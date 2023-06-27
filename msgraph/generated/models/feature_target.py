@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import feature_target_type
+    from .feature_target_type import FeatureTargetType
 
 @dataclass
 class FeatureTarget(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class FeatureTarget(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The kind of entity that's targeted. The possible values are: group, administrativeUnit, role, unknownFutureValue.
-    target_type: Optional[feature_target_type.FeatureTargetType] = None
+    target_type: Optional[FeatureTargetType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FeatureTarget:
@@ -35,14 +35,14 @@ class FeatureTarget(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import feature_target_type
+        from .feature_target_type import FeatureTargetType
 
-        from . import feature_target_type
+        from .feature_target_type import FeatureTargetType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(feature_target_type.FeatureTargetType)),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(FeatureTargetType)),
         }
         return fields
     

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import list_item_version, list_item_version_collection_response
-    from ..........models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import list_item_version_item_request_builder
+    from ..........models.list_item_version import ListItemVersion
+    from ..........models.list_item_version_collection_response import ListItemVersionCollectionResponse
+    from ..........models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.list_item_version_item_request_builder import ListItemVersionItemRequestBuilder
 
 class VersionsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class VersionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_list_item_version_id(self,list_item_version_id: str) -> list_item_version_item_request_builder.ListItemVersionItemRequestBuilder:
+    def by_list_item_version_id(self,list_item_version_id: str) -> ListItemVersionItemRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.listItem entity.
         Args:
             list_item_version_id: Unique identifier of the item
-        Returns: list_item_version_item_request_builder.ListItemVersionItemRequestBuilder
+        Returns: ListItemVersionItemRequestBuilder
         """
         if not list_item_version_id:
             raise TypeError("list_item_version_id cannot be null.")
-        from .item import list_item_version_item_request_builder
+        from .item.list_item_version_item_request_builder import ListItemVersionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["listItemVersion%2Did"] = list_item_version_id
-        return list_item_version_item_request_builder.ListItemVersionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ListItemVersionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[VersionsRequestBuilderGetRequestConfiguration] = None) -> Optional[list_item_version_collection_response.ListItemVersionCollectionResponse]:
+    async def get(self,request_configuration: Optional[VersionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ListItemVersionCollectionResponse]:
         """
         SharePoint can be configured to retain the history for list items. Previous versions may be retained for a finite period of time depending on admin settings which may be unique per user or location.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[list_item_version_collection_response.ListItemVersionCollectionResponse]
+        Returns: Optional[ListItemVersionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import list_item_version_collection_response
+        from ..........models.list_item_version_collection_response import ListItemVersionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, list_item_version_collection_response.ListItemVersionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ListItemVersionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[list_item_version.ListItemVersion] = None, request_configuration: Optional[VersionsRequestBuilderPostRequestConfiguration] = None) -> Optional[list_item_version.ListItemVersion]:
+    async def post(self,body: Optional[ListItemVersion] = None, request_configuration: Optional[VersionsRequestBuilderPostRequestConfiguration] = None) -> Optional[ListItemVersion]:
         """
         Create new navigation property to versions for groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[list_item_version.ListItemVersion]
+        Returns: Optional[ListItemVersion]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import list_item_version
+        from ..........models.list_item_version import ListItemVersion
 
-        return await self.request_adapter.send_async(request_info, list_item_version.ListItemVersion, error_mapping)
+        return await self.request_adapter.send_async(request_info, ListItemVersion, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[VersionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class VersionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[list_item_version.ListItemVersion] = None, request_configuration: Optional[VersionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ListItemVersion] = None, request_configuration: Optional[VersionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to versions for groups
         Args:
@@ -139,13 +140,13 @@ class VersionsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class VersionsRequestBuilderGetQueryParameters():

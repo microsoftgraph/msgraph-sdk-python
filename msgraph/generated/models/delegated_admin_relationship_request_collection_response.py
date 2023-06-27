@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, delegated_admin_relationship_request
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class DelegatedAdminRelationshipRequestCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class DelegatedAdminRelationshipRequestCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]] = None
+    value: Optional[List[DelegatedAdminRelationshipRequest]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedAdminRelationshipRequestCollectionResponse:
@@ -30,12 +31,14 @@ class DelegatedAdminRelationshipRequestCollectionResponse(base_collection_pagina
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, delegated_admin_relationship_request
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
 
-        from . import base_collection_pagination_count_response, delegated_admin_relationship_request
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(delegated_admin_relationship_request.DelegatedAdminRelationshipRequest)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(DelegatedAdminRelationshipRequest)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

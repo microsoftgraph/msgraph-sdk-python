@@ -10,14 +10,14 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ............models import onenote_page
-    from ............models.o_data_errors import o_data_error
-    from .content import content_request_builder
-    from .copy_to_section import copy_to_section_request_builder
-    from .onenote_patch_content import onenote_patch_content_request_builder
-    from .parent_notebook import parent_notebook_request_builder
-    from .parent_section import parent_section_request_builder
-    from .preview import preview_request_builder
+    from ............models.o_data_errors.o_data_error import ODataError
+    from ............models.onenote_page import OnenotePage
+    from .content.content_request_builder import ContentRequestBuilder
+    from .copy_to_section.copy_to_section_request_builder import CopyToSectionRequestBuilder
+    from .onenote_patch_content.onenote_patch_content_request_builder import OnenotePatchContentRequestBuilder
+    from .parent_notebook.parent_notebook_request_builder import ParentNotebookRequestBuilder
+    from .parent_section.parent_section_request_builder import ParentSectionRequestBuilder
+    from .preview.preview_request_builder import PreviewRequestBuilder
 
 class OnenotePageItemRequestBuilder():
     """
@@ -50,62 +50,62 @@ class OnenotePageItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[OnenotePageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[onenote_page.OnenotePage]:
+    async def get(self,request_configuration: Optional[OnenotePageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OnenotePage]:
         """
         The collection of pages in the section.  Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[onenote_page.OnenotePage]
+        Returns: Optional[OnenotePage]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ............models import onenote_page
+        from ............models.onenote_page import OnenotePage
 
-        return await self.request_adapter.send_async(request_info, onenote_page.OnenotePage, error_mapping)
+        return await self.request_adapter.send_async(request_info, OnenotePage, error_mapping)
     
-    async def patch(self,body: Optional[onenote_page.OnenotePage] = None, request_configuration: Optional[OnenotePageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[onenote_page.OnenotePage]:
+    async def patch(self,body: Optional[OnenotePage] = None, request_configuration: Optional[OnenotePageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[OnenotePage]:
         """
         Update the navigation property pages in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[onenote_page.OnenotePage]
+        Returns: Optional[OnenotePage]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ............models import onenote_page
+        from ............models.onenote_page import OnenotePage
 
-        return await self.request_adapter.send_async(request_info, onenote_page.OnenotePage, error_mapping)
+        return await self.request_adapter.send_async(request_info, OnenotePage, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[OnenotePageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -141,7 +141,7 @@ class OnenotePageItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[onenote_page.OnenotePage] = None, request_configuration: Optional[OnenotePageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[OnenotePage] = None, request_configuration: Optional[OnenotePageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property pages in users
         Args:
@@ -163,58 +163,58 @@ class OnenotePageItemRequestBuilder():
         return request_info
     
     @property
-    def content(self) -> content_request_builder.ContentRequestBuilder:
+    def content(self) -> ContentRequestBuilder:
         """
         Provides operations to manage the media for the user entity.
         """
-        from .content import content_request_builder
+        from .content.content_request_builder import ContentRequestBuilder
 
-        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+        return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def copy_to_section(self) -> copy_to_section_request_builder.CopyToSectionRequestBuilder:
+    def copy_to_section(self) -> CopyToSectionRequestBuilder:
         """
         Provides operations to call the copyToSection method.
         """
-        from .copy_to_section import copy_to_section_request_builder
+        from .copy_to_section.copy_to_section_request_builder import CopyToSectionRequestBuilder
 
-        return copy_to_section_request_builder.CopyToSectionRequestBuilder(self.request_adapter, self.path_parameters)
+        return CopyToSectionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def onenote_patch_content(self) -> onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder:
+    def onenote_patch_content(self) -> OnenotePatchContentRequestBuilder:
         """
         Provides operations to call the onenotePatchContent method.
         """
-        from .onenote_patch_content import onenote_patch_content_request_builder
+        from .onenote_patch_content.onenote_patch_content_request_builder import OnenotePatchContentRequestBuilder
 
-        return onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder(self.request_adapter, self.path_parameters)
+        return OnenotePatchContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def parent_notebook(self) -> parent_notebook_request_builder.ParentNotebookRequestBuilder:
+    def parent_notebook(self) -> ParentNotebookRequestBuilder:
         """
         Provides operations to manage the parentNotebook property of the microsoft.graph.onenotePage entity.
         """
-        from .parent_notebook import parent_notebook_request_builder
+        from .parent_notebook.parent_notebook_request_builder import ParentNotebookRequestBuilder
 
-        return parent_notebook_request_builder.ParentNotebookRequestBuilder(self.request_adapter, self.path_parameters)
+        return ParentNotebookRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def parent_section(self) -> parent_section_request_builder.ParentSectionRequestBuilder:
+    def parent_section(self) -> ParentSectionRequestBuilder:
         """
         Provides operations to manage the parentSection property of the microsoft.graph.onenotePage entity.
         """
-        from .parent_section import parent_section_request_builder
+        from .parent_section.parent_section_request_builder import ParentSectionRequestBuilder
 
-        return parent_section_request_builder.ParentSectionRequestBuilder(self.request_adapter, self.path_parameters)
+        return ParentSectionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def preview(self) -> preview_request_builder.PreviewRequestBuilder:
+    def preview(self) -> PreviewRequestBuilder:
         """
         Provides operations to call the preview method.
         """
-        from .preview import preview_request_builder
+        from .preview.preview_request_builder import PreviewRequestBuilder
 
-        return preview_request_builder.PreviewRequestBuilder(self.request_adapter, self.path_parameters)
+        return PreviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OnenotePageItemRequestBuilderDeleteRequestConfiguration():

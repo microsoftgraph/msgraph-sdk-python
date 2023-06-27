@@ -1,22 +1,35 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, identity_set, offer_shift_request, open_shift, open_shift_change_request, schedule_change_request, scheduling_group, shift, shift_preferences, swap_shifts_change_request, time_off, time_off_reason, time_off_request, workforce_integration
+    from .entity import Entity
+    from .identity_set import IdentitySet
+    from .offer_shift_request import OfferShiftRequest
+    from .open_shift import OpenShift
+    from .open_shift_change_request import OpenShiftChangeRequest
+    from .schedule_change_request import ScheduleChangeRequest
+    from .scheduling_group import SchedulingGroup
+    from .shift import Shift
+    from .shift_preferences import ShiftPreferences
+    from .swap_shifts_change_request import SwapShiftsChangeRequest
+    from .time_off import TimeOff
+    from .time_off_reason import TimeOffReason
+    from .time_off_request import TimeOffRequest
+    from .workforce_integration import WorkforceIntegration
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ChangeTrackedEntity(entity.Entity):
+class ChangeTrackedEntity(Entity):
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Identity of the person who last modified the entity.
-    last_modified_by: Optional[identity_set.IdentitySet] = None
+    last_modified_by: Optional[IdentitySet] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,53 +48,53 @@ class ChangeTrackedEntity(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.offerShiftRequest".casefold():
-            from . import offer_shift_request
+            from .offer_shift_request import OfferShiftRequest
 
-            return offer_shift_request.OfferShiftRequest()
+            return OfferShiftRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.openShift".casefold():
-            from . import open_shift
+            from .open_shift import OpenShift
 
-            return open_shift.OpenShift()
+            return OpenShift()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.openShiftChangeRequest".casefold():
-            from . import open_shift_change_request
+            from .open_shift_change_request import OpenShiftChangeRequest
 
-            return open_shift_change_request.OpenShiftChangeRequest()
+            return OpenShiftChangeRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.scheduleChangeRequest".casefold():
-            from . import schedule_change_request
+            from .schedule_change_request import ScheduleChangeRequest
 
-            return schedule_change_request.ScheduleChangeRequest()
+            return ScheduleChangeRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.schedulingGroup".casefold():
-            from . import scheduling_group
+            from .scheduling_group import SchedulingGroup
 
-            return scheduling_group.SchedulingGroup()
+            return SchedulingGroup()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.shift".casefold():
-            from . import shift
+            from .shift import Shift
 
-            return shift.Shift()
+            return Shift()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.shiftPreferences".casefold():
-            from . import shift_preferences
+            from .shift_preferences import ShiftPreferences
 
-            return shift_preferences.ShiftPreferences()
+            return ShiftPreferences()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.swapShiftsChangeRequest".casefold():
-            from . import swap_shifts_change_request
+            from .swap_shifts_change_request import SwapShiftsChangeRequest
 
-            return swap_shifts_change_request.SwapShiftsChangeRequest()
+            return SwapShiftsChangeRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOff".casefold():
-            from . import time_off
+            from .time_off import TimeOff
 
-            return time_off.TimeOff()
+            return TimeOff()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOffReason".casefold():
-            from . import time_off_reason
+            from .time_off_reason import TimeOffReason
 
-            return time_off_reason.TimeOffReason()
+            return TimeOffReason()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOffRequest".casefold():
-            from . import time_off_request
+            from .time_off_request import TimeOffRequest
 
-            return time_off_request.TimeOffRequest()
+            return TimeOffRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workforceIntegration".casefold():
-            from . import workforce_integration
+            from .workforce_integration import WorkforceIntegration
 
-            return workforce_integration.WorkforceIntegration()
+            return WorkforceIntegration()
         return ChangeTrackedEntity()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -89,13 +102,39 @@ class ChangeTrackedEntity(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, identity_set, offer_shift_request, open_shift, open_shift_change_request, schedule_change_request, scheduling_group, shift, shift_preferences, swap_shifts_change_request, time_off, time_off_reason, time_off_request, workforce_integration
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .offer_shift_request import OfferShiftRequest
+        from .open_shift import OpenShift
+        from .open_shift_change_request import OpenShiftChangeRequest
+        from .schedule_change_request import ScheduleChangeRequest
+        from .scheduling_group import SchedulingGroup
+        from .shift import Shift
+        from .shift_preferences import ShiftPreferences
+        from .swap_shifts_change_request import SwapShiftsChangeRequest
+        from .time_off import TimeOff
+        from .time_off_reason import TimeOffReason
+        from .time_off_request import TimeOffRequest
+        from .workforce_integration import WorkforceIntegration
 
-        from . import entity, identity_set, offer_shift_request, open_shift, open_shift_change_request, schedule_change_request, scheduling_group, shift, shift_preferences, swap_shifts_change_request, time_off, time_off_reason, time_off_request, workforce_integration
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .offer_shift_request import OfferShiftRequest
+        from .open_shift import OpenShift
+        from .open_shift_change_request import OpenShiftChangeRequest
+        from .schedule_change_request import ScheduleChangeRequest
+        from .scheduling_group import SchedulingGroup
+        from .shift import Shift
+        from .shift_preferences import ShiftPreferences
+        from .swap_shifts_change_request import SwapShiftsChangeRequest
+        from .time_off import TimeOff
+        from .time_off_reason import TimeOffReason
+        from .time_off_request import TimeOffRequest
+        from .workforce_integration import WorkforceIntegration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()

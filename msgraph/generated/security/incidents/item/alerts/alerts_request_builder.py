@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models.o_data_errors import o_data_error
-    from .....models.security import alert_collection_response
-    from .count import count_request_builder
-    from .item import alert_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.security.alert_collection_response import AlertCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.alert_item_request_builder import AlertItemRequestBuilder
 
 class AlertsRequestBuilder():
     """
@@ -37,42 +37,42 @@ class AlertsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_alert_id(self,alert_id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
+    def by_alert_id(self,alert_id: str) -> AlertItemRequestBuilder:
         """
         Provides operations to manage the alerts property of the microsoft.graph.security.incident entity.
         Args:
             alert_id: Unique identifier of the item
-        Returns: alert_item_request_builder.AlertItemRequestBuilder
+        Returns: AlertItemRequestBuilder
         """
         if not alert_id:
             raise TypeError("alert_id cannot be null.")
-        from .item import alert_item_request_builder
+        from .item.alert_item_request_builder import AlertItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["alert%2Did"] = alert_id
-        return alert_item_request_builder.AlertItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AlertItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AlertsRequestBuilderGetRequestConfiguration] = None) -> Optional[alert_collection_response.AlertCollectionResponse]:
+    async def get(self,request_configuration: Optional[AlertsRequestBuilderGetRequestConfiguration] = None) -> Optional[AlertCollectionResponse]:
         """
         The list of related alerts. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[alert_collection_response.AlertCollectionResponse]
+        Returns: Optional[AlertCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.security import alert_collection_response
+        from .....models.security.alert_collection_response import AlertCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, alert_collection_response.AlertCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AlertCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AlertsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class AlertsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AlertsRequestBuilderGetQueryParameters():

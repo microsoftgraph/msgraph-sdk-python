@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import learning_provider, learning_provider_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import learning_provider_item_request_builder
+    from ...models.learning_provider import LearningProvider
+    from ...models.learning_provider_collection_response import LearningProviderCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.learning_provider_item_request_builder import LearningProviderItemRequestBuilder
 
 class LearningProvidersRequestBuilder():
     """
@@ -37,67 +38,67 @@ class LearningProvidersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_learning_provider_id(self,learning_provider_id: str) -> learning_provider_item_request_builder.LearningProviderItemRequestBuilder:
+    def by_learning_provider_id(self,learning_provider_id: str) -> LearningProviderItemRequestBuilder:
         """
         Provides operations to manage the learningProviders property of the microsoft.graph.employeeExperience entity.
         Args:
             learning_provider_id: Unique identifier of the item
-        Returns: learning_provider_item_request_builder.LearningProviderItemRequestBuilder
+        Returns: LearningProviderItemRequestBuilder
         """
         if not learning_provider_id:
             raise TypeError("learning_provider_id cannot be null.")
-        from .item import learning_provider_item_request_builder
+        from .item.learning_provider_item_request_builder import LearningProviderItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["learningProvider%2Did"] = learning_provider_id
-        return learning_provider_item_request_builder.LearningProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return LearningProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[learning_provider_collection_response.LearningProviderCollectionResponse]:
+    async def get(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningProviderCollectionResponse]:
         """
         Get a list of the learningProvider resources registered in Viva Learning for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[learning_provider_collection_response.LearningProviderCollectionResponse]
+        Returns: Optional[LearningProviderCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import learning_provider_collection_response
+        from ...models.learning_provider_collection_response import LearningProviderCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, learning_provider_collection_response.LearningProviderCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, LearningProviderCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[learning_provider.LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[learning_provider.LearningProvider]:
+    async def post(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[LearningProvider]:
         """
         Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[learning_provider.LearningProvider]
+        Returns: Optional[LearningProvider]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import learning_provider
+        from ...models.learning_provider import LearningProvider
 
-        return await self.request_adapter.send_async(request_info, learning_provider.LearningProvider, error_mapping)
+        return await self.request_adapter.send_async(request_info, LearningProvider, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class LearningProvidersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[learning_provider.LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes.
         Args:
@@ -139,13 +140,13 @@ class LearningProvidersRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class LearningProvidersRequestBuilderGetQueryParameters():

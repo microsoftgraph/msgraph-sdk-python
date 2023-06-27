@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import column_definition
-    from .......models.o_data_errors import o_data_error
-    from .source_column import source_column_request_builder
+    from .......models.column_definition import ColumnDefinition
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .source_column.source_column_request_builder import SourceColumnRequestBuilder
 
 class ColumnDefinitionItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class ColumnDefinitionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ColumnDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[column_definition.ColumnDefinition]:
+    async def get(self,request_configuration: Optional[ColumnDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ColumnDefinition]:
         """
         The collection of column definitions reusable across lists under this site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[column_definition.ColumnDefinition]
+        Returns: Optional[ColumnDefinition]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import column_definition
+        from .......models.column_definition import ColumnDefinition
 
-        return await self.request_adapter.send_async(request_info, column_definition.ColumnDefinition, error_mapping)
+        return await self.request_adapter.send_async(request_info, ColumnDefinition, error_mapping)
     
-    async def patch(self,body: Optional[column_definition.ColumnDefinition] = None, request_configuration: Optional[ColumnDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[column_definition.ColumnDefinition]:
+    async def patch(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[ColumnDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ColumnDefinition]:
         """
         Update the navigation property columns in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[column_definition.ColumnDefinition]
+        Returns: Optional[ColumnDefinition]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import column_definition
+        from .......models.column_definition import ColumnDefinition
 
-        return await self.request_adapter.send_async(request_info, column_definition.ColumnDefinition, error_mapping)
+        return await self.request_adapter.send_async(request_info, ColumnDefinition, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ColumnDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class ColumnDefinitionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[column_definition.ColumnDefinition] = None, request_configuration: Optional[ColumnDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[ColumnDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property columns in groups
         Args:
@@ -158,13 +158,13 @@ class ColumnDefinitionItemRequestBuilder():
         return request_info
     
     @property
-    def source_column(self) -> source_column_request_builder.SourceColumnRequestBuilder:
+    def source_column(self) -> SourceColumnRequestBuilder:
         """
         Provides operations to manage the sourceColumn property of the microsoft.graph.columnDefinition entity.
         """
-        from .source_column import source_column_request_builder
+        from .source_column.source_column_request_builder import SourceColumnRequestBuilder
 
-        return source_column_request_builder.SourceColumnRequestBuilder(self.request_adapter, self.path_parameters)
+        return SourceColumnRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ColumnDefinitionItemRequestBuilderDeleteRequestConfiguration():

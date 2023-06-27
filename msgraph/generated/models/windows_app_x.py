@@ -4,15 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_lob_app, windows_architecture, windows_minimum_operating_system
+    from .mobile_lob_app import MobileLobApp
+    from .windows_architecture import WindowsArchitecture
+    from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
 
-from . import mobile_lob_app
+from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class WindowsAppX(mobile_lob_app.MobileLobApp):
+class WindowsAppX(MobileLobApp):
     odata_type = "#microsoft.graph.windowsAppX"
     # Contains properties for Windows architecture.
-    applicable_architectures: Optional[windows_architecture.WindowsArchitecture] = None
+    applicable_architectures: Optional[WindowsArchitecture] = None
     # The identity name of the uploaded app package. For example: 'Contoso.DemoApp'.
     identity_name: Optional[str] = None
     # The identity publisher hash of the uploaded app package. This is the hash of the publisher from the manifest. For example: 'AB82CD0XYZ'.
@@ -24,7 +26,7 @@ class WindowsAppX(mobile_lob_app.MobileLobApp):
     # When TRUE, indicates that the app is a bundle. When FALSE, indicates that the app is not a bundle. By default, property is set to FALSE.
     is_bundle: Optional[bool] = None
     # The minimum operating system required for a Windows mobile app.
-    minimum_supported_operating_system: Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem] = None
+    minimum_supported_operating_system: Optional[WindowsMinimumOperatingSystem] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsAppX:
@@ -43,18 +45,22 @@ class WindowsAppX(mobile_lob_app.MobileLobApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_lob_app, windows_architecture, windows_minimum_operating_system
+        from .mobile_lob_app import MobileLobApp
+        from .windows_architecture import WindowsArchitecture
+        from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
 
-        from . import mobile_lob_app, windows_architecture, windows_minimum_operating_system
+        from .mobile_lob_app import MobileLobApp
+        from .windows_architecture import WindowsArchitecture
+        from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
+            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(WindowsArchitecture)),
             "identityName": lambda n : setattr(self, 'identity_name', n.get_str_value()),
             "identityPublisherHash": lambda n : setattr(self, 'identity_publisher_hash', n.get_str_value()),
             "identityResourceIdentifier": lambda n : setattr(self, 'identity_resource_identifier', n.get_str_value()),
             "identityVersion": lambda n : setattr(self, 'identity_version', n.get_str_value()),
             "isBundle": lambda n : setattr(self, 'is_bundle', n.get_bool_value()),
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(windows_minimum_operating_system.WindowsMinimumOperatingSystem)),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(WindowsMinimumOperatingSystem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

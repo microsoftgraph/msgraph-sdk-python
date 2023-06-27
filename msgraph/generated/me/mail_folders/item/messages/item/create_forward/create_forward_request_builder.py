@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import create_forward_post_request_body
-    from .......models import message
-    from .......models.o_data_errors import o_data_error
+    from .......models.message import Message
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .create_forward_post_request_body import CreateForwardPostRequestBody
 
 class CreateForwardRequestBuilder():
     """
@@ -36,32 +36,32 @@ class CreateForwardRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[create_forward_post_request_body.CreateForwardPostRequestBody] = None, request_configuration: Optional[CreateForwardRequestBuilderPostRequestConfiguration] = None) -> Optional[message.Message]:
+    async def post(self,body: Optional[CreateForwardPostRequestBody] = None, request_configuration: Optional[CreateForwardRequestBuilderPostRequestConfiguration] = None) -> Optional[Message]:
         """
         Create a draft to forward an existing message, in either JSON or MIME format. When using JSON format, you can:- Specify either a comment or the **body** property of the `message` parameter. Specifying both will return an HTTP 400 Bad Request error.- Specify either the `toRecipients` parameter or the **toRecipients** property of the `message` parameter. Specifying both or specifying neither will return an HTTP 400 Bad Request error.- Update the draft later to add content to the **body** or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- Add any attachments and S/MIME properties to the MIME content. Send the draft message in a subsequent operation. Alternatively, forward a message in a single operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[message.Message]
+        Returns: Optional[Message]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import message
+        from .......models.message import Message
 
-        return await self.request_adapter.send_async(request_info, message.Message, error_mapping)
+        return await self.request_adapter.send_async(request_info, Message, error_mapping)
     
-    def to_post_request_information(self,body: Optional[create_forward_post_request_body.CreateForwardPostRequestBody] = None, request_configuration: Optional[CreateForwardRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CreateForwardPostRequestBody] = None, request_configuration: Optional[CreateForwardRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a draft to forward an existing message, in either JSON or MIME format. When using JSON format, you can:- Specify either a comment or the **body** property of the `message` parameter. Specifying both will return an HTTP 400 Bad Request error.- Specify either the `toRecipients` parameter or the **toRecipients** property of the `message` parameter. Specifying both or specifying neither will return an HTTP 400 Bad Request error.- Update the draft later to add content to the **body** or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- Add any attachments and S/MIME properties to the MIME content. Send the draft message in a subsequent operation. Alternatively, forward a message in a single operation.
         Args:

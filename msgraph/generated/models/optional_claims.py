@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import optional_claim
+    from .optional_claim import OptionalClaim
 
 @dataclass
 class OptionalClaims(AdditionalDataHolder, Parsable):
@@ -12,13 +12,13 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The optional claims returned in the JWT access token.
-    access_token: Optional[List[optional_claim.OptionalClaim]] = None
+    access_token: Optional[List[OptionalClaim]] = None
     # The optional claims returned in the JWT ID token.
-    id_token: Optional[List[optional_claim.OptionalClaim]] = None
+    id_token: Optional[List[OptionalClaim]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The optional claims returned in the SAML token.
-    saml2_token: Optional[List[optional_claim.OptionalClaim]] = None
+    saml2_token: Optional[List[OptionalClaim]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OptionalClaims:
@@ -37,15 +37,15 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import optional_claim
+        from .optional_claim import OptionalClaim
 
-        from . import optional_claim
+        from .optional_claim import OptionalClaim
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessToken": lambda n : setattr(self, 'access_token', n.get_collection_of_object_values(optional_claim.OptionalClaim)),
-            "idToken": lambda n : setattr(self, 'id_token', n.get_collection_of_object_values(optional_claim.OptionalClaim)),
+            "accessToken": lambda n : setattr(self, 'access_token', n.get_collection_of_object_values(OptionalClaim)),
+            "idToken": lambda n : setattr(self, 'id_token', n.get_collection_of_object_values(OptionalClaim)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "saml2Token": lambda n : setattr(self, 'saml2_token', n.get_collection_of_object_values(optional_claim.OptionalClaim)),
+            "saml2Token": lambda n : setattr(self, 'saml2_token', n.get_collection_of_object_values(OptionalClaim)),
         }
         return fields
     

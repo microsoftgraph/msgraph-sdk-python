@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import app_list_item
+    from .app_list_item import AppListItem
 
 @dataclass
 class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
@@ -19,7 +19,7 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
     # If set to true, corresponding managed apps will not be allowed to use cellular data at any time.
     cellular_data_blocked: Optional[bool] = None
     # Information about the managed apps that this rule is going to apply to. This collection can contain a maximum of 500 elements.
-    managed_apps: Optional[List[app_list_item.AppListItem]] = None
+    managed_apps: Optional[List[AppListItem]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -40,14 +40,14 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_list_item
+        from .app_list_item import AppListItem
 
-        from . import app_list_item
+        from .app_list_item import AppListItem
 
         fields: Dict[str, Callable[[Any], None]] = {
             "cellularDataBlockWhenRoaming": lambda n : setattr(self, 'cellular_data_block_when_roaming', n.get_bool_value()),
             "cellularDataBlocked": lambda n : setattr(self, 'cellular_data_blocked', n.get_bool_value()),
-            "managedApps": lambda n : setattr(self, 'managed_apps', n.get_collection_of_object_values(app_list_item.AppListItem)),
+            "managedApps": lambda n : setattr(self, 'managed_apps', n.get_collection_of_object_values(AppListItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

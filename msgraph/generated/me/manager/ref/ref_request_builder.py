@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import reference_update
-    from ....models.o_data_errors import o_data_error
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.reference_update import ReferenceUpdate
 
 class RefRequestBuilder():
     """
@@ -44,11 +44,11 @@ class RefRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -64,17 +64,17 @@ class RefRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "str", error_mapping)
     
-    async def put(self,body: Optional[reference_update.ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None) -> None:
+    async def put(self,body: Optional[ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None) -> None:
         """
         Assign a user's manager.
         Args:
@@ -86,11 +86,11 @@ class RefRequestBuilder():
         request_info = self.to_put_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -129,7 +129,7 @@ class RefRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_put_request_information(self,body: Optional[reference_update.ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: Optional[ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         Assign a user's manager.
         Args:

@@ -4,18 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import directory_definition, entity, synchronization_rule
+    from .directory_definition import DirectoryDefinition
+    from .entity import Entity
+    from .synchronization_rule import SynchronizationRule
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class SynchronizationSchema(entity.Entity):
+class SynchronizationSchema(Entity):
     # The directories property
-    directories: Optional[List[directory_definition.DirectoryDefinition]] = None
+    directories: Optional[List[DirectoryDefinition]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The synchronizationRules property
-    synchronization_rules: Optional[List[synchronization_rule.SynchronizationRule]] = None
+    synchronization_rules: Optional[List[SynchronizationRule]] = None
     # The version property
     version: Optional[str] = None
     
@@ -36,13 +38,17 @@ class SynchronizationSchema(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_definition, entity, synchronization_rule
+        from .directory_definition import DirectoryDefinition
+        from .entity import Entity
+        from .synchronization_rule import SynchronizationRule
 
-        from . import directory_definition, entity, synchronization_rule
+        from .directory_definition import DirectoryDefinition
+        from .entity import Entity
+        from .synchronization_rule import SynchronizationRule
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "directories": lambda n : setattr(self, 'directories', n.get_collection_of_object_values(directory_definition.DirectoryDefinition)),
-            "synchronizationRules": lambda n : setattr(self, 'synchronization_rules', n.get_collection_of_object_values(synchronization_rule.SynchronizationRule)),
+            "directories": lambda n : setattr(self, 'directories', n.get_collection_of_object_values(DirectoryDefinition)),
+            "synchronizationRules": lambda n : setattr(self, 'synchronization_rules', n.get_collection_of_object_values(SynchronizationRule)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

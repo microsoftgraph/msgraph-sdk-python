@@ -4,18 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, planner_category_descriptions, planner_user_ids
+    from .entity import Entity
+    from .planner_category_descriptions import PlannerCategoryDescriptions
+    from .planner_user_ids import PlannerUserIds
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PlannerPlanDetails(entity.Entity):
+class PlannerPlanDetails(Entity):
     # An object that specifies the descriptions of the 25 categories that can be associated with tasks in the plan.
-    category_descriptions: Optional[planner_category_descriptions.PlannerCategoryDescriptions] = None
+    category_descriptions: Optional[PlannerCategoryDescriptions] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Set of user IDs that this plan is shared with. If you are leveraging Microsoft 365 groups, use the Groups API to manage group membership to share the group's plan. You can also add existing members of the group to this collection, although it is not required for them to access the plan owned by the group.
-    shared_with: Optional[planner_user_ids.PlannerUserIds] = None
+    shared_with: Optional[PlannerUserIds] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerPlanDetails:
@@ -34,13 +36,17 @@ class PlannerPlanDetails(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, planner_category_descriptions, planner_user_ids
+        from .entity import Entity
+        from .planner_category_descriptions import PlannerCategoryDescriptions
+        from .planner_user_ids import PlannerUserIds
 
-        from . import entity, planner_category_descriptions, planner_user_ids
+        from .entity import Entity
+        from .planner_category_descriptions import PlannerCategoryDescriptions
+        from .planner_user_ids import PlannerUserIds
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "categoryDescriptions": lambda n : setattr(self, 'category_descriptions', n.get_object_value(planner_category_descriptions.PlannerCategoryDescriptions)),
-            "sharedWith": lambda n : setattr(self, 'shared_with', n.get_object_value(planner_user_ids.PlannerUserIds)),
+            "categoryDescriptions": lambda n : setattr(self, 'category_descriptions', n.get_object_value(PlannerCategoryDescriptions)),
+            "sharedWith": lambda n : setattr(self, 'shared_with', n.get_object_value(PlannerUserIds)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

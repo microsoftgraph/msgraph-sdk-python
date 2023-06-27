@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import booking_currency, booking_currency_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import booking_currency_item_request_builder
+    from ...models.booking_currency import BookingCurrency
+    from ...models.booking_currency_collection_response import BookingCurrencyCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.booking_currency_item_request_builder import BookingCurrencyItemRequestBuilder
 
 class BookingCurrenciesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class BookingCurrenciesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_booking_currency_id(self,booking_currency_id: str) -> booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder:
+    def by_booking_currency_id(self,booking_currency_id: str) -> BookingCurrencyItemRequestBuilder:
         """
         Provides operations to manage the bookingCurrencies property of the microsoft.graph.solutionsRoot entity.
         Args:
             booking_currency_id: Unique identifier of the item
-        Returns: booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder
+        Returns: BookingCurrencyItemRequestBuilder
         """
         if not booking_currency_id:
             raise TypeError("booking_currency_id cannot be null.")
-        from .item import booking_currency_item_request_builder
+        from .item.booking_currency_item_request_builder import BookingCurrencyItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["bookingCurrency%2Did"] = booking_currency_id
-        return booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return BookingCurrencyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[BookingCurrenciesRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_currency_collection_response.BookingCurrencyCollectionResponse]:
+    async def get(self,request_configuration: Optional[BookingCurrenciesRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingCurrencyCollectionResponse]:
         """
         Get a list of bookingCurrency objects available to a Microsoft Bookings business.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[booking_currency_collection_response.BookingCurrencyCollectionResponse]
+        Returns: Optional[BookingCurrencyCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import booking_currency_collection_response
+        from ...models.booking_currency_collection_response import BookingCurrencyCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, booking_currency_collection_response.BookingCurrencyCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, BookingCurrencyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[booking_currency.BookingCurrency] = None, request_configuration: Optional[BookingCurrenciesRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_currency.BookingCurrency]:
+    async def post(self,body: Optional[BookingCurrency] = None, request_configuration: Optional[BookingCurrenciesRequestBuilderPostRequestConfiguration] = None) -> Optional[BookingCurrency]:
         """
         Create new navigation property to bookingCurrencies for solutions
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[booking_currency.BookingCurrency]
+        Returns: Optional[BookingCurrency]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import booking_currency
+        from ...models.booking_currency import BookingCurrency
 
-        return await self.request_adapter.send_async(request_info, booking_currency.BookingCurrency, error_mapping)
+        return await self.request_adapter.send_async(request_info, BookingCurrency, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[BookingCurrenciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class BookingCurrenciesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[booking_currency.BookingCurrency] = None, request_configuration: Optional[BookingCurrenciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[BookingCurrency] = None, request_configuration: Optional[BookingCurrenciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to bookingCurrencies for solutions
         Args:
@@ -139,13 +140,13 @@ class BookingCurrenciesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class BookingCurrenciesRequestBuilderGetQueryParameters():

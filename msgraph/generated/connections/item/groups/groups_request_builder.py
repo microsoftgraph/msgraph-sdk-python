@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models.external_connectors import external_group, external_group_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import external_group_item_request_builder
+    from ....models.external_connectors.external_group import ExternalGroup
+    from ....models.external_connectors.external_group_collection_response import ExternalGroupCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.external_group_item_request_builder import ExternalGroupItemRequestBuilder
 
 class GroupsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class GroupsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_external_group_id(self,external_group_id: str) -> external_group_item_request_builder.ExternalGroupItemRequestBuilder:
+    def by_external_group_id(self,external_group_id: str) -> ExternalGroupItemRequestBuilder:
         """
         Provides operations to manage the groups property of the microsoft.graph.externalConnectors.externalConnection entity.
         Args:
             external_group_id: Unique identifier of the item
-        Returns: external_group_item_request_builder.ExternalGroupItemRequestBuilder
+        Returns: ExternalGroupItemRequestBuilder
         """
         if not external_group_id:
             raise TypeError("external_group_id cannot be null.")
-        from .item import external_group_item_request_builder
+        from .item.external_group_item_request_builder import ExternalGroupItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["externalGroup%2Did"] = external_group_id
-        return external_group_item_request_builder.ExternalGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ExternalGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[external_group_collection_response.ExternalGroupCollectionResponse]:
+    async def get(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[ExternalGroupCollectionResponse]:
         """
         Get an externalGroup object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external_group_collection_response.ExternalGroupCollectionResponse]
+        Returns: Optional[ExternalGroupCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.external_connectors import external_group_collection_response
+        from ....models.external_connectors.external_group_collection_response import ExternalGroupCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, external_group_collection_response.ExternalGroupCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExternalGroupCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[external_group.ExternalGroup] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[external_group.ExternalGroup]:
+    async def post(self,body: Optional[ExternalGroup] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[ExternalGroup]:
         """
         Create a new externalGroup object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external_group.ExternalGroup]
+        Returns: Optional[ExternalGroup]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.external_connectors import external_group
+        from ....models.external_connectors.external_group import ExternalGroup
 
-        return await self.request_adapter.send_async(request_info, external_group.ExternalGroup, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExternalGroup, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class GroupsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[external_group.ExternalGroup] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ExternalGroup] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new externalGroup object.
         Args:
@@ -139,13 +140,13 @@ class GroupsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GroupsRequestBuilderGetQueryParameters():

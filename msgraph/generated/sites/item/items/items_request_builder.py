@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import base_item_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import base_item_item_request_builder
+    from ....models.base_item_collection_response import BaseItemCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.base_item_item_request_builder import BaseItemItemRequestBuilder
 
 class ItemsRequestBuilder():
     """
@@ -37,42 +37,42 @@ class ItemsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_base_item_id(self,base_item_id: str) -> base_item_item_request_builder.BaseItemItemRequestBuilder:
+    def by_base_item_id(self,base_item_id: str) -> BaseItemItemRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.site entity.
         Args:
             base_item_id: Unique identifier of the item
-        Returns: base_item_item_request_builder.BaseItemItemRequestBuilder
+        Returns: BaseItemItemRequestBuilder
         """
         if not base_item_id:
             raise TypeError("base_item_id cannot be null.")
-        from .item import base_item_item_request_builder
+        from .item.base_item_item_request_builder import BaseItemItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["baseItem%2Did"] = base_item_id
-        return base_item_item_request_builder.BaseItemItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return BaseItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[base_item_collection_response.BaseItemCollectionResponse]:
+    async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[BaseItemCollectionResponse]:
         """
         Used to address any item contained in this site. This collection can't be enumerated.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[base_item_collection_response.BaseItemCollectionResponse]
+        Returns: Optional[BaseItemCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import base_item_collection_response
+        from ....models.base_item_collection_response import BaseItemCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, base_item_collection_response.BaseItemCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, BaseItemCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class ItemsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ItemsRequestBuilderGetQueryParameters():

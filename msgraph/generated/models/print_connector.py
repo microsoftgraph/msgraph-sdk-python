@@ -1,16 +1,17 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, printer_location
+    from .entity import Entity
+    from .printer_location import PrinterLocation
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PrintConnector(entity.Entity):
+class PrintConnector(Entity):
     # The connector's version.
     app_version: Optional[str] = None
     # The name of the connector.
@@ -18,13 +19,13 @@ class PrintConnector(entity.Entity):
     # The connector machine's hostname.
     fully_qualified_domain_name: Optional[str] = None
     # The physical and/or organizational location of the connector.
-    location: Optional[printer_location.PrinterLocation] = None
+    location: Optional[PrinterLocation] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The connector machine's operating system version.
     operating_system: Optional[str] = None
     # The DateTimeOffset when the connector was registered.
-    registered_date_time: Optional[datetime] = None
+    registered_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintConnector:
@@ -43,15 +44,17 @@ class PrintConnector(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, printer_location
+        from .entity import Entity
+        from .printer_location import PrinterLocation
 
-        from . import entity, printer_location
+        from .entity import Entity
+        from .printer_location import PrinterLocation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appVersion": lambda n : setattr(self, 'app_version', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "fullyQualifiedDomainName": lambda n : setattr(self, 'fully_qualified_domain_name', n.get_str_value()),
-            "location": lambda n : setattr(self, 'location', n.get_object_value(printer_location.PrinterLocation)),
+            "location": lambda n : setattr(self, 'location', n.get_object_value(PrinterLocation)),
             "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
             "registeredDateTime": lambda n : setattr(self, 'registered_date_time', n.get_datetime_value()),
         }
@@ -73,6 +76,6 @@ class PrintConnector(entity.Entity):
         writer.write_str_value("fullyQualifiedDomainName", self.fully_qualified_domain_name)
         writer.write_object_value("location", self.location)
         writer.write_str_value("operatingSystem", self.operating_system)
-        writer.write_datetime_value("registeredDateTime", self.registered_date_time)
+        writer.write_datetime_value()("registeredDateTime", self.registered_date_time)
     
 

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import simulation_automation_run
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.simulation_automation_run import SimulationAutomationRun
 
 class SimulationAutomationRunItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class SimulationAutomationRunItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SimulationAutomationRunItemRequestBuilderGetRequestConfiguration] = None) -> Optional[simulation_automation_run.SimulationAutomationRun]:
+    async def get(self,request_configuration: Optional[SimulationAutomationRunItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SimulationAutomationRun]:
         """
         A collection of simulation automation runs.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[simulation_automation_run.SimulationAutomationRun]
+        Returns: Optional[SimulationAutomationRun]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import simulation_automation_run
+        from .......models.simulation_automation_run import SimulationAutomationRun
 
-        return await self.request_adapter.send_async(request_info, simulation_automation_run.SimulationAutomationRun, error_mapping)
+        return await self.request_adapter.send_async(request_info, SimulationAutomationRun, error_mapping)
     
-    async def patch(self,body: Optional[simulation_automation_run.SimulationAutomationRun] = None, request_configuration: Optional[SimulationAutomationRunItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[simulation_automation_run.SimulationAutomationRun]:
+    async def patch(self,body: Optional[SimulationAutomationRun] = None, request_configuration: Optional[SimulationAutomationRunItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SimulationAutomationRun]:
         """
         Update the navigation property runs in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[simulation_automation_run.SimulationAutomationRun]
+        Returns: Optional[SimulationAutomationRun]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import simulation_automation_run
+        from .......models.simulation_automation_run import SimulationAutomationRun
 
-        return await self.request_adapter.send_async(request_info, simulation_automation_run.SimulationAutomationRun, error_mapping)
+        return await self.request_adapter.send_async(request_info, SimulationAutomationRun, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SimulationAutomationRunItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class SimulationAutomationRunItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[simulation_automation_run.SimulationAutomationRun] = None, request_configuration: Optional[SimulationAutomationRunItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SimulationAutomationRun] = None, request_configuration: Optional[SimulationAutomationRunItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property runs in security
         Args:

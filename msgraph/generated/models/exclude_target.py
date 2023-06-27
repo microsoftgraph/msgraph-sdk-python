@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_target_type
+    from .authentication_method_target_type import AuthenticationMethodTargetType
 
 @dataclass
 class ExcludeTarget(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The targetType property
-    target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
+    target_type: Optional[AuthenticationMethodTargetType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExcludeTarget:
@@ -35,14 +35,14 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_target_type
+        from .authentication_method_target_type import AuthenticationMethodTargetType
 
-        from . import authentication_method_target_type
+        from .authentication_method_target_type import AuthenticationMethodTargetType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(AuthenticationMethodTargetType)),
         }
         return fields
     

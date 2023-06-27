@@ -4,26 +4,37 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_assignment, education_assignment_defaults, education_assignment_settings, education_category, education_course, education_external_source, education_school, education_term, education_user, entity, group, identity_set
+    from .education_assignment import EducationAssignment
+    from .education_assignment_defaults import EducationAssignmentDefaults
+    from .education_assignment_settings import EducationAssignmentSettings
+    from .education_category import EducationCategory
+    from .education_course import EducationCourse
+    from .education_external_source import EducationExternalSource
+    from .education_school import EducationSchool
+    from .education_term import EducationTerm
+    from .education_user import EducationUser
+    from .entity import Entity
+    from .group import Group
+    from .identity_set import IdentitySet
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class EducationClass(entity.Entity):
+class EducationClass(Entity):
     # All categories associated with this class. Nullable.
-    assignment_categories: Optional[List[education_category.EducationCategory]] = None
+    assignment_categories: Optional[List[EducationCategory]] = None
     # Specifies class-level defaults respected by new assignments created in the class.
-    assignment_defaults: Optional[education_assignment_defaults.EducationAssignmentDefaults] = None
+    assignment_defaults: Optional[EducationAssignmentDefaults] = None
     # Specifies class-level assignments settings.
-    assignment_settings: Optional[education_assignment_settings.EducationAssignmentSettings] = None
+    assignment_settings: Optional[EducationAssignmentSettings] = None
     # All assignments associated with this class. Nullable.
-    assignments: Optional[List[education_assignment.EducationAssignment]] = None
+    assignments: Optional[List[EducationAssignment]] = None
     # Class code used by the school to identify the class.
     class_code: Optional[str] = None
     # The course property
-    course: Optional[education_course.EducationCourse] = None
+    course: Optional[EducationCourse] = None
     # Entity who created the class
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # Description of the class.
     description: Optional[str] = None
     # Name of the class.
@@ -33,25 +44,25 @@ class EducationClass(entity.Entity):
     # Name of the class in the syncing system.
     external_name: Optional[str] = None
     # How this class was created. Possible values are: sis, manual.
-    external_source: Optional[education_external_source.EducationExternalSource] = None
+    external_source: Optional[EducationExternalSource] = None
     # The name of the external source this resources was generated from.
     external_source_detail: Optional[str] = None
     # Grade level of the class.
     grade: Optional[str] = None
     # The underlying Microsoft 365 group object.
-    group: Optional[group.Group] = None
+    group: Optional[Group] = None
     # Mail name for sending email to all members, if this is enabled.
     mail_nickname: Optional[str] = None
     # All users in the class. Nullable.
-    members: Optional[List[education_user.EducationUser]] = None
+    members: Optional[List[EducationUser]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # All schools that this class is associated with. Nullable.
-    schools: Optional[List[education_school.EducationSchool]] = None
+    schools: Optional[List[EducationSchool]] = None
     # All teachers in the class. Nullable.
-    teachers: Optional[List[education_user.EducationUser]] = None
+    teachers: Optional[List[EducationUser]] = None
     # Term for this class.
-    term: Optional[education_term.EducationTerm] = None
+    term: Optional[EducationTerm] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationClass:
@@ -70,31 +81,53 @@ class EducationClass(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_assignment, education_assignment_defaults, education_assignment_settings, education_category, education_course, education_external_source, education_school, education_term, education_user, entity, group, identity_set
+        from .education_assignment import EducationAssignment
+        from .education_assignment_defaults import EducationAssignmentDefaults
+        from .education_assignment_settings import EducationAssignmentSettings
+        from .education_category import EducationCategory
+        from .education_course import EducationCourse
+        from .education_external_source import EducationExternalSource
+        from .education_school import EducationSchool
+        from .education_term import EducationTerm
+        from .education_user import EducationUser
+        from .entity import Entity
+        from .group import Group
+        from .identity_set import IdentitySet
 
-        from . import education_assignment, education_assignment_defaults, education_assignment_settings, education_category, education_course, education_external_source, education_school, education_term, education_user, entity, group, identity_set
+        from .education_assignment import EducationAssignment
+        from .education_assignment_defaults import EducationAssignmentDefaults
+        from .education_assignment_settings import EducationAssignmentSettings
+        from .education_category import EducationCategory
+        from .education_course import EducationCourse
+        from .education_external_source import EducationExternalSource
+        from .education_school import EducationSchool
+        from .education_term import EducationTerm
+        from .education_user import EducationUser
+        from .entity import Entity
+        from .group import Group
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignmentCategories": lambda n : setattr(self, 'assignment_categories', n.get_collection_of_object_values(education_category.EducationCategory)),
-            "assignmentDefaults": lambda n : setattr(self, 'assignment_defaults', n.get_object_value(education_assignment_defaults.EducationAssignmentDefaults)),
-            "assignmentSettings": lambda n : setattr(self, 'assignment_settings', n.get_object_value(education_assignment_settings.EducationAssignmentSettings)),
-            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(education_assignment.EducationAssignment)),
+            "assignmentCategories": lambda n : setattr(self, 'assignment_categories', n.get_collection_of_object_values(EducationCategory)),
+            "assignmentDefaults": lambda n : setattr(self, 'assignment_defaults', n.get_object_value(EducationAssignmentDefaults)),
+            "assignmentSettings": lambda n : setattr(self, 'assignment_settings', n.get_object_value(EducationAssignmentSettings)),
+            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(EducationAssignment)),
             "classCode": lambda n : setattr(self, 'class_code', n.get_str_value()),
-            "course": lambda n : setattr(self, 'course', n.get_object_value(education_course.EducationCourse)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "course": lambda n : setattr(self, 'course', n.get_object_value(EducationCourse)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "externalName": lambda n : setattr(self, 'external_name', n.get_str_value()),
-            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
+            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationExternalSource)),
             "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
-            "group": lambda n : setattr(self, 'group', n.get_object_value(group.Group)),
+            "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
             "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(education_user.EducationUser)),
-            "schools": lambda n : setattr(self, 'schools', n.get_collection_of_object_values(education_school.EducationSchool)),
-            "teachers": lambda n : setattr(self, 'teachers', n.get_collection_of_object_values(education_user.EducationUser)),
-            "term": lambda n : setattr(self, 'term', n.get_object_value(education_term.EducationTerm)),
+            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(EducationUser)),
+            "schools": lambda n : setattr(self, 'schools', n.get_collection_of_object_values(EducationSchool)),
+            "teachers": lambda n : setattr(self, 'teachers', n.get_collection_of_object_values(EducationUser)),
+            "term": lambda n : setattr(self, 'term', n.get_object_value(EducationTerm)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

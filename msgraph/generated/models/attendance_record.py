@@ -4,18 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attendance_interval, entity, identity
+    from .attendance_interval import AttendanceInterval
+    from .entity import Entity
+    from .identity import Identity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AttendanceRecord(entity.Entity):
+class AttendanceRecord(Entity):
     # List of time periods between joining and leaving a meeting.
-    attendance_intervals: Optional[List[attendance_interval.AttendanceInterval]] = None
+    attendance_intervals: Optional[List[AttendanceInterval]] = None
     # Email address of the user associated with this attendance record.
     email_address: Optional[str] = None
     # Identity of the user associated with this attendance record.
-    identity: Optional[identity.Identity] = None
+    identity: Optional[Identity] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Role of the attendee. Possible values are: None, Attendee, Presenter, and Organizer.
@@ -40,14 +42,18 @@ class AttendanceRecord(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attendance_interval, entity, identity
+        from .attendance_interval import AttendanceInterval
+        from .entity import Entity
+        from .identity import Identity
 
-        from . import attendance_interval, entity, identity
+        from .attendance_interval import AttendanceInterval
+        from .entity import Entity
+        from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attendanceIntervals": lambda n : setattr(self, 'attendance_intervals', n.get_collection_of_object_values(attendance_interval.AttendanceInterval)),
+            "attendanceIntervals": lambda n : setattr(self, 'attendance_intervals', n.get_collection_of_object_values(AttendanceInterval)),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "identity": lambda n : setattr(self, 'identity', n.get_object_value(identity.Identity)),
+            "identity": lambda n : setattr(self, 'identity', n.get_object_value(Identity)),
             "role": lambda n : setattr(self, 'role', n.get_str_value()),
             "totalAttendanceInSeconds": lambda n : setattr(self, 'total_attendance_in_seconds', n.get_int_value()),
         }

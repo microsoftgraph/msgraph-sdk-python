@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import media_prompt
+    from .media_prompt import MediaPrompt
 
 @dataclass
 class Prompt(AdditionalDataHolder, Parsable):
@@ -29,9 +29,9 @@ class Prompt(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mediaPrompt".casefold():
-            from . import media_prompt
+            from .media_prompt import MediaPrompt
 
-            return media_prompt.MediaPrompt()
+            return MediaPrompt()
         return Prompt()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -39,9 +39,9 @@ class Prompt(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import media_prompt
+        from .media_prompt import MediaPrompt
 
-        from . import media_prompt
+        from .media_prompt import MediaPrompt
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

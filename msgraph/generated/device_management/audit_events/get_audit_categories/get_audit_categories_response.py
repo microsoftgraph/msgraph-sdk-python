@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import base_collection_pagination_count_response
+    from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
-from ....models import base_collection_pagination_count_response
+from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class GetAuditCategoriesResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class GetAuditCategoriesResponse(BaseCollectionPaginationCountResponse):
     # The value property
     value: Optional[List[str]] = None
     
@@ -30,9 +30,9 @@ class GetAuditCategoriesResponse(base_collection_pagination_count_response.BaseC
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import base_collection_pagination_count_response
+        from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
-        from ....models import base_collection_pagination_count_response
+        from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
         fields: Dict[str, Callable[[Any], None]] = {
             "value": lambda n : setattr(self, 'value', n.get_collection_of_primitive_values(str)),

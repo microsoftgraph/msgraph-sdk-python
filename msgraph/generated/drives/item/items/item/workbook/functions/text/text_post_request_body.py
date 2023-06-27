@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class TextPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class TextPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The formatText property
-    format_text: Optional[json.Json] = None
+    format_text: Optional[Json] = None
     # The value property
-    value: Optional[json.Json] = None
+    value: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TextPostRequestBody:
@@ -33,13 +33,13 @@ class TextPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "formatText": lambda n : setattr(self, 'format_text', n.get_object_value(json.Json)),
-            "value": lambda n : setattr(self, 'value', n.get_object_value(json.Json)),
+            "formatText": lambda n : setattr(self, 'format_text', n.get_object_value(Json)),
+            "value": lambda n : setattr(self, 'value', n.get_object_value(Json)),
         }
         return fields
     

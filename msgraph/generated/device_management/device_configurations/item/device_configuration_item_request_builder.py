@@ -10,16 +10,16 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import device_configuration
-    from ....models.o_data_errors import o_data_error
-    from .assign import assign_request_builder
-    from .assignments import assignments_request_builder
-    from .device_setting_state_summaries import device_setting_state_summaries_request_builder
-    from .device_statuses import device_statuses_request_builder
-    from .device_status_overview import device_status_overview_request_builder
-    from .get_oma_setting_plain_text_value_with_secret_reference_value_id import get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder
-    from .user_statuses import user_statuses_request_builder
-    from .user_status_overview import user_status_overview_request_builder
+    from ....models.device_configuration import DeviceConfiguration
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .assign.assign_request_builder import AssignRequestBuilder
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .device_setting_state_summaries.device_setting_state_summaries_request_builder import DeviceSettingStateSummariesRequestBuilder
+    from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
+    from .device_status_overview.device_status_overview_request_builder import DeviceStatusOverviewRequestBuilder
+    from .get_oma_setting_plain_text_value_with_secret_reference_value_id.get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder import GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder
+    from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
+    from .user_status_overview.user_status_overview_request_builder import UserStatusOverviewRequestBuilder
 
 class DeviceConfigurationItemRequestBuilder():
     """
@@ -45,86 +45,86 @@ class DeviceConfigurationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceConfigurations for deviceManagement
+        Deletes a androidWorkProfileGeneralDeviceConfiguration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[device_configuration.DeviceConfiguration]:
+    async def get(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        The device configurations.
+        Read properties and relationships of the sharedPCConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_configuration.DeviceConfiguration]
+        Returns: Optional[DeviceConfiguration]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import device_configuration
+        from ....models.device_configuration import DeviceConfiguration
 
-        return await self.request_adapter.send_async(request_info, device_configuration.DeviceConfiguration, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceConfiguration, error_mapping)
     
-    def get_oma_setting_plain_text_value_with_secret_reference_value_id(self,secret_reference_value_id: Optional[str] = None) -> get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder:
+    def get_oma_setting_plain_text_value_with_secret_reference_value_id(self,secret_reference_value_id: Optional[str] = None) -> GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder:
         """
         Provides operations to call the getOmaSettingPlainTextValue method.
         Args:
             secretReferenceValueId: Usage: secretReferenceValueId='{secretReferenceValueId}'
-        Returns: get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder
+        Returns: GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder
         """
         if not secret_reference_value_id:
             raise TypeError("secret_reference_value_id cannot be null.")
-        from .get_oma_setting_plain_text_value_with_secret_reference_value_id import get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder
+        from .get_oma_setting_plain_text_value_with_secret_reference_value_id.get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder import GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder
 
-        return get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(self.request_adapter, self.path_parameters, secret_reference_value_id)
+        return GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(self.request_adapter, self.path_parameters, secret_reference_value_id)
     
-    async def patch(self,body: Optional[device_configuration.DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_configuration.DeviceConfiguration]:
+    async def patch(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Update the navigation property deviceConfigurations in deviceManagement
+        Update the properties of a androidCustomConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_configuration.DeviceConfiguration]
+        Returns: Optional[DeviceConfiguration]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import device_configuration
+        from ....models.device_configuration import DeviceConfiguration
 
-        return await self.request_adapter.send_async(request_info, device_configuration.DeviceConfiguration, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceConfiguration, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceConfigurations for deviceManagement
+        Deletes a androidWorkProfileGeneralDeviceConfiguration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class DeviceConfigurationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The device configurations.
+        Read properties and relationships of the sharedPCConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -156,9 +156,9 @@ class DeviceConfigurationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device_configuration.DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceConfigurations in deviceManagement
+        Update the properties of a androidCustomConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -178,67 +178,67 @@ class DeviceConfigurationItemRequestBuilder():
         return request_info
     
     @property
-    def assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def assign(self) -> AssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        from .assign import assign_request_builder
+        from .assign.assign_request_builder import AssignRequestBuilder
 
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+    def assignments(self) -> AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.deviceConfiguration entity.
         """
-        from .assignments import assignments_request_builder
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_setting_state_summaries(self) -> device_setting_state_summaries_request_builder.DeviceSettingStateSummariesRequestBuilder:
+    def device_setting_state_summaries(self) -> DeviceSettingStateSummariesRequestBuilder:
         """
         Provides operations to manage the deviceSettingStateSummaries property of the microsoft.graph.deviceConfiguration entity.
         """
-        from .device_setting_state_summaries import device_setting_state_summaries_request_builder
+        from .device_setting_state_summaries.device_setting_state_summaries_request_builder import DeviceSettingStateSummariesRequestBuilder
 
-        return device_setting_state_summaries_request_builder.DeviceSettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceSettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_statuses(self) -> device_statuses_request_builder.DeviceStatusesRequestBuilder:
+    def device_statuses(self) -> DeviceStatusesRequestBuilder:
         """
         Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceConfiguration entity.
         """
-        from .device_statuses import device_statuses_request_builder
+        from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
 
-        return device_statuses_request_builder.DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_status_overview(self) -> device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder:
+    def device_status_overview(self) -> DeviceStatusOverviewRequestBuilder:
         """
         Provides operations to manage the deviceStatusOverview property of the microsoft.graph.deviceConfiguration entity.
         """
-        from .device_status_overview import device_status_overview_request_builder
+        from .device_status_overview.device_status_overview_request_builder import DeviceStatusOverviewRequestBuilder
 
-        return device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_statuses(self) -> user_statuses_request_builder.UserStatusesRequestBuilder:
+    def user_statuses(self) -> UserStatusesRequestBuilder:
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.deviceConfiguration entity.
         """
-        from .user_statuses import user_statuses_request_builder
+        from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
 
-        return user_statuses_request_builder.UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+        return UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_status_overview(self) -> user_status_overview_request_builder.UserStatusOverviewRequestBuilder:
+    def user_status_overview(self) -> UserStatusOverviewRequestBuilder:
         """
         Provides operations to manage the userStatusOverview property of the microsoft.graph.deviceConfiguration entity.
         """
-        from .user_status_overview import user_status_overview_request_builder
+        from .user_status_overview.user_status_overview_request_builder import UserStatusOverviewRequestBuilder
 
-        return user_status_overview_request_builder.UserStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
+        return UserStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration():
@@ -255,7 +255,7 @@ class DeviceConfigurationItemRequestBuilder():
     @dataclass
     class DeviceConfigurationItemRequestBuilderGetQueryParameters():
         """
-        The device configurations.
+        Read properties and relationships of the sharedPCConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

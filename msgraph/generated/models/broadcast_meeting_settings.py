@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import broadcast_meeting_audience, broadcast_meeting_caption_settings
+    from .broadcast_meeting_audience import BroadcastMeetingAudience
+    from .broadcast_meeting_caption_settings import BroadcastMeetingCaptionSettings
 
 @dataclass
 class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
@@ -12,9 +13,9 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Defines who can join the Teams live event. Possible values are listed in the following table.
-    allowed_audience: Optional[broadcast_meeting_audience.BroadcastMeetingAudience] = None
+    allowed_audience: Optional[BroadcastMeetingAudience] = None
     # Caption settings of a Teams live event.
-    captions: Optional[broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings] = None
+    captions: Optional[BroadcastMeetingCaptionSettings] = None
     # Indicates whether attendee report is enabled for this Teams live event. Default value is false.
     is_attendee_report_enabled: Optional[bool] = None
     # Indicates whether Q&A is enabled for this Teams live event. Default value is false.
@@ -43,13 +44,15 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import broadcast_meeting_audience, broadcast_meeting_caption_settings
+        from .broadcast_meeting_audience import BroadcastMeetingAudience
+        from .broadcast_meeting_caption_settings import BroadcastMeetingCaptionSettings
 
-        from . import broadcast_meeting_audience, broadcast_meeting_caption_settings
+        from .broadcast_meeting_audience import BroadcastMeetingAudience
+        from .broadcast_meeting_caption_settings import BroadcastMeetingCaptionSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedAudience": lambda n : setattr(self, 'allowed_audience', n.get_enum_value(broadcast_meeting_audience.BroadcastMeetingAudience)),
-            "captions": lambda n : setattr(self, 'captions', n.get_object_value(broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings)),
+            "allowedAudience": lambda n : setattr(self, 'allowed_audience', n.get_enum_value(BroadcastMeetingAudience)),
+            "captions": lambda n : setattr(self, 'captions', n.get_object_value(BroadcastMeetingCaptionSettings)),
             "isAttendeeReportEnabled": lambda n : setattr(self, 'is_attendee_report_enabled', n.get_bool_value()),
             "isQuestionAndAnswerEnabled": lambda n : setattr(self, 'is_question_and_answer_enabled', n.get_bool_value()),
             "isRecordingEnabled": lambda n : setattr(self, 'is_recording_enabled', n.get_bool_value()),

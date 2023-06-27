@@ -10,14 +10,14 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import directory
-    from ..models.o_data_errors import o_data_error
-    from .administrative_units import administrative_units_request_builder
-    from .attribute_sets import attribute_sets_request_builder
-    from .custom_security_attribute_definitions import custom_security_attribute_definitions_request_builder
-    from .deleted_items import deleted_items_request_builder
-    from .federation_configurations import federation_configurations_request_builder
-    from .on_premises_synchronization import on_premises_synchronization_request_builder
+    from ..models.directory import Directory
+    from ..models.o_data_errors.o_data_error import ODataError
+    from .administrative_units.administrative_units_request_builder import AdministrativeUnitsRequestBuilder
+    from .attribute_sets.attribute_sets_request_builder import AttributeSetsRequestBuilder
+    from .custom_security_attribute_definitions.custom_security_attribute_definitions_request_builder import CustomSecurityAttributeDefinitionsRequestBuilder
+    from .deleted_items.deleted_items_request_builder import DeletedItemsRequestBuilder
+    from .federation_configurations.federation_configurations_request_builder import FederationConfigurationsRequestBuilder
+    from .on_premises_synchronization.on_premises_synchronization_request_builder import OnPremisesSynchronizationRequestBuilder
 
 class DirectoryRequestBuilder():
     """
@@ -41,52 +41,52 @@ class DirectoryRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DirectoryRequestBuilderGetRequestConfiguration] = None) -> Optional[directory.Directory]:
+    async def get(self,request_configuration: Optional[DirectoryRequestBuilderGetRequestConfiguration] = None) -> Optional[Directory]:
         """
         Get directory
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[directory.Directory]
+        Returns: Optional[Directory]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import directory
+        from ..models.directory import Directory
 
-        return await self.request_adapter.send_async(request_info, directory.Directory, error_mapping)
+        return await self.request_adapter.send_async(request_info, Directory, error_mapping)
     
-    async def patch(self,body: Optional[directory.Directory] = None, request_configuration: Optional[DirectoryRequestBuilderPatchRequestConfiguration] = None) -> Optional[directory.Directory]:
+    async def patch(self,body: Optional[Directory] = None, request_configuration: Optional[DirectoryRequestBuilderPatchRequestConfiguration] = None) -> Optional[Directory]:
         """
         Update directory
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[directory.Directory]
+        Returns: Optional[Directory]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import directory
+        from ..models.directory import Directory
 
-        return await self.request_adapter.send_async(request_info, directory.Directory, error_mapping)
+        return await self.request_adapter.send_async(request_info, Directory, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DirectoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -106,7 +106,7 @@ class DirectoryRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[directory.Directory] = None, request_configuration: Optional[DirectoryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Directory] = None, request_configuration: Optional[DirectoryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update directory
         Args:
@@ -128,58 +128,58 @@ class DirectoryRequestBuilder():
         return request_info
     
     @property
-    def administrative_units(self) -> administrative_units_request_builder.AdministrativeUnitsRequestBuilder:
+    def administrative_units(self) -> AdministrativeUnitsRequestBuilder:
         """
         Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
         """
-        from .administrative_units import administrative_units_request_builder
+        from .administrative_units.administrative_units_request_builder import AdministrativeUnitsRequestBuilder
 
-        return administrative_units_request_builder.AdministrativeUnitsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AdministrativeUnitsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def attribute_sets(self) -> attribute_sets_request_builder.AttributeSetsRequestBuilder:
+    def attribute_sets(self) -> AttributeSetsRequestBuilder:
         """
         Provides operations to manage the attributeSets property of the microsoft.graph.directory entity.
         """
-        from .attribute_sets import attribute_sets_request_builder
+        from .attribute_sets.attribute_sets_request_builder import AttributeSetsRequestBuilder
 
-        return attribute_sets_request_builder.AttributeSetsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AttributeSetsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def custom_security_attribute_definitions(self) -> custom_security_attribute_definitions_request_builder.CustomSecurityAttributeDefinitionsRequestBuilder:
+    def custom_security_attribute_definitions(self) -> CustomSecurityAttributeDefinitionsRequestBuilder:
         """
         Provides operations to manage the customSecurityAttributeDefinitions property of the microsoft.graph.directory entity.
         """
-        from .custom_security_attribute_definitions import custom_security_attribute_definitions_request_builder
+        from .custom_security_attribute_definitions.custom_security_attribute_definitions_request_builder import CustomSecurityAttributeDefinitionsRequestBuilder
 
-        return custom_security_attribute_definitions_request_builder.CustomSecurityAttributeDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CustomSecurityAttributeDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def deleted_items(self) -> deleted_items_request_builder.DeletedItemsRequestBuilder:
+    def deleted_items(self) -> DeletedItemsRequestBuilder:
         """
         Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
         """
-        from .deleted_items import deleted_items_request_builder
+        from .deleted_items.deleted_items_request_builder import DeletedItemsRequestBuilder
 
-        return deleted_items_request_builder.DeletedItemsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeletedItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def federation_configurations(self) -> federation_configurations_request_builder.FederationConfigurationsRequestBuilder:
+    def federation_configurations(self) -> FederationConfigurationsRequestBuilder:
         """
         Provides operations to manage the federationConfigurations property of the microsoft.graph.directory entity.
         """
-        from .federation_configurations import federation_configurations_request_builder
+        from .federation_configurations.federation_configurations_request_builder import FederationConfigurationsRequestBuilder
 
-        return federation_configurations_request_builder.FederationConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return FederationConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def on_premises_synchronization(self) -> on_premises_synchronization_request_builder.OnPremisesSynchronizationRequestBuilder:
+    def on_premises_synchronization(self) -> OnPremisesSynchronizationRequestBuilder:
         """
         Provides operations to manage the onPremisesSynchronization property of the microsoft.graph.directory entity.
         """
-        from .on_premises_synchronization import on_premises_synchronization_request_builder
+        from .on_premises_synchronization.on_premises_synchronization_request_builder import OnPremisesSynchronizationRequestBuilder
 
-        return on_premises_synchronization_request_builder.OnPremisesSynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
+        return OnPremisesSynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DirectoryRequestBuilderGetQueryParameters():

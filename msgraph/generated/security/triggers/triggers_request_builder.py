@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models.o_data_errors import o_data_error
-    from ...models.security import triggers_root
-    from .retention_events import retention_events_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.security.triggers_root import TriggersRoot
+    from .retention_events.retention_events_request_builder import RetentionEventsRequestBuilder
 
 class TriggersRequestBuilder():
     """
@@ -45,62 +45,62 @@ class TriggersRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TriggersRequestBuilderGetRequestConfiguration] = None) -> Optional[triggers_root.TriggersRoot]:
+    async def get(self,request_configuration: Optional[TriggersRequestBuilderGetRequestConfiguration] = None) -> Optional[TriggersRoot]:
         """
         Get triggers from security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[triggers_root.TriggersRoot]
+        Returns: Optional[TriggersRoot]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.security import triggers_root
+        from ...models.security.triggers_root import TriggersRoot
 
-        return await self.request_adapter.send_async(request_info, triggers_root.TriggersRoot, error_mapping)
+        return await self.request_adapter.send_async(request_info, TriggersRoot, error_mapping)
     
-    async def patch(self,body: Optional[triggers_root.TriggersRoot] = None, request_configuration: Optional[TriggersRequestBuilderPatchRequestConfiguration] = None) -> Optional[triggers_root.TriggersRoot]:
+    async def patch(self,body: Optional[TriggersRoot] = None, request_configuration: Optional[TriggersRequestBuilderPatchRequestConfiguration] = None) -> Optional[TriggersRoot]:
         """
         Update the navigation property triggers in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[triggers_root.TriggersRoot]
+        Returns: Optional[TriggersRoot]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.security import triggers_root
+        from ...models.security.triggers_root import TriggersRoot
 
-        return await self.request_adapter.send_async(request_info, triggers_root.TriggersRoot, error_mapping)
+        return await self.request_adapter.send_async(request_info, TriggersRoot, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TriggersRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class TriggersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[triggers_root.TriggersRoot] = None, request_configuration: Optional[TriggersRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TriggersRoot] = None, request_configuration: Optional[TriggersRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property triggers in security
         Args:
@@ -158,13 +158,13 @@ class TriggersRequestBuilder():
         return request_info
     
     @property
-    def retention_events(self) -> retention_events_request_builder.RetentionEventsRequestBuilder:
+    def retention_events(self) -> RetentionEventsRequestBuilder:
         """
         Provides operations to manage the retentionEvents property of the microsoft.graph.security.triggersRoot entity.
         """
-        from .retention_events import retention_events_request_builder
+        from .retention_events.retention_events_request_builder import RetentionEventsRequestBuilder
 
-        return retention_events_request_builder.RetentionEventsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RetentionEventsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TriggersRequestBuilderDeleteRequestConfiguration():

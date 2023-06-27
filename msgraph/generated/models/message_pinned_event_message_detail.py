@@ -1,21 +1,22 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_message_detail, identity_set
+    from .event_message_detail import EventMessageDetail
+    from .identity_set import IdentitySet
 
-from . import event_message_detail
+from .event_message_detail import EventMessageDetail
 
 @dataclass
-class MessagePinnedEventMessageDetail(event_message_detail.EventMessageDetail):
+class MessagePinnedEventMessageDetail(EventMessageDetail):
     odata_type = "#microsoft.graph.messagePinnedEventMessageDetail"
     # Date and time when the event occurred.
-    event_date_time: Optional[datetime] = None
+    event_date_time: Optional[datetime.datetime] = None
     # Initiator of the event.
-    initiator: Optional[identity_set.IdentitySet] = None
+    initiator: Optional[IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessagePinnedEventMessageDetail:
@@ -34,13 +35,15 @@ class MessagePinnedEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
-            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
+            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,7 +58,7 @@ class MessagePinnedEventMessageDetail(event_message_detail.EventMessageDetail):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("eventDateTime", self.event_date_time)
+        writer.write_datetime_value()("eventDateTime", self.event_date_time)
         writer.write_object_value("initiator", self.initiator)
     
 

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class MatchPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class MatchPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The lookupArray property
-    lookup_array: Optional[json.Json] = None
+    lookup_array: Optional[Json] = None
     # The lookupValue property
-    lookup_value: Optional[json.Json] = None
+    lookup_value: Optional[Json] = None
     # The matchType property
-    match_type: Optional[json.Json] = None
+    match_type: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MatchPostRequestBody:
@@ -35,14 +35,14 @@ class MatchPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lookupArray": lambda n : setattr(self, 'lookup_array', n.get_object_value(json.Json)),
-            "lookupValue": lambda n : setattr(self, 'lookup_value', n.get_object_value(json.Json)),
-            "matchType": lambda n : setattr(self, 'match_type', n.get_object_value(json.Json)),
+            "lookupArray": lambda n : setattr(self, 'lookup_array', n.get_object_value(Json)),
+            "lookupValue": lambda n : setattr(self, 'lookup_value', n.get_object_value(Json)),
+            "matchType": lambda n : setattr(self, 'match_type', n.get_object_value(Json)),
         }
         return fields
     

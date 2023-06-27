@@ -8,13 +8,13 @@ class AlternativeSecurityId(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # For internal use only
+    # For internal use only.
     identity_provider: Optional[str] = None
-    # For internal use only
+    # For internal use only.
     key: Optional[bytes] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # For internal use only
+    # For internal use only.
     type: Optional[int] = None
     
     @staticmethod
@@ -51,7 +51,7 @@ class AlternativeSecurityId(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("identityProvider", self.identity_provider)
-        writer.write_object_value("key", self.key)
+        writer.write_bytes_value("key", self.key)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)

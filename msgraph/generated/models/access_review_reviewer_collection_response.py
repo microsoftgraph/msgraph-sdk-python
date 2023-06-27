@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_reviewer, base_collection_pagination_count_response
+    from .access_review_reviewer import AccessReviewReviewer
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class AccessReviewReviewerCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class AccessReviewReviewerCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[access_review_reviewer.AccessReviewReviewer]] = None
+    value: Optional[List[AccessReviewReviewer]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewReviewerCollectionResponse:
@@ -30,12 +31,14 @@ class AccessReviewReviewerCollectionResponse(base_collection_pagination_count_re
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_reviewer, base_collection_pagination_count_response
+        from .access_review_reviewer import AccessReviewReviewer
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
-        from . import access_review_reviewer, base_collection_pagination_count_response
+        from .access_review_reviewer import AccessReviewReviewer
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(access_review_reviewer.AccessReviewReviewer)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(AccessReviewReviewer)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

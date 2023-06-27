@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import public_error_detail
+    from .public_error_detail import PublicErrorDetail
 
 @dataclass
 class PublicInnerError(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class PublicInnerError(AdditionalDataHolder, Parsable):
     # The error code.
     code: Optional[str] = None
     # A collection of error details.
-    details: Optional[List[public_error_detail.PublicErrorDetail]] = None
+    details: Optional[List[PublicErrorDetail]] = None
     # The error message.
     message: Optional[str] = None
     # The OdataType property
@@ -39,13 +39,13 @@ class PublicInnerError(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import public_error_detail
+        from .public_error_detail import PublicErrorDetail
 
-        from . import public_error_detail
+        from .public_error_detail import PublicErrorDetail
 
         fields: Dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
-            "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(public_error_detail.PublicErrorDetail)),
+            "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(PublicErrorDetail)),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "target": lambda n : setattr(self, 'target', n.get_str_value()),

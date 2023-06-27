@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import windows_information_protection_app_learning_summary
-    from ....models.o_data_errors import o_data_error
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
 
 class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder():
     """
@@ -37,73 +37,73 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property windowsInformationProtectionAppLearningSummaries for deviceManagement
+        Deletes a windowsInformationProtectionAppLearningSummary.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary]:
+    async def get(self,request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLearningSummary]:
         """
-        The windows information protection app learning summaries.
+        Read properties and relationships of the windowsInformationProtectionAppLearningSummary object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary]
+        Returns: Optional[WindowsInformationProtectionAppLearningSummary]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import windows_information_protection_app_learning_summary
+        from ....models.windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
 
-        return await self.request_adapter.send_async(request_info, windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary, error_mapping)
+        return await self.request_adapter.send_async(request_info, WindowsInformationProtectionAppLearningSummary, error_mapping)
     
-    async def patch(self,body: Optional[windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary]:
+    async def patch(self,body: Optional[WindowsInformationProtectionAppLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLearningSummary]:
         """
-        Update the navigation property windowsInformationProtectionAppLearningSummaries in deviceManagement
+        Update the properties of a windowsInformationProtectionAppLearningSummary object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary]
+        Returns: Optional[WindowsInformationProtectionAppLearningSummary]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import windows_information_protection_app_learning_summary
+        from ....models.windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
 
-        return await self.request_adapter.send_async(request_info, windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary, error_mapping)
+        return await self.request_adapter.send_async(request_info, WindowsInformationProtectionAppLearningSummary, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property windowsInformationProtectionAppLearningSummaries for deviceManagement
+        Deletes a windowsInformationProtectionAppLearningSummary.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The windows information protection app learning summaries.
+        Read properties and relationships of the windowsInformationProtectionAppLearningSummary object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WindowsInformationProtectionAppLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property windowsInformationProtectionAppLearningSummaries in deviceManagement
+        Update the properties of a windowsInformationProtectionAppLearningSummary object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder():
     @dataclass
     class WindowsInformationProtectionAppLearningSummaryItemRequestBuilderGetQueryParameters():
         """
-        The windows information protection app learning summaries.
+        Read properties and relationships of the windowsInformationProtectionAppLearningSummary object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

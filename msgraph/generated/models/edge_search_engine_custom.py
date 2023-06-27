@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import edge_search_engine_base
+    from .edge_search_engine_base import EdgeSearchEngineBase
 
-from . import edge_search_engine_base
+from .edge_search_engine_base import EdgeSearchEngineBase
 
 @dataclass
-class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
+class EdgeSearchEngineCustom(EdgeSearchEngineBase):
     odata_type = "#microsoft.graph.edgeSearchEngineCustom"
     # Points to a https link containing the OpenSearch xml file that contains, at minimum, the short name and the URL to the search Engine.
     edge_search_engine_open_search_xml_url: Optional[str] = None
@@ -31,9 +31,9 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import edge_search_engine_base
+        from .edge_search_engine_base import EdgeSearchEngineBase
 
-        from . import edge_search_engine_base
+        from .edge_search_engine_base import EdgeSearchEngineBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "edgeSearchEngineOpenSearchXmlUrl": lambda n : setattr(self, 'edge_search_engine_open_search_xml_url', n.get_str_value()),

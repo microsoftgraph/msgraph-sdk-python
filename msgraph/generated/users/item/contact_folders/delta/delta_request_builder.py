@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import delta_response
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .delta_response import DeltaResponse
 
 class DeltaRequestBuilder():
     """
@@ -35,27 +35,27 @@ class DeltaRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DeltaRequestBuilderGetRequestConfiguration] = None) -> Optional[delta_response.DeltaResponse]:
+    async def get(self,request_configuration: Optional[DeltaRequestBuilderGetRequestConfiguration] = None) -> Optional[DeltaResponse]:
         """
         Get a set of contact folders that have been added, deleted, or removed from the user's mailbox. A **delta** function call for contact folders in a mailbox is similar to a GET request, except that by appropriately applying state tokens in one or more of these calls, you can query for incremental changes in the contact folders. This allows you to maintain and synchronize a local store of a user's contact folders without having to fetch all the contact folders of that mailbox from the server every time.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delta_response.DeltaResponse]
+        Returns: Optional[DeltaResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import delta_response
+        from .delta_response import DeltaResponse
 
-        return await self.request_adapter.send_async(request_info, delta_response.DeltaResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeltaResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DeltaRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

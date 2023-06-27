@@ -4,15 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import external_activity
-    from .. import public_error
+    from ..public_error import PublicError
+    from .external_activity import ExternalActivity
 
-from . import external_activity
+from .external_activity import ExternalActivity
 
 @dataclass
-class ExternalActivityResult(external_activity.ExternalActivity):
+class ExternalActivityResult(ExternalActivity):
     # Error information that explains the failure to process an external activity.
-    error: Optional[public_error.PublicError] = None
+    error: Optional[PublicError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,14 +33,14 @@ class ExternalActivityResult(external_activity.ExternalActivity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import external_activity
-        from .. import public_error
+        from ..public_error import PublicError
+        from .external_activity import ExternalActivity
 
-        from . import external_activity
-        from .. import public_error
+        from ..public_error import PublicError
+        from .external_activity import ExternalActivity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

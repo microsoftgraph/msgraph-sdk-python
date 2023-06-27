@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import teamwork
-    from ..models.o_data_errors import o_data_error
-    from .deleted_teams import deleted_teams_request_builder
-    from .send_activity_notification_to_recipients import send_activity_notification_to_recipients_request_builder
-    from .workforce_integrations import workforce_integrations_request_builder
+    from ..models.o_data_errors.o_data_error import ODataError
+    from ..models.teamwork import Teamwork
+    from .deleted_teams.deleted_teams_request_builder import DeletedTeamsRequestBuilder
+    from .send_activity_notification_to_recipients.send_activity_notification_to_recipients_request_builder import SendActivityNotificationToRecipientsRequestBuilder
+    from .workforce_integrations.workforce_integrations_request_builder import WorkforceIntegrationsRequestBuilder
 
 class TeamworkRequestBuilder():
     """
@@ -38,52 +38,52 @@ class TeamworkRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TeamworkRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork.Teamwork]:
+    async def get(self,request_configuration: Optional[TeamworkRequestBuilderGetRequestConfiguration] = None) -> Optional[Teamwork]:
         """
         Get teamwork
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teamwork.Teamwork]
+        Returns: Optional[Teamwork]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import teamwork
+        from ..models.teamwork import Teamwork
 
-        return await self.request_adapter.send_async(request_info, teamwork.Teamwork, error_mapping)
+        return await self.request_adapter.send_async(request_info, Teamwork, error_mapping)
     
-    async def patch(self,body: Optional[teamwork.Teamwork] = None, request_configuration: Optional[TeamworkRequestBuilderPatchRequestConfiguration] = None) -> Optional[teamwork.Teamwork]:
+    async def patch(self,body: Optional[Teamwork] = None, request_configuration: Optional[TeamworkRequestBuilderPatchRequestConfiguration] = None) -> Optional[Teamwork]:
         """
         Update teamwork
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teamwork.Teamwork]
+        Returns: Optional[Teamwork]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import teamwork
+        from ..models.teamwork import Teamwork
 
-        return await self.request_adapter.send_async(request_info, teamwork.Teamwork, error_mapping)
+        return await self.request_adapter.send_async(request_info, Teamwork, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TeamworkRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -103,7 +103,7 @@ class TeamworkRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[teamwork.Teamwork] = None, request_configuration: Optional[TeamworkRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Teamwork] = None, request_configuration: Optional[TeamworkRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update teamwork
         Args:
@@ -125,31 +125,31 @@ class TeamworkRequestBuilder():
         return request_info
     
     @property
-    def deleted_teams(self) -> deleted_teams_request_builder.DeletedTeamsRequestBuilder:
+    def deleted_teams(self) -> DeletedTeamsRequestBuilder:
         """
         Provides operations to manage the deletedTeams property of the microsoft.graph.teamwork entity.
         """
-        from .deleted_teams import deleted_teams_request_builder
+        from .deleted_teams.deleted_teams_request_builder import DeletedTeamsRequestBuilder
 
-        return deleted_teams_request_builder.DeletedTeamsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeletedTeamsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def send_activity_notification_to_recipients(self) -> send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder:
+    def send_activity_notification_to_recipients(self) -> SendActivityNotificationToRecipientsRequestBuilder:
         """
         Provides operations to call the sendActivityNotificationToRecipients method.
         """
-        from .send_activity_notification_to_recipients import send_activity_notification_to_recipients_request_builder
+        from .send_activity_notification_to_recipients.send_activity_notification_to_recipients_request_builder import SendActivityNotificationToRecipientsRequestBuilder
 
-        return send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SendActivityNotificationToRecipientsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def workforce_integrations(self) -> workforce_integrations_request_builder.WorkforceIntegrationsRequestBuilder:
+    def workforce_integrations(self) -> WorkforceIntegrationsRequestBuilder:
         """
         Provides operations to manage the workforceIntegrations property of the microsoft.graph.teamwork entity.
         """
-        from .workforce_integrations import workforce_integrations_request_builder
+        from .workforce_integrations.workforce_integrations_request_builder import WorkforceIntegrationsRequestBuilder
 
-        return workforce_integrations_request_builder.WorkforceIntegrationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return WorkforceIntegrationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TeamworkRequestBuilderGetQueryParameters():

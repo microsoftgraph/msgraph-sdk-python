@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class CumIPmtPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,17 +12,17 @@ class CumIPmtPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The endPeriod property
-    end_period: Optional[json.Json] = None
+    end_period: Optional[Json] = None
     # The nper property
-    nper: Optional[json.Json] = None
+    nper: Optional[Json] = None
     # The pv property
-    pv: Optional[json.Json] = None
+    pv: Optional[Json] = None
     # The rate property
-    rate: Optional[json.Json] = None
+    rate: Optional[Json] = None
     # The startPeriod property
-    start_period: Optional[json.Json] = None
+    start_period: Optional[Json] = None
     # The type property
-    type: Optional[json.Json] = None
+    type: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CumIPmtPostRequestBody:
@@ -41,17 +41,17 @@ class CumIPmtPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endPeriod": lambda n : setattr(self, 'end_period', n.get_object_value(json.Json)),
-            "nper": lambda n : setattr(self, 'nper', n.get_object_value(json.Json)),
-            "pv": lambda n : setattr(self, 'pv', n.get_object_value(json.Json)),
-            "rate": lambda n : setattr(self, 'rate', n.get_object_value(json.Json)),
-            "startPeriod": lambda n : setattr(self, 'start_period', n.get_object_value(json.Json)),
-            "type": lambda n : setattr(self, 'type', n.get_object_value(json.Json)),
+            "endPeriod": lambda n : setattr(self, 'end_period', n.get_object_value(Json)),
+            "nper": lambda n : setattr(self, 'nper', n.get_object_value(Json)),
+            "pv": lambda n : setattr(self, 'pv', n.get_object_value(Json)),
+            "rate": lambda n : setattr(self, 'rate', n.get_object_value(Json)),
+            "startPeriod": lambda n : setattr(self, 'start_period', n.get_object_value(Json)),
+            "type": lambda n : setattr(self, 'type', n.get_object_value(Json)),
         }
         return fields
     

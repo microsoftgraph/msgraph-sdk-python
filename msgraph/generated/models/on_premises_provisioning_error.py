@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -12,7 +12,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
     # Category of the provisioning error. Note: Currently, there is only one possible value. Possible value: PropertyConflict - indicates a property value is not unique. Other objects contain the same value for the property.
     category: Optional[str] = None
     # The date and time at which the error occurred.
-    occurred_date_time: Optional[datetime] = None
+    occurred_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Name of the directory property causing the error. Current possible values: UserPrincipalName or ProxyAddress
@@ -55,7 +55,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("category", self.category)
-        writer.write_datetime_value("occurredDateTime", self.occurred_date_time)
+        writer.write_datetime_value()("occurredDateTime", self.occurred_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("propertyCausingError", self.property_causing_error)
         writer.write_str_value("value", self.value)

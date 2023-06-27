@@ -4,19 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_configuration, authentication_method_target
+    from .authentication_method_configuration import AuthenticationMethodConfiguration
+    from .authentication_method_target import AuthenticationMethodTarget
 
-from . import authentication_method_configuration
+from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class TemporaryAccessPassAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
+class TemporaryAccessPassAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     odata_type = "#microsoft.graph.temporaryAccessPassAuthenticationMethodConfiguration"
     # Default length in characters of a Temporary Access Pass object. Must be between 8 and 48 characters.
     default_length: Optional[int] = None
     # Default lifetime in minutes for a Temporary Access Pass. Value can be any integer between the minimumLifetimeInMinutes and maximumLifetimeInMinutes.
     default_lifetime_in_minutes: Optional[int] = None
     # A collection of groups that are enabled to use the authentication method.
-    include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
+    include_targets: Optional[List[AuthenticationMethodTarget]] = None
     # If true, all the passes in the tenant will be restricted to one-time use. If false, passes in the tenant can be created to be either one-time use or reusable.
     is_usable_once: Optional[bool] = None
     # Maximum lifetime in minutes for any Temporary Access Pass created in the tenant. Value can be between 10 and 43200 minutes (equivalent to 30 days).
@@ -41,14 +42,16 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(authentication_method
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_configuration, authentication_method_target
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
 
-        from . import authentication_method_configuration, authentication_method_target
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
             "defaultLength": lambda n : setattr(self, 'default_length', n.get_int_value()),
             "defaultLifetimeInMinutes": lambda n : setattr(self, 'default_lifetime_in_minutes', n.get_int_value()),
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
             "isUsableOnce": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
             "maximumLifetimeInMinutes": lambda n : setattr(self, 'maximum_lifetime_in_minutes', n.get_int_value()),
             "minimumLifetimeInMinutes": lambda n : setattr(self, 'minimum_lifetime_in_minutes', n.get_int_value()),

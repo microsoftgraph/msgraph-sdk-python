@@ -4,12 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_and_app_management_role_definition, entity, role_assignment, role_permission
+    from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
+    from .entity import Entity
+    from .role_assignment import RoleAssignment
+    from .role_permission import RolePermission
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class RoleDefinition(entity.Entity):
+class RoleDefinition(Entity):
+    """
+    The Role Definition resource. The role definition is the foundation of role based access in Intune. The role combines an Intune resource such as a Mobile App and associated role permissions such as Create or Read for the resource. There are two types of roles, built-in and custom. Built-in roles cannot be modified. Both built-in roles and custom roles must have assignments to be enforced. Create custom roles if you want to define a role that allows any of the available resources and role permissions to be combined into a single role.
+    """
     # Description of the Role definition.
     description: Optional[str] = None
     # Display Name of the Role definition.
@@ -19,9 +25,9 @@ class RoleDefinition(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # List of Role assignments for this role definition.
-    role_assignments: Optional[List[role_assignment.RoleAssignment]] = None
+    role_assignments: Optional[List[RoleAssignment]] = None
     # List of Role Permissions this role is allowed to perform. These must match the actionName that is defined as part of the rolePermission.
-    role_permissions: Optional[List[role_permission.RolePermission]] = None
+    role_permissions: Optional[List[RolePermission]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RoleDefinition:
@@ -38,9 +44,9 @@ class RoleDefinition(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceAndAppManagementRoleDefinition".casefold():
-            from . import device_and_app_management_role_definition
+            from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
 
-            return device_and_app_management_role_definition.DeviceAndAppManagementRoleDefinition()
+            return DeviceAndAppManagementRoleDefinition()
         return RoleDefinition()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -48,16 +54,22 @@ class RoleDefinition(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_role_definition, entity, role_assignment, role_permission
+        from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
+        from .entity import Entity
+        from .role_assignment import RoleAssignment
+        from .role_permission import RolePermission
 
-        from . import device_and_app_management_role_definition, entity, role_assignment, role_permission
+        from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
+        from .entity import Entity
+        from .role_assignment import RoleAssignment
+        from .role_permission import RolePermission
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
-            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(role_assignment.RoleAssignment)),
-            "rolePermissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(role_permission.RolePermission)),
+            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(RoleAssignment)),
+            "rolePermissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(RolePermission)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set
+    from .identity_set import IdentitySet
 
 @dataclass
 class SharingInvitation(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
     # The email address provided for the recipient of the sharing invitation. Read-only.
     email: Optional[str] = None
     # Provides information about who sent the invitation that created this permission, if that information is available. Read-only.
-    invited_by: Optional[identity_set.IdentitySet] = None
+    invited_by: Optional[IdentitySet] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The redeemedBy property
@@ -39,13 +39,13 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set
+        from .identity_set import IdentitySet
 
-        from . import identity_set
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "invitedBy": lambda n : setattr(self, 'invited_by', n.get_object_value(identity_set.IdentitySet)),
+            "invitedBy": lambda n : setattr(self, 'invited_by', n.get_object_value(IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "redeemedBy": lambda n : setattr(self, 'redeemed_by', n.get_str_value()),
             "signInRequired": lambda n : setattr(self, 'sign_in_required', n.get_bool_value()),

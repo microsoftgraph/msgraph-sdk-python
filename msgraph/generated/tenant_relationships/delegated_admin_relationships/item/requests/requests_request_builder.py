@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import delegated_admin_relationship_request, delegated_admin_relationship_request_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import delegated_admin_relationship_request_item_request_builder
+    from .....models.delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
+    from .....models.delegated_admin_relationship_request_collection_response import DelegatedAdminRelationshipRequestCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.delegated_admin_relationship_request_item_request_builder import DelegatedAdminRelationshipRequestItemRequestBuilder
 
 class RequestsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class RequestsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_delegated_admin_relationship_request_id(self,delegated_admin_relationship_request_id: str) -> delegated_admin_relationship_request_item_request_builder.DelegatedAdminRelationshipRequestItemRequestBuilder:
+    def by_delegated_admin_relationship_request_id(self,delegated_admin_relationship_request_id: str) -> DelegatedAdminRelationshipRequestItemRequestBuilder:
         """
         Provides operations to manage the requests property of the microsoft.graph.delegatedAdminRelationship entity.
         Args:
             delegated_admin_relationship_request_id: Unique identifier of the item
-        Returns: delegated_admin_relationship_request_item_request_builder.DelegatedAdminRelationshipRequestItemRequestBuilder
+        Returns: DelegatedAdminRelationshipRequestItemRequestBuilder
         """
         if not delegated_admin_relationship_request_id:
             raise TypeError("delegated_admin_relationship_request_id cannot be null.")
-        from .item import delegated_admin_relationship_request_item_request_builder
+        from .item.delegated_admin_relationship_request_item_request_builder import DelegatedAdminRelationshipRequestItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["delegatedAdminRelationshipRequest%2Did"] = delegated_admin_relationship_request_id
-        return delegated_admin_relationship_request_item_request_builder.DelegatedAdminRelationshipRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DelegatedAdminRelationshipRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_relationship_request_collection_response.DelegatedAdminRelationshipRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipRequestCollectionResponse]:
         """
         Get a list of the delegatedAdminRelationshipRequest objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_admin_relationship_request_collection_response.DelegatedAdminRelationshipRequestCollectionResponse]
+        Returns: Optional[DelegatedAdminRelationshipRequestCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import delegated_admin_relationship_request_collection_response
+        from .....models.delegated_admin_relationship_request_collection_response import DelegatedAdminRelationshipRequestCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, delegated_admin_relationship_request_collection_response.DelegatedAdminRelationshipRequestCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedAdminRelationshipRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]:
+    async def post(self,body: Optional[DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipRequest]:
         """
         Create a new delegatedAdminRelationshipRequest object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]
+        Returns: Optional[DelegatedAdminRelationshipRequest]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import delegated_admin_relationship_request
+        from .....models.delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
 
-        return await self.request_adapter.send_async(request_info, delegated_admin_relationship_request.DelegatedAdminRelationshipRequest, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedAdminRelationshipRequest, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class RequestsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new delegatedAdminRelationshipRequest object.
         Args:
@@ -139,13 +140,13 @@ class RequestsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RequestsRequestBuilderGetQueryParameters():

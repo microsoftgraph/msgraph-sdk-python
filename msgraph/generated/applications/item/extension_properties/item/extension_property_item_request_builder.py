@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import extension_property
-    from .....models.o_data_errors import o_data_error
+    from .....models.extension_property import ExtensionProperty
+    from .....models.o_data_errors.o_data_error import ODataError
 
 class ExtensionPropertyItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class ExtensionPropertyItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[extension_property.ExtensionProperty]:
+    async def get(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ExtensionProperty]:
         """
         Read a directory extension definition represented by an extensionProperty object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[extension_property.ExtensionProperty]
+        Returns: Optional[ExtensionProperty]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import extension_property
+        from .....models.extension_property import ExtensionProperty
 
-        return await self.request_adapter.send_async(request_info, extension_property.ExtensionProperty, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExtensionProperty, error_mapping)
     
-    async def patch(self,body: Optional[extension_property.ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[extension_property.ExtensionProperty]:
+    async def patch(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ExtensionProperty]:
         """
         Update the navigation property extensionProperties in applications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[extension_property.ExtensionProperty]
+        Returns: Optional[ExtensionProperty]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import extension_property
+        from .....models.extension_property import ExtensionProperty
 
-        return await self.request_adapter.send_async(request_info, extension_property.ExtensionProperty, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExtensionProperty, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class ExtensionPropertyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[extension_property.ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property extensionProperties in applications
         Args:

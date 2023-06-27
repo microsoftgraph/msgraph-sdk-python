@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import altered_query_token
+    from .altered_query_token import AlteredQueryToken
 
 @dataclass
 class SearchAlteration(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
     # Defines the altered query string with spelling correction.
     altered_query_string: Optional[str] = None
     # Represents changed segments related to an original user query.
-    altered_query_tokens: Optional[List[altered_query_token.AlteredQueryToken]] = None
+    altered_query_tokens: Optional[List[AlteredQueryToken]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -37,14 +37,14 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import altered_query_token
+        from .altered_query_token import AlteredQueryToken
 
-        from . import altered_query_token
+        from .altered_query_token import AlteredQueryToken
 
         fields: Dict[str, Callable[[Any], None]] = {
             "alteredHighlightedQueryString": lambda n : setattr(self, 'altered_highlighted_query_string', n.get_str_value()),
             "alteredQueryString": lambda n : setattr(self, 'altered_query_string', n.get_str_value()),
-            "alteredQueryTokens": lambda n : setattr(self, 'altered_query_tokens', n.get_collection_of_object_values(altered_query_token.AlteredQueryToken)),
+            "alteredQueryTokens": lambda n : setattr(self, 'altered_query_tokens', n.get_collection_of_object_values(AlteredQueryToken)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import teams_app_definition, teams_app_definition_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import teams_app_definition_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.teams_app_definition import TeamsAppDefinition
+    from .....models.teams_app_definition_collection_response import TeamsAppDefinitionCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.teams_app_definition_item_request_builder import TeamsAppDefinitionItemRequestBuilder
 
 class AppDefinitionsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class AppDefinitionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_teams_app_definition_id(self,teams_app_definition_id: str) -> teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder:
+    def by_teams_app_definition_id(self,teams_app_definition_id: str) -> TeamsAppDefinitionItemRequestBuilder:
         """
         Provides operations to manage the appDefinitions property of the microsoft.graph.teamsApp entity.
         Args:
             teams_app_definition_id: Unique identifier of the item
-        Returns: teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder
+        Returns: TeamsAppDefinitionItemRequestBuilder
         """
         if not teams_app_definition_id:
             raise TypeError("teams_app_definition_id cannot be null.")
-        from .item import teams_app_definition_item_request_builder
+        from .item.teams_app_definition_item_request_builder import TeamsAppDefinitionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["teamsAppDefinition%2Did"] = teams_app_definition_id
-        return teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return TeamsAppDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AppDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_app_definition_collection_response.TeamsAppDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[AppDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsAppDefinitionCollectionResponse]:
         """
         The details for each version of the app.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teams_app_definition_collection_response.TeamsAppDefinitionCollectionResponse]
+        Returns: Optional[TeamsAppDefinitionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import teams_app_definition_collection_response
+        from .....models.teams_app_definition_collection_response import TeamsAppDefinitionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, teams_app_definition_collection_response.TeamsAppDefinitionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamsAppDefinitionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[teams_app_definition.TeamsAppDefinition] = None, request_configuration: Optional[AppDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[teams_app_definition.TeamsAppDefinition]:
+    async def post(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[AppDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[TeamsAppDefinition]:
         """
         Update an app previously published to the Microsoft Teams app catalog. To update an app, the **distributionMethod** property for the app must be set to `organization`. This API specifically updates an app published to your organization's app catalog (the tenant app catalog).
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teams_app_definition.TeamsAppDefinition]
+        Returns: Optional[TeamsAppDefinition]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import teams_app_definition
+        from .....models.teams_app_definition import TeamsAppDefinition
 
-        return await self.request_adapter.send_async(request_info, teams_app_definition.TeamsAppDefinition, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamsAppDefinition, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AppDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class AppDefinitionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[teams_app_definition.TeamsAppDefinition] = None, request_configuration: Optional[AppDefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[AppDefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Update an app previously published to the Microsoft Teams app catalog. To update an app, the **distributionMethod** property for the app must be set to `organization`. This API specifically updates an app published to your organization's app catalog (the tenant app catalog).
         Args:
@@ -139,13 +140,13 @@ class AppDefinitionsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AppDefinitionsRequestBuilderGetQueryParameters():

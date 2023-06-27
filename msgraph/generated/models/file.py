@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import hashes
+    from .hashes import Hashes
 
 @dataclass
 class File(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class File(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Hashes of the file's binary content, if available. Read-only.
-    hashes: Optional[hashes.Hashes] = None
+    hashes: Optional[Hashes] = None
     # The MIME type for the file. This is determined by logic on the server and might not be the value provided when the file was uploaded. Read-only.
     mime_type: Optional[str] = None
     # The OdataType property
@@ -37,12 +37,12 @@ class File(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import hashes
+        from .hashes import Hashes
 
-        from . import hashes
+        from .hashes import Hashes
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "hashes": lambda n : setattr(self, 'hashes', n.get_object_value(hashes.Hashes)),
+            "hashes": lambda n : setattr(self, 'hashes', n.get_object_value(Hashes)),
             "mimeType": lambda n : setattr(self, 'mime_type', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "processingMetadata": lambda n : setattr(self, 'processing_metadata', n.get_bool_value()),

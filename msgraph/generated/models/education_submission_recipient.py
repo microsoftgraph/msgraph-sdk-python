@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_submission_individual_recipient
+    from .education_submission_individual_recipient import EducationSubmissionIndividualRecipient
 
 @dataclass
 class EducationSubmissionRecipient(AdditionalDataHolder, Parsable):
@@ -29,9 +29,9 @@ class EducationSubmissionRecipient(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationSubmissionIndividualRecipient".casefold():
-            from . import education_submission_individual_recipient
+            from .education_submission_individual_recipient import EducationSubmissionIndividualRecipient
 
-            return education_submission_individual_recipient.EducationSubmissionIndividualRecipient()
+            return EducationSubmissionIndividualRecipient()
         return EducationSubmissionRecipient()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -39,9 +39,9 @@ class EducationSubmissionRecipient(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_submission_individual_recipient
+        from .education_submission_individual_recipient import EducationSubmissionIndividualRecipient
 
-        from . import education_submission_individual_recipient
+        from .education_submission_individual_recipient import EducationSubmissionIndividualRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

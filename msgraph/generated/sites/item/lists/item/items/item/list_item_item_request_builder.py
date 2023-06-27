@@ -10,17 +10,17 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import list_item
-    from .......models.o_data_errors import o_data_error
-    from .analytics import analytics_request_builder
-    from .created_by_user import created_by_user_request_builder
-    from .document_set_versions import document_set_versions_request_builder
-    from .drive_item import drive_item_request_builder
-    from .fields import fields_request_builder
-    from .get_activities_by_interval import get_activities_by_interval_request_builder
-    from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval import get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder
-    from .last_modified_by_user import last_modified_by_user_request_builder
-    from .versions import versions_request_builder
+    from .......models.list_item import ListItem
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .analytics.analytics_request_builder import AnalyticsRequestBuilder
+    from .created_by_user.created_by_user_request_builder import CreatedByUserRequestBuilder
+    from .document_set_versions.document_set_versions_request_builder import DocumentSetVersionsRequestBuilder
+    from .drive_item.drive_item_request_builder import DriveItemRequestBuilder
+    from .fields.fields_request_builder import FieldsRequestBuilder
+    from .get_activities_by_interval.get_activities_by_interval_request_builder import GetActivitiesByIntervalRequestBuilder
+    from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+    from .last_modified_by_user.last_modified_by_user_request_builder import LastModifiedByUserRequestBuilder
+    from .versions.versions_request_builder import VersionsRequestBuilder
 
 class ListItemItemRequestBuilder():
     """
@@ -53,46 +53,46 @@ class ListItemItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ListItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[list_item.ListItem]:
+    async def get(self,request_configuration: Optional[ListItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ListItem]:
         """
         Returns the metadata for an [item][] in a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[list_item.ListItem]
+        Returns: Optional[ListItem]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import list_item
+        from .......models.list_item import ListItem
 
-        return await self.request_adapter.send_async(request_info, list_item.ListItem, error_mapping)
+        return await self.request_adapter.send_async(request_info, ListItem, error_mapping)
     
-    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
+    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         Args:
             endDateTime: Usage: endDateTime='{endDateTime}'
             interval: Usage: interval='{interval}'
             startDateTime: Usage: startDateTime='{startDateTime}'
-        Returns: get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+        Returns: GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
         """
         if not end_date_time:
             raise TypeError("end_date_time cannot be null.")
@@ -100,34 +100,34 @@ class ListItemItemRequestBuilder():
             raise TypeError("interval cannot be null.")
         if not start_date_time:
             raise TypeError("start_date_time cannot be null.")
-        from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval import get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder
+        from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
 
-        return get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
+        return GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
     
-    async def patch(self,body: Optional[list_item.ListItem] = None, request_configuration: Optional[ListItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[list_item.ListItem]:
+    async def patch(self,body: Optional[ListItem] = None, request_configuration: Optional[ListItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ListItem]:
         """
         Update the navigation property items in sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[list_item.ListItem]
+        Returns: Optional[ListItem]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import list_item
+        from .......models.list_item import ListItem
 
-        return await self.request_adapter.send_async(request_info, list_item.ListItem, error_mapping)
+        return await self.request_adapter.send_async(request_info, ListItem, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ListItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -163,7 +163,7 @@ class ListItemItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[list_item.ListItem] = None, request_configuration: Optional[ListItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ListItem] = None, request_configuration: Optional[ListItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property items in sites
         Args:
@@ -185,76 +185,76 @@ class ListItemItemRequestBuilder():
         return request_info
     
     @property
-    def analytics(self) -> analytics_request_builder.AnalyticsRequestBuilder:
+    def analytics(self) -> AnalyticsRequestBuilder:
         """
         Provides operations to manage the analytics property of the microsoft.graph.listItem entity.
         """
-        from .analytics import analytics_request_builder
+        from .analytics.analytics_request_builder import AnalyticsRequestBuilder
 
-        return analytics_request_builder.AnalyticsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AnalyticsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def created_by_user(self) -> created_by_user_request_builder.CreatedByUserRequestBuilder:
+    def created_by_user(self) -> CreatedByUserRequestBuilder:
         """
         Provides operations to manage the createdByUser property of the microsoft.graph.baseItem entity.
         """
-        from .created_by_user import created_by_user_request_builder
+        from .created_by_user.created_by_user_request_builder import CreatedByUserRequestBuilder
 
-        return created_by_user_request_builder.CreatedByUserRequestBuilder(self.request_adapter, self.path_parameters)
+        return CreatedByUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def document_set_versions(self) -> document_set_versions_request_builder.DocumentSetVersionsRequestBuilder:
+    def document_set_versions(self) -> DocumentSetVersionsRequestBuilder:
         """
         Provides operations to manage the documentSetVersions property of the microsoft.graph.listItem entity.
         """
-        from .document_set_versions import document_set_versions_request_builder
+        from .document_set_versions.document_set_versions_request_builder import DocumentSetVersionsRequestBuilder
 
-        return document_set_versions_request_builder.DocumentSetVersionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DocumentSetVersionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def drive_item(self) -> drive_item_request_builder.DriveItemRequestBuilder:
+    def drive_item(self) -> DriveItemRequestBuilder:
         """
         Provides operations to manage the driveItem property of the microsoft.graph.listItem entity.
         """
-        from .drive_item import drive_item_request_builder
+        from .drive_item.drive_item_request_builder import DriveItemRequestBuilder
 
-        return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, self.path_parameters)
+        return DriveItemRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def fields(self) -> fields_request_builder.FieldsRequestBuilder:
+    def fields(self) -> FieldsRequestBuilder:
         """
         Provides operations to manage the fields property of the microsoft.graph.listItem entity.
         """
-        from .fields import fields_request_builder
+        from .fields.fields_request_builder import FieldsRequestBuilder
 
-        return fields_request_builder.FieldsRequestBuilder(self.request_adapter, self.path_parameters)
+        return FieldsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_activities_by_interval(self) -> get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder:
+    def get_activities_by_interval(self) -> GetActivitiesByIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         """
-        from .get_activities_by_interval import get_activities_by_interval_request_builder
+        from .get_activities_by_interval.get_activities_by_interval_request_builder import GetActivitiesByIntervalRequestBuilder
 
-        return get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def last_modified_by_user(self) -> last_modified_by_user_request_builder.LastModifiedByUserRequestBuilder:
+    def last_modified_by_user(self) -> LastModifiedByUserRequestBuilder:
         """
         Provides operations to manage the lastModifiedByUser property of the microsoft.graph.baseItem entity.
         """
-        from .last_modified_by_user import last_modified_by_user_request_builder
+        from .last_modified_by_user.last_modified_by_user_request_builder import LastModifiedByUserRequestBuilder
 
-        return last_modified_by_user_request_builder.LastModifiedByUserRequestBuilder(self.request_adapter, self.path_parameters)
+        return LastModifiedByUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def versions(self) -> versions_request_builder.VersionsRequestBuilder:
+    def versions(self) -> VersionsRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.listItem entity.
         """
-        from .versions import versions_request_builder
+        from .versions.versions_request_builder import VersionsRequestBuilder
 
-        return versions_request_builder.VersionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return VersionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ListItemItemRequestBuilderDeleteRequestConfiguration():

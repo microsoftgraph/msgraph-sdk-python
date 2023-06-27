@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -10,9 +10,9 @@ class UsageDetails(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The date and time the resource was last accessed by the user. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    last_accessed_date_time: Optional[datetime] = None
+    last_accessed_date_time: Optional[datetime.datetime] = None
     # The date and time the resource was last modified by the user. The timestamp represents date and time information using ISO 8601 format and is always in UTC time.For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -48,8 +48,8 @@ class UsageDetails(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("lastAccessedDateTime", self.last_accessed_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastAccessedDateTime", self.last_accessed_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

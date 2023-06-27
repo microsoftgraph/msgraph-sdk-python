@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import pinned_chat_message_info, pinned_chat_message_info_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import pinned_chat_message_info_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.pinned_chat_message_info import PinnedChatMessageInfo
+    from .....models.pinned_chat_message_info_collection_response import PinnedChatMessageInfoCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.pinned_chat_message_info_item_request_builder import PinnedChatMessageInfoItemRequestBuilder
 
 class PinnedMessagesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class PinnedMessagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_pinned_chat_message_info_id(self,pinned_chat_message_info_id: str) -> pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder:
+    def by_pinned_chat_message_info_id(self,pinned_chat_message_info_id: str) -> PinnedChatMessageInfoItemRequestBuilder:
         """
         Provides operations to manage the pinnedMessages property of the microsoft.graph.chat entity.
         Args:
             pinned_chat_message_info_id: Unique identifier of the item
-        Returns: pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder
+        Returns: PinnedChatMessageInfoItemRequestBuilder
         """
         if not pinned_chat_message_info_id:
             raise TypeError("pinned_chat_message_info_id cannot be null.")
-        from .item import pinned_chat_message_info_item_request_builder
+        from .item.pinned_chat_message_info_item_request_builder import PinnedChatMessageInfoItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["pinnedChatMessageInfo%2Did"] = pinned_chat_message_info_id
-        return pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return PinnedChatMessageInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[PinnedMessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse]:
+    async def get(self,request_configuration: Optional[PinnedMessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[PinnedChatMessageInfoCollectionResponse]:
         """
         Get a list of pinnedChatMessages in a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse]
+        Returns: Optional[PinnedChatMessageInfoCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import pinned_chat_message_info_collection_response
+        from .....models.pinned_chat_message_info_collection_response import PinnedChatMessageInfoCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PinnedChatMessageInfoCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[pinned_chat_message_info.PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedMessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[pinned_chat_message_info.PinnedChatMessageInfo]:
+    async def post(self,body: Optional[PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedMessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[PinnedChatMessageInfo]:
         """
         Pin a chat message in the specified chat. This API cannot create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can pin a chat message.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[pinned_chat_message_info.PinnedChatMessageInfo]
+        Returns: Optional[PinnedChatMessageInfo]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import pinned_chat_message_info
+        from .....models.pinned_chat_message_info import PinnedChatMessageInfo
 
-        return await self.request_adapter.send_async(request_info, pinned_chat_message_info.PinnedChatMessageInfo, error_mapping)
+        return await self.request_adapter.send_async(request_info, PinnedChatMessageInfo, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PinnedMessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class PinnedMessagesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[pinned_chat_message_info.PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedMessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedMessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Pin a chat message in the specified chat. This API cannot create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can pin a chat message.
         Args:
@@ -139,13 +140,13 @@ class PinnedMessagesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PinnedMessagesRequestBuilderGetQueryParameters():

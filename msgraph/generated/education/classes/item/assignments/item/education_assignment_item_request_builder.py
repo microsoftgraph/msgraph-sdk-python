@@ -10,15 +10,15 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import education_assignment
-    from ......models.o_data_errors import o_data_error
-    from .categories import categories_request_builder
-    from .publish import publish_request_builder
-    from .resources import resources_request_builder
-    from .rubric import rubric_request_builder
-    from .set_up_feedback_resources_folder import set_up_feedback_resources_folder_request_builder
-    from .set_up_resources_folder import set_up_resources_folder_request_builder
-    from .submissions import submissions_request_builder
+    from ......models.education_assignment import EducationAssignment
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .categories.categories_request_builder import CategoriesRequestBuilder
+    from .publish.publish_request_builder import PublishRequestBuilder
+    from .resources.resources_request_builder import ResourcesRequestBuilder
+    from .rubric.rubric_request_builder import RubricRequestBuilder
+    from .set_up_feedback_resources_folder.set_up_feedback_resources_folder_request_builder import SetUpFeedbackResourcesFolderRequestBuilder
+    from .set_up_resources_folder.set_up_resources_folder_request_builder import SetUpResourcesFolderRequestBuilder
+    from .submissions.submissions_request_builder import SubmissionsRequestBuilder
 
 class EducationAssignmentItemRequestBuilder():
     """
@@ -51,62 +51,62 @@ class EducationAssignmentItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EducationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[education_assignment.EducationAssignment]:
+    async def get(self,request_configuration: Optional[EducationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationAssignment]:
         """
         Get the properties and relationships of an assignment. Only teachers, students, and applications with application permissions can perform this operation. Students can only see assignments assigned to them; teachers and applications with application permissions can see all assignments in a class.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_assignment.EducationAssignment]
+        Returns: Optional[EducationAssignment]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import education_assignment
+        from ......models.education_assignment import EducationAssignment
 
-        return await self.request_adapter.send_async(request_info, education_assignment.EducationAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationAssignment, error_mapping)
     
-    async def patch(self,body: Optional[education_assignment.EducationAssignment] = None, request_configuration: Optional[EducationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_assignment.EducationAssignment]:
+    async def patch(self,body: Optional[EducationAssignment] = None, request_configuration: Optional[EducationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationAssignment]:
         """
         Update an educationAssignment object.  Only teachers can perform this action.  Alternatively, request to change the status of an **assignment** with publish action. Don't use a PATCH operation for this purpose.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_assignment.EducationAssignment]
+        Returns: Optional[EducationAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import education_assignment
+        from ......models.education_assignment import EducationAssignment
 
-        return await self.request_adapter.send_async(request_info, education_assignment.EducationAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationAssignment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EducationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -142,7 +142,7 @@ class EducationAssignmentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[education_assignment.EducationAssignment] = None, request_configuration: Optional[EducationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EducationAssignment] = None, request_configuration: Optional[EducationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update an educationAssignment object.  Only teachers can perform this action.  Alternatively, request to change the status of an **assignment** with publish action. Don't use a PATCH operation for this purpose.
         Args:
@@ -164,67 +164,67 @@ class EducationAssignmentItemRequestBuilder():
         return request_info
     
     @property
-    def categories(self) -> categories_request_builder.CategoriesRequestBuilder:
+    def categories(self) -> CategoriesRequestBuilder:
         """
         Provides operations to manage the categories property of the microsoft.graph.educationAssignment entity.
         """
-        from .categories import categories_request_builder
+        from .categories.categories_request_builder import CategoriesRequestBuilder
 
-        return categories_request_builder.CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+        return CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def publish(self) -> publish_request_builder.PublishRequestBuilder:
+    def publish(self) -> PublishRequestBuilder:
         """
         Provides operations to call the publish method.
         """
-        from .publish import publish_request_builder
+        from .publish.publish_request_builder import PublishRequestBuilder
 
-        return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
+        return PublishRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def resources(self) -> resources_request_builder.ResourcesRequestBuilder:
+    def resources(self) -> ResourcesRequestBuilder:
         """
         Provides operations to manage the resources property of the microsoft.graph.educationAssignment entity.
         """
-        from .resources import resources_request_builder
+        from .resources.resources_request_builder import ResourcesRequestBuilder
 
-        return resources_request_builder.ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rubric(self) -> rubric_request_builder.RubricRequestBuilder:
+    def rubric(self) -> RubricRequestBuilder:
         """
         Provides operations to manage the rubric property of the microsoft.graph.educationAssignment entity.
         """
-        from .rubric import rubric_request_builder
+        from .rubric.rubric_request_builder import RubricRequestBuilder
 
-        return rubric_request_builder.RubricRequestBuilder(self.request_adapter, self.path_parameters)
+        return RubricRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def set_up_feedback_resources_folder(self) -> set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder:
+    def set_up_feedback_resources_folder(self) -> SetUpFeedbackResourcesFolderRequestBuilder:
         """
         Provides operations to call the setUpFeedbackResourcesFolder method.
         """
-        from .set_up_feedback_resources_folder import set_up_feedback_resources_folder_request_builder
+        from .set_up_feedback_resources_folder.set_up_feedback_resources_folder_request_builder import SetUpFeedbackResourcesFolderRequestBuilder
 
-        return set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
+        return SetUpFeedbackResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def set_up_resources_folder(self) -> set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder:
+    def set_up_resources_folder(self) -> SetUpResourcesFolderRequestBuilder:
         """
         Provides operations to call the setUpResourcesFolder method.
         """
-        from .set_up_resources_folder import set_up_resources_folder_request_builder
+        from .set_up_resources_folder.set_up_resources_folder_request_builder import SetUpResourcesFolderRequestBuilder
 
-        return set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
+        return SetUpResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def submissions(self) -> submissions_request_builder.SubmissionsRequestBuilder:
+    def submissions(self) -> SubmissionsRequestBuilder:
         """
         Provides operations to manage the submissions property of the microsoft.graph.educationAssignment entity.
         """
-        from .submissions import submissions_request_builder
+        from .submissions.submissions_request_builder import SubmissionsRequestBuilder
 
-        return submissions_request_builder.SubmissionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SubmissionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EducationAssignmentItemRequestBuilderDeleteRequestConfiguration():

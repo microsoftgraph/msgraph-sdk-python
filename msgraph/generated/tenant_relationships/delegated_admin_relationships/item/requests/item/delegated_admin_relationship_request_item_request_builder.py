@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import delegated_admin_relationship_request
-    from ......models.o_data_errors import o_data_error
+    from ......models.delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class DelegatedAdminRelationshipRequestItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class DelegatedAdminRelationshipRequestItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DelegatedAdminRelationshipRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]:
+    async def get(self,request_configuration: Optional[DelegatedAdminRelationshipRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipRequest]:
         """
         Read the properties and relationships of a delegatedAdminRelationshipRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]
+        Returns: Optional[DelegatedAdminRelationshipRequest]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import delegated_admin_relationship_request
+        from ......models.delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
 
-        return await self.request_adapter.send_async(request_info, delegated_admin_relationship_request.DelegatedAdminRelationshipRequest, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedAdminRelationshipRequest, error_mapping)
     
-    async def patch(self,body: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[DelegatedAdminRelationshipRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]:
+    async def patch(self,body: Optional[DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[DelegatedAdminRelationshipRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipRequest]:
         """
         Update the navigation property requests in tenantRelationships
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]
+        Returns: Optional[DelegatedAdminRelationshipRequest]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import delegated_admin_relationship_request
+        from ......models.delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
 
-        return await self.request_adapter.send_async(request_info, delegated_admin_relationship_request.DelegatedAdminRelationshipRequest, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedAdminRelationshipRequest, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class DelegatedAdminRelationshipRequestItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[DelegatedAdminRelationshipRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[DelegatedAdminRelationshipRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property requests in tenantRelationships
         Args:

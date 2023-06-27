@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import workbook_function_result
-    from ........models.o_data_errors import o_data_error
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.workbook_function_result import WorkbookFunctionResult
 
 class TrueRequestBuilder():
     """
@@ -35,27 +35,27 @@ class TrueRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[TrueRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_function_result.WorkbookFunctionResult]:
+    async def post(self,request_configuration: Optional[TrueRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookFunctionResult]:
         """
         Invoke action true
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_function_result.WorkbookFunctionResult]
+        Returns: Optional[WorkbookFunctionResult]
         """
         request_info = self.to_post_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import workbook_function_result
+        from ........models.workbook_function_result import WorkbookFunctionResult
 
-        return await self.request_adapter.send_async(request_info, workbook_function_result.WorkbookFunctionResult, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookFunctionResult, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[TrueRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

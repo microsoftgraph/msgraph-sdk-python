@@ -4,23 +4,26 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import apple_device_features_configuration_base, ios_home_screen_item, ios_home_screen_page, ios_notification_settings
+    from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
+    from .ios_home_screen_item import IosHomeScreenItem
+    from .ios_home_screen_page import IosHomeScreenPage
+    from .ios_notification_settings import IosNotificationSettings
 
-from . import apple_device_features_configuration_base
+from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
 
 @dataclass
-class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.AppleDeviceFeaturesConfigurationBase):
+class IosDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
     odata_type = "#microsoft.graph.iosDeviceFeaturesConfiguration"
     # Asset tag information for the device, displayed on the login window and lock screen.
     asset_tag_template: Optional[str] = None
     # A list of app and folders to appear on the Home Screen Dock. This collection can contain a maximum of 500 elements.
-    home_screen_dock_icons: Optional[List[ios_home_screen_item.IosHomeScreenItem]] = None
+    home_screen_dock_icons: Optional[List[IosHomeScreenItem]] = None
     # A list of pages on the Home Screen. This collection can contain a maximum of 500 elements.
-    home_screen_pages: Optional[List[ios_home_screen_page.IosHomeScreenPage]] = None
+    home_screen_pages: Optional[List[IosHomeScreenPage]] = None
     # A footnote displayed on the login window and lock screen. Available in iOS 9.3.1 and later.
     lock_screen_footnote: Optional[str] = None
     # Notification settings for each bundle id. Applicable to devices in supervised mode only (iOS 9.3 and later). This collection can contain a maximum of 500 elements.
-    notification_settings: Optional[List[ios_notification_settings.IosNotificationSettings]] = None
+    notification_settings: Optional[List[IosNotificationSettings]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosDeviceFeaturesConfiguration:
@@ -39,16 +42,22 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import apple_device_features_configuration_base, ios_home_screen_item, ios_home_screen_page, ios_notification_settings
+        from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
+        from .ios_home_screen_item import IosHomeScreenItem
+        from .ios_home_screen_page import IosHomeScreenPage
+        from .ios_notification_settings import IosNotificationSettings
 
-        from . import apple_device_features_configuration_base, ios_home_screen_item, ios_home_screen_page, ios_notification_settings
+        from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
+        from .ios_home_screen_item import IosHomeScreenItem
+        from .ios_home_screen_page import IosHomeScreenPage
+        from .ios_notification_settings import IosNotificationSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assetTagTemplate": lambda n : setattr(self, 'asset_tag_template', n.get_str_value()),
-            "homeScreenDockIcons": lambda n : setattr(self, 'home_screen_dock_icons', n.get_collection_of_object_values(ios_home_screen_item.IosHomeScreenItem)),
-            "homeScreenPages": lambda n : setattr(self, 'home_screen_pages', n.get_collection_of_object_values(ios_home_screen_page.IosHomeScreenPage)),
+            "homeScreenDockIcons": lambda n : setattr(self, 'home_screen_dock_icons', n.get_collection_of_object_values(IosHomeScreenItem)),
+            "homeScreenPages": lambda n : setattr(self, 'home_screen_pages', n.get_collection_of_object_values(IosHomeScreenPage)),
             "lockScreenFootnote": lambda n : setattr(self, 'lock_screen_footnote', n.get_str_value()),
-            "notificationSettings": lambda n : setattr(self, 'notification_settings', n.get_collection_of_object_values(ios_notification_settings.IosNotificationSettings)),
+            "notificationSettings": lambda n : setattr(self, 'notification_settings', n.get_collection_of_object_values(IosNotificationSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

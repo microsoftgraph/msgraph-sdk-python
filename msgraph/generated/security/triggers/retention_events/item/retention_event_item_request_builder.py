@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models.o_data_errors import o_data_error
-    from .....models.security import retention_event
-    from .retention_event_type import retention_event_type_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.security.retention_event import RetentionEvent
+    from .retention_event_type.retention_event_type_request_builder import RetentionEventTypeRequestBuilder
 
 class RetentionEventItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class RetentionEventItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RetentionEventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[retention_event.RetentionEvent]:
+    async def get(self,request_configuration: Optional[RetentionEventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[RetentionEvent]:
         """
         Read the properties and relationships of a retentionEvent object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[retention_event.RetentionEvent]
+        Returns: Optional[RetentionEvent]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.security import retention_event
+        from .....models.security.retention_event import RetentionEvent
 
-        return await self.request_adapter.send_async(request_info, retention_event.RetentionEvent, error_mapping)
+        return await self.request_adapter.send_async(request_info, RetentionEvent, error_mapping)
     
-    async def patch(self,body: Optional[retention_event.RetentionEvent] = None, request_configuration: Optional[RetentionEventItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[retention_event.RetentionEvent]:
+    async def patch(self,body: Optional[RetentionEvent] = None, request_configuration: Optional[RetentionEventItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[RetentionEvent]:
         """
         Update the navigation property retentionEvents in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[retention_event.RetentionEvent]
+        Returns: Optional[RetentionEvent]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.security import retention_event
+        from .....models.security.retention_event import RetentionEvent
 
-        return await self.request_adapter.send_async(request_info, retention_event.RetentionEvent, error_mapping)
+        return await self.request_adapter.send_async(request_info, RetentionEvent, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RetentionEventItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class RetentionEventItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[retention_event.RetentionEvent] = None, request_configuration: Optional[RetentionEventItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[RetentionEvent] = None, request_configuration: Optional[RetentionEventItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property retentionEvents in security
         Args:
@@ -158,13 +158,13 @@ class RetentionEventItemRequestBuilder():
         return request_info
     
     @property
-    def retention_event_type(self) -> retention_event_type_request_builder.RetentionEventTypeRequestBuilder:
+    def retention_event_type(self) -> RetentionEventTypeRequestBuilder:
         """
         Provides operations to manage the retentionEventType property of the microsoft.graph.security.retentionEvent entity.
         """
-        from .retention_event_type import retention_event_type_request_builder
+        from .retention_event_type.retention_event_type_request_builder import RetentionEventTypeRequestBuilder
 
-        return retention_event_type_request_builder.RetentionEventTypeRequestBuilder(self.request_adapter, self.path_parameters)
+        return RetentionEventTypeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RetentionEventItemRequestBuilderDeleteRequestConfiguration():

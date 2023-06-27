@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class NpvPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class NpvPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The rate property
-    rate: Optional[json.Json] = None
+    rate: Optional[Json] = None
     # The values property
-    values: Optional[json.Json] = None
+    values: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NpvPostRequestBody:
@@ -33,13 +33,13 @@ class NpvPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "rate": lambda n : setattr(self, 'rate', n.get_object_value(json.Json)),
-            "values": lambda n : setattr(self, 'values', n.get_object_value(json.Json)),
+            "rate": lambda n : setattr(self, 'rate', n.get_object_value(Json)),
+            "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         return fields
     

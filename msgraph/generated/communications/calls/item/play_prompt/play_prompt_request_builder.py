@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import play_prompt_post_request_body
-    from .....models import play_prompt_operation
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.play_prompt_operation import PlayPromptOperation
+    from .play_prompt_post_request_body import PlayPromptPostRequestBody
 
 class PlayPromptRequestBuilder():
     """
@@ -36,32 +36,32 @@ class PlayPromptRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[play_prompt_post_request_body.PlayPromptPostRequestBody] = None, request_configuration: Optional[PlayPromptRequestBuilderPostRequestConfiguration] = None) -> Optional[play_prompt_operation.PlayPromptOperation]:
+    async def post(self,body: Optional[PlayPromptPostRequestBody] = None, request_configuration: Optional[PlayPromptRequestBuilderPostRequestConfiguration] = None) -> Optional[PlayPromptOperation]:
         """
         Play a prompt in the call. For more information about how to handle operations, see commsOperation
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[play_prompt_operation.PlayPromptOperation]
+        Returns: Optional[PlayPromptOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import play_prompt_operation
+        from .....models.play_prompt_operation import PlayPromptOperation
 
-        return await self.request_adapter.send_async(request_info, play_prompt_operation.PlayPromptOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, PlayPromptOperation, error_mapping)
     
-    def to_post_request_information(self,body: Optional[play_prompt_post_request_body.PlayPromptPostRequestBody] = None, request_configuration: Optional[PlayPromptRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PlayPromptPostRequestBody] = None, request_configuration: Optional[PlayPromptRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Play a prompt in the call. For more information about how to handle operations, see commsOperation
         Args:

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import user_flow_language_page, user_flow_language_page_collection_response
-    from .......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import user_flow_language_page_item_request_builder
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.user_flow_language_page import UserFlowLanguagePage
+    from .......models.user_flow_language_page_collection_response import UserFlowLanguagePageCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.user_flow_language_page_item_request_builder import UserFlowLanguagePageItemRequestBuilder
 
 class DefaultPagesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class DefaultPagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_user_flow_language_page_id(self,user_flow_language_page_id: str) -> user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder:
+    def by_user_flow_language_page_id(self,user_flow_language_page_id: str) -> UserFlowLanguagePageItemRequestBuilder:
         """
         Provides operations to manage the defaultPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
         Args:
             user_flow_language_page_id: Unique identifier of the item
-        Returns: user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder
+        Returns: UserFlowLanguagePageItemRequestBuilder
         """
         if not user_flow_language_page_id:
             raise TypeError("user_flow_language_page_id cannot be null.")
-        from .item import user_flow_language_page_item_request_builder
+        from .item.user_flow_language_page_item_request_builder import UserFlowLanguagePageItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["userFlowLanguagePage%2Did"] = user_flow_language_page_id
-        return user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return UserFlowLanguagePageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DefaultPagesRequestBuilderGetRequestConfiguration] = None) -> Optional[user_flow_language_page_collection_response.UserFlowLanguagePageCollectionResponse]:
+    async def get(self,request_configuration: Optional[DefaultPagesRequestBuilderGetRequestConfiguration] = None) -> Optional[UserFlowLanguagePageCollectionResponse]:
         """
         Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_flow_language_page_collection_response.UserFlowLanguagePageCollectionResponse]
+        Returns: Optional[UserFlowLanguagePageCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import user_flow_language_page_collection_response
+        from .......models.user_flow_language_page_collection_response import UserFlowLanguagePageCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, user_flow_language_page_collection_response.UserFlowLanguagePageCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserFlowLanguagePageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[user_flow_language_page.UserFlowLanguagePage] = None, request_configuration: Optional[DefaultPagesRequestBuilderPostRequestConfiguration] = None) -> Optional[user_flow_language_page.UserFlowLanguagePage]:
+    async def post(self,body: Optional[UserFlowLanguagePage] = None, request_configuration: Optional[DefaultPagesRequestBuilderPostRequestConfiguration] = None) -> Optional[UserFlowLanguagePage]:
         """
         Create new navigation property to defaultPages for identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_flow_language_page.UserFlowLanguagePage]
+        Returns: Optional[UserFlowLanguagePage]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import user_flow_language_page
+        from .......models.user_flow_language_page import UserFlowLanguagePage
 
-        return await self.request_adapter.send_async(request_info, user_flow_language_page.UserFlowLanguagePage, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserFlowLanguagePage, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DefaultPagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class DefaultPagesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[user_flow_language_page.UserFlowLanguagePage] = None, request_configuration: Optional[DefaultPagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserFlowLanguagePage] = None, request_configuration: Optional[DefaultPagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to defaultPages for identity
         Args:
@@ -139,13 +140,13 @@ class DefaultPagesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DefaultPagesRequestBuilderGetQueryParameters():

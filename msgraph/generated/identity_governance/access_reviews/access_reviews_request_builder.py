@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import access_review_set
-    from ...models.o_data_errors import o_data_error
-    from .definitions import definitions_request_builder
-    from .history_definitions import history_definitions_request_builder
+    from ...models.access_review_set import AccessReviewSet
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .definitions.definitions_request_builder import DefinitionsRequestBuilder
+    from .history_definitions.history_definitions_request_builder import HistoryDefinitionsRequestBuilder
 
 class AccessReviewsRequestBuilder():
     """
@@ -46,62 +46,62 @@ class AccessReviewsRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AccessReviewsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_set.AccessReviewSet]:
+    async def get(self,request_configuration: Optional[AccessReviewsRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessReviewSet]:
         """
         Get accessReviews from identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_review_set.AccessReviewSet]
+        Returns: Optional[AccessReviewSet]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import access_review_set
+        from ...models.access_review_set import AccessReviewSet
 
-        return await self.request_adapter.send_async(request_info, access_review_set.AccessReviewSet, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessReviewSet, error_mapping)
     
-    async def patch(self,body: Optional[access_review_set.AccessReviewSet] = None, request_configuration: Optional[AccessReviewsRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_review_set.AccessReviewSet]:
+    async def patch(self,body: Optional[AccessReviewSet] = None, request_configuration: Optional[AccessReviewsRequestBuilderPatchRequestConfiguration] = None) -> Optional[AccessReviewSet]:
         """
         Update the navigation property accessReviews in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_review_set.AccessReviewSet]
+        Returns: Optional[AccessReviewSet]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import access_review_set
+        from ...models.access_review_set import AccessReviewSet
 
-        return await self.request_adapter.send_async(request_info, access_review_set.AccessReviewSet, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessReviewSet, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AccessReviewsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class AccessReviewsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[access_review_set.AccessReviewSet] = None, request_configuration: Optional[AccessReviewsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AccessReviewSet] = None, request_configuration: Optional[AccessReviewsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property accessReviews in identityGovernance
         Args:
@@ -159,22 +159,22 @@ class AccessReviewsRequestBuilder():
         return request_info
     
     @property
-    def definitions(self) -> definitions_request_builder.DefinitionsRequestBuilder:
+    def definitions(self) -> DefinitionsRequestBuilder:
         """
         Provides operations to manage the definitions property of the microsoft.graph.accessReviewSet entity.
         """
-        from .definitions import definitions_request_builder
+        from .definitions.definitions_request_builder import DefinitionsRequestBuilder
 
-        return definitions_request_builder.DefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def history_definitions(self) -> history_definitions_request_builder.HistoryDefinitionsRequestBuilder:
+    def history_definitions(self) -> HistoryDefinitionsRequestBuilder:
         """
         Provides operations to manage the historyDefinitions property of the microsoft.graph.accessReviewSet entity.
         """
-        from .history_definitions import history_definitions_request_builder
+        from .history_definitions.history_definitions_request_builder import HistoryDefinitionsRequestBuilder
 
-        return history_definitions_request_builder.HistoryDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return HistoryDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AccessReviewsRequestBuilderDeleteRequestConfiguration():

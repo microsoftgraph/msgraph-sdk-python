@@ -4,19 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conversation_member, user
+    from .conversation_member import ConversationMember
+    from .user import User
 
-from . import conversation_member
+from .conversation_member import ConversationMember
 
 @dataclass
-class AadUserConversationMember(conversation_member.ConversationMember):
+class AadUserConversationMember(ConversationMember):
     odata_type = "#microsoft.graph.aadUserConversationMember"
     # The email address of the user.
     email: Optional[str] = None
     # TenantId which the Azure AD user belongs to.
     tenant_id: Optional[str] = None
     # The user property
-    user: Optional[user.User] = None
+    user: Optional[User] = None
     # The guid of the user.
     user_id: Optional[str] = None
     
@@ -37,14 +38,16 @@ class AadUserConversationMember(conversation_member.ConversationMember):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conversation_member, user
+        from .conversation_member import ConversationMember
+        from .user import User
 
-        from . import conversation_member, user
+        from .conversation_member import ConversationMember
+        from .user import User
 
         fields: Dict[str, Callable[[Any], None]] = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "user": lambda n : setattr(self, 'user', n.get_object_value(user.User)),
+            "user": lambda n : setattr(self, 'user', n.get_object_value(User)),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

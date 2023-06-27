@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import identity_user_flow_attribute
-    from ....models.o_data_errors import o_data_error
+    from ....models.identity_user_flow_attribute import IdentityUserFlowAttribute
+    from ....models.o_data_errors.o_data_error import ODataError
 
 class IdentityUserFlowAttributeItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class IdentityUserFlowAttributeItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_user_flow_attribute.IdentityUserFlowAttribute]:
+    async def get(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityUserFlowAttribute]:
         """
         Retrieve the properties and relationships of a identityUserFlowAttribute object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute]
+        Returns: Optional[IdentityUserFlowAttribute]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import identity_user_flow_attribute
+        from ....models.identity_user_flow_attribute import IdentityUserFlowAttribute
 
-        return await self.request_adapter.send_async(request_info, identity_user_flow_attribute.IdentityUserFlowAttribute, error_mapping)
+        return await self.request_adapter.send_async(request_info, IdentityUserFlowAttribute, error_mapping)
     
-    async def patch(self,body: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute] = None, request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[identity_user_flow_attribute.IdentityUserFlowAttribute]:
+    async def patch(self,body: Optional[IdentityUserFlowAttribute] = None, request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[IdentityUserFlowAttribute]:
         """
         Update the properties of a identityUserFlowAttribute object. Only custom user flow attributes can be updated.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute]
+        Returns: Optional[IdentityUserFlowAttribute]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import identity_user_flow_attribute
+        from ....models.identity_user_flow_attribute import IdentityUserFlowAttribute
 
-        return await self.request_adapter.send_async(request_info, identity_user_flow_attribute.IdentityUserFlowAttribute, error_mapping)
+        return await self.request_adapter.send_async(request_info, IdentityUserFlowAttribute, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class IdentityUserFlowAttributeItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute] = None, request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[IdentityUserFlowAttribute] = None, request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a identityUserFlowAttribute object. Only custom user flow attributes can be updated.
         Args:

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ............models import recipient
+    from ............models.recipient import Recipient
 
 @dataclass
 class ForwardPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class ForwardPostRequestBody(AdditionalDataHolder, Parsable):
     # The Comment property
     comment: Optional[str] = None
     # The ToRecipients property
-    to_recipients: Optional[List[recipient.Recipient]] = None
+    to_recipients: Optional[List[Recipient]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ForwardPostRequestBody:
@@ -33,13 +33,13 @@ class ForwardPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ............models import recipient
+        from ............models.recipient import Recipient
 
-        from ............models import recipient
+        from ............models.recipient import Recipient
 
         fields: Dict[str, Callable[[Any], None]] = {
             "Comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "ToRecipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(recipient.Recipient)),
+            "ToRecipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(Recipient)),
         }
         return fields
     

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import set_user_preferred_presence_post_request_body
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .set_user_preferred_presence_post_request_body import SetUserPreferredPresencePostRequestBody
 
 class SetUserPreferredPresenceRequestBuilder():
     """
@@ -35,7 +35,7 @@ class SetUserPreferredPresenceRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[set_user_preferred_presence_post_request_body.SetUserPreferredPresencePostRequestBody] = None, request_configuration: Optional[SetUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[SetUserPreferredPresencePostRequestBody] = None, request_configuration: Optional[SetUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Set the preferred availability and activity status for a user. If the preferred presence of a user is set, the user's presence shows as the preferred status. Preferred presence takes effect only when at least one presence session exists for the user. Otherwise, the user's presence shows as `Offline`. A presence session is created as a result of a successful setPresence operation, or if the user is signed in on a Microsoft Teams client. For more details, see presence sessions and time-out and expiration.
         Args:
@@ -47,17 +47,17 @@ class SetUserPreferredPresenceRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[set_user_preferred_presence_post_request_body.SetUserPreferredPresencePostRequestBody] = None, request_configuration: Optional[SetUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SetUserPreferredPresencePostRequestBody] = None, request_configuration: Optional[SetUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Set the preferred availability and activity status for a user. If the preferred presence of a user is set, the user's presence shows as the preferred status. Preferred presence takes effect only when at least one presence session exists for the user. Otherwise, the user's presence shows as `Offline`. A presence session is created as a result of a successful setPresence operation, or if the user is signed in on a Microsoft Teams client. For more details, see presence sessions and time-out and expiration.
         Args:

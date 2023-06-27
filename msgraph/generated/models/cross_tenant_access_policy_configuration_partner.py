@@ -4,7 +4,10 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import cross_tenant_access_policy_b2_b_setting, cross_tenant_access_policy_inbound_trust, cross_tenant_identity_sync_policy_partner, inbound_outbound_policy_configuration
+    from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
+    from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
+    from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
+    from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
 
 @dataclass
 class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable):
@@ -12,19 +15,19 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Determines the partner-specific configuration for automatic user consent settings. Unless specifically configured, the inboundAllowed and outboundAllowed properties are null and inherit from the default settings, which is always false.
-    automatic_user_consent_settings: Optional[inbound_outbound_policy_configuration.InboundOutboundPolicyConfiguration] = None
+    automatic_user_consent_settings: Optional[InboundOutboundPolicyConfiguration] = None
     # Defines your partner-specific configuration for users from other organizations accessing your resources via Azure AD B2B collaboration.
-    b2b_collaboration_inbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
+    b2b_collaboration_inbound: Optional[CrossTenantAccessPolicyB2BSetting] = None
     # Defines your partner-specific configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B collaboration.
-    b2b_collaboration_outbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
+    b2b_collaboration_outbound: Optional[CrossTenantAccessPolicyB2BSetting] = None
     # Defines your partner-specific configuration for users from other organizations accessing your resources via Azure B2B direct connect.
-    b2b_direct_connect_inbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
+    b2b_direct_connect_inbound: Optional[CrossTenantAccessPolicyB2BSetting] = None
     # Defines your partner-specific configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B direct connect.
-    b2b_direct_connect_outbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
+    b2b_direct_connect_outbound: Optional[CrossTenantAccessPolicyB2BSetting] = None
     # Defines the cross-tenant policy for the synchronization of users from a partner tenant. Use this user synchronization policy to streamline collaboration between users in a multi-tenant organization by automating the creation, update, and deletion of users from one tenant to another.
-    identity_synchronization: Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner] = None
+    identity_synchronization: Optional[CrossTenantIdentitySyncPolicyPartner] = None
     # Determines the partner-specific configuration for trusting other Conditional Access claims from external Azure AD organizations.
-    inbound_trust: Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust] = None
+    inbound_trust: Optional[CrossTenantAccessPolicyInboundTrust] = None
     # Identifies whether the partner-specific configuration is a Cloud Service Provider for your organization.
     is_service_provider: Optional[bool] = None
     # The OdataType property
@@ -49,18 +52,24 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import cross_tenant_access_policy_b2_b_setting, cross_tenant_access_policy_inbound_trust, cross_tenant_identity_sync_policy_partner, inbound_outbound_policy_configuration
+        from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
+        from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
+        from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
+        from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
 
-        from . import cross_tenant_access_policy_b2_b_setting, cross_tenant_access_policy_inbound_trust, cross_tenant_identity_sync_policy_partner, inbound_outbound_policy_configuration
+        from .cross_tenant_access_policy_b2_b_setting import CrossTenantAccessPolicyB2BSetting
+        from .cross_tenant_access_policy_inbound_trust import CrossTenantAccessPolicyInboundTrust
+        from .cross_tenant_identity_sync_policy_partner import CrossTenantIdentitySyncPolicyPartner
+        from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "automaticUserConsentSettings": lambda n : setattr(self, 'automatic_user_consent_settings', n.get_object_value(inbound_outbound_policy_configuration.InboundOutboundPolicyConfiguration)),
-            "b2bCollaborationInbound": lambda n : setattr(self, 'b2b_collaboration_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "b2bCollaborationOutbound": lambda n : setattr(self, 'b2b_collaboration_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "b2bDirectConnectInbound": lambda n : setattr(self, 'b2b_direct_connect_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "b2bDirectConnectOutbound": lambda n : setattr(self, 'b2b_direct_connect_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "identitySynchronization": lambda n : setattr(self, 'identity_synchronization', n.get_object_value(cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner)),
-            "inboundTrust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust)),
+            "automaticUserConsentSettings": lambda n : setattr(self, 'automatic_user_consent_settings', n.get_object_value(InboundOutboundPolicyConfiguration)),
+            "b2bCollaborationInbound": lambda n : setattr(self, 'b2b_collaboration_inbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
+            "b2bCollaborationOutbound": lambda n : setattr(self, 'b2b_collaboration_outbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
+            "b2bDirectConnectInbound": lambda n : setattr(self, 'b2b_direct_connect_inbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
+            "b2bDirectConnectOutbound": lambda n : setattr(self, 'b2b_direct_connect_outbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
+            "identitySynchronization": lambda n : setattr(self, 'identity_synchronization', n.get_object_value(CrossTenantIdentitySyncPolicyPartner)),
+            "inboundTrust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(CrossTenantAccessPolicyInboundTrust)),
             "isServiceProvider": lambda n : setattr(self, 'is_service_provider', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),

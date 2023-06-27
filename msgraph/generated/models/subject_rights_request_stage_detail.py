@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import public_error, subject_rights_request_stage, subject_rights_request_stage_status
+    from .public_error import PublicError
+    from .subject_rights_request_stage import SubjectRightsRequestStage
+    from .subject_rights_request_stage_status import SubjectRightsRequestStageStatus
 
 @dataclass
 class SubjectRightsRequestStageDetail(AdditionalDataHolder, Parsable):
@@ -12,13 +14,13 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Describes the error, if any, for the current stage.
-    error: Optional[public_error.PublicError] = None
+    error: Optional[PublicError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The stage of the subject rights request. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue.
-    stage: Optional[subject_rights_request_stage.SubjectRightsRequestStage] = None
+    stage: Optional[SubjectRightsRequestStage] = None
     # Status of the current stage. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
-    status: Optional[subject_rights_request_stage_status.SubjectRightsRequestStageStatus] = None
+    status: Optional[SubjectRightsRequestStageStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubjectRightsRequestStageDetail:
@@ -37,15 +39,19 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import public_error, subject_rights_request_stage, subject_rights_request_stage_status
+        from .public_error import PublicError
+        from .subject_rights_request_stage import SubjectRightsRequestStage
+        from .subject_rights_request_stage_status import SubjectRightsRequestStageStatus
 
-        from . import public_error, subject_rights_request_stage, subject_rights_request_stage_status
+        from .public_error import PublicError
+        from .subject_rights_request_stage import SubjectRightsRequestStage
+        from .subject_rights_request_stage_status import SubjectRightsRequestStageStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "stage": lambda n : setattr(self, 'stage', n.get_enum_value(subject_rights_request_stage.SubjectRightsRequestStage)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(subject_rights_request_stage_status.SubjectRightsRequestStageStatus)),
+            "stage": lambda n : setattr(self, 'stage', n.get_enum_value(SubjectRightsRequestStage)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(SubjectRightsRequestStageStatus)),
         }
         return fields
     

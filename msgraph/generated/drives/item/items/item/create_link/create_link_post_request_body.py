@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -10,7 +10,7 @@ class CreateLinkPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The expirationDateTime property
-    expiration_date_time: Optional[datetime] = None
+    expiration_date_time: Optional[datetime.datetime] = None
     # The message property
     message: Optional[str] = None
     # The password property
@@ -57,7 +57,7 @@ class CreateLinkPostRequestBody(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("message", self.message)
         writer.write_str_value("password", self.password)
         writer.write_bool_value("retainInheritedPermissions", self.retain_inherited_permissions)

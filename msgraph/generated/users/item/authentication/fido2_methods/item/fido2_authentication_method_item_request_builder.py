@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import fido2_authentication_method
-    from ......models.o_data_errors import o_data_error
+    from ......models.fido2_authentication_method import Fido2AuthenticationMethod
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class Fido2AuthenticationMethodItemRequestBuilder():
     """
@@ -44,37 +44,37 @@ class Fido2AuthenticationMethodItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[fido2_authentication_method.Fido2AuthenticationMethod]:
+    async def get(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Fido2AuthenticationMethod]:
         """
         Retrieve a user's single FIDO2 Security Key Authentication Method object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[fido2_authentication_method.Fido2AuthenticationMethod]
+        Returns: Optional[Fido2AuthenticationMethod]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import fido2_authentication_method
+        from ......models.fido2_authentication_method import Fido2AuthenticationMethod
 
-        return await self.request_adapter.send_async(request_info, fido2_authentication_method.Fido2AuthenticationMethod, error_mapping)
+        return await self.request_adapter.send_async(request_info, Fido2AuthenticationMethod, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

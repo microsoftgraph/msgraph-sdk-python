@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import compliance_status, setting_source
+    from .compliance_status import ComplianceStatus
+    from .setting_source import SettingSource
 
 @dataclass
 class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
@@ -29,9 +30,9 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
     # Localized/user friendly setting name that is being reported
     setting_name: Optional[str] = None
     # Contributing policies
-    sources: Optional[List[setting_source.SettingSource]] = None
+    sources: Optional[List[SettingSource]] = None
     # The state property
-    state: Optional[compliance_status.ComplianceStatus] = None
+    state: Optional[ComplianceStatus] = None
     # UserEmail
     user_email: Optional[str] = None
     # UserId
@@ -58,9 +59,11 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import compliance_status, setting_source
+        from .compliance_status import ComplianceStatus
+        from .setting_source import SettingSource
 
-        from . import compliance_status, setting_source
+        from .compliance_status import ComplianceStatus
+        from .setting_source import SettingSource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "currentValue": lambda n : setattr(self, 'current_value', n.get_str_value()),
@@ -70,8 +73,8 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "setting": lambda n : setattr(self, 'setting', n.get_str_value()),
             "settingName": lambda n : setattr(self, 'setting_name', n.get_str_value()),
-            "sources": lambda n : setattr(self, 'sources', n.get_collection_of_object_values(setting_source.SettingSource)),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(compliance_status.ComplianceStatus)),
+            "sources": lambda n : setattr(self, 'sources', n.get_collection_of_object_values(SettingSource)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(ComplianceStatus)),
             "userEmail": lambda n : setattr(self, 'user_email', n.get_str_value()),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
             "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import drive_item
-    from ....models.o_data_errors import o_data_error
-    from .content import content_request_builder
+    from ....models.drive_item import DriveItem
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .content.content_request_builder import ContentRequestBuilder
 
 class DriveItemRequestBuilder():
     """
@@ -36,27 +36,27 @@ class DriveItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DriveItemRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
+    async def get(self,request_configuration: Optional[DriveItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DriveItem]:
         """
         Access a shared DriveItem or a collection of shared items by using a **shareId** or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[drive_item.DriveItem]
+        Returns: Optional[DriveItem]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import drive_item
+        from ....models.drive_item import DriveItem
 
-        return await self.request_adapter.send_async(request_info, drive_item.DriveItem, error_mapping)
+        return await self.request_adapter.send_async(request_info, DriveItem, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DriveItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -77,13 +77,13 @@ class DriveItemRequestBuilder():
         return request_info
     
     @property
-    def content(self) -> content_request_builder.ContentRequestBuilder:
+    def content(self) -> ContentRequestBuilder:
         """
         Provides operations to manage the media for the sharedDriveItem entity.
         """
-        from .content import content_request_builder
+        from .content.content_request_builder import ContentRequestBuilder
 
-        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+        return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DriveItemRequestBuilderGetQueryParameters():

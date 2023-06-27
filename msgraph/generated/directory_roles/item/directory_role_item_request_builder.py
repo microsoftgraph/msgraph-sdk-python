@@ -10,15 +10,15 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import directory_role
-    from ...models.o_data_errors import o_data_error
-    from .check_member_groups import check_member_groups_request_builder
-    from .check_member_objects import check_member_objects_request_builder
-    from .get_member_groups import get_member_groups_request_builder
-    from .get_member_objects import get_member_objects_request_builder
-    from .members import members_request_builder
-    from .restore import restore_request_builder
-    from .scoped_members import scoped_members_request_builder
+    from ...models.directory_role import DirectoryRole
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
+    from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
+    from .get_member_groups.get_member_groups_request_builder import GetMemberGroupsRequestBuilder
+    from .get_member_objects.get_member_objects_request_builder import GetMemberObjectsRequestBuilder
+    from .members.members_request_builder import MembersRequestBuilder
+    from .restore.restore_request_builder import RestoreRequestBuilder
+    from .scoped_members.scoped_members_request_builder import ScopedMembersRequestBuilder
 
 class DirectoryRoleItemRequestBuilder():
     """
@@ -51,62 +51,62 @@ class DirectoryRoleItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DirectoryRoleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_role.DirectoryRole]:
+    async def get(self,request_configuration: Optional[DirectoryRoleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryRole]:
         """
         Retrieve the properties of a directoryRole object. The role must be activated in tenant for a successful response. You can use both the object ID and template ID of the **directoryRole** with this API. The template ID of a built-in role is immutable and can be seen in the role description on the Azure portal. For details, see Role template IDs.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[directory_role.DirectoryRole]
+        Returns: Optional[DirectoryRole]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import directory_role
+        from ...models.directory_role import DirectoryRole
 
-        return await self.request_adapter.send_async(request_info, directory_role.DirectoryRole, error_mapping)
+        return await self.request_adapter.send_async(request_info, DirectoryRole, error_mapping)
     
-    async def patch(self,body: Optional[directory_role.DirectoryRole] = None, request_configuration: Optional[DirectoryRoleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[directory_role.DirectoryRole]:
+    async def patch(self,body: Optional[DirectoryRole] = None, request_configuration: Optional[DirectoryRoleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DirectoryRole]:
         """
         Update entity in directoryRoles
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[directory_role.DirectoryRole]
+        Returns: Optional[DirectoryRole]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import directory_role
+        from ...models.directory_role import DirectoryRole
 
-        return await self.request_adapter.send_async(request_info, directory_role.DirectoryRole, error_mapping)
+        return await self.request_adapter.send_async(request_info, DirectoryRole, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DirectoryRoleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -142,7 +142,7 @@ class DirectoryRoleItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[directory_role.DirectoryRole] = None, request_configuration: Optional[DirectoryRoleItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DirectoryRole] = None, request_configuration: Optional[DirectoryRoleItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in directoryRoles
         Args:
@@ -164,67 +164,67 @@ class DirectoryRoleItemRequestBuilder():
         return request_info
     
     @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+    def check_member_groups(self) -> CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
-        from .check_member_groups import check_member_groups_request_builder
+        from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
 
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+    def check_member_objects(self) -> CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
-        from .check_member_objects import check_member_objects_request_builder
+        from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
 
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+    def get_member_groups(self) -> GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
-        from .get_member_groups import get_member_groups_request_builder
+        from .get_member_groups.get_member_groups_request_builder import GetMemberGroupsRequestBuilder
 
-        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+    def get_member_objects(self) -> GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
-        from .get_member_objects import get_member_objects_request_builder
+        from .get_member_objects.get_member_objects_request_builder import GetMemberObjectsRequestBuilder
 
-        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def members(self) -> members_request_builder.MembersRequestBuilder:
+    def members(self) -> MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.directoryRole entity.
         """
-        from .members import members_request_builder
+        from .members.members_request_builder import MembersRequestBuilder
 
-        return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
+        return MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def restore(self) -> RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
-        from .restore import restore_request_builder
+        from .restore.restore_request_builder import RestoreRequestBuilder
 
-        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+        return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def scoped_members(self) -> scoped_members_request_builder.ScopedMembersRequestBuilder:
+    def scoped_members(self) -> ScopedMembersRequestBuilder:
         """
         Provides operations to manage the scopedMembers property of the microsoft.graph.directoryRole entity.
         """
-        from .scoped_members import scoped_members_request_builder
+        from .scoped_members.scoped_members_request_builder import ScopedMembersRequestBuilder
 
-        return scoped_members_request_builder.ScopedMembersRequestBuilder(self.request_adapter, self.path_parameters)
+        return ScopedMembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DirectoryRoleItemRequestBuilderDeleteRequestConfiguration():

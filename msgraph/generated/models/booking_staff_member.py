@@ -4,12 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import booking_staff_member_base, booking_staff_role, booking_work_hours
+    from .booking_staff_member_base import BookingStaffMemberBase
+    from .booking_staff_role import BookingStaffRole
+    from .booking_work_hours import BookingWorkHours
 
-from . import booking_staff_member_base
+from .booking_staff_member_base import BookingStaffMemberBase
 
 @dataclass
-class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
+class BookingStaffMember(BookingStaffMemberBase):
     odata_type = "#microsoft.graph.bookingStaffMember"
     # True means that if the staff member is a Microsoft 365 user, the Bookings API would verify the staff member's availability in their personal calendar in Microsoft 365, before making a booking.
     availability_is_affected_by_personal_calendar: Optional[bool] = None
@@ -20,13 +22,13 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
     # True indicates that a staff member will be notified via email when a booking assigned to them is created or changed.
     is_email_notification_enabled: Optional[bool] = None
     # The role property
-    role: Optional[booking_staff_role.BookingStaffRole] = None
+    role: Optional[BookingStaffRole] = None
     # The time zone of the staff member. For a list of possible values, see dateTimeTimeZone.
     time_zone: Optional[str] = None
     # True means the staff member's availability is as specified in the businessHours property of the business. False means the availability is determined by the staff member's workingHours property setting.
     use_business_hours: Optional[bool] = None
     # The range of hours each day of the week that the staff member is available for booking. By default, they are initialized to be the same as the businessHours property of the business.
-    working_hours: Optional[List[booking_work_hours.BookingWorkHours]] = None
+    working_hours: Optional[List[BookingWorkHours]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingStaffMember:
@@ -45,19 +47,23 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_staff_member_base, booking_staff_role, booking_work_hours
+        from .booking_staff_member_base import BookingStaffMemberBase
+        from .booking_staff_role import BookingStaffRole
+        from .booking_work_hours import BookingWorkHours
 
-        from . import booking_staff_member_base, booking_staff_role, booking_work_hours
+        from .booking_staff_member_base import BookingStaffMemberBase
+        from .booking_staff_role import BookingStaffRole
+        from .booking_work_hours import BookingWorkHours
 
         fields: Dict[str, Callable[[Any], None]] = {
             "availabilityIsAffectedByPersonalCalendar": lambda n : setattr(self, 'availability_is_affected_by_personal_calendar', n.get_bool_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "isEmailNotificationEnabled": lambda n : setattr(self, 'is_email_notification_enabled', n.get_bool_value()),
-            "role": lambda n : setattr(self, 'role', n.get_enum_value(booking_staff_role.BookingStaffRole)),
+            "role": lambda n : setattr(self, 'role', n.get_enum_value(BookingStaffRole)),
             "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
             "useBusinessHours": lambda n : setattr(self, 'use_business_hours', n.get_bool_value()),
-            "workingHours": lambda n : setattr(self, 'working_hours', n.get_collection_of_object_values(booking_work_hours.BookingWorkHours)),
+            "workingHours": lambda n : setattr(self, 'working_hours', n.get_collection_of_object_values(BookingWorkHours)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

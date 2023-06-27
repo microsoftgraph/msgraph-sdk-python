@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import clonable_team_parts, team_visibility_type
+    from ......models.clonable_team_parts import ClonableTeamParts
+    from ......models.team_visibility_type import TeamVisibilityType
 
 @dataclass
 class ClonePostRequestBody(AdditionalDataHolder, Parsable):
@@ -20,9 +21,9 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
     # The mailNickname property
     mail_nickname: Optional[str] = None
     # The partsToClone property
-    parts_to_clone: Optional[clonable_team_parts.ClonableTeamParts] = None
+    parts_to_clone: Optional[ClonableTeamParts] = None
     # The visibility property
-    visibility: Optional[team_visibility_type.TeamVisibilityType] = None
+    visibility: Optional[TeamVisibilityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClonePostRequestBody:
@@ -41,17 +42,19 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models import clonable_team_parts, team_visibility_type
+        from ......models.clonable_team_parts import ClonableTeamParts
+        from ......models.team_visibility_type import TeamVisibilityType
 
-        from ......models import clonable_team_parts, team_visibility_type
+        from ......models.clonable_team_parts import ClonableTeamParts
+        from ......models.team_visibility_type import TeamVisibilityType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "classification": lambda n : setattr(self, 'classification', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "partsToClone": lambda n : setattr(self, 'parts_to_clone', n.get_enum_value(clonable_team_parts.ClonableTeamParts)),
-            "visibility": lambda n : setattr(self, 'visibility', n.get_enum_value(team_visibility_type.TeamVisibilityType)),
+            "partsToClone": lambda n : setattr(self, 'parts_to_clone', n.get_enum_value(ClonableTeamParts)),
+            "visibility": lambda n : setattr(self, 'visibility', n.get_enum_value(TeamVisibilityType)),
         }
         return fields
     

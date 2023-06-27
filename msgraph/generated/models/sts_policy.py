@@ -4,15 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import activity_based_timeout_policy, claims_mapping_policy, directory_object, home_realm_discovery_policy, policy_base, token_issuance_policy, token_lifetime_policy
+    from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+    from .claims_mapping_policy import ClaimsMappingPolicy
+    from .directory_object import DirectoryObject
+    from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+    from .policy_base import PolicyBase
+    from .token_issuance_policy import TokenIssuancePolicy
+    from .token_lifetime_policy import TokenLifetimePolicy
 
-from . import policy_base
+from .policy_base import PolicyBase
 
 @dataclass
-class StsPolicy(policy_base.PolicyBase):
+class StsPolicy(PolicyBase):
     odata_type = "#microsoft.graph.stsPolicy"
     # The appliesTo property
-    applies_to: Optional[List[directory_object.DirectoryObject]] = None
+    applies_to: Optional[List[DirectoryObject]] = None
     # A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
     definition: Optional[List[str]] = None
     # If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
@@ -33,25 +39,25 @@ class StsPolicy(policy_base.PolicyBase):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.activityBasedTimeoutPolicy".casefold():
-            from . import activity_based_timeout_policy
+            from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
 
-            return activity_based_timeout_policy.ActivityBasedTimeoutPolicy()
+            return ActivityBasedTimeoutPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.claimsMappingPolicy".casefold():
-            from . import claims_mapping_policy
+            from .claims_mapping_policy import ClaimsMappingPolicy
 
-            return claims_mapping_policy.ClaimsMappingPolicy()
+            return ClaimsMappingPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.homeRealmDiscoveryPolicy".casefold():
-            from . import home_realm_discovery_policy
+            from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
 
-            return home_realm_discovery_policy.HomeRealmDiscoveryPolicy()
+            return HomeRealmDiscoveryPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.tokenIssuancePolicy".casefold():
-            from . import token_issuance_policy
+            from .token_issuance_policy import TokenIssuancePolicy
 
-            return token_issuance_policy.TokenIssuancePolicy()
+            return TokenIssuancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.tokenLifetimePolicy".casefold():
-            from . import token_lifetime_policy
+            from .token_lifetime_policy import TokenLifetimePolicy
 
-            return token_lifetime_policy.TokenLifetimePolicy()
+            return TokenLifetimePolicy()
         return StsPolicy()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -59,12 +65,24 @@ class StsPolicy(policy_base.PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import activity_based_timeout_policy, claims_mapping_policy, directory_object, home_realm_discovery_policy, policy_base, token_issuance_policy, token_lifetime_policy
+        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .directory_object import DirectoryObject
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .policy_base import PolicyBase
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
 
-        from . import activity_based_timeout_policy, claims_mapping_policy, directory_object, home_realm_discovery_policy, policy_base, token_issuance_policy, token_lifetime_policy
+        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .directory_object import DirectoryObject
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .policy_base import PolicyBase
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(DirectoryObject)),
             "definition": lambda n : setattr(self, 'definition', n.get_collection_of_primitive_values(str)),
             "isOrganizationDefault": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
         }

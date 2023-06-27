@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -44,7 +44,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
     # This attribute appears if DHA-Service detects an integrity issue
     health_status_mismatch_info: Optional[str] = None
     # The DateTime when device was evaluated or issued to MDM
-    issued_date_time: Optional[datetime] = None
+    issued_date_time: Optional[datetime.datetime] = None
     # The Timestamp of the last update.
     last_update_date_time: Optional[str] = None
     # The OdataType property
@@ -155,7 +155,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         writer.write_str_value("earlyLaunchAntiMalwareDriverProtection", self.early_launch_anti_malware_driver_protection)
         writer.write_str_value("healthAttestationSupportedStatus", self.health_attestation_supported_status)
         writer.write_str_value("healthStatusMismatchInfo", self.health_status_mismatch_info)
-        writer.write_datetime_value("issuedDateTime", self.issued_date_time)
+        writer.write_datetime_value()("issuedDateTime", self.issued_date_time)
         writer.write_str_value("lastUpdateDateTime", self.last_update_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("operatingSystemKernelDebugging", self.operating_system_kernel_debugging)

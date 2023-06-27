@@ -1,34 +1,45 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import email_file_assessment_request, entity, file_assessment_request, identity_set, mail_assessment_request, threat_assessment_content_type, threat_assessment_request_source, threat_assessment_result, threat_assessment_status, threat_category, threat_expected_assessment, url_assessment_request
+    from .email_file_assessment_request import EmailFileAssessmentRequest
+    from .entity import Entity
+    from .file_assessment_request import FileAssessmentRequest
+    from .identity_set import IdentitySet
+    from .mail_assessment_request import MailAssessmentRequest
+    from .threat_assessment_content_type import ThreatAssessmentContentType
+    from .threat_assessment_request_source import ThreatAssessmentRequestSource
+    from .threat_assessment_result import ThreatAssessmentResult
+    from .threat_assessment_status import ThreatAssessmentStatus
+    from .threat_category import ThreatCategory
+    from .threat_expected_assessment import ThreatExpectedAssessment
+    from .url_assessment_request import UrlAssessmentRequest
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ThreatAssessmentRequest(entity.Entity):
+class ThreatAssessmentRequest(Entity):
     # The category property
-    category: Optional[threat_category.ThreatCategory] = None
+    category: Optional[ThreatCategory] = None
     # The content type of threat assessment. Possible values are: mail, url, file.
-    content_type: Optional[threat_assessment_content_type.ThreatAssessmentContentType] = None
+    content_type: Optional[ThreatAssessmentContentType] = None
     # The threat assessment request creator.
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The expectedAssessment property
-    expected_assessment: Optional[threat_expected_assessment.ThreatExpectedAssessment] = None
+    expected_assessment: Optional[ThreatExpectedAssessment] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The source of the threat assessment request. Possible values are: administrator.
-    request_source: Optional[threat_assessment_request_source.ThreatAssessmentRequestSource] = None
+    request_source: Optional[ThreatAssessmentRequestSource] = None
     # A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.
-    results: Optional[List[threat_assessment_result.ThreatAssessmentResult]] = None
+    results: Optional[List[ThreatAssessmentResult]] = None
     # The assessment process status. Possible values are: pending, completed.
-    status: Optional[threat_assessment_status.ThreatAssessmentStatus] = None
+    status: Optional[ThreatAssessmentStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ThreatAssessmentRequest:
@@ -45,21 +56,21 @@ class ThreatAssessmentRequest(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailFileAssessmentRequest".casefold():
-            from . import email_file_assessment_request
+            from .email_file_assessment_request import EmailFileAssessmentRequest
 
-            return email_file_assessment_request.EmailFileAssessmentRequest()
+            return EmailFileAssessmentRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fileAssessmentRequest".casefold():
-            from . import file_assessment_request
+            from .file_assessment_request import FileAssessmentRequest
 
-            return file_assessment_request.FileAssessmentRequest()
+            return FileAssessmentRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailAssessmentRequest".casefold():
-            from . import mail_assessment_request
+            from .mail_assessment_request import MailAssessmentRequest
 
-            return mail_assessment_request.MailAssessmentRequest()
+            return MailAssessmentRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.urlAssessmentRequest".casefold():
-            from . import url_assessment_request
+            from .url_assessment_request import UrlAssessmentRequest
 
-            return url_assessment_request.UrlAssessmentRequest()
+            return UrlAssessmentRequest()
         return ThreatAssessmentRequest()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -67,19 +78,41 @@ class ThreatAssessmentRequest(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import email_file_assessment_request, entity, file_assessment_request, identity_set, mail_assessment_request, threat_assessment_content_type, threat_assessment_request_source, threat_assessment_result, threat_assessment_status, threat_category, threat_expected_assessment, url_assessment_request
+        from .email_file_assessment_request import EmailFileAssessmentRequest
+        from .entity import Entity
+        from .file_assessment_request import FileAssessmentRequest
+        from .identity_set import IdentitySet
+        from .mail_assessment_request import MailAssessmentRequest
+        from .threat_assessment_content_type import ThreatAssessmentContentType
+        from .threat_assessment_request_source import ThreatAssessmentRequestSource
+        from .threat_assessment_result import ThreatAssessmentResult
+        from .threat_assessment_status import ThreatAssessmentStatus
+        from .threat_category import ThreatCategory
+        from .threat_expected_assessment import ThreatExpectedAssessment
+        from .url_assessment_request import UrlAssessmentRequest
 
-        from . import email_file_assessment_request, entity, file_assessment_request, identity_set, mail_assessment_request, threat_assessment_content_type, threat_assessment_request_source, threat_assessment_result, threat_assessment_status, threat_category, threat_expected_assessment, url_assessment_request
+        from .email_file_assessment_request import EmailFileAssessmentRequest
+        from .entity import Entity
+        from .file_assessment_request import FileAssessmentRequest
+        from .identity_set import IdentitySet
+        from .mail_assessment_request import MailAssessmentRequest
+        from .threat_assessment_content_type import ThreatAssessmentContentType
+        from .threat_assessment_request_source import ThreatAssessmentRequestSource
+        from .threat_assessment_result import ThreatAssessmentResult
+        from .threat_assessment_status import ThreatAssessmentStatus
+        from .threat_category import ThreatCategory
+        from .threat_expected_assessment import ThreatExpectedAssessment
+        from .url_assessment_request import UrlAssessmentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "category": lambda n : setattr(self, 'category', n.get_enum_value(threat_category.ThreatCategory)),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(threat_assessment_content_type.ThreatAssessmentContentType)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "category": lambda n : setattr(self, 'category', n.get_enum_value(ThreatCategory)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(ThreatAssessmentContentType)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "expectedAssessment": lambda n : setattr(self, 'expected_assessment', n.get_enum_value(threat_expected_assessment.ThreatExpectedAssessment)),
-            "requestSource": lambda n : setattr(self, 'request_source', n.get_enum_value(threat_assessment_request_source.ThreatAssessmentRequestSource)),
-            "results": lambda n : setattr(self, 'results', n.get_collection_of_object_values(threat_assessment_result.ThreatAssessmentResult)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(threat_assessment_status.ThreatAssessmentStatus)),
+            "expectedAssessment": lambda n : setattr(self, 'expected_assessment', n.get_enum_value(ThreatExpectedAssessment)),
+            "requestSource": lambda n : setattr(self, 'request_source', n.get_enum_value(ThreatAssessmentRequestSource)),
+            "results": lambda n : setattr(self, 'results', n.get_collection_of_object_values(ThreatAssessmentResult)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ThreatAssessmentStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,7 +130,7 @@ class ThreatAssessmentRequest(entity.Entity):
         writer.write_enum_value("category", self.category)
         writer.write_enum_value("contentType", self.content_type)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_enum_value("expectedAssessment", self.expected_assessment)
         writer.write_enum_value("requestSource", self.request_source)
         writer.write_collection_of_object_values("results", self.results)

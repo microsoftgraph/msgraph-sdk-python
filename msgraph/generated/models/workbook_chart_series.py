@@ -4,20 +4,22 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_point, workbook_chart_series_format
+    from .entity import Entity
+    from .workbook_chart_point import WorkbookChartPoint
+    from .workbook_chart_series_format import WorkbookChartSeriesFormat
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartSeries(entity.Entity):
+class WorkbookChartSeries(Entity):
     # Represents the formatting of a chart series, which includes fill and line formatting. Read-only.
-    format: Optional[workbook_chart_series_format.WorkbookChartSeriesFormat] = None
+    format: Optional[WorkbookChartSeriesFormat] = None
     # Represents the name of a series in a chart.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents a collection of all points in the series. Read-only.
-    points: Optional[List[workbook_chart_point.WorkbookChartPoint]] = None
+    points: Optional[List[WorkbookChartPoint]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartSeries:
@@ -36,14 +38,18 @@ class WorkbookChartSeries(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_point, workbook_chart_series_format
+        from .entity import Entity
+        from .workbook_chart_point import WorkbookChartPoint
+        from .workbook_chart_series_format import WorkbookChartSeriesFormat
 
-        from . import entity, workbook_chart_point, workbook_chart_series_format
+        from .entity import Entity
+        from .workbook_chart_point import WorkbookChartPoint
+        from .workbook_chart_series_format import WorkbookChartSeriesFormat
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_series_format.WorkbookChartSeriesFormat)),
+            "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartSeriesFormat)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "points": lambda n : setattr(self, 'points', n.get_collection_of_object_values(workbook_chart_point.WorkbookChartPoint)),
+            "points": lambda n : setattr(self, 'points', n.get_collection_of_object_values(WorkbookChartPoint)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

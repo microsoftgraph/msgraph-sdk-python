@@ -10,18 +10,18 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import content_type
-    from .......models.o_data_errors import o_data_error
-    from .associate_with_hub_sites import associate_with_hub_sites_request_builder
-    from .base import base_request_builder
-    from .base_types import base_types_request_builder
-    from .column_links import column_links_request_builder
-    from .column_positions import column_positions_request_builder
-    from .columns import columns_request_builder
-    from .copy_to_default_content_location import copy_to_default_content_location_request_builder
-    from .is_published import is_published_request_builder
-    from .publish import publish_request_builder
-    from .unpublish import unpublish_request_builder
+    from .......models.content_type import ContentType
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .associate_with_hub_sites.associate_with_hub_sites_request_builder import AssociateWithHubSitesRequestBuilder
+    from .base.base_request_builder import BaseRequestBuilder
+    from .base_types.base_types_request_builder import BaseTypesRequestBuilder
+    from .column_links.column_links_request_builder import ColumnLinksRequestBuilder
+    from .column_positions.column_positions_request_builder import ColumnPositionsRequestBuilder
+    from .columns.columns_request_builder import ColumnsRequestBuilder
+    from .copy_to_default_content_location.copy_to_default_content_location_request_builder import CopyToDefaultContentLocationRequestBuilder
+    from .is_published.is_published_request_builder import IsPublishedRequestBuilder
+    from .publish.publish_request_builder import PublishRequestBuilder
+    from .unpublish.unpublish_request_builder import UnpublishRequestBuilder
 
 class ContentTypeItemRequestBuilder():
     """
@@ -54,62 +54,62 @@ class ContentTypeItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ContentTypeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[content_type.ContentType]:
+    async def get(self,request_configuration: Optional[ContentTypeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ContentType]:
         """
         The collection of content types present in this list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[content_type.ContentType]
+        Returns: Optional[ContentType]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import content_type
+        from .......models.content_type import ContentType
 
-        return await self.request_adapter.send_async(request_info, content_type.ContentType, error_mapping)
+        return await self.request_adapter.send_async(request_info, ContentType, error_mapping)
     
-    async def patch(self,body: Optional[content_type.ContentType] = None, request_configuration: Optional[ContentTypeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[content_type.ContentType]:
+    async def patch(self,body: Optional[ContentType] = None, request_configuration: Optional[ContentTypeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ContentType]:
         """
         Update the navigation property contentTypes in sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[content_type.ContentType]
+        Returns: Optional[ContentType]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import content_type
+        from .......models.content_type import ContentType
 
-        return await self.request_adapter.send_async(request_info, content_type.ContentType, error_mapping)
+        return await self.request_adapter.send_async(request_info, ContentType, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ContentTypeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -145,7 +145,7 @@ class ContentTypeItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[content_type.ContentType] = None, request_configuration: Optional[ContentTypeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ContentType] = None, request_configuration: Optional[ContentTypeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property contentTypes in sites
         Args:
@@ -167,94 +167,94 @@ class ContentTypeItemRequestBuilder():
         return request_info
     
     @property
-    def associate_with_hub_sites(self) -> associate_with_hub_sites_request_builder.AssociateWithHubSitesRequestBuilder:
+    def associate_with_hub_sites(self) -> AssociateWithHubSitesRequestBuilder:
         """
         Provides operations to call the associateWithHubSites method.
         """
-        from .associate_with_hub_sites import associate_with_hub_sites_request_builder
+        from .associate_with_hub_sites.associate_with_hub_sites_request_builder import AssociateWithHubSitesRequestBuilder
 
-        return associate_with_hub_sites_request_builder.AssociateWithHubSitesRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssociateWithHubSitesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def base(self) -> base_request_builder.BaseRequestBuilder:
+    def base(self) -> BaseRequestBuilder:
         """
         Provides operations to manage the base property of the microsoft.graph.contentType entity.
         """
-        from .base import base_request_builder
+        from .base.base_request_builder import BaseRequestBuilder
 
-        return base_request_builder.BaseRequestBuilder(self.request_adapter, self.path_parameters)
+        return BaseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def base_types(self) -> base_types_request_builder.BaseTypesRequestBuilder:
+    def base_types(self) -> BaseTypesRequestBuilder:
         """
         Provides operations to manage the baseTypes property of the microsoft.graph.contentType entity.
         """
-        from .base_types import base_types_request_builder
+        from .base_types.base_types_request_builder import BaseTypesRequestBuilder
 
-        return base_types_request_builder.BaseTypesRequestBuilder(self.request_adapter, self.path_parameters)
+        return BaseTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def column_links(self) -> column_links_request_builder.ColumnLinksRequestBuilder:
+    def column_links(self) -> ColumnLinksRequestBuilder:
         """
         Provides operations to manage the columnLinks property of the microsoft.graph.contentType entity.
         """
-        from .column_links import column_links_request_builder
+        from .column_links.column_links_request_builder import ColumnLinksRequestBuilder
 
-        return column_links_request_builder.ColumnLinksRequestBuilder(self.request_adapter, self.path_parameters)
+        return ColumnLinksRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def column_positions(self) -> column_positions_request_builder.ColumnPositionsRequestBuilder:
+    def column_positions(self) -> ColumnPositionsRequestBuilder:
         """
         Provides operations to manage the columnPositions property of the microsoft.graph.contentType entity.
         """
-        from .column_positions import column_positions_request_builder
+        from .column_positions.column_positions_request_builder import ColumnPositionsRequestBuilder
 
-        return column_positions_request_builder.ColumnPositionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ColumnPositionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def columns(self) -> columns_request_builder.ColumnsRequestBuilder:
+    def columns(self) -> ColumnsRequestBuilder:
         """
         Provides operations to manage the columns property of the microsoft.graph.contentType entity.
         """
-        from .columns import columns_request_builder
+        from .columns.columns_request_builder import ColumnsRequestBuilder
 
-        return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def copy_to_default_content_location(self) -> copy_to_default_content_location_request_builder.CopyToDefaultContentLocationRequestBuilder:
+    def copy_to_default_content_location(self) -> CopyToDefaultContentLocationRequestBuilder:
         """
         Provides operations to call the copyToDefaultContentLocation method.
         """
-        from .copy_to_default_content_location import copy_to_default_content_location_request_builder
+        from .copy_to_default_content_location.copy_to_default_content_location_request_builder import CopyToDefaultContentLocationRequestBuilder
 
-        return copy_to_default_content_location_request_builder.CopyToDefaultContentLocationRequestBuilder(self.request_adapter, self.path_parameters)
+        return CopyToDefaultContentLocationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def is_published(self) -> is_published_request_builder.IsPublishedRequestBuilder:
+    def is_published(self) -> IsPublishedRequestBuilder:
         """
         Provides operations to call the isPublished method.
         """
-        from .is_published import is_published_request_builder
+        from .is_published.is_published_request_builder import IsPublishedRequestBuilder
 
-        return is_published_request_builder.IsPublishedRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsPublishedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def publish(self) -> publish_request_builder.PublishRequestBuilder:
+    def publish(self) -> PublishRequestBuilder:
         """
         Provides operations to call the publish method.
         """
-        from .publish import publish_request_builder
+        from .publish.publish_request_builder import PublishRequestBuilder
 
-        return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
+        return PublishRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def unpublish(self) -> unpublish_request_builder.UnpublishRequestBuilder:
+    def unpublish(self) -> UnpublishRequestBuilder:
         """
         Provides operations to call the unpublish method.
         """
-        from .unpublish import unpublish_request_builder
+        from .unpublish.unpublish_request_builder import UnpublishRequestBuilder
 
-        return unpublish_request_builder.UnpublishRequestBuilder(self.request_adapter, self.path_parameters)
+        return UnpublishRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ContentTypeItemRequestBuilderDeleteRequestConfiguration():

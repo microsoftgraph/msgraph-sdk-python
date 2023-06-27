@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import rbac_application
+    from .rbac_application import RbacApplication
 
 @dataclass
 class RoleManagement(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class RoleManagement(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The directory property
-    directory: Optional[rbac_application.RbacApplication] = None
+    directory: Optional[RbacApplication] = None
     # Container for roles and assignments for entitlement management resources.
-    entitlement_management: Optional[rbac_application.RbacApplication] = None
+    entitlement_management: Optional[RbacApplication] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,13 +35,13 @@ class RoleManagement(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import rbac_application
+        from .rbac_application import RbacApplication
 
-        from . import rbac_application
+        from .rbac_application import RbacApplication
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "directory": lambda n : setattr(self, 'directory', n.get_object_value(rbac_application.RbacApplication)),
-            "entitlementManagement": lambda n : setattr(self, 'entitlement_management', n.get_object_value(rbac_application.RbacApplication)),
+            "directory": lambda n : setattr(self, 'directory', n.get_object_value(RbacApplication)),
+            "entitlementManagement": lambda n : setattr(self, 'entitlement_management', n.get_object_value(RbacApplication)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

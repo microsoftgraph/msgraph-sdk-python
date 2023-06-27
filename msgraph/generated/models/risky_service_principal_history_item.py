@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import risky_service_principal, risk_service_principal_activity
+    from .risk_service_principal_activity import RiskServicePrincipalActivity
+    from .risky_service_principal import RiskyServicePrincipal
 
-from . import risky_service_principal
+from .risky_service_principal import RiskyServicePrincipal
 
 @dataclass
-class RiskyServicePrincipalHistoryItem(risky_service_principal.RiskyServicePrincipal):
+class RiskyServicePrincipalHistoryItem(RiskyServicePrincipal):
     # The activity related to service principal risk level change.
-    activity: Optional[risk_service_principal_activity.RiskServicePrincipalActivity] = None
+    activity: Optional[RiskServicePrincipalActivity] = None
     # The identifier of the actor of the operation.
     initiated_by: Optional[str] = None
     # The OdataType property
@@ -34,12 +35,14 @@ class RiskyServicePrincipalHistoryItem(risky_service_principal.RiskyServicePrinc
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import risky_service_principal, risk_service_principal_activity
+        from .risk_service_principal_activity import RiskServicePrincipalActivity
+        from .risky_service_principal import RiskyServicePrincipal
 
-        from . import risky_service_principal, risk_service_principal_activity
+        from .risk_service_principal_activity import RiskServicePrincipalActivity
+        from .risky_service_principal import RiskyServicePrincipal
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activity": lambda n : setattr(self, 'activity', n.get_object_value(risk_service_principal_activity.RiskServicePrincipalActivity)),
+            "activity": lambda n : setattr(self, 'activity', n.get_object_value(RiskServicePrincipalActivity)),
             "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import managed_mobile_app
+    from .....models.managed_mobile_app import ManagedMobileApp
 
 @dataclass
 class TargetAppsPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class TargetAppsPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The apps property
-    apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
+    apps: Optional[List[ManagedMobileApp]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TargetAppsPostRequestBody:
@@ -31,12 +31,12 @@ class TargetAppsPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import managed_mobile_app
+        from .....models.managed_mobile_app import ManagedMobileApp
 
-        from .....models import managed_mobile_app
+        from .....models.managed_mobile_app import ManagedMobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
+            "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(ManagedMobileApp)),
         }
         return fields
     

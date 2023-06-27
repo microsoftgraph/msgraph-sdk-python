@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import default_managed_app_protection, default_managed_app_protection_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import default_managed_app_protection_item_request_builder
+    from ...models.default_managed_app_protection import DefaultManagedAppProtection
+    from ...models.default_managed_app_protection_collection_response import DefaultManagedAppProtectionCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.default_managed_app_protection_item_request_builder import DefaultManagedAppProtectionItemRequestBuilder
 
 class DefaultManagedAppProtectionsRequestBuilder():
     """
@@ -37,71 +38,71 @@ class DefaultManagedAppProtectionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_default_managed_app_protection_id(self,default_managed_app_protection_id: str) -> default_managed_app_protection_item_request_builder.DefaultManagedAppProtectionItemRequestBuilder:
+    def by_default_managed_app_protection_id(self,default_managed_app_protection_id: str) -> DefaultManagedAppProtectionItemRequestBuilder:
         """
         Provides operations to manage the defaultManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
         Args:
             default_managed_app_protection_id: Unique identifier of the item
-        Returns: default_managed_app_protection_item_request_builder.DefaultManagedAppProtectionItemRequestBuilder
+        Returns: DefaultManagedAppProtectionItemRequestBuilder
         """
         if not default_managed_app_protection_id:
             raise TypeError("default_managed_app_protection_id cannot be null.")
-        from .item import default_managed_app_protection_item_request_builder
+        from .item.default_managed_app_protection_item_request_builder import DefaultManagedAppProtectionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["defaultManagedAppProtection%2Did"] = default_managed_app_protection_id
-        return default_managed_app_protection_item_request_builder.DefaultManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DefaultManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[default_managed_app_protection_collection_response.DefaultManagedAppProtectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[DefaultManagedAppProtectionCollectionResponse]:
         """
-        Default managed app policies.
+        List properties and relationships of the defaultManagedAppProtection objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[default_managed_app_protection_collection_response.DefaultManagedAppProtectionCollectionResponse]
+        Returns: Optional[DefaultManagedAppProtectionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import default_managed_app_protection_collection_response
+        from ...models.default_managed_app_protection_collection_response import DefaultManagedAppProtectionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, default_managed_app_protection_collection_response.DefaultManagedAppProtectionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DefaultManagedAppProtectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[default_managed_app_protection.DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[default_managed_app_protection.DefaultManagedAppProtection]:
+    async def post(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[DefaultManagedAppProtection]:
         """
-        Create new navigation property to defaultManagedAppProtections for deviceAppManagement
+        Create a new defaultManagedAppProtection object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[default_managed_app_protection.DefaultManagedAppProtection]
+        Returns: Optional[DefaultManagedAppProtection]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import default_managed_app_protection
+        from ...models.default_managed_app_protection import DefaultManagedAppProtection
 
-        return await self.request_adapter.send_async(request_info, default_managed_app_protection.DefaultManagedAppProtection, error_mapping)
+        return await self.request_adapter.send_async(request_info, DefaultManagedAppProtection, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Default managed app policies.
+        List properties and relationships of the defaultManagedAppProtection objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class DefaultManagedAppProtectionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[default_managed_app_protection.DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to defaultManagedAppProtections for deviceAppManagement
+        Create a new defaultManagedAppProtection object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class DefaultManagedAppProtectionsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DefaultManagedAppProtectionsRequestBuilderGetQueryParameters():
         """
-        Default managed app policies.
+        List properties and relationships of the defaultManagedAppProtection objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

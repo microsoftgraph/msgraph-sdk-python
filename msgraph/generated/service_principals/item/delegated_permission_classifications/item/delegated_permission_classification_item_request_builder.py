@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import delegated_permission_classification
-    from .....models.o_data_errors import o_data_error
+    from .....models.delegated_permission_classification import DelegatedPermissionClassification
+    from .....models.o_data_errors.o_data_error import ODataError
 
 class DelegatedPermissionClassificationItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class DelegatedPermissionClassificationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DelegatedPermissionClassificationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_permission_classification.DelegatedPermissionClassification]:
+    async def get(self,request_configuration: Optional[DelegatedPermissionClassificationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedPermissionClassification]:
         """
         Get delegatedPermissionClassifications from servicePrincipals
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_permission_classification.DelegatedPermissionClassification]
+        Returns: Optional[DelegatedPermissionClassification]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import delegated_permission_classification
+        from .....models.delegated_permission_classification import DelegatedPermissionClassification
 
-        return await self.request_adapter.send_async(request_info, delegated_permission_classification.DelegatedPermissionClassification, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedPermissionClassification, error_mapping)
     
-    async def patch(self,body: Optional[delegated_permission_classification.DelegatedPermissionClassification] = None, request_configuration: Optional[DelegatedPermissionClassificationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[delegated_permission_classification.DelegatedPermissionClassification]:
+    async def patch(self,body: Optional[DelegatedPermissionClassification] = None, request_configuration: Optional[DelegatedPermissionClassificationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedPermissionClassification]:
         """
         Update the navigation property delegatedPermissionClassifications in servicePrincipals
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_permission_classification.DelegatedPermissionClassification]
+        Returns: Optional[DelegatedPermissionClassification]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import delegated_permission_classification
+        from .....models.delegated_permission_classification import DelegatedPermissionClassification
 
-        return await self.request_adapter.send_async(request_info, delegated_permission_classification.DelegatedPermissionClassification, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedPermissionClassification, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DelegatedPermissionClassificationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class DelegatedPermissionClassificationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[delegated_permission_classification.DelegatedPermissionClassification] = None, request_configuration: Optional[DelegatedPermissionClassificationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DelegatedPermissionClassification] = None, request_configuration: Optional[DelegatedPermissionClassificationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property delegatedPermissionClassifications in servicePrincipals
         Args:

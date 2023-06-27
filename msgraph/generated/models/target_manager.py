@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import subject_set
+    from .subject_set import SubjectSet
 
-from . import subject_set
+from .subject_set import SubjectSet
 
 @dataclass
-class TargetManager(subject_set.SubjectSet):
+class TargetManager(SubjectSet):
     odata_type = "#microsoft.graph.targetManager"
     # Manager level, between 1 and 4. The direct manager is 1.
     manager_level: Optional[int] = None
@@ -31,9 +31,9 @@ class TargetManager(subject_set.SubjectSet):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import subject_set
+        from .subject_set import SubjectSet
 
-        from . import subject_set
+        from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "managerLevel": lambda n : setattr(self, 'manager_level', n.get_int_value()),

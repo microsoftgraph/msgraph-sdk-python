@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import date_time_time_zone, free_busy_status
+    from .date_time_time_zone import DateTimeTimeZone
+    from .free_busy_status import FreeBusyStatus
 
 @dataclass
 class ScheduleItem(AdditionalDataHolder, Parsable):
@@ -12,7 +13,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The date, time, and time zone that the corresponding event ends.
-    end: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    end: Optional[DateTimeTimeZone] = None
     # The sensitivity of the corresponding event. True if the event is marked private, false otherwise. Optional.
     is_private: Optional[bool] = None
     # The location where the corresponding event is held or attended from. Optional.
@@ -20,9 +21,9 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The date, time, and time zone that the corresponding event starts.
-    start: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    start: Optional[DateTimeTimeZone] = None
     # The availability status of the user or resource during the corresponding event. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
-    status: Optional[free_busy_status.FreeBusyStatus] = None
+    status: Optional[FreeBusyStatus] = None
     # The corresponding event's subject line. Optional.
     subject: Optional[str] = None
     
@@ -43,17 +44,19 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import date_time_time_zone, free_busy_status
+        from .date_time_time_zone import DateTimeTimeZone
+        from .free_busy_status import FreeBusyStatus
 
-        from . import date_time_time_zone, free_busy_status
+        from .date_time_time_zone import DateTimeTimeZone
+        from .free_busy_status import FreeBusyStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "end": lambda n : setattr(self, 'end', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "end": lambda n : setattr(self, 'end', n.get_object_value(DateTimeTimeZone)),
             "isPrivate": lambda n : setattr(self, 'is_private', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start": lambda n : setattr(self, 'start', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(free_busy_status.FreeBusyStatus)),
+            "start": lambda n : setattr(self, 'start', n.get_object_value(DateTimeTimeZone)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(FreeBusyStatus)),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
         return fields

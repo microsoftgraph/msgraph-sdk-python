@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import access_review_history_instance
-    from ........models.o_data_errors import o_data_error
+    from ........models.access_review_history_instance import AccessReviewHistoryInstance
+    from ........models.o_data_errors.o_data_error import ODataError
 
 class GenerateDownloadUriRequestBuilder():
     """
@@ -35,27 +35,27 @@ class GenerateDownloadUriRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[GenerateDownloadUriRequestBuilderPostRequestConfiguration] = None) -> Optional[access_review_history_instance.AccessReviewHistoryInstance]:
+    async def post(self,request_configuration: Optional[GenerateDownloadUriRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessReviewHistoryInstance]:
         """
         Generates a URI for an accessReviewHistoryInstance object the **status** for which is `done`. Each URI can be used to retrieve the instance's review history data. Each URI is valid for 24 hours and can be retrieved by fetching the **downloadUri** property from the accessReviewHistoryInstance object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_review_history_instance.AccessReviewHistoryInstance]
+        Returns: Optional[AccessReviewHistoryInstance]
         """
         request_info = self.to_post_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import access_review_history_instance
+        from ........models.access_review_history_instance import AccessReviewHistoryInstance
 
-        return await self.request_adapter.send_async(request_info, access_review_history_instance.AccessReviewHistoryInstance, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessReviewHistoryInstance, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[GenerateDownloadUriRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

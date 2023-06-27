@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import audit_property
+    from .audit_property import AuditProperty
 
 @dataclass
 class AuditResource(AdditionalDataHolder, Parsable):
@@ -19,7 +19,7 @@ class AuditResource(AdditionalDataHolder, Parsable):
     # Display name.
     display_name: Optional[str] = None
     # List of modified properties.
-    modified_properties: Optional[List[audit_property.AuditProperty]] = None
+    modified_properties: Optional[List[AuditProperty]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Audit resource's Id.
@@ -42,14 +42,14 @@ class AuditResource(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import audit_property
+        from .audit_property import AuditProperty
 
-        from . import audit_property
+        from .audit_property import AuditProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
             "auditResourceType": lambda n : setattr(self, 'audit_resource_type', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(audit_property.AuditProperty)),
+            "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(AuditProperty)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
         }

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import windows_hello_for_business_authentication_method
-    from ......models.o_data_errors import o_data_error
-    from .device import device_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
+    from .device.device_request_builder import DeviceRequestBuilder
 
 class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
     """
@@ -45,37 +45,37 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]:
+    async def get(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsHelloForBusinessAuthenticationMethod]:
         """
         Read the properties and relationships of a windowsHelloForBusinessAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]
+        Returns: Optional[WindowsHelloForBusinessAuthenticationMethod]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import windows_hello_for_business_authentication_method
+        from ......models.windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
 
-        return await self.request_adapter.send_async(request_info, windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod, error_mapping)
+        return await self.request_adapter.send_async(request_info, WindowsHelloForBusinessAuthenticationMethod, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -112,13 +112,13 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
         return request_info
     
     @property
-    def device(self) -> device_request_builder.DeviceRequestBuilder:
+    def device(self) -> DeviceRequestBuilder:
         """
         Provides operations to manage the device property of the microsoft.graph.windowsHelloForBusinessAuthenticationMethod entity.
         """
-        from .device import device_request_builder
+        from .device.device_request_builder import DeviceRequestBuilder
 
-        return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration():

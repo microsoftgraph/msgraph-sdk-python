@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import agreement_file_localization
-    from .......models.o_data_errors import o_data_error
-    from .versions import versions_request_builder
+    from .......models.agreement_file_localization import AgreementFileLocalization
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .versions.versions_request_builder import VersionsRequestBuilder
 
 class AgreementFileLocalizationItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class AgreementFileLocalizationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement_file_localization.AgreementFileLocalization]:
+    async def get(self,request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AgreementFileLocalization]:
         """
         PDFs linked to this agreement. This property is in the process of being deprecated. Use the  file property instead. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[agreement_file_localization.AgreementFileLocalization]
+        Returns: Optional[AgreementFileLocalization]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import agreement_file_localization
+        from .......models.agreement_file_localization import AgreementFileLocalization
 
-        return await self.request_adapter.send_async(request_info, agreement_file_localization.AgreementFileLocalization, error_mapping)
+        return await self.request_adapter.send_async(request_info, AgreementFileLocalization, error_mapping)
     
-    async def patch(self,body: Optional[agreement_file_localization.AgreementFileLocalization] = None, request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[agreement_file_localization.AgreementFileLocalization]:
+    async def patch(self,body: Optional[AgreementFileLocalization] = None, request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AgreementFileLocalization]:
         """
         Update the navigation property files in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[agreement_file_localization.AgreementFileLocalization]
+        Returns: Optional[AgreementFileLocalization]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import agreement_file_localization
+        from .......models.agreement_file_localization import AgreementFileLocalization
 
-        return await self.request_adapter.send_async(request_info, agreement_file_localization.AgreementFileLocalization, error_mapping)
+        return await self.request_adapter.send_async(request_info, AgreementFileLocalization, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class AgreementFileLocalizationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[agreement_file_localization.AgreementFileLocalization] = None, request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AgreementFileLocalization] = None, request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property files in identityGovernance
         Args:
@@ -158,13 +158,13 @@ class AgreementFileLocalizationItemRequestBuilder():
         return request_info
     
     @property
-    def versions(self) -> versions_request_builder.VersionsRequestBuilder:
+    def versions(self) -> VersionsRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.agreementFileLocalization entity.
         """
-        from .versions import versions_request_builder
+        from .versions.versions_request_builder import VersionsRequestBuilder
 
-        return versions_request_builder.VersionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return VersionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AgreementFileLocalizationItemRequestBuilderDeleteRequestConfiguration():

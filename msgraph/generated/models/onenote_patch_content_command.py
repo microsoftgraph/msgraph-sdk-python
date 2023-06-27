@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import onenote_patch_action_type, onenote_patch_insert_position
+    from .onenote_patch_action_type import OnenotePatchActionType
+    from .onenote_patch_insert_position import OnenotePatchInsertPosition
 
 @dataclass
 class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
@@ -12,13 +13,13 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The action property
-    action: Optional[onenote_patch_action_type.OnenotePatchActionType] = None
+    action: Optional[OnenotePatchActionType] = None
     # A string of well-formed HTML to add to the page, and any image or file binary data. If the content contains binary data, the request must be sent using the multipart/form-data content type with a 'Commands' part.
     content: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The location to add the supplied content, relative to the target element. The possible values are: after (default) or before.
-    position: Optional[onenote_patch_insert_position.OnenotePatchInsertPosition] = None
+    position: Optional[OnenotePatchInsertPosition] = None
     # The element to update. Must be the #<data-id> or the generated <id> of the element, or the body or title keyword.
     target: Optional[str] = None
     
@@ -39,15 +40,17 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import onenote_patch_action_type, onenote_patch_insert_position
+        from .onenote_patch_action_type import OnenotePatchActionType
+        from .onenote_patch_insert_position import OnenotePatchInsertPosition
 
-        from . import onenote_patch_action_type, onenote_patch_insert_position
+        from .onenote_patch_action_type import OnenotePatchActionType
+        from .onenote_patch_insert_position import OnenotePatchInsertPosition
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "action": lambda n : setattr(self, 'action', n.get_enum_value(onenote_patch_action_type.OnenotePatchActionType)),
+            "action": lambda n : setattr(self, 'action', n.get_enum_value(OnenotePatchActionType)),
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "position": lambda n : setattr(self, 'position', n.get_enum_value(onenote_patch_insert_position.OnenotePatchInsertPosition)),
+            "position": lambda n : setattr(self, 'position', n.get_enum_value(OnenotePatchInsertPosition)),
             "target": lambda n : setattr(self, 'target', n.get_str_value()),
         }
         return fields

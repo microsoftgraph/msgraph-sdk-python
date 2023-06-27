@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conversation_member, team_info
+    from .conversation_member import ConversationMember
+    from .team_info import TeamInfo
 
-from . import team_info
+from .team_info import TeamInfo
 
 @dataclass
-class SharedWithChannelTeamInfo(team_info.TeamInfo):
+class SharedWithChannelTeamInfo(TeamInfo):
     # A collection of team members who have access to the shared channel.
-    allowed_members: Optional[List[conversation_member.ConversationMember]] = None
+    allowed_members: Optional[List[ConversationMember]] = None
     # Indicates whether the team is the host of the channel.
     is_host_team: Optional[bool] = None
     # The OdataType property
@@ -34,12 +35,14 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conversation_member, team_info
+        from .conversation_member import ConversationMember
+        from .team_info import TeamInfo
 
-        from . import conversation_member, team_info
+        from .conversation_member import ConversationMember
+        from .team_info import TeamInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedMembers": lambda n : setattr(self, 'allowed_members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
+            "allowedMembers": lambda n : setattr(self, 'allowed_members', n.get_collection_of_object_values(ConversationMember)),
             "isHostTeam": lambda n : setattr(self, 'is_host_team', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

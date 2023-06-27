@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class Beta_DistPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,17 +12,17 @@ class Beta_DistPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The A property
-    a: Optional[json.Json] = None
+    a: Optional[Json] = None
     # The alpha property
-    alpha: Optional[json.Json] = None
+    alpha: Optional[Json] = None
     # The B property
-    b: Optional[json.Json] = None
+    b: Optional[Json] = None
     # The beta property
-    beta: Optional[json.Json] = None
+    beta: Optional[Json] = None
     # The cumulative property
-    cumulative: Optional[json.Json] = None
+    cumulative: Optional[Json] = None
     # The x property
-    x: Optional[json.Json] = None
+    x: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Beta_DistPostRequestBody:
@@ -41,17 +41,17 @@ class Beta_DistPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "A": lambda n : setattr(self, 'a', n.get_object_value(json.Json)),
-            "alpha": lambda n : setattr(self, 'alpha', n.get_object_value(json.Json)),
-            "B": lambda n : setattr(self, 'b', n.get_object_value(json.Json)),
-            "beta": lambda n : setattr(self, 'beta', n.get_object_value(json.Json)),
-            "cumulative": lambda n : setattr(self, 'cumulative', n.get_object_value(json.Json)),
-            "x": lambda n : setattr(self, 'x', n.get_object_value(json.Json)),
+            "A": lambda n : setattr(self, 'a', n.get_object_value(Json)),
+            "alpha": lambda n : setattr(self, 'alpha', n.get_object_value(Json)),
+            "B": lambda n : setattr(self, 'b', n.get_object_value(Json)),
+            "beta": lambda n : setattr(self, 'beta', n.get_object_value(Json)),
+            "cumulative": lambda n : setattr(self, 'cumulative', n.get_object_value(Json)),
+            "x": lambda n : setattr(self, 'x', n.get_object_value(Json)),
         }
         return fields
     

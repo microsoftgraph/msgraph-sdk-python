@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, identity_user_flow_attribute
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class IdentityUserFlowAttributeCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class IdentityUserFlowAttributeCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]] = None
+    value: Optional[List[IdentityUserFlowAttribute]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityUserFlowAttributeCollectionResponse:
@@ -30,12 +31,14 @@ class IdentityUserFlowAttributeCollectionResponse(base_collection_pagination_cou
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, identity_user_flow_attribute
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
-        from . import base_collection_pagination_count_response, identity_user_flow_attribute
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(identity_user_flow_attribute.IdentityUserFlowAttribute)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(IdentityUserFlowAttribute)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

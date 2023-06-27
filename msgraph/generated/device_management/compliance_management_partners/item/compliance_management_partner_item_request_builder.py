@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import compliance_management_partner
-    from ....models.o_data_errors import o_data_error
+    from ....models.compliance_management_partner import ComplianceManagementPartner
+    from ....models.o_data_errors.o_data_error import ODataError
 
 class ComplianceManagementPartnerItemRequestBuilder():
     """
@@ -37,73 +37,73 @@ class ComplianceManagementPartnerItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property complianceManagementPartners for deviceManagement
+        Deletes a complianceManagementPartner.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[compliance_management_partner.ComplianceManagementPartner]:
+    async def get(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ComplianceManagementPartner]:
         """
-        The list of Compliance Management Partners configured by the tenant.
+        Read properties and relationships of the complianceManagementPartner object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[compliance_management_partner.ComplianceManagementPartner]
+        Returns: Optional[ComplianceManagementPartner]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import compliance_management_partner
+        from ....models.compliance_management_partner import ComplianceManagementPartner
 
-        return await self.request_adapter.send_async(request_info, compliance_management_partner.ComplianceManagementPartner, error_mapping)
+        return await self.request_adapter.send_async(request_info, ComplianceManagementPartner, error_mapping)
     
-    async def patch(self,body: Optional[compliance_management_partner.ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[compliance_management_partner.ComplianceManagementPartner]:
+    async def patch(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ComplianceManagementPartner]:
         """
-        Update the navigation property complianceManagementPartners in deviceManagement
+        Update the properties of a complianceManagementPartner object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[compliance_management_partner.ComplianceManagementPartner]
+        Returns: Optional[ComplianceManagementPartner]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import compliance_management_partner
+        from ....models.compliance_management_partner import ComplianceManagementPartner
 
-        return await self.request_adapter.send_async(request_info, compliance_management_partner.ComplianceManagementPartner, error_mapping)
+        return await self.request_adapter.send_async(request_info, ComplianceManagementPartner, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property complianceManagementPartners for deviceManagement
+        Deletes a complianceManagementPartner.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ComplianceManagementPartnerItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of Compliance Management Partners configured by the tenant.
+        Read properties and relationships of the complianceManagementPartner object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class ComplianceManagementPartnerItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[compliance_management_partner.ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property complianceManagementPartners in deviceManagement
+        Update the properties of a complianceManagementPartner object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class ComplianceManagementPartnerItemRequestBuilder():
     @dataclass
     class ComplianceManagementPartnerItemRequestBuilderGetQueryParameters():
         """
-        The list of Compliance Management Partners configured by the tenant.
+        Read properties and relationships of the complianceManagementPartner object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

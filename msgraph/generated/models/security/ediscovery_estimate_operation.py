@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import case_operation, ediscovery_search
+    from .case_operation import CaseOperation
+    from .ediscovery_search import EdiscoverySearch
 
-from . import case_operation
+from .case_operation import CaseOperation
 
 @dataclass
-class EdiscoveryEstimateOperation(case_operation.CaseOperation):
+class EdiscoveryEstimateOperation(CaseOperation):
     # The estimated count of items for the search that matched the content query.
     indexed_item_count: Optional[int] = None
     # The estimated size of items for the search that matched the content query.
@@ -19,7 +20,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
     # The OdataType property
     odata_type: Optional[str] = None
     # eDiscovery search.
-    search: Optional[ediscovery_search.EdiscoverySearch] = None
+    search: Optional[EdiscoverySearch] = None
     # The number of mailboxes that had search hits.
     site_count: Optional[int] = None
     # The estimated count of unindexed items for the collection.
@@ -44,15 +45,17 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import case_operation, ediscovery_search
+        from .case_operation import CaseOperation
+        from .ediscovery_search import EdiscoverySearch
 
-        from . import case_operation, ediscovery_search
+        from .case_operation import CaseOperation
+        from .ediscovery_search import EdiscoverySearch
 
         fields: Dict[str, Callable[[Any], None]] = {
             "indexedItemCount": lambda n : setattr(self, 'indexed_item_count', n.get_int_value()),
             "indexedItemsSize": lambda n : setattr(self, 'indexed_items_size', n.get_int_value()),
             "mailboxCount": lambda n : setattr(self, 'mailbox_count', n.get_int_value()),
-            "search": lambda n : setattr(self, 'search', n.get_object_value(ediscovery_search.EdiscoverySearch)),
+            "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
             "siteCount": lambda n : setattr(self, 'site_count', n.get_int_value()),
             "unindexedItemCount": lambda n : setattr(self, 'unindexed_item_count', n.get_int_value()),
             "unindexedItemsSize": lambda n : setattr(self, 'unindexed_items_size', n.get_int_value()),

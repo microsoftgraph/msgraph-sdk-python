@@ -1,24 +1,28 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, identity_set, unified_role_assignment_schedule_request, unified_role_eligibility_schedule_request, user_consent_request
+    from .entity import Entity
+    from .identity_set import IdentitySet
+    from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
+    from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
+    from .user_consent_request import UserConsentRequest
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Request(entity.Entity):
+class Request(Entity):
     # The identifier of the approval of the request.
     approval_id: Optional[str] = None
     # The request completion date time.
-    completed_date_time: Optional[datetime] = None
+    completed_date_time: Optional[datetime.datetime] = None
     # The principal that created the request.
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # The request creation date time.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Free text field to define any custom data for the request. Not used.
     custom_data: Optional[str] = None
     # The OdataType property
@@ -41,17 +45,17 @@ class Request(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleAssignmentScheduleRequest".casefold():
-            from . import unified_role_assignment_schedule_request
+            from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
 
-            return unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest()
+            return UnifiedRoleAssignmentScheduleRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleEligibilityScheduleRequest".casefold():
-            from . import unified_role_eligibility_schedule_request
+            from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
 
-            return unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest()
+            return UnifiedRoleEligibilityScheduleRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userConsentRequest".casefold():
-            from . import user_consent_request
+            from .user_consent_request import UserConsentRequest
 
-            return user_consent_request.UserConsentRequest()
+            return UserConsentRequest()
         return Request()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -59,14 +63,22 @@ class Request(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, identity_set, unified_role_assignment_schedule_request, unified_role_eligibility_schedule_request, user_consent_request
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
+        from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
+        from .user_consent_request import UserConsentRequest
 
-        from . import entity, identity_set, unified_role_assignment_schedule_request, unified_role_eligibility_schedule_request, user_consent_request
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
+        from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
+        from .user_consent_request import UserConsentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
             "approvalId": lambda n : setattr(self, 'approval_id', n.get_str_value()),
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customData": lambda n : setattr(self, 'custom_data', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
@@ -85,9 +97,9 @@ class Request(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("approvalId", self.approval_id)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
+        writer.write_datetime_value()("completedDateTime", self.completed_date_time)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("customData", self.custom_data)
         writer.write_str_value("status", self.status)
     

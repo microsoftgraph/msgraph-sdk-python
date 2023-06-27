@@ -10,29 +10,29 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import application
-    from ...models.o_data_errors import o_data_error
-    from .add_key import add_key_request_builder
-    from .add_password import add_password_request_builder
-    from .app_management_policies import app_management_policies_request_builder
-    from .check_member_groups import check_member_groups_request_builder
-    from .check_member_objects import check_member_objects_request_builder
-    from .created_on_behalf_of import created_on_behalf_of_request_builder
-    from .extension_properties import extension_properties_request_builder
-    from .federated_identity_credentials import federated_identity_credentials_request_builder
-    from .get_member_groups import get_member_groups_request_builder
-    from .get_member_objects import get_member_objects_request_builder
-    from .home_realm_discovery_policies import home_realm_discovery_policies_request_builder
-    from .logo import logo_request_builder
-    from .owners import owners_request_builder
-    from .remove_key import remove_key_request_builder
-    from .remove_password import remove_password_request_builder
-    from .restore import restore_request_builder
-    from .set_verified_publisher import set_verified_publisher_request_builder
-    from .synchronization import synchronization_request_builder
-    from .token_issuance_policies import token_issuance_policies_request_builder
-    from .token_lifetime_policies import token_lifetime_policies_request_builder
-    from .unset_verified_publisher import unset_verified_publisher_request_builder
+    from ...models.application import Application
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .add_key.add_key_request_builder import AddKeyRequestBuilder
+    from .add_password.add_password_request_builder import AddPasswordRequestBuilder
+    from .app_management_policies.app_management_policies_request_builder import AppManagementPoliciesRequestBuilder
+    from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
+    from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
+    from .created_on_behalf_of.created_on_behalf_of_request_builder import CreatedOnBehalfOfRequestBuilder
+    from .extension_properties.extension_properties_request_builder import ExtensionPropertiesRequestBuilder
+    from .federated_identity_credentials.federated_identity_credentials_request_builder import FederatedIdentityCredentialsRequestBuilder
+    from .get_member_groups.get_member_groups_request_builder import GetMemberGroupsRequestBuilder
+    from .get_member_objects.get_member_objects_request_builder import GetMemberObjectsRequestBuilder
+    from .home_realm_discovery_policies.home_realm_discovery_policies_request_builder import HomeRealmDiscoveryPoliciesRequestBuilder
+    from .logo.logo_request_builder import LogoRequestBuilder
+    from .owners.owners_request_builder import OwnersRequestBuilder
+    from .remove_key.remove_key_request_builder import RemoveKeyRequestBuilder
+    from .remove_password.remove_password_request_builder import RemovePasswordRequestBuilder
+    from .restore.restore_request_builder import RestoreRequestBuilder
+    from .set_verified_publisher.set_verified_publisher_request_builder import SetVerifiedPublisherRequestBuilder
+    from .synchronization.synchronization_request_builder import SynchronizationRequestBuilder
+    from .token_issuance_policies.token_issuance_policies_request_builder import TokenIssuancePoliciesRequestBuilder
+    from .token_lifetime_policies.token_lifetime_policies_request_builder import TokenLifetimePoliciesRequestBuilder
+    from .unset_verified_publisher.unset_verified_publisher_request_builder import UnsetVerifiedPublisherRequestBuilder
 
 class ApplicationItemRequestBuilder():
     """
@@ -65,62 +65,62 @@ class ApplicationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ApplicationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[application.Application]:
+    async def get(self,request_configuration: Optional[ApplicationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Application]:
         """
         Get the properties and relationships of an application object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[application.Application]
+        Returns: Optional[Application]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import application
+        from ...models.application import Application
 
-        return await self.request_adapter.send_async(request_info, application.Application, error_mapping)
+        return await self.request_adapter.send_async(request_info, Application, error_mapping)
     
-    async def patch(self,body: Optional[application.Application] = None, request_configuration: Optional[ApplicationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[application.Application]:
+    async def patch(self,body: Optional[Application] = None, request_configuration: Optional[ApplicationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Application]:
         """
         Update the properties of an application object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[application.Application]
+        Returns: Optional[Application]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import application
+        from ...models.application import Application
 
-        return await self.request_adapter.send_async(request_info, application.Application, error_mapping)
+        return await self.request_adapter.send_async(request_info, Application, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ApplicationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -156,7 +156,7 @@ class ApplicationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[application.Application] = None, request_configuration: Optional[ApplicationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Application] = None, request_configuration: Optional[ApplicationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an application object.
         Args:
@@ -178,193 +178,193 @@ class ApplicationItemRequestBuilder():
         return request_info
     
     @property
-    def add_key(self) -> add_key_request_builder.AddKeyRequestBuilder:
+    def add_key(self) -> AddKeyRequestBuilder:
         """
         Provides operations to call the addKey method.
         """
-        from .add_key import add_key_request_builder
+        from .add_key.add_key_request_builder import AddKeyRequestBuilder
 
-        return add_key_request_builder.AddKeyRequestBuilder(self.request_adapter, self.path_parameters)
+        return AddKeyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def add_password(self) -> add_password_request_builder.AddPasswordRequestBuilder:
+    def add_password(self) -> AddPasswordRequestBuilder:
         """
         Provides operations to call the addPassword method.
         """
-        from .add_password import add_password_request_builder
+        from .add_password.add_password_request_builder import AddPasswordRequestBuilder
 
-        return add_password_request_builder.AddPasswordRequestBuilder(self.request_adapter, self.path_parameters)
+        return AddPasswordRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def app_management_policies(self) -> app_management_policies_request_builder.AppManagementPoliciesRequestBuilder:
+    def app_management_policies(self) -> AppManagementPoliciesRequestBuilder:
         """
         Provides operations to manage the appManagementPolicies property of the microsoft.graph.application entity.
         """
-        from .app_management_policies import app_management_policies_request_builder
+        from .app_management_policies.app_management_policies_request_builder import AppManagementPoliciesRequestBuilder
 
-        return app_management_policies_request_builder.AppManagementPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+        return AppManagementPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+    def check_member_groups(self) -> CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
-        from .check_member_groups import check_member_groups_request_builder
+        from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
 
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+    def check_member_objects(self) -> CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
-        from .check_member_objects import check_member_objects_request_builder
+        from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
 
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def created_on_behalf_of(self) -> created_on_behalf_of_request_builder.CreatedOnBehalfOfRequestBuilder:
+    def created_on_behalf_of(self) -> CreatedOnBehalfOfRequestBuilder:
         """
         Provides operations to manage the createdOnBehalfOf property of the microsoft.graph.application entity.
         """
-        from .created_on_behalf_of import created_on_behalf_of_request_builder
+        from .created_on_behalf_of.created_on_behalf_of_request_builder import CreatedOnBehalfOfRequestBuilder
 
-        return created_on_behalf_of_request_builder.CreatedOnBehalfOfRequestBuilder(self.request_adapter, self.path_parameters)
+        return CreatedOnBehalfOfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def extension_properties(self) -> extension_properties_request_builder.ExtensionPropertiesRequestBuilder:
+    def extension_properties(self) -> ExtensionPropertiesRequestBuilder:
         """
         Provides operations to manage the extensionProperties property of the microsoft.graph.application entity.
         """
-        from .extension_properties import extension_properties_request_builder
+        from .extension_properties.extension_properties_request_builder import ExtensionPropertiesRequestBuilder
 
-        return extension_properties_request_builder.ExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def federated_identity_credentials(self) -> federated_identity_credentials_request_builder.FederatedIdentityCredentialsRequestBuilder:
+    def federated_identity_credentials(self) -> FederatedIdentityCredentialsRequestBuilder:
         """
         Provides operations to manage the federatedIdentityCredentials property of the microsoft.graph.application entity.
         """
-        from .federated_identity_credentials import federated_identity_credentials_request_builder
+        from .federated_identity_credentials.federated_identity_credentials_request_builder import FederatedIdentityCredentialsRequestBuilder
 
-        return federated_identity_credentials_request_builder.FederatedIdentityCredentialsRequestBuilder(self.request_adapter, self.path_parameters)
+        return FederatedIdentityCredentialsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+    def get_member_groups(self) -> GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
-        from .get_member_groups import get_member_groups_request_builder
+        from .get_member_groups.get_member_groups_request_builder import GetMemberGroupsRequestBuilder
 
-        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+    def get_member_objects(self) -> GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
-        from .get_member_objects import get_member_objects_request_builder
+        from .get_member_objects.get_member_objects_request_builder import GetMemberObjectsRequestBuilder
 
-        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def home_realm_discovery_policies(self) -> home_realm_discovery_policies_request_builder.HomeRealmDiscoveryPoliciesRequestBuilder:
+    def home_realm_discovery_policies(self) -> HomeRealmDiscoveryPoliciesRequestBuilder:
         """
         Provides operations to manage the homeRealmDiscoveryPolicies property of the microsoft.graph.application entity.
         """
-        from .home_realm_discovery_policies import home_realm_discovery_policies_request_builder
+        from .home_realm_discovery_policies.home_realm_discovery_policies_request_builder import HomeRealmDiscoveryPoliciesRequestBuilder
 
-        return home_realm_discovery_policies_request_builder.HomeRealmDiscoveryPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+        return HomeRealmDiscoveryPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def logo(self) -> logo_request_builder.LogoRequestBuilder:
+    def logo(self) -> LogoRequestBuilder:
         """
         Provides operations to manage the media for the application entity.
         """
-        from .logo import logo_request_builder
+        from .logo.logo_request_builder import LogoRequestBuilder
 
-        return logo_request_builder.LogoRequestBuilder(self.request_adapter, self.path_parameters)
+        return LogoRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def owners(self) -> owners_request_builder.OwnersRequestBuilder:
+    def owners(self) -> OwnersRequestBuilder:
         """
         Provides operations to manage the owners property of the microsoft.graph.application entity.
         """
-        from .owners import owners_request_builder
+        from .owners.owners_request_builder import OwnersRequestBuilder
 
-        return owners_request_builder.OwnersRequestBuilder(self.request_adapter, self.path_parameters)
+        return OwnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def remove_key(self) -> remove_key_request_builder.RemoveKeyRequestBuilder:
+    def remove_key(self) -> RemoveKeyRequestBuilder:
         """
         Provides operations to call the removeKey method.
         """
-        from .remove_key import remove_key_request_builder
+        from .remove_key.remove_key_request_builder import RemoveKeyRequestBuilder
 
-        return remove_key_request_builder.RemoveKeyRequestBuilder(self.request_adapter, self.path_parameters)
+        return RemoveKeyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def remove_password(self) -> remove_password_request_builder.RemovePasswordRequestBuilder:
+    def remove_password(self) -> RemovePasswordRequestBuilder:
         """
         Provides operations to call the removePassword method.
         """
-        from .remove_password import remove_password_request_builder
+        from .remove_password.remove_password_request_builder import RemovePasswordRequestBuilder
 
-        return remove_password_request_builder.RemovePasswordRequestBuilder(self.request_adapter, self.path_parameters)
+        return RemovePasswordRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def restore(self) -> RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
-        from .restore import restore_request_builder
+        from .restore.restore_request_builder import RestoreRequestBuilder
 
-        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+        return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def set_verified_publisher(self) -> set_verified_publisher_request_builder.SetVerifiedPublisherRequestBuilder:
+    def set_verified_publisher(self) -> SetVerifiedPublisherRequestBuilder:
         """
         Provides operations to call the setVerifiedPublisher method.
         """
-        from .set_verified_publisher import set_verified_publisher_request_builder
+        from .set_verified_publisher.set_verified_publisher_request_builder import SetVerifiedPublisherRequestBuilder
 
-        return set_verified_publisher_request_builder.SetVerifiedPublisherRequestBuilder(self.request_adapter, self.path_parameters)
+        return SetVerifiedPublisherRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def synchronization(self) -> synchronization_request_builder.SynchronizationRequestBuilder:
+    def synchronization(self) -> SynchronizationRequestBuilder:
         """
         Provides operations to manage the synchronization property of the microsoft.graph.application entity.
         """
-        from .synchronization import synchronization_request_builder
+        from .synchronization.synchronization_request_builder import SynchronizationRequestBuilder
 
-        return synchronization_request_builder.SynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
+        return SynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def token_issuance_policies(self) -> token_issuance_policies_request_builder.TokenIssuancePoliciesRequestBuilder:
+    def token_issuance_policies(self) -> TokenIssuancePoliciesRequestBuilder:
         """
         Provides operations to manage the tokenIssuancePolicies property of the microsoft.graph.application entity.
         """
-        from .token_issuance_policies import token_issuance_policies_request_builder
+        from .token_issuance_policies.token_issuance_policies_request_builder import TokenIssuancePoliciesRequestBuilder
 
-        return token_issuance_policies_request_builder.TokenIssuancePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+        return TokenIssuancePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def token_lifetime_policies(self) -> token_lifetime_policies_request_builder.TokenLifetimePoliciesRequestBuilder:
+    def token_lifetime_policies(self) -> TokenLifetimePoliciesRequestBuilder:
         """
         Provides operations to manage the tokenLifetimePolicies property of the microsoft.graph.application entity.
         """
-        from .token_lifetime_policies import token_lifetime_policies_request_builder
+        from .token_lifetime_policies.token_lifetime_policies_request_builder import TokenLifetimePoliciesRequestBuilder
 
-        return token_lifetime_policies_request_builder.TokenLifetimePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+        return TokenLifetimePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def unset_verified_publisher(self) -> unset_verified_publisher_request_builder.UnsetVerifiedPublisherRequestBuilder:
+    def unset_verified_publisher(self) -> UnsetVerifiedPublisherRequestBuilder:
         """
         Provides operations to call the unsetVerifiedPublisher method.
         """
-        from .unset_verified_publisher import unset_verified_publisher_request_builder
+        from .unset_verified_publisher.unset_verified_publisher_request_builder import UnsetVerifiedPublisherRequestBuilder
 
-        return unset_verified_publisher_request_builder.UnsetVerifiedPublisherRequestBuilder(self.request_adapter, self.path_parameters)
+        return UnsetVerifiedPublisherRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ApplicationItemRequestBuilderDeleteRequestConfiguration():

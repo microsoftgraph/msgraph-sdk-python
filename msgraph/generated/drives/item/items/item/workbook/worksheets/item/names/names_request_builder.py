@@ -10,12 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import workbook_named_item, workbook_named_item_collection_response
-    from .........models.o_data_errors import o_data_error
-    from .add import add_request_builder
-    from .add_formula_local import add_formula_local_request_builder
-    from .count import count_request_builder
-    from .item import workbook_named_item_item_request_builder
+    from .........models.o_data_errors.o_data_error import ODataError
+    from .........models.workbook_named_item import WorkbookNamedItem
+    from .........models.workbook_named_item_collection_response import WorkbookNamedItemCollectionResponse
+    from .add.add_request_builder import AddRequestBuilder
+    from .add_formula_local.add_formula_local_request_builder import AddFormulaLocalRequestBuilder
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.workbook_named_item_item_request_builder import WorkbookNamedItemItemRequestBuilder
 
 class NamesRequestBuilder():
     """
@@ -39,67 +40,67 @@ class NamesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_workbook_named_item_id(self,workbook_named_item_id: str) -> workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder:
+    def by_workbook_named_item_id(self,workbook_named_item_id: str) -> WorkbookNamedItemItemRequestBuilder:
         """
         Provides operations to manage the names property of the microsoft.graph.workbookWorksheet entity.
         Args:
             workbook_named_item_id: Unique identifier of the item
-        Returns: workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder
+        Returns: WorkbookNamedItemItemRequestBuilder
         """
         if not workbook_named_item_id:
             raise TypeError("workbook_named_item_id cannot be null.")
-        from .item import workbook_named_item_item_request_builder
+        from .item.workbook_named_item_item_request_builder import WorkbookNamedItemItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookNamedItem%2Did"] = workbook_named_item_id
-        return workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return WorkbookNamedItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[NamesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_named_item_collection_response.WorkbookNamedItemCollectionResponse]:
+    async def get(self,request_configuration: Optional[NamesRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookNamedItemCollectionResponse]:
         """
         Retrieve a list of named item associated with the worksheet. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_named_item_collection_response.WorkbookNamedItemCollectionResponse]
+        Returns: Optional[WorkbookNamedItemCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import workbook_named_item_collection_response
+        from .........models.workbook_named_item_collection_response import WorkbookNamedItemCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, workbook_named_item_collection_response.WorkbookNamedItemCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookNamedItemCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[workbook_named_item.WorkbookNamedItem] = None, request_configuration: Optional[NamesRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_named_item.WorkbookNamedItem]:
+    async def post(self,body: Optional[WorkbookNamedItem] = None, request_configuration: Optional[NamesRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookNamedItem]:
         """
         Create new navigation property to names for drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_named_item.WorkbookNamedItem]
+        Returns: Optional[WorkbookNamedItem]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import workbook_named_item
+        from .........models.workbook_named_item import WorkbookNamedItem
 
-        return await self.request_adapter.send_async(request_info, workbook_named_item.WorkbookNamedItem, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookNamedItem, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[NamesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -119,7 +120,7 @@ class NamesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[workbook_named_item.WorkbookNamedItem] = None, request_configuration: Optional[NamesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WorkbookNamedItem] = None, request_configuration: Optional[NamesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to names for drives
         Args:
@@ -141,31 +142,31 @@ class NamesRequestBuilder():
         return request_info
     
     @property
-    def add(self) -> add_request_builder.AddRequestBuilder:
+    def add(self) -> AddRequestBuilder:
         """
         Provides operations to call the add method.
         """
-        from .add import add_request_builder
+        from .add.add_request_builder import AddRequestBuilder
 
-        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
+        return AddRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def add_formula_local(self) -> add_formula_local_request_builder.AddFormulaLocalRequestBuilder:
+    def add_formula_local(self) -> AddFormulaLocalRequestBuilder:
         """
         Provides operations to call the addFormulaLocal method.
         """
-        from .add_formula_local import add_formula_local_request_builder
+        from .add_formula_local.add_formula_local_request_builder import AddFormulaLocalRequestBuilder
 
-        return add_formula_local_request_builder.AddFormulaLocalRequestBuilder(self.request_adapter, self.path_parameters)
+        return AddFormulaLocalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class NamesRequestBuilderGetQueryParameters():

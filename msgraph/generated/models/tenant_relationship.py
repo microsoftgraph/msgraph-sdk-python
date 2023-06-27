@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import delegated_admin_customer, delegated_admin_relationship
+    from .delegated_admin_customer import DelegatedAdminCustomer
+    from .delegated_admin_relationship import DelegatedAdminRelationship
 
 @dataclass
 class TenantRelationship(AdditionalDataHolder, Parsable):
@@ -12,9 +13,9 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The customer who has a delegated admin relationship with a Microsoft partner.
-    delegated_admin_customers: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]] = None
+    delegated_admin_customers: Optional[List[DelegatedAdminCustomer]] = None
     # The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
-    delegated_admin_relationships: Optional[List[delegated_admin_relationship.DelegatedAdminRelationship]] = None
+    delegated_admin_relationships: Optional[List[DelegatedAdminRelationship]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,13 +36,15 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import delegated_admin_customer, delegated_admin_relationship
+        from .delegated_admin_customer import DelegatedAdminCustomer
+        from .delegated_admin_relationship import DelegatedAdminRelationship
 
-        from . import delegated_admin_customer, delegated_admin_relationship
+        from .delegated_admin_customer import DelegatedAdminCustomer
+        from .delegated_admin_relationship import DelegatedAdminRelationship
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "delegatedAdminCustomers": lambda n : setattr(self, 'delegated_admin_customers', n.get_collection_of_object_values(delegated_admin_customer.DelegatedAdminCustomer)),
-            "delegatedAdminRelationships": lambda n : setattr(self, 'delegated_admin_relationships', n.get_collection_of_object_values(delegated_admin_relationship.DelegatedAdminRelationship)),
+            "delegatedAdminCustomers": lambda n : setattr(self, 'delegated_admin_customers', n.get_collection_of_object_values(DelegatedAdminCustomer)),
+            "delegatedAdminRelationships": lambda n : setattr(self, 'delegated_admin_relationships', n.get_collection_of_object_values(DelegatedAdminRelationship)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

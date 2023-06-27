@@ -1,24 +1,27 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_package_assignment_policy, access_package_catalog, entity, group
+    from .access_package_assignment_policy import AccessPackageAssignmentPolicy
+    from .access_package_catalog import AccessPackageCatalog
+    from .entity import Entity
+    from .group import Group
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AccessPackage(entity.Entity):
+class AccessPackage(Entity):
     # The access packages that are incompatible with this package. Read-only.
     access_packages_incompatible_with: Optional[List[AccessPackage]] = None
     # The assignmentPolicies property
-    assignment_policies: Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]] = None
+    assignment_policies: Optional[List[AccessPackageAssignmentPolicy]] = None
     # The catalog property
-    catalog: Optional[access_package_catalog.AccessPackageCatalog] = None
+    catalog: Optional[AccessPackageCatalog] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The description of the access package.
     description: Optional[str] = None
     # The display name of the access package. Supports $filter (eq, contains).
@@ -26,11 +29,11 @@ class AccessPackage(entity.Entity):
     # The access packages whose assigned users are ineligible to be assigned this access package.
     incompatible_access_packages: Optional[List[AccessPackage]] = None
     # The groups whose members are ineligible to be assigned this access package.
-    incompatible_groups: Optional[List[group.Group]] = None
+    incompatible_groups: Optional[List[Group]] = None
     # Whether the access package is hidden from the requestor.
     is_hidden: Optional[bool] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    modified_date_time: Optional[datetime] = None
+    modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -51,19 +54,25 @@ class AccessPackage(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_assignment_policy, access_package_catalog, entity, group
+        from .access_package_assignment_policy import AccessPackageAssignmentPolicy
+        from .access_package_catalog import AccessPackageCatalog
+        from .entity import Entity
+        from .group import Group
 
-        from . import access_package_assignment_policy, access_package_catalog, entity, group
+        from .access_package_assignment_policy import AccessPackageAssignmentPolicy
+        from .access_package_catalog import AccessPackageCatalog
+        from .entity import Entity
+        from .group import Group
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accessPackagesIncompatibleWith": lambda n : setattr(self, 'access_packages_incompatible_with', n.get_collection_of_object_values(AccessPackage)),
-            "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
-            "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(access_package_catalog.AccessPackageCatalog)),
+            "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(AccessPackageAssignmentPolicy)),
+            "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(AccessPackageCatalog)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "incompatibleAccessPackages": lambda n : setattr(self, 'incompatible_access_packages', n.get_collection_of_object_values(AccessPackage)),
-            "incompatibleGroups": lambda n : setattr(self, 'incompatible_groups', n.get_collection_of_object_values(group.Group)),
+            "incompatibleGroups": lambda n : setattr(self, 'incompatible_groups', n.get_collection_of_object_values(Group)),
             "isHidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
             "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
         }
@@ -83,12 +92,12 @@ class AccessPackage(entity.Entity):
         writer.write_collection_of_object_values("accessPackagesIncompatibleWith", self.access_packages_incompatible_with)
         writer.write_collection_of_object_values("assignmentPolicies", self.assignment_policies)
         writer.write_object_value("catalog", self.catalog)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("incompatibleAccessPackages", self.incompatible_access_packages)
         writer.write_collection_of_object_values("incompatibleGroups", self.incompatible_groups)
         writer.write_bool_value("isHidden", self.is_hidden)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
+        writer.write_datetime_value()("modifiedDateTime", self.modified_date_time)
     
 

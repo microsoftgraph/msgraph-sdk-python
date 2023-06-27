@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import drive_recipient
+    from .....models.drive_recipient import DriveRecipient
 
 @dataclass
 class GrantPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The recipients property
-    recipients: Optional[List[drive_recipient.DriveRecipient]] = None
+    recipients: Optional[List[DriveRecipient]] = None
     # The roles property
     roles: Optional[List[str]] = None
     
@@ -33,12 +33,12 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import drive_recipient
+        from .....models.drive_recipient import DriveRecipient
 
-        from .....models import drive_recipient
+        from .....models.drive_recipient import DriveRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "recipients": lambda n : setattr(self, 'recipients', n.get_collection_of_object_values(drive_recipient.DriveRecipient)),
+            "recipients": lambda n : setattr(self, 'recipients', n.get_collection_of_object_values(DriveRecipient)),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),
         }
         return fields

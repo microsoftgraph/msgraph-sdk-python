@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ............models.o_data_errors import o_data_error
-    from ............models.term_store import set
-    from .children import children_request_builder
-    from .relations import relations_request_builder
-    from .terms import terms_request_builder
+    from ............models.o_data_errors.o_data_error import ODataError
+    from ............models.term_store.set import Set
+    from .children.children_request_builder import ChildrenRequestBuilder
+    from .relations.relations_request_builder import RelationsRequestBuilder
+    from .terms.terms_request_builder import TermsRequestBuilder
 
 class SetItemRequestBuilder():
     """
@@ -47,62 +47,62 @@ class SetItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[set.Set]:
+    async def get(self,request_configuration: Optional[SetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Set]:
         """
         All sets under the group in a term [store].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[set.Set]
+        Returns: Optional[Set]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ............models.term_store import set
+        from ............models.term_store.set import Set
 
-        return await self.request_adapter.send_async(request_info, set.Set, error_mapping)
+        return await self.request_adapter.send_async(request_info, Set, error_mapping)
     
-    async def patch(self,body: Optional[set.Set] = None, request_configuration: Optional[SetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[set.Set]:
+    async def patch(self,body: Optional[Set] = None, request_configuration: Optional[SetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Set]:
         """
         Update the navigation property sets in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[set.Set]
+        Returns: Optional[Set]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ............models.term_store import set
+        from ............models.term_store.set import Set
 
-        return await self.request_adapter.send_async(request_info, set.Set, error_mapping)
+        return await self.request_adapter.send_async(request_info, Set, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class SetItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[set.Set] = None, request_configuration: Optional[SetItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Set] = None, request_configuration: Optional[SetItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property sets in groups
         Args:
@@ -160,31 +160,31 @@ class SetItemRequestBuilder():
         return request_info
     
     @property
-    def children(self) -> children_request_builder.ChildrenRequestBuilder:
+    def children(self) -> ChildrenRequestBuilder:
         """
         Provides operations to manage the children property of the microsoft.graph.termStore.set entity.
         """
-        from .children import children_request_builder
+        from .children.children_request_builder import ChildrenRequestBuilder
 
-        return children_request_builder.ChildrenRequestBuilder(self.request_adapter, self.path_parameters)
+        return ChildrenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def relations(self) -> relations_request_builder.RelationsRequestBuilder:
+    def relations(self) -> RelationsRequestBuilder:
         """
         Provides operations to manage the relations property of the microsoft.graph.termStore.set entity.
         """
-        from .relations import relations_request_builder
+        from .relations.relations_request_builder import RelationsRequestBuilder
 
-        return relations_request_builder.RelationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RelationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def terms(self) -> terms_request_builder.TermsRequestBuilder:
+    def terms(self) -> TermsRequestBuilder:
         """
         Provides operations to manage the terms property of the microsoft.graph.termStore.set entity.
         """
-        from .terms import terms_request_builder
+        from .terms.terms_request_builder import TermsRequestBuilder
 
-        return terms_request_builder.TermsRequestBuilder(self.request_adapter, self.path_parameters)
+        return TermsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SetItemRequestBuilderDeleteRequestConfiguration():

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import query_type
+    from .query_type import QueryType
 
 @dataclass
 class EventQuery(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class EventQuery(AdditionalDataHolder, Parsable):
     # Represents unique identification for the  query. 'Asset ID' for SharePoint Online and OneDrive for Business, 'keywords' for Exchange Online.
     query: Optional[str] = None
     # Represents the type of query associated with an event. 'files' for SPO and ODB and 'messages' for EXO.The possible values are: files, messages, unknownFutureValue.
-    query_type: Optional[query_type.QueryType] = None
+    query_type: Optional[QueryType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EventQuery:
@@ -35,14 +35,14 @@ class EventQuery(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import query_type
+        from .query_type import QueryType
 
-        from . import query_type
+        from .query_type import QueryType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "query": lambda n : setattr(self, 'query', n.get_str_value()),
-            "queryType": lambda n : setattr(self, 'query_type', n.get_enum_value(query_type.QueryType)),
+            "queryType": lambda n : setattr(self, 'query_type', n.get_enum_value(QueryType)),
         }
         return fields
     

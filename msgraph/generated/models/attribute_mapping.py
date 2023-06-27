@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attribute_flow_behavior, attribute_flow_type, attribute_mapping_source
+    from .attribute_flow_behavior import AttributeFlowBehavior
+    from .attribute_flow_type import AttributeFlowType
+    from .attribute_mapping_source import AttributeMappingSource
 
 @dataclass
 class AttributeMapping(AdditionalDataHolder, Parsable):
@@ -16,15 +18,15 @@ class AttributeMapping(AdditionalDataHolder, Parsable):
     # The exportMissingReferences property
     export_missing_references: Optional[bool] = None
     # The flowBehavior property
-    flow_behavior: Optional[attribute_flow_behavior.AttributeFlowBehavior] = None
+    flow_behavior: Optional[AttributeFlowBehavior] = None
     # The flowType property
-    flow_type: Optional[attribute_flow_type.AttributeFlowType] = None
+    flow_type: Optional[AttributeFlowType] = None
     # The matchingPriority property
     matching_priority: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The source property
-    source: Optional[attribute_mapping_source.AttributeMappingSource] = None
+    source: Optional[AttributeMappingSource] = None
     # The targetAttributeName property
     target_attribute_name: Optional[str] = None
     
@@ -45,18 +47,22 @@ class AttributeMapping(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attribute_flow_behavior, attribute_flow_type, attribute_mapping_source
+        from .attribute_flow_behavior import AttributeFlowBehavior
+        from .attribute_flow_type import AttributeFlowType
+        from .attribute_mapping_source import AttributeMappingSource
 
-        from . import attribute_flow_behavior, attribute_flow_type, attribute_mapping_source
+        from .attribute_flow_behavior import AttributeFlowBehavior
+        from .attribute_flow_type import AttributeFlowType
+        from .attribute_mapping_source import AttributeMappingSource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "defaultValue": lambda n : setattr(self, 'default_value', n.get_str_value()),
             "exportMissingReferences": lambda n : setattr(self, 'export_missing_references', n.get_bool_value()),
-            "flowBehavior": lambda n : setattr(self, 'flow_behavior', n.get_enum_value(attribute_flow_behavior.AttributeFlowBehavior)),
-            "flowType": lambda n : setattr(self, 'flow_type', n.get_enum_value(attribute_flow_type.AttributeFlowType)),
+            "flowBehavior": lambda n : setattr(self, 'flow_behavior', n.get_enum_value(AttributeFlowBehavior)),
+            "flowType": lambda n : setattr(self, 'flow_type', n.get_enum_value(AttributeFlowType)),
             "matchingPriority": lambda n : setattr(self, 'matching_priority', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "source": lambda n : setattr(self, 'source', n.get_object_value(attribute_mapping_source.AttributeMappingSource)),
+            "source": lambda n : setattr(self, 'source', n.get_object_value(AttributeMappingSource)),
             "targetAttributeName": lambda n : setattr(self, 'target_attribute_name', n.get_str_value()),
         }
         return fields

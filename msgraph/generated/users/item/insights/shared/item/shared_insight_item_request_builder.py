@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import shared_insight
-    from ......models.o_data_errors import o_data_error
-    from .last_shared_method import last_shared_method_request_builder
-    from .resource import resource_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.shared_insight import SharedInsight
+    from .last_shared_method.last_shared_method_request_builder import LastSharedMethodRequestBuilder
+    from .resource.resource_request_builder import ResourceRequestBuilder
 
 class SharedInsightItemRequestBuilder():
     """
@@ -46,62 +46,62 @@ class SharedInsightItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SharedInsightItemRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_insight.SharedInsight]:
+    async def get(self,request_configuration: Optional[SharedInsightItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SharedInsight]:
         """
         Calculated relationship identifying documents shared with or by the user. This includes URLs, file attachments, and reference attachments to OneDrive for Business and SharePoint files found in Outlook messages and meetings. This also includes URLs and reference attachments to Teams conversations. Ordered by recency of share.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[shared_insight.SharedInsight]
+        Returns: Optional[SharedInsight]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import shared_insight
+        from ......models.shared_insight import SharedInsight
 
-        return await self.request_adapter.send_async(request_info, shared_insight.SharedInsight, error_mapping)
+        return await self.request_adapter.send_async(request_info, SharedInsight, error_mapping)
     
-    async def patch(self,body: Optional[shared_insight.SharedInsight] = None, request_configuration: Optional[SharedInsightItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[shared_insight.SharedInsight]:
+    async def patch(self,body: Optional[SharedInsight] = None, request_configuration: Optional[SharedInsightItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SharedInsight]:
         """
         Update the navigation property shared in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[shared_insight.SharedInsight]
+        Returns: Optional[SharedInsight]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import shared_insight
+        from ......models.shared_insight import SharedInsight
 
-        return await self.request_adapter.send_async(request_info, shared_insight.SharedInsight, error_mapping)
+        return await self.request_adapter.send_async(request_info, SharedInsight, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SharedInsightItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class SharedInsightItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[shared_insight.SharedInsight] = None, request_configuration: Optional[SharedInsightItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SharedInsight] = None, request_configuration: Optional[SharedInsightItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property shared in users
         Args:
@@ -159,22 +159,22 @@ class SharedInsightItemRequestBuilder():
         return request_info
     
     @property
-    def last_shared_method(self) -> last_shared_method_request_builder.LastSharedMethodRequestBuilder:
+    def last_shared_method(self) -> LastSharedMethodRequestBuilder:
         """
         Provides operations to manage the lastSharedMethod property of the microsoft.graph.sharedInsight entity.
         """
-        from .last_shared_method import last_shared_method_request_builder
+        from .last_shared_method.last_shared_method_request_builder import LastSharedMethodRequestBuilder
 
-        return last_shared_method_request_builder.LastSharedMethodRequestBuilder(self.request_adapter, self.path_parameters)
+        return LastSharedMethodRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def resource(self) -> resource_request_builder.ResourceRequestBuilder:
+    def resource(self) -> ResourceRequestBuilder:
         """
         Provides operations to manage the resource property of the microsoft.graph.sharedInsight entity.
         """
-        from .resource import resource_request_builder
+        from .resource.resource_request_builder import ResourceRequestBuilder
 
-        return resource_request_builder.ResourceRequestBuilder(self.request_adapter, self.path_parameters)
+        return ResourceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SharedInsightItemRequestBuilderDeleteRequestConfiguration():

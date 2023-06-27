@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models.o_data_errors import o_data_error
-    from ......models.security import ediscovery_search, ediscovery_search_collection_response
-    from .count import count_request_builder
-    from .item import ediscovery_search_item_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.security.ediscovery_search import EdiscoverySearch
+    from ......models.security.ediscovery_search_collection_response import EdiscoverySearchCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.ediscovery_search_item_request_builder import EdiscoverySearchItemRequestBuilder
 
 class SearchesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class SearchesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_ediscovery_search_id(self,ediscovery_search_id: str) -> ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder:
+    def by_ediscovery_search_id(self,ediscovery_search_id: str) -> EdiscoverySearchItemRequestBuilder:
         """
         Provides operations to manage the searches property of the microsoft.graph.security.ediscoveryCase entity.
         Args:
             ediscovery_search_id: Unique identifier of the item
-        Returns: ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder
+        Returns: EdiscoverySearchItemRequestBuilder
         """
         if not ediscovery_search_id:
             raise TypeError("ediscovery_search_id cannot be null.")
-        from .item import ediscovery_search_item_request_builder
+        from .item.ediscovery_search_item_request_builder import EdiscoverySearchItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["ediscoverySearch%2Did"] = ediscovery_search_id
-        return ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return EdiscoverySearchItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SearchesRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_search_collection_response.EdiscoverySearchCollectionResponse]:
+    async def get(self,request_configuration: Optional[SearchesRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoverySearchCollectionResponse]:
         """
         Get the list of ediscoverySearch resources from an eDiscoveryCase object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_search_collection_response.EdiscoverySearchCollectionResponse]
+        Returns: Optional[EdiscoverySearchCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.security import ediscovery_search_collection_response
+        from ......models.security.ediscovery_search_collection_response import EdiscoverySearchCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, ediscovery_search_collection_response.EdiscoverySearchCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoverySearchCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ediscovery_search.EdiscoverySearch] = None, request_configuration: Optional[SearchesRequestBuilderPostRequestConfiguration] = None) -> Optional[ediscovery_search.EdiscoverySearch]:
+    async def post(self,body: Optional[EdiscoverySearch] = None, request_configuration: Optional[SearchesRequestBuilderPostRequestConfiguration] = None) -> Optional[EdiscoverySearch]:
         """
         Create a new ediscoverySearch object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_search.EdiscoverySearch]
+        Returns: Optional[EdiscoverySearch]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.security import ediscovery_search
+        from ......models.security.ediscovery_search import EdiscoverySearch
 
-        return await self.request_adapter.send_async(request_info, ediscovery_search.EdiscoverySearch, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoverySearch, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SearchesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class SearchesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[ediscovery_search.EdiscoverySearch] = None, request_configuration: Optional[SearchesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EdiscoverySearch] = None, request_configuration: Optional[SearchesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new ediscoverySearch object.
         Args:
@@ -139,13 +140,13 @@ class SearchesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SearchesRequestBuilderGetQueryParameters():

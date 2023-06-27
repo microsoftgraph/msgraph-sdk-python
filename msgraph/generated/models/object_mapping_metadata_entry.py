@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import object_mapping_metadata
+    from .object_mapping_metadata import ObjectMappingMetadata
 
 @dataclass
 class ObjectMappingMetadataEntry(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ObjectMappingMetadataEntry(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The key property
-    key: Optional[object_mapping_metadata.ObjectMappingMetadata] = None
+    key: Optional[ObjectMappingMetadata] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The value property
@@ -35,12 +35,12 @@ class ObjectMappingMetadataEntry(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import object_mapping_metadata
+        from .object_mapping_metadata import ObjectMappingMetadata
 
-        from . import object_mapping_metadata
+        from .object_mapping_metadata import ObjectMappingMetadata
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "key": lambda n : setattr(self, 'key', n.get_enum_value(object_mapping_metadata.ObjectMappingMetadata)),
+            "key": lambda n : setattr(self, 'key', n.get_enum_value(ObjectMappingMetadata)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }

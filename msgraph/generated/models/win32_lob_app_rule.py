@@ -4,7 +4,11 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import win32_lob_app_file_system_rule, win32_lob_app_power_shell_script_rule, win32_lob_app_product_code_rule, win32_lob_app_registry_rule, win32_lob_app_rule_type
+    from .win32_lob_app_file_system_rule import Win32LobAppFileSystemRule
+    from .win32_lob_app_power_shell_script_rule import Win32LobAppPowerShellScriptRule
+    from .win32_lob_app_product_code_rule import Win32LobAppProductCodeRule
+    from .win32_lob_app_registry_rule import Win32LobAppRegistryRule
+    from .win32_lob_app_rule_type import Win32LobAppRuleType
 
 @dataclass
 class Win32LobAppRule(AdditionalDataHolder, Parsable):
@@ -17,7 +21,7 @@ class Win32LobAppRule(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Contains rule types for Win32 LOB apps.
-    rule_type: Optional[win32_lob_app_rule_type.Win32LobAppRuleType] = None
+    rule_type: Optional[Win32LobAppRuleType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppRule:
@@ -34,21 +38,21 @@ class Win32LobAppRule(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobAppFileSystemRule".casefold():
-            from . import win32_lob_app_file_system_rule
+            from .win32_lob_app_file_system_rule import Win32LobAppFileSystemRule
 
-            return win32_lob_app_file_system_rule.Win32LobAppFileSystemRule()
+            return Win32LobAppFileSystemRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobAppPowerShellScriptRule".casefold():
-            from . import win32_lob_app_power_shell_script_rule
+            from .win32_lob_app_power_shell_script_rule import Win32LobAppPowerShellScriptRule
 
-            return win32_lob_app_power_shell_script_rule.Win32LobAppPowerShellScriptRule()
+            return Win32LobAppPowerShellScriptRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobAppProductCodeRule".casefold():
-            from . import win32_lob_app_product_code_rule
+            from .win32_lob_app_product_code_rule import Win32LobAppProductCodeRule
 
-            return win32_lob_app_product_code_rule.Win32LobAppProductCodeRule()
+            return Win32LobAppProductCodeRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobAppRegistryRule".casefold():
-            from . import win32_lob_app_registry_rule
+            from .win32_lob_app_registry_rule import Win32LobAppRegistryRule
 
-            return win32_lob_app_registry_rule.Win32LobAppRegistryRule()
+            return Win32LobAppRegistryRule()
         return Win32LobAppRule()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -56,13 +60,21 @@ class Win32LobAppRule(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import win32_lob_app_file_system_rule, win32_lob_app_power_shell_script_rule, win32_lob_app_product_code_rule, win32_lob_app_registry_rule, win32_lob_app_rule_type
+        from .win32_lob_app_file_system_rule import Win32LobAppFileSystemRule
+        from .win32_lob_app_power_shell_script_rule import Win32LobAppPowerShellScriptRule
+        from .win32_lob_app_product_code_rule import Win32LobAppProductCodeRule
+        from .win32_lob_app_registry_rule import Win32LobAppRegistryRule
+        from .win32_lob_app_rule_type import Win32LobAppRuleType
 
-        from . import win32_lob_app_file_system_rule, win32_lob_app_power_shell_script_rule, win32_lob_app_product_code_rule, win32_lob_app_registry_rule, win32_lob_app_rule_type
+        from .win32_lob_app_file_system_rule import Win32LobAppFileSystemRule
+        from .win32_lob_app_power_shell_script_rule import Win32LobAppPowerShellScriptRule
+        from .win32_lob_app_product_code_rule import Win32LobAppProductCodeRule
+        from .win32_lob_app_registry_rule import Win32LobAppRegistryRule
+        from .win32_lob_app_rule_type import Win32LobAppRuleType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "ruleType": lambda n : setattr(self, 'rule_type', n.get_enum_value(win32_lob_app_rule_type.Win32LobAppRuleType)),
+            "ruleType": lambda n : setattr(self, 'rule_type', n.get_enum_value(Win32LobAppRuleType)),
         }
         return fields
     

@@ -4,20 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, shared_insight, trending, used_insight
+    from .entity import Entity
+    from .shared_insight import SharedInsight
+    from .trending import Trending
+    from .used_insight import UsedInsight
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class OfficeGraphInsights(entity.Entity):
+class OfficeGraphInsights(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Calculated relationship identifying documents shared with or by the user. This includes URLs, file attachments, and reference attachments to OneDrive for Business and SharePoint files found in Outlook messages and meetings. This also includes URLs and reference attachments to Teams conversations. Ordered by recency of share.
-    shared: Optional[List[shared_insight.SharedInsight]] = None
+    shared: Optional[List[SharedInsight]] = None
     # Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
-    trending: Optional[List[trending.Trending]] = None
+    trending: Optional[List[Trending]] = None
     # Calculated relationship identifying the latest documents viewed or modified by a user, including OneDrive for Business and SharePoint documents, ranked by recency of use.
-    used: Optional[List[used_insight.UsedInsight]] = None
+    used: Optional[List[UsedInsight]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OfficeGraphInsights:
@@ -36,14 +39,20 @@ class OfficeGraphInsights(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, shared_insight, trending, used_insight
+        from .entity import Entity
+        from .shared_insight import SharedInsight
+        from .trending import Trending
+        from .used_insight import UsedInsight
 
-        from . import entity, shared_insight, trending, used_insight
+        from .entity import Entity
+        from .shared_insight import SharedInsight
+        from .trending import Trending
+        from .used_insight import UsedInsight
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "shared": lambda n : setattr(self, 'shared', n.get_collection_of_object_values(shared_insight.SharedInsight)),
-            "trending": lambda n : setattr(self, 'trending', n.get_collection_of_object_values(trending.Trending)),
-            "used": lambda n : setattr(self, 'used', n.get_collection_of_object_values(used_insight.UsedInsight)),
+            "shared": lambda n : setattr(self, 'shared', n.get_collection_of_object_values(SharedInsight)),
+            "trending": lambda n : setattr(self, 'trending', n.get_collection_of_object_values(Trending)),
+            "used": lambda n : setattr(self, 'used', n.get_collection_of_object_values(UsedInsight)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

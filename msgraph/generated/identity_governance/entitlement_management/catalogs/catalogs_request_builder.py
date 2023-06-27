@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import access_package_catalog, access_package_catalog_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import access_package_catalog_item_request_builder
+    from ....models.access_package_catalog import AccessPackageCatalog
+    from ....models.access_package_catalog_collection_response import AccessPackageCatalogCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.access_package_catalog_item_request_builder import AccessPackageCatalogItemRequestBuilder
 
 class CatalogsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class CatalogsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_access_package_catalog_id(self,access_package_catalog_id: str) -> access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder:
+    def by_access_package_catalog_id(self,access_package_catalog_id: str) -> AccessPackageCatalogItemRequestBuilder:
         """
         Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
         Args:
             access_package_catalog_id: Unique identifier of the item
-        Returns: access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder
+        Returns: AccessPackageCatalogItemRequestBuilder
         """
         if not access_package_catalog_id:
             raise TypeError("access_package_catalog_id cannot be null.")
-        from .item import access_package_catalog_item_request_builder
+        from .item.access_package_catalog_item_request_builder import AccessPackageCatalogItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["accessPackageCatalog%2Did"] = access_package_catalog_id
-        return access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AccessPackageCatalogItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[CatalogsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_catalog_collection_response.AccessPackageCatalogCollectionResponse]:
+    async def get(self,request_configuration: Optional[CatalogsRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageCatalogCollectionResponse]:
         """
         Retrieve a list of accessPackageCatalog objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_catalog_collection_response.AccessPackageCatalogCollectionResponse]
+        Returns: Optional[AccessPackageCatalogCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import access_package_catalog_collection_response
+        from ....models.access_package_catalog_collection_response import AccessPackageCatalogCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, access_package_catalog_collection_response.AccessPackageCatalogCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageCatalogCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[access_package_catalog.AccessPackageCatalog] = None, request_configuration: Optional[CatalogsRequestBuilderPostRequestConfiguration] = None) -> Optional[access_package_catalog.AccessPackageCatalog]:
+    async def post(self,body: Optional[AccessPackageCatalog] = None, request_configuration: Optional[CatalogsRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessPackageCatalog]:
         """
         Create a new accessPackageCatalog object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_catalog.AccessPackageCatalog]
+        Returns: Optional[AccessPackageCatalog]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import access_package_catalog
+        from ....models.access_package_catalog import AccessPackageCatalog
 
-        return await self.request_adapter.send_async(request_info, access_package_catalog.AccessPackageCatalog, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageCatalog, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CatalogsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class CatalogsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[access_package_catalog.AccessPackageCatalog] = None, request_configuration: Optional[CatalogsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AccessPackageCatalog] = None, request_configuration: Optional[CatalogsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new accessPackageCatalog object.
         Args:
@@ -139,13 +140,13 @@ class CatalogsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CatalogsRequestBuilderGetQueryParameters():

@@ -1,29 +1,31 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, localized_notification_message, notification_template_branding_options
+    from .entity import Entity
+    from .localized_notification_message import LocalizedNotificationMessage
+    from .notification_template_branding_options import NotificationTemplateBrandingOptions
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class NotificationMessageTemplate(entity.Entity):
+class NotificationMessageTemplate(Entity):
     """
     Notification messages are messages that are sent to end users who are determined to be not-compliant with the compliance policies defined by the administrator. Administrators choose notifications and configure them in the Intune Admin Console using the compliance policy creation page under the “Actions for non-compliance” section. Use the notificationMessageTemplate object to create your own custom notifications for administrators to choose while configuring actions for non-compliance.
     """
     # Branding Options for the Message Template. Branding is defined in the Intune Admin Console.
-    branding_options: Optional[notification_template_branding_options.NotificationTemplateBrandingOptions] = None
+    branding_options: Optional[NotificationTemplateBrandingOptions] = None
     # The default locale to fallback onto when the requested locale is not available.
     default_locale: Optional[str] = None
     # Display name for the Notification Message Template.
     display_name: Optional[str] = None
     # DateTime the object was last modified.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The list of localized messages for this Notification Message Template.
-    localized_notification_messages: Optional[List[localized_notification_message.LocalizedNotificationMessage]] = None
+    localized_notification_messages: Optional[List[LocalizedNotificationMessage]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # List of Scope Tags for this Entity instance.
@@ -46,16 +48,20 @@ class NotificationMessageTemplate(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, localized_notification_message, notification_template_branding_options
+        from .entity import Entity
+        from .localized_notification_message import LocalizedNotificationMessage
+        from .notification_template_branding_options import NotificationTemplateBrandingOptions
 
-        from . import entity, localized_notification_message, notification_template_branding_options
+        from .entity import Entity
+        from .localized_notification_message import LocalizedNotificationMessage
+        from .notification_template_branding_options import NotificationTemplateBrandingOptions
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "brandingOptions": lambda n : setattr(self, 'branding_options', n.get_enum_value(notification_template_branding_options.NotificationTemplateBrandingOptions)),
+            "brandingOptions": lambda n : setattr(self, 'branding_options', n.get_enum_value(NotificationTemplateBrandingOptions)),
             "defaultLocale": lambda n : setattr(self, 'default_locale', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "localizedNotificationMessages": lambda n : setattr(self, 'localized_notification_messages', n.get_collection_of_object_values(localized_notification_message.LocalizedNotificationMessage)),
+            "localizedNotificationMessages": lambda n : setattr(self, 'localized_notification_messages', n.get_collection_of_object_values(LocalizedNotificationMessage)),
             "roleScopeTagIds": lambda n : setattr(self, 'role_scope_tag_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
@@ -74,7 +80,7 @@ class NotificationMessageTemplate(entity.Entity):
         writer.write_enum_value("brandingOptions", self.branding_options)
         writer.write_str_value("defaultLocale", self.default_locale)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("localizedNotificationMessages", self.localized_notification_messages)
         writer.write_collection_of_primitive_values("roleScopeTagIds", self.role_scope_tag_ids)
     

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_app_assignment_settings
+    from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-from . import mobile_app_assignment_settings
+from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class MicrosoftStoreForBusinessAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
+class MicrosoftStoreForBusinessAppAssignmentSettings(MobileAppAssignmentSettings):
     odata_type = "#microsoft.graph.microsoftStoreForBusinessAppAssignmentSettings"
     # Whether or not to use device execution context for Microsoft Store for Business mobile app.
     use_device_context: Optional[bool] = None
@@ -31,9 +31,9 @@ class MicrosoftStoreForBusinessAppAssignmentSettings(mobile_app_assignment_setti
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "useDeviceContext": lambda n : setattr(self, 'use_device_context', n.get_bool_value()),

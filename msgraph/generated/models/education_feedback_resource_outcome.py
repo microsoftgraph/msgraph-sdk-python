@@ -4,17 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_feedback_resource_outcome_status, education_outcome, education_resource
+    from .education_feedback_resource_outcome_status import EducationFeedbackResourceOutcomeStatus
+    from .education_outcome import EducationOutcome
+    from .education_resource import EducationResource
 
-from . import education_outcome
+from .education_outcome import EducationOutcome
 
 @dataclass
-class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
+class EducationFeedbackResourceOutcome(EducationOutcome):
     odata_type = "#microsoft.graph.educationFeedbackResourceOutcome"
     # The actual feedback resource.
-    feedback_resource: Optional[education_resource.EducationResource] = None
+    feedback_resource: Optional[EducationResource] = None
     # The status of the feedback resource. The possible values are: notPublished, pendingPublish, published, failedPublish, unknownFutureValue.
-    resource_status: Optional[education_feedback_resource_outcome_status.EducationFeedbackResourceOutcomeStatus] = None
+    resource_status: Optional[EducationFeedbackResourceOutcomeStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationFeedbackResourceOutcome:
@@ -33,13 +35,17 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_feedback_resource_outcome_status, education_outcome, education_resource
+        from .education_feedback_resource_outcome_status import EducationFeedbackResourceOutcomeStatus
+        from .education_outcome import EducationOutcome
+        from .education_resource import EducationResource
 
-        from . import education_feedback_resource_outcome_status, education_outcome, education_resource
+        from .education_feedback_resource_outcome_status import EducationFeedbackResourceOutcomeStatus
+        from .education_outcome import EducationOutcome
+        from .education_resource import EducationResource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "feedbackResource": lambda n : setattr(self, 'feedback_resource', n.get_object_value(education_resource.EducationResource)),
-            "resourceStatus": lambda n : setattr(self, 'resource_status', n.get_enum_value(education_feedback_resource_outcome_status.EducationFeedbackResourceOutcomeStatus)),
+            "feedbackResource": lambda n : setattr(self, 'feedback_resource', n.get_object_value(EducationResource)),
+            "resourceStatus": lambda n : setattr(self, 'resource_status', n.get_enum_value(EducationFeedbackResourceOutcomeStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

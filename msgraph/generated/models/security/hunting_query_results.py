@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import hunting_row_result, single_property_schema
+    from .hunting_row_result import HuntingRowResult
+    from .single_property_schema import SinglePropertySchema
 
 @dataclass
 class HuntingQueryResults(AdditionalDataHolder, Parsable):
@@ -14,9 +15,9 @@ class HuntingQueryResults(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The results of the hunting query.
-    results: Optional[List[hunting_row_result.HuntingRowResult]] = None
+    results: Optional[List[HuntingRowResult]] = None
     # The schema for the response.
-    schema: Optional[List[single_property_schema.SinglePropertySchema]] = None
+    schema: Optional[List[SinglePropertySchema]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> HuntingQueryResults:
@@ -35,14 +36,16 @@ class HuntingQueryResults(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import hunting_row_result, single_property_schema
+        from .hunting_row_result import HuntingRowResult
+        from .single_property_schema import SinglePropertySchema
 
-        from . import hunting_row_result, single_property_schema
+        from .hunting_row_result import HuntingRowResult
+        from .single_property_schema import SinglePropertySchema
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "results": lambda n : setattr(self, 'results', n.get_collection_of_object_values(hunting_row_result.HuntingRowResult)),
-            "schema": lambda n : setattr(self, 'schema', n.get_collection_of_object_values(single_property_schema.SinglePropertySchema)),
+            "results": lambda n : setattr(self, 'results', n.get_collection_of_object_values(HuntingRowResult)),
+            "schema": lambda n : setattr(self, 'schema', n.get_collection_of_object_values(SinglePropertySchema)),
         }
         return fields
     

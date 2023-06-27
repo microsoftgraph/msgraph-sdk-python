@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_external_tenants
+    from .conditional_access_external_tenants import ConditionalAccessExternalTenants
 
-from . import conditional_access_external_tenants
+from .conditional_access_external_tenants import ConditionalAccessExternalTenants
 
 @dataclass
-class ConditionalAccessAllExternalTenants(conditional_access_external_tenants.ConditionalAccessExternalTenants):
+class ConditionalAccessAllExternalTenants(ConditionalAccessExternalTenants):
     odata_type = "#microsoft.graph.conditionalAccessAllExternalTenants"
     
     @staticmethod
@@ -29,9 +29,9 @@ class ConditionalAccessAllExternalTenants(conditional_access_external_tenants.Co
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_external_tenants
+        from .conditional_access_external_tenants import ConditionalAccessExternalTenants
 
-        from . import conditional_access_external_tenants
+        from .conditional_access_external_tenants import ConditionalAccessExternalTenants
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_instance_decision_item_access_package_assignment_policy_resource, access_review_instance_decision_item_azure_role_resource, access_review_instance_decision_item_service_principal_resource
+    from .access_review_instance_decision_item_access_package_assignment_policy_resource import AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource
+    from .access_review_instance_decision_item_azure_role_resource import AccessReviewInstanceDecisionItemAzureRoleResource
+    from .access_review_instance_decision_item_service_principal_resource import AccessReviewInstanceDecisionItemServicePrincipalResource
 
 @dataclass
 class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, Parsable):
@@ -35,17 +37,17 @@ class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource".casefold():
-            from . import access_review_instance_decision_item_access_package_assignment_policy_resource
+            from .access_review_instance_decision_item_access_package_assignment_policy_resource import AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource
 
-            return access_review_instance_decision_item_access_package_assignment_policy_resource.AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource()
+            return AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemAzureRoleResource".casefold():
-            from . import access_review_instance_decision_item_azure_role_resource
+            from .access_review_instance_decision_item_azure_role_resource import AccessReviewInstanceDecisionItemAzureRoleResource
 
-            return access_review_instance_decision_item_azure_role_resource.AccessReviewInstanceDecisionItemAzureRoleResource()
+            return AccessReviewInstanceDecisionItemAzureRoleResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItemServicePrincipalResource".casefold():
-            from . import access_review_instance_decision_item_service_principal_resource
+            from .access_review_instance_decision_item_service_principal_resource import AccessReviewInstanceDecisionItemServicePrincipalResource
 
-            return access_review_instance_decision_item_service_principal_resource.AccessReviewInstanceDecisionItemServicePrincipalResource()
+            return AccessReviewInstanceDecisionItemServicePrincipalResource()
         return AccessReviewInstanceDecisionItemResource()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -53,9 +55,13 @@ class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_instance_decision_item_access_package_assignment_policy_resource, access_review_instance_decision_item_azure_role_resource, access_review_instance_decision_item_service_principal_resource
+        from .access_review_instance_decision_item_access_package_assignment_policy_resource import AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource
+        from .access_review_instance_decision_item_azure_role_resource import AccessReviewInstanceDecisionItemAzureRoleResource
+        from .access_review_instance_decision_item_service_principal_resource import AccessReviewInstanceDecisionItemServicePrincipalResource
 
-        from . import access_review_instance_decision_item_access_package_assignment_policy_resource, access_review_instance_decision_item_azure_role_resource, access_review_instance_decision_item_service_principal_resource
+        from .access_review_instance_decision_item_access_package_assignment_policy_resource import AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource
+        from .access_review_instance_decision_item_azure_role_resource import AccessReviewInstanceDecisionItemAzureRoleResource
+        from .access_review_instance_decision_item_service_principal_resource import AccessReviewInstanceDecisionItemServicePrincipalResource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

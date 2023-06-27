@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import chat, teams_app_installation
+    from .chat import Chat
+    from .teams_app_installation import TeamsAppInstallation
 
-from . import teams_app_installation
+from .teams_app_installation import TeamsAppInstallation
 
 @dataclass
-class UserScopeTeamsAppInstallation(teams_app_installation.TeamsAppInstallation):
+class UserScopeTeamsAppInstallation(TeamsAppInstallation):
     odata_type = "#microsoft.graph.userScopeTeamsAppInstallation"
     # The chat between the user and Teams app.
-    chat: Optional[chat.Chat] = None
+    chat: Optional[Chat] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserScopeTeamsAppInstallation:
@@ -31,12 +32,14 @@ class UserScopeTeamsAppInstallation(teams_app_installation.TeamsAppInstallation)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import chat, teams_app_installation
+        from .chat import Chat
+        from .teams_app_installation import TeamsAppInstallation
 
-        from . import chat, teams_app_installation
+        from .chat import Chat
+        from .teams_app_installation import TeamsAppInstallation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "chat": lambda n : setattr(self, 'chat', n.get_object_value(chat.Chat)),
+            "chat": lambda n : setattr(self, 'chat', n.get_object_value(Chat)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import meeting_participant_info
+    from .meeting_participant_info import MeetingParticipantInfo
 
 @dataclass
 class MeetingParticipants(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The attendees property
-    attendees: Optional[List[meeting_participant_info.MeetingParticipantInfo]] = None
+    attendees: Optional[List[MeetingParticipantInfo]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The organizer property
-    organizer: Optional[meeting_participant_info.MeetingParticipantInfo] = None
+    organizer: Optional[MeetingParticipantInfo] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingParticipants:
@@ -35,14 +35,14 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import meeting_participant_info
+        from .meeting_participant_info import MeetingParticipantInfo
 
-        from . import meeting_participant_info
+        from .meeting_participant_info import MeetingParticipantInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(meeting_participant_info.MeetingParticipantInfo)),
+            "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(MeetingParticipantInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(meeting_participant_info.MeetingParticipantInfo)),
+            "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(MeetingParticipantInfo)),
         }
         return fields
     

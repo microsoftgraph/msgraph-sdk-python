@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import exchange_id_format
+    from ...models.exchange_id_format import ExchangeIdFormat
 
 @dataclass
 class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,9 +14,9 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
     # The InputIds property
     input_ids: Optional[List[str]] = None
     # The SourceIdType property
-    source_id_type: Optional[exchange_id_format.ExchangeIdFormat] = None
+    source_id_type: Optional[ExchangeIdFormat] = None
     # The TargetIdType property
-    target_id_type: Optional[exchange_id_format.ExchangeIdFormat] = None
+    target_id_type: Optional[ExchangeIdFormat] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TranslateExchangeIdsPostRequestBody:
@@ -35,14 +35,14 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ...models import exchange_id_format
+        from ...models.exchange_id_format import ExchangeIdFormat
 
-        from ...models import exchange_id_format
+        from ...models.exchange_id_format import ExchangeIdFormat
 
         fields: Dict[str, Callable[[Any], None]] = {
             "InputIds": lambda n : setattr(self, 'input_ids', n.get_collection_of_primitive_values(str)),
-            "SourceIdType": lambda n : setattr(self, 'source_id_type', n.get_enum_value(exchange_id_format.ExchangeIdFormat)),
-            "TargetIdType": lambda n : setattr(self, 'target_id_type', n.get_enum_value(exchange_id_format.ExchangeIdFormat)),
+            "SourceIdType": lambda n : setattr(self, 'source_id_type', n.get_enum_value(ExchangeIdFormat)),
+            "TargetIdType": lambda n : setattr(self, 'target_id_type', n.get_enum_value(ExchangeIdFormat)),
         }
         return fields
     

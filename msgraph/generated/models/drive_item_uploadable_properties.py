@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import file_system_info
+    from .file_system_info import FileSystemInfo
 
 @dataclass
 class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
     # Provides an expected file size to perform a quota check prior to upload. Only on OneDrive Personal.
     file_size: Optional[int] = None
     # File system information on client. Read-write.
-    file_system_info: Optional[file_system_info.FileSystemInfo] = None
+    file_system_info: Optional[FileSystemInfo] = None
     # The name of the item (filename and extension). Read-write.
     name: Optional[str] = None
     # The OdataType property
@@ -39,14 +39,14 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import file_system_info
+        from .file_system_info import FileSystemInfo
 
-        from . import file_system_info
+        from .file_system_info import FileSystemInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "fileSize": lambda n : setattr(self, 'file_size', n.get_int_value()),
-            "fileSystemInfo": lambda n : setattr(self, 'file_system_info', n.get_object_value(file_system_info.FileSystemInfo)),
+            "fileSystemInfo": lambda n : setattr(self, 'file_system_info', n.get_object_value(FileSystemInfo)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

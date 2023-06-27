@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import api_authentication_configuration_base, entity
+    from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class IdentityApiConnector(entity.Entity):
+class IdentityApiConnector(Entity):
     # The object which describes the authentication configuration details for calling the API. Basic and PKCS 12 client certificate are supported.
-    authentication_configuration: Optional[api_authentication_configuration_base.ApiAuthenticationConfigurationBase] = None
+    authentication_configuration: Optional[ApiAuthenticationConfigurationBase] = None
     # The name of the API connector.
     display_name: Optional[str] = None
     # The OdataType property
@@ -36,12 +37,14 @@ class IdentityApiConnector(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import api_authentication_configuration_base, entity
+        from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
+        from .entity import Entity
 
-        from . import api_authentication_configuration_base, entity
+        from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationConfiguration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(api_authentication_configuration_base.ApiAuthenticationConfigurationBase)),
+            "authenticationConfiguration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(ApiAuthenticationConfigurationBase)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "targetUrl": lambda n : setattr(self, 'target_url', n.get_str_value()),
         }

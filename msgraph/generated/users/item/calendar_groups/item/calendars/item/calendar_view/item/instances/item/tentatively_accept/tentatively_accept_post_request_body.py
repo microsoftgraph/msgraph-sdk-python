@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ............models import time_slot
+    from ............models.time_slot import TimeSlot
 
 @dataclass
 class TentativelyAcceptPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class TentativelyAcceptPostRequestBody(AdditionalDataHolder, Parsable):
     # The Comment property
     comment: Optional[str] = None
     # The ProposedNewTime property
-    proposed_new_time: Optional[time_slot.TimeSlot] = None
+    proposed_new_time: Optional[TimeSlot] = None
     # The SendResponse property
     send_response: Optional[bool] = None
     
@@ -35,13 +35,13 @@ class TentativelyAcceptPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ............models import time_slot
+        from ............models.time_slot import TimeSlot
 
-        from ............models import time_slot
+        from ............models.time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
             "Comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "ProposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
+            "ProposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(TimeSlot)),
             "SendResponse": lambda n : setattr(self, 'send_response', n.get_bool_value()),
         }
         return fields

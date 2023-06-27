@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import onenote_entity_base_model
+    from .onenote_entity_base_model import OnenoteEntityBaseModel
 
-from . import onenote_entity_base_model
+from .onenote_entity_base_model import OnenoteEntityBaseModel
 
 @dataclass
-class OnenoteResource(onenote_entity_base_model.OnenoteEntityBaseModel):
+class OnenoteResource(OnenoteEntityBaseModel):
     odata_type = "#microsoft.graph.onenoteResource"
     # The content stream
     content: Optional[bytes] = None
@@ -33,9 +33,9 @@ class OnenoteResource(onenote_entity_base_model.OnenoteEntityBaseModel):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import onenote_entity_base_model
+        from .onenote_entity_base_model import OnenoteEntityBaseModel
 
-        from . import onenote_entity_base_model
+        from .onenote_entity_base_model import OnenoteEntityBaseModel
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
@@ -54,7 +54,7 @@ class OnenoteResource(onenote_entity_base_model.OnenoteEntityBaseModel):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("content", self.content)
+        writer.write_bytes_value("content", self.content)
         writer.write_str_value("contentUrl", self.content_url)
     
 

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import item_reference
+    from ......models.item_reference import ItemReference
 
 @dataclass
 class CopyToDefaultContentLocationPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class CopyToDefaultContentLocationPostRequestBody(AdditionalDataHolder, Parsable
     # The destinationFileName property
     destination_file_name: Optional[str] = None
     # The sourceFile property
-    source_file: Optional[item_reference.ItemReference] = None
+    source_file: Optional[ItemReference] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CopyToDefaultContentLocationPostRequestBody:
@@ -33,13 +33,13 @@ class CopyToDefaultContentLocationPostRequestBody(AdditionalDataHolder, Parsable
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models import item_reference
+        from ......models.item_reference import ItemReference
 
-        from ......models import item_reference
+        from ......models.item_reference import ItemReference
 
         fields: Dict[str, Callable[[Any], None]] = {
             "destinationFileName": lambda n : setattr(self, 'destination_file_name', n.get_str_value()),
-            "sourceFile": lambda n : setattr(self, 'source_file', n.get_object_value(item_reference.ItemReference)),
+            "sourceFile": lambda n : setattr(self, 'source_file', n.get_object_value(ItemReference)),
         }
         return fields
     

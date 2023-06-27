@@ -1,36 +1,41 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_assignment_grade_type, education_item_body, entity, identity_set, rubric_level, rubric_quality
+    from .education_assignment_grade_type import EducationAssignmentGradeType
+    from .education_item_body import EducationItemBody
+    from .entity import Entity
+    from .identity_set import IdentitySet
+    from .rubric_level import RubricLevel
+    from .rubric_quality import RubricQuality
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class EducationRubric(entity.Entity):
+class EducationRubric(Entity):
     # The user who created this resource.
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The description of this rubric.
-    description: Optional[education_item_body.EducationItemBody] = None
+    description: Optional[EducationItemBody] = None
     # The name of this rubric.
     display_name: Optional[str] = None
     # The grading type of this rubric -- null for a no-points rubric, or educationAssignmentPointsGradeType for a points rubric.
-    grading: Optional[education_assignment_grade_type.EducationAssignmentGradeType] = None
+    grading: Optional[EducationAssignmentGradeType] = None
     # The last user to modify the resource.
-    last_modified_by: Optional[identity_set.IdentitySet] = None
+    last_modified_by: Optional[IdentitySet] = None
     # Moment in time when the resource was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The collection of levels making up this rubric.
-    levels: Optional[List[rubric_level.RubricLevel]] = None
+    levels: Optional[List[RubricLevel]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The collection of qualities making up this rubric.
-    qualities: Optional[List[rubric_quality.RubricQuality]] = None
+    qualities: Optional[List[RubricQuality]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationRubric:
@@ -49,20 +54,30 @@ class EducationRubric(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_assignment_grade_type, education_item_body, entity, identity_set, rubric_level, rubric_quality
+        from .education_assignment_grade_type import EducationAssignmentGradeType
+        from .education_item_body import EducationItemBody
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .rubric_level import RubricLevel
+        from .rubric_quality import RubricQuality
 
-        from . import education_assignment_grade_type, education_item_body, entity, identity_set, rubric_level, rubric_quality
+        from .education_assignment_grade_type import EducationAssignmentGradeType
+        from .education_item_body import EducationItemBody
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .rubric_level import RubricLevel
+        from .rubric_quality import RubricQuality
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "description": lambda n : setattr(self, 'description', n.get_object_value(education_item_body.EducationItemBody)),
+            "description": lambda n : setattr(self, 'description', n.get_object_value(EducationItemBody)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "grading": lambda n : setattr(self, 'grading', n.get_object_value(education_assignment_grade_type.EducationAssignmentGradeType)),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "grading": lambda n : setattr(self, 'grading', n.get_object_value(EducationAssignmentGradeType)),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "levels": lambda n : setattr(self, 'levels', n.get_collection_of_object_values(rubric_level.RubricLevel)),
-            "qualities": lambda n : setattr(self, 'qualities', n.get_collection_of_object_values(rubric_quality.RubricQuality)),
+            "levels": lambda n : setattr(self, 'levels', n.get_collection_of_object_values(RubricLevel)),
+            "qualities": lambda n : setattr(self, 'qualities', n.get_collection_of_object_values(RubricQuality)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

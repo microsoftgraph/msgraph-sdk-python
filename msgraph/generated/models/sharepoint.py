@@ -4,16 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, sharepoint_settings
+    from .entity import Entity
+    from .sharepoint_settings import SharepointSettings
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Sharepoint(entity.Entity):
+class Sharepoint(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The settings property
-    settings: Optional[sharepoint_settings.SharepointSettings] = None
+    settings: Optional[SharepointSettings] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Sharepoint:
@@ -32,12 +33,14 @@ class Sharepoint(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, sharepoint_settings
+        from .entity import Entity
+        from .sharepoint_settings import SharepointSettings
 
-        from . import entity, sharepoint_settings
+        from .entity import Entity
+        from .sharepoint_settings import SharepointSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "settings": lambda n : setattr(self, 'settings', n.get_object_value(sharepoint_settings.SharepointSettings)),
+            "settings": lambda n : setattr(self, 'settings', n.get_object_value(SharepointSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

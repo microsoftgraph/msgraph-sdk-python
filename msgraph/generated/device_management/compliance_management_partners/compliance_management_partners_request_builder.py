@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import compliance_management_partner, compliance_management_partner_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import compliance_management_partner_item_request_builder
+    from ...models.compliance_management_partner import ComplianceManagementPartner
+    from ...models.compliance_management_partner_collection_response import ComplianceManagementPartnerCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.compliance_management_partner_item_request_builder import ComplianceManagementPartnerItemRequestBuilder
 
 class ComplianceManagementPartnersRequestBuilder():
     """
@@ -37,71 +38,71 @@ class ComplianceManagementPartnersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_compliance_management_partner_id(self,compliance_management_partner_id: str) -> compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder:
+    def by_compliance_management_partner_id(self,compliance_management_partner_id: str) -> ComplianceManagementPartnerItemRequestBuilder:
         """
         Provides operations to manage the complianceManagementPartners property of the microsoft.graph.deviceManagement entity.
         Args:
             compliance_management_partner_id: Unique identifier of the item
-        Returns: compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder
+        Returns: ComplianceManagementPartnerItemRequestBuilder
         """
         if not compliance_management_partner_id:
             raise TypeError("compliance_management_partner_id cannot be null.")
-        from .item import compliance_management_partner_item_request_builder
+        from .item.compliance_management_partner_item_request_builder import ComplianceManagementPartnerItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["complianceManagementPartner%2Did"] = compliance_management_partner_id
-        return compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ComplianceManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ComplianceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[compliance_management_partner_collection_response.ComplianceManagementPartnerCollectionResponse]:
+    async def get(self,request_configuration: Optional[ComplianceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[ComplianceManagementPartnerCollectionResponse]:
         """
-        The list of Compliance Management Partners configured by the tenant.
+        List properties and relationships of the complianceManagementPartner objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[compliance_management_partner_collection_response.ComplianceManagementPartnerCollectionResponse]
+        Returns: Optional[ComplianceManagementPartnerCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import compliance_management_partner_collection_response
+        from ...models.compliance_management_partner_collection_response import ComplianceManagementPartnerCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, compliance_management_partner_collection_response.ComplianceManagementPartnerCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ComplianceManagementPartnerCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[compliance_management_partner.ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> Optional[compliance_management_partner.ComplianceManagementPartner]:
+    async def post(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> Optional[ComplianceManagementPartner]:
         """
-        Create new navigation property to complianceManagementPartners for deviceManagement
+        Create a new complianceManagementPartner object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[compliance_management_partner.ComplianceManagementPartner]
+        Returns: Optional[ComplianceManagementPartner]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import compliance_management_partner
+        from ...models.compliance_management_partner import ComplianceManagementPartner
 
-        return await self.request_adapter.send_async(request_info, compliance_management_partner.ComplianceManagementPartner, error_mapping)
+        return await self.request_adapter.send_async(request_info, ComplianceManagementPartner, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ComplianceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of Compliance Management Partners configured by the tenant.
+        List properties and relationships of the complianceManagementPartner objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class ComplianceManagementPartnersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[compliance_management_partner.ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to complianceManagementPartners for deviceManagement
+        Create a new complianceManagementPartner object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class ComplianceManagementPartnersRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ComplianceManagementPartnersRequestBuilderGetQueryParameters():
         """
-        The list of Compliance Management Partners configured by the tenant.
+        List properties and relationships of the complianceManagementPartner objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

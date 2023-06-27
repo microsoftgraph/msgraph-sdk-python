@@ -1,21 +1,21 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import schedule_change_request
+    from .schedule_change_request import ScheduleChangeRequest
 
-from . import schedule_change_request
+from .schedule_change_request import ScheduleChangeRequest
 
 @dataclass
-class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
+class TimeOffRequest(ScheduleChangeRequest):
     odata_type = "#microsoft.graph.timeOffRequest"
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    end_date_time: Optional[datetime] = None
+    end_date_time: Optional[datetime.datetime] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     # The reason for the time off.
     time_off_reason_id: Optional[str] = None
     
@@ -36,9 +36,9 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import schedule_change_request
+        from .schedule_change_request import ScheduleChangeRequest
 
-        from . import schedule_change_request
+        from .schedule_change_request import ScheduleChangeRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
@@ -58,8 +58,8 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
         writer.write_str_value("timeOffReasonId", self.time_off_reason_id)
     
 

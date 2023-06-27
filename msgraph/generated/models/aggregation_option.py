@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import bucket_aggregation_definition
+    from .bucket_aggregation_definition import BucketAggregationDefinition
 
 @dataclass
 class AggregationOption(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The bucketDefinition property
-    bucket_definition: Optional[bucket_aggregation_definition.BucketAggregationDefinition] = None
+    bucket_definition: Optional[BucketAggregationDefinition] = None
     # Computes aggregation on the field while the field exists in current entity type. Required.
     field: Optional[str] = None
     # The OdataType property
@@ -37,12 +37,12 @@ class AggregationOption(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import bucket_aggregation_definition
+        from .bucket_aggregation_definition import BucketAggregationDefinition
 
-        from . import bucket_aggregation_definition
+        from .bucket_aggregation_definition import BucketAggregationDefinition
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "bucketDefinition": lambda n : setattr(self, 'bucket_definition', n.get_object_value(bucket_aggregation_definition.BucketAggregationDefinition)),
+            "bucketDefinition": lambda n : setattr(self, 'bucket_definition', n.get_object_value(BucketAggregationDefinition)),
             "field": lambda n : setattr(self, 'field', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),

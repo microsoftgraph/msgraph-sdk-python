@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, outlook_category
+    from .entity import Entity
+    from .outlook_category import OutlookCategory
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class OutlookUser(entity.Entity):
+class OutlookUser(Entity):
     # A list of categories defined for the user.
-    master_categories: Optional[List[outlook_category.OutlookCategory]] = None
+    master_categories: Optional[List[OutlookCategory]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class OutlookUser(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, outlook_category
+        from .entity import Entity
+        from .outlook_category import OutlookCategory
 
-        from . import entity, outlook_category
+        from .entity import Entity
+        from .outlook_category import OutlookCategory
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "masterCategories": lambda n : setattr(self, 'master_categories', n.get_collection_of_object_values(outlook_category.OutlookCategory)),
+            "masterCategories": lambda n : setattr(self, 'master_categories', n.get_collection_of_object_values(OutlookCategory)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

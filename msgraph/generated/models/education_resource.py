@@ -1,11 +1,19 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_excel_resource, education_external_resource, education_file_resource, education_link_resource, education_media_resource, education_power_point_resource, education_teams_app_resource, education_word_resource, identity_set
+    from .education_excel_resource import EducationExcelResource
+    from .education_external_resource import EducationExternalResource
+    from .education_file_resource import EducationFileResource
+    from .education_link_resource import EducationLinkResource
+    from .education_media_resource import EducationMediaResource
+    from .education_power_point_resource import EducationPowerPointResource
+    from .education_teams_app_resource import EducationTeamsAppResource
+    from .education_word_resource import EducationWordResource
+    from .identity_set import IdentitySet
 
 @dataclass
 class EducationResource(AdditionalDataHolder, Parsable):
@@ -13,15 +21,15 @@ class EducationResource(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The individual who created the resource.
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # Moment in time when the resource was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Display name of resource.
     display_name: Optional[str] = None
     # The last user to modify the resource.
-    last_modified_by: Optional[identity_set.IdentitySet] = None
+    last_modified_by: Optional[IdentitySet] = None
     # Moment in time when the resource was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -40,37 +48,37 @@ class EducationResource(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationExcelResource".casefold():
-            from . import education_excel_resource
+            from .education_excel_resource import EducationExcelResource
 
-            return education_excel_resource.EducationExcelResource()
+            return EducationExcelResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationExternalResource".casefold():
-            from . import education_external_resource
+            from .education_external_resource import EducationExternalResource
 
-            return education_external_resource.EducationExternalResource()
+            return EducationExternalResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationFileResource".casefold():
-            from . import education_file_resource
+            from .education_file_resource import EducationFileResource
 
-            return education_file_resource.EducationFileResource()
+            return EducationFileResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationLinkResource".casefold():
-            from . import education_link_resource
+            from .education_link_resource import EducationLinkResource
 
-            return education_link_resource.EducationLinkResource()
+            return EducationLinkResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationMediaResource".casefold():
-            from . import education_media_resource
+            from .education_media_resource import EducationMediaResource
 
-            return education_media_resource.EducationMediaResource()
+            return EducationMediaResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationPowerPointResource".casefold():
-            from . import education_power_point_resource
+            from .education_power_point_resource import EducationPowerPointResource
 
-            return education_power_point_resource.EducationPowerPointResource()
+            return EducationPowerPointResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationTeamsAppResource".casefold():
-            from . import education_teams_app_resource
+            from .education_teams_app_resource import EducationTeamsAppResource
 
-            return education_teams_app_resource.EducationTeamsAppResource()
+            return EducationTeamsAppResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationWordResource".casefold():
-            from . import education_word_resource
+            from .education_word_resource import EducationWordResource
 
-            return education_word_resource.EducationWordResource()
+            return EducationWordResource()
         return EducationResource()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -78,15 +86,31 @@ class EducationResource(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_excel_resource, education_external_resource, education_file_resource, education_link_resource, education_media_resource, education_power_point_resource, education_teams_app_resource, education_word_resource, identity_set
+        from .education_excel_resource import EducationExcelResource
+        from .education_external_resource import EducationExternalResource
+        from .education_file_resource import EducationFileResource
+        from .education_link_resource import EducationLinkResource
+        from .education_media_resource import EducationMediaResource
+        from .education_power_point_resource import EducationPowerPointResource
+        from .education_teams_app_resource import EducationTeamsAppResource
+        from .education_word_resource import EducationWordResource
+        from .identity_set import IdentitySet
 
-        from . import education_excel_resource, education_external_resource, education_file_resource, education_link_resource, education_media_resource, education_power_point_resource, education_teams_app_resource, education_word_resource, identity_set
+        from .education_excel_resource import EducationExcelResource
+        from .education_external_resource import EducationExternalResource
+        from .education_file_resource import EducationFileResource
+        from .education_link_resource import EducationLinkResource
+        from .education_media_resource import EducationMediaResource
+        from .education_power_point_resource import EducationPowerPointResource
+        from .education_teams_app_resource import EducationTeamsAppResource
+        from .education_word_resource import EducationWordResource
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

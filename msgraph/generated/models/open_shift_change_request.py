@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import schedule_change_request
+    from .schedule_change_request import ScheduleChangeRequest
 
-from . import schedule_change_request
+from .schedule_change_request import ScheduleChangeRequest
 
 @dataclass
-class OpenShiftChangeRequest(schedule_change_request.ScheduleChangeRequest):
+class OpenShiftChangeRequest(ScheduleChangeRequest):
     odata_type = "#microsoft.graph.openShiftChangeRequest"
     # ID for the open shift.
     open_shift_id: Optional[str] = None
@@ -31,9 +31,9 @@ class OpenShiftChangeRequest(schedule_change_request.ScheduleChangeRequest):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import schedule_change_request
+        from .schedule_change_request import ScheduleChangeRequest
 
-        from . import schedule_change_request
+        from .schedule_change_request import ScheduleChangeRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
             "openShiftId": lambda n : setattr(self, 'open_shift_id', n.get_str_value()),

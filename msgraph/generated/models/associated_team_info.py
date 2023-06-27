@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import team_info
+    from .team_info import TeamInfo
 
-from . import team_info
+from .team_info import TeamInfo
 
 @dataclass
-class AssociatedTeamInfo(team_info.TeamInfo):
+class AssociatedTeamInfo(TeamInfo):
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -30,9 +30,9 @@ class AssociatedTeamInfo(team_info.TeamInfo):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import team_info
+        from .team_info import TeamInfo
 
-        from . import team_info
+        from .team_info import TeamInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

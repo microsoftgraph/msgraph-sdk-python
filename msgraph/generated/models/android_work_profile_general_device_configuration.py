@@ -4,12 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_work_profile_cross_profile_data_sharing_type, android_work_profile_default_app_permission_policy_type, android_work_profile_required_password_type, device_configuration
+    from .android_work_profile_cross_profile_data_sharing_type import AndroidWorkProfileCrossProfileDataSharingType
+    from .android_work_profile_default_app_permission_policy_type import AndroidWorkProfileDefaultAppPermissionPolicyType
+    from .android_work_profile_required_password_type import AndroidWorkProfileRequiredPasswordType
+    from .device_configuration import DeviceConfiguration
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
+class AndroidWorkProfileGeneralDeviceConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.androidWorkProfileGeneralDeviceConfiguration"
     # Indicates whether or not to block fingerprint unlock.
     password_block_fingerprint_unlock: Optional[bool] = None
@@ -24,7 +27,7 @@ class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceCo
     # Number of previous passwords to block. Valid values 0 to 24
     password_previous_password_block_count: Optional[int] = None
     # Android Work Profile required password type.
-    password_required_type: Optional[android_work_profile_required_password_type.AndroidWorkProfileRequiredPasswordType] = None
+    password_required_type: Optional[AndroidWorkProfileRequiredPasswordType] = None
     # Number of sign in failures allowed before factory reset. Valid values 1 to 16
     password_sign_in_failure_count_before_factory_reset: Optional[int] = None
     # Require the Android Verify apps feature is turned on.
@@ -46,9 +49,9 @@ class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceCo
     # Allow bluetooth devices to access enterprise contacts.
     work_profile_bluetooth_enable_contact_sharing: Optional[bool] = None
     # Android Work Profile cross profile data sharing type.
-    work_profile_data_sharing_type: Optional[android_work_profile_cross_profile_data_sharing_type.AndroidWorkProfileCrossProfileDataSharingType] = None
+    work_profile_data_sharing_type: Optional[AndroidWorkProfileCrossProfileDataSharingType] = None
     # Android Work Profile default app permission policy type.
-    work_profile_default_app_permission_policy: Optional[android_work_profile_default_app_permission_policy_type.AndroidWorkProfileDefaultAppPermissionPolicyType] = None
+    work_profile_default_app_permission_policy: Optional[AndroidWorkProfileDefaultAppPermissionPolicyType] = None
     # Indicates whether or not to block fingerprint unlock for work profile.
     work_profile_password_block_fingerprint_unlock: Optional[bool] = None
     # Indicates whether or not to block Smart Lock and other trust agents for work profile.
@@ -74,7 +77,7 @@ class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceCo
     # Number of previous work profile passwords to block. Valid values 0 to 24
     work_profile_password_previous_password_block_count: Optional[int] = None
     # Android Work Profile required password type.
-    work_profile_password_required_type: Optional[android_work_profile_required_password_type.AndroidWorkProfileRequiredPasswordType] = None
+    work_profile_password_required_type: Optional[AndroidWorkProfileRequiredPasswordType] = None
     # Number of sign in failures allowed before work profile is removed and all corporate data deleted. Valid values 1 to 16
     work_profile_password_sign_in_failure_count_before_factory_reset: Optional[int] = None
     # Password is required or not for work profile
@@ -97,9 +100,15 @@ class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceCo
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_work_profile_cross_profile_data_sharing_type, android_work_profile_default_app_permission_policy_type, android_work_profile_required_password_type, device_configuration
+        from .android_work_profile_cross_profile_data_sharing_type import AndroidWorkProfileCrossProfileDataSharingType
+        from .android_work_profile_default_app_permission_policy_type import AndroidWorkProfileDefaultAppPermissionPolicyType
+        from .android_work_profile_required_password_type import AndroidWorkProfileRequiredPasswordType
+        from .device_configuration import DeviceConfiguration
 
-        from . import android_work_profile_cross_profile_data_sharing_type, android_work_profile_default_app_permission_policy_type, android_work_profile_required_password_type, device_configuration
+        from .android_work_profile_cross_profile_data_sharing_type import AndroidWorkProfileCrossProfileDataSharingType
+        from .android_work_profile_default_app_permission_policy_type import AndroidWorkProfileDefaultAppPermissionPolicyType
+        from .android_work_profile_required_password_type import AndroidWorkProfileRequiredPasswordType
+        from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "passwordBlockFingerprintUnlock": lambda n : setattr(self, 'password_block_fingerprint_unlock', n.get_bool_value()),
@@ -108,7 +117,7 @@ class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceCo
             "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
             "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
             "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(android_work_profile_required_password_type.AndroidWorkProfileRequiredPasswordType)),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(AndroidWorkProfileRequiredPasswordType)),
             "passwordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
             "securityRequireVerifyApps": lambda n : setattr(self, 'security_require_verify_apps', n.get_bool_value()),
             "workProfileBlockAddingAccounts": lambda n : setattr(self, 'work_profile_block_adding_accounts', n.get_bool_value()),
@@ -119,8 +128,8 @@ class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceCo
             "workProfileBlockNotificationsWhileDeviceLocked": lambda n : setattr(self, 'work_profile_block_notifications_while_device_locked', n.get_bool_value()),
             "workProfileBlockScreenCapture": lambda n : setattr(self, 'work_profile_block_screen_capture', n.get_bool_value()),
             "workProfileBluetoothEnableContactSharing": lambda n : setattr(self, 'work_profile_bluetooth_enable_contact_sharing', n.get_bool_value()),
-            "workProfileDataSharingType": lambda n : setattr(self, 'work_profile_data_sharing_type', n.get_enum_value(android_work_profile_cross_profile_data_sharing_type.AndroidWorkProfileCrossProfileDataSharingType)),
-            "workProfileDefaultAppPermissionPolicy": lambda n : setattr(self, 'work_profile_default_app_permission_policy', n.get_enum_value(android_work_profile_default_app_permission_policy_type.AndroidWorkProfileDefaultAppPermissionPolicyType)),
+            "workProfileDataSharingType": lambda n : setattr(self, 'work_profile_data_sharing_type', n.get_enum_value(AndroidWorkProfileCrossProfileDataSharingType)),
+            "workProfileDefaultAppPermissionPolicy": lambda n : setattr(self, 'work_profile_default_app_permission_policy', n.get_enum_value(AndroidWorkProfileDefaultAppPermissionPolicyType)),
             "workProfilePasswordBlockFingerprintUnlock": lambda n : setattr(self, 'work_profile_password_block_fingerprint_unlock', n.get_bool_value()),
             "workProfilePasswordBlockTrustAgents": lambda n : setattr(self, 'work_profile_password_block_trust_agents', n.get_bool_value()),
             "workProfilePasswordExpirationDays": lambda n : setattr(self, 'work_profile_password_expiration_days', n.get_int_value()),
@@ -133,7 +142,7 @@ class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceCo
             "workProfilePasswordMinimumLength": lambda n : setattr(self, 'work_profile_password_minimum_length', n.get_int_value()),
             "workProfilePasswordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'work_profile_password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
             "workProfilePasswordPreviousPasswordBlockCount": lambda n : setattr(self, 'work_profile_password_previous_password_block_count', n.get_int_value()),
-            "workProfilePasswordRequiredType": lambda n : setattr(self, 'work_profile_password_required_type', n.get_enum_value(android_work_profile_required_password_type.AndroidWorkProfileRequiredPasswordType)),
+            "workProfilePasswordRequiredType": lambda n : setattr(self, 'work_profile_password_required_type', n.get_enum_value(AndroidWorkProfileRequiredPasswordType)),
             "workProfilePasswordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'work_profile_password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
             "workProfileRequirePassword": lambda n : setattr(self, 'work_profile_require_password', n.get_bool_value()),
         }

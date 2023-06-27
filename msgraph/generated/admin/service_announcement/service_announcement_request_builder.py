@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import service_announcement
-    from ...models.o_data_errors import o_data_error
-    from .health_overviews import health_overviews_request_builder
-    from .issues import issues_request_builder
-    from .messages import messages_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.service_announcement import ServiceAnnouncement
+    from .health_overviews.health_overviews_request_builder import HealthOverviewsRequestBuilder
+    from .issues.issues_request_builder import IssuesRequestBuilder
+    from .messages.messages_request_builder import MessagesRequestBuilder
 
 class ServiceAnnouncementRequestBuilder():
     """
@@ -47,62 +47,62 @@ class ServiceAnnouncementRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ServiceAnnouncementRequestBuilderGetRequestConfiguration] = None) -> Optional[service_announcement.ServiceAnnouncement]:
+    async def get(self,request_configuration: Optional[ServiceAnnouncementRequestBuilderGetRequestConfiguration] = None) -> Optional[ServiceAnnouncement]:
         """
         A container for service communications resources. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[service_announcement.ServiceAnnouncement]
+        Returns: Optional[ServiceAnnouncement]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import service_announcement
+        from ...models.service_announcement import ServiceAnnouncement
 
-        return await self.request_adapter.send_async(request_info, service_announcement.ServiceAnnouncement, error_mapping)
+        return await self.request_adapter.send_async(request_info, ServiceAnnouncement, error_mapping)
     
-    async def patch(self,body: Optional[service_announcement.ServiceAnnouncement] = None, request_configuration: Optional[ServiceAnnouncementRequestBuilderPatchRequestConfiguration] = None) -> Optional[service_announcement.ServiceAnnouncement]:
+    async def patch(self,body: Optional[ServiceAnnouncement] = None, request_configuration: Optional[ServiceAnnouncementRequestBuilderPatchRequestConfiguration] = None) -> Optional[ServiceAnnouncement]:
         """
         Update the navigation property serviceAnnouncement in admin
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[service_announcement.ServiceAnnouncement]
+        Returns: Optional[ServiceAnnouncement]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import service_announcement
+        from ...models.service_announcement import ServiceAnnouncement
 
-        return await self.request_adapter.send_async(request_info, service_announcement.ServiceAnnouncement, error_mapping)
+        return await self.request_adapter.send_async(request_info, ServiceAnnouncement, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ServiceAnnouncementRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class ServiceAnnouncementRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[service_announcement.ServiceAnnouncement] = None, request_configuration: Optional[ServiceAnnouncementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ServiceAnnouncement] = None, request_configuration: Optional[ServiceAnnouncementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property serviceAnnouncement in admin
         Args:
@@ -160,31 +160,31 @@ class ServiceAnnouncementRequestBuilder():
         return request_info
     
     @property
-    def health_overviews(self) -> health_overviews_request_builder.HealthOverviewsRequestBuilder:
+    def health_overviews(self) -> HealthOverviewsRequestBuilder:
         """
         Provides operations to manage the healthOverviews property of the microsoft.graph.serviceAnnouncement entity.
         """
-        from .health_overviews import health_overviews_request_builder
+        from .health_overviews.health_overviews_request_builder import HealthOverviewsRequestBuilder
 
-        return health_overviews_request_builder.HealthOverviewsRequestBuilder(self.request_adapter, self.path_parameters)
+        return HealthOverviewsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def issues(self) -> issues_request_builder.IssuesRequestBuilder:
+    def issues(self) -> IssuesRequestBuilder:
         """
         Provides operations to manage the issues property of the microsoft.graph.serviceAnnouncement entity.
         """
-        from .issues import issues_request_builder
+        from .issues.issues_request_builder import IssuesRequestBuilder
 
-        return issues_request_builder.IssuesRequestBuilder(self.request_adapter, self.path_parameters)
+        return IssuesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def messages(self) -> messages_request_builder.MessagesRequestBuilder:
+    def messages(self) -> MessagesRequestBuilder:
         """
         Provides operations to manage the messages property of the microsoft.graph.serviceAnnouncement entity.
         """
-        from .messages import messages_request_builder
+        from .messages.messages_request_builder import MessagesRequestBuilder
 
-        return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
+        return MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ServiceAnnouncementRequestBuilderDeleteRequestConfiguration():

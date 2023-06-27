@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import teams_app_definition
-    from ......models.o_data_errors import o_data_error
-    from .bot import bot_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.teams_app_definition import TeamsAppDefinition
+    from .bot.bot_request_builder import BotRequestBuilder
 
 class TeamsAppDefinitionItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class TeamsAppDefinitionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_app_definition.TeamsAppDefinition]:
+    async def get(self,request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsAppDefinition]:
         """
         The details for each version of the app.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teams_app_definition.TeamsAppDefinition]
+        Returns: Optional[TeamsAppDefinition]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import teams_app_definition
+        from ......models.teams_app_definition import TeamsAppDefinition
 
-        return await self.request_adapter.send_async(request_info, teams_app_definition.TeamsAppDefinition, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamsAppDefinition, error_mapping)
     
-    async def patch(self,body: Optional[teams_app_definition.TeamsAppDefinition] = None, request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[teams_app_definition.TeamsAppDefinition]:
+    async def patch(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TeamsAppDefinition]:
         """
         Publish an app to the Microsoft Teams apps catalog.Specifically, this API publishes the app to your organization's catalog (the tenant app catalog);the created resource will have a **distributionMethod** property value of `organization`. The **requiresReview** property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teams_app_definition.TeamsAppDefinition]
+        Returns: Optional[TeamsAppDefinition]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import teams_app_definition
+        from ......models.teams_app_definition import TeamsAppDefinition
 
-        return await self.request_adapter.send_async(request_info, teams_app_definition.TeamsAppDefinition, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamsAppDefinition, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class TeamsAppDefinitionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[teams_app_definition.TeamsAppDefinition] = None, request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Publish an app to the Microsoft Teams apps catalog.Specifically, this API publishes the app to your organization's catalog (the tenant app catalog);the created resource will have a **distributionMethod** property value of `organization`. The **requiresReview** property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center.
         Args:
@@ -158,13 +158,13 @@ class TeamsAppDefinitionItemRequestBuilder():
         return request_info
     
     @property
-    def bot(self) -> bot_request_builder.BotRequestBuilder:
+    def bot(self) -> BotRequestBuilder:
         """
         Provides operations to manage the bot property of the microsoft.graph.teamsAppDefinition entity.
         """
-        from .bot import bot_request_builder
+        from .bot.bot_request_builder import BotRequestBuilder
 
-        return bot_request_builder.BotRequestBuilder(self.request_adapter, self.path_parameters)
+        return BotRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TeamsAppDefinitionItemRequestBuilderDeleteRequestConfiguration():

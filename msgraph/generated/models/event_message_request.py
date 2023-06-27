@@ -4,23 +4,26 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import date_time_time_zone, event_message, location, meeting_request_type
+    from .date_time_time_zone import DateTimeTimeZone
+    from .event_message import EventMessage
+    from .location import Location
+    from .meeting_request_type import MeetingRequestType
 
-from . import event_message
+from .event_message import EventMessage
 
 @dataclass
-class EventMessageRequest(event_message.EventMessage):
+class EventMessageRequest(EventMessage):
     odata_type = "#microsoft.graph.eventMessageRequest"
     # True if the meeting organizer allows invitees to propose a new time when responding, false otherwise. Optional. Default is true.
     allow_new_time_proposals: Optional[bool] = None
     # The meetingRequestType property
-    meeting_request_type: Optional[meeting_request_type.MeetingRequestType] = None
+    meeting_request_type: Optional[MeetingRequestType] = None
     # If the meeting update changes the meeting end time, this property specifies the previous meeting end time.
-    previous_end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    previous_end_date_time: Optional[DateTimeTimeZone] = None
     # If the meeting update changes the meeting location, this property specifies the previous meeting location.
-    previous_location: Optional[location.Location] = None
+    previous_location: Optional[Location] = None
     # If the meeting update changes the meeting start time, this property specifies the previous meeting start time.
-    previous_start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    previous_start_date_time: Optional[DateTimeTimeZone] = None
     # Set to true if the sender would like the invitee to send a response to the requested meeting.
     response_requested: Optional[bool] = None
     
@@ -41,16 +44,22 @@ class EventMessageRequest(event_message.EventMessage):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import date_time_time_zone, event_message, location, meeting_request_type
+        from .date_time_time_zone import DateTimeTimeZone
+        from .event_message import EventMessage
+        from .location import Location
+        from .meeting_request_type import MeetingRequestType
 
-        from . import date_time_time_zone, event_message, location, meeting_request_type
+        from .date_time_time_zone import DateTimeTimeZone
+        from .event_message import EventMessage
+        from .location import Location
+        from .meeting_request_type import MeetingRequestType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowNewTimeProposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
-            "meetingRequestType": lambda n : setattr(self, 'meeting_request_type', n.get_enum_value(meeting_request_type.MeetingRequestType)),
-            "previousEndDateTime": lambda n : setattr(self, 'previous_end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "previousLocation": lambda n : setattr(self, 'previous_location', n.get_object_value(location.Location)),
-            "previousStartDateTime": lambda n : setattr(self, 'previous_start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "meetingRequestType": lambda n : setattr(self, 'meeting_request_type', n.get_enum_value(MeetingRequestType)),
+            "previousEndDateTime": lambda n : setattr(self, 'previous_end_date_time', n.get_object_value(DateTimeTimeZone)),
+            "previousLocation": lambda n : setattr(self, 'previous_location', n.get_object_value(Location)),
+            "previousStartDateTime": lambda n : setattr(self, 'previous_start_date_time', n.get_object_value(DateTimeTimeZone)),
             "responseRequested": lambda n : setattr(self, 'response_requested', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

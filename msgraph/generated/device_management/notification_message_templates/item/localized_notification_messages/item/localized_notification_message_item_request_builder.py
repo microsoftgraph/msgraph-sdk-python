@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import localized_notification_message
-    from ......models.o_data_errors import o_data_error
+    from ......models.localized_notification_message import LocalizedNotificationMessage
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class LocalizedNotificationMessageItemRequestBuilder():
     """
@@ -37,73 +37,73 @@ class LocalizedNotificationMessageItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property localizedNotificationMessages for deviceManagement
+        Deletes a localizedNotificationMessage.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[localized_notification_message.LocalizedNotificationMessage]:
+    async def get(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[LocalizedNotificationMessage]:
         """
-        The list of localized messages for this Notification Message Template.
+        Read properties and relationships of the localizedNotificationMessage object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[localized_notification_message.LocalizedNotificationMessage]
+        Returns: Optional[LocalizedNotificationMessage]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import localized_notification_message
+        from ......models.localized_notification_message import LocalizedNotificationMessage
 
-        return await self.request_adapter.send_async(request_info, localized_notification_message.LocalizedNotificationMessage, error_mapping)
+        return await self.request_adapter.send_async(request_info, LocalizedNotificationMessage, error_mapping)
     
-    async def patch(self,body: Optional[localized_notification_message.LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[localized_notification_message.LocalizedNotificationMessage]:
+    async def patch(self,body: Optional[LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[LocalizedNotificationMessage]:
         """
-        Update the navigation property localizedNotificationMessages in deviceManagement
+        Update the properties of a localizedNotificationMessage object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[localized_notification_message.LocalizedNotificationMessage]
+        Returns: Optional[LocalizedNotificationMessage]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import localized_notification_message
+        from ......models.localized_notification_message import LocalizedNotificationMessage
 
-        return await self.request_adapter.send_async(request_info, localized_notification_message.LocalizedNotificationMessage, error_mapping)
+        return await self.request_adapter.send_async(request_info, LocalizedNotificationMessage, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property localizedNotificationMessages for deviceManagement
+        Deletes a localizedNotificationMessage.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of localized messages for this Notification Message Template.
+        Read properties and relationships of the localizedNotificationMessage object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class LocalizedNotificationMessageItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[localized_notification_message.LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property localizedNotificationMessages in deviceManagement
+        Update the properties of a localizedNotificationMessage object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
     @dataclass
     class LocalizedNotificationMessageItemRequestBuilderGetQueryParameters():
         """
-        The list of localized messages for this Notification Message Template.
+        Read properties and relationships of the localizedNotificationMessage object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

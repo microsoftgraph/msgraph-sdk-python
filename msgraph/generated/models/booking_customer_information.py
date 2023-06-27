@@ -4,21 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import booking_customer_information_base, booking_question_answer, location
+    from .booking_customer_information_base import BookingCustomerInformationBase
+    from .booking_question_answer import BookingQuestionAnswer
+    from .location import Location
 
-from . import booking_customer_information_base
+from .booking_customer_information_base import BookingCustomerInformationBase
 
 @dataclass
-class BookingCustomerInformation(booking_customer_information_base.BookingCustomerInformationBase):
+class BookingCustomerInformation(BookingCustomerInformationBase):
     odata_type = "#microsoft.graph.bookingCustomerInformation"
     # It consists of the list of custom questions and answers given by the customer as part of the appointment
-    custom_question_answers: Optional[List[booking_question_answer.BookingQuestionAnswer]] = None
+    custom_question_answers: Optional[List[BookingQuestionAnswer]] = None
     # The ID of the bookingCustomer for this appointment. If no ID is specified when an appointment is created, then a new bookingCustomer object is created. Once set, you should consider the customerId immutable.
     customer_id: Optional[str] = None
     # The SMTP address of the bookingCustomer who is booking the appointment
     email_address: Optional[str] = None
     # Represents location information for the bookingCustomer who is booking the appointment.
-    location: Optional[location.Location] = None
+    location: Optional[Location] = None
     # The customer's name.
     name: Optional[str] = None
     # Notes from the customer associated with this appointment. You can get the value only when reading this bookingAppointment by its ID. You can set this property only when initially creating an appointment with a new customer. After that point, the value is computed from the customer represented by the customerId.
@@ -45,15 +47,19 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_customer_information_base, booking_question_answer, location
+        from .booking_customer_information_base import BookingCustomerInformationBase
+        from .booking_question_answer import BookingQuestionAnswer
+        from .location import Location
 
-        from . import booking_customer_information_base, booking_question_answer, location
+        from .booking_customer_information_base import BookingCustomerInformationBase
+        from .booking_question_answer import BookingQuestionAnswer
+        from .location import Location
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "customQuestionAnswers": lambda n : setattr(self, 'custom_question_answers', n.get_collection_of_object_values(booking_question_answer.BookingQuestionAnswer)),
+            "customQuestionAnswers": lambda n : setattr(self, 'custom_question_answers', n.get_collection_of_object_values(BookingQuestionAnswer)),
             "customerId": lambda n : setattr(self, 'customer_id', n.get_str_value()),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "location": lambda n : setattr(self, 'location', n.get_object_value(location.Location)),
+            "location": lambda n : setattr(self, 'location', n.get_object_value(Location)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),

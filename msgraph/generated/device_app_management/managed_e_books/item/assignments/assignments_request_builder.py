@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import managed_e_book_assignment, managed_e_book_assignment_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import managed_e_book_assignment_item_request_builder
+    from .....models.managed_e_book_assignment import ManagedEBookAssignment
+    from .....models.managed_e_book_assignment_collection_response import ManagedEBookAssignmentCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.managed_e_book_assignment_item_request_builder import ManagedEBookAssignmentItemRequestBuilder
 
 class AssignmentsRequestBuilder():
     """
@@ -37,71 +38,71 @@ class AssignmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_managed_e_book_assignment_id(self,managed_e_book_assignment_id: str) -> managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder:
+    def by_managed_e_book_assignment_id(self,managed_e_book_assignment_id: str) -> ManagedEBookAssignmentItemRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.managedEBook entity.
         Args:
             managed_e_book_assignment_id: Unique identifier of the item
-        Returns: managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder
+        Returns: ManagedEBookAssignmentItemRequestBuilder
         """
         if not managed_e_book_assignment_id:
             raise TypeError("managed_e_book_assignment_id cannot be null.")
-        from .item import managed_e_book_assignment_item_request_builder
+        from .item.managed_e_book_assignment_item_request_builder import ManagedEBookAssignmentItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedEBookAssignment%2Did"] = managed_e_book_assignment_id
-        return managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ManagedEBookAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_e_book_assignment_collection_response.ManagedEBookAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedEBookAssignmentCollectionResponse]:
         """
-        The list of assignments for this eBook.
+        List properties and relationships of the managedEBookAssignment objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_e_book_assignment_collection_response.ManagedEBookAssignmentCollectionResponse]
+        Returns: Optional[ManagedEBookAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import managed_e_book_assignment_collection_response
+        from .....models.managed_e_book_assignment_collection_response import ManagedEBookAssignmentCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, managed_e_book_assignment_collection_response.ManagedEBookAssignmentCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedEBookAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[managed_e_book_assignment.ManagedEBookAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[managed_e_book_assignment.ManagedEBookAssignment]:
+    async def post(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedEBookAssignment]:
         """
-        Create new navigation property to assignments for deviceAppManagement
+        Create a new iosVppEBookAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_e_book_assignment.ManagedEBookAssignment]
+        Returns: Optional[ManagedEBookAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import managed_e_book_assignment
+        from .....models.managed_e_book_assignment import ManagedEBookAssignment
 
-        return await self.request_adapter.send_async(request_info, managed_e_book_assignment.ManagedEBookAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedEBookAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of assignments for this eBook.
+        List properties and relationships of the managedEBookAssignment objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class AssignmentsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[managed_e_book_assignment.ManagedEBookAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to assignments for deviceAppManagement
+        Create a new iosVppEBookAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class AssignmentsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AssignmentsRequestBuilderGetQueryParameters():
         """
-        The list of assignments for this eBook.
+        List properties and relationships of the managedEBookAssignment objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AttributeSet(entity.Entity):
+class AttributeSet(Entity):
     # Description of the attribute set. Can be up to 128 characters long and include Unicode characters. Can be changed later.
     description: Optional[str] = None
     # Maximum number of custom security attributes that can be defined in this attribute set. Default value is null. If not specified, the administrator can add up to the maximum of 500 active attributes per tenant. Can be changed later.
@@ -34,9 +34,9 @@ class AttributeSet(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),

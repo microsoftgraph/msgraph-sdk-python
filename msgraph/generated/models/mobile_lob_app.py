@@ -4,17 +4,25 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_lob_app, ios_lob_app, mac_o_s_lob_app, mobile_app, mobile_app_content, win32_lob_app, windows_app_x, windows_mobile_m_s_i, windows_universal_app_x
+    from .android_lob_app import AndroidLobApp
+    from .ios_lob_app import IosLobApp
+    from .mac_o_s_lob_app import MacOSLobApp
+    from .mobile_app import MobileApp
+    from .mobile_app_content import MobileAppContent
+    from .win32_lob_app import Win32LobApp
+    from .windows_app_x import WindowsAppX
+    from .windows_mobile_m_s_i import WindowsMobileMSI
+    from .windows_universal_app_x import WindowsUniversalAppX
 
-from . import mobile_app
+from .mobile_app import MobileApp
 
 @dataclass
-class MobileLobApp(mobile_app.MobileApp):
+class MobileLobApp(MobileApp):
     odata_type = "#microsoft.graph.mobileLobApp"
     # The internal committed content version.
     committed_content_version: Optional[str] = None
     # The list of content versions for this app.
-    content_versions: Optional[List[mobile_app_content.MobileAppContent]] = None
+    content_versions: Optional[List[MobileAppContent]] = None
     # The name of the main Lob application file.
     file_name: Optional[str] = None
     # The total size, including all uploaded files.
@@ -35,33 +43,33 @@ class MobileLobApp(mobile_app.MobileApp):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidLobApp".casefold():
-            from . import android_lob_app
+            from .android_lob_app import AndroidLobApp
 
-            return android_lob_app.AndroidLobApp()
+            return AndroidLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosLobApp".casefold():
-            from . import ios_lob_app
+            from .ios_lob_app import IosLobApp
 
-            return ios_lob_app.IosLobApp()
+            return IosLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSLobApp".casefold():
-            from . import mac_o_s_lob_app
+            from .mac_o_s_lob_app import MacOSLobApp
 
-            return mac_o_s_lob_app.MacOSLobApp()
+            return MacOSLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobApp".casefold():
-            from . import win32_lob_app
+            from .win32_lob_app import Win32LobApp
 
-            return win32_lob_app.Win32LobApp()
+            return Win32LobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsAppX".casefold():
-            from . import windows_app_x
+            from .windows_app_x import WindowsAppX
 
-            return windows_app_x.WindowsAppX()
+            return WindowsAppX()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsMobileMSI".casefold():
-            from . import windows_mobile_m_s_i
+            from .windows_mobile_m_s_i import WindowsMobileMSI
 
-            return windows_mobile_m_s_i.WindowsMobileMSI()
+            return WindowsMobileMSI()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppX".casefold():
-            from . import windows_universal_app_x
+            from .windows_universal_app_x import WindowsUniversalAppX
 
-            return windows_universal_app_x.WindowsUniversalAppX()
+            return WindowsUniversalAppX()
         return MobileLobApp()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -69,13 +77,29 @@ class MobileLobApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_lob_app, ios_lob_app, mac_o_s_lob_app, mobile_app, mobile_app_content, win32_lob_app, windows_app_x, windows_mobile_m_s_i, windows_universal_app_x
+        from .android_lob_app import AndroidLobApp
+        from .ios_lob_app import IosLobApp
+        from .mac_o_s_lob_app import MacOSLobApp
+        from .mobile_app import MobileApp
+        from .mobile_app_content import MobileAppContent
+        from .win32_lob_app import Win32LobApp
+        from .windows_app_x import WindowsAppX
+        from .windows_mobile_m_s_i import WindowsMobileMSI
+        from .windows_universal_app_x import WindowsUniversalAppX
 
-        from . import android_lob_app, ios_lob_app, mac_o_s_lob_app, mobile_app, mobile_app_content, win32_lob_app, windows_app_x, windows_mobile_m_s_i, windows_universal_app_x
+        from .android_lob_app import AndroidLobApp
+        from .ios_lob_app import IosLobApp
+        from .mac_o_s_lob_app import MacOSLobApp
+        from .mobile_app import MobileApp
+        from .mobile_app_content import MobileAppContent
+        from .win32_lob_app import Win32LobApp
+        from .windows_app_x import WindowsAppX
+        from .windows_mobile_m_s_i import WindowsMobileMSI
+        from .windows_universal_app_x import WindowsUniversalAppX
 
         fields: Dict[str, Callable[[Any], None]] = {
             "committedContentVersion": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),
-            "contentVersions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(mobile_app_content.MobileAppContent)),
+            "contentVersions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(MobileAppContent)),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }

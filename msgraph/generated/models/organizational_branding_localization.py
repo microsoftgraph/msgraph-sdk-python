@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import organizational_branding_properties
+    from .organizational_branding_properties import OrganizationalBrandingProperties
 
-from . import organizational_branding_properties
+from .organizational_branding_properties import OrganizationalBrandingProperties
 
 @dataclass
-class OrganizationalBrandingLocalization(organizational_branding_properties.OrganizationalBrandingProperties):
+class OrganizationalBrandingLocalization(OrganizationalBrandingProperties):
     odata_type = "#microsoft.graph.organizationalBrandingLocalization"
     
     @staticmethod
@@ -29,9 +29,9 @@ class OrganizationalBrandingLocalization(organizational_branding_properties.Orga
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import organizational_branding_properties
+        from .organizational_branding_properties import OrganizationalBrandingProperties
 
-        from . import organizational_branding_properties
+        from .organizational_branding_properties import OrganizationalBrandingProperties
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

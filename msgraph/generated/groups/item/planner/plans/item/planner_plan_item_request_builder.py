@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import planner_plan
-    from ......models.o_data_errors import o_data_error
-    from .buckets import buckets_request_builder
-    from .details import details_request_builder
-    from .tasks import tasks_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.planner_plan import PlannerPlan
+    from .buckets.buckets_request_builder import BucketsRequestBuilder
+    from .details.details_request_builder import DetailsRequestBuilder
+    from .tasks.tasks_request_builder import TasksRequestBuilder
 
 class PlannerPlanItemRequestBuilder():
     """
@@ -47,62 +47,62 @@ class PlannerPlanItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PlannerPlanItemRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_plan.PlannerPlan]:
+    async def get(self,request_configuration: Optional[PlannerPlanItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerPlan]:
         """
         Read-only. Nullable. Returns the plannerPlans owned by the group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner_plan.PlannerPlan]
+        Returns: Optional[PlannerPlan]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import planner_plan
+        from ......models.planner_plan import PlannerPlan
 
-        return await self.request_adapter.send_async(request_info, planner_plan.PlannerPlan, error_mapping)
+        return await self.request_adapter.send_async(request_info, PlannerPlan, error_mapping)
     
-    async def patch(self,body: Optional[planner_plan.PlannerPlan] = None, request_configuration: Optional[PlannerPlanItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_plan.PlannerPlan]:
+    async def patch(self,body: Optional[PlannerPlan] = None, request_configuration: Optional[PlannerPlanItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PlannerPlan]:
         """
         Update the navigation property plans in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner_plan.PlannerPlan]
+        Returns: Optional[PlannerPlan]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import planner_plan
+        from ......models.planner_plan import PlannerPlan
 
-        return await self.request_adapter.send_async(request_info, planner_plan.PlannerPlan, error_mapping)
+        return await self.request_adapter.send_async(request_info, PlannerPlan, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PlannerPlanItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class PlannerPlanItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[planner_plan.PlannerPlan] = None, request_configuration: Optional[PlannerPlanItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PlannerPlan] = None, request_configuration: Optional[PlannerPlanItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property plans in groups
         Args:
@@ -160,31 +160,31 @@ class PlannerPlanItemRequestBuilder():
         return request_info
     
     @property
-    def buckets(self) -> buckets_request_builder.BucketsRequestBuilder:
+    def buckets(self) -> BucketsRequestBuilder:
         """
         Provides operations to manage the buckets property of the microsoft.graph.plannerPlan entity.
         """
-        from .buckets import buckets_request_builder
+        from .buckets.buckets_request_builder import BucketsRequestBuilder
 
-        return buckets_request_builder.BucketsRequestBuilder(self.request_adapter, self.path_parameters)
+        return BucketsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def details(self) -> details_request_builder.DetailsRequestBuilder:
+    def details(self) -> DetailsRequestBuilder:
         """
         Provides operations to manage the details property of the microsoft.graph.plannerPlan entity.
         """
-        from .details import details_request_builder
+        from .details.details_request_builder import DetailsRequestBuilder
 
-        return details_request_builder.DetailsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DetailsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tasks(self) -> tasks_request_builder.TasksRequestBuilder:
+    def tasks(self) -> TasksRequestBuilder:
         """
         Provides operations to manage the tasks property of the microsoft.graph.plannerPlan entity.
         """
-        from .tasks import tasks_request_builder
+        from .tasks.tasks_request_builder import TasksRequestBuilder
 
-        return tasks_request_builder.TasksRequestBuilder(self.request_adapter, self.path_parameters)
+        return TasksRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PlannerPlanItemRequestBuilderDeleteRequestConfiguration():

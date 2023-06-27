@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import directory_object
-    from ....models.o_data_errors import o_data_error
-    from .ref import ref_request_builder
+    from ....models.directory_object import DirectoryObject
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .ref.ref_request_builder import RefRequestBuilder
 
 class ManagerRequestBuilder():
     """
@@ -45,37 +45,37 @@ class ManagerRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ManagerRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object.DirectoryObject]:
+    async def get(self,request_configuration: Optional[ManagerRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
         Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[directory_object.DirectoryObject]
+        Returns: Optional[DirectoryObject]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import directory_object
+        from ....models.directory_object import DirectoryObject
 
-        return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, error_mapping)
+        return await self.request_adapter.send_async(request_info, DirectoryObject, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ManagerRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -112,13 +112,13 @@ class ManagerRequestBuilder():
         return request_info
     
     @property
-    def ref(self) -> ref_request_builder.RefRequestBuilder:
+    def ref(self) -> RefRequestBuilder:
         """
         Provides operations to manage the collection of user entities.
         """
-        from .ref import ref_request_builder
+        from .ref.ref_request_builder import RefRequestBuilder
 
-        return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
+        return RefRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ManagerRequestBuilderDeleteRequestConfiguration():

@@ -4,12 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import app_consent_request_scope, entity, user_consent_request
+    from .app_consent_request_scope import AppConsentRequestScope
+    from .entity import Entity
+    from .user_consent_request import UserConsentRequest
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AppConsentRequest(entity.Entity):
+class AppConsentRequest(Entity):
     # The display name of the app for which consent is requested. Required. Supports $filter (eq only) and $orderby.
     app_display_name: Optional[str] = None
     # The identifier of the application. Required. Supports $filter (eq only) and $orderby.
@@ -17,9 +19,9 @@ class AppConsentRequest(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # A list of pending scopes waiting for approval. Required.
-    pending_scopes: Optional[List[app_consent_request_scope.AppConsentRequestScope]] = None
+    pending_scopes: Optional[List[AppConsentRequestScope]] = None
     # A list of pending user consent requests. Supports $filter (eq).
-    user_consent_requests: Optional[List[user_consent_request.UserConsentRequest]] = None
+    user_consent_requests: Optional[List[UserConsentRequest]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppConsentRequest:
@@ -38,15 +40,19 @@ class AppConsentRequest(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_consent_request_scope, entity, user_consent_request
+        from .app_consent_request_scope import AppConsentRequestScope
+        from .entity import Entity
+        from .user_consent_request import UserConsentRequest
 
-        from . import app_consent_request_scope, entity, user_consent_request
+        from .app_consent_request_scope import AppConsentRequestScope
+        from .entity import Entity
+        from .user_consent_request import UserConsentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "pendingScopes": lambda n : setattr(self, 'pending_scopes', n.get_collection_of_object_values(app_consent_request_scope.AppConsentRequestScope)),
-            "userConsentRequests": lambda n : setattr(self, 'user_consent_requests', n.get_collection_of_object_values(user_consent_request.UserConsentRequest)),
+            "pendingScopes": lambda n : setattr(self, 'pending_scopes', n.get_collection_of_object_values(AppConsentRequestScope)),
+            "userConsentRequests": lambda n : setattr(self, 'user_consent_requests', n.get_collection_of_object_values(UserConsentRequest)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

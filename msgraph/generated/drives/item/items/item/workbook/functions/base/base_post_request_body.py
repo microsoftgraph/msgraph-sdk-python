@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class BasePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class BasePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The minLength property
-    min_length: Optional[json.Json] = None
+    min_length: Optional[Json] = None
     # The number property
-    number: Optional[json.Json] = None
+    number: Optional[Json] = None
     # The radix property
-    radix: Optional[json.Json] = None
+    radix: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BasePostRequestBody:
@@ -35,14 +35,14 @@ class BasePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "minLength": lambda n : setattr(self, 'min_length', n.get_object_value(json.Json)),
-            "number": lambda n : setattr(self, 'number', n.get_object_value(json.Json)),
-            "radix": lambda n : setattr(self, 'radix', n.get_object_value(json.Json)),
+            "minLength": lambda n : setattr(self, 'min_length', n.get_object_value(Json)),
+            "number": lambda n : setattr(self, 'number', n.get_object_value(Json)),
+            "radix": lambda n : setattr(self, 'radix', n.get_object_value(Json)),
         }
         return fields
     

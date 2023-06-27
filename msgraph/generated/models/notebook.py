@@ -4,29 +4,33 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import notebook_links, onenote_entity_hierarchy_model, onenote_section, onenote_user_role, section_group
+    from .notebook_links import NotebookLinks
+    from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+    from .onenote_section import OnenoteSection
+    from .onenote_user_role import OnenoteUserRole
+    from .section_group import SectionGroup
 
-from . import onenote_entity_hierarchy_model
+from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
 
 @dataclass
-class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
+class Notebook(OnenoteEntityHierarchyModel):
     odata_type = "#microsoft.graph.notebook"
     # Indicates whether this is the user's default notebook. Read-only.
     is_default: Optional[bool] = None
     # Indicates whether the notebook is shared. If true, the contents of the notebook can be seen by people other than the owner. Read-only.
     is_shared: Optional[bool] = None
     # Links for opening the notebook. The oneNoteClientURL link opens the notebook in the OneNote native client if it's installed. The oneNoteWebURL link opens the notebook in OneNote on the web.
-    links: Optional[notebook_links.NotebookLinks] = None
+    links: Optional[NotebookLinks] = None
     # The section groups in the notebook. Read-only. Nullable.
-    section_groups: Optional[List[section_group.SectionGroup]] = None
+    section_groups: Optional[List[SectionGroup]] = None
     # The URL for the sectionGroups navigation property, which returns all the section groups in the notebook. Read-only.
     section_groups_url: Optional[str] = None
     # The sections in the notebook. Read-only. Nullable.
-    sections: Optional[List[onenote_section.OnenoteSection]] = None
+    sections: Optional[List[OnenoteSection]] = None
     # The URL for the sections navigation property, which returns all the sections in the notebook. Read-only.
     sections_url: Optional[str] = None
     # Possible values are: Owner, Contributor, Reader, None. Owner represents owner-level access to the notebook. Contributor represents read/write access to the notebook. Reader represents read-only access to the notebook. Read-only.
-    user_role: Optional[onenote_user_role.OnenoteUserRole] = None
+    user_role: Optional[OnenoteUserRole] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Notebook:
@@ -45,19 +49,27 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import notebook_links, onenote_entity_hierarchy_model, onenote_section, onenote_user_role, section_group
+        from .notebook_links import NotebookLinks
+        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+        from .onenote_section import OnenoteSection
+        from .onenote_user_role import OnenoteUserRole
+        from .section_group import SectionGroup
 
-        from . import notebook_links, onenote_entity_hierarchy_model, onenote_section, onenote_user_role, section_group
+        from .notebook_links import NotebookLinks
+        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+        from .onenote_section import OnenoteSection
+        from .onenote_user_role import OnenoteUserRole
+        from .section_group import SectionGroup
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
-            "links": lambda n : setattr(self, 'links', n.get_object_value(notebook_links.NotebookLinks)),
-            "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(section_group.SectionGroup)),
+            "links": lambda n : setattr(self, 'links', n.get_object_value(NotebookLinks)),
+            "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(SectionGroup)),
             "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
-            "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(onenote_section.OnenoteSection)),
+            "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(OnenoteSection)),
             "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
-            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(onenote_user_role.OnenoteUserRole)),
+            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(OnenoteUserRole)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

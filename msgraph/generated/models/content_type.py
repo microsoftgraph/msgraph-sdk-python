@@ -4,12 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import column_definition, column_link, content_type_order, document_set, document_set_content, entity, item_reference
+    from .column_definition import ColumnDefinition
+    from .column_link import ColumnLink
+    from .content_type_order import ContentTypeOrder
+    from .document_set import DocumentSet
+    from .document_set_content import DocumentSetContent
+    from .entity import Entity
+    from .item_reference import ItemReference
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ContentType(entity.Entity):
+class ContentType(Entity):
     # List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type will be applied to the lists in the enforced sites.
     associated_hubs_urls: Optional[List[str]] = None
     # Parent contentType from which this content type is derived.
@@ -17,23 +23,23 @@ class ContentType(entity.Entity):
     # The collection of content types that are ancestors of this content type.
     base_types: Optional[List[ContentType]] = None
     # The collection of columns that are required by this content type.
-    column_links: Optional[List[column_link.ColumnLink]] = None
+    column_links: Optional[List[ColumnLink]] = None
     # Column order information in a content type.
-    column_positions: Optional[List[column_definition.ColumnDefinition]] = None
+    column_positions: Optional[List[ColumnDefinition]] = None
     # The collection of column definitions for this contentType.
-    columns: Optional[List[column_definition.ColumnDefinition]] = None
+    columns: Optional[List[ColumnDefinition]] = None
     # The descriptive text for the item.
     description: Optional[str] = None
     # Document Set metadata.
-    document_set: Optional[document_set.DocumentSet] = None
+    document_set: Optional[DocumentSet] = None
     # Document template metadata. To make sure that documents have consistent content across a site and its subsites, you can associate a Word, Excel, or PowerPoint template with a site content type.
-    document_template: Optional[document_set_content.DocumentSetContent] = None
+    document_template: Optional[DocumentSetContent] = None
     # The name of the group this content type belongs to. Helps organize related content types.
     group: Optional[str] = None
     # Indicates whether the content type is hidden in the list's 'New' menu.
     hidden: Optional[bool] = None
     # If this content type is inherited from another scope (like a site), provides a reference to the item where the content type is defined.
-    inherited_from: Optional[item_reference.ItemReference] = None
+    inherited_from: Optional[ItemReference] = None
     # Specifies if a content type is a built-in content type.
     is_built_in: Optional[bool] = None
     # The name of the content type.
@@ -41,7 +47,7 @@ class ContentType(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies the order in which the content type appears in the selection UI.
-    order: Optional[content_type_order.ContentTypeOrder] = None
+    order: Optional[ContentTypeOrder] = None
     # The unique identifier of the content type.
     parent_id: Optional[str] = None
     # If true, any changes made to the content type will be pushed to inherited content types and lists that implement the content type.
@@ -68,26 +74,38 @@ class ContentType(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import column_definition, column_link, content_type_order, document_set, document_set_content, entity, item_reference
+        from .column_definition import ColumnDefinition
+        from .column_link import ColumnLink
+        from .content_type_order import ContentTypeOrder
+        from .document_set import DocumentSet
+        from .document_set_content import DocumentSetContent
+        from .entity import Entity
+        from .item_reference import ItemReference
 
-        from . import column_definition, column_link, content_type_order, document_set, document_set_content, entity, item_reference
+        from .column_definition import ColumnDefinition
+        from .column_link import ColumnLink
+        from .content_type_order import ContentTypeOrder
+        from .document_set import DocumentSet
+        from .document_set_content import DocumentSetContent
+        from .entity import Entity
+        from .item_reference import ItemReference
 
         fields: Dict[str, Callable[[Any], None]] = {
             "associatedHubsUrls": lambda n : setattr(self, 'associated_hubs_urls', n.get_collection_of_primitive_values(str)),
             "base": lambda n : setattr(self, 'base', n.get_object_value(ContentType)),
             "baseTypes": lambda n : setattr(self, 'base_types', n.get_collection_of_object_values(ContentType)),
-            "columnLinks": lambda n : setattr(self, 'column_links', n.get_collection_of_object_values(column_link.ColumnLink)),
-            "columnPositions": lambda n : setattr(self, 'column_positions', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
-            "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
+            "columnLinks": lambda n : setattr(self, 'column_links', n.get_collection_of_object_values(ColumnLink)),
+            "columnPositions": lambda n : setattr(self, 'column_positions', n.get_collection_of_object_values(ColumnDefinition)),
+            "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(ColumnDefinition)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "documentSet": lambda n : setattr(self, 'document_set', n.get_object_value(document_set.DocumentSet)),
-            "documentTemplate": lambda n : setattr(self, 'document_template', n.get_object_value(document_set_content.DocumentSetContent)),
+            "documentSet": lambda n : setattr(self, 'document_set', n.get_object_value(DocumentSet)),
+            "documentTemplate": lambda n : setattr(self, 'document_template', n.get_object_value(DocumentSetContent)),
             "group": lambda n : setattr(self, 'group', n.get_str_value()),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
-            "inheritedFrom": lambda n : setattr(self, 'inherited_from', n.get_object_value(item_reference.ItemReference)),
+            "inheritedFrom": lambda n : setattr(self, 'inherited_from', n.get_object_value(ItemReference)),
             "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "order": lambda n : setattr(self, 'order', n.get_object_value(content_type_order.ContentTypeOrder)),
+            "order": lambda n : setattr(self, 'order', n.get_object_value(ContentTypeOrder)),
             "parentId": lambda n : setattr(self, 'parent_id', n.get_str_value()),
             "propagateChanges": lambda n : setattr(self, 'propagate_changes', n.get_bool_value()),
             "readOnly": lambda n : setattr(self, 'read_only', n.get_bool_value()),

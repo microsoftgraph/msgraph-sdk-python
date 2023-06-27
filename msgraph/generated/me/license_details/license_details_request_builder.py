@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import license_details, license_details_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import license_details_item_request_builder
+    from ...models.license_details import LicenseDetails
+    from ...models.license_details_collection_response import LicenseDetailsCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.license_details_item_request_builder import LicenseDetailsItemRequestBuilder
 
 class LicenseDetailsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class LicenseDetailsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_license_details_id(self,license_details_id: str) -> license_details_item_request_builder.LicenseDetailsItemRequestBuilder:
+    def by_license_details_id(self,license_details_id: str) -> LicenseDetailsItemRequestBuilder:
         """
         Provides operations to manage the licenseDetails property of the microsoft.graph.user entity.
         Args:
             license_details_id: Unique identifier of the item
-        Returns: license_details_item_request_builder.LicenseDetailsItemRequestBuilder
+        Returns: LicenseDetailsItemRequestBuilder
         """
         if not license_details_id:
             raise TypeError("license_details_id cannot be null.")
-        from .item import license_details_item_request_builder
+        from .item.license_details_item_request_builder import LicenseDetailsItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["licenseDetails%2Did"] = license_details_id
-        return license_details_item_request_builder.LicenseDetailsItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return LicenseDetailsItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[LicenseDetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[license_details_collection_response.LicenseDetailsCollectionResponse]:
+    async def get(self,request_configuration: Optional[LicenseDetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[LicenseDetailsCollectionResponse]:
         """
         Retrieve a list of licenseDetails objects for enterprise users. This API returns details for licenses that are directly assigned and those transitively assigned through memberships in licensed groups.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[license_details_collection_response.LicenseDetailsCollectionResponse]
+        Returns: Optional[LicenseDetailsCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import license_details_collection_response
+        from ...models.license_details_collection_response import LicenseDetailsCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, license_details_collection_response.LicenseDetailsCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, LicenseDetailsCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[license_details.LicenseDetails] = None, request_configuration: Optional[LicenseDetailsRequestBuilderPostRequestConfiguration] = None) -> Optional[license_details.LicenseDetails]:
+    async def post(self,body: Optional[LicenseDetails] = None, request_configuration: Optional[LicenseDetailsRequestBuilderPostRequestConfiguration] = None) -> Optional[LicenseDetails]:
         """
         Create new navigation property to licenseDetails for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[license_details.LicenseDetails]
+        Returns: Optional[LicenseDetails]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import license_details
+        from ...models.license_details import LicenseDetails
 
-        return await self.request_adapter.send_async(request_info, license_details.LicenseDetails, error_mapping)
+        return await self.request_adapter.send_async(request_info, LicenseDetails, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LicenseDetailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class LicenseDetailsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[license_details.LicenseDetails] = None, request_configuration: Optional[LicenseDetailsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[LicenseDetails] = None, request_configuration: Optional[LicenseDetailsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to licenseDetails for me
         Args:
@@ -139,13 +140,13 @@ class LicenseDetailsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class LicenseDetailsRequestBuilderGetQueryParameters():

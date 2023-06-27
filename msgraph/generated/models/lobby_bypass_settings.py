@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import lobby_bypass_scope
+    from .lobby_bypass_scope import LobbyBypassScope
 
 @dataclass
 class LobbyBypassSettings(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class LobbyBypassSettings(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies the type of participants that are automatically admitted into a meeting, bypassing the lobby. Optional.
-    scope: Optional[lobby_bypass_scope.LobbyBypassScope] = None
+    scope: Optional[LobbyBypassScope] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LobbyBypassSettings:
@@ -35,14 +35,14 @@ class LobbyBypassSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import lobby_bypass_scope
+        from .lobby_bypass_scope import LobbyBypassScope
 
-        from . import lobby_bypass_scope
+        from .lobby_bypass_scope import LobbyBypassScope
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isDialInBypassEnabled": lambda n : setattr(self, 'is_dial_in_bypass_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "scope": lambda n : setattr(self, 'scope', n.get_enum_value(lobby_bypass_scope.LobbyBypassScope)),
+            "scope": lambda n : setattr(self, 'scope', n.get_enum_value(LobbyBypassScope)),
         }
         return fields
     

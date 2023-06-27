@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attribute_mapping_source
+    from .attribute_mapping_source import AttributeMappingSource
 
 @dataclass
 class StringKeyAttributeMappingSourceValuePair(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class StringKeyAttributeMappingSourceValuePair(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The value property
-    value: Optional[attribute_mapping_source.AttributeMappingSource] = None
+    value: Optional[AttributeMappingSource] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> StringKeyAttributeMappingSourceValuePair:
@@ -35,14 +35,14 @@ class StringKeyAttributeMappingSourceValuePair(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attribute_mapping_source
+        from .attribute_mapping_source import AttributeMappingSource
 
-        from . import attribute_mapping_source
+        from .attribute_mapping_source import AttributeMappingSource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "key": lambda n : setattr(self, 'key', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "value": lambda n : setattr(self, 'value', n.get_object_value(attribute_mapping_source.AttributeMappingSource)),
+            "value": lambda n : setattr(self, 'value', n.get_object_value(AttributeMappingSource)),
         }
         return fields
     

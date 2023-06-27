@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import device_compliance_device_overview
-    from .....models.o_data_errors import o_data_error
+    from .....models.device_compliance_device_overview import DeviceComplianceDeviceOverview
+    from .....models.o_data_errors.o_data_error import ODataError
 
 class DeviceStatusOverviewRequestBuilder():
     """
@@ -44,62 +44,62 @@ class DeviceStatusOverviewRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeviceStatusOverviewRequestBuilderGetRequestConfiguration] = None) -> Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview]:
+    async def get(self,request_configuration: Optional[DeviceStatusOverviewRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceDeviceOverview]:
         """
-        Device compliance devices status overview
+        Read properties and relationships of the deviceComplianceDeviceOverview object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview]
+        Returns: Optional[DeviceComplianceDeviceOverview]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import device_compliance_device_overview
+        from .....models.device_compliance_device_overview import DeviceComplianceDeviceOverview
 
-        return await self.request_adapter.send_async(request_info, device_compliance_device_overview.DeviceComplianceDeviceOverview, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceComplianceDeviceOverview, error_mapping)
     
-    async def patch(self,body: Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview] = None, request_configuration: Optional[DeviceStatusOverviewRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview]:
+    async def patch(self,body: Optional[DeviceComplianceDeviceOverview] = None, request_configuration: Optional[DeviceStatusOverviewRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceComplianceDeviceOverview]:
         """
-        Update the navigation property deviceStatusOverview in deviceManagement
+        Update the properties of a deviceComplianceDeviceOverview object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview]
+        Returns: Optional[DeviceComplianceDeviceOverview]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import device_compliance_device_overview
+        from .....models.device_compliance_device_overview import DeviceComplianceDeviceOverview
 
-        return await self.request_adapter.send_async(request_info, device_compliance_device_overview.DeviceComplianceDeviceOverview, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceComplianceDeviceOverview, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceStatusOverviewRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -119,7 +119,7 @@ class DeviceStatusOverviewRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeviceStatusOverviewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Device compliance devices status overview
+        Read properties and relationships of the deviceComplianceDeviceOverview object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class DeviceStatusOverviewRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview] = None, request_configuration: Optional[DeviceStatusOverviewRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceComplianceDeviceOverview] = None, request_configuration: Optional[DeviceStatusOverviewRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceStatusOverview in deviceManagement
+        Update the properties of a deviceComplianceDeviceOverview object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class DeviceStatusOverviewRequestBuilder():
     @dataclass
     class DeviceStatusOverviewRequestBuilderGetQueryParameters():
         """
-        Device compliance devices status overview
+        Read properties and relationships of the deviceComplianceDeviceOverview object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

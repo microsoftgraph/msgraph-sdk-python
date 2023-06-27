@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import search_request
+    from ...models.search_request import SearchRequest
 
 @dataclass
 class QueryPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class QueryPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The requests property
-    requests: Optional[List[search_request.SearchRequest]] = None
+    requests: Optional[List[SearchRequest]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> QueryPostRequestBody:
@@ -31,12 +31,12 @@ class QueryPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ...models import search_request
+        from ...models.search_request import SearchRequest
 
-        from ...models import search_request
+        from ...models.search_request import SearchRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "requests": lambda n : setattr(self, 'requests', n.get_collection_of_object_values(search_request.SearchRequest)),
+            "requests": lambda n : setattr(self, 'requests', n.get_collection_of_object_values(SearchRequest)),
         }
         return fields
     

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_device_platform
+    from .conditional_access_device_platform import ConditionalAccessDevicePlatform
 
 @dataclass
 class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Possible values are: android, iOS, windows, windowsPhone, macOS, linux, all, unknownFutureValue.
-    exclude_platforms: Optional[List[conditional_access_device_platform.ConditionalAccessDevicePlatform]] = None
+    exclude_platforms: Optional[List[ConditionalAccessDevicePlatform]] = None
     # Possible values are: android, iOS, windows, windowsPhone, macOS, linux, all, unknownFutureValue.
-    include_platforms: Optional[List[conditional_access_device_platform.ConditionalAccessDevicePlatform]] = None
+    include_platforms: Optional[List[ConditionalAccessDevicePlatform]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,13 +35,13 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_device_platform
+        from .conditional_access_device_platform import ConditionalAccessDevicePlatform
 
-        from . import conditional_access_device_platform
+        from .conditional_access_device_platform import ConditionalAccessDevicePlatform
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "excludePlatforms": lambda n : setattr(self, 'exclude_platforms', n.get_collection_of_enum_values(conditional_access_device_platform.ConditionalAccessDevicePlatform)),
-            "includePlatforms": lambda n : setattr(self, 'include_platforms', n.get_collection_of_enum_values(conditional_access_device_platform.ConditionalAccessDevicePlatform)),
+            "excludePlatforms": lambda n : setattr(self, 'exclude_platforms', n.get_collection_of_enum_values(ConditionalAccessDevicePlatform)),
+            "includePlatforms": lambda n : setattr(self, 'include_platforms', n.get_collection_of_enum_values(ConditionalAccessDevicePlatform)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

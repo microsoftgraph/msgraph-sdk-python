@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity
+    from .identity import Identity
 
-from . import identity
+from .identity import Identity
 
 @dataclass
-class UserIdentity(identity.Identity):
+class UserIdentity(Identity):
     odata_type = "#microsoft.graph.userIdentity"
     # Indicates the client IP address used by user performing the activity (audit log only).
     ip_address: Optional[str] = None
@@ -33,9 +33,9 @@ class UserIdentity(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity
+        from .identity import Identity
 
-        from . import identity
+        from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),

@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alteration_response, result_template_dictionary, search_hits_container
+    from .alteration_response import AlterationResponse
+    from .result_template_dictionary import ResultTemplateDictionary
+    from .search_hits_container import SearchHitsContainer
 
 @dataclass
 class SearchResponse(AdditionalDataHolder, Parsable):
@@ -12,13 +14,13 @@ class SearchResponse(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # A collection of search results.
-    hits_containers: Optional[List[search_hits_container.SearchHitsContainer]] = None
+    hits_containers: Optional[List[SearchHitsContainer]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Provides information related to spelling corrections in the alteration response.
-    query_alteration_response: Optional[alteration_response.AlterationResponse] = None
+    query_alteration_response: Optional[AlterationResponse] = None
     # A dictionary of resultTemplateIds and associated values, which include the name and JSON schema of the result templates.
-    result_templates: Optional[result_template_dictionary.ResultTemplateDictionary] = None
+    result_templates: Optional[ResultTemplateDictionary] = None
     # Contains the search terms sent in the initial search query.
     search_terms: Optional[List[str]] = None
     
@@ -39,15 +41,19 @@ class SearchResponse(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alteration_response, result_template_dictionary, search_hits_container
+        from .alteration_response import AlterationResponse
+        from .result_template_dictionary import ResultTemplateDictionary
+        from .search_hits_container import SearchHitsContainer
 
-        from . import alteration_response, result_template_dictionary, search_hits_container
+        from .alteration_response import AlterationResponse
+        from .result_template_dictionary import ResultTemplateDictionary
+        from .search_hits_container import SearchHitsContainer
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "hitsContainers": lambda n : setattr(self, 'hits_containers', n.get_collection_of_object_values(search_hits_container.SearchHitsContainer)),
+            "hitsContainers": lambda n : setattr(self, 'hits_containers', n.get_collection_of_object_values(SearchHitsContainer)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "queryAlterationResponse": lambda n : setattr(self, 'query_alteration_response', n.get_object_value(alteration_response.AlterationResponse)),
-            "resultTemplates": lambda n : setattr(self, 'result_templates', n.get_object_value(result_template_dictionary.ResultTemplateDictionary)),
+            "queryAlterationResponse": lambda n : setattr(self, 'query_alteration_response', n.get_object_value(AlterationResponse)),
+            "resultTemplates": lambda n : setattr(self, 'result_templates', n.get_object_value(ResultTemplateDictionary)),
             "searchTerms": lambda n : setattr(self, 'search_terms', n.get_collection_of_primitive_values(str)),
         }
         return fields

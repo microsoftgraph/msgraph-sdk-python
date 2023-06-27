@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_external_tenants
+    from .conditional_access_external_tenants import ConditionalAccessExternalTenants
 
-from . import conditional_access_external_tenants
+from .conditional_access_external_tenants import ConditionalAccessExternalTenants
 
 @dataclass
-class ConditionalAccessEnumeratedExternalTenants(conditional_access_external_tenants.ConditionalAccessExternalTenants):
+class ConditionalAccessEnumeratedExternalTenants(ConditionalAccessExternalTenants):
     odata_type = "#microsoft.graph.conditionalAccessEnumeratedExternalTenants"
     # A collection of tenant IDs that define the scope of a policy targeting conditional access for guests and external users.
     members: Optional[List[str]] = None
@@ -31,9 +31,9 @@ class ConditionalAccessEnumeratedExternalTenants(conditional_access_external_ten
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_external_tenants
+        from .conditional_access_external_tenants import ConditionalAccessExternalTenants
 
-        from . import conditional_access_external_tenants
+        from .conditional_access_external_tenants import ConditionalAccessExternalTenants
 
         fields: Dict[str, Callable[[Any], None]] = {
             "members": lambda n : setattr(self, 'members', n.get_collection_of_primitive_values(str)),

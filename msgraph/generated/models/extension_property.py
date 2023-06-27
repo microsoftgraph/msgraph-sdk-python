@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import directory_object
+    from .directory_object import DirectoryObject
 
-from . import directory_object
+from .directory_object import DirectoryObject
 
 @dataclass
-class ExtensionProperty(directory_object.DirectoryObject):
+class ExtensionProperty(DirectoryObject):
     odata_type = "#microsoft.graph.extensionProperty"
     # Display name of the application object on which this extension property is defined. Read-only.
     app_display_name: Optional[str] = None
@@ -39,9 +39,9 @@ class ExtensionProperty(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object
+        from .directory_object import DirectoryObject
 
-        from . import directory_object
+        from .directory_object import DirectoryObject
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import education_category
-    from ......models.o_data_errors import o_data_error
+    from ......models.education_category import EducationCategory
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class EducationCategoryItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class EducationCategoryItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EducationCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[education_category.EducationCategory]:
+    async def get(self,request_configuration: Optional[EducationCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationCategory]:
         """
         Retrieve an educationCategory object. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_category.EducationCategory]
+        Returns: Optional[EducationCategory]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import education_category
+        from ......models.education_category import EducationCategory
 
-        return await self.request_adapter.send_async(request_info, education_category.EducationCategory, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationCategory, error_mapping)
     
-    async def patch(self,body: Optional[education_category.EducationCategory] = None, request_configuration: Optional[EducationCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_category.EducationCategory]:
+    async def patch(self,body: Optional[EducationCategory] = None, request_configuration: Optional[EducationCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationCategory]:
         """
         Update the navigation property assignmentCategories in education
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_category.EducationCategory]
+        Returns: Optional[EducationCategory]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import education_category
+        from ......models.education_category import EducationCategory
 
-        return await self.request_adapter.send_async(request_info, education_category.EducationCategory, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationCategory, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EducationCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class EducationCategoryItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[education_category.EducationCategory] = None, request_configuration: Optional[EducationCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EducationCategory] = None, request_configuration: Optional[EducationCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property assignmentCategories in education
         Args:

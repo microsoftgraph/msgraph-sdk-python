@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import feedback_token_set, user_feedback_rating
+    from .feedback_token_set import FeedbackTokenSet
+    from .user_feedback_rating import UserFeedbackRating
 
 @dataclass
 class UserFeedback(AdditionalDataHolder, Parsable):
@@ -14,11 +15,11 @@ class UserFeedback(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The rating property
-    rating: Optional[user_feedback_rating.UserFeedbackRating] = None
+    rating: Optional[UserFeedbackRating] = None
     # The feedback text provided by the user of this endpoint for the session.
     text: Optional[str] = None
     # The set of feedback tokens provided by the user of this endpoint for the session. This is a set of Boolean properties. The property names should not be relied upon since they may change depending on what tokens are offered to the user.
-    tokens: Optional[feedback_token_set.FeedbackTokenSet] = None
+    tokens: Optional[FeedbackTokenSet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserFeedback:
@@ -37,15 +38,17 @@ class UserFeedback(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import feedback_token_set, user_feedback_rating
+        from .feedback_token_set import FeedbackTokenSet
+        from .user_feedback_rating import UserFeedbackRating
 
-        from . import feedback_token_set, user_feedback_rating
+        from .feedback_token_set import FeedbackTokenSet
+        from .user_feedback_rating import UserFeedbackRating
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "rating": lambda n : setattr(self, 'rating', n.get_enum_value(user_feedback_rating.UserFeedbackRating)),
+            "rating": lambda n : setattr(self, 'rating', n.get_enum_value(UserFeedbackRating)),
             "text": lambda n : setattr(self, 'text', n.get_str_value()),
-            "tokens": lambda n : setattr(self, 'tokens', n.get_object_value(feedback_token_set.FeedbackTokenSet)),
+            "tokens": lambda n : setattr(self, 'tokens', n.get_object_value(FeedbackTokenSet)),
         }
         return fields
     

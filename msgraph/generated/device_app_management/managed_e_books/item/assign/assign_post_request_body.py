@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import managed_e_book_assignment
+    from .....models.managed_e_book_assignment import ManagedEBookAssignment
 
 @dataclass
 class AssignPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The managedEBookAssignments property
-    managed_e_book_assignments: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]] = None
+    managed_e_book_assignments: Optional[List[ManagedEBookAssignment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignPostRequestBody:
@@ -31,12 +31,12 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import managed_e_book_assignment
+        from .....models.managed_e_book_assignment import ManagedEBookAssignment
 
-        from .....models import managed_e_book_assignment
+        from .....models.managed_e_book_assignment import ManagedEBookAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "managedEBookAssignments": lambda n : setattr(self, 'managed_e_book_assignments', n.get_collection_of_object_values(managed_e_book_assignment.ManagedEBookAssignment)),
+            "managedEBookAssignments": lambda n : setattr(self, 'managed_e_book_assignments', n.get_collection_of_object_values(ManagedEBookAssignment)),
         }
         return fields
     

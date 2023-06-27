@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ............models import chat_message_hosted_content
-    from ............models.o_data_errors import o_data_error
-    from .value import content_request_builder
+    from ............models.chat_message_hosted_content import ChatMessageHostedContent
+    from ............models.o_data_errors.o_data_error import ODataError
+    from .value.content_request_builder import ContentRequestBuilder
 
 class ChatMessageHostedContentItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class ChatMessageHostedContentItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message_hosted_content.ChatMessageHostedContent]:
+    async def get(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ChatMessageHostedContent]:
         """
         Retrieve the properties and relationships of chatMessageHostedContent object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[chat_message_hosted_content.ChatMessageHostedContent]
+        Returns: Optional[ChatMessageHostedContent]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ............models import chat_message_hosted_content
+        from ............models.chat_message_hosted_content import ChatMessageHostedContent
 
-        return await self.request_adapter.send_async(request_info, chat_message_hosted_content.ChatMessageHostedContent, error_mapping)
+        return await self.request_adapter.send_async(request_info, ChatMessageHostedContent, error_mapping)
     
-    async def patch(self,body: Optional[chat_message_hosted_content.ChatMessageHostedContent] = None, request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[chat_message_hosted_content.ChatMessageHostedContent]:
+    async def patch(self,body: Optional[ChatMessageHostedContent] = None, request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ChatMessageHostedContent]:
         """
         Update the navigation property hostedContents in me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[chat_message_hosted_content.ChatMessageHostedContent]
+        Returns: Optional[ChatMessageHostedContent]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ............models import chat_message_hosted_content
+        from ............models.chat_message_hosted_content import ChatMessageHostedContent
 
-        return await self.request_adapter.send_async(request_info, chat_message_hosted_content.ChatMessageHostedContent, error_mapping)
+        return await self.request_adapter.send_async(request_info, ChatMessageHostedContent, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class ChatMessageHostedContentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[chat_message_hosted_content.ChatMessageHostedContent] = None, request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ChatMessageHostedContent] = None, request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property hostedContents in me
         Args:
@@ -158,13 +158,13 @@ class ChatMessageHostedContentItemRequestBuilder():
         return request_info
     
     @property
-    def content(self) -> content_request_builder.ContentRequestBuilder:
+    def content(self) -> ContentRequestBuilder:
         """
         Provides operations to manage the media for the user entity.
         """
-        from .value import content_request_builder
+        from .value.content_request_builder import ContentRequestBuilder
 
-        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+        return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ChatMessageHostedContentItemRequestBuilderDeleteRequestConfiguration():

@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, identity
+    from .entity import Entity
+    from .identity import Identity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ScopedRoleMembership(entity.Entity):
+class ScopedRoleMembership(Entity):
     # Unique identifier for the administrative unit that the directory role is scoped to
     administrative_unit_id: Optional[str] = None
     # The OdataType property
@@ -17,7 +18,7 @@ class ScopedRoleMembership(entity.Entity):
     # Unique identifier for the directory role that the member is in.
     role_id: Optional[str] = None
     # The roleMemberInfo property
-    role_member_info: Optional[identity.Identity] = None
+    role_member_info: Optional[Identity] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScopedRoleMembership:
@@ -36,14 +37,16 @@ class ScopedRoleMembership(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, identity
+        from .entity import Entity
+        from .identity import Identity
 
-        from . import entity, identity
+        from .entity import Entity
+        from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "administrativeUnitId": lambda n : setattr(self, 'administrative_unit_id', n.get_str_value()),
             "roleId": lambda n : setattr(self, 'role_id', n.get_str_value()),
-            "roleMemberInfo": lambda n : setattr(self, 'role_member_info', n.get_object_value(identity.Identity)),
+            "roleMemberInfo": lambda n : setattr(self, 'role_member_info', n.get_object_value(Identity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

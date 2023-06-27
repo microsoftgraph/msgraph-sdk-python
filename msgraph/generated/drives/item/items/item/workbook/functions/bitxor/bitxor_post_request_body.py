@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class BitxorPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class BitxorPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The number1 property
-    number1: Optional[json.Json] = None
+    number1: Optional[Json] = None
     # The number2 property
-    number2: Optional[json.Json] = None
+    number2: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BitxorPostRequestBody:
@@ -33,13 +33,13 @@ class BitxorPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "number1": lambda n : setattr(self, 'number1', n.get_object_value(json.Json)),
-            "number2": lambda n : setattr(self, 'number2', n.get_object_value(json.Json)),
+            "number1": lambda n : setattr(self, 'number1', n.get_object_value(Json)),
+            "number2": lambda n : setattr(self, 'number2', n.get_object_value(Json)),
         }
         return fields
     

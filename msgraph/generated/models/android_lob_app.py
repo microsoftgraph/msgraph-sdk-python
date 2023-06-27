@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_minimum_operating_system, mobile_lob_app
+    from .android_minimum_operating_system import AndroidMinimumOperatingSystem
+    from .mobile_lob_app import MobileLobApp
 
-from . import mobile_lob_app
+from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class AndroidLobApp(mobile_lob_app.MobileLobApp):
+class AndroidLobApp(MobileLobApp):
     odata_type = "#microsoft.graph.androidLobApp"
     # The value for the minimum applicable operating system.
-    minimum_supported_operating_system: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem] = None
+    minimum_supported_operating_system: Optional[AndroidMinimumOperatingSystem] = None
     # The package identifier.
     package_id: Optional[str] = None
     # The version code of Android Line of Business (LoB) app.
@@ -37,12 +38,14 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_minimum_operating_system, mobile_lob_app
+        from .android_minimum_operating_system import AndroidMinimumOperatingSystem
+        from .mobile_lob_app import MobileLobApp
 
-        from . import android_minimum_operating_system, mobile_lob_app
+        from .android_minimum_operating_system import AndroidMinimumOperatingSystem
+        from .mobile_lob_app import MobileLobApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(android_minimum_operating_system.AndroidMinimumOperatingSystem)),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(AndroidMinimumOperatingSystem)),
             "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),
             "versionCode": lambda n : setattr(self, 'version_code', n.get_str_value()),
             "versionName": lambda n : setattr(self, 'version_name', n.get_str_value()),

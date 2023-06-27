@@ -1,11 +1,13 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import email_role, logon_type, user_account_security_type
+    from .email_role import EmailRole
+    from .logon_type import LogonType
+    from .user_account_security_type import UserAccountSecurityType
 
 @dataclass
 class UserSecurityState(AdditionalDataHolder, Parsable):
@@ -19,11 +21,11 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
     # NetBIOS/Active Directory domain of user account (that is, domain/account format).
     domain_name: Optional[str] = None
     # For email-related alerts - user account's email 'role'. Possible values are: unknown, sender, recipient.
-    email_role: Optional[email_role.EmailRole] = None
+    email_role: Optional[EmailRole] = None
     # Indicates whether the user logged on through a VPN.
     is_vpn: Optional[bool] = None
     # Time at which the sign-in occurred. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    logon_date_time: Optional[datetime] = None
+    logon_date_time: Optional[datetime.datetime] = None
     # User sign-in ID.
     logon_id: Optional[str] = None
     # IP Address the sign-in request originated from.
@@ -31,7 +33,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
     # Location (by IP address mapping) associated with a user sign-in event by this user.
     logon_location: Optional[str] = None
     # Method of user sign in. Possible values are: unknown, interactive, remoteInteractive, network, batch, service.
-    logon_type: Optional[logon_type.LogonType] = None
+    logon_type: Optional[LogonType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Active Directory (on-premises) Security Identifier (SID) of the user.
@@ -39,7 +41,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
     # Provider-generated/calculated risk score of the user account. Recommended value range of 0-1, which equates to a percentage.
     risk_score: Optional[str] = None
     # User account type (group membership), per Windows definition. Possible values are: unknown, standard, power, administrator.
-    user_account_type: Optional[user_account_security_type.UserAccountSecurityType] = None
+    user_account_type: Optional[UserAccountSecurityType] = None
     # User sign-in name - internet format: (user account name)@(user account DNS domain name).
     user_principal_name: Optional[str] = None
     
@@ -60,25 +62,29 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import email_role, logon_type, user_account_security_type
+        from .email_role import EmailRole
+        from .logon_type import LogonType
+        from .user_account_security_type import UserAccountSecurityType
 
-        from . import email_role, logon_type, user_account_security_type
+        from .email_role import EmailRole
+        from .logon_type import LogonType
+        from .user_account_security_type import UserAccountSecurityType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "aadUserId": lambda n : setattr(self, 'aad_user_id', n.get_str_value()),
             "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
             "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
-            "emailRole": lambda n : setattr(self, 'email_role', n.get_enum_value(email_role.EmailRole)),
+            "emailRole": lambda n : setattr(self, 'email_role', n.get_enum_value(EmailRole)),
             "isVpn": lambda n : setattr(self, 'is_vpn', n.get_bool_value()),
             "logonDateTime": lambda n : setattr(self, 'logon_date_time', n.get_datetime_value()),
             "logonId": lambda n : setattr(self, 'logon_id', n.get_str_value()),
             "logonIp": lambda n : setattr(self, 'logon_ip', n.get_str_value()),
             "logonLocation": lambda n : setattr(self, 'logon_location', n.get_str_value()),
-            "logonType": lambda n : setattr(self, 'logon_type', n.get_enum_value(logon_type.LogonType)),
+            "logonType": lambda n : setattr(self, 'logon_type', n.get_enum_value(LogonType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
             "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
-            "userAccountType": lambda n : setattr(self, 'user_account_type', n.get_enum_value(user_account_security_type.UserAccountSecurityType)),
+            "userAccountType": lambda n : setattr(self, 'user_account_type', n.get_enum_value(UserAccountSecurityType)),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
@@ -96,7 +102,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         writer.write_str_value("domainName", self.domain_name)
         writer.write_enum_value("emailRole", self.email_role)
         writer.write_bool_value("isVpn", self.is_vpn)
-        writer.write_datetime_value("logonDateTime", self.logon_date_time)
+        writer.write_datetime_value()("logonDateTime", self.logon_date_time)
         writer.write_str_value("logonId", self.logon_id)
         writer.write_str_value("logonIp", self.logon_ip)
         writer.write_str_value("logonLocation", self.logon_location)

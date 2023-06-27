@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.o_data_errors import o_data_error
-    from ........models.security import ediscovery_review_tag
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.security.ediscovery_review_tag import EdiscoveryReviewTag
 
 class ParentRequestBuilder():
     """
@@ -35,27 +35,27 @@ class ParentRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ParentRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_tag.EdiscoveryReviewTag]:
+    async def get(self,request_configuration: Optional[ParentRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewTag]:
         """
         Returns the parent tag of the specified tag.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_review_tag.EdiscoveryReviewTag]
+        Returns: Optional[EdiscoveryReviewTag]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.security import ediscovery_review_tag
+        from ........models.security.ediscovery_review_tag import EdiscoveryReviewTag
 
-        return await self.request_adapter.send_async(request_info, ediscovery_review_tag.EdiscoveryReviewTag, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoveryReviewTag, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ParentRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

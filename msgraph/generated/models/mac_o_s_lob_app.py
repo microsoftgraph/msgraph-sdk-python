@@ -4,19 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mac_o_s_lob_child_app, mac_o_s_minimum_operating_system, mobile_lob_app
+    from .mac_o_s_lob_child_app import MacOSLobChildApp
+    from .mac_o_s_minimum_operating_system import MacOSMinimumOperatingSystem
+    from .mobile_lob_app import MobileLobApp
 
-from . import mobile_lob_app
+from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class MacOSLobApp(mobile_lob_app.MobileLobApp):
+class MacOSLobApp(MobileLobApp):
     odata_type = "#microsoft.graph.macOSLobApp"
     # The build number of the package. This should match the package CFBundleShortVersionString of the .pkg file.
     build_number: Optional[str] = None
     # The primary bundleId of the package.
     bundle_id: Optional[str] = None
     # List of ComplexType macOSLobChildApp objects. Represents the apps expected to be installed by the package.
-    child_apps: Optional[List[mac_o_s_lob_child_app.MacOSLobChildApp]] = None
+    child_apps: Optional[List[MacOSLobChildApp]] = None
     # When TRUE, indicates that the app's version will NOT be used to detect if the app is installed on a device. When FALSE, indicates that the app's version will be used to detect if the app is installed on a device. Set this to true for apps that use a self update feature.
     ignore_version_detection: Optional[bool] = None
     # When TRUE, indicates that the app will be installed as managed (requires macOS 11.0 and other managed package restrictions). When FALSE, indicates that the app will be installed as unmanaged.
@@ -26,7 +28,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
     # The chunk size for MD5 hash. This is '0' or empty if the package was uploaded directly. If the Intune App Wrapping Tool is used to create a .intunemac, this value can be found inside the Detection.xml file.
     md5_hash_chunk_size: Optional[int] = None
     # ComplexType macOSMinimumOperatingSystem that indicates the minimum operating system applicable for the application.
-    minimum_supported_operating_system: Optional[mac_o_s_minimum_operating_system.MacOSMinimumOperatingSystem] = None
+    minimum_supported_operating_system: Optional[MacOSMinimumOperatingSystem] = None
     # The version number of the package. This should match the package CFBundleVersion in the packageinfo file.
     version_number: Optional[str] = None
     
@@ -47,19 +49,23 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mac_o_s_lob_child_app, mac_o_s_minimum_operating_system, mobile_lob_app
+        from .mac_o_s_lob_child_app import MacOSLobChildApp
+        from .mac_o_s_minimum_operating_system import MacOSMinimumOperatingSystem
+        from .mobile_lob_app import MobileLobApp
 
-        from . import mac_o_s_lob_child_app, mac_o_s_minimum_operating_system, mobile_lob_app
+        from .mac_o_s_lob_child_app import MacOSLobChildApp
+        from .mac_o_s_minimum_operating_system import MacOSMinimumOperatingSystem
+        from .mobile_lob_app import MobileLobApp
 
         fields: Dict[str, Callable[[Any], None]] = {
             "buildNumber": lambda n : setattr(self, 'build_number', n.get_str_value()),
             "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "childApps": lambda n : setattr(self, 'child_apps', n.get_collection_of_object_values(mac_o_s_lob_child_app.MacOSLobChildApp)),
+            "childApps": lambda n : setattr(self, 'child_apps', n.get_collection_of_object_values(MacOSLobChildApp)),
             "ignoreVersionDetection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
             "installAsManaged": lambda n : setattr(self, 'install_as_managed', n.get_bool_value()),
             "md5Hash": lambda n : setattr(self, 'md5_hash', n.get_collection_of_primitive_values(str)),
             "md5HashChunkSize": lambda n : setattr(self, 'md5_hash_chunk_size', n.get_int_value()),
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(mac_o_s_minimum_operating_system.MacOSMinimumOperatingSystem)),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(MacOSMinimumOperatingSystem)),
             "versionNumber": lambda n : setattr(self, 'version_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

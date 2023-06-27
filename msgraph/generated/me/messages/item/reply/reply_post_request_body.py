@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import message
+    from .....models.message import Message
 
 @dataclass
 class ReplyPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class ReplyPostRequestBody(AdditionalDataHolder, Parsable):
     # The Comment property
     comment: Optional[str] = None
     # The Message property
-    message: Optional[message.Message] = None
+    message: Optional[Message] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ReplyPostRequestBody:
@@ -33,13 +33,13 @@ class ReplyPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import message
+        from .....models.message import Message
 
-        from .....models import message
+        from .....models.message import Message
 
         fields: Dict[str, Callable[[Any], None]] = {
             "Comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "Message": lambda n : setattr(self, 'message', n.get_object_value(message.Message)),
+            "Message": lambda n : setattr(self, 'message', n.get_object_value(Message)),
         }
         return fields
     

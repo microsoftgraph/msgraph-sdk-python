@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import identity_provider_base, identity_provider_base_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .available_provider_types import available_provider_types_request_builder
-    from .count import count_request_builder
-    from .item import identity_provider_base_item_request_builder
+    from ...models.identity_provider_base import IdentityProviderBase
+    from ...models.identity_provider_base_collection_response import IdentityProviderBaseCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .available_provider_types.available_provider_types_request_builder import AvailableProviderTypesRequestBuilder
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.identity_provider_base_item_request_builder import IdentityProviderBaseItemRequestBuilder
 
 class IdentityProvidersRequestBuilder():
     """
@@ -38,67 +39,67 @@ class IdentityProvidersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_identity_provider_base_id(self,identity_provider_base_id: str) -> identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder:
+    def by_identity_provider_base_id(self,identity_provider_base_id: str) -> IdentityProviderBaseItemRequestBuilder:
         """
         Provides operations to manage the identityProviders property of the microsoft.graph.identityContainer entity.
         Args:
             identity_provider_base_id: Unique identifier of the item
-        Returns: identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder
+        Returns: IdentityProviderBaseItemRequestBuilder
         """
         if not identity_provider_base_id:
             raise TypeError("identity_provider_base_id cannot be null.")
-        from .item import identity_provider_base_item_request_builder
+        from .item.identity_provider_base_item_request_builder import IdentityProviderBaseItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identityProviderBase%2Did"] = identity_provider_base_id
-        return identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return IdentityProviderBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_provider_base_collection_response.IdentityProviderBaseCollectionResponse]:
+    async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProviderBaseCollectionResponse]:
         """
         Get a collection of identity provider resources that are configured for a tenant, and that are derived from identityProviderBase. For an Azure AD tenant, the providers can be socialIdentityProviders or builtinIdentityProviders objects. For an Azure AD B2C, the providers can be socialIdentityProvider, or appleManagedIdentityProvider objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity_provider_base_collection_response.IdentityProviderBaseCollectionResponse]
+        Returns: Optional[IdentityProviderBaseCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import identity_provider_base_collection_response
+        from ...models.identity_provider_base_collection_response import IdentityProviderBaseCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, identity_provider_base_collection_response.IdentityProviderBaseCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, IdentityProviderBaseCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[identity_provider_base.IdentityProviderBase] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[identity_provider_base.IdentityProviderBase]:
+    async def post(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[IdentityProviderBase]:
         """
         Create an identity provider object that is of the type specified in the request body. Among the types of providers derived from identityProviderBase, you can currently create a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently create a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity_provider_base.IdentityProviderBase]
+        Returns: Optional[IdentityProviderBase]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import identity_provider_base
+        from ...models.identity_provider_base import IdentityProviderBase
 
-        return await self.request_adapter.send_async(request_info, identity_provider_base.IdentityProviderBase, error_mapping)
+        return await self.request_adapter.send_async(request_info, IdentityProviderBase, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -118,7 +119,7 @@ class IdentityProvidersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[identity_provider_base.IdentityProviderBase] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create an identity provider object that is of the type specified in the request body. Among the types of providers derived from identityProviderBase, you can currently create a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently create a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
@@ -140,22 +141,22 @@ class IdentityProvidersRequestBuilder():
         return request_info
     
     @property
-    def available_provider_types(self) -> available_provider_types_request_builder.AvailableProviderTypesRequestBuilder:
+    def available_provider_types(self) -> AvailableProviderTypesRequestBuilder:
         """
         Provides operations to call the availableProviderTypes method.
         """
-        from .available_provider_types import available_provider_types_request_builder
+        from .available_provider_types.available_provider_types_request_builder import AvailableProviderTypesRequestBuilder
 
-        return available_provider_types_request_builder.AvailableProviderTypesRequestBuilder(self.request_adapter, self.path_parameters)
+        return AvailableProviderTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class IdentityProvidersRequestBuilderGetQueryParameters():

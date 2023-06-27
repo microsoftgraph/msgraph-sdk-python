@@ -4,19 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import child_selectability, tag
+    from .child_selectability import ChildSelectability
+    from .tag import Tag
 
-from . import tag
+from .tag import Tag
 
 @dataclass
-class EdiscoveryReviewTag(tag.Tag):
+class EdiscoveryReviewTag(Tag):
     odata_type = "#microsoft.graph.security.ediscoveryReviewTag"
     # Indicates whether a single or multiple child tags can be associated with a document. Possible values are: One, Many.  This value controls whether the UX presents the tags as checkboxes or a radio button group.
-    child_selectability: Optional[child_selectability.ChildSelectability] = None
+    child_selectability: Optional[ChildSelectability] = None
     # Returns the tags that are a child of a tag.
-    child_tags: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
+    child_tags: Optional[List[EdiscoveryReviewTag]] = None
     # Returns the parent tag of the specified tag.
-    parent: Optional[ediscovery_review_tag.EdiscoveryReviewTag] = None
+    parent: Optional[EdiscoveryReviewTag] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryReviewTag:
@@ -35,14 +36,16 @@ class EdiscoveryReviewTag(tag.Tag):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import child_selectability, tag
+        from .child_selectability import ChildSelectability
+        from .tag import Tag
 
-        from . import child_selectability, tag
+        from .child_selectability import ChildSelectability
+        from .tag import Tag
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "childSelectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(child_selectability.ChildSelectability)),
-            "childTags": lambda n : setattr(self, 'child_tags', n.get_collection_of_object_values(ediscovery_review_tag.EdiscoveryReviewTag)),
-            "parent": lambda n : setattr(self, 'parent', n.get_object_value(ediscovery_review_tag.EdiscoveryReviewTag)),
+            "childSelectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(ChildSelectability)),
+            "childTags": lambda n : setattr(self, 'child_tags', n.get_collection_of_object_values(EdiscoveryReviewTag)),
+            "parent": lambda n : setattr(self, 'parent', n.get_object_value(EdiscoveryReviewTag)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

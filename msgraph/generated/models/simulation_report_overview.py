@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import recommended_action, simulation_events_content, training_events_content
+    from .recommended_action import RecommendedAction
+    from .simulation_events_content import SimulationEventsContent
+    from .training_events_content import TrainingEventsContent
 
 @dataclass
 class SimulationReportOverview(AdditionalDataHolder, Parsable):
@@ -14,13 +16,13 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # List of recommended actions for a tenant to improve its security posture based on the attack simulation and training campaign attack type.
-    recommended_actions: Optional[List[recommended_action.RecommendedAction]] = None
+    recommended_actions: Optional[List[RecommendedAction]] = None
     # Number of valid users in the attack simulation and training campaign.
     resolved_targets_count: Optional[int] = None
     # Summary of simulation events in the attack simulation and training campaign.
-    simulation_events_content: Optional[simulation_events_content.SimulationEventsContent] = None
+    simulation_events_content: Optional[SimulationEventsContent] = None
     # Summary of assigned trainings in the attack simulation and training campaign.
-    training_events_content: Optional[training_events_content.TrainingEventsContent] = None
+    training_events_content: Optional[TrainingEventsContent] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SimulationReportOverview:
@@ -39,16 +41,20 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import recommended_action, simulation_events_content, training_events_content
+        from .recommended_action import RecommendedAction
+        from .simulation_events_content import SimulationEventsContent
+        from .training_events_content import TrainingEventsContent
 
-        from . import recommended_action, simulation_events_content, training_events_content
+        from .recommended_action import RecommendedAction
+        from .simulation_events_content import SimulationEventsContent
+        from .training_events_content import TrainingEventsContent
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recommendedActions": lambda n : setattr(self, 'recommended_actions', n.get_collection_of_object_values(recommended_action.RecommendedAction)),
+            "recommendedActions": lambda n : setattr(self, 'recommended_actions', n.get_collection_of_object_values(RecommendedAction)),
             "resolvedTargetsCount": lambda n : setattr(self, 'resolved_targets_count', n.get_int_value()),
-            "simulationEventsContent": lambda n : setattr(self, 'simulation_events_content', n.get_object_value(simulation_events_content.SimulationEventsContent)),
-            "trainingEventsContent": lambda n : setattr(self, 'training_events_content', n.get_object_value(training_events_content.TrainingEventsContent)),
+            "simulationEventsContent": lambda n : setattr(self, 'simulation_events_content', n.get_object_value(SimulationEventsContent)),
+            "trainingEventsContent": lambda n : setattr(self, 'training_events_content', n.get_object_value(TrainingEventsContent)),
         }
         return fields
     

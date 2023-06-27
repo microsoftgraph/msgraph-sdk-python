@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attribute_mapping_source_type, string_key_attribute_mapping_source_value_pair
+    from .attribute_mapping_source_type import AttributeMappingSourceType
+    from .string_key_attribute_mapping_source_value_pair import StringKeyAttributeMappingSourceValuePair
 
 @dataclass
 class AttributeMappingSource(AdditionalDataHolder, Parsable):
@@ -18,9 +19,9 @@ class AttributeMappingSource(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The parameters property
-    parameters: Optional[List[string_key_attribute_mapping_source_value_pair.StringKeyAttributeMappingSourceValuePair]] = None
+    parameters: Optional[List[StringKeyAttributeMappingSourceValuePair]] = None
     # The type property
-    type: Optional[attribute_mapping_source_type.AttributeMappingSourceType] = None
+    type: Optional[AttributeMappingSourceType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttributeMappingSource:
@@ -39,16 +40,18 @@ class AttributeMappingSource(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attribute_mapping_source_type, string_key_attribute_mapping_source_value_pair
+        from .attribute_mapping_source_type import AttributeMappingSourceType
+        from .string_key_attribute_mapping_source_value_pair import StringKeyAttributeMappingSourceValuePair
 
-        from . import attribute_mapping_source_type, string_key_attribute_mapping_source_value_pair
+        from .attribute_mapping_source_type import AttributeMappingSourceType
+        from .string_key_attribute_mapping_source_value_pair import StringKeyAttributeMappingSourceValuePair
 
         fields: Dict[str, Callable[[Any], None]] = {
             "expression": lambda n : setattr(self, 'expression', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "parameters": lambda n : setattr(self, 'parameters', n.get_collection_of_object_values(string_key_attribute_mapping_source_value_pair.StringKeyAttributeMappingSourceValuePair)),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(attribute_mapping_source_type.AttributeMappingSourceType)),
+            "parameters": lambda n : setattr(self, 'parameters', n.get_collection_of_object_values(StringKeyAttributeMappingSourceValuePair)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(AttributeMappingSourceType)),
         }
         return fields
     

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import print_usage
+    from .print_usage import PrintUsage
 
-from . import print_usage
+from .print_usage import PrintUsage
 
 @dataclass
-class PrintUsageByPrinter(print_usage.PrintUsage):
+class PrintUsageByPrinter(PrintUsage):
     odata_type = "#microsoft.graph.printUsageByPrinter"
     # The printerId property
     printer_id: Optional[str] = None
@@ -31,9 +31,9 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import print_usage
+        from .print_usage import PrintUsage
 
-        from . import print_usage
+        from .print_usage import PrintUsage
 
         fields: Dict[str, Callable[[Any], None]] = {
             "printerId": lambda n : setattr(self, 'printer_id', n.get_str_value()),

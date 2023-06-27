@@ -4,52 +4,64 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_item, column_definition, content_type, drive, item_analytics, list, onenote, permission, public_error, rich_long_running_operation, root, sharepoint_ids, site_collection
-    from .term_store import store
+    from .base_item import BaseItem
+    from .column_definition import ColumnDefinition
+    from .content_type import ContentType
+    from .drive import Drive
+    from .item_analytics import ItemAnalytics
+    from .list_ import List_
+    from .onenote import Onenote
+    from .permission import Permission
+    from .public_error import PublicError
+    from .rich_long_running_operation import RichLongRunningOperation
+    from .root import Root
+    from .sharepoint_ids import SharepointIds
+    from .site_collection import SiteCollection
+    from .term_store.store import Store
 
-from . import base_item
+from .base_item import BaseItem
 
 @dataclass
-class Site(base_item.BaseItem):
+class Site(BaseItem):
     odata_type = "#microsoft.graph.site"
     # Analytics about the view activities that took place in this site.
-    analytics: Optional[item_analytics.ItemAnalytics] = None
+    analytics: Optional[ItemAnalytics] = None
     # The collection of column definitions reusable across lists under this site.
-    columns: Optional[List[column_definition.ColumnDefinition]] = None
+    columns: Optional[List[ColumnDefinition]] = None
     # The collection of content types defined for this site.
-    content_types: Optional[List[content_type.ContentType]] = None
+    content_types: Optional[List[ContentType]] = None
     # The full title for the site. Read-only.
     display_name: Optional[str] = None
     # The default drive (document library) for this site.
-    drive: Optional[drive.Drive] = None
+    drive: Optional[Drive] = None
     # The collection of drives (document libraries) under this site.
-    drives: Optional[List[drive.Drive]] = None
+    drives: Optional[List[Drive]] = None
     # The error property
-    error: Optional[public_error.PublicError] = None
+    error: Optional[PublicError] = None
     # The externalColumns property
-    external_columns: Optional[List[column_definition.ColumnDefinition]] = None
+    external_columns: Optional[List[ColumnDefinition]] = None
     # Used to address any item contained in this site. This collection can't be enumerated.
-    items: Optional[List[base_item.BaseItem]] = None
+    items: Optional[List[BaseItem]] = None
     # The collection of lists under this site.
-    lists: Optional[List[list.List]] = None
+    lists: Optional[List[List_]] = None
     # Calls the OneNote service for notebook related operations.
-    onenote: Optional[onenote.Onenote] = None
+    onenote: Optional[Onenote] = None
     # The collection of long-running operations on the site.
-    operations: Optional[List[rich_long_running_operation.RichLongRunningOperation]] = None
+    operations: Optional[List[RichLongRunningOperation]] = None
     # The permissions associated with the site. Nullable.
-    permissions: Optional[List[permission.Permission]] = None
+    permissions: Optional[List[Permission]] = None
     # If present, indicates that this is the root site in the site collection. Read-only.
-    root: Optional[root.Root] = None
+    root: Optional[Root] = None
     # Returns identifiers useful for SharePoint REST compatibility. Read-only.
-    sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
+    sharepoint_ids: Optional[SharepointIds] = None
     # Provides details about the site's site collection. Available only on the root site. Read-only.
-    site_collection: Optional[site_collection.SiteCollection] = None
+    site_collection: Optional[SiteCollection] = None
     # The collection of the sub-sites under this site.
     sites: Optional[List[Site]] = None
     # The default termStore under this site.
-    term_store: Optional[store.Store] = None
+    term_store: Optional[Store] = None
     # The collection of termStores under this site.
-    term_stores: Optional[List[store.Store]] = None
+    term_stores: Optional[List[Store]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Site:
@@ -68,32 +80,56 @@ class Site(base_item.BaseItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_item, column_definition, content_type, drive, item_analytics, list, onenote, permission, public_error, rich_long_running_operation, root, sharepoint_ids, site_collection
-        from .term_store import store
+        from .base_item import BaseItem
+        from .column_definition import ColumnDefinition
+        from .content_type import ContentType
+        from .drive import Drive
+        from .item_analytics import ItemAnalytics
+        from .list_ import List_
+        from .onenote import Onenote
+        from .permission import Permission
+        from .public_error import PublicError
+        from .rich_long_running_operation import RichLongRunningOperation
+        from .root import Root
+        from .sharepoint_ids import SharepointIds
+        from .site_collection import SiteCollection
+        from .term_store.store import Store
 
-        from . import base_item, column_definition, content_type, drive, item_analytics, list, onenote, permission, public_error, rich_long_running_operation, root, sharepoint_ids, site_collection
-        from .term_store import store
+        from .base_item import BaseItem
+        from .column_definition import ColumnDefinition
+        from .content_type import ContentType
+        from .drive import Drive
+        from .item_analytics import ItemAnalytics
+        from .list_ import List_
+        from .onenote import Onenote
+        from .permission import Permission
+        from .public_error import PublicError
+        from .rich_long_running_operation import RichLongRunningOperation
+        from .root import Root
+        from .sharepoint_ids import SharepointIds
+        from .site_collection import SiteCollection
+        from .term_store.store import Store
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(item_analytics.ItemAnalytics)),
-            "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
-            "contentTypes": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(content_type.ContentType)),
+            "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(ItemAnalytics)),
+            "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(ColumnDefinition)),
+            "contentTypes": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(ContentType)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "drive": lambda n : setattr(self, 'drive', n.get_object_value(drive.Drive)),
-            "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(drive.Drive)),
-            "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
-            "externalColumns": lambda n : setattr(self, 'external_columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
-            "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(base_item.BaseItem)),
-            "lists": lambda n : setattr(self, 'lists', n.get_collection_of_object_values(list.List)),
-            "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(onenote.Onenote)),
-            "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(rich_long_running_operation.RichLongRunningOperation)),
-            "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_object_values(permission.Permission)),
-            "root": lambda n : setattr(self, 'root', n.get_object_value(root.Root)),
-            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
-            "siteCollection": lambda n : setattr(self, 'site_collection', n.get_object_value(site_collection.SiteCollection)),
+            "drive": lambda n : setattr(self, 'drive', n.get_object_value(Drive)),
+            "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(Drive)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
+            "externalColumns": lambda n : setattr(self, 'external_columns', n.get_collection_of_object_values(ColumnDefinition)),
+            "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(BaseItem)),
+            "lists": lambda n : setattr(self, 'lists', n.get_collection_of_object_values(List_)),
+            "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(Onenote)),
+            "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(RichLongRunningOperation)),
+            "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_object_values(Permission)),
+            "root": lambda n : setattr(self, 'root', n.get_object_value(Root)),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
+            "siteCollection": lambda n : setattr(self, 'site_collection', n.get_object_value(SiteCollection)),
             "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(Site)),
-            "termStore": lambda n : setattr(self, 'term_store', n.get_object_value(store.Store)),
-            "termStores": lambda n : setattr(self, 'term_stores', n.get_collection_of_object_values(store.Store)),
+            "termStore": lambda n : setattr(self, 'term_store', n.get_object_value(Store)),
+            "termStores": lambda n : setattr(self, 'term_stores', n.get_collection_of_object_values(Store)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

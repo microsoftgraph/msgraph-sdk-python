@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...........models import json
+    from ...........models.json import Json
 
 @dataclass
 class SetPositionPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class SetPositionPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The endCell property
-    end_cell: Optional[json.Json] = None
+    end_cell: Optional[Json] = None
     # The startCell property
-    start_cell: Optional[json.Json] = None
+    start_cell: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SetPositionPostRequestBody:
@@ -33,13 +33,13 @@ class SetPositionPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ...........models import json
+        from ...........models.json import Json
 
-        from ...........models import json
+        from ...........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endCell": lambda n : setattr(self, 'end_cell', n.get_object_value(json.Json)),
-            "startCell": lambda n : setattr(self, 'start_cell', n.get_object_value(json.Json)),
+            "endCell": lambda n : setattr(self, 'end_cell', n.get_object_value(Json)),
+            "startCell": lambda n : setattr(self, 'start_cell', n.get_object_value(Json)),
         }
         return fields
     

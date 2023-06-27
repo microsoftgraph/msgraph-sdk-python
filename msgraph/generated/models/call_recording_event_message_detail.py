@@ -1,31 +1,33 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import call_recording_status, event_message_detail, identity_set
+    from .call_recording_status import CallRecordingStatus
+    from .event_message_detail import EventMessageDetail
+    from .identity_set import IdentitySet
 
-from . import event_message_detail
+from .event_message_detail import EventMessageDetail
 
 @dataclass
-class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
+class CallRecordingEventMessageDetail(EventMessageDetail):
     odata_type = "#microsoft.graph.callRecordingEventMessageDetail"
     # Unique identifier of the call.
     call_id: Optional[str] = None
     # Display name for the call recording.
     call_recording_display_name: Optional[str] = None
     # Duration of the call recording.
-    call_recording_duration: Optional[timedelta] = None
+    call_recording_duration: Optional[datetime.timedelta] = None
     # Status of the call recording. Possible values are: success, failure, initial, chunkFinished, unknownFutureValue.
-    call_recording_status: Optional[call_recording_status.CallRecordingStatus] = None
+    call_recording_status: Optional[CallRecordingStatus] = None
     # Call recording URL.
     call_recording_url: Optional[str] = None
     # Initiator of the event.
-    initiator: Optional[identity_set.IdentitySet] = None
+    initiator: Optional[IdentitySet] = None
     # Organizer of the meeting.
-    meeting_organizer: Optional[identity_set.IdentitySet] = None
+    meeting_organizer: Optional[IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallRecordingEventMessageDetail:
@@ -44,18 +46,22 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import call_recording_status, event_message_detail, identity_set
+        from .call_recording_status import CallRecordingStatus
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
-        from . import call_recording_status, event_message_detail, identity_set
+        from .call_recording_status import CallRecordingStatus
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "callRecordingDisplayName": lambda n : setattr(self, 'call_recording_display_name', n.get_str_value()),
             "callRecordingDuration": lambda n : setattr(self, 'call_recording_duration', n.get_timedelta_value()),
-            "callRecordingStatus": lambda n : setattr(self, 'call_recording_status', n.get_enum_value(call_recording_status.CallRecordingStatus)),
+            "callRecordingStatus": lambda n : setattr(self, 'call_recording_status', n.get_enum_value(CallRecordingStatus)),
             "callRecordingUrl": lambda n : setattr(self, 'call_recording_url', n.get_str_value()),
-            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
-            "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(identity_set.IdentitySet)),
+            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
+            "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,7 +78,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         super().serialize(writer)
         writer.write_str_value("callId", self.call_id)
         writer.write_str_value("callRecordingDisplayName", self.call_recording_display_name)
-        writer.write_timedelta_value("callRecordingDuration", self.call_recording_duration)
+        writer.write_timedelta_value()("callRecordingDuration", self.call_recording_duration)
         writer.write_enum_value("callRecordingStatus", self.call_recording_status)
         writer.write_str_value("callRecordingUrl", self.call_recording_url)
         writer.write_object_value("initiator", self.initiator)

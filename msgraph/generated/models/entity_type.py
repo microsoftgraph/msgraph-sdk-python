@@ -6,7 +6,7 @@ class EntityType(str, Enum):
     DriveItem = "driveItem",
     ExternalItem = "externalItem",
     Site = "site",
-    List = "list",
+    List_ = "list",
     ListItem = "listItem",
     Drive = "drive",
     UnknownFutureValue = "unknownFutureValue",

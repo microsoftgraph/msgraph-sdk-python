@@ -4,19 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_message_detail, identity_set, teamwork_user_identity
+    from .event_message_detail import EventMessageDetail
+    from .identity_set import IdentitySet
+    from .teamwork_user_identity import TeamworkUserIdentity
 
-from . import event_message_detail
+from .event_message_detail import EventMessageDetail
 
 @dataclass
-class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
+class ConversationMemberRoleUpdatedEventMessageDetail(EventMessageDetail):
     odata_type = "#microsoft.graph.conversationMemberRoleUpdatedEventMessageDetail"
     # Roles for the coversation member user.
     conversation_member_roles: Optional[List[str]] = None
     # Identity of the conversation member user.
-    conversation_member_user: Optional[teamwork_user_identity.TeamworkUserIdentity] = None
+    conversation_member_user: Optional[TeamworkUserIdentity] = None
     # Initiator of the event.
-    initiator: Optional[identity_set.IdentitySet] = None
+    initiator: Optional[IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConversationMemberRoleUpdatedEventMessageDetail:
@@ -35,14 +37,18 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message_detail, identity_set, teamwork_user_identity
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+        from .teamwork_user_identity import TeamworkUserIdentity
 
-        from . import event_message_detail, identity_set, teamwork_user_identity
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+        from .teamwork_user_identity import TeamworkUserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "conversationMemberRoles": lambda n : setattr(self, 'conversation_member_roles', n.get_collection_of_primitive_values(str)),
-            "conversationMemberUser": lambda n : setattr(self, 'conversation_member_user', n.get_object_value(teamwork_user_identity.TeamworkUserIdentity)),
-            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
+            "conversationMemberUser": lambda n : setattr(self, 'conversation_member_user', n.get_object_value(TeamworkUserIdentity)),
+            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

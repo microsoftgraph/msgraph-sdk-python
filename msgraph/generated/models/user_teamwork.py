@@ -4,16 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import associated_team_info, entity, user_scope_teams_app_installation
+    from .associated_team_info import AssociatedTeamInfo
+    from .entity import Entity
+    from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class UserTeamwork(entity.Entity):
+class UserTeamwork(Entity):
     # The list of associatedTeamInfo objects that a user is associated with.
-    associated_teams: Optional[List[associated_team_info.AssociatedTeamInfo]] = None
+    associated_teams: Optional[List[AssociatedTeamInfo]] = None
     # The apps installed in the personal scope of this user.
-    installed_apps: Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]] = None
+    installed_apps: Optional[List[UserScopeTeamsAppInstallation]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -34,13 +36,17 @@ class UserTeamwork(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import associated_team_info, entity, user_scope_teams_app_installation
+        from .associated_team_info import AssociatedTeamInfo
+        from .entity import Entity
+        from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
-        from . import associated_team_info, entity, user_scope_teams_app_installation
+        from .associated_team_info import AssociatedTeamInfo
+        from .entity import Entity
+        from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "associatedTeams": lambda n : setattr(self, 'associated_teams', n.get_collection_of_object_values(associated_team_info.AssociatedTeamInfo)),
-            "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(user_scope_teams_app_installation.UserScopeTeamsAppInstallation)),
+            "associatedTeams": lambda n : setattr(self, 'associated_teams', n.get_collection_of_object_values(AssociatedTeamInfo)),
+            "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(UserScopeTeamsAppInstallation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

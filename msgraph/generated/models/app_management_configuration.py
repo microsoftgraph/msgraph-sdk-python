@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import key_credential_configuration, password_credential_configuration
+    from .key_credential_configuration import KeyCredentialConfiguration
+    from .password_credential_configuration import PasswordCredentialConfiguration
 
 @dataclass
 class AppManagementConfiguration(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class AppManagementConfiguration(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Collection of keyCredential restrictions settings to be applied to an application or service principal.
-    key_credentials: Optional[List[key_credential_configuration.KeyCredentialConfiguration]] = None
+    key_credentials: Optional[List[KeyCredentialConfiguration]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Collection of password restrictions settings to be applied to an application or service principal.
-    password_credentials: Optional[List[password_credential_configuration.PasswordCredentialConfiguration]] = None
+    password_credentials: Optional[List[PasswordCredentialConfiguration]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppManagementConfiguration:
@@ -35,14 +36,16 @@ class AppManagementConfiguration(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import key_credential_configuration, password_credential_configuration
+        from .key_credential_configuration import KeyCredentialConfiguration
+        from .password_credential_configuration import PasswordCredentialConfiguration
 
-        from . import key_credential_configuration, password_credential_configuration
+        from .key_credential_configuration import KeyCredentialConfiguration
+        from .password_credential_configuration import PasswordCredentialConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(key_credential_configuration.KeyCredentialConfiguration)),
+            "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(KeyCredentialConfiguration)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "passwordCredentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(password_credential_configuration.PasswordCredentialConfiguration)),
+            "passwordCredentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(PasswordCredentialConfiguration)),
         }
         return fields
     

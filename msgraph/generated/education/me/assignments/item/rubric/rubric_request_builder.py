@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import education_rubric
-    from ......models.o_data_errors import o_data_error
-    from .ref import ref_request_builder
+    from ......models.education_rubric import EducationRubric
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .ref.ref_request_builder import RefRequestBuilder
 
 class RubricRequestBuilder():
     """
@@ -45,62 +45,62 @@ class RubricRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RubricRequestBuilderGetRequestConfiguration] = None) -> Optional[education_rubric.EducationRubric]:
+    async def get(self,request_configuration: Optional[RubricRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationRubric]:
         """
         Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_rubric.EducationRubric]
+        Returns: Optional[EducationRubric]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import education_rubric
+        from ......models.education_rubric import EducationRubric
 
-        return await self.request_adapter.send_async(request_info, education_rubric.EducationRubric, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationRubric, error_mapping)
     
-    async def patch(self,body: Optional[education_rubric.EducationRubric] = None, request_configuration: Optional[RubricRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_rubric.EducationRubric]:
+    async def patch(self,body: Optional[EducationRubric] = None, request_configuration: Optional[RubricRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationRubric]:
         """
         Attach an existing educationRubric object to an educationAssignment. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_rubric.EducationRubric]
+        Returns: Optional[EducationRubric]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import education_rubric
+        from ......models.education_rubric import EducationRubric
 
-        return await self.request_adapter.send_async(request_info, education_rubric.EducationRubric, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationRubric, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RubricRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class RubricRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[education_rubric.EducationRubric] = None, request_configuration: Optional[RubricRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EducationRubric] = None, request_configuration: Optional[RubricRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Attach an existing educationRubric object to an educationAssignment. Only teachers can perform this operation.
         Args:
@@ -158,13 +158,13 @@ class RubricRequestBuilder():
         return request_info
     
     @property
-    def ref(self) -> ref_request_builder.RefRequestBuilder:
+    def ref(self) -> RefRequestBuilder:
         """
         Provides operations to manage the collection of educationRoot entities.
         """
-        from .ref import ref_request_builder
+        from .ref.ref_request_builder import RefRequestBuilder
 
-        return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
+        return RefRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RubricRequestBuilderDeleteRequestConfiguration():

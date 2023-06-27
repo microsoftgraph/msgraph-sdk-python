@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AppScope(entity.Entity):
+class AppScope(Entity):
     # Provides the display name of the app-specific resource represented by the app scope. Provided for display purposes since appScopeId is often an immutable, non-human-readable id. Read-only.
     display_name: Optional[str] = None
     # The OdataType property
@@ -34,9 +34,9 @@ class AppScope(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

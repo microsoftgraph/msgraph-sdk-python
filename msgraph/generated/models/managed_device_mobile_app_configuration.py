@@ -1,41 +1,47 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, ios_mobile_app_configuration, managed_device_mobile_app_configuration_assignment, managed_device_mobile_app_configuration_device_status, managed_device_mobile_app_configuration_device_summary, managed_device_mobile_app_configuration_user_status, managed_device_mobile_app_configuration_user_summary
+    from .entity import Entity
+    from .ios_mobile_app_configuration import IosMobileAppConfiguration
+    from .managed_device_mobile_app_configuration_assignment import ManagedDeviceMobileAppConfigurationAssignment
+    from .managed_device_mobile_app_configuration_device_status import ManagedDeviceMobileAppConfigurationDeviceStatus
+    from .managed_device_mobile_app_configuration_device_summary import ManagedDeviceMobileAppConfigurationDeviceSummary
+    from .managed_device_mobile_app_configuration_user_status import ManagedDeviceMobileAppConfigurationUserStatus
+    from .managed_device_mobile_app_configuration_user_summary import ManagedDeviceMobileAppConfigurationUserSummary
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ManagedDeviceMobileAppConfiguration(entity.Entity):
+class ManagedDeviceMobileAppConfiguration(Entity):
     """
     An abstract class for Mobile app configuration for enrolled devices.
     """
     # The list of group assignemenets for app configration.
-    assignments: Optional[List[managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment]] = None
+    assignments: Optional[List[ManagedDeviceMobileAppConfigurationAssignment]] = None
     # DateTime the object was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Admin provided description of the Device Configuration.
     description: Optional[str] = None
     # App configuration device status summary.
-    device_status_summary: Optional[managed_device_mobile_app_configuration_device_summary.ManagedDeviceMobileAppConfigurationDeviceSummary] = None
+    device_status_summary: Optional[ManagedDeviceMobileAppConfigurationDeviceSummary] = None
     # List of ManagedDeviceMobileAppConfigurationDeviceStatus.
-    device_statuses: Optional[List[managed_device_mobile_app_configuration_device_status.ManagedDeviceMobileAppConfigurationDeviceStatus]] = None
+    device_statuses: Optional[List[ManagedDeviceMobileAppConfigurationDeviceStatus]] = None
     # Admin provided name of the device configuration.
     display_name: Optional[str] = None
     # DateTime the object was last modified.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # the associated app.
     targeted_mobile_apps: Optional[List[str]] = None
     # App configuration user status summary.
-    user_status_summary: Optional[managed_device_mobile_app_configuration_user_summary.ManagedDeviceMobileAppConfigurationUserSummary] = None
+    user_status_summary: Optional[ManagedDeviceMobileAppConfigurationUserSummary] = None
     # List of ManagedDeviceMobileAppConfigurationUserStatus.
-    user_statuses: Optional[List[managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus]] = None
+    user_statuses: Optional[List[ManagedDeviceMobileAppConfigurationUserStatus]] = None
     # Version of the device configuration.
     version: Optional[int] = None
     
@@ -54,9 +60,9 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosMobileAppConfiguration".casefold():
-            from . import ios_mobile_app_configuration
+            from .ios_mobile_app_configuration import IosMobileAppConfiguration
 
-            return ios_mobile_app_configuration.IosMobileAppConfiguration()
+            return IosMobileAppConfiguration()
         return ManagedDeviceMobileAppConfiguration()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -64,21 +70,33 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, ios_mobile_app_configuration, managed_device_mobile_app_configuration_assignment, managed_device_mobile_app_configuration_device_status, managed_device_mobile_app_configuration_device_summary, managed_device_mobile_app_configuration_user_status, managed_device_mobile_app_configuration_user_summary
+        from .entity import Entity
+        from .ios_mobile_app_configuration import IosMobileAppConfiguration
+        from .managed_device_mobile_app_configuration_assignment import ManagedDeviceMobileAppConfigurationAssignment
+        from .managed_device_mobile_app_configuration_device_status import ManagedDeviceMobileAppConfigurationDeviceStatus
+        from .managed_device_mobile_app_configuration_device_summary import ManagedDeviceMobileAppConfigurationDeviceSummary
+        from .managed_device_mobile_app_configuration_user_status import ManagedDeviceMobileAppConfigurationUserStatus
+        from .managed_device_mobile_app_configuration_user_summary import ManagedDeviceMobileAppConfigurationUserSummary
 
-        from . import entity, ios_mobile_app_configuration, managed_device_mobile_app_configuration_assignment, managed_device_mobile_app_configuration_device_status, managed_device_mobile_app_configuration_device_summary, managed_device_mobile_app_configuration_user_status, managed_device_mobile_app_configuration_user_summary
+        from .entity import Entity
+        from .ios_mobile_app_configuration import IosMobileAppConfiguration
+        from .managed_device_mobile_app_configuration_assignment import ManagedDeviceMobileAppConfigurationAssignment
+        from .managed_device_mobile_app_configuration_device_status import ManagedDeviceMobileAppConfigurationDeviceStatus
+        from .managed_device_mobile_app_configuration_device_summary import ManagedDeviceMobileAppConfigurationDeviceSummary
+        from .managed_device_mobile_app_configuration_user_status import ManagedDeviceMobileAppConfigurationUserStatus
+        from .managed_device_mobile_app_configuration_user_summary import ManagedDeviceMobileAppConfigurationUserSummary
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment)),
+            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(ManagedDeviceMobileAppConfigurationAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "deviceStatusSummary": lambda n : setattr(self, 'device_status_summary', n.get_object_value(managed_device_mobile_app_configuration_device_summary.ManagedDeviceMobileAppConfigurationDeviceSummary)),
-            "deviceStatuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(managed_device_mobile_app_configuration_device_status.ManagedDeviceMobileAppConfigurationDeviceStatus)),
+            "deviceStatusSummary": lambda n : setattr(self, 'device_status_summary', n.get_object_value(ManagedDeviceMobileAppConfigurationDeviceSummary)),
+            "deviceStatuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(ManagedDeviceMobileAppConfigurationDeviceStatus)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "targetedMobileApps": lambda n : setattr(self, 'targeted_mobile_apps', n.get_collection_of_primitive_values(str)),
-            "userStatusSummary": lambda n : setattr(self, 'user_status_summary', n.get_object_value(managed_device_mobile_app_configuration_user_summary.ManagedDeviceMobileAppConfigurationUserSummary)),
-            "userStatuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus)),
+            "userStatusSummary": lambda n : setattr(self, 'user_status_summary', n.get_object_value(ManagedDeviceMobileAppConfigurationUserSummary)),
+            "userStatuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(ManagedDeviceMobileAppConfigurationUserStatus)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -95,12 +113,12 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_object_value("deviceStatusSummary", self.device_status_summary)
         writer.write_collection_of_object_values("deviceStatuses", self.device_statuses)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_primitive_values("targetedMobileApps", self.targeted_mobile_apps)
         writer.write_object_value("userStatusSummary", self.user_status_summary)
         writer.write_collection_of_object_values("userStatuses", self.user_statuses)

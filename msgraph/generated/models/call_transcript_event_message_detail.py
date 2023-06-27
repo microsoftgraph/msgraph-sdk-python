@@ -4,19 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_message_detail, identity_set
+    from .event_message_detail import EventMessageDetail
+    from .identity_set import IdentitySet
 
-from . import event_message_detail
+from .event_message_detail import EventMessageDetail
 
 @dataclass
-class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
+class CallTranscriptEventMessageDetail(EventMessageDetail):
     odata_type = "#microsoft.graph.callTranscriptEventMessageDetail"
     # Unique identifier of the call.
     call_id: Optional[str] = None
     # Unique identifier for a call transcript.
     call_transcript_i_cal_uid: Optional[str] = None
     # The organizer of the meeting.
-    meeting_organizer: Optional[identity_set.IdentitySet] = None
+    meeting_organizer: Optional[IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallTranscriptEventMessageDetail:
@@ -35,14 +36,16 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "callTranscriptICalUid": lambda n : setattr(self, 'call_transcript_i_cal_uid', n.get_str_value()),
-            "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(identity_set.IdentitySet)),
+            "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

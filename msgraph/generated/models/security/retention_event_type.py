@@ -1,28 +1,29 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .. import entity, identity_set
+    from ..entity import Entity
+    from ..identity_set import IdentitySet
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class RetentionEventType(entity.Entity):
+class RetentionEventType(Entity):
     # The user who created the retentionEventType.
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # The date time when the retentionEventType was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Optional information about the event type.
     description: Optional[str] = None
     # Name of the event type.
     display_name: Optional[str] = None
     # The user who last modified the retentionEventType.
-    last_modified_by: Optional[identity_set.IdentitySet] = None
+    last_modified_by: Optional[IdentitySet] = None
     # The latest date time when the retentionEventType was modified.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -43,16 +44,18 @@ class RetentionEventType(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .. import entity, identity_set
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
 
-        from .. import entity, identity_set
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -69,10 +72,10 @@ class RetentionEventType(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
     
 

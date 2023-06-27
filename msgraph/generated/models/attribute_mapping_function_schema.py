@@ -4,16 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attribute_mapping_parameter_schema, entity
+    from .attribute_mapping_parameter_schema import AttributeMappingParameterSchema
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AttributeMappingFunctionSchema(entity.Entity):
+class AttributeMappingFunctionSchema(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The parameters property
-    parameters: Optional[List[attribute_mapping_parameter_schema.AttributeMappingParameterSchema]] = None
+    parameters: Optional[List[AttributeMappingParameterSchema]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttributeMappingFunctionSchema:
@@ -32,12 +33,14 @@ class AttributeMappingFunctionSchema(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attribute_mapping_parameter_schema, entity
+        from .attribute_mapping_parameter_schema import AttributeMappingParameterSchema
+        from .entity import Entity
 
-        from . import attribute_mapping_parameter_schema, entity
+        from .attribute_mapping_parameter_schema import AttributeMappingParameterSchema
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "parameters": lambda n : setattr(self, 'parameters', n.get_collection_of_object_values(attribute_mapping_parameter_schema.AttributeMappingParameterSchema)),
+            "parameters": lambda n : setattr(self, 'parameters', n.get_collection_of_object_values(AttributeMappingParameterSchema)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

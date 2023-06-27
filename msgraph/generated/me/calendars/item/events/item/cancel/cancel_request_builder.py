@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import cancel_post_request_body
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .cancel_post_request_body import CancelPostRequestBody
 
 class CancelRequestBuilder():
     """
@@ -35,7 +35,7 @@ class CancelRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[cancel_post_request_body.CancelPostRequestBody] = None, request_configuration: Optional[CancelRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[CancelPostRequestBody] = None, request_configuration: Optional[CancelRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         This action allows the organizer of a meeting to send a cancellation message and cancel the event.  The action moves the event to the Deleted Items folder. The organizer can also cancel an occurrence of a recurring meeting by providing the occurrence event ID. An attendee calling this action gets an error (HTTP 400 Bad Request), with the followingerror message: 'Your request can't be completed. You need to be an organizer to cancel a meeting.' This action differs from Delete in that **Cancel** is available to only the organizer, and letsthe organizer send a custom message to the attendees about the cancellation.
         Args:
@@ -47,17 +47,17 @@ class CancelRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[cancel_post_request_body.CancelPostRequestBody] = None, request_configuration: Optional[CancelRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CancelPostRequestBody] = None, request_configuration: Optional[CancelRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         This action allows the organizer of a meeting to send a cancellation message and cancel the event.  The action moves the event to the Deleted Items folder. The organizer can also cancel an occurrence of a recurring meeting by providing the occurrence event ID. An attendee calling this action gets an error (HTTP 400 Bad Request), with the followingerror message: 'Your request can't be completed. You need to be an organizer to cancel a meeting.' This action differs from Delete in that **Cancel** is available to only the organizer, and letsthe organizer send a custom message to the attendees about the cancellation.
         Args:

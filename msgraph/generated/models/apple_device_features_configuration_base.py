@@ -4,12 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_configuration, ios_device_features_configuration, mac_o_s_device_features_configuration
+    from .device_configuration import DeviceConfiguration
+    from .ios_device_features_configuration import IosDeviceFeaturesConfiguration
+    from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class AppleDeviceFeaturesConfigurationBase(device_configuration.DeviceConfiguration):
+class AppleDeviceFeaturesConfigurationBase(DeviceConfiguration):
     odata_type = "#microsoft.graph.appleDeviceFeaturesConfigurationBase"
     
     @staticmethod
@@ -27,13 +29,13 @@ class AppleDeviceFeaturesConfigurationBase(device_configuration.DeviceConfigurat
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosDeviceFeaturesConfiguration".casefold():
-            from . import ios_device_features_configuration
+            from .ios_device_features_configuration import IosDeviceFeaturesConfiguration
 
-            return ios_device_features_configuration.IosDeviceFeaturesConfiguration()
+            return IosDeviceFeaturesConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSDeviceFeaturesConfiguration".casefold():
-            from . import mac_o_s_device_features_configuration
+            from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
 
-            return mac_o_s_device_features_configuration.MacOSDeviceFeaturesConfiguration()
+            return MacOSDeviceFeaturesConfiguration()
         return AppleDeviceFeaturesConfigurationBase()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -41,9 +43,13 @@ class AppleDeviceFeaturesConfigurationBase(device_configuration.DeviceConfigurat
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration, ios_device_features_configuration, mac_o_s_device_features_configuration
+        from .device_configuration import DeviceConfiguration
+        from .ios_device_features_configuration import IosDeviceFeaturesConfiguration
+        from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
 
-        from . import device_configuration, ios_device_features_configuration, mac_o_s_device_features_configuration
+        from .device_configuration import DeviceConfiguration
+        from .ios_device_features_configuration import IosDeviceFeaturesConfiguration
+        from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

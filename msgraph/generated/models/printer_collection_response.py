@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, printer
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .printer import Printer
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class PrinterCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class PrinterCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[printer.Printer]] = None
+    value: Optional[List[Printer]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterCollectionResponse:
@@ -30,12 +31,14 @@ class PrinterCollectionResponse(base_collection_pagination_count_response.BaseCo
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, printer
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .printer import Printer
 
-        from . import base_collection_pagination_count_response, printer
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .printer import Printer
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(printer.Printer)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(Printer)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

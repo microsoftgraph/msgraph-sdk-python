@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mime_content, rgb_color
+    from .mime_content import MimeContent
+    from .rgb_color import RgbColor
 
 @dataclass
 class IntuneBrand(AdditionalDataHolder, Parsable):
@@ -23,11 +24,11 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
     # Phone number of the person/organization responsible for IT support.
     contact_i_t_phone_number: Optional[str] = None
     # Logo image displayed in Company Portal apps which have a dark background behind the logo.
-    dark_background_logo: Optional[mime_content.MimeContent] = None
+    dark_background_logo: Optional[MimeContent] = None
     # Company/organization name that is displayed to end users.
     display_name: Optional[str] = None
     # Logo image displayed in Company Portal apps which have a light background behind the logo.
-    light_background_logo: Optional[mime_content.MimeContent] = None
+    light_background_logo: Optional[MimeContent] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Display name of the company/organization’s IT helpdesk site.
@@ -43,7 +44,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
     # Boolean that represents whether the administrator-supplied display name will be shown next to the logo image.
     show_name_next_to_logo: Optional[bool] = None
     # Primary theme color used in the Company Portal applications and web portal.
-    theme_color: Optional[rgb_color.RgbColor] = None
+    theme_color: Optional[RgbColor] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IntuneBrand:
@@ -62,18 +63,20 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mime_content, rgb_color
+        from .mime_content import MimeContent
+        from .rgb_color import RgbColor
 
-        from . import mime_content, rgb_color
+        from .mime_content import MimeContent
+        from .rgb_color import RgbColor
 
         fields: Dict[str, Callable[[Any], None]] = {
             "contactITEmailAddress": lambda n : setattr(self, 'contact_i_t_email_address', n.get_str_value()),
             "contactITName": lambda n : setattr(self, 'contact_i_t_name', n.get_str_value()),
             "contactITNotes": lambda n : setattr(self, 'contact_i_t_notes', n.get_str_value()),
             "contactITPhoneNumber": lambda n : setattr(self, 'contact_i_t_phone_number', n.get_str_value()),
-            "darkBackgroundLogo": lambda n : setattr(self, 'dark_background_logo', n.get_object_value(mime_content.MimeContent)),
+            "darkBackgroundLogo": lambda n : setattr(self, 'dark_background_logo', n.get_object_value(MimeContent)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lightBackgroundLogo": lambda n : setattr(self, 'light_background_logo', n.get_object_value(mime_content.MimeContent)),
+            "lightBackgroundLogo": lambda n : setattr(self, 'light_background_logo', n.get_object_value(MimeContent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "onlineSupportSiteName": lambda n : setattr(self, 'online_support_site_name', n.get_str_value()),
             "onlineSupportSiteUrl": lambda n : setattr(self, 'online_support_site_url', n.get_str_value()),
@@ -81,7 +84,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             "showDisplayNameNextToLogo": lambda n : setattr(self, 'show_display_name_next_to_logo', n.get_bool_value()),
             "showLogo": lambda n : setattr(self, 'show_logo', n.get_bool_value()),
             "showNameNextToLogo": lambda n : setattr(self, 'show_name_next_to_logo', n.get_bool_value()),
-            "themeColor": lambda n : setattr(self, 'theme_color', n.get_object_value(rgb_color.RgbColor)),
+            "themeColor": lambda n : setattr(self, 'theme_color', n.get_object_value(RgbColor)),
         }
         return fields
     

@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import public_error_detail, public_inner_error
+    from .public_error_detail import PublicErrorDetail
+    from .public_inner_error import PublicInnerError
 
 @dataclass
 class PublicError(AdditionalDataHolder, Parsable):
@@ -14,9 +15,9 @@ class PublicError(AdditionalDataHolder, Parsable):
     # Represents the error code.
     code: Optional[str] = None
     # Details of the error.
-    details: Optional[List[public_error_detail.PublicErrorDetail]] = None
+    details: Optional[List[PublicErrorDetail]] = None
     # Details of the inner error.
-    inner_error: Optional[public_inner_error.PublicInnerError] = None
+    inner_error: Optional[PublicInnerError] = None
     # A non-localized message for the developer.
     message: Optional[str] = None
     # The OdataType property
@@ -41,14 +42,16 @@ class PublicError(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import public_error_detail, public_inner_error
+        from .public_error_detail import PublicErrorDetail
+        from .public_inner_error import PublicInnerError
 
-        from . import public_error_detail, public_inner_error
+        from .public_error_detail import PublicErrorDetail
+        from .public_inner_error import PublicInnerError
 
         fields: Dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
-            "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(public_error_detail.PublicErrorDetail)),
-            "innerError": lambda n : setattr(self, 'inner_error', n.get_object_value(public_inner_error.PublicInnerError)),
+            "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(PublicErrorDetail)),
+            "innerError": lambda n : setattr(self, 'inner_error', n.get_object_value(PublicInnerError)),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "target": lambda n : setattr(self, 'target', n.get_str_value()),

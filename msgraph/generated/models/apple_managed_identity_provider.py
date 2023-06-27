@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_provider_base
+    from .identity_provider_base import IdentityProviderBase
 
-from . import identity_provider_base
+from .identity_provider_base import IdentityProviderBase
 
 @dataclass
-class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
+class AppleManagedIdentityProvider(IdentityProviderBase):
     odata_type = "#microsoft.graph.appleManagedIdentityProvider"
     # The certificate data, which is a long string of text from the certificate. Can be null.
     certificate_data: Optional[str] = None
@@ -37,9 +37,9 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_provider_base
+        from .identity_provider_base import IdentityProviderBase
 
-        from . import identity_provider_base
+        from .identity_provider_base import IdentityProviderBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "certificateData": lambda n : setattr(self, 'certificate_data', n.get_str_value()),

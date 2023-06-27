@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import risk_detection, risk_detection_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import risk_detection_item_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.risk_detection import RiskDetection
+    from ...models.risk_detection_collection_response import RiskDetectionCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.risk_detection_item_request_builder import RiskDetectionItemRequestBuilder
 
 class RiskDetectionsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class RiskDetectionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_risk_detection_id(self,risk_detection_id: str) -> risk_detection_item_request_builder.RiskDetectionItemRequestBuilder:
+    def by_risk_detection_id(self,risk_detection_id: str) -> RiskDetectionItemRequestBuilder:
         """
         Provides operations to manage the riskDetections property of the microsoft.graph.identityProtectionRoot entity.
         Args:
             risk_detection_id: Unique identifier of the item
-        Returns: risk_detection_item_request_builder.RiskDetectionItemRequestBuilder
+        Returns: RiskDetectionItemRequestBuilder
         """
         if not risk_detection_id:
             raise TypeError("risk_detection_id cannot be null.")
-        from .item import risk_detection_item_request_builder
+        from .item.risk_detection_item_request_builder import RiskDetectionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["riskDetection%2Did"] = risk_detection_id
-        return risk_detection_item_request_builder.RiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return RiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[risk_detection_collection_response.RiskDetectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[RiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[RiskDetectionCollectionResponse]:
         """
         Get a list of the riskDetection objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[risk_detection_collection_response.RiskDetectionCollectionResponse]
+        Returns: Optional[RiskDetectionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import risk_detection_collection_response
+        from ...models.risk_detection_collection_response import RiskDetectionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, risk_detection_collection_response.RiskDetectionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, RiskDetectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[risk_detection.RiskDetection] = None, request_configuration: Optional[RiskDetectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[risk_detection.RiskDetection]:
+    async def post(self,body: Optional[RiskDetection] = None, request_configuration: Optional[RiskDetectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[RiskDetection]:
         """
         Create new navigation property to riskDetections for identityProtection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[risk_detection.RiskDetection]
+        Returns: Optional[RiskDetection]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import risk_detection
+        from ...models.risk_detection import RiskDetection
 
-        return await self.request_adapter.send_async(request_info, risk_detection.RiskDetection, error_mapping)
+        return await self.request_adapter.send_async(request_info, RiskDetection, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class RiskDetectionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[risk_detection.RiskDetection] = None, request_configuration: Optional[RiskDetectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[RiskDetection] = None, request_configuration: Optional[RiskDetectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to riskDetections for identityProtection
         Args:
@@ -139,13 +140,13 @@ class RiskDetectionsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RiskDetectionsRequestBuilderGetQueryParameters():

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_modes
+    from .authentication_method_modes import AuthenticationMethodModes
 
 @dataclass
 class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
@@ -16,11 +16,11 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
     # References to existing Conditional Access policies that use this authentication strength.
     conditional_access_references: Optional[List[str]] = None
     # The list of current authentication method combinations allowed by the authentication strength.
-    current_combinations: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None
+    current_combinations: Optional[List[AuthenticationMethodModes]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The list of former authentication method combinations allowed by the authentication strength before they were updated through the updateAllowedCombinations action.
-    previous_combinations: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None
+    previous_combinations: Optional[List[AuthenticationMethodModes]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UpdateAllowedCombinationsResult:
@@ -39,16 +39,16 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_modes
+        from .authentication_method_modes import AuthenticationMethodModes
 
-        from . import authentication_method_modes
+        from .authentication_method_modes import AuthenticationMethodModes
 
         fields: Dict[str, Callable[[Any], None]] = {
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
             "conditionalAccessReferences": lambda n : setattr(self, 'conditional_access_references', n.get_collection_of_primitive_values(str)),
-            "currentCombinations": lambda n : setattr(self, 'current_combinations', n.get_collection_of_enum_values(authentication_method_modes.AuthenticationMethodModes)),
+            "currentCombinations": lambda n : setattr(self, 'current_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "previousCombinations": lambda n : setattr(self, 'previous_combinations', n.get_collection_of_enum_values(authentication_method_modes.AuthenticationMethodModes)),
+            "previousCombinations": lambda n : setattr(self, 'previous_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
         }
         return fields
     

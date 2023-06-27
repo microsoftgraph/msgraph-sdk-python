@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import date_time_time_zone, location
+    from .date_time_time_zone import DateTimeTimeZone
+    from .location import Location
 
 @dataclass
 class Reminder(AdditionalDataHolder, Parsable):
@@ -14,13 +15,13 @@ class Reminder(AdditionalDataHolder, Parsable):
     # Identifies the version of the reminder. Every time the reminder is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object.
     change_key: Optional[str] = None
     # The date, time and time zone that the event ends.
-    event_end_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    event_end_time: Optional[DateTimeTimeZone] = None
     # The unique ID of the event. Read only.
     event_id: Optional[str] = None
     # The location of the event.
-    event_location: Optional[location.Location] = None
+    event_location: Optional[Location] = None
     # The date, time, and time zone that the event starts.
-    event_start_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    event_start_time: Optional[DateTimeTimeZone] = None
     # The text of the event's subject line.
     event_subject: Optional[str] = None
     # The URL to open the event in Outlook on the web.The event will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
@@ -28,7 +29,7 @@ class Reminder(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The date, time, and time zone that the reminder is set to occur.
-    reminder_fire_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    reminder_fire_time: Optional[DateTimeTimeZone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Reminder:
@@ -47,20 +48,22 @@ class Reminder(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import date_time_time_zone, location
+        from .date_time_time_zone import DateTimeTimeZone
+        from .location import Location
 
-        from . import date_time_time_zone, location
+        from .date_time_time_zone import DateTimeTimeZone
+        from .location import Location
 
         fields: Dict[str, Callable[[Any], None]] = {
             "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "eventEndTime": lambda n : setattr(self, 'event_end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "eventEndTime": lambda n : setattr(self, 'event_end_time', n.get_object_value(DateTimeTimeZone)),
             "eventId": lambda n : setattr(self, 'event_id', n.get_str_value()),
-            "eventLocation": lambda n : setattr(self, 'event_location', n.get_object_value(location.Location)),
-            "eventStartTime": lambda n : setattr(self, 'event_start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "eventLocation": lambda n : setattr(self, 'event_location', n.get_object_value(Location)),
+            "eventStartTime": lambda n : setattr(self, 'event_start_time', n.get_object_value(DateTimeTimeZone)),
             "eventSubject": lambda n : setattr(self, 'event_subject', n.get_str_value()),
             "eventWebLink": lambda n : setattr(self, 'event_web_link', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "reminderFireTime": lambda n : setattr(self, 'reminder_fire_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "reminderFireTime": lambda n : setattr(self, 'reminder_fire_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
     

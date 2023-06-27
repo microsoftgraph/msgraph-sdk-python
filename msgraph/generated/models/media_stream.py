@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import media_direction, modality
+    from .media_direction import MediaDirection
+    from .modality import Modality
 
 @dataclass
 class MediaStream(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class MediaStream(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The direction property
-    direction: Optional[media_direction.MediaDirection] = None
+    direction: Optional[MediaDirection] = None
     # The media stream label.
     label: Optional[str] = None
     # The mediaType property
-    media_type: Optional[modality.Modality] = None
+    media_type: Optional[Modality] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # If the media is muted by the server.
@@ -41,14 +42,16 @@ class MediaStream(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import media_direction, modality
+        from .media_direction import MediaDirection
+        from .modality import Modality
 
-        from . import media_direction, modality
+        from .media_direction import MediaDirection
+        from .modality import Modality
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "direction": lambda n : setattr(self, 'direction', n.get_enum_value(media_direction.MediaDirection)),
+            "direction": lambda n : setattr(self, 'direction', n.get_enum_value(MediaDirection)),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
-            "mediaType": lambda n : setattr(self, 'media_type', n.get_enum_value(modality.Modality)),
+            "mediaType": lambda n : setattr(self, 'media_type', n.get_enum_value(Modality)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "serverMuted": lambda n : setattr(self, 'server_muted', n.get_bool_value()),
             "sourceId": lambda n : setattr(self, 'source_id', n.get_str_value()),

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import managed_app_policy_deployment_summary
-    from .....models.o_data_errors import o_data_error
+    from .....models.managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+    from .....models.o_data_errors.o_data_error import ODataError
 
 class DeploymentSummaryRequestBuilder():
     """
@@ -44,62 +44,62 @@ class DeploymentSummaryRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeploymentSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]:
+    async def get(self,request_configuration: Optional[DeploymentSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppPolicyDeploymentSummary]:
         """
-        Navigation property to deployment summary of the configuration.
+        Read properties and relationships of the managedAppPolicyDeploymentSummary object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]
+        Returns: Optional[ManagedAppPolicyDeploymentSummary]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import managed_app_policy_deployment_summary
+        from .....models.managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
 
-        return await self.request_adapter.send_async(request_info, managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedAppPolicyDeploymentSummary, error_mapping)
     
-    async def patch(self,body: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None, request_configuration: Optional[DeploymentSummaryRequestBuilderPatchRequestConfiguration] = None) -> Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]:
+    async def patch(self,body: Optional[ManagedAppPolicyDeploymentSummary] = None, request_configuration: Optional[DeploymentSummaryRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedAppPolicyDeploymentSummary]:
         """
-        Update the navigation property deploymentSummary in deviceAppManagement
+        Update the properties of a managedAppPolicyDeploymentSummary object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]
+        Returns: Optional[ManagedAppPolicyDeploymentSummary]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import managed_app_policy_deployment_summary
+        from .....models.managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
 
-        return await self.request_adapter.send_async(request_info, managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedAppPolicyDeploymentSummary, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeploymentSummaryRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -119,7 +119,7 @@ class DeploymentSummaryRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeploymentSummaryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Navigation property to deployment summary of the configuration.
+        Read properties and relationships of the managedAppPolicyDeploymentSummary object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class DeploymentSummaryRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None, request_configuration: Optional[DeploymentSummaryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ManagedAppPolicyDeploymentSummary] = None, request_configuration: Optional[DeploymentSummaryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deploymentSummary in deviceAppManagement
+        Update the properties of a managedAppPolicyDeploymentSummary object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class DeploymentSummaryRequestBuilder():
     @dataclass
     class DeploymentSummaryRequestBuilderGetQueryParameters():
         """
-        Navigation property to deployment summary of the configuration.
+        Read properties and relationships of the managedAppPolicyDeploymentSummary object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

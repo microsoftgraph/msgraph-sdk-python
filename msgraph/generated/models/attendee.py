@@ -4,17 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attendee_base, response_status, time_slot
+    from .attendee_base import AttendeeBase
+    from .response_status import ResponseStatus
+    from .time_slot import TimeSlot
 
-from . import attendee_base
+from .attendee_base import AttendeeBase
 
 @dataclass
-class Attendee(attendee_base.AttendeeBase):
+class Attendee(AttendeeBase):
     odata_type = "#microsoft.graph.attendee"
     # An alternate date/time proposed by the attendee for a meeting request to start and end. If the attendee hasn't proposed another time, then this property is not included in a response of a GET event.
-    proposed_new_time: Optional[time_slot.TimeSlot] = None
+    proposed_new_time: Optional[TimeSlot] = None
     # The attendee's response (none, accepted, declined, etc.) for the event and date-time that the response was sent.
-    status: Optional[response_status.ResponseStatus] = None
+    status: Optional[ResponseStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Attendee:
@@ -33,13 +35,17 @@ class Attendee(attendee_base.AttendeeBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attendee_base, response_status, time_slot
+        from .attendee_base import AttendeeBase
+        from .response_status import ResponseStatus
+        from .time_slot import TimeSlot
 
-        from . import attendee_base, response_status, time_slot
+        from .attendee_base import AttendeeBase
+        from .response_status import ResponseStatus
+        from .time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
-            "status": lambda n : setattr(self, 'status', n.get_object_value(response_status.ResponseStatus)),
+            "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(TimeSlot)),
+            "status": lambda n : setattr(self, 'status', n.get_object_value(ResponseStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

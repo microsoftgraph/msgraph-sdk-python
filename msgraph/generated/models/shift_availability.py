@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import patterned_recurrence, time_range
+    from .patterned_recurrence import PatternedRecurrence
+    from .time_range import TimeRange
 
 @dataclass
 class ShiftAvailability(AdditionalDataHolder, Parsable):
@@ -14,9 +15,9 @@ class ShiftAvailability(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies the pattern for recurrence
-    recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
+    recurrence: Optional[PatternedRecurrence] = None
     # The time slot(s) preferred by the user.
-    time_slots: Optional[List[time_range.TimeRange]] = None
+    time_slots: Optional[List[TimeRange]] = None
     # Specifies the time zone for the indicated time.
     time_zone: Optional[str] = None
     
@@ -37,14 +38,16 @@ class ShiftAvailability(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import patterned_recurrence, time_range
+        from .patterned_recurrence import PatternedRecurrence
+        from .time_range import TimeRange
 
-        from . import patterned_recurrence, time_range
+        from .patterned_recurrence import PatternedRecurrence
+        from .time_range import TimeRange
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
-            "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(time_range.TimeRange)),
+            "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(PatternedRecurrence)),
+            "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(TimeRange)),
             "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
         }
         return fields

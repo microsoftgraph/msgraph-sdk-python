@@ -4,21 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import client_platform, product_family, user_agent
+    from .client_platform import ClientPlatform
+    from .product_family import ProductFamily
+    from .user_agent import UserAgent
 
-from . import user_agent
+from .user_agent import UserAgent
 
 @dataclass
-class ClientUserAgent(user_agent.UserAgent):
+class ClientUserAgent(UserAgent):
     odata_type = "#microsoft.graph.callRecords.clientUserAgent"
     # The unique identifier of the Azure AD application used by this endpoint.
     azure_a_d_app_id: Optional[str] = None
     # Immutable resource identifier of the Azure Communication Service associated with this endpoint based on Communication Services APIs.
     communication_service_id: Optional[str] = None
     # The platform property
-    platform: Optional[client_platform.ClientPlatform] = None
+    platform: Optional[ClientPlatform] = None
     # The productFamily property
-    product_family: Optional[product_family.ProductFamily] = None
+    product_family: Optional[ProductFamily] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClientUserAgent:
@@ -37,15 +39,19 @@ class ClientUserAgent(user_agent.UserAgent):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import client_platform, product_family, user_agent
+        from .client_platform import ClientPlatform
+        from .product_family import ProductFamily
+        from .user_agent import UserAgent
 
-        from . import client_platform, product_family, user_agent
+        from .client_platform import ClientPlatform
+        from .product_family import ProductFamily
+        from .user_agent import UserAgent
 
         fields: Dict[str, Callable[[Any], None]] = {
             "azureADAppId": lambda n : setattr(self, 'azure_a_d_app_id', n.get_str_value()),
             "communicationServiceId": lambda n : setattr(self, 'communication_service_id', n.get_str_value()),
-            "platform": lambda n : setattr(self, 'platform', n.get_enum_value(client_platform.ClientPlatform)),
-            "productFamily": lambda n : setattr(self, 'product_family', n.get_enum_value(product_family.ProductFamily)),
+            "platform": lambda n : setattr(self, 'platform', n.get_enum_value(ClientPlatform)),
+            "productFamily": lambda n : setattr(self, 'product_family', n.get_enum_value(ProductFamily)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

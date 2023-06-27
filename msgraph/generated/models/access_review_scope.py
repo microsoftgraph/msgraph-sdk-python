@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_inactive_users_query_scope, access_review_query_scope, principal_resource_memberships_scope
+    from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
+    from .access_review_query_scope import AccessReviewQueryScope
+    from .principal_resource_memberships_scope import PrincipalResourceMembershipsScope
 
 @dataclass
 class AccessReviewScope(AdditionalDataHolder, Parsable):
@@ -29,17 +31,17 @@ class AccessReviewScope(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInactiveUsersQueryScope".casefold():
-            from . import access_review_inactive_users_query_scope
+            from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
 
-            return access_review_inactive_users_query_scope.AccessReviewInactiveUsersQueryScope()
+            return AccessReviewInactiveUsersQueryScope()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewQueryScope".casefold():
-            from . import access_review_query_scope
+            from .access_review_query_scope import AccessReviewQueryScope
 
-            return access_review_query_scope.AccessReviewQueryScope()
+            return AccessReviewQueryScope()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.principalResourceMembershipsScope".casefold():
-            from . import principal_resource_memberships_scope
+            from .principal_resource_memberships_scope import PrincipalResourceMembershipsScope
 
-            return principal_resource_memberships_scope.PrincipalResourceMembershipsScope()
+            return PrincipalResourceMembershipsScope()
         return AccessReviewScope()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -47,9 +49,13 @@ class AccessReviewScope(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_inactive_users_query_scope, access_review_query_scope, principal_resource_memberships_scope
+        from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
+        from .access_review_query_scope import AccessReviewQueryScope
+        from .principal_resource_memberships_scope import PrincipalResourceMembershipsScope
 
-        from . import access_review_inactive_users_query_scope, access_review_query_scope, principal_resource_memberships_scope
+        from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
+        from .access_review_query_scope import AccessReviewQueryScope
+        from .principal_resource_memberships_scope import PrincipalResourceMembershipsScope
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, managed_e_book_assignment
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .managed_e_book_assignment import ManagedEBookAssignment
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class ManagedEBookAssignmentCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class ManagedEBookAssignmentCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]] = None
+    value: Optional[List[ManagedEBookAssignment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedEBookAssignmentCollectionResponse:
@@ -30,12 +31,14 @@ class ManagedEBookAssignmentCollectionResponse(base_collection_pagination_count_
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, managed_e_book_assignment
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .managed_e_book_assignment import ManagedEBookAssignment
 
-        from . import base_collection_pagination_count_response, managed_e_book_assignment
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .managed_e_book_assignment import ManagedEBookAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(managed_e_book_assignment.ManagedEBookAssignment)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(ManagedEBookAssignment)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

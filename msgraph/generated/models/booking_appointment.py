@@ -1,16 +1,24 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import booking_customer_information_base, booking_price_type, booking_reminder, date_time_time_zone, entity, location
+    from .booking_customer_information_base import BookingCustomerInformationBase
+    from .booking_price_type import BookingPriceType
+    from .booking_reminder import BookingReminder
+    from .date_time_time_zone import DateTimeTimeZone
+    from .entity import Entity
+    from .location import Location
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class BookingAppointment(entity.Entity):
+class BookingAppointment(Entity):
+    """
+    Represents a booked appointment of a service by a customer in a business.
+    """
     # Additional information that is sent to the customer when an appointment is confirmed.
     additional_information: Optional[str] = None
     # The URL of the meeting to join anonymously.
@@ -18,11 +26,11 @@ class BookingAppointment(entity.Entity):
     # The time zone of the customer. For a list of possible values, see dateTimeTimeZone.
     customer_time_zone: Optional[str] = None
     # A collection of customer properties for an appointment. An appointment will contain a list of customer information and each unit will indicate the properties of a customer who is part of that appointment. Optional.
-    customers: Optional[List[booking_customer_information_base.BookingCustomerInformationBase]] = None
+    customers: Optional[List[BookingCustomerInformationBase]] = None
     # The length of the appointment, denoted in ISO8601 format.
-    duration: Optional[timedelta] = None
+    duration: Optional[datetime.timedelta] = None
     # The endDateTime property
-    end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    end_date_time: Optional[DateTimeTimeZone] = None
     # The current number of customers in the appointment
     filled_attendees_count: Optional[int] = None
     # If true, indicates that the appointment will be held online. Default value is false.
@@ -36,21 +44,21 @@ class BookingAppointment(entity.Entity):
     # If true indicates that the bookingCustomer for this appointment does not wish to receive a confirmation for this appointment.
     opt_out_of_customer_email: Optional[bool] = None
     # The amount of time to reserve after the appointment ends, for cleaning up, as an example. The value is expressed in ISO8601 format.
-    post_buffer: Optional[timedelta] = None
+    post_buffer: Optional[datetime.timedelta] = None
     # The amount of time to reserve before the appointment begins, for preparation, as an example. The value is expressed in ISO8601 format.
-    pre_buffer: Optional[timedelta] = None
+    pre_buffer: Optional[datetime.timedelta] = None
     # The regular price for an appointment for the specified bookingService.
     price: Optional[float] = None
     # Represents the type of pricing of a booking service.
-    price_type: Optional[booking_price_type.BookingPriceType] = None
+    price_type: Optional[BookingPriceType] = None
     # The collection of customer reminders sent for this appointment. The value of this property is available only when reading this bookingAppointment by its ID.
-    reminders: Optional[List[booking_reminder.BookingReminder]] = None
+    reminders: Optional[List[BookingReminder]] = None
     # An additional tracking ID for the appointment, if the appointment has been created directly by the customer on the scheduling page, as opposed to by a staff member on the behalf of the customer. Only supported for appointment if maxAttendeeCount is 1.
     self_service_appointment_id: Optional[str] = None
     # The ID of the bookingService associated with this appointment.
     service_id: Optional[str] = None
     # The location where the service is delivered.
-    service_location: Optional[location.Location] = None
+    service_location: Optional[Location] = None
     # The name of the bookingService associated with this appointment.This property is optional when creating a new appointment. If not specified, it is computed from the service associated with the appointment by the serviceId property.
     service_name: Optional[str] = None
     # Notes from a bookingStaffMember. The value of this property is available only when reading this bookingAppointment by its ID.
@@ -60,7 +68,7 @@ class BookingAppointment(entity.Entity):
     # The ID of each bookingStaffMember who is scheduled in this appointment.
     staff_member_ids: Optional[List[str]] = None
     # The startDateTime property
-    start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    start_date_time: Optional[DateTimeTimeZone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingAppointment:
@@ -79,17 +87,27 @@ class BookingAppointment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_customer_information_base, booking_price_type, booking_reminder, date_time_time_zone, entity, location
+        from .booking_customer_information_base import BookingCustomerInformationBase
+        from .booking_price_type import BookingPriceType
+        from .booking_reminder import BookingReminder
+        from .date_time_time_zone import DateTimeTimeZone
+        from .entity import Entity
+        from .location import Location
 
-        from . import booking_customer_information_base, booking_price_type, booking_reminder, date_time_time_zone, entity, location
+        from .booking_customer_information_base import BookingCustomerInformationBase
+        from .booking_price_type import BookingPriceType
+        from .booking_reminder import BookingReminder
+        from .date_time_time_zone import DateTimeTimeZone
+        from .entity import Entity
+        from .location import Location
 
         fields: Dict[str, Callable[[Any], None]] = {
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
             "anonymousJoinWebUrl": lambda n : setattr(self, 'anonymous_join_web_url', n.get_str_value()),
             "customerTimeZone": lambda n : setattr(self, 'customer_time_zone', n.get_str_value()),
-            "customers": lambda n : setattr(self, 'customers', n.get_collection_of_object_values(booking_customer_information_base.BookingCustomerInformationBase)),
+            "customers": lambda n : setattr(self, 'customers', n.get_collection_of_object_values(BookingCustomerInformationBase)),
             "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
             "filledAttendeesCount": lambda n : setattr(self, 'filled_attendees_count', n.get_int_value()),
             "isLocationOnline": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
             "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
@@ -98,16 +116,16 @@ class BookingAppointment(entity.Entity):
             "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_timedelta_value()),
             "preBuffer": lambda n : setattr(self, 'pre_buffer', n.get_timedelta_value()),
             "price": lambda n : setattr(self, 'price', n.get_float_value()),
-            "priceType": lambda n : setattr(self, 'price_type', n.get_enum_value(booking_price_type.BookingPriceType)),
-            "reminders": lambda n : setattr(self, 'reminders', n.get_collection_of_object_values(booking_reminder.BookingReminder)),
+            "priceType": lambda n : setattr(self, 'price_type', n.get_enum_value(BookingPriceType)),
+            "reminders": lambda n : setattr(self, 'reminders', n.get_collection_of_object_values(BookingReminder)),
             "selfServiceAppointmentId": lambda n : setattr(self, 'self_service_appointment_id', n.get_str_value()),
             "serviceId": lambda n : setattr(self, 'service_id', n.get_str_value()),
-            "serviceLocation": lambda n : setattr(self, 'service_location', n.get_object_value(location.Location)),
+            "serviceLocation": lambda n : setattr(self, 'service_location', n.get_object_value(Location)),
             "serviceName": lambda n : setattr(self, 'service_name', n.get_str_value()),
             "serviceNotes": lambda n : setattr(self, 'service_notes', n.get_str_value()),
             "smsNotificationsEnabled": lambda n : setattr(self, 'sms_notifications_enabled', n.get_bool_value()),
             "staffMemberIds": lambda n : setattr(self, 'staff_member_ids', n.get_collection_of_primitive_values(str)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -131,8 +149,8 @@ class BookingAppointment(entity.Entity):
         writer.write_str_value("joinWebUrl", self.join_web_url)
         writer.write_int_value("maximumAttendeesCount", self.maximum_attendees_count)
         writer.write_bool_value("optOutOfCustomerEmail", self.opt_out_of_customer_email)
-        writer.write_timedelta_value("postBuffer", self.post_buffer)
-        writer.write_timedelta_value("preBuffer", self.pre_buffer)
+        writer.write_timedelta_value()("postBuffer", self.post_buffer)
+        writer.write_timedelta_value()("preBuffer", self.pre_buffer)
         writer.write_float_value("price", self.price)
         writer.write_enum_value("priceType", self.price_type)
         writer.write_collection_of_object_values("reminders", self.reminders)

@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import long_running_operation, public_error
+    from .long_running_operation import LongRunningOperation
+    from .public_error import PublicError
 
-from . import long_running_operation
+from .long_running_operation import LongRunningOperation
 
 @dataclass
-class RichLongRunningOperation(long_running_operation.LongRunningOperation):
+class RichLongRunningOperation(LongRunningOperation):
     # Error that caused the operation to fail.
-    error: Optional[public_error.PublicError] = None
+    error: Optional[PublicError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A value between 0 and 100 that indicates the progress of the operation.
@@ -38,12 +39,14 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import long_running_operation, public_error
+        from .long_running_operation import LongRunningOperation
+        from .public_error import PublicError
 
-        from . import long_running_operation, public_error
+        from .long_running_operation import LongRunningOperation
+        from .public_error import PublicError
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
             "percentageComplete": lambda n : setattr(self, 'percentage_complete', n.get_int_value()),
             "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),

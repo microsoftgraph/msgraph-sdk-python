@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import access_package, access_package_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
-    from .item import access_package_item_request_builder
+    from ....models.access_package import AccessPackage
+    from ....models.access_package_collection_response import AccessPackageCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
+    from .item.access_package_item_request_builder import AccessPackageItemRequestBuilder
 
 class AccessPackagesRequestBuilder():
     """
@@ -38,80 +39,80 @@ class AccessPackagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_access_package_id(self,access_package_id: str) -> access_package_item_request_builder.AccessPackageItemRequestBuilder:
+    def by_access_package_id(self,access_package_id: str) -> AccessPackageItemRequestBuilder:
         """
         Provides operations to manage the accessPackages property of the microsoft.graph.entitlementManagement entity.
         Args:
             access_package_id: Unique identifier of the item
-        Returns: access_package_item_request_builder.AccessPackageItemRequestBuilder
+        Returns: AccessPackageItemRequestBuilder
         """
         if not access_package_id:
             raise TypeError("access_package_id cannot be null.")
-        from .item import access_package_item_request_builder
+        from .item.access_package_item_request_builder import AccessPackageItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["accessPackage%2Did"] = access_package_id
-        return access_package_item_request_builder.AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
         Args:
             on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        Returns: FilterByCurrentUserWithOnRequestBuilder
         """
         if not on:
             raise TypeError("on cannot be null.")
-        from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+        from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
 
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+        return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[AccessPackagesRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_collection_response.AccessPackageCollectionResponse]:
+    async def get(self,request_configuration: Optional[AccessPackagesRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageCollectionResponse]:
         """
         Retrieve a list of accessPackage objects.  The resulting list includes all the access packages that the caller has access to read, across all catalogs.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_collection_response.AccessPackageCollectionResponse]
+        Returns: Optional[AccessPackageCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import access_package_collection_response
+        from ....models.access_package_collection_response import AccessPackageCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, access_package_collection_response.AccessPackageCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[access_package.AccessPackage] = None, request_configuration: Optional[AccessPackagesRequestBuilderPostRequestConfiguration] = None) -> Optional[access_package.AccessPackage]:
+    async def post(self,body: Optional[AccessPackage] = None, request_configuration: Optional[AccessPackagesRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessPackage]:
         """
         Create a new accessPackage object. The access package will be added to an existing accessPackageCatalog.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package.AccessPackage]
+        Returns: Optional[AccessPackage]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import access_package
+        from ....models.access_package import AccessPackage
 
-        return await self.request_adapter.send_async(request_info, access_package.AccessPackage, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackage, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -131,7 +132,7 @@ class AccessPackagesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[access_package.AccessPackage] = None, request_configuration: Optional[AccessPackagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AccessPackage] = None, request_configuration: Optional[AccessPackagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new accessPackage object. The access package will be added to an existing accessPackageCatalog.
         Args:
@@ -153,13 +154,13 @@ class AccessPackagesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AccessPackagesRequestBuilderGetQueryParameters():

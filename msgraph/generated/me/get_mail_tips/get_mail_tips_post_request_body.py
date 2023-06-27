@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import mail_tips_type
+    from ...models.mail_tips_type import MailTipsType
 
 @dataclass
 class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
     # The EmailAddresses property
     email_addresses: Optional[List[str]] = None
     # The MailTipsOptions property
-    mail_tips_options: Optional[mail_tips_type.MailTipsType] = None
+    mail_tips_options: Optional[MailTipsType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetMailTipsPostRequestBody:
@@ -33,13 +33,13 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ...models import mail_tips_type
+        from ...models.mail_tips_type import MailTipsType
 
-        from ...models import mail_tips_type
+        from ...models.mail_tips_type import MailTipsType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "EmailAddresses": lambda n : setattr(self, 'email_addresses', n.get_collection_of_primitive_values(str)),
-            "MailTipsOptions": lambda n : setattr(self, 'mail_tips_options', n.get_enum_value(mail_tips_type.MailTipsType)),
+            "MailTipsOptions": lambda n : setattr(self, 'mail_tips_options', n.get_enum_value(MailTipsType)),
         }
         return fields
     

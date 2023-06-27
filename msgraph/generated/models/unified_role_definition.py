@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, unified_role_permission
+    from .entity import Entity
+    from .unified_role_permission import UnifiedRolePermission
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class UnifiedRoleDefinition(entity.Entity):
+class UnifiedRoleDefinition(Entity):
     # The description for the unifiedRoleDefinition. Read-only when isBuiltIn is true.
     description: Optional[str] = None
     # The display name for the unifiedRoleDefinition. Read-only when isBuiltIn is true. Required.  Supports $filter (eq, in).
@@ -25,7 +26,7 @@ class UnifiedRoleDefinition(entity.Entity):
     # List of the scopes or permissions the role definition applies to. Currently only / is supported. Read-only when isBuiltIn is true. DO NOT USE. This will be deprecated soon. Attach scope to role assignment.
     resource_scopes: Optional[List[str]] = None
     # List of permissions included in the role. Read-only when isBuiltIn is true. Required.
-    role_permissions: Optional[List[unified_role_permission.UnifiedRolePermission]] = None
+    role_permissions: Optional[List[UnifiedRolePermission]] = None
     # Custom template identifier that can be set when isBuiltIn is false but is read-only when isBuiltIn is true. This identifier is typically used if one needs an identifier to be the same across different directories.
     template_id: Optional[str] = None
     # Indicates version of the role definition. Read-only when isBuiltIn is true.
@@ -48,9 +49,11 @@ class UnifiedRoleDefinition(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, unified_role_permission
+        from .entity import Entity
+        from .unified_role_permission import UnifiedRolePermission
 
-        from . import entity, unified_role_permission
+        from .entity import Entity
+        from .unified_role_permission import UnifiedRolePermission
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -59,7 +62,7 @@ class UnifiedRoleDefinition(entity.Entity):
             "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_primitive_values(str)),
-            "rolePermissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(unified_role_permission.UnifiedRolePermission)),
+            "rolePermissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(UnifiedRolePermission)),
             "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }

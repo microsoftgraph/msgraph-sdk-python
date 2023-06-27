@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import date_time_time_zone
+    from ........models.date_time_time_zone import DateTimeTimeZone
 
 @dataclass
 class SnoozeReminderPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class SnoozeReminderPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The NewReminderTime property
-    new_reminder_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    new_reminder_time: Optional[DateTimeTimeZone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SnoozeReminderPostRequestBody:
@@ -31,12 +31,12 @@ class SnoozeReminderPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import date_time_time_zone
+        from ........models.date_time_time_zone import DateTimeTimeZone
 
-        from ........models import date_time_time_zone
+        from ........models.date_time_time_zone import DateTimeTimeZone
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "NewReminderTime": lambda n : setattr(self, 'new_reminder_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "NewReminderTime": lambda n : setattr(self, 'new_reminder_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
     

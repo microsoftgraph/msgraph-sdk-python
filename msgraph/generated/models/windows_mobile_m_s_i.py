@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_lob_app
+    from .mobile_lob_app import MobileLobApp
 
-from . import mobile_lob_app
+from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
+class WindowsMobileMSI(MobileLobApp):
     odata_type = "#microsoft.graph.windowsMobileMSI"
     # The command line.
     command_line: Optional[str] = None
@@ -37,9 +37,9 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_lob_app
+        from .mobile_lob_app import MobileLobApp
 
-        from . import mobile_lob_app
+        from .mobile_lob_app import MobileLobApp
 
         fields: Dict[str, Callable[[Any], None]] = {
             "commandLine": lambda n : setattr(self, 'command_line', n.get_str_value()),

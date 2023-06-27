@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set, recording_status
+    from .identity_set import IdentitySet
+    from .recording_status import RecordingStatus
 
 @dataclass
 class RecordingInfo(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class RecordingInfo(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The identities of the recording initiator.
-    initiator: Optional[identity_set.IdentitySet] = None
+    initiator: Optional[IdentitySet] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The recordingStatus property
-    recording_status: Optional[recording_status.RecordingStatus] = None
+    recording_status: Optional[RecordingStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecordingInfo:
@@ -35,14 +36,16 @@ class RecordingInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set, recording_status
+        from .identity_set import IdentitySet
+        from .recording_status import RecordingStatus
 
-        from . import identity_set, recording_status
+        from .identity_set import IdentitySet
+        from .recording_status import RecordingStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
+            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recordingStatus": lambda n : setattr(self, 'recording_status', n.get_enum_value(recording_status.RecordingStatus)),
+            "recordingStatus": lambda n : setattr(self, 'recording_status', n.get_enum_value(RecordingStatus)),
         }
         return fields
     

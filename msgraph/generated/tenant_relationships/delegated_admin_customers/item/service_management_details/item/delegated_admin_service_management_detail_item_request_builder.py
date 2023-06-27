@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import delegated_admin_service_management_detail
-    from ......models.o_data_errors import o_data_error
+    from ......models.delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class DelegatedAdminServiceManagementDetailItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]:
+    async def get(self,request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetail]:
         """
         Contains the management details of a service in the customer tenant that's managed by delegated administration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]
+        Returns: Optional[DelegatedAdminServiceManagementDetail]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import delegated_admin_service_management_detail
+        from ......models.delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
 
-        return await self.request_adapter.send_async(request_info, delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedAdminServiceManagementDetail, error_mapping)
     
-    async def patch(self,body: Optional[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]:
+    async def patch(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetail]:
         """
         Update the navigation property serviceManagementDetails in tenantRelationships
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]
+        Returns: Optional[DelegatedAdminServiceManagementDetail]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import delegated_admin_service_management_detail
+        from ......models.delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
 
-        return await self.request_adapter.send_async(request_info, delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedAdminServiceManagementDetail, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property serviceManagementDetails in tenantRelationships
         Args:

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert_evidence
+    from .alert_evidence import AlertEvidence
 
-from . import alert_evidence
+from .alert_evidence import AlertEvidence
 
 @dataclass
-class IpEvidence(alert_evidence.AlertEvidence):
+class IpEvidence(AlertEvidence):
     # The two-letter country code according to ISO 3166 format, for example: US, UK, CA, etc..).
     country_letter_code: Optional[str] = None
     # The value of the IP Address, can be either in V4 address or V6 address format.
@@ -34,9 +34,9 @@ class IpEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_evidence
+        from .alert_evidence import AlertEvidence
 
-        from . import alert_evidence
+        from .alert_evidence import AlertEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
             "countryLetterCode": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),

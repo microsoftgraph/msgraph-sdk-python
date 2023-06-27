@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import booking_customer_information
+    from .booking_customer_information import BookingCustomerInformation
 
 @dataclass
 class BookingCustomerInformationBase(AdditionalDataHolder, Parsable):
@@ -29,9 +29,9 @@ class BookingCustomerInformationBase(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingCustomerInformation".casefold():
-            from . import booking_customer_information
+            from .booking_customer_information import BookingCustomerInformation
 
-            return booking_customer_information.BookingCustomerInformation()
+            return BookingCustomerInformation()
         return BookingCustomerInformationBase()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -39,9 +39,9 @@ class BookingCustomerInformationBase(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_customer_information
+        from .booking_customer_information import BookingCustomerInformation
 
-        from . import booking_customer_information
+        from .booking_customer_information import BookingCustomerInformation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

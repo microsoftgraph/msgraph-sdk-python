@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import access_package_catalog
-    from ......models.o_data_errors import o_data_error
+    from ......models.access_package_catalog import AccessPackageCatalog
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class CatalogRequestBuilder():
     """
@@ -35,27 +35,27 @@ class CatalogRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[CatalogRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_catalog.AccessPackageCatalog]:
+    async def get(self,request_configuration: Optional[CatalogRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageCatalog]:
         """
         Catalog of the access package containing this policy. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_catalog.AccessPackageCatalog]
+        Returns: Optional[AccessPackageCatalog]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import access_package_catalog
+        from ......models.access_package_catalog import AccessPackageCatalog
 
-        return await self.request_adapter.send_async(request_info, access_package_catalog.AccessPackageCatalog, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageCatalog, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CatalogRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

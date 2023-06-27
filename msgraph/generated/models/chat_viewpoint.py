@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -12,7 +12,7 @@ class ChatViewpoint(AdditionalDataHolder, Parsable):
     # Indicates whether the chat is hidden for the current user.
     is_hidden: Optional[bool] = None
     # Represents the dateTime up until which the current user has read chatMessages in a specific chat.
-    last_message_read_date_time: Optional[datetime] = None
+    last_message_read_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -49,7 +49,7 @@ class ChatViewpoint(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("isHidden", self.is_hidden)
-        writer.write_datetime_value("lastMessageReadDateTime", self.last_message_read_date_time)
+        writer.write_datetime_value()("lastMessageReadDateTime", self.last_message_read_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

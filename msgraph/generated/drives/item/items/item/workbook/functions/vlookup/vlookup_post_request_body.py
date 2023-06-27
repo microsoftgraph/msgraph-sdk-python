@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class VlookupPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,13 +12,13 @@ class VlookupPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The colIndexNum property
-    col_index_num: Optional[json.Json] = None
+    col_index_num: Optional[Json] = None
     # The lookupValue property
-    lookup_value: Optional[json.Json] = None
+    lookup_value: Optional[Json] = None
     # The rangeLookup property
-    range_lookup: Optional[json.Json] = None
+    range_lookup: Optional[Json] = None
     # The tableArray property
-    table_array: Optional[json.Json] = None
+    table_array: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> VlookupPostRequestBody:
@@ -37,15 +37,15 @@ class VlookupPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "colIndexNum": lambda n : setattr(self, 'col_index_num', n.get_object_value(json.Json)),
-            "lookupValue": lambda n : setattr(self, 'lookup_value', n.get_object_value(json.Json)),
-            "rangeLookup": lambda n : setattr(self, 'range_lookup', n.get_object_value(json.Json)),
-            "tableArray": lambda n : setattr(self, 'table_array', n.get_object_value(json.Json)),
+            "colIndexNum": lambda n : setattr(self, 'col_index_num', n.get_object_value(Json)),
+            "lookupValue": lambda n : setattr(self, 'lookup_value', n.get_object_value(Json)),
+            "rangeLookup": lambda n : setattr(self, 'range_lookup', n.get_object_value(Json)),
+            "tableArray": lambda n : setattr(self, 'table_array', n.get_object_value(Json)),
         }
         return fields
     

@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import training_status, user_training_content_event_info
+    from .training_status import TrainingStatus
+    from .user_training_content_event_info import UserTrainingContentEventInfo
 
 @dataclass
 class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
@@ -14,15 +15,15 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
     # Display name of the training.
     display_name: Optional[str] = None
     # Latest status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
-    latest_training_status: Optional[training_status.TrainingStatus] = None
+    latest_training_status: Optional[TrainingStatus] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Event details of the training when it was assigned to the user.
-    training_assigned_properties: Optional[user_training_content_event_info.UserTrainingContentEventInfo] = None
+    training_assigned_properties: Optional[UserTrainingContentEventInfo] = None
     # Event details of the training when it was completed by the user.
-    training_completed_properties: Optional[user_training_content_event_info.UserTrainingContentEventInfo] = None
+    training_completed_properties: Optional[UserTrainingContentEventInfo] = None
     # Event details of the training when it was updated/in-progress by the user.
-    training_updated_properties: Optional[user_training_content_event_info.UserTrainingContentEventInfo] = None
+    training_updated_properties: Optional[UserTrainingContentEventInfo] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTrainingEventInfo:
@@ -41,17 +42,19 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import training_status, user_training_content_event_info
+        from .training_status import TrainingStatus
+        from .user_training_content_event_info import UserTrainingContentEventInfo
 
-        from . import training_status, user_training_content_event_info
+        from .training_status import TrainingStatus
+        from .user_training_content_event_info import UserTrainingContentEventInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "latestTrainingStatus": lambda n : setattr(self, 'latest_training_status', n.get_enum_value(training_status.TrainingStatus)),
+            "latestTrainingStatus": lambda n : setattr(self, 'latest_training_status', n.get_enum_value(TrainingStatus)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "trainingAssignedProperties": lambda n : setattr(self, 'training_assigned_properties', n.get_object_value(user_training_content_event_info.UserTrainingContentEventInfo)),
-            "trainingCompletedProperties": lambda n : setattr(self, 'training_completed_properties', n.get_object_value(user_training_content_event_info.UserTrainingContentEventInfo)),
-            "trainingUpdatedProperties": lambda n : setattr(self, 'training_updated_properties', n.get_object_value(user_training_content_event_info.UserTrainingContentEventInfo)),
+            "trainingAssignedProperties": lambda n : setattr(self, 'training_assigned_properties', n.get_object_value(UserTrainingContentEventInfo)),
+            "trainingCompletedProperties": lambda n : setattr(self, 'training_completed_properties', n.get_object_value(UserTrainingContentEventInfo)),
+            "trainingUpdatedProperties": lambda n : setattr(self, 'training_updated_properties', n.get_object_value(UserTrainingContentEventInfo)),
         }
         return fields
     

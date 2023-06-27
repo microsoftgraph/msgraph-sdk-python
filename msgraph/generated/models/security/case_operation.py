@@ -1,33 +1,42 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import case_action, case_operation_status, ediscovery_add_to_review_set_operation, ediscovery_estimate_operation, ediscovery_hold_operation, ediscovery_index_operation, ediscovery_purge_data_operation, ediscovery_tag_operation
-    from .. import entity, identity_set, result_info
+    from ..entity import Entity
+    from ..identity_set import IdentitySet
+    from ..result_info import ResultInfo
+    from .case_action import CaseAction
+    from .case_operation_status import CaseOperationStatus
+    from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
+    from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
+    from .ediscovery_hold_operation import EdiscoveryHoldOperation
+    from .ediscovery_index_operation import EdiscoveryIndexOperation
+    from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
+    from .ediscovery_tag_operation import EdiscoveryTagOperation
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class CaseOperation(entity.Entity):
+class CaseOperation(Entity):
     # The type of action the operation represents. Possible values are: addToReviewSet,applyTags,contentExport,convertToPdf,estimateStatistics, purgeData
-    action: Optional[case_action.CaseAction] = None
+    action: Optional[CaseAction] = None
     # The date and time the operation was completed.
-    completed_date_time: Optional[datetime] = None
+    completed_date_time: Optional[datetime.datetime] = None
     # The user that created the operation.
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # The date and time the operation was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The progress of the operation.
     percent_progress: Optional[int] = None
     # Contains success and failure-specific result information.
-    result_info: Optional[result_info.ResultInfo] = None
+    result_info: Optional[ResultInfo] = None
     # The status of the case operation. Possible values are: notStarted, submissionFailed, running, succeeded, partiallySucceeded, failed.
-    status: Optional[case_operation_status.CaseOperationStatus] = None
+    status: Optional[CaseOperationStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CaseOperation:
@@ -44,29 +53,29 @@ class CaseOperation(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryAddToReviewSetOperation".casefold():
-            from . import ediscovery_add_to_review_set_operation
+            from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
 
-            return ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation()
+            return EdiscoveryAddToReviewSetOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryEstimateOperation".casefold():
-            from . import ediscovery_estimate_operation
+            from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
 
-            return ediscovery_estimate_operation.EdiscoveryEstimateOperation()
+            return EdiscoveryEstimateOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryHoldOperation".casefold():
-            from . import ediscovery_hold_operation
+            from .ediscovery_hold_operation import EdiscoveryHoldOperation
 
-            return ediscovery_hold_operation.EdiscoveryHoldOperation()
+            return EdiscoveryHoldOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryIndexOperation".casefold():
-            from . import ediscovery_index_operation
+            from .ediscovery_index_operation import EdiscoveryIndexOperation
 
-            return ediscovery_index_operation.EdiscoveryIndexOperation()
+            return EdiscoveryIndexOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryPurgeDataOperation".casefold():
-            from . import ediscovery_purge_data_operation
+            from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
 
-            return ediscovery_purge_data_operation.EdiscoveryPurgeDataOperation()
+            return EdiscoveryPurgeDataOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryTagOperation".casefold():
-            from . import ediscovery_tag_operation
+            from .ediscovery_tag_operation import EdiscoveryTagOperation
 
-            return ediscovery_tag_operation.EdiscoveryTagOperation()
+            return EdiscoveryTagOperation()
         return CaseOperation()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -74,20 +83,38 @@ class CaseOperation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import case_action, case_operation_status, ediscovery_add_to_review_set_operation, ediscovery_estimate_operation, ediscovery_hold_operation, ediscovery_index_operation, ediscovery_purge_data_operation, ediscovery_tag_operation
-        from .. import entity, identity_set, result_info
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from ..result_info import ResultInfo
+        from .case_action import CaseAction
+        from .case_operation_status import CaseOperationStatus
+        from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
+        from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
+        from .ediscovery_hold_operation import EdiscoveryHoldOperation
+        from .ediscovery_index_operation import EdiscoveryIndexOperation
+        from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
+        from .ediscovery_tag_operation import EdiscoveryTagOperation
 
-        from . import case_action, case_operation_status, ediscovery_add_to_review_set_operation, ediscovery_estimate_operation, ediscovery_hold_operation, ediscovery_index_operation, ediscovery_purge_data_operation, ediscovery_tag_operation
-        from .. import entity, identity_set, result_info
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from ..result_info import ResultInfo
+        from .case_action import CaseAction
+        from .case_operation_status import CaseOperationStatus
+        from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
+        from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
+        from .ediscovery_hold_operation import EdiscoveryHoldOperation
+        from .ediscovery_index_operation import EdiscoveryIndexOperation
+        from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
+        from .ediscovery_tag_operation import EdiscoveryTagOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "action": lambda n : setattr(self, 'action', n.get_enum_value(case_action.CaseAction)),
+            "action": lambda n : setattr(self, 'action', n.get_enum_value(CaseAction)),
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "percentProgress": lambda n : setattr(self, 'percent_progress', n.get_int_value()),
-            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(case_operation_status.CaseOperationStatus)),
+            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(ResultInfo)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(CaseOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -103,9 +130,9 @@ class CaseOperation(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("action", self.action)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
+        writer.write_datetime_value()("completedDateTime", self.completed_date_time)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_int_value("percentProgress", self.percent_progress)
         writer.write_object_value("resultInfo", self.result_info)
         writer.write_enum_value("status", self.status)

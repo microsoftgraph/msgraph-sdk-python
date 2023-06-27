@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import unified_role
+    from .unified_role import UnifiedRole
 
 @dataclass
 class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The directory roles that the Microsoft partner is assigned in the customer tenant.
-    unified_roles: Optional[List[unified_role.UnifiedRole]] = None
+    unified_roles: Optional[List[UnifiedRole]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedAdminAccessDetails:
@@ -33,13 +33,13 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import unified_role
+        from .unified_role import UnifiedRole
 
-        from . import unified_role
+        from .unified_role import UnifiedRole
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "unifiedRoles": lambda n : setattr(self, 'unified_roles', n.get_collection_of_object_values(unified_role.UnifiedRole)),
+            "unifiedRoles": lambda n : setattr(self, 'unified_roles', n.get_collection_of_object_values(UnifiedRole)),
         }
         return fields
     

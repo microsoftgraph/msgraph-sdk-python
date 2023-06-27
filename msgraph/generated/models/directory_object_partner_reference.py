@@ -5,12 +5,12 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import directory_object
+    from .directory_object import DirectoryObject
 
-from . import directory_object
+from .directory_object import DirectoryObject
 
 @dataclass
-class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
+class DirectoryObjectPartnerReference(DirectoryObject):
     odata_type = "#microsoft.graph.directoryObjectPartnerReference"
     # Description of the object returned. Read-only.
     description: Optional[str] = None
@@ -38,9 +38,9 @@ class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object
+        from .directory_object import DirectoryObject
 
-        from . import directory_object
+        from .directory_object import DirectoryObject
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),

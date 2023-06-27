@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attribute_mapping_source, public_error
+    from .attribute_mapping_source import AttributeMappingSource
+    from .public_error import PublicError
 
 @dataclass
 class ParseExpressionResponse(AdditionalDataHolder, Parsable):
@@ -12,7 +13,7 @@ class ParseExpressionResponse(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The error property
-    error: Optional[public_error.PublicError] = None
+    error: Optional[PublicError] = None
     # The evaluationResult property
     evaluation_result: Optional[List[str]] = None
     # The evaluationSucceeded property
@@ -20,7 +21,7 @@ class ParseExpressionResponse(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The parsedExpression property
-    parsed_expression: Optional[attribute_mapping_source.AttributeMappingSource] = None
+    parsed_expression: Optional[AttributeMappingSource] = None
     # The parsingSucceeded property
     parsing_succeeded: Optional[bool] = None
     
@@ -41,16 +42,18 @@ class ParseExpressionResponse(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attribute_mapping_source, public_error
+        from .attribute_mapping_source import AttributeMappingSource
+        from .public_error import PublicError
 
-        from . import attribute_mapping_source, public_error
+        from .attribute_mapping_source import AttributeMappingSource
+        from .public_error import PublicError
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
             "evaluationResult": lambda n : setattr(self, 'evaluation_result', n.get_collection_of_primitive_values(str)),
             "evaluationSucceeded": lambda n : setattr(self, 'evaluation_succeeded', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "parsedExpression": lambda n : setattr(self, 'parsed_expression', n.get_object_value(attribute_mapping_source.AttributeMappingSource)),
+            "parsedExpression": lambda n : setattr(self, 'parsed_expression', n.get_object_value(AttributeMappingSource)),
             "parsingSucceeded": lambda n : setattr(self, 'parsing_succeeded', n.get_bool_value()),
         }
         return fields

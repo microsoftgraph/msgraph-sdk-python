@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import workbook_comment_reply, workbook_comment_reply_collection_response
-    from .........models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import workbook_comment_reply_item_request_builder
+    from .........models.o_data_errors.o_data_error import ODataError
+    from .........models.workbook_comment_reply import WorkbookCommentReply
+    from .........models.workbook_comment_reply_collection_response import WorkbookCommentReplyCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.workbook_comment_reply_item_request_builder import WorkbookCommentReplyItemRequestBuilder
 
 class RepliesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class RepliesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_workbook_comment_reply_id(self,workbook_comment_reply_id: str) -> workbook_comment_reply_item_request_builder.WorkbookCommentReplyItemRequestBuilder:
+    def by_workbook_comment_reply_id(self,workbook_comment_reply_id: str) -> WorkbookCommentReplyItemRequestBuilder:
         """
         Provides operations to manage the replies property of the microsoft.graph.workbookComment entity.
         Args:
             workbook_comment_reply_id: Unique identifier of the item
-        Returns: workbook_comment_reply_item_request_builder.WorkbookCommentReplyItemRequestBuilder
+        Returns: WorkbookCommentReplyItemRequestBuilder
         """
         if not workbook_comment_reply_id:
             raise TypeError("workbook_comment_reply_id cannot be null.")
-        from .item import workbook_comment_reply_item_request_builder
+        from .item.workbook_comment_reply_item_request_builder import WorkbookCommentReplyItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookCommentReply%2Did"] = workbook_comment_reply_id
-        return workbook_comment_reply_item_request_builder.WorkbookCommentReplyItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return WorkbookCommentReplyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_comment_reply_collection_response.WorkbookCommentReplyCollectionResponse]:
+    async def get(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookCommentReplyCollectionResponse]:
         """
         Retrieve the properties and relationships of workbookCommentReply object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_comment_reply_collection_response.WorkbookCommentReplyCollectionResponse]
+        Returns: Optional[WorkbookCommentReplyCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import workbook_comment_reply_collection_response
+        from .........models.workbook_comment_reply_collection_response import WorkbookCommentReplyCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, workbook_comment_reply_collection_response.WorkbookCommentReplyCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookCommentReplyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[workbook_comment_reply.WorkbookCommentReply] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_comment_reply.WorkbookCommentReply]:
+    async def post(self,body: Optional[WorkbookCommentReply] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookCommentReply]:
         """
         Create new navigation property to replies for drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_comment_reply.WorkbookCommentReply]
+        Returns: Optional[WorkbookCommentReply]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import workbook_comment_reply
+        from .........models.workbook_comment_reply import WorkbookCommentReply
 
-        return await self.request_adapter.send_async(request_info, workbook_comment_reply.WorkbookCommentReply, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookCommentReply, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class RepliesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[workbook_comment_reply.WorkbookCommentReply] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WorkbookCommentReply] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to replies for drives
         Args:
@@ -139,13 +140,13 @@ class RepliesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RepliesRequestBuilderGetQueryParameters():

@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -12,9 +12,9 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
     # Duration of the meeting interval in seconds; that is, the difference between joinDateTime and leaveDateTime.
     duration_in_seconds: Optional[int] = None
     # The time the attendee joined in UTC.
-    join_date_time: Optional[datetime] = None
+    join_date_time: Optional[datetime.datetime] = None
     # The time the attendee left in UTC.
-    leave_date_time: Optional[datetime] = None
+    leave_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -52,8 +52,8 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_int_value("durationInSeconds", self.duration_in_seconds)
-        writer.write_datetime_value("joinDateTime", self.join_date_time)
-        writer.write_datetime_value("leaveDateTime", self.leave_date_time)
+        writer.write_datetime_value()("joinDateTime", self.join_date_time)
+        writer.write_datetime_value()("leaveDateTime", self.leave_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

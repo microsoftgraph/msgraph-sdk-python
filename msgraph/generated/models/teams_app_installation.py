@@ -4,18 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, teams_app, teams_app_definition, user_scope_teams_app_installation
+    from .entity import Entity
+    from .teams_app import TeamsApp
+    from .teams_app_definition import TeamsAppDefinition
+    from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class TeamsAppInstallation(entity.Entity):
+class TeamsAppInstallation(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The app that is installed.
-    teams_app: Optional[teams_app.TeamsApp] = None
+    teams_app: Optional[TeamsApp] = None
     # The details of this version of the app.
-    teams_app_definition: Optional[teams_app_definition.TeamsAppDefinition] = None
+    teams_app_definition: Optional[TeamsAppDefinition] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamsAppInstallation:
@@ -32,9 +35,9 @@ class TeamsAppInstallation(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userScopeTeamsAppInstallation".casefold():
-            from . import user_scope_teams_app_installation
+            from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
-            return user_scope_teams_app_installation.UserScopeTeamsAppInstallation()
+            return UserScopeTeamsAppInstallation()
         return TeamsAppInstallation()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -42,13 +45,19 @@ class TeamsAppInstallation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, teams_app, teams_app_definition, user_scope_teams_app_installation
+        from .entity import Entity
+        from .teams_app import TeamsApp
+        from .teams_app_definition import TeamsAppDefinition
+        from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
-        from . import entity, teams_app, teams_app_definition, user_scope_teams_app_installation
+        from .entity import Entity
+        from .teams_app import TeamsApp
+        from .teams_app_definition import TeamsAppDefinition
+        from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(teams_app.TeamsApp)),
-            "teamsAppDefinition": lambda n : setattr(self, 'teams_app_definition', n.get_object_value(teams_app_definition.TeamsAppDefinition)),
+            "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(TeamsApp)),
+            "teamsAppDefinition": lambda n : setattr(self, 'teams_app_definition', n.get_object_value(TeamsAppDefinition)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

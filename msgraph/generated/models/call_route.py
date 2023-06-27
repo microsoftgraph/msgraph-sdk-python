@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set, routing_type
+    from .identity_set import IdentitySet
+    from .routing_type import RoutingType
 
 @dataclass
 class CallRoute(AdditionalDataHolder, Parsable):
@@ -12,13 +13,13 @@ class CallRoute(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The final property
-    final: Optional[identity_set.IdentitySet] = None
+    final: Optional[IdentitySet] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The original property
-    original: Optional[identity_set.IdentitySet] = None
+    original: Optional[IdentitySet] = None
     # The routingType property
-    routing_type: Optional[routing_type.RoutingType] = None
+    routing_type: Optional[RoutingType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallRoute:
@@ -37,15 +38,17 @@ class CallRoute(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set, routing_type
+        from .identity_set import IdentitySet
+        from .routing_type import RoutingType
 
-        from . import identity_set, routing_type
+        from .identity_set import IdentitySet
+        from .routing_type import RoutingType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "final": lambda n : setattr(self, 'final', n.get_object_value(identity_set.IdentitySet)),
+            "final": lambda n : setattr(self, 'final', n.get_object_value(IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "original": lambda n : setattr(self, 'original', n.get_object_value(identity_set.IdentitySet)),
-            "routingType": lambda n : setattr(self, 'routing_type', n.get_enum_value(routing_type.RoutingType)),
+            "original": lambda n : setattr(self, 'original', n.get_object_value(IdentitySet)),
+            "routingType": lambda n : setattr(self, 'routing_type', n.get_enum_value(RoutingType)),
         }
         return fields
     

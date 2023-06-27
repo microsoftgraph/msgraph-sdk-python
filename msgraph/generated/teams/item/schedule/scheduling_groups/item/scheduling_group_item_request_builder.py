@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import scheduling_group
-    from ......models.o_data_errors import o_data_error
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.scheduling_group import SchedulingGroup
 
 class SchedulingGroupItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class SchedulingGroupItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[scheduling_group.SchedulingGroup]:
+    async def get(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SchedulingGroup]:
         """
         Retrieve the properties and relationships of a schedulingGroup by ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[scheduling_group.SchedulingGroup]
+        Returns: Optional[SchedulingGroup]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import scheduling_group
+        from ......models.scheduling_group import SchedulingGroup
 
-        return await self.request_adapter.send_async(request_info, scheduling_group.SchedulingGroup, error_mapping)
+        return await self.request_adapter.send_async(request_info, SchedulingGroup, error_mapping)
     
-    async def patch(self,body: Optional[scheduling_group.SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[scheduling_group.SchedulingGroup]:
+    async def patch(self,body: Optional[SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SchedulingGroup]:
         """
         Replace an existing schedulingGroup. If the specified schedulingGroup doesn't exist, this method returns `404 Not found`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[scheduling_group.SchedulingGroup]
+        Returns: Optional[SchedulingGroup]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import scheduling_group
+        from ......models.scheduling_group import SchedulingGroup
 
-        return await self.request_adapter.send_async(request_info, scheduling_group.SchedulingGroup, error_mapping)
+        return await self.request_adapter.send_async(request_info, SchedulingGroup, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class SchedulingGroupItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[scheduling_group.SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Replace an existing schedulingGroup. If the specified schedulingGroup doesn't exist, this method returns `404 Not found`.
         Args:

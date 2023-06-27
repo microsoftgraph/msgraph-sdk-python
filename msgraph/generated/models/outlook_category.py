@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import category_color, entity
+    from .category_color import CategoryColor
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class OutlookCategory(entity.Entity):
+class OutlookCategory(Entity):
     # A pre-set color constant that characterizes a category, and that is mapped to one of 25 predefined colors. For more details, see the following note.
-    color: Optional[category_color.CategoryColor] = None
+    color: Optional[CategoryColor] = None
     # A unique name that identifies a category in the user's mailbox. After a category is created, the name cannot be changed. Read-only.
     display_name: Optional[str] = None
     # The OdataType property
@@ -34,12 +35,14 @@ class OutlookCategory(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import category_color, entity
+        from .category_color import CategoryColor
+        from .entity import Entity
 
-        from . import category_color, entity
+        from .category_color import CategoryColor
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "color": lambda n : setattr(self, 'color', n.get_enum_value(category_color.CategoryColor)),
+            "color": lambda n : setattr(self, 'color', n.get_enum_value(CategoryColor)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

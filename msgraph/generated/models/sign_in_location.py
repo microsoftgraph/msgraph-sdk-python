@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import geo_coordinates
+    from .geo_coordinates import GeoCoordinates
 
 @dataclass
 class SignInLocation(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class SignInLocation(AdditionalDataHolder, Parsable):
     # Provides the country code info (2 letter code) where the sign-in originated.  This is calculated using latitude/longitude information from the sign-in activity.
     country_or_region: Optional[str] = None
     # Provides the latitude, longitude and altitude where the sign-in originated.
-    geo_coordinates: Optional[geo_coordinates.GeoCoordinates] = None
+    geo_coordinates: Optional[GeoCoordinates] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Provides the State where the sign-in originated. This is calculated using latitude/longitude information from the sign-in activity.
@@ -39,14 +39,14 @@ class SignInLocation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import geo_coordinates
+        from .geo_coordinates import GeoCoordinates
 
-        from . import geo_coordinates
+        from .geo_coordinates import GeoCoordinates
 
         fields: Dict[str, Callable[[Any], None]] = {
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
             "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
-            "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(geo_coordinates.GeoCoordinates)),
+            "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(GeoCoordinates)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
         }

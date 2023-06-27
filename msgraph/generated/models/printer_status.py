@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import printer_processing_state, printer_processing_state_detail
+    from .printer_processing_state import PrinterProcessingState
+    from .printer_processing_state_detail import PrinterProcessingStateDetail
 
 @dataclass
 class PrinterStatus(AdditionalDataHolder, Parsable):
@@ -14,11 +15,11 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
     # A human-readable description of the printer's current processing state. Read-only.
     description: Optional[str] = None
     # The list of details describing why the printer is in the current state. Valid values are described in the following table. Read-only.
-    details: Optional[List[printer_processing_state_detail.PrinterProcessingStateDetail]] = None
+    details: Optional[List[PrinterProcessingStateDetail]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The state property
-    state: Optional[printer_processing_state.PrinterProcessingState] = None
+    state: Optional[PrinterProcessingState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterStatus:
@@ -37,15 +38,17 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import printer_processing_state, printer_processing_state_detail
+        from .printer_processing_state import PrinterProcessingState
+        from .printer_processing_state_detail import PrinterProcessingStateDetail
 
-        from . import printer_processing_state, printer_processing_state_detail
+        from .printer_processing_state import PrinterProcessingState
+        from .printer_processing_state_detail import PrinterProcessingStateDetail
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "details": lambda n : setattr(self, 'details', n.get_collection_of_enum_values(printer_processing_state_detail.PrinterProcessingStateDetail)),
+            "details": lambda n : setattr(self, 'details', n.get_collection_of_enum_values(PrinterProcessingStateDetail)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(printer_processing_state.PrinterProcessingState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(PrinterProcessingState)),
         }
         return fields
     

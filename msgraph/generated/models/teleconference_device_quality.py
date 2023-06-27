@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import teleconference_device_media_quality
+    from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
 @dataclass
 class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
@@ -29,7 +29,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
     # A unique identifier for a specific media leg of a participant in a conference.  One participant can have multiple media leg identifiers if retargeting happens. CVI partner assigns this value.
     media_leg_id: Optional[UUID] = None
     # The list of media qualities in a media session (call), such as audio quality, video quality, and/or screen sharing quality.
-    media_quality_list: Optional[List[teleconference_device_media_quality.TeleconferenceDeviceMediaQuality]] = None
+    media_quality_list: Optional[List[TeleconferenceDeviceMediaQuality]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
@@ -52,9 +52,9 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teleconference_device_media_quality
+        from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
-        from . import teleconference_device_media_quality
+        from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
         fields: Dict[str, Callable[[Any], None]] = {
             "callChainId": lambda n : setattr(self, 'call_chain_id', n.get_uuid_value()),
@@ -65,7 +65,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             "deviceDescription": lambda n : setattr(self, 'device_description', n.get_str_value()),
             "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
             "mediaLegId": lambda n : setattr(self, 'media_leg_id', n.get_uuid_value()),
-            "mediaQualityList": lambda n : setattr(self, 'media_quality_list', n.get_collection_of_object_values(teleconference_device_media_quality.TeleconferenceDeviceMediaQuality)),
+            "mediaQualityList": lambda n : setattr(self, 'media_quality_list', n.get_collection_of_object_values(TeleconferenceDeviceMediaQuality)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "participantId": lambda n : setattr(self, 'participant_id', n.get_uuid_value()),
         }

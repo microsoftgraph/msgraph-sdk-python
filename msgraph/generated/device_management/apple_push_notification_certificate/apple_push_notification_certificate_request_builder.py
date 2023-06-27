@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import apple_push_notification_certificate
-    from ...models.o_data_errors import o_data_error
-    from .download_apple_push_notification_certificate_signing_request import download_apple_push_notification_certificate_signing_request_request_builder
+    from ...models.apple_push_notification_certificate import ApplePushNotificationCertificate
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .download_apple_push_notification_certificate_signing_request.download_apple_push_notification_certificate_signing_request_request_builder import DownloadApplePushNotificationCertificateSigningRequestRequestBuilder
 
 class ApplePushNotificationCertificateRequestBuilder():
     """
@@ -45,62 +45,62 @@ class ApplePushNotificationCertificateRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderGetRequestConfiguration] = None) -> Optional[apple_push_notification_certificate.ApplePushNotificationCertificate]:
+    async def get(self,request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderGetRequestConfiguration] = None) -> Optional[ApplePushNotificationCertificate]:
         """
-        Apple push notification certificate.
+        Read properties and relationships of the applePushNotificationCertificate object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate]
+        Returns: Optional[ApplePushNotificationCertificate]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import apple_push_notification_certificate
+        from ...models.apple_push_notification_certificate import ApplePushNotificationCertificate
 
-        return await self.request_adapter.send_async(request_info, apple_push_notification_certificate.ApplePushNotificationCertificate, error_mapping)
+        return await self.request_adapter.send_async(request_info, ApplePushNotificationCertificate, error_mapping)
     
-    async def patch(self,body: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate] = None, request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderPatchRequestConfiguration] = None) -> Optional[apple_push_notification_certificate.ApplePushNotificationCertificate]:
+    async def patch(self,body: Optional[ApplePushNotificationCertificate] = None, request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderPatchRequestConfiguration] = None) -> Optional[ApplePushNotificationCertificate]:
         """
-        Update the navigation property applePushNotificationCertificate in deviceManagement
+        Update the properties of a applePushNotificationCertificate object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate]
+        Returns: Optional[ApplePushNotificationCertificate]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import apple_push_notification_certificate
+        from ...models.apple_push_notification_certificate import ApplePushNotificationCertificate
 
-        return await self.request_adapter.send_async(request_info, apple_push_notification_certificate.ApplePushNotificationCertificate, error_mapping)
+        return await self.request_adapter.send_async(request_info, ApplePushNotificationCertificate, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -120,7 +120,7 @@ class ApplePushNotificationCertificateRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Apple push notification certificate.
+        Read properties and relationships of the applePushNotificationCertificate object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -136,9 +136,9 @@ class ApplePushNotificationCertificateRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate] = None, request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ApplePushNotificationCertificate] = None, request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property applePushNotificationCertificate in deviceManagement
+        Update the properties of a applePushNotificationCertificate object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -158,13 +158,13 @@ class ApplePushNotificationCertificateRequestBuilder():
         return request_info
     
     @property
-    def download_apple_push_notification_certificate_signing_request(self) -> download_apple_push_notification_certificate_signing_request_request_builder.DownloadApplePushNotificationCertificateSigningRequestRequestBuilder:
+    def download_apple_push_notification_certificate_signing_request(self) -> DownloadApplePushNotificationCertificateSigningRequestRequestBuilder:
         """
         Provides operations to call the downloadApplePushNotificationCertificateSigningRequest method.
         """
-        from .download_apple_push_notification_certificate_signing_request import download_apple_push_notification_certificate_signing_request_request_builder
+        from .download_apple_push_notification_certificate_signing_request.download_apple_push_notification_certificate_signing_request_request_builder import DownloadApplePushNotificationCertificateSigningRequestRequestBuilder
 
-        return download_apple_push_notification_certificate_signing_request_request_builder.DownloadApplePushNotificationCertificateSigningRequestRequestBuilder(self.request_adapter, self.path_parameters)
+        return DownloadApplePushNotificationCertificateSigningRequestRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ApplePushNotificationCertificateRequestBuilderDeleteRequestConfiguration():
@@ -181,7 +181,7 @@ class ApplePushNotificationCertificateRequestBuilder():
     @dataclass
     class ApplePushNotificationCertificateRequestBuilderGetQueryParameters():
         """
-        Apple push notification certificate.
+        Read properties and relationships of the applePushNotificationCertificate object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

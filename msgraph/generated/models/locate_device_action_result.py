@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_action_result, device_geo_location
+    from .device_action_result import DeviceActionResult
+    from .device_geo_location import DeviceGeoLocation
 
-from . import device_action_result
+from .device_action_result import DeviceActionResult
 
 @dataclass
-class LocateDeviceActionResult(device_action_result.DeviceActionResult):
+class LocateDeviceActionResult(DeviceActionResult):
     # device location
-    device_location: Optional[device_geo_location.DeviceGeoLocation] = None
+    device_location: Optional[DeviceGeoLocation] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class LocateDeviceActionResult(device_action_result.DeviceActionResult):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_action_result, device_geo_location
+        from .device_action_result import DeviceActionResult
+        from .device_geo_location import DeviceGeoLocation
 
-        from . import device_action_result, device_geo_location
+        from .device_action_result import DeviceActionResult
+        from .device_geo_location import DeviceGeoLocation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceLocation": lambda n : setattr(self, 'device_location', n.get_object_value(device_geo_location.DeviceGeoLocation)),
+            "deviceLocation": lambda n : setattr(self, 'device_location', n.get_object_value(DeviceGeoLocation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,17 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import managed_android_lob_app, managed_app, managed_i_o_s_lob_app, mobile_app_content
+    from .managed_android_lob_app import ManagedAndroidLobApp
+    from .managed_app import ManagedApp
+    from .managed_i_o_s_lob_app import ManagedIOSLobApp
+    from .mobile_app_content import MobileAppContent
 
-from . import managed_app
+from .managed_app import ManagedApp
 
 @dataclass
-class ManagedMobileLobApp(managed_app.ManagedApp):
+class ManagedMobileLobApp(ManagedApp):
     odata_type = "#microsoft.graph.managedMobileLobApp"
     # The internal committed content version.
     committed_content_version: Optional[str] = None
     # The list of content versions for this app.
-    content_versions: Optional[List[mobile_app_content.MobileAppContent]] = None
+    content_versions: Optional[List[MobileAppContent]] = None
     # The name of the main Lob application file.
     file_name: Optional[str] = None
     # The total size, including all uploaded files.
@@ -35,13 +38,13 @@ class ManagedMobileLobApp(managed_app.ManagedApp):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAndroidLobApp".casefold():
-            from . import managed_android_lob_app
+            from .managed_android_lob_app import ManagedAndroidLobApp
 
-            return managed_android_lob_app.ManagedAndroidLobApp()
+            return ManagedAndroidLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedIOSLobApp".casefold():
-            from . import managed_i_o_s_lob_app
+            from .managed_i_o_s_lob_app import ManagedIOSLobApp
 
-            return managed_i_o_s_lob_app.ManagedIOSLobApp()
+            return ManagedIOSLobApp()
         return ManagedMobileLobApp()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -49,13 +52,19 @@ class ManagedMobileLobApp(managed_app.ManagedApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_android_lob_app, managed_app, managed_i_o_s_lob_app, mobile_app_content
+        from .managed_android_lob_app import ManagedAndroidLobApp
+        from .managed_app import ManagedApp
+        from .managed_i_o_s_lob_app import ManagedIOSLobApp
+        from .mobile_app_content import MobileAppContent
 
-        from . import managed_android_lob_app, managed_app, managed_i_o_s_lob_app, mobile_app_content
+        from .managed_android_lob_app import ManagedAndroidLobApp
+        from .managed_app import ManagedApp
+        from .managed_i_o_s_lob_app import ManagedIOSLobApp
+        from .mobile_app_content import MobileAppContent
 
         fields: Dict[str, Callable[[Any], None]] = {
             "committedContentVersion": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),
-            "contentVersions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(mobile_app_content.MobileAppContent)),
+            "contentVersions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(MobileAppContent)),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }

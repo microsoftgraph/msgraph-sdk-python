@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method
+    from .authentication_method import AuthenticationMethod
 
-from . import authentication_method
+from .authentication_method import AuthenticationMethod
 
 @dataclass
-class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMethod):
+class SoftwareOathAuthenticationMethod(AuthenticationMethod):
     odata_type = "#microsoft.graph.softwareOathAuthenticationMethod"
     # The secret key of the method. Always returns null.
     secret_key: Optional[str] = None
@@ -31,9 +31,9 @@ class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMetho
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method
+        from .authentication_method import AuthenticationMethod
 
-        from . import authentication_method
+        from .authentication_method import AuthenticationMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
             "secretKey": lambda n : setattr(self, 'secret_key', n.get_str_value()),

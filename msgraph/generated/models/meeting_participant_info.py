@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set, online_meeting_role
+    from .identity_set import IdentitySet
+    from .online_meeting_role import OnlineMeetingRole
 
 @dataclass
 class MeetingParticipantInfo(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class MeetingParticipantInfo(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Identity information of the participant.
-    identity: Optional[identity_set.IdentitySet] = None
+    identity: Optional[IdentitySet] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies the participant's role in the meeting.
-    role: Optional[online_meeting_role.OnlineMeetingRole] = None
+    role: Optional[OnlineMeetingRole] = None
     # User principal name of the participant.
     upn: Optional[str] = None
     
@@ -37,14 +38,16 @@ class MeetingParticipantInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set, online_meeting_role
+        from .identity_set import IdentitySet
+        from .online_meeting_role import OnlineMeetingRole
 
-        from . import identity_set, online_meeting_role
+        from .identity_set import IdentitySet
+        from .online_meeting_role import OnlineMeetingRole
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "identity": lambda n : setattr(self, 'identity', n.get_object_value(identity_set.IdentitySet)),
+            "identity": lambda n : setattr(self, 'identity', n.get_object_value(IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "role": lambda n : setattr(self, 'role', n.get_enum_value(online_meeting_role.OnlineMeetingRole)),
+            "role": lambda n : setattr(self, 'role', n.get_enum_value(OnlineMeetingRole)),
             "upn": lambda n : setattr(self, 'upn', n.get_str_value()),
         }
         return fields

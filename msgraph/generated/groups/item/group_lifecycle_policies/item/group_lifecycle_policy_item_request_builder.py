@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import group_lifecycle_policy
-    from .....models.o_data_errors import o_data_error
-    from .add_group import add_group_request_builder
-    from .remove_group import remove_group_request_builder
+    from .....models.group_lifecycle_policy import GroupLifecyclePolicy
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .add_group.add_group_request_builder import AddGroupRequestBuilder
+    from .remove_group.remove_group_request_builder import RemoveGroupRequestBuilder
 
 class GroupLifecyclePolicyItemRequestBuilder():
     """
@@ -46,62 +46,62 @@ class GroupLifecyclePolicyItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[GroupLifecyclePolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[group_lifecycle_policy.GroupLifecyclePolicy]:
+    async def get(self,request_configuration: Optional[GroupLifecyclePolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[GroupLifecyclePolicy]:
         """
         The collection of lifecycle policies for this group. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[group_lifecycle_policy.GroupLifecyclePolicy]
+        Returns: Optional[GroupLifecyclePolicy]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import group_lifecycle_policy
+        from .....models.group_lifecycle_policy import GroupLifecyclePolicy
 
-        return await self.request_adapter.send_async(request_info, group_lifecycle_policy.GroupLifecyclePolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, GroupLifecyclePolicy, error_mapping)
     
-    async def patch(self,body: Optional[group_lifecycle_policy.GroupLifecyclePolicy] = None, request_configuration: Optional[GroupLifecyclePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[group_lifecycle_policy.GroupLifecyclePolicy]:
+    async def patch(self,body: Optional[GroupLifecyclePolicy] = None, request_configuration: Optional[GroupLifecyclePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[GroupLifecyclePolicy]:
         """
         Update the navigation property groupLifecyclePolicies in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[group_lifecycle_policy.GroupLifecyclePolicy]
+        Returns: Optional[GroupLifecyclePolicy]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import group_lifecycle_policy
+        from .....models.group_lifecycle_policy import GroupLifecyclePolicy
 
-        return await self.request_adapter.send_async(request_info, group_lifecycle_policy.GroupLifecyclePolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, GroupLifecyclePolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[GroupLifecyclePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class GroupLifecyclePolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[group_lifecycle_policy.GroupLifecyclePolicy] = None, request_configuration: Optional[GroupLifecyclePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[GroupLifecyclePolicy] = None, request_configuration: Optional[GroupLifecyclePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property groupLifecyclePolicies in groups
         Args:
@@ -159,22 +159,22 @@ class GroupLifecyclePolicyItemRequestBuilder():
         return request_info
     
     @property
-    def add_group(self) -> add_group_request_builder.AddGroupRequestBuilder:
+    def add_group(self) -> AddGroupRequestBuilder:
         """
         Provides operations to call the addGroup method.
         """
-        from .add_group import add_group_request_builder
+        from .add_group.add_group_request_builder import AddGroupRequestBuilder
 
-        return add_group_request_builder.AddGroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return AddGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def remove_group(self) -> remove_group_request_builder.RemoveGroupRequestBuilder:
+    def remove_group(self) -> RemoveGroupRequestBuilder:
         """
         Provides operations to call the removeGroup method.
         """
-        from .remove_group import remove_group_request_builder
+        from .remove_group.remove_group_request_builder import RemoveGroupRequestBuilder
 
-        return remove_group_request_builder.RemoveGroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return RemoveGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GroupLifecyclePolicyItemRequestBuilderDeleteRequestConfiguration():

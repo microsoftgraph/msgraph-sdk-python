@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import assignment_order
+    from ......models.assignment_order import AssignmentOrder
 
 @dataclass
 class SetOrderPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class SetOrderPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The newAssignmentOrder property
-    new_assignment_order: Optional[assignment_order.AssignmentOrder] = None
+    new_assignment_order: Optional[AssignmentOrder] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SetOrderPostRequestBody:
@@ -31,12 +31,12 @@ class SetOrderPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models import assignment_order
+        from ......models.assignment_order import AssignmentOrder
 
-        from ......models import assignment_order
+        from ......models.assignment_order import AssignmentOrder
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "newAssignmentOrder": lambda n : setattr(self, 'new_assignment_order', n.get_object_value(assignment_order.AssignmentOrder)),
+            "newAssignmentOrder": lambda n : setattr(self, 'new_assignment_order', n.get_object_value(AssignmentOrder)),
         }
         return fields
     

@@ -4,17 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_configuration, authentication_method_target, external_email_otp_state
+    from .authentication_method_configuration import AuthenticationMethodConfiguration
+    from .authentication_method_target import AuthenticationMethodTarget
+    from .external_email_otp_state import ExternalEmailOtpState
 
-from . import authentication_method_configuration
+from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class EmailAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
+class EmailAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     odata_type = "#microsoft.graph.emailAuthenticationMethodConfiguration"
     # Determines whether email OTP is usable by external users for authentication. Possible values are: default, enabled, disabled, unknownFutureValue. Tenants in the default state who did not use public preview will automatically have email OTP enabled beginning in October 2021.
-    allow_external_id_to_use_email_otp: Optional[external_email_otp_state.ExternalEmailOtpState] = None
+    allow_external_id_to_use_email_otp: Optional[ExternalEmailOtpState] = None
     # A collection of groups that are enabled to use the authentication method.
-    include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
+    include_targets: Optional[List[AuthenticationMethodTarget]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EmailAuthenticationMethodConfiguration:
@@ -33,13 +35,17 @@ class EmailAuthenticationMethodConfiguration(authentication_method_configuration
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_configuration, authentication_method_target, external_email_otp_state
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
+        from .external_email_otp_state import ExternalEmailOtpState
 
-        from . import authentication_method_configuration, authentication_method_target, external_email_otp_state
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
+        from .external_email_otp_state import ExternalEmailOtpState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowExternalIdToUseEmailOtp": lambda n : setattr(self, 'allow_external_id_to_use_email_otp', n.get_enum_value(external_email_otp_state.ExternalEmailOtpState)),
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
+            "allowExternalIdToUseEmailOtp": lambda n : setattr(self, 'allow_external_id_to_use_email_otp', n.get_enum_value(ExternalEmailOtpState)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

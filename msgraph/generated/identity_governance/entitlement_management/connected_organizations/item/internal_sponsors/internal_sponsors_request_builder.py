@@ -10,15 +10,16 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import directory_object, directory_object_collection_response
-    from ......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .delta import delta_request_builder
-    from .get_available_extension_properties import get_available_extension_properties_request_builder
-    from .get_by_ids import get_by_ids_request_builder
-    from .item import directory_object_item_request_builder
-    from .ref import ref_request_builder
-    from .validate_properties import validate_properties_request_builder
+    from ......models.directory_object import DirectoryObject
+    from ......models.directory_object_collection_response import DirectoryObjectCollectionResponse
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
+    from .get_available_extension_properties.get_available_extension_properties_request_builder import GetAvailableExtensionPropertiesRequestBuilder
+    from .get_by_ids.get_by_ids_request_builder import GetByIdsRequestBuilder
+    from .item.directory_object_item_request_builder import DirectoryObjectItemRequestBuilder
+    from .ref.ref_request_builder import RefRequestBuilder
+    from .validate_properties.validate_properties_request_builder import ValidatePropertiesRequestBuilder
 
 class InternalSponsorsRequestBuilder():
     """
@@ -42,67 +43,67 @@ class InternalSponsorsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_directory_object_id(self,directory_object_id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def by_directory_object_id(self,directory_object_id: str) -> DirectoryObjectItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.identityGovernance.entitlementManagement.connectedOrganizations.item.internalSponsors.item collection
         Args:
             directory_object_id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: DirectoryObjectItemRequestBuilder
         """
         if not directory_object_id:
             raise TypeError("directory_object_id cannot be null.")
-        from .item import directory_object_item_request_builder
+        from .item.directory_object_item_request_builder import DirectoryObjectItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = directory_object_id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[InternalSponsorsRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
+    async def get(self,request_configuration: Optional[InternalSponsorsRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObjectCollectionResponse]:
         """
         Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
+        Returns: Optional[DirectoryObjectCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import directory_object_collection_response
+        from ......models.directory_object_collection_response import DirectoryObjectCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, directory_object_collection_response.DirectoryObjectCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DirectoryObjectCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[InternalSponsorsRequestBuilderPostRequestConfiguration] = None) -> Optional[directory_object.DirectoryObject]:
+    async def post(self,body: Optional[DirectoryObject] = None, request_configuration: Optional[InternalSponsorsRequestBuilderPostRequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
         Add a user or a group to the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[directory_object.DirectoryObject]
+        Returns: Optional[DirectoryObject]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import directory_object
+        from ......models.directory_object import DirectoryObject
 
-        return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, error_mapping)
+        return await self.request_adapter.send_async(request_info, DirectoryObject, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[InternalSponsorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -122,7 +123,7 @@ class InternalSponsorsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[InternalSponsorsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DirectoryObject] = None, request_configuration: Optional[InternalSponsorsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add a user or a group to the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         Args:
@@ -144,58 +145,58 @@ class InternalSponsorsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def delta(self) -> DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        from .delta import delta_request_builder
+        from .delta.delta_request_builder import DeltaRequestBuilder
 
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
+    def get_available_extension_properties(self) -> GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
-        from .get_available_extension_properties import get_available_extension_properties_request_builder
+        from .get_available_extension_properties.get_available_extension_properties_request_builder import GetAvailableExtensionPropertiesRequestBuilder
 
-        return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
+    def get_by_ids(self) -> GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
-        from .get_by_ids import get_by_ids_request_builder
+        from .get_by_ids.get_by_ids_request_builder import GetByIdsRequestBuilder
 
-        return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ref(self) -> ref_request_builder.RefRequestBuilder:
+    def ref(self) -> RefRequestBuilder:
         """
         Provides operations to manage the collection of identityGovernance entities.
         """
-        from .ref import ref_request_builder
+        from .ref.ref_request_builder import RefRequestBuilder
 
-        return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
+        return RefRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+    def validate_properties(self) -> ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
-        from .validate_properties import validate_properties_request_builder
+        from .validate_properties.validate_properties_request_builder import ValidatePropertiesRequestBuilder
 
-        return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class InternalSponsorsRequestBuilderGetQueryParameters():

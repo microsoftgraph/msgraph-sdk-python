@@ -4,18 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, planner_plan, planner_task
+    from .entity import Entity
+    from .planner_plan import PlannerPlan
+    from .planner_task import PlannerTask
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PlannerUser(entity.Entity):
+class PlannerUser(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Read-only. Nullable. Returns the plannerTasks assigned to the user.
-    plans: Optional[List[planner_plan.PlannerPlan]] = None
+    plans: Optional[List[PlannerPlan]] = None
     # Read-only. Nullable. Returns the plannerPlans shared with the user.
-    tasks: Optional[List[planner_task.PlannerTask]] = None
+    tasks: Optional[List[PlannerTask]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerUser:
@@ -34,13 +36,17 @@ class PlannerUser(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, planner_plan, planner_task
+        from .entity import Entity
+        from .planner_plan import PlannerPlan
+        from .planner_task import PlannerTask
 
-        from . import entity, planner_plan, planner_task
+        from .entity import Entity
+        from .planner_plan import PlannerPlan
+        from .planner_task import PlannerTask
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "plans": lambda n : setattr(self, 'plans', n.get_collection_of_object_values(planner_plan.PlannerPlan)),
-            "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(planner_task.PlannerTask)),
+            "plans": lambda n : setattr(self, 'plans', n.get_collection_of_object_values(PlannerPlan)),
+            "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(PlannerTask)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -1,16 +1,16 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceComplianceUserOverview(entity.Entity):
+class DeviceComplianceUserOverview(Entity):
     # Version of the policy for that overview
     configuration_version: Optional[int] = None
     # Number of error Users
@@ -18,7 +18,7 @@ class DeviceComplianceUserOverview(entity.Entity):
     # Number of failed Users
     failed_count: Optional[int] = None
     # Last update time
-    last_update_date_time: Optional[datetime] = None
+    last_update_date_time: Optional[datetime.datetime] = None
     # Number of not applicable users
     not_applicable_count: Optional[int] = None
     # The OdataType property
@@ -45,9 +45,9 @@ class DeviceComplianceUserOverview(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "configurationVersion": lambda n : setattr(self, 'configuration_version', n.get_int_value()),
@@ -74,7 +74,7 @@ class DeviceComplianceUserOverview(entity.Entity):
         writer.write_int_value("configurationVersion", self.configuration_version)
         writer.write_int_value("errorCount", self.error_count)
         writer.write_int_value("failedCount", self.failed_count)
-        writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
+        writer.write_datetime_value()("lastUpdateDateTime", self.last_update_date_time)
         writer.write_int_value("notApplicableCount", self.not_applicable_count)
         writer.write_int_value("pendingCount", self.pending_count)
         writer.write_int_value("successCount", self.success_count)

@@ -1,46 +1,51 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_outcome, education_submission_recipient, education_submission_resource, education_submission_status, entity, identity_set
+    from .education_outcome import EducationOutcome
+    from .education_submission_recipient import EducationSubmissionRecipient
+    from .education_submission_resource import EducationSubmissionResource
+    from .education_submission_status import EducationSubmissionStatus
+    from .entity import Entity
+    from .identity_set import IdentitySet
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class EducationSubmission(entity.Entity):
+class EducationSubmission(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The outcomes property
-    outcomes: Optional[List[education_outcome.EducationOutcome]] = None
+    outcomes: Optional[List[EducationOutcome]] = None
     # User who moved the status of this submission to reassigned.
-    reassigned_by: Optional[identity_set.IdentitySet] = None
+    reassigned_by: Optional[IdentitySet] = None
     # Moment in time when the submission was reassigned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    reassigned_date_time: Optional[datetime] = None
+    reassigned_date_time: Optional[datetime.datetime] = None
     # Who this submission is assigned to.
-    recipient: Optional[education_submission_recipient.EducationSubmissionRecipient] = None
+    recipient: Optional[EducationSubmissionRecipient] = None
     # The resources property
-    resources: Optional[List[education_submission_resource.EducationSubmissionResource]] = None
+    resources: Optional[List[EducationSubmissionResource]] = None
     # Folder where all file resources for this submission need to be stored.
     resources_folder_url: Optional[str] = None
     # User who moved the status of this submission to returned.
-    returned_by: Optional[identity_set.IdentitySet] = None
+    returned_by: Optional[IdentitySet] = None
     # Moment in time when the submission was returned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    returned_date_time: Optional[datetime] = None
+    returned_date_time: Optional[datetime.datetime] = None
     # Read-only. Possible values are: working, submitted, returned, and reassigned. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: reassigned.
-    status: Optional[education_submission_status.EducationSubmissionStatus] = None
+    status: Optional[EducationSubmissionStatus] = None
     # User who moved the resource into the submitted state.
-    submitted_by: Optional[identity_set.IdentitySet] = None
+    submitted_by: Optional[IdentitySet] = None
     # Moment in time when the submission was moved into the submitted state. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    submitted_date_time: Optional[datetime] = None
+    submitted_date_time: Optional[datetime.datetime] = None
     # The submittedResources property
-    submitted_resources: Optional[List[education_submission_resource.EducationSubmissionResource]] = None
+    submitted_resources: Optional[List[EducationSubmissionResource]] = None
     # User who moved the resource from submitted into the working state.
-    unsubmitted_by: Optional[identity_set.IdentitySet] = None
+    unsubmitted_by: Optional[IdentitySet] = None
     # Moment in time when the submission was moved from submitted into the working state. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    unsubmitted_date_time: Optional[datetime] = None
+    unsubmitted_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationSubmission:
@@ -59,24 +64,34 @@ class EducationSubmission(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_outcome, education_submission_recipient, education_submission_resource, education_submission_status, entity, identity_set
+        from .education_outcome import EducationOutcome
+        from .education_submission_recipient import EducationSubmissionRecipient
+        from .education_submission_resource import EducationSubmissionResource
+        from .education_submission_status import EducationSubmissionStatus
+        from .entity import Entity
+        from .identity_set import IdentitySet
 
-        from . import education_outcome, education_submission_recipient, education_submission_resource, education_submission_status, entity, identity_set
+        from .education_outcome import EducationOutcome
+        from .education_submission_recipient import EducationSubmissionRecipient
+        from .education_submission_resource import EducationSubmissionResource
+        from .education_submission_status import EducationSubmissionStatus
+        from .entity import Entity
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "outcomes": lambda n : setattr(self, 'outcomes', n.get_collection_of_object_values(education_outcome.EducationOutcome)),
-            "reassignedBy": lambda n : setattr(self, 'reassigned_by', n.get_object_value(identity_set.IdentitySet)),
+            "outcomes": lambda n : setattr(self, 'outcomes', n.get_collection_of_object_values(EducationOutcome)),
+            "reassignedBy": lambda n : setattr(self, 'reassigned_by', n.get_object_value(IdentitySet)),
             "reassignedDateTime": lambda n : setattr(self, 'reassigned_date_time', n.get_datetime_value()),
-            "recipient": lambda n : setattr(self, 'recipient', n.get_object_value(education_submission_recipient.EducationSubmissionRecipient)),
-            "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(education_submission_resource.EducationSubmissionResource)),
+            "recipient": lambda n : setattr(self, 'recipient', n.get_object_value(EducationSubmissionRecipient)),
+            "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(EducationSubmissionResource)),
             "resourcesFolderUrl": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
-            "returnedBy": lambda n : setattr(self, 'returned_by', n.get_object_value(identity_set.IdentitySet)),
+            "returnedBy": lambda n : setattr(self, 'returned_by', n.get_object_value(IdentitySet)),
             "returnedDateTime": lambda n : setattr(self, 'returned_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(education_submission_status.EducationSubmissionStatus)),
-            "submittedBy": lambda n : setattr(self, 'submitted_by', n.get_object_value(identity_set.IdentitySet)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(EducationSubmissionStatus)),
+            "submittedBy": lambda n : setattr(self, 'submitted_by', n.get_object_value(IdentitySet)),
             "submittedDateTime": lambda n : setattr(self, 'submitted_date_time', n.get_datetime_value()),
-            "submittedResources": lambda n : setattr(self, 'submitted_resources', n.get_collection_of_object_values(education_submission_resource.EducationSubmissionResource)),
-            "unsubmittedBy": lambda n : setattr(self, 'unsubmitted_by', n.get_object_value(identity_set.IdentitySet)),
+            "submittedResources": lambda n : setattr(self, 'submitted_resources', n.get_collection_of_object_values(EducationSubmissionResource)),
+            "unsubmittedBy": lambda n : setattr(self, 'unsubmitted_by', n.get_object_value(IdentitySet)),
             "unsubmittedDateTime": lambda n : setattr(self, 'unsubmitted_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()

@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, permission_type
+    from .entity import Entity
+    from .permission_type import PermissionType
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PermissionGrantConditionSet(entity.Entity):
+class PermissionGrantConditionSet(Entity):
     # A list of appId values for the client applications to match with, or a list with the single value all to match any client application. Default is the single value all.
     client_application_ids: Optional[List[str]] = None
     # A list of Microsoft Partner Network (MPN) IDs for verified publishers of the client application, or a list with the single value all to match with client apps from any publisher. Default is the single value all.
@@ -23,7 +24,7 @@ class PermissionGrantConditionSet(entity.Entity):
     # The permission classification for the permission being granted, or all to match with any permission classification (including permissions which are not classified). Default is all.
     permission_classification: Optional[str] = None
     # The permission type of the permission being granted. Possible values: application for application permissions (e.g. app roles), or delegated for delegated permissions. The value delegatedUserConsentable indicates delegated permissions which have not been configured by the API publisher to require admin consent—this value may be used in built-in permission grant policies, but cannot be used in custom permission grant policies. Required.
-    permission_type: Optional[permission_type.PermissionType] = None
+    permission_type: Optional[PermissionType] = None
     # The list of id values for the specific permissions to match with, or a list with the single value all to match with any permission. The id of delegated permissions can be found in the oauth2PermissionScopes property of the API's **servicePrincipal** object. The id of application permissions can be found in the appRoles property of the API's **servicePrincipal** object. The id of resource-specific application permissions can be found in the resourceSpecificApplicationPermissions property of the API's **servicePrincipal** object. Default is the single value all.
     permissions: Optional[List[str]] = None
     # The appId of the resource application (e.g. the API) for which a permission is being granted, or any to match with any resource application or API. Default is any.
@@ -46,9 +47,11 @@ class PermissionGrantConditionSet(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, permission_type
+        from .entity import Entity
+        from .permission_type import PermissionType
 
-        from . import entity, permission_type
+        from .entity import Entity
+        from .permission_type import PermissionType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "clientApplicationIds": lambda n : setattr(self, 'client_application_ids', n.get_collection_of_primitive_values(str)),
@@ -56,7 +59,7 @@ class PermissionGrantConditionSet(entity.Entity):
             "clientApplicationTenantIds": lambda n : setattr(self, 'client_application_tenant_ids', n.get_collection_of_primitive_values(str)),
             "clientApplicationsFromVerifiedPublisherOnly": lambda n : setattr(self, 'client_applications_from_verified_publisher_only', n.get_bool_value()),
             "permissionClassification": lambda n : setattr(self, 'permission_classification', n.get_str_value()),
-            "permissionType": lambda n : setattr(self, 'permission_type', n.get_enum_value(permission_type.PermissionType)),
+            "permissionType": lambda n : setattr(self, 'permission_type', n.get_enum_value(PermissionType)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_primitive_values(str)),
             "resourceApplication": lambda n : setattr(self, 'resource_application', n.get_str_value()),
         }

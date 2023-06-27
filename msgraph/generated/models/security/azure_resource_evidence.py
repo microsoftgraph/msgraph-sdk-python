@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert_evidence
+    from .alert_evidence import AlertEvidence
 
-from . import alert_evidence
+from .alert_evidence import AlertEvidence
 
 @dataclass
-class AzureResourceEvidence(alert_evidence.AlertEvidence):
+class AzureResourceEvidence(AlertEvidence):
     # The OdataType property
     odata_type: Optional[str] = None
     # The unique identifier for the Azure resource.
@@ -36,9 +36,9 @@ class AzureResourceEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_evidence
+        from .alert_evidence import AlertEvidence
 
-        from . import alert_evidence
+        from .alert_evidence import AlertEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
             "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),

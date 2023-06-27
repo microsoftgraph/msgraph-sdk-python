@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_gridlines_format
+    from .entity import Entity
+    from .workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartGridlines(entity.Entity):
+class WorkbookChartGridlines(Entity):
     # Represents the formatting of chart gridlines. Read-only.
-    format: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat] = None
+    format: Optional[WorkbookChartGridlinesFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Boolean value representing if the axis gridlines are visible or not.
@@ -34,12 +35,14 @@ class WorkbookChartGridlines(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_gridlines_format
+        from .entity import Entity
+        from .workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
 
-        from . import entity, workbook_chart_gridlines_format
+        from .entity import Entity
+        from .workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_gridlines_format.WorkbookChartGridlinesFormat)),
+            "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartGridlinesFormat)),
             "visible": lambda n : setattr(self, 'visible', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

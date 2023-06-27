@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, enrollment_configuration_assignment
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class EnrollmentConfigurationAssignmentCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class EnrollmentConfigurationAssignmentCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]] = None
+    value: Optional[List[EnrollmentConfigurationAssignment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EnrollmentConfigurationAssignmentCollectionResponse:
@@ -30,12 +31,14 @@ class EnrollmentConfigurationAssignmentCollectionResponse(base_collection_pagina
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, enrollment_configuration_assignment
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
 
-        from . import base_collection_pagination_count_response, enrollment_configuration_assignment
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(enrollment_configuration_assignment.EnrollmentConfigurationAssignment)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(EnrollmentConfigurationAssignment)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_message_detail, identity_set
+    from .event_message_detail import EventMessageDetail
+    from .identity_set import IdentitySet
 
-from . import event_message_detail
+from .event_message_detail import EventMessageDetail
 
 @dataclass
-class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
+class MeetingPolicyUpdatedEventMessageDetail(EventMessageDetail):
     odata_type = "#microsoft.graph.meetingPolicyUpdatedEventMessageDetail"
     # Initiator of the event.
-    initiator: Optional[identity_set.IdentitySet] = None
+    initiator: Optional[IdentitySet] = None
     # Represents whether the meeting chat is enabled or not.
     meeting_chat_enabled: Optional[bool] = None
     # Unique identifier of the meeting chat.
@@ -35,12 +36,14 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
+            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
             "meetingChatEnabled": lambda n : setattr(self, 'meeting_chat_enabled', n.get_bool_value()),
             "meetingChatId": lambda n : setattr(self, 'meeting_chat_id', n.get_str_value()),
         }

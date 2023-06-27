@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...........models import workbook_chart_axes
-    from ...........models.o_data_errors import o_data_error
-    from .category_axis import category_axis_request_builder
-    from .series_axis import series_axis_request_builder
-    from .value_axis import value_axis_request_builder
+    from ...........models.o_data_errors.o_data_error import ODataError
+    from ...........models.workbook_chart_axes import WorkbookChartAxes
+    from .category_axis.category_axis_request_builder import CategoryAxisRequestBuilder
+    from .series_axis.series_axis_request_builder import SeriesAxisRequestBuilder
+    from .value_axis.value_axis_request_builder import ValueAxisRequestBuilder
 
 class AxesRequestBuilder():
     """
@@ -47,62 +47,62 @@ class AxesRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
+        from ...........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AxesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_axes.WorkbookChartAxes]:
+    async def get(self,request_configuration: Optional[AxesRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartAxes]:
         """
         Represents chart axes. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart_axes.WorkbookChartAxes]
+        Returns: Optional[WorkbookChartAxes]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
+        from ...........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...........models import workbook_chart_axes
+        from ...........models.workbook_chart_axes import WorkbookChartAxes
 
-        return await self.request_adapter.send_async(request_info, workbook_chart_axes.WorkbookChartAxes, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChartAxes, error_mapping)
     
-    async def patch(self,body: Optional[workbook_chart_axes.WorkbookChartAxes] = None, request_configuration: Optional[AxesRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_axes.WorkbookChartAxes]:
+    async def patch(self,body: Optional[WorkbookChartAxes] = None, request_configuration: Optional[AxesRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChartAxes]:
         """
         Update the navigation property axes in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart_axes.WorkbookChartAxes]
+        Returns: Optional[WorkbookChartAxes]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
+        from ...........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...........models import workbook_chart_axes
+        from ...........models.workbook_chart_axes import WorkbookChartAxes
 
-        return await self.request_adapter.send_async(request_info, workbook_chart_axes.WorkbookChartAxes, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChartAxes, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AxesRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class AxesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_chart_axes.WorkbookChartAxes] = None, request_configuration: Optional[AxesRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookChartAxes] = None, request_configuration: Optional[AxesRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property axes in drives
         Args:
@@ -160,31 +160,31 @@ class AxesRequestBuilder():
         return request_info
     
     @property
-    def category_axis(self) -> category_axis_request_builder.CategoryAxisRequestBuilder:
+    def category_axis(self) -> CategoryAxisRequestBuilder:
         """
         Provides operations to manage the categoryAxis property of the microsoft.graph.workbookChartAxes entity.
         """
-        from .category_axis import category_axis_request_builder
+        from .category_axis.category_axis_request_builder import CategoryAxisRequestBuilder
 
-        return category_axis_request_builder.CategoryAxisRequestBuilder(self.request_adapter, self.path_parameters)
+        return CategoryAxisRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def series_axis(self) -> series_axis_request_builder.SeriesAxisRequestBuilder:
+    def series_axis(self) -> SeriesAxisRequestBuilder:
         """
         Provides operations to manage the seriesAxis property of the microsoft.graph.workbookChartAxes entity.
         """
-        from .series_axis import series_axis_request_builder
+        from .series_axis.series_axis_request_builder import SeriesAxisRequestBuilder
 
-        return series_axis_request_builder.SeriesAxisRequestBuilder(self.request_adapter, self.path_parameters)
+        return SeriesAxisRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def value_axis(self) -> value_axis_request_builder.ValueAxisRequestBuilder:
+    def value_axis(self) -> ValueAxisRequestBuilder:
         """
         Provides operations to manage the valueAxis property of the microsoft.graph.workbookChartAxes entity.
         """
-        from .value_axis import value_axis_request_builder
+        from .value_axis.value_axis_request_builder import ValueAxisRequestBuilder
 
-        return value_axis_request_builder.ValueAxisRequestBuilder(self.request_adapter, self.path_parameters)
+        return ValueAxisRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AxesRequestBuilderDeleteRequestConfiguration():

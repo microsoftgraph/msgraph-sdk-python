@@ -4,15 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_instance_decision_item_resource
+    from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
 
-from . import access_review_instance_decision_item_resource
+from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
 
 @dataclass
-class AccessReviewInstanceDecisionItemAzureRoleResource(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource):
+class AccessReviewInstanceDecisionItemAzureRoleResource(AccessReviewInstanceDecisionItemResource):
     odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemAzureRoleResource"
     # Details of the scope this role is associated with.
-    scope: Optional[access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource] = None
+    scope: Optional[AccessReviewInstanceDecisionItemResource] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewInstanceDecisionItemAzureRoleResource:
@@ -31,12 +31,12 @@ class AccessReviewInstanceDecisionItemAzureRoleResource(access_review_instance_d
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_instance_decision_item_resource
+        from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
 
-        from . import access_review_instance_decision_item_resource
+        from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "scope": lambda n : setattr(self, 'scope', n.get_object_value(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource)),
+            "scope": lambda n : setattr(self, 'scope', n.get_object_value(AccessReviewInstanceDecisionItemResource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

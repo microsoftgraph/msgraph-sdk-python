@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Presence(entity.Entity):
+class Presence(Entity):
     # The supplemental information to a user's availability. Possible values are Available, Away, BeRightBack, Busy, DoNotDisturb, InACall, InAConferenceCall, Inactive, InAMeeting, Offline, OffWork, OutOfOffice, PresenceUnknown, Presenting, UrgentInterruptionsOnly.
     activity: Optional[str] = None
     # The base presence information for a user. Possible values are Available, AvailableIdle,  Away, BeRightBack, Busy, BusyIdle, DoNotDisturb, Offline, PresenceUnknown
@@ -34,9 +34,9 @@ class Presence(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import microsoft_authenticator_authentication_method
-    from .....models.o_data_errors import o_data_error
-    from .device import device_request_builder
+    from .....models.microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .device.device_request_builder import DeviceRequestBuilder
 
 class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder():
     """
@@ -45,37 +45,37 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[microsoft_authenticator_authentication_method.MicrosoftAuthenticatorAuthenticationMethod]:
+    async def get(self,request_configuration: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MicrosoftAuthenticatorAuthenticationMethod]:
         """
         Read the properties and relationships of a microsoftAuthenticatorAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[microsoft_authenticator_authentication_method.MicrosoftAuthenticatorAuthenticationMethod]
+        Returns: Optional[MicrosoftAuthenticatorAuthenticationMethod]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import microsoft_authenticator_authentication_method
+        from .....models.microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
 
-        return await self.request_adapter.send_async(request_info, microsoft_authenticator_authentication_method.MicrosoftAuthenticatorAuthenticationMethod, error_mapping)
+        return await self.request_adapter.send_async(request_info, MicrosoftAuthenticatorAuthenticationMethod, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -112,13 +112,13 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder():
         return request_info
     
     @property
-    def device(self) -> device_request_builder.DeviceRequestBuilder:
+    def device(self) -> DeviceRequestBuilder:
         """
         Provides operations to manage the device property of the microsoft.graph.microsoftAuthenticatorAuthenticationMethod entity.
         """
-        from .device import device_request_builder
+        from .device.device_request_builder import DeviceRequestBuilder
 
-        return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration():

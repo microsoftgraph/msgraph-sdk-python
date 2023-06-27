@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class RatePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,17 +12,17 @@ class RatePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The fv property
-    fv: Optional[json.Json] = None
+    fv: Optional[Json] = None
     # The guess property
-    guess: Optional[json.Json] = None
+    guess: Optional[Json] = None
     # The nper property
-    nper: Optional[json.Json] = None
+    nper: Optional[Json] = None
     # The pmt property
-    pmt: Optional[json.Json] = None
+    pmt: Optional[Json] = None
     # The pv property
-    pv: Optional[json.Json] = None
+    pv: Optional[Json] = None
     # The type property
-    type: Optional[json.Json] = None
+    type: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RatePostRequestBody:
@@ -41,17 +41,17 @@ class RatePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fv": lambda n : setattr(self, 'fv', n.get_object_value(json.Json)),
-            "guess": lambda n : setattr(self, 'guess', n.get_object_value(json.Json)),
-            "nper": lambda n : setattr(self, 'nper', n.get_object_value(json.Json)),
-            "pmt": lambda n : setattr(self, 'pmt', n.get_object_value(json.Json)),
-            "pv": lambda n : setattr(self, 'pv', n.get_object_value(json.Json)),
-            "type": lambda n : setattr(self, 'type', n.get_object_value(json.Json)),
+            "fv": lambda n : setattr(self, 'fv', n.get_object_value(Json)),
+            "guess": lambda n : setattr(self, 'guess', n.get_object_value(Json)),
+            "nper": lambda n : setattr(self, 'nper', n.get_object_value(Json)),
+            "pmt": lambda n : setattr(self, 'pmt', n.get_object_value(Json)),
+            "pv": lambda n : setattr(self, 'pv', n.get_object_value(Json)),
+            "type": lambda n : setattr(self, 'type', n.get_object_value(Json)),
         }
         return fields
     

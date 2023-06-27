@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PrintDocument(entity.Entity):
+class PrintDocument(Entity):
     # The document's content (MIME) type. Read-only.
     content_type: Optional[str] = None
     # The document's name. Read-only.
@@ -36,9 +36,9 @@ class PrintDocument(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),

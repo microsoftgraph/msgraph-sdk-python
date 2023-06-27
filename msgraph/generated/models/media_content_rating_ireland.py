@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import rating_ireland_movies_type, rating_ireland_television_type
+    from .rating_ireland_movies_type import RatingIrelandMoviesType
+    from .rating_ireland_television_type import RatingIrelandTelevisionType
 
 @dataclass
 class MediaContentRatingIreland(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class MediaContentRatingIreland(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Movies rating labels in Ireland
-    movie_rating: Optional[rating_ireland_movies_type.RatingIrelandMoviesType] = None
+    movie_rating: Optional[RatingIrelandMoviesType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # TV content rating labels in Ireland
-    tv_rating: Optional[rating_ireland_television_type.RatingIrelandTelevisionType] = None
+    tv_rating: Optional[RatingIrelandTelevisionType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MediaContentRatingIreland:
@@ -35,14 +36,16 @@ class MediaContentRatingIreland(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import rating_ireland_movies_type, rating_ireland_television_type
+        from .rating_ireland_movies_type import RatingIrelandMoviesType
+        from .rating_ireland_television_type import RatingIrelandTelevisionType
 
-        from . import rating_ireland_movies_type, rating_ireland_television_type
+        from .rating_ireland_movies_type import RatingIrelandMoviesType
+        from .rating_ireland_television_type import RatingIrelandTelevisionType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(rating_ireland_movies_type.RatingIrelandMoviesType)),
+            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(RatingIrelandMoviesType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(rating_ireland_television_type.RatingIrelandTelevisionType)),
+            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(RatingIrelandTelevisionType)),
         }
         return fields
     

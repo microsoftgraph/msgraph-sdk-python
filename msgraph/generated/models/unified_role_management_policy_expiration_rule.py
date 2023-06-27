@@ -1,21 +1,21 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import unified_role_management_policy_rule
+    from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-from . import unified_role_management_policy_rule
+from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
 @dataclass
-class UnifiedRoleManagementPolicyExpirationRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
+class UnifiedRoleManagementPolicyExpirationRule(UnifiedRoleManagementPolicyRule):
     odata_type = "#microsoft.graph.unifiedRoleManagementPolicyExpirationRule"
     # Indicates whether expiration is required or if it's a permanently active assignment or eligibility.
     is_expiration_required: Optional[bool] = None
     # The maximum duration allowed for eligibility or assignment which is not permanent. Required when isExpirationRequired is true.
-    maximum_duration: Optional[timedelta] = None
+    maximum_duration: Optional[datetime.timedelta] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyExpirationRule:
@@ -34,9 +34,9 @@ class UnifiedRoleManagementPolicyExpirationRule(unified_role_management_policy_r
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import unified_role_management_policy_rule
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-        from . import unified_role_management_policy_rule
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isExpirationRequired": lambda n : setattr(self, 'is_expiration_required', n.get_bool_value()),
@@ -56,6 +56,6 @@ class UnifiedRoleManagementPolicyExpirationRule(unified_role_management_policy_r
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("isExpirationRequired", self.is_expiration_required)
-        writer.write_timedelta_value("maximumDuration", self.maximum_duration)
+        writer.write_timedelta_value()("maximumDuration", self.maximum_duration)
     
 

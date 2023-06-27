@@ -4,18 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_enrollment_failure_reason, device_enrollment_type, device_management_troubleshooting_event
+    from .device_enrollment_failure_reason import DeviceEnrollmentFailureReason
+    from .device_enrollment_type import DeviceEnrollmentType
+    from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
-from . import device_management_troubleshooting_event
+from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
 @dataclass
-class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent):
+class EnrollmentTroubleshootingEvent(DeviceManagementTroubleshootingEvent):
     # Azure AD device identifier.
     device_id: Optional[str] = None
     # Possible ways of adding a mobile device to management.
-    enrollment_type: Optional[device_enrollment_type.DeviceEnrollmentType] = None
+    enrollment_type: Optional[DeviceEnrollmentType] = None
     # Top level failure categories for enrollment.
-    failure_category: Optional[device_enrollment_failure_reason.DeviceEnrollmentFailureReason] = None
+    failure_category: Optional[DeviceEnrollmentFailureReason] = None
     # Detailed failure reason.
     failure_reason: Optional[str] = None
     # Device identifier created or collected by Intune.
@@ -46,14 +48,18 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_enrollment_failure_reason, device_enrollment_type, device_management_troubleshooting_event
+        from .device_enrollment_failure_reason import DeviceEnrollmentFailureReason
+        from .device_enrollment_type import DeviceEnrollmentType
+        from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
-        from . import device_enrollment_failure_reason, device_enrollment_type, device_management_troubleshooting_event
+        from .device_enrollment_failure_reason import DeviceEnrollmentFailureReason
+        from .device_enrollment_type import DeviceEnrollmentType
+        from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
         fields: Dict[str, Callable[[Any], None]] = {
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "enrollmentType": lambda n : setattr(self, 'enrollment_type', n.get_enum_value(device_enrollment_type.DeviceEnrollmentType)),
-            "failureCategory": lambda n : setattr(self, 'failure_category', n.get_enum_value(device_enrollment_failure_reason.DeviceEnrollmentFailureReason)),
+            "enrollmentType": lambda n : setattr(self, 'enrollment_type', n.get_enum_value(DeviceEnrollmentType)),
+            "failureCategory": lambda n : setattr(self, 'failure_category', n.get_enum_value(DeviceEnrollmentFailureReason)),
             "failureReason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
             "managedDeviceIdentifier": lambda n : setattr(self, 'managed_device_identifier', n.get_str_value()),
             "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),

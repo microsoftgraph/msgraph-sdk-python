@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import email_authentication_method, email_authentication_method_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import email_authentication_method_item_request_builder
+    from ....models.email_authentication_method import EmailAuthenticationMethod
+    from ....models.email_authentication_method_collection_response import EmailAuthenticationMethodCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.email_authentication_method_item_request_builder import EmailAuthenticationMethodItemRequestBuilder
 
 class EmailMethodsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class EmailMethodsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_email_authentication_method_id(self,email_authentication_method_id: str) -> email_authentication_method_item_request_builder.EmailAuthenticationMethodItemRequestBuilder:
+    def by_email_authentication_method_id(self,email_authentication_method_id: str) -> EmailAuthenticationMethodItemRequestBuilder:
         """
         Provides operations to manage the emailMethods property of the microsoft.graph.authentication entity.
         Args:
             email_authentication_method_id: Unique identifier of the item
-        Returns: email_authentication_method_item_request_builder.EmailAuthenticationMethodItemRequestBuilder
+        Returns: EmailAuthenticationMethodItemRequestBuilder
         """
         if not email_authentication_method_id:
             raise TypeError("email_authentication_method_id cannot be null.")
-        from .item import email_authentication_method_item_request_builder
+        from .item.email_authentication_method_item_request_builder import EmailAuthenticationMethodItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["emailAuthenticationMethod%2Did"] = email_authentication_method_id
-        return email_authentication_method_item_request_builder.EmailAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return EmailAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[EmailMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[email_authentication_method_collection_response.EmailAuthenticationMethodCollectionResponse]:
+    async def get(self,request_configuration: Optional[EmailMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[EmailAuthenticationMethodCollectionResponse]:
         """
         Retrieve a list of a user's emailAuthenticationMethod objects and their properties. This API will return only a single object in the collection as only one email method can be set for a user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[email_authentication_method_collection_response.EmailAuthenticationMethodCollectionResponse]
+        Returns: Optional[EmailAuthenticationMethodCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import email_authentication_method_collection_response
+        from ....models.email_authentication_method_collection_response import EmailAuthenticationMethodCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, email_authentication_method_collection_response.EmailAuthenticationMethodCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, EmailAuthenticationMethodCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[email_authentication_method.EmailAuthenticationMethod] = None, request_configuration: Optional[EmailMethodsRequestBuilderPostRequestConfiguration] = None) -> Optional[email_authentication_method.EmailAuthenticationMethod]:
+    async def post(self,body: Optional[EmailAuthenticationMethod] = None, request_configuration: Optional[EmailMethodsRequestBuilderPostRequestConfiguration] = None) -> Optional[EmailAuthenticationMethod]:
         """
         Set a user's emailAuthenticationMethod object. Email authentication is a self-service password reset method. A user may only have one email authentication method.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[email_authentication_method.EmailAuthenticationMethod]
+        Returns: Optional[EmailAuthenticationMethod]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import email_authentication_method
+        from ....models.email_authentication_method import EmailAuthenticationMethod
 
-        return await self.request_adapter.send_async(request_info, email_authentication_method.EmailAuthenticationMethod, error_mapping)
+        return await self.request_adapter.send_async(request_info, EmailAuthenticationMethod, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[EmailMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class EmailMethodsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[email_authentication_method.EmailAuthenticationMethod] = None, request_configuration: Optional[EmailMethodsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EmailAuthenticationMethod] = None, request_configuration: Optional[EmailMethodsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Set a user's emailAuthenticationMethod object. Email authentication is a self-service password reset method. A user may only have one email authentication method.
         Args:
@@ -139,13 +140,13 @@ class EmailMethodsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EmailMethodsRequestBuilderGetQueryParameters():

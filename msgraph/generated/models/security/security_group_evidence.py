@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert_evidence
+    from .alert_evidence import AlertEvidence
 
-from . import alert_evidence
+from .alert_evidence import AlertEvidence
 
 @dataclass
-class SecurityGroupEvidence(alert_evidence.AlertEvidence):
+class SecurityGroupEvidence(AlertEvidence):
     # The name of the security group.
     display_name: Optional[str] = None
     # The OdataType property
@@ -34,9 +34,9 @@ class SecurityGroupEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_evidence
+        from .alert_evidence import AlertEvidence
 
-        from . import alert_evidence
+        from .alert_evidence import AlertEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

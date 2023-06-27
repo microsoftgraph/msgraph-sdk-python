@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_submission_recipient
+    from .education_submission_recipient import EducationSubmissionRecipient
 
-from . import education_submission_recipient
+from .education_submission_recipient import EducationSubmissionRecipient
 
 @dataclass
-class EducationSubmissionIndividualRecipient(education_submission_recipient.EducationSubmissionRecipient):
+class EducationSubmissionIndividualRecipient(EducationSubmissionRecipient):
     odata_type = "#microsoft.graph.educationSubmissionIndividualRecipient"
     # User ID of the user to whom the submission is assigned.
     user_id: Optional[str] = None
@@ -31,9 +31,9 @@ class EducationSubmissionIndividualRecipient(education_submission_recipient.Educ
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_submission_recipient
+        from .education_submission_recipient import EducationSubmissionRecipient
 
-        from . import education_submission_recipient
+        from .education_submission_recipient import EducationSubmissionRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),

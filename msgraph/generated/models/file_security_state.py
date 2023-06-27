@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import file_hash
+    from .file_hash import FileHash
 
 @dataclass
 class FileSecurityState(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Complex type containing file hashes (cryptographic and location-sensitive).
-    file_hash: Optional[file_hash.FileHash] = None
+    file_hash: Optional[FileHash] = None
     # File name (without path).
     name: Optional[str] = None
     # The OdataType property
@@ -39,12 +39,12 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import file_hash
+        from .file_hash import FileHash
 
-        from . import file_hash
+        from .file_hash import FileHash
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fileHash": lambda n : setattr(self, 'file_hash', n.get_object_value(file_hash.FileHash)),
+            "fileHash": lambda n : setattr(self, 'file_hash', n.get_object_value(FileHash)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),

@@ -4,16 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert_evidence, detection_status, file_details
+    from .alert_evidence import AlertEvidence
+    from .detection_status import DetectionStatus
+    from .file_details import FileDetails
 
-from . import alert_evidence
+from .alert_evidence import AlertEvidence
 
 @dataclass
-class FileEvidence(alert_evidence.AlertEvidence):
+class FileEvidence(AlertEvidence):
     # The status of the detection.The possible values are: detected, blocked, prevented, unknownFutureValue.
-    detection_status: Optional[detection_status.DetectionStatus] = None
+    detection_status: Optional[DetectionStatus] = None
     # The file details.
-    file_details: Optional[file_details.FileDetails] = None
+    file_details: Optional[FileDetails] = None
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
     mde_device_id: Optional[str] = None
     # The OdataType property
@@ -36,13 +38,17 @@ class FileEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_evidence, detection_status, file_details
+        from .alert_evidence import AlertEvidence
+        from .detection_status import DetectionStatus
+        from .file_details import FileDetails
 
-        from . import alert_evidence, detection_status, file_details
+        from .alert_evidence import AlertEvidence
+        from .detection_status import DetectionStatus
+        from .file_details import FileDetails
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(detection_status.DetectionStatus)),
-            "fileDetails": lambda n : setattr(self, 'file_details', n.get_object_value(file_details.FileDetails)),
+            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(DetectionStatus)),
+            "fileDetails": lambda n : setattr(self, 'file_details', n.get_object_value(FileDetails)),
             "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

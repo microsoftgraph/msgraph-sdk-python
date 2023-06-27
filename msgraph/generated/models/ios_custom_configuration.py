@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_configuration
+    from .device_configuration import DeviceConfiguration
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class IosCustomConfiguration(device_configuration.DeviceConfiguration):
+class IosCustomConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.iosCustomConfiguration"
     # Payload. (UTF8 encoded byte array)
     payload: Optional[bytes] = None
@@ -35,9 +35,9 @@ class IosCustomConfiguration(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration
+        from .device_configuration import DeviceConfiguration
 
-        from . import device_configuration
+        from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "payload": lambda n : setattr(self, 'payload', n.get_bytes_value()),
@@ -57,7 +57,7 @@ class IosCustomConfiguration(device_configuration.DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("payload", self.payload)
+        writer.write_bytes_value("payload", self.payload)
         writer.write_str_value("payloadFileName", self.payload_file_name)
         writer.write_str_value("payloadName", self.payload_name)
     

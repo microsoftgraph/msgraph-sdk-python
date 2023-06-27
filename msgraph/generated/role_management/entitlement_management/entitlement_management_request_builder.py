@@ -10,17 +10,17 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import rbac_application
-    from ...models.o_data_errors import o_data_error
-    from .resource_namespaces import resource_namespaces_request_builder
-    from .role_assignments import role_assignments_request_builder
-    from .role_assignment_schedule_instances import role_assignment_schedule_instances_request_builder
-    from .role_assignment_schedule_requests import role_assignment_schedule_requests_request_builder
-    from .role_assignment_schedules import role_assignment_schedules_request_builder
-    from .role_definitions import role_definitions_request_builder
-    from .role_eligibility_schedule_instances import role_eligibility_schedule_instances_request_builder
-    from .role_eligibility_schedule_requests import role_eligibility_schedule_requests_request_builder
-    from .role_eligibility_schedules import role_eligibility_schedules_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.rbac_application import RbacApplication
+    from .resource_namespaces.resource_namespaces_request_builder import ResourceNamespacesRequestBuilder
+    from .role_assignments.role_assignments_request_builder import RoleAssignmentsRequestBuilder
+    from .role_assignment_schedule_instances.role_assignment_schedule_instances_request_builder import RoleAssignmentScheduleInstancesRequestBuilder
+    from .role_assignment_schedule_requests.role_assignment_schedule_requests_request_builder import RoleAssignmentScheduleRequestsRequestBuilder
+    from .role_assignment_schedules.role_assignment_schedules_request_builder import RoleAssignmentSchedulesRequestBuilder
+    from .role_definitions.role_definitions_request_builder import RoleDefinitionsRequestBuilder
+    from .role_eligibility_schedule_instances.role_eligibility_schedule_instances_request_builder import RoleEligibilityScheduleInstancesRequestBuilder
+    from .role_eligibility_schedule_requests.role_eligibility_schedule_requests_request_builder import RoleEligibilityScheduleRequestsRequestBuilder
+    from .role_eligibility_schedules.role_eligibility_schedules_request_builder import RoleEligibilitySchedulesRequestBuilder
 
 class EntitlementManagementRequestBuilder():
     """
@@ -53,62 +53,62 @@ class EntitlementManagementRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EntitlementManagementRequestBuilderGetRequestConfiguration] = None) -> Optional[rbac_application.RbacApplication]:
+    async def get(self,request_configuration: Optional[EntitlementManagementRequestBuilderGetRequestConfiguration] = None) -> Optional[RbacApplication]:
         """
         Container for roles and assignments for entitlement management resources.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[rbac_application.RbacApplication]
+        Returns: Optional[RbacApplication]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import rbac_application
+        from ...models.rbac_application import RbacApplication
 
-        return await self.request_adapter.send_async(request_info, rbac_application.RbacApplication, error_mapping)
+        return await self.request_adapter.send_async(request_info, RbacApplication, error_mapping)
     
-    async def patch(self,body: Optional[rbac_application.RbacApplication] = None, request_configuration: Optional[EntitlementManagementRequestBuilderPatchRequestConfiguration] = None) -> Optional[rbac_application.RbacApplication]:
+    async def patch(self,body: Optional[RbacApplication] = None, request_configuration: Optional[EntitlementManagementRequestBuilderPatchRequestConfiguration] = None) -> Optional[RbacApplication]:
         """
         Update the navigation property entitlementManagement in roleManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[rbac_application.RbacApplication]
+        Returns: Optional[RbacApplication]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import rbac_application
+        from ...models.rbac_application import RbacApplication
 
-        return await self.request_adapter.send_async(request_info, rbac_application.RbacApplication, error_mapping)
+        return await self.request_adapter.send_async(request_info, RbacApplication, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EntitlementManagementRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -144,7 +144,7 @@ class EntitlementManagementRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[rbac_application.RbacApplication] = None, request_configuration: Optional[EntitlementManagementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[RbacApplication] = None, request_configuration: Optional[EntitlementManagementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property entitlementManagement in roleManagement
         Args:
@@ -166,85 +166,85 @@ class EntitlementManagementRequestBuilder():
         return request_info
     
     @property
-    def resource_namespaces(self) -> resource_namespaces_request_builder.ResourceNamespacesRequestBuilder:
+    def resource_namespaces(self) -> ResourceNamespacesRequestBuilder:
         """
         Provides operations to manage the resourceNamespaces property of the microsoft.graph.rbacApplication entity.
         """
-        from .resource_namespaces import resource_namespaces_request_builder
+        from .resource_namespaces.resource_namespaces_request_builder import ResourceNamespacesRequestBuilder
 
-        return resource_namespaces_request_builder.ResourceNamespacesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ResourceNamespacesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_assignments(self) -> role_assignments_request_builder.RoleAssignmentsRequestBuilder:
+    def role_assignments(self) -> RoleAssignmentsRequestBuilder:
         """
         Provides operations to manage the roleAssignments property of the microsoft.graph.rbacApplication entity.
         """
-        from .role_assignments import role_assignments_request_builder
+        from .role_assignments.role_assignments_request_builder import RoleAssignmentsRequestBuilder
 
-        return role_assignments_request_builder.RoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_assignment_schedule_instances(self) -> role_assignment_schedule_instances_request_builder.RoleAssignmentScheduleInstancesRequestBuilder:
+    def role_assignment_schedule_instances(self) -> RoleAssignmentScheduleInstancesRequestBuilder:
         """
         Provides operations to manage the roleAssignmentScheduleInstances property of the microsoft.graph.rbacApplication entity.
         """
-        from .role_assignment_schedule_instances import role_assignment_schedule_instances_request_builder
+        from .role_assignment_schedule_instances.role_assignment_schedule_instances_request_builder import RoleAssignmentScheduleInstancesRequestBuilder
 
-        return role_assignment_schedule_instances_request_builder.RoleAssignmentScheduleInstancesRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleAssignmentScheduleInstancesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_assignment_schedule_requests(self) -> role_assignment_schedule_requests_request_builder.RoleAssignmentScheduleRequestsRequestBuilder:
+    def role_assignment_schedule_requests(self) -> RoleAssignmentScheduleRequestsRequestBuilder:
         """
         Provides operations to manage the roleAssignmentScheduleRequests property of the microsoft.graph.rbacApplication entity.
         """
-        from .role_assignment_schedule_requests import role_assignment_schedule_requests_request_builder
+        from .role_assignment_schedule_requests.role_assignment_schedule_requests_request_builder import RoleAssignmentScheduleRequestsRequestBuilder
 
-        return role_assignment_schedule_requests_request_builder.RoleAssignmentScheduleRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleAssignmentScheduleRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_assignment_schedules(self) -> role_assignment_schedules_request_builder.RoleAssignmentSchedulesRequestBuilder:
+    def role_assignment_schedules(self) -> RoleAssignmentSchedulesRequestBuilder:
         """
         Provides operations to manage the roleAssignmentSchedules property of the microsoft.graph.rbacApplication entity.
         """
-        from .role_assignment_schedules import role_assignment_schedules_request_builder
+        from .role_assignment_schedules.role_assignment_schedules_request_builder import RoleAssignmentSchedulesRequestBuilder
 
-        return role_assignment_schedules_request_builder.RoleAssignmentSchedulesRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleAssignmentSchedulesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_definitions(self) -> role_definitions_request_builder.RoleDefinitionsRequestBuilder:
+    def role_definitions(self) -> RoleDefinitionsRequestBuilder:
         """
         Provides operations to manage the roleDefinitions property of the microsoft.graph.rbacApplication entity.
         """
-        from .role_definitions import role_definitions_request_builder
+        from .role_definitions.role_definitions_request_builder import RoleDefinitionsRequestBuilder
 
-        return role_definitions_request_builder.RoleDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_eligibility_schedule_instances(self) -> role_eligibility_schedule_instances_request_builder.RoleEligibilityScheduleInstancesRequestBuilder:
+    def role_eligibility_schedule_instances(self) -> RoleEligibilityScheduleInstancesRequestBuilder:
         """
         Provides operations to manage the roleEligibilityScheduleInstances property of the microsoft.graph.rbacApplication entity.
         """
-        from .role_eligibility_schedule_instances import role_eligibility_schedule_instances_request_builder
+        from .role_eligibility_schedule_instances.role_eligibility_schedule_instances_request_builder import RoleEligibilityScheduleInstancesRequestBuilder
 
-        return role_eligibility_schedule_instances_request_builder.RoleEligibilityScheduleInstancesRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleEligibilityScheduleInstancesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_eligibility_schedule_requests(self) -> role_eligibility_schedule_requests_request_builder.RoleEligibilityScheduleRequestsRequestBuilder:
+    def role_eligibility_schedule_requests(self) -> RoleEligibilityScheduleRequestsRequestBuilder:
         """
         Provides operations to manage the roleEligibilityScheduleRequests property of the microsoft.graph.rbacApplication entity.
         """
-        from .role_eligibility_schedule_requests import role_eligibility_schedule_requests_request_builder
+        from .role_eligibility_schedule_requests.role_eligibility_schedule_requests_request_builder import RoleEligibilityScheduleRequestsRequestBuilder
 
-        return role_eligibility_schedule_requests_request_builder.RoleEligibilityScheduleRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleEligibilityScheduleRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_eligibility_schedules(self) -> role_eligibility_schedules_request_builder.RoleEligibilitySchedulesRequestBuilder:
+    def role_eligibility_schedules(self) -> RoleEligibilitySchedulesRequestBuilder:
         """
         Provides operations to manage the roleEligibilitySchedules property of the microsoft.graph.rbacApplication entity.
         """
-        from .role_eligibility_schedules import role_eligibility_schedules_request_builder
+        from .role_eligibility_schedules.role_eligibility_schedules_request_builder import RoleEligibilitySchedulesRequestBuilder
 
-        return role_eligibility_schedules_request_builder.RoleEligibilitySchedulesRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleEligibilitySchedulesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EntitlementManagementRequestBuilderDeleteRequestConfiguration():

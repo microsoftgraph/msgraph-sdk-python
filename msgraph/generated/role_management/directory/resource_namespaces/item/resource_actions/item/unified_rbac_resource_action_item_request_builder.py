@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import unified_rbac_resource_action
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.unified_rbac_resource_action import UnifiedRbacResourceAction
 
 class UnifiedRbacResourceActionItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class UnifiedRbacResourceActionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_rbac_resource_action.UnifiedRbacResourceAction]:
+    async def get(self,request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRbacResourceAction]:
         """
         Get resourceActions from roleManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_rbac_resource_action.UnifiedRbacResourceAction]
+        Returns: Optional[UnifiedRbacResourceAction]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import unified_rbac_resource_action
+        from .......models.unified_rbac_resource_action import UnifiedRbacResourceAction
 
-        return await self.request_adapter.send_async(request_info, unified_rbac_resource_action.UnifiedRbacResourceAction, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRbacResourceAction, error_mapping)
     
-    async def patch(self,body: Optional[unified_rbac_resource_action.UnifiedRbacResourceAction] = None, request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[unified_rbac_resource_action.UnifiedRbacResourceAction]:
+    async def patch(self,body: Optional[UnifiedRbacResourceAction] = None, request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UnifiedRbacResourceAction]:
         """
         Update the navigation property resourceActions in roleManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_rbac_resource_action.UnifiedRbacResourceAction]
+        Returns: Optional[UnifiedRbacResourceAction]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import unified_rbac_resource_action
+        from .......models.unified_rbac_resource_action import UnifiedRbacResourceAction
 
-        return await self.request_adapter.send_async(request_info, unified_rbac_resource_action.UnifiedRbacResourceAction, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRbacResourceAction, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class UnifiedRbacResourceActionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[unified_rbac_resource_action.UnifiedRbacResourceAction] = None, request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UnifiedRbacResourceAction] = None, request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property resourceActions in roleManagement
         Args:

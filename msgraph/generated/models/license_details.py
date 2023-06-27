@@ -5,16 +5,17 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import entity, service_plan_info
+    from .entity import Entity
+    from .service_plan_info import ServicePlanInfo
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class LicenseDetails(entity.Entity):
+class LicenseDetails(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Information about the service plans assigned with the license. Read-only, Not nullable
-    service_plans: Optional[List[service_plan_info.ServicePlanInfo]] = None
+    service_plans: Optional[List[ServicePlanInfo]] = None
     # Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related SubscribedSku object. Read-only
     sku_id: Optional[UUID] = None
     # Unique SKU display name. Equal to the skuPartNumber on the related SubscribedSku object; for example: 'AAD_Premium'. Read-only
@@ -37,12 +38,14 @@ class LicenseDetails(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, service_plan_info
+        from .entity import Entity
+        from .service_plan_info import ServicePlanInfo
 
-        from . import entity, service_plan_info
+        from .entity import Entity
+        from .service_plan_info import ServicePlanInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
+            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(ServicePlanInfo)),
             "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
             "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
         }

@@ -4,29 +4,35 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_item, drive_item, identity_set, list, list_item, permission, site
+    from .base_item import BaseItem
+    from .drive_item import DriveItem
+    from .identity_set import IdentitySet
+    from .list_item import ListItem
+    from .list_ import List_
+    from .permission import Permission
+    from .site import Site
 
-from . import base_item
+from .base_item import BaseItem
 
 @dataclass
-class SharedDriveItem(base_item.BaseItem):
+class SharedDriveItem(BaseItem):
     odata_type = "#microsoft.graph.sharedDriveItem"
     # Used to access the underlying driveItem
-    drive_item: Optional[drive_item.DriveItem] = None
+    drive_item: Optional[DriveItem] = None
     # All driveItems contained in the sharing root. This collection cannot be enumerated.
-    items: Optional[List[drive_item.DriveItem]] = None
+    items: Optional[List[DriveItem]] = None
     # Used to access the underlying list
-    list: Optional[list.List] = None
+    list_: Optional[List_] = None
     # Used to access the underlying listItem
-    list_item: Optional[list_item.ListItem] = None
+    list_item: Optional[ListItem] = None
     # Information about the owner of the shared item being referenced.
-    owner: Optional[identity_set.IdentitySet] = None
+    owner: Optional[IdentitySet] = None
     # Used to access the permission representing the underlying sharing link
-    permission: Optional[permission.Permission] = None
+    permission: Optional[Permission] = None
     # Used to access the underlying driveItem. Deprecated -- use driveItem instead.
-    root: Optional[drive_item.DriveItem] = None
+    root: Optional[DriveItem] = None
     # Used to access the underlying site
-    site: Optional[site.Site] = None
+    site: Optional[Site] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedDriveItem:
@@ -45,19 +51,31 @@ class SharedDriveItem(base_item.BaseItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_item, drive_item, identity_set, list, list_item, permission, site
+        from .base_item import BaseItem
+        from .drive_item import DriveItem
+        from .identity_set import IdentitySet
+        from .list_item import ListItem
+        from .list_ import List_
+        from .permission import Permission
+        from .site import Site
 
-        from . import base_item, drive_item, identity_set, list, list_item, permission, site
+        from .base_item import BaseItem
+        from .drive_item import DriveItem
+        from .identity_set import IdentitySet
+        from .list_item import ListItem
+        from .list_ import List_
+        from .permission import Permission
+        from .site import Site
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
-            "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(drive_item.DriveItem)),
-            "list": lambda n : setattr(self, 'list', n.get_object_value(list.List)),
-            "listItem": lambda n : setattr(self, 'list_item', n.get_object_value(list_item.ListItem)),
-            "owner": lambda n : setattr(self, 'owner', n.get_object_value(identity_set.IdentitySet)),
-            "permission": lambda n : setattr(self, 'permission', n.get_object_value(permission.Permission)),
-            "root": lambda n : setattr(self, 'root', n.get_object_value(drive_item.DriveItem)),
-            "site": lambda n : setattr(self, 'site', n.get_object_value(site.Site)),
+            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
+            "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(DriveItem)),
+            "list": lambda n : setattr(self, 'list_', n.get_object_value(List_)),
+            "listItem": lambda n : setattr(self, 'list_item', n.get_object_value(ListItem)),
+            "owner": lambda n : setattr(self, 'owner', n.get_object_value(IdentitySet)),
+            "permission": lambda n : setattr(self, 'permission', n.get_object_value(Permission)),
+            "root": lambda n : setattr(self, 'root', n.get_object_value(DriveItem)),
+            "site": lambda n : setattr(self, 'site', n.get_object_value(Site)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -74,7 +92,7 @@ class SharedDriveItem(base_item.BaseItem):
         super().serialize(writer)
         writer.write_object_value("driveItem", self.drive_item)
         writer.write_collection_of_object_values("items", self.items)
-        writer.write_object_value("list", self.list)
+        writer.write_object_value("list", self.list_)
         writer.write_object_value("listItem", self.list_item)
         writer.write_object_value("owner", self.owner)
         writer.write_object_value("permission", self.permission)

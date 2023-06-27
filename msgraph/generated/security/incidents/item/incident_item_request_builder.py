@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models.o_data_errors import o_data_error
-    from ....models.security import incident
-    from .alerts import alerts_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.security.incident import Incident
+    from .alerts.alerts_request_builder import AlertsRequestBuilder
 
 class IncidentItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class IncidentItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[IncidentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[incident.Incident]:
+    async def get(self,request_configuration: Optional[IncidentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Incident]:
         """
         Retrieve the properties and relationships of an incident object. Attacks are typically inflicted on different types of entities, such as devices, users, and mailboxes, resulting in multiple alert objects. Microsoft 365 Defender correlates alerts with the same attack techniques or the same attacker into an **incident**. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[incident.Incident]
+        Returns: Optional[Incident]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.security import incident
+        from ....models.security.incident import Incident
 
-        return await self.request_adapter.send_async(request_info, incident.Incident, error_mapping)
+        return await self.request_adapter.send_async(request_info, Incident, error_mapping)
     
-    async def patch(self,body: Optional[incident.Incident] = None, request_configuration: Optional[IncidentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[incident.Incident]:
+    async def patch(self,body: Optional[Incident] = None, request_configuration: Optional[IncidentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Incident]:
         """
         Update the properties of an incident object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[incident.Incident]
+        Returns: Optional[Incident]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.security import incident
+        from ....models.security.incident import Incident
 
-        return await self.request_adapter.send_async(request_info, incident.Incident, error_mapping)
+        return await self.request_adapter.send_async(request_info, Incident, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[IncidentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class IncidentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[incident.Incident] = None, request_configuration: Optional[IncidentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Incident] = None, request_configuration: Optional[IncidentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an incident object.
         Args:
@@ -158,13 +158,13 @@ class IncidentItemRequestBuilder():
         return request_info
     
     @property
-    def alerts(self) -> alerts_request_builder.AlertsRequestBuilder:
+    def alerts(self) -> AlertsRequestBuilder:
         """
         Provides operations to manage the alerts property of the microsoft.graph.security.incident entity.
         """
-        from .alerts import alerts_request_builder
+        from .alerts.alerts_request_builder import AlertsRequestBuilder
 
-        return alerts_request_builder.AlertsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AlertsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class IncidentItemRequestBuilderDeleteRequestConfiguration():

@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -10,7 +10,7 @@ class VerifiedPublisher(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The timestamp when the verified publisher was first added or most recently updated.
-    added_date_time: Optional[datetime] = None
+    added_date_time: Optional[datetime.datetime] = None
     # The verified publisher name from the app publisher's Partner Center account.
     display_name: Optional[str] = None
     # The OdataType property
@@ -51,7 +51,7 @@ class VerifiedPublisher(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("addedDateTime", self.added_date_time)
+        writer.write_datetime_value()("addedDateTime", self.added_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("verifiedPublisherId", self.verified_publisher_id)

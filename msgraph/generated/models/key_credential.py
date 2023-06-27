@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
@@ -15,7 +15,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
     # Friendly name for the key. Optional.
     display_name: Optional[str] = None
     # The date and time at which the credential expires. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    end_date_time: Optional[datetime] = None
+    end_date_time: Optional[datetime.datetime] = None
     # The certificate's raw data in byte array converted to Base64 string. Returned only on $select for a single object, that is, GET applications/{applicationId}?$select=keyCredentials or GET servicePrincipals/{servicePrincipalId}?$select=keyCredentials; otherwise, it is always null.  From a .cer certificate, you can read the key using the Convert.ToBase64String() method. For more information, see Get the certificate key.
     key: Optional[bytes] = None
     # The unique identifier (GUID) for the key.
@@ -23,7 +23,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The date and time at which the credential becomes valid.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     # The type of key credential; for example, Symmetric, AsymmetricX509Cert.
     type: Optional[str] = None
     # A string that describes the purpose for which the key can be used; for example, Verify.
@@ -67,13 +67,13 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("customKeyIdentifier", self.custom_key_identifier)
+        writer.write_bytes_value("customKeyIdentifier", self.custom_key_identifier)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_object_value("key", self.key)
+        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_bytes_value("key", self.key)
         writer.write_uuid_value("keyId", self.key_id)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
         writer.write_str_value("type", self.type)
         writer.write_str_value("usage", self.usage)
         writer.write_additional_data_value(self.additional_data)

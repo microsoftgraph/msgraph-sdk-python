@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import search_with_q_response
-    from ....models.o_data_errors import o_data_error
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .search_with_q_response import SearchWithQResponse
 
 class SearchWithQRequestBuilder():
     """
@@ -37,27 +37,27 @@ class SearchWithQRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> Optional[search_with_q_response.SearchWithQResponse]:
+    async def get(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> Optional[SearchWithQResponse]:
         """
         Invoke function search
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[search_with_q_response.SearchWithQResponse]
+        Returns: Optional[SearchWithQResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import search_with_q_response
+        from .search_with_q_response import SearchWithQResponse
 
-        return await self.request_adapter.send_async(request_info, search_with_q_response.SearchWithQResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SearchWithQResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

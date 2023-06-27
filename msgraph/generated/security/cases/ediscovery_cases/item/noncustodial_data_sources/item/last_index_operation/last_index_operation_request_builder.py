@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.o_data_errors import o_data_error
-    from ........models.security import ediscovery_index_operation
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.security.ediscovery_index_operation import EdiscoveryIndexOperation
 
 class LastIndexOperationRequestBuilder():
     """
@@ -35,27 +35,27 @@ class LastIndexOperationRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_index_operation.EdiscoveryIndexOperation]:
+    async def get(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryIndexOperation]:
         """
         Operation entity that represents the latest indexing for the non-custodial data source.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_index_operation.EdiscoveryIndexOperation]
+        Returns: Optional[EdiscoveryIndexOperation]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.security import ediscovery_index_operation
+        from ........models.security.ediscovery_index_operation import EdiscoveryIndexOperation
 
-        return await self.request_adapter.send_async(request_info, ediscovery_index_operation.EdiscoveryIndexOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoveryIndexOperation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

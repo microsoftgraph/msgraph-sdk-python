@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import date
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -12,13 +12,13 @@ class EducationTerm(AdditionalDataHolder, Parsable):
     # Display name of the term.
     display_name: Optional[str] = None
     # End of the term.
-    end_date: Optional[date] = None
+    end_date: Optional[datetime.date] = None
     # ID of term in the syncing system.
     external_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Start of the term.
-    start_date: Optional[date] = None
+    start_date: Optional[datetime.date] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationTerm:
@@ -55,10 +55,10 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("displayName", self.display_name)
-        writer.write_date_value("endDate", self.end_date)
+        writer.write_date_value()("endDate", self.end_date)
         writer.write_str_value("externalId", self.external_id)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_date_value("startDate", self.start_date)
+        writer.write_date_value()("startDate", self.start_date)
         writer.write_additional_data_value(self.additional_data)
     
 

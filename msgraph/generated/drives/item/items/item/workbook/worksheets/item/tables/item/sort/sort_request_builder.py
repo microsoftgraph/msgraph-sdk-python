@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...........models import workbook_table_sort
-    from ...........models.o_data_errors import o_data_error
-    from .apply import apply_request_builder
-    from .clear import clear_request_builder
-    from .reapply import reapply_request_builder
+    from ...........models.o_data_errors.o_data_error import ODataError
+    from ...........models.workbook_table_sort import WorkbookTableSort
+    from .apply.apply_request_builder import ApplyRequestBuilder
+    from .clear.clear_request_builder import ClearRequestBuilder
+    from .reapply.reapply_request_builder import ReapplyRequestBuilder
 
 class SortRequestBuilder():
     """
@@ -47,62 +47,62 @@ class SortRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
+        from ...........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SortRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table_sort.WorkbookTableSort]:
+    async def get(self,request_configuration: Optional[SortRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookTableSort]:
         """
         Retrieve the properties and relationships of tablesort object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_table_sort.WorkbookTableSort]
+        Returns: Optional[WorkbookTableSort]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
+        from ...........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...........models import workbook_table_sort
+        from ...........models.workbook_table_sort import WorkbookTableSort
 
-        return await self.request_adapter.send_async(request_info, workbook_table_sort.WorkbookTableSort, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookTableSort, error_mapping)
     
-    async def patch(self,body: Optional[workbook_table_sort.WorkbookTableSort] = None, request_configuration: Optional[SortRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_table_sort.WorkbookTableSort]:
+    async def patch(self,body: Optional[WorkbookTableSort] = None, request_configuration: Optional[SortRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookTableSort]:
         """
         Update the navigation property sort in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_table_sort.WorkbookTableSort]
+        Returns: Optional[WorkbookTableSort]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
+        from ...........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...........models import workbook_table_sort
+        from ...........models.workbook_table_sort import WorkbookTableSort
 
-        return await self.request_adapter.send_async(request_info, workbook_table_sort.WorkbookTableSort, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookTableSort, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SortRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class SortRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_table_sort.WorkbookTableSort] = None, request_configuration: Optional[SortRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookTableSort] = None, request_configuration: Optional[SortRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property sort in drives
         Args:
@@ -160,31 +160,31 @@ class SortRequestBuilder():
         return request_info
     
     @property
-    def apply(self) -> apply_request_builder.ApplyRequestBuilder:
+    def apply(self) -> ApplyRequestBuilder:
         """
         Provides operations to call the apply method.
         """
-        from .apply import apply_request_builder
+        from .apply.apply_request_builder import ApplyRequestBuilder
 
-        return apply_request_builder.ApplyRequestBuilder(self.request_adapter, self.path_parameters)
+        return ApplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def clear(self) -> clear_request_builder.ClearRequestBuilder:
+    def clear(self) -> ClearRequestBuilder:
         """
         Provides operations to call the clear method.
         """
-        from .clear import clear_request_builder
+        from .clear.clear_request_builder import ClearRequestBuilder
 
-        return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
+        return ClearRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def reapply(self) -> reapply_request_builder.ReapplyRequestBuilder:
+    def reapply(self) -> ReapplyRequestBuilder:
         """
         Provides operations to call the reapply method.
         """
-        from .reapply import reapply_request_builder
+        from .reapply.reapply_request_builder import ReapplyRequestBuilder
 
-        return reapply_request_builder.ReapplyRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReapplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SortRequestBuilderDeleteRequestConfiguration():

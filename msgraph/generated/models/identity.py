@@ -4,7 +4,18 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import email_identity, initiator, provisioned_identity, provisioning_service_principal, provisioning_system, service_principal_identity, share_point_identity, teamwork_application_identity, teamwork_conversation_identity, teamwork_tag_identity, teamwork_user_identity, user_identity
+    from .email_identity import EmailIdentity
+    from .initiator import Initiator
+    from .provisioned_identity import ProvisionedIdentity
+    from .provisioning_service_principal import ProvisioningServicePrincipal
+    from .provisioning_system import ProvisioningSystem
+    from .service_principal_identity import ServicePrincipalIdentity
+    from .share_point_identity import SharePointIdentity
+    from .teamwork_application_identity import TeamworkApplicationIdentity
+    from .teamwork_conversation_identity import TeamworkConversationIdentity
+    from .teamwork_tag_identity import TeamworkTagIdentity
+    from .teamwork_user_identity import TeamworkUserIdentity
+    from .user_identity import UserIdentity
 
 @dataclass
 class Identity(AdditionalDataHolder, Parsable):
@@ -33,53 +44,53 @@ class Identity(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailIdentity".casefold():
-            from . import email_identity
+            from .email_identity import EmailIdentity
 
-            return email_identity.EmailIdentity()
+            return EmailIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.initiator".casefold():
-            from . import initiator
+            from .initiator import Initiator
 
-            return initiator.Initiator()
+            return Initiator()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.provisionedIdentity".casefold():
-            from . import provisioned_identity
+            from .provisioned_identity import ProvisionedIdentity
 
-            return provisioned_identity.ProvisionedIdentity()
+            return ProvisionedIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.provisioningServicePrincipal".casefold():
-            from . import provisioning_service_principal
+            from .provisioning_service_principal import ProvisioningServicePrincipal
 
-            return provisioning_service_principal.ProvisioningServicePrincipal()
+            return ProvisioningServicePrincipal()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.provisioningSystem".casefold():
-            from . import provisioning_system
+            from .provisioning_system import ProvisioningSystem
 
-            return provisioning_system.ProvisioningSystem()
+            return ProvisioningSystem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.servicePrincipalIdentity".casefold():
-            from . import service_principal_identity
+            from .service_principal_identity import ServicePrincipalIdentity
 
-            return service_principal_identity.ServicePrincipalIdentity()
+            return ServicePrincipalIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointIdentity".casefold():
-            from . import share_point_identity
+            from .share_point_identity import SharePointIdentity
 
-            return share_point_identity.SharePointIdentity()
+            return SharePointIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkApplicationIdentity".casefold():
-            from . import teamwork_application_identity
+            from .teamwork_application_identity import TeamworkApplicationIdentity
 
-            return teamwork_application_identity.TeamworkApplicationIdentity()
+            return TeamworkApplicationIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkConversationIdentity".casefold():
-            from . import teamwork_conversation_identity
+            from .teamwork_conversation_identity import TeamworkConversationIdentity
 
-            return teamwork_conversation_identity.TeamworkConversationIdentity()
+            return TeamworkConversationIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkTagIdentity".casefold():
-            from . import teamwork_tag_identity
+            from .teamwork_tag_identity import TeamworkTagIdentity
 
-            return teamwork_tag_identity.TeamworkTagIdentity()
+            return TeamworkTagIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkUserIdentity".casefold():
-            from . import teamwork_user_identity
+            from .teamwork_user_identity import TeamworkUserIdentity
 
-            return teamwork_user_identity.TeamworkUserIdentity()
+            return TeamworkUserIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userIdentity".casefold():
-            from . import user_identity
+            from .user_identity import UserIdentity
 
-            return user_identity.UserIdentity()
+            return UserIdentity()
         return Identity()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -87,9 +98,31 @@ class Identity(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import email_identity, initiator, provisioned_identity, provisioning_service_principal, provisioning_system, service_principal_identity, share_point_identity, teamwork_application_identity, teamwork_conversation_identity, teamwork_tag_identity, teamwork_user_identity, user_identity
+        from .email_identity import EmailIdentity
+        from .initiator import Initiator
+        from .provisioned_identity import ProvisionedIdentity
+        from .provisioning_service_principal import ProvisioningServicePrincipal
+        from .provisioning_system import ProvisioningSystem
+        from .service_principal_identity import ServicePrincipalIdentity
+        from .share_point_identity import SharePointIdentity
+        from .teamwork_application_identity import TeamworkApplicationIdentity
+        from .teamwork_conversation_identity import TeamworkConversationIdentity
+        from .teamwork_tag_identity import TeamworkTagIdentity
+        from .teamwork_user_identity import TeamworkUserIdentity
+        from .user_identity import UserIdentity
 
-        from . import email_identity, initiator, provisioned_identity, provisioning_service_principal, provisioning_system, service_principal_identity, share_point_identity, teamwork_application_identity, teamwork_conversation_identity, teamwork_tag_identity, teamwork_user_identity, user_identity
+        from .email_identity import EmailIdentity
+        from .initiator import Initiator
+        from .provisioned_identity import ProvisionedIdentity
+        from .provisioning_service_principal import ProvisioningServicePrincipal
+        from .provisioning_system import ProvisioningSystem
+        from .service_principal_identity import ServicePrincipalIdentity
+        from .share_point_identity import SharePointIdentity
+        from .teamwork_application_identity import TeamworkApplicationIdentity
+        from .teamwork_conversation_identity import TeamworkConversationIdentity
+        from .teamwork_tag_identity import TeamworkTagIdentity
+        from .teamwork_user_identity import TeamworkUserIdentity
+        from .user_identity import UserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

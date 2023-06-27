@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import move_post_request_body
-    from .......models import message
-    from .......models.o_data_errors import o_data_error
+    from .......models.message import Message
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .move_post_request_body import MovePostRequestBody
 
 class MoveRequestBuilder():
     """
@@ -36,32 +36,32 @@ class MoveRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[move_post_request_body.MovePostRequestBody] = None, request_configuration: Optional[MoveRequestBuilderPostRequestConfiguration] = None) -> Optional[message.Message]:
+    async def post(self,body: Optional[MovePostRequestBody] = None, request_configuration: Optional[MoveRequestBuilderPostRequestConfiguration] = None) -> Optional[Message]:
         """
         Move a message to another folder within the specified user's mailbox. This creates a new copy of the message in the destination folder and removes the original message.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[message.Message]
+        Returns: Optional[Message]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import message
+        from .......models.message import Message
 
-        return await self.request_adapter.send_async(request_info, message.Message, error_mapping)
+        return await self.request_adapter.send_async(request_info, Message, error_mapping)
     
-    def to_post_request_information(self,body: Optional[move_post_request_body.MovePostRequestBody] = None, request_configuration: Optional[MoveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[MovePostRequestBody] = None, request_configuration: Optional[MoveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Move a message to another folder within the specified user's mailbox. This creates a new copy of the message in the destination folder and removes the original message.
         Args:

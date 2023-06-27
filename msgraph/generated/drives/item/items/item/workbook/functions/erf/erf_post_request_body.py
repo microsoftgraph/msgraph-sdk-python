@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class ErfPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class ErfPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The lowerLimit property
-    lower_limit: Optional[json.Json] = None
+    lower_limit: Optional[Json] = None
     # The upperLimit property
-    upper_limit: Optional[json.Json] = None
+    upper_limit: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ErfPostRequestBody:
@@ -33,13 +33,13 @@ class ErfPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lowerLimit": lambda n : setattr(self, 'lower_limit', n.get_object_value(json.Json)),
-            "upperLimit": lambda n : setattr(self, 'upper_limit', n.get_object_value(json.Json)),
+            "lowerLimit": lambda n : setattr(self, 'lower_limit', n.get_object_value(Json)),
+            "upperLimit": lambda n : setattr(self, 'upper_limit', n.get_object_value(Json)),
         }
         return fields
     

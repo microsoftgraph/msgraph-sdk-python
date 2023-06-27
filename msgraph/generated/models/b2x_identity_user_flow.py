@@ -4,24 +4,29 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_provider, identity_provider_base, identity_user_flow, identity_user_flow_attribute_assignment, user_flow_api_connector_configuration, user_flow_language_configuration
+    from .identity_provider import IdentityProvider
+    from .identity_provider_base import IdentityProviderBase
+    from .identity_user_flow import IdentityUserFlow
+    from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
+    from .user_flow_api_connector_configuration import UserFlowApiConnectorConfiguration
+    from .user_flow_language_configuration import UserFlowLanguageConfiguration
 
-from . import identity_user_flow
+from .identity_user_flow import IdentityUserFlow
 
 @dataclass
-class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
+class B2xIdentityUserFlow(IdentityUserFlow):
     # Configuration for enabling an API connector for use as part of the self-service sign-up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
-    api_connector_configuration: Optional[user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration] = None
+    api_connector_configuration: Optional[UserFlowApiConnectorConfiguration] = None
     # The identity providers included in the user flow.
-    identity_providers: Optional[List[identity_provider.IdentityProvider]] = None
+    identity_providers: Optional[List[IdentityProvider]] = None
     # The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You cannot create custom languages in self-service sign-up user flows.
-    languages: Optional[List[user_flow_language_configuration.UserFlowLanguageConfiguration]] = None
+    languages: Optional[List[UserFlowLanguageConfiguration]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The user attribute assignments included in the user flow.
-    user_attribute_assignments: Optional[List[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]] = None
+    user_attribute_assignments: Optional[List[IdentityUserFlowAttributeAssignment]] = None
     # The userFlowIdentityProviders property
-    user_flow_identity_providers: Optional[List[identity_provider_base.IdentityProviderBase]] = None
+    user_flow_identity_providers: Optional[List[IdentityProviderBase]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> B2xIdentityUserFlow:
@@ -40,16 +45,26 @@ class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_provider, identity_provider_base, identity_user_flow, identity_user_flow_attribute_assignment, user_flow_api_connector_configuration, user_flow_language_configuration
+        from .identity_provider import IdentityProvider
+        from .identity_provider_base import IdentityProviderBase
+        from .identity_user_flow import IdentityUserFlow
+        from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
+        from .user_flow_api_connector_configuration import UserFlowApiConnectorConfiguration
+        from .user_flow_language_configuration import UserFlowLanguageConfiguration
 
-        from . import identity_provider, identity_provider_base, identity_user_flow, identity_user_flow_attribute_assignment, user_flow_api_connector_configuration, user_flow_language_configuration
+        from .identity_provider import IdentityProvider
+        from .identity_provider_base import IdentityProviderBase
+        from .identity_user_flow import IdentityUserFlow
+        from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
+        from .user_flow_api_connector_configuration import UserFlowApiConnectorConfiguration
+        from .user_flow_language_configuration import UserFlowLanguageConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "apiConnectorConfiguration": lambda n : setattr(self, 'api_connector_configuration', n.get_object_value(user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration)),
-            "identityProviders": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(identity_provider.IdentityProvider)),
-            "languages": lambda n : setattr(self, 'languages', n.get_collection_of_object_values(user_flow_language_configuration.UserFlowLanguageConfiguration)),
-            "userAttributeAssignments": lambda n : setattr(self, 'user_attribute_assignments', n.get_collection_of_object_values(identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment)),
-            "userFlowIdentityProviders": lambda n : setattr(self, 'user_flow_identity_providers', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
+            "apiConnectorConfiguration": lambda n : setattr(self, 'api_connector_configuration', n.get_object_value(UserFlowApiConnectorConfiguration)),
+            "identityProviders": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(IdentityProvider)),
+            "languages": lambda n : setattr(self, 'languages', n.get_collection_of_object_values(UserFlowLanguageConfiguration)),
+            "userAttributeAssignments": lambda n : setattr(self, 'user_attribute_assignments', n.get_collection_of_object_values(IdentityUserFlowAttributeAssignment)),
+            "userFlowIdentityProviders": lambda n : setattr(self, 'user_flow_identity_providers', n.get_collection_of_object_values(IdentityProviderBase)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

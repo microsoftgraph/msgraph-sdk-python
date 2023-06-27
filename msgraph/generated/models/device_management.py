@@ -5,86 +5,121 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import apple_push_notification_certificate, audit_event, compliance_management_partner, detected_app, device_and_app_management_role_assignment, device_category, device_compliance_policy, device_compliance_policy_device_state_summary, device_compliance_policy_setting_state_summary, device_configuration, device_configuration_device_state_summary, device_enrollment_configuration, device_management_exchange_connector, device_management_partner, device_management_reports, device_management_settings, device_management_subscription_state, device_management_troubleshooting_event, entity, imported_windows_autopilot_device_identity, intune_brand, ios_update_device_status, managed_device, managed_device_overview, mobile_threat_defense_connector, notification_message_template, on_premises_conditional_access_settings, remote_assistance_partner, resource_operation, role_definition, software_update_status_summary, telecom_expense_management_partner, terms_and_conditions, windows_autopilot_device_identity, windows_information_protection_app_learning_summary, windows_information_protection_network_learning_summary
+    from .apple_push_notification_certificate import ApplePushNotificationCertificate
+    from .audit_event import AuditEvent
+    from .compliance_management_partner import ComplianceManagementPartner
+    from .detected_app import DetectedApp
+    from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
+    from .device_category import DeviceCategory
+    from .device_compliance_policy import DeviceCompliancePolicy
+    from .device_compliance_policy_device_state_summary import DeviceCompliancePolicyDeviceStateSummary
+    from .device_compliance_policy_setting_state_summary import DeviceCompliancePolicySettingStateSummary
+    from .device_configuration import DeviceConfiguration
+    from .device_configuration_device_state_summary import DeviceConfigurationDeviceStateSummary
+    from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+    from .device_management_exchange_connector import DeviceManagementExchangeConnector
+    from .device_management_partner import DeviceManagementPartner
+    from .device_management_reports import DeviceManagementReports
+    from .device_management_settings import DeviceManagementSettings
+    from .device_management_subscription_state import DeviceManagementSubscriptionState
+    from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+    from .entity import Entity
+    from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
+    from .intune_brand import IntuneBrand
+    from .ios_update_device_status import IosUpdateDeviceStatus
+    from .managed_device import ManagedDevice
+    from .managed_device_overview import ManagedDeviceOverview
+    from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+    from .notification_message_template import NotificationMessageTemplate
+    from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
+    from .remote_assistance_partner import RemoteAssistancePartner
+    from .resource_operation import ResourceOperation
+    from .role_definition import RoleDefinition
+    from .software_update_status_summary import SoftwareUpdateStatusSummary
+    from .telecom_expense_management_partner import TelecomExpenseManagementPartner
+    from .terms_and_conditions import TermsAndConditions
+    from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
+    from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
+    from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceManagement(entity.Entity):
+class DeviceManagement(Entity):
     # Apple push notification certificate.
-    apple_push_notification_certificate: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate] = None
+    apple_push_notification_certificate: Optional[ApplePushNotificationCertificate] = None
     # The Audit Events
-    audit_events: Optional[List[audit_event.AuditEvent]] = None
+    audit_events: Optional[List[AuditEvent]] = None
     # The list of Compliance Management Partners configured by the tenant.
-    compliance_management_partners: Optional[List[compliance_management_partner.ComplianceManagementPartner]] = None
+    compliance_management_partners: Optional[List[ComplianceManagementPartner]] = None
     # The Exchange on premises conditional access settings. On premises conditional access will require devices to be both enrolled and compliant for mail access
-    conditional_access_settings: Optional[on_premises_conditional_access_settings.OnPremisesConditionalAccessSettings] = None
+    conditional_access_settings: Optional[OnPremisesConditionalAccessSettings] = None
     # The list of detected apps associated with a device.
-    detected_apps: Optional[List[detected_app.DetectedApp]] = None
+    detected_apps: Optional[List[DetectedApp]] = None
     # The list of device categories with the tenant.
-    device_categories: Optional[List[device_category.DeviceCategory]] = None
+    device_categories: Optional[List[DeviceCategory]] = None
     # The device compliance policies.
-    device_compliance_policies: Optional[List[device_compliance_policy.DeviceCompliancePolicy]] = None
+    device_compliance_policies: Optional[List[DeviceCompliancePolicy]] = None
     # The device compliance state summary for this account.
-    device_compliance_policy_device_state_summary: Optional[device_compliance_policy_device_state_summary.DeviceCompliancePolicyDeviceStateSummary] = None
+    device_compliance_policy_device_state_summary: Optional[DeviceCompliancePolicyDeviceStateSummary] = None
     # The summary states of compliance policy settings for this account.
-    device_compliance_policy_setting_state_summaries: Optional[List[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]] = None
+    device_compliance_policy_setting_state_summaries: Optional[List[DeviceCompliancePolicySettingStateSummary]] = None
     # The device configuration device state summary for this account.
-    device_configuration_device_state_summaries: Optional[device_configuration_device_state_summary.DeviceConfigurationDeviceStateSummary] = None
+    device_configuration_device_state_summaries: Optional[DeviceConfigurationDeviceStateSummary] = None
     # The device configurations.
-    device_configurations: Optional[List[device_configuration.DeviceConfiguration]] = None
+    device_configurations: Optional[List[DeviceConfiguration]] = None
     # The list of device enrollment configurations
-    device_enrollment_configurations: Optional[List[device_enrollment_configuration.DeviceEnrollmentConfiguration]] = None
+    device_enrollment_configurations: Optional[List[DeviceEnrollmentConfiguration]] = None
     # The list of Device Management Partners configured by the tenant.
-    device_management_partners: Optional[List[device_management_partner.DeviceManagementPartner]] = None
+    device_management_partners: Optional[List[DeviceManagementPartner]] = None
     # The list of Exchange Connectors configured by the tenant.
-    exchange_connectors: Optional[List[device_management_exchange_connector.DeviceManagementExchangeConnector]] = None
+    exchange_connectors: Optional[List[DeviceManagementExchangeConnector]] = None
     # Collection of imported Windows autopilot devices.
-    imported_windows_autopilot_device_identities: Optional[List[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]] = None
+    imported_windows_autopilot_device_identities: Optional[List[ImportedWindowsAutopilotDeviceIdentity]] = None
     # Intune Account Id for given tenant
     intune_account_id: Optional[UUID] = None
     # intuneBrand contains data which is used in customizing the appearance of the Company Portal applications as well as the end user web portal.
-    intune_brand: Optional[intune_brand.IntuneBrand] = None
+    intune_brand: Optional[IntuneBrand] = None
     # The IOS software update installation statuses for this account.
-    ios_update_statuses: Optional[List[ios_update_device_status.IosUpdateDeviceStatus]] = None
+    ios_update_statuses: Optional[List[IosUpdateDeviceStatus]] = None
     # Device overview
-    managed_device_overview: Optional[managed_device_overview.ManagedDeviceOverview] = None
+    managed_device_overview: Optional[ManagedDeviceOverview] = None
     # The list of managed devices.
-    managed_devices: Optional[List[managed_device.ManagedDevice]] = None
+    managed_devices: Optional[List[ManagedDevice]] = None
     # The list of Mobile threat Defense connectors configured by the tenant.
-    mobile_threat_defense_connectors: Optional[List[mobile_threat_defense_connector.MobileThreatDefenseConnector]] = None
+    mobile_threat_defense_connectors: Optional[List[MobileThreatDefenseConnector]] = None
     # The Notification Message Templates.
-    notification_message_templates: Optional[List[notification_message_template.NotificationMessageTemplate]] = None
+    notification_message_templates: Optional[List[NotificationMessageTemplate]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The remote assist partners.
-    remote_assistance_partners: Optional[List[remote_assistance_partner.RemoteAssistancePartner]] = None
+    remote_assistance_partners: Optional[List[RemoteAssistancePartner]] = None
     # Reports singleton
-    reports: Optional[device_management_reports.DeviceManagementReports] = None
+    reports: Optional[DeviceManagementReports] = None
     # The Resource Operations.
-    resource_operations: Optional[List[resource_operation.ResourceOperation]] = None
+    resource_operations: Optional[List[ResourceOperation]] = None
     # The Role Assignments.
-    role_assignments: Optional[List[device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment]] = None
+    role_assignments: Optional[List[DeviceAndAppManagementRoleAssignment]] = None
     # The Role Definitions.
-    role_definitions: Optional[List[role_definition.RoleDefinition]] = None
+    role_definitions: Optional[List[RoleDefinition]] = None
     # Account level settings.
-    settings: Optional[device_management_settings.DeviceManagementSettings] = None
+    settings: Optional[DeviceManagementSettings] = None
     # The software update status summary.
-    software_update_status_summary: Optional[software_update_status_summary.SoftwareUpdateStatusSummary] = None
+    software_update_status_summary: Optional[SoftwareUpdateStatusSummary] = None
     # Tenant mobile device management subscription state.
-    subscription_state: Optional[device_management_subscription_state.DeviceManagementSubscriptionState] = None
+    subscription_state: Optional[DeviceManagementSubscriptionState] = None
     # The telecom expense management partners.
-    telecom_expense_management_partners: Optional[List[telecom_expense_management_partner.TelecomExpenseManagementPartner]] = None
+    telecom_expense_management_partners: Optional[List[TelecomExpenseManagementPartner]] = None
     # The terms and conditions associated with device management of the company.
-    terms_and_conditions: Optional[List[terms_and_conditions.TermsAndConditions]] = None
+    terms_and_conditions: Optional[List[TermsAndConditions]] = None
     # The list of troubleshooting events for the tenant.
-    troubleshooting_events: Optional[List[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]] = None
+    troubleshooting_events: Optional[List[DeviceManagementTroubleshootingEvent]] = None
     # The Windows autopilot device identities contained collection.
-    windows_autopilot_device_identities: Optional[List[windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity]] = None
+    windows_autopilot_device_identities: Optional[List[WindowsAutopilotDeviceIdentity]] = None
     # The windows information protection app learning summaries.
-    windows_information_protection_app_learning_summaries: Optional[List[windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary]] = None
+    windows_information_protection_app_learning_summaries: Optional[List[WindowsInformationProtectionAppLearningSummary]] = None
     # The windows information protection network learning summaries.
-    windows_information_protection_network_learning_summaries: Optional[List[windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary]] = None
+    windows_information_protection_network_learning_summaries: Optional[List[WindowsInformationProtectionNetworkLearningSummary]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagement:
@@ -103,47 +138,117 @@ class DeviceManagement(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import apple_push_notification_certificate, audit_event, compliance_management_partner, detected_app, device_and_app_management_role_assignment, device_category, device_compliance_policy, device_compliance_policy_device_state_summary, device_compliance_policy_setting_state_summary, device_configuration, device_configuration_device_state_summary, device_enrollment_configuration, device_management_exchange_connector, device_management_partner, device_management_reports, device_management_settings, device_management_subscription_state, device_management_troubleshooting_event, entity, imported_windows_autopilot_device_identity, intune_brand, ios_update_device_status, managed_device, managed_device_overview, mobile_threat_defense_connector, notification_message_template, on_premises_conditional_access_settings, remote_assistance_partner, resource_operation, role_definition, software_update_status_summary, telecom_expense_management_partner, terms_and_conditions, windows_autopilot_device_identity, windows_information_protection_app_learning_summary, windows_information_protection_network_learning_summary
+        from .apple_push_notification_certificate import ApplePushNotificationCertificate
+        from .audit_event import AuditEvent
+        from .compliance_management_partner import ComplianceManagementPartner
+        from .detected_app import DetectedApp
+        from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
+        from .device_category import DeviceCategory
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .device_compliance_policy_device_state_summary import DeviceCompliancePolicyDeviceStateSummary
+        from .device_compliance_policy_setting_state_summary import DeviceCompliancePolicySettingStateSummary
+        from .device_configuration import DeviceConfiguration
+        from .device_configuration_device_state_summary import DeviceConfigurationDeviceStateSummary
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+        from .device_management_exchange_connector import DeviceManagementExchangeConnector
+        from .device_management_partner import DeviceManagementPartner
+        from .device_management_reports import DeviceManagementReports
+        from .device_management_settings import DeviceManagementSettings
+        from .device_management_subscription_state import DeviceManagementSubscriptionState
+        from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+        from .entity import Entity
+        from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
+        from .intune_brand import IntuneBrand
+        from .ios_update_device_status import IosUpdateDeviceStatus
+        from .managed_device import ManagedDevice
+        from .managed_device_overview import ManagedDeviceOverview
+        from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+        from .notification_message_template import NotificationMessageTemplate
+        from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
+        from .remote_assistance_partner import RemoteAssistancePartner
+        from .resource_operation import ResourceOperation
+        from .role_definition import RoleDefinition
+        from .software_update_status_summary import SoftwareUpdateStatusSummary
+        from .telecom_expense_management_partner import TelecomExpenseManagementPartner
+        from .terms_and_conditions import TermsAndConditions
+        from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
+        from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
+        from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
 
-        from . import apple_push_notification_certificate, audit_event, compliance_management_partner, detected_app, device_and_app_management_role_assignment, device_category, device_compliance_policy, device_compliance_policy_device_state_summary, device_compliance_policy_setting_state_summary, device_configuration, device_configuration_device_state_summary, device_enrollment_configuration, device_management_exchange_connector, device_management_partner, device_management_reports, device_management_settings, device_management_subscription_state, device_management_troubleshooting_event, entity, imported_windows_autopilot_device_identity, intune_brand, ios_update_device_status, managed_device, managed_device_overview, mobile_threat_defense_connector, notification_message_template, on_premises_conditional_access_settings, remote_assistance_partner, resource_operation, role_definition, software_update_status_summary, telecom_expense_management_partner, terms_and_conditions, windows_autopilot_device_identity, windows_information_protection_app_learning_summary, windows_information_protection_network_learning_summary
+        from .apple_push_notification_certificate import ApplePushNotificationCertificate
+        from .audit_event import AuditEvent
+        from .compliance_management_partner import ComplianceManagementPartner
+        from .detected_app import DetectedApp
+        from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
+        from .device_category import DeviceCategory
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .device_compliance_policy_device_state_summary import DeviceCompliancePolicyDeviceStateSummary
+        from .device_compliance_policy_setting_state_summary import DeviceCompliancePolicySettingStateSummary
+        from .device_configuration import DeviceConfiguration
+        from .device_configuration_device_state_summary import DeviceConfigurationDeviceStateSummary
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+        from .device_management_exchange_connector import DeviceManagementExchangeConnector
+        from .device_management_partner import DeviceManagementPartner
+        from .device_management_reports import DeviceManagementReports
+        from .device_management_settings import DeviceManagementSettings
+        from .device_management_subscription_state import DeviceManagementSubscriptionState
+        from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+        from .entity import Entity
+        from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
+        from .intune_brand import IntuneBrand
+        from .ios_update_device_status import IosUpdateDeviceStatus
+        from .managed_device import ManagedDevice
+        from .managed_device_overview import ManagedDeviceOverview
+        from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+        from .notification_message_template import NotificationMessageTemplate
+        from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
+        from .remote_assistance_partner import RemoteAssistancePartner
+        from .resource_operation import ResourceOperation
+        from .role_definition import RoleDefinition
+        from .software_update_status_summary import SoftwareUpdateStatusSummary
+        from .telecom_expense_management_partner import TelecomExpenseManagementPartner
+        from .terms_and_conditions import TermsAndConditions
+        from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
+        from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
+        from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applePushNotificationCertificate": lambda n : setattr(self, 'apple_push_notification_certificate', n.get_object_value(apple_push_notification_certificate.ApplePushNotificationCertificate)),
-            "auditEvents": lambda n : setattr(self, 'audit_events', n.get_collection_of_object_values(audit_event.AuditEvent)),
-            "complianceManagementPartners": lambda n : setattr(self, 'compliance_management_partners', n.get_collection_of_object_values(compliance_management_partner.ComplianceManagementPartner)),
-            "conditionalAccessSettings": lambda n : setattr(self, 'conditional_access_settings', n.get_object_value(on_premises_conditional_access_settings.OnPremisesConditionalAccessSettings)),
-            "detectedApps": lambda n : setattr(self, 'detected_apps', n.get_collection_of_object_values(detected_app.DetectedApp)),
-            "deviceCategories": lambda n : setattr(self, 'device_categories', n.get_collection_of_object_values(device_category.DeviceCategory)),
-            "deviceCompliancePolicies": lambda n : setattr(self, 'device_compliance_policies', n.get_collection_of_object_values(device_compliance_policy.DeviceCompliancePolicy)),
-            "deviceCompliancePolicyDeviceStateSummary": lambda n : setattr(self, 'device_compliance_policy_device_state_summary', n.get_object_value(device_compliance_policy_device_state_summary.DeviceCompliancePolicyDeviceStateSummary)),
-            "deviceCompliancePolicySettingStateSummaries": lambda n : setattr(self, 'device_compliance_policy_setting_state_summaries', n.get_collection_of_object_values(device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary)),
-            "deviceConfigurationDeviceStateSummaries": lambda n : setattr(self, 'device_configuration_device_state_summaries', n.get_object_value(device_configuration_device_state_summary.DeviceConfigurationDeviceStateSummary)),
-            "deviceConfigurations": lambda n : setattr(self, 'device_configurations', n.get_collection_of_object_values(device_configuration.DeviceConfiguration)),
-            "deviceEnrollmentConfigurations": lambda n : setattr(self, 'device_enrollment_configurations', n.get_collection_of_object_values(device_enrollment_configuration.DeviceEnrollmentConfiguration)),
-            "deviceManagementPartners": lambda n : setattr(self, 'device_management_partners', n.get_collection_of_object_values(device_management_partner.DeviceManagementPartner)),
-            "exchangeConnectors": lambda n : setattr(self, 'exchange_connectors', n.get_collection_of_object_values(device_management_exchange_connector.DeviceManagementExchangeConnector)),
-            "importedWindowsAutopilotDeviceIdentities": lambda n : setattr(self, 'imported_windows_autopilot_device_identities', n.get_collection_of_object_values(imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity)),
+            "applePushNotificationCertificate": lambda n : setattr(self, 'apple_push_notification_certificate', n.get_object_value(ApplePushNotificationCertificate)),
+            "auditEvents": lambda n : setattr(self, 'audit_events', n.get_collection_of_object_values(AuditEvent)),
+            "complianceManagementPartners": lambda n : setattr(self, 'compliance_management_partners', n.get_collection_of_object_values(ComplianceManagementPartner)),
+            "conditionalAccessSettings": lambda n : setattr(self, 'conditional_access_settings', n.get_object_value(OnPremisesConditionalAccessSettings)),
+            "detectedApps": lambda n : setattr(self, 'detected_apps', n.get_collection_of_object_values(DetectedApp)),
+            "deviceCategories": lambda n : setattr(self, 'device_categories', n.get_collection_of_object_values(DeviceCategory)),
+            "deviceCompliancePolicies": lambda n : setattr(self, 'device_compliance_policies', n.get_collection_of_object_values(DeviceCompliancePolicy)),
+            "deviceCompliancePolicyDeviceStateSummary": lambda n : setattr(self, 'device_compliance_policy_device_state_summary', n.get_object_value(DeviceCompliancePolicyDeviceStateSummary)),
+            "deviceCompliancePolicySettingStateSummaries": lambda n : setattr(self, 'device_compliance_policy_setting_state_summaries', n.get_collection_of_object_values(DeviceCompliancePolicySettingStateSummary)),
+            "deviceConfigurationDeviceStateSummaries": lambda n : setattr(self, 'device_configuration_device_state_summaries', n.get_object_value(DeviceConfigurationDeviceStateSummary)),
+            "deviceConfigurations": lambda n : setattr(self, 'device_configurations', n.get_collection_of_object_values(DeviceConfiguration)),
+            "deviceEnrollmentConfigurations": lambda n : setattr(self, 'device_enrollment_configurations', n.get_collection_of_object_values(DeviceEnrollmentConfiguration)),
+            "deviceManagementPartners": lambda n : setattr(self, 'device_management_partners', n.get_collection_of_object_values(DeviceManagementPartner)),
+            "exchangeConnectors": lambda n : setattr(self, 'exchange_connectors', n.get_collection_of_object_values(DeviceManagementExchangeConnector)),
+            "importedWindowsAutopilotDeviceIdentities": lambda n : setattr(self, 'imported_windows_autopilot_device_identities', n.get_collection_of_object_values(ImportedWindowsAutopilotDeviceIdentity)),
             "intuneAccountId": lambda n : setattr(self, 'intune_account_id', n.get_uuid_value()),
-            "intuneBrand": lambda n : setattr(self, 'intune_brand', n.get_object_value(intune_brand.IntuneBrand)),
-            "iosUpdateStatuses": lambda n : setattr(self, 'ios_update_statuses', n.get_collection_of_object_values(ios_update_device_status.IosUpdateDeviceStatus)),
-            "managedDeviceOverview": lambda n : setattr(self, 'managed_device_overview', n.get_object_value(managed_device_overview.ManagedDeviceOverview)),
-            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
-            "mobileThreatDefenseConnectors": lambda n : setattr(self, 'mobile_threat_defense_connectors', n.get_collection_of_object_values(mobile_threat_defense_connector.MobileThreatDefenseConnector)),
-            "notificationMessageTemplates": lambda n : setattr(self, 'notification_message_templates', n.get_collection_of_object_values(notification_message_template.NotificationMessageTemplate)),
-            "remoteAssistancePartners": lambda n : setattr(self, 'remote_assistance_partners', n.get_collection_of_object_values(remote_assistance_partner.RemoteAssistancePartner)),
-            "reports": lambda n : setattr(self, 'reports', n.get_object_value(device_management_reports.DeviceManagementReports)),
-            "resourceOperations": lambda n : setattr(self, 'resource_operations', n.get_collection_of_object_values(resource_operation.ResourceOperation)),
-            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment)),
-            "roleDefinitions": lambda n : setattr(self, 'role_definitions', n.get_collection_of_object_values(role_definition.RoleDefinition)),
-            "settings": lambda n : setattr(self, 'settings', n.get_object_value(device_management_settings.DeviceManagementSettings)),
-            "softwareUpdateStatusSummary": lambda n : setattr(self, 'software_update_status_summary', n.get_object_value(software_update_status_summary.SoftwareUpdateStatusSummary)),
-            "subscriptionState": lambda n : setattr(self, 'subscription_state', n.get_enum_value(device_management_subscription_state.DeviceManagementSubscriptionState)),
-            "telecomExpenseManagementPartners": lambda n : setattr(self, 'telecom_expense_management_partners', n.get_collection_of_object_values(telecom_expense_management_partner.TelecomExpenseManagementPartner)),
-            "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_collection_of_object_values(terms_and_conditions.TermsAndConditions)),
-            "troubleshootingEvents": lambda n : setattr(self, 'troubleshooting_events', n.get_collection_of_object_values(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent)),
-            "windowsAutopilotDeviceIdentities": lambda n : setattr(self, 'windows_autopilot_device_identities', n.get_collection_of_object_values(windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity)),
-            "windowsInformationProtectionAppLearningSummaries": lambda n : setattr(self, 'windows_information_protection_app_learning_summaries', n.get_collection_of_object_values(windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary)),
-            "windowsInformationProtectionNetworkLearningSummaries": lambda n : setattr(self, 'windows_information_protection_network_learning_summaries', n.get_collection_of_object_values(windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary)),
+            "intuneBrand": lambda n : setattr(self, 'intune_brand', n.get_object_value(IntuneBrand)),
+            "iosUpdateStatuses": lambda n : setattr(self, 'ios_update_statuses', n.get_collection_of_object_values(IosUpdateDeviceStatus)),
+            "managedDeviceOverview": lambda n : setattr(self, 'managed_device_overview', n.get_object_value(ManagedDeviceOverview)),
+            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(ManagedDevice)),
+            "mobileThreatDefenseConnectors": lambda n : setattr(self, 'mobile_threat_defense_connectors', n.get_collection_of_object_values(MobileThreatDefenseConnector)),
+            "notificationMessageTemplates": lambda n : setattr(self, 'notification_message_templates', n.get_collection_of_object_values(NotificationMessageTemplate)),
+            "remoteAssistancePartners": lambda n : setattr(self, 'remote_assistance_partners', n.get_collection_of_object_values(RemoteAssistancePartner)),
+            "reports": lambda n : setattr(self, 'reports', n.get_object_value(DeviceManagementReports)),
+            "resourceOperations": lambda n : setattr(self, 'resource_operations', n.get_collection_of_object_values(ResourceOperation)),
+            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(DeviceAndAppManagementRoleAssignment)),
+            "roleDefinitions": lambda n : setattr(self, 'role_definitions', n.get_collection_of_object_values(RoleDefinition)),
+            "settings": lambda n : setattr(self, 'settings', n.get_object_value(DeviceManagementSettings)),
+            "softwareUpdateStatusSummary": lambda n : setattr(self, 'software_update_status_summary', n.get_object_value(SoftwareUpdateStatusSummary)),
+            "subscriptionState": lambda n : setattr(self, 'subscription_state', n.get_enum_value(DeviceManagementSubscriptionState)),
+            "telecomExpenseManagementPartners": lambda n : setattr(self, 'telecom_expense_management_partners', n.get_collection_of_object_values(TelecomExpenseManagementPartner)),
+            "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_collection_of_object_values(TermsAndConditions)),
+            "troubleshootingEvents": lambda n : setattr(self, 'troubleshooting_events', n.get_collection_of_object_values(DeviceManagementTroubleshootingEvent)),
+            "windowsAutopilotDeviceIdentities": lambda n : setattr(self, 'windows_autopilot_device_identities', n.get_collection_of_object_values(WindowsAutopilotDeviceIdentity)),
+            "windowsInformationProtectionAppLearningSummaries": lambda n : setattr(self, 'windows_information_protection_app_learning_summaries', n.get_collection_of_object_values(WindowsInformationProtectionAppLearningSummary)),
+            "windowsInformationProtectionNetworkLearningSummaries": lambda n : setattr(self, 'windows_information_protection_network_learning_summaries', n.get_collection_of_object_values(WindowsInformationProtectionNetworkLearningSummary)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

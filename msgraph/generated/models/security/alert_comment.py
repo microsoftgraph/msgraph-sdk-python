@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -14,7 +14,7 @@ class AlertComment(AdditionalDataHolder, Parsable):
     # The person or app name that submitted the comment.
     created_by_display_name: Optional[str] = None
     # The time when the comment was submitted.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -53,7 +53,7 @@ class AlertComment(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("comment", self.comment)
         writer.write_str_value("createdByDisplayName", self.created_by_display_name)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

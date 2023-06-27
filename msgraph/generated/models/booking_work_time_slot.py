@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import time
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -10,11 +10,11 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The time of the day when work stops. For example, 17:00:00.0000000.
-    end_time: Optional[time] = None
+    end_time: Optional[datetime.time] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The time of the day when work starts. For example, 08:00:00.0000000.
-    start_time: Optional[time] = None
+    start_time: Optional[datetime.time] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingWorkTimeSlot:
@@ -48,9 +48,9 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_time_value("endTime", self.end_time)
+        writer.write_time_value()("endTime", self.end_time)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_time_value("startTime", self.start_time)
+        writer.write_time_value()("startTime", self.start_time)
         writer.write_additional_data_value(self.additional_data)
     
 

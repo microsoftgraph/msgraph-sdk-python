@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import reference_create, string_collection_response
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.reference_create import ReferenceCreate
+    from .....models.string_collection_response import StringCollectionResponse
 
 class RefRequestBuilder():
     """
@@ -35,29 +36,29 @@ class RefRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> Optional[string_collection_response.StringCollectionResponse]:
+    async def get(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> Optional[StringCollectionResponse]:
         """
         List the homeRealmDiscoveryPolicy objects that are assigned to a servicePrincipal.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[string_collection_response.StringCollectionResponse]
+        Returns: Optional[StringCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import string_collection_response
+        from .....models.string_collection_response import StringCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, string_collection_response.StringCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, StringCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[reference_create.ReferenceCreate] = None, request_configuration: Optional[RefRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RefRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Assign a homeRealmDiscoveryPolicy to a servicePrincipal.
         Args:
@@ -69,11 +70,11 @@ class RefRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -97,7 +98,7 @@ class RefRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[reference_create.ReferenceCreate] = None, request_configuration: Optional[RefRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RefRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Assign a homeRealmDiscoveryPolicy to a servicePrincipal.
         Args:

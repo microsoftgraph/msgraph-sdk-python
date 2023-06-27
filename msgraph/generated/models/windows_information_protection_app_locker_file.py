@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WindowsInformationProtectionAppLockerFile(entity.Entity):
+class WindowsInformationProtectionAppLockerFile(Entity):
     """
     Windows Information Protection AppLocker File
     """
@@ -41,9 +41,9 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -65,7 +65,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("file", self.file)
+        writer.write_bytes_value("file", self.file)
         writer.write_str_value("fileHash", self.file_hash)
         writer.write_str_value("version", self.version)
     

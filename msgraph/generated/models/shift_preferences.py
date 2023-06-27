@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import change_tracked_entity, shift_availability
+    from .change_tracked_entity import ChangeTrackedEntity
+    from .shift_availability import ShiftAvailability
 
-from . import change_tracked_entity
+from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class ShiftPreferences(change_tracked_entity.ChangeTrackedEntity):
+class ShiftPreferences(ChangeTrackedEntity):
     odata_type = "#microsoft.graph.shiftPreferences"
     # Availability of the user to be scheduled for work and its recurrence pattern.
-    availability: Optional[List[shift_availability.ShiftAvailability]] = None
+    availability: Optional[List[ShiftAvailability]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ShiftPreferences:
@@ -31,12 +32,14 @@ class ShiftPreferences(change_tracked_entity.ChangeTrackedEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import change_tracked_entity, shift_availability
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .shift_availability import ShiftAvailability
 
-        from . import change_tracked_entity, shift_availability
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .shift_availability import ShiftAvailability
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "availability": lambda n : setattr(self, 'availability', n.get_collection_of_object_values(shift_availability.ShiftAvailability)),
+            "availability": lambda n : setattr(self, 'availability', n.get_collection_of_object_values(ShiftAvailability)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

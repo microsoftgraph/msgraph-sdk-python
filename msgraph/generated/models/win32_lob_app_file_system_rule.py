@@ -4,12 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import win32_lob_app_file_system_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+    from .win32_lob_app_file_system_operation_type import Win32LobAppFileSystemOperationType
+    from .win32_lob_app_rule import Win32LobAppRule
+    from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-from . import win32_lob_app_rule
+from .win32_lob_app_rule import Win32LobAppRule
 
 @dataclass
-class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
+class Win32LobAppFileSystemRule(Win32LobAppRule):
     odata_type = "#microsoft.graph.win32LobAppFileSystemRule"
     # A value indicating whether to expand environment variables in the 32-bit context on 64-bit systems.
     check32_bit_on64_system: Optional[bool] = None
@@ -18,9 +20,9 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
     # The file or folder name to look up.
     file_or_folder_name: Optional[str] = None
     # Contains all supported file system detection type.
-    operation_type: Optional[win32_lob_app_file_system_operation_type.Win32LobAppFileSystemOperationType] = None
+    operation_type: Optional[Win32LobAppFileSystemOperationType] = None
     # Contains properties for detection operator.
-    operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
+    operator: Optional[Win32LobAppRuleOperator] = None
     # The file or folder path to look up.
     path: Optional[str] = None
     
@@ -41,16 +43,20 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import win32_lob_app_file_system_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+        from .win32_lob_app_file_system_operation_type import Win32LobAppFileSystemOperationType
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-        from . import win32_lob_app_file_system_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+        from .win32_lob_app_file_system_operation_type import Win32LobAppFileSystemOperationType
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
         fields: Dict[str, Callable[[Any], None]] = {
             "check32BitOn64System": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
             "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
             "fileOrFolderName": lambda n : setattr(self, 'file_or_folder_name', n.get_str_value()),
-            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_file_system_operation_type.Win32LobAppFileSystemOperationType)),
-            "operator": lambda n : setattr(self, 'operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(Win32LobAppFileSystemOperationType)),
+            "operator": lambda n : setattr(self, 'operator', n.get_enum_value(Win32LobAppRuleOperator)),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

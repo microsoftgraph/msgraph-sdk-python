@@ -1,25 +1,34 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import assigned_plan, certificate_based_auth_configuration, directory_object, extension, mdm_authority, organizational_branding, partner_tenant_type, privacy_profile, provisioned_plan, verified_domain
+    from .assigned_plan import AssignedPlan
+    from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
+    from .directory_object import DirectoryObject
+    from .extension import Extension
+    from .mdm_authority import MdmAuthority
+    from .organizational_branding import OrganizationalBranding
+    from .partner_tenant_type import PartnerTenantType
+    from .privacy_profile import PrivacyProfile
+    from .provisioned_plan import ProvisionedPlan
+    from .verified_domain import VerifiedDomain
 
-from . import directory_object
+from .directory_object import DirectoryObject
 
 @dataclass
-class Organization(directory_object.DirectoryObject):
+class Organization(DirectoryObject):
     odata_type = "#microsoft.graph.organization"
     # The collection of service plans associated with the tenant. Not nullable.
-    assigned_plans: Optional[List[assigned_plan.AssignedPlan]] = None
+    assigned_plans: Optional[List[AssignedPlan]] = None
     # Branding for the organization. Nullable.
-    branding: Optional[organizational_branding.OrganizationalBranding] = None
+    branding: Optional[OrganizationalBranding] = None
     # Telephone number for the organization. Although this is a string collection, only one number can be set for this property.
     business_phones: Optional[List[str]] = None
     # Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
-    certificate_based_auth_configuration: Optional[List[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]] = None
+    certificate_based_auth_configuration: Optional[List[CertificateBasedAuthConfiguration]] = None
     # City name of the address for the organization.
     city: Optional[str] = None
     # Country/region name of the address for the organization.
@@ -27,34 +36,34 @@ class Organization(directory_object.DirectoryObject):
     # Country or region abbreviation for the organization in ISO 3166-2 format.
     country_letter_code: Optional[str] = None
     # Timestamp of when the organization was created. The value cannot be modified and is automatically populated when the organization is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Two-letter ISO 3166 country code indicating the default service usage location of an organization.
     default_usage_location: Optional[str] = None
     # The display name for the tenant.
     display_name: Optional[str] = None
     # The collection of open extensions defined for the organization. Read-only. Nullable.
-    extensions: Optional[List[extension.Extension]] = None
+    extensions: Optional[List[Extension]] = None
     # Not nullable.
     marketing_notification_emails: Optional[List[str]] = None
     # Mobile device management authority.
-    mobile_device_management_authority: Optional[mdm_authority.MdmAuthority] = None
+    mobile_device_management_authority: Optional[MdmAuthority] = None
     # The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    on_premises_last_sync_date_time: Optional[datetime] = None
+    on_premises_last_sync_date_time: Optional[datetime.datetime] = None
     # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     on_premises_sync_enabled: Optional[bool] = None
     # The type of partnership this tenant has with Microsoft. The possible values are: microsoftSupport, syndicatePartner, breadthPartner, breadthPartnerDelegatedAdmin, resellerPartnerDelegatedAdmin, valueAddedResellerPartnerDelegatedAdmin, unknownFutureValue. Nullable. For more information about the possible types, see partnerTenantType values.
-    partner_tenant_type: Optional[partner_tenant_type.PartnerTenantType] = None
+    partner_tenant_type: Optional[PartnerTenantType] = None
     # Postal code of the address for the organization.
     postal_code: Optional[str] = None
     # The preferred language for the organization. Should follow ISO 639-1 Code; for example, en.
     preferred_language: Optional[str] = None
     # The privacy profile of an organization.
-    privacy_profile: Optional[privacy_profile.PrivacyProfile] = None
+    privacy_profile: Optional[PrivacyProfile] = None
     # Not nullable.
-    provisioned_plans: Optional[List[provisioned_plan.ProvisionedPlan]] = None
-    # The securityComplianceNotificationMails property
+    provisioned_plans: Optional[List[ProvisionedPlan]] = None
+    # Not nullable.
     security_compliance_notification_mails: Optional[List[str]] = None
-    # The securityComplianceNotificationPhones property
+    # Not nullable.
     security_compliance_notification_phones: Optional[List[str]] = None
     # State name of the address for the organization.
     state: Optional[str] = None
@@ -65,7 +74,7 @@ class Organization(directory_object.DirectoryObject):
     # Not nullable. The tenant type option that was selected when the tenant was created. The possible values are:  AAD - An enterprise identity access management (IAM) service that serves business-to-employee and business-to-business (B2B) scenarios.  AAD B2C A customer identity access management (CIAM) service that serves business-to-consumer (B2C) scenarios.
     tenant_type: Optional[str] = None
     # The collection of domains associated with this tenant. Not nullable.
-    verified_domains: Optional[List[verified_domain.VerifiedDomain]] = None
+    verified_domains: Optional[List[VerifiedDomain]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Organization:
@@ -84,38 +93,56 @@ class Organization(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import assigned_plan, certificate_based_auth_configuration, directory_object, extension, mdm_authority, organizational_branding, partner_tenant_type, privacy_profile, provisioned_plan, verified_domain
+        from .assigned_plan import AssignedPlan
+        from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
+        from .directory_object import DirectoryObject
+        from .extension import Extension
+        from .mdm_authority import MdmAuthority
+        from .organizational_branding import OrganizationalBranding
+        from .partner_tenant_type import PartnerTenantType
+        from .privacy_profile import PrivacyProfile
+        from .provisioned_plan import ProvisionedPlan
+        from .verified_domain import VerifiedDomain
 
-        from . import assigned_plan, certificate_based_auth_configuration, directory_object, extension, mdm_authority, organizational_branding, partner_tenant_type, privacy_profile, provisioned_plan, verified_domain
+        from .assigned_plan import AssignedPlan
+        from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
+        from .directory_object import DirectoryObject
+        from .extension import Extension
+        from .mdm_authority import MdmAuthority
+        from .organizational_branding import OrganizationalBranding
+        from .partner_tenant_type import PartnerTenantType
+        from .privacy_profile import PrivacyProfile
+        from .provisioned_plan import ProvisionedPlan
+        from .verified_domain import VerifiedDomain
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
-            "branding": lambda n : setattr(self, 'branding', n.get_object_value(organizational_branding.OrganizationalBranding)),
+            "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(AssignedPlan)),
+            "branding": lambda n : setattr(self, 'branding', n.get_object_value(OrganizationalBranding)),
             "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
-            "certificateBasedAuthConfiguration": lambda n : setattr(self, 'certificate_based_auth_configuration', n.get_collection_of_object_values(certificate_based_auth_configuration.CertificateBasedAuthConfiguration)),
+            "certificateBasedAuthConfiguration": lambda n : setattr(self, 'certificate_based_auth_configuration', n.get_collection_of_object_values(CertificateBasedAuthConfiguration)),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
             "country": lambda n : setattr(self, 'country', n.get_str_value()),
             "countryLetterCode": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "defaultUsageLocation": lambda n : setattr(self, 'default_usage_location', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
+            "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
             "marketingNotificationEmails": lambda n : setattr(self, 'marketing_notification_emails', n.get_collection_of_primitive_values(str)),
-            "mobileDeviceManagementAuthority": lambda n : setattr(self, 'mobile_device_management_authority', n.get_enum_value(mdm_authority.MdmAuthority)),
+            "mobileDeviceManagementAuthority": lambda n : setattr(self, 'mobile_device_management_authority', n.get_enum_value(MdmAuthority)),
             "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
             "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
-            "partnerTenantType": lambda n : setattr(self, 'partner_tenant_type', n.get_enum_value(partner_tenant_type.PartnerTenantType)),
+            "partnerTenantType": lambda n : setattr(self, 'partner_tenant_type', n.get_enum_value(PartnerTenantType)),
             "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
             "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
-            "privacyProfile": lambda n : setattr(self, 'privacy_profile', n.get_object_value(privacy_profile.PrivacyProfile)),
-            "provisionedPlans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(provisioned_plan.ProvisionedPlan)),
+            "privacyProfile": lambda n : setattr(self, 'privacy_profile', n.get_object_value(PrivacyProfile)),
+            "provisionedPlans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(ProvisionedPlan)),
             "securityComplianceNotificationMails": lambda n : setattr(self, 'security_compliance_notification_mails', n.get_collection_of_primitive_values(str)),
             "securityComplianceNotificationPhones": lambda n : setattr(self, 'security_compliance_notification_phones', n.get_collection_of_primitive_values(str)),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
             "street": lambda n : setattr(self, 'street', n.get_str_value()),
             "technicalNotificationMails": lambda n : setattr(self, 'technical_notification_mails', n.get_collection_of_primitive_values(str)),
             "tenantType": lambda n : setattr(self, 'tenant_type', n.get_str_value()),
-            "verifiedDomains": lambda n : setattr(self, 'verified_domains', n.get_collection_of_object_values(verified_domain.VerifiedDomain)),
+            "verifiedDomains": lambda n : setattr(self, 'verified_domains', n.get_collection_of_object_values(VerifiedDomain)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -137,13 +164,13 @@ class Organization(directory_object.DirectoryObject):
         writer.write_str_value("city", self.city)
         writer.write_str_value("country", self.country)
         writer.write_str_value("countryLetterCode", self.country_letter_code)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("defaultUsageLocation", self.default_usage_location)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_collection_of_primitive_values("marketingNotificationEmails", self.marketing_notification_emails)
         writer.write_enum_value("mobileDeviceManagementAuthority", self.mobile_device_management_authority)
-        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
+        writer.write_datetime_value()("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
         writer.write_enum_value("partnerTenantType", self.partner_tenant_type)
         writer.write_str_value("postalCode", self.postal_code)

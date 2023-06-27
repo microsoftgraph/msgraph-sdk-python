@@ -4,28 +4,33 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart, workbook_named_item, workbook_pivot_table, workbook_table, workbook_worksheet_protection
+    from .entity import Entity
+    from .workbook_chart import WorkbookChart
+    from .workbook_named_item import WorkbookNamedItem
+    from .workbook_pivot_table import WorkbookPivotTable
+    from .workbook_table import WorkbookTable
+    from .workbook_worksheet_protection import WorkbookWorksheetProtection
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookWorksheet(entity.Entity):
+class WorkbookWorksheet(Entity):
     # Returns collection of charts that are part of the worksheet. Read-only.
-    charts: Optional[List[workbook_chart.WorkbookChart]] = None
+    charts: Optional[List[WorkbookChart]] = None
     # The display name of the worksheet.
     name: Optional[str] = None
     # Returns collection of names that are associated with the worksheet. Read-only.
-    names: Optional[List[workbook_named_item.WorkbookNamedItem]] = None
+    names: Optional[List[WorkbookNamedItem]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Collection of PivotTables that are part of the worksheet.
-    pivot_tables: Optional[List[workbook_pivot_table.WorkbookPivotTable]] = None
+    pivot_tables: Optional[List[WorkbookPivotTable]] = None
     # The zero-based position of the worksheet within the workbook.
     position: Optional[int] = None
     # Returns sheet protection object for a worksheet. Read-only.
-    protection: Optional[workbook_worksheet_protection.WorkbookWorksheetProtection] = None
+    protection: Optional[WorkbookWorksheetProtection] = None
     # Collection of tables that are part of the worksheet. Read-only.
-    tables: Optional[List[workbook_table.WorkbookTable]] = None
+    tables: Optional[List[WorkbookTable]] = None
     # The Visibility of the worksheet. The possible values are: Visible, Hidden, VeryHidden.
     visibility: Optional[str] = None
     
@@ -46,18 +51,28 @@ class WorkbookWorksheet(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart, workbook_named_item, workbook_pivot_table, workbook_table, workbook_worksheet_protection
+        from .entity import Entity
+        from .workbook_chart import WorkbookChart
+        from .workbook_named_item import WorkbookNamedItem
+        from .workbook_pivot_table import WorkbookPivotTable
+        from .workbook_table import WorkbookTable
+        from .workbook_worksheet_protection import WorkbookWorksheetProtection
 
-        from . import entity, workbook_chart, workbook_named_item, workbook_pivot_table, workbook_table, workbook_worksheet_protection
+        from .entity import Entity
+        from .workbook_chart import WorkbookChart
+        from .workbook_named_item import WorkbookNamedItem
+        from .workbook_pivot_table import WorkbookPivotTable
+        from .workbook_table import WorkbookTable
+        from .workbook_worksheet_protection import WorkbookWorksheetProtection
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "charts": lambda n : setattr(self, 'charts', n.get_collection_of_object_values(workbook_chart.WorkbookChart)),
+            "charts": lambda n : setattr(self, 'charts', n.get_collection_of_object_values(WorkbookChart)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "names": lambda n : setattr(self, 'names', n.get_collection_of_object_values(workbook_named_item.WorkbookNamedItem)),
-            "pivotTables": lambda n : setattr(self, 'pivot_tables', n.get_collection_of_object_values(workbook_pivot_table.WorkbookPivotTable)),
+            "names": lambda n : setattr(self, 'names', n.get_collection_of_object_values(WorkbookNamedItem)),
+            "pivotTables": lambda n : setattr(self, 'pivot_tables', n.get_collection_of_object_values(WorkbookPivotTable)),
             "position": lambda n : setattr(self, 'position', n.get_int_value()),
-            "protection": lambda n : setattr(self, 'protection', n.get_object_value(workbook_worksheet_protection.WorkbookWorksheetProtection)),
-            "tables": lambda n : setattr(self, 'tables', n.get_collection_of_object_values(workbook_table.WorkbookTable)),
+            "protection": lambda n : setattr(self, 'protection', n.get_object_value(WorkbookWorksheetProtection)),
+            "tables": lambda n : setattr(self, 'tables', n.get_collection_of_object_values(WorkbookTable)),
             "visibility": lambda n : setattr(self, 'visibility', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

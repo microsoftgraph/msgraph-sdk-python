@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import image_with_width_with_height_with_fitting_mode_response
-    from ...........models.o_data_errors import o_data_error
+    from ...........models.o_data_errors.o_data_error import ODataError
+    from .image_with_width_with_height_with_fitting_mode_response import ImageWithWidthWithHeightWithFittingModeResponse
 
 class ImageWithWidthWithHeightWithFittingModeRequestBuilder():
     """
@@ -41,27 +41,27 @@ class ImageWithWidthWithHeightWithFittingModeRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ImageWithWidthWithHeightWithFittingModeRequestBuilderGetRequestConfiguration] = None) -> Optional[image_with_width_with_height_with_fitting_mode_response.ImageWithWidthWithHeightWithFittingModeResponse]:
+    async def get(self,request_configuration: Optional[ImageWithWidthWithHeightWithFittingModeRequestBuilderGetRequestConfiguration] = None) -> Optional[ImageWithWidthWithHeightWithFittingModeResponse]:
         """
         Invoke function image
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[image_with_width_with_height_with_fitting_mode_response.ImageWithWidthWithHeightWithFittingModeResponse]
+        Returns: Optional[ImageWithWidthWithHeightWithFittingModeResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
+        from ...........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import image_with_width_with_height_with_fitting_mode_response
+        from .image_with_width_with_height_with_fitting_mode_response import ImageWithWidthWithHeightWithFittingModeResponse
 
-        return await self.request_adapter.send_async(request_info, image_with_width_with_height_with_fitting_mode_response.ImageWithWidthWithHeightWithFittingModeResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ImageWithWidthWithHeightWithFittingModeResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ImageWithWidthWithHeightWithFittingModeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

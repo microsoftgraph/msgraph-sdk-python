@@ -10,42 +10,42 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import device_management
-    from ..models.o_data_errors import o_data_error
-    from .apple_push_notification_certificate import apple_push_notification_certificate_request_builder
-    from .audit_events import audit_events_request_builder
-    from .compliance_management_partners import compliance_management_partners_request_builder
-    from .conditional_access_settings import conditional_access_settings_request_builder
-    from .detected_apps import detected_apps_request_builder
-    from .device_categories import device_categories_request_builder
-    from .device_compliance_policies import device_compliance_policies_request_builder
-    from .device_compliance_policy_device_state_summary import device_compliance_policy_device_state_summary_request_builder
-    from .device_compliance_policy_setting_state_summaries import device_compliance_policy_setting_state_summaries_request_builder
-    from .device_configuration_device_state_summaries import device_configuration_device_state_summaries_request_builder
-    from .device_configurations import device_configurations_request_builder
-    from .device_enrollment_configurations import device_enrollment_configurations_request_builder
-    from .device_management_partners import device_management_partners_request_builder
-    from .exchange_connectors import exchange_connectors_request_builder
-    from .get_effective_permissions_with_scope import get_effective_permissions_with_scope_request_builder
-    from .imported_windows_autopilot_device_identities import imported_windows_autopilot_device_identities_request_builder
-    from .ios_update_statuses import ios_update_statuses_request_builder
-    from .managed_device_overview import managed_device_overview_request_builder
-    from .managed_devices import managed_devices_request_builder
-    from .mobile_threat_defense_connectors import mobile_threat_defense_connectors_request_builder
-    from .notification_message_templates import notification_message_templates_request_builder
-    from .remote_assistance_partners import remote_assistance_partners_request_builder
-    from .reports import reports_request_builder
-    from .resource_operations import resource_operations_request_builder
-    from .role_assignments import role_assignments_request_builder
-    from .role_definitions import role_definitions_request_builder
-    from .software_update_status_summary import software_update_status_summary_request_builder
-    from .telecom_expense_management_partners import telecom_expense_management_partners_request_builder
-    from .terms_and_conditions import terms_and_conditions_request_builder
-    from .troubleshooting_events import troubleshooting_events_request_builder
-    from .verify_windows_enrollment_auto_discovery_with_domain_name import verify_windows_enrollment_auto_discovery_with_domain_name_request_builder
-    from .windows_autopilot_device_identities import windows_autopilot_device_identities_request_builder
-    from .windows_information_protection_app_learning_summaries import windows_information_protection_app_learning_summaries_request_builder
-    from .windows_information_protection_network_learning_summaries import windows_information_protection_network_learning_summaries_request_builder
+    from ..models.device_management import DeviceManagement
+    from ..models.o_data_errors.o_data_error import ODataError
+    from .apple_push_notification_certificate.apple_push_notification_certificate_request_builder import ApplePushNotificationCertificateRequestBuilder
+    from .audit_events.audit_events_request_builder import AuditEventsRequestBuilder
+    from .compliance_management_partners.compliance_management_partners_request_builder import ComplianceManagementPartnersRequestBuilder
+    from .conditional_access_settings.conditional_access_settings_request_builder import ConditionalAccessSettingsRequestBuilder
+    from .detected_apps.detected_apps_request_builder import DetectedAppsRequestBuilder
+    from .device_categories.device_categories_request_builder import DeviceCategoriesRequestBuilder
+    from .device_compliance_policies.device_compliance_policies_request_builder import DeviceCompliancePoliciesRequestBuilder
+    from .device_compliance_policy_device_state_summary.device_compliance_policy_device_state_summary_request_builder import DeviceCompliancePolicyDeviceStateSummaryRequestBuilder
+    from .device_compliance_policy_setting_state_summaries.device_compliance_policy_setting_state_summaries_request_builder import DeviceCompliancePolicySettingStateSummariesRequestBuilder
+    from .device_configuration_device_state_summaries.device_configuration_device_state_summaries_request_builder import DeviceConfigurationDeviceStateSummariesRequestBuilder
+    from .device_configurations.device_configurations_request_builder import DeviceConfigurationsRequestBuilder
+    from .device_enrollment_configurations.device_enrollment_configurations_request_builder import DeviceEnrollmentConfigurationsRequestBuilder
+    from .device_management_partners.device_management_partners_request_builder import DeviceManagementPartnersRequestBuilder
+    from .exchange_connectors.exchange_connectors_request_builder import ExchangeConnectorsRequestBuilder
+    from .get_effective_permissions_with_scope.get_effective_permissions_with_scope_request_builder import GetEffectivePermissionsWithScopeRequestBuilder
+    from .imported_windows_autopilot_device_identities.imported_windows_autopilot_device_identities_request_builder import ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder
+    from .ios_update_statuses.ios_update_statuses_request_builder import IosUpdateStatusesRequestBuilder
+    from .managed_device_overview.managed_device_overview_request_builder import ManagedDeviceOverviewRequestBuilder
+    from .managed_devices.managed_devices_request_builder import ManagedDevicesRequestBuilder
+    from .mobile_threat_defense_connectors.mobile_threat_defense_connectors_request_builder import MobileThreatDefenseConnectorsRequestBuilder
+    from .notification_message_templates.notification_message_templates_request_builder import NotificationMessageTemplatesRequestBuilder
+    from .remote_assistance_partners.remote_assistance_partners_request_builder import RemoteAssistancePartnersRequestBuilder
+    from .reports.reports_request_builder import ReportsRequestBuilder
+    from .resource_operations.resource_operations_request_builder import ResourceOperationsRequestBuilder
+    from .role_assignments.role_assignments_request_builder import RoleAssignmentsRequestBuilder
+    from .role_definitions.role_definitions_request_builder import RoleDefinitionsRequestBuilder
+    from .software_update_status_summary.software_update_status_summary_request_builder import SoftwareUpdateStatusSummaryRequestBuilder
+    from .telecom_expense_management_partners.telecom_expense_management_partners_request_builder import TelecomExpenseManagementPartnersRequestBuilder
+    from .terms_and_conditions.terms_and_conditions_request_builder import TermsAndConditionsRequestBuilder
+    from .troubleshooting_events.troubleshooting_events_request_builder import TroubleshootingEventsRequestBuilder
+    from .verify_windows_enrollment_auto_discovery_with_domain_name.verify_windows_enrollment_auto_discovery_with_domain_name_request_builder import VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder
+    from .windows_autopilot_device_identities.windows_autopilot_device_identities_request_builder import WindowsAutopilotDeviceIdentitiesRequestBuilder
+    from .windows_information_protection_app_learning_summaries.windows_information_protection_app_learning_summaries_request_builder import WindowsInformationProtectionAppLearningSummariesRequestBuilder
+    from .windows_information_protection_network_learning_summaries.windows_information_protection_network_learning_summaries_request_builder import WindowsInformationProtectionNetworkLearningSummariesRequestBuilder
 
 class DeviceManagementRequestBuilder():
     """
@@ -69,69 +69,69 @@ class DeviceManagementRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DeviceManagementRequestBuilderGetRequestConfiguration] = None) -> Optional[device_management.DeviceManagement]:
+    async def get(self,request_configuration: Optional[DeviceManagementRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagement]:
         """
-        Get deviceManagement
+        Read properties and relationships of the deviceManagement object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_management.DeviceManagement]
+        Returns: Optional[DeviceManagement]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import device_management
+        from ..models.device_management import DeviceManagement
 
-        return await self.request_adapter.send_async(request_info, device_management.DeviceManagement, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceManagement, error_mapping)
     
-    def get_effective_permissions_with_scope(self,scope: Optional[str] = None) -> get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder:
+    def get_effective_permissions_with_scope(self,scope: Optional[str] = None) -> GetEffectivePermissionsWithScopeRequestBuilder:
         """
         Provides operations to call the getEffectivePermissions method.
         Args:
             scope: Usage: scope='{scope}'
-        Returns: get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder
+        Returns: GetEffectivePermissionsWithScopeRequestBuilder
         """
         if not scope:
             raise TypeError("scope cannot be null.")
-        from .get_effective_permissions_with_scope import get_effective_permissions_with_scope_request_builder
+        from .get_effective_permissions_with_scope.get_effective_permissions_with_scope_request_builder import GetEffectivePermissionsWithScopeRequestBuilder
 
-        return get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder(self.request_adapter, self.path_parameters, scope)
+        return GetEffectivePermissionsWithScopeRequestBuilder(self.request_adapter, self.path_parameters, scope)
     
-    async def patch(self,body: Optional[device_management.DeviceManagement] = None, request_configuration: Optional[DeviceManagementRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_management.DeviceManagement]:
+    async def patch(self,body: Optional[DeviceManagement] = None, request_configuration: Optional[DeviceManagementRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceManagement]:
         """
-        Update deviceManagement
+        Update the properties of a deviceManagement object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_management.DeviceManagement]
+        Returns: Optional[DeviceManagement]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import device_management
+        from ..models.device_management import DeviceManagement
 
-        return await self.request_adapter.send_async(request_info, device_management.DeviceManagement, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceManagement, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DeviceManagementRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get deviceManagement
+        Read properties and relationships of the deviceManagement object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,9 +147,9 @@ class DeviceManagementRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device_management.DeviceManagement] = None, request_configuration: Optional[DeviceManagementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceManagement] = None, request_configuration: Optional[DeviceManagementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update deviceManagement
+        Update the properties of a deviceManagement object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -168,311 +168,311 @@ class DeviceManagementRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def verify_windows_enrollment_auto_discovery_with_domain_name(self,domain_name: Optional[str] = None) -> verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder:
+    def verify_windows_enrollment_auto_discovery_with_domain_name(self,domain_name: Optional[str] = None) -> VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder:
         """
         Provides operations to call the verifyWindowsEnrollmentAutoDiscovery method.
         Args:
             domainName: Usage: domainName='{domainName}'
-        Returns: verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder
+        Returns: VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder
         """
         if not domain_name:
             raise TypeError("domain_name cannot be null.")
-        from .verify_windows_enrollment_auto_discovery_with_domain_name import verify_windows_enrollment_auto_discovery_with_domain_name_request_builder
+        from .verify_windows_enrollment_auto_discovery_with_domain_name.verify_windows_enrollment_auto_discovery_with_domain_name_request_builder import VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder
 
-        return verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domain_name)
+        return VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domain_name)
     
     @property
-    def apple_push_notification_certificate(self) -> apple_push_notification_certificate_request_builder.ApplePushNotificationCertificateRequestBuilder:
+    def apple_push_notification_certificate(self) -> ApplePushNotificationCertificateRequestBuilder:
         """
         Provides operations to manage the applePushNotificationCertificate property of the microsoft.graph.deviceManagement entity.
         """
-        from .apple_push_notification_certificate import apple_push_notification_certificate_request_builder
+        from .apple_push_notification_certificate.apple_push_notification_certificate_request_builder import ApplePushNotificationCertificateRequestBuilder
 
-        return apple_push_notification_certificate_request_builder.ApplePushNotificationCertificateRequestBuilder(self.request_adapter, self.path_parameters)
+        return ApplePushNotificationCertificateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def audit_events(self) -> audit_events_request_builder.AuditEventsRequestBuilder:
+    def audit_events(self) -> AuditEventsRequestBuilder:
         """
         Provides operations to manage the auditEvents property of the microsoft.graph.deviceManagement entity.
         """
-        from .audit_events import audit_events_request_builder
+        from .audit_events.audit_events_request_builder import AuditEventsRequestBuilder
 
-        return audit_events_request_builder.AuditEventsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AuditEventsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def compliance_management_partners(self) -> compliance_management_partners_request_builder.ComplianceManagementPartnersRequestBuilder:
+    def compliance_management_partners(self) -> ComplianceManagementPartnersRequestBuilder:
         """
         Provides operations to manage the complianceManagementPartners property of the microsoft.graph.deviceManagement entity.
         """
-        from .compliance_management_partners import compliance_management_partners_request_builder
+        from .compliance_management_partners.compliance_management_partners_request_builder import ComplianceManagementPartnersRequestBuilder
 
-        return compliance_management_partners_request_builder.ComplianceManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
+        return ComplianceManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def conditional_access_settings(self) -> conditional_access_settings_request_builder.ConditionalAccessSettingsRequestBuilder:
+    def conditional_access_settings(self) -> ConditionalAccessSettingsRequestBuilder:
         """
         Provides operations to manage the conditionalAccessSettings property of the microsoft.graph.deviceManagement entity.
         """
-        from .conditional_access_settings import conditional_access_settings_request_builder
+        from .conditional_access_settings.conditional_access_settings_request_builder import ConditionalAccessSettingsRequestBuilder
 
-        return conditional_access_settings_request_builder.ConditionalAccessSettingsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ConditionalAccessSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def detected_apps(self) -> detected_apps_request_builder.DetectedAppsRequestBuilder:
+    def detected_apps(self) -> DetectedAppsRequestBuilder:
         """
         Provides operations to manage the detectedApps property of the microsoft.graph.deviceManagement entity.
         """
-        from .detected_apps import detected_apps_request_builder
+        from .detected_apps.detected_apps_request_builder import DetectedAppsRequestBuilder
 
-        return detected_apps_request_builder.DetectedAppsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DetectedAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_categories(self) -> device_categories_request_builder.DeviceCategoriesRequestBuilder:
+    def device_categories(self) -> DeviceCategoriesRequestBuilder:
         """
         Provides operations to manage the deviceCategories property of the microsoft.graph.deviceManagement entity.
         """
-        from .device_categories import device_categories_request_builder
+        from .device_categories.device_categories_request_builder import DeviceCategoriesRequestBuilder
 
-        return device_categories_request_builder.DeviceCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_compliance_policies(self) -> device_compliance_policies_request_builder.DeviceCompliancePoliciesRequestBuilder:
+    def device_compliance_policies(self) -> DeviceCompliancePoliciesRequestBuilder:
         """
         Provides operations to manage the deviceCompliancePolicies property of the microsoft.graph.deviceManagement entity.
         """
-        from .device_compliance_policies import device_compliance_policies_request_builder
+        from .device_compliance_policies.device_compliance_policies_request_builder import DeviceCompliancePoliciesRequestBuilder
 
-        return device_compliance_policies_request_builder.DeviceCompliancePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceCompliancePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_compliance_policy_device_state_summary(self) -> device_compliance_policy_device_state_summary_request_builder.DeviceCompliancePolicyDeviceStateSummaryRequestBuilder:
+    def device_compliance_policy_device_state_summary(self) -> DeviceCompliancePolicyDeviceStateSummaryRequestBuilder:
         """
         Provides operations to manage the deviceCompliancePolicyDeviceStateSummary property of the microsoft.graph.deviceManagement entity.
         """
-        from .device_compliance_policy_device_state_summary import device_compliance_policy_device_state_summary_request_builder
+        from .device_compliance_policy_device_state_summary.device_compliance_policy_device_state_summary_request_builder import DeviceCompliancePolicyDeviceStateSummaryRequestBuilder
 
-        return device_compliance_policy_device_state_summary_request_builder.DeviceCompliancePolicyDeviceStateSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceCompliancePolicyDeviceStateSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_compliance_policy_setting_state_summaries(self) -> device_compliance_policy_setting_state_summaries_request_builder.DeviceCompliancePolicySettingStateSummariesRequestBuilder:
+    def device_compliance_policy_setting_state_summaries(self) -> DeviceCompliancePolicySettingStateSummariesRequestBuilder:
         """
         Provides operations to manage the deviceCompliancePolicySettingStateSummaries property of the microsoft.graph.deviceManagement entity.
         """
-        from .device_compliance_policy_setting_state_summaries import device_compliance_policy_setting_state_summaries_request_builder
+        from .device_compliance_policy_setting_state_summaries.device_compliance_policy_setting_state_summaries_request_builder import DeviceCompliancePolicySettingStateSummariesRequestBuilder
 
-        return device_compliance_policy_setting_state_summaries_request_builder.DeviceCompliancePolicySettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceCompliancePolicySettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_configuration_device_state_summaries(self) -> device_configuration_device_state_summaries_request_builder.DeviceConfigurationDeviceStateSummariesRequestBuilder:
+    def device_configuration_device_state_summaries(self) -> DeviceConfigurationDeviceStateSummariesRequestBuilder:
         """
         Provides operations to manage the deviceConfigurationDeviceStateSummaries property of the microsoft.graph.deviceManagement entity.
         """
-        from .device_configuration_device_state_summaries import device_configuration_device_state_summaries_request_builder
+        from .device_configuration_device_state_summaries.device_configuration_device_state_summaries_request_builder import DeviceConfigurationDeviceStateSummariesRequestBuilder
 
-        return device_configuration_device_state_summaries_request_builder.DeviceConfigurationDeviceStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceConfigurationDeviceStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_configurations(self) -> device_configurations_request_builder.DeviceConfigurationsRequestBuilder:
+    def device_configurations(self) -> DeviceConfigurationsRequestBuilder:
         """
         Provides operations to manage the deviceConfigurations property of the microsoft.graph.deviceManagement entity.
         """
-        from .device_configurations import device_configurations_request_builder
+        from .device_configurations.device_configurations_request_builder import DeviceConfigurationsRequestBuilder
 
-        return device_configurations_request_builder.DeviceConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_enrollment_configurations(self) -> device_enrollment_configurations_request_builder.DeviceEnrollmentConfigurationsRequestBuilder:
+    def device_enrollment_configurations(self) -> DeviceEnrollmentConfigurationsRequestBuilder:
         """
         Provides operations to manage the deviceEnrollmentConfigurations property of the microsoft.graph.deviceManagement entity.
         """
-        from .device_enrollment_configurations import device_enrollment_configurations_request_builder
+        from .device_enrollment_configurations.device_enrollment_configurations_request_builder import DeviceEnrollmentConfigurationsRequestBuilder
 
-        return device_enrollment_configurations_request_builder.DeviceEnrollmentConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceEnrollmentConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_management_partners(self) -> device_management_partners_request_builder.DeviceManagementPartnersRequestBuilder:
+    def device_management_partners(self) -> DeviceManagementPartnersRequestBuilder:
         """
         Provides operations to manage the deviceManagementPartners property of the microsoft.graph.deviceManagement entity.
         """
-        from .device_management_partners import device_management_partners_request_builder
+        from .device_management_partners.device_management_partners_request_builder import DeviceManagementPartnersRequestBuilder
 
-        return device_management_partners_request_builder.DeviceManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def exchange_connectors(self) -> exchange_connectors_request_builder.ExchangeConnectorsRequestBuilder:
+    def exchange_connectors(self) -> ExchangeConnectorsRequestBuilder:
         """
         Provides operations to manage the exchangeConnectors property of the microsoft.graph.deviceManagement entity.
         """
-        from .exchange_connectors import exchange_connectors_request_builder
+        from .exchange_connectors.exchange_connectors_request_builder import ExchangeConnectorsRequestBuilder
 
-        return exchange_connectors_request_builder.ExchangeConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExchangeConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def imported_windows_autopilot_device_identities(self) -> imported_windows_autopilot_device_identities_request_builder.ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder:
+    def imported_windows_autopilot_device_identities(self) -> ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder:
         """
         Provides operations to manage the importedWindowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
         """
-        from .imported_windows_autopilot_device_identities import imported_windows_autopilot_device_identities_request_builder
+        from .imported_windows_autopilot_device_identities.imported_windows_autopilot_device_identities_request_builder import ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder
 
-        return imported_windows_autopilot_device_identities_request_builder.ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ios_update_statuses(self) -> ios_update_statuses_request_builder.IosUpdateStatusesRequestBuilder:
+    def ios_update_statuses(self) -> IosUpdateStatusesRequestBuilder:
         """
         Provides operations to manage the iosUpdateStatuses property of the microsoft.graph.deviceManagement entity.
         """
-        from .ios_update_statuses import ios_update_statuses_request_builder
+        from .ios_update_statuses.ios_update_statuses_request_builder import IosUpdateStatusesRequestBuilder
 
-        return ios_update_statuses_request_builder.IosUpdateStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+        return IosUpdateStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def managed_device_overview(self) -> managed_device_overview_request_builder.ManagedDeviceOverviewRequestBuilder:
+    def managed_device_overview(self) -> ManagedDeviceOverviewRequestBuilder:
         """
         Provides operations to manage the managedDeviceOverview property of the microsoft.graph.deviceManagement entity.
         """
-        from .managed_device_overview import managed_device_overview_request_builder
+        from .managed_device_overview.managed_device_overview_request_builder import ManagedDeviceOverviewRequestBuilder
 
-        return managed_device_overview_request_builder.ManagedDeviceOverviewRequestBuilder(self.request_adapter, self.path_parameters)
+        return ManagedDeviceOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def managed_devices(self) -> managed_devices_request_builder.ManagedDevicesRequestBuilder:
+    def managed_devices(self) -> ManagedDevicesRequestBuilder:
         """
         Provides operations to manage the managedDevices property of the microsoft.graph.deviceManagement entity.
         """
-        from .managed_devices import managed_devices_request_builder
+        from .managed_devices.managed_devices_request_builder import ManagedDevicesRequestBuilder
 
-        return managed_devices_request_builder.ManagedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ManagedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def mobile_threat_defense_connectors(self) -> mobile_threat_defense_connectors_request_builder.MobileThreatDefenseConnectorsRequestBuilder:
+    def mobile_threat_defense_connectors(self) -> MobileThreatDefenseConnectorsRequestBuilder:
         """
         Provides operations to manage the mobileThreatDefenseConnectors property of the microsoft.graph.deviceManagement entity.
         """
-        from .mobile_threat_defense_connectors import mobile_threat_defense_connectors_request_builder
+        from .mobile_threat_defense_connectors.mobile_threat_defense_connectors_request_builder import MobileThreatDefenseConnectorsRequestBuilder
 
-        return mobile_threat_defense_connectors_request_builder.MobileThreatDefenseConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
+        return MobileThreatDefenseConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def notification_message_templates(self) -> notification_message_templates_request_builder.NotificationMessageTemplatesRequestBuilder:
+    def notification_message_templates(self) -> NotificationMessageTemplatesRequestBuilder:
         """
         Provides operations to manage the notificationMessageTemplates property of the microsoft.graph.deviceManagement entity.
         """
-        from .notification_message_templates import notification_message_templates_request_builder
+        from .notification_message_templates.notification_message_templates_request_builder import NotificationMessageTemplatesRequestBuilder
 
-        return notification_message_templates_request_builder.NotificationMessageTemplatesRequestBuilder(self.request_adapter, self.path_parameters)
+        return NotificationMessageTemplatesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def remote_assistance_partners(self) -> remote_assistance_partners_request_builder.RemoteAssistancePartnersRequestBuilder:
+    def remote_assistance_partners(self) -> RemoteAssistancePartnersRequestBuilder:
         """
         Provides operations to manage the remoteAssistancePartners property of the microsoft.graph.deviceManagement entity.
         """
-        from .remote_assistance_partners import remote_assistance_partners_request_builder
+        from .remote_assistance_partners.remote_assistance_partners_request_builder import RemoteAssistancePartnersRequestBuilder
 
-        return remote_assistance_partners_request_builder.RemoteAssistancePartnersRequestBuilder(self.request_adapter, self.path_parameters)
+        return RemoteAssistancePartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def reports(self) -> reports_request_builder.ReportsRequestBuilder:
+    def reports(self) -> ReportsRequestBuilder:
         """
         Provides operations to manage the reports property of the microsoft.graph.deviceManagement entity.
         """
-        from .reports import reports_request_builder
+        from .reports.reports_request_builder import ReportsRequestBuilder
 
-        return reports_request_builder.ReportsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReportsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def resource_operations(self) -> resource_operations_request_builder.ResourceOperationsRequestBuilder:
+    def resource_operations(self) -> ResourceOperationsRequestBuilder:
         """
         Provides operations to manage the resourceOperations property of the microsoft.graph.deviceManagement entity.
         """
-        from .resource_operations import resource_operations_request_builder
+        from .resource_operations.resource_operations_request_builder import ResourceOperationsRequestBuilder
 
-        return resource_operations_request_builder.ResourceOperationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ResourceOperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_assignments(self) -> role_assignments_request_builder.RoleAssignmentsRequestBuilder:
+    def role_assignments(self) -> RoleAssignmentsRequestBuilder:
         """
         Provides operations to manage the roleAssignments property of the microsoft.graph.deviceManagement entity.
         """
-        from .role_assignments import role_assignments_request_builder
+        from .role_assignments.role_assignments_request_builder import RoleAssignmentsRequestBuilder
 
-        return role_assignments_request_builder.RoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_definitions(self) -> role_definitions_request_builder.RoleDefinitionsRequestBuilder:
+    def role_definitions(self) -> RoleDefinitionsRequestBuilder:
         """
         Provides operations to manage the roleDefinitions property of the microsoft.graph.deviceManagement entity.
         """
-        from .role_definitions import role_definitions_request_builder
+        from .role_definitions.role_definitions_request_builder import RoleDefinitionsRequestBuilder
 
-        return role_definitions_request_builder.RoleDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def software_update_status_summary(self) -> software_update_status_summary_request_builder.SoftwareUpdateStatusSummaryRequestBuilder:
+    def software_update_status_summary(self) -> SoftwareUpdateStatusSummaryRequestBuilder:
         """
         Provides operations to manage the softwareUpdateStatusSummary property of the microsoft.graph.deviceManagement entity.
         """
-        from .software_update_status_summary import software_update_status_summary_request_builder
+        from .software_update_status_summary.software_update_status_summary_request_builder import SoftwareUpdateStatusSummaryRequestBuilder
 
-        return software_update_status_summary_request_builder.SoftwareUpdateStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+        return SoftwareUpdateStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def telecom_expense_management_partners(self) -> telecom_expense_management_partners_request_builder.TelecomExpenseManagementPartnersRequestBuilder:
+    def telecom_expense_management_partners(self) -> TelecomExpenseManagementPartnersRequestBuilder:
         """
         Provides operations to manage the telecomExpenseManagementPartners property of the microsoft.graph.deviceManagement entity.
         """
-        from .telecom_expense_management_partners import telecom_expense_management_partners_request_builder
+        from .telecom_expense_management_partners.telecom_expense_management_partners_request_builder import TelecomExpenseManagementPartnersRequestBuilder
 
-        return telecom_expense_management_partners_request_builder.TelecomExpenseManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
+        return TelecomExpenseManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def terms_and_conditions(self) -> terms_and_conditions_request_builder.TermsAndConditionsRequestBuilder:
+    def terms_and_conditions(self) -> TermsAndConditionsRequestBuilder:
         """
         Provides operations to manage the termsAndConditions property of the microsoft.graph.deviceManagement entity.
         """
-        from .terms_and_conditions import terms_and_conditions_request_builder
+        from .terms_and_conditions.terms_and_conditions_request_builder import TermsAndConditionsRequestBuilder
 
-        return terms_and_conditions_request_builder.TermsAndConditionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return TermsAndConditionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def troubleshooting_events(self) -> troubleshooting_events_request_builder.TroubleshootingEventsRequestBuilder:
+    def troubleshooting_events(self) -> TroubleshootingEventsRequestBuilder:
         """
         Provides operations to manage the troubleshootingEvents property of the microsoft.graph.deviceManagement entity.
         """
-        from .troubleshooting_events import troubleshooting_events_request_builder
+        from .troubleshooting_events.troubleshooting_events_request_builder import TroubleshootingEventsRequestBuilder
 
-        return troubleshooting_events_request_builder.TroubleshootingEventsRequestBuilder(self.request_adapter, self.path_parameters)
+        return TroubleshootingEventsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def windows_autopilot_device_identities(self) -> windows_autopilot_device_identities_request_builder.WindowsAutopilotDeviceIdentitiesRequestBuilder:
+    def windows_autopilot_device_identities(self) -> WindowsAutopilotDeviceIdentitiesRequestBuilder:
         """
         Provides operations to manage the windowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
         """
-        from .windows_autopilot_device_identities import windows_autopilot_device_identities_request_builder
+        from .windows_autopilot_device_identities.windows_autopilot_device_identities_request_builder import WindowsAutopilotDeviceIdentitiesRequestBuilder
 
-        return windows_autopilot_device_identities_request_builder.WindowsAutopilotDeviceIdentitiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return WindowsAutopilotDeviceIdentitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def windows_information_protection_app_learning_summaries(self) -> windows_information_protection_app_learning_summaries_request_builder.WindowsInformationProtectionAppLearningSummariesRequestBuilder:
+    def windows_information_protection_app_learning_summaries(self) -> WindowsInformationProtectionAppLearningSummariesRequestBuilder:
         """
         Provides operations to manage the windowsInformationProtectionAppLearningSummaries property of the microsoft.graph.deviceManagement entity.
         """
-        from .windows_information_protection_app_learning_summaries import windows_information_protection_app_learning_summaries_request_builder
+        from .windows_information_protection_app_learning_summaries.windows_information_protection_app_learning_summaries_request_builder import WindowsInformationProtectionAppLearningSummariesRequestBuilder
 
-        return windows_information_protection_app_learning_summaries_request_builder.WindowsInformationProtectionAppLearningSummariesRequestBuilder(self.request_adapter, self.path_parameters)
+        return WindowsInformationProtectionAppLearningSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def windows_information_protection_network_learning_summaries(self) -> windows_information_protection_network_learning_summaries_request_builder.WindowsInformationProtectionNetworkLearningSummariesRequestBuilder:
+    def windows_information_protection_network_learning_summaries(self) -> WindowsInformationProtectionNetworkLearningSummariesRequestBuilder:
         """
         Provides operations to manage the windowsInformationProtectionNetworkLearningSummaries property of the microsoft.graph.deviceManagement entity.
         """
-        from .windows_information_protection_network_learning_summaries import windows_information_protection_network_learning_summaries_request_builder
+        from .windows_information_protection_network_learning_summaries.windows_information_protection_network_learning_summaries_request_builder import WindowsInformationProtectionNetworkLearningSummariesRequestBuilder
 
-        return windows_information_protection_network_learning_summaries_request_builder.WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(self.request_adapter, self.path_parameters)
+        return WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceManagementRequestBuilderGetQueryParameters():
         """
-        Get deviceManagement
+        Read properties and relationships of the deviceManagement object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

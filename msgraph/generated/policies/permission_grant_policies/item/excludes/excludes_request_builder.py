@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import permission_grant_condition_set, permission_grant_condition_set_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import permission_grant_condition_set_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.permission_grant_condition_set import PermissionGrantConditionSet
+    from .....models.permission_grant_condition_set_collection_response import PermissionGrantConditionSetCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.permission_grant_condition_set_item_request_builder import PermissionGrantConditionSetItemRequestBuilder
 
 class ExcludesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class ExcludesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_permission_grant_condition_set_id(self,permission_grant_condition_set_id: str) -> permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder:
+    def by_permission_grant_condition_set_id(self,permission_grant_condition_set_id: str) -> PermissionGrantConditionSetItemRequestBuilder:
         """
         Provides operations to manage the excludes property of the microsoft.graph.permissionGrantPolicy entity.
         Args:
             permission_grant_condition_set_id: Unique identifier of the item
-        Returns: permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder
+        Returns: PermissionGrantConditionSetItemRequestBuilder
         """
         if not permission_grant_condition_set_id:
             raise TypeError("permission_grant_condition_set_id cannot be null.")
-        from .item import permission_grant_condition_set_item_request_builder
+        from .item.permission_grant_condition_set_item_request_builder import PermissionGrantConditionSetItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["permissionGrantConditionSet%2Did"] = permission_grant_condition_set_id
-        return permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return PermissionGrantConditionSetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ExcludesRequestBuilderGetRequestConfiguration] = None) -> Optional[permission_grant_condition_set_collection_response.PermissionGrantConditionSetCollectionResponse]:
+    async def get(self,request_configuration: Optional[ExcludesRequestBuilderGetRequestConfiguration] = None) -> Optional[PermissionGrantConditionSetCollectionResponse]:
         """
         Retrieve the condition sets which are *excluded* in a permissionGrantPolicy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[permission_grant_condition_set_collection_response.PermissionGrantConditionSetCollectionResponse]
+        Returns: Optional[PermissionGrantConditionSetCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import permission_grant_condition_set_collection_response
+        from .....models.permission_grant_condition_set_collection_response import PermissionGrantConditionSetCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, permission_grant_condition_set_collection_response.PermissionGrantConditionSetCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PermissionGrantConditionSetCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[permission_grant_condition_set.PermissionGrantConditionSet] = None, request_configuration: Optional[ExcludesRequestBuilderPostRequestConfiguration] = None) -> Optional[permission_grant_condition_set.PermissionGrantConditionSet]:
+    async def post(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[ExcludesRequestBuilderPostRequestConfiguration] = None) -> Optional[PermissionGrantConditionSet]:
         """
         Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the **excludes** collection of a  permissionGrantPolicy.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[permission_grant_condition_set.PermissionGrantConditionSet]
+        Returns: Optional[PermissionGrantConditionSet]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import permission_grant_condition_set
+        from .....models.permission_grant_condition_set import PermissionGrantConditionSet
 
-        return await self.request_adapter.send_async(request_info, permission_grant_condition_set.PermissionGrantConditionSet, error_mapping)
+        return await self.request_adapter.send_async(request_info, PermissionGrantConditionSet, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ExcludesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class ExcludesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[permission_grant_condition_set.PermissionGrantConditionSet] = None, request_configuration: Optional[ExcludesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[ExcludesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the **excludes** collection of a  permissionGrantPolicy.
         Args:
@@ -139,13 +140,13 @@ class ExcludesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ExcludesRequestBuilderGetQueryParameters():

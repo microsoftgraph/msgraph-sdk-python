@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.o_data_errors import o_data_error
-    from ........models.security import data_source_collection_response
-    from .count import count_request_builder
-    from .item import data_source_item_request_builder
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.security.data_source_collection_response import DataSourceCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.data_source_item_request_builder import DataSourceItemRequestBuilder
 
 class CustodianSourcesRequestBuilder():
     """
@@ -37,42 +37,42 @@ class CustodianSourcesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_data_source_id(self,data_source_id: str) -> data_source_item_request_builder.DataSourceItemRequestBuilder:
+    def by_data_source_id(self,data_source_id: str) -> DataSourceItemRequestBuilder:
         """
         Provides operations to manage the custodianSources property of the microsoft.graph.security.ediscoverySearch entity.
         Args:
             data_source_id: Unique identifier of the item
-        Returns: data_source_item_request_builder.DataSourceItemRequestBuilder
+        Returns: DataSourceItemRequestBuilder
         """
         if not data_source_id:
             raise TypeError("data_source_id cannot be null.")
-        from .item import data_source_item_request_builder
+        from .item.data_source_item_request_builder import DataSourceItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["dataSource%2Did"] = data_source_id
-        return data_source_item_request_builder.DataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[CustodianSourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[data_source_collection_response.DataSourceCollectionResponse]:
+    async def get(self,request_configuration: Optional[CustodianSourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[DataSourceCollectionResponse]:
         """
         Get the list of custodial data sources associated with an eDiscovery search.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[data_source_collection_response.DataSourceCollectionResponse]
+        Returns: Optional[DataSourceCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.security import data_source_collection_response
+        from ........models.security.data_source_collection_response import DataSourceCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, data_source_collection_response.DataSourceCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DataSourceCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CustodianSourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class CustodianSourcesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CustodianSourcesRequestBuilderGetQueryParameters():

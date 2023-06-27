@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import onenote_page_preview_links
+    from .onenote_page_preview_links import OnenotePagePreviewLinks
 
 @dataclass
 class OnenotePagePreview(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The links property
-    links: Optional[onenote_page_preview_links.OnenotePagePreviewLinks] = None
+    links: Optional[OnenotePagePreviewLinks] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The previewText property
@@ -35,12 +35,12 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import onenote_page_preview_links
+        from .onenote_page_preview_links import OnenotePagePreviewLinks
 
-        from . import onenote_page_preview_links
+        from .onenote_page_preview_links import OnenotePagePreviewLinks
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "links": lambda n : setattr(self, 'links', n.get_object_value(onenote_page_preview_links.OnenotePagePreviewLinks)),
+            "links": lambda n : setattr(self, 'links', n.get_object_value(OnenotePagePreviewLinks)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "previewText": lambda n : setattr(self, 'preview_text', n.get_str_value()),
         }

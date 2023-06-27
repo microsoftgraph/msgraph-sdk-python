@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import action_result_part
+    from .action_result_part import ActionResultPart
 
-from . import action_result_part
+from .action_result_part import ActionResultPart
 
 @dataclass
-class AadUserConversationMemberResult(action_result_part.ActionResultPart):
+class AadUserConversationMemberResult(ActionResultPart):
     odata_type = "#microsoft.graph.aadUserConversationMemberResult"
     # The userId property
     user_id: Optional[str] = None
@@ -31,9 +31,9 @@ class AadUserConversationMemberResult(action_result_part.ActionResultPart):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import action_result_part
+        from .action_result_part import ActionResultPart
 
-        from . import action_result_part
+        from .action_result_part import ActionResultPart
 
         fields: Dict[str, Callable[[Any], None]] = {
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),

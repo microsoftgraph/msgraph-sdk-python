@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import planner_group
-    from ....models.o_data_errors import o_data_error
-    from .plans import plans_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.planner_group import PlannerGroup
+    from .plans.plans_request_builder import PlansRequestBuilder
 
 class PlannerRequestBuilder():
     """
@@ -45,62 +45,62 @@ class PlannerRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PlannerRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_group.PlannerGroup]:
+    async def get(self,request_configuration: Optional[PlannerRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerGroup]:
         """
         Entry-point to Planner resource that might exist for a Unified Group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner_group.PlannerGroup]
+        Returns: Optional[PlannerGroup]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import planner_group
+        from ....models.planner_group import PlannerGroup
 
-        return await self.request_adapter.send_async(request_info, planner_group.PlannerGroup, error_mapping)
+        return await self.request_adapter.send_async(request_info, PlannerGroup, error_mapping)
     
-    async def patch(self,body: Optional[planner_group.PlannerGroup] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_group.PlannerGroup]:
+    async def patch(self,body: Optional[PlannerGroup] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> Optional[PlannerGroup]:
         """
         Update the navigation property planner in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner_group.PlannerGroup]
+        Returns: Optional[PlannerGroup]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import planner_group
+        from ....models.planner_group import PlannerGroup
 
-        return await self.request_adapter.send_async(request_info, planner_group.PlannerGroup, error_mapping)
+        return await self.request_adapter.send_async(request_info, PlannerGroup, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PlannerRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class PlannerRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[planner_group.PlannerGroup] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PlannerGroup] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property planner in groups
         Args:
@@ -158,13 +158,13 @@ class PlannerRequestBuilder():
         return request_info
     
     @property
-    def plans(self) -> plans_request_builder.PlansRequestBuilder:
+    def plans(self) -> PlansRequestBuilder:
         """
         Provides operations to manage the plans property of the microsoft.graph.plannerGroup entity.
         """
-        from .plans import plans_request_builder
+        from .plans.plans_request_builder import PlansRequestBuilder
 
-        return plans_request_builder.PlansRequestBuilder(self.request_adapter, self.path_parameters)
+        return PlansRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PlannerRequestBuilderDeleteRequestConfiguration():

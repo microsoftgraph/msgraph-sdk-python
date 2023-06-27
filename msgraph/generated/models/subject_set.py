@@ -4,7 +4,17 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attribute_rule_members, connected_organization_members, external_sponsors, group_members, internal_sponsors, requestor_manager, single_service_principal, single_user, target_application_owners, target_manager
+    from .attribute_rule_members import AttributeRuleMembers
+    from .connected_organization_members import ConnectedOrganizationMembers
+    from .external_sponsors import ExternalSponsors
+    from .group_members import GroupMembers
+    from .identity_governance.rule_based_subject_set import RuleBasedSubjectSet
+    from .internal_sponsors import InternalSponsors
+    from .requestor_manager import RequestorManager
+    from .single_service_principal import SingleServicePrincipal
+    from .single_user import SingleUser
+    from .target_application_owners import TargetApplicationOwners
+    from .target_manager import TargetManager
 
 @dataclass
 class SubjectSet(AdditionalDataHolder, Parsable):
@@ -29,45 +39,49 @@ class SubjectSet(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.attributeRuleMembers".casefold():
-            from . import attribute_rule_members
+            from .attribute_rule_members import AttributeRuleMembers
 
-            return attribute_rule_members.AttributeRuleMembers()
+            return AttributeRuleMembers()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.connectedOrganizationMembers".casefold():
-            from . import connected_organization_members
+            from .connected_organization_members import ConnectedOrganizationMembers
 
-            return connected_organization_members.ConnectedOrganizationMembers()
+            return ConnectedOrganizationMembers()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalSponsors".casefold():
-            from . import external_sponsors
+            from .external_sponsors import ExternalSponsors
 
-            return external_sponsors.ExternalSponsors()
+            return ExternalSponsors()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupMembers".casefold():
-            from . import group_members
+            from .group_members import GroupMembers
 
-            return group_members.GroupMembers()
+            return GroupMembers()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.ruleBasedSubjectSet".casefold():
+            from .identity_governance.rule_based_subject_set import RuleBasedSubjectSet
+
+            return RuleBasedSubjectSet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.internalSponsors".casefold():
-            from . import internal_sponsors
+            from .internal_sponsors import InternalSponsors
 
-            return internal_sponsors.InternalSponsors()
+            return InternalSponsors()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.requestorManager".casefold():
-            from . import requestor_manager
+            from .requestor_manager import RequestorManager
 
-            return requestor_manager.RequestorManager()
+            return RequestorManager()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.singleServicePrincipal".casefold():
-            from . import single_service_principal
+            from .single_service_principal import SingleServicePrincipal
 
-            return single_service_principal.SingleServicePrincipal()
+            return SingleServicePrincipal()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.singleUser".casefold():
-            from . import single_user
+            from .single_user import SingleUser
 
-            return single_user.SingleUser()
+            return SingleUser()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetApplicationOwners".casefold():
-            from . import target_application_owners
+            from .target_application_owners import TargetApplicationOwners
 
-            return target_application_owners.TargetApplicationOwners()
+            return TargetApplicationOwners()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetManager".casefold():
-            from . import target_manager
+            from .target_manager import TargetManager
 
-            return target_manager.TargetManager()
+            return TargetManager()
         return SubjectSet()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -75,9 +89,29 @@ class SubjectSet(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attribute_rule_members, connected_organization_members, external_sponsors, group_members, internal_sponsors, requestor_manager, single_service_principal, single_user, target_application_owners, target_manager
+        from .attribute_rule_members import AttributeRuleMembers
+        from .connected_organization_members import ConnectedOrganizationMembers
+        from .external_sponsors import ExternalSponsors
+        from .group_members import GroupMembers
+        from .identity_governance.rule_based_subject_set import RuleBasedSubjectSet
+        from .internal_sponsors import InternalSponsors
+        from .requestor_manager import RequestorManager
+        from .single_service_principal import SingleServicePrincipal
+        from .single_user import SingleUser
+        from .target_application_owners import TargetApplicationOwners
+        from .target_manager import TargetManager
 
-        from . import attribute_rule_members, connected_organization_members, external_sponsors, group_members, internal_sponsors, requestor_manager, single_service_principal, single_user, target_application_owners, target_manager
+        from .attribute_rule_members import AttributeRuleMembers
+        from .connected_organization_members import ConnectedOrganizationMembers
+        from .external_sponsors import ExternalSponsors
+        from .group_members import GroupMembers
+        from .identity_governance.rule_based_subject_set import RuleBasedSubjectSet
+        from .internal_sponsors import InternalSponsors
+        from .requestor_manager import RequestorManager
+        from .single_service_principal import SingleServicePrincipal
+        from .single_user import SingleUser
+        from .target_application_owners import TargetApplicationOwners
+        from .target_manager import TargetManager
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

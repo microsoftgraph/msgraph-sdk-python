@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import managed_app_registration
+    from .managed_app_registration import ManagedAppRegistration
 
-from . import managed_app_registration
+from .managed_app_registration import ManagedAppRegistration
 
 @dataclass
-class AndroidManagedAppRegistration(managed_app_registration.ManagedAppRegistration):
+class AndroidManagedAppRegistration(ManagedAppRegistration):
     odata_type = "#microsoft.graph.androidManagedAppRegistration"
     
     @staticmethod
@@ -29,9 +29,9 @@ class AndroidManagedAppRegistration(managed_app_registration.ManagedAppRegistrat
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_app_registration
+        from .managed_app_registration import ManagedAppRegistration
 
-        from . import managed_app_registration
+        from .managed_app_registration import ManagedAppRegistration
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

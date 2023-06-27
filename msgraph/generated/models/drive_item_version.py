@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_item_version
+    from .base_item_version import BaseItemVersion
 
-from . import base_item_version
+from .base_item_version import BaseItemVersion
 
 @dataclass
-class DriveItemVersion(base_item_version.BaseItemVersion):
+class DriveItemVersion(BaseItemVersion):
     odata_type = "#microsoft.graph.driveItemVersion"
     # The content stream for this version of the item.
     content: Optional[bytes] = None
@@ -33,9 +33,9 @@ class DriveItemVersion(base_item_version.BaseItemVersion):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_item_version
+        from .base_item_version import BaseItemVersion
 
-        from . import base_item_version
+        from .base_item_version import BaseItemVersion
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
@@ -54,7 +54,7 @@ class DriveItemVersion(base_item_version.BaseItemVersion):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("content", self.content)
+        writer.write_bytes_value("content", self.content)
         writer.write_int_value("size", self.size)
     
 

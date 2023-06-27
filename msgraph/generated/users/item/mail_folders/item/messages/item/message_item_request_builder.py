@@ -10,20 +10,20 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import message
-    from .......models.o_data_errors import o_data_error
-    from .attachments import attachments_request_builder
-    from .copy import copy_request_builder
-    from .create_forward import create_forward_request_builder
-    from .create_reply import create_reply_request_builder
-    from .create_reply_all import create_reply_all_request_builder
-    from .extensions import extensions_request_builder
-    from .forward import forward_request_builder
-    from .move import move_request_builder
-    from .reply import reply_request_builder
-    from .reply_all import reply_all_request_builder
-    from .send import send_request_builder
-    from .value import content_request_builder
+    from .......models.message import Message
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .attachments.attachments_request_builder import AttachmentsRequestBuilder
+    from .copy.copy_request_builder import CopyRequestBuilder
+    from .create_forward.create_forward_request_builder import CreateForwardRequestBuilder
+    from .create_reply.create_reply_request_builder import CreateReplyRequestBuilder
+    from .create_reply_all.create_reply_all_request_builder import CreateReplyAllRequestBuilder
+    from .extensions.extensions_request_builder import ExtensionsRequestBuilder
+    from .forward.forward_request_builder import ForwardRequestBuilder
+    from .move.move_request_builder import MoveRequestBuilder
+    from .reply.reply_request_builder import ReplyRequestBuilder
+    from .reply_all.reply_all_request_builder import ReplyAllRequestBuilder
+    from .send.send_request_builder import SendRequestBuilder
+    from .value.content_request_builder import ContentRequestBuilder
 
 class MessageItemRequestBuilder():
     """
@@ -56,62 +56,62 @@ class MessageItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[MessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[message.Message]:
+    async def get(self,request_configuration: Optional[MessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Message]:
         """
         The collection of messages in the mailFolder.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[message.Message]
+        Returns: Optional[Message]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import message
+        from .......models.message import Message
 
-        return await self.request_adapter.send_async(request_info, message.Message, error_mapping)
+        return await self.request_adapter.send_async(request_info, Message, error_mapping)
     
-    async def patch(self,body: Optional[message.Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[message.Message]:
+    async def patch(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Message]:
         """
         Update the navigation property messages in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[message.Message]
+        Returns: Optional[Message]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import message
+        from .......models.message import Message
 
-        return await self.request_adapter.send_async(request_info, message.Message, error_mapping)
+        return await self.request_adapter.send_async(request_info, Message, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -147,7 +147,7 @@ class MessageItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[message.Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property messages in users
         Args:
@@ -169,112 +169,112 @@ class MessageItemRequestBuilder():
         return request_info
     
     @property
-    def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
+    def attachments(self) -> AttachmentsRequestBuilder:
         """
         Provides operations to manage the attachments property of the microsoft.graph.message entity.
         """
-        from .attachments import attachments_request_builder
+        from .attachments.attachments_request_builder import AttachmentsRequestBuilder
 
-        return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def content(self) -> content_request_builder.ContentRequestBuilder:
+    def content(self) -> ContentRequestBuilder:
         """
         Provides operations to manage the media for the user entity.
         """
-        from .value import content_request_builder
+        from .value.content_request_builder import ContentRequestBuilder
 
-        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+        return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def copy(self) -> copy_request_builder.CopyRequestBuilder:
+    def copy(self) -> CopyRequestBuilder:
         """
         Provides operations to call the copy method.
         """
-        from .copy import copy_request_builder
+        from .copy.copy_request_builder import CopyRequestBuilder
 
-        return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
+        return CopyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def create_forward(self) -> create_forward_request_builder.CreateForwardRequestBuilder:
+    def create_forward(self) -> CreateForwardRequestBuilder:
         """
         Provides operations to call the createForward method.
         """
-        from .create_forward import create_forward_request_builder
+        from .create_forward.create_forward_request_builder import CreateForwardRequestBuilder
 
-        return create_forward_request_builder.CreateForwardRequestBuilder(self.request_adapter, self.path_parameters)
+        return CreateForwardRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def create_reply(self) -> create_reply_request_builder.CreateReplyRequestBuilder:
+    def create_reply(self) -> CreateReplyRequestBuilder:
         """
         Provides operations to call the createReply method.
         """
-        from .create_reply import create_reply_request_builder
+        from .create_reply.create_reply_request_builder import CreateReplyRequestBuilder
 
-        return create_reply_request_builder.CreateReplyRequestBuilder(self.request_adapter, self.path_parameters)
+        return CreateReplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def create_reply_all(self) -> create_reply_all_request_builder.CreateReplyAllRequestBuilder:
+    def create_reply_all(self) -> CreateReplyAllRequestBuilder:
         """
         Provides operations to call the createReplyAll method.
         """
-        from .create_reply_all import create_reply_all_request_builder
+        from .create_reply_all.create_reply_all_request_builder import CreateReplyAllRequestBuilder
 
-        return create_reply_all_request_builder.CreateReplyAllRequestBuilder(self.request_adapter, self.path_parameters)
+        return CreateReplyAllRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+    def extensions(self) -> ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.message entity.
         """
-        from .extensions import extensions_request_builder
+        from .extensions.extensions_request_builder import ExtensionsRequestBuilder
 
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def forward(self) -> forward_request_builder.ForwardRequestBuilder:
+    def forward(self) -> ForwardRequestBuilder:
         """
         Provides operations to call the forward method.
         """
-        from .forward import forward_request_builder
+        from .forward.forward_request_builder import ForwardRequestBuilder
 
-        return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
+        return ForwardRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def move(self) -> move_request_builder.MoveRequestBuilder:
+    def move(self) -> MoveRequestBuilder:
         """
         Provides operations to call the move method.
         """
-        from .move import move_request_builder
+        from .move.move_request_builder import MoveRequestBuilder
 
-        return move_request_builder.MoveRequestBuilder(self.request_adapter, self.path_parameters)
+        return MoveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def reply(self) -> reply_request_builder.ReplyRequestBuilder:
+    def reply(self) -> ReplyRequestBuilder:
         """
         Provides operations to call the reply method.
         """
-        from .reply import reply_request_builder
+        from .reply.reply_request_builder import ReplyRequestBuilder
 
-        return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def reply_all(self) -> reply_all_request_builder.ReplyAllRequestBuilder:
+    def reply_all(self) -> ReplyAllRequestBuilder:
         """
         Provides operations to call the replyAll method.
         """
-        from .reply_all import reply_all_request_builder
+        from .reply_all.reply_all_request_builder import ReplyAllRequestBuilder
 
-        return reply_all_request_builder.ReplyAllRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReplyAllRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def send(self) -> send_request_builder.SendRequestBuilder:
+    def send(self) -> SendRequestBuilder:
         """
         Provides operations to call the send method.
         """
-        from .send import send_request_builder
+        from .send.send_request_builder import SendRequestBuilder
 
-        return send_request_builder.SendRequestBuilder(self.request_adapter, self.path_parameters)
+        return SendRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MessageItemRequestBuilderDeleteRequestConfiguration():

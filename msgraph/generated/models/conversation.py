@@ -1,26 +1,27 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conversation_thread, entity
+    from .conversation_thread import ConversationThread
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Conversation(entity.Entity):
+class Conversation(Entity):
     # Indicates whether any of the posts within this Conversation has at least one attachment. Supports $filter (eq, ne) and $search.
     has_attachments: Optional[bool] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    last_delivered_date_time: Optional[datetime] = None
+    last_delivered_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A short summary from the body of the latest post in this conversation. Supports $filter (eq, ne, le, ge).
     preview: Optional[str] = None
     # A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
-    threads: Optional[List[conversation_thread.ConversationThread]] = None
+    threads: Optional[List[ConversationThread]] = None
     # The topic of the conversation. This property can be set when the conversation is created, but it cannot be updated.
     topic: Optional[str] = None
     # All the users that sent a message to this Conversation.
@@ -43,15 +44,17 @@ class Conversation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conversation_thread, entity
+        from .conversation_thread import ConversationThread
+        from .entity import Entity
 
-        from . import conversation_thread, entity
+        from .conversation_thread import ConversationThread
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "lastDeliveredDateTime": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
             "preview": lambda n : setattr(self, 'preview', n.get_str_value()),
-            "threads": lambda n : setattr(self, 'threads', n.get_collection_of_object_values(conversation_thread.ConversationThread)),
+            "threads": lambda n : setattr(self, 'threads', n.get_collection_of_object_values(ConversationThread)),
             "topic": lambda n : setattr(self, 'topic', n.get_str_value()),
             "uniqueSenders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
         }
@@ -69,7 +72,7 @@ class Conversation(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("hasAttachments", self.has_attachments)
-        writer.write_datetime_value("lastDeliveredDateTime", self.last_delivered_date_time)
+        writer.write_datetime_value()("lastDeliveredDateTime", self.last_delivered_date_time)
         writer.write_str_value("preview", self.preview)
         writer.write_collection_of_object_values("threads", self.threads)
         writer.write_str_value("topic", self.topic)

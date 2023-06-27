@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class IfPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class IfPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The logicalTest property
-    logical_test: Optional[json.Json] = None
+    logical_test: Optional[Json] = None
     # The valueIfFalse property
-    value_if_false: Optional[json.Json] = None
+    value_if_false: Optional[Json] = None
     # The valueIfTrue property
-    value_if_true: Optional[json.Json] = None
+    value_if_true: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IfPostRequestBody:
@@ -35,14 +35,14 @@ class IfPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "logicalTest": lambda n : setattr(self, 'logical_test', n.get_object_value(json.Json)),
-            "valueIfFalse": lambda n : setattr(self, 'value_if_false', n.get_object_value(json.Json)),
-            "valueIfTrue": lambda n : setattr(self, 'value_if_true', n.get_object_value(json.Json)),
+            "logicalTest": lambda n : setattr(self, 'logical_test', n.get_object_value(Json)),
+            "valueIfFalse": lambda n : setattr(self, 'value_if_false', n.get_object_value(Json)),
+            "valueIfTrue": lambda n : setattr(self, 'value_if_true', n.get_object_value(Json)),
         }
         return fields
     

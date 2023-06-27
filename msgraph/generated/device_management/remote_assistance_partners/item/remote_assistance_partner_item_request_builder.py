@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import remote_assistance_partner
-    from ....models.o_data_errors import o_data_error
-    from .begin_onboarding import begin_onboarding_request_builder
-    from .disconnect import disconnect_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.remote_assistance_partner import RemoteAssistancePartner
+    from .begin_onboarding.begin_onboarding_request_builder import BeginOnboardingRequestBuilder
+    from .disconnect.disconnect_request_builder import DisconnectRequestBuilder
 
 class RemoteAssistancePartnerItemRequestBuilder():
     """
@@ -39,73 +39,73 @@ class RemoteAssistancePartnerItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[RemoteAssistancePartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property remoteAssistancePartners for deviceManagement
+        Deletes a remoteAssistancePartner.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RemoteAssistancePartnerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[remote_assistance_partner.RemoteAssistancePartner]:
+    async def get(self,request_configuration: Optional[RemoteAssistancePartnerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[RemoteAssistancePartner]:
         """
-        The remote assist partners.
+        Read properties and relationships of the remoteAssistancePartner object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[remote_assistance_partner.RemoteAssistancePartner]
+        Returns: Optional[RemoteAssistancePartner]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import remote_assistance_partner
+        from ....models.remote_assistance_partner import RemoteAssistancePartner
 
-        return await self.request_adapter.send_async(request_info, remote_assistance_partner.RemoteAssistancePartner, error_mapping)
+        return await self.request_adapter.send_async(request_info, RemoteAssistancePartner, error_mapping)
     
-    async def patch(self,body: Optional[remote_assistance_partner.RemoteAssistancePartner] = None, request_configuration: Optional[RemoteAssistancePartnerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[remote_assistance_partner.RemoteAssistancePartner]:
+    async def patch(self,body: Optional[RemoteAssistancePartner] = None, request_configuration: Optional[RemoteAssistancePartnerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[RemoteAssistancePartner]:
         """
-        Update the navigation property remoteAssistancePartners in deviceManagement
+        Update the properties of a remoteAssistancePartner object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[remote_assistance_partner.RemoteAssistancePartner]
+        Returns: Optional[RemoteAssistancePartner]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import remote_assistance_partner
+        from ....models.remote_assistance_partner import RemoteAssistancePartner
 
-        return await self.request_adapter.send_async(request_info, remote_assistance_partner.RemoteAssistancePartner, error_mapping)
+        return await self.request_adapter.send_async(request_info, RemoteAssistancePartner, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RemoteAssistancePartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property remoteAssistancePartners for deviceManagement
+        Deletes a remoteAssistancePartner.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -121,7 +121,7 @@ class RemoteAssistancePartnerItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RemoteAssistancePartnerItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The remote assist partners.
+        Read properties and relationships of the remoteAssistancePartner object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,9 +137,9 @@ class RemoteAssistancePartnerItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[remote_assistance_partner.RemoteAssistancePartner] = None, request_configuration: Optional[RemoteAssistancePartnerItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[RemoteAssistancePartner] = None, request_configuration: Optional[RemoteAssistancePartnerItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property remoteAssistancePartners in deviceManagement
+        Update the properties of a remoteAssistancePartner object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -159,22 +159,22 @@ class RemoteAssistancePartnerItemRequestBuilder():
         return request_info
     
     @property
-    def begin_onboarding(self) -> begin_onboarding_request_builder.BeginOnboardingRequestBuilder:
+    def begin_onboarding(self) -> BeginOnboardingRequestBuilder:
         """
         Provides operations to call the beginOnboarding method.
         """
-        from .begin_onboarding import begin_onboarding_request_builder
+        from .begin_onboarding.begin_onboarding_request_builder import BeginOnboardingRequestBuilder
 
-        return begin_onboarding_request_builder.BeginOnboardingRequestBuilder(self.request_adapter, self.path_parameters)
+        return BeginOnboardingRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def disconnect(self) -> disconnect_request_builder.DisconnectRequestBuilder:
+    def disconnect(self) -> DisconnectRequestBuilder:
         """
         Provides operations to call the disconnect method.
         """
-        from .disconnect import disconnect_request_builder
+        from .disconnect.disconnect_request_builder import DisconnectRequestBuilder
 
-        return disconnect_request_builder.DisconnectRequestBuilder(self.request_adapter, self.path_parameters)
+        return DisconnectRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RemoteAssistancePartnerItemRequestBuilderDeleteRequestConfiguration():
@@ -191,7 +191,7 @@ class RemoteAssistancePartnerItemRequestBuilder():
     @dataclass
     class RemoteAssistancePartnerItemRequestBuilderGetQueryParameters():
         """
-        The remote assist partners.
+        Read properties and relationships of the remoteAssistancePartner object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

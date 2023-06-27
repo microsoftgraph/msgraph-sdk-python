@@ -10,14 +10,15 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import user, user_collection_response
-    from ..models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .delta import delta_request_builder
-    from .get_available_extension_properties import get_available_extension_properties_request_builder
-    from .get_by_ids import get_by_ids_request_builder
-    from .item import user_item_request_builder
-    from .validate_properties import validate_properties_request_builder
+    from ..models.o_data_errors.o_data_error import ODataError
+    from ..models.user import User
+    from ..models.user_collection_response import UserCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
+    from .get_available_extension_properties.get_available_extension_properties_request_builder import GetAvailableExtensionPropertiesRequestBuilder
+    from .get_by_ids.get_by_ids_request_builder import GetByIdsRequestBuilder
+    from .item.user_item_request_builder import UserItemRequestBuilder
+    from .validate_properties.validate_properties_request_builder import ValidatePropertiesRequestBuilder
 
 class UsersRequestBuilder():
     """
@@ -41,71 +42,71 @@ class UsersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_user_id(self,user_id: str) -> user_item_request_builder.UserItemRequestBuilder:
+    def by_user_id(self,user_id: str) -> UserItemRequestBuilder:
         """
         Provides operations to manage the collection of user entities.
         Args:
             user_id: Unique identifier of the item
-        Returns: user_item_request_builder.UserItemRequestBuilder
+        Returns: UserItemRequestBuilder
         """
         if not user_id:
             raise TypeError("user_id cannot be null.")
-        from .item import user_item_request_builder
+        from .item.user_item_request_builder import UserItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["user%2Did"] = user_id
-        return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return UserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> Optional[user_collection_response.UserCollectionResponse]:
+    async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> Optional[UserCollectionResponse]:
         """
-        Retrieve a list of user objects.
+        List properties and relationships of the user objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_collection_response.UserCollectionResponse]
+        Returns: Optional[UserCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import user_collection_response
+        from ..models.user_collection_response import UserCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, user_collection_response.UserCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[user.User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> Optional[user.User]:
+    async def post(self,body: Optional[User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> Optional[User]:
         """
         Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user.User]
+        Returns: Optional[User]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import user
+        from ..models.user import User
 
-        return await self.request_adapter.send_async(request_info, user.User, error_mapping)
+        return await self.request_adapter.send_async(request_info, User, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of user objects.
+        List properties and relationships of the user objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -121,7 +122,7 @@ class UsersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[user.User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
         Args:
@@ -143,54 +144,54 @@ class UsersRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def delta(self) -> DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        from .delta import delta_request_builder
+        from .delta.delta_request_builder import DeltaRequestBuilder
 
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
+    def get_available_extension_properties(self) -> GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
-        from .get_available_extension_properties import get_available_extension_properties_request_builder
+        from .get_available_extension_properties.get_available_extension_properties_request_builder import GetAvailableExtensionPropertiesRequestBuilder
 
-        return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
+    def get_by_ids(self) -> GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
-        from .get_by_ids import get_by_ids_request_builder
+        from .get_by_ids.get_by_ids_request_builder import GetByIdsRequestBuilder
 
-        return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+    def validate_properties(self) -> ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
-        from .validate_properties import validate_properties_request_builder
+        from .validate_properties.validate_properties_request_builder import ValidatePropertiesRequestBuilder
 
-        return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class UsersRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of user objects.
+        List properties and relationships of the user objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookFormatProtection(entity.Entity):
+class WorkbookFormatProtection(Entity):
     # Indicates if Excel hides the formula for the cells in the range. A null value indicates that the entire range doesn't have uniform formula hidden setting.
     formula_hidden: Optional[bool] = None
     # Indicates if Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.
@@ -34,9 +34,9 @@ class WorkbookFormatProtection(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "formulaHidden": lambda n : setattr(self, 'formula_hidden', n.get_bool_value()),

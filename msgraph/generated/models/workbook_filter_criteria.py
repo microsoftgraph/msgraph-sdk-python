@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import json, workbook_icon
+    from .json import Json
+    from .workbook_icon import WorkbookIcon
 
 @dataclass
 class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
@@ -22,13 +23,13 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     # The filterOn property
     filter_on: Optional[str] = None
     # The icon property
-    icon: Optional[workbook_icon.WorkbookIcon] = None
+    icon: Optional[WorkbookIcon] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The operator property
     operator: Optional[str] = None
     # The values property
-    values: Optional[json.Json] = None
+    values: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookFilterCriteria:
@@ -47,9 +48,11 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import json, workbook_icon
+        from .json import Json
+        from .workbook_icon import WorkbookIcon
 
-        from . import json, workbook_icon
+        from .json import Json
+        from .workbook_icon import WorkbookIcon
 
         fields: Dict[str, Callable[[Any], None]] = {
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
@@ -57,10 +60,10 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
             "criterion2": lambda n : setattr(self, 'criterion2', n.get_str_value()),
             "dynamicCriteria": lambda n : setattr(self, 'dynamic_criteria', n.get_str_value()),
             "filterOn": lambda n : setattr(self, 'filter_on', n.get_str_value()),
-            "icon": lambda n : setattr(self, 'icon', n.get_object_value(workbook_icon.WorkbookIcon)),
+            "icon": lambda n : setattr(self, 'icon', n.get_object_value(WorkbookIcon)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operator": lambda n : setattr(self, 'operator', n.get_str_value()),
-            "values": lambda n : setattr(self, 'values', n.get_object_value(json.Json)),
+            "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         return fields
     

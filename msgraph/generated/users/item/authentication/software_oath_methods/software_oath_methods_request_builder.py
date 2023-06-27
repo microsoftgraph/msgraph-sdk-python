@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import software_oath_authentication_method_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import software_oath_authentication_method_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.software_oath_authentication_method_collection_response import SoftwareOathAuthenticationMethodCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.software_oath_authentication_method_item_request_builder import SoftwareOathAuthenticationMethodItemRequestBuilder
 
 class SoftwareOathMethodsRequestBuilder():
     """
@@ -37,42 +37,42 @@ class SoftwareOathMethodsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_software_oath_authentication_method_id(self,software_oath_authentication_method_id: str) -> software_oath_authentication_method_item_request_builder.SoftwareOathAuthenticationMethodItemRequestBuilder:
+    def by_software_oath_authentication_method_id(self,software_oath_authentication_method_id: str) -> SoftwareOathAuthenticationMethodItemRequestBuilder:
         """
         Provides operations to manage the softwareOathMethods property of the microsoft.graph.authentication entity.
         Args:
             software_oath_authentication_method_id: Unique identifier of the item
-        Returns: software_oath_authentication_method_item_request_builder.SoftwareOathAuthenticationMethodItemRequestBuilder
+        Returns: SoftwareOathAuthenticationMethodItemRequestBuilder
         """
         if not software_oath_authentication_method_id:
             raise TypeError("software_oath_authentication_method_id cannot be null.")
-        from .item import software_oath_authentication_method_item_request_builder
+        from .item.software_oath_authentication_method_item_request_builder import SoftwareOathAuthenticationMethodItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["softwareOathAuthenticationMethod%2Did"] = software_oath_authentication_method_id
-        return software_oath_authentication_method_item_request_builder.SoftwareOathAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return SoftwareOathAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SoftwareOathMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[software_oath_authentication_method_collection_response.SoftwareOathAuthenticationMethodCollectionResponse]:
+    async def get(self,request_configuration: Optional[SoftwareOathMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[SoftwareOathAuthenticationMethodCollectionResponse]:
         """
         Retrieve a list of a user's software OATH token authentication method objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[software_oath_authentication_method_collection_response.SoftwareOathAuthenticationMethodCollectionResponse]
+        Returns: Optional[SoftwareOathAuthenticationMethodCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import software_oath_authentication_method_collection_response
+        from .....models.software_oath_authentication_method_collection_response import SoftwareOathAuthenticationMethodCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, software_oath_authentication_method_collection_response.SoftwareOathAuthenticationMethodCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SoftwareOathAuthenticationMethodCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SoftwareOathMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class SoftwareOathMethodsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SoftwareOathMethodsRequestBuilderGetQueryParameters():

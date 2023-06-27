@@ -4,15 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_managed_app_protection, ios_managed_app_protection, managed_app_protection, targeted_managed_app_policy_assignment
+    from .android_managed_app_protection import AndroidManagedAppProtection
+    from .ios_managed_app_protection import IosManagedAppProtection
+    from .managed_app_protection import ManagedAppProtection
+    from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
-from . import managed_app_protection
+from .managed_app_protection import ManagedAppProtection
 
 @dataclass
-class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
+class TargetedManagedAppProtection(ManagedAppProtection):
     odata_type = "#microsoft.graph.targetedManagedAppProtection"
     # Navigation property to list of inclusion and exclusion groups to which the policy is deployed.
-    assignments: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None
+    assignments: Optional[List[TargetedManagedAppPolicyAssignment]] = None
     # Indicates if the policy is deployed to any inclusion groups or not.
     is_assigned: Optional[bool] = None
     
@@ -31,13 +34,13 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidManagedAppProtection".casefold():
-            from . import android_managed_app_protection
+            from .android_managed_app_protection import AndroidManagedAppProtection
 
-            return android_managed_app_protection.AndroidManagedAppProtection()
+            return AndroidManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosManagedAppProtection".casefold():
-            from . import ios_managed_app_protection
+            from .ios_managed_app_protection import IosManagedAppProtection
 
-            return ios_managed_app_protection.IosManagedAppProtection()
+            return IosManagedAppProtection()
         return TargetedManagedAppProtection()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -45,12 +48,18 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_managed_app_protection, ios_managed_app_protection, managed_app_protection, targeted_managed_app_policy_assignment
+        from .android_managed_app_protection import AndroidManagedAppProtection
+        from .ios_managed_app_protection import IosManagedAppProtection
+        from .managed_app_protection import ManagedAppProtection
+        from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
-        from . import android_managed_app_protection, ios_managed_app_protection, managed_app_protection, targeted_managed_app_policy_assignment
+        from .android_managed_app_protection import AndroidManagedAppProtection
+        from .ios_managed_app_protection import IosManagedAppProtection
+        from .managed_app_protection import ManagedAppProtection
+        from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment)),
+            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(TargetedManagedAppPolicyAssignment)),
             "isAssigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_class, education_school, education_user
+    from .education_class import EducationClass
+    from .education_school import EducationSchool
+    from .education_user import EducationUser
 
 @dataclass
 class EducationRoot(AdditionalDataHolder, Parsable):
@@ -12,15 +14,15 @@ class EducationRoot(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The classes property
-    classes: Optional[List[education_class.EducationClass]] = None
+    classes: Optional[List[EducationClass]] = None
     # The me property
-    me: Optional[education_user.EducationUser] = None
+    me: Optional[EducationUser] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The schools property
-    schools: Optional[List[education_school.EducationSchool]] = None
+    schools: Optional[List[EducationSchool]] = None
     # The users property
-    users: Optional[List[education_user.EducationUser]] = None
+    users: Optional[List[EducationUser]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationRoot:
@@ -39,16 +41,20 @@ class EducationRoot(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_class, education_school, education_user
+        from .education_class import EducationClass
+        from .education_school import EducationSchool
+        from .education_user import EducationUser
 
-        from . import education_class, education_school, education_user
+        from .education_class import EducationClass
+        from .education_school import EducationSchool
+        from .education_user import EducationUser
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "classes": lambda n : setattr(self, 'classes', n.get_collection_of_object_values(education_class.EducationClass)),
-            "me": lambda n : setattr(self, 'me', n.get_object_value(education_user.EducationUser)),
+            "classes": lambda n : setattr(self, 'classes', n.get_collection_of_object_values(EducationClass)),
+            "me": lambda n : setattr(self, 'me', n.get_object_value(EducationUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "schools": lambda n : setattr(self, 'schools', n.get_collection_of_object_values(education_school.EducationSchool)),
-            "users": lambda n : setattr(self, 'users', n.get_collection_of_object_values(education_user.EducationUser)),
+            "schools": lambda n : setattr(self, 'schools', n.get_collection_of_object_values(EducationSchool)),
+            "users": lambda n : setattr(self, 'users', n.get_collection_of_object_values(EducationUser)),
         }
         return fields
     

@@ -1,23 +1,24 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import day_of_week, device_configuration
+    from .day_of_week import DayOfWeek
+    from .device_configuration import DeviceConfiguration
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
+class IosUpdateConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.iosUpdateConfiguration"
     # Active Hours End (active hours mean the time window when updates install should not happen)
-    active_hours_end: Optional[time] = None
+    active_hours_end: Optional[datetime.time] = None
     # Active Hours Start (active hours mean the time window when updates install should not happen)
-    active_hours_start: Optional[time] = None
+    active_hours_start: Optional[datetime.time] = None
     # Days in week for which active hours are configured. This collection can contain a maximum of 7 elements.
-    scheduled_install_days: Optional[List[day_of_week.DayOfWeek]] = None
+    scheduled_install_days: Optional[List[DayOfWeek]] = None
     # UTC Time Offset indicated in minutes
     utc_time_offset_in_minutes: Optional[int] = None
     
@@ -38,14 +39,16 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import day_of_week, device_configuration
+        from .day_of_week import DayOfWeek
+        from .device_configuration import DeviceConfiguration
 
-        from . import day_of_week, device_configuration
+        from .day_of_week import DayOfWeek
+        from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_time_value()),
             "activeHoursStart": lambda n : setattr(self, 'active_hours_start', n.get_time_value()),
-            "scheduledInstallDays": lambda n : setattr(self, 'scheduled_install_days', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
+            "scheduledInstallDays": lambda n : setattr(self, 'scheduled_install_days', n.get_collection_of_enum_values(DayOfWeek)),
             "utcTimeOffsetInMinutes": lambda n : setattr(self, 'utc_time_offset_in_minutes', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -61,8 +64,8 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_time_value("activeHoursEnd", self.active_hours_end)
-        writer.write_time_value("activeHoursStart", self.active_hours_start)
+        writer.write_time_value()("activeHoursEnd", self.active_hours_end)
+        writer.write_time_value()("activeHoursStart", self.active_hours_start)
         writer.write_collection_of_enum_values("scheduledInstallDays", self.scheduled_install_days)
         writer.write_int_value("utcTimeOffsetInMinutes", self.utc_time_offset_in_minutes)
     

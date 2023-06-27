@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -12,7 +12,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
     # The clickAction property
     click_action: Optional[str] = None
     # The clickDateTime property
-    click_date_time: Optional[datetime] = None
+    click_date_time: Optional[datetime.datetime] = None
     # The id property
     id: Optional[str] = None
     # The OdataType property
@@ -61,7 +61,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("clickAction", self.click_action)
-        writer.write_datetime_value("clickDateTime", self.click_date_time)
+        writer.write_datetime_value()("clickDateTime", self.click_date_time)
         writer.write_str_value("id", self.id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("sourceId", self.source_id)

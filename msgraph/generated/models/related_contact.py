@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import contact_relationship
+    from .contact_relationship import ContactRelationship
 
 @dataclass
 class RelatedContact(AdditionalDataHolder, Parsable):
@@ -22,7 +22,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The relationship property
-    relationship: Optional[contact_relationship.ContactRelationship] = None
+    relationship: Optional[ContactRelationship] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RelatedContact:
@@ -41,9 +41,9 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import contact_relationship
+        from .contact_relationship import ContactRelationship
 
-        from . import contact_relationship
+        from .contact_relationship import ContactRelationship
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accessConsent": lambda n : setattr(self, 'access_consent', n.get_bool_value()),
@@ -51,7 +51,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(contact_relationship.ContactRelationship)),
+            "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(ContactRelationship)),
         }
         return fields
     

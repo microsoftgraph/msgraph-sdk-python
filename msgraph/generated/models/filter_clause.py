@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import filter_operand
+    from .filter_operand import FilterOperand
 
 @dataclass
 class FilterClause(AdditionalDataHolder, Parsable):
@@ -18,7 +18,7 @@ class FilterClause(AdditionalDataHolder, Parsable):
     # The sourceOperandName property
     source_operand_name: Optional[str] = None
     # The targetOperand property
-    target_operand: Optional[filter_operand.FilterOperand] = None
+    target_operand: Optional[FilterOperand] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FilterClause:
@@ -37,15 +37,15 @@ class FilterClause(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import filter_operand
+        from .filter_operand import FilterOperand
 
-        from . import filter_operand
+        from .filter_operand import FilterOperand
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operatorName": lambda n : setattr(self, 'operator_name', n.get_str_value()),
             "sourceOperandName": lambda n : setattr(self, 'source_operand_name', n.get_str_value()),
-            "targetOperand": lambda n : setattr(self, 'target_operand', n.get_object_value(filter_operand.FilterOperand)),
+            "targetOperand": lambda n : setattr(self, 'target_operand', n.get_object_value(FilterOperand)),
         }
         return fields
     

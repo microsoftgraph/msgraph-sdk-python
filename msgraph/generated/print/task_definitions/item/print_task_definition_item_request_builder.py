@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import print_task_definition
-    from ....models.o_data_errors import o_data_error
-    from .tasks import tasks_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.print_task_definition import PrintTaskDefinition
+    from .tasks.tasks_request_builder import TasksRequestBuilder
 
 class PrintTaskDefinitionItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class PrintTaskDefinitionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[print_task_definition.PrintTaskDefinition]:
+    async def get(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintTaskDefinition]:
         """
         Get details about a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_task_definition.PrintTaskDefinition]
+        Returns: Optional[PrintTaskDefinition]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import print_task_definition
+        from ....models.print_task_definition import PrintTaskDefinition
 
-        return await self.request_adapter.send_async(request_info, print_task_definition.PrintTaskDefinition, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintTaskDefinition, error_mapping)
     
-    async def patch(self,body: Optional[print_task_definition.PrintTaskDefinition] = None, request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[print_task_definition.PrintTaskDefinition]:
+    async def patch(self,body: Optional[PrintTaskDefinition] = None, request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrintTaskDefinition]:
         """
         Update a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_task_definition.PrintTaskDefinition]
+        Returns: Optional[PrintTaskDefinition]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import print_task_definition
+        from ....models.print_task_definition import PrintTaskDefinition
 
-        return await self.request_adapter.send_async(request_info, print_task_definition.PrintTaskDefinition, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintTaskDefinition, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class PrintTaskDefinitionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[print_task_definition.PrintTaskDefinition] = None, request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PrintTaskDefinition] = None, request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
@@ -158,13 +158,13 @@ class PrintTaskDefinitionItemRequestBuilder():
         return request_info
     
     @property
-    def tasks(self) -> tasks_request_builder.TasksRequestBuilder:
+    def tasks(self) -> TasksRequestBuilder:
         """
         Provides operations to manage the tasks property of the microsoft.graph.printTaskDefinition entity.
         """
-        from .tasks import tasks_request_builder
+        from .tasks.tasks_request_builder import TasksRequestBuilder
 
-        return tasks_request_builder.TasksRequestBuilder(self.request_adapter, self.path_parameters)
+        return TasksRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PrintTaskDefinitionItemRequestBuilderDeleteRequestConfiguration():

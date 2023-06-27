@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import error_details, inner_error
+    from .error_details import ErrorDetails
+    from .inner_error import InnerError
 
 @dataclass
 class MainError(AdditionalDataHolder, Parsable):
@@ -14,9 +15,9 @@ class MainError(AdditionalDataHolder, Parsable):
     # The code property
     code: Optional[str] = None
     # The details property
-    details: Optional[List[error_details.ErrorDetails]] = None
+    details: Optional[List[ErrorDetails]] = None
     # The innerError property
-    inner_error: Optional[inner_error.InnerError] = None
+    inner_error: Optional[InnerError] = None
     # The message property
     message: Optional[str] = None
     # The target property
@@ -39,14 +40,16 @@ class MainError(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import error_details, inner_error
+        from .error_details import ErrorDetails
+        from .inner_error import InnerError
 
-        from . import error_details, inner_error
+        from .error_details import ErrorDetails
+        from .inner_error import InnerError
 
         fields: Dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
-            "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(error_details.ErrorDetails)),
-            "innerError": lambda n : setattr(self, 'inner_error', n.get_object_value(inner_error.InnerError)),
+            "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(ErrorDetails)),
+            "innerError": lambda n : setattr(self, 'inner_error', n.get_object_value(InnerError)),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "target": lambda n : setattr(self, 'target', n.get_str_value()),
         }

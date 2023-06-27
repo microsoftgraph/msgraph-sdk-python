@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import authored_note
-    from ......models.o_data_errors import o_data_error
+    from ......models.authored_note import AuthoredNote
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class AuthoredNoteItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class AuthoredNoteItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AuthoredNoteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[authored_note.AuthoredNote]:
+    async def get(self,request_configuration: Optional[AuthoredNoteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthoredNote]:
         """
         List of notes associcated with the request.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[authored_note.AuthoredNote]
+        Returns: Optional[AuthoredNote]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import authored_note
+        from ......models.authored_note import AuthoredNote
 
-        return await self.request_adapter.send_async(request_info, authored_note.AuthoredNote, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuthoredNote, error_mapping)
     
-    async def patch(self,body: Optional[authored_note.AuthoredNote] = None, request_configuration: Optional[AuthoredNoteItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[authored_note.AuthoredNote]:
+    async def patch(self,body: Optional[AuthoredNote] = None, request_configuration: Optional[AuthoredNoteItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AuthoredNote]:
         """
         Update the navigation property notes in privacy
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[authored_note.AuthoredNote]
+        Returns: Optional[AuthoredNote]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import authored_note
+        from ......models.authored_note import AuthoredNote
 
-        return await self.request_adapter.send_async(request_info, authored_note.AuthoredNote, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuthoredNote, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AuthoredNoteItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class AuthoredNoteItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[authored_note.AuthoredNote] = None, request_configuration: Optional[AuthoredNoteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AuthoredNote] = None, request_configuration: Optional[AuthoredNoteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property notes in privacy
         Args:

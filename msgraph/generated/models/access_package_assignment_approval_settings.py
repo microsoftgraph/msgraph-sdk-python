@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_package_approval_stage
+    from .access_package_approval_stage import AccessPackageApprovalStage
 
 @dataclass
 class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
@@ -18,7 +18,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # If approval is required, the one, two or three elements of this collection define each of the stages of approval. An empty array is present if no approval is required.
-    stages: Optional[List[access_package_approval_stage.AccessPackageApprovalStage]] = None
+    stages: Optional[List[AccessPackageApprovalStage]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentApprovalSettings:
@@ -37,15 +37,15 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_approval_stage
+        from .access_package_approval_stage import AccessPackageApprovalStage
 
-        from . import access_package_approval_stage
+        from .access_package_approval_stage import AccessPackageApprovalStage
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isApprovalRequiredForAdd": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
             "isApprovalRequiredForUpdate": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(access_package_approval_stage.AccessPackageApprovalStage)),
+            "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(AccessPackageApprovalStage)),
         }
         return fields
     

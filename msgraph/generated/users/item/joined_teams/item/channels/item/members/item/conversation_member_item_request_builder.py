@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import conversation_member
-    from .........models.o_data_errors import o_data_error
+    from .........models.conversation_member import ConversationMember
+    from .........models.o_data_errors.o_data_error import ODataError
 
 class ConversationMemberItemRequestBuilder():
     """
@@ -37,73 +37,73 @@ class ConversationMemberItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a conversationMember from a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
+        Delete a conversationMember from a channel.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_member.ConversationMember]:
+    async def get(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConversationMember]:
         """
         Get a conversationMember from a channel.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[conversation_member.ConversationMember]
+        Returns: Optional[ConversationMember]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import conversation_member
+        from .........models.conversation_member import ConversationMember
 
-        return await self.request_adapter.send_async(request_info, conversation_member.ConversationMember, error_mapping)
+        return await self.request_adapter.send_async(request_info, ConversationMember, error_mapping)
     
-    async def patch(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[ConversationMemberItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[conversation_member.ConversationMember]:
+    async def patch(self,body: Optional[ConversationMember] = None, request_configuration: Optional[ConversationMemberItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ConversationMember]:
         """
-        Update the role of a conversationMember in a team or channel.
+        Update the role of a conversationMember in a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[conversation_member.ConversationMember]
+        Returns: Optional[ConversationMember]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import conversation_member
+        from .........models.conversation_member import ConversationMember
 
-        return await self.request_adapter.send_async(request_info, conversation_member.ConversationMember, error_mapping)
+        return await self.request_adapter.send_async(request_info, ConversationMember, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a conversationMember from a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
+        Delete a conversationMember from a channel.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class ConversationMemberItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[ConversationMemberItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ConversationMember] = None, request_configuration: Optional[ConversationMemberItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the role of a conversationMember in a team or channel.
+        Update the role of a conversationMember in a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

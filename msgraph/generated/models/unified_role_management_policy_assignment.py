@@ -4,16 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, unified_role_management_policy
+    from .entity import Entity
+    from .unified_role_management_policy import UnifiedRoleManagementPolicy
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class UnifiedRoleManagementPolicyAssignment(entity.Entity):
+class UnifiedRoleManagementPolicyAssignment(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The policy that's associated with a policy assignment. Supports $expand and a nested $expand of the rules and effectiveRules relationships for the policy.
-    policy: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy] = None
+    policy: Optional[UnifiedRoleManagementPolicy] = None
     # The id of the policy. Inherited from entity.
     policy_id: Optional[str] = None
     # The identifier of the role definition object where the policy applies. If not specified, the policy applies to all roles. Supports $filter (eq).
@@ -40,12 +41,14 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, unified_role_management_policy
+        from .entity import Entity
+        from .unified_role_management_policy import UnifiedRoleManagementPolicy
 
-        from . import entity, unified_role_management_policy
+        from .entity import Entity
+        from .unified_role_management_policy import UnifiedRoleManagementPolicy
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "policy": lambda n : setattr(self, 'policy', n.get_object_value(unified_role_management_policy.UnifiedRoleManagementPolicy)),
+            "policy": lambda n : setattr(self, 'policy', n.get_object_value(UnifiedRoleManagementPolicy)),
             "policyId": lambda n : setattr(self, 'policy_id', n.get_str_value()),
             "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
             "scopeId": lambda n : setattr(self, 'scope_id', n.get_str_value()),

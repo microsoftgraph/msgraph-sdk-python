@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import comms_operation
+    from .comms_operation import CommsOperation
 
-from . import comms_operation
+from .comms_operation import CommsOperation
 
 @dataclass
-class UnmuteParticipantOperation(comms_operation.CommsOperation):
+class UnmuteParticipantOperation(CommsOperation):
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -30,9 +30,9 @@ class UnmuteParticipantOperation(comms_operation.CommsOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import comms_operation
+        from .comms_operation import CommsOperation
 
-        from . import comms_operation
+        from .comms_operation import CommsOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

@@ -4,16 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, on_premises_directory_synchronization_configuration, on_premises_directory_synchronization_feature
+    from .entity import Entity
+    from .on_premises_directory_synchronization_configuration import OnPremisesDirectorySynchronizationConfiguration
+    from .on_premises_directory_synchronization_feature import OnPremisesDirectorySynchronizationFeature
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class OnPremisesDirectorySynchronization(entity.Entity):
+class OnPremisesDirectorySynchronization(Entity):
     # Consists of configurations that can be fine-tuned and impact the on-premises directory synchronization process for a tenant.
-    configuration: Optional[on_premises_directory_synchronization_configuration.OnPremisesDirectorySynchronizationConfiguration] = None
+    configuration: Optional[OnPremisesDirectorySynchronizationConfiguration] = None
     # The features property
-    features: Optional[on_premises_directory_synchronization_feature.OnPremisesDirectorySynchronizationFeature] = None
+    features: Optional[OnPremisesDirectorySynchronizationFeature] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -34,13 +36,17 @@ class OnPremisesDirectorySynchronization(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, on_premises_directory_synchronization_configuration, on_premises_directory_synchronization_feature
+        from .entity import Entity
+        from .on_premises_directory_synchronization_configuration import OnPremisesDirectorySynchronizationConfiguration
+        from .on_premises_directory_synchronization_feature import OnPremisesDirectorySynchronizationFeature
 
-        from . import entity, on_premises_directory_synchronization_configuration, on_premises_directory_synchronization_feature
+        from .entity import Entity
+        from .on_premises_directory_synchronization_configuration import OnPremisesDirectorySynchronizationConfiguration
+        from .on_premises_directory_synchronization_feature import OnPremisesDirectorySynchronizationFeature
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(on_premises_directory_synchronization_configuration.OnPremisesDirectorySynchronizationConfiguration)),
-            "features": lambda n : setattr(self, 'features', n.get_object_value(on_premises_directory_synchronization_feature.OnPremisesDirectorySynchronizationFeature)),
+            "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(OnPremisesDirectorySynchronizationConfiguration)),
+            "features": lambda n : setattr(self, 'features', n.get_object_value(OnPremisesDirectorySynchronizationFeature)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

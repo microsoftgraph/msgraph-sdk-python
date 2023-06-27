@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import invite_post_request_body, invite_response
-    from ......models.o_data_errors import o_data_error
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .invite_post_request_body import InvitePostRequestBody
+    from .invite_response import InviteResponse
 
 class InviteRequestBuilder():
     """
@@ -35,32 +36,32 @@ class InviteRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[invite_post_request_body.InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> Optional[invite_response.InviteResponse]:
+    async def post(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> Optional[InviteResponse]:
         """
         Sends a sharing invitation for a **driveItem**.A sharing invitation provides permissions to the recipients and optionally sends them an email with a [sharing link][].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[invite_response.InviteResponse]
+        Returns: Optional[InviteResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import invite_response
+        from .invite_response import InviteResponse
 
-        return await self.request_adapter.send_async(request_info, invite_response.InviteResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, InviteResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[invite_post_request_body.InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Sends a sharing invitation for a **driveItem**.A sharing invitation provides permissions to the recipients and optionally sends them an email with a [sharing link][].
         Args:

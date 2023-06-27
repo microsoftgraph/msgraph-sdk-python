@@ -4,27 +4,34 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_item, content_type_info, document_set_version, drive_item, field_value_set, item_analytics, list_item_version, sharepoint_ids
+    from .base_item import BaseItem
+    from .content_type_info import ContentTypeInfo
+    from .document_set_version import DocumentSetVersion
+    from .drive_item import DriveItem
+    from .field_value_set import FieldValueSet
+    from .item_analytics import ItemAnalytics
+    from .list_item_version import ListItemVersion
+    from .sharepoint_ids import SharepointIds
 
-from . import base_item
+from .base_item import BaseItem
 
 @dataclass
-class ListItem(base_item.BaseItem):
+class ListItem(BaseItem):
     odata_type = "#microsoft.graph.listItem"
     # Analytics about the view activities that took place on this item.
-    analytics: Optional[item_analytics.ItemAnalytics] = None
+    analytics: Optional[ItemAnalytics] = None
     # The content type of this list item
-    content_type: Optional[content_type_info.ContentTypeInfo] = None
+    content_type: Optional[ContentTypeInfo] = None
     # Version information for a document set version created by a user.
-    document_set_versions: Optional[List[document_set_version.DocumentSetVersion]] = None
+    document_set_versions: Optional[List[DocumentSetVersion]] = None
     # For document libraries, the driveItem relationship exposes the listItem as a [driveItem][]
-    drive_item: Optional[drive_item.DriveItem] = None
+    drive_item: Optional[DriveItem] = None
     # The values of the columns set on this list item.
-    fields: Optional[field_value_set.FieldValueSet] = None
+    fields: Optional[FieldValueSet] = None
     # Returns identifiers useful for SharePoint REST compatibility. Read-only.
-    sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
+    sharepoint_ids: Optional[SharepointIds] = None
     # The list of previous versions of the list item.
-    versions: Optional[List[list_item_version.ListItemVersion]] = None
+    versions: Optional[List[ListItemVersion]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ListItem:
@@ -43,18 +50,32 @@ class ListItem(base_item.BaseItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_item, content_type_info, document_set_version, drive_item, field_value_set, item_analytics, list_item_version, sharepoint_ids
+        from .base_item import BaseItem
+        from .content_type_info import ContentTypeInfo
+        from .document_set_version import DocumentSetVersion
+        from .drive_item import DriveItem
+        from .field_value_set import FieldValueSet
+        from .item_analytics import ItemAnalytics
+        from .list_item_version import ListItemVersion
+        from .sharepoint_ids import SharepointIds
 
-        from . import base_item, content_type_info, document_set_version, drive_item, field_value_set, item_analytics, list_item_version, sharepoint_ids
+        from .base_item import BaseItem
+        from .content_type_info import ContentTypeInfo
+        from .document_set_version import DocumentSetVersion
+        from .drive_item import DriveItem
+        from .field_value_set import FieldValueSet
+        from .item_analytics import ItemAnalytics
+        from .list_item_version import ListItemVersion
+        from .sharepoint_ids import SharepointIds
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(item_analytics.ItemAnalytics)),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
-            "documentSetVersions": lambda n : setattr(self, 'document_set_versions', n.get_collection_of_object_values(document_set_version.DocumentSetVersion)),
-            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
-            "fields": lambda n : setattr(self, 'fields', n.get_object_value(field_value_set.FieldValueSet)),
-            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
-            "versions": lambda n : setattr(self, 'versions', n.get_collection_of_object_values(list_item_version.ListItemVersion)),
+            "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(ItemAnalytics)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(ContentTypeInfo)),
+            "documentSetVersions": lambda n : setattr(self, 'document_set_versions', n.get_collection_of_object_values(DocumentSetVersion)),
+            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
+            "fields": lambda n : setattr(self, 'fields', n.get_object_value(FieldValueSet)),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
+            "versions": lambda n : setattr(self, 'versions', n.get_collection_of_object_values(ListItemVersion)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -5,12 +5,12 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import managed_e_book
+    from .managed_e_book import ManagedEBook
 
-from . import managed_e_book
+from .managed_e_book import ManagedEBook
 
 @dataclass
-class IosVppEBook(managed_e_book.ManagedEBook):
+class IosVppEBook(ManagedEBook):
     odata_type = "#microsoft.graph.iosVppEBook"
     # The Apple ID associated with Vpp token.
     apple_id: Optional[str] = None
@@ -46,9 +46,9 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_e_book
+        from .managed_e_book import ManagedEBook
 
-        from . import managed_e_book
+        from .managed_e_book import ManagedEBook
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appleId": lambda n : setattr(self, 'apple_id', n.get_str_value()),

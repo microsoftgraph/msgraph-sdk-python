@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, device_and_app_management_role_assignment
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class DeviceAndAppManagementRoleAssignmentCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class DeviceAndAppManagementRoleAssignmentCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment]] = None
+    value: Optional[List[DeviceAndAppManagementRoleAssignment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceAndAppManagementRoleAssignmentCollectionResponse:
@@ -30,12 +31,14 @@ class DeviceAndAppManagementRoleAssignmentCollectionResponse(base_collection_pag
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, device_and_app_management_role_assignment
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
 
-        from . import base_collection_pagination_count_response, device_and_app_management_role_assignment
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(DeviceAndAppManagementRoleAssignment)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

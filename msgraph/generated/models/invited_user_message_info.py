@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import recipient
+    from .recipient import Recipient
 
 @dataclass
 class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Additional recipients the invitation message should be sent to. Currently only 1 additional recipient is supported.
-    cc_recipients: Optional[List[recipient.Recipient]] = None
+    cc_recipients: Optional[List[Recipient]] = None
     # Customized message body you want to send if you don't want the default message.
     customized_message_body: Optional[str] = None
     # The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.
@@ -37,12 +37,12 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import recipient
+        from .recipient import Recipient
 
-        from . import recipient
+        from .recipient import Recipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(recipient.Recipient)),
+            "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(Recipient)),
             "customizedMessageBody": lambda n : setattr(self, 'customized_message_body', n.get_str_value()),
             "messageLanguage": lambda n : setattr(self, 'message_language', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

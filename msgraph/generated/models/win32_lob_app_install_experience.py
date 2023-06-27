@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import run_as_account_type, win32_lob_app_restart_behavior
+    from .run_as_account_type import RunAsAccountType
+    from .win32_lob_app_restart_behavior import Win32LobAppRestartBehavior
 
 @dataclass
 class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
@@ -15,11 +16,11 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Indicates the type of restart action.
-    device_restart_behavior: Optional[win32_lob_app_restart_behavior.Win32LobAppRestartBehavior] = None
+    device_restart_behavior: Optional[Win32LobAppRestartBehavior] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the type of execution context the app runs in.
-    run_as_account: Optional[run_as_account_type.RunAsAccountType] = None
+    run_as_account: Optional[RunAsAccountType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppInstallExperience:
@@ -38,14 +39,16 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import run_as_account_type, win32_lob_app_restart_behavior
+        from .run_as_account_type import RunAsAccountType
+        from .win32_lob_app_restart_behavior import Win32LobAppRestartBehavior
 
-        from . import run_as_account_type, win32_lob_app_restart_behavior
+        from .run_as_account_type import RunAsAccountType
+        from .win32_lob_app_restart_behavior import Win32LobAppRestartBehavior
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceRestartBehavior": lambda n : setattr(self, 'device_restart_behavior', n.get_enum_value(win32_lob_app_restart_behavior.Win32LobAppRestartBehavior)),
+            "deviceRestartBehavior": lambda n : setattr(self, 'device_restart_behavior', n.get_enum_value(Win32LobAppRestartBehavior)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(run_as_account_type.RunAsAccountType)),
+            "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(RunAsAccountType)),
         }
         return fields
     

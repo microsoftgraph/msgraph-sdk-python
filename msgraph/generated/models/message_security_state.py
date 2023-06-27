@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -22,7 +22,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
     # The messageFingerprint property
     message_fingerprint: Optional[str] = None
     # The messageReceivedDateTime property
-    message_received_date_time: Optional[datetime] = None
+    message_received_date_time: Optional[datetime.datetime] = None
     # The messageSubject property
     message_subject: Optional[str] = None
     # The networkMessageId property
@@ -75,7 +75,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         writer.write_str_value("directionality", self.directionality)
         writer.write_str_value("internetMessageId", self.internet_message_id)
         writer.write_str_value("messageFingerprint", self.message_fingerprint)
-        writer.write_datetime_value("messageReceivedDateTime", self.message_received_date_time)
+        writer.write_datetime_value()("messageReceivedDateTime", self.message_received_date_time)
         writer.write_str_value("messageSubject", self.message_subject)
         writer.write_str_value("networkMessageId", self.network_message_id)
         writer.write_str_value("@odata.type", self.odata_type)

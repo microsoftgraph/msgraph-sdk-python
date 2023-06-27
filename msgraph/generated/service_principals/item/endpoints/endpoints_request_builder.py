@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import endpoint, endpoint_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import endpoint_item_request_builder
+    from ....models.endpoint import Endpoint
+    from ....models.endpoint_collection_response import EndpointCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.endpoint_item_request_builder import EndpointItemRequestBuilder
 
 class EndpointsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class EndpointsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_endpoint_id(self,endpoint_id: str) -> endpoint_item_request_builder.EndpointItemRequestBuilder:
+    def by_endpoint_id(self,endpoint_id: str) -> EndpointItemRequestBuilder:
         """
         Provides operations to manage the endpoints property of the microsoft.graph.servicePrincipal entity.
         Args:
             endpoint_id: Unique identifier of the item
-        Returns: endpoint_item_request_builder.EndpointItemRequestBuilder
+        Returns: EndpointItemRequestBuilder
         """
         if not endpoint_id:
             raise TypeError("endpoint_id cannot be null.")
-        from .item import endpoint_item_request_builder
+        from .item.endpoint_item_request_builder import EndpointItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["endpoint%2Did"] = endpoint_id
-        return endpoint_item_request_builder.EndpointItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return EndpointItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[EndpointsRequestBuilderGetRequestConfiguration] = None) -> Optional[endpoint_collection_response.EndpointCollectionResponse]:
+    async def get(self,request_configuration: Optional[EndpointsRequestBuilderGetRequestConfiguration] = None) -> Optional[EndpointCollectionResponse]:
         """
         Get endpoints from servicePrincipals
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[endpoint_collection_response.EndpointCollectionResponse]
+        Returns: Optional[EndpointCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import endpoint_collection_response
+        from ....models.endpoint_collection_response import EndpointCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, endpoint_collection_response.EndpointCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, EndpointCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[endpoint.Endpoint] = None, request_configuration: Optional[EndpointsRequestBuilderPostRequestConfiguration] = None) -> Optional[endpoint.Endpoint]:
+    async def post(self,body: Optional[Endpoint] = None, request_configuration: Optional[EndpointsRequestBuilderPostRequestConfiguration] = None) -> Optional[Endpoint]:
         """
         Create new navigation property to endpoints for servicePrincipals
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[endpoint.Endpoint]
+        Returns: Optional[Endpoint]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import endpoint
+        from ....models.endpoint import Endpoint
 
-        return await self.request_adapter.send_async(request_info, endpoint.Endpoint, error_mapping)
+        return await self.request_adapter.send_async(request_info, Endpoint, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[EndpointsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class EndpointsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[endpoint.Endpoint] = None, request_configuration: Optional[EndpointsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Endpoint] = None, request_configuration: Optional[EndpointsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to endpoints for servicePrincipals
         Args:
@@ -139,13 +140,13 @@ class EndpointsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EndpointsRequestBuilderGetQueryParameters():

@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -14,7 +14,7 @@ class SynchronizationProgress(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The progressObservationDateTime property
-    progress_observation_date_time: Optional[datetime] = None
+    progress_observation_date_time: Optional[datetime.datetime] = None
     # The totalUnits property
     total_units: Optional[int] = None
     # The units property
@@ -56,7 +56,7 @@ class SynchronizationProgress(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_int_value("completedUnits", self.completed_units)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_datetime_value("progressObservationDateTime", self.progress_observation_date_time)
+        writer.write_datetime_value()("progressObservationDateTime", self.progress_observation_date_time)
         writer.write_int_value("totalUnits", self.total_units)
         writer.write_str_value("units", self.units)
         writer.write_additional_data_value(self.additional_data)

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import chat_message_info
-    from ......models.o_data_errors import o_data_error
+    from ......models.chat_message_info import ChatMessageInfo
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class LastMessagePreviewRequestBuilder():
     """
@@ -44,62 +44,62 @@ class LastMessagePreviewRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[LastMessagePreviewRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message_info.ChatMessageInfo]:
+    async def get(self,request_configuration: Optional[LastMessagePreviewRequestBuilderGetRequestConfiguration] = None) -> Optional[ChatMessageInfo]:
         """
         Preview of the last message sent in the chat. Null if no messages have been sent in the chat. Currently, only the list chats operation supports this property.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[chat_message_info.ChatMessageInfo]
+        Returns: Optional[ChatMessageInfo]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import chat_message_info
+        from ......models.chat_message_info import ChatMessageInfo
 
-        return await self.request_adapter.send_async(request_info, chat_message_info.ChatMessageInfo, error_mapping)
+        return await self.request_adapter.send_async(request_info, ChatMessageInfo, error_mapping)
     
-    async def patch(self,body: Optional[chat_message_info.ChatMessageInfo] = None, request_configuration: Optional[LastMessagePreviewRequestBuilderPatchRequestConfiguration] = None) -> Optional[chat_message_info.ChatMessageInfo]:
+    async def patch(self,body: Optional[ChatMessageInfo] = None, request_configuration: Optional[LastMessagePreviewRequestBuilderPatchRequestConfiguration] = None) -> Optional[ChatMessageInfo]:
         """
         Update the navigation property lastMessagePreview in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[chat_message_info.ChatMessageInfo]
+        Returns: Optional[ChatMessageInfo]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import chat_message_info
+        from ......models.chat_message_info import ChatMessageInfo
 
-        return await self.request_adapter.send_async(request_info, chat_message_info.ChatMessageInfo, error_mapping)
+        return await self.request_adapter.send_async(request_info, ChatMessageInfo, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[LastMessagePreviewRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class LastMessagePreviewRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[chat_message_info.ChatMessageInfo] = None, request_configuration: Optional[LastMessagePreviewRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ChatMessageInfo] = None, request_configuration: Optional[LastMessagePreviewRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property lastMessagePreview in users
         Args:

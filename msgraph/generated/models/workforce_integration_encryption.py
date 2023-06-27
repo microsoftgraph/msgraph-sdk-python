@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import workforce_integration_encryption_protocol
+    from .workforce_integration_encryption_protocol import WorkforceIntegrationEncryptionProtocol
 
 @dataclass
 class WorkforceIntegrationEncryption(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Possible values are: sharedSecret, unknownFutureValue.
-    protocol: Optional[workforce_integration_encryption_protocol.WorkforceIntegrationEncryptionProtocol] = None
+    protocol: Optional[WorkforceIntegrationEncryptionProtocol] = None
     # Encryption shared secret.
     secret: Optional[str] = None
     
@@ -35,13 +35,13 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import workforce_integration_encryption_protocol
+        from .workforce_integration_encryption_protocol import WorkforceIntegrationEncryptionProtocol
 
-        from . import workforce_integration_encryption_protocol
+        from .workforce_integration_encryption_protocol import WorkforceIntegrationEncryptionProtocol
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(workforce_integration_encryption_protocol.WorkforceIntegrationEncryptionProtocol)),
+            "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(WorkforceIntegrationEncryptionProtocol)),
             "secret": lambda n : setattr(self, 'secret', n.get_str_value()),
         }
         return fields

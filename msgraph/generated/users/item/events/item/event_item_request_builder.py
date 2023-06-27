@@ -10,19 +10,19 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import event
-    from .....models.o_data_errors import o_data_error
-    from .accept import accept_request_builder
-    from .attachments import attachments_request_builder
-    from .calendar import calendar_request_builder
-    from .cancel import cancel_request_builder
-    from .decline import decline_request_builder
-    from .dismiss_reminder import dismiss_reminder_request_builder
-    from .extensions import extensions_request_builder
-    from .forward import forward_request_builder
-    from .instances import instances_request_builder
-    from .snooze_reminder import snooze_reminder_request_builder
-    from .tentatively_accept import tentatively_accept_request_builder
+    from .....models.event import Event
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .accept.accept_request_builder import AcceptRequestBuilder
+    from .attachments.attachments_request_builder import AttachmentsRequestBuilder
+    from .calendar.calendar_request_builder import CalendarRequestBuilder
+    from .cancel.cancel_request_builder import CancelRequestBuilder
+    from .decline.decline_request_builder import DeclineRequestBuilder
+    from .dismiss_reminder.dismiss_reminder_request_builder import DismissReminderRequestBuilder
+    from .extensions.extensions_request_builder import ExtensionsRequestBuilder
+    from .forward.forward_request_builder import ForwardRequestBuilder
+    from .instances.instances_request_builder import InstancesRequestBuilder
+    from .snooze_reminder.snooze_reminder_request_builder import SnoozeReminderRequestBuilder
+    from .tentatively_accept.tentatively_accept_request_builder import TentativelyAcceptRequestBuilder
 
 class EventItemRequestBuilder():
     """
@@ -55,62 +55,62 @@ class EventItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[event.Event]:
+    async def get(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Event]:
         """
         Get the properties and relationships of the specified event object. Currently, this operation returns event bodies in only HTML format. There are two scenarios where an app can get an event in another user's calendar: Since the **event** resource supports extensions, you can also use the `GET` operation to get custom properties and extension data in an **event** instance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[event.Event]
+        Returns: Optional[Event]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import event
+        from .....models.event import Event
 
-        return await self.request_adapter.send_async(request_info, event.Event, error_mapping)
+        return await self.request_adapter.send_async(request_info, Event, error_mapping)
     
-    async def patch(self,body: Optional[event.Event] = None, request_configuration: Optional[EventItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[event.Event]:
+    async def patch(self,body: Optional[Event] = None, request_configuration: Optional[EventItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Event]:
         """
         Update the properties of the event object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[event.Event]
+        Returns: Optional[Event]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import event
+        from .....models.event import Event
 
-        return await self.request_adapter.send_async(request_info, event.Event, error_mapping)
+        return await self.request_adapter.send_async(request_info, Event, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EventItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -146,7 +146,7 @@ class EventItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[event.Event] = None, request_configuration: Optional[EventItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Event] = None, request_configuration: Optional[EventItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of the event object.
         Args:
@@ -168,103 +168,103 @@ class EventItemRequestBuilder():
         return request_info
     
     @property
-    def accept(self) -> accept_request_builder.AcceptRequestBuilder:
+    def accept(self) -> AcceptRequestBuilder:
         """
         Provides operations to call the accept method.
         """
-        from .accept import accept_request_builder
+        from .accept.accept_request_builder import AcceptRequestBuilder
 
-        return accept_request_builder.AcceptRequestBuilder(self.request_adapter, self.path_parameters)
+        return AcceptRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
+    def attachments(self) -> AttachmentsRequestBuilder:
         """
         Provides operations to manage the attachments property of the microsoft.graph.event entity.
         """
-        from .attachments import attachments_request_builder
+        from .attachments.attachments_request_builder import AttachmentsRequestBuilder
 
-        return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def calendar(self) -> calendar_request_builder.CalendarRequestBuilder:
+    def calendar(self) -> CalendarRequestBuilder:
         """
         Provides operations to manage the calendar property of the microsoft.graph.event entity.
         """
-        from .calendar import calendar_request_builder
+        from .calendar.calendar_request_builder import CalendarRequestBuilder
 
-        return calendar_request_builder.CalendarRequestBuilder(self.request_adapter, self.path_parameters)
+        return CalendarRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
+    def cancel(self) -> CancelRequestBuilder:
         """
         Provides operations to call the cancel method.
         """
-        from .cancel import cancel_request_builder
+        from .cancel.cancel_request_builder import CancelRequestBuilder
 
-        return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
+        return CancelRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def decline(self) -> decline_request_builder.DeclineRequestBuilder:
+    def decline(self) -> DeclineRequestBuilder:
         """
         Provides operations to call the decline method.
         """
-        from .decline import decline_request_builder
+        from .decline.decline_request_builder import DeclineRequestBuilder
 
-        return decline_request_builder.DeclineRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeclineRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dismiss_reminder(self) -> dismiss_reminder_request_builder.DismissReminderRequestBuilder:
+    def dismiss_reminder(self) -> DismissReminderRequestBuilder:
         """
         Provides operations to call the dismissReminder method.
         """
-        from .dismiss_reminder import dismiss_reminder_request_builder
+        from .dismiss_reminder.dismiss_reminder_request_builder import DismissReminderRequestBuilder
 
-        return dismiss_reminder_request_builder.DismissReminderRequestBuilder(self.request_adapter, self.path_parameters)
+        return DismissReminderRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+    def extensions(self) -> ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.event entity.
         """
-        from .extensions import extensions_request_builder
+        from .extensions.extensions_request_builder import ExtensionsRequestBuilder
 
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def forward(self) -> forward_request_builder.ForwardRequestBuilder:
+    def forward(self) -> ForwardRequestBuilder:
         """
         Provides operations to call the forward method.
         """
-        from .forward import forward_request_builder
+        from .forward.forward_request_builder import ForwardRequestBuilder
 
-        return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
+        return ForwardRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def instances(self) -> instances_request_builder.InstancesRequestBuilder:
+    def instances(self) -> InstancesRequestBuilder:
         """
         Provides operations to manage the instances property of the microsoft.graph.event entity.
         """
-        from .instances import instances_request_builder
+        from .instances.instances_request_builder import InstancesRequestBuilder
 
-        return instances_request_builder.InstancesRequestBuilder(self.request_adapter, self.path_parameters)
+        return InstancesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def snooze_reminder(self) -> snooze_reminder_request_builder.SnoozeReminderRequestBuilder:
+    def snooze_reminder(self) -> SnoozeReminderRequestBuilder:
         """
         Provides operations to call the snoozeReminder method.
         """
-        from .snooze_reminder import snooze_reminder_request_builder
+        from .snooze_reminder.snooze_reminder_request_builder import SnoozeReminderRequestBuilder
 
-        return snooze_reminder_request_builder.SnoozeReminderRequestBuilder(self.request_adapter, self.path_parameters)
+        return SnoozeReminderRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tentatively_accept(self) -> tentatively_accept_request_builder.TentativelyAcceptRequestBuilder:
+    def tentatively_accept(self) -> TentativelyAcceptRequestBuilder:
         """
         Provides operations to call the tentativelyAccept method.
         """
-        from .tentatively_accept import tentatively_accept_request_builder
+        from .tentatively_accept.tentatively_accept_request_builder import TentativelyAcceptRequestBuilder
 
-        return tentatively_accept_request_builder.TentativelyAcceptRequestBuilder(self.request_adapter, self.path_parameters)
+        return TentativelyAcceptRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EventItemRequestBuilderDeleteRequestConfiguration():

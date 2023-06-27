@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import audio_routing_group, audio_routing_group_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import audio_routing_group_item_request_builder
+    from .....models.audio_routing_group import AudioRoutingGroup
+    from .....models.audio_routing_group_collection_response import AudioRoutingGroupCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.audio_routing_group_item_request_builder import AudioRoutingGroupItemRequestBuilder
 
 class AudioRoutingGroupsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class AudioRoutingGroupsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_audio_routing_group_id(self,audio_routing_group_id: str) -> audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder:
+    def by_audio_routing_group_id(self,audio_routing_group_id: str) -> AudioRoutingGroupItemRequestBuilder:
         """
         Provides operations to manage the audioRoutingGroups property of the microsoft.graph.call entity.
         Args:
             audio_routing_group_id: Unique identifier of the item
-        Returns: audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder
+        Returns: AudioRoutingGroupItemRequestBuilder
         """
         if not audio_routing_group_id:
             raise TypeError("audio_routing_group_id cannot be null.")
-        from .item import audio_routing_group_item_request_builder
+        from .item.audio_routing_group_item_request_builder import AudioRoutingGroupItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["audioRoutingGroup%2Did"] = audio_routing_group_id
-        return audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AudioRoutingGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[audio_routing_group_collection_response.AudioRoutingGroupCollectionResponse]:
+    async def get(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[AudioRoutingGroupCollectionResponse]:
         """
         Get audioRoutingGroups from communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[audio_routing_group_collection_response.AudioRoutingGroupCollectionResponse]
+        Returns: Optional[AudioRoutingGroupCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import audio_routing_group_collection_response
+        from .....models.audio_routing_group_collection_response import AudioRoutingGroupCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, audio_routing_group_collection_response.AudioRoutingGroupCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AudioRoutingGroupCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[audio_routing_group.AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[audio_routing_group.AudioRoutingGroup]:
+    async def post(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
         """
         Create new navigation property to audioRoutingGroups for communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[audio_routing_group.AudioRoutingGroup]
+        Returns: Optional[AudioRoutingGroup]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import audio_routing_group
+        from .....models.audio_routing_group import AudioRoutingGroup
 
-        return await self.request_adapter.send_async(request_info, audio_routing_group.AudioRoutingGroup, error_mapping)
+        return await self.request_adapter.send_async(request_info, AudioRoutingGroup, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class AudioRoutingGroupsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[audio_routing_group.AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to audioRoutingGroups for communications
         Args:
@@ -139,13 +140,13 @@ class AudioRoutingGroupsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AudioRoutingGroupsRequestBuilderGetQueryParameters():

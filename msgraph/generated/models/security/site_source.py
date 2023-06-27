@@ -4,16 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import data_source
-    from .. import site
+    from ..site import Site
+    from .data_source import DataSource
 
-from . import data_source
+from .data_source import DataSource
 
 @dataclass
-class SiteSource(data_source.DataSource):
+class SiteSource(DataSource):
     odata_type = "#microsoft.graph.security.siteSource"
     # The site property
-    site: Optional[site.Site] = None
+    site: Optional[Site] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SiteSource:
@@ -32,14 +32,14 @@ class SiteSource(data_source.DataSource):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import data_source
-        from .. import site
+        from ..site import Site
+        from .data_source import DataSource
 
-        from . import data_source
-        from .. import site
+        from ..site import Site
+        from .data_source import DataSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "site": lambda n : setattr(self, 'site', n.get_object_value(site.Site)),
+            "site": lambda n : setattr(self, 'site', n.get_object_value(Site)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

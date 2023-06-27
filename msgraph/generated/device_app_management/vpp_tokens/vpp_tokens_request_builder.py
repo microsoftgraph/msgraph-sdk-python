@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import vpp_token, vpp_token_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import vpp_token_item_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.vpp_token import VppToken
+    from ...models.vpp_token_collection_response import VppTokenCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.vpp_token_item_request_builder import VppTokenItemRequestBuilder
 
 class VppTokensRequestBuilder():
     """
@@ -37,71 +38,71 @@ class VppTokensRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_vpp_token_id(self,vpp_token_id: str) -> vpp_token_item_request_builder.VppTokenItemRequestBuilder:
+    def by_vpp_token_id(self,vpp_token_id: str) -> VppTokenItemRequestBuilder:
         """
         Provides operations to manage the vppTokens property of the microsoft.graph.deviceAppManagement entity.
         Args:
             vpp_token_id: Unique identifier of the item
-        Returns: vpp_token_item_request_builder.VppTokenItemRequestBuilder
+        Returns: VppTokenItemRequestBuilder
         """
         if not vpp_token_id:
             raise TypeError("vpp_token_id cannot be null.")
-        from .item import vpp_token_item_request_builder
+        from .item.vpp_token_item_request_builder import VppTokenItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["vppToken%2Did"] = vpp_token_id
-        return vpp_token_item_request_builder.VppTokenItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return VppTokenItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[VppTokensRequestBuilderGetRequestConfiguration] = None) -> Optional[vpp_token_collection_response.VppTokenCollectionResponse]:
+    async def get(self,request_configuration: Optional[VppTokensRequestBuilderGetRequestConfiguration] = None) -> Optional[VppTokenCollectionResponse]:
         """
-        List of Vpp tokens for this organization.
+        List properties and relationships of the vppToken objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[vpp_token_collection_response.VppTokenCollectionResponse]
+        Returns: Optional[VppTokenCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import vpp_token_collection_response
+        from ...models.vpp_token_collection_response import VppTokenCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, vpp_token_collection_response.VppTokenCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, VppTokenCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[vpp_token.VppToken] = None, request_configuration: Optional[VppTokensRequestBuilderPostRequestConfiguration] = None) -> Optional[vpp_token.VppToken]:
+    async def post(self,body: Optional[VppToken] = None, request_configuration: Optional[VppTokensRequestBuilderPostRequestConfiguration] = None) -> Optional[VppToken]:
         """
-        Create new navigation property to vppTokens for deviceAppManagement
+        Create a new vppToken object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[vpp_token.VppToken]
+        Returns: Optional[VppToken]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import vpp_token
+        from ...models.vpp_token import VppToken
 
-        return await self.request_adapter.send_async(request_info, vpp_token.VppToken, error_mapping)
+        return await self.request_adapter.send_async(request_info, VppToken, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[VppTokensRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of Vpp tokens for this organization.
+        List properties and relationships of the vppToken objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class VppTokensRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[vpp_token.VppToken] = None, request_configuration: Optional[VppTokensRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[VppToken] = None, request_configuration: Optional[VppTokensRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to vppTokens for deviceAppManagement
+        Create a new vppToken object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class VppTokensRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class VppTokensRequestBuilderGetQueryParameters():
         """
-        List of Vpp tokens for this organization.
+        List properties and relationships of the vppToken objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

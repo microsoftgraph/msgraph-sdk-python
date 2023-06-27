@@ -4,22 +4,25 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, resource_reference, resource_visualization, usage_details
+    from .entity import Entity
+    from .resource_reference import ResourceReference
+    from .resource_visualization import ResourceVisualization
+    from .usage_details import UsageDetails
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class UsedInsight(entity.Entity):
+class UsedInsight(Entity):
     # Information about when the item was last viewed or modified by the user. Read only.
-    last_used: Optional[usage_details.UsageDetails] = None
+    last_used: Optional[UsageDetails] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Used for navigating to the item that was used. For file attachments, the type is fileAttachment. For linked attachments, the type is driveItem.
-    resource: Optional[entity.Entity] = None
+    resource: Optional[Entity] = None
     # Reference properties of the used document, such as the url and type of the document. Read-only
-    resource_reference: Optional[resource_reference.ResourceReference] = None
+    resource_reference: Optional[ResourceReference] = None
     # Properties that you can use to visualize the document in your experience. Read-only
-    resource_visualization: Optional[resource_visualization.ResourceVisualization] = None
+    resource_visualization: Optional[ResourceVisualization] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UsedInsight:
@@ -38,15 +41,21 @@ class UsedInsight(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, resource_reference, resource_visualization, usage_details
+        from .entity import Entity
+        from .resource_reference import ResourceReference
+        from .resource_visualization import ResourceVisualization
+        from .usage_details import UsageDetails
 
-        from . import entity, resource_reference, resource_visualization, usage_details
+        from .entity import Entity
+        from .resource_reference import ResourceReference
+        from .resource_visualization import ResourceVisualization
+        from .usage_details import UsageDetails
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lastUsed": lambda n : setattr(self, 'last_used', n.get_object_value(usage_details.UsageDetails)),
-            "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
-            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
-            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
+            "lastUsed": lambda n : setattr(self, 'last_used', n.get_object_value(UsageDetails)),
+            "resource": lambda n : setattr(self, 'resource', n.get_object_value(Entity)),
+            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(ResourceReference)),
+            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(ResourceVisualization)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

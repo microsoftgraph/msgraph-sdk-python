@@ -1,21 +1,22 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ediscovery_review_set
-    from .. import entity, identity_set
+    from ..entity import Entity
+    from ..identity_set import IdentitySet
+    from .ediscovery_review_set import EdiscoveryReviewSet
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class DataSet(entity.Entity):
+class DataSet(Entity):
     # The createdBy property
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # The createdDateTime property
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The displayName property
     display_name: Optional[str] = None
     # The OdataType property
@@ -36,9 +37,9 @@ class DataSet(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryReviewSet".casefold():
-            from . import ediscovery_review_set
+            from .ediscovery_review_set import EdiscoveryReviewSet
 
-            return ediscovery_review_set.EdiscoveryReviewSet()
+            return EdiscoveryReviewSet()
         return DataSet()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -46,14 +47,16 @@ class DataSet(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ediscovery_review_set
-        from .. import entity, identity_set
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from .ediscovery_review_set import EdiscoveryReviewSet
 
-        from . import ediscovery_review_set
-        from .. import entity, identity_set
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from .ediscovery_review_set import EdiscoveryReviewSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
@@ -71,7 +74,7 @@ class DataSet(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
     
 

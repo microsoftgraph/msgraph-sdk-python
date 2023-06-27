@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import teleconference_device_media_quality
+    from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
-from . import teleconference_device_media_quality
+from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
 @dataclass
-class TeleconferenceDeviceAudioQuality(teleconference_device_media_quality.TeleconferenceDeviceMediaQuality):
+class TeleconferenceDeviceAudioQuality(TeleconferenceDeviceMediaQuality):
     odata_type = "#microsoft.graph.teleconferenceDeviceAudioQuality"
     
     @staticmethod
@@ -29,9 +29,9 @@ class TeleconferenceDeviceAudioQuality(teleconference_device_media_quality.Telec
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teleconference_device_media_quality
+        from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
-        from . import teleconference_device_media_quality
+        from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

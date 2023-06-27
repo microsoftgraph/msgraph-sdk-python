@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import audit_event
-    from ....models.o_data_errors import o_data_error
+    from ....models.audit_event import AuditEvent
+    from ....models.o_data_errors.o_data_error import ODataError
 
 class AuditEventItemRequestBuilder():
     """
@@ -37,73 +37,73 @@ class AuditEventItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AuditEventItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property auditEvents for deviceManagement
+        Deletes a auditEvent.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AuditEventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[audit_event.AuditEvent]:
+    async def get(self,request_configuration: Optional[AuditEventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AuditEvent]:
         """
-        The Audit Events
+        Read properties and relationships of the auditEvent object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[audit_event.AuditEvent]
+        Returns: Optional[AuditEvent]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import audit_event
+        from ....models.audit_event import AuditEvent
 
-        return await self.request_adapter.send_async(request_info, audit_event.AuditEvent, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuditEvent, error_mapping)
     
-    async def patch(self,body: Optional[audit_event.AuditEvent] = None, request_configuration: Optional[AuditEventItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[audit_event.AuditEvent]:
+    async def patch(self,body: Optional[AuditEvent] = None, request_configuration: Optional[AuditEventItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AuditEvent]:
         """
-        Update the navigation property auditEvents in deviceManagement
+        Update the properties of a auditEvent object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[audit_event.AuditEvent]
+        Returns: Optional[AuditEvent]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import audit_event
+        from ....models.audit_event import AuditEvent
 
-        return await self.request_adapter.send_async(request_info, audit_event.AuditEvent, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuditEvent, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AuditEventItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property auditEvents for deviceManagement
+        Deletes a auditEvent.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class AuditEventItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AuditEventItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Audit Events
+        Read properties and relationships of the auditEvent object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class AuditEventItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[audit_event.AuditEvent] = None, request_configuration: Optional[AuditEventItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AuditEvent] = None, request_configuration: Optional[AuditEventItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property auditEvents in deviceManagement
+        Update the properties of a auditEvent object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class AuditEventItemRequestBuilder():
     @dataclass
     class AuditEventItemRequestBuilderGetQueryParameters():
         """
-        The Audit Events
+        Read properties and relationships of the auditEvent object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

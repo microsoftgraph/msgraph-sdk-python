@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import api_authentication_configuration_base, pkcs12_certificate_information
+    from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
+    from .pkcs12_certificate_information import Pkcs12CertificateInformation
 
-from . import api_authentication_configuration_base
+from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
 @dataclass
-class ClientCertificateAuthentication(api_authentication_configuration_base.ApiAuthenticationConfigurationBase):
+class ClientCertificateAuthentication(ApiAuthenticationConfigurationBase):
     odata_type = "#microsoft.graph.clientCertificateAuthentication"
     # The list of certificates uploaded for this API connector.
-    certificate_list: Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]] = None
+    certificate_list: Optional[List[Pkcs12CertificateInformation]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClientCertificateAuthentication:
@@ -31,12 +32,14 @@ class ClientCertificateAuthentication(api_authentication_configuration_base.ApiA
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import api_authentication_configuration_base, pkcs12_certificate_information
+        from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
+        from .pkcs12_certificate_information import Pkcs12CertificateInformation
 
-        from . import api_authentication_configuration_base, pkcs12_certificate_information
+        from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
+        from .pkcs12_certificate_information import Pkcs12CertificateInformation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "certificateList": lambda n : setattr(self, 'certificate_list', n.get_collection_of_object_values(pkcs12_certificate_information.Pkcs12CertificateInformation)),
+            "certificateList": lambda n : setattr(self, 'certificate_list', n.get_collection_of_object_values(Pkcs12CertificateInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

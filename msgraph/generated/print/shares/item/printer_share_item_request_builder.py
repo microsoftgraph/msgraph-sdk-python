@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import printer_share
-    from ....models.o_data_errors import o_data_error
-    from .allowed_groups import allowed_groups_request_builder
-    from .allowed_users import allowed_users_request_builder
-    from .jobs import jobs_request_builder
-    from .printer import printer_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.printer_share import PrinterShare
+    from .allowed_groups.allowed_groups_request_builder import AllowedGroupsRequestBuilder
+    from .allowed_users.allowed_users_request_builder import AllowedUsersRequestBuilder
+    from .jobs.jobs_request_builder import JobsRequestBuilder
+    from .printer.printer_request_builder import PrinterRequestBuilder
 
 class PrinterShareItemRequestBuilder():
     """
@@ -48,62 +48,62 @@ class PrinterShareItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PrinterShareItemRequestBuilderGetRequestConfiguration] = None) -> Optional[printer_share.PrinterShare]:
+    async def get(self,request_configuration: Optional[PrinterShareItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrinterShare]:
         """
         Retrieve the properties and relationships of a printer share.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[printer_share.PrinterShare]
+        Returns: Optional[PrinterShare]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import printer_share
+        from ....models.printer_share import PrinterShare
 
-        return await self.request_adapter.send_async(request_info, printer_share.PrinterShare, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrinterShare, error_mapping)
     
-    async def patch(self,body: Optional[printer_share.PrinterShare] = None, request_configuration: Optional[PrinterShareItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[printer_share.PrinterShare]:
+    async def patch(self,body: Optional[PrinterShare] = None, request_configuration: Optional[PrinterShareItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrinterShare]:
         """
         Update the properties of a printer share. This method can be used to swap printers. For example, if a physical printer device breaks, an administrator can register a new printer device and update this printerShare to point to the new printer without requiring users to take any action.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[printer_share.PrinterShare]
+        Returns: Optional[PrinterShare]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import printer_share
+        from ....models.printer_share import PrinterShare
 
-        return await self.request_adapter.send_async(request_info, printer_share.PrinterShare, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrinterShare, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PrinterShareItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -139,7 +139,7 @@ class PrinterShareItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[printer_share.PrinterShare] = None, request_configuration: Optional[PrinterShareItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PrinterShare] = None, request_configuration: Optional[PrinterShareItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a printer share. This method can be used to swap printers. For example, if a physical printer device breaks, an administrator can register a new printer device and update this printerShare to point to the new printer without requiring users to take any action.
         Args:
@@ -161,40 +161,40 @@ class PrinterShareItemRequestBuilder():
         return request_info
     
     @property
-    def allowed_groups(self) -> allowed_groups_request_builder.AllowedGroupsRequestBuilder:
+    def allowed_groups(self) -> AllowedGroupsRequestBuilder:
         """
         Provides operations to manage the allowedGroups property of the microsoft.graph.printerShare entity.
         """
-        from .allowed_groups import allowed_groups_request_builder
+        from .allowed_groups.allowed_groups_request_builder import AllowedGroupsRequestBuilder
 
-        return allowed_groups_request_builder.AllowedGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AllowedGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def allowed_users(self) -> allowed_users_request_builder.AllowedUsersRequestBuilder:
+    def allowed_users(self) -> AllowedUsersRequestBuilder:
         """
         Provides operations to manage the allowedUsers property of the microsoft.graph.printerShare entity.
         """
-        from .allowed_users import allowed_users_request_builder
+        from .allowed_users.allowed_users_request_builder import AllowedUsersRequestBuilder
 
-        return allowed_users_request_builder.AllowedUsersRequestBuilder(self.request_adapter, self.path_parameters)
+        return AllowedUsersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def jobs(self) -> jobs_request_builder.JobsRequestBuilder:
+    def jobs(self) -> JobsRequestBuilder:
         """
         Provides operations to manage the jobs property of the microsoft.graph.printerBase entity.
         """
-        from .jobs import jobs_request_builder
+        from .jobs.jobs_request_builder import JobsRequestBuilder
 
-        return jobs_request_builder.JobsRequestBuilder(self.request_adapter, self.path_parameters)
+        return JobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def printer(self) -> printer_request_builder.PrinterRequestBuilder:
+    def printer(self) -> PrinterRequestBuilder:
         """
         Provides operations to manage the printer property of the microsoft.graph.printerShare entity.
         """
-        from .printer import printer_request_builder
+        from .printer.printer_request_builder import PrinterRequestBuilder
 
-        return printer_request_builder.PrinterRequestBuilder(self.request_adapter, self.path_parameters)
+        return PrinterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PrinterShareItemRequestBuilderDeleteRequestConfiguration():

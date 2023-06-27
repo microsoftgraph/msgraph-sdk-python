@@ -4,12 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import apple_managed_identity_provider, built_in_identity_provider, entity, internal_domain_federation, saml_or_ws_fed_external_domain_federation, saml_or_ws_fed_provider, social_identity_provider
+    from .apple_managed_identity_provider import AppleManagedIdentityProvider
+    from .built_in_identity_provider import BuiltInIdentityProvider
+    from .entity import Entity
+    from .internal_domain_federation import InternalDomainFederation
+    from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
+    from .saml_or_ws_fed_provider import SamlOrWsFedProvider
+    from .social_identity_provider import SocialIdentityProvider
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class IdentityProviderBase(entity.Entity):
+class IdentityProviderBase(Entity):
     # The display name of the identity provider.
     display_name: Optional[str] = None
     # The OdataType property
@@ -30,29 +36,29 @@ class IdentityProviderBase(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appleManagedIdentityProvider".casefold():
-            from . import apple_managed_identity_provider
+            from .apple_managed_identity_provider import AppleManagedIdentityProvider
 
-            return apple_managed_identity_provider.AppleManagedIdentityProvider()
+            return AppleManagedIdentityProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.builtInIdentityProvider".casefold():
-            from . import built_in_identity_provider
+            from .built_in_identity_provider import BuiltInIdentityProvider
 
-            return built_in_identity_provider.BuiltInIdentityProvider()
+            return BuiltInIdentityProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.internalDomainFederation".casefold():
-            from . import internal_domain_federation
+            from .internal_domain_federation import InternalDomainFederation
 
-            return internal_domain_federation.InternalDomainFederation()
+            return InternalDomainFederation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.samlOrWsFedExternalDomainFederation".casefold():
-            from . import saml_or_ws_fed_external_domain_federation
+            from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
 
-            return saml_or_ws_fed_external_domain_federation.SamlOrWsFedExternalDomainFederation()
+            return SamlOrWsFedExternalDomainFederation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.samlOrWsFedProvider".casefold():
-            from . import saml_or_ws_fed_provider
+            from .saml_or_ws_fed_provider import SamlOrWsFedProvider
 
-            return saml_or_ws_fed_provider.SamlOrWsFedProvider()
+            return SamlOrWsFedProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.socialIdentityProvider".casefold():
-            from . import social_identity_provider
+            from .social_identity_provider import SocialIdentityProvider
 
-            return social_identity_provider.SocialIdentityProvider()
+            return SocialIdentityProvider()
         return IdentityProviderBase()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -60,9 +66,21 @@ class IdentityProviderBase(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import apple_managed_identity_provider, built_in_identity_provider, entity, internal_domain_federation, saml_or_ws_fed_external_domain_federation, saml_or_ws_fed_provider, social_identity_provider
+        from .apple_managed_identity_provider import AppleManagedIdentityProvider
+        from .built_in_identity_provider import BuiltInIdentityProvider
+        from .entity import Entity
+        from .internal_domain_federation import InternalDomainFederation
+        from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
+        from .saml_or_ws_fed_provider import SamlOrWsFedProvider
+        from .social_identity_provider import SocialIdentityProvider
 
-        from . import apple_managed_identity_provider, built_in_identity_provider, entity, internal_domain_federation, saml_or_ws_fed_external_domain_federation, saml_or_ws_fed_provider, social_identity_provider
+        from .apple_managed_identity_provider import AppleManagedIdentityProvider
+        from .built_in_identity_provider import BuiltInIdentityProvider
+        from .entity import Entity
+        from .internal_domain_federation import InternalDomainFederation
+        from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
+        from .saml_or_ws_fed_provider import SamlOrWsFedProvider
+        from .social_identity_provider import SocialIdentityProvider
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

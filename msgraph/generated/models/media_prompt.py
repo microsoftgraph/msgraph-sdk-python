@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import media_info, prompt
+    from .media_info import MediaInfo
+    from .prompt import Prompt
 
-from . import prompt
+from .prompt import Prompt
 
 @dataclass
-class MediaPrompt(prompt.Prompt):
+class MediaPrompt(Prompt):
     odata_type = "#microsoft.graph.mediaPrompt"
     # The mediaInfo property
-    media_info: Optional[media_info.MediaInfo] = None
+    media_info: Optional[MediaInfo] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MediaPrompt:
@@ -31,12 +32,14 @@ class MediaPrompt(prompt.Prompt):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import media_info, prompt
+        from .media_info import MediaInfo
+        from .prompt import Prompt
 
-        from . import media_info, prompt
+        from .media_info import MediaInfo
+        from .prompt import Prompt
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "mediaInfo": lambda n : setattr(self, 'media_info', n.get_object_value(media_info.MediaInfo)),
+            "mediaInfo": lambda n : setattr(self, 'media_info', n.get_object_value(MediaInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

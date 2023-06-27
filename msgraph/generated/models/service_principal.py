@@ -5,17 +5,37 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import add_in, app_management_policy, app_role, app_role_assignment, claims_mapping_policy, delegated_permission_classification, directory_object, endpoint, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, o_auth2_permission_grant, password_credential, permission_scope, resource_specific_permission, saml_single_sign_on_settings, synchronization, token_issuance_policy, token_lifetime_policy, verified_publisher
+    from .add_in import AddIn
+    from .app_management_policy import AppManagementPolicy
+    from .app_role import AppRole
+    from .app_role_assignment import AppRoleAssignment
+    from .claims_mapping_policy import ClaimsMappingPolicy
+    from .delegated_permission_classification import DelegatedPermissionClassification
+    from .directory_object import DirectoryObject
+    from .endpoint import Endpoint
+    from .federated_identity_credential import FederatedIdentityCredential
+    from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+    from .informational_url import InformationalUrl
+    from .key_credential import KeyCredential
+    from .o_auth2_permission_grant import OAuth2PermissionGrant
+    from .password_credential import PasswordCredential
+    from .permission_scope import PermissionScope
+    from .resource_specific_permission import ResourceSpecificPermission
+    from .saml_single_sign_on_settings import SamlSingleSignOnSettings
+    from .synchronization import Synchronization
+    from .token_issuance_policy import TokenIssuancePolicy
+    from .token_lifetime_policy import TokenLifetimePolicy
+    from .verified_publisher import VerifiedPublisher
 
-from . import directory_object
+from .directory_object import DirectoryObject
 
 @dataclass
-class ServicePrincipal(directory_object.DirectoryObject):
+class ServicePrincipal(DirectoryObject):
     odata_type = "#microsoft.graph.servicePrincipal"
     # true if the service principal account is enabled; otherwise, false. If set to false, then no users will be able to sign in to this app, even if they are assigned to it. Supports $filter (eq, ne, not, in).
     account_enabled: Optional[bool] = None
     # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Microsoft 365 call the application in the context of a document the user is working on.
-    add_ins: Optional[List[add_in.AddIn]] = None
+    add_ins: Optional[List[AddIn]] = None
     # Used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities. Supports $filter (eq, not, ge, le, startsWith).
     alternative_names: Optional[List[str]] = None
     # The description exposed by the associated application.
@@ -25,25 +45,25 @@ class ServicePrincipal(directory_object.DirectoryObject):
     # The unique identifier for the associated application (its appId property). Supports $filter (eq, ne, not, in, startsWith).
     app_id: Optional[str] = None
     # The appManagementPolicy applied to this application.
-    app_management_policies: Optional[List[app_management_policy.AppManagementPolicy]] = None
+    app_management_policies: Optional[List[AppManagementPolicy]] = None
     # Contains the tenant id where the application is registered. This is applicable only to service principals backed by applications. Supports $filter (eq, ne, NOT, ge, le).
     app_owner_organization_id: Optional[UUID] = None
     # App role assignments for this app or service, granted to users, groups, and other service principals. Supports $expand.
-    app_role_assigned_to: Optional[List[app_role_assignment.AppRoleAssignment]] = None
+    app_role_assigned_to: Optional[List[AppRoleAssignment]] = None
     # Specifies whether users or other service principals need to be granted an app role assignment for this service principal before users can sign in or apps can get tokens. The default value is false. Not nullable. Supports $filter (eq, ne, NOT).
     app_role_assignment_required: Optional[bool] = None
     # App role assignment for another app or service, granted to this service principal. Supports $expand.
-    app_role_assignments: Optional[List[app_role_assignment.AppRoleAssignment]] = None
+    app_role_assignments: Optional[List[AppRoleAssignment]] = None
     # The roles exposed by the application which this service principal represents. For more information see the appRoles property definition on the application entity. Not nullable.
-    app_roles: Optional[List[app_role.AppRole]] = None
+    app_roles: Optional[List[AppRole]] = None
     # Unique identifier of the applicationTemplate that the servicePrincipal was created from. Read-only. Supports $filter (eq, ne, NOT, startsWith).
     application_template_id: Optional[str] = None
     # The claimsMappingPolicies assigned to this service principal. Supports $expand.
-    claims_mapping_policies: Optional[List[claims_mapping_policy.ClaimsMappingPolicy]] = None
+    claims_mapping_policies: Optional[List[ClaimsMappingPolicy]] = None
     # Directory objects created by this service principal. Read-only. Nullable.
-    created_objects: Optional[List[directory_object.DirectoryObject]] = None
+    created_objects: Optional[List[DirectoryObject]] = None
     # The delegatedPermissionClassifications property
-    delegated_permission_classifications: Optional[List[delegated_permission_classification.DelegatedPermissionClassification]] = None
+    delegated_permission_classifications: Optional[List[DelegatedPermissionClassification]] = None
     # Free text field to provide an internal end-user facing description of the service principal. End-user portals such MyApps will display the application description in this field. The maximum allowed size is 1024 characters. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
     description: Optional[str] = None
     # Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
@@ -51,37 +71,37 @@ class ServicePrincipal(directory_object.DirectoryObject):
     # The display name for the service principal. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
     display_name: Optional[str] = None
     # The endpoints property
-    endpoints: Optional[List[endpoint.Endpoint]] = None
+    endpoints: Optional[List[Endpoint]] = None
     # Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (/$count eq 0, /$count ne 0).
-    federated_identity_credentials: Optional[List[federated_identity_credential.FederatedIdentityCredential]] = None
+    federated_identity_credentials: Optional[List[FederatedIdentityCredential]] = None
     # The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
-    home_realm_discovery_policies: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None
+    home_realm_discovery_policies: Optional[List[HomeRealmDiscoveryPolicy]] = None
     # Home page or landing page of the application.
     homepage: Optional[str] = None
     # Basic profile information of the acquired application such as app's marketing, support, terms of service and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more info, see How to: Add Terms of service and privacy statement for registered Azure AD apps. Supports $filter (eq, ne, not, ge, le, and eq on null values).
-    info: Optional[informational_url.InformationalUrl] = None
+    info: Optional[InformationalUrl] = None
     # The collection of key credentials associated with the service principal. Not nullable. Supports $filter (eq, not, ge, le).
-    key_credentials: Optional[List[key_credential.KeyCredential]] = None
+    key_credentials: Optional[List[KeyCredential]] = None
     # Specifies the URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on. The user launches the application from Microsoft 365, the Azure AD My Apps, or the Azure AD SSO URL.
     login_url: Optional[str] = None
     # Specifies the URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols.
     logout_url: Optional[str] = None
     # Roles that this service principal is a member of. HTTP Methods: GET Read-only. Nullable. Supports $expand.
-    member_of: Optional[List[directory_object.DirectoryObject]] = None
+    member_of: Optional[List[DirectoryObject]] = None
     # Free text field to capture information about the service principal, typically used for operational purposes. Maximum allowed size is 1024 characters.
     notes: Optional[str] = None
     # Specifies the list of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
     notification_email_addresses: Optional[List[str]] = None
     # Delegated permission grants authorizing this service principal to access an API on behalf of a signed-in user. Read-only. Nullable.
-    oauth2_permission_grants: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]] = None
+    oauth2_permission_grants: Optional[List[OAuth2PermissionGrant]] = None
     # The delegated permissions exposed by the application. For more information see the oauth2PermissionScopes property on the application entity's api property. Not nullable.
-    oauth2_permission_scopes: Optional[List[permission_scope.PermissionScope]] = None
+    oauth2_permission_scopes: Optional[List[PermissionScope]] = None
     # Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
-    owned_objects: Optional[List[directory_object.DirectoryObject]] = None
+    owned_objects: Optional[List[DirectoryObject]] = None
     # Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable.  Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
-    owners: Optional[List[directory_object.DirectoryObject]] = None
+    owners: Optional[List[DirectoryObject]] = None
     # The collection of password credentials associated with the application. Not nullable.
-    password_credentials: Optional[List[password_credential.PasswordCredential]] = None
+    password_credentials: Optional[List[PasswordCredential]] = None
     # Specifies the single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. The supported values are password, saml, notSupported, and oidc.
     preferred_single_sign_on_mode: Optional[str] = None
     # This property can be used on SAML applications (apps that have preferredSingleSignOnMode set to saml) to control which certificate is used to sign the SAML responses. For applications that are not SAML, do not write or otherwise rely on this property.
@@ -89,9 +109,9 @@ class ServicePrincipal(directory_object.DirectoryObject):
     # The URLs that user tokens are sent to for sign in with the associated application, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to for the associated application. Not nullable.
     reply_urls: Optional[List[str]] = None
     # The resource-specific application permissions exposed by this application. Currently, resource-specific permissions are only supported for Teams apps accessing to specific chats and teams using Microsoft Graph. Read-only.
-    resource_specific_application_permissions: Optional[List[resource_specific_permission.ResourceSpecificPermission]] = None
+    resource_specific_application_permissions: Optional[List[ResourceSpecificPermission]] = None
     # The collection for settings related to saml single sign-on.
-    saml_single_sign_on_settings: Optional[saml_single_sign_on_settings.SamlSingleSignOnSettings] = None
+    saml_single_sign_on_settings: Optional[SamlSingleSignOnSettings] = None
     # Contains the list of identifiersUris, copied over from the associated application. Additional values can be added to hybrid applications. These values can be used to identify the permissions exposed by this app within Azure AD. For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties. Not nullable.  Supports $filter (eq, not, ge, le, startsWith).
     service_principal_names: Optional[List[str]] = None
     # Identifies whether the service principal represents an application, a managed identity, or a legacy application. This is set by Azure AD internally. The servicePrincipalType property can be set to three different values: __Application - A service principal that represents an application or service. The appId property identifies the associated app registration, and matches the appId of an application, possibly from a different tenant. If the associated app registration is missing, tokens are not issued for the service principal.__ManagedIdentity - A service principal that represents a managed identity. Service principals representing managed identities can be granted access and permissions, but cannot be updated or modified directly.__Legacy - A service principal that represents an app created before app registrations, or through legacy experiences. Legacy service principal can have credentials, service principal names, reply URLs, and other properties which are editable by an authorized user, but does not have an associated app registration. The appId value does not associate the service principal with an app registration. The service principal can only be used in the tenant where it was created.__SocialIdp - For internal use.
@@ -99,19 +119,19 @@ class ServicePrincipal(directory_object.DirectoryObject):
     # Specifies the Microsoft accounts that are supported for the current application. Read-only. Supported values are:AzureADMyOrg: Users with a Microsoft work or school account in my organization's Azure AD tenant (single-tenant).AzureADMultipleOrgs: Users with a Microsoft work or school account in any organization's Azure AD tenant (multi-tenant).AzureADandPersonalMicrosoftAccount: Users with a personal Microsoft account, or a work or school account in any organization's Azure AD tenant.PersonalMicrosoftAccount: Users with a personal Microsoft account only.
     sign_in_audience: Optional[str] = None
     # The synchronization property
-    synchronization: Optional[synchronization.Synchronization] = None
+    synchronization: Optional[Synchronization] = None
     # Custom strings that can be used to categorize and identify the service principal. Not nullable. The value is the union of strings set here and on the associated application entity's tags property.Supports $filter (eq, not, ge, le, startsWith).
     tags: Optional[List[str]] = None
     # Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD issues tokens for this application encrypted using the key specified by this property. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
     token_encryption_key_id: Optional[UUID] = None
     # The tokenIssuancePolicies assigned to this service principal.
-    token_issuance_policies: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None
+    token_issuance_policies: Optional[List[TokenIssuancePolicy]] = None
     # The tokenLifetimePolicies assigned to this service principal.
-    token_lifetime_policies: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None
+    token_lifetime_policies: Optional[List[TokenLifetimePolicy]] = None
     # The transitiveMemberOf property
-    transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
+    transitive_member_of: Optional[List[DirectoryObject]] = None
     # Specifies the verified publisher of the application which this service principal represents.
-    verified_publisher: Optional[verified_publisher.VerifiedPublisher] = None
+    verified_publisher: Optional[VerifiedPublisher] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServicePrincipal:
@@ -130,61 +150,101 @@ class ServicePrincipal(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import add_in, app_management_policy, app_role, app_role_assignment, claims_mapping_policy, delegated_permission_classification, directory_object, endpoint, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, o_auth2_permission_grant, password_credential, permission_scope, resource_specific_permission, saml_single_sign_on_settings, synchronization, token_issuance_policy, token_lifetime_policy, verified_publisher
+        from .add_in import AddIn
+        from .app_management_policy import AppManagementPolicy
+        from .app_role import AppRole
+        from .app_role_assignment import AppRoleAssignment
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .delegated_permission_classification import DelegatedPermissionClassification
+        from .directory_object import DirectoryObject
+        from .endpoint import Endpoint
+        from .federated_identity_credential import FederatedIdentityCredential
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .informational_url import InformationalUrl
+        from .key_credential import KeyCredential
+        from .o_auth2_permission_grant import OAuth2PermissionGrant
+        from .password_credential import PasswordCredential
+        from .permission_scope import PermissionScope
+        from .resource_specific_permission import ResourceSpecificPermission
+        from .saml_single_sign_on_settings import SamlSingleSignOnSettings
+        from .synchronization import Synchronization
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
+        from .verified_publisher import VerifiedPublisher
 
-        from . import add_in, app_management_policy, app_role, app_role_assignment, claims_mapping_policy, delegated_permission_classification, directory_object, endpoint, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, o_auth2_permission_grant, password_credential, permission_scope, resource_specific_permission, saml_single_sign_on_settings, synchronization, token_issuance_policy, token_lifetime_policy, verified_publisher
+        from .add_in import AddIn
+        from .app_management_policy import AppManagementPolicy
+        from .app_role import AppRole
+        from .app_role_assignment import AppRoleAssignment
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .delegated_permission_classification import DelegatedPermissionClassification
+        from .directory_object import DirectoryObject
+        from .endpoint import Endpoint
+        from .federated_identity_credential import FederatedIdentityCredential
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .informational_url import InformationalUrl
+        from .key_credential import KeyCredential
+        from .o_auth2_permission_grant import OAuth2PermissionGrant
+        from .password_credential import PasswordCredential
+        from .permission_scope import PermissionScope
+        from .resource_specific_permission import ResourceSpecificPermission
+        from .saml_single_sign_on_settings import SamlSingleSignOnSettings
+        from .synchronization import Synchronization
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
+        from .verified_publisher import VerifiedPublisher
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
-            "addIns": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(add_in.AddIn)),
+            "addIns": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(AddIn)),
             "alternativeNames": lambda n : setattr(self, 'alternative_names', n.get_collection_of_primitive_values(str)),
             "appDescription": lambda n : setattr(self, 'app_description', n.get_str_value()),
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "appManagementPolicies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(app_management_policy.AppManagementPolicy)),
+            "appManagementPolicies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(AppManagementPolicy)),
             "appOwnerOrganizationId": lambda n : setattr(self, 'app_owner_organization_id', n.get_uuid_value()),
-            "appRoleAssignedTo": lambda n : setattr(self, 'app_role_assigned_to', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
+            "appRoleAssignedTo": lambda n : setattr(self, 'app_role_assigned_to', n.get_collection_of_object_values(AppRoleAssignment)),
             "appRoleAssignmentRequired": lambda n : setattr(self, 'app_role_assignment_required', n.get_bool_value()),
-            "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
-            "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(app_role.AppRole)),
+            "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(AppRoleAssignment)),
+            "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(AppRole)),
             "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
-            "claimsMappingPolicies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(claims_mapping_policy.ClaimsMappingPolicy)),
-            "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "delegatedPermissionClassifications": lambda n : setattr(self, 'delegated_permission_classifications', n.get_collection_of_object_values(delegated_permission_classification.DelegatedPermissionClassification)),
+            "claimsMappingPolicies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(ClaimsMappingPolicy)),
+            "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(DirectoryObject)),
+            "delegatedPermissionClassifications": lambda n : setattr(self, 'delegated_permission_classifications', n.get_collection_of_object_values(DelegatedPermissionClassification)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "disabledByMicrosoftStatus": lambda n : setattr(self, 'disabled_by_microsoft_status', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "endpoints": lambda n : setattr(self, 'endpoints', n.get_collection_of_object_values(endpoint.Endpoint)),
-            "federatedIdentityCredentials": lambda n : setattr(self, 'federated_identity_credentials', n.get_collection_of_object_values(federated_identity_credential.FederatedIdentityCredential)),
-            "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(home_realm_discovery_policy.HomeRealmDiscoveryPolicy)),
+            "endpoints": lambda n : setattr(self, 'endpoints', n.get_collection_of_object_values(Endpoint)),
+            "federatedIdentityCredentials": lambda n : setattr(self, 'federated_identity_credentials', n.get_collection_of_object_values(FederatedIdentityCredential)),
+            "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(HomeRealmDiscoveryPolicy)),
             "homepage": lambda n : setattr(self, 'homepage', n.get_str_value()),
-            "info": lambda n : setattr(self, 'info', n.get_object_value(informational_url.InformationalUrl)),
-            "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(key_credential.KeyCredential)),
+            "info": lambda n : setattr(self, 'info', n.get_object_value(InformationalUrl)),
+            "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(KeyCredential)),
             "loginUrl": lambda n : setattr(self, 'login_url', n.get_str_value()),
             "logoutUrl": lambda n : setattr(self, 'logout_url', n.get_str_value()),
-            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
             "notificationEmailAddresses": lambda n : setattr(self, 'notification_email_addresses', n.get_collection_of_primitive_values(str)),
-            "oauth2PermissionGrants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(o_auth2_permission_grant.OAuth2PermissionGrant)),
-            "oauth2PermissionScopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(permission_scope.PermissionScope)),
-            "ownedObjects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "passwordCredentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(password_credential.PasswordCredential)),
+            "oauth2PermissionGrants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(OAuth2PermissionGrant)),
+            "oauth2PermissionScopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(PermissionScope)),
+            "ownedObjects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(DirectoryObject)),
+            "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(DirectoryObject)),
+            "passwordCredentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(PasswordCredential)),
             "preferredSingleSignOnMode": lambda n : setattr(self, 'preferred_single_sign_on_mode', n.get_str_value()),
             "preferredTokenSigningKeyThumbprint": lambda n : setattr(self, 'preferred_token_signing_key_thumbprint', n.get_str_value()),
             "replyUrls": lambda n : setattr(self, 'reply_urls', n.get_collection_of_primitive_values(str)),
-            "resourceSpecificApplicationPermissions": lambda n : setattr(self, 'resource_specific_application_permissions', n.get_collection_of_object_values(resource_specific_permission.ResourceSpecificPermission)),
-            "samlSingleSignOnSettings": lambda n : setattr(self, 'saml_single_sign_on_settings', n.get_object_value(saml_single_sign_on_settings.SamlSingleSignOnSettings)),
+            "resourceSpecificApplicationPermissions": lambda n : setattr(self, 'resource_specific_application_permissions', n.get_collection_of_object_values(ResourceSpecificPermission)),
+            "samlSingleSignOnSettings": lambda n : setattr(self, 'saml_single_sign_on_settings', n.get_object_value(SamlSingleSignOnSettings)),
             "servicePrincipalNames": lambda n : setattr(self, 'service_principal_names', n.get_collection_of_primitive_values(str)),
             "servicePrincipalType": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
             "signInAudience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
-            "synchronization": lambda n : setattr(self, 'synchronization', n.get_object_value(synchronization.Synchronization)),
+            "synchronization": lambda n : setattr(self, 'synchronization', n.get_object_value(Synchronization)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
             "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_uuid_value()),
-            "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
-            "tokenLifetimePolicies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
-            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "verifiedPublisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(verified_publisher.VerifiedPublisher)),
+            "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(TokenIssuancePolicy)),
+            "tokenLifetimePolicies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(TokenLifetimePolicy)),
+            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "verifiedPublisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(VerifiedPublisher)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_and_app_management_assignment_target
+    from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
-from . import device_and_app_management_assignment_target
+from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
 @dataclass
-class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget):
+class ConfigurationManagerCollectionAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
     odata_type = "#microsoft.graph.configurationManagerCollectionAssignmentTarget"
     # The collection Id that is the target of the assignment.
     collection_id: Optional[str] = None
@@ -31,9 +31,9 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_assignment_target
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
-        from . import device_and_app_management_assignment_target
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
             "collectionId": lambda n : setattr(self, 'collection_id', n.get_str_value()),

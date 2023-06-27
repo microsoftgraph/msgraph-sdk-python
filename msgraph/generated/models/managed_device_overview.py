@@ -4,16 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_exchange_access_state_summary, device_operating_system_summary, entity
+    from .device_exchange_access_state_summary import DeviceExchangeAccessStateSummary
+    from .device_operating_system_summary import DeviceOperatingSystemSummary
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ManagedDeviceOverview(entity.Entity):
+class ManagedDeviceOverview(Entity):
     # Distribution of Exchange Access State in Intune
-    device_exchange_access_state_summary: Optional[device_exchange_access_state_summary.DeviceExchangeAccessStateSummary] = None
+    device_exchange_access_state_summary: Optional[DeviceExchangeAccessStateSummary] = None
     # Device operating system summary.
-    device_operating_system_summary: Optional[device_operating_system_summary.DeviceOperatingSystemSummary] = None
+    device_operating_system_summary: Optional[DeviceOperatingSystemSummary] = None
     # The number of devices enrolled in both MDM and EAS
     dual_enrolled_device_count: Optional[int] = None
     # Total enrolled device count. Does not include PC devices managed via Intune PC Agent
@@ -40,13 +42,17 @@ class ManagedDeviceOverview(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_exchange_access_state_summary, device_operating_system_summary, entity
+        from .device_exchange_access_state_summary import DeviceExchangeAccessStateSummary
+        from .device_operating_system_summary import DeviceOperatingSystemSummary
+        from .entity import Entity
 
-        from . import device_exchange_access_state_summary, device_operating_system_summary, entity
+        from .device_exchange_access_state_summary import DeviceExchangeAccessStateSummary
+        from .device_operating_system_summary import DeviceOperatingSystemSummary
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceExchangeAccessStateSummary": lambda n : setattr(self, 'device_exchange_access_state_summary', n.get_object_value(device_exchange_access_state_summary.DeviceExchangeAccessStateSummary)),
-            "deviceOperatingSystemSummary": lambda n : setattr(self, 'device_operating_system_summary', n.get_object_value(device_operating_system_summary.DeviceOperatingSystemSummary)),
+            "deviceExchangeAccessStateSummary": lambda n : setattr(self, 'device_exchange_access_state_summary', n.get_object_value(DeviceExchangeAccessStateSummary)),
+            "deviceOperatingSystemSummary": lambda n : setattr(self, 'device_operating_system_summary', n.get_object_value(DeviceOperatingSystemSummary)),
             "dualEnrolledDeviceCount": lambda n : setattr(self, 'dual_enrolled_device_count', n.get_int_value()),
             "enrolledDeviceCount": lambda n : setattr(self, 'enrolled_device_count', n.get_int_value()),
             "mdmEnrolledCount": lambda n : setattr(self, 'mdm_enrolled_count', n.get_int_value()),

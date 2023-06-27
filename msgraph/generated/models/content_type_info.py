@@ -8,7 +8,7 @@ class ContentTypeInfo(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The id of the content type.
+    # The ID of the content type.
     id: Optional[str] = None
     # The name of the content type.
     name: Optional[str] = None

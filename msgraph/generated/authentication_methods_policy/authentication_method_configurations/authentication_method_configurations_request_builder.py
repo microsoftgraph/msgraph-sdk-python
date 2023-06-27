@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import authentication_method_configuration, authentication_method_configuration_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import authentication_method_configuration_item_request_builder
+    from ...models.authentication_method_configuration import AuthenticationMethodConfiguration
+    from ...models.authentication_method_configuration_collection_response import AuthenticationMethodConfigurationCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.authentication_method_configuration_item_request_builder import AuthenticationMethodConfigurationItemRequestBuilder
 
 class AuthenticationMethodConfigurationsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class AuthenticationMethodConfigurationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_authentication_method_configuration_id(self,authentication_method_configuration_id: str) -> authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder:
+    def by_authentication_method_configuration_id(self,authentication_method_configuration_id: str) -> AuthenticationMethodConfigurationItemRequestBuilder:
         """
         Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
         Args:
             authentication_method_configuration_id: Unique identifier of the item
-        Returns: authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder
+        Returns: AuthenticationMethodConfigurationItemRequestBuilder
         """
         if not authentication_method_configuration_id:
             raise TypeError("authentication_method_configuration_id cannot be null.")
-        from .item import authentication_method_configuration_item_request_builder
+        from .item.authentication_method_configuration_item_request_builder import AuthenticationMethodConfigurationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["authenticationMethodConfiguration%2Did"] = authentication_method_configuration_id
-        return authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AuthenticationMethodConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AuthenticationMethodConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_method_configuration_collection_response.AuthenticationMethodConfigurationCollectionResponse]:
+    async def get(self,request_configuration: Optional[AuthenticationMethodConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationMethodConfigurationCollectionResponse]:
         """
         Represents the settings for each authentication method. Automatically expanded on GET /policies/authenticationMethodsPolicy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[authentication_method_configuration_collection_response.AuthenticationMethodConfigurationCollectionResponse]
+        Returns: Optional[AuthenticationMethodConfigurationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import authentication_method_configuration_collection_response
+        from ...models.authentication_method_configuration_collection_response import AuthenticationMethodConfigurationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, authentication_method_configuration_collection_response.AuthenticationMethodConfigurationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuthenticationMethodConfigurationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[authentication_method_configuration.AuthenticationMethodConfiguration] = None, request_configuration: Optional[AuthenticationMethodConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[authentication_method_configuration.AuthenticationMethodConfiguration]:
+    async def post(self,body: Optional[AuthenticationMethodConfiguration] = None, request_configuration: Optional[AuthenticationMethodConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[AuthenticationMethodConfiguration]:
         """
         Create new navigation property to authenticationMethodConfigurations for authenticationMethodsPolicy
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[authentication_method_configuration.AuthenticationMethodConfiguration]
+        Returns: Optional[AuthenticationMethodConfiguration]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import authentication_method_configuration
+        from ...models.authentication_method_configuration import AuthenticationMethodConfiguration
 
-        return await self.request_adapter.send_async(request_info, authentication_method_configuration.AuthenticationMethodConfiguration, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuthenticationMethodConfiguration, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationMethodConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class AuthenticationMethodConfigurationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[authentication_method_configuration.AuthenticationMethodConfiguration] = None, request_configuration: Optional[AuthenticationMethodConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AuthenticationMethodConfiguration] = None, request_configuration: Optional[AuthenticationMethodConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to authenticationMethodConfigurations for authenticationMethodsPolicy
         Args:
@@ -139,13 +140,13 @@ class AuthenticationMethodConfigurationsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AuthenticationMethodConfigurationsRequestBuilderGetQueryParameters():

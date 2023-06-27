@@ -1,57 +1,76 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import app_role_assignment, assigned_label, assigned_license, calendar, conversation, conversation_thread, directory_object, drive, event, extension, group_lifecycle_policy, group_setting, license_processing_state, onenote, on_premises_provisioning_error, planner_group, profile_photo, resource_specific_permission_grant, site, team
+    from .app_role_assignment import AppRoleAssignment
+    from .assigned_label import AssignedLabel
+    from .assigned_license import AssignedLicense
+    from .calendar import Calendar
+    from .conversation import Conversation
+    from .conversation_thread import ConversationThread
+    from .directory_object import DirectoryObject
+    from .drive import Drive
+    from .event import Event
+    from .extension import Extension
+    from .group_lifecycle_policy import GroupLifecyclePolicy
+    from .group_setting import GroupSetting
+    from .license_processing_state import LicenseProcessingState
+    from .onenote import Onenote
+    from .on_premises_provisioning_error import OnPremisesProvisioningError
+    from .planner_group import PlannerGroup
+    from .profile_photo import ProfilePhoto
+    from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+    from .site import Site
+    from .team import Team
 
-from . import directory_object
+from .directory_object import DirectoryObject
 
 @dataclass
-class Group(directory_object.DirectoryObject):
+class Group(DirectoryObject):
     odata_type = "#microsoft.graph.group"
     # The list of users or groups that are allowed to create post's or calendar events in this group. If this list is non-empty then only users or groups listed here are allowed to post.
-    accepted_senders: Optional[List[directory_object.DirectoryObject]] = None
+    accepted_senders: Optional[List[DirectoryObject]] = None
     # Indicates if people external to the organization can send messages to the group. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
     allow_external_senders: Optional[bool] = None
     # Represents the app roles a group has been granted for an application. Supports $expand.
-    app_role_assignments: Optional[List[app_role_assignment.AppRoleAssignment]] = None
+    app_role_assignments: Optional[List[AppRoleAssignment]] = None
     # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Returned only on $select.
-    assigned_labels: Optional[List[assigned_label.AssignedLabel]] = None
+    assigned_labels: Optional[List[AssignedLabel]] = None
     # The licenses that are assigned to the group. Returned only on $select. Supports $filter (eq).Read-only.
-    assigned_licenses: Optional[List[assigned_license.AssignedLicense]] = None
+    assigned_licenses: Optional[List[AssignedLicense]] = None
     # Indicates if new members added to the group will be auto-subscribed to receive email notifications. You can set this property in a PATCH request for the group; do not set it in the initial POST request that creates the group. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
     auto_subscribe_new_members: Optional[bool] = None
     # The group's calendar. Read-only.
-    calendar: Optional[calendar.Calendar] = None
+    calendar: Optional[Calendar] = None
     # The calendar view for the calendar. Read-only.
-    calendar_view: Optional[List[event.Event]] = None
+    calendar_view: Optional[List[Event]] = None
     # Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith).
     classification: Optional[str] = None
     # The group's conversations.
-    conversations: Optional[List[conversation.Conversation]] = None
+    conversations: Optional[List[Conversation]] = None
     # Timestamp of when the group was created. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Read-only.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The user (or application) that created the group. NOTE: This is not set if the user is an administrator. Read-only.
-    created_on_behalf_of: Optional[directory_object.DirectoryObject] = None
+    created_on_behalf_of: Optional[DirectoryObject] = None
     # An optional description for the group. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
     description: Optional[str] = None
     # The display name for the group. This property is required when a group is created and cannot be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
     display_name: Optional[str] = None
     # The group's default drive. Read-only.
-    drive: Optional[drive.Drive] = None
+    drive: Optional[Drive] = None
     # The group's drives. Read-only.
-    drives: Optional[List[drive.Drive]] = None
+    drives: Optional[List[Drive]] = None
     # The group's calendar events.
-    events: Optional[List[event.Event]] = None
+    events: Optional[List[Event]] = None
     # Timestamp of when the group is set to expire. Is null for security groups but for Microsoft 365 groups, it represents when the group is set to expire as defined in the groupLifecyclePolicy. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
-    expiration_date_time: Optional[datetime] = None
+    expiration_date_time: Optional[datetime.datetime] = None
     # The collection of open extensions defined for the group. Read-only. Nullable.
-    extensions: Optional[List[extension.Extension]] = None
+    extensions: Optional[List[Extension]] = None
     # The collection of lifecycle policies for this group. Read-only. Nullable.
-    group_lifecycle_policies: Optional[List[group_lifecycle_policy.GroupLifecyclePolicy]] = None
+    group_lifecycle_policies: Optional[List[GroupLifecyclePolicy]] = None
     # Specifies the group type and its membership. If the collection contains Unified, the group is a Microsoft 365 group; otherwise, it's either a security group or distribution group. For details, see groups overview.If the collection includes DynamicMembership, the group has dynamic membership; otherwise, membership is static. Returned by default. Supports $filter (eq, not).
     group_types: Optional[List[str]] = None
     # Indicates whether there are members in this group that have license errors from its group-based license assignment. This property is never returned on a GET operation. You can use it as a $filter argument to get groups that have members with license errors (that is, filter for this property being true). See an example. Supports $filter (eq).
@@ -67,7 +86,7 @@ class Group(directory_object.DirectoryObject):
     # Indicates whether the signed-in user is subscribed to receive email conversations. Default value is true. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
     is_subscribed_by_mail: Optional[bool] = None
     # Indicates status of the group license assignment to all members of the group. Default value is false. Read-only. Possible values: QueuedForProcessing, ProcessingInProgress, and ProcessingComplete.Returned only on $select. Read-only.
-    license_processing_state: Optional[license_processing_state.LicenseProcessingState] = None
+    license_processing_state: Optional[LicenseProcessingState] = None
     # The SMTP address for the group, for example, 'serviceadmins@contoso.onmicrosoft.com'. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     mail: Optional[str] = None
     # Specifies whether the group is mail-enabled. Required. Returned by default. Supports $filter (eq, ne, not).
@@ -75,11 +94,11 @@ class Group(directory_object.DirectoryObject):
     # The mail alias for the group, unique for Microsoft 365 groups in the organization. Maximum length is 64 characters. This property can contain only characters in the ASCII character set 0 - 127 except the following: @ () / [] ' ; : <> , SPACE. Required. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     mail_nickname: Optional[str] = None
     # Groups that this group is a member of. HTTP Methods: GET (supported for all groups). Read-only. Nullable. Supports $expand.
-    member_of: Optional[List[directory_object.DirectoryObject]] = None
+    member_of: Optional[List[DirectoryObject]] = None
     # The members of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).
-    members: Optional[List[directory_object.DirectoryObject]] = None
+    members: Optional[List[DirectoryObject]] = None
     # A list of group members with license errors from this group-based license assignment. Read-only.
-    members_with_license_errors: Optional[List[directory_object.DirectoryObject]] = None
+    members_with_license_errors: Optional[List[DirectoryObject]] = None
     # The rule that determines members for this group if the group is a dynamic group (groupTypes contains DynamicMembership). For more information about the syntax of the membership rule, see Membership Rules syntax. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith).
     membership_rule: Optional[str] = None
     # Indicates whether the dynamic membership processing is on or paused. Possible values are On or Paused. Returned by default. Supports $filter (eq, ne, not, in).
@@ -87,11 +106,11 @@ class Group(directory_object.DirectoryObject):
     # The onPremisesDomainName property
     on_premises_domain_name: Optional[str] = None
     # Indicates the last time at which the group was synced with the on-premises directory.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in).
-    on_premises_last_sync_date_time: Optional[datetime] = None
+    on_premises_last_sync_date_time: Optional[datetime.datetime] = None
     # The onPremisesNetBiosName property
     on_premises_net_bios_name: Optional[str] = None
     # Errors when using Microsoft synchronization product during provisioning. Returned by default. Supports $filter (eq, not).
-    on_premises_provisioning_errors: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None
+    on_premises_provisioning_errors: Optional[List[OnPremisesProvisioningError]] = None
     # Contains the on-premises SAM account name synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect.Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith). Read-only.
     on_premises_sam_account_name: Optional[str] = None
     # Contains the on-premises security identifier (SID) for the group that was synchronized from on-premises to the cloud. Returned by default. Supports $filter (eq including on null values). Read-only.
@@ -99,17 +118,17 @@ class Group(directory_object.DirectoryObject):
     # true if this group is synced from an on-premises directory; false if this group was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Returned by default. Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
     on_premises_sync_enabled: Optional[bool] = None
     # The onenote property
-    onenote: Optional[onenote.Onenote] = None
+    onenote: Optional[Onenote] = None
     # The owners of the group. Limited to 100 owners. Nullable. If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner.  Supports $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1). Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
-    owners: Optional[List[directory_object.DirectoryObject]] = None
+    owners: Optional[List[DirectoryObject]] = None
     # The permission that has been granted for a group to a specific application. Supports $expand.
-    permission_grants: Optional[List[resource_specific_permission_grant.ResourceSpecificPermissionGrant]] = None
+    permission_grants: Optional[List[ResourceSpecificPermissionGrant]] = None
     # The group's profile photo
-    photo: Optional[profile_photo.ProfilePhoto] = None
+    photo: Optional[ProfilePhoto] = None
     # The profile photos owned by the group. Read-only. Nullable.
-    photos: Optional[List[profile_photo.ProfilePhoto]] = None
+    photos: Optional[List[ProfilePhoto]] = None
     # Entry-point to Planner resource that might exist for a Unified Group.
-    planner: Optional[planner_group.PlannerGroup] = None
+    planner: Optional[PlannerGroup] = None
     # The preferred data location for the Microsoft 365 group. By default, the group inherits the group creator's preferred data location. To set this property, the calling user must be assigned one of the following Azure AD roles:  Global Administrator  User Account Administrator Directory Writer  Exchange Administrator  SharePoint Administrator  For more information about this property, see OneDrive Online Multi-Geo. Nullable. Returned by default.
     preferred_data_location: Optional[str] = None
     # The preferred language for a Microsoft 365 group. Should follow ISO 639-1 Code; for example en-US. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
@@ -117,27 +136,27 @@ class Group(directory_object.DirectoryObject):
     # Email addresses for the group that direct to the same group mailbox. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. The any operator is required to filter expressions on multi-valued properties. Returned by default. Read-only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
     proxy_addresses: Optional[List[str]] = None
     # The list of users or groups that are not allowed to create posts or calendar events in this group. Nullable
-    rejected_senders: Optional[List[directory_object.DirectoryObject]] = None
+    rejected_senders: Optional[List[DirectoryObject]] = None
     # Timestamp of when the group was last renewed. This cannot be modified directly and is only updated via the renew service action. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
-    renewed_date_time: Optional[datetime] = None
+    renewed_date_time: Optional[datetime.datetime] = None
     # Specifies whether the group is a security group. Required. Returned by default. Supports $filter (eq, ne, not, in).
     security_enabled: Optional[bool] = None
     # Security identifier of the group, used in Windows scenarios. Returned by default.
     security_identifier: Optional[str] = None
     # Settings that can govern this group's behavior, like whether members can invite guest users to the group. Nullable.
-    settings: Optional[List[group_setting.GroupSetting]] = None
+    settings: Optional[List[GroupSetting]] = None
     # The list of SharePoint sites in this group. Access the default site with /sites/root.
-    sites: Optional[List[site.Site]] = None
+    sites: Optional[List[Site]] = None
     # The team associated with this group.
-    team: Optional[team.Team] = None
+    team: Optional[Team] = None
     # Specifies a Microsoft 365 group's color theme. Possible values are Teal, Purple, Green, Blue, Pink, Orange or Red. Returned by default.
     theme: Optional[str] = None
     # The group's conversation threads. Nullable.
-    threads: Optional[List[conversation_thread.ConversationThread]] = None
+    threads: Optional[List[ConversationThread]] = None
     # The groups that a group is a member of, either directly and through nested membership. Nullable.
-    transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
+    transitive_member_of: Optional[List[DirectoryObject]] = None
     # The direct and transitive members of a group. Nullable.
-    transitive_members: Optional[List[directory_object.DirectoryObject]] = None
+    transitive_members: Optional[List[DirectoryObject]] = None
     # Count of conversations that have received new posts since the signed-in user last visited the group. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
     unseen_count: Optional[int] = None
     # Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or HiddenMembership. HiddenMembership can be set only for Microsoft 365 groups, when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. Groups assignable to roles are always Private. See group visibility options to learn more. Returned by default. Nullable.
@@ -160,31 +179,69 @@ class Group(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_role_assignment, assigned_label, assigned_license, calendar, conversation, conversation_thread, directory_object, drive, event, extension, group_lifecycle_policy, group_setting, license_processing_state, onenote, on_premises_provisioning_error, planner_group, profile_photo, resource_specific_permission_grant, site, team
+        from .app_role_assignment import AppRoleAssignment
+        from .assigned_label import AssignedLabel
+        from .assigned_license import AssignedLicense
+        from .calendar import Calendar
+        from .conversation import Conversation
+        from .conversation_thread import ConversationThread
+        from .directory_object import DirectoryObject
+        from .drive import Drive
+        from .event import Event
+        from .extension import Extension
+        from .group_lifecycle_policy import GroupLifecyclePolicy
+        from .group_setting import GroupSetting
+        from .license_processing_state import LicenseProcessingState
+        from .onenote import Onenote
+        from .on_premises_provisioning_error import OnPremisesProvisioningError
+        from .planner_group import PlannerGroup
+        from .profile_photo import ProfilePhoto
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .site import Site
+        from .team import Team
 
-        from . import app_role_assignment, assigned_label, assigned_license, calendar, conversation, conversation_thread, directory_object, drive, event, extension, group_lifecycle_policy, group_setting, license_processing_state, onenote, on_premises_provisioning_error, planner_group, profile_photo, resource_specific_permission_grant, site, team
+        from .app_role_assignment import AppRoleAssignment
+        from .assigned_label import AssignedLabel
+        from .assigned_license import AssignedLicense
+        from .calendar import Calendar
+        from .conversation import Conversation
+        from .conversation_thread import ConversationThread
+        from .directory_object import DirectoryObject
+        from .drive import Drive
+        from .event import Event
+        from .extension import Extension
+        from .group_lifecycle_policy import GroupLifecyclePolicy
+        from .group_setting import GroupSetting
+        from .license_processing_state import LicenseProcessingState
+        from .onenote import Onenote
+        from .on_premises_provisioning_error import OnPremisesProvisioningError
+        from .planner_group import PlannerGroup
+        from .profile_photo import ProfilePhoto
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .site import Site
+        from .team import Team
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "acceptedSenders": lambda n : setattr(self, 'accepted_senders', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "acceptedSenders": lambda n : setattr(self, 'accepted_senders', n.get_collection_of_object_values(DirectoryObject)),
             "allowExternalSenders": lambda n : setattr(self, 'allow_external_senders', n.get_bool_value()),
-            "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
-            "assignedLabels": lambda n : setattr(self, 'assigned_labels', n.get_collection_of_object_values(assigned_label.AssignedLabel)),
-            "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
+            "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(AppRoleAssignment)),
+            "assignedLabels": lambda n : setattr(self, 'assigned_labels', n.get_collection_of_object_values(AssignedLabel)),
+            "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(AssignedLicense)),
             "autoSubscribeNewMembers": lambda n : setattr(self, 'auto_subscribe_new_members', n.get_bool_value()),
-            "calendar": lambda n : setattr(self, 'calendar', n.get_object_value(calendar.Calendar)),
-            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(event.Event)),
+            "calendar": lambda n : setattr(self, 'calendar', n.get_object_value(Calendar)),
+            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(Event)),
             "classification": lambda n : setattr(self, 'classification', n.get_str_value()),
-            "conversations": lambda n : setattr(self, 'conversations', n.get_collection_of_object_values(conversation.Conversation)),
+            "conversations": lambda n : setattr(self, 'conversations', n.get_collection_of_object_values(Conversation)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "createdOnBehalfOf": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(directory_object.DirectoryObject)),
+            "createdOnBehalfOf": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(DirectoryObject)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "drive": lambda n : setattr(self, 'drive', n.get_object_value(drive.Drive)),
-            "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(drive.Drive)),
-            "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(event.Event)),
+            "drive": lambda n : setattr(self, 'drive', n.get_object_value(Drive)),
+            "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(Drive)),
+            "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(Event)),
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "groupLifecyclePolicies": lambda n : setattr(self, 'group_lifecycle_policies', n.get_collection_of_object_values(group_lifecycle_policy.GroupLifecyclePolicy)),
+            "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
+            "groupLifecyclePolicies": lambda n : setattr(self, 'group_lifecycle_policies', n.get_collection_of_object_values(GroupLifecyclePolicy)),
             "groupTypes": lambda n : setattr(self, 'group_types', n.get_collection_of_primitive_values(str)),
             "hasMembersWithLicenseErrors": lambda n : setattr(self, 'has_members_with_license_errors', n.get_bool_value()),
             "hideFromAddressLists": lambda n : setattr(self, 'hide_from_address_lists', n.get_bool_value()),
@@ -192,42 +249,42 @@ class Group(directory_object.DirectoryObject):
             "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
             "isAssignableToRole": lambda n : setattr(self, 'is_assignable_to_role', n.get_bool_value()),
             "isSubscribedByMail": lambda n : setattr(self, 'is_subscribed_by_mail', n.get_bool_value()),
-            "licenseProcessingState": lambda n : setattr(self, 'license_processing_state', n.get_object_value(license_processing_state.LicenseProcessingState)),
+            "licenseProcessingState": lambda n : setattr(self, 'license_processing_state', n.get_object_value(LicenseProcessingState)),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
             "mailEnabled": lambda n : setattr(self, 'mail_enabled', n.get_bool_value()),
             "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "membersWithLicenseErrors": lambda n : setattr(self, 'members_with_license_errors', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(DirectoryObject)),
+            "membersWithLicenseErrors": lambda n : setattr(self, 'members_with_license_errors', n.get_collection_of_object_values(DirectoryObject)),
             "membershipRule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
             "membershipRuleProcessingState": lambda n : setattr(self, 'membership_rule_processing_state', n.get_str_value()),
             "onPremisesDomainName": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
             "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
             "onPremisesNetBiosName": lambda n : setattr(self, 'on_premises_net_bios_name', n.get_str_value()),
-            "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(on_premises_provisioning_error.OnPremisesProvisioningError)),
+            "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(OnPremisesProvisioningError)),
             "onPremisesSamAccountName": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
             "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
             "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
-            "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(onenote.Onenote)),
-            "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "permissionGrants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(resource_specific_permission_grant.ResourceSpecificPermissionGrant)),
-            "photo": lambda n : setattr(self, 'photo', n.get_object_value(profile_photo.ProfilePhoto)),
-            "photos": lambda n : setattr(self, 'photos', n.get_collection_of_object_values(profile_photo.ProfilePhoto)),
-            "planner": lambda n : setattr(self, 'planner', n.get_object_value(planner_group.PlannerGroup)),
+            "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(Onenote)),
+            "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(DirectoryObject)),
+            "permissionGrants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(ResourceSpecificPermissionGrant)),
+            "photo": lambda n : setattr(self, 'photo', n.get_object_value(ProfilePhoto)),
+            "photos": lambda n : setattr(self, 'photos', n.get_collection_of_object_values(ProfilePhoto)),
+            "planner": lambda n : setattr(self, 'planner', n.get_object_value(PlannerGroup)),
             "preferredDataLocation": lambda n : setattr(self, 'preferred_data_location', n.get_str_value()),
             "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
             "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
-            "rejectedSenders": lambda n : setattr(self, 'rejected_senders', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "rejectedSenders": lambda n : setattr(self, 'rejected_senders', n.get_collection_of_object_values(DirectoryObject)),
             "renewedDateTime": lambda n : setattr(self, 'renewed_date_time', n.get_datetime_value()),
             "securityEnabled": lambda n : setattr(self, 'security_enabled', n.get_bool_value()),
             "securityIdentifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
-            "settings": lambda n : setattr(self, 'settings', n.get_collection_of_object_values(group_setting.GroupSetting)),
-            "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(site.Site)),
-            "team": lambda n : setattr(self, 'team', n.get_object_value(team.Team)),
+            "settings": lambda n : setattr(self, 'settings', n.get_collection_of_object_values(GroupSetting)),
+            "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(Site)),
+            "team": lambda n : setattr(self, 'team', n.get_object_value(Team)),
             "theme": lambda n : setattr(self, 'theme', n.get_str_value()),
-            "threads": lambda n : setattr(self, 'threads', n.get_collection_of_object_values(conversation_thread.ConversationThread)),
-            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "transitiveMembers": lambda n : setattr(self, 'transitive_members', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "threads": lambda n : setattr(self, 'threads', n.get_collection_of_object_values(ConversationThread)),
+            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "transitiveMembers": lambda n : setattr(self, 'transitive_members', n.get_collection_of_object_values(DirectoryObject)),
             "unseenCount": lambda n : setattr(self, 'unseen_count', n.get_int_value()),
             "visibility": lambda n : setattr(self, 'visibility', n.get_str_value()),
         }
@@ -254,14 +311,14 @@ class Group(directory_object.DirectoryObject):
         writer.write_collection_of_object_values("calendarView", self.calendar_view)
         writer.write_str_value("classification", self.classification)
         writer.write_collection_of_object_values("conversations", self.conversations)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_object_value("createdOnBehalfOf", self.created_on_behalf_of)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("drive", self.drive)
         writer.write_collection_of_object_values("drives", self.drives)
         writer.write_collection_of_object_values("events", self.events)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_collection_of_object_values("groupLifecyclePolicies", self.group_lifecycle_policies)
         writer.write_collection_of_primitive_values("groupTypes", self.group_types)
@@ -281,7 +338,7 @@ class Group(directory_object.DirectoryObject):
         writer.write_str_value("membershipRule", self.membership_rule)
         writer.write_str_value("membershipRuleProcessingState", self.membership_rule_processing_state)
         writer.write_str_value("onPremisesDomainName", self.on_premises_domain_name)
-        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
+        writer.write_datetime_value()("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_str_value("onPremisesNetBiosName", self.on_premises_net_bios_name)
         writer.write_collection_of_object_values("onPremisesProvisioningErrors", self.on_premises_provisioning_errors)
         writer.write_str_value("onPremisesSamAccountName", self.on_premises_sam_account_name)
@@ -297,7 +354,7 @@ class Group(directory_object.DirectoryObject):
         writer.write_str_value("preferredLanguage", self.preferred_language)
         writer.write_collection_of_primitive_values("proxyAddresses", self.proxy_addresses)
         writer.write_collection_of_object_values("rejectedSenders", self.rejected_senders)
-        writer.write_datetime_value("renewedDateTime", self.renewed_date_time)
+        writer.write_datetime_value()("renewedDateTime", self.renewed_date_time)
         writer.write_bool_value("securityEnabled", self.security_enabled)
         writer.write_str_value("securityIdentifier", self.security_identifier)
         writer.write_collection_of_object_values("settings", self.settings)

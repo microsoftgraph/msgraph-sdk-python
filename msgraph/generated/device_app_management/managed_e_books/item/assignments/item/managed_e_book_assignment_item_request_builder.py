@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import managed_e_book_assignment
-    from ......models.o_data_errors import o_data_error
+    from ......models.managed_e_book_assignment import ManagedEBookAssignment
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class ManagedEBookAssignmentItemRequestBuilder():
     """
@@ -37,73 +37,73 @@ class ManagedEBookAssignmentItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property assignments for deviceAppManagement
+        Deletes a iosVppEBookAssignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_e_book_assignment.ManagedEBookAssignment]:
+    async def get(self,request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedEBookAssignment]:
         """
-        The list of assignments for this eBook.
+        Read properties and relationships of the managedEBookAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_e_book_assignment.ManagedEBookAssignment]
+        Returns: Optional[ManagedEBookAssignment]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import managed_e_book_assignment
+        from ......models.managed_e_book_assignment import ManagedEBookAssignment
 
-        return await self.request_adapter.send_async(request_info, managed_e_book_assignment.ManagedEBookAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedEBookAssignment, error_mapping)
     
-    async def patch(self,body: Optional[managed_e_book_assignment.ManagedEBookAssignment] = None, request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[managed_e_book_assignment.ManagedEBookAssignment]:
+    async def patch(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedEBookAssignment]:
         """
-        Update the navigation property assignments in deviceAppManagement
+        Update the properties of a iosVppEBookAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_e_book_assignment.ManagedEBookAssignment]
+        Returns: Optional[ManagedEBookAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import managed_e_book_assignment
+        from ......models.managed_e_book_assignment import ManagedEBookAssignment
 
-        return await self.request_adapter.send_async(request_info, managed_e_book_assignment.ManagedEBookAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedEBookAssignment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property assignments for deviceAppManagement
+        Deletes a iosVppEBookAssignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ManagedEBookAssignmentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of assignments for this eBook.
+        Read properties and relationships of the managedEBookAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class ManagedEBookAssignmentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[managed_e_book_assignment.ManagedEBookAssignment] = None, request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property assignments in deviceAppManagement
+        Update the properties of a iosVppEBookAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class ManagedEBookAssignmentItemRequestBuilder():
     @dataclass
     class ManagedEBookAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The list of assignments for this eBook.
+        Read properties and relationships of the managedEBookAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

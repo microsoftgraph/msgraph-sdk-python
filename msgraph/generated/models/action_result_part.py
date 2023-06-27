@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import aad_user_conversation_member_result, public_error
+    from .aad_user_conversation_member_result import AadUserConversationMemberResult
+    from .public_error import PublicError
 
 @dataclass
 class ActionResultPart(AdditionalDataHolder, Parsable):
@@ -12,7 +13,7 @@ class ActionResultPart(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The error that occurred, if any, during the course of the bulk operation.
-    error: Optional[public_error.PublicError] = None
+    error: Optional[PublicError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -31,9 +32,9 @@ class ActionResultPart(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.aadUserConversationMemberResult".casefold():
-            from . import aad_user_conversation_member_result
+            from .aad_user_conversation_member_result import AadUserConversationMemberResult
 
-            return aad_user_conversation_member_result.AadUserConversationMemberResult()
+            return AadUserConversationMemberResult()
         return ActionResultPart()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -41,12 +42,14 @@ class ActionResultPart(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import aad_user_conversation_member_result, public_error
+        from .aad_user_conversation_member_result import AadUserConversationMemberResult
+        from .public_error import PublicError
 
-        from . import aad_user_conversation_member_result, public_error
+        from .aad_user_conversation_member_result import AadUserConversationMemberResult
+        from .public_error import PublicError
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

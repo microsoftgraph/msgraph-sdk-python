@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models.external_connectors import external
-    from ..models.o_data_errors import o_data_error
-    from .connections import connections_request_builder
+    from ..models.external_connectors.external import External
+    from ..models.o_data_errors.o_data_error import ODataError
+    from .connections.connections_request_builder import ConnectionsRequestBuilder
 
 class ExternalRequestBuilder():
     """
@@ -36,52 +36,52 @@ class ExternalRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ExternalRequestBuilderGetRequestConfiguration] = None) -> Optional[external.External]:
+    async def get(self,request_configuration: Optional[ExternalRequestBuilderGetRequestConfiguration] = None) -> Optional[External]:
         """
         Get external
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external.External]
+        Returns: Optional[External]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models.external_connectors import external
+        from ..models.external_connectors.external import External
 
-        return await self.request_adapter.send_async(request_info, external.External, error_mapping)
+        return await self.request_adapter.send_async(request_info, External, error_mapping)
     
-    async def patch(self,body: Optional[external.External] = None, request_configuration: Optional[ExternalRequestBuilderPatchRequestConfiguration] = None) -> Optional[external.External]:
+    async def patch(self,body: Optional[External] = None, request_configuration: Optional[ExternalRequestBuilderPatchRequestConfiguration] = None) -> Optional[External]:
         """
         Update external
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external.External]
+        Returns: Optional[External]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models.external_connectors import external
+        from ..models.external_connectors.external import External
 
-        return await self.request_adapter.send_async(request_info, external.External, error_mapping)
+        return await self.request_adapter.send_async(request_info, External, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ExternalRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -101,7 +101,7 @@ class ExternalRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[external.External] = None, request_configuration: Optional[ExternalRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[External] = None, request_configuration: Optional[ExternalRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update external
         Args:
@@ -123,13 +123,13 @@ class ExternalRequestBuilder():
         return request_info
     
     @property
-    def connections(self) -> connections_request_builder.ConnectionsRequestBuilder:
+    def connections(self) -> ConnectionsRequestBuilder:
         """
         Provides operations to manage the connections property of the microsoft.graph.externalConnectors.external entity.
         """
-        from .connections import connections_request_builder
+        from .connections.connections_request_builder import ConnectionsRequestBuilder
 
-        return connections_request_builder.ConnectionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ConnectionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ExternalRequestBuilderGetQueryParameters():

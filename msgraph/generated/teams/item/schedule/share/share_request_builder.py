@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import share_post_request_body
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .share_post_request_body import SharePostRequestBody
 
 class ShareRequestBuilder():
     """
@@ -35,7 +35,7 @@ class ShareRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[share_post_request_body.SharePostRequestBody] = None, request_configuration: Optional[ShareRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[SharePostRequestBody] = None, request_configuration: Optional[ShareRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Share a schedule time range with schedule members.Make the collections of shift, openshift and timeOff items in the specified time range of the schedule viewable by the specified team members, including employees and managers.Each shift, openshift and timeOff instance in a schedule supports a draft version and a shared version of the item. The draft version is viewable by only managers, and the shared version is viewable by employees and managers. For each shift, openshift and timeOff instance in the specified time range, the share action updates the shared version from the draft version, so that in addition to managers, employees can also view the most current information about the item. The **notifyTeam** parameter further specifies which employees can view the item.
         Args:
@@ -47,17 +47,17 @@ class ShareRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[share_post_request_body.SharePostRequestBody] = None, request_configuration: Optional[ShareRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SharePostRequestBody] = None, request_configuration: Optional[ShareRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Share a schedule time range with schedule members.Make the collections of shift, openshift and timeOff items in the specified time range of the schedule viewable by the specified team members, including employees and managers.Each shift, openshift and timeOff instance in a schedule supports a draft version and a shared version of the item. The draft version is viewable by only managers, and the shared version is viewable by employees and managers. For each shift, openshift and timeOff instance in the specified time range, the share action updates the shared version from the draft version, so that in addition to managers, employees can also view the most current information about the item. The **notifyTeam** parameter further specifies which employees can view the item.
         Args:

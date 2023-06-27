@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import screen_sharing_role
+    from .....models.screen_sharing_role import ScreenSharingRole
 
 @dataclass
 class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The role property
-    role: Optional[screen_sharing_role.ScreenSharingRole] = None
+    role: Optional[ScreenSharingRole] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChangeScreenSharingRolePostRequestBody:
@@ -31,12 +31,12 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import screen_sharing_role
+        from .....models.screen_sharing_role import ScreenSharingRole
 
-        from .....models import screen_sharing_role
+        from .....models.screen_sharing_role import ScreenSharingRole
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "role": lambda n : setattr(self, 'role', n.get_enum_value(screen_sharing_role.ScreenSharingRole)),
+            "role": lambda n : setattr(self, 'role', n.get_enum_value(ScreenSharingRole)),
         }
         return fields
     

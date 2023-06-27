@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import synchronization_job_restart_criteria
+    from .......models.synchronization_job_restart_criteria import SynchronizationJobRestartCriteria
 
 @dataclass
 class RestartPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class RestartPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The criteria property
-    criteria: Optional[synchronization_job_restart_criteria.SynchronizationJobRestartCriteria] = None
+    criteria: Optional[SynchronizationJobRestartCriteria] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RestartPostRequestBody:
@@ -31,12 +31,12 @@ class RestartPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .......models import synchronization_job_restart_criteria
+        from .......models.synchronization_job_restart_criteria import SynchronizationJobRestartCriteria
 
-        from .......models import synchronization_job_restart_criteria
+        from .......models.synchronization_job_restart_criteria import SynchronizationJobRestartCriteria
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(synchronization_job_restart_criteria.SynchronizationJobRestartCriteria)),
+            "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(SynchronizationJobRestartCriteria)),
         }
         return fields
     

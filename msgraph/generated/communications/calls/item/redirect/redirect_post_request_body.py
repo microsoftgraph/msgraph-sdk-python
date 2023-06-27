@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import invitation_participant_info
+    from .....models.invitation_participant_info import InvitationParticipantInfo
 
 @dataclass
 class RedirectPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class RedirectPostRequestBody(AdditionalDataHolder, Parsable):
     # The callbackUri property
     callback_uri: Optional[str] = None
     # The targets property
-    targets: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None
+    targets: Optional[List[InvitationParticipantInfo]] = None
     # The timeout property
     timeout: Optional[int] = None
     
@@ -35,13 +35,13 @@ class RedirectPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import invitation_participant_info
+        from .....models.invitation_participant_info import InvitationParticipantInfo
 
-        from .....models import invitation_participant_info
+        from .....models.invitation_participant_info import InvitationParticipantInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
-            "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(invitation_participant_info.InvitationParticipantInfo)),
+            "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(InvitationParticipantInfo)),
             "timeout": lambda n : setattr(self, 'timeout', n.get_int_value()),
         }
         return fields

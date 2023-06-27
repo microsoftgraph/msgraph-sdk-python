@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import prompt
+    from .....models.prompt import Prompt
 
 @dataclass
 class RecordResponsePostRequestBody(AdditionalDataHolder, Parsable):
@@ -24,7 +24,7 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, Parsable):
     # The playBeep property
     play_beep: Optional[bool] = None
     # The prompts property
-    prompts: Optional[List[prompt.Prompt]] = None
+    prompts: Optional[List[Prompt]] = None
     # The stopTones property
     stop_tones: Optional[List[str]] = None
     
@@ -45,9 +45,9 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import prompt
+        from .....models.prompt import Prompt
 
-        from .....models import prompt
+        from .....models.prompt import Prompt
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bargeInAllowed": lambda n : setattr(self, 'barge_in_allowed', n.get_bool_value()),
@@ -56,7 +56,7 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, Parsable):
             "maxRecordDurationInSeconds": lambda n : setattr(self, 'max_record_duration_in_seconds', n.get_int_value()),
             "maxSilenceTimeoutInSeconds": lambda n : setattr(self, 'max_silence_timeout_in_seconds', n.get_int_value()),
             "playBeep": lambda n : setattr(self, 'play_beep', n.get_bool_value()),
-            "prompts": lambda n : setattr(self, 'prompts', n.get_collection_of_object_values(prompt.Prompt)),
+            "prompts": lambda n : setattr(self, 'prompts', n.get_collection_of_object_values(Prompt)),
             "stopTones": lambda n : setattr(self, 'stop_tones', n.get_collection_of_primitive_values(str)),
         }
         return fields

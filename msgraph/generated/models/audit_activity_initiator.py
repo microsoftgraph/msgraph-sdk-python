@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import app_identity, user_identity
+    from .app_identity import AppIdentity
+    from .user_identity import UserIdentity
 
 @dataclass
 class AuditActivityInitiator(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class AuditActivityInitiator(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # If the resource initiating the activity is an app, this property indicates all the app related information like appId, Name, servicePrincipalId, Name.
-    app: Optional[app_identity.AppIdentity] = None
+    app: Optional[AppIdentity] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # If the resource initiating the activity is a user, this property Indicates all the user related information like userId, Name, UserPrinicpalName.
-    user: Optional[user_identity.UserIdentity] = None
+    user: Optional[UserIdentity] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuditActivityInitiator:
@@ -35,14 +36,16 @@ class AuditActivityInitiator(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_identity, user_identity
+        from .app_identity import AppIdentity
+        from .user_identity import UserIdentity
 
-        from . import app_identity, user_identity
+        from .app_identity import AppIdentity
+        from .user_identity import UserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "app": lambda n : setattr(self, 'app', n.get_object_value(app_identity.AppIdentity)),
+            "app": lambda n : setattr(self, 'app', n.get_object_value(AppIdentity)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "user": lambda n : setattr(self, 'user', n.get_object_value(user_identity.UserIdentity)),
+            "user": lambda n : setattr(self, 'user', n.get_object_value(UserIdentity)),
         }
         return fields
     

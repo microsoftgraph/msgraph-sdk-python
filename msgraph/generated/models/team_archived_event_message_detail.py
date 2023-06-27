@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_message_detail, identity_set
+    from .event_message_detail import EventMessageDetail
+    from .identity_set import IdentitySet
 
-from . import event_message_detail
+from .event_message_detail import EventMessageDetail
 
 @dataclass
-class TeamArchivedEventMessageDetail(event_message_detail.EventMessageDetail):
+class TeamArchivedEventMessageDetail(EventMessageDetail):
     odata_type = "#microsoft.graph.teamArchivedEventMessageDetail"
     # Initiator of the event.
-    initiator: Optional[identity_set.IdentitySet] = None
+    initiator: Optional[IdentitySet] = None
     # Unique identifier of the team.
     team_id: Optional[str] = None
     
@@ -33,12 +34,14 @@ class TeamArchivedEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
+            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
             "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

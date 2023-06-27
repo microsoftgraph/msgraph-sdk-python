@@ -10,19 +10,19 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import workbook_table
-    from ........models.o_data_errors import o_data_error
-    from .clear_filters import clear_filters_request_builder
-    from .columns import columns_request_builder
-    from .convert_to_range import convert_to_range_request_builder
-    from .data_body_range import data_body_range_request_builder
-    from .header_row_range import header_row_range_request_builder
-    from .range import range_request_builder
-    from .reapply_filters import reapply_filters_request_builder
-    from .rows import rows_request_builder
-    from .sort import sort_request_builder
-    from .total_row_range import total_row_range_request_builder
-    from .worksheet import worksheet_request_builder
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.workbook_table import WorkbookTable
+    from .clear_filters.clear_filters_request_builder import ClearFiltersRequestBuilder
+    from .columns.columns_request_builder import ColumnsRequestBuilder
+    from .convert_to_range.convert_to_range_request_builder import ConvertToRangeRequestBuilder
+    from .data_body_range.data_body_range_request_builder import DataBodyRangeRequestBuilder
+    from .header_row_range.header_row_range_request_builder import HeaderRowRangeRequestBuilder
+    from .range.range_request_builder import RangeRequestBuilder
+    from .reapply_filters.reapply_filters_request_builder import ReapplyFiltersRequestBuilder
+    from .rows.rows_request_builder import RowsRequestBuilder
+    from .sort.sort_request_builder import SortRequestBuilder
+    from .total_row_range.total_row_range_request_builder import TotalRowRangeRequestBuilder
+    from .worksheet.worksheet_request_builder import WorksheetRequestBuilder
 
 class WorkbookTableItemRequestBuilder():
     """
@@ -55,62 +55,62 @@ class WorkbookTableItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WorkbookTableItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table.WorkbookTable]:
+    async def get(self,request_configuration: Optional[WorkbookTableItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookTable]:
         """
         Retrieve the properties and relationships of table object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_table.WorkbookTable]
+        Returns: Optional[WorkbookTable]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import workbook_table
+        from ........models.workbook_table import WorkbookTable
 
-        return await self.request_adapter.send_async(request_info, workbook_table.WorkbookTable, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookTable, error_mapping)
     
-    async def patch(self,body: Optional[workbook_table.WorkbookTable] = None, request_configuration: Optional[WorkbookTableItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_table.WorkbookTable]:
+    async def patch(self,body: Optional[WorkbookTable] = None, request_configuration: Optional[WorkbookTableItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookTable]:
         """
         Update the properties of table object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_table.WorkbookTable]
+        Returns: Optional[WorkbookTable]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import workbook_table
+        from ........models.workbook_table import WorkbookTable
 
-        return await self.request_adapter.send_async(request_info, workbook_table.WorkbookTable, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookTable, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookTableItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -146,7 +146,7 @@ class WorkbookTableItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_table.WorkbookTable] = None, request_configuration: Optional[WorkbookTableItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookTable] = None, request_configuration: Optional[WorkbookTableItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of table object.
         Args:
@@ -168,103 +168,103 @@ class WorkbookTableItemRequestBuilder():
         return request_info
     
     @property
-    def clear_filters(self) -> clear_filters_request_builder.ClearFiltersRequestBuilder:
+    def clear_filters(self) -> ClearFiltersRequestBuilder:
         """
         Provides operations to call the clearFilters method.
         """
-        from .clear_filters import clear_filters_request_builder
+        from .clear_filters.clear_filters_request_builder import ClearFiltersRequestBuilder
 
-        return clear_filters_request_builder.ClearFiltersRequestBuilder(self.request_adapter, self.path_parameters)
+        return ClearFiltersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def columns(self) -> columns_request_builder.ColumnsRequestBuilder:
+    def columns(self) -> ColumnsRequestBuilder:
         """
         Provides operations to manage the columns property of the microsoft.graph.workbookTable entity.
         """
-        from .columns import columns_request_builder
+        from .columns.columns_request_builder import ColumnsRequestBuilder
 
-        return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def convert_to_range(self) -> convert_to_range_request_builder.ConvertToRangeRequestBuilder:
+    def convert_to_range(self) -> ConvertToRangeRequestBuilder:
         """
         Provides operations to call the convertToRange method.
         """
-        from .convert_to_range import convert_to_range_request_builder
+        from .convert_to_range.convert_to_range_request_builder import ConvertToRangeRequestBuilder
 
-        return convert_to_range_request_builder.ConvertToRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return ConvertToRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def data_body_range(self) -> data_body_range_request_builder.DataBodyRangeRequestBuilder:
+    def data_body_range(self) -> DataBodyRangeRequestBuilder:
         """
         Provides operations to call the dataBodyRange method.
         """
-        from .data_body_range import data_body_range_request_builder
+        from .data_body_range.data_body_range_request_builder import DataBodyRangeRequestBuilder
 
-        return data_body_range_request_builder.DataBodyRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return DataBodyRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def header_row_range(self) -> header_row_range_request_builder.HeaderRowRangeRequestBuilder:
+    def header_row_range(self) -> HeaderRowRangeRequestBuilder:
         """
         Provides operations to call the headerRowRange method.
         """
-        from .header_row_range import header_row_range_request_builder
+        from .header_row_range.header_row_range_request_builder import HeaderRowRangeRequestBuilder
 
-        return header_row_range_request_builder.HeaderRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return HeaderRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def range(self) -> range_request_builder.RangeRequestBuilder:
+    def range(self) -> RangeRequestBuilder:
         """
         Provides operations to call the range method.
         """
-        from .range import range_request_builder
+        from .range.range_request_builder import RangeRequestBuilder
 
-        return range_request_builder.RangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return RangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def reapply_filters(self) -> reapply_filters_request_builder.ReapplyFiltersRequestBuilder:
+    def reapply_filters(self) -> ReapplyFiltersRequestBuilder:
         """
         Provides operations to call the reapplyFilters method.
         """
-        from .reapply_filters import reapply_filters_request_builder
+        from .reapply_filters.reapply_filters_request_builder import ReapplyFiltersRequestBuilder
 
-        return reapply_filters_request_builder.ReapplyFiltersRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReapplyFiltersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rows(self) -> rows_request_builder.RowsRequestBuilder:
+    def rows(self) -> RowsRequestBuilder:
         """
         Provides operations to manage the rows property of the microsoft.graph.workbookTable entity.
         """
-        from .rows import rows_request_builder
+        from .rows.rows_request_builder import RowsRequestBuilder
 
-        return rows_request_builder.RowsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RowsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sort(self) -> sort_request_builder.SortRequestBuilder:
+    def sort(self) -> SortRequestBuilder:
         """
         Provides operations to manage the sort property of the microsoft.graph.workbookTable entity.
         """
-        from .sort import sort_request_builder
+        from .sort.sort_request_builder import SortRequestBuilder
 
-        return sort_request_builder.SortRequestBuilder(self.request_adapter, self.path_parameters)
+        return SortRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def total_row_range(self) -> total_row_range_request_builder.TotalRowRangeRequestBuilder:
+    def total_row_range(self) -> TotalRowRangeRequestBuilder:
         """
         Provides operations to call the totalRowRange method.
         """
-        from .total_row_range import total_row_range_request_builder
+        from .total_row_range.total_row_range_request_builder import TotalRowRangeRequestBuilder
 
-        return total_row_range_request_builder.TotalRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return TotalRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def worksheet(self) -> worksheet_request_builder.WorksheetRequestBuilder:
+    def worksheet(self) -> WorksheetRequestBuilder:
         """
         Provides operations to manage the worksheet property of the microsoft.graph.workbookTable entity.
         """
-        from .worksheet import worksheet_request_builder
+        from .worksheet.worksheet_request_builder import WorksheetRequestBuilder
 
-        return worksheet_request_builder.WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
+        return WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class WorkbookTableItemRequestBuilderDeleteRequestConfiguration():

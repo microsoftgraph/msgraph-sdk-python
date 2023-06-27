@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import giphy_rating_type
+    from .giphy_rating_type import GiphyRatingType
 
 @dataclass
 class TeamFunSettings(AdditionalDataHolder, Parsable):
@@ -18,7 +18,7 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
     # If set to true, enables users to include stickers and memes.
     allow_stickers_and_memes: Optional[bool] = None
     # Giphy content rating. Possible values are: moderate, strict.
-    giphy_content_rating: Optional[giphy_rating_type.GiphyRatingType] = None
+    giphy_content_rating: Optional[GiphyRatingType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -39,15 +39,15 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import giphy_rating_type
+        from .giphy_rating_type import GiphyRatingType
 
-        from . import giphy_rating_type
+        from .giphy_rating_type import GiphyRatingType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowCustomMemes": lambda n : setattr(self, 'allow_custom_memes', n.get_bool_value()),
             "allowGiphy": lambda n : setattr(self, 'allow_giphy', n.get_bool_value()),
             "allowStickersAndMemes": lambda n : setattr(self, 'allow_stickers_and_memes', n.get_bool_value()),
-            "giphyContentRating": lambda n : setattr(self, 'giphy_content_rating', n.get_enum_value(giphy_rating_type.GiphyRatingType)),
+            "giphyContentRating": lambda n : setattr(self, 'giphy_content_rating', n.get_enum_value(GiphyRatingType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

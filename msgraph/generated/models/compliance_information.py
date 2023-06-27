@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import certification_control
+    from .certification_control import CertificationControl
 
 @dataclass
 class ComplianceInformation(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ComplianceInformation(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Collection of the certification controls associated with certification
-    certification_controls: Optional[List[certification_control.CertificationControl]] = None
+    certification_controls: Optional[List[CertificationControl]] = None
     # Compliance certification name (for example, ISO 27018:2014, GDPR, FedRAMP, NIST 800-171)
     certification_name: Optional[str] = None
     # The OdataType property
@@ -35,12 +35,12 @@ class ComplianceInformation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import certification_control
+        from .certification_control import CertificationControl
 
-        from . import certification_control
+        from .certification_control import CertificationControl
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "certificationControls": lambda n : setattr(self, 'certification_controls', n.get_collection_of_object_values(certification_control.CertificationControl)),
+            "certificationControls": lambda n : setattr(self, 'certification_controls', n.get_collection_of_object_values(CertificationControl)),
             "certificationName": lambda n : setattr(self, 'certification_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

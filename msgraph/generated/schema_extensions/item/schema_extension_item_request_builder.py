@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import schema_extension
-    from ...models.o_data_errors import o_data_error
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.schema_extension import SchemaExtension
 
 class SchemaExtensionItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class SchemaExtensionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SchemaExtensionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[schema_extension.SchemaExtension]:
+    async def get(self,request_configuration: Optional[SchemaExtensionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SchemaExtension]:
         """
         Get schemaExtension
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[schema_extension.SchemaExtension]
+        Returns: Optional[SchemaExtension]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import schema_extension
+        from ...models.schema_extension import SchemaExtension
 
-        return await self.request_adapter.send_async(request_info, schema_extension.SchemaExtension, error_mapping)
+        return await self.request_adapter.send_async(request_info, SchemaExtension, error_mapping)
     
-    async def patch(self,body: Optional[schema_extension.SchemaExtension] = None, request_configuration: Optional[SchemaExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[schema_extension.SchemaExtension]:
+    async def patch(self,body: Optional[SchemaExtension] = None, request_configuration: Optional[SchemaExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SchemaExtension]:
         """
         Update properties in the definition of the specified schemaExtension. Additive updates to the extension can only be made when the extension is in the `InDevelopment` or `Available` status. This means custom properties or target resource types cannot be removed from the definition, but new custom properties can be added and the description of the extension changed. The update applies to all the resources that are included in the **targetTypes** property of the extension. These resources are among the supporting resource types. For delegated flows, the signed-in user can update a schema extension as long as the **owner** property of the extension is set to the **appId** of an application the signed-in user owns. That application can be the one that initially created the extension, or some other application owned by the signed-in user.  This criteria for the **owner** property allows a signed-in user to make updates through other applications they don't own, such as Microsoft Graph Explorer. When using Graph Explorer to update a **schemaExtension** resource, include the **owner** property in the PATCH request body. For more information, see the Extensions section in Known issues with Microsoft Graph.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[schema_extension.SchemaExtension]
+        Returns: Optional[SchemaExtension]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import schema_extension
+        from ...models.schema_extension import SchemaExtension
 
-        return await self.request_adapter.send_async(request_info, schema_extension.SchemaExtension, error_mapping)
+        return await self.request_adapter.send_async(request_info, SchemaExtension, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SchemaExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class SchemaExtensionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[schema_extension.SchemaExtension] = None, request_configuration: Optional[SchemaExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SchemaExtension] = None, request_configuration: Optional[SchemaExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update properties in the definition of the specified schemaExtension. Additive updates to the extension can only be made when the extension is in the `InDevelopment` or `Available` status. This means custom properties or target resource types cannot be removed from the definition, but new custom properties can be added and the description of the extension changed. The update applies to all the resources that are included in the **targetTypes** property of the extension. These resources are among the supporting resource types. For delegated flows, the signed-in user can update a schema extension as long as the **owner** property of the extension is set to the **appId** of an application the signed-in user owns. That application can be the one that initially created the extension, or some other application owned by the signed-in user.  This criteria for the **owner** property allows a signed-in user to make updates through other applications they don't own, such as Microsoft Graph Explorer. When using Graph Explorer to update a **schemaExtension** resource, include the **owner** property in the PATCH request body. For more information, see the Extensions section in Known issues with Microsoft Graph.
         Args:

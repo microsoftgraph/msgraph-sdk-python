@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import planner_task
-    from ..........models.o_data_errors import o_data_error
-    from .assigned_to_task_board_format import assigned_to_task_board_format_request_builder
-    from .bucket_task_board_format import bucket_task_board_format_request_builder
-    from .details import details_request_builder
-    from .progress_task_board_format import progress_task_board_format_request_builder
+    from ..........models.o_data_errors.o_data_error import ODataError
+    from ..........models.planner_task import PlannerTask
+    from .assigned_to_task_board_format.assigned_to_task_board_format_request_builder import AssignedToTaskBoardFormatRequestBuilder
+    from .bucket_task_board_format.bucket_task_board_format_request_builder import BucketTaskBoardFormatRequestBuilder
+    from .details.details_request_builder import DetailsRequestBuilder
+    from .progress_task_board_format.progress_task_board_format_request_builder import ProgressTaskBoardFormatRequestBuilder
 
 class PlannerTaskItemRequestBuilder():
     """
@@ -48,62 +48,62 @@ class PlannerTaskItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PlannerTaskItemRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_task.PlannerTask]:
+    async def get(self,request_configuration: Optional[PlannerTaskItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerTask]:
         """
         Read-only. Nullable. The collection of tasks in the bucket.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner_task.PlannerTask]
+        Returns: Optional[PlannerTask]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import planner_task
+        from ..........models.planner_task import PlannerTask
 
-        return await self.request_adapter.send_async(request_info, planner_task.PlannerTask, error_mapping)
+        return await self.request_adapter.send_async(request_info, PlannerTask, error_mapping)
     
-    async def patch(self,body: Optional[planner_task.PlannerTask] = None, request_configuration: Optional[PlannerTaskItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_task.PlannerTask]:
+    async def patch(self,body: Optional[PlannerTask] = None, request_configuration: Optional[PlannerTaskItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PlannerTask]:
         """
         Update the navigation property tasks in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner_task.PlannerTask]
+        Returns: Optional[PlannerTask]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import planner_task
+        from ..........models.planner_task import PlannerTask
 
-        return await self.request_adapter.send_async(request_info, planner_task.PlannerTask, error_mapping)
+        return await self.request_adapter.send_async(request_info, PlannerTask, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PlannerTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -139,7 +139,7 @@ class PlannerTaskItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[planner_task.PlannerTask] = None, request_configuration: Optional[PlannerTaskItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PlannerTask] = None, request_configuration: Optional[PlannerTaskItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property tasks in users
         Args:
@@ -161,40 +161,40 @@ class PlannerTaskItemRequestBuilder():
         return request_info
     
     @property
-    def assigned_to_task_board_format(self) -> assigned_to_task_board_format_request_builder.AssignedToTaskBoardFormatRequestBuilder:
+    def assigned_to_task_board_format(self) -> AssignedToTaskBoardFormatRequestBuilder:
         """
         Provides operations to manage the assignedToTaskBoardFormat property of the microsoft.graph.plannerTask entity.
         """
-        from .assigned_to_task_board_format import assigned_to_task_board_format_request_builder
+        from .assigned_to_task_board_format.assigned_to_task_board_format_request_builder import AssignedToTaskBoardFormatRequestBuilder
 
-        return assigned_to_task_board_format_request_builder.AssignedToTaskBoardFormatRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignedToTaskBoardFormatRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bucket_task_board_format(self) -> bucket_task_board_format_request_builder.BucketTaskBoardFormatRequestBuilder:
+    def bucket_task_board_format(self) -> BucketTaskBoardFormatRequestBuilder:
         """
         Provides operations to manage the bucketTaskBoardFormat property of the microsoft.graph.plannerTask entity.
         """
-        from .bucket_task_board_format import bucket_task_board_format_request_builder
+        from .bucket_task_board_format.bucket_task_board_format_request_builder import BucketTaskBoardFormatRequestBuilder
 
-        return bucket_task_board_format_request_builder.BucketTaskBoardFormatRequestBuilder(self.request_adapter, self.path_parameters)
+        return BucketTaskBoardFormatRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def details(self) -> details_request_builder.DetailsRequestBuilder:
+    def details(self) -> DetailsRequestBuilder:
         """
         Provides operations to manage the details property of the microsoft.graph.plannerTask entity.
         """
-        from .details import details_request_builder
+        from .details.details_request_builder import DetailsRequestBuilder
 
-        return details_request_builder.DetailsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DetailsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def progress_task_board_format(self) -> progress_task_board_format_request_builder.ProgressTaskBoardFormatRequestBuilder:
+    def progress_task_board_format(self) -> ProgressTaskBoardFormatRequestBuilder:
         """
         Provides operations to manage the progressTaskBoardFormat property of the microsoft.graph.plannerTask entity.
         """
-        from .progress_task_board_format import progress_task_board_format_request_builder
+        from .progress_task_board_format.progress_task_board_format_request_builder import ProgressTaskBoardFormatRequestBuilder
 
-        return progress_task_board_format_request_builder.ProgressTaskBoardFormatRequestBuilder(self.request_adapter, self.path_parameters)
+        return ProgressTaskBoardFormatRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PlannerTaskItemRequestBuilderDeleteRequestConfiguration():

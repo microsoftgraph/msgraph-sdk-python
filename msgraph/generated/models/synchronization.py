@@ -4,20 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, synchronization_job, synchronization_secret_key_string_value_pair, synchronization_template
+    from .entity import Entity
+    from .synchronization_job import SynchronizationJob
+    from .synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
+    from .synchronization_template import SynchronizationTemplate
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Synchronization(entity.Entity):
+class Synchronization(Entity):
     # The jobs property
-    jobs: Optional[List[synchronization_job.SynchronizationJob]] = None
+    jobs: Optional[List[SynchronizationJob]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The secrets property
-    secrets: Optional[List[synchronization_secret_key_string_value_pair.SynchronizationSecretKeyStringValuePair]] = None
+    secrets: Optional[List[SynchronizationSecretKeyStringValuePair]] = None
     # The templates property
-    templates: Optional[List[synchronization_template.SynchronizationTemplate]] = None
+    templates: Optional[List[SynchronizationTemplate]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Synchronization:
@@ -36,14 +39,20 @@ class Synchronization(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, synchronization_job, synchronization_secret_key_string_value_pair, synchronization_template
+        from .entity import Entity
+        from .synchronization_job import SynchronizationJob
+        from .synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
+        from .synchronization_template import SynchronizationTemplate
 
-        from . import entity, synchronization_job, synchronization_secret_key_string_value_pair, synchronization_template
+        from .entity import Entity
+        from .synchronization_job import SynchronizationJob
+        from .synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
+        from .synchronization_template import SynchronizationTemplate
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "jobs": lambda n : setattr(self, 'jobs', n.get_collection_of_object_values(synchronization_job.SynchronizationJob)),
-            "secrets": lambda n : setattr(self, 'secrets', n.get_collection_of_object_values(synchronization_secret_key_string_value_pair.SynchronizationSecretKeyStringValuePair)),
-            "templates": lambda n : setattr(self, 'templates', n.get_collection_of_object_values(synchronization_template.SynchronizationTemplate)),
+            "jobs": lambda n : setattr(self, 'jobs', n.get_collection_of_object_values(SynchronizationJob)),
+            "secrets": lambda n : setattr(self, 'secrets', n.get_collection_of_object_values(SynchronizationSecretKeyStringValuePair)),
+            "templates": lambda n : setattr(self, 'templates', n.get_collection_of_object_values(SynchronizationTemplate)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

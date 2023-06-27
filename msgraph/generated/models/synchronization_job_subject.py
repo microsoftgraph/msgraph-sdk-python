@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import synchronization_linked_objects
+    from .synchronization_linked_objects import SynchronizationLinkedObjects
 
 @dataclass
 class SynchronizationJobSubject(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class SynchronizationJobSubject(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The links property
-    links: Optional[synchronization_linked_objects.SynchronizationLinkedObjects] = None
+    links: Optional[SynchronizationLinkedObjects] = None
     # The objectId property
     object_id: Optional[str] = None
     # The objectTypeName property
@@ -37,12 +37,12 @@ class SynchronizationJobSubject(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import synchronization_linked_objects
+        from .synchronization_linked_objects import SynchronizationLinkedObjects
 
-        from . import synchronization_linked_objects
+        from .synchronization_linked_objects import SynchronizationLinkedObjects
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "links": lambda n : setattr(self, 'links', n.get_object_value(synchronization_linked_objects.SynchronizationLinkedObjects)),
+            "links": lambda n : setattr(self, 'links', n.get_object_value(SynchronizationLinkedObjects)),
             "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
             "objectTypeName": lambda n : setattr(self, 'object_type_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_resource
+    from .education_resource import EducationResource
 
-from . import education_resource
+from .education_resource import EducationResource
 
 @dataclass
-class EducationExternalResource(education_resource.EducationResource):
+class EducationExternalResource(EducationResource):
     odata_type = "#microsoft.graph.educationExternalResource"
     # Location of the resource. Required
     web_url: Optional[str] = None
@@ -31,9 +31,9 @@ class EducationExternalResource(education_resource.EducationResource):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_resource
+        from .education_resource import EducationResource
 
-        from . import education_resource
+        from .education_resource import EducationResource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),

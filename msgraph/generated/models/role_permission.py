@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import resource_action
+    from .resource_action import ResourceAction
 
 @dataclass
 class RolePermission(AdditionalDataHolder, Parsable):
@@ -17,7 +17,7 @@ class RolePermission(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Resource Actions each containing a set of allowed and not allowed permissions.
-    resource_actions: Optional[List[resource_action.ResourceAction]] = None
+    resource_actions: Optional[List[ResourceAction]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RolePermission:
@@ -36,13 +36,13 @@ class RolePermission(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import resource_action
+        from .resource_action import ResourceAction
 
-        from . import resource_action
+        from .resource_action import ResourceAction
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resourceActions": lambda n : setattr(self, 'resource_actions', n.get_collection_of_object_values(resource_action.ResourceAction)),
+            "resourceActions": lambda n : setattr(self, 'resource_actions', n.get_collection_of_object_values(ResourceAction)),
         }
         return fields
     

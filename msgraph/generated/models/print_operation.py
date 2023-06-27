@@ -1,22 +1,24 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, printer_create_operation, print_operation_status
+    from .entity import Entity
+    from .printer_create_operation import PrinterCreateOperation
+    from .print_operation_status import PrintOperationStatus
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PrintOperation(entity.Entity):
+class PrintOperation(Entity):
     # The DateTimeOffset when the operation was created. Read-only.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status property
-    status: Optional[print_operation_status.PrintOperationStatus] = None
+    status: Optional[PrintOperationStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintOperation:
@@ -33,9 +35,9 @@ class PrintOperation(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printerCreateOperation".casefold():
-            from . import printer_create_operation
+            from .printer_create_operation import PrinterCreateOperation
 
-            return printer_create_operation.PrinterCreateOperation()
+            return PrinterCreateOperation()
         return PrintOperation()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -43,13 +45,17 @@ class PrintOperation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, printer_create_operation, print_operation_status
+        from .entity import Entity
+        from .printer_create_operation import PrinterCreateOperation
+        from .print_operation_status import PrintOperationStatus
 
-        from . import entity, printer_create_operation, print_operation_status
+        from .entity import Entity
+        from .printer_create_operation import PrinterCreateOperation
+        from .print_operation_status import PrintOperationStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_object_value(print_operation_status.PrintOperationStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_object_value(PrintOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,7 +70,7 @@ class PrintOperation(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_object_value("status", self.status)
     
 

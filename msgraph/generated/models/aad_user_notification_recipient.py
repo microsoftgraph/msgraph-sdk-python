@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import teamwork_notification_recipient
+    from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
-from . import teamwork_notification_recipient
+from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
 @dataclass
-class AadUserNotificationRecipient(teamwork_notification_recipient.TeamworkNotificationRecipient):
+class AadUserNotificationRecipient(TeamworkNotificationRecipient):
     odata_type = "#microsoft.graph.aadUserNotificationRecipient"
     # Azure AD user identifier. Use the List users method to get this ID.
     user_id: Optional[str] = None
@@ -31,9 +31,9 @@ class AadUserNotificationRecipient(teamwork_notification_recipient.TeamworkNotif
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teamwork_notification_recipient
+        from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
-        from . import teamwork_notification_recipient
+        from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),

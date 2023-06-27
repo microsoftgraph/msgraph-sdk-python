@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import call_options
+    from .call_options import CallOptions
 
-from . import call_options
+from .call_options import CallOptions
 
 @dataclass
-class OutgoingCallOptions(call_options.CallOptions):
+class OutgoingCallOptions(CallOptions):
     odata_type = "#microsoft.graph.outgoingCallOptions"
     
     @staticmethod
@@ -29,9 +29,9 @@ class OutgoingCallOptions(call_options.CallOptions):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import call_options
+        from .call_options import CallOptions
 
-        from . import call_options
+        from .call_options import CallOptions
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

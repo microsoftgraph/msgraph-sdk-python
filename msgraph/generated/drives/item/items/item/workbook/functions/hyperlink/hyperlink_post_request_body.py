@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class HyperlinkPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class HyperlinkPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The friendlyName property
-    friendly_name: Optional[json.Json] = None
+    friendly_name: Optional[Json] = None
     # The linkLocation property
-    link_location: Optional[json.Json] = None
+    link_location: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> HyperlinkPostRequestBody:
@@ -33,13 +33,13 @@ class HyperlinkPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "friendlyName": lambda n : setattr(self, 'friendly_name', n.get_object_value(json.Json)),
-            "linkLocation": lambda n : setattr(self, 'link_location', n.get_object_value(json.Json)),
+            "friendlyName": lambda n : setattr(self, 'friendly_name', n.get_object_value(Json)),
+            "linkLocation": lambda n : setattr(self, 'link_location', n.get_object_value(Json)),
         }
         return fields
     

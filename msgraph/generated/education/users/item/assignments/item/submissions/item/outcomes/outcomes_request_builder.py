@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import education_outcome, education_outcome_collection_response
-    from .........models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import education_outcome_item_request_builder
+    from .........models.education_outcome import EducationOutcome
+    from .........models.education_outcome_collection_response import EducationOutcomeCollectionResponse
+    from .........models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.education_outcome_item_request_builder import EducationOutcomeItemRequestBuilder
 
 class OutcomesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class OutcomesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_education_outcome_id(self,education_outcome_id: str) -> education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder:
+    def by_education_outcome_id(self,education_outcome_id: str) -> EducationOutcomeItemRequestBuilder:
         """
         Provides operations to manage the outcomes property of the microsoft.graph.educationSubmission entity.
         Args:
             education_outcome_id: Unique identifier of the item
-        Returns: education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder
+        Returns: EducationOutcomeItemRequestBuilder
         """
         if not education_outcome_id:
             raise TypeError("education_outcome_id cannot be null.")
-        from .item import education_outcome_item_request_builder
+        from .item.education_outcome_item_request_builder import EducationOutcomeItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationOutcome%2Did"] = education_outcome_id
-        return education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return EducationOutcomeItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[OutcomesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_outcome_collection_response.EducationOutcomeCollectionResponse]:
+    async def get(self,request_configuration: Optional[OutcomesRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationOutcomeCollectionResponse]:
         """
         Retrieve a list of educationOutcome objects. There are four types of outcomes: **educationPointsOutcome**, **educationFeedbackOutcome**, **educationRubricOutcome**, and **educationFeedbackResourceOutcome**. Only teachers, students, and applications with application permissions can perform this operation. A submission for a credit assignment (one that has no point value and no rubric) will have an educationFeedbackOutcome. (It might also return an educationPointsOutcome, but that outcome is ignored.) A submission for a points assignment (one that has a point value assigned) will have both an educationFeedbackOutcome and an educationPointsOutcome. A submission for an assignment with an attached rubric, if the rubric is a credit rubric (no points), will have an educationFeedbackOutcome and an educationRubricOutcome. (It might also return an educationPointsOutcome, but that outcome is ignored.) A submission for an assignment with an attached rubric, if the rubric is a points rubric, will have an educationFeedbackOutcome, an educationPointsOutcome, and an educationRubricOutcome. A submission for a feedback resource will have an educationFeedbackResourceOutcome. All outcome types have a regular and a published property appropriate to that type of outcome; for example, **points** and **publishedPoints**, **feedback** and **publishedFeedback**. The regular property is the most recent value updated by the teacher; the published property is the most recent value returned to the student.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_outcome_collection_response.EducationOutcomeCollectionResponse]
+        Returns: Optional[EducationOutcomeCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import education_outcome_collection_response
+        from .........models.education_outcome_collection_response import EducationOutcomeCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, education_outcome_collection_response.EducationOutcomeCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationOutcomeCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[education_outcome.EducationOutcome] = None, request_configuration: Optional[OutcomesRequestBuilderPostRequestConfiguration] = None) -> Optional[education_outcome.EducationOutcome]:
+    async def post(self,body: Optional[EducationOutcome] = None, request_configuration: Optional[OutcomesRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationOutcome]:
         """
         Create a new feedback resource for a submission. Only a teacher can perform this operation. To create a new file-based resource, upload the file to the feedback resources folder associated with the assignment. If the file doesn't exist or isn't in that folder, the `POST` request will fail.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_outcome.EducationOutcome]
+        Returns: Optional[EducationOutcome]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import education_outcome
+        from .........models.education_outcome import EducationOutcome
 
-        return await self.request_adapter.send_async(request_info, education_outcome.EducationOutcome, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationOutcome, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OutcomesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class OutcomesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[education_outcome.EducationOutcome] = None, request_configuration: Optional[OutcomesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EducationOutcome] = None, request_configuration: Optional[OutcomesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new feedback resource for a submission. Only a teacher can perform this operation. To create a new file-based resource, upload the file to the feedback resources folder associated with the assignment. If the file doesn't exist or isn't in that folder, the `POST` request will fail.
         Args:
@@ -139,13 +140,13 @@ class OutcomesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OutcomesRequestBuilderGetQueryParameters():

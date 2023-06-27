@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity
+    from .identity import Identity
 
-from . import identity
+from .identity import Identity
 
 @dataclass
-class SharePointIdentity(identity.Identity):
+class SharePointIdentity(Identity):
     odata_type = "#microsoft.graph.sharePointIdentity"
     # The sign in name of the SharePoint identity.
     login_name: Optional[str] = None
@@ -31,9 +31,9 @@ class SharePointIdentity(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity
+        from .identity import Identity
 
-        from . import identity
+        from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "loginName": lambda n : setattr(self, 'login_name', n.get_str_value()),

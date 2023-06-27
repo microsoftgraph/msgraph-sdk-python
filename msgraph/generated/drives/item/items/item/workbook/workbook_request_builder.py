@@ -10,20 +10,20 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import workbook
-    from ......models.o_data_errors import o_data_error
-    from .application import application_request_builder
-    from .close_session import close_session_request_builder
-    from .comments import comments_request_builder
-    from .create_session import create_session_request_builder
-    from .functions import functions_request_builder
-    from .names import names_request_builder
-    from .operations import operations_request_builder
-    from .refresh_session import refresh_session_request_builder
-    from .session_info_resource_with_key import session_info_resource_with_key_request_builder
-    from .table_row_operation_result_with_key import table_row_operation_result_with_key_request_builder
-    from .tables import tables_request_builder
-    from .worksheets import worksheets_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.workbook import Workbook
+    from .application.application_request_builder import ApplicationRequestBuilder
+    from .close_session.close_session_request_builder import CloseSessionRequestBuilder
+    from .comments.comments_request_builder import CommentsRequestBuilder
+    from .create_session.create_session_request_builder import CreateSessionRequestBuilder
+    from .functions.functions_request_builder import FunctionsRequestBuilder
+    from .names.names_request_builder import NamesRequestBuilder
+    from .operations.operations_request_builder import OperationsRequestBuilder
+    from .refresh_session.refresh_session_request_builder import RefreshSessionRequestBuilder
+    from .session_info_resource_with_key.session_info_resource_with_key_request_builder import SessionInfoResourceWithKeyRequestBuilder
+    from .table_row_operation_result_with_key.table_row_operation_result_with_key_request_builder import TableRowOperationResultWithKeyRequestBuilder
+    from .tables.tables_request_builder import TablesRequestBuilder
+    from .worksheets.worksheets_request_builder import WorksheetsRequestBuilder
 
 class WorkbookRequestBuilder():
     """
@@ -56,88 +56,88 @@ class WorkbookRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WorkbookRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook.Workbook]:
+    async def get(self,request_configuration: Optional[WorkbookRequestBuilderGetRequestConfiguration] = None) -> Optional[Workbook]:
         """
         For files that are Excel spreadsheets, accesses the workbook API to work with the spreadsheet's contents. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook.Workbook]
+        Returns: Optional[Workbook]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import workbook
+        from ......models.workbook import Workbook
 
-        return await self.request_adapter.send_async(request_info, workbook.Workbook, error_mapping)
+        return await self.request_adapter.send_async(request_info, Workbook, error_mapping)
     
-    async def patch(self,body: Optional[workbook.Workbook] = None, request_configuration: Optional[WorkbookRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook.Workbook]:
+    async def patch(self,body: Optional[Workbook] = None, request_configuration: Optional[WorkbookRequestBuilderPatchRequestConfiguration] = None) -> Optional[Workbook]:
         """
         Update the navigation property workbook in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook.Workbook]
+        Returns: Optional[Workbook]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import workbook
+        from ......models.workbook import Workbook
 
-        return await self.request_adapter.send_async(request_info, workbook.Workbook, error_mapping)
+        return await self.request_adapter.send_async(request_info, Workbook, error_mapping)
     
-    def session_info_resource_with_key(self,key: Optional[str] = None) -> session_info_resource_with_key_request_builder.SessionInfoResourceWithKeyRequestBuilder:
+    def session_info_resource_with_key(self,key: Optional[str] = None) -> SessionInfoResourceWithKeyRequestBuilder:
         """
         Provides operations to call the sessionInfoResource method.
         Args:
             key: Usage: key='{key}'
-        Returns: session_info_resource_with_key_request_builder.SessionInfoResourceWithKeyRequestBuilder
+        Returns: SessionInfoResourceWithKeyRequestBuilder
         """
         if not key:
             raise TypeError("key cannot be null.")
-        from .session_info_resource_with_key import session_info_resource_with_key_request_builder
+        from .session_info_resource_with_key.session_info_resource_with_key_request_builder import SessionInfoResourceWithKeyRequestBuilder
 
-        return session_info_resource_with_key_request_builder.SessionInfoResourceWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
+        return SessionInfoResourceWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
     
-    def table_row_operation_result_with_key(self,key: Optional[str] = None) -> table_row_operation_result_with_key_request_builder.TableRowOperationResultWithKeyRequestBuilder:
+    def table_row_operation_result_with_key(self,key: Optional[str] = None) -> TableRowOperationResultWithKeyRequestBuilder:
         """
         Provides operations to call the tableRowOperationResult method.
         Args:
             key: Usage: key='{key}'
-        Returns: table_row_operation_result_with_key_request_builder.TableRowOperationResultWithKeyRequestBuilder
+        Returns: TableRowOperationResultWithKeyRequestBuilder
         """
         if not key:
             raise TypeError("key cannot be null.")
-        from .table_row_operation_result_with_key import table_row_operation_result_with_key_request_builder
+        from .table_row_operation_result_with_key.table_row_operation_result_with_key_request_builder import TableRowOperationResultWithKeyRequestBuilder
 
-        return table_row_operation_result_with_key_request_builder.TableRowOperationResultWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
+        return TableRowOperationResultWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -173,7 +173,7 @@ class WorkbookRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook.Workbook] = None, request_configuration: Optional[WorkbookRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Workbook] = None, request_configuration: Optional[WorkbookRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property workbook in drives
         Args:
@@ -195,94 +195,94 @@ class WorkbookRequestBuilder():
         return request_info
     
     @property
-    def application(self) -> application_request_builder.ApplicationRequestBuilder:
+    def application(self) -> ApplicationRequestBuilder:
         """
         Provides operations to manage the application property of the microsoft.graph.workbook entity.
         """
-        from .application import application_request_builder
+        from .application.application_request_builder import ApplicationRequestBuilder
 
-        return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+        return ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def close_session(self) -> close_session_request_builder.CloseSessionRequestBuilder:
+    def close_session(self) -> CloseSessionRequestBuilder:
         """
         Provides operations to call the closeSession method.
         """
-        from .close_session import close_session_request_builder
+        from .close_session.close_session_request_builder import CloseSessionRequestBuilder
 
-        return close_session_request_builder.CloseSessionRequestBuilder(self.request_adapter, self.path_parameters)
+        return CloseSessionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def comments(self) -> comments_request_builder.CommentsRequestBuilder:
+    def comments(self) -> CommentsRequestBuilder:
         """
         Provides operations to manage the comments property of the microsoft.graph.workbook entity.
         """
-        from .comments import comments_request_builder
+        from .comments.comments_request_builder import CommentsRequestBuilder
 
-        return comments_request_builder.CommentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CommentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def create_session(self) -> create_session_request_builder.CreateSessionRequestBuilder:
+    def create_session(self) -> CreateSessionRequestBuilder:
         """
         Provides operations to call the createSession method.
         """
-        from .create_session import create_session_request_builder
+        from .create_session.create_session_request_builder import CreateSessionRequestBuilder
 
-        return create_session_request_builder.CreateSessionRequestBuilder(self.request_adapter, self.path_parameters)
+        return CreateSessionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def functions(self) -> functions_request_builder.FunctionsRequestBuilder:
+    def functions(self) -> FunctionsRequestBuilder:
         """
         Provides operations to manage the functions property of the microsoft.graph.workbook entity.
         """
-        from .functions import functions_request_builder
+        from .functions.functions_request_builder import FunctionsRequestBuilder
 
-        return functions_request_builder.FunctionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return FunctionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def names(self) -> names_request_builder.NamesRequestBuilder:
+    def names(self) -> NamesRequestBuilder:
         """
         Provides operations to manage the names property of the microsoft.graph.workbook entity.
         """
-        from .names import names_request_builder
+        from .names.names_request_builder import NamesRequestBuilder
 
-        return names_request_builder.NamesRequestBuilder(self.request_adapter, self.path_parameters)
+        return NamesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+    def operations(self) -> OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.workbook entity.
         """
-        from .operations import operations_request_builder
+        from .operations.operations_request_builder import OperationsRequestBuilder
 
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def refresh_session(self) -> refresh_session_request_builder.RefreshSessionRequestBuilder:
+    def refresh_session(self) -> RefreshSessionRequestBuilder:
         """
         Provides operations to call the refreshSession method.
         """
-        from .refresh_session import refresh_session_request_builder
+        from .refresh_session.refresh_session_request_builder import RefreshSessionRequestBuilder
 
-        return refresh_session_request_builder.RefreshSessionRequestBuilder(self.request_adapter, self.path_parameters)
+        return RefreshSessionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tables(self) -> tables_request_builder.TablesRequestBuilder:
+    def tables(self) -> TablesRequestBuilder:
         """
         Provides operations to manage the tables property of the microsoft.graph.workbook entity.
         """
-        from .tables import tables_request_builder
+        from .tables.tables_request_builder import TablesRequestBuilder
 
-        return tables_request_builder.TablesRequestBuilder(self.request_adapter, self.path_parameters)
+        return TablesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def worksheets(self) -> worksheets_request_builder.WorksheetsRequestBuilder:
+    def worksheets(self) -> WorksheetsRequestBuilder:
         """
         Provides operations to manage the worksheets property of the microsoft.graph.workbook entity.
         """
-        from .worksheets import worksheets_request_builder
+        from .worksheets.worksheets_request_builder import WorksheetsRequestBuilder
 
-        return worksheets_request_builder.WorksheetsRequestBuilder(self.request_adapter, self.path_parameters)
+        return WorksheetsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class WorkbookRequestBuilderDeleteRequestConfiguration():

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import teamwork_activity_topic_source
+    from .teamwork_activity_topic_source import TeamworkActivityTopicSource
 
 @dataclass
 class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Type of source. Possible values are: entityUrl, text. For supported Microsoft Graph URLs, use entityUrl. For custom text, use text.
-    source: Optional[teamwork_activity_topic_source.TeamworkActivityTopicSource] = None
+    source: Optional[TeamworkActivityTopicSource] = None
     # The topic value. If the value of the source property is entityUrl, this must be a Microsoft Graph URL. If the vaule is text, this must be a plain text value.
     value: Optional[str] = None
     # The link the user clicks when they select the notification. Optional when source is entityUrl; required when source is text.
@@ -37,13 +37,13 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teamwork_activity_topic_source
+        from .teamwork_activity_topic_source import TeamworkActivityTopicSource
 
-        from . import teamwork_activity_topic_source
+        from .teamwork_activity_topic_source import TeamworkActivityTopicSource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "source": lambda n : setattr(self, 'source', n.get_enum_value(teamwork_activity_topic_source.TeamworkActivityTopicSource)),
+            "source": lambda n : setattr(self, 'source', n.get_enum_value(TeamworkActivityTopicSource)),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
             "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }

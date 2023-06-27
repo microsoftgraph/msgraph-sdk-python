@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, user_flow_language_page
+    from .entity import Entity
+    from .user_flow_language_page import UserFlowLanguagePage
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class UserFlowLanguageConfiguration(entity.Entity):
+class UserFlowLanguageConfiguration(Entity):
     # Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
-    default_pages: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None
+    default_pages: Optional[List[UserFlowLanguagePage]] = None
     # The language name to display. This property is read-only.
     display_name: Optional[str] = None
     # Indicates whether the language is enabled within the user flow.
@@ -19,7 +20,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
-    overrides_pages: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None
+    overrides_pages: Optional[List[UserFlowLanguagePage]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserFlowLanguageConfiguration:
@@ -38,15 +39,17 @@ class UserFlowLanguageConfiguration(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, user_flow_language_page
+        from .entity import Entity
+        from .user_flow_language_page import UserFlowLanguagePage
 
-        from . import entity, user_flow_language_page
+        from .entity import Entity
+        from .user_flow_language_page import UserFlowLanguagePage
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "defaultPages": lambda n : setattr(self, 'default_pages', n.get_collection_of_object_values(user_flow_language_page.UserFlowLanguagePage)),
+            "defaultPages": lambda n : setattr(self, 'default_pages', n.get_collection_of_object_values(UserFlowLanguagePage)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "overridesPages": lambda n : setattr(self, 'overrides_pages', n.get_collection_of_object_values(user_flow_language_page.UserFlowLanguagePage)),
+            "overridesPages": lambda n : setattr(self, 'overrides_pages', n.get_collection_of_object_values(UserFlowLanguagePage)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

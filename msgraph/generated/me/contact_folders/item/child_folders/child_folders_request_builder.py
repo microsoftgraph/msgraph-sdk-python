@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import contact_folder, contact_folder_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .delta import delta_request_builder
-    from .item import contact_folder_item_request_builder
+    from .....models.contact_folder import ContactFolder
+    from .....models.contact_folder_collection_response import ContactFolderCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
+    from .item.contact_folder_item_request_builder import ContactFolderItemRequestBuilder
 
 class ChildFoldersRequestBuilder():
     """
@@ -38,67 +39,67 @@ class ChildFoldersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_contact_folder_id1(self,contact_folder_id1: str) -> contact_folder_item_request_builder.ContactFolderItemRequestBuilder:
+    def by_contact_folder_id1(self,contact_folder_id1: str) -> ContactFolderItemRequestBuilder:
         """
         Provides operations to manage the childFolders property of the microsoft.graph.contactFolder entity.
         Args:
             contact_folder_id1: Unique identifier of the item
-        Returns: contact_folder_item_request_builder.ContactFolderItemRequestBuilder
+        Returns: ContactFolderItemRequestBuilder
         """
         if not contact_folder_id1:
             raise TypeError("contact_folder_id1 cannot be null.")
-        from .item import contact_folder_item_request_builder
+        from .item.contact_folder_item_request_builder import ContactFolderItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["contactFolder%2Did1"] = contact_folder_id1
-        return contact_folder_item_request_builder.ContactFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ContactFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[contact_folder_collection_response.ContactFolderCollectionResponse]:
+    async def get(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[ContactFolderCollectionResponse]:
         """
         Get a collection of child folders under the specified contact folder.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[contact_folder_collection_response.ContactFolderCollectionResponse]
+        Returns: Optional[ContactFolderCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import contact_folder_collection_response
+        from .....models.contact_folder_collection_response import ContactFolderCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, contact_folder_collection_response.ContactFolderCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ContactFolderCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[contact_folder.ContactFolder]:
+    async def post(self,body: Optional[ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[ContactFolder]:
         """
         Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[contact_folder.ContactFolder]
+        Returns: Optional[ContactFolder]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import contact_folder
+        from .....models.contact_folder import ContactFolder
 
-        return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, error_mapping)
+        return await self.request_adapter.send_async(request_info, ContactFolder, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -118,7 +119,7 @@ class ChildFoldersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
         Args:
@@ -140,22 +141,22 @@ class ChildFoldersRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def delta(self) -> DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        from .delta import delta_request_builder
+        from .delta.delta_request_builder import DeltaRequestBuilder
 
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ChildFoldersRequestBuilderGetQueryParameters():

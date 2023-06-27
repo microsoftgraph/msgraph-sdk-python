@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import contact, contact_collection_response
-    from ........models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .delta import delta_request_builder
-    from .item import contact_item_request_builder
+    from ........models.contact import Contact
+    from ........models.contact_collection_response import ContactCollectionResponse
+    from ........models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
+    from .item.contact_item_request_builder import ContactItemRequestBuilder
 
 class ContactsRequestBuilder():
     """
@@ -38,67 +39,67 @@ class ContactsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_contact_id(self,contact_id: str) -> contact_item_request_builder.ContactItemRequestBuilder:
+    def by_contact_id(self,contact_id: str) -> ContactItemRequestBuilder:
         """
         Provides operations to manage the contacts property of the microsoft.graph.contactFolder entity.
         Args:
             contact_id: Unique identifier of the item
-        Returns: contact_item_request_builder.ContactItemRequestBuilder
+        Returns: ContactItemRequestBuilder
         """
         if not contact_id:
             raise TypeError("contact_id cannot be null.")
-        from .item import contact_item_request_builder
+        from .item.contact_item_request_builder import ContactItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["contact%2Did"] = contact_id
-        return contact_item_request_builder.ContactItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ContactItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> Optional[contact_collection_response.ContactCollectionResponse]:
+    async def get(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> Optional[ContactCollectionResponse]:
         """
         Get a contact collection from the default Contacts folder of the signed-in user (`.../me/contacts`), or from the specified contact folder.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[contact_collection_response.ContactCollectionResponse]
+        Returns: Optional[ContactCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import contact_collection_response
+        from ........models.contact_collection_response import ContactCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, contact_collection_response.ContactCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ContactCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None) -> Optional[contact.Contact]:
+    async def post(self,body: Optional[Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None) -> Optional[Contact]:
         """
         Add a contact to the root Contacts folder or to the `contacts` endpoint of another contact folder.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[contact.Contact]
+        Returns: Optional[Contact]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import contact
+        from ........models.contact import Contact
 
-        return await self.request_adapter.send_async(request_info, contact.Contact, error_mapping)
+        return await self.request_adapter.send_async(request_info, Contact, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -118,7 +119,7 @@ class ContactsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add a contact to the root Contacts folder or to the `contacts` endpoint of another contact folder.
         Args:
@@ -140,22 +141,22 @@ class ContactsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def delta(self) -> DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        from .delta import delta_request_builder
+        from .delta.delta_request_builder import DeltaRequestBuilder
 
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ContactsRequestBuilderGetQueryParameters():

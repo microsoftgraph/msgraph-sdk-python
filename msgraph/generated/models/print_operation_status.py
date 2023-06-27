@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import print_operation_processing_state
+    from .print_operation_processing_state import PrintOperationProcessingState
 
 @dataclass
 class PrintOperationStatus(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The state property
-    state: Optional[print_operation_processing_state.PrintOperationProcessingState] = None
+    state: Optional[PrintOperationProcessingState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintOperationStatus:
@@ -35,14 +35,14 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import print_operation_processing_state
+        from .print_operation_processing_state import PrintOperationProcessingState
 
-        from . import print_operation_processing_state
+        from .print_operation_processing_state import PrintOperationProcessingState
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(print_operation_processing_state.PrintOperationProcessingState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(PrintOperationProcessingState)),
         }
         return fields
     

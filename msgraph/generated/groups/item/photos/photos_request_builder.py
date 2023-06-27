@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import profile_photo_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import profile_photo_item_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.profile_photo_collection_response import ProfilePhotoCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.profile_photo_item_request_builder import ProfilePhotoItemRequestBuilder
 
 class PhotosRequestBuilder():
     """
@@ -37,42 +37,42 @@ class PhotosRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_profile_photo_id(self,profile_photo_id: str) -> profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder:
+    def by_profile_photo_id(self,profile_photo_id: str) -> ProfilePhotoItemRequestBuilder:
         """
         Provides operations to manage the photos property of the microsoft.graph.group entity.
         Args:
             profile_photo_id: Unique identifier of the item
-        Returns: profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder
+        Returns: ProfilePhotoItemRequestBuilder
         """
         if not profile_photo_id:
             raise TypeError("profile_photo_id cannot be null.")
-        from .item import profile_photo_item_request_builder
+        from .item.profile_photo_item_request_builder import ProfilePhotoItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["profilePhoto%2Did"] = profile_photo_id
-        return profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ProfilePhotoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[PhotosRequestBuilderGetRequestConfiguration] = None) -> Optional[profile_photo_collection_response.ProfilePhotoCollectionResponse]:
+    async def get(self,request_configuration: Optional[PhotosRequestBuilderGetRequestConfiguration] = None) -> Optional[ProfilePhotoCollectionResponse]:
         """
         Retrieve a list of profilePhoto objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[profile_photo_collection_response.ProfilePhotoCollectionResponse]
+        Returns: Optional[ProfilePhotoCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import profile_photo_collection_response
+        from ....models.profile_photo_collection_response import ProfilePhotoCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, profile_photo_collection_response.ProfilePhotoCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ProfilePhotoCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PhotosRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class PhotosRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PhotosRequestBuilderGetQueryParameters():

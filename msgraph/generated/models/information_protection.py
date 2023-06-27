@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import bitlocker, threat_assessment_request
+    from .bitlocker import Bitlocker
+    from .threat_assessment_request import ThreatAssessmentRequest
 
 @dataclass
 class InformationProtection(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class InformationProtection(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The bitlocker property
-    bitlocker: Optional[bitlocker.Bitlocker] = None
+    bitlocker: Optional[Bitlocker] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The threatAssessmentRequests property
-    threat_assessment_requests: Optional[List[threat_assessment_request.ThreatAssessmentRequest]] = None
+    threat_assessment_requests: Optional[List[ThreatAssessmentRequest]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InformationProtection:
@@ -35,14 +36,16 @@ class InformationProtection(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import bitlocker, threat_assessment_request
+        from .bitlocker import Bitlocker
+        from .threat_assessment_request import ThreatAssessmentRequest
 
-        from . import bitlocker, threat_assessment_request
+        from .bitlocker import Bitlocker
+        from .threat_assessment_request import ThreatAssessmentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "bitlocker": lambda n : setattr(self, 'bitlocker', n.get_object_value(bitlocker.Bitlocker)),
+            "bitlocker": lambda n : setattr(self, 'bitlocker', n.get_object_value(Bitlocker)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "threatAssessmentRequests": lambda n : setattr(self, 'threat_assessment_requests', n.get_collection_of_object_values(threat_assessment_request.ThreatAssessmentRequest)),
+            "threatAssessmentRequests": lambda n : setattr(self, 'threat_assessment_requests', n.get_collection_of_object_values(ThreatAssessmentRequest)),
         }
         return fields
     

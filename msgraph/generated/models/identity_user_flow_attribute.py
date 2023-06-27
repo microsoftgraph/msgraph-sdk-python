@@ -4,14 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, identity_built_in_user_flow_attribute, identity_custom_user_flow_attribute, identity_user_flow_attribute_data_type, identity_user_flow_attribute_type
+    from .entity import Entity
+    from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
+    from .identity_custom_user_flow_attribute import IdentityCustomUserFlowAttribute
+    from .identity_user_flow_attribute_data_type import IdentityUserFlowAttributeDataType
+    from .identity_user_flow_attribute_type import IdentityUserFlowAttributeType
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class IdentityUserFlowAttribute(entity.Entity):
+class IdentityUserFlowAttribute(Entity):
     # The dataType property
-    data_type: Optional[identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType] = None
+    data_type: Optional[IdentityUserFlowAttributeDataType] = None
     # The description of the user flow attribute that's shown to the user at the time of sign-up.
     description: Optional[str] = None
     # The display name of the user flow attribute.
@@ -19,7 +23,7 @@ class IdentityUserFlowAttribute(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The userFlowAttributeType property
-    user_flow_attribute_type: Optional[identity_user_flow_attribute_type.IdentityUserFlowAttributeType] = None
+    user_flow_attribute_type: Optional[IdentityUserFlowAttributeType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityUserFlowAttribute:
@@ -36,13 +40,13 @@ class IdentityUserFlowAttribute(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityBuiltInUserFlowAttribute".casefold():
-            from . import identity_built_in_user_flow_attribute
+            from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
 
-            return identity_built_in_user_flow_attribute.IdentityBuiltInUserFlowAttribute()
+            return IdentityBuiltInUserFlowAttribute()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityCustomUserFlowAttribute".casefold():
-            from . import identity_custom_user_flow_attribute
+            from .identity_custom_user_flow_attribute import IdentityCustomUserFlowAttribute
 
-            return identity_custom_user_flow_attribute.IdentityCustomUserFlowAttribute()
+            return IdentityCustomUserFlowAttribute()
         return IdentityUserFlowAttribute()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -50,15 +54,23 @@ class IdentityUserFlowAttribute(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, identity_built_in_user_flow_attribute, identity_custom_user_flow_attribute, identity_user_flow_attribute_data_type, identity_user_flow_attribute_type
+        from .entity import Entity
+        from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
+        from .identity_custom_user_flow_attribute import IdentityCustomUserFlowAttribute
+        from .identity_user_flow_attribute_data_type import IdentityUserFlowAttributeDataType
+        from .identity_user_flow_attribute_type import IdentityUserFlowAttributeType
 
-        from . import entity, identity_built_in_user_flow_attribute, identity_custom_user_flow_attribute, identity_user_flow_attribute_data_type, identity_user_flow_attribute_type
+        from .entity import Entity
+        from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
+        from .identity_custom_user_flow_attribute import IdentityCustomUserFlowAttribute
+        from .identity_user_flow_attribute_data_type import IdentityUserFlowAttributeDataType
+        from .identity_user_flow_attribute_type import IdentityUserFlowAttributeType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "dataType": lambda n : setattr(self, 'data_type', n.get_enum_value(identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType)),
+            "dataType": lambda n : setattr(self, 'data_type', n.get_enum_value(IdentityUserFlowAttributeDataType)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "userFlowAttributeType": lambda n : setattr(self, 'user_flow_attribute_type', n.get_enum_value(identity_user_flow_attribute_type.IdentityUserFlowAttributeType)),
+            "userFlowAttributeType": lambda n : setattr(self, 'user_flow_attribute_type', n.get_enum_value(IdentityUserFlowAttributeType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

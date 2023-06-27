@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import fido2_restriction_enforcement_type
+    from .fido2_restriction_enforcement_type import Fido2RestrictionEnforcementType
 
 @dataclass
 class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
     # A collection of Authenticator Attestation GUIDs. AADGUIDs define key types and manufacturers.
     aa_guids: Optional[List[str]] = None
     # Enforcement type. Possible values are: allow, block.
-    enforcement_type: Optional[fido2_restriction_enforcement_type.Fido2RestrictionEnforcementType] = None
+    enforcement_type: Optional[Fido2RestrictionEnforcementType] = None
     # Determines if the configured key enforcement is enabled.
     is_enforced: Optional[bool] = None
     # The OdataType property
@@ -37,13 +37,13 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import fido2_restriction_enforcement_type
+        from .fido2_restriction_enforcement_type import Fido2RestrictionEnforcementType
 
-        from . import fido2_restriction_enforcement_type
+        from .fido2_restriction_enforcement_type import Fido2RestrictionEnforcementType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "aaGuids": lambda n : setattr(self, 'aa_guids', n.get_collection_of_primitive_values(str)),
-            "enforcementType": lambda n : setattr(self, 'enforcement_type', n.get_enum_value(fido2_restriction_enforcement_type.Fido2RestrictionEnforcementType)),
+            "enforcementType": lambda n : setattr(self, 'enforcement_type', n.get_enum_value(Fido2RestrictionEnforcementType)),
             "isEnforced": lambda n : setattr(self, 'is_enforced', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import windows_device_account
+    from .windows_device_account import WindowsDeviceAccount
 
 @dataclass
 class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
     # Not yet documented
     calendar_sync_enabled: Optional[bool] = None
     # Not yet documented
-    device_account: Optional[windows_device_account.WindowsDeviceAccount] = None
+    device_account: Optional[WindowsDeviceAccount] = None
     # Not yet documented
     device_account_email: Optional[str] = None
     # Not yet documented
@@ -43,13 +43,13 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_device_account
+        from .windows_device_account import WindowsDeviceAccount
 
-        from . import windows_device_account
+        from .windows_device_account import WindowsDeviceAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
             "calendarSyncEnabled": lambda n : setattr(self, 'calendar_sync_enabled', n.get_bool_value()),
-            "deviceAccount": lambda n : setattr(self, 'device_account', n.get_object_value(windows_device_account.WindowsDeviceAccount)),
+            "deviceAccount": lambda n : setattr(self, 'device_account', n.get_object_value(WindowsDeviceAccount)),
             "deviceAccountEmail": lambda n : setattr(self, 'device_account_email', n.get_str_value()),
             "exchangeServer": lambda n : setattr(self, 'exchange_server', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

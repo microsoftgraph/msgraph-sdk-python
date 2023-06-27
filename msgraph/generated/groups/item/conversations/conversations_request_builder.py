@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import conversation, conversation_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import conversation_item_request_builder
+    from ....models.conversation import Conversation
+    from ....models.conversation_collection_response import ConversationCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.conversation_item_request_builder import ConversationItemRequestBuilder
 
 class ConversationsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class ConversationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_conversation_id(self,conversation_id: str) -> conversation_item_request_builder.ConversationItemRequestBuilder:
+    def by_conversation_id(self,conversation_id: str) -> ConversationItemRequestBuilder:
         """
         Provides operations to manage the conversations property of the microsoft.graph.group entity.
         Args:
             conversation_id: Unique identifier of the item
-        Returns: conversation_item_request_builder.ConversationItemRequestBuilder
+        Returns: ConversationItemRequestBuilder
         """
         if not conversation_id:
             raise TypeError("conversation_id cannot be null.")
-        from .item import conversation_item_request_builder
+        from .item.conversation_item_request_builder import ConversationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["conversation%2Did"] = conversation_id
-        return conversation_item_request_builder.ConversationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ConversationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ConversationsRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_collection_response.ConversationCollectionResponse]:
+    async def get(self,request_configuration: Optional[ConversationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ConversationCollectionResponse]:
         """
         Retrieve the list of conversations in this group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[conversation_collection_response.ConversationCollectionResponse]
+        Returns: Optional[ConversationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import conversation_collection_response
+        from ....models.conversation_collection_response import ConversationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, conversation_collection_response.ConversationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ConversationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[conversation.Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> Optional[conversation.Conversation]:
+    async def post(self,body: Optional[Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> Optional[Conversation]:
         """
-        Use reply thread or reply post to further post to that conversation.
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[conversation.Conversation]
+        Returns: Optional[Conversation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import conversation
+        from ....models.conversation import Conversation
 
-        return await self.request_adapter.send_async(request_info, conversation.Conversation, error_mapping)
+        return await self.request_adapter.send_async(request_info, Conversation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ConversationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,9 +118,9 @@ class ConversationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[conversation.Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use reply thread or reply post to further post to that conversation.
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,13 +140,13 @@ class ConversationsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ConversationsRequestBuilderGetQueryParameters():

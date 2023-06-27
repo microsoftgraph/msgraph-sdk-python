@@ -4,23 +4,24 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_enrollment_configuration, device_enrollment_platform_restriction
+    from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+    from .device_enrollment_platform_restriction import DeviceEnrollmentPlatformRestriction
 
-from . import device_enrollment_configuration
+from .device_enrollment_configuration import DeviceEnrollmentConfiguration
 
 @dataclass
-class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_configuration.DeviceEnrollmentConfiguration):
+class DeviceEnrollmentPlatformRestrictionsConfiguration(DeviceEnrollmentConfiguration):
     odata_type = "#microsoft.graph.deviceEnrollmentPlatformRestrictionsConfiguration"
     # Android restrictions based on platform, platform operating system version, and device ownership
-    android_restriction: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None
+    android_restriction: Optional[DeviceEnrollmentPlatformRestriction] = None
     # Ios restrictions based on platform, platform operating system version, and device ownership
-    ios_restriction: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None
+    ios_restriction: Optional[DeviceEnrollmentPlatformRestriction] = None
     # Mac restrictions based on platform, platform operating system version, and device ownership
-    mac_o_s_restriction: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None
+    mac_o_s_restriction: Optional[DeviceEnrollmentPlatformRestriction] = None
     # Windows mobile restrictions based on platform, platform operating system version, and device ownership
-    windows_mobile_restriction: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None
+    windows_mobile_restriction: Optional[DeviceEnrollmentPlatformRestriction] = None
     # Windows restrictions based on platform, platform operating system version, and device ownership
-    windows_restriction: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None
+    windows_restriction: Optional[DeviceEnrollmentPlatformRestriction] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceEnrollmentPlatformRestrictionsConfiguration:
@@ -39,16 +40,18 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_enrollment_configuration, device_enrollment_platform_restriction
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+        from .device_enrollment_platform_restriction import DeviceEnrollmentPlatformRestriction
 
-        from . import device_enrollment_configuration, device_enrollment_platform_restriction
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+        from .device_enrollment_platform_restriction import DeviceEnrollmentPlatformRestriction
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "androidRestriction": lambda n : setattr(self, 'android_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
-            "iosRestriction": lambda n : setattr(self, 'ios_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
-            "macOSRestriction": lambda n : setattr(self, 'mac_o_s_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
-            "windowsMobileRestriction": lambda n : setattr(self, 'windows_mobile_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
-            "windowsRestriction": lambda n : setattr(self, 'windows_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
+            "androidRestriction": lambda n : setattr(self, 'android_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
+            "iosRestriction": lambda n : setattr(self, 'ios_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
+            "macOSRestriction": lambda n : setattr(self, 'mac_o_s_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
+            "windowsMobileRestriction": lambda n : setattr(self, 'windows_mobile_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
+            "windowsRestriction": lambda n : setattr(self, 'windows_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

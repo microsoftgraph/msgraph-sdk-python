@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import sts_policy
+    from .sts_policy import StsPolicy
 
-from . import sts_policy
+from .sts_policy import StsPolicy
 
 @dataclass
-class ClaimsMappingPolicy(sts_policy.StsPolicy):
+class ClaimsMappingPolicy(StsPolicy):
     odata_type = "#microsoft.graph.claimsMappingPolicy"
     
     @staticmethod
@@ -29,9 +29,9 @@ class ClaimsMappingPolicy(sts_policy.StsPolicy):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import sts_policy
+        from .sts_policy import StsPolicy
 
-        from . import sts_policy
+        from .sts_policy import StsPolicy
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

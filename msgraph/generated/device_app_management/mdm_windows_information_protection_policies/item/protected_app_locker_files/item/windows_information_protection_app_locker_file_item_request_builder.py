@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import windows_information_protection_app_locker_file
-    from ......models.o_data_errors import o_data_error
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
 
 class WindowsInformationProtectionAppLockerFileItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class WindowsInformationProtectionAppLockerFileItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WindowsInformationProtectionAppLockerFileItemRequestBuilderGetRequestConfiguration] = None) -> Optional[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile]:
+    async def get(self,request_configuration: Optional[WindowsInformationProtectionAppLockerFileItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLockerFile]:
         """
         Another way to input protected apps through xml files
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile]
+        Returns: Optional[WindowsInformationProtectionAppLockerFile]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import windows_information_protection_app_locker_file
+        from ......models.windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
 
-        return await self.request_adapter.send_async(request_info, windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile, error_mapping)
+        return await self.request_adapter.send_async(request_info, WindowsInformationProtectionAppLockerFile, error_mapping)
     
-    async def patch(self,body: Optional[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile] = None, request_configuration: Optional[WindowsInformationProtectionAppLockerFileItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile]:
+    async def patch(self,body: Optional[WindowsInformationProtectionAppLockerFile] = None, request_configuration: Optional[WindowsInformationProtectionAppLockerFileItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLockerFile]:
         """
         Update the navigation property protectedAppLockerFiles in deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile]
+        Returns: Optional[WindowsInformationProtectionAppLockerFile]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import windows_information_protection_app_locker_file
+        from ......models.windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
 
-        return await self.request_adapter.send_async(request_info, windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile, error_mapping)
+        return await self.request_adapter.send_async(request_info, WindowsInformationProtectionAppLockerFile, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WindowsInformationProtectionAppLockerFileItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class WindowsInformationProtectionAppLockerFileItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile] = None, request_configuration: Optional[WindowsInformationProtectionAppLockerFileItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WindowsInformationProtectionAppLockerFile] = None, request_configuration: Optional[WindowsInformationProtectionAppLockerFileItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property protectedAppLockerFiles in deviceAppManagement
         Args:

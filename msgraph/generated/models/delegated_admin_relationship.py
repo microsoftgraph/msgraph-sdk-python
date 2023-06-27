@@ -1,42 +1,48 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import delegated_admin_access_assignment, delegated_admin_access_details, delegated_admin_relationship_customer_participant, delegated_admin_relationship_operation, delegated_admin_relationship_request, delegated_admin_relationship_status, entity
+    from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
+    from .delegated_admin_access_details import DelegatedAdminAccessDetails
+    from .delegated_admin_relationship_customer_participant import DelegatedAdminRelationshipCustomerParticipant
+    from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
+    from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
+    from .delegated_admin_relationship_status import DelegatedAdminRelationshipStatus
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DelegatedAdminRelationship(entity.Entity):
+class DelegatedAdminRelationship(Entity):
     # The access assignments associated with the delegated admin relationship.
-    access_assignments: Optional[List[delegated_admin_access_assignment.DelegatedAdminAccessAssignment]] = None
+    access_assignments: Optional[List[DelegatedAdminAccessAssignment]] = None
     # The accessDetails property
-    access_details: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails] = None
+    access_details: Optional[DelegatedAdminAccessDetails] = None
     # The date and time in ISO 8601 format and in UTC time when the relationship became active. Read-only.
-    activated_date_time: Optional[datetime] = None
+    activated_date_time: Optional[datetime.datetime] = None
     # The date and time in ISO 8601 format and in UTC time when the relationship was created. Read-only.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The display name and unique identifier of the customer of the relationship. This is configured either by the partner at the time the relationship is created or by the system after the customer approves the relationship. Cannot be changed by the customer.
-    customer: Optional[delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant] = None
+    customer: Optional[DelegatedAdminRelationshipCustomerParticipant] = None
     # The display name of the relationship used for ease of identification. Must be unique across all delegated admin relationships of the partner. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
     display_name: Optional[str] = None
     # The duration of the relationship in ISO 8601 format. Must be a value between P1D and P2Y inclusive. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
-    duration: Optional[timedelta] = None
+    duration: Optional[datetime.timedelta] = None
     # The date and time in ISO 8601 format and in UTC time when the status of relationship changes to either terminated or expired. Calculated as endDateTime = activatedDateTime + duration. Read-only.
-    end_date_time: Optional[datetime] = None
+    end_date_time: Optional[datetime.datetime] = None
     # The date and time in ISO 8601 format and in UTC time when the relationship was last modified. Read-only.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The long running operations associated with the delegated admin relationship.
-    operations: Optional[List[delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation]] = None
+    operations: Optional[List[DelegatedAdminRelationshipOperation]] = None
     # The requests associated with the delegated admin relationship.
-    requests: Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]] = None
+    requests: Optional[List[DelegatedAdminRelationshipRequest]] = None
     # The status of the relationship. Read Only. The possible values are: activating, active, approvalPending, approved, created, expired, expiring, terminated, terminating, terminationRequested, unknownFutureValue. Supports $orderBy.
-    status: Optional[delegated_admin_relationship_status.DelegatedAdminRelationshipStatus] = None
+    status: Optional[DelegatedAdminRelationshipStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedAdminRelationship:
@@ -55,23 +61,35 @@ class DelegatedAdminRelationship(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import delegated_admin_access_assignment, delegated_admin_access_details, delegated_admin_relationship_customer_participant, delegated_admin_relationship_operation, delegated_admin_relationship_request, delegated_admin_relationship_status, entity
+        from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
+        from .delegated_admin_access_details import DelegatedAdminAccessDetails
+        from .delegated_admin_relationship_customer_participant import DelegatedAdminRelationshipCustomerParticipant
+        from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
+        from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
+        from .delegated_admin_relationship_status import DelegatedAdminRelationshipStatus
+        from .entity import Entity
 
-        from . import delegated_admin_access_assignment, delegated_admin_access_details, delegated_admin_relationship_customer_participant, delegated_admin_relationship_operation, delegated_admin_relationship_request, delegated_admin_relationship_status, entity
+        from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
+        from .delegated_admin_access_details import DelegatedAdminAccessDetails
+        from .delegated_admin_relationship_customer_participant import DelegatedAdminRelationshipCustomerParticipant
+        from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
+        from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
+        from .delegated_admin_relationship_status import DelegatedAdminRelationshipStatus
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessAssignments": lambda n : setattr(self, 'access_assignments', n.get_collection_of_object_values(delegated_admin_access_assignment.DelegatedAdminAccessAssignment)),
-            "accessDetails": lambda n : setattr(self, 'access_details', n.get_object_value(delegated_admin_access_details.DelegatedAdminAccessDetails)),
+            "accessAssignments": lambda n : setattr(self, 'access_assignments', n.get_collection_of_object_values(DelegatedAdminAccessAssignment)),
+            "accessDetails": lambda n : setattr(self, 'access_details', n.get_object_value(DelegatedAdminAccessDetails)),
             "activatedDateTime": lambda n : setattr(self, 'activated_date_time', n.get_datetime_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "customer": lambda n : setattr(self, 'customer', n.get_object_value(delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant)),
+            "customer": lambda n : setattr(self, 'customer', n.get_object_value(DelegatedAdminRelationshipCustomerParticipant)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation)),
-            "requests": lambda n : setattr(self, 'requests', n.get_collection_of_object_values(delegated_admin_relationship_request.DelegatedAdminRelationshipRequest)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(delegated_admin_relationship_status.DelegatedAdminRelationshipStatus)),
+            "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(DelegatedAdminRelationshipOperation)),
+            "requests": lambda n : setattr(self, 'requests', n.get_collection_of_object_values(DelegatedAdminRelationshipRequest)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(DelegatedAdminRelationshipStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -88,13 +106,13 @@ class DelegatedAdminRelationship(entity.Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("accessAssignments", self.access_assignments)
         writer.write_object_value("accessDetails", self.access_details)
-        writer.write_datetime_value("activatedDateTime", self.activated_date_time)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("activatedDateTime", self.activated_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_object_value("customer", self.customer)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_timedelta_value("duration", self.duration)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_timedelta_value()("duration", self.duration)
+        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("requests", self.requests)
         writer.write_enum_value("status", self.status)

@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import simulation_report_overview, user_simulation_details
+    from .simulation_report_overview import SimulationReportOverview
+    from .user_simulation_details import UserSimulationDetails
 
 @dataclass
 class SimulationReport(AdditionalDataHolder, Parsable):
@@ -14,9 +15,9 @@ class SimulationReport(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Overview of an attack simulation and training campaign.
-    overview: Optional[simulation_report_overview.SimulationReportOverview] = None
+    overview: Optional[SimulationReportOverview] = None
     # The tenant users and their online actions in an attack simulation and training campaign.
-    simulation_users: Optional[List[user_simulation_details.UserSimulationDetails]] = None
+    simulation_users: Optional[List[UserSimulationDetails]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SimulationReport:
@@ -35,14 +36,16 @@ class SimulationReport(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import simulation_report_overview, user_simulation_details
+        from .simulation_report_overview import SimulationReportOverview
+        from .user_simulation_details import UserSimulationDetails
 
-        from . import simulation_report_overview, user_simulation_details
+        from .simulation_report_overview import SimulationReportOverview
+        from .user_simulation_details import UserSimulationDetails
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "overview": lambda n : setattr(self, 'overview', n.get_object_value(simulation_report_overview.SimulationReportOverview)),
-            "simulationUsers": lambda n : setattr(self, 'simulation_users', n.get_collection_of_object_values(user_simulation_details.UserSimulationDetails)),
+            "overview": lambda n : setattr(self, 'overview', n.get_object_value(SimulationReportOverview)),
+            "simulationUsers": lambda n : setattr(self, 'simulation_users', n.get_collection_of_object_values(UserSimulationDetails)),
         }
         return fields
     

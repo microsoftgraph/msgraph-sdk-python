@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import pending_content_update
+    from .pending_content_update import PendingContentUpdate
 
 @dataclass
 class PendingOperations(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class PendingOperations(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # A property that indicates that an operation that might update the binary content of a file is pending completion.
-    pending_content_update: Optional[pending_content_update.PendingContentUpdate] = None
+    pending_content_update: Optional[PendingContentUpdate] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PendingOperations:
@@ -33,13 +33,13 @@ class PendingOperations(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import pending_content_update
+        from .pending_content_update import PendingContentUpdate
 
-        from . import pending_content_update
+        from .pending_content_update import PendingContentUpdate
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "pendingContentUpdate": lambda n : setattr(self, 'pending_content_update', n.get_object_value(pending_content_update.PendingContentUpdate)),
+            "pendingContentUpdate": lambda n : setattr(self, 'pending_content_update', n.get_object_value(PendingContentUpdate)),
         }
         return fields
     

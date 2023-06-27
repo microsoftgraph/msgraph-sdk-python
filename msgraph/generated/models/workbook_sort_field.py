@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import workbook_icon
+    from .workbook_icon import WorkbookIcon
 
 @dataclass
 class WorkbookSortField(AdditionalDataHolder, Parsable):
@@ -18,7 +18,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
     # Represents additional sorting options for this field. The possible values are: Normal, TextAsNumber.
     data_option: Optional[str] = None
     # Represents the icon that is the target of the condition if the sorting is on the cell's icon.
-    icon: Optional[workbook_icon.WorkbookIcon] = None
+    icon: Optional[WorkbookIcon] = None
     # Represents the column (or row, depending on the sort orientation) that the condition is on. Represented as an offset from the first column (or row).
     key: Optional[int] = None
     # The OdataType property
@@ -43,15 +43,15 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import workbook_icon
+        from .workbook_icon import WorkbookIcon
 
-        from . import workbook_icon
+        from .workbook_icon import WorkbookIcon
 
         fields: Dict[str, Callable[[Any], None]] = {
             "ascending": lambda n : setattr(self, 'ascending', n.get_bool_value()),
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
             "dataOption": lambda n : setattr(self, 'data_option', n.get_str_value()),
-            "icon": lambda n : setattr(self, 'icon', n.get_object_value(workbook_icon.WorkbookIcon)),
+            "icon": lambda n : setattr(self, 'icon', n.get_object_value(WorkbookIcon)),
             "key": lambda n : setattr(self, 'key', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sortOn": lambda n : setattr(self, 'sort_on', n.get_str_value()),

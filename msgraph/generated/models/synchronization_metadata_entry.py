@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import synchronization_metadata
+    from .synchronization_metadata import SynchronizationMetadata
 
 @dataclass
 class SynchronizationMetadataEntry(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class SynchronizationMetadataEntry(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The key property
-    key: Optional[synchronization_metadata.SynchronizationMetadata] = None
+    key: Optional[SynchronizationMetadata] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The value property
@@ -35,12 +35,12 @@ class SynchronizationMetadataEntry(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import synchronization_metadata
+        from .synchronization_metadata import SynchronizationMetadata
 
-        from . import synchronization_metadata
+        from .synchronization_metadata import SynchronizationMetadata
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "key": lambda n : setattr(self, 'key', n.get_enum_value(synchronization_metadata.SynchronizationMetadata)),
+            "key": lambda n : setattr(self, 'key', n.get_enum_value(SynchronizationMetadata)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }

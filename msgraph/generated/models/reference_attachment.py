@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attachment
+    from .attachment import Attachment
 
-from . import attachment
+from .attachment import Attachment
 
 @dataclass
-class ReferenceAttachment(attachment.Attachment):
+class ReferenceAttachment(Attachment):
     odata_type = "#microsoft.graph.referenceAttachment"
     
     @staticmethod
@@ -29,9 +29,9 @@ class ReferenceAttachment(attachment.Attachment):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attachment
+        from .attachment import Attachment
 
-        from . import attachment
+        from .attachment import Attachment
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

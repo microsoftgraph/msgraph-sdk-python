@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import risk_detail
+    from .risk_detail import RiskDetail
 
 @dataclass
 class RiskUserActivity(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
-    detail: Optional[risk_detail.RiskDetail] = None
+    detail: Optional[RiskDetail] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of risk event detected.
@@ -35,12 +35,12 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import risk_detail
+        from .risk_detail import RiskDetail
 
-        from . import risk_detail
+        from .risk_detail import RiskDetail
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "detail": lambda n : setattr(self, 'detail', n.get_enum_value(risk_detail.RiskDetail)),
+            "detail": lambda n : setattr(self, 'detail', n.get_enum_value(RiskDetail)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),
         }

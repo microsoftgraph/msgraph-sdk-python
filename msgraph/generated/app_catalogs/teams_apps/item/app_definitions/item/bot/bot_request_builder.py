@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import teamwork_bot
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.teamwork_bot import TeamworkBot
 
 class BotRequestBuilder():
     """
@@ -44,62 +44,62 @@ class BotRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[BotRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork_bot.TeamworkBot]:
+    async def get(self,request_configuration: Optional[BotRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamworkBot]:
         """
         Get the bot associated with a specific definition of the  TeamsApp.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teamwork_bot.TeamworkBot]
+        Returns: Optional[TeamworkBot]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import teamwork_bot
+        from .......models.teamwork_bot import TeamworkBot
 
-        return await self.request_adapter.send_async(request_info, teamwork_bot.TeamworkBot, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamworkBot, error_mapping)
     
-    async def patch(self,body: Optional[teamwork_bot.TeamworkBot] = None, request_configuration: Optional[BotRequestBuilderPatchRequestConfiguration] = None) -> Optional[teamwork_bot.TeamworkBot]:
+    async def patch(self,body: Optional[TeamworkBot] = None, request_configuration: Optional[BotRequestBuilderPatchRequestConfiguration] = None) -> Optional[TeamworkBot]:
         """
         Update the navigation property bot in appCatalogs
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teamwork_bot.TeamworkBot]
+        Returns: Optional[TeamworkBot]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import teamwork_bot
+        from .......models.teamwork_bot import TeamworkBot
 
-        return await self.request_adapter.send_async(request_info, teamwork_bot.TeamworkBot, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamworkBot, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[BotRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class BotRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[teamwork_bot.TeamworkBot] = None, request_configuration: Optional[BotRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TeamworkBot] = None, request_configuration: Optional[BotRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property bot in appCatalogs
         Args:

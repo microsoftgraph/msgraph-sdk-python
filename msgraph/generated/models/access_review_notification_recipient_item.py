@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_notification_recipient_scope
+    from .access_review_notification_recipient_scope import AccessReviewNotificationRecipientScope
 
 @dataclass
 class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Determines the recipient of the notification email.
-    notification_recipient_scope: Optional[access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope] = None
+    notification_recipient_scope: Optional[AccessReviewNotificationRecipientScope] = None
     # Indicates the type of access review email to be sent. Supported template type is CompletedAdditionalRecipients, which sends review completion notifications to the recipients.
     notification_template_type: Optional[str] = None
     # The OdataType property
@@ -35,12 +35,12 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_notification_recipient_scope
+        from .access_review_notification_recipient_scope import AccessReviewNotificationRecipientScope
 
-        from . import access_review_notification_recipient_scope
+        from .access_review_notification_recipient_scope import AccessReviewNotificationRecipientScope
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "notificationRecipientScope": lambda n : setattr(self, 'notification_recipient_scope', n.get_object_value(access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope)),
+            "notificationRecipientScope": lambda n : setattr(self, 'notification_recipient_scope', n.get_object_value(AccessReviewNotificationRecipientScope)),
             "notificationTemplateType": lambda n : setattr(self, 'notification_template_type', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

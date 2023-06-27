@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -12,7 +12,7 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
     # Status of the last certificate update. Read-only. For a list of statuses, see certificateUpdateResult status.
     certificate_update_result: Optional[str] = None
     # Date and time in ISO 8601 format and in UTC time when the certificate was last updated. Read-only.
-    last_run_date_time: Optional[datetime] = None
+    last_run_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -49,7 +49,7 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("certificateUpdateResult", self.certificate_update_result)
-        writer.write_datetime_value("lastRunDateTime", self.last_run_date_time)
+        writer.write_datetime_value()("lastRunDateTime", self.last_run_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

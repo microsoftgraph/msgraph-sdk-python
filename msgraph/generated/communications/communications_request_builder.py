@@ -10,13 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import cloud_communications
-    from ..models.o_data_errors import o_data_error
-    from .call_records import call_records_request_builder
-    from .calls import calls_request_builder
-    from .get_presences_by_user_id import get_presences_by_user_id_request_builder
-    from .online_meetings import online_meetings_request_builder
-    from .presences import presences_request_builder
+    from ..models.cloud_communications import CloudCommunications
+    from ..models.o_data_errors.o_data_error import ODataError
+    from .call_records.call_records_request_builder import CallRecordsRequestBuilder
+    from .calls.calls_request_builder import CallsRequestBuilder
+    from .get_presences_by_user_id.get_presences_by_user_id_request_builder import GetPresencesByUserIdRequestBuilder
+    from .online_meetings.online_meetings_request_builder import OnlineMeetingsRequestBuilder
+    from .presences.presences_request_builder import PresencesRequestBuilder
 
 class CommunicationsRequestBuilder():
     """
@@ -40,52 +40,52 @@ class CommunicationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[CommunicationsRequestBuilderGetRequestConfiguration] = None) -> Optional[cloud_communications.CloudCommunications]:
+    async def get(self,request_configuration: Optional[CommunicationsRequestBuilderGetRequestConfiguration] = None) -> Optional[CloudCommunications]:
         """
         Get communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[cloud_communications.CloudCommunications]
+        Returns: Optional[CloudCommunications]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import cloud_communications
+        from ..models.cloud_communications import CloudCommunications
 
-        return await self.request_adapter.send_async(request_info, cloud_communications.CloudCommunications, error_mapping)
+        return await self.request_adapter.send_async(request_info, CloudCommunications, error_mapping)
     
-    async def patch(self,body: Optional[cloud_communications.CloudCommunications] = None, request_configuration: Optional[CommunicationsRequestBuilderPatchRequestConfiguration] = None) -> Optional[cloud_communications.CloudCommunications]:
+    async def patch(self,body: Optional[CloudCommunications] = None, request_configuration: Optional[CommunicationsRequestBuilderPatchRequestConfiguration] = None) -> Optional[CloudCommunications]:
         """
         Update communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[cloud_communications.CloudCommunications]
+        Returns: Optional[CloudCommunications]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import cloud_communications
+        from ..models.cloud_communications import CloudCommunications
 
-        return await self.request_adapter.send_async(request_info, cloud_communications.CloudCommunications, error_mapping)
+        return await self.request_adapter.send_async(request_info, CloudCommunications, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CommunicationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -105,7 +105,7 @@ class CommunicationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[cloud_communications.CloudCommunications] = None, request_configuration: Optional[CommunicationsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[CloudCommunications] = None, request_configuration: Optional[CommunicationsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update communications
         Args:
@@ -127,49 +127,49 @@ class CommunicationsRequestBuilder():
         return request_info
     
     @property
-    def call_records(self) -> call_records_request_builder.CallRecordsRequestBuilder:
+    def call_records(self) -> CallRecordsRequestBuilder:
         """
         Provides operations to manage the callRecords property of the microsoft.graph.cloudCommunications entity.
         """
-        from .call_records import call_records_request_builder
+        from .call_records.call_records_request_builder import CallRecordsRequestBuilder
 
-        return call_records_request_builder.CallRecordsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CallRecordsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def calls(self) -> calls_request_builder.CallsRequestBuilder:
+    def calls(self) -> CallsRequestBuilder:
         """
         Provides operations to manage the calls property of the microsoft.graph.cloudCommunications entity.
         """
-        from .calls import calls_request_builder
+        from .calls.calls_request_builder import CallsRequestBuilder
 
-        return calls_request_builder.CallsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CallsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_presences_by_user_id(self) -> get_presences_by_user_id_request_builder.GetPresencesByUserIdRequestBuilder:
+    def get_presences_by_user_id(self) -> GetPresencesByUserIdRequestBuilder:
         """
         Provides operations to call the getPresencesByUserId method.
         """
-        from .get_presences_by_user_id import get_presences_by_user_id_request_builder
+        from .get_presences_by_user_id.get_presences_by_user_id_request_builder import GetPresencesByUserIdRequestBuilder
 
-        return get_presences_by_user_id_request_builder.GetPresencesByUserIdRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetPresencesByUserIdRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def online_meetings(self) -> online_meetings_request_builder.OnlineMeetingsRequestBuilder:
+    def online_meetings(self) -> OnlineMeetingsRequestBuilder:
         """
         Provides operations to manage the onlineMeetings property of the microsoft.graph.cloudCommunications entity.
         """
-        from .online_meetings import online_meetings_request_builder
+        from .online_meetings.online_meetings_request_builder import OnlineMeetingsRequestBuilder
 
-        return online_meetings_request_builder.OnlineMeetingsRequestBuilder(self.request_adapter, self.path_parameters)
+        return OnlineMeetingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def presences(self) -> presences_request_builder.PresencesRequestBuilder:
+    def presences(self) -> PresencesRequestBuilder:
         """
         Provides operations to manage the presences property of the microsoft.graph.cloudCommunications entity.
         """
-        from .presences import presences_request_builder
+        from .presences.presences_request_builder import PresencesRequestBuilder
 
-        return presences_request_builder.PresencesRequestBuilder(self.request_adapter, self.path_parameters)
+        return PresencesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CommunicationsRequestBuilderGetQueryParameters():

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import subject_set
+    from .subject_set import SubjectSet
 
 @dataclass
 class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
     # The number of days that a request can be pending a response before it is automatically denied.
     approval_stage_time_out_in_days: Optional[int] = None
     # The escalation approvers for this stage when the primary approvers don't respond.
-    escalation_approvers: Optional[List[subject_set.SubjectSet]] = None
+    escalation_approvers: Optional[List[SubjectSet]] = None
     # The time a request can be pending a response from a primary approver before it can be escalated to the escalation approvers.
     escalation_time_in_minutes: Optional[int] = None
     # Indicates whether the approver must provide justification for their reponse.
@@ -24,7 +24,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The primary approvers of this stage.
-    primary_approvers: Optional[List[subject_set.SubjectSet]] = None
+    primary_approvers: Optional[List[SubjectSet]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedApprovalStage:
@@ -43,18 +43,18 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import subject_set
+        from .subject_set import SubjectSet
 
-        from . import subject_set
+        from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "approvalStageTimeOutInDays": lambda n : setattr(self, 'approval_stage_time_out_in_days', n.get_int_value()),
-            "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(SubjectSet)),
             "escalationTimeInMinutes": lambda n : setattr(self, 'escalation_time_in_minutes', n.get_int_value()),
             "isApproverJustificationRequired": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
             "isEscalationEnabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(SubjectSet)),
         }
         return fields
     

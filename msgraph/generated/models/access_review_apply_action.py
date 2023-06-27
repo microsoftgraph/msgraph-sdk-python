@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import disable_and_delete_user_apply_action, remove_access_apply_action
+    from .disable_and_delete_user_apply_action import DisableAndDeleteUserApplyAction
+    from .remove_access_apply_action import RemoveAccessApplyAction
 
 @dataclass
 class AccessReviewApplyAction(AdditionalDataHolder, Parsable):
@@ -29,13 +30,13 @@ class AccessReviewApplyAction(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.disableAndDeleteUserApplyAction".casefold():
-            from . import disable_and_delete_user_apply_action
+            from .disable_and_delete_user_apply_action import DisableAndDeleteUserApplyAction
 
-            return disable_and_delete_user_apply_action.DisableAndDeleteUserApplyAction()
+            return DisableAndDeleteUserApplyAction()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.removeAccessApplyAction".casefold():
-            from . import remove_access_apply_action
+            from .remove_access_apply_action import RemoveAccessApplyAction
 
-            return remove_access_apply_action.RemoveAccessApplyAction()
+            return RemoveAccessApplyAction()
         return AccessReviewApplyAction()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -43,9 +44,11 @@ class AccessReviewApplyAction(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import disable_and_delete_user_apply_action, remove_access_apply_action
+        from .disable_and_delete_user_apply_action import DisableAndDeleteUserApplyAction
+        from .remove_access_apply_action import RemoveAccessApplyAction
 
-        from . import disable_and_delete_user_apply_action, remove_access_apply_action
+        from .disable_and_delete_user_apply_action import DisableAndDeleteUserApplyAction
+        from .remove_access_apply_action import RemoveAccessApplyAction
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

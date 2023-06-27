@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import temporary_access_pass_authentication_method, temporary_access_pass_authentication_method_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import temporary_access_pass_authentication_method_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
+    from .....models.temporary_access_pass_authentication_method_collection_response import TemporaryAccessPassAuthenticationMethodCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.temporary_access_pass_authentication_method_item_request_builder import TemporaryAccessPassAuthenticationMethodItemRequestBuilder
 
 class TemporaryAccessPassMethodsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class TemporaryAccessPassMethodsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_temporary_access_pass_authentication_method_id(self,temporary_access_pass_authentication_method_id: str) -> temporary_access_pass_authentication_method_item_request_builder.TemporaryAccessPassAuthenticationMethodItemRequestBuilder:
+    def by_temporary_access_pass_authentication_method_id(self,temporary_access_pass_authentication_method_id: str) -> TemporaryAccessPassAuthenticationMethodItemRequestBuilder:
         """
         Provides operations to manage the temporaryAccessPassMethods property of the microsoft.graph.authentication entity.
         Args:
             temporary_access_pass_authentication_method_id: Unique identifier of the item
-        Returns: temporary_access_pass_authentication_method_item_request_builder.TemporaryAccessPassAuthenticationMethodItemRequestBuilder
+        Returns: TemporaryAccessPassAuthenticationMethodItemRequestBuilder
         """
         if not temporary_access_pass_authentication_method_id:
             raise TypeError("temporary_access_pass_authentication_method_id cannot be null.")
-        from .item import temporary_access_pass_authentication_method_item_request_builder
+        from .item.temporary_access_pass_authentication_method_item_request_builder import TemporaryAccessPassAuthenticationMethodItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["temporaryAccessPassAuthenticationMethod%2Did"] = temporary_access_pass_authentication_method_id
-        return temporary_access_pass_authentication_method_item_request_builder.TemporaryAccessPassAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return TemporaryAccessPassAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[temporary_access_pass_authentication_method_collection_response.TemporaryAccessPassAuthenticationMethodCollectionResponse]:
+    async def get(self,request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[TemporaryAccessPassAuthenticationMethodCollectionResponse]:
         """
         Retrieve a list of a user's temporaryAccessPassAuthenticationMethod objects and their properties. This API will only return a single object in the collection as a user can have only one Temporary Access Pass method.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[temporary_access_pass_authentication_method_collection_response.TemporaryAccessPassAuthenticationMethodCollectionResponse]
+        Returns: Optional[TemporaryAccessPassAuthenticationMethodCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import temporary_access_pass_authentication_method_collection_response
+        from .....models.temporary_access_pass_authentication_method_collection_response import TemporaryAccessPassAuthenticationMethodCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, temporary_access_pass_authentication_method_collection_response.TemporaryAccessPassAuthenticationMethodCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TemporaryAccessPassAuthenticationMethodCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod] = None, request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderPostRequestConfiguration] = None) -> Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]:
+    async def post(self,body: Optional[TemporaryAccessPassAuthenticationMethod] = None, request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderPostRequestConfiguration] = None) -> Optional[TemporaryAccessPassAuthenticationMethod]:
         """
         Create a new temporaryAccessPassAuthenticationMethod object on a user. A user can only have one Temporary Access Pass that's usable within its specified lifetime. If the user requires a new Temporary Access Pass while the current Temporary Access Pass is valid, the admin can create a new Temporary Access Pass for the user, the previous Temporary Access Pass will be deleted, and a new Temporary Access Pass will be created.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]
+        Returns: Optional[TemporaryAccessPassAuthenticationMethod]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import temporary_access_pass_authentication_method
+        from .....models.temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
 
-        return await self.request_adapter.send_async(request_info, temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod, error_mapping)
+        return await self.request_adapter.send_async(request_info, TemporaryAccessPassAuthenticationMethod, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class TemporaryAccessPassMethodsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod] = None, request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TemporaryAccessPassAuthenticationMethod] = None, request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new temporaryAccessPassAuthenticationMethod object on a user. A user can only have one Temporary Access Pass that's usable within its specified lifetime. If the user requires a new Temporary Access Pass while the current Temporary Access Pass is valid, the admin can create a new Temporary Access Pass for the user, the previous Temporary Access Pass will be deleted, and a new Temporary Access Pass will be created.
         Args:
@@ -139,13 +140,13 @@ class TemporaryAccessPassMethodsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TemporaryAccessPassMethodsRequestBuilderGetQueryParameters():

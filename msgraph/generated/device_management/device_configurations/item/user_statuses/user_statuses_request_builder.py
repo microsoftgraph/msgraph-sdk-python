@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import device_configuration_user_status, device_configuration_user_status_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import device_configuration_user_status_item_request_builder
+    from .....models.device_configuration_user_status import DeviceConfigurationUserStatus
+    from .....models.device_configuration_user_status_collection_response import DeviceConfigurationUserStatusCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.device_configuration_user_status_item_request_builder import DeviceConfigurationUserStatusItemRequestBuilder
 
 class UserStatusesRequestBuilder():
     """
@@ -37,71 +38,71 @@ class UserStatusesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_device_configuration_user_status_id(self,device_configuration_user_status_id: str) -> device_configuration_user_status_item_request_builder.DeviceConfigurationUserStatusItemRequestBuilder:
+    def by_device_configuration_user_status_id(self,device_configuration_user_status_id: str) -> DeviceConfigurationUserStatusItemRequestBuilder:
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.deviceConfiguration entity.
         Args:
             device_configuration_user_status_id: Unique identifier of the item
-        Returns: device_configuration_user_status_item_request_builder.DeviceConfigurationUserStatusItemRequestBuilder
+        Returns: DeviceConfigurationUserStatusItemRequestBuilder
         """
         if not device_configuration_user_status_id:
             raise TypeError("device_configuration_user_status_id cannot be null.")
-        from .item import device_configuration_user_status_item_request_builder
+        from .item.device_configuration_user_status_item_request_builder import DeviceConfigurationUserStatusItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceConfigurationUserStatus%2Did"] = device_configuration_user_status_id
-        return device_configuration_user_status_item_request_builder.DeviceConfigurationUserStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DeviceConfigurationUserStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[UserStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[device_configuration_user_status_collection_response.DeviceConfigurationUserStatusCollectionResponse]:
+    async def get(self,request_configuration: Optional[UserStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatusCollectionResponse]:
         """
-        Device configuration installation status by user.
+        List properties and relationships of the deviceConfigurationUserStatus objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_configuration_user_status_collection_response.DeviceConfigurationUserStatusCollectionResponse]
+        Returns: Optional[DeviceConfigurationUserStatusCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import device_configuration_user_status_collection_response
+        from .....models.device_configuration_user_status_collection_response import DeviceConfigurationUserStatusCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, device_configuration_user_status_collection_response.DeviceConfigurationUserStatusCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceConfigurationUserStatusCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[device_configuration_user_status.DeviceConfigurationUserStatus] = None, request_configuration: Optional[UserStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[device_configuration_user_status.DeviceConfigurationUserStatus]:
+    async def post(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[UserStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatus]:
         """
-        Create new navigation property to userStatuses for deviceManagement
+        Create a new deviceConfigurationUserStatus object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_configuration_user_status.DeviceConfigurationUserStatus]
+        Returns: Optional[DeviceConfigurationUserStatus]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import device_configuration_user_status
+        from .....models.device_configuration_user_status import DeviceConfigurationUserStatus
 
-        return await self.request_adapter.send_async(request_info, device_configuration_user_status.DeviceConfigurationUserStatus, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceConfigurationUserStatus, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[UserStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Device configuration installation status by user.
+        List properties and relationships of the deviceConfigurationUserStatus objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class UserStatusesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[device_configuration_user_status.DeviceConfigurationUserStatus] = None, request_configuration: Optional[UserStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[UserStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to userStatuses for deviceManagement
+        Create a new deviceConfigurationUserStatus object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class UserStatusesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class UserStatusesRequestBuilderGetQueryParameters():
         """
-        Device configuration installation status by user.
+        List properties and relationships of the deviceConfigurationUserStatus objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import promote_response
-    from ....models.o_data_errors import o_data_error
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .promote_response import PromoteResponse
 
 class PromoteRequestBuilder():
     """
@@ -35,27 +35,27 @@ class PromoteRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> Optional[promote_response.PromoteResponse]:
+    async def post(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> Optional[PromoteResponse]:
         """
         Promote a verified subdomain to the root domain. A verified domain has its **isVerified** property set to `true`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[promote_response.PromoteResponse]
+        Returns: Optional[PromoteResponse]
         """
         request_info = self.to_post_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import promote_response
+        from .promote_response import PromoteResponse
 
-        return await self.request_adapter.send_async(request_info, promote_response.PromoteResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PromoteResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

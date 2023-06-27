@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import external_connection
+    from .external_connection import ExternalConnection
 
 @dataclass
 class External(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class External(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The connections property
-    connections: Optional[List[external_connection.ExternalConnection]] = None
+    connections: Optional[List[ExternalConnection]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,12 +33,12 @@ class External(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import external_connection
+        from .external_connection import ExternalConnection
 
-        from . import external_connection
+        from .external_connection import ExternalConnection
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "connections": lambda n : setattr(self, 'connections', n.get_collection_of_object_values(external_connection.ExternalConnection)),
+            "connections": lambda n : setattr(self, 'connections', n.get_collection_of_object_values(ExternalConnection)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

@@ -10,20 +10,21 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import directory_object, directory_object_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .delta import delta_request_builder
-    from .get_available_extension_properties import get_available_extension_properties_request_builder
-    from .get_by_ids import get_by_ids_request_builder
-    from .graph_administrative_unit import graph_administrative_unit_request_builder
-    from .graph_application import graph_application_request_builder
-    from .graph_device import graph_device_request_builder
-    from .graph_group import graph_group_request_builder
-    from .graph_service_principal import graph_service_principal_request_builder
-    from .graph_user import graph_user_request_builder
-    from .item import directory_object_item_request_builder
-    from .validate_properties import validate_properties_request_builder
+    from ...models.directory_object import DirectoryObject
+    from ...models.directory_object_collection_response import DirectoryObjectCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
+    from .get_available_extension_properties.get_available_extension_properties_request_builder import GetAvailableExtensionPropertiesRequestBuilder
+    from .get_by_ids.get_by_ids_request_builder import GetByIdsRequestBuilder
+    from .graph_administrative_unit.graph_administrative_unit_request_builder import GraphAdministrativeUnitRequestBuilder
+    from .graph_application.graph_application_request_builder import GraphApplicationRequestBuilder
+    from .graph_device.graph_device_request_builder import GraphDeviceRequestBuilder
+    from .graph_group.graph_group_request_builder import GraphGroupRequestBuilder
+    from .graph_service_principal.graph_service_principal_request_builder import GraphServicePrincipalRequestBuilder
+    from .graph_user.graph_user_request_builder import GraphUserRequestBuilder
+    from .item.directory_object_item_request_builder import DirectoryObjectItemRequestBuilder
+    from .validate_properties.validate_properties_request_builder import ValidatePropertiesRequestBuilder
 
 class DeletedItemsRequestBuilder():
     """
@@ -47,67 +48,67 @@ class DeletedItemsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_directory_object_id(self,directory_object_id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def by_directory_object_id(self,directory_object_id: str) -> DirectoryObjectItemRequestBuilder:
         """
         Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
         Args:
             directory_object_id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: DirectoryObjectItemRequestBuilder
         """
         if not directory_object_id:
             raise TypeError("directory_object_id cannot be null.")
-        from .item import directory_object_item_request_builder
+        from .item.directory_object_item_request_builder import DirectoryObjectItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = directory_object_id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DeletedItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeletedItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObjectCollectionResponse]:
         """
         Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
+        Returns: Optional[DirectoryObjectCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import directory_object_collection_response
+        from ...models.directory_object_collection_response import DirectoryObjectCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, directory_object_collection_response.DirectoryObjectCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DirectoryObjectCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[DeletedItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[directory_object.DirectoryObject]:
+    async def post(self,body: Optional[DirectoryObject] = None, request_configuration: Optional[DeletedItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
         Create new navigation property to deletedItems for directory
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[directory_object.DirectoryObject]
+        Returns: Optional[DirectoryObject]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import directory_object
+        from ...models.directory_object import DirectoryObject
 
-        return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, error_mapping)
+        return await self.request_adapter.send_async(request_info, DirectoryObject, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DeletedItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -127,7 +128,7 @@ class DeletedItemsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[DeletedItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DirectoryObject] = None, request_configuration: Optional[DeletedItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to deletedItems for directory
         Args:
@@ -149,103 +150,103 @@ class DeletedItemsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def delta(self) -> DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        from .delta import delta_request_builder
+        from .delta.delta_request_builder import DeltaRequestBuilder
 
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
+    def get_available_extension_properties(self) -> GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
-        from .get_available_extension_properties import get_available_extension_properties_request_builder
+        from .get_available_extension_properties.get_available_extension_properties_request_builder import GetAvailableExtensionPropertiesRequestBuilder
 
-        return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
+    def get_by_ids(self) -> GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
-        from .get_by_ids import get_by_ids_request_builder
+        from .get_by_ids.get_by_ids_request_builder import GetByIdsRequestBuilder
 
-        return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def graph_administrative_unit(self) -> graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder:
+    def graph_administrative_unit(self) -> GraphAdministrativeUnitRequestBuilder:
         """
         Casts the previous resource to administrativeUnit.
         """
-        from .graph_administrative_unit import graph_administrative_unit_request_builder
+        from .graph_administrative_unit.graph_administrative_unit_request_builder import GraphAdministrativeUnitRequestBuilder
 
-        return graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphAdministrativeUnitRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
+    def graph_application(self) -> GraphApplicationRequestBuilder:
         """
         Casts the previous resource to application.
         """
-        from .graph_application import graph_application_request_builder
+        from .graph_application.graph_application_request_builder import GraphApplicationRequestBuilder
 
-        return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def graph_device(self) -> graph_device_request_builder.GraphDeviceRequestBuilder:
+    def graph_device(self) -> GraphDeviceRequestBuilder:
         """
         Casts the previous resource to device.
         """
-        from .graph_device import graph_device_request_builder
+        from .graph_device.graph_device_request_builder import GraphDeviceRequestBuilder
 
-        return graph_device_request_builder.GraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
+    def graph_group(self) -> GraphGroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
-        from .graph_group import graph_group_request_builder
+        from .graph_group.graph_group_request_builder import GraphGroupRequestBuilder
 
-        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def graph_service_principal(self) -> graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder:
+    def graph_service_principal(self) -> GraphServicePrincipalRequestBuilder:
         """
         Casts the previous resource to servicePrincipal.
         """
-        from .graph_service_principal import graph_service_principal_request_builder
+        from .graph_service_principal.graph_service_principal_request_builder import GraphServicePrincipalRequestBuilder
 
-        return graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def graph_user(self) -> graph_user_request_builder.GraphUserRequestBuilder:
+    def graph_user(self) -> GraphUserRequestBuilder:
         """
         Casts the previous resource to user.
         """
-        from .graph_user import graph_user_request_builder
+        from .graph_user.graph_user_request_builder import GraphUserRequestBuilder
 
-        return graph_user_request_builder.GraphUserRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+    def validate_properties(self) -> ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
-        from .validate_properties import validate_properties_request_builder
+        from .validate_properties.validate_properties_request_builder import ValidatePropertiesRequestBuilder
 
-        return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeletedItemsRequestBuilderGetQueryParameters():

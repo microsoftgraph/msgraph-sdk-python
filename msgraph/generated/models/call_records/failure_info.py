@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import failure_stage
+    from .failure_stage import FailureStage
 
 @dataclass
 class FailureInfo(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class FailureInfo(AdditionalDataHolder, Parsable):
     # Classification of why a call or portion of a call failed.
     reason: Optional[str] = None
     # The stage property
-    stage: Optional[failure_stage.FailureStage] = None
+    stage: Optional[FailureStage] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FailureInfo:
@@ -35,14 +35,14 @@ class FailureInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import failure_stage
+        from .failure_stage import FailureStage
 
-        from . import failure_stage
+        from .failure_stage import FailureStage
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reason": lambda n : setattr(self, 'reason', n.get_str_value()),
-            "stage": lambda n : setattr(self, 'stage', n.get_enum_value(failure_stage.FailureStage)),
+            "stage": lambda n : setattr(self, 'stage', n.get_enum_value(FailureStage)),
         }
         return fields
     

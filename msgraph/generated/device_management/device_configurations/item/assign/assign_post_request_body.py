@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import device_configuration_assignment
+    from .....models.device_configuration_assignment import DeviceConfigurationAssignment
 
 @dataclass
 class AssignPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The assignments property
-    assignments: Optional[List[device_configuration_assignment.DeviceConfigurationAssignment]] = None
+    assignments: Optional[List[DeviceConfigurationAssignment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignPostRequestBody:
@@ -31,12 +31,12 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import device_configuration_assignment
+        from .....models.device_configuration_assignment import DeviceConfigurationAssignment
 
-        from .....models import device_configuration_assignment
+        from .....models.device_configuration_assignment import DeviceConfigurationAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(device_configuration_assignment.DeviceConfigurationAssignment)),
+            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(DeviceConfigurationAssignment)),
         }
         return fields
     

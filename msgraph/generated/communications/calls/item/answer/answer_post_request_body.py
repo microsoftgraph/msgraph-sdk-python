@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import incoming_call_options, media_config, modality
+    from .....models.incoming_call_options import IncomingCallOptions
+    from .....models.media_config import MediaConfig
+    from .....models.modality import Modality
 
 @dataclass
 class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,13 +14,13 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The acceptedModalities property
-    accepted_modalities: Optional[List[modality.Modality]] = None
+    accepted_modalities: Optional[List[Modality]] = None
     # The callOptions property
-    call_options: Optional[incoming_call_options.IncomingCallOptions] = None
+    call_options: Optional[IncomingCallOptions] = None
     # The callbackUri property
     callback_uri: Optional[str] = None
     # The mediaConfig property
-    media_config: Optional[media_config.MediaConfig] = None
+    media_config: Optional[MediaConfig] = None
     # The participantCapacity property
     participant_capacity: Optional[int] = None
     
@@ -39,15 +41,19 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import incoming_call_options, media_config, modality
+        from .....models.incoming_call_options import IncomingCallOptions
+        from .....models.media_config import MediaConfig
+        from .....models.modality import Modality
 
-        from .....models import incoming_call_options, media_config, modality
+        from .....models.incoming_call_options import IncomingCallOptions
+        from .....models.media_config import MediaConfig
+        from .....models.modality import Modality
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "acceptedModalities": lambda n : setattr(self, 'accepted_modalities', n.get_collection_of_enum_values(modality.Modality)),
-            "callOptions": lambda n : setattr(self, 'call_options', n.get_object_value(incoming_call_options.IncomingCallOptions)),
+            "acceptedModalities": lambda n : setattr(self, 'accepted_modalities', n.get_collection_of_enum_values(Modality)),
+            "callOptions": lambda n : setattr(self, 'call_options', n.get_object_value(IncomingCallOptions)),
             "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
-            "mediaConfig": lambda n : setattr(self, 'media_config', n.get_object_value(media_config.MediaConfig)),
+            "mediaConfig": lambda n : setattr(self, 'media_config', n.get_object_value(MediaConfig)),
             "participantCapacity": lambda n : setattr(self, 'participant_capacity', n.get_int_value()),
         }
         return fields

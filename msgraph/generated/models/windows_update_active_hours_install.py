@@ -1,21 +1,21 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import windows_update_install_schedule_type
+    from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
 
-from . import windows_update_install_schedule_type
+from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
 
 @dataclass
-class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.WindowsUpdateInstallScheduleType):
+class WindowsUpdateActiveHoursInstall(WindowsUpdateInstallScheduleType):
     odata_type = "#microsoft.graph.windowsUpdateActiveHoursInstall"
     # Active Hours End
-    active_hours_end: Optional[time] = None
+    active_hours_end: Optional[datetime.time] = None
     # Active Hours Start
-    active_hours_start: Optional[time] = None
+    active_hours_start: Optional[datetime.time] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUpdateActiveHoursInstall:
@@ -34,9 +34,9 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_update_install_schedule_type
+        from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
 
-        from . import windows_update_install_schedule_type
+        from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_time_value()),
@@ -55,7 +55,7 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_time_value("activeHoursEnd", self.active_hours_end)
-        writer.write_time_value("activeHoursStart", self.active_hours_start)
+        writer.write_time_value()("activeHoursEnd", self.active_hours_end)
+        writer.write_time_value()("activeHoursStart", self.active_hours_start)
     
 

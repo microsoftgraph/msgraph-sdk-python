@@ -4,18 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import deleted_team, entity, workforce_integration
+    from .deleted_team import DeletedTeam
+    from .entity import Entity
+    from .workforce_integration import WorkforceIntegration
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Teamwork(entity.Entity):
+class Teamwork(Entity):
     # The deleted team.
-    deleted_teams: Optional[List[deleted_team.DeletedTeam]] = None
+    deleted_teams: Optional[List[DeletedTeam]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The workforceIntegrations property
-    workforce_integrations: Optional[List[workforce_integration.WorkforceIntegration]] = None
+    workforce_integrations: Optional[List[WorkforceIntegration]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Teamwork:
@@ -34,13 +36,17 @@ class Teamwork(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import deleted_team, entity, workforce_integration
+        from .deleted_team import DeletedTeam
+        from .entity import Entity
+        from .workforce_integration import WorkforceIntegration
 
-        from . import deleted_team, entity, workforce_integration
+        from .deleted_team import DeletedTeam
+        from .entity import Entity
+        from .workforce_integration import WorkforceIntegration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deletedTeams": lambda n : setattr(self, 'deleted_teams', n.get_collection_of_object_values(deleted_team.DeletedTeam)),
-            "workforceIntegrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(workforce_integration.WorkforceIntegration)),
+            "deletedTeams": lambda n : setattr(self, 'deleted_teams', n.get_collection_of_object_values(DeletedTeam)),
+            "workforceIntegrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(WorkforceIntegration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

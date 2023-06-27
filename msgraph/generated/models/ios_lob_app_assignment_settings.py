@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_app_assignment_settings
+    from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-from . import mobile_app_assignment_settings
+from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class IosLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
+class IosLobAppAssignmentSettings(MobileAppAssignmentSettings):
     odata_type = "#microsoft.graph.iosLobAppAssignmentSettings"
     # When TRUE, indicates that the app can be uninstalled by the user. When FALSE, indicates that the app cannot be uninstalled by the user. By default, this property is set to null which internally is treated as TRUE.
     is_removable: Optional[bool] = None
@@ -35,9 +35,9 @@ class IosLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),

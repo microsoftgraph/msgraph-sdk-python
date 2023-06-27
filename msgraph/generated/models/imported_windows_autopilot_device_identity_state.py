@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import imported_windows_autopilot_device_identity_import_status
+    from .imported_windows_autopilot_device_identity_import_status import ImportedWindowsAutopilotDeviceIdentityImportStatus
 
 @dataclass
 class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
     # Device error name reported by Device Directory Service(DDS).
     device_error_name: Optional[str] = None
     # The deviceImportStatus property
-    device_import_status: Optional[imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus] = None
+    device_import_status: Optional[ImportedWindowsAutopilotDeviceIdentityImportStatus] = None
     # Device Registration ID for successfully added device reported by Device Directory Service(DDS).
     device_registration_id: Optional[str] = None
     # The OdataType property
@@ -39,14 +39,14 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import imported_windows_autopilot_device_identity_import_status
+        from .imported_windows_autopilot_device_identity_import_status import ImportedWindowsAutopilotDeviceIdentityImportStatus
 
-        from . import imported_windows_autopilot_device_identity_import_status
+        from .imported_windows_autopilot_device_identity_import_status import ImportedWindowsAutopilotDeviceIdentityImportStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "deviceErrorCode": lambda n : setattr(self, 'device_error_code', n.get_int_value()),
             "deviceErrorName": lambda n : setattr(self, 'device_error_name', n.get_str_value()),
-            "deviceImportStatus": lambda n : setattr(self, 'device_import_status', n.get_enum_value(imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus)),
+            "deviceImportStatus": lambda n : setattr(self, 'device_import_status', n.get_enum_value(ImportedWindowsAutopilotDeviceIdentityImportStatus)),
             "deviceRegistrationId": lambda n : setattr(self, 'device_registration_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

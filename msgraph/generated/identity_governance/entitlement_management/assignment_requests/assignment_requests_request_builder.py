@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import access_package_assignment_request, access_package_assignment_request_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
-    from .item import access_package_assignment_request_item_request_builder
+    from ....models.access_package_assignment_request import AccessPackageAssignmentRequest
+    from ....models.access_package_assignment_request_collection_response import AccessPackageAssignmentRequestCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
+    from .item.access_package_assignment_request_item_request_builder import AccessPackageAssignmentRequestItemRequestBuilder
 
 class AssignmentRequestsRequestBuilder():
     """
@@ -38,80 +39,80 @@ class AssignmentRequestsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_access_package_assignment_request_id(self,access_package_assignment_request_id: str) -> access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder:
+    def by_access_package_assignment_request_id(self,access_package_assignment_request_id: str) -> AccessPackageAssignmentRequestItemRequestBuilder:
         """
         Provides operations to manage the assignmentRequests property of the microsoft.graph.entitlementManagement entity.
         Args:
             access_package_assignment_request_id: Unique identifier of the item
-        Returns: access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder
+        Returns: AccessPackageAssignmentRequestItemRequestBuilder
         """
         if not access_package_assignment_request_id:
             raise TypeError("access_package_assignment_request_id cannot be null.")
-        from .item import access_package_assignment_request_item_request_builder
+        from .item.access_package_assignment_request_item_request_builder import AccessPackageAssignmentRequestItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["accessPackageAssignmentRequest%2Did"] = access_package_assignment_request_id
-        return access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AccessPackageAssignmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
         Args:
             on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        Returns: FilterByCurrentUserWithOnRequestBuilder
         """
         if not on:
             raise TypeError("on cannot be null.")
-        from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+        from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
 
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+        return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[AssignmentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[AssignmentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageAssignmentRequestCollectionResponse]:
         """
         In Azure AD entitlement management, retrieve a list of accessPackageAssignmentRequest objects.  The resulting list includes all the assignment requests, current and well as expired, that the caller has access to read, across all catalogs and access packages.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse]
+        Returns: Optional[AccessPackageAssignmentRequestCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import access_package_assignment_request_collection_response
+        from ....models.access_package_assignment_request_collection_response import AccessPackageAssignmentRequestCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageAssignmentRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[access_package_assignment_request.AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[access_package_assignment_request.AccessPackageAssignmentRequest]:
+    async def post(self,body: Optional[AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessPackageAssignmentRequest]:
         """
         In Azure AD Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, update the assignment, or to remove an access package assignment.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_assignment_request.AccessPackageAssignmentRequest]
+        Returns: Optional[AccessPackageAssignmentRequest]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import access_package_assignment_request
+        from ....models.access_package_assignment_request import AccessPackageAssignmentRequest
 
-        return await self.request_adapter.send_async(request_info, access_package_assignment_request.AccessPackageAssignmentRequest, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageAssignmentRequest, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -131,7 +132,7 @@ class AssignmentRequestsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[access_package_assignment_request.AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         In Azure AD Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, update the assignment, or to remove an access package assignment.
         Args:
@@ -153,13 +154,13 @@ class AssignmentRequestsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AssignmentRequestsRequestBuilderGetQueryParameters():

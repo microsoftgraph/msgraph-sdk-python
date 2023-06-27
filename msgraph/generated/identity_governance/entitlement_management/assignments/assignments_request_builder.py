@@ -10,13 +10,14 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import access_package_assignment, access_package_assignment_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .additional_access import additional_access_request_builder
-    from .additional_access_with_access_package_id_with_incompatible_access_package_id import additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder
-    from .count import count_request_builder
-    from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
-    from .item import access_package_assignment_item_request_builder
+    from ....models.access_package_assignment import AccessPackageAssignment
+    from ....models.access_package_assignment_collection_response import AccessPackageAssignmentCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .additional_access.additional_access_request_builder import AdditionalAccessRequestBuilder
+    from .additional_access_with_access_package_id_with_incompatible_access_package_id.additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder import AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder
+    from .count.count_request_builder import CountRequestBuilder
+    from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
+    from .item.access_package_assignment_item_request_builder import AccessPackageAssignmentItemRequestBuilder
 
 class AssignmentsRequestBuilder():
     """
@@ -40,96 +41,96 @@ class AssignmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def additional_access_with_access_package_id_with_incompatible_access_package_id(self,access_package_id: Optional[str] = None, incompatible_access_package_id: Optional[str] = None) -> additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder.AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder:
+    def additional_access_with_access_package_id_with_incompatible_access_package_id(self,access_package_id: Optional[str] = None, incompatible_access_package_id: Optional[str] = None) -> AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder:
         """
         Provides operations to call the additionalAccess method.
         Args:
             accessPackageId: Usage: accessPackageId='{accessPackageId}'
             incompatibleAccessPackageId: Usage: incompatibleAccessPackageId='{incompatibleAccessPackageId}'
-        Returns: additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder.AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder
+        Returns: AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder
         """
         if not access_package_id:
             raise TypeError("access_package_id cannot be null.")
         if not incompatible_access_package_id:
             raise TypeError("incompatible_access_package_id cannot be null.")
-        from .additional_access_with_access_package_id_with_incompatible_access_package_id import additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder
+        from .additional_access_with_access_package_id_with_incompatible_access_package_id.additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder import AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder
 
-        return additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder.AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder(self.request_adapter, self.path_parameters, access_package_id, incompatible_access_package_id)
+        return AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder(self.request_adapter, self.path_parameters, access_package_id, incompatible_access_package_id)
     
-    def by_access_package_assignment_id(self,access_package_assignment_id: str) -> access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder:
+    def by_access_package_assignment_id(self,access_package_assignment_id: str) -> AccessPackageAssignmentItemRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
         Args:
             access_package_assignment_id: Unique identifier of the item
-        Returns: access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder
+        Returns: AccessPackageAssignmentItemRequestBuilder
         """
         if not access_package_assignment_id:
             raise TypeError("access_package_assignment_id cannot be null.")
-        from .item import access_package_assignment_item_request_builder
+        from .item.access_package_assignment_item_request_builder import AccessPackageAssignmentItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["accessPackageAssignment%2Did"] = access_package_assignment_id
-        return access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AccessPackageAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
         Args:
             on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        Returns: FilterByCurrentUserWithOnRequestBuilder
         """
         if not on:
             raise TypeError("on cannot be null.")
-        from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+        from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
 
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+        return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_assignment_collection_response.AccessPackageAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageAssignmentCollectionResponse]:
         """
         In Azure AD entitlement management, retrieve a list of accessPackageAssignment objects. For directory-wide administrators, the resulting list includes all the assignments, current and well as expired, that the caller has access to read, across all catalogs and access packages.  If the caller is on behalf of a delegated user who is assigned only to catalog-specific delegated administrative roles, the request must supply a filter to indicate a specific access package, such as: `$filter=accessPackage/id eq 'a914b616-e04e-476b-aa37-91038f0b165b'`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_assignment_collection_response.AccessPackageAssignmentCollectionResponse]
+        Returns: Optional[AccessPackageAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import access_package_assignment_collection_response
+        from ....models.access_package_assignment_collection_response import AccessPackageAssignmentCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, access_package_assignment_collection_response.AccessPackageAssignmentCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[access_package_assignment.AccessPackageAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[access_package_assignment.AccessPackageAssignment]:
+    async def post(self,body: Optional[AccessPackageAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessPackageAssignment]:
         """
         Create new navigation property to assignments for identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_assignment.AccessPackageAssignment]
+        Returns: Optional[AccessPackageAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import access_package_assignment
+        from ....models.access_package_assignment import AccessPackageAssignment
 
-        return await self.request_adapter.send_async(request_info, access_package_assignment.AccessPackageAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -149,7 +150,7 @@ class AssignmentsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[access_package_assignment.AccessPackageAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AccessPackageAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to assignments for identityGovernance
         Args:
@@ -171,22 +172,22 @@ class AssignmentsRequestBuilder():
         return request_info
     
     @property
-    def additional_access(self) -> additional_access_request_builder.AdditionalAccessRequestBuilder:
+    def additional_access(self) -> AdditionalAccessRequestBuilder:
         """
         Provides operations to call the additionalAccess method.
         """
-        from .additional_access import additional_access_request_builder
+        from .additional_access.additional_access_request_builder import AdditionalAccessRequestBuilder
 
-        return additional_access_request_builder.AdditionalAccessRequestBuilder(self.request_adapter, self.path_parameters)
+        return AdditionalAccessRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AssignmentsRequestBuilderGetQueryParameters():

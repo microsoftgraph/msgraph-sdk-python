@@ -4,8 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_status_type
-    from .. import public_error
+    from ..public_error import PublicError
+    from .event_status_type import EventStatusType
 
 @dataclass
 class RetentionEventStatus(AdditionalDataHolder, Parsable):
@@ -13,11 +13,11 @@ class RetentionEventStatus(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The error if the status is not successful.
-    error: Optional[public_error.PublicError] = None
+    error: Optional[PublicError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status of the distribution. The possible values are: pending, error, success, notAvaliable.
-    status: Optional[event_status_type.EventStatusType] = None
+    status: Optional[EventStatusType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RetentionEventStatus:
@@ -36,16 +36,16 @@ class RetentionEventStatus(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_status_type
-        from .. import public_error
+        from ..public_error import PublicError
+        from .event_status_type import EventStatusType
 
-        from . import event_status_type
-        from .. import public_error
+        from ..public_error import PublicError
+        from .event_status_type import EventStatusType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(event_status_type.EventStatusType)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(EventStatusType)),
         }
         return fields
     

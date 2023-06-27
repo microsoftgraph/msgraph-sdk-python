@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import education_submission
-    from ........models.o_data_errors import o_data_error
+    from ........models.education_submission import EducationSubmission
+    from ........models.o_data_errors.o_data_error import ODataError
 
 class SetUpResourcesFolderRequestBuilder():
     """
@@ -35,27 +35,27 @@ class SetUpResourcesFolderRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[SetUpResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> Optional[education_submission.EducationSubmission]:
+    async def post(self,request_configuration: Optional[SetUpResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationSubmission]:
         """
         Trigger the creation of the SharePoint resource folder where all file-based resources (Word, Excel, and so on) should be uploaded for a given submission. Only teachers and students can perform this operation. Note that files must be located in this folder in order to be added as resources. Only a student in the class can determine what files to upload in a given submission-level resource folder. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_submission.EducationSubmission]
+        Returns: Optional[EducationSubmission]
         """
         request_info = self.to_post_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import education_submission
+        from ........models.education_submission import EducationSubmission
 
-        return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationSubmission, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[SetUpResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

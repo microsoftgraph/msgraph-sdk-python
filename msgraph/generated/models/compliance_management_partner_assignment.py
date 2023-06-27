@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_and_app_management_assignment_target
+    from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
 @dataclass
 class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
@@ -17,7 +17,7 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Group assignment target.
-    target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None
+    target: Optional[DeviceAndAppManagementAssignmentTarget] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ComplianceManagementPartnerAssignment:
@@ -36,13 +36,13 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_assignment_target
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
-        from . import device_and_app_management_assignment_target
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "target": lambda n : setattr(self, 'target', n.get_object_value(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget)),
+            "target": lambda n : setattr(self, 'target', n.get_object_value(DeviceAndAppManagementAssignmentTarget)),
         }
         return fields
     

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import export_personal_data_post_request_body
-    from ...models.o_data_errors import o_data_error
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .export_personal_data_post_request_body import ExportPersonalDataPostRequestBody
 
 class ExportPersonalDataRequestBuilder():
     """
@@ -35,7 +35,7 @@ class ExportPersonalDataRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[export_personal_data_post_request_body.ExportPersonalDataPostRequestBody] = None, request_configuration: Optional[ExportPersonalDataRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[ExportPersonalDataPostRequestBody] = None, request_configuration: Optional[ExportPersonalDataRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Submit a data policy operation request from a company administrator or an application to export an organizational user's data. This data includes the user's data stored in OneDrive and their activity reports. For more guidance about exporting data while complying with regulations, see Data Subject Requests and the GDPR and CCPA.
         Args:
@@ -47,17 +47,17 @@ class ExportPersonalDataRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[export_personal_data_post_request_body.ExportPersonalDataPostRequestBody] = None, request_configuration: Optional[ExportPersonalDataRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ExportPersonalDataPostRequestBody] = None, request_configuration: Optional[ExportPersonalDataRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Submit a data policy operation request from a company administrator or an application to export an organizational user's data. This data includes the user's data stored in OneDrive and their activity reports. For more guidance about exporting data while complying with regulations, see Data Subject Requests and the GDPR and CCPA.
         Args:

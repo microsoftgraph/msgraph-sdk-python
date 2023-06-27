@@ -4,19 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import win32_lob_app_rule, win32_lob_app_rule_operator
+    from .win32_lob_app_rule import Win32LobAppRule
+    from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-from . import win32_lob_app_rule
+from .win32_lob_app_rule import Win32LobAppRule
 
 @dataclass
-class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
+class Win32LobAppProductCodeRule(Win32LobAppRule):
     odata_type = "#microsoft.graph.win32LobAppProductCodeRule"
     # The product code of the app.
     product_code: Optional[str] = None
     # The product version comparison value.
     product_version: Optional[str] = None
     # Contains properties for detection operator.
-    product_version_operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
+    product_version_operator: Optional[Win32LobAppRuleOperator] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppProductCodeRule:
@@ -35,14 +36,16 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import win32_lob_app_rule, win32_lob_app_rule_operator
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-        from . import win32_lob_app_rule, win32_lob_app_rule_operator
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
         fields: Dict[str, Callable[[Any], None]] = {
             "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
             "productVersion": lambda n : setattr(self, 'product_version', n.get_str_value()),
-            "productVersionOperator": lambda n : setattr(self, 'product_version_operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
+            "productVersionOperator": lambda n : setattr(self, 'product_version_operator', n.get_enum_value(Win32LobAppRuleOperator)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

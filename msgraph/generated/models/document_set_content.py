@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import content_type_info
+    from .content_type_info import ContentTypeInfo
 
 @dataclass
 class DocumentSetContent(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Content type information of the file.
-    content_type: Optional[content_type_info.ContentTypeInfo] = None
+    content_type: Optional[ContentTypeInfo] = None
     # Name of the file in resource folder that should be added as a default content or a template in the document set.
     file_name: Optional[str] = None
     # Folder name in which the file will be placed when a new document set is created in the library.
@@ -37,12 +37,12 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import content_type_info
+        from .content_type_info import ContentTypeInfo
 
-        from . import content_type_info
+        from .content_type_info import ContentTypeInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(ContentTypeInfo)),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "folderName": lambda n : setattr(self, 'folder_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

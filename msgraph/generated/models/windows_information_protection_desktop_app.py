@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import windows_information_protection_app
+    from .windows_information_protection_app import WindowsInformationProtectionApp
 
-from . import windows_information_protection_app
+from .windows_information_protection_app import WindowsInformationProtectionApp
 
 @dataclass
-class WindowsInformationProtectionDesktopApp(windows_information_protection_app.WindowsInformationProtectionApp):
+class WindowsInformationProtectionDesktopApp(WindowsInformationProtectionApp):
     odata_type = "#microsoft.graph.windowsInformationProtectionDesktopApp"
     # The binary name.
     binary_name: Optional[str] = None
@@ -35,9 +35,9 @@ class WindowsInformationProtectionDesktopApp(windows_information_protection_app.
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_information_protection_app
+        from .windows_information_protection_app import WindowsInformationProtectionApp
 
-        from . import windows_information_protection_app
+        from .windows_information_protection_app import WindowsInformationProtectionApp
 
         fields: Dict[str, Callable[[Any], None]] = {
             "binaryName": lambda n : setattr(self, 'binary_name', n.get_str_value()),

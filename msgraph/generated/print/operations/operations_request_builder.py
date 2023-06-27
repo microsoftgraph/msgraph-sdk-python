@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import print_operation, print_operation_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import print_operation_item_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.print_operation import PrintOperation
+    from ...models.print_operation_collection_response import PrintOperationCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.print_operation_item_request_builder import PrintOperationItemRequestBuilder
 
 class OperationsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class OperationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_print_operation_id(self,print_operation_id: str) -> print_operation_item_request_builder.PrintOperationItemRequestBuilder:
+    def by_print_operation_id(self,print_operation_id: str) -> PrintOperationItemRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.print entity.
         Args:
             print_operation_id: Unique identifier of the item
-        Returns: print_operation_item_request_builder.PrintOperationItemRequestBuilder
+        Returns: PrintOperationItemRequestBuilder
         """
         if not print_operation_id:
             raise TypeError("print_operation_id cannot be null.")
-        from .item import print_operation_item_request_builder
+        from .item.print_operation_item_request_builder import PrintOperationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printOperation%2Did"] = print_operation_id
-        return print_operation_item_request_builder.PrintOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return PrintOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[print_operation_collection_response.PrintOperationCollectionResponse]:
+    async def get(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintOperationCollectionResponse]:
         """
         Retrieve the properties and relationships of a printOperation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_operation_collection_response.PrintOperationCollectionResponse]
+        Returns: Optional[PrintOperationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import print_operation_collection_response
+        from ...models.print_operation_collection_response import PrintOperationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, print_operation_collection_response.PrintOperationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintOperationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[print_operation.PrintOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[print_operation.PrintOperation]:
+    async def post(self,body: Optional[PrintOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[PrintOperation]:
         """
         Create new navigation property to operations for print
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_operation.PrintOperation]
+        Returns: Optional[PrintOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import print_operation
+        from ...models.print_operation import PrintOperation
 
-        return await self.request_adapter.send_async(request_info, print_operation.PrintOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintOperation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class OperationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[print_operation.PrintOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PrintOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to operations for print
         Args:
@@ -139,13 +140,13 @@ class OperationsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OperationsRequestBuilderGetQueryParameters():

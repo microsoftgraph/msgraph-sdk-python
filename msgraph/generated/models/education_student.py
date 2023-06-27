@@ -1,11 +1,11 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import date
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_gender
+    from .education_gender import EducationGender
 
 @dataclass
 class EducationStudent(AdditionalDataHolder, Parsable):
@@ -13,11 +13,11 @@ class EducationStudent(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Birth date of the student.
-    birth_date: Optional[date] = None
+    birth_date: Optional[datetime.date] = None
     # ID of the student in the source system.
     external_id: Optional[str] = None
     # The possible values are: female, male, other, unknownFutureValue.
-    gender: Optional[education_gender.EducationGender] = None
+    gender: Optional[EducationGender] = None
     # Current grade level of the student.
     grade: Optional[str] = None
     # Year the student is graduating from the school.
@@ -44,14 +44,14 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_gender
+        from .education_gender import EducationGender
 
-        from . import education_gender
+        from .education_gender import EducationGender
 
         fields: Dict[str, Callable[[Any], None]] = {
             "birthDate": lambda n : setattr(self, 'birth_date', n.get_date_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "gender": lambda n : setattr(self, 'gender', n.get_enum_value(education_gender.EducationGender)),
+            "gender": lambda n : setattr(self, 'gender', n.get_enum_value(EducationGender)),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
             "graduationYear": lambda n : setattr(self, 'graduation_year', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -67,7 +67,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_date_value("birthDate", self.birth_date)
+        writer.write_date_value()("birthDate", self.birth_date)
         writer.write_str_value("externalId", self.external_id)
         writer.write_enum_value("gender", self.gender)
         writer.write_str_value("grade", self.grade)

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_session_control
+    from .conditional_access_session_control import ConditionalAccessSessionControl
 
-from . import conditional_access_session_control
+from .conditional_access_session_control import ConditionalAccessSessionControl
 
 @dataclass
-class ApplicationEnforcedRestrictionsSessionControl(conditional_access_session_control.ConditionalAccessSessionControl):
+class ApplicationEnforcedRestrictionsSessionControl(ConditionalAccessSessionControl):
     odata_type = "#microsoft.graph.applicationEnforcedRestrictionsSessionControl"
     
     @staticmethod
@@ -29,9 +29,9 @@ class ApplicationEnforcedRestrictionsSessionControl(conditional_access_session_c
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_session_control
+        from .conditional_access_session_control import ConditionalAccessSessionControl
 
-        from . import conditional_access_session_control
+        from .conditional_access_session_control import ConditionalAccessSessionControl
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

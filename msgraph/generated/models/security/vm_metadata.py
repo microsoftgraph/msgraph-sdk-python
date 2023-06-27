@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import vm_cloud_provider
+    from .vm_cloud_provider import VmCloudProvider
 
 @dataclass
 class VmMetadata(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class VmMetadata(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The cloudProvider property
-    cloud_provider: Optional[vm_cloud_provider.VmCloudProvider] = None
+    cloud_provider: Optional[VmCloudProvider] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Unique identifier of the Azure resource.
@@ -39,12 +39,12 @@ class VmMetadata(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import vm_cloud_provider
+        from .vm_cloud_provider import VmCloudProvider
 
-        from . import vm_cloud_provider
+        from .vm_cloud_provider import VmCloudProvider
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cloudProvider": lambda n : setattr(self, 'cloud_provider', n.get_enum_value(vm_cloud_provider.VmCloudProvider)),
+            "cloudProvider": lambda n : setattr(self, 'cloud_provider', n.get_enum_value(VmCloudProvider)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
             "subscriptionId": lambda n : setattr(self, 'subscription_id', n.get_str_value()),

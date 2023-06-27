@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class GroupLifecyclePolicy(entity.Entity):
+class GroupLifecyclePolicy(Entity):
     # List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.
     alternate_notification_emails: Optional[str] = None
     # Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.
@@ -36,9 +36,9 @@ class GroupLifecyclePolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "alternateNotificationEmails": lambda n : setattr(self, 'alternate_notification_emails', n.get_str_value()),

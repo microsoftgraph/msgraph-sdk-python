@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models.o_data_errors import o_data_error
-    from .........models.security import unified_group_source
-    from .group import group_request_builder
+    from .........models.o_data_errors.o_data_error import ODataError
+    from .........models.security.unified_group_source import UnifiedGroupSource
+    from .group.group_request_builder import GroupRequestBuilder
 
 class UnifiedGroupSourceItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class UnifiedGroupSourceItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_group_source.UnifiedGroupSource]:
+    async def get(self,request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedGroupSource]:
         """
         Data source entity for groups associated with the custodian.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_group_source.UnifiedGroupSource]
+        Returns: Optional[UnifiedGroupSource]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models.security import unified_group_source
+        from .........models.security.unified_group_source import UnifiedGroupSource
 
-        return await self.request_adapter.send_async(request_info, unified_group_source.UnifiedGroupSource, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedGroupSource, error_mapping)
     
-    async def patch(self,body: Optional[unified_group_source.UnifiedGroupSource] = None, request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[unified_group_source.UnifiedGroupSource]:
+    async def patch(self,body: Optional[UnifiedGroupSource] = None, request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UnifiedGroupSource]:
         """
         Update the navigation property unifiedGroupSources in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_group_source.UnifiedGroupSource]
+        Returns: Optional[UnifiedGroupSource]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models.security import unified_group_source
+        from .........models.security.unified_group_source import UnifiedGroupSource
 
-        return await self.request_adapter.send_async(request_info, unified_group_source.UnifiedGroupSource, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedGroupSource, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class UnifiedGroupSourceItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[unified_group_source.UnifiedGroupSource] = None, request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UnifiedGroupSource] = None, request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property unifiedGroupSources in security
         Args:
@@ -158,13 +158,13 @@ class UnifiedGroupSourceItemRequestBuilder():
         return request_info
     
     @property
-    def group(self) -> group_request_builder.GroupRequestBuilder:
+    def group(self) -> GroupRequestBuilder:
         """
         Provides operations to manage the group property of the microsoft.graph.security.unifiedGroupSource entity.
         """
-        from .group import group_request_builder
+        from .group.group_request_builder import GroupRequestBuilder
 
-        return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return GroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class UnifiedGroupSourceItemRequestBuilderDeleteRequestConfiguration():

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import identity_api_connector
-    from ....models.o_data_errors import o_data_error
-    from .upload_client_certificate import upload_client_certificate_request_builder
+    from ....models.identity_api_connector import IdentityApiConnector
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .upload_client_certificate.upload_client_certificate_request_builder import UploadClientCertificateRequestBuilder
 
 class IdentityApiConnectorItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class IdentityApiConnectorItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[IdentityApiConnectorItemRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_api_connector.IdentityApiConnector]:
+    async def get(self,request_configuration: Optional[IdentityApiConnectorItemRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityApiConnector]:
         """
         Read the properties of an identityApiConnector object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity_api_connector.IdentityApiConnector]
+        Returns: Optional[IdentityApiConnector]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import identity_api_connector
+        from ....models.identity_api_connector import IdentityApiConnector
 
-        return await self.request_adapter.send_async(request_info, identity_api_connector.IdentityApiConnector, error_mapping)
+        return await self.request_adapter.send_async(request_info, IdentityApiConnector, error_mapping)
     
-    async def patch(self,body: Optional[identity_api_connector.IdentityApiConnector] = None, request_configuration: Optional[IdentityApiConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[identity_api_connector.IdentityApiConnector]:
+    async def patch(self,body: Optional[IdentityApiConnector] = None, request_configuration: Optional[IdentityApiConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[IdentityApiConnector]:
         """
         Update the properties of an identityApiConnector object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity_api_connector.IdentityApiConnector]
+        Returns: Optional[IdentityApiConnector]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import identity_api_connector
+        from ....models.identity_api_connector import IdentityApiConnector
 
-        return await self.request_adapter.send_async(request_info, identity_api_connector.IdentityApiConnector, error_mapping)
+        return await self.request_adapter.send_async(request_info, IdentityApiConnector, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityApiConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class IdentityApiConnectorItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[identity_api_connector.IdentityApiConnector] = None, request_configuration: Optional[IdentityApiConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[IdentityApiConnector] = None, request_configuration: Optional[IdentityApiConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an identityApiConnector object.
         Args:
@@ -158,13 +158,13 @@ class IdentityApiConnectorItemRequestBuilder():
         return request_info
     
     @property
-    def upload_client_certificate(self) -> upload_client_certificate_request_builder.UploadClientCertificateRequestBuilder:
+    def upload_client_certificate(self) -> UploadClientCertificateRequestBuilder:
         """
         Provides operations to call the uploadClientCertificate method.
         """
-        from .upload_client_certificate import upload_client_certificate_request_builder
+        from .upload_client_certificate.upload_client_certificate_request_builder import UploadClientCertificateRequestBuilder
 
-        return upload_client_certificate_request_builder.UploadClientCertificateRequestBuilder(self.request_adapter, self.path_parameters)
+        return UploadClientCertificateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class IdentityApiConnectorItemRequestBuilderDeleteRequestConfiguration():

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import access_package_assignment_policy, access_package_assignment_policy_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import access_package_assignment_policy_item_request_builder
+    from ....models.access_package_assignment_policy import AccessPackageAssignmentPolicy
+    from ....models.access_package_assignment_policy_collection_response import AccessPackageAssignmentPolicyCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.access_package_assignment_policy_item_request_builder import AccessPackageAssignmentPolicyItemRequestBuilder
 
 class AssignmentPoliciesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class AssignmentPoliciesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_access_package_assignment_policy_id(self,access_package_assignment_policy_id: str) -> access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder:
+    def by_access_package_assignment_policy_id(self,access_package_assignment_policy_id: str) -> AccessPackageAssignmentPolicyItemRequestBuilder:
         """
         Provides operations to manage the assignmentPolicies property of the microsoft.graph.entitlementManagement entity.
         Args:
             access_package_assignment_policy_id: Unique identifier of the item
-        Returns: access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder
+        Returns: AccessPackageAssignmentPolicyItemRequestBuilder
         """
         if not access_package_assignment_policy_id:
             raise TypeError("access_package_assignment_policy_id cannot be null.")
-        from .item import access_package_assignment_policy_item_request_builder
+        from .item.access_package_assignment_policy_item_request_builder import AccessPackageAssignmentPolicyItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["accessPackageAssignmentPolicy%2Did"] = access_package_assignment_policy_id
-        return access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AccessPackageAssignmentPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AssignmentPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_assignment_policy_collection_response.AccessPackageAssignmentPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[AssignmentPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageAssignmentPolicyCollectionResponse]:
         """
         In Azure AD entitlement management, retrieve a list of accessPackageAssignmentPolicy objects. If the delegated user is in a directory role, the resulting list includes all the assignment policies that the caller has access to read, across all catalogs and access packages. If the delegated user is an access package manager or catalog owner, they should instead retrieve the policies for the access packages they can read with list accessPackages by including `$expand=accessPackageAssignmentPolicies` as a query parameter.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_assignment_policy_collection_response.AccessPackageAssignmentPolicyCollectionResponse]
+        Returns: Optional[AccessPackageAssignmentPolicyCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import access_package_assignment_policy_collection_response
+        from ....models.access_package_assignment_policy_collection_response import AccessPackageAssignmentPolicyCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, access_package_assignment_policy_collection_response.AccessPackageAssignmentPolicyCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageAssignmentPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy] = None, request_configuration: Optional[AssignmentPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy]:
+    async def post(self,body: Optional[AccessPackageAssignmentPolicy] = None, request_configuration: Optional[AssignmentPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessPackageAssignmentPolicy]:
         """
         In Azure AD entitlement management, create a new accessPackageAssignmentPolicy object.  The request will include a reference to the accessPackage that will contain this policy, which must already exist.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy]
+        Returns: Optional[AccessPackageAssignmentPolicy]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import access_package_assignment_policy
+        from ....models.access_package_assignment_policy import AccessPackageAssignmentPolicy
 
-        return await self.request_adapter.send_async(request_info, access_package_assignment_policy.AccessPackageAssignmentPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageAssignmentPolicy, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class AssignmentPoliciesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy] = None, request_configuration: Optional[AssignmentPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AccessPackageAssignmentPolicy] = None, request_configuration: Optional[AssignmentPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         In Azure AD entitlement management, create a new accessPackageAssignmentPolicy object.  The request will include a reference to the accessPackage that will contain this policy, which must already exist.
         Args:
@@ -139,13 +140,13 @@ class AssignmentPoliciesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AssignmentPoliciesRequestBuilderGetQueryParameters():

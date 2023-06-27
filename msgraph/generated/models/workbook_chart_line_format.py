@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartLineFormat(entity.Entity):
+class WorkbookChartLineFormat(Entity):
     # HTML color code representing the color of lines in the chart.
     color: Optional[str] = None
     # The OdataType property
@@ -32,9 +32,9 @@ class WorkbookChartLineFormat(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "color": lambda n : setattr(self, 'color', n.get_str_value()),

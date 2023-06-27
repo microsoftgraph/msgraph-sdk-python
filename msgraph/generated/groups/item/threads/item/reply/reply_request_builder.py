@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import reply_post_request_body
-    from ......models.o_data_errors import o_data_error
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .reply_post_request_body import ReplyPostRequestBody
 
 class ReplyRequestBuilder():
     """
@@ -35,9 +35,9 @@ class ReplyRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[reply_post_request_body.ReplyPostRequestBody] = None, request_configuration: Optional[ReplyRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[ReplyPostRequestBody] = None, request_configuration: Optional[ReplyRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Reply to a thread in a group conversation and add a new post to it. You can specify the parent conversation in the request, or, you can specify just the thread without the parent conversation.
+        Add an attachment when creating a group post. This operation limits the size of the attachment you can add to under 3 MB. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,19 +47,19 @@ class ReplyRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[reply_post_request_body.ReplyPostRequestBody] = None, request_configuration: Optional[ReplyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ReplyPostRequestBody] = None, request_configuration: Optional[ReplyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reply to a thread in a group conversation and add a new post to it. You can specify the parent conversation in the request, or, you can specify just the thread without the parent conversation.
+        Add an attachment when creating a group post. This operation limits the size of the attachment you can add to under 3 MB. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

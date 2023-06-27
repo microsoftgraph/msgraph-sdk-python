@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import answer_input_type, entity
+    from .answer_input_type import AnswerInputType
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class BookingCustomQuestion(entity.Entity):
+class BookingCustomQuestion(Entity):
     """
     Represents a custom question of the business.
     """
     # The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
-    answer_input_type: Optional[answer_input_type.AnswerInputType] = None
+    answer_input_type: Optional[AnswerInputType] = None
     # List of possible answer values.
     answer_options: Optional[List[str]] = None
     # The question.
@@ -39,12 +40,14 @@ class BookingCustomQuestion(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import answer_input_type, entity
+        from .answer_input_type import AnswerInputType
+        from .entity import Entity
 
-        from . import answer_input_type, entity
+        from .answer_input_type import AnswerInputType
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
+            "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(AnswerInputType)),
             "answerOptions": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }

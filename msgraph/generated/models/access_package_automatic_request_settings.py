@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -10,7 +10,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The gracePeriodBeforeAccessRemoval property
-    grace_period_before_access_removal: Optional[timedelta] = None
+    grace_period_before_access_removal: Optional[datetime.timedelta] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The removeAccessWhenTargetLeavesAllowedTargets property
@@ -51,7 +51,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_timedelta_value("gracePeriodBeforeAccessRemoval", self.grace_period_before_access_removal)
+        writer.write_timedelta_value()("gracePeriodBeforeAccessRemoval", self.grace_period_before_access_removal)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("removeAccessWhenTargetLeavesAllowedTargets", self.remove_access_when_target_leaves_allowed_targets)
         writer.write_bool_value("requestAccessForAllowedTargets", self.request_access_for_allowed_targets)

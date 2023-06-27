@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, planner_task
+    from .entity import Entity
+    from .planner_task import PlannerTask
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PlannerBucket(entity.Entity):
+class PlannerBucket(Entity):
     # Name of the bucket.
     name: Optional[str] = None
     # The OdataType property
@@ -19,7 +20,7 @@ class PlannerBucket(entity.Entity):
     # Plan ID to which the bucket belongs.
     plan_id: Optional[str] = None
     # Read-only. Nullable. The collection of tasks in the bucket.
-    tasks: Optional[List[planner_task.PlannerTask]] = None
+    tasks: Optional[List[PlannerTask]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerBucket:
@@ -38,15 +39,17 @@ class PlannerBucket(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, planner_task
+        from .entity import Entity
+        from .planner_task import PlannerTask
 
-        from . import entity, planner_task
+        from .entity import Entity
+        from .planner_task import PlannerTask
 
         fields: Dict[str, Callable[[Any], None]] = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "orderHint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
             "planId": lambda n : setattr(self, 'plan_id', n.get_str_value()),
-            "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(planner_task.PlannerTask)),
+            "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(PlannerTask)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

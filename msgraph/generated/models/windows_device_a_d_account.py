@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import windows_device_account
+    from .windows_device_account import WindowsDeviceAccount
 
-from . import windows_device_account
+from .windows_device_account import WindowsDeviceAccount
 
 @dataclass
-class WindowsDeviceADAccount(windows_device_account.WindowsDeviceAccount):
+class WindowsDeviceADAccount(WindowsDeviceAccount):
     odata_type = "#microsoft.graph.windowsDeviceADAccount"
     # Not yet documented
     domain_name: Optional[str] = None
@@ -33,9 +33,9 @@ class WindowsDeviceADAccount(windows_device_account.WindowsDeviceAccount):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_device_account
+        from .windows_device_account import WindowsDeviceAccount
 
-        from . import windows_device_account
+        from .windows_device_account import WindowsDeviceAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
             "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),

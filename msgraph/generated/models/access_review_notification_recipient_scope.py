@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_notification_recipient_query_scope
+    from .access_review_notification_recipient_query_scope import AccessReviewNotificationRecipientQueryScope
 
 @dataclass
 class AccessReviewNotificationRecipientScope(AdditionalDataHolder, Parsable):
@@ -29,9 +29,9 @@ class AccessReviewNotificationRecipientScope(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewNotificationRecipientQueryScope".casefold():
-            from . import access_review_notification_recipient_query_scope
+            from .access_review_notification_recipient_query_scope import AccessReviewNotificationRecipientQueryScope
 
-            return access_review_notification_recipient_query_scope.AccessReviewNotificationRecipientQueryScope()
+            return AccessReviewNotificationRecipientQueryScope()
         return AccessReviewNotificationRecipientScope()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -39,9 +39,9 @@ class AccessReviewNotificationRecipientScope(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_notification_recipient_query_scope
+        from .access_review_notification_recipient_query_scope import AccessReviewNotificationRecipientQueryScope
 
-        from . import access_review_notification_recipient_query_scope
+        from .access_review_notification_recipient_query_scope import AccessReviewNotificationRecipientQueryScope
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

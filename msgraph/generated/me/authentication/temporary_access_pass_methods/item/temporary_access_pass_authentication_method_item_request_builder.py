@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import temporary_access_pass_authentication_method
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
 
 class TemporaryAccessPassAuthenticationMethodItemRequestBuilder():
     """
@@ -44,37 +44,37 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]:
+    async def get(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TemporaryAccessPassAuthenticationMethod]:
         """
         Retrieve a user's single temporaryAccessPassAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]
+        Returns: Optional[TemporaryAccessPassAuthenticationMethod]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import temporary_access_pass_authentication_method
+        from .....models.temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
 
-        return await self.request_adapter.send_async(request_info, temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod, error_mapping)
+        return await self.request_adapter.send_async(request_info, TemporaryAccessPassAuthenticationMethod, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

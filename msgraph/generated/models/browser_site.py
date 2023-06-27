@@ -1,16 +1,22 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import browser_site_compatibility_mode, browser_site_history, browser_site_merge_type, browser_site_status, browser_site_target_environment, entity, identity_set
+    from .browser_site_compatibility_mode import BrowserSiteCompatibilityMode
+    from .browser_site_history import BrowserSiteHistory
+    from .browser_site_merge_type import BrowserSiteMergeType
+    from .browser_site_status import BrowserSiteStatus
+    from .browser_site_target_environment import BrowserSiteTargetEnvironment
+    from .entity import Entity
+    from .identity_set import IdentitySet
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class BrowserSite(entity.Entity):
+class BrowserSite(Entity):
     """
     Singleton entity which is used to specify IE mode site metadata
     """
@@ -19,25 +25,25 @@ class BrowserSite(entity.Entity):
     # The comment for the site.
     comment: Optional[str] = None
     # The compatibilityMode property
-    compatibility_mode: Optional[browser_site_compatibility_mode.BrowserSiteCompatibilityMode] = None
+    compatibility_mode: Optional[BrowserSiteCompatibilityMode] = None
     # The date and time when the site was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The date and time when the site was deleted.
-    deleted_date_time: Optional[datetime] = None
+    deleted_date_time: Optional[datetime.datetime] = None
     # The history of modifications applied to the site.
-    history: Optional[List[browser_site_history.BrowserSiteHistory]] = None
+    history: Optional[List[BrowserSiteHistory]] = None
     # The user who last modified the site.
-    last_modified_by: Optional[identity_set.IdentitySet] = None
+    last_modified_by: Optional[IdentitySet] = None
     # The date and time when the site was last modified.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The mergeType property
-    merge_type: Optional[browser_site_merge_type.BrowserSiteMergeType] = None
+    merge_type: Optional[BrowserSiteMergeType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status property
-    status: Optional[browser_site_status.BrowserSiteStatus] = None
+    status: Optional[BrowserSiteStatus] = None
     # The targetEnvironment property
-    target_environment: Optional[browser_site_target_environment.BrowserSiteTargetEnvironment] = None
+    target_environment: Optional[BrowserSiteTargetEnvironment] = None
     # The URL of the site.
     web_url: Optional[str] = None
     
@@ -58,22 +64,34 @@ class BrowserSite(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import browser_site_compatibility_mode, browser_site_history, browser_site_merge_type, browser_site_status, browser_site_target_environment, entity, identity_set
+        from .browser_site_compatibility_mode import BrowserSiteCompatibilityMode
+        from .browser_site_history import BrowserSiteHistory
+        from .browser_site_merge_type import BrowserSiteMergeType
+        from .browser_site_status import BrowserSiteStatus
+        from .browser_site_target_environment import BrowserSiteTargetEnvironment
+        from .entity import Entity
+        from .identity_set import IdentitySet
 
-        from . import browser_site_compatibility_mode, browser_site_history, browser_site_merge_type, browser_site_status, browser_site_target_environment, entity, identity_set
+        from .browser_site_compatibility_mode import BrowserSiteCompatibilityMode
+        from .browser_site_history import BrowserSiteHistory
+        from .browser_site_merge_type import BrowserSiteMergeType
+        from .browser_site_status import BrowserSiteStatus
+        from .browser_site_target_environment import BrowserSiteTargetEnvironment
+        from .entity import Entity
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowRedirect": lambda n : setattr(self, 'allow_redirect', n.get_bool_value()),
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "compatibilityMode": lambda n : setattr(self, 'compatibility_mode', n.get_enum_value(browser_site_compatibility_mode.BrowserSiteCompatibilityMode)),
+            "compatibilityMode": lambda n : setattr(self, 'compatibility_mode', n.get_enum_value(BrowserSiteCompatibilityMode)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
-            "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(browser_site_history.BrowserSiteHistory)),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(BrowserSiteHistory)),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "mergeType": lambda n : setattr(self, 'merge_type', n.get_enum_value(browser_site_merge_type.BrowserSiteMergeType)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(browser_site_status.BrowserSiteStatus)),
-            "targetEnvironment": lambda n : setattr(self, 'target_environment', n.get_enum_value(browser_site_target_environment.BrowserSiteTargetEnvironment)),
+            "mergeType": lambda n : setattr(self, 'merge_type', n.get_enum_value(BrowserSiteMergeType)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(BrowserSiteStatus)),
+            "targetEnvironment": lambda n : setattr(self, 'target_environment', n.get_enum_value(BrowserSiteTargetEnvironment)),
             "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -92,11 +110,11 @@ class BrowserSite(entity.Entity):
         writer.write_bool_value("allowRedirect", self.allow_redirect)
         writer.write_str_value("comment", self.comment)
         writer.write_enum_value("compatibilityMode", self.compatibility_mode)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("deletedDateTime", self.deleted_date_time)
         writer.write_collection_of_object_values("history", self.history)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_enum_value("mergeType", self.merge_type)
         writer.write_enum_value("status", self.status)
         writer.write_enum_value("targetEnvironment", self.target_environment)

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import device_compliance_scheduled_action_for_rule
+    from .....models.device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
 
 @dataclass
 class ScheduleActionsForRulesPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ScheduleActionsForRulesPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The deviceComplianceScheduledActionForRules property
-    device_compliance_scheduled_action_for_rules: Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]] = None
+    device_compliance_scheduled_action_for_rules: Optional[List[DeviceComplianceScheduledActionForRule]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleActionsForRulesPostRequestBody:
@@ -31,12 +31,12 @@ class ScheduleActionsForRulesPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import device_compliance_scheduled_action_for_rule
+        from .....models.device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
 
-        from .....models import device_compliance_scheduled_action_for_rule
+        from .....models.device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceComplianceScheduledActionForRules": lambda n : setattr(self, 'device_compliance_scheduled_action_for_rules', n.get_collection_of_object_values(device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule)),
+            "deviceComplianceScheduledActionForRules": lambda n : setattr(self, 'device_compliance_scheduled_action_for_rules', n.get_collection_of_object_values(DeviceComplianceScheduledActionForRule)),
         }
         return fields
     

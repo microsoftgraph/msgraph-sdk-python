@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import date_time_time_zone, locale_info
+    from .date_time_time_zone import DateTimeTimeZone
+    from .locale_info import LocaleInfo
 
 @dataclass
 class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
@@ -14,13 +15,13 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
     # The automatic reply message.
     message: Optional[str] = None
     # The language that the automatic reply message is in.
-    message_language: Optional[locale_info.LocaleInfo] = None
+    message_language: Optional[LocaleInfo] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The date and time that automatic replies are set to end.
-    scheduled_end_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    scheduled_end_time: Optional[DateTimeTimeZone] = None
     # The date and time that automatic replies are set to begin.
-    scheduled_start_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    scheduled_start_time: Optional[DateTimeTimeZone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AutomaticRepliesMailTips:
@@ -39,16 +40,18 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import date_time_time_zone, locale_info
+        from .date_time_time_zone import DateTimeTimeZone
+        from .locale_info import LocaleInfo
 
-        from . import date_time_time_zone, locale_info
+        from .date_time_time_zone import DateTimeTimeZone
+        from .locale_info import LocaleInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
-            "messageLanguage": lambda n : setattr(self, 'message_language', n.get_object_value(locale_info.LocaleInfo)),
+            "messageLanguage": lambda n : setattr(self, 'message_language', n.get_object_value(LocaleInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "scheduledEndTime": lambda n : setattr(self, 'scheduled_end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "scheduledStartTime": lambda n : setattr(self, 'scheduled_start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "scheduledEndTime": lambda n : setattr(self, 'scheduled_end_time', n.get_object_value(DateTimeTimeZone)),
+            "scheduledStartTime": lambda n : setattr(self, 'scheduled_start_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
     

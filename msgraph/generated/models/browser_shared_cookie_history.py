@@ -1,11 +1,12 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import browser_shared_cookie_source_environment, identity_set
+    from .browser_shared_cookie_source_environment import BrowserSharedCookieSourceEnvironment
+    from .identity_set import IdentitySet
 
 @dataclass
 class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
@@ -21,15 +22,15 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     # The URL of the cookie.
     host_or_domain: Optional[str] = None
     # The lastModifiedBy property
-    last_modified_by: Optional[identity_set.IdentitySet] = None
+    last_modified_by: Optional[IdentitySet] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The path of the cookie.
     path: Optional[str] = None
     # The date and time when the cookie was last published.
-    published_date_time: Optional[datetime] = None
+    published_date_time: Optional[datetime.datetime] = None
     # Specifies how the cookies are shared between Microsoft Edge and Internet Explorer. The possible values are: microsoftEdge, internetExplorer11, both, unknownFutureValue.
-    source_environment: Optional[browser_shared_cookie_source_environment.BrowserSharedCookieSourceEnvironment] = None
+    source_environment: Optional[BrowserSharedCookieSourceEnvironment] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BrowserSharedCookieHistory:
@@ -48,20 +49,22 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import browser_shared_cookie_source_environment, identity_set
+        from .browser_shared_cookie_source_environment import BrowserSharedCookieSourceEnvironment
+        from .identity_set import IdentitySet
 
-        from . import browser_shared_cookie_source_environment, identity_set
+        from .browser_shared_cookie_source_environment import BrowserSharedCookieSourceEnvironment
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "hostOnly": lambda n : setattr(self, 'host_only', n.get_bool_value()),
             "hostOrDomain": lambda n : setattr(self, 'host_or_domain', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
             "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
-            "sourceEnvironment": lambda n : setattr(self, 'source_environment', n.get_enum_value(browser_shared_cookie_source_environment.BrowserSharedCookieSourceEnvironment)),
+            "sourceEnvironment": lambda n : setattr(self, 'source_environment', n.get_enum_value(BrowserSharedCookieSourceEnvironment)),
         }
         return fields
     
@@ -80,7 +83,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("path", self.path)
-        writer.write_datetime_value("publishedDateTime", self.published_date_time)
+        writer.write_datetime_value()("publishedDateTime", self.published_date_time)
         writer.write_enum_value("sourceEnvironment", self.source_environment)
         writer.write_additional_data_value(self.additional_data)
     

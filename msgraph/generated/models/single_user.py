@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import subject_set
+    from .subject_set import SubjectSet
 
-from . import subject_set
+from .subject_set import SubjectSet
 
 @dataclass
-class SingleUser(subject_set.SubjectSet):
+class SingleUser(SubjectSet):
     odata_type = "#microsoft.graph.singleUser"
     # The name of the user in Azure AD. Read only.
     description: Optional[str] = None
@@ -33,9 +33,9 @@ class SingleUser(subject_set.SubjectSet):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import subject_set
+        from .subject_set import SubjectSet
 
-        from . import subject_set
+        from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),

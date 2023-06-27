@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_compliance_action_item, entity
+    from .device_compliance_action_item import DeviceComplianceActionItem
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceComplianceScheduledActionForRule(entity.Entity):
+class DeviceComplianceScheduledActionForRule(Entity):
     """
     Scheduled Action for Rule
     """
@@ -18,7 +19,7 @@ class DeviceComplianceScheduledActionForRule(entity.Entity):
     # Name of the rule which this scheduled action applies to. Currently scheduled actions are created per policy instead of per rule, thus RuleName is always set to default value PasswordRequired.
     rule_name: Optional[str] = None
     # The list of scheduled action configurations for this compliance policy. Compliance policy must have one and only one block scheduled action.
-    scheduled_action_configurations: Optional[List[device_compliance_action_item.DeviceComplianceActionItem]] = None
+    scheduled_action_configurations: Optional[List[DeviceComplianceActionItem]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceComplianceScheduledActionForRule:
@@ -37,13 +38,15 @@ class DeviceComplianceScheduledActionForRule(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_compliance_action_item, entity
+        from .device_compliance_action_item import DeviceComplianceActionItem
+        from .entity import Entity
 
-        from . import device_compliance_action_item, entity
+        from .device_compliance_action_item import DeviceComplianceActionItem
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "ruleName": lambda n : setattr(self, 'rule_name', n.get_str_value()),
-            "scheduledActionConfigurations": lambda n : setattr(self, 'scheduled_action_configurations', n.get_collection_of_object_values(device_compliance_action_item.DeviceComplianceActionItem)),
+            "scheduledActionConfigurations": lambda n : setattr(self, 'scheduled_action_configurations', n.get_collection_of_object_values(DeviceComplianceActionItem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

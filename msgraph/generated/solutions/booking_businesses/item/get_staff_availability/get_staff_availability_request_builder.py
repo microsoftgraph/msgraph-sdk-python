@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import get_staff_availability_post_request_body, get_staff_availability_response
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .get_staff_availability_post_request_body import GetStaffAvailabilityPostRequestBody
+    from .get_staff_availability_response import GetStaffAvailabilityResponse
 
 class GetStaffAvailabilityRequestBuilder():
     """
@@ -35,32 +36,32 @@ class GetStaffAvailabilityRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[get_staff_availability_post_request_body.GetStaffAvailabilityPostRequestBody] = None, request_configuration: Optional[GetStaffAvailabilityRequestBuilderPostRequestConfiguration] = None) -> Optional[get_staff_availability_response.GetStaffAvailabilityResponse]:
+    async def post(self,body: Optional[GetStaffAvailabilityPostRequestBody] = None, request_configuration: Optional[GetStaffAvailabilityRequestBuilderPostRequestConfiguration] = None) -> Optional[GetStaffAvailabilityResponse]:
         """
         Get the availability information of staff members of a Microsoft Bookings calendar.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[get_staff_availability_response.GetStaffAvailabilityResponse]
+        Returns: Optional[GetStaffAvailabilityResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import get_staff_availability_response
+        from .get_staff_availability_response import GetStaffAvailabilityResponse
 
-        return await self.request_adapter.send_async(request_info, get_staff_availability_response.GetStaffAvailabilityResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetStaffAvailabilityResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[get_staff_availability_post_request_body.GetStaffAvailabilityPostRequestBody] = None, request_configuration: Optional[GetStaffAvailabilityRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GetStaffAvailabilityPostRequestBody] = None, request_configuration: Optional[GetStaffAvailabilityRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Get the availability information of staff members of a Microsoft Bookings calendar.
         Args:

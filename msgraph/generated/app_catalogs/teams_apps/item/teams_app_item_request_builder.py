@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import teams_app
-    from ....models.o_data_errors import o_data_error
-    from .app_definitions import app_definitions_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.teams_app import TeamsApp
+    from .app_definitions.app_definitions_request_builder import AppDefinitionsRequestBuilder
 
 class TeamsAppItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class TeamsAppItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TeamsAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_app.TeamsApp]:
+    async def get(self,request_configuration: Optional[TeamsAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsApp]:
         """
         Get teamsApps from appCatalogs
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teams_app.TeamsApp]
+        Returns: Optional[TeamsApp]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import teams_app
+        from ....models.teams_app import TeamsApp
 
-        return await self.request_adapter.send_async(request_info, teams_app.TeamsApp, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamsApp, error_mapping)
     
-    async def patch(self,body: Optional[teams_app.TeamsApp] = None, request_configuration: Optional[TeamsAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[teams_app.TeamsApp]:
+    async def patch(self,body: Optional[TeamsApp] = None, request_configuration: Optional[TeamsAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TeamsApp]:
         """
         Update the navigation property teamsApps in appCatalogs
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teams_app.TeamsApp]
+        Returns: Optional[TeamsApp]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import teams_app
+        from ....models.teams_app import TeamsApp
 
-        return await self.request_adapter.send_async(request_info, teams_app.TeamsApp, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamsApp, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TeamsAppItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class TeamsAppItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[teams_app.TeamsApp] = None, request_configuration: Optional[TeamsAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TeamsApp] = None, request_configuration: Optional[TeamsAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property teamsApps in appCatalogs
         Args:
@@ -158,13 +158,13 @@ class TeamsAppItemRequestBuilder():
         return request_info
     
     @property
-    def app_definitions(self) -> app_definitions_request_builder.AppDefinitionsRequestBuilder:
+    def app_definitions(self) -> AppDefinitionsRequestBuilder:
         """
         Provides operations to manage the appDefinitions property of the microsoft.graph.teamsApp entity.
         """
-        from .app_definitions import app_definitions_request_builder
+        from .app_definitions.app_definitions_request_builder import AppDefinitionsRequestBuilder
 
-        return app_definitions_request_builder.AppDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AppDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TeamsAppItemRequestBuilderDeleteRequestConfiguration():

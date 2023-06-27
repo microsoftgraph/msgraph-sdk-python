@@ -1,11 +1,12 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import chat_info, meeting_participants
+    from ....models.chat_info import ChatInfo
+    from ....models.meeting_participants import MeetingParticipants
 
 @dataclass
 class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,15 +14,15 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The chatInfo property
-    chat_info: Optional[chat_info.ChatInfo] = None
+    chat_info: Optional[ChatInfo] = None
     # The endDateTime property
-    end_date_time: Optional[datetime] = None
+    end_date_time: Optional[datetime.datetime] = None
     # The externalId property
     external_id: Optional[str] = None
     # The participants property
-    participants: Optional[meeting_participants.MeetingParticipants] = None
+    participants: Optional[MeetingParticipants] = None
     # The startDateTime property
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     # The subject property
     subject: Optional[str] = None
     
@@ -42,15 +43,17 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import chat_info, meeting_participants
+        from ....models.chat_info import ChatInfo
+        from ....models.meeting_participants import MeetingParticipants
 
-        from ....models import chat_info, meeting_participants
+        from ....models.chat_info import ChatInfo
+        from ....models.meeting_participants import MeetingParticipants
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(chat_info.ChatInfo)),
+            "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(ChatInfo)),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "participants": lambda n : setattr(self, 'participants', n.get_object_value(meeting_participants.MeetingParticipants)),
+            "participants": lambda n : setattr(self, 'participants', n.get_object_value(MeetingParticipants)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
@@ -65,10 +68,10 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("chatInfo", self.chat_info)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
+        writer.write_datetime_value()("endDateTime", self.end_date_time)
         writer.write_str_value("externalId", self.external_id)
         writer.write_object_value("participants", self.participants)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
         writer.write_str_value("subject", self.subject)
         writer.write_additional_data_value(self.additional_data)
     

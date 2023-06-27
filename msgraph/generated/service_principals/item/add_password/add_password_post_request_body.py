@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import password_credential
+    from ....models.password_credential import PasswordCredential
 
 @dataclass
 class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The passwordCredential property
-    password_credential: Optional[password_credential.PasswordCredential] = None
+    password_credential: Optional[PasswordCredential] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddPasswordPostRequestBody:
@@ -31,12 +31,12 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import password_credential
+        from ....models.password_credential import PasswordCredential
 
-        from ....models import password_credential
+        from ....models.password_credential import PasswordCredential
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "passwordCredential": lambda n : setattr(self, 'password_credential', n.get_object_value(password_credential.PasswordCredential)),
+            "passwordCredential": lambda n : setattr(self, 'password_credential', n.get_object_value(PasswordCredential)),
         }
         return fields
     

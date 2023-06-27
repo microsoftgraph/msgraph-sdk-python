@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_font
+    from .entity import Entity
+    from .workbook_chart_font import WorkbookChartFont
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartAxisTitleFormat(entity.Entity):
+class WorkbookChartAxisTitleFormat(Entity):
     # Represents the font attributes, such as font name, font size, color, etc. of chart axis title object. Read-only.
-    font: Optional[workbook_chart_font.WorkbookChartFont] = None
+    font: Optional[WorkbookChartFont] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class WorkbookChartAxisTitleFormat(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_font
+        from .entity import Entity
+        from .workbook_chart_font import WorkbookChartFont
 
-        from . import entity, workbook_chart_font
+        from .entity import Entity
+        from .workbook_chart_font import WorkbookChartFont
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "font": lambda n : setattr(self, 'font', n.get_object_value(workbook_chart_font.WorkbookChartFont)),
+            "font": lambda n : setattr(self, 'font', n.get_object_value(WorkbookChartFont)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

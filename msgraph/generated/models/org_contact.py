@@ -1,25 +1,28 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import directory_object, on_premises_provisioning_error, phone, physical_office_address
+    from .directory_object import DirectoryObject
+    from .on_premises_provisioning_error import OnPremisesProvisioningError
+    from .phone import Phone
+    from .physical_office_address import PhysicalOfficeAddress
 
-from . import directory_object
+from .directory_object import DirectoryObject
 
 @dataclass
-class OrgContact(directory_object.DirectoryObject):
+class OrgContact(DirectoryObject):
     odata_type = "#microsoft.graph.orgContact"
     # Postal addresses for this organizational contact. For now a contact can only have one physical address.
-    addresses: Optional[List[physical_office_address.PhysicalOfficeAddress]] = None
+    addresses: Optional[List[PhysicalOfficeAddress]] = None
     # Name of the company that this organizational contact belongs to.  Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
     company_name: Optional[str] = None
     # The name for the department in which the contact works.  Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
     department: Optional[str] = None
     # The contact's direct reports. (The users and contacts that have their manager property set to this contact.)  Read-only. Nullable. Supports $expand.
-    direct_reports: Optional[List[directory_object.DirectoryObject]] = None
+    direct_reports: Optional[List[DirectoryObject]] = None
     # Display name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values), $search, and $orderBy.
     display_name: Optional[str] = None
     # First name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
@@ -31,23 +34,23 @@ class OrgContact(directory_object.DirectoryObject):
     # Email alias (portion of email address pre-pending the @ symbol) for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
     mail_nickname: Optional[str] = None
     # The user or contact that is this contact's manager. Read-only. Supports $expand and $filter (eq) by id.
-    manager: Optional[directory_object.DirectoryObject] = None
+    manager: Optional[DirectoryObject] = None
     # Groups that this contact is a member of. Read-only. Nullable. Supports $expand.
-    member_of: Optional[List[directory_object.DirectoryObject]] = None
+    member_of: Optional[List[DirectoryObject]] = None
     # Date and time when this organizational contact was last synchronized from on-premises AD. This date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ne, not, ge, le, in).
-    on_premises_last_sync_date_time: Optional[datetime] = None
+    on_premises_last_sync_date_time: Optional[datetime.datetime] = None
     # List of any synchronization provisioning errors for this organizational contact. Supports $filter (eq, not for category and propertyCausingError), /$count eq 0, /$count ne 0.
-    on_premises_provisioning_errors: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None
+    on_premises_provisioning_errors: Optional[List[OnPremisesProvisioningError]] = None
     # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced and now mastered in Exchange; null if this object has never been synced from an on-premises directory (default).   Supports $filter (eq, ne, not, in, and eq for null values).
     on_premises_sync_enabled: Optional[bool] = None
     # List of phones for this organizational contact. Phone types can be mobile, business, and businessFax. Only one of each type can ever be present in the collection.
-    phones: Optional[List[phone.Phone]] = None
+    phones: Optional[List[Phone]] = None
     # For example: 'SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com'. The any operator is required for filter expressions on multi-valued properties. Supports $filter (eq, not, ge, le, startsWith, /$count eq 0, /$count ne 0).
     proxy_addresses: Optional[List[str]] = None
     # Last name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
     surname: Optional[str] = None
     # Groups that this contact is a member of, including groups that the contact is nested under. Read-only. Nullable.
-    transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
+    transitive_member_of: Optional[List[DirectoryObject]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrgContact:
@@ -66,29 +69,35 @@ class OrgContact(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object, on_premises_provisioning_error, phone, physical_office_address
+        from .directory_object import DirectoryObject
+        from .on_premises_provisioning_error import OnPremisesProvisioningError
+        from .phone import Phone
+        from .physical_office_address import PhysicalOfficeAddress
 
-        from . import directory_object, on_premises_provisioning_error, phone, physical_office_address
+        from .directory_object import DirectoryObject
+        from .on_premises_provisioning_error import OnPremisesProvisioningError
+        from .phone import Phone
+        from .physical_office_address import PhysicalOfficeAddress
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(physical_office_address.PhysicalOfficeAddress)),
+            "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(PhysicalOfficeAddress)),
             "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "directReports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "directReports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(DirectoryObject)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
             "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
             "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "manager": lambda n : setattr(self, 'manager', n.get_object_value(directory_object.DirectoryObject)),
-            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "manager": lambda n : setattr(self, 'manager', n.get_object_value(DirectoryObject)),
+            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
             "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
-            "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(on_premises_provisioning_error.OnPremisesProvisioningError)),
+            "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(OnPremisesProvisioningError)),
             "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
-            "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(phone.Phone)),
+            "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(Phone)),
             "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
-            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -114,7 +123,7 @@ class OrgContact(directory_object.DirectoryObject):
         writer.write_str_value("mailNickname", self.mail_nickname)
         writer.write_object_value("manager", self.manager)
         writer.write_collection_of_object_values("memberOf", self.member_of)
-        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
+        writer.write_datetime_value()("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_collection_of_object_values("onPremisesProvisioningErrors", self.on_premises_provisioning_errors)
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
         writer.write_collection_of_object_values("phones", self.phones)

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_instance_decision_item_resource
+    from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
 
-from . import access_review_instance_decision_item_resource
+from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
 
 @dataclass
-class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource):
+class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(AccessReviewInstanceDecisionItemResource):
     odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource"
     # Display name of the access package to which access has been granted.
     access_package_display_name: Optional[str] = None
@@ -33,9 +33,9 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_instance_decision_item_resource
+        from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
 
-        from . import access_review_instance_decision_item_resource
+        from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accessPackageDisplayName": lambda n : setattr(self, 'access_package_display_name', n.get_str_value()),

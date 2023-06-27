@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_expiration_behavior, entitlement_management_schedule, subject_set
+    from .access_review_expiration_behavior import AccessReviewExpirationBehavior
+    from .entitlement_management_schedule import EntitlementManagementSchedule
+    from .subject_set import SubjectSet
 
 @dataclass
 class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
@@ -12,9 +14,9 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The default decision to apply if the access is not reviewed. The possible values are: keepAccess, removeAccess, acceptAccessRecommendation, unknownFutureValue.
-    expiration_behavior: Optional[access_review_expiration_behavior.AccessReviewExpirationBehavior] = None
+    expiration_behavior: Optional[AccessReviewExpirationBehavior] = None
     # This collection specifies the users who will be the fallback reviewers when the primary reviewers don't respond.
-    fallback_reviewers: Optional[List[subject_set.SubjectSet]] = None
+    fallback_reviewers: Optional[List[SubjectSet]] = None
     # If true, access reviews are required for assignments through this policy.
     is_enabled: Optional[bool] = None
     # Specifies whether to display recommendations to the reviewer. The default value is true.
@@ -26,9 +28,9 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # This collection specifies the users or group of users who will review the access package assignments.
-    primary_reviewers: Optional[List[subject_set.SubjectSet]] = None
+    primary_reviewers: Optional[List[SubjectSet]] = None
     # When the first review should start and how often it should recur.
-    schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
+    schedule: Optional[EntitlementManagementSchedule] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentReviewSettings:
@@ -47,20 +49,24 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_expiration_behavior, entitlement_management_schedule, subject_set
+        from .access_review_expiration_behavior import AccessReviewExpirationBehavior
+        from .entitlement_management_schedule import EntitlementManagementSchedule
+        from .subject_set import SubjectSet
 
-        from . import access_review_expiration_behavior, entitlement_management_schedule, subject_set
+        from .access_review_expiration_behavior import AccessReviewExpirationBehavior
+        from .entitlement_management_schedule import EntitlementManagementSchedule
+        from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "expirationBehavior": lambda n : setattr(self, 'expiration_behavior', n.get_enum_value(access_review_expiration_behavior.AccessReviewExpirationBehavior)),
-            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "expirationBehavior": lambda n : setattr(self, 'expiration_behavior', n.get_enum_value(AccessReviewExpirationBehavior)),
+            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(SubjectSet)),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "isRecommendationEnabled": lambda n : setattr(self, 'is_recommendation_enabled', n.get_bool_value()),
             "isReviewerJustificationRequired": lambda n : setattr(self, 'is_reviewer_justification_required', n.get_bool_value()),
             "isSelfReview": lambda n : setattr(self, 'is_self_review', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primaryReviewers": lambda n : setattr(self, 'primary_reviewers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
+            "primaryReviewers": lambda n : setattr(self, 'primary_reviewers', n.get_collection_of_object_values(SubjectSet)),
+            "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(EntitlementManagementSchedule)),
         }
         return fields
     

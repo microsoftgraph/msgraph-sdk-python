@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -19,7 +19,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
     # Accuracy of longitude and latitude in meters
     horizontal_accuracy: Optional[float] = None
     # Time at which location was recorded, relative to UTC
-    last_collected_date_time: Optional[datetime] = None
+    last_collected_date_time: Optional[datetime.datetime] = None
     # Latitude coordinate of the device's location
     latitude: Optional[float] = None
     # Longitude coordinate of the device's location
@@ -72,7 +72,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         writer.write_float_value("altitude", self.altitude)
         writer.write_float_value("heading", self.heading)
         writer.write_float_value("horizontalAccuracy", self.horizontal_accuracy)
-        writer.write_datetime_value("lastCollectedDateTime", self.last_collected_date_time)
+        writer.write_datetime_value()("lastCollectedDateTime", self.last_collected_date_time)
         writer.write_float_value("latitude", self.latitude)
         writer.write_float_value("longitude", self.longitude)
         writer.write_str_value("@odata.type", self.odata_type)

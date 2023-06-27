@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class Norm_DistPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,13 +12,13 @@ class Norm_DistPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The cumulative property
-    cumulative: Optional[json.Json] = None
+    cumulative: Optional[Json] = None
     # The mean property
-    mean: Optional[json.Json] = None
+    mean: Optional[Json] = None
     # The standardDev property
-    standard_dev: Optional[json.Json] = None
+    standard_dev: Optional[Json] = None
     # The x property
-    x: Optional[json.Json] = None
+    x: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Norm_DistPostRequestBody:
@@ -37,15 +37,15 @@ class Norm_DistPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cumulative": lambda n : setattr(self, 'cumulative', n.get_object_value(json.Json)),
-            "mean": lambda n : setattr(self, 'mean', n.get_object_value(json.Json)),
-            "standardDev": lambda n : setattr(self, 'standard_dev', n.get_object_value(json.Json)),
-            "x": lambda n : setattr(self, 'x', n.get_object_value(json.Json)),
+            "cumulative": lambda n : setattr(self, 'cumulative', n.get_object_value(Json)),
+            "mean": lambda n : setattr(self, 'mean', n.get_object_value(Json)),
+            "standardDev": lambda n : setattr(self, 'standard_dev', n.get_object_value(Json)),
+            "x": lambda n : setattr(self, 'x', n.get_object_value(Json)),
         }
         return fields
     

@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_assignment_points_grade, education_outcome
+    from .education_assignment_points_grade import EducationAssignmentPointsGrade
+    from .education_outcome import EducationOutcome
 
-from . import education_outcome
+from .education_outcome import EducationOutcome
 
 @dataclass
-class EducationPointsOutcome(education_outcome.EducationOutcome):
+class EducationPointsOutcome(EducationOutcome):
     odata_type = "#microsoft.graph.educationPointsOutcome"
     # The numeric grade the teacher has given the student for this assignment.
-    points: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None
+    points: Optional[EducationAssignmentPointsGrade] = None
     # A copy of the points property that is made when the grade is released to the student.
-    published_points: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None
+    published_points: Optional[EducationAssignmentPointsGrade] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationPointsOutcome:
@@ -33,13 +34,15 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_assignment_points_grade, education_outcome
+        from .education_assignment_points_grade import EducationAssignmentPointsGrade
+        from .education_outcome import EducationOutcome
 
-        from . import education_assignment_points_grade, education_outcome
+        from .education_assignment_points_grade import EducationAssignmentPointsGrade
+        from .education_outcome import EducationOutcome
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "points": lambda n : setattr(self, 'points', n.get_object_value(education_assignment_points_grade.EducationAssignmentPointsGrade)),
-            "publishedPoints": lambda n : setattr(self, 'published_points', n.get_object_value(education_assignment_points_grade.EducationAssignmentPointsGrade)),
+            "points": lambda n : setattr(self, 'points', n.get_object_value(EducationAssignmentPointsGrade)),
+            "publishedPoints": lambda n : setattr(self, 'published_points', n.get_object_value(EducationAssignmentPointsGrade)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

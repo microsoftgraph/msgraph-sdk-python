@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import attachment_info
+    from .........models.attachment_info import AttachmentInfo
 
 @dataclass
 class CreateUploadSessionPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The attachmentInfo property
-    attachment_info: Optional[attachment_info.AttachmentInfo] = None
+    attachment_info: Optional[AttachmentInfo] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CreateUploadSessionPostRequestBody:
@@ -31,12 +31,12 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .........models import attachment_info
+        from .........models.attachment_info import AttachmentInfo
 
-        from .........models import attachment_info
+        from .........models.attachment_info import AttachmentInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attachmentInfo": lambda n : setattr(self, 'attachment_info', n.get_object_value(attachment_info.AttachmentInfo)),
+            "attachmentInfo": lambda n : setattr(self, 'attachment_info', n.get_object_value(AttachmentInfo)),
         }
         return fields
     

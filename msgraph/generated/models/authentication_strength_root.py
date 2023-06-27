@@ -4,20 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_modes, authentication_method_mode_detail, authentication_strength_policy, entity
+    from .authentication_method_mode_detail import AuthenticationMethodModeDetail
+    from .authentication_method_modes import AuthenticationMethodModes
+    from .authentication_strength_policy import AuthenticationStrengthPolicy
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AuthenticationStrengthRoot(entity.Entity):
+class AuthenticationStrengthRoot(Entity):
     # Names and descriptions of all valid authentication method modes in the system.
-    authentication_method_modes: Optional[List[authentication_method_mode_detail.AuthenticationMethodModeDetail]] = None
+    authentication_method_modes: Optional[List[AuthenticationMethodModeDetail]] = None
     # The combinations property
-    combinations: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None
+    combinations: Optional[List[AuthenticationMethodModes]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of authentication strength policies that exist for this tenant, including both built-in and custom policies.
-    policies: Optional[List[authentication_strength_policy.AuthenticationStrengthPolicy]] = None
+    policies: Optional[List[AuthenticationStrengthPolicy]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationStrengthRoot:
@@ -36,14 +39,20 @@ class AuthenticationStrengthRoot(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_modes, authentication_method_mode_detail, authentication_strength_policy, entity
+        from .authentication_method_mode_detail import AuthenticationMethodModeDetail
+        from .authentication_method_modes import AuthenticationMethodModes
+        from .authentication_strength_policy import AuthenticationStrengthPolicy
+        from .entity import Entity
 
-        from . import authentication_method_modes, authentication_method_mode_detail, authentication_strength_policy, entity
+        from .authentication_method_mode_detail import AuthenticationMethodModeDetail
+        from .authentication_method_modes import AuthenticationMethodModes
+        from .authentication_strength_policy import AuthenticationStrengthPolicy
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationMethodModes": lambda n : setattr(self, 'authentication_method_modes', n.get_collection_of_object_values(authentication_method_mode_detail.AuthenticationMethodModeDetail)),
-            "combinations": lambda n : setattr(self, 'combinations', n.get_collection_of_enum_values(authentication_method_modes.AuthenticationMethodModes)),
-            "policies": lambda n : setattr(self, 'policies', n.get_collection_of_object_values(authentication_strength_policy.AuthenticationStrengthPolicy)),
+            "authenticationMethodModes": lambda n : setattr(self, 'authentication_method_modes', n.get_collection_of_object_values(AuthenticationMethodModeDetail)),
+            "combinations": lambda n : setattr(self, 'combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
+            "policies": lambda n : setattr(self, 'policies', n.get_collection_of_object_values(AuthenticationStrengthPolicy)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

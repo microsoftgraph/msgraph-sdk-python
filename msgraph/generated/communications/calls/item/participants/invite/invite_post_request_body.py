@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import invitation_participant_info
+    from ......models.invitation_participant_info import InvitationParticipantInfo
 
 @dataclass
 class InvitePostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
     # The clientContext property
     client_context: Optional[str] = None
     # The participants property
-    participants: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None
+    participants: Optional[List[InvitationParticipantInfo]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InvitePostRequestBody:
@@ -33,13 +33,13 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models import invitation_participant_info
+        from ......models.invitation_participant_info import InvitationParticipantInfo
 
-        from ......models import invitation_participant_info
+        from ......models.invitation_participant_info import InvitationParticipantInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
-            "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(invitation_participant_info.InvitationParticipantInfo)),
+            "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(InvitationParticipantInfo)),
         }
         return fields
     

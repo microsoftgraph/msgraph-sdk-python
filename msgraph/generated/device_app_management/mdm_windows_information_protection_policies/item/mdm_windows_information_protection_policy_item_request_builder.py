@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import mdm_windows_information_protection_policy
-    from ....models.o_data_errors import o_data_error
-    from .assignments import assignments_request_builder
-    from .exempt_app_locker_files import exempt_app_locker_files_request_builder
-    from .protected_app_locker_files import protected_app_locker_files_request_builder
+    from ....models.mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .exempt_app_locker_files.exempt_app_locker_files_request_builder import ExemptAppLockerFilesRequestBuilder
+    from .protected_app_locker_files.protected_app_locker_files_request_builder import ProtectedAppLockerFilesRequestBuilder
 
 class MdmWindowsInformationProtectionPolicyItemRequestBuilder():
     """
@@ -40,73 +40,73 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property mdmWindowsInformationProtectionPolicies for deviceAppManagement
+        Deletes a mdmWindowsInformationProtectionPolicy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]:
+    async def get(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MdmWindowsInformationProtectionPolicy]:
         """
-        Windows information protection for apps running on devices which are MDM enrolled.
+        Read properties and relationships of the mdmWindowsInformationProtectionPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]
+        Returns: Optional[MdmWindowsInformationProtectionPolicy]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import mdm_windows_information_protection_policy
+        from ....models.mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
 
-        return await self.request_adapter.send_async(request_info, mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, MdmWindowsInformationProtectionPolicy, error_mapping)
     
-    async def patch(self,body: Optional[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy] = None, request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]:
+    async def patch(self,body: Optional[MdmWindowsInformationProtectionPolicy] = None, request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MdmWindowsInformationProtectionPolicy]:
         """
-        Update the navigation property mdmWindowsInformationProtectionPolicies in deviceAppManagement
+        Update the properties of a mdmWindowsInformationProtectionPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]
+        Returns: Optional[MdmWindowsInformationProtectionPolicy]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import mdm_windows_information_protection_policy
+        from ....models.mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
 
-        return await self.request_adapter.send_async(request_info, mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, MdmWindowsInformationProtectionPolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property mdmWindowsInformationProtectionPolicies for deviceAppManagement
+        Deletes a mdmWindowsInformationProtectionPolicy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Windows information protection for apps running on devices which are MDM enrolled.
+        Read properties and relationships of the mdmWindowsInformationProtectionPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,9 +138,9 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy] = None, request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[MdmWindowsInformationProtectionPolicy] = None, request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property mdmWindowsInformationProtectionPolicies in deviceAppManagement
+        Update the properties of a mdmWindowsInformationProtectionPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,31 +160,31 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder():
         return request_info
     
     @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+    def assignments(self) -> AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.windowsInformationProtection entity.
         """
-        from .assignments import assignments_request_builder
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def exempt_app_locker_files(self) -> exempt_app_locker_files_request_builder.ExemptAppLockerFilesRequestBuilder:
+    def exempt_app_locker_files(self) -> ExemptAppLockerFilesRequestBuilder:
         """
         Provides operations to manage the exemptAppLockerFiles property of the microsoft.graph.windowsInformationProtection entity.
         """
-        from .exempt_app_locker_files import exempt_app_locker_files_request_builder
+        from .exempt_app_locker_files.exempt_app_locker_files_request_builder import ExemptAppLockerFilesRequestBuilder
 
-        return exempt_app_locker_files_request_builder.ExemptAppLockerFilesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExemptAppLockerFilesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def protected_app_locker_files(self) -> protected_app_locker_files_request_builder.ProtectedAppLockerFilesRequestBuilder:
+    def protected_app_locker_files(self) -> ProtectedAppLockerFilesRequestBuilder:
         """
         Provides operations to manage the protectedAppLockerFiles property of the microsoft.graph.windowsInformationProtection entity.
         """
-        from .protected_app_locker_files import protected_app_locker_files_request_builder
+        from .protected_app_locker_files.protected_app_locker_files_request_builder import ProtectedAppLockerFilesRequestBuilder
 
-        return protected_app_locker_files_request_builder.ProtectedAppLockerFilesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ProtectedAppLockerFilesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MdmWindowsInformationProtectionPolicyItemRequestBuilderDeleteRequestConfiguration():
@@ -201,7 +201,7 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder():
     @dataclass
     class MdmWindowsInformationProtectionPolicyItemRequestBuilderGetQueryParameters():
         """
-        Windows information protection for apps running on devices which are MDM enrolled.
+        Read properties and relationships of the mdmWindowsInformationProtectionPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attribute_definition, object_definition_metadata_entry
+    from .attribute_definition import AttributeDefinition
+    from .object_definition_metadata_entry import ObjectDefinitionMetadataEntry
 
 @dataclass
 class ObjectDefinition(AdditionalDataHolder, Parsable):
@@ -12,9 +13,9 @@ class ObjectDefinition(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The attributes property
-    attributes: Optional[List[attribute_definition.AttributeDefinition]] = None
+    attributes: Optional[List[AttributeDefinition]] = None
     # The metadata property
-    metadata: Optional[List[object_definition_metadata_entry.ObjectDefinitionMetadataEntry]] = None
+    metadata: Optional[List[ObjectDefinitionMetadataEntry]] = None
     # The name property
     name: Optional[str] = None
     # The OdataType property
@@ -39,13 +40,15 @@ class ObjectDefinition(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attribute_definition, object_definition_metadata_entry
+        from .attribute_definition import AttributeDefinition
+        from .object_definition_metadata_entry import ObjectDefinitionMetadataEntry
 
-        from . import attribute_definition, object_definition_metadata_entry
+        from .attribute_definition import AttributeDefinition
+        from .object_definition_metadata_entry import ObjectDefinitionMetadataEntry
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attributes": lambda n : setattr(self, 'attributes', n.get_collection_of_object_values(attribute_definition.AttributeDefinition)),
-            "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(object_definition_metadata_entry.ObjectDefinitionMetadataEntry)),
+            "attributes": lambda n : setattr(self, 'attributes', n.get_collection_of_object_values(AttributeDefinition)),
+            "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(ObjectDefinitionMetadataEntry)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "supportedApis": lambda n : setattr(self, 'supported_apis', n.get_collection_of_primitive_values(str)),

@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_assignment_class_recipient, education_assignment_group_recipient, education_assignment_individual_recipient
+    from .education_assignment_class_recipient import EducationAssignmentClassRecipient
+    from .education_assignment_group_recipient import EducationAssignmentGroupRecipient
+    from .education_assignment_individual_recipient import EducationAssignmentIndividualRecipient
 
 @dataclass
 class EducationAssignmentRecipient(AdditionalDataHolder, Parsable):
@@ -29,17 +31,17 @@ class EducationAssignmentRecipient(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentClassRecipient".casefold():
-            from . import education_assignment_class_recipient
+            from .education_assignment_class_recipient import EducationAssignmentClassRecipient
 
-            return education_assignment_class_recipient.EducationAssignmentClassRecipient()
+            return EducationAssignmentClassRecipient()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentGroupRecipient".casefold():
-            from . import education_assignment_group_recipient
+            from .education_assignment_group_recipient import EducationAssignmentGroupRecipient
 
-            return education_assignment_group_recipient.EducationAssignmentGroupRecipient()
+            return EducationAssignmentGroupRecipient()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentIndividualRecipient".casefold():
-            from . import education_assignment_individual_recipient
+            from .education_assignment_individual_recipient import EducationAssignmentIndividualRecipient
 
-            return education_assignment_individual_recipient.EducationAssignmentIndividualRecipient()
+            return EducationAssignmentIndividualRecipient()
         return EducationAssignmentRecipient()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -47,9 +49,13 @@ class EducationAssignmentRecipient(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_assignment_class_recipient, education_assignment_group_recipient, education_assignment_individual_recipient
+        from .education_assignment_class_recipient import EducationAssignmentClassRecipient
+        from .education_assignment_group_recipient import EducationAssignmentGroupRecipient
+        from .education_assignment_individual_recipient import EducationAssignmentIndividualRecipient
 
-        from . import education_assignment_class_recipient, education_assignment_group_recipient, education_assignment_individual_recipient
+        from .education_assignment_class_recipient import EducationAssignmentClassRecipient
+        from .education_assignment_group_recipient import EducationAssignmentGroupRecipient
+        from .education_assignment_individual_recipient import EducationAssignmentIndividualRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

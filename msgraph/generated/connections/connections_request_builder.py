@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models.external_connectors import external_connection, external_connection_collection_response
-    from ..models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import external_connection_item_request_builder
+    from ..models.external_connectors.external_connection import ExternalConnection
+    from ..models.external_connectors.external_connection_collection_response import ExternalConnectionCollectionResponse
+    from ..models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.external_connection_item_request_builder import ExternalConnectionItemRequestBuilder
 
 class ConnectionsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class ConnectionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_external_connection_id(self,external_connection_id: str) -> external_connection_item_request_builder.ExternalConnectionItemRequestBuilder:
+    def by_external_connection_id(self,external_connection_id: str) -> ExternalConnectionItemRequestBuilder:
         """
         Provides operations to manage the collection of externalConnection entities.
         Args:
             external_connection_id: Unique identifier of the item
-        Returns: external_connection_item_request_builder.ExternalConnectionItemRequestBuilder
+        Returns: ExternalConnectionItemRequestBuilder
         """
         if not external_connection_id:
             raise TypeError("external_connection_id cannot be null.")
-        from .item import external_connection_item_request_builder
+        from .item.external_connection_item_request_builder import ExternalConnectionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["externalConnection%2Did"] = external_connection_id
-        return external_connection_item_request_builder.ExternalConnectionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ExternalConnectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ConnectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[external_connection_collection_response.ExternalConnectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[ConnectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ExternalConnectionCollectionResponse]:
         """
         Get entities from connections
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external_connection_collection_response.ExternalConnectionCollectionResponse]
+        Returns: Optional[ExternalConnectionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models.external_connectors import external_connection_collection_response
+        from ..models.external_connectors.external_connection_collection_response import ExternalConnectionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, external_connection_collection_response.ExternalConnectionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExternalConnectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ConnectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[external_connection.ExternalConnection]:
+    async def post(self,body: Optional[ExternalConnection] = None, request_configuration: Optional[ConnectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[ExternalConnection]:
         """
         Add new entity to connections
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external_connection.ExternalConnection]
+        Returns: Optional[ExternalConnection]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models.external_connectors import external_connection
+        from ..models.external_connectors.external_connection import ExternalConnection
 
-        return await self.request_adapter.send_async(request_info, external_connection.ExternalConnection, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExternalConnection, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ConnectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class ConnectionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ConnectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ExternalConnection] = None, request_configuration: Optional[ConnectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add new entity to connections
         Args:
@@ -139,13 +140,13 @@ class ConnectionsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ConnectionsRequestBuilderGetQueryParameters():

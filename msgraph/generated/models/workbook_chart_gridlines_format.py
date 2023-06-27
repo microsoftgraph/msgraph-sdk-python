@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_line_format
+    from .entity import Entity
+    from .workbook_chart_line_format import WorkbookChartLineFormat
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartGridlinesFormat(entity.Entity):
+class WorkbookChartGridlinesFormat(Entity):
     # Represents chart line formatting. Read-only.
-    line: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None
+    line: Optional[WorkbookChartLineFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class WorkbookChartGridlinesFormat(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_line_format
+        from .entity import Entity
+        from .workbook_chart_line_format import WorkbookChartLineFormat
 
-        from . import entity, workbook_chart_line_format
+        from .entity import Entity
+        from .workbook_chart_line_format import WorkbookChartLineFormat
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "line": lambda n : setattr(self, 'line', n.get_object_value(workbook_chart_line_format.WorkbookChartLineFormat)),
+            "line": lambda n : setattr(self, 'line', n.get_object_value(WorkbookChartLineFormat)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

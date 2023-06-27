@@ -4,18 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_package_localized_text, access_package_multiple_choice_question, access_package_text_input_question, entity
+    from .access_package_localized_text import AccessPackageLocalizedText
+    from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
+    from .access_package_text_input_question import AccessPackageTextInputQuestion
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AccessPackageQuestion(entity.Entity):
+class AccessPackageQuestion(Entity):
     # Specifies whether the requestor is allowed to edit answers to questions for an assignment by posting an update to accessPackageAssignmentRequest.
     is_answer_editable: Optional[bool] = None
     # Whether the requestor is required to supply an answer or not.
     is_required: Optional[bool] = None
     # The text of the question represented in a format for a specific locale.
-    localizations: Optional[List[access_package_localized_text.AccessPackageLocalizedText]] = None
+    localizations: Optional[List[AccessPackageLocalizedText]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Relative position of this question when displaying a list of questions to the requestor.
@@ -38,13 +41,13 @@ class AccessPackageQuestion(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageMultipleChoiceQuestion".casefold():
-            from . import access_package_multiple_choice_question
+            from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
 
-            return access_package_multiple_choice_question.AccessPackageMultipleChoiceQuestion()
+            return AccessPackageMultipleChoiceQuestion()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageTextInputQuestion".casefold():
-            from . import access_package_text_input_question
+            from .access_package_text_input_question import AccessPackageTextInputQuestion
 
-            return access_package_text_input_question.AccessPackageTextInputQuestion()
+            return AccessPackageTextInputQuestion()
         return AccessPackageQuestion()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -52,14 +55,20 @@ class AccessPackageQuestion(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_localized_text, access_package_multiple_choice_question, access_package_text_input_question, entity
+        from .access_package_localized_text import AccessPackageLocalizedText
+        from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
+        from .access_package_text_input_question import AccessPackageTextInputQuestion
+        from .entity import Entity
 
-        from . import access_package_localized_text, access_package_multiple_choice_question, access_package_text_input_question, entity
+        from .access_package_localized_text import AccessPackageLocalizedText
+        from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
+        from .access_package_text_input_question import AccessPackageTextInputQuestion
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isAnswerEditable": lambda n : setattr(self, 'is_answer_editable', n.get_bool_value()),
             "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
-            "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(access_package_localized_text.AccessPackageLocalizedText)),
+            "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(AccessPackageLocalizedText)),
             "sequence": lambda n : setattr(self, 'sequence', n.get_int_value()),
             "text": lambda n : setattr(self, 'text', n.get_str_value()),
         }

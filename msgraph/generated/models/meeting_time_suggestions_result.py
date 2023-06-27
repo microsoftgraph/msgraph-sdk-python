@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import meeting_time_suggestion
+    from .meeting_time_suggestion import MeetingTimeSuggestion
 
 @dataclass
 class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
     # A reason for not returning any meeting suggestions. The possible values are: attendeesUnavailable, attendeesUnavailableOrUnknown, locationsUnavailable, organizerUnavailable, or unknown. This property is an empty string if the meetingTimeSuggestions property does include any meeting suggestions.
     empty_suggestions_reason: Optional[str] = None
     # An array of meeting suggestions.
-    meeting_time_suggestions: Optional[List[meeting_time_suggestion.MeetingTimeSuggestion]] = None
+    meeting_time_suggestions: Optional[List[MeetingTimeSuggestion]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,13 +35,13 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import meeting_time_suggestion
+        from .meeting_time_suggestion import MeetingTimeSuggestion
 
-        from . import meeting_time_suggestion
+        from .meeting_time_suggestion import MeetingTimeSuggestion
 
         fields: Dict[str, Callable[[Any], None]] = {
             "emptySuggestionsReason": lambda n : setattr(self, 'empty_suggestions_reason', n.get_str_value()),
-            "meetingTimeSuggestions": lambda n : setattr(self, 'meeting_time_suggestions', n.get_collection_of_object_values(meeting_time_suggestion.MeetingTimeSuggestion)),
+            "meetingTimeSuggestions": lambda n : setattr(self, 'meeting_time_suggestions', n.get_collection_of_object_values(MeetingTimeSuggestion)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

@@ -4,19 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, mobile_app_content_file, mobile_contained_app
+    from .entity import Entity
+    from .mobile_app_content_file import MobileAppContentFile
+    from .mobile_contained_app import MobileContainedApp
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class MobileAppContent(entity.Entity):
+class MobileAppContent(Entity):
     """
     Contains content properties for a specific app version. Each mobileAppContent can have multiple mobileAppContentFile.
     """
     # The collection of contained apps in a MobileLobApp acting as a package.
-    contained_apps: Optional[List[mobile_contained_app.MobileContainedApp]] = None
+    contained_apps: Optional[List[MobileContainedApp]] = None
     # The list of files for this app content version.
-    files: Optional[List[mobile_app_content_file.MobileAppContentFile]] = None
+    files: Optional[List[MobileAppContentFile]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -37,13 +39,17 @@ class MobileAppContent(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, mobile_app_content_file, mobile_contained_app
+        from .entity import Entity
+        from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_contained_app import MobileContainedApp
 
-        from . import entity, mobile_app_content_file, mobile_contained_app
+        from .entity import Entity
+        from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_contained_app import MobileContainedApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "containedApps": lambda n : setattr(self, 'contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
-            "files": lambda n : setattr(self, 'files', n.get_collection_of_object_values(mobile_app_content_file.MobileAppContentFile)),
+            "containedApps": lambda n : setattr(self, 'contained_apps', n.get_collection_of_object_values(MobileContainedApp)),
+            "files": lambda n : setattr(self, 'files', n.get_collection_of_object_values(MobileAppContentFile)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

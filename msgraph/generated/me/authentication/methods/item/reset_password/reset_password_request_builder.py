@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import reset_password_post_request_body
-    from ......models import password_reset_response
-    from ......models.o_data_errors import o_data_error
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.password_reset_response import PasswordResetResponse
+    from .reset_password_post_request_body import ResetPasswordPostRequestBody
 
 class ResetPasswordRequestBuilder():
     """
@@ -36,32 +36,32 @@ class ResetPasswordRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[reset_password_post_request_body.ResetPasswordPostRequestBody] = None, request_configuration: Optional[ResetPasswordRequestBuilderPostRequestConfiguration] = None) -> Optional[password_reset_response.PasswordResetResponse]:
+    async def post(self,body: Optional[ResetPasswordPostRequestBody] = None, request_configuration: Optional[ResetPasswordRequestBuilderPostRequestConfiguration] = None) -> Optional[PasswordResetResponse]:
         """
         Reset a user's password, represented by a password authentication method object. This can only be done by an administrator with appropriate permissions and cannot be performed on a user's own account. This flow writes the new password to Azure Active Directory and pushes it to on-premises Active Directory if configured using password writeback. The admin can either provide a new password or have the system generate one. The user is prompted to change their password on their next sign in. This reset is a long-running operation and will return a **Location** header with a link where the caller can periodically check for the status of the reset operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[password_reset_response.PasswordResetResponse]
+        Returns: Optional[PasswordResetResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import password_reset_response
+        from ......models.password_reset_response import PasswordResetResponse
 
-        return await self.request_adapter.send_async(request_info, password_reset_response.PasswordResetResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PasswordResetResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[reset_password_post_request_body.ResetPasswordPostRequestBody] = None, request_configuration: Optional[ResetPasswordRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ResetPasswordPostRequestBody] = None, request_configuration: Optional[ResetPasswordRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Reset a user's password, represented by a password authentication method object. This can only be done by an administrator with appropriate permissions and cannot be performed on a user's own account. This flow writes the new password to Azure Active Directory and pushes it to on-premises Active Directory if configured using password writeback. The admin can either provide a new password or have the system generate one. The user is prompted to change their password on their next sign in. This reset is a long-running operation and will return a **Location** header with a link where the caller can periodically check for the status of the reset operation.
         Args:

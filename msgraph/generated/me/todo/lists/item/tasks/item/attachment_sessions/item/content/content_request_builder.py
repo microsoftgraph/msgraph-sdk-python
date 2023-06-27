@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import attachment_session
-    from ..........models.o_data_errors import o_data_error
+    from ..........models.attachment_session import AttachmentSession
+    from ..........models.o_data_errors.o_data_error import ODataError
 
 class ContentRequestBuilder():
     """
@@ -45,40 +45,40 @@ class ContentRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    async def put(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> Optional[attachment_session.AttachmentSession]:
+    async def put(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> Optional[AttachmentSession]:
         """
         The content streams that are uploaded.
         Args:
             body: Binary request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[attachment_session.AttachmentSession]
+        Returns: Optional[AttachmentSession]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_put_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import attachment_session
+        from ..........models.attachment_session import AttachmentSession
 
-        return await self.request_adapter.send_async(request_info, attachment_session.AttachmentSession, error_mapping)
+        return await self.request_adapter.send_async(request_info, AttachmentSession, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

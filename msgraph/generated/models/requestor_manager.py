@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import subject_set
+    from .subject_set import SubjectSet
 
-from . import subject_set
+from .subject_set import SubjectSet
 
 @dataclass
-class RequestorManager(subject_set.SubjectSet):
+class RequestorManager(SubjectSet):
     odata_type = "#microsoft.graph.requestorManager"
     # The hierarchical level of the manager with respect to the requestor. For example, the direct manager of a requestor would have a managerLevel of 1, while the manager of the requestor's manager would have a managerLevel of 2. Default value for managerLevel is 1. Possible values for this property range from 1 to 2.
     manager_level: Optional[int] = None
@@ -31,9 +31,9 @@ class RequestorManager(subject_set.SubjectSet):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import subject_set
+        from .subject_set import SubjectSet
 
-        from . import subject_set
+        from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "managerLevel": lambda n : setattr(self, 'manager_level', n.get_int_value()),

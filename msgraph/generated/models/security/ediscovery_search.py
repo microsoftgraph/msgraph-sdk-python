@@ -4,25 +4,30 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import data_source, data_source_scopes, ediscovery_add_to_review_set_operation, ediscovery_estimate_operation, ediscovery_noncustodial_data_source, search
+    from .data_source import DataSource
+    from .data_source_scopes import DataSourceScopes
+    from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
+    from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
+    from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
+    from .search import Search
 
-from . import search
+from .search import Search
 
 @dataclass
-class EdiscoverySearch(search.Search):
+class EdiscoverySearch(Search):
     odata_type = "#microsoft.graph.security.ediscoverySearch"
     # Adds the results of the eDiscovery search to the specified reviewSet.
-    add_to_review_set_operation: Optional[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation] = None
+    add_to_review_set_operation: Optional[EdiscoveryAddToReviewSetOperation] = None
     # Adds an additional source to the eDiscovery search.
-    additional_sources: Optional[List[data_source.DataSource]] = None
+    additional_sources: Optional[List[DataSource]] = None
     # Custodian sources that are included in the eDiscovery search.
-    custodian_sources: Optional[List[data_source.DataSource]] = None
+    custodian_sources: Optional[List[DataSource]] = None
     # When specified, the collection will span across a service for an entire workload. Possible values are: none, allTenantMailboxes, allTenantSites, allCaseCustodians, allCaseNoncustodialDataSources.
-    data_source_scopes: Optional[data_source_scopes.DataSourceScopes] = None
+    data_source_scopes: Optional[DataSourceScopes] = None
     # The last estimate operation associated with the eDiscovery search.
-    last_estimate_statistics_operation: Optional[ediscovery_estimate_operation.EdiscoveryEstimateOperation] = None
+    last_estimate_statistics_operation: Optional[EdiscoveryEstimateOperation] = None
     # noncustodialDataSource sources that are included in the eDiscovery search
-    noncustodial_sources: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]] = None
+    noncustodial_sources: Optional[List[EdiscoveryNoncustodialDataSource]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoverySearch:
@@ -41,17 +46,27 @@ class EdiscoverySearch(search.Search):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import data_source, data_source_scopes, ediscovery_add_to_review_set_operation, ediscovery_estimate_operation, ediscovery_noncustodial_data_source, search
+        from .data_source import DataSource
+        from .data_source_scopes import DataSourceScopes
+        from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
+        from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
+        from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
+        from .search import Search
 
-        from . import data_source, data_source_scopes, ediscovery_add_to_review_set_operation, ediscovery_estimate_operation, ediscovery_noncustodial_data_source, search
+        from .data_source import DataSource
+        from .data_source_scopes import DataSourceScopes
+        from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
+        from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
+        from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
+        from .search import Search
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "addToReviewSetOperation": lambda n : setattr(self, 'add_to_review_set_operation', n.get_object_value(ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation)),
-            "additionalSources": lambda n : setattr(self, 'additional_sources', n.get_collection_of_object_values(data_source.DataSource)),
-            "custodianSources": lambda n : setattr(self, 'custodian_sources', n.get_collection_of_object_values(data_source.DataSource)),
-            "dataSourceScopes": lambda n : setattr(self, 'data_source_scopes', n.get_enum_value(data_source_scopes.DataSourceScopes)),
-            "lastEstimateStatisticsOperation": lambda n : setattr(self, 'last_estimate_statistics_operation', n.get_object_value(ediscovery_estimate_operation.EdiscoveryEstimateOperation)),
-            "noncustodialSources": lambda n : setattr(self, 'noncustodial_sources', n.get_collection_of_object_values(ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource)),
+            "addToReviewSetOperation": lambda n : setattr(self, 'add_to_review_set_operation', n.get_object_value(EdiscoveryAddToReviewSetOperation)),
+            "additionalSources": lambda n : setattr(self, 'additional_sources', n.get_collection_of_object_values(DataSource)),
+            "custodianSources": lambda n : setattr(self, 'custodian_sources', n.get_collection_of_object_values(DataSource)),
+            "dataSourceScopes": lambda n : setattr(self, 'data_source_scopes', n.get_enum_value(DataSourceScopes)),
+            "lastEstimateStatisticsOperation": lambda n : setattr(self, 'last_estimate_statistics_operation', n.get_object_value(EdiscoveryEstimateOperation)),
+            "noncustodialSources": lambda n : setattr(self, 'noncustodial_sources', n.get_collection_of_object_values(EdiscoveryNoncustodialDataSource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

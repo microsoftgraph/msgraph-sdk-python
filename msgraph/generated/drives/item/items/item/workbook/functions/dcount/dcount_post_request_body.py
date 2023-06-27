@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class DcountPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class DcountPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The criteria property
-    criteria: Optional[json.Json] = None
+    criteria: Optional[Json] = None
     # The database property
-    database: Optional[json.Json] = None
+    database: Optional[Json] = None
     # The field property
-    field: Optional[json.Json] = None
+    field: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DcountPostRequestBody:
@@ -35,14 +35,14 @@ class DcountPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(json.Json)),
-            "database": lambda n : setattr(self, 'database', n.get_object_value(json.Json)),
-            "field": lambda n : setattr(self, 'field', n.get_object_value(json.Json)),
+            "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(Json)),
+            "database": lambda n : setattr(self, 'database', n.get_object_value(Json)),
+            "field": lambda n : setattr(self, 'field', n.get_object_value(Json)),
         }
         return fields
     

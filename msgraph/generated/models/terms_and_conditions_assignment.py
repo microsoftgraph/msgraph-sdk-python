@@ -4,19 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_and_app_management_assignment_target, entity
+    from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class TermsAndConditionsAssignment(entity.Entity):
+class TermsAndConditionsAssignment(Entity):
     """
     A termsAndConditionsAssignment entity represents the assignment of a given Terms and Conditions (T&C) policy to a given group. Users in the group will be required to accept the terms in order to have devices enrolled into Intune.
     """
     # The OdataType property
     odata_type: Optional[str] = None
     # Assignment target that the T&C policy is assigned to.
-    target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None
+    target: Optional[DeviceAndAppManagementAssignmentTarget] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermsAndConditionsAssignment:
@@ -35,12 +36,14 @@ class TermsAndConditionsAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_assignment_target, entity
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+        from .entity import Entity
 
-        from . import device_and_app_management_assignment_target, entity
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "target": lambda n : setattr(self, 'target', n.get_object_value(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget)),
+            "target": lambda n : setattr(self, 'target', n.get_object_value(DeviceAndAppManagementAssignmentTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

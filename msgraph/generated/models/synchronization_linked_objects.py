@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import synchronization_job_subject
+    from .synchronization_job_subject import SynchronizationJobSubject
 
 @dataclass
 class SynchronizationLinkedObjects(AdditionalDataHolder, Parsable):
@@ -12,13 +12,13 @@ class SynchronizationLinkedObjects(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The manager property
-    manager: Optional[synchronization_job_subject.SynchronizationJobSubject] = None
+    manager: Optional[SynchronizationJobSubject] = None
     # The members property
-    members: Optional[List[synchronization_job_subject.SynchronizationJobSubject]] = None
+    members: Optional[List[SynchronizationJobSubject]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The owners property
-    owners: Optional[List[synchronization_job_subject.SynchronizationJobSubject]] = None
+    owners: Optional[List[SynchronizationJobSubject]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SynchronizationLinkedObjects:
@@ -37,15 +37,15 @@ class SynchronizationLinkedObjects(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import synchronization_job_subject
+        from .synchronization_job_subject import SynchronizationJobSubject
 
-        from . import synchronization_job_subject
+        from .synchronization_job_subject import SynchronizationJobSubject
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "manager": lambda n : setattr(self, 'manager', n.get_object_value(synchronization_job_subject.SynchronizationJobSubject)),
-            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(synchronization_job_subject.SynchronizationJobSubject)),
+            "manager": lambda n : setattr(self, 'manager', n.get_object_value(SynchronizationJobSubject)),
+            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(SynchronizationJobSubject)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(synchronization_job_subject.SynchronizationJobSubject)),
+            "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(SynchronizationJobSubject)),
         }
         return fields
     

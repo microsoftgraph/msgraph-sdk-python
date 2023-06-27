@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_axis_title_format
+    from .entity import Entity
+    from .workbook_chart_axis_title_format import WorkbookChartAxisTitleFormat
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartAxisTitle(entity.Entity):
+class WorkbookChartAxisTitle(Entity):
     # Represents the formatting of chart axis title. Read-only.
-    format: Optional[workbook_chart_axis_title_format.WorkbookChartAxisTitleFormat] = None
+    format: Optional[WorkbookChartAxisTitleFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents the axis title.
@@ -36,12 +37,14 @@ class WorkbookChartAxisTitle(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_axis_title_format
+        from .entity import Entity
+        from .workbook_chart_axis_title_format import WorkbookChartAxisTitleFormat
 
-        from . import entity, workbook_chart_axis_title_format
+        from .entity import Entity
+        from .workbook_chart_axis_title_format import WorkbookChartAxisTitleFormat
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_axis_title_format.WorkbookChartAxisTitleFormat)),
+            "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartAxisTitleFormat)),
             "text": lambda n : setattr(self, 'text', n.get_str_value()),
             "visible": lambda n : setattr(self, 'visible', n.get_bool_value()),
         }

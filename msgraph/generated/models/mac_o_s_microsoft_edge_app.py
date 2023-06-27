@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import microsoft_edge_channel, mobile_app
+    from .microsoft_edge_channel import MicrosoftEdgeChannel
+    from .mobile_app import MobileApp
 
-from . import mobile_app
+from .mobile_app import MobileApp
 
 @dataclass
-class MacOSMicrosoftEdgeApp(mobile_app.MobileApp):
+class MacOSMicrosoftEdgeApp(MobileApp):
     odata_type = "#microsoft.graph.macOSMicrosoftEdgeApp"
     # The enum to specify the channels for Microsoft Edge apps.
-    channel: Optional[microsoft_edge_channel.MicrosoftEdgeChannel] = None
+    channel: Optional[MicrosoftEdgeChannel] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOSMicrosoftEdgeApp:
@@ -31,12 +32,14 @@ class MacOSMicrosoftEdgeApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import microsoft_edge_channel, mobile_app
+        from .microsoft_edge_channel import MicrosoftEdgeChannel
+        from .mobile_app import MobileApp
 
-        from . import microsoft_edge_channel, mobile_app
+        from .microsoft_edge_channel import MicrosoftEdgeChannel
+        from .mobile_app import MobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "channel": lambda n : setattr(self, 'channel', n.get_enum_value(microsoft_edge_channel.MicrosoftEdgeChannel)),
+            "channel": lambda n : setattr(self, 'channel', n.get_enum_value(MicrosoftEdgeChannel)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

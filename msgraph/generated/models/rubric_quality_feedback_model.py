@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_item_body
+    from .education_item_body import EducationItemBody
 
 @dataclass
 class RubricQualityFeedbackModel(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class RubricQualityFeedbackModel(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Specific feedback for one quality of this rubric.
-    feedback: Optional[education_item_body.EducationItemBody] = None
+    feedback: Optional[EducationItemBody] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The ID of the rubricQuality that this feedback is related to.
@@ -35,12 +35,12 @@ class RubricQualityFeedbackModel(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_item_body
+        from .education_item_body import EducationItemBody
 
-        from . import education_item_body
+        from .education_item_body import EducationItemBody
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(education_item_body.EducationItemBody)),
+            "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(EducationItemBody)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "qualityId": lambda n : setattr(self, 'quality_id', n.get_str_value()),
         }

@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import object_definition, string_key_object_value_pair
+    from .object_definition import ObjectDefinition
+    from .string_key_object_value_pair import StringKeyObjectValuePair
 
 @dataclass
 class ExpressionInputObject(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class ExpressionInputObject(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The definition property
-    definition: Optional[object_definition.ObjectDefinition] = None
+    definition: Optional[ObjectDefinition] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The properties property
-    properties: Optional[List[string_key_object_value_pair.StringKeyObjectValuePair]] = None
+    properties: Optional[List[StringKeyObjectValuePair]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExpressionInputObject:
@@ -35,14 +36,16 @@ class ExpressionInputObject(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import object_definition, string_key_object_value_pair
+        from .object_definition import ObjectDefinition
+        from .string_key_object_value_pair import StringKeyObjectValuePair
 
-        from . import object_definition, string_key_object_value_pair
+        from .object_definition import ObjectDefinition
+        from .string_key_object_value_pair import StringKeyObjectValuePair
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "definition": lambda n : setattr(self, 'definition', n.get_object_value(object_definition.ObjectDefinition)),
+            "definition": lambda n : setattr(self, 'definition', n.get_object_value(ObjectDefinition)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(string_key_object_value_pair.StringKeyObjectValuePair)),
+            "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(StringKeyObjectValuePair)),
         }
         return fields
     

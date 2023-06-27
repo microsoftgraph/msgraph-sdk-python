@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookRangeFont(entity.Entity):
+class WorkbookRangeFont(Entity):
     # Represents the bold status of font.
     bold: Optional[bool] = None
     # HTML color code representation of the text color. E.g. #FF0000 represents Red.
@@ -42,9 +42,9 @@ class WorkbookRangeFont(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bold": lambda n : setattr(self, 'bold', n.get_bool_value()),

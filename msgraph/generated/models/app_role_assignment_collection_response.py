@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import app_role_assignment, base_collection_pagination_count_response
+    from .app_role_assignment import AppRoleAssignment
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class AppRoleAssignmentCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class AppRoleAssignmentCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[app_role_assignment.AppRoleAssignment]] = None
+    value: Optional[List[AppRoleAssignment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppRoleAssignmentCollectionResponse:
@@ -30,12 +31,14 @@ class AppRoleAssignmentCollectionResponse(base_collection_pagination_count_respo
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_role_assignment, base_collection_pagination_count_response
+        from .app_role_assignment import AppRoleAssignment
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
-        from . import app_role_assignment, base_collection_pagination_count_response
+        from .app_role_assignment import AppRoleAssignment
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(AppRoleAssignment)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

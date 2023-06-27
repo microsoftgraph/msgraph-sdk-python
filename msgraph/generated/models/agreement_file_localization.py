@@ -4,16 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import agreement_file_properties, agreement_file_version
+    from .agreement_file_properties import AgreementFileProperties
+    from .agreement_file_version import AgreementFileVersion
 
-from . import agreement_file_properties
+from .agreement_file_properties import AgreementFileProperties
 
 @dataclass
-class AgreementFileLocalization(agreement_file_properties.AgreementFileProperties):
+class AgreementFileLocalization(AgreementFileProperties):
     # The OdataType property
     odata_type: Optional[str] = None
     # Read-only. Customized versions of the terms of use agreement in the Azure AD tenant.
-    versions: Optional[List[agreement_file_version.AgreementFileVersion]] = None
+    versions: Optional[List[AgreementFileVersion]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AgreementFileLocalization:
@@ -32,12 +33,14 @@ class AgreementFileLocalization(agreement_file_properties.AgreementFilePropertie
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import agreement_file_properties, agreement_file_version
+        from .agreement_file_properties import AgreementFileProperties
+        from .agreement_file_version import AgreementFileVersion
 
-        from . import agreement_file_properties, agreement_file_version
+        from .agreement_file_properties import AgreementFileProperties
+        from .agreement_file_version import AgreementFileVersion
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "versions": lambda n : setattr(self, 'versions', n.get_collection_of_object_values(agreement_file_version.AgreementFileVersion)),
+            "versions": lambda n : setattr(self, 'versions', n.get_collection_of_object_values(AgreementFileVersion)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

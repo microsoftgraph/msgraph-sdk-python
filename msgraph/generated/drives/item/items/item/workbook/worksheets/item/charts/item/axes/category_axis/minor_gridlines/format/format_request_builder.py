@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..............models import workbook_chart_gridlines_format
-    from ..............models.o_data_errors import o_data_error
-    from .line import line_request_builder
+    from ..............models.o_data_errors.o_data_error import ODataError
+    from ..............models.workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
+    from .line.line_request_builder import LineRequestBuilder
 
 class FormatRequestBuilder():
     """
@@ -45,62 +45,62 @@ class FormatRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..............models.o_data_errors import o_data_error
+        from ..............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[FormatRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat]:
+    async def get(self,request_configuration: Optional[FormatRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartGridlinesFormat]:
         """
         Represents the formatting of chart gridlines. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat]
+        Returns: Optional[WorkbookChartGridlinesFormat]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..............models.o_data_errors import o_data_error
+        from ..............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..............models import workbook_chart_gridlines_format
+        from ..............models.workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
 
-        return await self.request_adapter.send_async(request_info, workbook_chart_gridlines_format.WorkbookChartGridlinesFormat, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChartGridlinesFormat, error_mapping)
     
-    async def patch(self,body: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat] = None, request_configuration: Optional[FormatRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat]:
+    async def patch(self,body: Optional[WorkbookChartGridlinesFormat] = None, request_configuration: Optional[FormatRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChartGridlinesFormat]:
         """
         Update the navigation property format in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat]
+        Returns: Optional[WorkbookChartGridlinesFormat]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..............models.o_data_errors import o_data_error
+        from ..............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..............models import workbook_chart_gridlines_format
+        from ..............models.workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
 
-        return await self.request_adapter.send_async(request_info, workbook_chart_gridlines_format.WorkbookChartGridlinesFormat, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChartGridlinesFormat, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[FormatRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class FormatRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat] = None, request_configuration: Optional[FormatRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookChartGridlinesFormat] = None, request_configuration: Optional[FormatRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property format in drives
         Args:
@@ -158,13 +158,13 @@ class FormatRequestBuilder():
         return request_info
     
     @property
-    def line(self) -> line_request_builder.LineRequestBuilder:
+    def line(self) -> LineRequestBuilder:
         """
         Provides operations to manage the line property of the microsoft.graph.workbookChartGridlinesFormat entity.
         """
-        from .line import line_request_builder
+        from .line.line_request_builder import LineRequestBuilder
 
-        return line_request_builder.LineRequestBuilder(self.request_adapter, self.path_parameters)
+        return LineRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class FormatRequestBuilderDeleteRequestConfiguration():

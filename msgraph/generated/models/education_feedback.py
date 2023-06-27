@@ -1,11 +1,12 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_item_body, identity_set
+    from .education_item_body import EducationItemBody
+    from .identity_set import IdentitySet
 
 @dataclass
 class EducationFeedback(AdditionalDataHolder, Parsable):
@@ -13,13 +14,13 @@ class EducationFeedback(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # User who created the feedback.
-    feedback_by: Optional[identity_set.IdentitySet] = None
+    feedback_by: Optional[IdentitySet] = None
     # Moment in time when the feedback was given. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    feedback_date_time: Optional[datetime] = None
+    feedback_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Feedback.
-    text: Optional[education_item_body.EducationItemBody] = None
+    text: Optional[EducationItemBody] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationFeedback:
@@ -38,15 +39,17 @@ class EducationFeedback(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_item_body, identity_set
+        from .education_item_body import EducationItemBody
+        from .identity_set import IdentitySet
 
-        from . import education_item_body, identity_set
+        from .education_item_body import EducationItemBody
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "feedbackBy": lambda n : setattr(self, 'feedback_by', n.get_object_value(identity_set.IdentitySet)),
+            "feedbackBy": lambda n : setattr(self, 'feedback_by', n.get_object_value(IdentitySet)),
             "feedbackDateTime": lambda n : setattr(self, 'feedback_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "text": lambda n : setattr(self, 'text', n.get_object_value(education_item_body.EducationItemBody)),
+            "text": lambda n : setattr(self, 'text', n.get_object_value(EducationItemBody)),
         }
         return fields
     
@@ -59,7 +62,7 @@ class EducationFeedback(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("feedbackBy", self.feedback_by)
-        writer.write_datetime_value("feedbackDateTime", self.feedback_date_time)
+        writer.write_datetime_value()("feedbackDateTime", self.feedback_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("text", self.text)
         writer.write_additional_data_value(self.additional_data)

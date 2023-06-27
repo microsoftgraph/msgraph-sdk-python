@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import approval, request
+    from .approval import Approval
+    from .request import Request
 
-from . import request
+from .request import Request
 
 @dataclass
-class UserConsentRequest(request.Request):
+class UserConsentRequest(Request):
     # Approval decisions associated with a request.
-    approval: Optional[approval.Approval] = None
+    approval: Optional[Approval] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The user's justification for requiring access to the app. Supports $filter (eq only) and $orderby.
@@ -34,12 +35,14 @@ class UserConsentRequest(request.Request):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import approval, request
+        from .approval import Approval
+        from .request import Request
 
-        from . import approval, request
+        from .approval import Approval
+        from .request import Request
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "approval": lambda n : setattr(self, 'approval', n.get_object_value(approval.Approval)),
+            "approval": lambda n : setattr(self, 'approval', n.get_object_value(Approval)),
             "reason": lambda n : setattr(self, 'reason', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

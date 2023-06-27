@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ios_home_screen_item
+    from .ios_home_screen_item import IosHomeScreenItem
 
 @dataclass
 class IosHomeScreenPage(AdditionalDataHolder, Parsable):
@@ -17,7 +17,7 @@ class IosHomeScreenPage(AdditionalDataHolder, Parsable):
     # Name of the page
     display_name: Optional[str] = None
     # A list of apps, folders, and web clips to appear on a page. This collection can contain a maximum of 500 elements.
-    icons: Optional[List[ios_home_screen_item.IosHomeScreenItem]] = None
+    icons: Optional[List[IosHomeScreenItem]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -38,13 +38,13 @@ class IosHomeScreenPage(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ios_home_screen_item
+        from .ios_home_screen_item import IosHomeScreenItem
 
-        from . import ios_home_screen_item
+        from .ios_home_screen_item import IosHomeScreenItem
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "icons": lambda n : setattr(self, 'icons', n.get_collection_of_object_values(ios_home_screen_item.IosHomeScreenItem)),
+            "icons": lambda n : setattr(self, 'icons', n.get_collection_of_object_values(IosHomeScreenItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

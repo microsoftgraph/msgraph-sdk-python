@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import subject_rights_request
-    from ....models.o_data_errors import o_data_error
-    from .get_final_attachment import get_final_attachment_request_builder
-    from .get_final_report import get_final_report_request_builder
-    from .notes import notes_request_builder
-    from .team import team_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.subject_rights_request import SubjectRightsRequest
+    from .get_final_attachment.get_final_attachment_request_builder import GetFinalAttachmentRequestBuilder
+    from .get_final_report.get_final_report_request_builder import GetFinalReportRequestBuilder
+    from .notes.notes_request_builder import NotesRequestBuilder
+    from .team.team_request_builder import TeamRequestBuilder
 
 class SubjectRightsRequestItemRequestBuilder():
     """
@@ -48,62 +48,62 @@ class SubjectRightsRequestItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[subject_rights_request.SubjectRightsRequest]:
+    async def get(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SubjectRightsRequest]:
         """
         Read the properties and relationships of a subjectRightsRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[subject_rights_request.SubjectRightsRequest]
+        Returns: Optional[SubjectRightsRequest]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import subject_rights_request
+        from ....models.subject_rights_request import SubjectRightsRequest
 
-        return await self.request_adapter.send_async(request_info, subject_rights_request.SubjectRightsRequest, error_mapping)
+        return await self.request_adapter.send_async(request_info, SubjectRightsRequest, error_mapping)
     
-    async def patch(self,body: Optional[subject_rights_request.SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[subject_rights_request.SubjectRightsRequest]:
+    async def patch(self,body: Optional[SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SubjectRightsRequest]:
         """
         Update the properties of a subjectRightsRequest object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[subject_rights_request.SubjectRightsRequest]
+        Returns: Optional[SubjectRightsRequest]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import subject_rights_request
+        from ....models.subject_rights_request import SubjectRightsRequest
 
-        return await self.request_adapter.send_async(request_info, subject_rights_request.SubjectRightsRequest, error_mapping)
+        return await self.request_adapter.send_async(request_info, SubjectRightsRequest, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -139,7 +139,7 @@ class SubjectRightsRequestItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[subject_rights_request.SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a subjectRightsRequest object.
         Args:
@@ -161,40 +161,40 @@ class SubjectRightsRequestItemRequestBuilder():
         return request_info
     
     @property
-    def get_final_attachment(self) -> get_final_attachment_request_builder.GetFinalAttachmentRequestBuilder:
+    def get_final_attachment(self) -> GetFinalAttachmentRequestBuilder:
         """
         Provides operations to call the getFinalAttachment method.
         """
-        from .get_final_attachment import get_final_attachment_request_builder
+        from .get_final_attachment.get_final_attachment_request_builder import GetFinalAttachmentRequestBuilder
 
-        return get_final_attachment_request_builder.GetFinalAttachmentRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetFinalAttachmentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_final_report(self) -> get_final_report_request_builder.GetFinalReportRequestBuilder:
+    def get_final_report(self) -> GetFinalReportRequestBuilder:
         """
         Provides operations to call the getFinalReport method.
         """
-        from .get_final_report import get_final_report_request_builder
+        from .get_final_report.get_final_report_request_builder import GetFinalReportRequestBuilder
 
-        return get_final_report_request_builder.GetFinalReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetFinalReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def notes(self) -> notes_request_builder.NotesRequestBuilder:
+    def notes(self) -> NotesRequestBuilder:
         """
         Provides operations to manage the notes property of the microsoft.graph.subjectRightsRequest entity.
         """
-        from .notes import notes_request_builder
+        from .notes.notes_request_builder import NotesRequestBuilder
 
-        return notes_request_builder.NotesRequestBuilder(self.request_adapter, self.path_parameters)
+        return NotesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def team(self) -> team_request_builder.TeamRequestBuilder:
+    def team(self) -> TeamRequestBuilder:
         """
         Provides operations to manage the team property of the microsoft.graph.subjectRightsRequest entity.
         """
-        from .team import team_request_builder
+        from .team.team_request_builder import TeamRequestBuilder
 
-        return team_request_builder.TeamRequestBuilder(self.request_adapter, self.path_parameters)
+        return TeamRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SubjectRightsRequestItemRequestBuilderDeleteRequestConfiguration():

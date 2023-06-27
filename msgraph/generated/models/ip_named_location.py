@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ip_range, named_location
+    from .ip_range import IpRange
+    from .named_location import NamedLocation
 
-from . import named_location
+from .named_location import NamedLocation
 
 @dataclass
-class IpNamedLocation(named_location.NamedLocation):
+class IpNamedLocation(NamedLocation):
     # List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC5969. Required.
-    ip_ranges: Optional[List[ip_range.IpRange]] = None
+    ip_ranges: Optional[List[IpRange]] = None
     # true if this location is explicitly trusted. Optional. Default value is false.
     is_trusted: Optional[bool] = None
     # The OdataType property
@@ -34,12 +35,14 @@ class IpNamedLocation(named_location.NamedLocation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ip_range, named_location
+        from .ip_range import IpRange
+        from .named_location import NamedLocation
 
-        from . import ip_range, named_location
+        from .ip_range import IpRange
+        from .named_location import NamedLocation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "ipRanges": lambda n : setattr(self, 'ip_ranges', n.get_collection_of_object_values(ip_range.IpRange)),
+            "ipRanges": lambda n : setattr(self, 'ip_ranges', n.get_collection_of_object_values(IpRange)),
             "isTrusted": lambda n : setattr(self, 'is_trusted', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import print_task_trigger
-    from ......models.o_data_errors import o_data_error
-    from .definition import definition_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.print_task_trigger import PrintTaskTrigger
+    from .definition.definition_request_builder import DefinitionRequestBuilder
 
 class PrintTaskTriggerItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class PrintTaskTriggerItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PrintTaskTriggerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[print_task_trigger.PrintTaskTrigger]:
+    async def get(self,request_configuration: Optional[PrintTaskTriggerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintTaskTrigger]:
         """
         Get a task trigger from a printer. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_task_trigger.PrintTaskTrigger]
+        Returns: Optional[PrintTaskTrigger]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import print_task_trigger
+        from ......models.print_task_trigger import PrintTaskTrigger
 
-        return await self.request_adapter.send_async(request_info, print_task_trigger.PrintTaskTrigger, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintTaskTrigger, error_mapping)
     
-    async def patch(self,body: Optional[print_task_trigger.PrintTaskTrigger] = None, request_configuration: Optional[PrintTaskTriggerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[print_task_trigger.PrintTaskTrigger]:
+    async def patch(self,body: Optional[PrintTaskTrigger] = None, request_configuration: Optional[PrintTaskTriggerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrintTaskTrigger]:
         """
         Update the navigation property taskTriggers in print
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_task_trigger.PrintTaskTrigger]
+        Returns: Optional[PrintTaskTrigger]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import print_task_trigger
+        from ......models.print_task_trigger import PrintTaskTrigger
 
-        return await self.request_adapter.send_async(request_info, print_task_trigger.PrintTaskTrigger, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintTaskTrigger, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PrintTaskTriggerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class PrintTaskTriggerItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[print_task_trigger.PrintTaskTrigger] = None, request_configuration: Optional[PrintTaskTriggerItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PrintTaskTrigger] = None, request_configuration: Optional[PrintTaskTriggerItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property taskTriggers in print
         Args:
@@ -158,13 +158,13 @@ class PrintTaskTriggerItemRequestBuilder():
         return request_info
     
     @property
-    def definition(self) -> definition_request_builder.DefinitionRequestBuilder:
+    def definition(self) -> DefinitionRequestBuilder:
         """
         Provides operations to manage the definition property of the microsoft.graph.printTaskTrigger entity.
         """
-        from .definition import definition_request_builder
+        from .definition.definition_request_builder import DefinitionRequestBuilder
 
-        return definition_request_builder.DefinitionRequestBuilder(self.request_adapter, self.path_parameters)
+        return DefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PrintTaskTriggerItemRequestBuilderDeleteRequestConfiguration():

@@ -4,21 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import booking_customer_base, phone, physical_address
+    from .booking_customer_base import BookingCustomerBase
+    from .phone import Phone
+    from .physical_address import PhysicalAddress
 
-from . import booking_customer_base
+from .booking_customer_base import BookingCustomerBase
 
 @dataclass
-class BookingCustomer(booking_customer_base.BookingCustomerBase):
+class BookingCustomer(BookingCustomerBase):
     odata_type = "#microsoft.graph.bookingCustomer"
     # Addresses associated with the customer. The attribute type of physicalAddress is not supported in v1.0. Internally we map the addresses to the type others.
-    addresses: Optional[List[physical_address.PhysicalAddress]] = None
+    addresses: Optional[List[PhysicalAddress]] = None
     # The name of the customer.
     display_name: Optional[str] = None
     # The SMTP address of the customer.
     email_address: Optional[str] = None
     # Phone numbers associated with the customer, including home, business and mobile numbers.
-    phones: Optional[List[phone.Phone]] = None
+    phones: Optional[List[Phone]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingCustomer:
@@ -37,15 +39,19 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_customer_base, phone, physical_address
+        from .booking_customer_base import BookingCustomerBase
+        from .phone import Phone
+        from .physical_address import PhysicalAddress
 
-        from . import booking_customer_base, phone, physical_address
+        from .booking_customer_base import BookingCustomerBase
+        from .phone import Phone
+        from .physical_address import PhysicalAddress
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(physical_address.PhysicalAddress)),
+            "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(PhysicalAddress)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(phone.Phone)),
+            "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(Phone)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

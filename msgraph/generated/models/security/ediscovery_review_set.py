@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import data_set, ediscovery_review_set_query
+    from .data_set import DataSet
+    from .ediscovery_review_set_query import EdiscoveryReviewSetQuery
 
-from . import data_set
+from .data_set import DataSet
 
 @dataclass
-class EdiscoveryReviewSet(data_set.DataSet):
+class EdiscoveryReviewSet(DataSet):
     odata_type = "#microsoft.graph.security.ediscoveryReviewSet"
     # Represents queries within the review set.
-    queries: Optional[List[ediscovery_review_set_query.EdiscoveryReviewSetQuery]] = None
+    queries: Optional[List[EdiscoveryReviewSetQuery]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryReviewSet:
@@ -31,12 +32,14 @@ class EdiscoveryReviewSet(data_set.DataSet):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import data_set, ediscovery_review_set_query
+        from .data_set import DataSet
+        from .ediscovery_review_set_query import EdiscoveryReviewSetQuery
 
-        from . import data_set, ediscovery_review_set_query
+        from .data_set import DataSet
+        from .ediscovery_review_set_query import EdiscoveryReviewSetQuery
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "queries": lambda n : setattr(self, 'queries', n.get_collection_of_object_values(ediscovery_review_set_query.EdiscoveryReviewSetQuery)),
+            "queries": lambda n : setattr(self, 'queries', n.get_collection_of_object_values(EdiscoveryReviewSetQuery)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

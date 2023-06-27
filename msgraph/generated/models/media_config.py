@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import app_hosted_media_config, service_hosted_media_config
+    from .app_hosted_media_config import AppHostedMediaConfig
+    from .service_hosted_media_config import ServiceHostedMediaConfig
 
 @dataclass
 class MediaConfig(AdditionalDataHolder, Parsable):
@@ -29,13 +30,13 @@ class MediaConfig(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appHostedMediaConfig".casefold():
-            from . import app_hosted_media_config
+            from .app_hosted_media_config import AppHostedMediaConfig
 
-            return app_hosted_media_config.AppHostedMediaConfig()
+            return AppHostedMediaConfig()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceHostedMediaConfig".casefold():
-            from . import service_hosted_media_config
+            from .service_hosted_media_config import ServiceHostedMediaConfig
 
-            return service_hosted_media_config.ServiceHostedMediaConfig()
+            return ServiceHostedMediaConfig()
         return MediaConfig()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -43,9 +44,11 @@ class MediaConfig(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_hosted_media_config, service_hosted_media_config
+        from .app_hosted_media_config import AppHostedMediaConfig
+        from .service_hosted_media_config import ServiceHostedMediaConfig
 
-        from . import app_hosted_media_config, service_hosted_media_config
+        from .app_hosted_media_config import AppHostedMediaConfig
+        from .service_hosted_media_config import ServiceHostedMediaConfig
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import access_package_assignment
-    from .....models.o_data_errors import o_data_error
-    from .access_package import access_package_request_builder
-    from .assignment_policy import assignment_policy_request_builder
-    from .reprocess import reprocess_request_builder
-    from .target import target_request_builder
+    from .....models.access_package_assignment import AccessPackageAssignment
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .access_package.access_package_request_builder import AccessPackageRequestBuilder
+    from .assignment_policy.assignment_policy_request_builder import AssignmentPolicyRequestBuilder
+    from .reprocess.reprocess_request_builder import ReprocessRequestBuilder
+    from .target.target_request_builder import TargetRequestBuilder
 
 class AccessPackageAssignmentItemRequestBuilder():
     """
@@ -48,62 +48,62 @@ class AccessPackageAssignmentItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_assignment.AccessPackageAssignment]:
+    async def get(self,request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageAssignment]:
         """
         In Azure AD entitlement management, retrieve the properties and relationships of an accessPackageAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_assignment.AccessPackageAssignment]
+        Returns: Optional[AccessPackageAssignment]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import access_package_assignment
+        from .....models.access_package_assignment import AccessPackageAssignment
 
-        return await self.request_adapter.send_async(request_info, access_package_assignment.AccessPackageAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageAssignment, error_mapping)
     
-    async def patch(self,body: Optional[access_package_assignment.AccessPackageAssignment] = None, request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_package_assignment.AccessPackageAssignment]:
+    async def patch(self,body: Optional[AccessPackageAssignment] = None, request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AccessPackageAssignment]:
         """
         Update the navigation property assignments in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_assignment.AccessPackageAssignment]
+        Returns: Optional[AccessPackageAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import access_package_assignment
+        from .....models.access_package_assignment import AccessPackageAssignment
 
-        return await self.request_adapter.send_async(request_info, access_package_assignment.AccessPackageAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageAssignment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -139,7 +139,7 @@ class AccessPackageAssignmentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[access_package_assignment.AccessPackageAssignment] = None, request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AccessPackageAssignment] = None, request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property assignments in identityGovernance
         Args:
@@ -161,40 +161,40 @@ class AccessPackageAssignmentItemRequestBuilder():
         return request_info
     
     @property
-    def access_package(self) -> access_package_request_builder.AccessPackageRequestBuilder:
+    def access_package(self) -> AccessPackageRequestBuilder:
         """
         Provides operations to manage the accessPackage property of the microsoft.graph.accessPackageAssignment entity.
         """
-        from .access_package import access_package_request_builder
+        from .access_package.access_package_request_builder import AccessPackageRequestBuilder
 
-        return access_package_request_builder.AccessPackageRequestBuilder(self.request_adapter, self.path_parameters)
+        return AccessPackageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignment_policy(self) -> assignment_policy_request_builder.AssignmentPolicyRequestBuilder:
+    def assignment_policy(self) -> AssignmentPolicyRequestBuilder:
         """
         Provides operations to manage the assignmentPolicy property of the microsoft.graph.accessPackageAssignment entity.
         """
-        from .assignment_policy import assignment_policy_request_builder
+        from .assignment_policy.assignment_policy_request_builder import AssignmentPolicyRequestBuilder
 
-        return assignment_policy_request_builder.AssignmentPolicyRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def reprocess(self) -> reprocess_request_builder.ReprocessRequestBuilder:
+    def reprocess(self) -> ReprocessRequestBuilder:
         """
         Provides operations to call the reprocess method.
         """
-        from .reprocess import reprocess_request_builder
+        from .reprocess.reprocess_request_builder import ReprocessRequestBuilder
 
-        return reprocess_request_builder.ReprocessRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReprocessRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def target(self) -> target_request_builder.TargetRequestBuilder:
+    def target(self) -> TargetRequestBuilder:
         """
         Provides operations to manage the target property of the microsoft.graph.accessPackageAssignment entity.
         """
-        from .target import target_request_builder
+        from .target.target_request_builder import TargetRequestBuilder
 
-        return target_request_builder.TargetRequestBuilder(self.request_adapter, self.path_parameters)
+        return TargetRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AccessPackageAssignmentItemRequestBuilderDeleteRequestConfiguration():

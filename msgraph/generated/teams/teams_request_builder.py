@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import team, team_collection_response
-    from ..models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .get_all_messages import get_all_messages_request_builder
-    from .item import team_item_request_builder
+    from ..models.o_data_errors.o_data_error import ODataError
+    from ..models.team import Team
+    from ..models.team_collection_response import TeamCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .get_all_messages.get_all_messages_request_builder import GetAllMessagesRequestBuilder
+    from .item.team_item_request_builder import TeamItemRequestBuilder
 
 class TeamsRequestBuilder():
     """
@@ -38,67 +39,67 @@ class TeamsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_team_id(self,team_id: str) -> team_item_request_builder.TeamItemRequestBuilder:
+    def by_team_id(self,team_id: str) -> TeamItemRequestBuilder:
         """
         Provides operations to manage the collection of team entities.
         Args:
             team_id: Unique identifier of the item
-        Returns: team_item_request_builder.TeamItemRequestBuilder
+        Returns: TeamItemRequestBuilder
         """
         if not team_id:
             raise TypeError("team_id cannot be null.")
-        from .item import team_item_request_builder
+        from .item.team_item_request_builder import TeamItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["team%2Did"] = team_id
-        return team_item_request_builder.TeamItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return TeamItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[team_collection_response.TeamCollectionResponse]:
+    async def get(self,request_configuration: Optional[TeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamCollectionResponse]:
         """
         Retrieve the properties and relationships of the specified team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[team_collection_response.TeamCollectionResponse]
+        Returns: Optional[TeamCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import team_collection_response
+        from ..models.team_collection_response import TeamCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, team_collection_response.TeamCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamsRequestBuilderPostRequestConfiguration] = None) -> Optional[team.Team]:
+    async def post(self,body: Optional[Team] = None, request_configuration: Optional[TeamsRequestBuilderPostRequestConfiguration] = None) -> Optional[Team]:
         """
         Create a new team.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[team.Team]
+        Returns: Optional[Team]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import team
+        from ..models.team import Team
 
-        return await self.request_adapter.send_async(request_info, team.Team, error_mapping)
+        return await self.request_adapter.send_async(request_info, Team, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -118,7 +119,7 @@ class TeamsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Team] = None, request_configuration: Optional[TeamsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new team.
         Args:
@@ -140,22 +141,22 @@ class TeamsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_all_messages(self) -> get_all_messages_request_builder.GetAllMessagesRequestBuilder:
+    def get_all_messages(self) -> GetAllMessagesRequestBuilder:
         """
         Provides operations to call the getAllMessages method.
         """
-        from .get_all_messages import get_all_messages_request_builder
+        from .get_all_messages.get_all_messages_request_builder import GetAllMessagesRequestBuilder
 
-        return get_all_messages_request_builder.GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TeamsRequestBuilderGetQueryParameters():

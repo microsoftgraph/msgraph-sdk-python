@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -10,7 +10,7 @@ class DomainState(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Timestamp for when the last activity occurred. The value is updated when an operation is scheduled, the asynchronous task starts, and when the operation completes.
-    last_action_date_time: Optional[datetime] = None
+    last_action_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Type of asynchronous operation. The values can be ForceDelete or Verification
@@ -51,7 +51,7 @@ class DomainState(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("lastActionDateTime", self.last_action_date_time)
+        writer.write_datetime_value()("lastActionDateTime", self.last_action_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("operation", self.operation)
         writer.write_str_value("status", self.status)

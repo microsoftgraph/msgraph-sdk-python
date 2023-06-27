@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import domain_dns_record
-    from .....models.o_data_errors import o_data_error
+    from .....models.domain_dns_record import DomainDnsRecord
+    from .....models.o_data_errors.o_data_error import ODataError
 
 class DomainDnsRecordItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class DomainDnsRecordItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DomainDnsRecordItemRequestBuilderGetRequestConfiguration] = None) -> Optional[domain_dns_record.DomainDnsRecord]:
+    async def get(self,request_configuration: Optional[DomainDnsRecordItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DomainDnsRecord]:
         """
         DNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[domain_dns_record.DomainDnsRecord]
+        Returns: Optional[DomainDnsRecord]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import domain_dns_record
+        from .....models.domain_dns_record import DomainDnsRecord
 
-        return await self.request_adapter.send_async(request_info, domain_dns_record.DomainDnsRecord, error_mapping)
+        return await self.request_adapter.send_async(request_info, DomainDnsRecord, error_mapping)
     
-    async def patch(self,body: Optional[domain_dns_record.DomainDnsRecord] = None, request_configuration: Optional[DomainDnsRecordItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[domain_dns_record.DomainDnsRecord]:
+    async def patch(self,body: Optional[DomainDnsRecord] = None, request_configuration: Optional[DomainDnsRecordItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DomainDnsRecord]:
         """
         Update the navigation property serviceConfigurationRecords in domains
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[domain_dns_record.DomainDnsRecord]
+        Returns: Optional[DomainDnsRecord]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import domain_dns_record
+        from .....models.domain_dns_record import DomainDnsRecord
 
-        return await self.request_adapter.send_async(request_info, domain_dns_record.DomainDnsRecord, error_mapping)
+        return await self.request_adapter.send_async(request_info, DomainDnsRecord, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DomainDnsRecordItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class DomainDnsRecordItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[domain_dns_record.DomainDnsRecord] = None, request_configuration: Optional[DomainDnsRecordItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DomainDnsRecord] = None, request_configuration: Optional[DomainDnsRecordItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property serviceConfigurationRecords in domains
         Args:

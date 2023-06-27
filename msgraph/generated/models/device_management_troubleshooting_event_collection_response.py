@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, device_management_troubleshooting_event
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class DeviceManagementTroubleshootingEventCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class DeviceManagementTroubleshootingEventCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]] = None
+    value: Optional[List[DeviceManagementTroubleshootingEvent]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagementTroubleshootingEventCollectionResponse:
@@ -30,12 +31,14 @@ class DeviceManagementTroubleshootingEventCollectionResponse(base_collection_pag
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, device_management_troubleshooting_event
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
-        from . import base_collection_pagination_count_response, device_management_troubleshooting_event
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(DeviceManagementTroubleshootingEvent)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import print_document, print_document_collection_response
-    from .......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import print_document_item_request_builder
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.print_document import PrintDocument
+    from .......models.print_document_collection_response import PrintDocumentCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.print_document_item_request_builder import PrintDocumentItemRequestBuilder
 
 class DocumentsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class DocumentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_print_document_id(self,print_document_id: str) -> print_document_item_request_builder.PrintDocumentItemRequestBuilder:
+    def by_print_document_id(self,print_document_id: str) -> PrintDocumentItemRequestBuilder:
         """
         Provides operations to manage the documents property of the microsoft.graph.printJob entity.
         Args:
             print_document_id: Unique identifier of the item
-        Returns: print_document_item_request_builder.PrintDocumentItemRequestBuilder
+        Returns: PrintDocumentItemRequestBuilder
         """
         if not print_document_id:
             raise TypeError("print_document_id cannot be null.")
-        from .item import print_document_item_request_builder
+        from .item.print_document_item_request_builder import PrintDocumentItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printDocument%2Did"] = print_document_id
-        return print_document_item_request_builder.PrintDocumentItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return PrintDocumentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DocumentsRequestBuilderGetRequestConfiguration] = None) -> Optional[print_document_collection_response.PrintDocumentCollectionResponse]:
+    async def get(self,request_configuration: Optional[DocumentsRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintDocumentCollectionResponse]:
         """
         Get documents from print
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_document_collection_response.PrintDocumentCollectionResponse]
+        Returns: Optional[PrintDocumentCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import print_document_collection_response
+        from .......models.print_document_collection_response import PrintDocumentCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, print_document_collection_response.PrintDocumentCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintDocumentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[print_document.PrintDocument] = None, request_configuration: Optional[DocumentsRequestBuilderPostRequestConfiguration] = None) -> Optional[print_document.PrintDocument]:
+    async def post(self,body: Optional[PrintDocument] = None, request_configuration: Optional[DocumentsRequestBuilderPostRequestConfiguration] = None) -> Optional[PrintDocument]:
         """
         Create new navigation property to documents for print
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_document.PrintDocument]
+        Returns: Optional[PrintDocument]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import print_document
+        from .......models.print_document import PrintDocument
 
-        return await self.request_adapter.send_async(request_info, print_document.PrintDocument, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintDocument, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DocumentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class DocumentsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[print_document.PrintDocument] = None, request_configuration: Optional[DocumentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PrintDocument] = None, request_configuration: Optional[DocumentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to documents for print
         Args:
@@ -139,13 +140,13 @@ class DocumentsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DocumentsRequestBuilderGetQueryParameters():

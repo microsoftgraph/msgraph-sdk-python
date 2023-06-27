@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import unified_role_management_policy_rule
+    from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-from . import unified_role_management_policy_rule
+from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
 @dataclass
-class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
+class UnifiedRoleManagementPolicyEnablementRule(UnifiedRoleManagementPolicyRule):
     odata_type = "#microsoft.graph.unifiedRoleManagementPolicyEnablementRule"
     # The collection of rules that are enabled for this policy rule. For example, MultiFactorAuthentication, Ticketing, and Justification.
     enabled_rules: Optional[List[str]] = None
@@ -31,9 +31,9 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import unified_role_management_policy_rule
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-        from . import unified_role_management_policy_rule
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         fields: Dict[str, Callable[[Any], None]] = {
             "enabledRules": lambda n : setattr(self, 'enabled_rules', n.get_collection_of_primitive_values(str)),

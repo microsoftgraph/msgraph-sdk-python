@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import rating_japan_movies_type, rating_japan_television_type
+    from .rating_japan_movies_type import RatingJapanMoviesType
+    from .rating_japan_television_type import RatingJapanTelevisionType
 
 @dataclass
 class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Movies rating labels in Japan
-    movie_rating: Optional[rating_japan_movies_type.RatingJapanMoviesType] = None
+    movie_rating: Optional[RatingJapanMoviesType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # TV content rating labels in Japan
-    tv_rating: Optional[rating_japan_television_type.RatingJapanTelevisionType] = None
+    tv_rating: Optional[RatingJapanTelevisionType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MediaContentRatingJapan:
@@ -35,14 +36,16 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import rating_japan_movies_type, rating_japan_television_type
+        from .rating_japan_movies_type import RatingJapanMoviesType
+        from .rating_japan_television_type import RatingJapanTelevisionType
 
-        from . import rating_japan_movies_type, rating_japan_television_type
+        from .rating_japan_movies_type import RatingJapanMoviesType
+        from .rating_japan_television_type import RatingJapanTelevisionType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(rating_japan_movies_type.RatingJapanMoviesType)),
+            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(RatingJapanMoviesType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(rating_japan_television_type.RatingJapanTelevisionType)),
+            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(RatingJapanTelevisionType)),
         }
         return fields
     

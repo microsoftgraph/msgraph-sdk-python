@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_strength_policy, conditional_access_grant_control
+    from .authentication_strength_policy import AuthenticationStrengthPolicy
+    from .conditional_access_grant_control import ConditionalAccessGrantControl
 
 @dataclass
 class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
@@ -12,9 +13,9 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The authenticationStrength property
-    authentication_strength: Optional[authentication_strength_policy.AuthenticationStrengthPolicy] = None
+    authentication_strength: Optional[AuthenticationStrengthPolicy] = None
     # List of values of built-in controls required by the policy. Possible values: block, mfa, compliantDevice, domainJoinedDevice, approvedApplication, compliantApplication, passwordChange, unknownFutureValue.
-    built_in_controls: Optional[List[conditional_access_grant_control.ConditionalAccessGrantControl]] = None
+    built_in_controls: Optional[List[ConditionalAccessGrantControl]] = None
     # List of custom controls IDs required by the policy. For more information, see Custom controls.
     custom_authentication_factors: Optional[List[str]] = None
     # The OdataType property
@@ -41,13 +42,15 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_strength_policy, conditional_access_grant_control
+        from .authentication_strength_policy import AuthenticationStrengthPolicy
+        from .conditional_access_grant_control import ConditionalAccessGrantControl
 
-        from . import authentication_strength_policy, conditional_access_grant_control
+        from .authentication_strength_policy import AuthenticationStrengthPolicy
+        from .conditional_access_grant_control import ConditionalAccessGrantControl
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationStrength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(authentication_strength_policy.AuthenticationStrengthPolicy)),
-            "builtInControls": lambda n : setattr(self, 'built_in_controls', n.get_collection_of_enum_values(conditional_access_grant_control.ConditionalAccessGrantControl)),
+            "authenticationStrength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(AuthenticationStrengthPolicy)),
+            "builtInControls": lambda n : setattr(self, 'built_in_controls', n.get_collection_of_enum_values(ConditionalAccessGrantControl)),
             "customAuthenticationFactors": lambda n : setattr(self, 'custom_authentication_factors', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operator": lambda n : setattr(self, 'operator', n.get_str_value()),

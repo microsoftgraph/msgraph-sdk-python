@@ -10,14 +10,14 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models.o_data_errors import o_data_error
-    from .......models.security import ediscovery_noncustodial_data_source
-    from .data_source import data_source_request_builder
-    from .last_index_operation import last_index_operation_request_builder
-    from .microsoft_graph_security_apply_hold import microsoft_graph_security_apply_hold_request_builder
-    from .microsoft_graph_security_release import microsoft_graph_security_release_request_builder
-    from .microsoft_graph_security_remove_hold import microsoft_graph_security_remove_hold_request_builder
-    from .microsoft_graph_security_update_index import microsoft_graph_security_update_index_request_builder
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
+    from .data_source.data_source_request_builder import DataSourceRequestBuilder
+    from .last_index_operation.last_index_operation_request_builder import LastIndexOperationRequestBuilder
+    from .microsoft_graph_security_apply_hold.microsoft_graph_security_apply_hold_request_builder import MicrosoftGraphSecurityApplyHoldRequestBuilder
+    from .microsoft_graph_security_release.microsoft_graph_security_release_request_builder import MicrosoftGraphSecurityReleaseRequestBuilder
+    from .microsoft_graph_security_remove_hold.microsoft_graph_security_remove_hold_request_builder import MicrosoftGraphSecurityRemoveHoldRequestBuilder
+    from .microsoft_graph_security_update_index.microsoft_graph_security_update_index_request_builder import MicrosoftGraphSecurityUpdateIndexRequestBuilder
 
 class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
     """
@@ -50,62 +50,62 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EdiscoveryNoncustodialDataSourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]:
+    async def get(self,request_configuration: Optional[EdiscoveryNoncustodialDataSourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryNoncustodialDataSource]:
         """
         Returns a list of case ediscoveryNoncustodialDataSource objects for this case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]
+        Returns: Optional[EdiscoveryNoncustodialDataSource]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models.security import ediscovery_noncustodial_data_source
+        from .......models.security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
 
-        return await self.request_adapter.send_async(request_info, ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoveryNoncustodialDataSource, error_mapping)
     
-    async def patch(self,body: Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource] = None, request_configuration: Optional[EdiscoveryNoncustodialDataSourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]:
+    async def patch(self,body: Optional[EdiscoveryNoncustodialDataSource] = None, request_configuration: Optional[EdiscoveryNoncustodialDataSourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EdiscoveryNoncustodialDataSource]:
         """
         Update the navigation property noncustodialDataSources in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]
+        Returns: Optional[EdiscoveryNoncustodialDataSource]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models.security import ediscovery_noncustodial_data_source
+        from .......models.security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
 
-        return await self.request_adapter.send_async(request_info, ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoveryNoncustodialDataSource, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryNoncustodialDataSourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -141,7 +141,7 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource] = None, request_configuration: Optional[EdiscoveryNoncustodialDataSourceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EdiscoveryNoncustodialDataSource] = None, request_configuration: Optional[EdiscoveryNoncustodialDataSourceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property noncustodialDataSources in security
         Args:
@@ -163,58 +163,58 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         return request_info
     
     @property
-    def data_source(self) -> data_source_request_builder.DataSourceRequestBuilder:
+    def data_source(self) -> DataSourceRequestBuilder:
         """
         Provides operations to manage the dataSource property of the microsoft.graph.security.ediscoveryNoncustodialDataSource entity.
         """
-        from .data_source import data_source_request_builder
+        from .data_source.data_source_request_builder import DataSourceRequestBuilder
 
-        return data_source_request_builder.DataSourceRequestBuilder(self.request_adapter, self.path_parameters)
+        return DataSourceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def last_index_operation(self) -> last_index_operation_request_builder.LastIndexOperationRequestBuilder:
+    def last_index_operation(self) -> LastIndexOperationRequestBuilder:
         """
         Provides operations to manage the lastIndexOperation property of the microsoft.graph.security.ediscoveryNoncustodialDataSource entity.
         """
-        from .last_index_operation import last_index_operation_request_builder
+        from .last_index_operation.last_index_operation_request_builder import LastIndexOperationRequestBuilder
 
-        return last_index_operation_request_builder.LastIndexOperationRequestBuilder(self.request_adapter, self.path_parameters)
+        return LastIndexOperationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_apply_hold(self) -> microsoft_graph_security_apply_hold_request_builder.MicrosoftGraphSecurityApplyHoldRequestBuilder:
+    def microsoft_graph_security_apply_hold(self) -> MicrosoftGraphSecurityApplyHoldRequestBuilder:
         """
         Provides operations to call the applyHold method.
         """
-        from .microsoft_graph_security_apply_hold import microsoft_graph_security_apply_hold_request_builder
+        from .microsoft_graph_security_apply_hold.microsoft_graph_security_apply_hold_request_builder import MicrosoftGraphSecurityApplyHoldRequestBuilder
 
-        return microsoft_graph_security_apply_hold_request_builder.MicrosoftGraphSecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
+        return MicrosoftGraphSecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_release(self) -> microsoft_graph_security_release_request_builder.MicrosoftGraphSecurityReleaseRequestBuilder:
+    def microsoft_graph_security_release(self) -> MicrosoftGraphSecurityReleaseRequestBuilder:
         """
         Provides operations to call the release method.
         """
-        from .microsoft_graph_security_release import microsoft_graph_security_release_request_builder
+        from .microsoft_graph_security_release.microsoft_graph_security_release_request_builder import MicrosoftGraphSecurityReleaseRequestBuilder
 
-        return microsoft_graph_security_release_request_builder.MicrosoftGraphSecurityReleaseRequestBuilder(self.request_adapter, self.path_parameters)
+        return MicrosoftGraphSecurityReleaseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_remove_hold(self) -> microsoft_graph_security_remove_hold_request_builder.MicrosoftGraphSecurityRemoveHoldRequestBuilder:
+    def microsoft_graph_security_remove_hold(self) -> MicrosoftGraphSecurityRemoveHoldRequestBuilder:
         """
         Provides operations to call the removeHold method.
         """
-        from .microsoft_graph_security_remove_hold import microsoft_graph_security_remove_hold_request_builder
+        from .microsoft_graph_security_remove_hold.microsoft_graph_security_remove_hold_request_builder import MicrosoftGraphSecurityRemoveHoldRequestBuilder
 
-        return microsoft_graph_security_remove_hold_request_builder.MicrosoftGraphSecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
+        return MicrosoftGraphSecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_update_index(self) -> microsoft_graph_security_update_index_request_builder.MicrosoftGraphSecurityUpdateIndexRequestBuilder:
+    def microsoft_graph_security_update_index(self) -> MicrosoftGraphSecurityUpdateIndexRequestBuilder:
         """
         Provides operations to call the updateIndex method.
         """
-        from .microsoft_graph_security_update_index import microsoft_graph_security_update_index_request_builder
+        from .microsoft_graph_security_update_index.microsoft_graph_security_update_index_request_builder import MicrosoftGraphSecurityUpdateIndexRequestBuilder
 
-        return microsoft_graph_security_update_index_request_builder.MicrosoftGraphSecurityUpdateIndexRequestBuilder(self.request_adapter, self.path_parameters)
+        return MicrosoftGraphSecurityUpdateIndexRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EdiscoveryNoncustodialDataSourceItemRequestBuilderDeleteRequestConfiguration():

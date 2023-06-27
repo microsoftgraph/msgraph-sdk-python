@@ -4,16 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import approval_stage, entity
+    from .approval_stage import ApprovalStage
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Approval(entity.Entity):
+class Approval(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of stages in the approval decision.
-    stages: Optional[List[approval_stage.ApprovalStage]] = None
+    stages: Optional[List[ApprovalStage]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Approval:
@@ -32,12 +33,14 @@ class Approval(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import approval_stage, entity
+        from .approval_stage import ApprovalStage
+        from .entity import Entity
 
-        from . import approval_stage, entity
+        from .approval_stage import ApprovalStage
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(approval_stage.ApprovalStage)),
+            "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(ApprovalStage)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

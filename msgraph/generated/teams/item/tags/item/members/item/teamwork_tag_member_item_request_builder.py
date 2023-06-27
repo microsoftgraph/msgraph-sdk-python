@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import teamwork_tag_member
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.teamwork_tag_member import TeamworkTagMember
 
 class TeamworkTagMemberItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class TeamworkTagMemberItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork_tag_member.TeamworkTagMember]:
+    async def get(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamworkTagMember]:
         """
         Get the properties and relationships of a member of a standard tag in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teamwork_tag_member.TeamworkTagMember]
+        Returns: Optional[TeamworkTagMember]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import teamwork_tag_member
+        from .......models.teamwork_tag_member import TeamworkTagMember
 
-        return await self.request_adapter.send_async(request_info, teamwork_tag_member.TeamworkTagMember, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamworkTagMember, error_mapping)
     
-    async def patch(self,body: Optional[teamwork_tag_member.TeamworkTagMember] = None, request_configuration: Optional[TeamworkTagMemberItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[teamwork_tag_member.TeamworkTagMember]:
+    async def patch(self,body: Optional[TeamworkTagMember] = None, request_configuration: Optional[TeamworkTagMemberItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TeamworkTagMember]:
         """
         Update the navigation property members in teams
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teamwork_tag_member.TeamworkTagMember]
+        Returns: Optional[TeamworkTagMember]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import teamwork_tag_member
+        from .......models.teamwork_tag_member import TeamworkTagMember
 
-        return await self.request_adapter.send_async(request_info, teamwork_tag_member.TeamworkTagMember, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamworkTagMember, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class TeamworkTagMemberItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[teamwork_tag_member.TeamworkTagMember] = None, request_configuration: Optional[TeamworkTagMemberItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TeamworkTagMember] = None, request_configuration: Optional[TeamworkTagMemberItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property members in teams
         Args:

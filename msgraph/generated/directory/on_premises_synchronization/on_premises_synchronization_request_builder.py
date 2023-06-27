@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import on_premises_directory_synchronization, on_premises_directory_synchronization_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import on_premises_directory_synchronization_item_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+    from ...models.on_premises_directory_synchronization_collection_response import OnPremisesDirectorySynchronizationCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.on_premises_directory_synchronization_item_request_builder import OnPremisesDirectorySynchronizationItemRequestBuilder
 
 class OnPremisesSynchronizationRequestBuilder():
     """
@@ -37,67 +38,67 @@ class OnPremisesSynchronizationRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_on_premises_directory_synchronization_id(self,on_premises_directory_synchronization_id: str) -> on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder:
+    def by_on_premises_directory_synchronization_id(self,on_premises_directory_synchronization_id: str) -> OnPremisesDirectorySynchronizationItemRequestBuilder:
         """
         Provides operations to manage the onPremisesSynchronization property of the microsoft.graph.directory entity.
         Args:
             on_premises_directory_synchronization_id: Unique identifier of the item
-        Returns: on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder
+        Returns: OnPremisesDirectorySynchronizationItemRequestBuilder
         """
         if not on_premises_directory_synchronization_id:
             raise TypeError("on_premises_directory_synchronization_id cannot be null.")
-        from .item import on_premises_directory_synchronization_item_request_builder
+        from .item.on_premises_directory_synchronization_item_request_builder import OnPremisesDirectorySynchronizationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onPremisesDirectorySynchronization%2Did"] = on_premises_directory_synchronization_id
-        return on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return OnPremisesDirectorySynchronizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[on_premises_directory_synchronization_collection_response.OnPremisesDirectorySynchronizationCollectionResponse]:
+    async def get(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[OnPremisesDirectorySynchronizationCollectionResponse]:
         """
         Read the properties and relationships of an onPremisesDirectorySynchronization object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[on_premises_directory_synchronization_collection_response.OnPremisesDirectorySynchronizationCollectionResponse]
+        Returns: Optional[OnPremisesDirectorySynchronizationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import on_premises_directory_synchronization_collection_response
+        from ...models.on_premises_directory_synchronization_collection_response import OnPremisesDirectorySynchronizationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, on_premises_directory_synchronization_collection_response.OnPremisesDirectorySynchronizationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, OnPremisesDirectorySynchronizationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[on_premises_directory_synchronization.OnPremisesDirectorySynchronization] = None, request_configuration: Optional[OnPremisesSynchronizationRequestBuilderPostRequestConfiguration] = None) -> Optional[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]:
+    async def post(self,body: Optional[OnPremisesDirectorySynchronization] = None, request_configuration: Optional[OnPremisesSynchronizationRequestBuilderPostRequestConfiguration] = None) -> Optional[OnPremisesDirectorySynchronization]:
         """
         Create new navigation property to onPremisesSynchronization for directory
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]
+        Returns: Optional[OnPremisesDirectorySynchronization]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import on_premises_directory_synchronization
+        from ...models.on_premises_directory_synchronization import OnPremisesDirectorySynchronization
 
-        return await self.request_adapter.send_async(request_info, on_premises_directory_synchronization.OnPremisesDirectorySynchronization, error_mapping)
+        return await self.request_adapter.send_async(request_info, OnPremisesDirectorySynchronization, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class OnPremisesSynchronizationRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[on_premises_directory_synchronization.OnPremisesDirectorySynchronization] = None, request_configuration: Optional[OnPremisesSynchronizationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[OnPremisesDirectorySynchronization] = None, request_configuration: Optional[OnPremisesSynchronizationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to onPremisesSynchronization for directory
         Args:
@@ -139,13 +140,13 @@ class OnPremisesSynchronizationRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OnPremisesSynchronizationRequestBuilderGetQueryParameters():

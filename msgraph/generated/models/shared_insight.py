@@ -4,26 +4,29 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, resource_reference, resource_visualization, sharing_detail
+    from .entity import Entity
+    from .resource_reference import ResourceReference
+    from .resource_visualization import ResourceVisualization
+    from .sharing_detail import SharingDetail
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class SharedInsight(entity.Entity):
+class SharedInsight(Entity):
     # Details about the shared item. Read only.
-    last_shared: Optional[sharing_detail.SharingDetail] = None
+    last_shared: Optional[SharingDetail] = None
     # The lastSharedMethod property
-    last_shared_method: Optional[entity.Entity] = None
+    last_shared_method: Optional[Entity] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Used for navigating to the item that was shared. For file attachments, the type is fileAttachment. For linked attachments, the type is driveItem.
-    resource: Optional[entity.Entity] = None
+    resource: Optional[Entity] = None
     # Reference properties of the shared document, such as the url and type of the document. Read-only
-    resource_reference: Optional[resource_reference.ResourceReference] = None
+    resource_reference: Optional[ResourceReference] = None
     # Properties that you can use to visualize the document in your experience. Read-only
-    resource_visualization: Optional[resource_visualization.ResourceVisualization] = None
+    resource_visualization: Optional[ResourceVisualization] = None
     # The sharingHistory property
-    sharing_history: Optional[List[sharing_detail.SharingDetail]] = None
+    sharing_history: Optional[List[SharingDetail]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedInsight:
@@ -42,17 +45,23 @@ class SharedInsight(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, resource_reference, resource_visualization, sharing_detail
+        from .entity import Entity
+        from .resource_reference import ResourceReference
+        from .resource_visualization import ResourceVisualization
+        from .sharing_detail import SharingDetail
 
-        from . import entity, resource_reference, resource_visualization, sharing_detail
+        from .entity import Entity
+        from .resource_reference import ResourceReference
+        from .resource_visualization import ResourceVisualization
+        from .sharing_detail import SharingDetail
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lastShared": lambda n : setattr(self, 'last_shared', n.get_object_value(sharing_detail.SharingDetail)),
-            "lastSharedMethod": lambda n : setattr(self, 'last_shared_method', n.get_object_value(entity.Entity)),
-            "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
-            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
-            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
-            "sharingHistory": lambda n : setattr(self, 'sharing_history', n.get_collection_of_object_values(sharing_detail.SharingDetail)),
+            "lastShared": lambda n : setattr(self, 'last_shared', n.get_object_value(SharingDetail)),
+            "lastSharedMethod": lambda n : setattr(self, 'last_shared_method', n.get_object_value(Entity)),
+            "resource": lambda n : setattr(self, 'resource', n.get_object_value(Entity)),
+            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(ResourceReference)),
+            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(ResourceVisualization)),
+            "sharingHistory": lambda n : setattr(self, 'sharing_history', n.get_collection_of_object_values(SharingDetail)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

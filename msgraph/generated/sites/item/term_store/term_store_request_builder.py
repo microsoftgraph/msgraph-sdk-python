@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models.o_data_errors import o_data_error
-    from ....models.term_store import store
-    from .groups import groups_request_builder
-    from .sets import sets_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.term_store.store import Store
+    from .groups.groups_request_builder import GroupsRequestBuilder
+    from .sets.sets_request_builder import SetsRequestBuilder
 
 class TermStoreRequestBuilder():
     """
@@ -46,62 +46,62 @@ class TermStoreRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TermStoreRequestBuilderGetRequestConfiguration] = None) -> Optional[store.Store]:
+    async def get(self,request_configuration: Optional[TermStoreRequestBuilderGetRequestConfiguration] = None) -> Optional[Store]:
         """
         Read the properties and relationships of a store object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[store.Store]
+        Returns: Optional[Store]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.term_store import store
+        from ....models.term_store.store import Store
 
-        return await self.request_adapter.send_async(request_info, store.Store, error_mapping)
+        return await self.request_adapter.send_async(request_info, Store, error_mapping)
     
-    async def patch(self,body: Optional[store.Store] = None, request_configuration: Optional[TermStoreRequestBuilderPatchRequestConfiguration] = None) -> Optional[store.Store]:
+    async def patch(self,body: Optional[Store] = None, request_configuration: Optional[TermStoreRequestBuilderPatchRequestConfiguration] = None) -> Optional[Store]:
         """
         Update the properties of a store object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[store.Store]
+        Returns: Optional[Store]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.term_store import store
+        from ....models.term_store.store import Store
 
-        return await self.request_adapter.send_async(request_info, store.Store, error_mapping)
+        return await self.request_adapter.send_async(request_info, Store, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TermStoreRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class TermStoreRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[store.Store] = None, request_configuration: Optional[TermStoreRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Store] = None, request_configuration: Optional[TermStoreRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a store object.
         Args:
@@ -159,22 +159,22 @@ class TermStoreRequestBuilder():
         return request_info
     
     @property
-    def groups(self) -> groups_request_builder.GroupsRequestBuilder:
+    def groups(self) -> GroupsRequestBuilder:
         """
         Provides operations to manage the groups property of the microsoft.graph.termStore.store entity.
         """
-        from .groups import groups_request_builder
+        from .groups.groups_request_builder import GroupsRequestBuilder
 
-        return groups_request_builder.GroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sets(self) -> sets_request_builder.SetsRequestBuilder:
+    def sets(self) -> SetsRequestBuilder:
         """
         Provides operations to manage the sets property of the microsoft.graph.termStore.store entity.
         """
-        from .sets import sets_request_builder
+        from .sets.sets_request_builder import SetsRequestBuilder
 
-        return sets_request_builder.SetsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SetsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TermStoreRequestBuilderDeleteRequestConfiguration():

@@ -4,18 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, service_health, service_health_issue, service_update_message
+    from .entity import Entity
+    from .service_health import ServiceHealth
+    from .service_health_issue import ServiceHealthIssue
+    from .service_update_message import ServiceUpdateMessage
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ServiceAnnouncement(entity.Entity):
+class ServiceAnnouncement(Entity):
     # A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
-    health_overviews: Optional[List[service_health.ServiceHealth]] = None
+    health_overviews: Optional[List[ServiceHealth]] = None
     # A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
-    issues: Optional[List[service_health_issue.ServiceHealthIssue]] = None
+    issues: Optional[List[ServiceHealthIssue]] = None
     # A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
-    messages: Optional[List[service_update_message.ServiceUpdateMessage]] = None
+    messages: Optional[List[ServiceUpdateMessage]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -36,14 +39,20 @@ class ServiceAnnouncement(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, service_health, service_health_issue, service_update_message
+        from .entity import Entity
+        from .service_health import ServiceHealth
+        from .service_health_issue import ServiceHealthIssue
+        from .service_update_message import ServiceUpdateMessage
 
-        from . import entity, service_health, service_health_issue, service_update_message
+        from .entity import Entity
+        from .service_health import ServiceHealth
+        from .service_health_issue import ServiceHealthIssue
+        from .service_update_message import ServiceUpdateMessage
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "healthOverviews": lambda n : setattr(self, 'health_overviews', n.get_collection_of_object_values(service_health.ServiceHealth)),
-            "issues": lambda n : setattr(self, 'issues', n.get_collection_of_object_values(service_health_issue.ServiceHealthIssue)),
-            "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(service_update_message.ServiceUpdateMessage)),
+            "healthOverviews": lambda n : setattr(self, 'health_overviews', n.get_collection_of_object_values(ServiceHealth)),
+            "issues": lambda n : setattr(self, 'issues', n.get_collection_of_object_values(ServiceHealthIssue)),
+            "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(ServiceUpdateMessage)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

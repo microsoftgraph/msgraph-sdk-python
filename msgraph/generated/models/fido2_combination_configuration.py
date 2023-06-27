@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_combination_configuration
+    from .authentication_combination_configuration import AuthenticationCombinationConfiguration
 
-from . import authentication_combination_configuration
+from .authentication_combination_configuration import AuthenticationCombinationConfiguration
 
 @dataclass
-class Fido2CombinationConfiguration(authentication_combination_configuration.AuthenticationCombinationConfiguration):
+class Fido2CombinationConfiguration(AuthenticationCombinationConfiguration):
     odata_type = "#microsoft.graph.fido2CombinationConfiguration"
     # A list of AAGUIDs allowed to be used as part of the specified authentication method combinations.
     allowed_a_a_g_u_i_ds: Optional[List[str]] = None
@@ -31,9 +31,9 @@ class Fido2CombinationConfiguration(authentication_combination_configuration.Aut
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_combination_configuration
+        from .authentication_combination_configuration import AuthenticationCombinationConfiguration
 
-        from . import authentication_combination_configuration
+        from .authentication_combination_configuration import AuthenticationCombinationConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowedAAGUIDs": lambda n : setattr(self, 'allowed_a_a_g_u_i_ds', n.get_collection_of_primitive_values(str)),

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import device_configuration_device_status
-    from ......models.o_data_errors import o_data_error
+    from ......models.device_configuration_device_status import DeviceConfigurationDeviceStatus
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class DeviceConfigurationDeviceStatusItemRequestBuilder():
     """
@@ -37,73 +37,73 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceStatuses for deviceManagement
+        Deletes a deviceConfigurationDeviceStatus.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[device_configuration_device_status.DeviceConfigurationDeviceStatus]:
+    async def get(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationDeviceStatus]:
         """
-        Device configuration installation status by device.
+        Read properties and relationships of the deviceConfigurationDeviceStatus object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_configuration_device_status.DeviceConfigurationDeviceStatus]
+        Returns: Optional[DeviceConfigurationDeviceStatus]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import device_configuration_device_status
+        from ......models.device_configuration_device_status import DeviceConfigurationDeviceStatus
 
-        return await self.request_adapter.send_async(request_info, device_configuration_device_status.DeviceConfigurationDeviceStatus, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceConfigurationDeviceStatus, error_mapping)
     
-    async def patch(self,body: Optional[device_configuration_device_status.DeviceConfigurationDeviceStatus] = None, request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_configuration_device_status.DeviceConfigurationDeviceStatus]:
+    async def patch(self,body: Optional[DeviceConfigurationDeviceStatus] = None, request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceConfigurationDeviceStatus]:
         """
-        Update the navigation property deviceStatuses in deviceManagement
+        Update the properties of a deviceConfigurationDeviceStatus object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_configuration_device_status.DeviceConfigurationDeviceStatus]
+        Returns: Optional[DeviceConfigurationDeviceStatus]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import device_configuration_device_status
+        from ......models.device_configuration_device_status import DeviceConfigurationDeviceStatus
 
-        return await self.request_adapter.send_async(request_info, device_configuration_device_status.DeviceConfigurationDeviceStatus, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceConfigurationDeviceStatus, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceStatuses for deviceManagement
+        Deletes a deviceConfigurationDeviceStatus.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Device configuration installation status by device.
+        Read properties and relationships of the deviceConfigurationDeviceStatus object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device_configuration_device_status.DeviceConfigurationDeviceStatus] = None, request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceConfigurationDeviceStatus] = None, request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceStatuses in deviceManagement
+        Update the properties of a deviceConfigurationDeviceStatus object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder():
     @dataclass
     class DeviceConfigurationDeviceStatusItemRequestBuilderGetQueryParameters():
         """
-        Device configuration installation status by device.
+        Read properties and relationships of the deviceConfigurationDeviceStatus object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

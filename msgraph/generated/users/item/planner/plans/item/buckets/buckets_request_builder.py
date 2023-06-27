@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import planner_bucket, planner_bucket_collection_response
-    from .......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import planner_bucket_item_request_builder
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.planner_bucket import PlannerBucket
+    from .......models.planner_bucket_collection_response import PlannerBucketCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.planner_bucket_item_request_builder import PlannerBucketItemRequestBuilder
 
 class BucketsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class BucketsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_planner_bucket_id(self,planner_bucket_id: str) -> planner_bucket_item_request_builder.PlannerBucketItemRequestBuilder:
+    def by_planner_bucket_id(self,planner_bucket_id: str) -> PlannerBucketItemRequestBuilder:
         """
         Provides operations to manage the buckets property of the microsoft.graph.plannerPlan entity.
         Args:
             planner_bucket_id: Unique identifier of the item
-        Returns: planner_bucket_item_request_builder.PlannerBucketItemRequestBuilder
+        Returns: PlannerBucketItemRequestBuilder
         """
         if not planner_bucket_id:
             raise TypeError("planner_bucket_id cannot be null.")
-        from .item import planner_bucket_item_request_builder
+        from .item.planner_bucket_item_request_builder import PlannerBucketItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["plannerBucket%2Did"] = planner_bucket_id
-        return planner_bucket_item_request_builder.PlannerBucketItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return PlannerBucketItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[BucketsRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_bucket_collection_response.PlannerBucketCollectionResponse]:
+    async def get(self,request_configuration: Optional[BucketsRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerBucketCollectionResponse]:
         """
         Retrieve a list of plannerBucket objects contained by a plannerPlan object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner_bucket_collection_response.PlannerBucketCollectionResponse]
+        Returns: Optional[PlannerBucketCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import planner_bucket_collection_response
+        from .......models.planner_bucket_collection_response import PlannerBucketCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, planner_bucket_collection_response.PlannerBucketCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PlannerBucketCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[planner_bucket.PlannerBucket] = None, request_configuration: Optional[BucketsRequestBuilderPostRequestConfiguration] = None) -> Optional[planner_bucket.PlannerBucket]:
+    async def post(self,body: Optional[PlannerBucket] = None, request_configuration: Optional[BucketsRequestBuilderPostRequestConfiguration] = None) -> Optional[PlannerBucket]:
         """
         Create new navigation property to buckets for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner_bucket.PlannerBucket]
+        Returns: Optional[PlannerBucket]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import planner_bucket
+        from .......models.planner_bucket import PlannerBucket
 
-        return await self.request_adapter.send_async(request_info, planner_bucket.PlannerBucket, error_mapping)
+        return await self.request_adapter.send_async(request_info, PlannerBucket, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[BucketsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class BucketsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[planner_bucket.PlannerBucket] = None, request_configuration: Optional[BucketsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PlannerBucket] = None, request_configuration: Optional[BucketsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to buckets for users
         Args:
@@ -139,13 +140,13 @@ class BucketsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class BucketsRequestBuilderGetQueryParameters():

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import on_premises_directory_synchronization_deletion_prevention_type
+    from .on_premises_directory_synchronization_deletion_prevention_type import OnPremisesDirectorySynchronizationDeletionPreventionType
 
 @dataclass
 class OnPremisesAccidentalDeletionPrevention(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class OnPremisesAccidentalDeletionPrevention(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The status of the accidental deletion prevention feature. The possible values are: disabled, enabledForCount, enabledForPercentage, unknownFutureValue.
-    synchronization_prevention_type: Optional[on_premises_directory_synchronization_deletion_prevention_type.OnPremisesDirectorySynchronizationDeletionPreventionType] = None
+    synchronization_prevention_type: Optional[OnPremisesDirectorySynchronizationDeletionPreventionType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnPremisesAccidentalDeletionPrevention:
@@ -35,14 +35,14 @@ class OnPremisesAccidentalDeletionPrevention(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import on_premises_directory_synchronization_deletion_prevention_type
+        from .on_premises_directory_synchronization_deletion_prevention_type import OnPremisesDirectorySynchronizationDeletionPreventionType
 
-        from . import on_premises_directory_synchronization_deletion_prevention_type
+        from .on_premises_directory_synchronization_deletion_prevention_type import OnPremisesDirectorySynchronizationDeletionPreventionType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "alertThreshold": lambda n : setattr(self, 'alert_threshold', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "synchronizationPreventionType": lambda n : setattr(self, 'synchronization_prevention_type', n.get_enum_value(on_premises_directory_synchronization_deletion_prevention_type.OnPremisesDirectorySynchronizationDeletionPreventionType)),
+            "synchronizationPreventionType": lambda n : setattr(self, 'synchronization_prevention_type', n.get_enum_value(OnPremisesDirectorySynchronizationDeletionPreventionType)),
         }
         return fields
     

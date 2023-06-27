@@ -4,35 +4,41 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_item, drive_item, identity_set, list, quota, sharepoint_ids, system_facet
+    from .base_item import BaseItem
+    from .drive_item import DriveItem
+    from .identity_set import IdentitySet
+    from .list_ import List_
+    from .quota import Quota
+    from .sharepoint_ids import SharepointIds
+    from .system_facet import SystemFacet
 
-from . import base_item
+from .base_item import BaseItem
 
 @dataclass
-class Drive(base_item.BaseItem):
+class Drive(BaseItem):
     odata_type = "#microsoft.graph.drive"
     # Collection of [bundles][bundle] (albums and multi-select-shared sets of items). Only in personal OneDrive.
-    bundles: Optional[List[drive_item.DriveItem]] = None
+    bundles: Optional[List[DriveItem]] = None
     # Describes the type of drive represented by this resource. OneDrive personal drives will return personal. OneDrive for Business will return business. SharePoint document libraries will return documentLibrary. Read-only.
     drive_type: Optional[str] = None
     # The list of items the user is following. Only in OneDrive for Business.
-    following: Optional[List[drive_item.DriveItem]] = None
+    following: Optional[List[DriveItem]] = None
     # All items contained in the drive. Read-only. Nullable.
-    items: Optional[List[drive_item.DriveItem]] = None
+    items: Optional[List[DriveItem]] = None
     # For drives in SharePoint, the underlying document library list. Read-only. Nullable.
-    list: Optional[list.List] = None
+    list_: Optional[List_] = None
     # Optional. The user account that owns the drive. Read-only.
-    owner: Optional[identity_set.IdentitySet] = None
+    owner: Optional[IdentitySet] = None
     # Optional. Information about the drive's storage space quota. Read-only.
-    quota: Optional[quota.Quota] = None
+    quota: Optional[Quota] = None
     # The root folder of the drive. Read-only.
-    root: Optional[drive_item.DriveItem] = None
+    root: Optional[DriveItem] = None
     # The sharePointIds property
-    share_point_ids: Optional[sharepoint_ids.SharepointIds] = None
+    share_point_ids: Optional[SharepointIds] = None
     # Collection of common folders available in OneDrive. Read-only. Nullable.
-    special: Optional[List[drive_item.DriveItem]] = None
+    special: Optional[List[DriveItem]] = None
     # If present, indicates that this is a system-managed drive. Read-only.
-    system: Optional[system_facet.SystemFacet] = None
+    system: Optional[SystemFacet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Drive:
@@ -51,22 +57,34 @@ class Drive(base_item.BaseItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_item, drive_item, identity_set, list, quota, sharepoint_ids, system_facet
+        from .base_item import BaseItem
+        from .drive_item import DriveItem
+        from .identity_set import IdentitySet
+        from .list_ import List_
+        from .quota import Quota
+        from .sharepoint_ids import SharepointIds
+        from .system_facet import SystemFacet
 
-        from . import base_item, drive_item, identity_set, list, quota, sharepoint_ids, system_facet
+        from .base_item import BaseItem
+        from .drive_item import DriveItem
+        from .identity_set import IdentitySet
+        from .list_ import List_
+        from .quota import Quota
+        from .sharepoint_ids import SharepointIds
+        from .system_facet import SystemFacet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "bundles": lambda n : setattr(self, 'bundles', n.get_collection_of_object_values(drive_item.DriveItem)),
+            "bundles": lambda n : setattr(self, 'bundles', n.get_collection_of_object_values(DriveItem)),
             "driveType": lambda n : setattr(self, 'drive_type', n.get_str_value()),
-            "following": lambda n : setattr(self, 'following', n.get_collection_of_object_values(drive_item.DriveItem)),
-            "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(drive_item.DriveItem)),
-            "list": lambda n : setattr(self, 'list', n.get_object_value(list.List)),
-            "owner": lambda n : setattr(self, 'owner', n.get_object_value(identity_set.IdentitySet)),
-            "quota": lambda n : setattr(self, 'quota', n.get_object_value(quota.Quota)),
-            "root": lambda n : setattr(self, 'root', n.get_object_value(drive_item.DriveItem)),
-            "sharePointIds": lambda n : setattr(self, 'share_point_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
-            "special": lambda n : setattr(self, 'special', n.get_collection_of_object_values(drive_item.DriveItem)),
-            "system": lambda n : setattr(self, 'system', n.get_object_value(system_facet.SystemFacet)),
+            "following": lambda n : setattr(self, 'following', n.get_collection_of_object_values(DriveItem)),
+            "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(DriveItem)),
+            "list": lambda n : setattr(self, 'list_', n.get_object_value(List_)),
+            "owner": lambda n : setattr(self, 'owner', n.get_object_value(IdentitySet)),
+            "quota": lambda n : setattr(self, 'quota', n.get_object_value(Quota)),
+            "root": lambda n : setattr(self, 'root', n.get_object_value(DriveItem)),
+            "sharePointIds": lambda n : setattr(self, 'share_point_ids', n.get_object_value(SharepointIds)),
+            "special": lambda n : setattr(self, 'special', n.get_collection_of_object_values(DriveItem)),
+            "system": lambda n : setattr(self, 'system', n.get_object_value(SystemFacet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -85,7 +103,7 @@ class Drive(base_item.BaseItem):
         writer.write_str_value("driveType", self.drive_type)
         writer.write_collection_of_object_values("following", self.following)
         writer.write_collection_of_object_values("items", self.items)
-        writer.write_object_value("list", self.list)
+        writer.write_object_value("list", self.list_)
         writer.write_object_value("owner", self.owner)
         writer.write_object_value("quota", self.quota)
         writer.write_object_value("root", self.root)

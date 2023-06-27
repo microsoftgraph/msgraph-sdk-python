@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import secure_score, secure_score_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import secure_score_item_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.secure_score import SecureScore
+    from ...models.secure_score_collection_response import SecureScoreCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.secure_score_item_request_builder import SecureScoreItemRequestBuilder
 
 class SecureScoresRequestBuilder():
     """
@@ -37,67 +38,67 @@ class SecureScoresRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_secure_score_id(self,secure_score_id: str) -> secure_score_item_request_builder.SecureScoreItemRequestBuilder:
+    def by_secure_score_id(self,secure_score_id: str) -> SecureScoreItemRequestBuilder:
         """
         Provides operations to manage the secureScores property of the microsoft.graph.security entity.
         Args:
             secure_score_id: Unique identifier of the item
-        Returns: secure_score_item_request_builder.SecureScoreItemRequestBuilder
+        Returns: SecureScoreItemRequestBuilder
         """
         if not secure_score_id:
             raise TypeError("secure_score_id cannot be null.")
-        from .item import secure_score_item_request_builder
+        from .item.secure_score_item_request_builder import SecureScoreItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["secureScore%2Did"] = secure_score_id
-        return secure_score_item_request_builder.SecureScoreItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return SecureScoreItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SecureScoresRequestBuilderGetRequestConfiguration] = None) -> Optional[secure_score_collection_response.SecureScoreCollectionResponse]:
+    async def get(self,request_configuration: Optional[SecureScoresRequestBuilderGetRequestConfiguration] = None) -> Optional[SecureScoreCollectionResponse]:
         """
         Retrieve a list of secureScore objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[secure_score_collection_response.SecureScoreCollectionResponse]
+        Returns: Optional[SecureScoreCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import secure_score_collection_response
+        from ...models.secure_score_collection_response import SecureScoreCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, secure_score_collection_response.SecureScoreCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SecureScoreCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[secure_score.SecureScore] = None, request_configuration: Optional[SecureScoresRequestBuilderPostRequestConfiguration] = None) -> Optional[secure_score.SecureScore]:
+    async def post(self,body: Optional[SecureScore] = None, request_configuration: Optional[SecureScoresRequestBuilderPostRequestConfiguration] = None) -> Optional[SecureScore]:
         """
         Create new navigation property to secureScores for security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[secure_score.SecureScore]
+        Returns: Optional[SecureScore]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import secure_score
+        from ...models.secure_score import SecureScore
 
-        return await self.request_adapter.send_async(request_info, secure_score.SecureScore, error_mapping)
+        return await self.request_adapter.send_async(request_info, SecureScore, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SecureScoresRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class SecureScoresRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[secure_score.SecureScore] = None, request_configuration: Optional[SecureScoresRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SecureScore] = None, request_configuration: Optional[SecureScoresRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to secureScores for security
         Args:
@@ -139,13 +140,13 @@ class SecureScoresRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SecureScoresRequestBuilderGetQueryParameters():

@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import administrative_unit
-    from ....models.o_data_errors import o_data_error
-    from .extensions import extensions_request_builder
-    from .members import members_request_builder
-    from .scoped_role_members import scoped_role_members_request_builder
+    from ....models.administrative_unit import AdministrativeUnit
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .extensions.extensions_request_builder import ExtensionsRequestBuilder
+    from .members.members_request_builder import MembersRequestBuilder
+    from .scoped_role_members.scoped_role_members_request_builder import ScopedRoleMembersRequestBuilder
 
 class AdministrativeUnitItemRequestBuilder():
     """
@@ -47,62 +47,62 @@ class AdministrativeUnitItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AdministrativeUnitItemRequestBuilderGetRequestConfiguration] = None) -> Optional[administrative_unit.AdministrativeUnit]:
+    async def get(self,request_configuration: Optional[AdministrativeUnitItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
         Retrieve the properties and relationships of an administrativeUnit object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[administrative_unit.AdministrativeUnit]
+        Returns: Optional[AdministrativeUnit]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import administrative_unit
+        from ....models.administrative_unit import AdministrativeUnit
 
-        return await self.request_adapter.send_async(request_info, administrative_unit.AdministrativeUnit, error_mapping)
+        return await self.request_adapter.send_async(request_info, AdministrativeUnit, error_mapping)
     
-    async def patch(self,body: Optional[administrative_unit.AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[administrative_unit.AdministrativeUnit]:
+    async def patch(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
         Update the properties of an administrativeUnit object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[administrative_unit.AdministrativeUnit]
+        Returns: Optional[AdministrativeUnit]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import administrative_unit
+        from ....models.administrative_unit import AdministrativeUnit
 
-        return await self.request_adapter.send_async(request_info, administrative_unit.AdministrativeUnit, error_mapping)
+        return await self.request_adapter.send_async(request_info, AdministrativeUnit, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AdministrativeUnitItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class AdministrativeUnitItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[administrative_unit.AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an administrativeUnit object.
         Args:
@@ -160,31 +160,31 @@ class AdministrativeUnitItemRequestBuilder():
         return request_info
     
     @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+    def extensions(self) -> ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.administrativeUnit entity.
         """
-        from .extensions import extensions_request_builder
+        from .extensions.extensions_request_builder import ExtensionsRequestBuilder
 
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def members(self) -> members_request_builder.MembersRequestBuilder:
+    def members(self) -> MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.administrativeUnit entity.
         """
-        from .members import members_request_builder
+        from .members.members_request_builder import MembersRequestBuilder
 
-        return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
+        return MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def scoped_role_members(self) -> scoped_role_members_request_builder.ScopedRoleMembersRequestBuilder:
+    def scoped_role_members(self) -> ScopedRoleMembersRequestBuilder:
         """
         Provides operations to manage the scopedRoleMembers property of the microsoft.graph.administrativeUnit entity.
         """
-        from .scoped_role_members import scoped_role_members_request_builder
+        from .scoped_role_members.scoped_role_members_request_builder import ScopedRoleMembersRequestBuilder
 
-        return scoped_role_members_request_builder.ScopedRoleMembersRequestBuilder(self.request_adapter, self.path_parameters)
+        return ScopedRoleMembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AdministrativeUnitItemRequestBuilderDeleteRequestConfiguration():

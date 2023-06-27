@@ -4,15 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import application_guard_block_clipboard_sharing_type, application_guard_block_file_transfer_type, app_locker_application_control_type, bit_locker_removable_drive_policy, device_configuration, firewall_certificate_revocation_list_check_method_type, firewall_packet_queueing_method_type, firewall_pre_shared_key_encoding_method_type, windows_firewall_network_profile
+    from .application_guard_block_clipboard_sharing_type import ApplicationGuardBlockClipboardSharingType
+    from .application_guard_block_file_transfer_type import ApplicationGuardBlockFileTransferType
+    from .app_locker_application_control_type import AppLockerApplicationControlType
+    from .bit_locker_removable_drive_policy import BitLockerRemovableDrivePolicy
+    from .device_configuration import DeviceConfiguration
+    from .firewall_certificate_revocation_list_check_method_type import FirewallCertificateRevocationListCheckMethodType
+    from .firewall_packet_queueing_method_type import FirewallPacketQueueingMethodType
+    from .firewall_pre_shared_key_encoding_method_type import FirewallPreSharedKeyEncodingMethodType
+    from .windows_firewall_network_profile import WindowsFirewallNetworkProfile
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfiguration):
+class Windows10EndpointProtectionConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.windows10EndpointProtectionConfiguration"
     # Possible values of AppLocker Application Control Types
-    app_locker_application_control: Optional[app_locker_application_control_type.AppLockerApplicationControlType] = None
+    app_locker_application_control: Optional[AppLockerApplicationControlType] = None
     # Allow persisting user generated data inside the App Guard Containter (favorites, cookies, web passwords, etc.)
     application_guard_allow_persistence: Optional[bool] = None
     # Allow printing to Local Printers from Container
@@ -24,9 +32,9 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
     # Allow printing to XPS from Container
     application_guard_allow_print_to_x_p_s: Optional[bool] = None
     # Possible values for applicationGuardBlockClipboardSharingType
-    application_guard_block_clipboard_sharing: Optional[application_guard_block_clipboard_sharing_type.ApplicationGuardBlockClipboardSharingType] = None
+    application_guard_block_clipboard_sharing: Optional[ApplicationGuardBlockClipboardSharingType] = None
     # Possible values for applicationGuardBlockFileTransfer
-    application_guard_block_file_transfer: Optional[application_guard_block_file_transfer_type.ApplicationGuardBlockFileTransferType] = None
+    application_guard_block_file_transfer: Optional[ApplicationGuardBlockFileTransferType] = None
     # Block enterprise sites to load non-enterprise content, such as third party plug-ins
     application_guard_block_non_enterprise_content: Optional[bool] = None
     # Enable Windows Defender Application Guard
@@ -40,7 +48,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
     # Allows the admin to require encryption to be turned on using BitLocker.
     bit_locker_encrypt_device: Optional[bool] = None
     # BitLocker Removable Drive Policy.
-    bit_locker_removable_drive_policy: Optional[bit_locker_removable_drive_policy.BitLockerRemovableDrivePolicy] = None
+    bit_locker_removable_drive_policy: Optional[BitLockerRemovableDrivePolicy] = None
     # List of folder paths to be added to the list of protected folders
     defender_additional_guarded_folders: Optional[List[str]] = None
     # List of exe files and folders to be excluded from attack surface reduction rules
@@ -56,7 +64,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
     # Blocks stateful FTP connections to the device
     firewall_block_stateful_f_t_p: Optional[bool] = None
     # Possible values for firewallCertificateRevocationListCheckMethod
-    firewall_certificate_revocation_list_check_method: Optional[firewall_certificate_revocation_list_check_method_type.FirewallCertificateRevocationListCheckMethodType] = None
+    firewall_certificate_revocation_list_check_method: Optional[FirewallCertificateRevocationListCheckMethodType] = None
     # Configures IPSec exemptions to allow both IPv4 and IPv6 DHCP traffic
     firewall_i_p_sec_exemptions_allow_d_h_c_p: Optional[bool] = None
     # Configures IPSec exemptions to allow ICMP
@@ -70,15 +78,15 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
     # If an authentication set is not fully supported by a keying module, direct the module to ignore only unsupported authentication suites rather than the entire set
     firewall_merge_keying_module_settings: Optional[bool] = None
     # Possible values for firewallPacketQueueingMethod
-    firewall_packet_queueing_method: Optional[firewall_packet_queueing_method_type.FirewallPacketQueueingMethodType] = None
+    firewall_packet_queueing_method: Optional[FirewallPacketQueueingMethodType] = None
     # Possible values for firewallPreSharedKeyEncodingMethod
-    firewall_pre_shared_key_encoding_method: Optional[firewall_pre_shared_key_encoding_method_type.FirewallPreSharedKeyEncodingMethodType] = None
+    firewall_pre_shared_key_encoding_method: Optional[FirewallPreSharedKeyEncodingMethodType] = None
     # Configures the firewall profile settings for domain networks
-    firewall_profile_domain: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None
+    firewall_profile_domain: Optional[WindowsFirewallNetworkProfile] = None
     # Configures the firewall profile settings for private networks
-    firewall_profile_private: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None
+    firewall_profile_private: Optional[WindowsFirewallNetworkProfile] = None
     # Configures the firewall profile settings for public networks
-    firewall_profile_public: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None
+    firewall_profile_public: Optional[WindowsFirewallNetworkProfile] = None
     # Allows IT Admins to control whether users can can ignore SmartScreen warnings and run malicious files.
     smart_screen_block_override_for_files: Optional[bool] = None
     # Allows IT Admins to configure SmartScreen for Windows.
@@ -101,26 +109,42 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import application_guard_block_clipboard_sharing_type, application_guard_block_file_transfer_type, app_locker_application_control_type, bit_locker_removable_drive_policy, device_configuration, firewall_certificate_revocation_list_check_method_type, firewall_packet_queueing_method_type, firewall_pre_shared_key_encoding_method_type, windows_firewall_network_profile
+        from .application_guard_block_clipboard_sharing_type import ApplicationGuardBlockClipboardSharingType
+        from .application_guard_block_file_transfer_type import ApplicationGuardBlockFileTransferType
+        from .app_locker_application_control_type import AppLockerApplicationControlType
+        from .bit_locker_removable_drive_policy import BitLockerRemovableDrivePolicy
+        from .device_configuration import DeviceConfiguration
+        from .firewall_certificate_revocation_list_check_method_type import FirewallCertificateRevocationListCheckMethodType
+        from .firewall_packet_queueing_method_type import FirewallPacketQueueingMethodType
+        from .firewall_pre_shared_key_encoding_method_type import FirewallPreSharedKeyEncodingMethodType
+        from .windows_firewall_network_profile import WindowsFirewallNetworkProfile
 
-        from . import application_guard_block_clipboard_sharing_type, application_guard_block_file_transfer_type, app_locker_application_control_type, bit_locker_removable_drive_policy, device_configuration, firewall_certificate_revocation_list_check_method_type, firewall_packet_queueing_method_type, firewall_pre_shared_key_encoding_method_type, windows_firewall_network_profile
+        from .application_guard_block_clipboard_sharing_type import ApplicationGuardBlockClipboardSharingType
+        from .application_guard_block_file_transfer_type import ApplicationGuardBlockFileTransferType
+        from .app_locker_application_control_type import AppLockerApplicationControlType
+        from .bit_locker_removable_drive_policy import BitLockerRemovableDrivePolicy
+        from .device_configuration import DeviceConfiguration
+        from .firewall_certificate_revocation_list_check_method_type import FirewallCertificateRevocationListCheckMethodType
+        from .firewall_packet_queueing_method_type import FirewallPacketQueueingMethodType
+        from .firewall_pre_shared_key_encoding_method_type import FirewallPreSharedKeyEncodingMethodType
+        from .windows_firewall_network_profile import WindowsFirewallNetworkProfile
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appLockerApplicationControl": lambda n : setattr(self, 'app_locker_application_control', n.get_enum_value(app_locker_application_control_type.AppLockerApplicationControlType)),
+            "appLockerApplicationControl": lambda n : setattr(self, 'app_locker_application_control', n.get_enum_value(AppLockerApplicationControlType)),
             "applicationGuardAllowPersistence": lambda n : setattr(self, 'application_guard_allow_persistence', n.get_bool_value()),
             "applicationGuardAllowPrintToLocalPrinters": lambda n : setattr(self, 'application_guard_allow_print_to_local_printers', n.get_bool_value()),
             "applicationGuardAllowPrintToNetworkPrinters": lambda n : setattr(self, 'application_guard_allow_print_to_network_printers', n.get_bool_value()),
             "applicationGuardAllowPrintToPDF": lambda n : setattr(self, 'application_guard_allow_print_to_p_d_f', n.get_bool_value()),
             "applicationGuardAllowPrintToXPS": lambda n : setattr(self, 'application_guard_allow_print_to_x_p_s', n.get_bool_value()),
-            "applicationGuardBlockClipboardSharing": lambda n : setattr(self, 'application_guard_block_clipboard_sharing', n.get_enum_value(application_guard_block_clipboard_sharing_type.ApplicationGuardBlockClipboardSharingType)),
-            "applicationGuardBlockFileTransfer": lambda n : setattr(self, 'application_guard_block_file_transfer', n.get_enum_value(application_guard_block_file_transfer_type.ApplicationGuardBlockFileTransferType)),
+            "applicationGuardBlockClipboardSharing": lambda n : setattr(self, 'application_guard_block_clipboard_sharing', n.get_enum_value(ApplicationGuardBlockClipboardSharingType)),
+            "applicationGuardBlockFileTransfer": lambda n : setattr(self, 'application_guard_block_file_transfer', n.get_enum_value(ApplicationGuardBlockFileTransferType)),
             "applicationGuardBlockNonEnterpriseContent": lambda n : setattr(self, 'application_guard_block_non_enterprise_content', n.get_bool_value()),
             "applicationGuardEnabled": lambda n : setattr(self, 'application_guard_enabled', n.get_bool_value()),
             "applicationGuardForceAuditing": lambda n : setattr(self, 'application_guard_force_auditing', n.get_bool_value()),
             "bitLockerDisableWarningForOtherDiskEncryption": lambda n : setattr(self, 'bit_locker_disable_warning_for_other_disk_encryption', n.get_bool_value()),
             "bitLockerEnableStorageCardEncryptionOnMobile": lambda n : setattr(self, 'bit_locker_enable_storage_card_encryption_on_mobile', n.get_bool_value()),
             "bitLockerEncryptDevice": lambda n : setattr(self, 'bit_locker_encrypt_device', n.get_bool_value()),
-            "bitLockerRemovableDrivePolicy": lambda n : setattr(self, 'bit_locker_removable_drive_policy', n.get_object_value(bit_locker_removable_drive_policy.BitLockerRemovableDrivePolicy)),
+            "bitLockerRemovableDrivePolicy": lambda n : setattr(self, 'bit_locker_removable_drive_policy', n.get_object_value(BitLockerRemovableDrivePolicy)),
             "defenderAdditionalGuardedFolders": lambda n : setattr(self, 'defender_additional_guarded_folders', n.get_collection_of_primitive_values(str)),
             "defenderAttackSurfaceReductionExcludedPaths": lambda n : setattr(self, 'defender_attack_surface_reduction_excluded_paths', n.get_collection_of_primitive_values(str)),
             "defenderExploitProtectionXml": lambda n : setattr(self, 'defender_exploit_protection_xml', n.get_bytes_value()),
@@ -128,18 +152,18 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             "defenderGuardedFoldersAllowedAppPaths": lambda n : setattr(self, 'defender_guarded_folders_allowed_app_paths', n.get_collection_of_primitive_values(str)),
             "defenderSecurityCenterBlockExploitProtectionOverride": lambda n : setattr(self, 'defender_security_center_block_exploit_protection_override', n.get_bool_value()),
             "firewallBlockStatefulFTP": lambda n : setattr(self, 'firewall_block_stateful_f_t_p', n.get_bool_value()),
-            "firewallCertificateRevocationListCheckMethod": lambda n : setattr(self, 'firewall_certificate_revocation_list_check_method', n.get_enum_value(firewall_certificate_revocation_list_check_method_type.FirewallCertificateRevocationListCheckMethodType)),
+            "firewallCertificateRevocationListCheckMethod": lambda n : setattr(self, 'firewall_certificate_revocation_list_check_method', n.get_enum_value(FirewallCertificateRevocationListCheckMethodType)),
             "firewallIPSecExemptionsAllowDHCP": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_d_h_c_p', n.get_bool_value()),
             "firewallIPSecExemptionsAllowICMP": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_i_c_m_p', n.get_bool_value()),
             "firewallIPSecExemptionsAllowNeighborDiscovery": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_neighbor_discovery', n.get_bool_value()),
             "firewallIPSecExemptionsAllowRouterDiscovery": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_router_discovery', n.get_bool_value()),
             "firewallIdleTimeoutForSecurityAssociationInSeconds": lambda n : setattr(self, 'firewall_idle_timeout_for_security_association_in_seconds', n.get_int_value()),
             "firewallMergeKeyingModuleSettings": lambda n : setattr(self, 'firewall_merge_keying_module_settings', n.get_bool_value()),
-            "firewallPacketQueueingMethod": lambda n : setattr(self, 'firewall_packet_queueing_method', n.get_enum_value(firewall_packet_queueing_method_type.FirewallPacketQueueingMethodType)),
-            "firewallPreSharedKeyEncodingMethod": lambda n : setattr(self, 'firewall_pre_shared_key_encoding_method', n.get_enum_value(firewall_pre_shared_key_encoding_method_type.FirewallPreSharedKeyEncodingMethodType)),
-            "firewallProfileDomain": lambda n : setattr(self, 'firewall_profile_domain', n.get_object_value(windows_firewall_network_profile.WindowsFirewallNetworkProfile)),
-            "firewallProfilePrivate": lambda n : setattr(self, 'firewall_profile_private', n.get_object_value(windows_firewall_network_profile.WindowsFirewallNetworkProfile)),
-            "firewallProfilePublic": lambda n : setattr(self, 'firewall_profile_public', n.get_object_value(windows_firewall_network_profile.WindowsFirewallNetworkProfile)),
+            "firewallPacketQueueingMethod": lambda n : setattr(self, 'firewall_packet_queueing_method', n.get_enum_value(FirewallPacketQueueingMethodType)),
+            "firewallPreSharedKeyEncodingMethod": lambda n : setattr(self, 'firewall_pre_shared_key_encoding_method', n.get_enum_value(FirewallPreSharedKeyEncodingMethodType)),
+            "firewallProfileDomain": lambda n : setattr(self, 'firewall_profile_domain', n.get_object_value(WindowsFirewallNetworkProfile)),
+            "firewallProfilePrivate": lambda n : setattr(self, 'firewall_profile_private', n.get_object_value(WindowsFirewallNetworkProfile)),
+            "firewallProfilePublic": lambda n : setattr(self, 'firewall_profile_public', n.get_object_value(WindowsFirewallNetworkProfile)),
             "smartScreenBlockOverrideForFiles": lambda n : setattr(self, 'smart_screen_block_override_for_files', n.get_bool_value()),
             "smartScreenEnableInShell": lambda n : setattr(self, 'smart_screen_enable_in_shell', n.get_bool_value()),
         }
@@ -173,7 +197,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         writer.write_object_value("bitLockerRemovableDrivePolicy", self.bit_locker_removable_drive_policy)
         writer.write_collection_of_primitive_values("defenderAdditionalGuardedFolders", self.defender_additional_guarded_folders)
         writer.write_collection_of_primitive_values("defenderAttackSurfaceReductionExcludedPaths", self.defender_attack_surface_reduction_excluded_paths)
-        writer.write_object_value("defenderExploitProtectionXml", self.defender_exploit_protection_xml)
+        writer.write_bytes_value("defenderExploitProtectionXml", self.defender_exploit_protection_xml)
         writer.write_str_value("defenderExploitProtectionXmlFileName", self.defender_exploit_protection_xml_file_name)
         writer.write_collection_of_primitive_values("defenderGuardedFoldersAllowedAppPaths", self.defender_guarded_folders_allowed_app_paths)
         writer.write_bool_value("defenderSecurityCenterBlockExploitProtectionOverride", self.defender_security_center_block_exploit_protection_override)

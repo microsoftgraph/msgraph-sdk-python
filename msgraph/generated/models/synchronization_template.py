@@ -5,12 +5,14 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import entity, synchronization_metadata_entry, synchronization_schema
+    from .entity import Entity
+    from .synchronization_metadata_entry import SynchronizationMetadataEntry
+    from .synchronization_schema import SynchronizationSchema
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class SynchronizationTemplate(entity.Entity):
+class SynchronizationTemplate(Entity):
     # The applicationId property
     application_id: Optional[UUID] = None
     # The default property
@@ -22,11 +24,11 @@ class SynchronizationTemplate(entity.Entity):
     # The factoryTag property
     factory_tag: Optional[str] = None
     # The metadata property
-    metadata: Optional[List[synchronization_metadata_entry.SynchronizationMetadataEntry]] = None
+    metadata: Optional[List[SynchronizationMetadataEntry]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The schema property
-    schema: Optional[synchronization_schema.SynchronizationSchema] = None
+    schema: Optional[SynchronizationSchema] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SynchronizationTemplate:
@@ -45,9 +47,13 @@ class SynchronizationTemplate(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, synchronization_metadata_entry, synchronization_schema
+        from .entity import Entity
+        from .synchronization_metadata_entry import SynchronizationMetadataEntry
+        from .synchronization_schema import SynchronizationSchema
 
-        from . import entity, synchronization_metadata_entry, synchronization_schema
+        from .entity import Entity
+        from .synchronization_metadata_entry import SynchronizationMetadataEntry
+        from .synchronization_schema import SynchronizationSchema
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applicationId": lambda n : setattr(self, 'application_id', n.get_uuid_value()),
@@ -55,8 +61,8 @@ class SynchronizationTemplate(entity.Entity):
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "discoverable": lambda n : setattr(self, 'discoverable', n.get_bool_value()),
             "factoryTag": lambda n : setattr(self, 'factory_tag', n.get_str_value()),
-            "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(synchronization_metadata_entry.SynchronizationMetadataEntry)),
-            "schema": lambda n : setattr(self, 'schema', n.get_object_value(synchronization_schema.SynchronizationSchema)),
+            "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(SynchronizationMetadataEntry)),
+            "schema": lambda n : setattr(self, 'schema', n.get_object_value(SynchronizationSchema)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

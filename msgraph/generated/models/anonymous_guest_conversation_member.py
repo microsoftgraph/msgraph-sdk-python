@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conversation_member
+    from .conversation_member import ConversationMember
 
-from . import conversation_member
+from .conversation_member import ConversationMember
 
 @dataclass
-class AnonymousGuestConversationMember(conversation_member.ConversationMember):
+class AnonymousGuestConversationMember(ConversationMember):
     odata_type = "#microsoft.graph.anonymousGuestConversationMember"
     # Unique ID that represents the user. Note: This ID can change if the user leaves and rejoins the meeting, or joins from a different device.
     anonymous_guest_id: Optional[str] = None
@@ -31,9 +31,9 @@ class AnonymousGuestConversationMember(conversation_member.ConversationMember):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conversation_member
+        from .conversation_member import ConversationMember
 
-        from . import conversation_member
+        from .conversation_member import ConversationMember
 
         fields: Dict[str, Callable[[Any], None]] = {
             "anonymousGuestId": lambda n : setattr(self, 'anonymous_guest_id', n.get_str_value()),

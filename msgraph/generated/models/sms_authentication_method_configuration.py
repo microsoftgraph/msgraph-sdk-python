@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_configuration, sms_authentication_method_target
+    from .authentication_method_configuration import AuthenticationMethodConfiguration
+    from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
-from . import authentication_method_configuration
+from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class SmsAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
+class SmsAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     odata_type = "#microsoft.graph.smsAuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method.
-    include_targets: Optional[List[sms_authentication_method_target.SmsAuthenticationMethodTarget]] = None
+    include_targets: Optional[List[SmsAuthenticationMethodTarget]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SmsAuthenticationMethodConfiguration:
@@ -31,12 +32,14 @@ class SmsAuthenticationMethodConfiguration(authentication_method_configuration.A
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_configuration, sms_authentication_method_target
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
-        from . import authentication_method_configuration, sms_authentication_method_target
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(sms_authentication_method_target.SmsAuthenticationMethodTarget)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(SmsAuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

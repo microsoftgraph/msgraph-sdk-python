@@ -10,15 +10,15 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import domain
-    from ...models.o_data_errors import o_data_error
-    from .domain_name_references import domain_name_references_request_builder
-    from .federation_configuration import federation_configuration_request_builder
-    from .force_delete import force_delete_request_builder
-    from .promote import promote_request_builder
-    from .service_configuration_records import service_configuration_records_request_builder
-    from .verification_dns_records import verification_dns_records_request_builder
-    from .verify import verify_request_builder
+    from ...models.domain import Domain
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .domain_name_references.domain_name_references_request_builder import DomainNameReferencesRequestBuilder
+    from .federation_configuration.federation_configuration_request_builder import FederationConfigurationRequestBuilder
+    from .force_delete.force_delete_request_builder import ForceDeleteRequestBuilder
+    from .promote.promote_request_builder import PromoteRequestBuilder
+    from .service_configuration_records.service_configuration_records_request_builder import ServiceConfigurationRecordsRequestBuilder
+    from .verification_dns_records.verification_dns_records_request_builder import VerificationDnsRecordsRequestBuilder
+    from .verify.verify_request_builder import VerifyRequestBuilder
 
 class DomainItemRequestBuilder():
     """
@@ -51,62 +51,62 @@ class DomainItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DomainItemRequestBuilderGetRequestConfiguration] = None) -> Optional[domain.Domain]:
+    async def get(self,request_configuration: Optional[DomainItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Domain]:
         """
         Retrieve the properties and relationships of domain object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[domain.Domain]
+        Returns: Optional[Domain]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import domain
+        from ...models.domain import Domain
 
-        return await self.request_adapter.send_async(request_info, domain.Domain, error_mapping)
+        return await self.request_adapter.send_async(request_info, Domain, error_mapping)
     
-    async def patch(self,body: Optional[domain.Domain] = None, request_configuration: Optional[DomainItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[domain.Domain]:
+    async def patch(self,body: Optional[Domain] = None, request_configuration: Optional[DomainItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Domain]:
         """
         Update the properties of domain object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[domain.Domain]
+        Returns: Optional[Domain]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import domain
+        from ...models.domain import Domain
 
-        return await self.request_adapter.send_async(request_info, domain.Domain, error_mapping)
+        return await self.request_adapter.send_async(request_info, Domain, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DomainItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -142,7 +142,7 @@ class DomainItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[domain.Domain] = None, request_configuration: Optional[DomainItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Domain] = None, request_configuration: Optional[DomainItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of domain object.
         Args:
@@ -164,67 +164,67 @@ class DomainItemRequestBuilder():
         return request_info
     
     @property
-    def domain_name_references(self) -> domain_name_references_request_builder.DomainNameReferencesRequestBuilder:
+    def domain_name_references(self) -> DomainNameReferencesRequestBuilder:
         """
         Provides operations to manage the domainNameReferences property of the microsoft.graph.domain entity.
         """
-        from .domain_name_references import domain_name_references_request_builder
+        from .domain_name_references.domain_name_references_request_builder import DomainNameReferencesRequestBuilder
 
-        return domain_name_references_request_builder.DomainNameReferencesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DomainNameReferencesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def federation_configuration(self) -> federation_configuration_request_builder.FederationConfigurationRequestBuilder:
+    def federation_configuration(self) -> FederationConfigurationRequestBuilder:
         """
         Provides operations to manage the federationConfiguration property of the microsoft.graph.domain entity.
         """
-        from .federation_configuration import federation_configuration_request_builder
+        from .federation_configuration.federation_configuration_request_builder import FederationConfigurationRequestBuilder
 
-        return federation_configuration_request_builder.FederationConfigurationRequestBuilder(self.request_adapter, self.path_parameters)
+        return FederationConfigurationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def force_delete(self) -> force_delete_request_builder.ForceDeleteRequestBuilder:
+    def force_delete(self) -> ForceDeleteRequestBuilder:
         """
         Provides operations to call the forceDelete method.
         """
-        from .force_delete import force_delete_request_builder
+        from .force_delete.force_delete_request_builder import ForceDeleteRequestBuilder
 
-        return force_delete_request_builder.ForceDeleteRequestBuilder(self.request_adapter, self.path_parameters)
+        return ForceDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def promote(self) -> promote_request_builder.PromoteRequestBuilder:
+    def promote(self) -> PromoteRequestBuilder:
         """
         Provides operations to call the promote method.
         """
-        from .promote import promote_request_builder
+        from .promote.promote_request_builder import PromoteRequestBuilder
 
-        return promote_request_builder.PromoteRequestBuilder(self.request_adapter, self.path_parameters)
+        return PromoteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def service_configuration_records(self) -> service_configuration_records_request_builder.ServiceConfigurationRecordsRequestBuilder:
+    def service_configuration_records(self) -> ServiceConfigurationRecordsRequestBuilder:
         """
         Provides operations to manage the serviceConfigurationRecords property of the microsoft.graph.domain entity.
         """
-        from .service_configuration_records import service_configuration_records_request_builder
+        from .service_configuration_records.service_configuration_records_request_builder import ServiceConfigurationRecordsRequestBuilder
 
-        return service_configuration_records_request_builder.ServiceConfigurationRecordsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ServiceConfigurationRecordsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def verification_dns_records(self) -> verification_dns_records_request_builder.VerificationDnsRecordsRequestBuilder:
+    def verification_dns_records(self) -> VerificationDnsRecordsRequestBuilder:
         """
         Provides operations to manage the verificationDnsRecords property of the microsoft.graph.domain entity.
         """
-        from .verification_dns_records import verification_dns_records_request_builder
+        from .verification_dns_records.verification_dns_records_request_builder import VerificationDnsRecordsRequestBuilder
 
-        return verification_dns_records_request_builder.VerificationDnsRecordsRequestBuilder(self.request_adapter, self.path_parameters)
+        return VerificationDnsRecordsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def verify(self) -> verify_request_builder.VerifyRequestBuilder:
+    def verify(self) -> VerifyRequestBuilder:
         """
         Provides operations to call the verify method.
         """
-        from .verify import verify_request_builder
+        from .verify.verify_request_builder import VerifyRequestBuilder
 
-        return verify_request_builder.VerifyRequestBuilder(self.request_adapter, self.path_parameters)
+        return VerifyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DomainItemRequestBuilderDeleteRequestConfiguration():

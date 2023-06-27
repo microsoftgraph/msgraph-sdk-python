@@ -1,22 +1,25 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_instance_decision_item_resource, entity, identity, user_identity
+    from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
+    from .entity import Entity
+    from .identity import Identity
+    from .user_identity import UserIdentity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AccessReviewInstanceDecisionItem(entity.Entity):
+class AccessReviewInstanceDecisionItem(Entity):
     # The identifier of the accessReviewInstance parent. Supports $select. Read-only.
     access_review_id: Optional[str] = None
     # The identifier of the user who applied the decision. Read-only.
-    applied_by: Optional[user_identity.UserIdentity] = None
+    applied_by: Optional[UserIdentity] = None
     # The timestamp when the approval decision was applied.00000000-0000-0000-0000-000000000000 if the assigned reviewer hasn't applied the decision or it was automatically applied. The DatetimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  Supports $select. Read-only.
-    applied_date_time: Optional[datetime] = None
+    applied_date_time: Optional[datetime.datetime] = None
     # The result of applying the decision. Possible values: New, AppliedSuccessfully, AppliedWithUnknownFailure, AppliedSuccessfullyButObjectNotFound and ApplyNotSupported. Supports $select, $orderby, and $filter (eq only). Read-only.
     apply_result: Optional[str] = None
     # Result of the review. Possible values: Approve, Deny, NotReviewed, or DontKnow. Supports $select, $orderby, and $filter (eq only).
@@ -26,19 +29,19 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Every decision item in an access review represents a principal's access to a resource. This property represents details of the principal. For example, if a decision item represents access of User 'Bob' to Group 'Sales' - The principal is 'Bob' and the resource is 'Sales'. Principals can be of two types - userIdentity and servicePrincipalIdentity. Supports $select. Read-only.
-    principal: Optional[identity.Identity] = None
+    principal: Optional[Identity] = None
     # A link to the principal object. For example, https://graph.microsoft.com/v1.0/users/a6c7aecb-cbfd-4763-87ef-e91b4bd509d9. Read-only.
     principal_link: Optional[str] = None
     # A system-generated recommendation for the approval decision based off last interactive sign-in to tenant. Recommend approve if sign-in is within thirty days of start of review. Recommend deny if sign-in is greater than thirty days of start of review. Recommendation not available otherwise. Possible values: Approve, Deny, or NoInfoAvailable. Supports $select, $orderby, and $filter (eq only). Read-only.
     recommendation: Optional[str] = None
     # Every decision item in an access review represents a principal's access to a resource. This property represents details of the resource. For example, if a decision item represents access of User 'Bob' to Group 'Sales' - The principal is Bob and the resource is 'Sales'. Resources can be of multiple types. See accessReviewInstanceDecisionItemResource. Read-only.
-    resource: Optional[access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource] = None
+    resource: Optional[AccessReviewInstanceDecisionItemResource] = None
     # A link to the resource. For example, https://graph.microsoft.com/v1.0/servicePrincipals/c86300f3-8695-4320-9f6e-32a2555f5ff8. Supports $select. Read-only.
     resource_link: Optional[str] = None
     # The identifier of the reviewer.00000000-0000-0000-0000-000000000000 if the assigned reviewer hasn't reviewed. Supports $select. Read-only.
-    reviewed_by: Optional[user_identity.UserIdentity] = None
+    reviewed_by: Optional[UserIdentity] = None
     # The timestamp when the review decision occurred. Supports $select. Read-only.
-    reviewed_date_time: Optional[datetime] = None
+    reviewed_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewInstanceDecisionItem:
@@ -57,23 +60,29 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_instance_decision_item_resource, entity, identity, user_identity
+        from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
+        from .entity import Entity
+        from .identity import Identity
+        from .user_identity import UserIdentity
 
-        from . import access_review_instance_decision_item_resource, entity, identity, user_identity
+        from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
+        from .entity import Entity
+        from .identity import Identity
+        from .user_identity import UserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accessReviewId": lambda n : setattr(self, 'access_review_id', n.get_str_value()),
-            "appliedBy": lambda n : setattr(self, 'applied_by', n.get_object_value(user_identity.UserIdentity)),
+            "appliedBy": lambda n : setattr(self, 'applied_by', n.get_object_value(UserIdentity)),
             "appliedDateTime": lambda n : setattr(self, 'applied_date_time', n.get_datetime_value()),
             "applyResult": lambda n : setattr(self, 'apply_result', n.get_str_value()),
             "decision": lambda n : setattr(self, 'decision', n.get_str_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
-            "principal": lambda n : setattr(self, 'principal', n.get_object_value(identity.Identity)),
+            "principal": lambda n : setattr(self, 'principal', n.get_object_value(Identity)),
             "principalLink": lambda n : setattr(self, 'principal_link', n.get_str_value()),
             "recommendation": lambda n : setattr(self, 'recommendation', n.get_str_value()),
-            "resource": lambda n : setattr(self, 'resource', n.get_object_value(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource)),
+            "resource": lambda n : setattr(self, 'resource', n.get_object_value(AccessReviewInstanceDecisionItemResource)),
             "resourceLink": lambda n : setattr(self, 'resource_link', n.get_str_value()),
-            "reviewedBy": lambda n : setattr(self, 'reviewed_by', n.get_object_value(user_identity.UserIdentity)),
+            "reviewedBy": lambda n : setattr(self, 'reviewed_by', n.get_object_value(UserIdentity)),
             "reviewedDateTime": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -91,7 +100,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         super().serialize(writer)
         writer.write_str_value("accessReviewId", self.access_review_id)
         writer.write_object_value("appliedBy", self.applied_by)
-        writer.write_datetime_value("appliedDateTime", self.applied_date_time)
+        writer.write_datetime_value()("appliedDateTime", self.applied_date_time)
         writer.write_str_value("applyResult", self.apply_result)
         writer.write_str_value("decision", self.decision)
         writer.write_str_value("justification", self.justification)
@@ -101,6 +110,6 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         writer.write_object_value("resource", self.resource)
         writer.write_str_value("resourceLink", self.resource_link)
         writer.write_object_value("reviewedBy", self.reviewed_by)
-        writer.write_datetime_value("reviewedDateTime", self.reviewed_date_time)
+        writer.write_datetime_value()("reviewedDateTime", self.reviewed_date_time)
     
 

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import assigned_training_info
+    from .assigned_training_info import AssignedTrainingInfo
 
 @dataclass
 class TrainingEventsContent(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class TrainingEventsContent(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # List of assigned trainings and their information in an attack simulation and training campaign.
-    assigned_trainings_infos: Optional[List[assigned_training_info.AssignedTrainingInfo]] = None
+    assigned_trainings_infos: Optional[List[AssignedTrainingInfo]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Number of users who were assigned trainings in an attack simulation and training campaign.
@@ -35,12 +35,12 @@ class TrainingEventsContent(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import assigned_training_info
+        from .assigned_training_info import AssignedTrainingInfo
 
-        from . import assigned_training_info
+        from .assigned_training_info import AssignedTrainingInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignedTrainingsInfos": lambda n : setattr(self, 'assigned_trainings_infos', n.get_collection_of_object_values(assigned_training_info.AssignedTrainingInfo)),
+            "assignedTrainingsInfos": lambda n : setattr(self, 'assigned_trainings_infos', n.get_collection_of_object_values(AssignedTrainingInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "trainingsAssignedUserCount": lambda n : setattr(self, 'trainings_assigned_user_count', n.get_int_value()),
         }

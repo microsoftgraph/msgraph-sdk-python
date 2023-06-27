@@ -1,16 +1,16 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class TelecomExpenseManagementPartner(entity.Entity):
+class TelecomExpenseManagementPartner(Entity):
     """
     telecomExpenseManagementPartner resources represent the metadata and status of a given TEM service. Once your organization has onboarded with a partner, the partner can be enabled or disabled to switch TEM functionality on or off.
     """
@@ -21,7 +21,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
     # Whether Intune's connection to the TEM service is currently enabled or disabled.
     enabled: Optional[bool] = None
     # Timestamp of the last request sent to Intune by the TEM partner.
-    last_connection_date_time: Optional[datetime] = None
+    last_connection_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # URL of the TEM partner's administrative control panel, where an administrator can configure their TEM service.
@@ -44,9 +44,9 @@ class TelecomExpenseManagementPartner(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appAuthorized": lambda n : setattr(self, 'app_authorized', n.get_bool_value()),
@@ -71,7 +71,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         writer.write_bool_value("appAuthorized", self.app_authorized)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("enabled", self.enabled)
-        writer.write_datetime_value("lastConnectionDateTime", self.last_connection_date_time)
+        writer.write_datetime_value()("lastConnectionDateTime", self.last_connection_date_time)
         writer.write_str_value("url", self.url)
     
 

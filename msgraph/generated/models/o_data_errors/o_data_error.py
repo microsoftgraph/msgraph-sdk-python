@@ -5,7 +5,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import main_error
+    from .main_error import MainError
 
 @dataclass
 class ODataError(APIError):
@@ -13,7 +13,7 @@ class ODataError(APIError):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The error property
-    error: Optional[main_error.MainError] = None
+    error: Optional[MainError] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ODataError:
@@ -32,12 +32,12 @@ class ODataError(APIError):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import main_error
+        from .main_error import MainError
 
-        from . import main_error
+        from .main_error import MainError
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "error": lambda n : setattr(self, 'error', n.get_object_value(main_error.MainError)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(MainError)),
         }
         return fields
     

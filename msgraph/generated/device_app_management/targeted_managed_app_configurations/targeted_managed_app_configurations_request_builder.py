@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import targeted_managed_app_configuration, targeted_managed_app_configuration_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import targeted_managed_app_configuration_item_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.targeted_managed_app_configuration import TargetedManagedAppConfiguration
+    from ...models.targeted_managed_app_configuration_collection_response import TargetedManagedAppConfigurationCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.targeted_managed_app_configuration_item_request_builder import TargetedManagedAppConfigurationItemRequestBuilder
 
 class TargetedManagedAppConfigurationsRequestBuilder():
     """
@@ -37,71 +38,71 @@ class TargetedManagedAppConfigurationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_targeted_managed_app_configuration_id(self,targeted_managed_app_configuration_id: str) -> targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder:
+    def by_targeted_managed_app_configuration_id(self,targeted_managed_app_configuration_id: str) -> TargetedManagedAppConfigurationItemRequestBuilder:
         """
         Provides operations to manage the targetedManagedAppConfigurations property of the microsoft.graph.deviceAppManagement entity.
         Args:
             targeted_managed_app_configuration_id: Unique identifier of the item
-        Returns: targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder
+        Returns: TargetedManagedAppConfigurationItemRequestBuilder
         """
         if not targeted_managed_app_configuration_id:
             raise TypeError("targeted_managed_app_configuration_id cannot be null.")
-        from .item import targeted_managed_app_configuration_item_request_builder
+        from .item.targeted_managed_app_configuration_item_request_builder import TargetedManagedAppConfigurationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["targetedManagedAppConfiguration%2Did"] = targeted_managed_app_configuration_id
-        return targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return TargetedManagedAppConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TargetedManagedAppConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[targeted_managed_app_configuration_collection_response.TargetedManagedAppConfigurationCollectionResponse]:
+    async def get(self,request_configuration: Optional[TargetedManagedAppConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[TargetedManagedAppConfigurationCollectionResponse]:
         """
-        Targeted managed app configurations.
+        List properties and relationships of the targetedManagedAppConfiguration objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[targeted_managed_app_configuration_collection_response.TargetedManagedAppConfigurationCollectionResponse]
+        Returns: Optional[TargetedManagedAppConfigurationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import targeted_managed_app_configuration_collection_response
+        from ...models.targeted_managed_app_configuration_collection_response import TargetedManagedAppConfigurationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, targeted_managed_app_configuration_collection_response.TargetedManagedAppConfigurationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TargetedManagedAppConfigurationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]:
+    async def post(self,body: Optional[TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[TargetedManagedAppConfiguration]:
         """
-        Create new navigation property to targetedManagedAppConfigurations for deviceAppManagement
+        Create a new targetedManagedAppConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]
+        Returns: Optional[TargetedManagedAppConfiguration]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import targeted_managed_app_configuration
+        from ...models.targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
-        return await self.request_adapter.send_async(request_info, targeted_managed_app_configuration.TargetedManagedAppConfiguration, error_mapping)
+        return await self.request_adapter.send_async(request_info, TargetedManagedAppConfiguration, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TargetedManagedAppConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Targeted managed app configurations.
+        List properties and relationships of the targetedManagedAppConfiguration objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class TargetedManagedAppConfigurationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to targetedManagedAppConfigurations for deviceAppManagement
+        Create a new targetedManagedAppConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class TargetedManagedAppConfigurationsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TargetedManagedAppConfigurationsRequestBuilderGetQueryParameters():
         """
-        Targeted managed app configurations.
+        List properties and relationships of the targetedManagedAppConfiguration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

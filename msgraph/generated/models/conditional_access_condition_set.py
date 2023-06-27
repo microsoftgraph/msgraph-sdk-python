@@ -4,7 +4,14 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_applications, conditional_access_client_app, conditional_access_client_applications, conditional_access_devices, conditional_access_locations, conditional_access_platforms, conditional_access_users, risk_level
+    from .conditional_access_applications import ConditionalAccessApplications
+    from .conditional_access_client_app import ConditionalAccessClientApp
+    from .conditional_access_client_applications import ConditionalAccessClientApplications
+    from .conditional_access_devices import ConditionalAccessDevices
+    from .conditional_access_locations import ConditionalAccessLocations
+    from .conditional_access_platforms import ConditionalAccessPlatforms
+    from .conditional_access_users import ConditionalAccessUsers
+    from .risk_level import RiskLevel
 
 @dataclass
 class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
@@ -12,27 +19,27 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Applications and user actions included in and excluded from the policy. Required.
-    applications: Optional[conditional_access_applications.ConditionalAccessApplications] = None
+    applications: Optional[ConditionalAccessApplications] = None
     # Client application types included in the policy. Possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.
-    client_app_types: Optional[List[conditional_access_client_app.ConditionalAccessClientApp]] = None
+    client_app_types: Optional[List[ConditionalAccessClientApp]] = None
     # Client applications (service principals and workload identities) included in and excluded from the policy. Either users or clientApplications is required.
-    client_applications: Optional[conditional_access_client_applications.ConditionalAccessClientApplications] = None
+    client_applications: Optional[ConditionalAccessClientApplications] = None
     # Devices in the policy.
-    devices: Optional[conditional_access_devices.ConditionalAccessDevices] = None
+    devices: Optional[ConditionalAccessDevices] = None
     # Locations included in and excluded from the policy.
-    locations: Optional[conditional_access_locations.ConditionalAccessLocations] = None
+    locations: Optional[ConditionalAccessLocations] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Platforms included in and excluded from the policy.
-    platforms: Optional[conditional_access_platforms.ConditionalAccessPlatforms] = None
+    platforms: Optional[ConditionalAccessPlatforms] = None
     # Service principal risk levels included in the policy. Possible values are: low, medium, high, none, unknownFutureValue.
-    service_principal_risk_levels: Optional[List[risk_level.RiskLevel]] = None
+    service_principal_risk_levels: Optional[List[RiskLevel]] = None
     # Sign-in risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
-    sign_in_risk_levels: Optional[List[risk_level.RiskLevel]] = None
+    sign_in_risk_levels: Optional[List[RiskLevel]] = None
     # User risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
-    user_risk_levels: Optional[List[risk_level.RiskLevel]] = None
+    user_risk_levels: Optional[List[RiskLevel]] = None
     # Users, groups, and roles included in and excluded from the policy. Either users or clientApplications is required.
-    users: Optional[conditional_access_users.ConditionalAccessUsers] = None
+    users: Optional[ConditionalAccessUsers] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessConditionSet:
@@ -51,22 +58,36 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_applications, conditional_access_client_app, conditional_access_client_applications, conditional_access_devices, conditional_access_locations, conditional_access_platforms, conditional_access_users, risk_level
+        from .conditional_access_applications import ConditionalAccessApplications
+        from .conditional_access_client_app import ConditionalAccessClientApp
+        from .conditional_access_client_applications import ConditionalAccessClientApplications
+        from .conditional_access_devices import ConditionalAccessDevices
+        from .conditional_access_locations import ConditionalAccessLocations
+        from .conditional_access_platforms import ConditionalAccessPlatforms
+        from .conditional_access_users import ConditionalAccessUsers
+        from .risk_level import RiskLevel
 
-        from . import conditional_access_applications, conditional_access_client_app, conditional_access_client_applications, conditional_access_devices, conditional_access_locations, conditional_access_platforms, conditional_access_users, risk_level
+        from .conditional_access_applications import ConditionalAccessApplications
+        from .conditional_access_client_app import ConditionalAccessClientApp
+        from .conditional_access_client_applications import ConditionalAccessClientApplications
+        from .conditional_access_devices import ConditionalAccessDevices
+        from .conditional_access_locations import ConditionalAccessLocations
+        from .conditional_access_platforms import ConditionalAccessPlatforms
+        from .conditional_access_users import ConditionalAccessUsers
+        from .risk_level import RiskLevel
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applications": lambda n : setattr(self, 'applications', n.get_object_value(conditional_access_applications.ConditionalAccessApplications)),
-            "clientAppTypes": lambda n : setattr(self, 'client_app_types', n.get_collection_of_enum_values(conditional_access_client_app.ConditionalAccessClientApp)),
-            "clientApplications": lambda n : setattr(self, 'client_applications', n.get_object_value(conditional_access_client_applications.ConditionalAccessClientApplications)),
-            "devices": lambda n : setattr(self, 'devices', n.get_object_value(conditional_access_devices.ConditionalAccessDevices)),
-            "locations": lambda n : setattr(self, 'locations', n.get_object_value(conditional_access_locations.ConditionalAccessLocations)),
+            "applications": lambda n : setattr(self, 'applications', n.get_object_value(ConditionalAccessApplications)),
+            "clientAppTypes": lambda n : setattr(self, 'client_app_types', n.get_collection_of_enum_values(ConditionalAccessClientApp)),
+            "clientApplications": lambda n : setattr(self, 'client_applications', n.get_object_value(ConditionalAccessClientApplications)),
+            "devices": lambda n : setattr(self, 'devices', n.get_object_value(ConditionalAccessDevices)),
+            "locations": lambda n : setattr(self, 'locations', n.get_object_value(ConditionalAccessLocations)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "platforms": lambda n : setattr(self, 'platforms', n.get_object_value(conditional_access_platforms.ConditionalAccessPlatforms)),
-            "servicePrincipalRiskLevels": lambda n : setattr(self, 'service_principal_risk_levels', n.get_collection_of_enum_values(risk_level.RiskLevel)),
-            "signInRiskLevels": lambda n : setattr(self, 'sign_in_risk_levels', n.get_collection_of_enum_values(risk_level.RiskLevel)),
-            "userRiskLevels": lambda n : setattr(self, 'user_risk_levels', n.get_collection_of_enum_values(risk_level.RiskLevel)),
-            "users": lambda n : setattr(self, 'users', n.get_object_value(conditional_access_users.ConditionalAccessUsers)),
+            "platforms": lambda n : setattr(self, 'platforms', n.get_object_value(ConditionalAccessPlatforms)),
+            "servicePrincipalRiskLevels": lambda n : setattr(self, 'service_principal_risk_levels', n.get_collection_of_enum_values(RiskLevel)),
+            "signInRiskLevels": lambda n : setattr(self, 'sign_in_risk_levels', n.get_collection_of_enum_values(RiskLevel)),
+            "userRiskLevels": lambda n : setattr(self, 'user_risk_levels', n.get_collection_of_enum_values(RiskLevel)),
+            "users": lambda n : setattr(self, 'users', n.get_object_value(ConditionalAccessUsers)),
         }
         return fields
     

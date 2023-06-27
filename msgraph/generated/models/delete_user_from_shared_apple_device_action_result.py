@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_action_result
+    from .device_action_result import DeviceActionResult
 
-from . import device_action_result
+from .device_action_result import DeviceActionResult
 
 @dataclass
-class DeleteUserFromSharedAppleDeviceActionResult(device_action_result.DeviceActionResult):
+class DeleteUserFromSharedAppleDeviceActionResult(DeviceActionResult):
     # The OdataType property
     odata_type: Optional[str] = None
     # User principal name of the user to be deleted
@@ -32,9 +32,9 @@ class DeleteUserFromSharedAppleDeviceActionResult(device_action_result.DeviceAct
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_action_result
+        from .device_action_result import DeviceActionResult
 
-        from . import device_action_result
+        from .device_action_result import DeviceActionResult
 
         fields: Dict[str, Callable[[Any], None]] = {
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),

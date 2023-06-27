@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import device_management_partner, device_management_partner_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import device_management_partner_item_request_builder
+    from ...models.device_management_partner import DeviceManagementPartner
+    from ...models.device_management_partner_collection_response import DeviceManagementPartnerCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.device_management_partner_item_request_builder import DeviceManagementPartnerItemRequestBuilder
 
 class DeviceManagementPartnersRequestBuilder():
     """
@@ -37,71 +38,71 @@ class DeviceManagementPartnersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_device_management_partner_id(self,device_management_partner_id: str) -> device_management_partner_item_request_builder.DeviceManagementPartnerItemRequestBuilder:
+    def by_device_management_partner_id(self,device_management_partner_id: str) -> DeviceManagementPartnerItemRequestBuilder:
         """
         Provides operations to manage the deviceManagementPartners property of the microsoft.graph.deviceManagement entity.
         Args:
             device_management_partner_id: Unique identifier of the item
-        Returns: device_management_partner_item_request_builder.DeviceManagementPartnerItemRequestBuilder
+        Returns: DeviceManagementPartnerItemRequestBuilder
         """
         if not device_management_partner_id:
             raise TypeError("device_management_partner_id cannot be null.")
-        from .item import device_management_partner_item_request_builder
+        from .item.device_management_partner_item_request_builder import DeviceManagementPartnerItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceManagementPartner%2Did"] = device_management_partner_id
-        return device_management_partner_item_request_builder.DeviceManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DeviceManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DeviceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[device_management_partner_collection_response.DeviceManagementPartnerCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeviceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementPartnerCollectionResponse]:
         """
-        The list of Device Management Partners configured by the tenant.
+        List properties and relationships of the deviceManagementPartner objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_management_partner_collection_response.DeviceManagementPartnerCollectionResponse]
+        Returns: Optional[DeviceManagementPartnerCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device_management_partner_collection_response
+        from ...models.device_management_partner_collection_response import DeviceManagementPartnerCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, device_management_partner_collection_response.DeviceManagementPartnerCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceManagementPartnerCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[device_management_partner.DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> Optional[device_management_partner.DeviceManagementPartner]:
+    async def post(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
         """
-        Create new navigation property to deviceManagementPartners for deviceManagement
+        Create a new deviceManagementPartner object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_management_partner.DeviceManagementPartner]
+        Returns: Optional[DeviceManagementPartner]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device_management_partner
+        from ...models.device_management_partner import DeviceManagementPartner
 
-        return await self.request_adapter.send_async(request_info, device_management_partner.DeviceManagementPartner, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceManagementPartner, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DeviceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of Device Management Partners configured by the tenant.
+        List properties and relationships of the deviceManagementPartner objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class DeviceManagementPartnersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[device_management_partner.DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to deviceManagementPartners for deviceManagement
+        Create a new deviceManagementPartner object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class DeviceManagementPartnersRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceManagementPartnersRequestBuilderGetQueryParameters():
         """
-        The list of Device Management Partners configured by the tenant.
+        List properties and relationships of the deviceManagementPartner objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

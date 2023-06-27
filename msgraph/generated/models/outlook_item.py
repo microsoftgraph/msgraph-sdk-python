@@ -1,24 +1,32 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import calendar_sharing_message, contact, entity, event, event_message, event_message_request, event_message_response, message, post
+    from .calendar_sharing_message import CalendarSharingMessage
+    from .contact import Contact
+    from .entity import Entity
+    from .event import Event
+    from .event_message import EventMessage
+    from .event_message_request import EventMessageRequest
+    from .event_message_response import EventMessageResponse
+    from .message import Message
+    from .post import Post
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class OutlookItem(entity.Entity):
+class OutlookItem(Entity):
     # The categories associated with the item
     categories: Optional[List[str]] = None
     # Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
     change_key: Optional[str] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -37,37 +45,37 @@ class OutlookItem(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.calendarSharingMessage".casefold():
-            from . import calendar_sharing_message
+            from .calendar_sharing_message import CalendarSharingMessage
 
-            return calendar_sharing_message.CalendarSharingMessage()
+            return CalendarSharingMessage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.contact".casefold():
-            from . import contact
+            from .contact import Contact
 
-            return contact.Contact()
+            return Contact()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.event".casefold():
-            from . import event
+            from .event import Event
 
-            return event.Event()
+            return Event()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessage".casefold():
-            from . import event_message
+            from .event_message import EventMessage
 
-            return event_message.EventMessage()
+            return EventMessage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessageRequest".casefold():
-            from . import event_message_request
+            from .event_message_request import EventMessageRequest
 
-            return event_message_request.EventMessageRequest()
+            return EventMessageRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessageResponse".casefold():
-            from . import event_message_response
+            from .event_message_response import EventMessageResponse
 
-            return event_message_response.EventMessageResponse()
+            return EventMessageResponse()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.message".casefold():
-            from . import message
+            from .message import Message
 
-            return message.Message()
+            return Message()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.post".casefold():
-            from . import post
+            from .post import Post
 
-            return post.Post()
+            return Post()
         return OutlookItem()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -75,9 +83,25 @@ class OutlookItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import calendar_sharing_message, contact, entity, event, event_message, event_message_request, event_message_response, message, post
+        from .calendar_sharing_message import CalendarSharingMessage
+        from .contact import Contact
+        from .entity import Entity
+        from .event import Event
+        from .event_message import EventMessage
+        from .event_message_request import EventMessageRequest
+        from .event_message_response import EventMessageResponse
+        from .message import Message
+        from .post import Post
 
-        from . import calendar_sharing_message, contact, entity, event, event_message, event_message_request, event_message_response, message, post
+        from .calendar_sharing_message import CalendarSharingMessage
+        from .contact import Contact
+        from .entity import Entity
+        from .event import Event
+        from .event_message import EventMessage
+        from .event_message_request import EventMessageRequest
+        from .event_message_response import EventMessageResponse
+        from .message import Message
+        from .post import Post
 
         fields: Dict[str, Callable[[Any], None]] = {
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
@@ -100,7 +124,7 @@ class OutlookItem(entity.Entity):
         super().serialize(writer)
         writer.write_collection_of_primitive_values("categories", self.categories)
         writer.write_str_value("changeKey", self.change_key)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
     
 

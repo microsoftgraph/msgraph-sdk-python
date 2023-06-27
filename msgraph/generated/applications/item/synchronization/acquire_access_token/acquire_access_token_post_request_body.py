@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import synchronization_secret_key_string_value_pair
+    from .....models.synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
 
 @dataclass
 class AcquireAccessTokenPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AcquireAccessTokenPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The credentials property
-    credentials: Optional[List[synchronization_secret_key_string_value_pair.SynchronizationSecretKeyStringValuePair]] = None
+    credentials: Optional[List[SynchronizationSecretKeyStringValuePair]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AcquireAccessTokenPostRequestBody:
@@ -31,12 +31,12 @@ class AcquireAccessTokenPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import synchronization_secret_key_string_value_pair
+        from .....models.synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
 
-        from .....models import synchronization_secret_key_string_value_pair
+        from .....models.synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "credentials": lambda n : setattr(self, 'credentials', n.get_collection_of_object_values(synchronization_secret_key_string_value_pair.SynchronizationSecretKeyStringValuePair)),
+            "credentials": lambda n : setattr(self, 'credentials', n.get_collection_of_object_values(SynchronizationSecretKeyStringValuePair)),
         }
         return fields
     

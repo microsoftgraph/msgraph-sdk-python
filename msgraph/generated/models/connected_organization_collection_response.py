@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, connected_organization
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .connected_organization import ConnectedOrganization
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class ConnectedOrganizationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class ConnectedOrganizationCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[connected_organization.ConnectedOrganization]] = None
+    value: Optional[List[ConnectedOrganization]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConnectedOrganizationCollectionResponse:
@@ -30,12 +31,14 @@ class ConnectedOrganizationCollectionResponse(base_collection_pagination_count_r
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, connected_organization
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .connected_organization import ConnectedOrganization
 
-        from . import base_collection_pagination_count_response, connected_organization
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .connected_organization import ConnectedOrganization
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(connected_organization.ConnectedOrganization)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(ConnectedOrganization)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

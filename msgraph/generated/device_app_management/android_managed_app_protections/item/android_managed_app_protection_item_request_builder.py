@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import android_managed_app_protection
-    from ....models.o_data_errors import o_data_error
-    from .apps import apps_request_builder
-    from .assignments import assignments_request_builder
-    from .deployment_summary import deployment_summary_request_builder
+    from ....models.android_managed_app_protection import AndroidManagedAppProtection
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .apps.apps_request_builder import AppsRequestBuilder
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .deployment_summary.deployment_summary_request_builder import DeploymentSummaryRequestBuilder
 
 class AndroidManagedAppProtectionItemRequestBuilder():
     """
@@ -40,73 +40,73 @@ class AndroidManagedAppProtectionItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property androidManagedAppProtections for deviceAppManagement
+        Deletes a androidManagedAppProtection.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[android_managed_app_protection.AndroidManagedAppProtection]:
+    async def get(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AndroidManagedAppProtection]:
         """
-        Android managed app policies.
+        Read properties and relationships of the androidManagedAppProtection object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[android_managed_app_protection.AndroidManagedAppProtection]
+        Returns: Optional[AndroidManagedAppProtection]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import android_managed_app_protection
+        from ....models.android_managed_app_protection import AndroidManagedAppProtection
 
-        return await self.request_adapter.send_async(request_info, android_managed_app_protection.AndroidManagedAppProtection, error_mapping)
+        return await self.request_adapter.send_async(request_info, AndroidManagedAppProtection, error_mapping)
     
-    async def patch(self,body: Optional[android_managed_app_protection.AndroidManagedAppProtection] = None, request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[android_managed_app_protection.AndroidManagedAppProtection]:
+    async def patch(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AndroidManagedAppProtection]:
         """
-        Update the navigation property androidManagedAppProtections in deviceAppManagement
+        Update the properties of a androidManagedAppProtection object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[android_managed_app_protection.AndroidManagedAppProtection]
+        Returns: Optional[AndroidManagedAppProtection]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import android_managed_app_protection
+        from ....models.android_managed_app_protection import AndroidManagedAppProtection
 
-        return await self.request_adapter.send_async(request_info, android_managed_app_protection.AndroidManagedAppProtection, error_mapping)
+        return await self.request_adapter.send_async(request_info, AndroidManagedAppProtection, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property androidManagedAppProtections for deviceAppManagement
+        Deletes a androidManagedAppProtection.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class AndroidManagedAppProtectionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Android managed app policies.
+        Read properties and relationships of the androidManagedAppProtection object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,9 +138,9 @@ class AndroidManagedAppProtectionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[android_managed_app_protection.AndroidManagedAppProtection] = None, request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property androidManagedAppProtections in deviceAppManagement
+        Update the properties of a androidManagedAppProtection object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,31 +160,31 @@ class AndroidManagedAppProtectionItemRequestBuilder():
         return request_info
     
     @property
-    def apps(self) -> apps_request_builder.AppsRequestBuilder:
+    def apps(self) -> AppsRequestBuilder:
         """
         Provides operations to manage the apps property of the microsoft.graph.androidManagedAppProtection entity.
         """
-        from .apps import apps_request_builder
+        from .apps.apps_request_builder import AppsRequestBuilder
 
-        return apps_request_builder.AppsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+    def assignments(self) -> AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.targetedManagedAppProtection entity.
         """
-        from .assignments import assignments_request_builder
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def deployment_summary(self) -> deployment_summary_request_builder.DeploymentSummaryRequestBuilder:
+    def deployment_summary(self) -> DeploymentSummaryRequestBuilder:
         """
         Provides operations to manage the deploymentSummary property of the microsoft.graph.androidManagedAppProtection entity.
         """
-        from .deployment_summary import deployment_summary_request_builder
+        from .deployment_summary.deployment_summary_request_builder import DeploymentSummaryRequestBuilder
 
-        return deployment_summary_request_builder.DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AndroidManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration():
@@ -201,7 +201,7 @@ class AndroidManagedAppProtectionItemRequestBuilder():
     @dataclass
     class AndroidManagedAppProtectionItemRequestBuilderGetQueryParameters():
         """
-        Android managed app policies.
+        Read properties and relationships of the androidManagedAppProtection object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

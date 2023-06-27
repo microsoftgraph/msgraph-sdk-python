@@ -10,25 +10,25 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import team
-    from ....models.o_data_errors import o_data_error
-    from .all_channels import all_channels_request_builder
-    from .archive import archive_request_builder
-    from .channels import channels_request_builder
-    from .clone import clone_request_builder
-    from .complete_migration import complete_migration_request_builder
-    from .group import group_request_builder
-    from .incoming_channels import incoming_channels_request_builder
-    from .installed_apps import installed_apps_request_builder
-    from .members import members_request_builder
-    from .operations import operations_request_builder
-    from .photo import photo_request_builder
-    from .primary_channel import primary_channel_request_builder
-    from .schedule import schedule_request_builder
-    from .send_activity_notification import send_activity_notification_request_builder
-    from .tags import tags_request_builder
-    from .template import template_request_builder
-    from .unarchive import unarchive_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.team import Team
+    from .all_channels.all_channels_request_builder import AllChannelsRequestBuilder
+    from .archive.archive_request_builder import ArchiveRequestBuilder
+    from .channels.channels_request_builder import ChannelsRequestBuilder
+    from .clone.clone_request_builder import CloneRequestBuilder
+    from .complete_migration.complete_migration_request_builder import CompleteMigrationRequestBuilder
+    from .group.group_request_builder import GroupRequestBuilder
+    from .incoming_channels.incoming_channels_request_builder import IncomingChannelsRequestBuilder
+    from .installed_apps.installed_apps_request_builder import InstalledAppsRequestBuilder
+    from .members.members_request_builder import MembersRequestBuilder
+    from .operations.operations_request_builder import OperationsRequestBuilder
+    from .photo.photo_request_builder import PhotoRequestBuilder
+    from .primary_channel.primary_channel_request_builder import PrimaryChannelRequestBuilder
+    from .schedule.schedule_request_builder import ScheduleRequestBuilder
+    from .send_activity_notification.send_activity_notification_request_builder import SendActivityNotificationRequestBuilder
+    from .tags.tags_request_builder import TagsRequestBuilder
+    from .template.template_request_builder import TemplateRequestBuilder
+    from .unarchive.unarchive_request_builder import UnarchiveRequestBuilder
 
 class TeamItemRequestBuilder():
     """
@@ -61,62 +61,62 @@ class TeamItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TeamItemRequestBuilderGetRequestConfiguration] = None) -> Optional[team.Team]:
+    async def get(self,request_configuration: Optional[TeamItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Team]:
         """
         Get joinedTeams from me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[team.Team]
+        Returns: Optional[Team]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import team
+        from ....models.team import Team
 
-        return await self.request_adapter.send_async(request_info, team.Team, error_mapping)
+        return await self.request_adapter.send_async(request_info, Team, error_mapping)
     
-    async def patch(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[team.Team]:
+    async def patch(self,body: Optional[Team] = None, request_configuration: Optional[TeamItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Team]:
         """
         Update the navigation property joinedTeams in me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[team.Team]
+        Returns: Optional[Team]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import team
+        from ....models.team import Team
 
-        return await self.request_adapter.send_async(request_info, team.Team, error_mapping)
+        return await self.request_adapter.send_async(request_info, Team, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TeamItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -152,7 +152,7 @@ class TeamItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Team] = None, request_configuration: Optional[TeamItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property joinedTeams in me
         Args:
@@ -174,157 +174,157 @@ class TeamItemRequestBuilder():
         return request_info
     
     @property
-    def all_channels(self) -> all_channels_request_builder.AllChannelsRequestBuilder:
+    def all_channels(self) -> AllChannelsRequestBuilder:
         """
         Provides operations to manage the allChannels property of the microsoft.graph.team entity.
         """
-        from .all_channels import all_channels_request_builder
+        from .all_channels.all_channels_request_builder import AllChannelsRequestBuilder
 
-        return all_channels_request_builder.AllChannelsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AllChannelsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def archive(self) -> archive_request_builder.ArchiveRequestBuilder:
+    def archive(self) -> ArchiveRequestBuilder:
         """
         Provides operations to call the archive method.
         """
-        from .archive import archive_request_builder
+        from .archive.archive_request_builder import ArchiveRequestBuilder
 
-        return archive_request_builder.ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
+        return ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def channels(self) -> channels_request_builder.ChannelsRequestBuilder:
+    def channels(self) -> ChannelsRequestBuilder:
         """
         Provides operations to manage the channels property of the microsoft.graph.team entity.
         """
-        from .channels import channels_request_builder
+        from .channels.channels_request_builder import ChannelsRequestBuilder
 
-        return channels_request_builder.ChannelsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ChannelsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def clone(self) -> clone_request_builder.CloneRequestBuilder:
+    def clone(self) -> CloneRequestBuilder:
         """
         Provides operations to call the clone method.
         """
-        from .clone import clone_request_builder
+        from .clone.clone_request_builder import CloneRequestBuilder
 
-        return clone_request_builder.CloneRequestBuilder(self.request_adapter, self.path_parameters)
+        return CloneRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def complete_migration(self) -> complete_migration_request_builder.CompleteMigrationRequestBuilder:
+    def complete_migration(self) -> CompleteMigrationRequestBuilder:
         """
         Provides operations to call the completeMigration method.
         """
-        from .complete_migration import complete_migration_request_builder
+        from .complete_migration.complete_migration_request_builder import CompleteMigrationRequestBuilder
 
-        return complete_migration_request_builder.CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
+        return CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def group(self) -> group_request_builder.GroupRequestBuilder:
+    def group(self) -> GroupRequestBuilder:
         """
         Provides operations to manage the group property of the microsoft.graph.team entity.
         """
-        from .group import group_request_builder
+        from .group.group_request_builder import GroupRequestBuilder
 
-        return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return GroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def incoming_channels(self) -> incoming_channels_request_builder.IncomingChannelsRequestBuilder:
+    def incoming_channels(self) -> IncomingChannelsRequestBuilder:
         """
         Provides operations to manage the incomingChannels property of the microsoft.graph.team entity.
         """
-        from .incoming_channels import incoming_channels_request_builder
+        from .incoming_channels.incoming_channels_request_builder import IncomingChannelsRequestBuilder
 
-        return incoming_channels_request_builder.IncomingChannelsRequestBuilder(self.request_adapter, self.path_parameters)
+        return IncomingChannelsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def installed_apps(self) -> installed_apps_request_builder.InstalledAppsRequestBuilder:
+    def installed_apps(self) -> InstalledAppsRequestBuilder:
         """
         Provides operations to manage the installedApps property of the microsoft.graph.team entity.
         """
-        from .installed_apps import installed_apps_request_builder
+        from .installed_apps.installed_apps_request_builder import InstalledAppsRequestBuilder
 
-        return installed_apps_request_builder.InstalledAppsRequestBuilder(self.request_adapter, self.path_parameters)
+        return InstalledAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def members(self) -> members_request_builder.MembersRequestBuilder:
+    def members(self) -> MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.team entity.
         """
-        from .members import members_request_builder
+        from .members.members_request_builder import MembersRequestBuilder
 
-        return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
+        return MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+    def operations(self) -> OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.team entity.
         """
-        from .operations import operations_request_builder
+        from .operations.operations_request_builder import OperationsRequestBuilder
 
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def photo(self) -> photo_request_builder.PhotoRequestBuilder:
+    def photo(self) -> PhotoRequestBuilder:
         """
         Provides operations to manage the photo property of the microsoft.graph.team entity.
         """
-        from .photo import photo_request_builder
+        from .photo.photo_request_builder import PhotoRequestBuilder
 
-        return photo_request_builder.PhotoRequestBuilder(self.request_adapter, self.path_parameters)
+        return PhotoRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def primary_channel(self) -> primary_channel_request_builder.PrimaryChannelRequestBuilder:
+    def primary_channel(self) -> PrimaryChannelRequestBuilder:
         """
         Provides operations to manage the primaryChannel property of the microsoft.graph.team entity.
         """
-        from .primary_channel import primary_channel_request_builder
+        from .primary_channel.primary_channel_request_builder import PrimaryChannelRequestBuilder
 
-        return primary_channel_request_builder.PrimaryChannelRequestBuilder(self.request_adapter, self.path_parameters)
+        return PrimaryChannelRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def schedule(self) -> schedule_request_builder.ScheduleRequestBuilder:
+    def schedule(self) -> ScheduleRequestBuilder:
         """
         Provides operations to manage the schedule property of the microsoft.graph.team entity.
         """
-        from .schedule import schedule_request_builder
+        from .schedule.schedule_request_builder import ScheduleRequestBuilder
 
-        return schedule_request_builder.ScheduleRequestBuilder(self.request_adapter, self.path_parameters)
+        return ScheduleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
+    def send_activity_notification(self) -> SendActivityNotificationRequestBuilder:
         """
         Provides operations to call the sendActivityNotification method.
         """
-        from .send_activity_notification import send_activity_notification_request_builder
+        from .send_activity_notification.send_activity_notification_request_builder import SendActivityNotificationRequestBuilder
 
-        return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
+        return SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tags(self) -> tags_request_builder.TagsRequestBuilder:
+    def tags(self) -> TagsRequestBuilder:
         """
         Provides operations to manage the tags property of the microsoft.graph.team entity.
         """
-        from .tags import tags_request_builder
+        from .tags.tags_request_builder import TagsRequestBuilder
 
-        return tags_request_builder.TagsRequestBuilder(self.request_adapter, self.path_parameters)
+        return TagsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def template(self) -> template_request_builder.TemplateRequestBuilder:
+    def template(self) -> TemplateRequestBuilder:
         """
         Provides operations to manage the template property of the microsoft.graph.team entity.
         """
-        from .template import template_request_builder
+        from .template.template_request_builder import TemplateRequestBuilder
 
-        return template_request_builder.TemplateRequestBuilder(self.request_adapter, self.path_parameters)
+        return TemplateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def unarchive(self) -> unarchive_request_builder.UnarchiveRequestBuilder:
+    def unarchive(self) -> UnarchiveRequestBuilder:
         """
         Provides operations to call the unarchive method.
         """
-        from .unarchive import unarchive_request_builder
+        from .unarchive.unarchive_request_builder import UnarchiveRequestBuilder
 
-        return unarchive_request_builder.UnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
+        return UnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TeamItemRequestBuilderDeleteRequestConfiguration():

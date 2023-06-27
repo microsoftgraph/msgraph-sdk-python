@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import url_to_item_resolver_base
+    from .url_to_item_resolver_base import UrlToItemResolverBase
 
 @dataclass
 class ActivitySettings(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class ActivitySettings(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies configurations to identify an externalItem based on a shared URL.
-    url_to_item_resolvers: Optional[List[url_to_item_resolver_base.UrlToItemResolverBase]] = None
+    url_to_item_resolvers: Optional[List[UrlToItemResolverBase]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ActivitySettings:
@@ -33,13 +33,13 @@ class ActivitySettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import url_to_item_resolver_base
+        from .url_to_item_resolver_base import UrlToItemResolverBase
 
-        from . import url_to_item_resolver_base
+        from .url_to_item_resolver_base import UrlToItemResolverBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "urlToItemResolvers": lambda n : setattr(self, 'url_to_item_resolvers', n.get_collection_of_object_values(url_to_item_resolver_base.UrlToItemResolverBase)),
+            "urlToItemResolvers": lambda n : setattr(self, 'url_to_item_resolvers', n.get_collection_of_object_values(UrlToItemResolverBase)),
         }
         return fields
     

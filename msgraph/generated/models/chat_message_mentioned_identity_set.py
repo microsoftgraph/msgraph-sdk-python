@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set, teamwork_conversation_identity
+    from .identity_set import IdentitySet
+    from .teamwork_conversation_identity import TeamworkConversationIdentity
 
-from . import identity_set
+from .identity_set import IdentitySet
 
 @dataclass
-class ChatMessageMentionedIdentitySet(identity_set.IdentitySet):
+class ChatMessageMentionedIdentitySet(IdentitySet):
     odata_type = "#microsoft.graph.chatMessageMentionedIdentitySet"
     # If present, represents a conversation (for example, team or channel) @mentioned in a message.
-    conversation: Optional[teamwork_conversation_identity.TeamworkConversationIdentity] = None
+    conversation: Optional[TeamworkConversationIdentity] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageMentionedIdentitySet:
@@ -31,12 +32,14 @@ class ChatMessageMentionedIdentitySet(identity_set.IdentitySet):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set, teamwork_conversation_identity
+        from .identity_set import IdentitySet
+        from .teamwork_conversation_identity import TeamworkConversationIdentity
 
-        from . import identity_set, teamwork_conversation_identity
+        from .identity_set import IdentitySet
+        from .teamwork_conversation_identity import TeamworkConversationIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "conversation": lambda n : setattr(self, 'conversation', n.get_object_value(teamwork_conversation_identity.TeamworkConversationIdentity)),
+            "conversation": lambda n : setattr(self, 'conversation', n.get_object_value(TeamworkConversationIdentity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

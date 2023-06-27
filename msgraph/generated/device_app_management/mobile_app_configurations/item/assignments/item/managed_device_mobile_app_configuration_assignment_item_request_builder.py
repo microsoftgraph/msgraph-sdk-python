@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import managed_device_mobile_app_configuration_assignment
-    from ......models.o_data_errors import o_data_error
+    from ......models.managed_device_mobile_app_configuration_assignment import ManagedDeviceMobileAppConfigurationAssignment
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder():
     """
@@ -37,73 +37,73 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property assignments for deviceAppManagement
+        Deletes a managedDeviceMobileAppConfigurationAssignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment]:
+    async def get(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationAssignment]:
         """
-        The list of group assignemenets for app configration.
+        Read properties and relationships of the managedDeviceMobileAppConfigurationAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment]
+        Returns: Optional[ManagedDeviceMobileAppConfigurationAssignment]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import managed_device_mobile_app_configuration_assignment
+        from ......models.managed_device_mobile_app_configuration_assignment import ManagedDeviceMobileAppConfigurationAssignment
 
-        return await self.request_adapter.send_async(request_info, managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedDeviceMobileAppConfigurationAssignment, error_mapping)
     
-    async def patch(self,body: Optional[managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment]:
+    async def patch(self,body: Optional[ManagedDeviceMobileAppConfigurationAssignment] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationAssignment]:
         """
-        Update the navigation property assignments in deviceAppManagement
+        Update the properties of a managedDeviceMobileAppConfigurationAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment]
+        Returns: Optional[ManagedDeviceMobileAppConfigurationAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import managed_device_mobile_app_configuration_assignment
+        from ......models.managed_device_mobile_app_configuration_assignment import ManagedDeviceMobileAppConfigurationAssignment
 
-        return await self.request_adapter.send_async(request_info, managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedDeviceMobileAppConfigurationAssignment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property assignments for deviceAppManagement
+        Deletes a managedDeviceMobileAppConfigurationAssignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of group assignemenets for app configration.
+        Read properties and relationships of the managedDeviceMobileAppConfigurationAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ManagedDeviceMobileAppConfigurationAssignment] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property assignments in deviceAppManagement
+        Update the properties of a managedDeviceMobileAppConfigurationAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder():
     @dataclass
     class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The list of group assignemenets for app configration.
+        Read properties and relationships of the managedDeviceMobileAppConfigurationAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

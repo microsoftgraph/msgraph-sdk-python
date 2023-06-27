@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import managed_mobile_lob_app
-    from .....models.o_data_errors import o_data_error
+    from .....models.managed_mobile_lob_app import ManagedMobileLobApp
+    from .....models.o_data_errors.o_data_error import ODataError
 
 class GraphManagedMobileLobAppRequestBuilder():
     """
@@ -35,27 +35,27 @@ class GraphManagedMobileLobAppRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[GraphManagedMobileLobAppRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_mobile_lob_app.ManagedMobileLobApp]:
+    async def get(self,request_configuration: Optional[GraphManagedMobileLobAppRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedMobileLobApp]:
         """
         Get the item of type microsoft.graph.mobileApp as microsoft.graph.managedMobileLobApp
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_mobile_lob_app.ManagedMobileLobApp]
+        Returns: Optional[ManagedMobileLobApp]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import managed_mobile_lob_app
+        from .....models.managed_mobile_lob_app import ManagedMobileLobApp
 
-        return await self.request_adapter.send_async(request_info, managed_mobile_lob_app.ManagedMobileLobApp, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedMobileLobApp, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GraphManagedMobileLobAppRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

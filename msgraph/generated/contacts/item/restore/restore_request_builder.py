@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import directory_object
-    from ....models.o_data_errors import o_data_error
+    from ....models.directory_object import DirectoryObject
+    from ....models.o_data_errors.o_data_error import ODataError
 
 class RestoreRequestBuilder():
     """
@@ -35,27 +35,27 @@ class RestoreRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> Optional[directory_object.DirectoryObject]:
+    async def post(self,request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
         Restore a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items. If an item was accidentally deleted, you can fully restore the item. This is not applicable to security groups, which are deleted permanently. A recently deleted item will remain available for up to 30 days. After 30 days, the item is permanently deleted.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[directory_object.DirectoryObject]
+        Returns: Optional[DirectoryObject]
         """
         request_info = self.to_post_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import directory_object
+        from ....models.directory_object import DirectoryObject
 
-        return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, error_mapping)
+        return await self.request_adapter.send_async(request_info, DirectoryObject, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

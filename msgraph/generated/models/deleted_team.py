@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import channel, entity
+    from .channel import Channel
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeletedTeam(entity.Entity):
+class DeletedTeam(Entity):
     # The channels that are either shared with this deleted team or created in this deleted team.
-    channels: Optional[List[channel.Channel]] = None
+    channels: Optional[List[Channel]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class DeletedTeam(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import channel, entity
+        from .channel import Channel
+        from .entity import Entity
 
-        from . import channel, entity
+        from .channel import Channel
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "channels": lambda n : setattr(self, 'channels', n.get_collection_of_object_values(channel.Channel)),
+            "channels": lambda n : setattr(self, 'channels', n.get_collection_of_object_values(Channel)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

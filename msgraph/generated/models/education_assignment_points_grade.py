@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_assignment_grade
+    from .education_assignment_grade import EducationAssignmentGrade
 
-from . import education_assignment_grade
+from .education_assignment_grade import EducationAssignmentGrade
 
 @dataclass
-class EducationAssignmentPointsGrade(education_assignment_grade.EducationAssignmentGrade):
+class EducationAssignmentPointsGrade(EducationAssignmentGrade):
     odata_type = "#microsoft.graph.educationAssignmentPointsGrade"
     # Number of points a teacher is giving this submission object.
     points: Optional[float] = None
@@ -31,9 +31,9 @@ class EducationAssignmentPointsGrade(education_assignment_grade.EducationAssignm
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_assignment_grade
+        from .education_assignment_grade import EducationAssignmentGrade
 
-        from . import education_assignment_grade
+        from .education_assignment_grade import EducationAssignmentGrade
 
         fields: Dict[str, Callable[[Any], None]] = {
             "points": lambda n : setattr(self, 'points', n.get_float_value()),

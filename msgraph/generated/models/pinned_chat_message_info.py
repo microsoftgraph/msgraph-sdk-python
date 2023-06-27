@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import chat_message, entity
+    from .chat_message import ChatMessage
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PinnedChatMessageInfo(entity.Entity):
+class PinnedChatMessageInfo(Entity):
     # Represents details about the chat message that is pinned.
-    message: Optional[chat_message.ChatMessage] = None
+    message: Optional[ChatMessage] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class PinnedChatMessageInfo(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import chat_message, entity
+        from .chat_message import ChatMessage
+        from .entity import Entity
 
-        from . import chat_message, entity
+        from .chat_message import ChatMessage
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "message": lambda n : setattr(self, 'message', n.get_object_value(chat_message.ChatMessage)),
+            "message": lambda n : setattr(self, 'message', n.get_object_value(ChatMessage)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

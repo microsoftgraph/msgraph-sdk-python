@@ -1,23 +1,40 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import defender_cloud_block_level_type, defender_detected_malware_actions, defender_monitor_file_activity, defender_prompt_for_sample_submission, defender_scan_type, device_configuration, diagnostic_data_submission_mode, edge_cookie_policy, edge_search_engine_base, required_password_type, safe_search_filter_type, state_management_setting, visibility_setting, weekly_schedule, windows10_network_proxy_server, windows_spotlight_enablement_settings, windows_start_menu_app_list_visibility_type, windows_start_menu_mode_type
+    from .defender_cloud_block_level_type import DefenderCloudBlockLevelType
+    from .defender_detected_malware_actions import DefenderDetectedMalwareActions
+    from .defender_monitor_file_activity import DefenderMonitorFileActivity
+    from .defender_prompt_for_sample_submission import DefenderPromptForSampleSubmission
+    from .defender_scan_type import DefenderScanType
+    from .device_configuration import DeviceConfiguration
+    from .diagnostic_data_submission_mode import DiagnosticDataSubmissionMode
+    from .edge_cookie_policy import EdgeCookiePolicy
+    from .edge_search_engine_base import EdgeSearchEngineBase
+    from .required_password_type import RequiredPasswordType
+    from .safe_search_filter_type import SafeSearchFilterType
+    from .state_management_setting import StateManagementSetting
+    from .visibility_setting import VisibilitySetting
+    from .weekly_schedule import WeeklySchedule
+    from .windows10_network_proxy_server import Windows10NetworkProxyServer
+    from .windows_spotlight_enablement_settings import WindowsSpotlightEnablementSettings
+    from .windows_start_menu_app_list_visibility_type import WindowsStartMenuAppListVisibilityType
+    from .windows_start_menu_mode_type import WindowsStartMenuModeType
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
+class Windows10GeneralConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.windows10GeneralConfiguration"
     # Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
     accounts_block_adding_non_microsoft_account_email: Optional[bool] = None
     # Indicates whether or not to block the user from selecting an AntiTheft mode preference (Windows 10 Mobile only).
     anti_theft_mode_blocked: Optional[bool] = None
     # State Management Setting.
-    apps_allow_trusted_apps_sideloading: Optional[state_management_setting.StateManagementSetting] = None
+    apps_allow_trusted_apps_sideloading: Optional[StateManagementSetting] = None
     # Indicates whether or not to disable the launch of all apps from Windows Store that came pre-installed or were downloaded.
     apps_block_windows_store_originated_apps: Optional[bool] = None
     # Specify a list of allowed Bluetooth services and profiles in hex formatted strings.
@@ -49,21 +66,21 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Whether or not to block end user access to Defender.
     defender_block_end_user_access: Optional[bool] = None
     # Possible values of Cloud Block Level
-    defender_cloud_block_level: Optional[defender_cloud_block_level_type.DefenderCloudBlockLevelType] = None
+    defender_cloud_block_level: Optional[DefenderCloudBlockLevelType] = None
     # Number of days before deleting quarantined malware. Valid values 0 to 90
     defender_days_before_deleting_quarantined_malware: Optional[int] = None
     # Gets or sets Defender’s actions to take on detected Malware per threat level.
-    defender_detected_malware_actions: Optional[defender_detected_malware_actions.DefenderDetectedMalwareActions] = None
+    defender_detected_malware_actions: Optional[DefenderDetectedMalwareActions] = None
     # File extensions to exclude from scans and real time protection.
     defender_file_extensions_to_exclude: Optional[List[str]] = None
     # Files and folder to exclude from scans and real time protection.
     defender_files_and_folders_to_exclude: Optional[List[str]] = None
     # Possible values for monitoring file activity.
-    defender_monitor_file_activity: Optional[defender_monitor_file_activity.DefenderMonitorFileActivity] = None
+    defender_monitor_file_activity: Optional[DefenderMonitorFileActivity] = None
     # Processes to exclude from scans and real time protection.
     defender_processes_to_exclude: Optional[List[str]] = None
     # Possible values for prompting user for samples submission.
-    defender_prompt_for_sample_submission: Optional[defender_prompt_for_sample_submission.DefenderPromptForSampleSubmission] = None
+    defender_prompt_for_sample_submission: Optional[DefenderPromptForSampleSubmission] = None
     # Indicates whether or not to require behavior monitoring.
     defender_require_behavior_monitoring: Optional[bool] = None
     # Indicates whether or not to require cloud protection.
@@ -89,23 +106,23 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to scan scripts loaded in Internet Explorer browser.
     defender_scan_scripts_loaded_in_internet_explorer: Optional[bool] = None
     # Possible values for system scan type.
-    defender_scan_type: Optional[defender_scan_type.DefenderScanType] = None
+    defender_scan_type: Optional[DefenderScanType] = None
     # The time to perform a daily quick scan.
-    defender_scheduled_quick_scan_time: Optional[time] = None
+    defender_scheduled_quick_scan_time: Optional[datetime.time] = None
     # The defender time for the system scan.
-    defender_scheduled_scan_time: Optional[time] = None
+    defender_scheduled_scan_time: Optional[datetime.time] = None
     # The signature update interval in hours. Specify 0 not to check. Valid values 0 to 24
     defender_signature_update_interval_in_hours: Optional[int] = None
     # Possible values for a weekly schedule.
-    defender_system_scan_schedule: Optional[weekly_schedule.WeeklySchedule] = None
+    defender_system_scan_schedule: Optional[WeeklySchedule] = None
     # State Management Setting.
-    developer_unlock_setting: Optional[state_management_setting.StateManagementSetting] = None
+    developer_unlock_setting: Optional[StateManagementSetting] = None
     # Indicates whether or not to Block the user from resetting their phone.
     device_management_block_factory_reset_on_mobile: Optional[bool] = None
     # Indicates whether or not to Block the user from doing manual un-enrollment from device management.
     device_management_block_manual_unenroll: Optional[bool] = None
     # Allow the device to send diagnostic and usage telemetry data, such as Watson.
-    diagnostics_data_submission_mode: Optional[diagnostic_data_submission_mode.DiagnosticDataSubmissionMode] = None
+    diagnostics_data_submission_mode: Optional[DiagnosticDataSubmissionMode] = None
     # Allow users to change Start pages on Edge. Use the EdgeHomepageUrls to specify the Start pages that the user would see by default when they open Edge.
     edge_allow_start_pages_modification: Optional[bool] = None
     # Indicates whether or not to prevent access to about flags on Edge browser.
@@ -141,7 +158,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Clear browsing data on exiting Microsoft Edge.
     edge_clear_browsing_data_on_exit: Optional[bool] = None
     # Possible values to specify which cookies are allowed in Microsoft Edge.
-    edge_cookie_policy: Optional[edge_cookie_policy.EdgeCookiePolicy] = None
+    edge_cookie_policy: Optional[EdgeCookiePolicy] = None
     # Block the Microsoft web page that opens on the first use of Microsoft Edge. This policy allows enterprises, like those enrolled in zero emissions configurations, to block this page.
     edge_disable_first_run_page: Optional[bool] = None
     # Indicates the enterprise mode site list location. Could be a local file, local network or http location.
@@ -153,7 +170,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to Require the user to use the smart screen filter.
     edge_require_smart_screen: Optional[bool] = None
     # Allows IT admins to set a default search engine for MDM-Controlled devices. Users can override this and change their default search engine provided the AllowSearchEngineCustomization policy is not set.
-    edge_search_engine: Optional[edge_search_engine_base.EdgeSearchEngineBase] = None
+    edge_search_engine: Optional[EdgeSearchEngineBase] = None
     # Indicates whether or not to switch the intranet traffic from Edge to Internet Explorer.
     edge_send_intranet_traffic_to_internet_explorer: Optional[bool] = None
     # Enable favorites sync between Internet Explorer and Microsoft Edge. Additions, deletions, modifications and order changes to favorites are shared between browsers.
@@ -205,7 +222,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Disable automatic detection of settings. If enabled, the system will try to find the path to a proxy auto-config (PAC) script.
     network_proxy_disable_auto_detect: Optional[bool] = None
     # Specifies manual proxy server settings.
-    network_proxy_server: Optional[windows10_network_proxy_server.Windows10NetworkProxyServer] = None
+    network_proxy_server: Optional[Windows10NetworkProxyServer] = None
     # Indicates whether or not to Block the user from using near field communication.
     nfc_blocked: Optional[bool] = None
     # Gets or sets a value allowing IT admins to prevent apps and features from working with files on OneDrive.
@@ -227,7 +244,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to require the user to have a password.
     password_required: Optional[bool] = None
     # Possible values of required passwords.
-    password_required_type: Optional[required_password_type.RequiredPasswordType] = None
+    password_required_type: Optional[RequiredPasswordType] = None
     # The number of sign in failures before factory reset. Valid values 0 to 999
     password_sign_in_failure_count_before_factory_reset: Optional[int] = None
     # A http or https Url to a jpg, jpeg or png image that needs to be downloaded and used as the Desktop Image or a file Url to a local image on the file system that needs to used as the Desktop Image.
@@ -235,7 +252,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     # A http or https Url to a jpg, jpeg or png image that neeeds to be downloaded and used as the Lock Screen Image or a file Url to a local image on the file system that needs to be used as the Lock Screen Image.
     personalization_lock_screen_image_url: Optional[str] = None
     # State Management Setting.
-    privacy_advertising_id: Optional[state_management_setting.StateManagementSetting] = None
+    privacy_advertising_id: Optional[StateManagementSetting] = None
     # Indicates whether or not to allow the automatic acceptance of the pairing and privacy user consent dialog when launching apps.
     privacy_auto_accept_pairing_and_consent_prompts: Optional[bool] = None
     # Indicates whether or not to block the usage of cloud based speech services for Cortana, Dictation, or Store applications.
@@ -243,7 +260,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to Block the user from reset protection mode.
     reset_protection_mode_blocked: Optional[bool] = None
     # Specifies what level of safe search (filtering adult content) is required
-    safe_search_filter: Optional[safe_search_filter_type.SafeSearchFilterType] = None
+    safe_search_filter: Optional[SafeSearchFilterType] = None
     # Indicates whether or not to Block the user from taking Screenshots.
     screen_capture_blocked: Optional[bool] = None
     # Specifies if search can use diacritics.
@@ -309,7 +326,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to block the user from unpinning apps from taskbar.
     start_block_unpinning_apps_from_taskbar: Optional[bool] = None
     # Type of start menu app list visibility.
-    start_menu_app_list_visibility: Optional[windows_start_menu_app_list_visibility_type.WindowsStartMenuAppListVisibilityType] = None
+    start_menu_app_list_visibility: Optional[WindowsStartMenuAppListVisibilityType] = None
     # Enabling this policy hides the change account setting from appearing in the user tile in the start menu.
     start_menu_hide_change_account_settings: Optional[bool] = None
     # Enabling this policy hides the most used apps from appearing on the start menu and disables the corresponding toggle in the Settings app.
@@ -341,27 +358,27 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Allows admins to override the default Start menu layout and prevents the user from changing it. The layout is modified by specifying an XML file based on a layout modification schema. XML needs to be in a UTF8 encoded byte array format.
     start_menu_layout_xml: Optional[bytes] = None
     # Type of display modes for the start menu.
-    start_menu_mode: Optional[windows_start_menu_mode_type.WindowsStartMenuModeType] = None
+    start_menu_mode: Optional[WindowsStartMenuModeType] = None
     # Generic visibility state.
-    start_menu_pinned_folder_documents: Optional[visibility_setting.VisibilitySetting] = None
+    start_menu_pinned_folder_documents: Optional[VisibilitySetting] = None
     # Generic visibility state.
-    start_menu_pinned_folder_downloads: Optional[visibility_setting.VisibilitySetting] = None
+    start_menu_pinned_folder_downloads: Optional[VisibilitySetting] = None
     # Generic visibility state.
-    start_menu_pinned_folder_file_explorer: Optional[visibility_setting.VisibilitySetting] = None
+    start_menu_pinned_folder_file_explorer: Optional[VisibilitySetting] = None
     # Generic visibility state.
-    start_menu_pinned_folder_home_group: Optional[visibility_setting.VisibilitySetting] = None
+    start_menu_pinned_folder_home_group: Optional[VisibilitySetting] = None
     # Generic visibility state.
-    start_menu_pinned_folder_music: Optional[visibility_setting.VisibilitySetting] = None
+    start_menu_pinned_folder_music: Optional[VisibilitySetting] = None
     # Generic visibility state.
-    start_menu_pinned_folder_network: Optional[visibility_setting.VisibilitySetting] = None
+    start_menu_pinned_folder_network: Optional[VisibilitySetting] = None
     # Generic visibility state.
-    start_menu_pinned_folder_personal_folder: Optional[visibility_setting.VisibilitySetting] = None
+    start_menu_pinned_folder_personal_folder: Optional[VisibilitySetting] = None
     # Generic visibility state.
-    start_menu_pinned_folder_pictures: Optional[visibility_setting.VisibilitySetting] = None
+    start_menu_pinned_folder_pictures: Optional[VisibilitySetting] = None
     # Generic visibility state.
-    start_menu_pinned_folder_settings: Optional[visibility_setting.VisibilitySetting] = None
+    start_menu_pinned_folder_settings: Optional[VisibilitySetting] = None
     # Generic visibility state.
-    start_menu_pinned_folder_videos: Optional[visibility_setting.VisibilitySetting] = None
+    start_menu_pinned_folder_videos: Optional[VisibilitySetting] = None
     # Indicates whether or not to Block the user from using removable storage.
     storage_block_removable_storage: Optional[bool] = None
     # Indicating whether or not to require encryption on a mobile device.
@@ -401,7 +418,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Allows IT admins to turn off all Windows Spotlight features
     windows_spotlight_blocked: Optional[bool] = None
     # Allows IT admind to set a predefined default search engine for MDM-Controlled devices
-    windows_spotlight_configure_on_lock_screen: Optional[windows_spotlight_enablement_settings.WindowsSpotlightEnablementSettings] = None
+    windows_spotlight_configure_on_lock_screen: Optional[WindowsSpotlightEnablementSettings] = None
     # Indicates whether or not to block automatic update of apps from Windows Store.
     windows_store_block_auto_update: Optional[bool] = None
     # Indicates whether or not to Block the user from using the Windows store.
@@ -432,14 +449,48 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import defender_cloud_block_level_type, defender_detected_malware_actions, defender_monitor_file_activity, defender_prompt_for_sample_submission, defender_scan_type, device_configuration, diagnostic_data_submission_mode, edge_cookie_policy, edge_search_engine_base, required_password_type, safe_search_filter_type, state_management_setting, visibility_setting, weekly_schedule, windows10_network_proxy_server, windows_spotlight_enablement_settings, windows_start_menu_app_list_visibility_type, windows_start_menu_mode_type
+        from .defender_cloud_block_level_type import DefenderCloudBlockLevelType
+        from .defender_detected_malware_actions import DefenderDetectedMalwareActions
+        from .defender_monitor_file_activity import DefenderMonitorFileActivity
+        from .defender_prompt_for_sample_submission import DefenderPromptForSampleSubmission
+        from .defender_scan_type import DefenderScanType
+        from .device_configuration import DeviceConfiguration
+        from .diagnostic_data_submission_mode import DiagnosticDataSubmissionMode
+        from .edge_cookie_policy import EdgeCookiePolicy
+        from .edge_search_engine_base import EdgeSearchEngineBase
+        from .required_password_type import RequiredPasswordType
+        from .safe_search_filter_type import SafeSearchFilterType
+        from .state_management_setting import StateManagementSetting
+        from .visibility_setting import VisibilitySetting
+        from .weekly_schedule import WeeklySchedule
+        from .windows10_network_proxy_server import Windows10NetworkProxyServer
+        from .windows_spotlight_enablement_settings import WindowsSpotlightEnablementSettings
+        from .windows_start_menu_app_list_visibility_type import WindowsStartMenuAppListVisibilityType
+        from .windows_start_menu_mode_type import WindowsStartMenuModeType
 
-        from . import defender_cloud_block_level_type, defender_detected_malware_actions, defender_monitor_file_activity, defender_prompt_for_sample_submission, defender_scan_type, device_configuration, diagnostic_data_submission_mode, edge_cookie_policy, edge_search_engine_base, required_password_type, safe_search_filter_type, state_management_setting, visibility_setting, weekly_schedule, windows10_network_proxy_server, windows_spotlight_enablement_settings, windows_start_menu_app_list_visibility_type, windows_start_menu_mode_type
+        from .defender_cloud_block_level_type import DefenderCloudBlockLevelType
+        from .defender_detected_malware_actions import DefenderDetectedMalwareActions
+        from .defender_monitor_file_activity import DefenderMonitorFileActivity
+        from .defender_prompt_for_sample_submission import DefenderPromptForSampleSubmission
+        from .defender_scan_type import DefenderScanType
+        from .device_configuration import DeviceConfiguration
+        from .diagnostic_data_submission_mode import DiagnosticDataSubmissionMode
+        from .edge_cookie_policy import EdgeCookiePolicy
+        from .edge_search_engine_base import EdgeSearchEngineBase
+        from .required_password_type import RequiredPasswordType
+        from .safe_search_filter_type import SafeSearchFilterType
+        from .state_management_setting import StateManagementSetting
+        from .visibility_setting import VisibilitySetting
+        from .weekly_schedule import WeeklySchedule
+        from .windows10_network_proxy_server import Windows10NetworkProxyServer
+        from .windows_spotlight_enablement_settings import WindowsSpotlightEnablementSettings
+        from .windows_start_menu_app_list_visibility_type import WindowsStartMenuAppListVisibilityType
+        from .windows_start_menu_mode_type import WindowsStartMenuModeType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accountsBlockAddingNonMicrosoftAccountEmail": lambda n : setattr(self, 'accounts_block_adding_non_microsoft_account_email', n.get_bool_value()),
             "antiTheftModeBlocked": lambda n : setattr(self, 'anti_theft_mode_blocked', n.get_bool_value()),
-            "appsAllowTrustedAppsSideloading": lambda n : setattr(self, 'apps_allow_trusted_apps_sideloading', n.get_enum_value(state_management_setting.StateManagementSetting)),
+            "appsAllowTrustedAppsSideloading": lambda n : setattr(self, 'apps_allow_trusted_apps_sideloading', n.get_enum_value(StateManagementSetting)),
             "appsBlockWindowsStoreOriginatedApps": lambda n : setattr(self, 'apps_block_windows_store_originated_apps', n.get_bool_value()),
             "bluetoothAllowedServices": lambda n : setattr(self, 'bluetooth_allowed_services', n.get_collection_of_primitive_values(str)),
             "bluetoothBlockAdvertising": lambda n : setattr(self, 'bluetooth_block_advertising', n.get_bool_value()),
@@ -455,14 +506,14 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             "copyPasteBlocked": lambda n : setattr(self, 'copy_paste_blocked', n.get_bool_value()),
             "cortanaBlocked": lambda n : setattr(self, 'cortana_blocked', n.get_bool_value()),
             "defenderBlockEndUserAccess": lambda n : setattr(self, 'defender_block_end_user_access', n.get_bool_value()),
-            "defenderCloudBlockLevel": lambda n : setattr(self, 'defender_cloud_block_level', n.get_enum_value(defender_cloud_block_level_type.DefenderCloudBlockLevelType)),
+            "defenderCloudBlockLevel": lambda n : setattr(self, 'defender_cloud_block_level', n.get_enum_value(DefenderCloudBlockLevelType)),
             "defenderDaysBeforeDeletingQuarantinedMalware": lambda n : setattr(self, 'defender_days_before_deleting_quarantined_malware', n.get_int_value()),
-            "defenderDetectedMalwareActions": lambda n : setattr(self, 'defender_detected_malware_actions', n.get_object_value(defender_detected_malware_actions.DefenderDetectedMalwareActions)),
+            "defenderDetectedMalwareActions": lambda n : setattr(self, 'defender_detected_malware_actions', n.get_object_value(DefenderDetectedMalwareActions)),
             "defenderFileExtensionsToExclude": lambda n : setattr(self, 'defender_file_extensions_to_exclude', n.get_collection_of_primitive_values(str)),
             "defenderFilesAndFoldersToExclude": lambda n : setattr(self, 'defender_files_and_folders_to_exclude', n.get_collection_of_primitive_values(str)),
-            "defenderMonitorFileActivity": lambda n : setattr(self, 'defender_monitor_file_activity', n.get_enum_value(defender_monitor_file_activity.DefenderMonitorFileActivity)),
+            "defenderMonitorFileActivity": lambda n : setattr(self, 'defender_monitor_file_activity', n.get_enum_value(DefenderMonitorFileActivity)),
             "defenderProcessesToExclude": lambda n : setattr(self, 'defender_processes_to_exclude', n.get_collection_of_primitive_values(str)),
-            "defenderPromptForSampleSubmission": lambda n : setattr(self, 'defender_prompt_for_sample_submission', n.get_enum_value(defender_prompt_for_sample_submission.DefenderPromptForSampleSubmission)),
+            "defenderPromptForSampleSubmission": lambda n : setattr(self, 'defender_prompt_for_sample_submission', n.get_enum_value(DefenderPromptForSampleSubmission)),
             "defenderRequireBehaviorMonitoring": lambda n : setattr(self, 'defender_require_behavior_monitoring', n.get_bool_value()),
             "defenderRequireCloudProtection": lambda n : setattr(self, 'defender_require_cloud_protection', n.get_bool_value()),
             "defenderRequireNetworkInspectionSystem": lambda n : setattr(self, 'defender_require_network_inspection_system', n.get_bool_value()),
@@ -475,15 +526,15 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             "defenderScanNetworkFiles": lambda n : setattr(self, 'defender_scan_network_files', n.get_bool_value()),
             "defenderScanRemovableDrivesDuringFullScan": lambda n : setattr(self, 'defender_scan_removable_drives_during_full_scan', n.get_bool_value()),
             "defenderScanScriptsLoadedInInternetExplorer": lambda n : setattr(self, 'defender_scan_scripts_loaded_in_internet_explorer', n.get_bool_value()),
-            "defenderScanType": lambda n : setattr(self, 'defender_scan_type', n.get_enum_value(defender_scan_type.DefenderScanType)),
+            "defenderScanType": lambda n : setattr(self, 'defender_scan_type', n.get_enum_value(DefenderScanType)),
             "defenderScheduledQuickScanTime": lambda n : setattr(self, 'defender_scheduled_quick_scan_time', n.get_time_value()),
             "defenderScheduledScanTime": lambda n : setattr(self, 'defender_scheduled_scan_time', n.get_time_value()),
             "defenderSignatureUpdateIntervalInHours": lambda n : setattr(self, 'defender_signature_update_interval_in_hours', n.get_int_value()),
-            "defenderSystemScanSchedule": lambda n : setattr(self, 'defender_system_scan_schedule', n.get_enum_value(weekly_schedule.WeeklySchedule)),
-            "developerUnlockSetting": lambda n : setattr(self, 'developer_unlock_setting', n.get_enum_value(state_management_setting.StateManagementSetting)),
+            "defenderSystemScanSchedule": lambda n : setattr(self, 'defender_system_scan_schedule', n.get_enum_value(WeeklySchedule)),
+            "developerUnlockSetting": lambda n : setattr(self, 'developer_unlock_setting', n.get_enum_value(StateManagementSetting)),
             "deviceManagementBlockFactoryResetOnMobile": lambda n : setattr(self, 'device_management_block_factory_reset_on_mobile', n.get_bool_value()),
             "deviceManagementBlockManualUnenroll": lambda n : setattr(self, 'device_management_block_manual_unenroll', n.get_bool_value()),
-            "diagnosticsDataSubmissionMode": lambda n : setattr(self, 'diagnostics_data_submission_mode', n.get_enum_value(diagnostic_data_submission_mode.DiagnosticDataSubmissionMode)),
+            "diagnosticsDataSubmissionMode": lambda n : setattr(self, 'diagnostics_data_submission_mode', n.get_enum_value(DiagnosticDataSubmissionMode)),
             "edgeAllowStartPagesModification": lambda n : setattr(self, 'edge_allow_start_pages_modification', n.get_bool_value()),
             "edgeBlockAccessToAboutFlags": lambda n : setattr(self, 'edge_block_access_to_about_flags', n.get_bool_value()),
             "edgeBlockAddressBarDropdown": lambda n : setattr(self, 'edge_block_address_bar_dropdown', n.get_bool_value()),
@@ -501,13 +552,13 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             "edgeBlockSendingIntranetTrafficToInternetExplorer": lambda n : setattr(self, 'edge_block_sending_intranet_traffic_to_internet_explorer', n.get_bool_value()),
             "edgeBlocked": lambda n : setattr(self, 'edge_blocked', n.get_bool_value()),
             "edgeClearBrowsingDataOnExit": lambda n : setattr(self, 'edge_clear_browsing_data_on_exit', n.get_bool_value()),
-            "edgeCookiePolicy": lambda n : setattr(self, 'edge_cookie_policy', n.get_enum_value(edge_cookie_policy.EdgeCookiePolicy)),
+            "edgeCookiePolicy": lambda n : setattr(self, 'edge_cookie_policy', n.get_enum_value(EdgeCookiePolicy)),
             "edgeDisableFirstRunPage": lambda n : setattr(self, 'edge_disable_first_run_page', n.get_bool_value()),
             "edgeEnterpriseModeSiteListLocation": lambda n : setattr(self, 'edge_enterprise_mode_site_list_location', n.get_str_value()),
             "edgeFirstRunUrl": lambda n : setattr(self, 'edge_first_run_url', n.get_str_value()),
             "edgeHomepageUrls": lambda n : setattr(self, 'edge_homepage_urls', n.get_collection_of_primitive_values(str)),
             "edgeRequireSmartScreen": lambda n : setattr(self, 'edge_require_smart_screen', n.get_bool_value()),
-            "edgeSearchEngine": lambda n : setattr(self, 'edge_search_engine', n.get_object_value(edge_search_engine_base.EdgeSearchEngineBase)),
+            "edgeSearchEngine": lambda n : setattr(self, 'edge_search_engine', n.get_object_value(EdgeSearchEngineBase)),
             "edgeSendIntranetTrafficToInternetExplorer": lambda n : setattr(self, 'edge_send_intranet_traffic_to_internet_explorer', n.get_bool_value()),
             "edgeSyncFavoritesWithInternetExplorer": lambda n : setattr(self, 'edge_sync_favorites_with_internet_explorer', n.get_bool_value()),
             "enterpriseCloudPrintDiscoveryEndPoint": lambda n : setattr(self, 'enterprise_cloud_print_discovery_end_point', n.get_str_value()),
@@ -533,7 +584,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             "networkProxyApplySettingsDeviceWide": lambda n : setattr(self, 'network_proxy_apply_settings_device_wide', n.get_bool_value()),
             "networkProxyAutomaticConfigurationUrl": lambda n : setattr(self, 'network_proxy_automatic_configuration_url', n.get_str_value()),
             "networkProxyDisableAutoDetect": lambda n : setattr(self, 'network_proxy_disable_auto_detect', n.get_bool_value()),
-            "networkProxyServer": lambda n : setattr(self, 'network_proxy_server', n.get_object_value(windows10_network_proxy_server.Windows10NetworkProxyServer)),
+            "networkProxyServer": lambda n : setattr(self, 'network_proxy_server', n.get_object_value(Windows10NetworkProxyServer)),
             "nfcBlocked": lambda n : setattr(self, 'nfc_blocked', n.get_bool_value()),
             "oneDriveDisableFileSync": lambda n : setattr(self, 'one_drive_disable_file_sync', n.get_bool_value()),
             "passwordBlockSimple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
@@ -544,15 +595,15 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
             "passwordRequireWhenResumeFromIdleState": lambda n : setattr(self, 'password_require_when_resume_from_idle_state', n.get_bool_value()),
             "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
             "passwordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
             "personalizationDesktopImageUrl": lambda n : setattr(self, 'personalization_desktop_image_url', n.get_str_value()),
             "personalizationLockScreenImageUrl": lambda n : setattr(self, 'personalization_lock_screen_image_url', n.get_str_value()),
-            "privacyAdvertisingId": lambda n : setattr(self, 'privacy_advertising_id', n.get_enum_value(state_management_setting.StateManagementSetting)),
+            "privacyAdvertisingId": lambda n : setattr(self, 'privacy_advertising_id', n.get_enum_value(StateManagementSetting)),
             "privacyAutoAcceptPairingAndConsentPrompts": lambda n : setattr(self, 'privacy_auto_accept_pairing_and_consent_prompts', n.get_bool_value()),
             "privacyBlockInputPersonalization": lambda n : setattr(self, 'privacy_block_input_personalization', n.get_bool_value()),
             "resetProtectionModeBlocked": lambda n : setattr(self, 'reset_protection_mode_blocked', n.get_bool_value()),
-            "safeSearchFilter": lambda n : setattr(self, 'safe_search_filter', n.get_enum_value(safe_search_filter_type.SafeSearchFilterType)),
+            "safeSearchFilter": lambda n : setattr(self, 'safe_search_filter', n.get_enum_value(SafeSearchFilterType)),
             "screenCaptureBlocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
             "searchBlockDiacritics": lambda n : setattr(self, 'search_block_diacritics', n.get_bool_value()),
             "searchDisableAutoLanguageDetection": lambda n : setattr(self, 'search_disable_auto_language_detection', n.get_bool_value()),
@@ -585,7 +636,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             "smartScreenBlockPromptOverrideForFiles": lambda n : setattr(self, 'smart_screen_block_prompt_override_for_files', n.get_bool_value()),
             "smartScreenEnableAppInstallControl": lambda n : setattr(self, 'smart_screen_enable_app_install_control', n.get_bool_value()),
             "startBlockUnpinningAppsFromTaskbar": lambda n : setattr(self, 'start_block_unpinning_apps_from_taskbar', n.get_bool_value()),
-            "startMenuAppListVisibility": lambda n : setattr(self, 'start_menu_app_list_visibility', n.get_enum_value(windows_start_menu_app_list_visibility_type.WindowsStartMenuAppListVisibilityType)),
+            "startMenuAppListVisibility": lambda n : setattr(self, 'start_menu_app_list_visibility', n.get_enum_value(WindowsStartMenuAppListVisibilityType)),
             "startMenuHideChangeAccountSettings": lambda n : setattr(self, 'start_menu_hide_change_account_settings', n.get_bool_value()),
             "startMenuHideFrequentlyUsedApps": lambda n : setattr(self, 'start_menu_hide_frequently_used_apps', n.get_bool_value()),
             "startMenuHideHibernate": lambda n : setattr(self, 'start_menu_hide_hibernate', n.get_bool_value()),
@@ -601,17 +652,17 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             "startMenuHideUserTile": lambda n : setattr(self, 'start_menu_hide_user_tile', n.get_bool_value()),
             "startMenuLayoutEdgeAssetsXml": lambda n : setattr(self, 'start_menu_layout_edge_assets_xml', n.get_bytes_value()),
             "startMenuLayoutXml": lambda n : setattr(self, 'start_menu_layout_xml', n.get_bytes_value()),
-            "startMenuMode": lambda n : setattr(self, 'start_menu_mode', n.get_enum_value(windows_start_menu_mode_type.WindowsStartMenuModeType)),
-            "startMenuPinnedFolderDocuments": lambda n : setattr(self, 'start_menu_pinned_folder_documents', n.get_enum_value(visibility_setting.VisibilitySetting)),
-            "startMenuPinnedFolderDownloads": lambda n : setattr(self, 'start_menu_pinned_folder_downloads', n.get_enum_value(visibility_setting.VisibilitySetting)),
-            "startMenuPinnedFolderFileExplorer": lambda n : setattr(self, 'start_menu_pinned_folder_file_explorer', n.get_enum_value(visibility_setting.VisibilitySetting)),
-            "startMenuPinnedFolderHomeGroup": lambda n : setattr(self, 'start_menu_pinned_folder_home_group', n.get_enum_value(visibility_setting.VisibilitySetting)),
-            "startMenuPinnedFolderMusic": lambda n : setattr(self, 'start_menu_pinned_folder_music', n.get_enum_value(visibility_setting.VisibilitySetting)),
-            "startMenuPinnedFolderNetwork": lambda n : setattr(self, 'start_menu_pinned_folder_network', n.get_enum_value(visibility_setting.VisibilitySetting)),
-            "startMenuPinnedFolderPersonalFolder": lambda n : setattr(self, 'start_menu_pinned_folder_personal_folder', n.get_enum_value(visibility_setting.VisibilitySetting)),
-            "startMenuPinnedFolderPictures": lambda n : setattr(self, 'start_menu_pinned_folder_pictures', n.get_enum_value(visibility_setting.VisibilitySetting)),
-            "startMenuPinnedFolderSettings": lambda n : setattr(self, 'start_menu_pinned_folder_settings', n.get_enum_value(visibility_setting.VisibilitySetting)),
-            "startMenuPinnedFolderVideos": lambda n : setattr(self, 'start_menu_pinned_folder_videos', n.get_enum_value(visibility_setting.VisibilitySetting)),
+            "startMenuMode": lambda n : setattr(self, 'start_menu_mode', n.get_enum_value(WindowsStartMenuModeType)),
+            "startMenuPinnedFolderDocuments": lambda n : setattr(self, 'start_menu_pinned_folder_documents', n.get_enum_value(VisibilitySetting)),
+            "startMenuPinnedFolderDownloads": lambda n : setattr(self, 'start_menu_pinned_folder_downloads', n.get_enum_value(VisibilitySetting)),
+            "startMenuPinnedFolderFileExplorer": lambda n : setattr(self, 'start_menu_pinned_folder_file_explorer', n.get_enum_value(VisibilitySetting)),
+            "startMenuPinnedFolderHomeGroup": lambda n : setattr(self, 'start_menu_pinned_folder_home_group', n.get_enum_value(VisibilitySetting)),
+            "startMenuPinnedFolderMusic": lambda n : setattr(self, 'start_menu_pinned_folder_music', n.get_enum_value(VisibilitySetting)),
+            "startMenuPinnedFolderNetwork": lambda n : setattr(self, 'start_menu_pinned_folder_network', n.get_enum_value(VisibilitySetting)),
+            "startMenuPinnedFolderPersonalFolder": lambda n : setattr(self, 'start_menu_pinned_folder_personal_folder', n.get_enum_value(VisibilitySetting)),
+            "startMenuPinnedFolderPictures": lambda n : setattr(self, 'start_menu_pinned_folder_pictures', n.get_enum_value(VisibilitySetting)),
+            "startMenuPinnedFolderSettings": lambda n : setattr(self, 'start_menu_pinned_folder_settings', n.get_enum_value(VisibilitySetting)),
+            "startMenuPinnedFolderVideos": lambda n : setattr(self, 'start_menu_pinned_folder_videos', n.get_enum_value(VisibilitySetting)),
             "storageBlockRemovableStorage": lambda n : setattr(self, 'storage_block_removable_storage', n.get_bool_value()),
             "storageRequireMobileDeviceEncryption": lambda n : setattr(self, 'storage_require_mobile_device_encryption', n.get_bool_value()),
             "storageRestrictAppDataToSystemVolume": lambda n : setattr(self, 'storage_restrict_app_data_to_system_volume', n.get_bool_value()),
@@ -631,7 +682,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             "windowsSpotlightBlockWelcomeExperience": lambda n : setattr(self, 'windows_spotlight_block_welcome_experience', n.get_bool_value()),
             "windowsSpotlightBlockWindowsTips": lambda n : setattr(self, 'windows_spotlight_block_windows_tips', n.get_bool_value()),
             "windowsSpotlightBlocked": lambda n : setattr(self, 'windows_spotlight_blocked', n.get_bool_value()),
-            "windowsSpotlightConfigureOnLockScreen": lambda n : setattr(self, 'windows_spotlight_configure_on_lock_screen', n.get_enum_value(windows_spotlight_enablement_settings.WindowsSpotlightEnablementSettings)),
+            "windowsSpotlightConfigureOnLockScreen": lambda n : setattr(self, 'windows_spotlight_configure_on_lock_screen', n.get_enum_value(WindowsSpotlightEnablementSettings)),
             "windowsStoreBlockAutoUpdate": lambda n : setattr(self, 'windows_store_block_auto_update', n.get_bool_value()),
             "windowsStoreBlocked": lambda n : setattr(self, 'windows_store_blocked', n.get_bool_value()),
             "windowsStoreEnablePrivateStoreOnly": lambda n : setattr(self, 'windows_store_enable_private_store_only', n.get_bool_value()),
@@ -691,8 +742,8 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         writer.write_bool_value("defenderScanRemovableDrivesDuringFullScan", self.defender_scan_removable_drives_during_full_scan)
         writer.write_bool_value("defenderScanScriptsLoadedInInternetExplorer", self.defender_scan_scripts_loaded_in_internet_explorer)
         writer.write_enum_value("defenderScanType", self.defender_scan_type)
-        writer.write_time_value("defenderScheduledQuickScanTime", self.defender_scheduled_quick_scan_time)
-        writer.write_time_value("defenderScheduledScanTime", self.defender_scheduled_scan_time)
+        writer.write_time_value()("defenderScheduledQuickScanTime", self.defender_scheduled_quick_scan_time)
+        writer.write_time_value()("defenderScheduledScanTime", self.defender_scheduled_scan_time)
         writer.write_int_value("defenderSignatureUpdateIntervalInHours", self.defender_signature_update_interval_in_hours)
         writer.write_enum_value("defenderSystemScanSchedule", self.defender_system_scan_schedule)
         writer.write_enum_value("developerUnlockSetting", self.developer_unlock_setting)
@@ -814,8 +865,8 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         writer.write_bool_value("startMenuHideSleep", self.start_menu_hide_sleep)
         writer.write_bool_value("startMenuHideSwitchAccount", self.start_menu_hide_switch_account)
         writer.write_bool_value("startMenuHideUserTile", self.start_menu_hide_user_tile)
-        writer.write_object_value("startMenuLayoutEdgeAssetsXml", self.start_menu_layout_edge_assets_xml)
-        writer.write_object_value("startMenuLayoutXml", self.start_menu_layout_xml)
+        writer.write_bytes_value("startMenuLayoutEdgeAssetsXml", self.start_menu_layout_edge_assets_xml)
+        writer.write_bytes_value("startMenuLayoutXml", self.start_menu_layout_xml)
         writer.write_enum_value("startMenuMode", self.start_menu_mode)
         writer.write_enum_value("startMenuPinnedFolderDocuments", self.start_menu_pinned_folder_documents)
         writer.write_enum_value("startMenuPinnedFolderDownloads", self.start_menu_pinned_folder_downloads)

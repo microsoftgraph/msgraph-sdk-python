@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import managed_mobile_app
-    from ......models.o_data_errors import o_data_error
+    from ......models.managed_mobile_app import ManagedMobileApp
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class ManagedMobileAppItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class ManagedMobileAppItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ManagedMobileAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_mobile_app.ManagedMobileApp]:
+    async def get(self,request_configuration: Optional[ManagedMobileAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedMobileApp]:
         """
         List of apps to which the policy is deployed.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_mobile_app.ManagedMobileApp]
+        Returns: Optional[ManagedMobileApp]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import managed_mobile_app
+        from ......models.managed_mobile_app import ManagedMobileApp
 
-        return await self.request_adapter.send_async(request_info, managed_mobile_app.ManagedMobileApp, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedMobileApp, error_mapping)
     
-    async def patch(self,body: Optional[managed_mobile_app.ManagedMobileApp] = None, request_configuration: Optional[ManagedMobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[managed_mobile_app.ManagedMobileApp]:
+    async def patch(self,body: Optional[ManagedMobileApp] = None, request_configuration: Optional[ManagedMobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedMobileApp]:
         """
         Update the navigation property apps in deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_mobile_app.ManagedMobileApp]
+        Returns: Optional[ManagedMobileApp]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import managed_mobile_app
+        from ......models.managed_mobile_app import ManagedMobileApp
 
-        return await self.request_adapter.send_async(request_info, managed_mobile_app.ManagedMobileApp, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedMobileApp, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedMobileAppItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class ManagedMobileAppItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[managed_mobile_app.ManagedMobileApp] = None, request_configuration: Optional[ManagedMobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ManagedMobileApp] = None, request_configuration: Optional[ManagedMobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property apps in deviceAppManagement
         Args:

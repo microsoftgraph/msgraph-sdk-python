@@ -1,18 +1,24 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import channel_membership_type, chat_message, conversation_member, drive_item, entity, shared_with_channel_team_info, teams_tab
+    from .channel_membership_type import ChannelMembershipType
+    from .chat_message import ChatMessage
+    from .conversation_member import ConversationMember
+    from .drive_item import DriveItem
+    from .entity import Entity
+    from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+    from .teams_tab import TeamsTab
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Channel(entity.Entity):
+class Channel(Entity):
     # Read only. Timestamp at which the channel was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Optional textual description for the channel.
     description: Optional[str] = None
     # Channel name as it will appear to the user in Microsoft Teams. The maximum length is 50 characters.
@@ -20,21 +26,21 @@ class Channel(entity.Entity):
     # The email address for sending messages to the channel. Read-only.
     email: Optional[str] = None
     # Metadata for the location where the channel's files are stored.
-    files_folder: Optional[drive_item.DriveItem] = None
+    files_folder: Optional[DriveItem] = None
     # Indicates whether the channel should automatically be marked 'favorite' for all members of the team. Can only be set programmatically with Create team. Default: false.
     is_favorite_by_default: Optional[bool] = None
     # A collection of membership records associated with the channel.
-    members: Optional[List[conversation_member.ConversationMember]] = None
+    members: Optional[List[ConversationMember]] = None
     # The type of the channel. Can be set during creation and can't be changed. The possible values are: standard, private, unknownFutureValue, shared. The default value is standard. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: shared.
-    membership_type: Optional[channel_membership_type.ChannelMembershipType] = None
+    membership_type: Optional[ChannelMembershipType] = None
     # A collection of all the messages in the channel. A navigation property. Nullable.
-    messages: Optional[List[chat_message.ChatMessage]] = None
+    messages: Optional[List[ChatMessage]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of teams with which a channel is shared.
-    shared_with_teams: Optional[List[shared_with_channel_team_info.SharedWithChannelTeamInfo]] = None
+    shared_with_teams: Optional[List[SharedWithChannelTeamInfo]] = None
     # A collection of all the tabs in the channel. A navigation property.
-    tabs: Optional[List[teams_tab.TeamsTab]] = None
+    tabs: Optional[List[TeamsTab]] = None
     # The ID of the Azure Active Directory tenant.
     tenant_id: Optional[str] = None
     # A hyperlink that will go to the channel in Microsoft Teams. This is the URL that you get when you right-click a channel in Microsoft Teams and select Get link to channel. This URL should be treated as an opaque blob, and not parsed. Read-only.
@@ -57,22 +63,34 @@ class Channel(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import channel_membership_type, chat_message, conversation_member, drive_item, entity, shared_with_channel_team_info, teams_tab
+        from .channel_membership_type import ChannelMembershipType
+        from .chat_message import ChatMessage
+        from .conversation_member import ConversationMember
+        from .drive_item import DriveItem
+        from .entity import Entity
+        from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+        from .teams_tab import TeamsTab
 
-        from . import channel_membership_type, chat_message, conversation_member, drive_item, entity, shared_with_channel_team_info, teams_tab
+        from .channel_membership_type import ChannelMembershipType
+        from .chat_message import ChatMessage
+        from .conversation_member import ConversationMember
+        from .drive_item import DriveItem
+        from .entity import Entity
+        from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+        from .teams_tab import TeamsTab
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "filesFolder": lambda n : setattr(self, 'files_folder', n.get_object_value(drive_item.DriveItem)),
+            "filesFolder": lambda n : setattr(self, 'files_folder', n.get_object_value(DriveItem)),
             "isFavoriteByDefault": lambda n : setattr(self, 'is_favorite_by_default', n.get_bool_value()),
-            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
-            "membershipType": lambda n : setattr(self, 'membership_type', n.get_enum_value(channel_membership_type.ChannelMembershipType)),
-            "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(chat_message.ChatMessage)),
-            "sharedWithTeams": lambda n : setattr(self, 'shared_with_teams', n.get_collection_of_object_values(shared_with_channel_team_info.SharedWithChannelTeamInfo)),
-            "tabs": lambda n : setattr(self, 'tabs', n.get_collection_of_object_values(teams_tab.TeamsTab)),
+            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(ConversationMember)),
+            "membershipType": lambda n : setattr(self, 'membership_type', n.get_enum_value(ChannelMembershipType)),
+            "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(ChatMessage)),
+            "sharedWithTeams": lambda n : setattr(self, 'shared_with_teams', n.get_collection_of_object_values(SharedWithChannelTeamInfo)),
+            "tabs": lambda n : setattr(self, 'tabs', n.get_collection_of_object_values(TeamsTab)),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
@@ -89,7 +107,7 @@ class Channel(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("email", self.email)

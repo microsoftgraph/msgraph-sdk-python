@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import on_premises_accidental_deletion_prevention
+    from .on_premises_accidental_deletion_prevention import OnPremisesAccidentalDeletionPrevention
 
 @dataclass
 class OnPremisesDirectorySynchronizationConfiguration(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class OnPremisesDirectorySynchronizationConfiguration(AdditionalDataHolder, Pars
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Contains the accidental deletion prevention configuration for a tenant.
-    accidental_deletion_prevention: Optional[on_premises_accidental_deletion_prevention.OnPremisesAccidentalDeletionPrevention] = None
+    accidental_deletion_prevention: Optional[OnPremisesAccidentalDeletionPrevention] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,12 +33,12 @@ class OnPremisesDirectorySynchronizationConfiguration(AdditionalDataHolder, Pars
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import on_premises_accidental_deletion_prevention
+        from .on_premises_accidental_deletion_prevention import OnPremisesAccidentalDeletionPrevention
 
-        from . import on_premises_accidental_deletion_prevention
+        from .on_premises_accidental_deletion_prevention import OnPremisesAccidentalDeletionPrevention
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accidentalDeletionPrevention": lambda n : setattr(self, 'accidental_deletion_prevention', n.get_object_value(on_premises_accidental_deletion_prevention.OnPremisesAccidentalDeletionPrevention)),
+            "accidentalDeletionPrevention": lambda n : setattr(self, 'accidental_deletion_prevention', n.get_object_value(OnPremisesAccidentalDeletionPrevention)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

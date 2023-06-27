@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import calendar, calendar_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import calendar_item_request_builder
+    from .....models.calendar import Calendar
+    from .....models.calendar_collection_response import CalendarCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.calendar_item_request_builder import CalendarItemRequestBuilder
 
 class CalendarsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class CalendarsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_calendar_id(self,calendar_id: str) -> calendar_item_request_builder.CalendarItemRequestBuilder:
+    def by_calendar_id(self,calendar_id: str) -> CalendarItemRequestBuilder:
         """
         Provides operations to manage the calendars property of the microsoft.graph.calendarGroup entity.
         Args:
             calendar_id: Unique identifier of the item
-        Returns: calendar_item_request_builder.CalendarItemRequestBuilder
+        Returns: CalendarItemRequestBuilder
         """
         if not calendar_id:
             raise TypeError("calendar_id cannot be null.")
-        from .item import calendar_item_request_builder
+        from .item.calendar_item_request_builder import CalendarItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["calendar%2Did"] = calendar_id
-        return calendar_item_request_builder.CalendarItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return CalendarItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[CalendarsRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar_collection_response.CalendarCollectionResponse]:
+    async def get(self,request_configuration: Optional[CalendarsRequestBuilderGetRequestConfiguration] = None) -> Optional[CalendarCollectionResponse]:
         """
         Retrieve a list of calendars belonging to a calendar group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[calendar_collection_response.CalendarCollectionResponse]
+        Returns: Optional[CalendarCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import calendar_collection_response
+        from .....models.calendar_collection_response import CalendarCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, calendar_collection_response.CalendarCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, CalendarCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[calendar.Calendar] = None, request_configuration: Optional[CalendarsRequestBuilderPostRequestConfiguration] = None) -> Optional[calendar.Calendar]:
+    async def post(self,body: Optional[Calendar] = None, request_configuration: Optional[CalendarsRequestBuilderPostRequestConfiguration] = None) -> Optional[Calendar]:
         """
         Use this API to create a new calendar in a calendar group for a user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[calendar.Calendar]
+        Returns: Optional[Calendar]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import calendar
+        from .....models.calendar import Calendar
 
-        return await self.request_adapter.send_async(request_info, calendar.Calendar, error_mapping)
+        return await self.request_adapter.send_async(request_info, Calendar, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CalendarsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class CalendarsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[calendar.Calendar] = None, request_configuration: Optional[CalendarsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Calendar] = None, request_configuration: Optional[CalendarsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Use this API to create a new calendar in a calendar group for a user.
         Args:
@@ -139,13 +140,13 @@ class CalendarsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CalendarsRequestBuilderGetQueryParameters():

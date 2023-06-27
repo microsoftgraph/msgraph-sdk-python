@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -15,15 +15,15 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
     # True if to allow customers to choose a specific person for the booking.
     allow_staff_selection: Optional[bool] = None
     # Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
-    maximum_advance: Optional[timedelta] = None
+    maximum_advance: Optional[datetime.timedelta] = None
     # The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
-    minimum_lead_time: Optional[timedelta] = None
+    minimum_lead_time: Optional[datetime.timedelta] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # True to notify the business via email when a booking is created or changed. Use the email address specified in the email property of the bookingBusiness entity for the business.
     send_confirmations_to_owner: Optional[bool] = None
     # Duration of each time slot, denoted in ISO 8601 format.
-    time_slot_interval: Optional[timedelta] = None
+    time_slot_interval: Optional[datetime.timedelta] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingSchedulingPolicy:
@@ -61,11 +61,11 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("allowStaffSelection", self.allow_staff_selection)
-        writer.write_timedelta_value("maximumAdvance", self.maximum_advance)
-        writer.write_timedelta_value("minimumLeadTime", self.minimum_lead_time)
+        writer.write_timedelta_value()("maximumAdvance", self.maximum_advance)
+        writer.write_timedelta_value()("minimumLeadTime", self.minimum_lead_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("sendConfirmationsToOwner", self.send_confirmations_to_owner)
-        writer.write_timedelta_value("timeSlotInterval", self.time_slot_interval)
+        writer.write_timedelta_value()("timeSlotInterval", self.time_slot_interval)
         writer.write_additional_data_value(self.additional_data)
     
 

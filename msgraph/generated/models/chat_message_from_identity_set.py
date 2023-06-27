@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set
+    from .identity_set import IdentitySet
 
-from . import identity_set
+from .identity_set import IdentitySet
 
 @dataclass
-class ChatMessageFromIdentitySet(identity_set.IdentitySet):
+class ChatMessageFromIdentitySet(IdentitySet):
     odata_type = "#microsoft.graph.chatMessageFromIdentitySet"
     
     @staticmethod
@@ -29,9 +29,9 @@ class ChatMessageFromIdentitySet(identity_set.IdentitySet):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set
+        from .identity_set import IdentitySet
 
-        from . import identity_set
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

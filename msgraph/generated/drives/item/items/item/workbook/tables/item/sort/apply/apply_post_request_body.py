@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import workbook_sort_field
+    from ..........models.workbook_sort_field import WorkbookSortField
 
 @dataclass
 class ApplyPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ApplyPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The fields property
-    fields: Optional[List[workbook_sort_field.WorkbookSortField]] = None
+    fields: Optional[List[WorkbookSortField]] = None
     # The matchCase property
     match_case: Optional[bool] = None
     # The method property
@@ -35,12 +35,12 @@ class ApplyPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ..........models import workbook_sort_field
+        from ..........models.workbook_sort_field import WorkbookSortField
 
-        from ..........models import workbook_sort_field
+        from ..........models.workbook_sort_field import WorkbookSortField
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fields": lambda n : setattr(self, 'fields', n.get_collection_of_object_values(workbook_sort_field.WorkbookSortField)),
+            "fields": lambda n : setattr(self, 'fields', n.get_collection_of_object_values(WorkbookSortField)),
             "matchCase": lambda n : setattr(self, 'match_case', n.get_bool_value()),
             "method": lambda n : setattr(self, 'method', n.get_str_value()),
         }

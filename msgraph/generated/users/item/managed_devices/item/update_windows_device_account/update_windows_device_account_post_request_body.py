@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import update_windows_device_account_action_parameter
+    from ......models.update_windows_device_account_action_parameter import UpdateWindowsDeviceAccountActionParameter
 
 @dataclass
 class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The updateWindowsDeviceAccountActionParameter property
-    update_windows_device_account_action_parameter: Optional[update_windows_device_account_action_parameter.UpdateWindowsDeviceAccountActionParameter] = None
+    update_windows_device_account_action_parameter: Optional[UpdateWindowsDeviceAccountActionParameter] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UpdateWindowsDeviceAccountPostRequestBody:
@@ -31,12 +31,12 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models import update_windows_device_account_action_parameter
+        from ......models.update_windows_device_account_action_parameter import UpdateWindowsDeviceAccountActionParameter
 
-        from ......models import update_windows_device_account_action_parameter
+        from ......models.update_windows_device_account_action_parameter import UpdateWindowsDeviceAccountActionParameter
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "updateWindowsDeviceAccountActionParameter": lambda n : setattr(self, 'update_windows_device_account_action_parameter', n.get_object_value(update_windows_device_account_action_parameter.UpdateWindowsDeviceAccountActionParameter)),
+            "updateWindowsDeviceAccountActionParameter": lambda n : setattr(self, 'update_windows_device_account_action_parameter', n.get_object_value(UpdateWindowsDeviceAccountActionParameter)),
         }
         return fields
     

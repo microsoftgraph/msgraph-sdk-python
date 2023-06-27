@@ -4,17 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_message, response_type, time_slot
+    from .event_message import EventMessage
+    from .response_type import ResponseType
+    from .time_slot import TimeSlot
 
-from . import event_message
+from .event_message import EventMessage
 
 @dataclass
-class EventMessageResponse(event_message.EventMessage):
+class EventMessageResponse(EventMessage):
     odata_type = "#microsoft.graph.eventMessageResponse"
     # The proposedNewTime property
-    proposed_new_time: Optional[time_slot.TimeSlot] = None
+    proposed_new_time: Optional[TimeSlot] = None
     # The responseType property
-    response_type: Optional[response_type.ResponseType] = None
+    response_type: Optional[ResponseType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EventMessageResponse:
@@ -33,13 +35,17 @@ class EventMessageResponse(event_message.EventMessage):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message, response_type, time_slot
+        from .event_message import EventMessage
+        from .response_type import ResponseType
+        from .time_slot import TimeSlot
 
-        from . import event_message, response_type, time_slot
+        from .event_message import EventMessage
+        from .response_type import ResponseType
+        from .time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
-            "responseType": lambda n : setattr(self, 'response_type', n.get_enum_value(response_type.ResponseType)),
+            "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(TimeSlot)),
+            "responseType": lambda n : setattr(self, 'response_type', n.get_enum_value(ResponseType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

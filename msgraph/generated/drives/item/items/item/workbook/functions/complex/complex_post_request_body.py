@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class ComplexPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class ComplexPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The iNum property
-    i_num: Optional[json.Json] = None
+    i_num: Optional[Json] = None
     # The realNum property
-    real_num: Optional[json.Json] = None
+    real_num: Optional[Json] = None
     # The suffix property
-    suffix: Optional[json.Json] = None
+    suffix: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ComplexPostRequestBody:
@@ -35,14 +35,14 @@ class ComplexPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "iNum": lambda n : setattr(self, 'i_num', n.get_object_value(json.Json)),
-            "realNum": lambda n : setattr(self, 'real_num', n.get_object_value(json.Json)),
-            "suffix": lambda n : setattr(self, 'suffix', n.get_object_value(json.Json)),
+            "iNum": lambda n : setattr(self, 'i_num', n.get_object_value(Json)),
+            "realNum": lambda n : setattr(self, 'real_num', n.get_object_value(Json)),
+            "suffix": lambda n : setattr(self, 'suffix', n.get_object_value(Json)),
         }
         return fields
     

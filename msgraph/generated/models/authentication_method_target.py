@@ -4,18 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_target_type, entity, microsoft_authenticator_authentication_method_target, sms_authentication_method_target
+    from .authentication_method_target_type import AuthenticationMethodTargetType
+    from .entity import Entity
+    from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+    from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AuthenticationMethodTarget(entity.Entity):
+class AuthenticationMethodTarget(Entity):
     # Determines if the user is enforced to register the authentication method.
     is_registration_required: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The targetType property
-    target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
+    target_type: Optional[AuthenticationMethodTargetType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodTarget:
@@ -32,13 +35,13 @@ class AuthenticationMethodTarget(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodTarget".casefold():
-            from . import microsoft_authenticator_authentication_method_target
+            from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
 
-            return microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget()
+            return MicrosoftAuthenticatorAuthenticationMethodTarget()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.smsAuthenticationMethodTarget".casefold():
-            from . import sms_authentication_method_target
+            from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
-            return sms_authentication_method_target.SmsAuthenticationMethodTarget()
+            return SmsAuthenticationMethodTarget()
         return AuthenticationMethodTarget()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -46,13 +49,19 @@ class AuthenticationMethodTarget(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_target_type, entity, microsoft_authenticator_authentication_method_target, sms_authentication_method_target
+        from .authentication_method_target_type import AuthenticationMethodTargetType
+        from .entity import Entity
+        from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+        from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
-        from . import authentication_method_target_type, entity, microsoft_authenticator_authentication_method_target, sms_authentication_method_target
+        from .authentication_method_target_type import AuthenticationMethodTargetType
+        from .entity import Entity
+        from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+        from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isRegistrationRequired": lambda n : setattr(self, 'is_registration_required', n.get_bool_value()),
-            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(AuthenticationMethodTargetType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

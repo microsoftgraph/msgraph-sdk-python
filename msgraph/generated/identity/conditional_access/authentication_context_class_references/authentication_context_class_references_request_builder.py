@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import authentication_context_class_reference, authentication_context_class_reference_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import authentication_context_class_reference_item_request_builder
+    from ....models.authentication_context_class_reference import AuthenticationContextClassReference
+    from ....models.authentication_context_class_reference_collection_response import AuthenticationContextClassReferenceCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.authentication_context_class_reference_item_request_builder import AuthenticationContextClassReferenceItemRequestBuilder
 
 class AuthenticationContextClassReferencesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class AuthenticationContextClassReferencesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_authentication_context_class_reference_id(self,authentication_context_class_reference_id: str) -> authentication_context_class_reference_item_request_builder.AuthenticationContextClassReferenceItemRequestBuilder:
+    def by_authentication_context_class_reference_id(self,authentication_context_class_reference_id: str) -> AuthenticationContextClassReferenceItemRequestBuilder:
         """
         Provides operations to manage the authenticationContextClassReferences property of the microsoft.graph.conditionalAccessRoot entity.
         Args:
             authentication_context_class_reference_id: Unique identifier of the item
-        Returns: authentication_context_class_reference_item_request_builder.AuthenticationContextClassReferenceItemRequestBuilder
+        Returns: AuthenticationContextClassReferenceItemRequestBuilder
         """
         if not authentication_context_class_reference_id:
             raise TypeError("authentication_context_class_reference_id cannot be null.")
-        from .item import authentication_context_class_reference_item_request_builder
+        from .item.authentication_context_class_reference_item_request_builder import AuthenticationContextClassReferenceItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["authenticationContextClassReference%2Did"] = authentication_context_class_reference_id
-        return authentication_context_class_reference_item_request_builder.AuthenticationContextClassReferenceItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AuthenticationContextClassReferenceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AuthenticationContextClassReferencesRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_context_class_reference_collection_response.AuthenticationContextClassReferenceCollectionResponse]:
+    async def get(self,request_configuration: Optional[AuthenticationContextClassReferencesRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationContextClassReferenceCollectionResponse]:
         """
         Retrieve a list of authenticationContextClassReference objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[authentication_context_class_reference_collection_response.AuthenticationContextClassReferenceCollectionResponse]
+        Returns: Optional[AuthenticationContextClassReferenceCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import authentication_context_class_reference_collection_response
+        from ....models.authentication_context_class_reference_collection_response import AuthenticationContextClassReferenceCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, authentication_context_class_reference_collection_response.AuthenticationContextClassReferenceCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuthenticationContextClassReferenceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[authentication_context_class_reference.AuthenticationContextClassReference] = None, request_configuration: Optional[AuthenticationContextClassReferencesRequestBuilderPostRequestConfiguration] = None) -> Optional[authentication_context_class_reference.AuthenticationContextClassReference]:
+    async def post(self,body: Optional[AuthenticationContextClassReference] = None, request_configuration: Optional[AuthenticationContextClassReferencesRequestBuilderPostRequestConfiguration] = None) -> Optional[AuthenticationContextClassReference]:
         """
         Create new navigation property to authenticationContextClassReferences for identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[authentication_context_class_reference.AuthenticationContextClassReference]
+        Returns: Optional[AuthenticationContextClassReference]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import authentication_context_class_reference
+        from ....models.authentication_context_class_reference import AuthenticationContextClassReference
 
-        return await self.request_adapter.send_async(request_info, authentication_context_class_reference.AuthenticationContextClassReference, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuthenticationContextClassReference, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationContextClassReferencesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class AuthenticationContextClassReferencesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[authentication_context_class_reference.AuthenticationContextClassReference] = None, request_configuration: Optional[AuthenticationContextClassReferencesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AuthenticationContextClassReference] = None, request_configuration: Optional[AuthenticationContextClassReferencesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to authenticationContextClassReferences for identity
         Args:
@@ -139,13 +140,13 @@ class AuthenticationContextClassReferencesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AuthenticationContextClassReferencesRequestBuilderGetQueryParameters():

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import prompt
+    from .....models.prompt import Prompt
 
 @dataclass
 class PlayPromptPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class PlayPromptPostRequestBody(AdditionalDataHolder, Parsable):
     # The clientContext property
     client_context: Optional[str] = None
     # The prompts property
-    prompts: Optional[List[prompt.Prompt]] = None
+    prompts: Optional[List[Prompt]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlayPromptPostRequestBody:
@@ -33,13 +33,13 @@ class PlayPromptPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import prompt
+        from .....models.prompt import Prompt
 
-        from .....models import prompt
+        from .....models.prompt import Prompt
 
         fields: Dict[str, Callable[[Any], None]] = {
             "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
-            "prompts": lambda n : setattr(self, 'prompts', n.get_collection_of_object_values(prompt.Prompt)),
+            "prompts": lambda n : setattr(self, 'prompts', n.get_collection_of_object_values(Prompt)),
         }
         return fields
     

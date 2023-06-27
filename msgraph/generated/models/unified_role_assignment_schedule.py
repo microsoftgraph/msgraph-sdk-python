@@ -4,14 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import request_schedule, unified_role_eligibility_schedule, unified_role_schedule_base
+    from .request_schedule import RequestSchedule
+    from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
+    from .unified_role_schedule_base import UnifiedRoleScheduleBase
 
-from . import unified_role_schedule_base
+from .unified_role_schedule_base import UnifiedRoleScheduleBase
 
 @dataclass
-class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleScheduleBase):
+class UnifiedRoleAssignmentSchedule(UnifiedRoleScheduleBase):
     # If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it is null. Supports $expand.
-    activated_using: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule] = None
+    activated_using: Optional[UnifiedRoleEligibilitySchedule] = None
     # Type of the assignment which can either be Assigned or Activated. Supports $filter (eq, ne).
     assignment_type: Optional[str] = None
     # How the assignments is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleAssignmentSchedule can be managed by the caller. Supports $filter (eq, ne).
@@ -19,7 +21,7 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
     # The OdataType property
     odata_type: Optional[str] = None
     # The period of the role assignment. It can represent a single occurrence or multiple recurrences.
-    schedule_info: Optional[request_schedule.RequestSchedule] = None
+    schedule_info: Optional[RequestSchedule] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleAssignmentSchedule:
@@ -38,15 +40,19 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import request_schedule, unified_role_eligibility_schedule, unified_role_schedule_base
+        from .request_schedule import RequestSchedule
+        from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
+        from .unified_role_schedule_base import UnifiedRoleScheduleBase
 
-        from . import request_schedule, unified_role_eligibility_schedule, unified_role_schedule_base
+        from .request_schedule import RequestSchedule
+        from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
+        from .unified_role_schedule_base import UnifiedRoleScheduleBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
+            "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(UnifiedRoleEligibilitySchedule)),
             "assignmentType": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
             "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
-            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
+            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(RequestSchedule)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

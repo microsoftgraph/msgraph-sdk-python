@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import print_job_status
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.print_job_status import PrintJobStatus
 
 class StartRequestBuilder():
     """
@@ -35,27 +35,27 @@ class StartRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[StartRequestBuilderPostRequestConfiguration] = None) -> Optional[print_job_status.PrintJobStatus]:
+    async def post(self,request_configuration: Optional[StartRequestBuilderPostRequestConfiguration] = None) -> Optional[PrintJobStatus]:
         """
         Submits the print job to the associated printer or printerShare. It will be printed after any existing pending **jobs** are completed, aborted, or canceled.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_job_status.PrintJobStatus]
+        Returns: Optional[PrintJobStatus]
         """
         request_info = self.to_post_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import print_job_status
+        from .......models.print_job_status import PrintJobStatus
 
-        return await self.request_adapter.send_async(request_info, print_job_status.PrintJobStatus, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintJobStatus, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[StartRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

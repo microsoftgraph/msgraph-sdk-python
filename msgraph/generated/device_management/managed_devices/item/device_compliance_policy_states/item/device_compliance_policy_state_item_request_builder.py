@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import device_compliance_policy_state
-    from ......models.o_data_errors import o_data_error
+    from ......models.device_compliance_policy_state import DeviceCompliancePolicyState
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class DeviceCompliancePolicyStateItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class DeviceCompliancePolicyStateItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[device_compliance_policy_state.DeviceCompliancePolicyState]:
+    async def get(self,request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyState]:
         """
         Device compliance policy states for this device.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_compliance_policy_state.DeviceCompliancePolicyState]
+        Returns: Optional[DeviceCompliancePolicyState]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import device_compliance_policy_state
+        from ......models.device_compliance_policy_state import DeviceCompliancePolicyState
 
-        return await self.request_adapter.send_async(request_info, device_compliance_policy_state.DeviceCompliancePolicyState, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceCompliancePolicyState, error_mapping)
     
-    async def patch(self,body: Optional[device_compliance_policy_state.DeviceCompliancePolicyState] = None, request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_compliance_policy_state.DeviceCompliancePolicyState]:
+    async def patch(self,body: Optional[DeviceCompliancePolicyState] = None, request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyState]:
         """
         Update the navigation property deviceCompliancePolicyStates in deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_compliance_policy_state.DeviceCompliancePolicyState]
+        Returns: Optional[DeviceCompliancePolicyState]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import device_compliance_policy_state
+        from ......models.device_compliance_policy_state import DeviceCompliancePolicyState
 
-        return await self.request_adapter.send_async(request_info, device_compliance_policy_state.DeviceCompliancePolicyState, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceCompliancePolicyState, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class DeviceCompliancePolicyStateItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device_compliance_policy_state.DeviceCompliancePolicyState] = None, request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceCompliancePolicyState] = None, request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property deviceCompliancePolicyStates in deviceManagement
         Args:

@@ -4,19 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method, authentication_method_sign_in_state, authentication_phone_type
+    from .authentication_method import AuthenticationMethod
+    from .authentication_method_sign_in_state import AuthenticationMethodSignInState
+    from .authentication_phone_type import AuthenticationPhoneType
 
-from . import authentication_method
+from .authentication_method import AuthenticationMethod
 
 @dataclass
-class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
+class PhoneAuthenticationMethod(AuthenticationMethod):
     odata_type = "#microsoft.graph.phoneAuthenticationMethod"
     # The phone number to text or call for authentication. Phone numbers use the format +{country code} {number}x{extension}, with extension optional. For example, +1 5555551234 or +1 5555551234x123 are valid. Numbers are rejected when creating or updating if they do not match the required format.
     phone_number: Optional[str] = None
     # The type of this phone. Possible values are: mobile, alternateMobile, or office.
-    phone_type: Optional[authentication_phone_type.AuthenticationPhoneType] = None
+    phone_type: Optional[AuthenticationPhoneType] = None
     # Whether a phone is ready to be used for SMS sign-in or not. Possible values are: notSupported, notAllowedByPolicy, notEnabled, phoneNumberNotUnique, ready, or notConfigured, unknownFutureValue.
-    sms_sign_in_state: Optional[authentication_method_sign_in_state.AuthenticationMethodSignInState] = None
+    sms_sign_in_state: Optional[AuthenticationMethodSignInState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PhoneAuthenticationMethod:
@@ -35,14 +37,18 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method, authentication_method_sign_in_state, authentication_phone_type
+        from .authentication_method import AuthenticationMethod
+        from .authentication_method_sign_in_state import AuthenticationMethodSignInState
+        from .authentication_phone_type import AuthenticationPhoneType
 
-        from . import authentication_method, authentication_method_sign_in_state, authentication_phone_type
+        from .authentication_method import AuthenticationMethod
+        from .authentication_method_sign_in_state import AuthenticationMethodSignInState
+        from .authentication_phone_type import AuthenticationPhoneType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "phoneNumber": lambda n : setattr(self, 'phone_number', n.get_str_value()),
-            "phoneType": lambda n : setattr(self, 'phone_type', n.get_enum_value(authentication_phone_type.AuthenticationPhoneType)),
-            "smsSignInState": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(authentication_method_sign_in_state.AuthenticationMethodSignInState)),
+            "phoneType": lambda n : setattr(self, 'phone_type', n.get_enum_value(AuthenticationPhoneType)),
+            "smsSignInState": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(AuthenticationMethodSignInState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

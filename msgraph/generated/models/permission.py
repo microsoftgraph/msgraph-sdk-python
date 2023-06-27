@@ -1,34 +1,39 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, identity_set, item_reference, share_point_identity_set, sharing_invitation, sharing_link
+    from .entity import Entity
+    from .identity_set import IdentitySet
+    from .item_reference import ItemReference
+    from .share_point_identity_set import SharePointIdentitySet
+    from .sharing_invitation import SharingInvitation
+    from .sharing_link import SharingLink
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Permission(entity.Entity):
+class Permission(Entity):
     # A format of yyyy-MM-ddTHH:mm:ssZ of DateTimeOffset indicates the expiration time of the permission. DateTime.MinValue indicates there is no expiration set for this permission. Optional.
-    expiration_date_time: Optional[datetime] = None
+    expiration_date_time: Optional[datetime.datetime] = None
     # The grantedTo property
-    granted_to: Optional[identity_set.IdentitySet] = None
+    granted_to: Optional[IdentitySet] = None
     # The grantedToIdentities property
-    granted_to_identities: Optional[List[identity_set.IdentitySet]] = None
+    granted_to_identities: Optional[List[IdentitySet]] = None
     # For link type permissions, the details of the users to whom permission was granted. Read-only.
-    granted_to_identities_v2: Optional[List[share_point_identity_set.SharePointIdentitySet]] = None
+    granted_to_identities_v2: Optional[List[SharePointIdentitySet]] = None
     # For user type permissions, the details of the users and applications for this permission. Read-only.
-    granted_to_v2: Optional[share_point_identity_set.SharePointIdentitySet] = None
+    granted_to_v2: Optional[SharePointIdentitySet] = None
     # Indicates whether the password is set for this permission. This property only appears in the response. Optional. Read-only. For OneDrive Personal only..
     has_password: Optional[bool] = None
     # Provides a reference to the ancestor of the current permission, if it is inherited from an ancestor. Read-only.
-    inherited_from: Optional[item_reference.ItemReference] = None
+    inherited_from: Optional[ItemReference] = None
     # Details of any associated sharing invitation for this permission. Read-only.
-    invitation: Optional[sharing_invitation.SharingInvitation] = None
+    invitation: Optional[SharingInvitation] = None
     # Provides the link details of the current permission, if it is a link type permissions. Read-only.
-    link: Optional[sharing_link.SharingLink] = None
+    link: Optional[SharingLink] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of permission, for example, read. See below for the full list of roles. Read-only.
@@ -53,20 +58,30 @@ class Permission(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, identity_set, item_reference, share_point_identity_set, sharing_invitation, sharing_link
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .item_reference import ItemReference
+        from .share_point_identity_set import SharePointIdentitySet
+        from .sharing_invitation import SharingInvitation
+        from .sharing_link import SharingLink
 
-        from . import entity, identity_set, item_reference, share_point_identity_set, sharing_invitation, sharing_link
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .item_reference import ItemReference
+        from .share_point_identity_set import SharePointIdentitySet
+        from .sharing_invitation import SharingInvitation
+        from .sharing_link import SharingLink
 
         fields: Dict[str, Callable[[Any], None]] = {
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "grantedTo": lambda n : setattr(self, 'granted_to', n.get_object_value(identity_set.IdentitySet)),
-            "grantedToIdentities": lambda n : setattr(self, 'granted_to_identities', n.get_collection_of_object_values(identity_set.IdentitySet)),
-            "grantedToIdentitiesV2": lambda n : setattr(self, 'granted_to_identities_v2', n.get_collection_of_object_values(share_point_identity_set.SharePointIdentitySet)),
-            "grantedToV2": lambda n : setattr(self, 'granted_to_v2', n.get_object_value(share_point_identity_set.SharePointIdentitySet)),
+            "grantedTo": lambda n : setattr(self, 'granted_to', n.get_object_value(IdentitySet)),
+            "grantedToIdentities": lambda n : setattr(self, 'granted_to_identities', n.get_collection_of_object_values(IdentitySet)),
+            "grantedToIdentitiesV2": lambda n : setattr(self, 'granted_to_identities_v2', n.get_collection_of_object_values(SharePointIdentitySet)),
+            "grantedToV2": lambda n : setattr(self, 'granted_to_v2', n.get_object_value(SharePointIdentitySet)),
             "hasPassword": lambda n : setattr(self, 'has_password', n.get_bool_value()),
-            "inheritedFrom": lambda n : setattr(self, 'inherited_from', n.get_object_value(item_reference.ItemReference)),
-            "invitation": lambda n : setattr(self, 'invitation', n.get_object_value(sharing_invitation.SharingInvitation)),
-            "link": lambda n : setattr(self, 'link', n.get_object_value(sharing_link.SharingLink)),
+            "inheritedFrom": lambda n : setattr(self, 'inherited_from', n.get_object_value(ItemReference)),
+            "invitation": lambda n : setattr(self, 'invitation', n.get_object_value(SharingInvitation)),
+            "link": lambda n : setattr(self, 'link', n.get_object_value(SharingLink)),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),
             "shareId": lambda n : setattr(self, 'share_id', n.get_str_value()),
         }
@@ -83,7 +98,7 @@ class Permission(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
         writer.write_object_value("grantedTo", self.granted_to)
         writer.write_collection_of_object_values("grantedToIdentities", self.granted_to_identities)
         writer.write_collection_of_object_values("grantedToIdentitiesV2", self.granted_to_identities_v2)

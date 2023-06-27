@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import device_management_exchange_connector_sync_type
+    from .....models.device_management_exchange_connector_sync_type import DeviceManagementExchangeConnectorSyncType
 
 @dataclass
 class SyncPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class SyncPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The type of Exchange Connector sync requested.
-    sync_type: Optional[device_management_exchange_connector_sync_type.DeviceManagementExchangeConnectorSyncType] = None
+    sync_type: Optional[DeviceManagementExchangeConnectorSyncType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SyncPostRequestBody:
@@ -31,12 +31,12 @@ class SyncPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import device_management_exchange_connector_sync_type
+        from .....models.device_management_exchange_connector_sync_type import DeviceManagementExchangeConnectorSyncType
 
-        from .....models import device_management_exchange_connector_sync_type
+        from .....models.device_management_exchange_connector_sync_type import DeviceManagementExchangeConnectorSyncType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "syncType": lambda n : setattr(self, 'sync_type', n.get_enum_value(device_management_exchange_connector_sync_type.DeviceManagementExchangeConnectorSyncType)),
+            "syncType": lambda n : setattr(self, 'sync_type', n.get_enum_value(DeviceManagementExchangeConnectorSyncType)),
         }
         return fields
     

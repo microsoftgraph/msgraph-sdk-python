@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import oma_setting
+    from .oma_setting import OmaSetting
 
-from . import oma_setting
+from .oma_setting import OmaSetting
 
 @dataclass
-class OmaSettingInteger(oma_setting.OmaSetting):
+class OmaSettingInteger(OmaSetting):
     odata_type = "#microsoft.graph.omaSettingInteger"
     # Value.
     value: Optional[int] = None
@@ -31,9 +31,9 @@ class OmaSettingInteger(oma_setting.OmaSetting):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import oma_setting
+        from .oma_setting import OmaSetting
 
-        from . import oma_setting
+        from .oma_setting import OmaSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
             "value": lambda n : setattr(self, 'value', n.get_int_value()),

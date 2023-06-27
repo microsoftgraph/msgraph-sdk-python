@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import schedule_entity
+    from .schedule_entity import ScheduleEntity
 
-from . import schedule_entity
+from .schedule_entity import ScheduleEntity
 
 @dataclass
-class TimeOffItem(schedule_entity.ScheduleEntity):
+class TimeOffItem(ScheduleEntity):
     # The OdataType property
     odata_type: Optional[str] = None
     # ID of the timeOffReason for this timeOffItem. Required.
@@ -32,9 +32,9 @@ class TimeOffItem(schedule_entity.ScheduleEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import schedule_entity
+        from .schedule_entity import ScheduleEntity
 
-        from . import schedule_entity
+        from .schedule_entity import ScheduleEntity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "timeOffReasonId": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),

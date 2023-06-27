@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import app_consent_request
-    from .....models.o_data_errors import o_data_error
-    from .user_consent_requests import user_consent_requests_request_builder
+    from .....models.app_consent_request import AppConsentRequest
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .user_consent_requests.user_consent_requests_request_builder import UserConsentRequestsRequestBuilder
 
 class AppConsentRequestItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class AppConsentRequestItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AppConsentRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[app_consent_request.AppConsentRequest]:
+    async def get(self,request_configuration: Optional[AppConsentRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AppConsentRequest]:
         """
         Read the properties and relationships of an appConsentRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[app_consent_request.AppConsentRequest]
+        Returns: Optional[AppConsentRequest]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import app_consent_request
+        from .....models.app_consent_request import AppConsentRequest
 
-        return await self.request_adapter.send_async(request_info, app_consent_request.AppConsentRequest, error_mapping)
+        return await self.request_adapter.send_async(request_info, AppConsentRequest, error_mapping)
     
-    async def patch(self,body: Optional[app_consent_request.AppConsentRequest] = None, request_configuration: Optional[AppConsentRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[app_consent_request.AppConsentRequest]:
+    async def patch(self,body: Optional[AppConsentRequest] = None, request_configuration: Optional[AppConsentRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AppConsentRequest]:
         """
         Update the navigation property appConsentRequests in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[app_consent_request.AppConsentRequest]
+        Returns: Optional[AppConsentRequest]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import app_consent_request
+        from .....models.app_consent_request import AppConsentRequest
 
-        return await self.request_adapter.send_async(request_info, app_consent_request.AppConsentRequest, error_mapping)
+        return await self.request_adapter.send_async(request_info, AppConsentRequest, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AppConsentRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class AppConsentRequestItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[app_consent_request.AppConsentRequest] = None, request_configuration: Optional[AppConsentRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AppConsentRequest] = None, request_configuration: Optional[AppConsentRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property appConsentRequests in identityGovernance
         Args:
@@ -158,13 +158,13 @@ class AppConsentRequestItemRequestBuilder():
         return request_info
     
     @property
-    def user_consent_requests(self) -> user_consent_requests_request_builder.UserConsentRequestsRequestBuilder:
+    def user_consent_requests(self) -> UserConsentRequestsRequestBuilder:
         """
         Provides operations to manage the userConsentRequests property of the microsoft.graph.appConsentRequest entity.
         """
-        from .user_consent_requests import user_consent_requests_request_builder
+        from .user_consent_requests.user_consent_requests_request_builder import UserConsentRequestsRequestBuilder
 
-        return user_consent_requests_request_builder.UserConsentRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+        return UserConsentRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AppConsentRequestItemRequestBuilderDeleteRequestConfiguration():

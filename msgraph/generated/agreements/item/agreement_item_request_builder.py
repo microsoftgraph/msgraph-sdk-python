@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import agreement
-    from ...models.o_data_errors import o_data_error
-    from .acceptances import acceptances_request_builder
-    from .file import file_request_builder
-    from .files import files_request_builder
+    from ...models.agreement import Agreement
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .acceptances.acceptances_request_builder import AcceptancesRequestBuilder
+    from .file.file_request_builder import FileRequestBuilder
+    from .files.files_request_builder import FilesRequestBuilder
 
 class AgreementItemRequestBuilder():
     """
@@ -47,62 +47,62 @@ class AgreementItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement.Agreement]:
+    async def get(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Agreement]:
         """
         Get entity from agreements by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[agreement.Agreement]
+        Returns: Optional[Agreement]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import agreement
+        from ...models.agreement import Agreement
 
-        return await self.request_adapter.send_async(request_info, agreement.Agreement, error_mapping)
+        return await self.request_adapter.send_async(request_info, Agreement, error_mapping)
     
-    async def patch(self,body: Optional[agreement.Agreement] = None, request_configuration: Optional[AgreementItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[agreement.Agreement]:
+    async def patch(self,body: Optional[Agreement] = None, request_configuration: Optional[AgreementItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Agreement]:
         """
         Update entity in agreements
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[agreement.Agreement]
+        Returns: Optional[Agreement]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import agreement
+        from ...models.agreement import Agreement
 
-        return await self.request_adapter.send_async(request_info, agreement.Agreement, error_mapping)
+        return await self.request_adapter.send_async(request_info, Agreement, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AgreementItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class AgreementItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[agreement.Agreement] = None, request_configuration: Optional[AgreementItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Agreement] = None, request_configuration: Optional[AgreementItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in agreements
         Args:
@@ -160,31 +160,31 @@ class AgreementItemRequestBuilder():
         return request_info
     
     @property
-    def acceptances(self) -> acceptances_request_builder.AcceptancesRequestBuilder:
+    def acceptances(self) -> AcceptancesRequestBuilder:
         """
         Provides operations to manage the acceptances property of the microsoft.graph.agreement entity.
         """
-        from .acceptances import acceptances_request_builder
+        from .acceptances.acceptances_request_builder import AcceptancesRequestBuilder
 
-        return acceptances_request_builder.AcceptancesRequestBuilder(self.request_adapter, self.path_parameters)
+        return AcceptancesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def file(self) -> file_request_builder.FileRequestBuilder:
+    def file(self) -> FileRequestBuilder:
         """
         Provides operations to manage the file property of the microsoft.graph.agreement entity.
         """
-        from .file import file_request_builder
+        from .file.file_request_builder import FileRequestBuilder
 
-        return file_request_builder.FileRequestBuilder(self.request_adapter, self.path_parameters)
+        return FileRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def files(self) -> files_request_builder.FilesRequestBuilder:
+    def files(self) -> FilesRequestBuilder:
         """
         Provides operations to manage the files property of the microsoft.graph.agreement entity.
         """
-        from .files import files_request_builder
+        from .files.files_request_builder import FilesRequestBuilder
 
-        return files_request_builder.FilesRequestBuilder(self.request_adapter, self.path_parameters)
+        return FilesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AgreementItemRequestBuilderDeleteRequestConfiguration():

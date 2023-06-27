@@ -4,20 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attribute_type, entity, scope_operator_multi_valued_comparison_type, scope_operator_type
+    from .attribute_type import AttributeType
+    from .entity import Entity
+    from .scope_operator_multi_valued_comparison_type import ScopeOperatorMultiValuedComparisonType
+    from .scope_operator_type import ScopeOperatorType
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class FilterOperatorSchema(entity.Entity):
+class FilterOperatorSchema(Entity):
     # The arity property
-    arity: Optional[scope_operator_type.ScopeOperatorType] = None
+    arity: Optional[ScopeOperatorType] = None
     # The multivaluedComparisonType property
-    multivalued_comparison_type: Optional[scope_operator_multi_valued_comparison_type.ScopeOperatorMultiValuedComparisonType] = None
+    multivalued_comparison_type: Optional[ScopeOperatorMultiValuedComparisonType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The supportedAttributeTypes property
-    supported_attribute_types: Optional[List[attribute_type.AttributeType]] = None
+    supported_attribute_types: Optional[List[AttributeType]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FilterOperatorSchema:
@@ -36,14 +39,20 @@ class FilterOperatorSchema(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attribute_type, entity, scope_operator_multi_valued_comparison_type, scope_operator_type
+        from .attribute_type import AttributeType
+        from .entity import Entity
+        from .scope_operator_multi_valued_comparison_type import ScopeOperatorMultiValuedComparisonType
+        from .scope_operator_type import ScopeOperatorType
 
-        from . import attribute_type, entity, scope_operator_multi_valued_comparison_type, scope_operator_type
+        from .attribute_type import AttributeType
+        from .entity import Entity
+        from .scope_operator_multi_valued_comparison_type import ScopeOperatorMultiValuedComparisonType
+        from .scope_operator_type import ScopeOperatorType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "arity": lambda n : setattr(self, 'arity', n.get_enum_value(scope_operator_type.ScopeOperatorType)),
-            "multivaluedComparisonType": lambda n : setattr(self, 'multivalued_comparison_type', n.get_enum_value(scope_operator_multi_valued_comparison_type.ScopeOperatorMultiValuedComparisonType)),
-            "supportedAttributeTypes": lambda n : setattr(self, 'supported_attribute_types', n.get_collection_of_enum_values(attribute_type.AttributeType)),
+            "arity": lambda n : setattr(self, 'arity', n.get_enum_value(ScopeOperatorType)),
+            "multivaluedComparisonType": lambda n : setattr(self, 'multivalued_comparison_type', n.get_enum_value(ScopeOperatorMultiValuedComparisonType)),
+            "supportedAttributeTypes": lambda n : setattr(self, 'supported_attribute_types', n.get_collection_of_enum_values(AttributeType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import external_item_content_type
+    from .external_item_content_type import ExternalItemContentType
 
 @dataclass
 class ExternalItemContent(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class ExternalItemContent(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type property
-    type: Optional[external_item_content_type.ExternalItemContentType] = None
+    type: Optional[ExternalItemContentType] = None
     # The content for the externalItem. Required.
     value: Optional[str] = None
     
@@ -35,13 +35,13 @@ class ExternalItemContent(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import external_item_content_type
+        from .external_item_content_type import ExternalItemContentType
 
-        from . import external_item_content_type
+        from .external_item_content_type import ExternalItemContentType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(external_item_content_type.ExternalItemContentType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(ExternalItemContentType)),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         return fields

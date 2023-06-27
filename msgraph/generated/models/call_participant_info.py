@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set
+    from .identity_set import IdentitySet
 
 @dataclass
 class CallParticipantInfo(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Identity of the call participant.
-    participant: Optional[identity_set.IdentitySet] = None
+    participant: Optional[IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallParticipantInfo:
@@ -33,13 +33,13 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set
+        from .identity_set import IdentitySet
 
-        from . import identity_set
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "participant": lambda n : setattr(self, 'participant', n.get_object_value(identity_set.IdentitySet)),
+            "participant": lambda n : setattr(self, 'participant', n.get_object_value(IdentitySet)),
         }
         return fields
     

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import case_operation
+    from .case_operation import CaseOperation
 
-from . import case_operation
+from .case_operation import CaseOperation
 
 @dataclass
-class EdiscoveryIndexOperation(case_operation.CaseOperation):
+class EdiscoveryIndexOperation(CaseOperation):
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -30,9 +30,9 @@ class EdiscoveryIndexOperation(case_operation.CaseOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import case_operation
+        from .case_operation import CaseOperation
 
-        from . import case_operation
+        from .case_operation import CaseOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_package_answer_choice, access_package_question
+    from .access_package_answer_choice import AccessPackageAnswerChoice
+    from .access_package_question import AccessPackageQuestion
 
-from . import access_package_question
+from .access_package_question import AccessPackageQuestion
 
 @dataclass
-class AccessPackageMultipleChoiceQuestion(access_package_question.AccessPackageQuestion):
+class AccessPackageMultipleChoiceQuestion(AccessPackageQuestion):
     odata_type = "#microsoft.graph.accessPackageMultipleChoiceQuestion"
     # List of answer choices.
-    choices: Optional[List[access_package_answer_choice.AccessPackageAnswerChoice]] = None
+    choices: Optional[List[AccessPackageAnswerChoice]] = None
     # Indicates whether requestor can select multiple choices as their answer.
     is_multiple_selection_allowed: Optional[bool] = None
     
@@ -33,12 +34,14 @@ class AccessPackageMultipleChoiceQuestion(access_package_question.AccessPackageQ
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_answer_choice, access_package_question
+        from .access_package_answer_choice import AccessPackageAnswerChoice
+        from .access_package_question import AccessPackageQuestion
 
-        from . import access_package_answer_choice, access_package_question
+        from .access_package_answer_choice import AccessPackageAnswerChoice
+        from .access_package_question import AccessPackageQuestion
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "choices": lambda n : setattr(self, 'choices', n.get_collection_of_object_values(access_package_answer_choice.AccessPackageAnswerChoice)),
+            "choices": lambda n : setattr(self, 'choices', n.get_collection_of_object_values(AccessPackageAnswerChoice)),
             "isMultipleSelectionAllowed": lambda n : setattr(self, 'is_multiple_selection_allowed', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

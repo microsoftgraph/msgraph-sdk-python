@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import file_hash_type
+    from .file_hash_type import FileHashType
 
 @dataclass
 class FileHash(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class FileHash(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # File hash type. Possible values are: unknown, sha1, sha256, md5, authenticodeHash256, lsHash, ctph, peSha1, peSha256.
-    hash_type: Optional[file_hash_type.FileHashType] = None
+    hash_type: Optional[FileHashType] = None
     # Value of the file hash.
     hash_value: Optional[str] = None
     # The OdataType property
@@ -35,12 +35,12 @@ class FileHash(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import file_hash_type
+        from .file_hash_type import FileHashType
 
-        from . import file_hash_type
+        from .file_hash_type import FileHashType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "hashType": lambda n : setattr(self, 'hash_type', n.get_enum_value(file_hash_type.FileHashType)),
+            "hashType": lambda n : setattr(self, 'hash_type', n.get_enum_value(FileHashType)),
             "hashValue": lambda n : setattr(self, 'hash_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

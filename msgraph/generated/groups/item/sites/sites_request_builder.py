@@ -10,13 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import site_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .add import add_request_builder
-    from .count import count_request_builder
-    from .get_all_sites import get_all_sites_request_builder
-    from .item import site_item_request_builder
-    from .remove import remove_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.site_collection_response import SiteCollectionResponse
+    from .add.add_request_builder import AddRequestBuilder
+    from .count.count_request_builder import CountRequestBuilder
+    from .get_all_sites.get_all_sites_request_builder import GetAllSitesRequestBuilder
+    from .item.site_item_request_builder import SiteItemRequestBuilder
+    from .remove.remove_request_builder import RemoveRequestBuilder
 
 class SitesRequestBuilder():
     """
@@ -40,42 +40,42 @@ class SitesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_site_id(self,site_id: str) -> site_item_request_builder.SiteItemRequestBuilder:
+    def by_site_id(self,site_id: str) -> SiteItemRequestBuilder:
         """
         Provides operations to manage the sites property of the microsoft.graph.group entity.
         Args:
             site_id: Unique identifier of the item
-        Returns: site_item_request_builder.SiteItemRequestBuilder
+        Returns: SiteItemRequestBuilder
         """
         if not site_id:
             raise TypeError("site_id cannot be null.")
-        from .item import site_item_request_builder
+        from .item.site_item_request_builder import SiteItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["site%2Did"] = site_id
-        return site_item_request_builder.SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> Optional[site_collection_response.SiteCollectionResponse]:
+    async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> Optional[SiteCollectionResponse]:
         """
         The list of SharePoint sites in this group. Access the default site with /sites/root.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[site_collection_response.SiteCollectionResponse]
+        Returns: Optional[SiteCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import site_collection_response
+        from ....models.site_collection_response import SiteCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, site_collection_response.SiteCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SiteCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -96,40 +96,40 @@ class SitesRequestBuilder():
         return request_info
     
     @property
-    def add(self) -> add_request_builder.AddRequestBuilder:
+    def add(self) -> AddRequestBuilder:
         """
         Provides operations to call the add method.
         """
-        from .add import add_request_builder
+        from .add.add_request_builder import AddRequestBuilder
 
-        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
+        return AddRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_all_sites(self) -> get_all_sites_request_builder.GetAllSitesRequestBuilder:
+    def get_all_sites(self) -> GetAllSitesRequestBuilder:
         """
         Provides operations to call the getAllSites method.
         """
-        from .get_all_sites import get_all_sites_request_builder
+        from .get_all_sites.get_all_sites_request_builder import GetAllSitesRequestBuilder
 
-        return get_all_sites_request_builder.GetAllSitesRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAllSitesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def remove(self) -> remove_request_builder.RemoveRequestBuilder:
+    def remove(self) -> RemoveRequestBuilder:
         """
         Provides operations to call the remove method.
         """
-        from .remove import remove_request_builder
+        from .remove.remove_request_builder import RemoveRequestBuilder
 
-        return remove_request_builder.RemoveRequestBuilder(self.request_adapter, self.path_parameters)
+        return RemoveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SitesRequestBuilderGetQueryParameters():

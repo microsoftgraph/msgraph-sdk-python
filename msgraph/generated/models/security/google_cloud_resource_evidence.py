@@ -4,16 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert_evidence, google_cloud_location_type
+    from .alert_evidence import AlertEvidence
+    from .google_cloud_location_type import GoogleCloudLocationType
 
-from . import alert_evidence
+from .alert_evidence import AlertEvidence
 
 @dataclass
-class GoogleCloudResourceEvidence(alert_evidence.AlertEvidence):
+class GoogleCloudResourceEvidence(AlertEvidence):
     # The zone or region where the resource is located.
     location: Optional[str] = None
     # The type of location. Possible values are: unknown, regional, zonal, global, unknownFutureValue.
-    location_type: Optional[google_cloud_location_type.GoogleCloudLocationType] = None
+    location_type: Optional[GoogleCloudLocationType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The Google project ID as defined by the user.
@@ -42,13 +43,15 @@ class GoogleCloudResourceEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_evidence, google_cloud_location_type
+        from .alert_evidence import AlertEvidence
+        from .google_cloud_location_type import GoogleCloudLocationType
 
-        from . import alert_evidence, google_cloud_location_type
+        from .alert_evidence import AlertEvidence
+        from .google_cloud_location_type import GoogleCloudLocationType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "location": lambda n : setattr(self, 'location', n.get_str_value()),
-            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(google_cloud_location_type.GoogleCloudLocationType)),
+            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(GoogleCloudLocationType)),
             "projectId": lambda n : setattr(self, 'project_id', n.get_str_value()),
             "projectNumber": lambda n : setattr(self, 'project_number', n.get_int_value()),
             "resourceName": lambda n : setattr(self, 'resource_name', n.get_str_value()),

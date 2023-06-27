@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import mailbox_settings
-    from ...models.o_data_errors import o_data_error
+    from ...models.mailbox_settings import MailboxSettings
+    from ...models.o_data_errors.o_data_error import ODataError
 
 class MailboxSettingsRequestBuilder():
     """
@@ -35,52 +35,52 @@ class MailboxSettingsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[MailboxSettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[mailbox_settings.MailboxSettings]:
+    async def get(self,request_configuration: Optional[MailboxSettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[MailboxSettings]:
         """
         Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone. Returned only on $select.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mailbox_settings.MailboxSettings]
+        Returns: Optional[MailboxSettings]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import mailbox_settings
+        from ...models.mailbox_settings import MailboxSettings
 
-        return await self.request_adapter.send_async(request_info, mailbox_settings.MailboxSettings, error_mapping)
+        return await self.request_adapter.send_async(request_info, MailboxSettings, error_mapping)
     
-    async def patch(self,body: Optional[mailbox_settings.MailboxSettings] = None, request_configuration: Optional[MailboxSettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[mailbox_settings.MailboxSettings]:
+    async def patch(self,body: Optional[MailboxSettings] = None, request_configuration: Optional[MailboxSettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[MailboxSettings]:
         """
         Update property mailboxSettings value.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mailbox_settings.MailboxSettings]
+        Returns: Optional[MailboxSettings]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import mailbox_settings
+        from ...models.mailbox_settings import MailboxSettings
 
-        return await self.request_adapter.send_async(request_info, mailbox_settings.MailboxSettings, error_mapping)
+        return await self.request_adapter.send_async(request_info, MailboxSettings, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MailboxSettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -100,7 +100,7 @@ class MailboxSettingsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[mailbox_settings.MailboxSettings] = None, request_configuration: Optional[MailboxSettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[MailboxSettings] = None, request_configuration: Optional[MailboxSettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update property mailboxSettings value.
         Args:

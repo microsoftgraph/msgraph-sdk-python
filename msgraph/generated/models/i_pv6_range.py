@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ip_range
+    from .ip_range import IpRange
 
-from . import ip_range
+from .ip_range import IpRange
 
 @dataclass
-class IPv6Range(ip_range.IpRange):
+class IPv6Range(IpRange):
     odata_type = "#microsoft.graph.iPv6Range"
     # Lower address.
     lower_address: Optional[str] = None
@@ -33,9 +33,9 @@ class IPv6Range(ip_range.IpRange):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ip_range
+        from .ip_range import IpRange
 
-        from . import ip_range
+        from .ip_range import IpRange
 
         fields: Dict[str, Callable[[Any], None]] = {
             "lowerAddress": lambda n : setattr(self, 'lower_address', n.get_str_value()),

@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import allowed_value, entity
+    from .allowed_value import AllowedValue
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class CustomSecurityAttributeDefinition(entity.Entity):
+class CustomSecurityAttributeDefinition(Entity):
     # Values that are predefined for this custom security attribute. This navigation property is not returned by default and must be specified in an $expand query. For example, /directory/customSecurityAttributeDefinitions?$expand=allowedValues.
-    allowed_values: Optional[List[allowed_value.AllowedValue]] = None
+    allowed_values: Optional[List[AllowedValue]] = None
     # Name of the attribute set. Case insensitive.
     attribute_set: Optional[str] = None
     # Description of the custom security attribute. Can be up to 128 characters long and include Unicode characters. Can be changed later.
@@ -48,12 +49,14 @@ class CustomSecurityAttributeDefinition(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import allowed_value, entity
+        from .allowed_value import AllowedValue
+        from .entity import Entity
 
-        from . import allowed_value, entity
+        from .allowed_value import AllowedValue
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedValues": lambda n : setattr(self, 'allowed_values', n.get_collection_of_object_values(allowed_value.AllowedValue)),
+            "allowedValues": lambda n : setattr(self, 'allowed_values', n.get_collection_of_object_values(AllowedValue)),
             "attributeSet": lambda n : setattr(self, 'attribute_set', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "isCollection": lambda n : setattr(self, 'is_collection', n.get_bool_value()),

@@ -1,16 +1,19 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import compliance_information, entity, secure_score_control_state_update, security_vendor_information
+    from .compliance_information import ComplianceInformation
+    from .entity import Entity
+    from .secure_score_control_state_update import SecureScoreControlStateUpdate
+    from .security_vendor_information import SecurityVendorInformation
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class SecureScoreControlProfile(entity.Entity):
+class SecureScoreControlProfile(Entity):
     # Control action type (Config, Review, Behavior).
     action_type: Optional[str] = None
     # URL to where the control can be actioned.
@@ -18,17 +21,17 @@ class SecureScoreControlProfile(entity.Entity):
     # GUID string for tenant ID.
     azure_tenant_id: Optional[str] = None
     # The collection of compliance information associated with secure score control
-    compliance_information: Optional[List[compliance_information.ComplianceInformation]] = None
+    compliance_information: Optional[List[ComplianceInformation]] = None
     # Control action category (Identity, Data, Device, Apps, Infrastructure).
     control_category: Optional[str] = None
     # Flag to indicate where the tenant has marked a control (ignored, thirdParty, reviewed) (supports update).
-    control_state_updates: Optional[List[secure_score_control_state_update.SecureScoreControlStateUpdate]] = None
+    control_state_updates: Optional[List[SecureScoreControlStateUpdate]] = None
     # Flag to indicate if a control is depreciated.
     deprecated: Optional[bool] = None
     # Resource cost of implemmentating control (low, moderate, high).
     implementation_cost: Optional[str] = None
     # Time at which the control profile entity was last modified. The Timestamp type represents date and time
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # max attainable score for the control.
     max_score: Optional[float] = None
     # The OdataType property
@@ -50,7 +53,7 @@ class SecureScoreControlProfile(entity.Entity):
     # The userImpact property
     user_impact: Optional[str] = None
     # The vendorInformation property
-    vendor_information: Optional[security_vendor_information.SecurityVendorInformation] = None
+    vendor_information: Optional[SecurityVendorInformation] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SecureScoreControlProfile:
@@ -69,17 +72,23 @@ class SecureScoreControlProfile(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import compliance_information, entity, secure_score_control_state_update, security_vendor_information
+        from .compliance_information import ComplianceInformation
+        from .entity import Entity
+        from .secure_score_control_state_update import SecureScoreControlStateUpdate
+        from .security_vendor_information import SecurityVendorInformation
 
-        from . import compliance_information, entity, secure_score_control_state_update, security_vendor_information
+        from .compliance_information import ComplianceInformation
+        from .entity import Entity
+        from .secure_score_control_state_update import SecureScoreControlStateUpdate
+        from .security_vendor_information import SecurityVendorInformation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "actionType": lambda n : setattr(self, 'action_type', n.get_str_value()),
             "actionUrl": lambda n : setattr(self, 'action_url', n.get_str_value()),
             "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
-            "complianceInformation": lambda n : setattr(self, 'compliance_information', n.get_collection_of_object_values(compliance_information.ComplianceInformation)),
+            "complianceInformation": lambda n : setattr(self, 'compliance_information', n.get_collection_of_object_values(ComplianceInformation)),
             "controlCategory": lambda n : setattr(self, 'control_category', n.get_str_value()),
-            "controlStateUpdates": lambda n : setattr(self, 'control_state_updates', n.get_collection_of_object_values(secure_score_control_state_update.SecureScoreControlStateUpdate)),
+            "controlStateUpdates": lambda n : setattr(self, 'control_state_updates', n.get_collection_of_object_values(SecureScoreControlStateUpdate)),
             "deprecated": lambda n : setattr(self, 'deprecated', n.get_bool_value()),
             "implementationCost": lambda n : setattr(self, 'implementation_cost', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
@@ -92,7 +101,7 @@ class SecureScoreControlProfile(entity.Entity):
             "tier": lambda n : setattr(self, 'tier', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
             "userImpact": lambda n : setattr(self, 'user_impact', n.get_str_value()),
-            "vendorInformation": lambda n : setattr(self, 'vendor_information', n.get_object_value(security_vendor_information.SecurityVendorInformation)),
+            "vendorInformation": lambda n : setattr(self, 'vendor_information', n.get_object_value(SecurityVendorInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -115,7 +124,7 @@ class SecureScoreControlProfile(entity.Entity):
         writer.write_collection_of_object_values("controlStateUpdates", self.control_state_updates)
         writer.write_bool_value("deprecated", self.deprecated)
         writer.write_str_value("implementationCost", self.implementation_cost)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_float_value("maxScore", self.max_score)
         writer.write_int_value("rank", self.rank)
         writer.write_str_value("remediation", self.remediation)

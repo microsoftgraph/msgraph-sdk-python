@@ -10,9 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import subscribed_sku, subscribed_sku_collection_response
-    from ..models.o_data_errors import o_data_error
-    from .item import subscribed_sku_item_request_builder
+    from ..models.o_data_errors.o_data_error import ODataError
+    from ..models.subscribed_sku import SubscribedSku
+    from ..models.subscribed_sku_collection_response import SubscribedSkuCollectionResponse
+    from .item.subscribed_sku_item_request_builder import SubscribedSkuItemRequestBuilder
 
 class SubscribedSkusRequestBuilder():
     """
@@ -36,67 +37,67 @@ class SubscribedSkusRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_subscribed_sku_id(self,subscribed_sku_id: str) -> subscribed_sku_item_request_builder.SubscribedSkuItemRequestBuilder:
+    def by_subscribed_sku_id(self,subscribed_sku_id: str) -> SubscribedSkuItemRequestBuilder:
         """
         Provides operations to manage the collection of subscribedSku entities.
         Args:
             subscribed_sku_id: Unique identifier of the item
-        Returns: subscribed_sku_item_request_builder.SubscribedSkuItemRequestBuilder
+        Returns: SubscribedSkuItemRequestBuilder
         """
         if not subscribed_sku_id:
             raise TypeError("subscribed_sku_id cannot be null.")
-        from .item import subscribed_sku_item_request_builder
+        from .item.subscribed_sku_item_request_builder import SubscribedSkuItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["subscribedSku%2Did"] = subscribed_sku_id
-        return subscribed_sku_item_request_builder.SubscribedSkuItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return SubscribedSkuItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SubscribedSkusRequestBuilderGetRequestConfiguration] = None) -> Optional[subscribed_sku_collection_response.SubscribedSkuCollectionResponse]:
+    async def get(self,request_configuration: Optional[SubscribedSkusRequestBuilderGetRequestConfiguration] = None) -> Optional[SubscribedSkuCollectionResponse]:
         """
         Get the list of commercial subscriptions that an organization has acquired. For the mapping of license names as displayed on the Azure portal or the Microsoft 365 admin center against their Microsoft Graph **skuId** and **skuPartNumber** properties, see Product names and service plan identifiers for licensing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[subscribed_sku_collection_response.SubscribedSkuCollectionResponse]
+        Returns: Optional[SubscribedSkuCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import subscribed_sku_collection_response
+        from ..models.subscribed_sku_collection_response import SubscribedSkuCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, subscribed_sku_collection_response.SubscribedSkuCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SubscribedSkuCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[subscribed_sku.SubscribedSku] = None, request_configuration: Optional[SubscribedSkusRequestBuilderPostRequestConfiguration] = None) -> Optional[subscribed_sku.SubscribedSku]:
+    async def post(self,body: Optional[SubscribedSku] = None, request_configuration: Optional[SubscribedSkusRequestBuilderPostRequestConfiguration] = None) -> Optional[SubscribedSku]:
         """
         Add new entity to subscribedSkus
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[subscribed_sku.SubscribedSku]
+        Returns: Optional[SubscribedSku]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import subscribed_sku
+        from ..models.subscribed_sku import SubscribedSku
 
-        return await self.request_adapter.send_async(request_info, subscribed_sku.SubscribedSku, error_mapping)
+        return await self.request_adapter.send_async(request_info, SubscribedSku, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SubscribedSkusRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -116,7 +117,7 @@ class SubscribedSkusRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[subscribed_sku.SubscribedSku] = None, request_configuration: Optional[SubscribedSkusRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SubscribedSku] = None, request_configuration: Optional[SubscribedSkusRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add new entity to subscribedSkus
         Args:

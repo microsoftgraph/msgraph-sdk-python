@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import search_content
+    from .search_content import SearchContent
 
 @dataclass
 class SharePointOneDriveOptions(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class SharePointOneDriveOptions(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The type of search content. The possible values are: sharedContent, privateContent, unknownFutureValue. Read-only.
-    include_content: Optional[search_content.SearchContent] = None
+    include_content: Optional[SearchContent] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,12 +33,12 @@ class SharePointOneDriveOptions(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import search_content
+        from .search_content import SearchContent
 
-        from . import search_content
+        from .search_content import SearchContent
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "includeContent": lambda n : setattr(self, 'include_content', n.get_enum_value(search_content.SearchContent)),
+            "includeContent": lambda n : setattr(self, 'include_content', n.get_enum_value(SearchContent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

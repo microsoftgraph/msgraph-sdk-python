@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import participant_endpoint, service_endpoint, user_agent
+    from .participant_endpoint import ParticipantEndpoint
+    from .service_endpoint import ServiceEndpoint
+    from .user_agent import UserAgent
 
 @dataclass
 class Endpoint(AdditionalDataHolder, Parsable):
@@ -14,7 +16,7 @@ class Endpoint(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # User-agent reported by this endpoint.
-    user_agent: Optional[user_agent.UserAgent] = None
+    user_agent: Optional[UserAgent] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Endpoint:
@@ -31,13 +33,13 @@ class Endpoint(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.participantEndpoint".casefold():
-            from . import participant_endpoint
+            from .participant_endpoint import ParticipantEndpoint
 
-            return participant_endpoint.ParticipantEndpoint()
+            return ParticipantEndpoint()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.serviceEndpoint".casefold():
-            from . import service_endpoint
+            from .service_endpoint import ServiceEndpoint
 
-            return service_endpoint.ServiceEndpoint()
+            return ServiceEndpoint()
         return Endpoint()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -45,13 +47,17 @@ class Endpoint(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import participant_endpoint, service_endpoint, user_agent
+        from .participant_endpoint import ParticipantEndpoint
+        from .service_endpoint import ServiceEndpoint
+        from .user_agent import UserAgent
 
-        from . import participant_endpoint, service_endpoint, user_agent
+        from .participant_endpoint import ParticipantEndpoint
+        from .service_endpoint import ServiceEndpoint
+        from .user_agent import UserAgent
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "userAgent": lambda n : setattr(self, 'user_agent', n.get_object_value(user_agent.UserAgent)),
+            "userAgent": lambda n : setattr(self, 'user_agent', n.get_object_value(UserAgent)),
         }
         return fields
     

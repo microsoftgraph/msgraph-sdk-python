@@ -4,23 +4,26 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import managed_app_data_encryption_type, managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
+    from .managed_app_data_encryption_type import ManagedAppDataEncryptionType
+    from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+    from .managed_mobile_app import ManagedMobileApp
+    from .targeted_managed_app_protection import TargetedManagedAppProtection
 
-from . import targeted_managed_app_protection
+from .targeted_managed_app_protection import TargetedManagedAppProtection
 
 @dataclass
-class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedAppProtection):
+class IosManagedAppProtection(TargetedManagedAppProtection):
     odata_type = "#microsoft.graph.iosManagedAppProtection"
     # Represents the level to which app data is encrypted for managed apps
-    app_data_encryption_type: Optional[managed_app_data_encryption_type.ManagedAppDataEncryptionType] = None
+    app_data_encryption_type: Optional[ManagedAppDataEncryptionType] = None
     # List of apps to which the policy is deployed.
-    apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
+    apps: Optional[List[ManagedMobileApp]] = None
     # A custom browser protocol to open weblink on iOS. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
     custom_browser_protocol: Optional[str] = None
     # Count of apps to which the current policy is deployed.
     deployed_app_count: Optional[int] = None
     # Navigation property to deployment summary of the configuration.
-    deployment_summary: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None
+    deployment_summary: Optional[ManagedAppPolicyDeploymentSummary] = None
     # Indicates whether use of the FaceID is allowed in place of a pin if PinRequired is set to True.
     face_id_blocked: Optional[bool] = None
     # Versions less than the specified version will block the managed app from accessing company data.
@@ -43,16 +46,22 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_app_data_encryption_type, managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
+        from .managed_app_data_encryption_type import ManagedAppDataEncryptionType
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_mobile_app import ManagedMobileApp
+        from .targeted_managed_app_protection import TargetedManagedAppProtection
 
-        from . import managed_app_data_encryption_type, managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
+        from .managed_app_data_encryption_type import ManagedAppDataEncryptionType
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_mobile_app import ManagedMobileApp
+        from .targeted_managed_app_protection import TargetedManagedAppProtection
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appDataEncryptionType": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(managed_app_data_encryption_type.ManagedAppDataEncryptionType)),
-            "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
+            "appDataEncryptionType": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(ManagedAppDataEncryptionType)),
+            "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(ManagedMobileApp)),
             "customBrowserProtocol": lambda n : setattr(self, 'custom_browser_protocol', n.get_str_value()),
             "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
+            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(ManagedAppPolicyDeploymentSummary)),
             "faceIdBlocked": lambda n : setattr(self, 'face_id_blocked', n.get_bool_value()),
             "minimumRequiredSdkVersion": lambda n : setattr(self, 'minimum_required_sdk_version', n.get_str_value()),
         }

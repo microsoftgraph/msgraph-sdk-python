@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class ConvertPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class ConvertPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The fromUnit property
-    from_unit: Optional[json.Json] = None
+    from_unit: Optional[Json] = None
     # The number property
-    number: Optional[json.Json] = None
+    number: Optional[Json] = None
     # The toUnit property
-    to_unit: Optional[json.Json] = None
+    to_unit: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConvertPostRequestBody:
@@ -35,14 +35,14 @@ class ConvertPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fromUnit": lambda n : setattr(self, 'from_unit', n.get_object_value(json.Json)),
-            "number": lambda n : setattr(self, 'number', n.get_object_value(json.Json)),
-            "toUnit": lambda n : setattr(self, 'to_unit', n.get_object_value(json.Json)),
+            "fromUnit": lambda n : setattr(self, 'from_unit', n.get_object_value(Json)),
+            "number": lambda n : setattr(self, 'number', n.get_object_value(Json)),
+            "toUnit": lambda n : setattr(self, 'to_unit', n.get_object_value(Json)),
         }
         return fields
     

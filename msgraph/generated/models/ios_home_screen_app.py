@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ios_home_screen_item
+    from .ios_home_screen_item import IosHomeScreenItem
 
-from . import ios_home_screen_item
+from .ios_home_screen_item import IosHomeScreenItem
 
 @dataclass
-class IosHomeScreenApp(ios_home_screen_item.IosHomeScreenItem):
+class IosHomeScreenApp(IosHomeScreenItem):
     odata_type = "#microsoft.graph.iosHomeScreenApp"
     # BundleID of the app if isWebClip is false or the URL of a web clip if isWebClip is true.
     bundle_i_d: Optional[str] = None
@@ -31,9 +31,9 @@ class IosHomeScreenApp(ios_home_screen_item.IosHomeScreenItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ios_home_screen_item
+        from .ios_home_screen_item import IosHomeScreenItem
 
-        from . import ios_home_screen_item
+        from .ios_home_screen_item import IosHomeScreenItem
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bundleID": lambda n : setattr(self, 'bundle_i_d', n.get_str_value()),

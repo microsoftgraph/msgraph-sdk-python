@@ -1,18 +1,48 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import activity_based_timeout_policy, administrative_unit, application, app_management_policy, app_role_assignment, authorization_policy, claims_mapping_policy, contract, cross_tenant_access_policy, device, directory_object_partner_reference, directory_role, directory_role_template, endpoint, entity, extension_property, group, group_setting_template, home_realm_discovery_policy, identity_security_defaults_enforcement_policy, organization, org_contact, permission_grant_policy, policy_base, resource_specific_permission_grant, service_principal, sts_policy, tenant_app_management_policy, token_issuance_policy, token_lifetime_policy, user
+    from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+    from .administrative_unit import AdministrativeUnit
+    from .application import Application
+    from .app_management_policy import AppManagementPolicy
+    from .app_role_assignment import AppRoleAssignment
+    from .authorization_policy import AuthorizationPolicy
+    from .claims_mapping_policy import ClaimsMappingPolicy
+    from .contract import Contract
+    from .cross_tenant_access_policy import CrossTenantAccessPolicy
+    from .device import Device
+    from .directory_object_partner_reference import DirectoryObjectPartnerReference
+    from .directory_role import DirectoryRole
+    from .directory_role_template import DirectoryRoleTemplate
+    from .endpoint import Endpoint
+    from .entity import Entity
+    from .extension_property import ExtensionProperty
+    from .group import Group
+    from .group_setting_template import GroupSettingTemplate
+    from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+    from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+    from .organization import Organization
+    from .org_contact import OrgContact
+    from .permission_grant_policy import PermissionGrantPolicy
+    from .policy_base import PolicyBase
+    from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+    from .service_principal import ServicePrincipal
+    from .sts_policy import StsPolicy
+    from .tenant_app_management_policy import TenantAppManagementPolicy
+    from .token_issuance_policy import TokenIssuancePolicy
+    from .token_lifetime_policy import TokenLifetimePolicy
+    from .user import User
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DirectoryObject(entity.Entity):
+class DirectoryObject(Entity):
     # Date and time when this object was deleted. Always null when the object hasn't been deleted.
-    deleted_date_time: Optional[datetime] = None
+    deleted_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -31,125 +61,125 @@ class DirectoryObject(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.activityBasedTimeoutPolicy".casefold():
-            from . import activity_based_timeout_policy
+            from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
 
-            return activity_based_timeout_policy.ActivityBasedTimeoutPolicy()
+            return ActivityBasedTimeoutPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.administrativeUnit".casefold():
-            from . import administrative_unit
+            from .administrative_unit import AdministrativeUnit
 
-            return administrative_unit.AdministrativeUnit()
+            return AdministrativeUnit()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.application".casefold():
-            from . import application
+            from .application import Application
 
-            return application.Application()
+            return Application()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appManagementPolicy".casefold():
-            from . import app_management_policy
+            from .app_management_policy import AppManagementPolicy
 
-            return app_management_policy.AppManagementPolicy()
+            return AppManagementPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appRoleAssignment".casefold():
-            from . import app_role_assignment
+            from .app_role_assignment import AppRoleAssignment
 
-            return app_role_assignment.AppRoleAssignment()
+            return AppRoleAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authorizationPolicy".casefold():
-            from . import authorization_policy
+            from .authorization_policy import AuthorizationPolicy
 
-            return authorization_policy.AuthorizationPolicy()
+            return AuthorizationPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.claimsMappingPolicy".casefold():
-            from . import claims_mapping_policy
+            from .claims_mapping_policy import ClaimsMappingPolicy
 
-            return claims_mapping_policy.ClaimsMappingPolicy()
+            return ClaimsMappingPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.contract".casefold():
-            from . import contract
+            from .contract import Contract
 
-            return contract.Contract()
+            return Contract()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantAccessPolicy".casefold():
-            from . import cross_tenant_access_policy
+            from .cross_tenant_access_policy import CrossTenantAccessPolicy
 
-            return cross_tenant_access_policy.CrossTenantAccessPolicy()
+            return CrossTenantAccessPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.device".casefold():
-            from . import device
+            from .device import Device
 
-            return device.Device()
+            return Device()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directoryObjectPartnerReference".casefold():
-            from . import directory_object_partner_reference
+            from .directory_object_partner_reference import DirectoryObjectPartnerReference
 
-            return directory_object_partner_reference.DirectoryObjectPartnerReference()
+            return DirectoryObjectPartnerReference()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directoryRole".casefold():
-            from . import directory_role
+            from .directory_role import DirectoryRole
 
-            return directory_role.DirectoryRole()
+            return DirectoryRole()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directoryRoleTemplate".casefold():
-            from . import directory_role_template
+            from .directory_role_template import DirectoryRoleTemplate
 
-            return directory_role_template.DirectoryRoleTemplate()
+            return DirectoryRoleTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.endpoint".casefold():
-            from . import endpoint
+            from .endpoint import Endpoint
 
-            return endpoint.Endpoint()
+            return Endpoint()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.extensionProperty".casefold():
-            from . import extension_property
+            from .extension_property import ExtensionProperty
 
-            return extension_property.ExtensionProperty()
+            return ExtensionProperty()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.group".casefold():
-            from . import group
+            from .group import Group
 
-            return group.Group()
+            return Group()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupSettingTemplate".casefold():
-            from . import group_setting_template
+            from .group_setting_template import GroupSettingTemplate
 
-            return group_setting_template.GroupSettingTemplate()
+            return GroupSettingTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.homeRealmDiscoveryPolicy".casefold():
-            from . import home_realm_discovery_policy
+            from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
 
-            return home_realm_discovery_policy.HomeRealmDiscoveryPolicy()
+            return HomeRealmDiscoveryPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identitySecurityDefaultsEnforcementPolicy".casefold():
-            from . import identity_security_defaults_enforcement_policy
+            from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
 
-            return identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy()
+            return IdentitySecurityDefaultsEnforcementPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.organization".casefold():
-            from . import organization
+            from .organization import Organization
 
-            return organization.Organization()
+            return Organization()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.orgContact".casefold():
-            from . import org_contact
+            from .org_contact import OrgContact
 
-            return org_contact.OrgContact()
+            return OrgContact()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.permissionGrantPolicy".casefold():
-            from . import permission_grant_policy
+            from .permission_grant_policy import PermissionGrantPolicy
 
-            return permission_grant_policy.PermissionGrantPolicy()
+            return PermissionGrantPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.policyBase".casefold():
-            from . import policy_base
+            from .policy_base import PolicyBase
 
-            return policy_base.PolicyBase()
+            return PolicyBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.resourceSpecificPermissionGrant".casefold():
-            from . import resource_specific_permission_grant
+            from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
 
-            return resource_specific_permission_grant.ResourceSpecificPermissionGrant()
+            return ResourceSpecificPermissionGrant()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.servicePrincipal".casefold():
-            from . import service_principal
+            from .service_principal import ServicePrincipal
 
-            return service_principal.ServicePrincipal()
+            return ServicePrincipal()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.stsPolicy".casefold():
-            from . import sts_policy
+            from .sts_policy import StsPolicy
 
-            return sts_policy.StsPolicy()
+            return StsPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.tenantAppManagementPolicy".casefold():
-            from . import tenant_app_management_policy
+            from .tenant_app_management_policy import TenantAppManagementPolicy
 
-            return tenant_app_management_policy.TenantAppManagementPolicy()
+            return TenantAppManagementPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.tokenIssuancePolicy".casefold():
-            from . import token_issuance_policy
+            from .token_issuance_policy import TokenIssuancePolicy
 
-            return token_issuance_policy.TokenIssuancePolicy()
+            return TokenIssuancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.tokenLifetimePolicy".casefold():
-            from . import token_lifetime_policy
+            from .token_lifetime_policy import TokenLifetimePolicy
 
-            return token_lifetime_policy.TokenLifetimePolicy()
+            return TokenLifetimePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.user".casefold():
-            from . import user
+            from .user import User
 
-            return user.User()
+            return User()
         return DirectoryObject()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -157,9 +187,69 @@ class DirectoryObject(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import activity_based_timeout_policy, administrative_unit, application, app_management_policy, app_role_assignment, authorization_policy, claims_mapping_policy, contract, cross_tenant_access_policy, device, directory_object_partner_reference, directory_role, directory_role_template, endpoint, entity, extension_property, group, group_setting_template, home_realm_discovery_policy, identity_security_defaults_enforcement_policy, organization, org_contact, permission_grant_policy, policy_base, resource_specific_permission_grant, service_principal, sts_policy, tenant_app_management_policy, token_issuance_policy, token_lifetime_policy, user
+        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+        from .administrative_unit import AdministrativeUnit
+        from .application import Application
+        from .app_management_policy import AppManagementPolicy
+        from .app_role_assignment import AppRoleAssignment
+        from .authorization_policy import AuthorizationPolicy
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .contract import Contract
+        from .cross_tenant_access_policy import CrossTenantAccessPolicy
+        from .device import Device
+        from .directory_object_partner_reference import DirectoryObjectPartnerReference
+        from .directory_role import DirectoryRole
+        from .directory_role_template import DirectoryRoleTemplate
+        from .endpoint import Endpoint
+        from .entity import Entity
+        from .extension_property import ExtensionProperty
+        from .group import Group
+        from .group_setting_template import GroupSettingTemplate
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .organization import Organization
+        from .org_contact import OrgContact
+        from .permission_grant_policy import PermissionGrantPolicy
+        from .policy_base import PolicyBase
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .service_principal import ServicePrincipal
+        from .sts_policy import StsPolicy
+        from .tenant_app_management_policy import TenantAppManagementPolicy
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
+        from .user import User
 
-        from . import activity_based_timeout_policy, administrative_unit, application, app_management_policy, app_role_assignment, authorization_policy, claims_mapping_policy, contract, cross_tenant_access_policy, device, directory_object_partner_reference, directory_role, directory_role_template, endpoint, entity, extension_property, group, group_setting_template, home_realm_discovery_policy, identity_security_defaults_enforcement_policy, organization, org_contact, permission_grant_policy, policy_base, resource_specific_permission_grant, service_principal, sts_policy, tenant_app_management_policy, token_issuance_policy, token_lifetime_policy, user
+        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+        from .administrative_unit import AdministrativeUnit
+        from .application import Application
+        from .app_management_policy import AppManagementPolicy
+        from .app_role_assignment import AppRoleAssignment
+        from .authorization_policy import AuthorizationPolicy
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .contract import Contract
+        from .cross_tenant_access_policy import CrossTenantAccessPolicy
+        from .device import Device
+        from .directory_object_partner_reference import DirectoryObjectPartnerReference
+        from .directory_role import DirectoryRole
+        from .directory_role_template import DirectoryRoleTemplate
+        from .endpoint import Endpoint
+        from .entity import Entity
+        from .extension_property import ExtensionProperty
+        from .group import Group
+        from .group_setting_template import GroupSettingTemplate
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .organization import Organization
+        from .org_contact import OrgContact
+        from .permission_grant_policy import PermissionGrantPolicy
+        from .policy_base import PolicyBase
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .service_principal import ServicePrincipal
+        from .sts_policy import StsPolicy
+        from .tenant_app_management_policy import TenantAppManagementPolicy
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
+        from .user import User
 
         fields: Dict[str, Callable[[Any], None]] = {
             "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
@@ -177,6 +267,6 @@ class DirectoryObject(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
+        writer.write_datetime_value()("deletedDateTime", self.deleted_date_time)
     
 

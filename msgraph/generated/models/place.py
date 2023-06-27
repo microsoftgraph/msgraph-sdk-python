@@ -4,18 +4,22 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, outlook_geo_coordinates, physical_address, room, room_list
+    from .entity import Entity
+    from .outlook_geo_coordinates import OutlookGeoCoordinates
+    from .physical_address import PhysicalAddress
+    from .room import Room
+    from .room_list import RoomList
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Place(entity.Entity):
+class Place(Entity):
     # The street address of the place.
-    address: Optional[physical_address.PhysicalAddress] = None
+    address: Optional[PhysicalAddress] = None
     # The name associated with the place.
     display_name: Optional[str] = None
     # Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
-    geo_coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
+    geo_coordinates: Optional[OutlookGeoCoordinates] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The phone number of the place.
@@ -36,13 +40,13 @@ class Place(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.room".casefold():
-            from . import room
+            from .room import Room
 
-            return room.Room()
+            return Room()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.roomList".casefold():
-            from . import room_list
+            from .room_list import RoomList
 
-            return room_list.RoomList()
+            return RoomList()
         return Place()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -50,14 +54,22 @@ class Place(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, outlook_geo_coordinates, physical_address, room, room_list
+        from .entity import Entity
+        from .outlook_geo_coordinates import OutlookGeoCoordinates
+        from .physical_address import PhysicalAddress
+        from .room import Room
+        from .room_list import RoomList
 
-        from . import entity, outlook_geo_coordinates, physical_address, room, room_list
+        from .entity import Entity
+        from .outlook_geo_coordinates import OutlookGeoCoordinates
+        from .physical_address import PhysicalAddress
+        from .room import Room
+        from .room_list import RoomList
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
+            "address": lambda n : setattr(self, 'address', n.get_object_value(PhysicalAddress)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(outlook_geo_coordinates.OutlookGeoCoordinates)),
+            "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(OutlookGeoCoordinates)),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

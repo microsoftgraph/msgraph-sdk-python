@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import applied_conditional_access_policy_result
+    from .applied_conditional_access_policy_result import AppliedConditionalAccessPolicyResult
 
 @dataclass
 class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
@@ -22,7 +22,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the result of the CA policy that was triggered. Possible values are: success, failure, notApplied (Policy isn't applied because policy conditions were not met),notEnabled (This is due to the policy in disabled state), unknown, unknownFutureValue.
-    result: Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult] = None
+    result: Optional[AppliedConditionalAccessPolicyResult] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppliedConditionalAccessPolicy:
@@ -41,9 +41,9 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import applied_conditional_access_policy_result
+        from .applied_conditional_access_policy_result import AppliedConditionalAccessPolicyResult
 
-        from . import applied_conditional_access_policy_result
+        from .applied_conditional_access_policy_result import AppliedConditionalAccessPolicyResult
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -51,7 +51,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
             "enforcedSessionControls": lambda n : setattr(self, 'enforced_session_controls', n.get_collection_of_primitive_values(str)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "result": lambda n : setattr(self, 'result', n.get_enum_value(applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult)),
+            "result": lambda n : setattr(self, 'result', n.get_enum_value(AppliedConditionalAccessPolicyResult)),
         }
         return fields
     

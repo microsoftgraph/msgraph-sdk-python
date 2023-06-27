@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import office_graph_insights
-    from ....models.o_data_errors import o_data_error
-    from .shared import shared_request_builder
-    from .trending import trending_request_builder
-    from .used import used_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.office_graph_insights import OfficeGraphInsights
+    from .shared.shared_request_builder import SharedRequestBuilder
+    from .trending.trending_request_builder import TrendingRequestBuilder
+    from .used.used_request_builder import UsedRequestBuilder
 
 class InsightsRequestBuilder():
     """
@@ -47,62 +47,62 @@ class InsightsRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[InsightsRequestBuilderGetRequestConfiguration] = None) -> Optional[office_graph_insights.OfficeGraphInsights]:
+    async def get(self,request_configuration: Optional[InsightsRequestBuilderGetRequestConfiguration] = None) -> Optional[OfficeGraphInsights]:
         """
         Get insights from users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[office_graph_insights.OfficeGraphInsights]
+        Returns: Optional[OfficeGraphInsights]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import office_graph_insights
+        from ....models.office_graph_insights import OfficeGraphInsights
 
-        return await self.request_adapter.send_async(request_info, office_graph_insights.OfficeGraphInsights, error_mapping)
+        return await self.request_adapter.send_async(request_info, OfficeGraphInsights, error_mapping)
     
-    async def patch(self,body: Optional[office_graph_insights.OfficeGraphInsights] = None, request_configuration: Optional[InsightsRequestBuilderPatchRequestConfiguration] = None) -> Optional[office_graph_insights.OfficeGraphInsights]:
+    async def patch(self,body: Optional[OfficeGraphInsights] = None, request_configuration: Optional[InsightsRequestBuilderPatchRequestConfiguration] = None) -> Optional[OfficeGraphInsights]:
         """
         Update the navigation property insights in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[office_graph_insights.OfficeGraphInsights]
+        Returns: Optional[OfficeGraphInsights]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import office_graph_insights
+        from ....models.office_graph_insights import OfficeGraphInsights
 
-        return await self.request_adapter.send_async(request_info, office_graph_insights.OfficeGraphInsights, error_mapping)
+        return await self.request_adapter.send_async(request_info, OfficeGraphInsights, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[InsightsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class InsightsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[office_graph_insights.OfficeGraphInsights] = None, request_configuration: Optional[InsightsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[OfficeGraphInsights] = None, request_configuration: Optional[InsightsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property insights in users
         Args:
@@ -160,31 +160,31 @@ class InsightsRequestBuilder():
         return request_info
     
     @property
-    def shared(self) -> shared_request_builder.SharedRequestBuilder:
+    def shared(self) -> SharedRequestBuilder:
         """
         Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
         """
-        from .shared import shared_request_builder
+        from .shared.shared_request_builder import SharedRequestBuilder
 
-        return shared_request_builder.SharedRequestBuilder(self.request_adapter, self.path_parameters)
+        return SharedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def trending(self) -> trending_request_builder.TrendingRequestBuilder:
+    def trending(self) -> TrendingRequestBuilder:
         """
         Provides operations to manage the trending property of the microsoft.graph.officeGraphInsights entity.
         """
-        from .trending import trending_request_builder
+        from .trending.trending_request_builder import TrendingRequestBuilder
 
-        return trending_request_builder.TrendingRequestBuilder(self.request_adapter, self.path_parameters)
+        return TrendingRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def used(self) -> used_request_builder.UsedRequestBuilder:
+    def used(self) -> UsedRequestBuilder:
         """
         Provides operations to manage the used property of the microsoft.graph.officeGraphInsights entity.
         """
-        from .used import used_request_builder
+        from .used.used_request_builder import UsedRequestBuilder
 
-        return used_request_builder.UsedRequestBuilder(self.request_adapter, self.path_parameters)
+        return UsedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class InsightsRequestBuilderDeleteRequestConfiguration():

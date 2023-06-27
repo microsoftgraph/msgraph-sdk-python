@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import cross_tenant_access_policy_target, cross_tenant_access_policy_target_configuration_access_type
+    from .cross_tenant_access_policy_target import CrossTenantAccessPolicyTarget
+    from .cross_tenant_access_policy_target_configuration_access_type import CrossTenantAccessPolicyTargetConfigurationAccessType
 
 @dataclass
 class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Defines whether access is allowed or blocked. The possible values are: allowed, blocked, unknownFutureValue.
-    access_type: Optional[cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType] = None
+    access_type: Optional[CrossTenantAccessPolicyTargetConfigurationAccessType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies whether to target users, groups, or applications with this rule.
-    targets: Optional[List[cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget]] = None
+    targets: Optional[List[CrossTenantAccessPolicyTarget]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyTargetConfiguration:
@@ -35,14 +36,16 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import cross_tenant_access_policy_target, cross_tenant_access_policy_target_configuration_access_type
+        from .cross_tenant_access_policy_target import CrossTenantAccessPolicyTarget
+        from .cross_tenant_access_policy_target_configuration_access_type import CrossTenantAccessPolicyTargetConfigurationAccessType
 
-        from . import cross_tenant_access_policy_target, cross_tenant_access_policy_target_configuration_access_type
+        from .cross_tenant_access_policy_target import CrossTenantAccessPolicyTarget
+        from .cross_tenant_access_policy_target_configuration_access_type import CrossTenantAccessPolicyTargetConfigurationAccessType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType)),
+            "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(CrossTenantAccessPolicyTargetConfigurationAccessType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget)),
+            "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(CrossTenantAccessPolicyTarget)),
         }
         return fields
     

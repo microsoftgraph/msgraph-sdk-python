@@ -1,31 +1,33 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import endpoint, failure_info, media
-    from .. import entity
+    from ..entity import Entity
+    from .endpoint import Endpoint
+    from .failure_info import FailureInfo
+    from .media import Media
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class Segment(entity.Entity):
+class Segment(Entity):
     # Endpoint that answered this segment.
-    callee: Optional[endpoint.Endpoint] = None
+    callee: Optional[Endpoint] = None
     # Endpoint that initiated this segment.
-    caller: Optional[endpoint.Endpoint] = None
+    caller: Optional[Endpoint] = None
     # UTC time when the segment ended. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    end_date_time: Optional[datetime] = None
+    end_date_time: Optional[datetime.datetime] = None
     # Failure information associated with the segment if it failed.
-    failure_info: Optional[failure_info.FailureInfo] = None
+    failure_info: Optional[FailureInfo] = None
     # Media associated with this segment.
-    media: Optional[List[media.Media]] = None
+    media: Optional[List[Media]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Segment:
@@ -44,18 +46,22 @@ class Segment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import endpoint, failure_info, media
-        from .. import entity
+        from ..entity import Entity
+        from .endpoint import Endpoint
+        from .failure_info import FailureInfo
+        from .media import Media
 
-        from . import endpoint, failure_info, media
-        from .. import entity
+        from ..entity import Entity
+        from .endpoint import Endpoint
+        from .failure_info import FailureInfo
+        from .media import Media
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callee": lambda n : setattr(self, 'callee', n.get_object_value(endpoint.Endpoint)),
-            "caller": lambda n : setattr(self, 'caller', n.get_object_value(endpoint.Endpoint)),
+            "callee": lambda n : setattr(self, 'callee', n.get_object_value(Endpoint)),
+            "caller": lambda n : setattr(self, 'caller', n.get_object_value(Endpoint)),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "failureInfo": lambda n : setattr(self, 'failure_info', n.get_object_value(failure_info.FailureInfo)),
-            "media": lambda n : setattr(self, 'media', n.get_collection_of_object_values(media.Media)),
+            "failureInfo": lambda n : setattr(self, 'failure_info', n.get_object_value(FailureInfo)),
+            "media": lambda n : setattr(self, 'media', n.get_collection_of_object_values(Media)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -73,9 +79,9 @@ class Segment(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("callee", self.callee)
         writer.write_object_value("caller", self.caller)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
+        writer.write_datetime_value()("endDateTime", self.end_date_time)
         writer.write_object_value("failureInfo", self.failure_info)
         writer.write_collection_of_object_values("media", self.media)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
     
 

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class LookupPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class LookupPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The lookupValue property
-    lookup_value: Optional[json.Json] = None
+    lookup_value: Optional[Json] = None
     # The lookupVector property
-    lookup_vector: Optional[json.Json] = None
+    lookup_vector: Optional[Json] = None
     # The resultVector property
-    result_vector: Optional[json.Json] = None
+    result_vector: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LookupPostRequestBody:
@@ -35,14 +35,14 @@ class LookupPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lookupValue": lambda n : setattr(self, 'lookup_value', n.get_object_value(json.Json)),
-            "lookupVector": lambda n : setattr(self, 'lookup_vector', n.get_object_value(json.Json)),
-            "resultVector": lambda n : setattr(self, 'result_vector', n.get_object_value(json.Json)),
+            "lookupValue": lambda n : setattr(self, 'lookup_value', n.get_object_value(Json)),
+            "lookupVector": lambda n : setattr(self, 'lookup_vector', n.get_object_value(Json)),
+            "resultVector": lambda n : setattr(self, 'result_vector', n.get_object_value(Json)),
         }
         return fields
     

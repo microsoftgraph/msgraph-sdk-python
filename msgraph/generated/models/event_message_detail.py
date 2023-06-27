@@ -4,7 +4,36 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import call_ended_event_message_detail, call_recording_event_message_detail, call_started_event_message_detail, call_transcript_event_message_detail, channel_added_event_message_detail, channel_deleted_event_message_detail, channel_description_updated_event_message_detail, channel_renamed_event_message_detail, channel_set_as_favorite_by_default_event_message_detail, channel_unset_as_favorite_by_default_event_message_detail, chat_renamed_event_message_detail, conversation_member_role_updated_event_message_detail, meeting_policy_updated_event_message_detail, members_added_event_message_detail, members_deleted_event_message_detail, members_joined_event_message_detail, members_left_event_message_detail, message_pinned_event_message_detail, message_unpinned_event_message_detail, tab_updated_event_message_detail, teams_app_installed_event_message_detail, teams_app_removed_event_message_detail, teams_app_upgraded_event_message_detail, team_archived_event_message_detail, team_created_event_message_detail, team_description_updated_event_message_detail, team_joining_disabled_event_message_detail, team_joining_enabled_event_message_detail, team_renamed_event_message_detail, team_unarchived_event_message_detail
+    from .call_ended_event_message_detail import CallEndedEventMessageDetail
+    from .call_recording_event_message_detail import CallRecordingEventMessageDetail
+    from .call_started_event_message_detail import CallStartedEventMessageDetail
+    from .call_transcript_event_message_detail import CallTranscriptEventMessageDetail
+    from .channel_added_event_message_detail import ChannelAddedEventMessageDetail
+    from .channel_deleted_event_message_detail import ChannelDeletedEventMessageDetail
+    from .channel_description_updated_event_message_detail import ChannelDescriptionUpdatedEventMessageDetail
+    from .channel_renamed_event_message_detail import ChannelRenamedEventMessageDetail
+    from .channel_set_as_favorite_by_default_event_message_detail import ChannelSetAsFavoriteByDefaultEventMessageDetail
+    from .channel_unset_as_favorite_by_default_event_message_detail import ChannelUnsetAsFavoriteByDefaultEventMessageDetail
+    from .chat_renamed_event_message_detail import ChatRenamedEventMessageDetail
+    from .conversation_member_role_updated_event_message_detail import ConversationMemberRoleUpdatedEventMessageDetail
+    from .meeting_policy_updated_event_message_detail import MeetingPolicyUpdatedEventMessageDetail
+    from .members_added_event_message_detail import MembersAddedEventMessageDetail
+    from .members_deleted_event_message_detail import MembersDeletedEventMessageDetail
+    from .members_joined_event_message_detail import MembersJoinedEventMessageDetail
+    from .members_left_event_message_detail import MembersLeftEventMessageDetail
+    from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
+    from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
+    from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
+    from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
+    from .team_created_event_message_detail import TeamCreatedEventMessageDetail
+    from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
+    from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
+    from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
+    from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
+    from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
+    from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
+    from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
+    from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
 @dataclass
 class EventMessageDetail(AdditionalDataHolder, Parsable):
@@ -29,125 +58,125 @@ class EventMessageDetail(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callEndedEventMessageDetail".casefold():
-            from . import call_ended_event_message_detail
+            from .call_ended_event_message_detail import CallEndedEventMessageDetail
 
-            return call_ended_event_message_detail.CallEndedEventMessageDetail()
+            return CallEndedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecordingEventMessageDetail".casefold():
-            from . import call_recording_event_message_detail
+            from .call_recording_event_message_detail import CallRecordingEventMessageDetail
 
-            return call_recording_event_message_detail.CallRecordingEventMessageDetail()
+            return CallRecordingEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callStartedEventMessageDetail".casefold():
-            from . import call_started_event_message_detail
+            from .call_started_event_message_detail import CallStartedEventMessageDetail
 
-            return call_started_event_message_detail.CallStartedEventMessageDetail()
+            return CallStartedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callTranscriptEventMessageDetail".casefold():
-            from . import call_transcript_event_message_detail
+            from .call_transcript_event_message_detail import CallTranscriptEventMessageDetail
 
-            return call_transcript_event_message_detail.CallTranscriptEventMessageDetail()
+            return CallTranscriptEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelAddedEventMessageDetail".casefold():
-            from . import channel_added_event_message_detail
+            from .channel_added_event_message_detail import ChannelAddedEventMessageDetail
 
-            return channel_added_event_message_detail.ChannelAddedEventMessageDetail()
+            return ChannelAddedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelDeletedEventMessageDetail".casefold():
-            from . import channel_deleted_event_message_detail
+            from .channel_deleted_event_message_detail import ChannelDeletedEventMessageDetail
 
-            return channel_deleted_event_message_detail.ChannelDeletedEventMessageDetail()
+            return ChannelDeletedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelDescriptionUpdatedEventMessageDetail".casefold():
-            from . import channel_description_updated_event_message_detail
+            from .channel_description_updated_event_message_detail import ChannelDescriptionUpdatedEventMessageDetail
 
-            return channel_description_updated_event_message_detail.ChannelDescriptionUpdatedEventMessageDetail()
+            return ChannelDescriptionUpdatedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelRenamedEventMessageDetail".casefold():
-            from . import channel_renamed_event_message_detail
+            from .channel_renamed_event_message_detail import ChannelRenamedEventMessageDetail
 
-            return channel_renamed_event_message_detail.ChannelRenamedEventMessageDetail()
+            return ChannelRenamedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelSetAsFavoriteByDefaultEventMessageDetail".casefold():
-            from . import channel_set_as_favorite_by_default_event_message_detail
+            from .channel_set_as_favorite_by_default_event_message_detail import ChannelSetAsFavoriteByDefaultEventMessageDetail
 
-            return channel_set_as_favorite_by_default_event_message_detail.ChannelSetAsFavoriteByDefaultEventMessageDetail()
+            return ChannelSetAsFavoriteByDefaultEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelUnsetAsFavoriteByDefaultEventMessageDetail".casefold():
-            from . import channel_unset_as_favorite_by_default_event_message_detail
+            from .channel_unset_as_favorite_by_default_event_message_detail import ChannelUnsetAsFavoriteByDefaultEventMessageDetail
 
-            return channel_unset_as_favorite_by_default_event_message_detail.ChannelUnsetAsFavoriteByDefaultEventMessageDetail()
+            return ChannelUnsetAsFavoriteByDefaultEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatRenamedEventMessageDetail".casefold():
-            from . import chat_renamed_event_message_detail
+            from .chat_renamed_event_message_detail import ChatRenamedEventMessageDetail
 
-            return chat_renamed_event_message_detail.ChatRenamedEventMessageDetail()
+            return ChatRenamedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.conversationMemberRoleUpdatedEventMessageDetail".casefold():
-            from . import conversation_member_role_updated_event_message_detail
+            from .conversation_member_role_updated_event_message_detail import ConversationMemberRoleUpdatedEventMessageDetail
 
-            return conversation_member_role_updated_event_message_detail.ConversationMemberRoleUpdatedEventMessageDetail()
+            return ConversationMemberRoleUpdatedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.meetingPolicyUpdatedEventMessageDetail".casefold():
-            from . import meeting_policy_updated_event_message_detail
+            from .meeting_policy_updated_event_message_detail import MeetingPolicyUpdatedEventMessageDetail
 
-            return meeting_policy_updated_event_message_detail.MeetingPolicyUpdatedEventMessageDetail()
+            return MeetingPolicyUpdatedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.membersAddedEventMessageDetail".casefold():
-            from . import members_added_event_message_detail
+            from .members_added_event_message_detail import MembersAddedEventMessageDetail
 
-            return members_added_event_message_detail.MembersAddedEventMessageDetail()
+            return MembersAddedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.membersDeletedEventMessageDetail".casefold():
-            from . import members_deleted_event_message_detail
+            from .members_deleted_event_message_detail import MembersDeletedEventMessageDetail
 
-            return members_deleted_event_message_detail.MembersDeletedEventMessageDetail()
+            return MembersDeletedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.membersJoinedEventMessageDetail".casefold():
-            from . import members_joined_event_message_detail
+            from .members_joined_event_message_detail import MembersJoinedEventMessageDetail
 
-            return members_joined_event_message_detail.MembersJoinedEventMessageDetail()
+            return MembersJoinedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.membersLeftEventMessageDetail".casefold():
-            from . import members_left_event_message_detail
+            from .members_left_event_message_detail import MembersLeftEventMessageDetail
 
-            return members_left_event_message_detail.MembersLeftEventMessageDetail()
+            return MembersLeftEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.messagePinnedEventMessageDetail".casefold():
-            from . import message_pinned_event_message_detail
+            from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
 
-            return message_pinned_event_message_detail.MessagePinnedEventMessageDetail()
+            return MessagePinnedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.messageUnpinnedEventMessageDetail".casefold():
-            from . import message_unpinned_event_message_detail
+            from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
 
-            return message_unpinned_event_message_detail.MessageUnpinnedEventMessageDetail()
+            return MessageUnpinnedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.tabUpdatedEventMessageDetail".casefold():
-            from . import tab_updated_event_message_detail
+            from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
 
-            return tab_updated_event_message_detail.TabUpdatedEventMessageDetail()
+            return TabUpdatedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamArchivedEventMessageDetail".casefold():
-            from . import team_archived_event_message_detail
+            from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
 
-            return team_archived_event_message_detail.TeamArchivedEventMessageDetail()
+            return TeamArchivedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamCreatedEventMessageDetail".casefold():
-            from . import team_created_event_message_detail
+            from .team_created_event_message_detail import TeamCreatedEventMessageDetail
 
-            return team_created_event_message_detail.TeamCreatedEventMessageDetail()
+            return TeamCreatedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamDescriptionUpdatedEventMessageDetail".casefold():
-            from . import team_description_updated_event_message_detail
+            from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
 
-            return team_description_updated_event_message_detail.TeamDescriptionUpdatedEventMessageDetail()
+            return TeamDescriptionUpdatedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamJoiningDisabledEventMessageDetail".casefold():
-            from . import team_joining_disabled_event_message_detail
+            from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
 
-            return team_joining_disabled_event_message_detail.TeamJoiningDisabledEventMessageDetail()
+            return TeamJoiningDisabledEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamJoiningEnabledEventMessageDetail".casefold():
-            from . import team_joining_enabled_event_message_detail
+            from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
 
-            return team_joining_enabled_event_message_detail.TeamJoiningEnabledEventMessageDetail()
+            return TeamJoiningEnabledEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamRenamedEventMessageDetail".casefold():
-            from . import team_renamed_event_message_detail
+            from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
 
-            return team_renamed_event_message_detail.TeamRenamedEventMessageDetail()
+            return TeamRenamedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAppInstalledEventMessageDetail".casefold():
-            from . import teams_app_installed_event_message_detail
+            from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
 
-            return teams_app_installed_event_message_detail.TeamsAppInstalledEventMessageDetail()
+            return TeamsAppInstalledEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAppRemovedEventMessageDetail".casefold():
-            from . import teams_app_removed_event_message_detail
+            from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
 
-            return teams_app_removed_event_message_detail.TeamsAppRemovedEventMessageDetail()
+            return TeamsAppRemovedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAppUpgradedEventMessageDetail".casefold():
-            from . import teams_app_upgraded_event_message_detail
+            from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
 
-            return teams_app_upgraded_event_message_detail.TeamsAppUpgradedEventMessageDetail()
+            return TeamsAppUpgradedEventMessageDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamUnarchivedEventMessageDetail".casefold():
-            from . import team_unarchived_event_message_detail
+            from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
-            return team_unarchived_event_message_detail.TeamUnarchivedEventMessageDetail()
+            return TeamUnarchivedEventMessageDetail()
         return EventMessageDetail()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -155,9 +184,67 @@ class EventMessageDetail(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import call_ended_event_message_detail, call_recording_event_message_detail, call_started_event_message_detail, call_transcript_event_message_detail, channel_added_event_message_detail, channel_deleted_event_message_detail, channel_description_updated_event_message_detail, channel_renamed_event_message_detail, channel_set_as_favorite_by_default_event_message_detail, channel_unset_as_favorite_by_default_event_message_detail, chat_renamed_event_message_detail, conversation_member_role_updated_event_message_detail, meeting_policy_updated_event_message_detail, members_added_event_message_detail, members_deleted_event_message_detail, members_joined_event_message_detail, members_left_event_message_detail, message_pinned_event_message_detail, message_unpinned_event_message_detail, tab_updated_event_message_detail, teams_app_installed_event_message_detail, teams_app_removed_event_message_detail, teams_app_upgraded_event_message_detail, team_archived_event_message_detail, team_created_event_message_detail, team_description_updated_event_message_detail, team_joining_disabled_event_message_detail, team_joining_enabled_event_message_detail, team_renamed_event_message_detail, team_unarchived_event_message_detail
+        from .call_ended_event_message_detail import CallEndedEventMessageDetail
+        from .call_recording_event_message_detail import CallRecordingEventMessageDetail
+        from .call_started_event_message_detail import CallStartedEventMessageDetail
+        from .call_transcript_event_message_detail import CallTranscriptEventMessageDetail
+        from .channel_added_event_message_detail import ChannelAddedEventMessageDetail
+        from .channel_deleted_event_message_detail import ChannelDeletedEventMessageDetail
+        from .channel_description_updated_event_message_detail import ChannelDescriptionUpdatedEventMessageDetail
+        from .channel_renamed_event_message_detail import ChannelRenamedEventMessageDetail
+        from .channel_set_as_favorite_by_default_event_message_detail import ChannelSetAsFavoriteByDefaultEventMessageDetail
+        from .channel_unset_as_favorite_by_default_event_message_detail import ChannelUnsetAsFavoriteByDefaultEventMessageDetail
+        from .chat_renamed_event_message_detail import ChatRenamedEventMessageDetail
+        from .conversation_member_role_updated_event_message_detail import ConversationMemberRoleUpdatedEventMessageDetail
+        from .meeting_policy_updated_event_message_detail import MeetingPolicyUpdatedEventMessageDetail
+        from .members_added_event_message_detail import MembersAddedEventMessageDetail
+        from .members_deleted_event_message_detail import MembersDeletedEventMessageDetail
+        from .members_joined_event_message_detail import MembersJoinedEventMessageDetail
+        from .members_left_event_message_detail import MembersLeftEventMessageDetail
+        from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
+        from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
+        from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
+        from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
+        from .team_created_event_message_detail import TeamCreatedEventMessageDetail
+        from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
+        from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
+        from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
+        from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
+        from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
+        from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
+        from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
+        from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
-        from . import call_ended_event_message_detail, call_recording_event_message_detail, call_started_event_message_detail, call_transcript_event_message_detail, channel_added_event_message_detail, channel_deleted_event_message_detail, channel_description_updated_event_message_detail, channel_renamed_event_message_detail, channel_set_as_favorite_by_default_event_message_detail, channel_unset_as_favorite_by_default_event_message_detail, chat_renamed_event_message_detail, conversation_member_role_updated_event_message_detail, meeting_policy_updated_event_message_detail, members_added_event_message_detail, members_deleted_event_message_detail, members_joined_event_message_detail, members_left_event_message_detail, message_pinned_event_message_detail, message_unpinned_event_message_detail, tab_updated_event_message_detail, teams_app_installed_event_message_detail, teams_app_removed_event_message_detail, teams_app_upgraded_event_message_detail, team_archived_event_message_detail, team_created_event_message_detail, team_description_updated_event_message_detail, team_joining_disabled_event_message_detail, team_joining_enabled_event_message_detail, team_renamed_event_message_detail, team_unarchived_event_message_detail
+        from .call_ended_event_message_detail import CallEndedEventMessageDetail
+        from .call_recording_event_message_detail import CallRecordingEventMessageDetail
+        from .call_started_event_message_detail import CallStartedEventMessageDetail
+        from .call_transcript_event_message_detail import CallTranscriptEventMessageDetail
+        from .channel_added_event_message_detail import ChannelAddedEventMessageDetail
+        from .channel_deleted_event_message_detail import ChannelDeletedEventMessageDetail
+        from .channel_description_updated_event_message_detail import ChannelDescriptionUpdatedEventMessageDetail
+        from .channel_renamed_event_message_detail import ChannelRenamedEventMessageDetail
+        from .channel_set_as_favorite_by_default_event_message_detail import ChannelSetAsFavoriteByDefaultEventMessageDetail
+        from .channel_unset_as_favorite_by_default_event_message_detail import ChannelUnsetAsFavoriteByDefaultEventMessageDetail
+        from .chat_renamed_event_message_detail import ChatRenamedEventMessageDetail
+        from .conversation_member_role_updated_event_message_detail import ConversationMemberRoleUpdatedEventMessageDetail
+        from .meeting_policy_updated_event_message_detail import MeetingPolicyUpdatedEventMessageDetail
+        from .members_added_event_message_detail import MembersAddedEventMessageDetail
+        from .members_deleted_event_message_detail import MembersDeletedEventMessageDetail
+        from .members_joined_event_message_detail import MembersJoinedEventMessageDetail
+        from .members_left_event_message_detail import MembersLeftEventMessageDetail
+        from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
+        from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
+        from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
+        from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
+        from .team_created_event_message_detail import TeamCreatedEventMessageDetail
+        from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
+        from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
+        from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
+        from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
+        from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
+        from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
+        from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
+        from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

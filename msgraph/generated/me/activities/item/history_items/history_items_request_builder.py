@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import activity_history_item, activity_history_item_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import activity_history_item_item_request_builder
+    from .....models.activity_history_item import ActivityHistoryItem
+    from .....models.activity_history_item_collection_response import ActivityHistoryItemCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.activity_history_item_item_request_builder import ActivityHistoryItemItemRequestBuilder
 
 class HistoryItemsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class HistoryItemsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_activity_history_item_id(self,activity_history_item_id: str) -> activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder:
+    def by_activity_history_item_id(self,activity_history_item_id: str) -> ActivityHistoryItemItemRequestBuilder:
         """
         Provides operations to manage the historyItems property of the microsoft.graph.userActivity entity.
         Args:
             activity_history_item_id: Unique identifier of the item
-        Returns: activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder
+        Returns: ActivityHistoryItemItemRequestBuilder
         """
         if not activity_history_item_id:
             raise TypeError("activity_history_item_id cannot be null.")
-        from .item import activity_history_item_item_request_builder
+        from .item.activity_history_item_item_request_builder import ActivityHistoryItemItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["activityHistoryItem%2Did"] = activity_history_item_id
-        return activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ActivityHistoryItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[HistoryItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[activity_history_item_collection_response.ActivityHistoryItemCollectionResponse]:
+    async def get(self,request_configuration: Optional[HistoryItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[ActivityHistoryItemCollectionResponse]:
         """
         Optional. NavigationProperty/Containment; navigation property to the activity's historyItems.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[activity_history_item_collection_response.ActivityHistoryItemCollectionResponse]
+        Returns: Optional[ActivityHistoryItemCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import activity_history_item_collection_response
+        from .....models.activity_history_item_collection_response import ActivityHistoryItemCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, activity_history_item_collection_response.ActivityHistoryItemCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ActivityHistoryItemCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[activity_history_item.ActivityHistoryItem] = None, request_configuration: Optional[HistoryItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[activity_history_item.ActivityHistoryItem]:
+    async def post(self,body: Optional[ActivityHistoryItem] = None, request_configuration: Optional[HistoryItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[ActivityHistoryItem]:
         """
         Create new navigation property to historyItems for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[activity_history_item.ActivityHistoryItem]
+        Returns: Optional[ActivityHistoryItem]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import activity_history_item
+        from .....models.activity_history_item import ActivityHistoryItem
 
-        return await self.request_adapter.send_async(request_info, activity_history_item.ActivityHistoryItem, error_mapping)
+        return await self.request_adapter.send_async(request_info, ActivityHistoryItem, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[HistoryItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class HistoryItemsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[activity_history_item.ActivityHistoryItem] = None, request_configuration: Optional[HistoryItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ActivityHistoryItem] = None, request_configuration: Optional[HistoryItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to historyItems for me
         Args:
@@ -139,13 +140,13 @@ class HistoryItemsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class HistoryItemsRequestBuilderGetQueryParameters():

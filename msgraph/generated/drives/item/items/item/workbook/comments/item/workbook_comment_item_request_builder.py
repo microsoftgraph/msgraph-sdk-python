@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import workbook_comment
-    from ........models.o_data_errors import o_data_error
-    from .replies import replies_request_builder
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.workbook_comment import WorkbookComment
+    from .replies.replies_request_builder import RepliesRequestBuilder
 
 class WorkbookCommentItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class WorkbookCommentItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WorkbookCommentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_comment.WorkbookComment]:
+    async def get(self,request_configuration: Optional[WorkbookCommentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookComment]:
         """
-        Get comments from drives
+        Represents a collection of comments in a workbook.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_comment.WorkbookComment]
+        Returns: Optional[WorkbookComment]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import workbook_comment
+        from ........models.workbook_comment import WorkbookComment
 
-        return await self.request_adapter.send_async(request_info, workbook_comment.WorkbookComment, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookComment, error_mapping)
     
-    async def patch(self,body: Optional[workbook_comment.WorkbookComment] = None, request_configuration: Optional[WorkbookCommentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_comment.WorkbookComment]:
+    async def patch(self,body: Optional[WorkbookComment] = None, request_configuration: Optional[WorkbookCommentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookComment]:
         """
         Update the navigation property comments in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_comment.WorkbookComment]
+        Returns: Optional[WorkbookComment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import workbook_comment
+        from ........models.workbook_comment import WorkbookComment
 
-        return await self.request_adapter.send_async(request_info, workbook_comment.WorkbookComment, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookComment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookCommentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -120,7 +120,7 @@ class WorkbookCommentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookCommentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get comments from drives
+        Represents a collection of comments in a workbook.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -136,7 +136,7 @@ class WorkbookCommentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_comment.WorkbookComment] = None, request_configuration: Optional[WorkbookCommentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookComment] = None, request_configuration: Optional[WorkbookCommentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property comments in drives
         Args:
@@ -158,13 +158,13 @@ class WorkbookCommentItemRequestBuilder():
         return request_info
     
     @property
-    def replies(self) -> replies_request_builder.RepliesRequestBuilder:
+    def replies(self) -> RepliesRequestBuilder:
         """
         Provides operations to manage the replies property of the microsoft.graph.workbookComment entity.
         """
-        from .replies import replies_request_builder
+        from .replies.replies_request_builder import RepliesRequestBuilder
 
-        return replies_request_builder.RepliesRequestBuilder(self.request_adapter, self.path_parameters)
+        return RepliesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class WorkbookCommentItemRequestBuilderDeleteRequestConfiguration():
@@ -181,7 +181,7 @@ class WorkbookCommentItemRequestBuilder():
     @dataclass
     class WorkbookCommentItemRequestBuilderGetQueryParameters():
         """
-        Get comments from drives
+        Represents a collection of comments in a workbook.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

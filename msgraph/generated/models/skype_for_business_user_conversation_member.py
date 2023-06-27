@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conversation_member
+    from .conversation_member import ConversationMember
 
-from . import conversation_member
+from .conversation_member import ConversationMember
 
 @dataclass
-class SkypeForBusinessUserConversationMember(conversation_member.ConversationMember):
+class SkypeForBusinessUserConversationMember(ConversationMember):
     odata_type = "#microsoft.graph.skypeForBusinessUserConversationMember"
     # ID of the tenant that the user belongs to.
     tenant_id: Optional[str] = None
@@ -33,9 +33,9 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conversation_member
+        from .conversation_member import ConversationMember
 
-        from . import conversation_member
+        from .conversation_member import ConversationMember
 
         fields: Dict[str, Callable[[Any], None]] = {
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),

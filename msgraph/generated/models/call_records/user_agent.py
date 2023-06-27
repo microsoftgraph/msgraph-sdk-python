@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import client_user_agent, service_user_agent
+    from .client_user_agent import ClientUserAgent
+    from .service_user_agent import ServiceUserAgent
 
 @dataclass
 class UserAgent(AdditionalDataHolder, Parsable):
@@ -33,13 +34,13 @@ class UserAgent(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.clientUserAgent".casefold():
-            from . import client_user_agent
+            from .client_user_agent import ClientUserAgent
 
-            return client_user_agent.ClientUserAgent()
+            return ClientUserAgent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.serviceUserAgent".casefold():
-            from . import service_user_agent
+            from .service_user_agent import ServiceUserAgent
 
-            return service_user_agent.ServiceUserAgent()
+            return ServiceUserAgent()
         return UserAgent()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -47,9 +48,11 @@ class UserAgent(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import client_user_agent, service_user_agent
+        from .client_user_agent import ClientUserAgent
+        from .service_user_agent import ServiceUserAgent
 
-        from . import client_user_agent, service_user_agent
+        from .client_user_agent import ClientUserAgent
+        from .service_user_agent import ServiceUserAgent
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applicationVersion": lambda n : setattr(self, 'application_version', n.get_str_value()),

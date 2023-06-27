@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import change_tracked_entity, time_off_reason_icon_type
+    from .change_tracked_entity import ChangeTrackedEntity
+    from .time_off_reason_icon_type import TimeOffReasonIconType
 
-from . import change_tracked_entity
+from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
+class TimeOffReason(ChangeTrackedEntity):
     odata_type = "#microsoft.graph.timeOffReason"
     # The name of the timeOffReason. Required.
     display_name: Optional[str] = None
     # Supported icon types are: none, car, calendar, running, plane, firstAid, doctor, notWorking, clock, juryDuty, globe, cup, phone, weather, umbrella, piggyBank, dog, cake, trafficCone, pin, sunny. Required.
-    icon_type: Optional[time_off_reason_icon_type.TimeOffReasonIconType] = None
+    icon_type: Optional[TimeOffReasonIconType] = None
     # Indicates whether the timeOffReason can be used when creating new entities or updating existing ones. Required.
     is_active: Optional[bool] = None
     
@@ -35,13 +36,15 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import change_tracked_entity, time_off_reason_icon_type
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .time_off_reason_icon_type import TimeOffReasonIconType
 
-        from . import change_tracked_entity, time_off_reason_icon_type
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .time_off_reason_icon_type import TimeOffReasonIconType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "iconType": lambda n : setattr(self, 'icon_type', n.get_enum_value(time_off_reason_icon_type.TimeOffReasonIconType)),
+            "iconType": lambda n : setattr(self, 'icon_type', n.get_enum_value(TimeOffReasonIconType)),
             "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

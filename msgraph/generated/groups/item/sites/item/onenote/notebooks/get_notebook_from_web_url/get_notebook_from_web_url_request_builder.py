@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import get_notebook_from_web_url_post_request_body
-    from ........models import copy_notebook_model
-    from ........models.o_data_errors import o_data_error
+    from ........models.copy_notebook_model import CopyNotebookModel
+    from ........models.o_data_errors.o_data_error import ODataError
+    from .get_notebook_from_web_url_post_request_body import GetNotebookFromWebUrlPostRequestBody
 
 class GetNotebookFromWebUrlRequestBuilder():
     """
@@ -36,32 +36,32 @@ class GetNotebookFromWebUrlRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[get_notebook_from_web_url_post_request_body.GetNotebookFromWebUrlPostRequestBody] = None, request_configuration: Optional[GetNotebookFromWebUrlRequestBuilderPostRequestConfiguration] = None) -> Optional[copy_notebook_model.CopyNotebookModel]:
+    async def post(self,body: Optional[GetNotebookFromWebUrlPostRequestBody] = None, request_configuration: Optional[GetNotebookFromWebUrlRequestBuilderPostRequestConfiguration] = None) -> Optional[CopyNotebookModel]:
         """
         Retrieve the properties and relationships of a notebook object by using its URL path. The location can be user notebooks on Microsoft 365, group notebooks, or SharePoint site-hosted team notebooks on Microsoft 365.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[copy_notebook_model.CopyNotebookModel]
+        Returns: Optional[CopyNotebookModel]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import copy_notebook_model
+        from ........models.copy_notebook_model import CopyNotebookModel
 
-        return await self.request_adapter.send_async(request_info, copy_notebook_model.CopyNotebookModel, error_mapping)
+        return await self.request_adapter.send_async(request_info, CopyNotebookModel, error_mapping)
     
-    def to_post_request_information(self,body: Optional[get_notebook_from_web_url_post_request_body.GetNotebookFromWebUrlPostRequestBody] = None, request_configuration: Optional[GetNotebookFromWebUrlRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GetNotebookFromWebUrlPostRequestBody] = None, request_configuration: Optional[GetNotebookFromWebUrlRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a notebook object by using its URL path. The location can be user notebooks on Microsoft 365, group notebooks, or SharePoint site-hosted team notebooks on Microsoft 365.
         Args:

@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, open_shift
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .open_shift import OpenShift
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class OpenShiftCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class OpenShiftCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[open_shift.OpenShift]] = None
+    value: Optional[List[OpenShift]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OpenShiftCollectionResponse:
@@ -30,12 +31,14 @@ class OpenShiftCollectionResponse(base_collection_pagination_count_response.Base
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, open_shift
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .open_shift import OpenShift
 
-        from . import base_collection_pagination_count_response, open_shift
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .open_shift import OpenShift
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(open_shift.OpenShift)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(OpenShift)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

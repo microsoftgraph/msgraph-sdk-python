@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import print_usage_by_printer, print_usage_by_user, security_reports_root
+    from .print_usage_by_printer import PrintUsageByPrinter
+    from .print_usage_by_user import PrintUsageByUser
+    from .security_reports_root import SecurityReportsRoot
 
 @dataclass
 class ReportRoot(AdditionalDataHolder, Parsable):
@@ -12,17 +14,17 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The dailyPrintUsageByPrinter property
-    daily_print_usage_by_printer: Optional[List[print_usage_by_printer.PrintUsageByPrinter]] = None
+    daily_print_usage_by_printer: Optional[List[PrintUsageByPrinter]] = None
     # The dailyPrintUsageByUser property
-    daily_print_usage_by_user: Optional[List[print_usage_by_user.PrintUsageByUser]] = None
+    daily_print_usage_by_user: Optional[List[PrintUsageByUser]] = None
     # The monthlyPrintUsageByPrinter property
-    monthly_print_usage_by_printer: Optional[List[print_usage_by_printer.PrintUsageByPrinter]] = None
+    monthly_print_usage_by_printer: Optional[List[PrintUsageByPrinter]] = None
     # The monthlyPrintUsageByUser property
-    monthly_print_usage_by_user: Optional[List[print_usage_by_user.PrintUsageByUser]] = None
+    monthly_print_usage_by_user: Optional[List[PrintUsageByUser]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The security property
-    security: Optional[security_reports_root.SecurityReportsRoot] = None
+    security: Optional[SecurityReportsRoot] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ReportRoot:
@@ -41,17 +43,21 @@ class ReportRoot(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import print_usage_by_printer, print_usage_by_user, security_reports_root
+        from .print_usage_by_printer import PrintUsageByPrinter
+        from .print_usage_by_user import PrintUsageByUser
+        from .security_reports_root import SecurityReportsRoot
 
-        from . import print_usage_by_printer, print_usage_by_user, security_reports_root
+        from .print_usage_by_printer import PrintUsageByPrinter
+        from .print_usage_by_user import PrintUsageByUser
+        from .security_reports_root import SecurityReportsRoot
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "dailyPrintUsageByPrinter": lambda n : setattr(self, 'daily_print_usage_by_printer', n.get_collection_of_object_values(print_usage_by_printer.PrintUsageByPrinter)),
-            "dailyPrintUsageByUser": lambda n : setattr(self, 'daily_print_usage_by_user', n.get_collection_of_object_values(print_usage_by_user.PrintUsageByUser)),
-            "monthlyPrintUsageByPrinter": lambda n : setattr(self, 'monthly_print_usage_by_printer', n.get_collection_of_object_values(print_usage_by_printer.PrintUsageByPrinter)),
-            "monthlyPrintUsageByUser": lambda n : setattr(self, 'monthly_print_usage_by_user', n.get_collection_of_object_values(print_usage_by_user.PrintUsageByUser)),
+            "dailyPrintUsageByPrinter": lambda n : setattr(self, 'daily_print_usage_by_printer', n.get_collection_of_object_values(PrintUsageByPrinter)),
+            "dailyPrintUsageByUser": lambda n : setattr(self, 'daily_print_usage_by_user', n.get_collection_of_object_values(PrintUsageByUser)),
+            "monthlyPrintUsageByPrinter": lambda n : setattr(self, 'monthly_print_usage_by_printer', n.get_collection_of_object_values(PrintUsageByPrinter)),
+            "monthlyPrintUsageByUser": lambda n : setattr(self, 'monthly_print_usage_by_user', n.get_collection_of_object_values(PrintUsageByUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "security": lambda n : setattr(self, 'security', n.get_object_value(security_reports_root.SecurityReportsRoot)),
+            "security": lambda n : setattr(self, 'security', n.get_object_value(SecurityReportsRoot)),
         }
         return fields
     

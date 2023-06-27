@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mdm_app_config_key_type
+    from .mdm_app_config_key_type import MdmAppConfigKeyType
 
 @dataclass
 class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
@@ -17,7 +17,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
     # app configuration key.
     app_config_key: Optional[str] = None
     # App configuration key types.
-    app_config_key_type: Optional[mdm_app_config_key_type.MdmAppConfigKeyType] = None
+    app_config_key_type: Optional[MdmAppConfigKeyType] = None
     # app configuration key value.
     app_config_key_value: Optional[str] = None
     # The OdataType property
@@ -40,13 +40,13 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mdm_app_config_key_type
+        from .mdm_app_config_key_type import MdmAppConfigKeyType
 
-        from . import mdm_app_config_key_type
+        from .mdm_app_config_key_type import MdmAppConfigKeyType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appConfigKey": lambda n : setattr(self, 'app_config_key', n.get_str_value()),
-            "appConfigKeyType": lambda n : setattr(self, 'app_config_key_type', n.get_enum_value(mdm_app_config_key_type.MdmAppConfigKeyType)),
+            "appConfigKeyType": lambda n : setattr(self, 'app_config_key_type', n.get_enum_value(MdmAppConfigKeyType)),
             "appConfigKeyValue": lambda n : setattr(self, 'app_config_key_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

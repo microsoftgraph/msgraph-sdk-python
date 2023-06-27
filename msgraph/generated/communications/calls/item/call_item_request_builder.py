@@ -10,26 +10,26 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import call
-    from ....models.o_data_errors import o_data_error
-    from .add_large_gallery_view import add_large_gallery_view_request_builder
-    from .answer import answer_request_builder
-    from .audio_routing_groups import audio_routing_groups_request_builder
-    from .cancel_media_processing import cancel_media_processing_request_builder
-    from .change_screen_sharing_role import change_screen_sharing_role_request_builder
-    from .content_sharing_sessions import content_sharing_sessions_request_builder
-    from .keep_alive import keep_alive_request_builder
-    from .mute import mute_request_builder
-    from .operations import operations_request_builder
-    from .participants import participants_request_builder
-    from .play_prompt import play_prompt_request_builder
-    from .record_response import record_response_request_builder
-    from .redirect import redirect_request_builder
-    from .reject import reject_request_builder
-    from .subscribe_to_tone import subscribe_to_tone_request_builder
-    from .transfer import transfer_request_builder
-    from .unmute import unmute_request_builder
-    from .update_recording_status import update_recording_status_request_builder
+    from ....models.call import Call
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .add_large_gallery_view.add_large_gallery_view_request_builder import AddLargeGalleryViewRequestBuilder
+    from .answer.answer_request_builder import AnswerRequestBuilder
+    from .audio_routing_groups.audio_routing_groups_request_builder import AudioRoutingGroupsRequestBuilder
+    from .cancel_media_processing.cancel_media_processing_request_builder import CancelMediaProcessingRequestBuilder
+    from .change_screen_sharing_role.change_screen_sharing_role_request_builder import ChangeScreenSharingRoleRequestBuilder
+    from .content_sharing_sessions.content_sharing_sessions_request_builder import ContentSharingSessionsRequestBuilder
+    from .keep_alive.keep_alive_request_builder import KeepAliveRequestBuilder
+    from .mute.mute_request_builder import MuteRequestBuilder
+    from .operations.operations_request_builder import OperationsRequestBuilder
+    from .participants.participants_request_builder import ParticipantsRequestBuilder
+    from .play_prompt.play_prompt_request_builder import PlayPromptRequestBuilder
+    from .record_response.record_response_request_builder import RecordResponseRequestBuilder
+    from .redirect.redirect_request_builder import RedirectRequestBuilder
+    from .reject.reject_request_builder import RejectRequestBuilder
+    from .subscribe_to_tone.subscribe_to_tone_request_builder import SubscribeToToneRequestBuilder
+    from .transfer.transfer_request_builder import TransferRequestBuilder
+    from .unmute.unmute_request_builder import UnmuteRequestBuilder
+    from .update_recording_status.update_recording_status_request_builder import UpdateRecordingStatusRequestBuilder
 
 class CallItemRequestBuilder():
     """
@@ -62,62 +62,62 @@ class CallItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[CallItemRequestBuilderGetRequestConfiguration] = None) -> Optional[call.Call]:
+    async def get(self,request_configuration: Optional[CallItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Call]:
         """
         Retrieve the properties and relationships of a call object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[call.Call]
+        Returns: Optional[Call]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import call
+        from ....models.call import Call
 
-        return await self.request_adapter.send_async(request_info, call.Call, error_mapping)
+        return await self.request_adapter.send_async(request_info, Call, error_mapping)
     
-    async def patch(self,body: Optional[call.Call] = None, request_configuration: Optional[CallItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[call.Call]:
+    async def patch(self,body: Optional[Call] = None, request_configuration: Optional[CallItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Call]:
         """
         Update the navigation property calls in communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[call.Call]
+        Returns: Optional[Call]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import call
+        from ....models.call import Call
 
-        return await self.request_adapter.send_async(request_info, call.Call, error_mapping)
+        return await self.request_adapter.send_async(request_info, Call, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[CallItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -153,7 +153,7 @@ class CallItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[call.Call] = None, request_configuration: Optional[CallItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Call] = None, request_configuration: Optional[CallItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property calls in communications
         Args:
@@ -175,166 +175,166 @@ class CallItemRequestBuilder():
         return request_info
     
     @property
-    def add_large_gallery_view(self) -> add_large_gallery_view_request_builder.AddLargeGalleryViewRequestBuilder:
+    def add_large_gallery_view(self) -> AddLargeGalleryViewRequestBuilder:
         """
         Provides operations to call the addLargeGalleryView method.
         """
-        from .add_large_gallery_view import add_large_gallery_view_request_builder
+        from .add_large_gallery_view.add_large_gallery_view_request_builder import AddLargeGalleryViewRequestBuilder
 
-        return add_large_gallery_view_request_builder.AddLargeGalleryViewRequestBuilder(self.request_adapter, self.path_parameters)
+        return AddLargeGalleryViewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def answer(self) -> answer_request_builder.AnswerRequestBuilder:
+    def answer(self) -> AnswerRequestBuilder:
         """
         Provides operations to call the answer method.
         """
-        from .answer import answer_request_builder
+        from .answer.answer_request_builder import AnswerRequestBuilder
 
-        return answer_request_builder.AnswerRequestBuilder(self.request_adapter, self.path_parameters)
+        return AnswerRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def audio_routing_groups(self) -> audio_routing_groups_request_builder.AudioRoutingGroupsRequestBuilder:
+    def audio_routing_groups(self) -> AudioRoutingGroupsRequestBuilder:
         """
         Provides operations to manage the audioRoutingGroups property of the microsoft.graph.call entity.
         """
-        from .audio_routing_groups import audio_routing_groups_request_builder
+        from .audio_routing_groups.audio_routing_groups_request_builder import AudioRoutingGroupsRequestBuilder
 
-        return audio_routing_groups_request_builder.AudioRoutingGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AudioRoutingGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def cancel_media_processing(self) -> cancel_media_processing_request_builder.CancelMediaProcessingRequestBuilder:
+    def cancel_media_processing(self) -> CancelMediaProcessingRequestBuilder:
         """
         Provides operations to call the cancelMediaProcessing method.
         """
-        from .cancel_media_processing import cancel_media_processing_request_builder
+        from .cancel_media_processing.cancel_media_processing_request_builder import CancelMediaProcessingRequestBuilder
 
-        return cancel_media_processing_request_builder.CancelMediaProcessingRequestBuilder(self.request_adapter, self.path_parameters)
+        return CancelMediaProcessingRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def change_screen_sharing_role(self) -> change_screen_sharing_role_request_builder.ChangeScreenSharingRoleRequestBuilder:
+    def change_screen_sharing_role(self) -> ChangeScreenSharingRoleRequestBuilder:
         """
         Provides operations to call the changeScreenSharingRole method.
         """
-        from .change_screen_sharing_role import change_screen_sharing_role_request_builder
+        from .change_screen_sharing_role.change_screen_sharing_role_request_builder import ChangeScreenSharingRoleRequestBuilder
 
-        return change_screen_sharing_role_request_builder.ChangeScreenSharingRoleRequestBuilder(self.request_adapter, self.path_parameters)
+        return ChangeScreenSharingRoleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def content_sharing_sessions(self) -> content_sharing_sessions_request_builder.ContentSharingSessionsRequestBuilder:
+    def content_sharing_sessions(self) -> ContentSharingSessionsRequestBuilder:
         """
         Provides operations to manage the contentSharingSessions property of the microsoft.graph.call entity.
         """
-        from .content_sharing_sessions import content_sharing_sessions_request_builder
+        from .content_sharing_sessions.content_sharing_sessions_request_builder import ContentSharingSessionsRequestBuilder
 
-        return content_sharing_sessions_request_builder.ContentSharingSessionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ContentSharingSessionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def keep_alive(self) -> keep_alive_request_builder.KeepAliveRequestBuilder:
+    def keep_alive(self) -> KeepAliveRequestBuilder:
         """
         Provides operations to call the keepAlive method.
         """
-        from .keep_alive import keep_alive_request_builder
+        from .keep_alive.keep_alive_request_builder import KeepAliveRequestBuilder
 
-        return keep_alive_request_builder.KeepAliveRequestBuilder(self.request_adapter, self.path_parameters)
+        return KeepAliveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def mute(self) -> mute_request_builder.MuteRequestBuilder:
+    def mute(self) -> MuteRequestBuilder:
         """
         Provides operations to call the mute method.
         """
-        from .mute import mute_request_builder
+        from .mute.mute_request_builder import MuteRequestBuilder
 
-        return mute_request_builder.MuteRequestBuilder(self.request_adapter, self.path_parameters)
+        return MuteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+    def operations(self) -> OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.call entity.
         """
-        from .operations import operations_request_builder
+        from .operations.operations_request_builder import OperationsRequestBuilder
 
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def participants(self) -> participants_request_builder.ParticipantsRequestBuilder:
+    def participants(self) -> ParticipantsRequestBuilder:
         """
         Provides operations to manage the participants property of the microsoft.graph.call entity.
         """
-        from .participants import participants_request_builder
+        from .participants.participants_request_builder import ParticipantsRequestBuilder
 
-        return participants_request_builder.ParticipantsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ParticipantsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def play_prompt(self) -> play_prompt_request_builder.PlayPromptRequestBuilder:
+    def play_prompt(self) -> PlayPromptRequestBuilder:
         """
         Provides operations to call the playPrompt method.
         """
-        from .play_prompt import play_prompt_request_builder
+        from .play_prompt.play_prompt_request_builder import PlayPromptRequestBuilder
 
-        return play_prompt_request_builder.PlayPromptRequestBuilder(self.request_adapter, self.path_parameters)
+        return PlayPromptRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def record_response(self) -> record_response_request_builder.RecordResponseRequestBuilder:
+    def record_response(self) -> RecordResponseRequestBuilder:
         """
         Provides operations to call the recordResponse method.
         """
-        from .record_response import record_response_request_builder
+        from .record_response.record_response_request_builder import RecordResponseRequestBuilder
 
-        return record_response_request_builder.RecordResponseRequestBuilder(self.request_adapter, self.path_parameters)
+        return RecordResponseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def redirect(self) -> redirect_request_builder.RedirectRequestBuilder:
+    def redirect(self) -> RedirectRequestBuilder:
         """
         Provides operations to call the redirect method.
         """
-        from .redirect import redirect_request_builder
+        from .redirect.redirect_request_builder import RedirectRequestBuilder
 
-        return redirect_request_builder.RedirectRequestBuilder(self.request_adapter, self.path_parameters)
+        return RedirectRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def reject(self) -> reject_request_builder.RejectRequestBuilder:
+    def reject(self) -> RejectRequestBuilder:
         """
         Provides operations to call the reject method.
         """
-        from .reject import reject_request_builder
+        from .reject.reject_request_builder import RejectRequestBuilder
 
-        return reject_request_builder.RejectRequestBuilder(self.request_adapter, self.path_parameters)
+        return RejectRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def subscribe_to_tone(self) -> subscribe_to_tone_request_builder.SubscribeToToneRequestBuilder:
+    def subscribe_to_tone(self) -> SubscribeToToneRequestBuilder:
         """
         Provides operations to call the subscribeToTone method.
         """
-        from .subscribe_to_tone import subscribe_to_tone_request_builder
+        from .subscribe_to_tone.subscribe_to_tone_request_builder import SubscribeToToneRequestBuilder
 
-        return subscribe_to_tone_request_builder.SubscribeToToneRequestBuilder(self.request_adapter, self.path_parameters)
+        return SubscribeToToneRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def transfer(self) -> transfer_request_builder.TransferRequestBuilder:
+    def transfer(self) -> TransferRequestBuilder:
         """
         Provides operations to call the transfer method.
         """
-        from .transfer import transfer_request_builder
+        from .transfer.transfer_request_builder import TransferRequestBuilder
 
-        return transfer_request_builder.TransferRequestBuilder(self.request_adapter, self.path_parameters)
+        return TransferRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def unmute(self) -> unmute_request_builder.UnmuteRequestBuilder:
+    def unmute(self) -> UnmuteRequestBuilder:
         """
         Provides operations to call the unmute method.
         """
-        from .unmute import unmute_request_builder
+        from .unmute.unmute_request_builder import UnmuteRequestBuilder
 
-        return unmute_request_builder.UnmuteRequestBuilder(self.request_adapter, self.path_parameters)
+        return UnmuteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def update_recording_status(self) -> update_recording_status_request_builder.UpdateRecordingStatusRequestBuilder:
+    def update_recording_status(self) -> UpdateRecordingStatusRequestBuilder:
         """
         Provides operations to call the updateRecordingStatus method.
         """
-        from .update_recording_status import update_recording_status_request_builder
+        from .update_recording_status.update_recording_status_request_builder import UpdateRecordingStatusRequestBuilder
 
-        return update_recording_status_request_builder.UpdateRecordingStatusRequestBuilder(self.request_adapter, self.path_parameters)
+        return UpdateRecordingStatusRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CallItemRequestBuilderDeleteRequestConfiguration():

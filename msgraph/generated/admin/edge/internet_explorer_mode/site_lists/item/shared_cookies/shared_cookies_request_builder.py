@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import browser_shared_cookie, browser_shared_cookie_collection_response
-    from .......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import browser_shared_cookie_item_request_builder
+    from .......models.browser_shared_cookie import BrowserSharedCookie
+    from .......models.browser_shared_cookie_collection_response import BrowserSharedCookieCollectionResponse
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.browser_shared_cookie_item_request_builder import BrowserSharedCookieItemRequestBuilder
 
 class SharedCookiesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class SharedCookiesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_browser_shared_cookie_id(self,browser_shared_cookie_id: str) -> browser_shared_cookie_item_request_builder.BrowserSharedCookieItemRequestBuilder:
+    def by_browser_shared_cookie_id(self,browser_shared_cookie_id: str) -> BrowserSharedCookieItemRequestBuilder:
         """
         Provides operations to manage the sharedCookies property of the microsoft.graph.browserSiteList entity.
         Args:
             browser_shared_cookie_id: Unique identifier of the item
-        Returns: browser_shared_cookie_item_request_builder.BrowserSharedCookieItemRequestBuilder
+        Returns: BrowserSharedCookieItemRequestBuilder
         """
         if not browser_shared_cookie_id:
             raise TypeError("browser_shared_cookie_id cannot be null.")
-        from .item import browser_shared_cookie_item_request_builder
+        from .item.browser_shared_cookie_item_request_builder import BrowserSharedCookieItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["browserSharedCookie%2Did"] = browser_shared_cookie_id
-        return browser_shared_cookie_item_request_builder.BrowserSharedCookieItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return BrowserSharedCookieItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SharedCookiesRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_shared_cookie_collection_response.BrowserSharedCookieCollectionResponse]:
+    async def get(self,request_configuration: Optional[SharedCookiesRequestBuilderGetRequestConfiguration] = None) -> Optional[BrowserSharedCookieCollectionResponse]:
         """
         Get a list of the browserSharedCookie objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[browser_shared_cookie_collection_response.BrowserSharedCookieCollectionResponse]
+        Returns: Optional[BrowserSharedCookieCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import browser_shared_cookie_collection_response
+        from .......models.browser_shared_cookie_collection_response import BrowserSharedCookieCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, browser_shared_cookie_collection_response.BrowserSharedCookieCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, BrowserSharedCookieCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[browser_shared_cookie.BrowserSharedCookie] = None, request_configuration: Optional[SharedCookiesRequestBuilderPostRequestConfiguration] = None) -> Optional[browser_shared_cookie.BrowserSharedCookie]:
+    async def post(self,body: Optional[BrowserSharedCookie] = None, request_configuration: Optional[SharedCookiesRequestBuilderPostRequestConfiguration] = None) -> Optional[BrowserSharedCookie]:
         """
         Create a new browserSharedCookie object in a browserSiteList.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[browser_shared_cookie.BrowserSharedCookie]
+        Returns: Optional[BrowserSharedCookie]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import browser_shared_cookie
+        from .......models.browser_shared_cookie import BrowserSharedCookie
 
-        return await self.request_adapter.send_async(request_info, browser_shared_cookie.BrowserSharedCookie, error_mapping)
+        return await self.request_adapter.send_async(request_info, BrowserSharedCookie, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SharedCookiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class SharedCookiesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[browser_shared_cookie.BrowserSharedCookie] = None, request_configuration: Optional[SharedCookiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[BrowserSharedCookie] = None, request_configuration: Optional[SharedCookiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new browserSharedCookie object in a browserSiteList.
         Args:
@@ -139,13 +140,13 @@ class SharedCookiesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SharedCookiesRequestBuilderGetQueryParameters():

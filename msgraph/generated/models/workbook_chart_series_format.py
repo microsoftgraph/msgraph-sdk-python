@@ -4,16 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_fill, workbook_chart_line_format
+    from .entity import Entity
+    from .workbook_chart_fill import WorkbookChartFill
+    from .workbook_chart_line_format import WorkbookChartLineFormat
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartSeriesFormat(entity.Entity):
+class WorkbookChartSeriesFormat(Entity):
     # Represents the fill format of a chart series, which includes background formating information. Read-only.
-    fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
+    fill: Optional[WorkbookChartFill] = None
     # Represents line formatting. Read-only.
-    line: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None
+    line: Optional[WorkbookChartLineFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -34,13 +36,17 @@ class WorkbookChartSeriesFormat(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_fill, workbook_chart_line_format
+        from .entity import Entity
+        from .workbook_chart_fill import WorkbookChartFill
+        from .workbook_chart_line_format import WorkbookChartLineFormat
 
-        from . import entity, workbook_chart_fill, workbook_chart_line_format
+        from .entity import Entity
+        from .workbook_chart_fill import WorkbookChartFill
+        from .workbook_chart_line_format import WorkbookChartLineFormat
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fill": lambda n : setattr(self, 'fill', n.get_object_value(workbook_chart_fill.WorkbookChartFill)),
-            "line": lambda n : setattr(self, 'line', n.get_object_value(workbook_chart_line_format.WorkbookChartLineFormat)),
+            "fill": lambda n : setattr(self, 'fill', n.get_object_value(WorkbookChartFill)),
+            "line": lambda n : setattr(self, 'line', n.get_object_value(WorkbookChartLineFormat)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

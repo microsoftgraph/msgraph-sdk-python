@@ -1,16 +1,19 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import notebook, onenote_entity_schema_object_model, onenote_section, page_links
+    from .notebook import Notebook
+    from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
+    from .onenote_section import OnenoteSection
+    from .page_links import PageLinks
 
-from . import onenote_entity_schema_object_model
+from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
 
 @dataclass
-class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectModel):
+class OnenotePage(OnenoteEntitySchemaObjectModel):
     odata_type = "#microsoft.graph.onenotePage"
     # The page's HTML content.
     content: Optional[bytes] = None
@@ -19,17 +22,17 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
     # The unique identifier of the application that created the page. Read-only.
     created_by_app_id: Optional[str] = None
     # The date and time when the page was last modified. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The indentation level of the page. Read-only.
     level: Optional[int] = None
     # Links for opening the page. The oneNoteClientURL link opens the page in the OneNote native client if it 's installed. The oneNoteWebUrl link opens the page in OneNote on the web. Read-only.
-    links: Optional[page_links.PageLinks] = None
+    links: Optional[PageLinks] = None
     # The order of the page within its parent section. Read-only.
     order: Optional[int] = None
     # The notebook that contains the page.  Read-only.
-    parent_notebook: Optional[notebook.Notebook] = None
+    parent_notebook: Optional[Notebook] = None
     # The section that contains the page. Read-only.
-    parent_section: Optional[onenote_section.OnenoteSection] = None
+    parent_section: Optional[OnenoteSection] = None
     # The title of the page.
     title: Optional[str] = None
     # The userTags property
@@ -52,9 +55,15 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import notebook, onenote_entity_schema_object_model, onenote_section, page_links
+        from .notebook import Notebook
+        from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
+        from .onenote_section import OnenoteSection
+        from .page_links import PageLinks
 
-        from . import notebook, onenote_entity_schema_object_model, onenote_section, page_links
+        from .notebook import Notebook
+        from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
+        from .onenote_section import OnenoteSection
+        from .page_links import PageLinks
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
@@ -62,10 +71,10 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             "createdByAppId": lambda n : setattr(self, 'created_by_app_id', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "level": lambda n : setattr(self, 'level', n.get_int_value()),
-            "links": lambda n : setattr(self, 'links', n.get_object_value(page_links.PageLinks)),
+            "links": lambda n : setattr(self, 'links', n.get_object_value(PageLinks)),
             "order": lambda n : setattr(self, 'order', n.get_int_value()),
-            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
-            "parentSection": lambda n : setattr(self, 'parent_section', n.get_object_value(onenote_section.OnenoteSection)),
+            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(Notebook)),
+            "parentSection": lambda n : setattr(self, 'parent_section', n.get_object_value(OnenoteSection)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
             "userTags": lambda n : setattr(self, 'user_tags', n.get_collection_of_primitive_values(str)),
         }
@@ -82,10 +91,10 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("content", self.content)
+        writer.write_bytes_value("content", self.content)
         writer.write_str_value("contentUrl", self.content_url)
         writer.write_str_value("createdByAppId", self.created_by_app_id)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_int_value("level", self.level)
         writer.write_object_value("links", self.links)
         writer.write_int_value("order", self.order)

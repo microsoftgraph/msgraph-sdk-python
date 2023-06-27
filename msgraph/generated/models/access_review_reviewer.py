@@ -1,18 +1,18 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AccessReviewReviewer(entity.Entity):
+class AccessReviewReviewer(Entity):
     # The date when the reviewer was added for the access review.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Name of reviewer.
     display_name: Optional[str] = None
     # The OdataType property
@@ -37,9 +37,9 @@ class AccessReviewReviewer(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -59,7 +59,7 @@ class AccessReviewReviewer(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
     

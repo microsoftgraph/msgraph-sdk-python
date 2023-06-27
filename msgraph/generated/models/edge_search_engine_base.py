@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import edge_search_engine, edge_search_engine_custom
+    from .edge_search_engine import EdgeSearchEngine
+    from .edge_search_engine_custom import EdgeSearchEngineCustom
 
 @dataclass
 class EdgeSearchEngineBase(AdditionalDataHolder, Parsable):
@@ -32,13 +33,13 @@ class EdgeSearchEngineBase(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.edgeSearchEngine".casefold():
-            from . import edge_search_engine
+            from .edge_search_engine import EdgeSearchEngine
 
-            return edge_search_engine.EdgeSearchEngine()
+            return EdgeSearchEngine()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.edgeSearchEngineCustom".casefold():
-            from . import edge_search_engine_custom
+            from .edge_search_engine_custom import EdgeSearchEngineCustom
 
-            return edge_search_engine_custom.EdgeSearchEngineCustom()
+            return EdgeSearchEngineCustom()
         return EdgeSearchEngineBase()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -46,9 +47,11 @@ class EdgeSearchEngineBase(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import edge_search_engine, edge_search_engine_custom
+        from .edge_search_engine import EdgeSearchEngine
+        from .edge_search_engine_custom import EdgeSearchEngineCustom
 
-        from . import edge_search_engine, edge_search_engine_custom
+        from .edge_search_engine import EdgeSearchEngine
+        from .edge_search_engine_custom import EdgeSearchEngineCustom
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

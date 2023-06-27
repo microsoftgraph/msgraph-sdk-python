@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class Error_TypePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class Error_TypePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The errorVal property
-    error_val: Optional[json.Json] = None
+    error_val: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Error_TypePostRequestBody:
@@ -31,12 +31,12 @@ class Error_TypePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "errorVal": lambda n : setattr(self, 'error_val', n.get_object_value(json.Json)),
+            "errorVal": lambda n : setattr(self, 'error_val', n.get_object_value(Json)),
         }
         return fields
     

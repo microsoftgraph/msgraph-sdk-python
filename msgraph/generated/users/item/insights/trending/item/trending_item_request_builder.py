@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import trending
-    from ......models.o_data_errors import o_data_error
-    from .resource import resource_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.trending import Trending
+    from .resource.resource_request_builder import ResourceRequestBuilder
 
 class TrendingItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class TrendingItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TrendingItemRequestBuilderGetRequestConfiguration] = None) -> Optional[trending.Trending]:
+    async def get(self,request_configuration: Optional[TrendingItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Trending]:
         """
         Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[trending.Trending]
+        Returns: Optional[Trending]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import trending
+        from ......models.trending import Trending
 
-        return await self.request_adapter.send_async(request_info, trending.Trending, error_mapping)
+        return await self.request_adapter.send_async(request_info, Trending, error_mapping)
     
-    async def patch(self,body: Optional[trending.Trending] = None, request_configuration: Optional[TrendingItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[trending.Trending]:
+    async def patch(self,body: Optional[Trending] = None, request_configuration: Optional[TrendingItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Trending]:
         """
         Update the navigation property trending in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[trending.Trending]
+        Returns: Optional[Trending]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import trending
+        from ......models.trending import Trending
 
-        return await self.request_adapter.send_async(request_info, trending.Trending, error_mapping)
+        return await self.request_adapter.send_async(request_info, Trending, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TrendingItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class TrendingItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[trending.Trending] = None, request_configuration: Optional[TrendingItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Trending] = None, request_configuration: Optional[TrendingItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property trending in users
         Args:
@@ -158,13 +158,13 @@ class TrendingItemRequestBuilder():
         return request_info
     
     @property
-    def resource(self) -> resource_request_builder.ResourceRequestBuilder:
+    def resource(self) -> ResourceRequestBuilder:
         """
         Provides operations to manage the resource property of the microsoft.graph.trending entity.
         """
-        from .resource import resource_request_builder
+        from .resource.resource_request_builder import ResourceRequestBuilder
 
-        return resource_request_builder.ResourceRequestBuilder(self.request_adapter, self.path_parameters)
+        return ResourceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TrendingItemRequestBuilderDeleteRequestConfiguration():

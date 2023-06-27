@@ -4,19 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_enrollment_configuration, enablement, windows_hello_for_business_pin_usage
+    from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+    from .enablement import Enablement
+    from .windows_hello_for_business_pin_usage import WindowsHelloForBusinessPinUsage
 
-from . import device_enrollment_configuration
+from .device_enrollment_configuration import DeviceEnrollmentConfiguration
 
 @dataclass
-class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_configuration.DeviceEnrollmentConfiguration):
+class DeviceEnrollmentWindowsHelloForBusinessConfiguration(DeviceEnrollmentConfiguration):
     odata_type = "#microsoft.graph.deviceEnrollmentWindowsHelloForBusinessConfiguration"
     # Possible values of a property
-    enhanced_biometrics_state: Optional[enablement.Enablement] = None
+    enhanced_biometrics_state: Optional[Enablement] = None
     # Controls the period of time (in days) that a PIN can be used before the system requires the user to change it. This must be set between 0 and 730, inclusive. If set to 0, the user's PIN will never expire
     pin_expiration_in_days: Optional[int] = None
     # Windows Hello for Business pin usage options
-    pin_lowercase_characters_usage: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None
+    pin_lowercase_characters_usage: Optional[WindowsHelloForBusinessPinUsage] = None
     # Controls the maximum number of characters allowed for the Windows Hello for Business PIN. This value must be between 4 and 127, inclusive. This value must be greater than or equal to the value set for the minimum PIN.
     pin_maximum_length: Optional[int] = None
     # Controls the minimum number of characters required for the Windows Hello for Business PIN.  This value must be between 4 and 127, inclusive, and less than or equal to the value set for the maximum PIN.
@@ -24,15 +26,15 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
     # Controls the ability to prevent users from using past PINs. This must be set between 0 and 50, inclusive, and the current PIN of the user is included in that count. If set to 0, previous PINs are not stored. PIN history is not preserved through a PIN reset.
     pin_previous_block_count: Optional[int] = None
     # Windows Hello for Business pin usage options
-    pin_special_characters_usage: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None
+    pin_special_characters_usage: Optional[WindowsHelloForBusinessPinUsage] = None
     # Windows Hello for Business pin usage options
-    pin_uppercase_characters_usage: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None
+    pin_uppercase_characters_usage: Optional[WindowsHelloForBusinessPinUsage] = None
     # Controls the use of Remote Windows Hello for Business. Remote Windows Hello for Business provides the ability for a portable, registered device to be usable as a companion for desktop authentication. The desktop must be Azure AD joined and the companion device must have a Windows Hello for Business PIN.
     remote_passport_enabled: Optional[bool] = None
     # Controls whether to require a Trusted Platform Module (TPM) for provisioning Windows Hello for Business. A TPM provides an additional security benefit in that data stored on it cannot be used on other devices. If set to False, all devices can provision Windows Hello for Business even if there is not a usable TPM.
     security_device_required: Optional[bool] = None
     # Possible values of a property
-    state: Optional[enablement.Enablement] = None
+    state: Optional[Enablement] = None
     # Controls the use of biometric gestures, such as face and fingerprint, as an alternative to the Windows Hello for Business PIN.  If set to False, biometric gestures are not allowed. Users must still configure a PIN as a backup in case of failures.
     unlock_with_biometrics_enabled: Optional[bool] = None
     
@@ -53,22 +55,26 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_enrollment_configuration, enablement, windows_hello_for_business_pin_usage
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+        from .enablement import Enablement
+        from .windows_hello_for_business_pin_usage import WindowsHelloForBusinessPinUsage
 
-        from . import device_enrollment_configuration, enablement, windows_hello_for_business_pin_usage
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+        from .enablement import Enablement
+        from .windows_hello_for_business_pin_usage import WindowsHelloForBusinessPinUsage
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "enhancedBiometricsState": lambda n : setattr(self, 'enhanced_biometrics_state', n.get_enum_value(enablement.Enablement)),
+            "enhancedBiometricsState": lambda n : setattr(self, 'enhanced_biometrics_state', n.get_enum_value(Enablement)),
             "pinExpirationInDays": lambda n : setattr(self, 'pin_expiration_in_days', n.get_int_value()),
-            "pinLowercaseCharactersUsage": lambda n : setattr(self, 'pin_lowercase_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
+            "pinLowercaseCharactersUsage": lambda n : setattr(self, 'pin_lowercase_characters_usage', n.get_enum_value(WindowsHelloForBusinessPinUsage)),
             "pinMaximumLength": lambda n : setattr(self, 'pin_maximum_length', n.get_int_value()),
             "pinMinimumLength": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
             "pinPreviousBlockCount": lambda n : setattr(self, 'pin_previous_block_count', n.get_int_value()),
-            "pinSpecialCharactersUsage": lambda n : setattr(self, 'pin_special_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
-            "pinUppercaseCharactersUsage": lambda n : setattr(self, 'pin_uppercase_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
+            "pinSpecialCharactersUsage": lambda n : setattr(self, 'pin_special_characters_usage', n.get_enum_value(WindowsHelloForBusinessPinUsage)),
+            "pinUppercaseCharactersUsage": lambda n : setattr(self, 'pin_uppercase_characters_usage', n.get_enum_value(WindowsHelloForBusinessPinUsage)),
             "remotePassportEnabled": lambda n : setattr(self, 'remote_passport_enabled', n.get_bool_value()),
             "securityDeviceRequired": lambda n : setattr(self, 'security_device_required', n.get_bool_value()),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(enablement.Enablement)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(Enablement)),
             "unlockWithBiometricsEnabled": lambda n : setattr(self, 'unlock_with_biometrics_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

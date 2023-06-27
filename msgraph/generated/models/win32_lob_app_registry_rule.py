@@ -4,12 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import win32_lob_app_registry_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+    from .win32_lob_app_registry_rule_operation_type import Win32LobAppRegistryRuleOperationType
+    from .win32_lob_app_rule import Win32LobAppRule
+    from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-from . import win32_lob_app_rule
+from .win32_lob_app_rule import Win32LobAppRule
 
 @dataclass
-class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
+class Win32LobAppRegistryRule(Win32LobAppRule):
     odata_type = "#microsoft.graph.win32LobAppRegistryRule"
     # A value indicating whether to search the 32-bit registry on 64-bit systems.
     check32_bit_on64_system: Optional[bool] = None
@@ -18,9 +20,9 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
     # The full path of the registry entry containing the value to detect.
     key_path: Optional[str] = None
     # Contains all supported registry data detection type.
-    operation_type: Optional[win32_lob_app_registry_rule_operation_type.Win32LobAppRegistryRuleOperationType] = None
+    operation_type: Optional[Win32LobAppRegistryRuleOperationType] = None
     # Contains properties for detection operator.
-    operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
+    operator: Optional[Win32LobAppRuleOperator] = None
     # The name of the registry value to detect.
     value_name: Optional[str] = None
     
@@ -41,16 +43,20 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import win32_lob_app_registry_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+        from .win32_lob_app_registry_rule_operation_type import Win32LobAppRegistryRuleOperationType
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-        from . import win32_lob_app_registry_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+        from .win32_lob_app_registry_rule_operation_type import Win32LobAppRegistryRuleOperationType
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
         fields: Dict[str, Callable[[Any], None]] = {
             "check32BitOn64System": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
             "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
             "keyPath": lambda n : setattr(self, 'key_path', n.get_str_value()),
-            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_registry_rule_operation_type.Win32LobAppRegistryRuleOperationType)),
-            "operator": lambda n : setattr(self, 'operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(Win32LobAppRegistryRuleOperationType)),
+            "operator": lambda n : setattr(self, 'operator', n.get_enum_value(Win32LobAppRuleOperator)),
             "valueName": lambda n : setattr(self, 'value_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

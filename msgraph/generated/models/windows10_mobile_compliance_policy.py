@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_compliance_policy, required_password_type
+    from .device_compliance_policy import DeviceCompliancePolicy
+    from .required_password_type import RequiredPasswordType
 
-from . import device_compliance_policy
+from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
-class Windows10MobileCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
+class Windows10MobileCompliancePolicy(DeviceCompliancePolicy):
     odata_type = "#microsoft.graph.windows10MobileCompliancePolicy"
     # Require devices to be reported healthy by Windows Device Health Attestation - bit locker is enabled
     bit_locker_enabled: Optional[bool] = None
@@ -38,7 +39,7 @@ class Windows10MobileCompliancePolicy(device_compliance_policy.DeviceComplianceP
     # Require a password to unlock Windows Phone device.
     password_required: Optional[bool] = None
     # Possible values of required passwords.
-    password_required_type: Optional[required_password_type.RequiredPasswordType] = None
+    password_required_type: Optional[RequiredPasswordType] = None
     # Require devices to be reported as healthy by Windows Device Health Attestation - secure boot is enabled.
     secure_boot_enabled: Optional[bool] = None
     # Require encryption on windows devices.
@@ -61,9 +62,11 @@ class Windows10MobileCompliancePolicy(device_compliance_policy.DeviceComplianceP
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_compliance_policy, required_password_type
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .required_password_type import RequiredPasswordType
 
-        from . import device_compliance_policy, required_password_type
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .required_password_type import RequiredPasswordType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bitLockerEnabled": lambda n : setattr(self, 'bit_locker_enabled', n.get_bool_value()),
@@ -79,7 +82,7 @@ class Windows10MobileCompliancePolicy(device_compliance_policy.DeviceComplianceP
             "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
             "passwordRequireToUnlockFromIdle": lambda n : setattr(self, 'password_require_to_unlock_from_idle', n.get_bool_value()),
             "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
             "secureBootEnabled": lambda n : setattr(self, 'secure_boot_enabled', n.get_bool_value()),
             "storageRequireEncryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
         }

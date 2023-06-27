@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import planner_plan_details
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.planner_plan_details import PlannerPlanDetails
 
 class DetailsRequestBuilder():
     """
@@ -44,62 +44,62 @@ class DetailsRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_plan_details.PlannerPlanDetails]:
+    async def get(self,request_configuration: Optional[DetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerPlanDetails]:
         """
         Retrieve the properties and relationships of a **plannerPlanDetails** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner_plan_details.PlannerPlanDetails]
+        Returns: Optional[PlannerPlanDetails]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import planner_plan_details
+        from .......models.planner_plan_details import PlannerPlanDetails
 
-        return await self.request_adapter.send_async(request_info, planner_plan_details.PlannerPlanDetails, error_mapping)
+        return await self.request_adapter.send_async(request_info, PlannerPlanDetails, error_mapping)
     
-    async def patch(self,body: Optional[planner_plan_details.PlannerPlanDetails] = None, request_configuration: Optional[DetailsRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_plan_details.PlannerPlanDetails]:
+    async def patch(self,body: Optional[PlannerPlanDetails] = None, request_configuration: Optional[DetailsRequestBuilderPatchRequestConfiguration] = None) -> Optional[PlannerPlanDetails]:
         """
         Update the navigation property details in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner_plan_details.PlannerPlanDetails]
+        Returns: Optional[PlannerPlanDetails]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import planner_plan_details
+        from .......models.planner_plan_details import PlannerPlanDetails
 
-        return await self.request_adapter.send_async(request_info, planner_plan_details.PlannerPlanDetails, error_mapping)
+        return await self.request_adapter.send_async(request_info, PlannerPlanDetails, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DetailsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class DetailsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[planner_plan_details.PlannerPlanDetails] = None, request_configuration: Optional[DetailsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PlannerPlanDetails] = None, request_configuration: Optional[DetailsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property details in users
         Args:

@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import unified_role_management_policy
-    from ....models.o_data_errors import o_data_error
-    from .effective_rules import effective_rules_request_builder
-    from .rules import rules_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.unified_role_management_policy import UnifiedRoleManagementPolicy
+    from .effective_rules.effective_rules_request_builder import EffectiveRulesRequestBuilder
+    from .rules.rules_request_builder import RulesRequestBuilder
 
 class UnifiedRoleManagementPolicyItemRequestBuilder():
     """
@@ -46,62 +46,62 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UnifiedRoleManagementPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]:
+    async def get(self,request_configuration: Optional[UnifiedRoleManagementPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicy]:
         """
         Retrieve the details of a role management policy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]
+        Returns: Optional[UnifiedRoleManagementPolicy]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import unified_role_management_policy
+        from ....models.unified_role_management_policy import UnifiedRoleManagementPolicy
 
-        return await self.request_adapter.send_async(request_info, unified_role_management_policy.UnifiedRoleManagementPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleManagementPolicy, error_mapping)
     
-    async def patch(self,body: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy] = None, request_configuration: Optional[UnifiedRoleManagementPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]:
+    async def patch(self,body: Optional[UnifiedRoleManagementPolicy] = None, request_configuration: Optional[UnifiedRoleManagementPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicy]:
         """
         Update the navigation property roleManagementPolicies in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]
+        Returns: Optional[UnifiedRoleManagementPolicy]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import unified_role_management_policy
+        from ....models.unified_role_management_policy import UnifiedRoleManagementPolicy
 
-        return await self.request_adapter.send_async(request_info, unified_role_management_policy.UnifiedRoleManagementPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleManagementPolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy] = None, request_configuration: Optional[UnifiedRoleManagementPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UnifiedRoleManagementPolicy] = None, request_configuration: Optional[UnifiedRoleManagementPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property roleManagementPolicies in policies
         Args:
@@ -159,22 +159,22 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
         return request_info
     
     @property
-    def effective_rules(self) -> effective_rules_request_builder.EffectiveRulesRequestBuilder:
+    def effective_rules(self) -> EffectiveRulesRequestBuilder:
         """
         Provides operations to manage the effectiveRules property of the microsoft.graph.unifiedRoleManagementPolicy entity.
         """
-        from .effective_rules import effective_rules_request_builder
+        from .effective_rules.effective_rules_request_builder import EffectiveRulesRequestBuilder
 
-        return effective_rules_request_builder.EffectiveRulesRequestBuilder(self.request_adapter, self.path_parameters)
+        return EffectiveRulesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rules(self) -> rules_request_builder.RulesRequestBuilder:
+    def rules(self) -> RulesRequestBuilder:
         """
         Provides operations to manage the rules property of the microsoft.graph.unifiedRoleManagementPolicy entity.
         """
-        from .rules import rules_request_builder
+        from .rules.rules_request_builder import RulesRequestBuilder
 
-        return rules_request_builder.RulesRequestBuilder(self.request_adapter, self.path_parameters)
+        return RulesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class UnifiedRoleManagementPolicyItemRequestBuilderDeleteRequestConfiguration():

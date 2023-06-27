@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import get_member_groups_post_request_body, get_member_groups_response
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .get_member_groups_post_request_body import GetMemberGroupsPostRequestBody
+    from .get_member_groups_response import GetMemberGroupsResponse
 
 class GetMemberGroupsRequestBuilder():
     """
@@ -35,32 +36,32 @@ class GetMemberGroupsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[get_member_groups_post_request_body.GetMemberGroupsPostRequestBody] = None, request_configuration: Optional[GetMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[get_member_groups_response.GetMemberGroupsResponse]:
+    async def post(self,body: Optional[GetMemberGroupsPostRequestBody] = None, request_configuration: Optional[GetMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetMemberGroupsResponse]:
         """
         Return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[get_member_groups_response.GetMemberGroupsResponse]
+        Returns: Optional[GetMemberGroupsResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import get_member_groups_response
+        from .get_member_groups_response import GetMemberGroupsResponse
 
-        return await self.request_adapter.send_async(request_info, get_member_groups_response.GetMemberGroupsResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetMemberGroupsResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[get_member_groups_post_request_body.GetMemberGroupsPostRequestBody] = None, request_configuration: Optional[GetMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GetMemberGroupsPostRequestBody] = None, request_configuration: Optional[GetMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive.
         Args:

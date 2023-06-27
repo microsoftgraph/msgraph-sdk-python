@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import search_aggregation, search_hit
+    from .search_aggregation import SearchAggregation
+    from .search_hit import SearchHit
 
 @dataclass
 class SearchHitsContainer(AdditionalDataHolder, Parsable):
@@ -12,9 +13,9 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The aggregations property
-    aggregations: Optional[List[search_aggregation.SearchAggregation]] = None
+    aggregations: Optional[List[SearchAggregation]] = None
     # A collection of the search results.
-    hits: Optional[List[search_hit.SearchHit]] = None
+    hits: Optional[List[SearchHit]] = None
     # Provides information if more results are available. Based on this information, you can adjust the from and size properties of the searchRequest accordingly.
     more_results_available: Optional[bool] = None
     # The OdataType property
@@ -39,13 +40,15 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import search_aggregation, search_hit
+        from .search_aggregation import SearchAggregation
+        from .search_hit import SearchHit
 
-        from . import search_aggregation, search_hit
+        from .search_aggregation import SearchAggregation
+        from .search_hit import SearchHit
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(search_aggregation.SearchAggregation)),
-            "hits": lambda n : setattr(self, 'hits', n.get_collection_of_object_values(search_hit.SearchHit)),
+            "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(SearchAggregation)),
+            "hits": lambda n : setattr(self, 'hits', n.get_collection_of_object_values(SearchHit)),
             "moreResultsAvailable": lambda n : setattr(self, 'more_results_available', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "total": lambda n : setattr(self, 'total', n.get_int_value()),

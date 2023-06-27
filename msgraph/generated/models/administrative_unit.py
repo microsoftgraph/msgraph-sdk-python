@@ -4,23 +4,25 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import directory_object, extension, scoped_role_membership
+    from .directory_object import DirectoryObject
+    from .extension import Extension
+    from .scoped_role_membership import ScopedRoleMembership
 
-from . import directory_object
+from .directory_object import DirectoryObject
 
 @dataclass
-class AdministrativeUnit(directory_object.DirectoryObject):
+class AdministrativeUnit(DirectoryObject):
     odata_type = "#microsoft.graph.administrativeUnit"
     # An optional description for the administrative unit. Supports $filter (eq, ne, in, startsWith), $search.
     description: Optional[str] = None
     # Display name for the administrative unit. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
     display_name: Optional[str] = None
     # The collection of open extensions defined for this administrative unit. Nullable.
-    extensions: Optional[List[extension.Extension]] = None
+    extensions: Optional[List[Extension]] = None
     # Users and groups that are members of this administrative unit. Supports $expand.
-    members: Optional[List[directory_object.DirectoryObject]] = None
+    members: Optional[List[DirectoryObject]] = None
     # Scoped-role members of this administrative unit.
-    scoped_role_members: Optional[List[scoped_role_membership.ScopedRoleMembership]] = None
+    scoped_role_members: Optional[List[ScopedRoleMembership]] = None
     # Controls whether the administrative unit and its members are hidden or public. Can be set to HiddenMembership. If not set (value is null), the default behavior is public. When set to HiddenMembership, only members of the administrative unit can list other members of the administrative unit.
     visibility: Optional[str] = None
     
@@ -41,16 +43,20 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object, extension, scoped_role_membership
+        from .directory_object import DirectoryObject
+        from .extension import Extension
+        from .scoped_role_membership import ScopedRoleMembership
 
-        from . import directory_object, extension, scoped_role_membership
+        from .directory_object import DirectoryObject
+        from .extension import Extension
+        from .scoped_role_membership import ScopedRoleMembership
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "scopedRoleMembers": lambda n : setattr(self, 'scoped_role_members', n.get_collection_of_object_values(scoped_role_membership.ScopedRoleMembership)),
+            "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
+            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(DirectoryObject)),
+            "scopedRoleMembers": lambda n : setattr(self, 'scoped_role_members', n.get_collection_of_object_values(ScopedRoleMembership)),
             "visibility": lambda n : setattr(self, 'visibility', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

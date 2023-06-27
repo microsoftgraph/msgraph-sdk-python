@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import answer_input_type
+    from .answer_input_type import AnswerInputType
 
 @dataclass
 class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
     # The answer given by the user in case the answerInputType is text.
     answer: Optional[str] = None
     # The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
-    answer_input_type: Optional[answer_input_type.AnswerInputType] = None
+    answer_input_type: Optional[AnswerInputType] = None
     # In case the answerInputType is radioButton, this will consists of a list of possible answer values.
     answer_options: Optional[List[str]] = None
     # Indicates whether it is mandatory to answer the custom question.
@@ -45,13 +45,13 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import answer_input_type
+        from .answer_input_type import AnswerInputType
 
-        from . import answer_input_type
+        from .answer_input_type import AnswerInputType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "answer": lambda n : setattr(self, 'answer', n.get_str_value()),
-            "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
+            "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(AnswerInputType)),
             "answerOptions": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
             "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

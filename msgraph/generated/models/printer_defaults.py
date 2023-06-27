@@ -4,7 +4,13 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import print_color_mode, print_duplex_mode, print_finishing, print_multipage_layout, print_orientation, print_quality, print_scaling
+    from .print_color_mode import PrintColorMode
+    from .print_duplex_mode import PrintDuplexMode
+    from .print_finishing import PrintFinishing
+    from .print_multipage_layout import PrintMultipageLayout
+    from .print_orientation import PrintOrientation
+    from .print_quality import PrintQuality
+    from .print_scaling import PrintScaling
 
 @dataclass
 class PrinterDefaults(AdditionalDataHolder, Parsable):
@@ -12,7 +18,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The default color mode to use when printing the document. Valid values are described in the following table.
-    color_mode: Optional[print_color_mode.PrintColorMode] = None
+    color_mode: Optional[PrintColorMode] = None
     # The default content (MIME) type to use when processing documents.
     content_type: Optional[str] = None
     # The default number of copies printed per job.
@@ -20,9 +26,9 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
     # The default resolution in DPI to use when printing the job.
     dpi: Optional[int] = None
     # The default duplex (double-sided) configuration to use when printing a document. Valid values are described in the following table.
-    duplex_mode: Optional[print_duplex_mode.PrintDuplexMode] = None
+    duplex_mode: Optional[PrintDuplexMode] = None
     # The default set of finishings to apply to print jobs. Valid values are described in the following table.
-    finishings: Optional[List[print_finishing.PrintFinishing]] = None
+    finishings: Optional[List[PrintFinishing]] = None
     # The default fitPdfToPage setting. True to fit each page of a PDF document to a physical sheet of media; false to let the printer decide how to lay out impressions.
     fit_pdf_to_page: Optional[bool] = None
     # The inputBin property
@@ -34,19 +40,19 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
     # The default media (such as paper) type to print the document on.
     media_type: Optional[str] = None
     # The default direction to lay out pages when multiple pages are being printed per sheet. Valid values are described in the following table.
-    multipage_layout: Optional[print_multipage_layout.PrintMultipageLayout] = None
+    multipage_layout: Optional[PrintMultipageLayout] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The default orientation to use when printing the document. Valid values are described in the following table.
-    orientation: Optional[print_orientation.PrintOrientation] = None
+    orientation: Optional[PrintOrientation] = None
     # The default output bin to place completed prints into. See the printer's capabilities for a list of supported output bins.
     output_bin: Optional[str] = None
     # The default number of document pages to print on each sheet.
     pages_per_sheet: Optional[int] = None
     # The default quality to use when printing the document. Valid values are described in the following table.
-    quality: Optional[print_quality.PrintQuality] = None
+    quality: Optional[PrintQuality] = None
     # Specifies how the printer scales the document data to fit the requested media. Valid values are described in the following table.
-    scaling: Optional[print_scaling.PrintScaling] = None
+    scaling: Optional[PrintScaling] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterDefaults:
@@ -65,29 +71,41 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import print_color_mode, print_duplex_mode, print_finishing, print_multipage_layout, print_orientation, print_quality, print_scaling
+        from .print_color_mode import PrintColorMode
+        from .print_duplex_mode import PrintDuplexMode
+        from .print_finishing import PrintFinishing
+        from .print_multipage_layout import PrintMultipageLayout
+        from .print_orientation import PrintOrientation
+        from .print_quality import PrintQuality
+        from .print_scaling import PrintScaling
 
-        from . import print_color_mode, print_duplex_mode, print_finishing, print_multipage_layout, print_orientation, print_quality, print_scaling
+        from .print_color_mode import PrintColorMode
+        from .print_duplex_mode import PrintDuplexMode
+        from .print_finishing import PrintFinishing
+        from .print_multipage_layout import PrintMultipageLayout
+        from .print_orientation import PrintOrientation
+        from .print_quality import PrintQuality
+        from .print_scaling import PrintScaling
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "colorMode": lambda n : setattr(self, 'color_mode', n.get_enum_value(print_color_mode.PrintColorMode)),
+            "colorMode": lambda n : setattr(self, 'color_mode', n.get_enum_value(PrintColorMode)),
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "copiesPerJob": lambda n : setattr(self, 'copies_per_job', n.get_int_value()),
             "dpi": lambda n : setattr(self, 'dpi', n.get_int_value()),
-            "duplexMode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(print_duplex_mode.PrintDuplexMode)),
-            "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_enum_values(print_finishing.PrintFinishing)),
+            "duplexMode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(PrintDuplexMode)),
+            "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_enum_values(PrintFinishing)),
             "fitPdfToPage": lambda n : setattr(self, 'fit_pdf_to_page', n.get_bool_value()),
             "inputBin": lambda n : setattr(self, 'input_bin', n.get_str_value()),
             "mediaColor": lambda n : setattr(self, 'media_color', n.get_str_value()),
             "mediaSize": lambda n : setattr(self, 'media_size', n.get_str_value()),
             "mediaType": lambda n : setattr(self, 'media_type', n.get_str_value()),
-            "multipageLayout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(print_multipage_layout.PrintMultipageLayout)),
+            "multipageLayout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(PrintMultipageLayout)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "orientation": lambda n : setattr(self, 'orientation', n.get_enum_value(print_orientation.PrintOrientation)),
+            "orientation": lambda n : setattr(self, 'orientation', n.get_enum_value(PrintOrientation)),
             "outputBin": lambda n : setattr(self, 'output_bin', n.get_str_value()),
             "pagesPerSheet": lambda n : setattr(self, 'pages_per_sheet', n.get_int_value()),
-            "quality": lambda n : setattr(self, 'quality', n.get_enum_value(print_quality.PrintQuality)),
-            "scaling": lambda n : setattr(self, 'scaling', n.get_enum_value(print_scaling.PrintScaling)),
+            "quality": lambda n : setattr(self, 'quality', n.get_enum_value(PrintQuality)),
+            "scaling": lambda n : setattr(self, 'scaling', n.get_enum_value(PrintScaling)),
         }
         return fields
     

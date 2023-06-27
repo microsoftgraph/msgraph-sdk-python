@@ -1,11 +1,30 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import amazon_resource_evidence, analyzed_message_evidence, azure_resource_evidence, cloud_application_evidence, device_evidence, evidence_remediation_status, evidence_role, evidence_verdict, file_evidence, google_cloud_resource_evidence, ip_evidence, mailbox_evidence, mail_cluster_evidence, oauth_application_evidence, process_evidence, registry_key_evidence, registry_value_evidence, security_group_evidence, url_evidence, user_evidence
+    from .amazon_resource_evidence import AmazonResourceEvidence
+    from .analyzed_message_evidence import AnalyzedMessageEvidence
+    from .azure_resource_evidence import AzureResourceEvidence
+    from .cloud_application_evidence import CloudApplicationEvidence
+    from .device_evidence import DeviceEvidence
+    from .evidence_remediation_status import EvidenceRemediationStatus
+    from .evidence_role import EvidenceRole
+    from .evidence_verdict import EvidenceVerdict
+    from .file_evidence import FileEvidence
+    from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
+    from .ip_evidence import IpEvidence
+    from .mailbox_evidence import MailboxEvidence
+    from .mail_cluster_evidence import MailClusterEvidence
+    from .oauth_application_evidence import OauthApplicationEvidence
+    from .process_evidence import ProcessEvidence
+    from .registry_key_evidence import RegistryKeyEvidence
+    from .registry_value_evidence import RegistryValueEvidence
+    from .security_group_evidence import SecurityGroupEvidence
+    from .url_evidence import UrlEvidence
+    from .user_evidence import UserEvidence
 
 @dataclass
 class AlertEvidence(AdditionalDataHolder, Parsable):
@@ -13,21 +32,21 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The date and time when the evidence was created and added to the alert. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The detailedRoles property
     detailed_roles: Optional[List[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The remediationStatus property
-    remediation_status: Optional[evidence_remediation_status.EvidenceRemediationStatus] = None
+    remediation_status: Optional[EvidenceRemediationStatus] = None
     # Details about the remediation status.
     remediation_status_details: Optional[str] = None
     # One or more roles that an evidence entity represents in an alert. For example, an IP address that is associated with an attacker has the evidence role Attacker.
-    roles: Optional[List[evidence_role.EvidenceRole]] = None
+    roles: Optional[List[EvidenceRole]] = None
     # Array of custom tags associated with an evidence instance. For example, to denote a group of devices or high value assets.
     tags: Optional[List[str]] = None
     # The verdict property
-    verdict: Optional[evidence_verdict.EvidenceVerdict] = None
+    verdict: Optional[EvidenceVerdict] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AlertEvidence:
@@ -44,73 +63,73 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.amazonResourceEvidence".casefold():
-            from . import amazon_resource_evidence
+            from .amazon_resource_evidence import AmazonResourceEvidence
 
-            return amazon_resource_evidence.AmazonResourceEvidence()
+            return AmazonResourceEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.analyzedMessageEvidence".casefold():
-            from . import analyzed_message_evidence
+            from .analyzed_message_evidence import AnalyzedMessageEvidence
 
-            return analyzed_message_evidence.AnalyzedMessageEvidence()
+            return AnalyzedMessageEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.azureResourceEvidence".casefold():
-            from . import azure_resource_evidence
+            from .azure_resource_evidence import AzureResourceEvidence
 
-            return azure_resource_evidence.AzureResourceEvidence()
+            return AzureResourceEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.cloudApplicationEvidence".casefold():
-            from . import cloud_application_evidence
+            from .cloud_application_evidence import CloudApplicationEvidence
 
-            return cloud_application_evidence.CloudApplicationEvidence()
+            return CloudApplicationEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.deviceEvidence".casefold():
-            from . import device_evidence
+            from .device_evidence import DeviceEvidence
 
-            return device_evidence.DeviceEvidence()
+            return DeviceEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.fileEvidence".casefold():
-            from . import file_evidence
+            from .file_evidence import FileEvidence
 
-            return file_evidence.FileEvidence()
+            return FileEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.googleCloudResourceEvidence".casefold():
-            from . import google_cloud_resource_evidence
+            from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
 
-            return google_cloud_resource_evidence.GoogleCloudResourceEvidence()
+            return GoogleCloudResourceEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ipEvidence".casefold():
-            from . import ip_evidence
+            from .ip_evidence import IpEvidence
 
-            return ip_evidence.IpEvidence()
+            return IpEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.mailboxEvidence".casefold():
-            from . import mailbox_evidence
+            from .mailbox_evidence import MailboxEvidence
 
-            return mailbox_evidence.MailboxEvidence()
+            return MailboxEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.mailClusterEvidence".casefold():
-            from . import mail_cluster_evidence
+            from .mail_cluster_evidence import MailClusterEvidence
 
-            return mail_cluster_evidence.MailClusterEvidence()
+            return MailClusterEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.oauthApplicationEvidence".casefold():
-            from . import oauth_application_evidence
+            from .oauth_application_evidence import OauthApplicationEvidence
 
-            return oauth_application_evidence.OauthApplicationEvidence()
+            return OauthApplicationEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.processEvidence".casefold():
-            from . import process_evidence
+            from .process_evidence import ProcessEvidence
 
-            return process_evidence.ProcessEvidence()
+            return ProcessEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.registryKeyEvidence".casefold():
-            from . import registry_key_evidence
+            from .registry_key_evidence import RegistryKeyEvidence
 
-            return registry_key_evidence.RegistryKeyEvidence()
+            return RegistryKeyEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.registryValueEvidence".casefold():
-            from . import registry_value_evidence
+            from .registry_value_evidence import RegistryValueEvidence
 
-            return registry_value_evidence.RegistryValueEvidence()
+            return RegistryValueEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.securityGroupEvidence".casefold():
-            from . import security_group_evidence
+            from .security_group_evidence import SecurityGroupEvidence
 
-            return security_group_evidence.SecurityGroupEvidence()
+            return SecurityGroupEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.urlEvidence".casefold():
-            from . import url_evidence
+            from .url_evidence import UrlEvidence
 
-            return url_evidence.UrlEvidence()
+            return UrlEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.userEvidence".casefold():
-            from . import user_evidence
+            from .user_evidence import UserEvidence
 
-            return user_evidence.UserEvidence()
+            return UserEvidence()
         return AlertEvidence()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -118,19 +137,57 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import amazon_resource_evidence, analyzed_message_evidence, azure_resource_evidence, cloud_application_evidence, device_evidence, evidence_remediation_status, evidence_role, evidence_verdict, file_evidence, google_cloud_resource_evidence, ip_evidence, mailbox_evidence, mail_cluster_evidence, oauth_application_evidence, process_evidence, registry_key_evidence, registry_value_evidence, security_group_evidence, url_evidence, user_evidence
+        from .amazon_resource_evidence import AmazonResourceEvidence
+        from .analyzed_message_evidence import AnalyzedMessageEvidence
+        from .azure_resource_evidence import AzureResourceEvidence
+        from .cloud_application_evidence import CloudApplicationEvidence
+        from .device_evidence import DeviceEvidence
+        from .evidence_remediation_status import EvidenceRemediationStatus
+        from .evidence_role import EvidenceRole
+        from .evidence_verdict import EvidenceVerdict
+        from .file_evidence import FileEvidence
+        from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
+        from .ip_evidence import IpEvidence
+        from .mailbox_evidence import MailboxEvidence
+        from .mail_cluster_evidence import MailClusterEvidence
+        from .oauth_application_evidence import OauthApplicationEvidence
+        from .process_evidence import ProcessEvidence
+        from .registry_key_evidence import RegistryKeyEvidence
+        from .registry_value_evidence import RegistryValueEvidence
+        from .security_group_evidence import SecurityGroupEvidence
+        from .url_evidence import UrlEvidence
+        from .user_evidence import UserEvidence
 
-        from . import amazon_resource_evidence, analyzed_message_evidence, azure_resource_evidence, cloud_application_evidence, device_evidence, evidence_remediation_status, evidence_role, evidence_verdict, file_evidence, google_cloud_resource_evidence, ip_evidence, mailbox_evidence, mail_cluster_evidence, oauth_application_evidence, process_evidence, registry_key_evidence, registry_value_evidence, security_group_evidence, url_evidence, user_evidence
+        from .amazon_resource_evidence import AmazonResourceEvidence
+        from .analyzed_message_evidence import AnalyzedMessageEvidence
+        from .azure_resource_evidence import AzureResourceEvidence
+        from .cloud_application_evidence import CloudApplicationEvidence
+        from .device_evidence import DeviceEvidence
+        from .evidence_remediation_status import EvidenceRemediationStatus
+        from .evidence_role import EvidenceRole
+        from .evidence_verdict import EvidenceVerdict
+        from .file_evidence import FileEvidence
+        from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
+        from .ip_evidence import IpEvidence
+        from .mailbox_evidence import MailboxEvidence
+        from .mail_cluster_evidence import MailClusterEvidence
+        from .oauth_application_evidence import OauthApplicationEvidence
+        from .process_evidence import ProcessEvidence
+        from .registry_key_evidence import RegistryKeyEvidence
+        from .registry_value_evidence import RegistryValueEvidence
+        from .security_group_evidence import SecurityGroupEvidence
+        from .url_evidence import UrlEvidence
+        from .user_evidence import UserEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "detailedRoles": lambda n : setattr(self, 'detailed_roles', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "remediationStatus": lambda n : setattr(self, 'remediation_status', n.get_enum_value(evidence_remediation_status.EvidenceRemediationStatus)),
+            "remediationStatus": lambda n : setattr(self, 'remediation_status', n.get_enum_value(EvidenceRemediationStatus)),
             "remediationStatusDetails": lambda n : setattr(self, 'remediation_status_details', n.get_str_value()),
-            "roles": lambda n : setattr(self, 'roles', n.get_collection_of_enum_values(evidence_role.EvidenceRole)),
+            "roles": lambda n : setattr(self, 'roles', n.get_collection_of_enum_values(EvidenceRole)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "verdict": lambda n : setattr(self, 'verdict', n.get_enum_value(evidence_verdict.EvidenceVerdict)),
+            "verdict": lambda n : setattr(self, 'verdict', n.get_enum_value(EvidenceVerdict)),
         }
         return fields
     
@@ -142,7 +199,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_collection_of_primitive_values("detailedRoles", self.detailed_roles)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("remediationStatus", self.remediation_status)

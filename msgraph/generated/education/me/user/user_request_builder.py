@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import user
-    from ....models.o_data_errors import o_data_error
-    from .mailbox_settings import mailbox_settings_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.user import User
+    from .mailbox_settings.mailbox_settings_request_builder import MailboxSettingsRequestBuilder
 
 class UserRequestBuilder():
     """
@@ -36,27 +36,27 @@ class UserRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[UserRequestBuilderGetRequestConfiguration] = None) -> Optional[user.User]:
+    async def get(self,request_configuration: Optional[UserRequestBuilderGetRequestConfiguration] = None) -> Optional[User]:
         """
         Retrieve the simple directory **user** that corresponds to this **educationUser**.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user.User]
+        Returns: Optional[User]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import user
+        from ....models.user import User
 
-        return await self.request_adapter.send_async(request_info, user.User, error_mapping)
+        return await self.request_adapter.send_async(request_info, User, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[UserRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -77,13 +77,13 @@ class UserRequestBuilder():
         return request_info
     
     @property
-    def mailbox_settings(self) -> mailbox_settings_request_builder.MailboxSettingsRequestBuilder:
+    def mailbox_settings(self) -> MailboxSettingsRequestBuilder:
         """
         The mailboxSettings property
         """
-        from .mailbox_settings import mailbox_settings_request_builder
+        from .mailbox_settings.mailbox_settings_request_builder import MailboxSettingsRequestBuilder
 
-        return mailbox_settings_request_builder.MailboxSettingsRequestBuilder(self.request_adapter, self.path_parameters)
+        return MailboxSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class UserRequestBuilderGetQueryParameters():

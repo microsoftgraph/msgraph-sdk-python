@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class MultiValueLegacyExtendedProperty(entity.Entity):
+class MultiValueLegacyExtendedProperty(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of property values.
@@ -32,9 +32,9 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "value": lambda n : setattr(self, 'value', n.get_collection_of_primitive_values(str)),

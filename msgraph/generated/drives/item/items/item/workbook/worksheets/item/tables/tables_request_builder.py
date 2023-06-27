@@ -10,12 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import workbook_table, workbook_table_collection_response
-    from .........models.o_data_errors import o_data_error
-    from .add import add_request_builder
-    from .count import count_request_builder
-    from .item import workbook_table_item_request_builder
-    from .item_at_with_index import item_at_with_index_request_builder
+    from .........models.o_data_errors.o_data_error import ODataError
+    from .........models.workbook_table import WorkbookTable
+    from .........models.workbook_table_collection_response import WorkbookTableCollectionResponse
+    from .add.add_request_builder import AddRequestBuilder
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.workbook_table_item_request_builder import WorkbookTableItemRequestBuilder
+    from .item_at_with_index.item_at_with_index_request_builder import ItemAtWithIndexRequestBuilder
 
 class TablesRequestBuilder():
     """
@@ -39,80 +40,80 @@ class TablesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_workbook_table_id(self,workbook_table_id: str) -> workbook_table_item_request_builder.WorkbookTableItemRequestBuilder:
+    def by_workbook_table_id(self,workbook_table_id: str) -> WorkbookTableItemRequestBuilder:
         """
         Provides operations to manage the tables property of the microsoft.graph.workbookWorksheet entity.
         Args:
             workbook_table_id: Unique identifier of the item
-        Returns: workbook_table_item_request_builder.WorkbookTableItemRequestBuilder
+        Returns: WorkbookTableItemRequestBuilder
         """
         if not workbook_table_id:
             raise TypeError("workbook_table_id cannot be null.")
-        from .item import workbook_table_item_request_builder
+        from .item.workbook_table_item_request_builder import WorkbookTableItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookTable%2Did"] = workbook_table_id
-        return workbook_table_item_request_builder.WorkbookTableItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return WorkbookTableItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TablesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table_collection_response.WorkbookTableCollectionResponse]:
+    async def get(self,request_configuration: Optional[TablesRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookTableCollectionResponse]:
         """
         Retrieve a list of table objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_table_collection_response.WorkbookTableCollectionResponse]
+        Returns: Optional[WorkbookTableCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import workbook_table_collection_response
+        from .........models.workbook_table_collection_response import WorkbookTableCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, workbook_table_collection_response.WorkbookTableCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookTableCollectionResponse, error_mapping)
     
-    def item_at_with_index(self,index: Optional[int] = None) -> item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder:
+    def item_at_with_index(self,index: Optional[int] = None) -> ItemAtWithIndexRequestBuilder:
         """
         Provides operations to call the itemAt method.
         Args:
             index: Usage: index={index}
-        Returns: item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder
+        Returns: ItemAtWithIndexRequestBuilder
         """
         if not index:
             raise TypeError("index cannot be null.")
-        from .item_at_with_index import item_at_with_index_request_builder
+        from .item_at_with_index.item_at_with_index_request_builder import ItemAtWithIndexRequestBuilder
 
-        return item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder(self.request_adapter, self.path_parameters, index)
+        return ItemAtWithIndexRequestBuilder(self.request_adapter, self.path_parameters, index)
     
-    async def post(self,body: Optional[workbook_table.WorkbookTable] = None, request_configuration: Optional[TablesRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_table.WorkbookTable]:
+    async def post(self,body: Optional[WorkbookTable] = None, request_configuration: Optional[TablesRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookTable]:
         """
         Create new navigation property to tables for drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_table.WorkbookTable]
+        Returns: Optional[WorkbookTable]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import workbook_table
+        from .........models.workbook_table import WorkbookTable
 
-        return await self.request_adapter.send_async(request_info, workbook_table.WorkbookTable, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookTable, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TablesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -132,7 +133,7 @@ class TablesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[workbook_table.WorkbookTable] = None, request_configuration: Optional[TablesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WorkbookTable] = None, request_configuration: Optional[TablesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to tables for drives
         Args:
@@ -154,22 +155,22 @@ class TablesRequestBuilder():
         return request_info
     
     @property
-    def add(self) -> add_request_builder.AddRequestBuilder:
+    def add(self) -> AddRequestBuilder:
         """
         Provides operations to call the add method.
         """
-        from .add import add_request_builder
+        from .add.add_request_builder import AddRequestBuilder
 
-        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
+        return AddRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to call the count method.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TablesRequestBuilderGetQueryParameters():

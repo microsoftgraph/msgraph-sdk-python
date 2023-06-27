@@ -4,26 +4,32 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import administrative_unit, attribute_set, custom_security_attribute_definition, directory_object, entity, identity_provider_base, on_premises_directory_synchronization
+    from .administrative_unit import AdministrativeUnit
+    from .attribute_set import AttributeSet
+    from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
+    from .directory_object import DirectoryObject
+    from .entity import Entity
+    from .identity_provider_base import IdentityProviderBase
+    from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Directory(entity.Entity):
+class Directory(Entity):
     # Conceptual container for user and group directory objects.
-    administrative_units: Optional[List[administrative_unit.AdministrativeUnit]] = None
+    administrative_units: Optional[List[AdministrativeUnit]] = None
     # Group of related custom security attribute definitions.
-    attribute_sets: Optional[List[attribute_set.AttributeSet]] = None
+    attribute_sets: Optional[List[AttributeSet]] = None
     # Schema of a custom security attributes (key-value pairs).
-    custom_security_attribute_definitions: Optional[List[custom_security_attribute_definition.CustomSecurityAttributeDefinition]] = None
+    custom_security_attribute_definitions: Optional[List[CustomSecurityAttributeDefinition]] = None
     # Recently deleted items. Read-only. Nullable.
-    deleted_items: Optional[List[directory_object.DirectoryObject]] = None
+    deleted_items: Optional[List[DirectoryObject]] = None
     # Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
-    federation_configurations: Optional[List[identity_provider_base.IdentityProviderBase]] = None
+    federation_configurations: Optional[List[IdentityProviderBase]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A container for on-premises directory synchronization functionalities that are available for the organization.
-    on_premises_synchronization: Optional[List[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]] = None
+    on_premises_synchronization: Optional[List[OnPremisesDirectorySynchronization]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Directory:
@@ -42,17 +48,29 @@ class Directory(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import administrative_unit, attribute_set, custom_security_attribute_definition, directory_object, entity, identity_provider_base, on_premises_directory_synchronization
+        from .administrative_unit import AdministrativeUnit
+        from .attribute_set import AttributeSet
+        from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
+        from .directory_object import DirectoryObject
+        from .entity import Entity
+        from .identity_provider_base import IdentityProviderBase
+        from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
 
-        from . import administrative_unit, attribute_set, custom_security_attribute_definition, directory_object, entity, identity_provider_base, on_premises_directory_synchronization
+        from .administrative_unit import AdministrativeUnit
+        from .attribute_set import AttributeSet
+        from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
+        from .directory_object import DirectoryObject
+        from .entity import Entity
+        from .identity_provider_base import IdentityProviderBase
+        from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(administrative_unit.AdministrativeUnit)),
-            "attributeSets": lambda n : setattr(self, 'attribute_sets', n.get_collection_of_object_values(attribute_set.AttributeSet)),
-            "customSecurityAttributeDefinitions": lambda n : setattr(self, 'custom_security_attribute_definitions', n.get_collection_of_object_values(custom_security_attribute_definition.CustomSecurityAttributeDefinition)),
-            "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "federationConfigurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
-            "onPremisesSynchronization": lambda n : setattr(self, 'on_premises_synchronization', n.get_collection_of_object_values(on_premises_directory_synchronization.OnPremisesDirectorySynchronization)),
+            "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(AdministrativeUnit)),
+            "attributeSets": lambda n : setattr(self, 'attribute_sets', n.get_collection_of_object_values(AttributeSet)),
+            "customSecurityAttributeDefinitions": lambda n : setattr(self, 'custom_security_attribute_definitions', n.get_collection_of_object_values(CustomSecurityAttributeDefinition)),
+            "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_collection_of_object_values(DirectoryObject)),
+            "federationConfigurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(IdentityProviderBase)),
+            "onPremisesSynchronization": lambda n : setattr(self, 'on_premises_synchronization', n.get_collection_of_object_values(OnPremisesDirectorySynchronization)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

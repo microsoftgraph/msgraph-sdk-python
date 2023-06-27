@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_contained_app
+    from .mobile_contained_app import MobileContainedApp
 
-from . import mobile_contained_app
+from .mobile_contained_app import MobileContainedApp
 
 @dataclass
-class WindowsUniversalAppXContainedApp(mobile_contained_app.MobileContainedApp):
+class WindowsUniversalAppXContainedApp(MobileContainedApp):
     odata_type = "#microsoft.graph.windowsUniversalAppXContainedApp"
     # The app user model ID of the contained app of a WindowsUniversalAppX app.
     app_user_model_id: Optional[str] = None
@@ -31,9 +31,9 @@ class WindowsUniversalAppXContainedApp(mobile_contained_app.MobileContainedApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_contained_app
+        from .mobile_contained_app import MobileContainedApp
 
-        from . import mobile_contained_app
+        from .mobile_contained_app import MobileContainedApp
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appUserModelId": lambda n : setattr(self, 'app_user_model_id', n.get_str_value()),

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models.external_connectors import identity, identity_collection_response
-    from ......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import identity_item_request_builder
+    from ......models.external_connectors.identity import Identity
+    from ......models.external_connectors.identity_collection_response import IdentityCollectionResponse
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.identity_item_request_builder import IdentityItemRequestBuilder
 
 class MembersRequestBuilder():
     """
@@ -37,67 +38,67 @@ class MembersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_identity_id(self,identity_id: str) -> identity_item_request_builder.IdentityItemRequestBuilder:
+    def by_identity_id(self,identity_id: str) -> IdentityItemRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.externalConnectors.externalGroup entity.
         Args:
             identity_id: Unique identifier of the item
-        Returns: identity_item_request_builder.IdentityItemRequestBuilder
+        Returns: IdentityItemRequestBuilder
         """
         if not identity_id:
             raise TypeError("identity_id cannot be null.")
-        from .item import identity_item_request_builder
+        from .item.identity_item_request_builder import IdentityItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identity%2Did"] = identity_id
-        return identity_item_request_builder.IdentityItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return IdentityItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_collection_response.IdentityCollectionResponse]:
+    async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityCollectionResponse]:
         """
         A member added to an externalGroup. You can add Azure Active Directory users, Azure Active Directory groups, or an externalGroup as members.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity_collection_response.IdentityCollectionResponse]
+        Returns: Optional[IdentityCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.external_connectors import identity_collection_response
+        from ......models.external_connectors.identity_collection_response import IdentityCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, identity_collection_response.IdentityCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, IdentityCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[identity.Identity] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[identity.Identity]:
+    async def post(self,body: Optional[Identity] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[Identity]:
         """
         Create an identity resource for a new member in an externalGroup.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity.Identity]
+        Returns: Optional[Identity]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.external_connectors import identity
+        from ......models.external_connectors.identity import Identity
 
-        return await self.request_adapter.send_async(request_info, identity.Identity, error_mapping)
+        return await self.request_adapter.send_async(request_info, Identity, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class MembersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[identity.Identity] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Identity] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create an identity resource for a new member in an externalGroup.
         Args:
@@ -139,13 +140,13 @@ class MembersRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MembersRequestBuilderGetQueryParameters():

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import permission, permission_collection_response
-    from ......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import permission_item_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.permission import Permission
+    from ......models.permission_collection_response import PermissionCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.permission_item_request_builder import PermissionItemRequestBuilder
 
 class PermissionsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class PermissionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_permission_id(self,permission_id: str) -> permission_item_request_builder.PermissionItemRequestBuilder:
+    def by_permission_id(self,permission_id: str) -> PermissionItemRequestBuilder:
         """
         Provides operations to manage the permissions property of the microsoft.graph.driveItem entity.
         Args:
             permission_id: Unique identifier of the item
-        Returns: permission_item_request_builder.PermissionItemRequestBuilder
+        Returns: PermissionItemRequestBuilder
         """
         if not permission_id:
             raise TypeError("permission_id cannot be null.")
-        from .item import permission_item_request_builder
+        from .item.permission_item_request_builder import PermissionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["permission%2Did"] = permission_id
-        return permission_item_request_builder.PermissionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return PermissionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[permission_collection_response.PermissionCollectionResponse]:
+    async def get(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[PermissionCollectionResponse]:
         """
         List the effective sharing permissions on a driveItem.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[permission_collection_response.PermissionCollectionResponse]
+        Returns: Optional[PermissionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import permission_collection_response
+        from ......models.permission_collection_response import PermissionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, permission_collection_response.PermissionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PermissionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[permission.Permission] = None, request_configuration: Optional[PermissionsRequestBuilderPostRequestConfiguration] = None) -> Optional[permission.Permission]:
+    async def post(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionsRequestBuilderPostRequestConfiguration] = None) -> Optional[Permission]:
         """
         Create new navigation property to permissions for drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[permission.Permission]
+        Returns: Optional[Permission]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import permission
+        from ......models.permission import Permission
 
-        return await self.request_adapter.send_async(request_info, permission.Permission, error_mapping)
+        return await self.request_adapter.send_async(request_info, Permission, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class PermissionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[permission.Permission] = None, request_configuration: Optional[PermissionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to permissions for drives
         Args:
@@ -139,13 +140,13 @@ class PermissionsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PermissionsRequestBuilderGetQueryParameters():

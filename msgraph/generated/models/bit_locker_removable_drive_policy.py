@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import bit_locker_encryption_method
+    from .bit_locker_encryption_method import BitLockerEncryptionMethod
 
 @dataclass
 class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
@@ -17,7 +17,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
     # This policy setting determines whether BitLocker protection is required for removable data drives to be writable on a computer.
     block_cross_organization_write_access: Optional[bool] = None
     # Select the encryption method for removable  drives. Possible values are: aesCbc128, aesCbc256, xtsAes128, xtsAes256.
-    encryption_method: Optional[bit_locker_encryption_method.BitLockerEncryptionMethod] = None
+    encryption_method: Optional[BitLockerEncryptionMethod] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates whether to block write access to devices configured in another organization.  If requireEncryptionForWriteAccess is false, this value does not affect.
@@ -40,13 +40,13 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import bit_locker_encryption_method
+        from .bit_locker_encryption_method import BitLockerEncryptionMethod
 
-        from . import bit_locker_encryption_method
+        from .bit_locker_encryption_method import BitLockerEncryptionMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
             "blockCrossOrganizationWriteAccess": lambda n : setattr(self, 'block_cross_organization_write_access', n.get_bool_value()),
-            "encryptionMethod": lambda n : setattr(self, 'encryption_method', n.get_enum_value(bit_locker_encryption_method.BitLockerEncryptionMethod)),
+            "encryptionMethod": lambda n : setattr(self, 'encryption_method', n.get_enum_value(BitLockerEncryptionMethod)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "requireEncryptionForWriteAccess": lambda n : setattr(self, 'require_encryption_for_write_access', n.get_bool_value()),
         }

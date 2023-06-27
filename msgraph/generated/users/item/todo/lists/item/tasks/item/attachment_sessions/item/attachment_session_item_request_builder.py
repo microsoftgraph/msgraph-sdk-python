@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import attachment_session
-    from ..........models.o_data_errors import o_data_error
-    from .content import content_request_builder
+    from ..........models.attachment_session import AttachmentSession
+    from ..........models.o_data_errors.o_data_error import ODataError
+    from .content.content_request_builder import ContentRequestBuilder
 
 class AttachmentSessionItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class AttachmentSessionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AttachmentSessionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[attachment_session.AttachmentSession]:
+    async def get(self,request_configuration: Optional[AttachmentSessionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AttachmentSession]:
         """
         Get attachmentSessions from users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[attachment_session.AttachmentSession]
+        Returns: Optional[AttachmentSession]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import attachment_session
+        from ..........models.attachment_session import AttachmentSession
 
-        return await self.request_adapter.send_async(request_info, attachment_session.AttachmentSession, error_mapping)
+        return await self.request_adapter.send_async(request_info, AttachmentSession, error_mapping)
     
-    async def patch(self,body: Optional[attachment_session.AttachmentSession] = None, request_configuration: Optional[AttachmentSessionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[attachment_session.AttachmentSession]:
+    async def patch(self,body: Optional[AttachmentSession] = None, request_configuration: Optional[AttachmentSessionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AttachmentSession]:
         """
         Update the navigation property attachmentSessions in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[attachment_session.AttachmentSession]
+        Returns: Optional[AttachmentSession]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import attachment_session
+        from ..........models.attachment_session import AttachmentSession
 
-        return await self.request_adapter.send_async(request_info, attachment_session.AttachmentSession, error_mapping)
+        return await self.request_adapter.send_async(request_info, AttachmentSession, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AttachmentSessionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class AttachmentSessionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[attachment_session.AttachmentSession] = None, request_configuration: Optional[AttachmentSessionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AttachmentSession] = None, request_configuration: Optional[AttachmentSessionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property attachmentSessions in users
         Args:
@@ -158,13 +158,13 @@ class AttachmentSessionItemRequestBuilder():
         return request_info
     
     @property
-    def content(self) -> content_request_builder.ContentRequestBuilder:
+    def content(self) -> ContentRequestBuilder:
         """
         Provides operations to manage the media for the user entity.
         """
-        from .content import content_request_builder
+        from .content.content_request_builder import ContentRequestBuilder
 
-        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+        return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AttachmentSessionItemRequestBuilderDeleteRequestConfiguration():

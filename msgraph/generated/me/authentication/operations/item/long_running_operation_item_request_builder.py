@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import long_running_operation
-    from .....models.o_data_errors import o_data_error
+    from .....models.long_running_operation import LongRunningOperation
+    from .....models.o_data_errors.o_data_error import ODataError
 
 class LongRunningOperationItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class LongRunningOperationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[LongRunningOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[long_running_operation.LongRunningOperation]:
+    async def get(self,request_configuration: Optional[LongRunningOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[LongRunningOperation]:
         """
         Retrieve the status of a long-running operation, represented by a longRunningOperation object. A long-running operation is initiated when you reset a user's password. This resource type is also the base type for the richLongRunningOperation object that represents the status of a long-running operation on a site or a list. The possible states of the long-running operation are `notStarted`, `running`, `succeeded`, `failed`, `unknownFutureValue` where `succeeded` and `failed` are terminal states.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[long_running_operation.LongRunningOperation]
+        Returns: Optional[LongRunningOperation]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import long_running_operation
+        from .....models.long_running_operation import LongRunningOperation
 
-        return await self.request_adapter.send_async(request_info, long_running_operation.LongRunningOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, LongRunningOperation, error_mapping)
     
-    async def patch(self,body: Optional[long_running_operation.LongRunningOperation] = None, request_configuration: Optional[LongRunningOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[long_running_operation.LongRunningOperation]:
+    async def patch(self,body: Optional[LongRunningOperation] = None, request_configuration: Optional[LongRunningOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[LongRunningOperation]:
         """
         Update the navigation property operations in me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[long_running_operation.LongRunningOperation]
+        Returns: Optional[LongRunningOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import long_running_operation
+        from .....models.long_running_operation import LongRunningOperation
 
-        return await self.request_adapter.send_async(request_info, long_running_operation.LongRunningOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, LongRunningOperation, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[LongRunningOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class LongRunningOperationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[long_running_operation.LongRunningOperation] = None, request_configuration: Optional[LongRunningOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[LongRunningOperation] = None, request_configuration: Optional[LongRunningOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property operations in me
         Args:

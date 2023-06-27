@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import tone
+    from .tone import Tone
 
 @dataclass
 class ToneInfo(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
     # An incremental identifier used for ordering DTMF events.
     sequence_id: Optional[int] = None
     # The tone property
-    tone: Optional[tone.Tone] = None
+    tone: Optional[Tone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ToneInfo:
@@ -35,14 +35,14 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import tone
+        from .tone import Tone
 
-        from . import tone
+        from .tone import Tone
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sequenceId": lambda n : setattr(self, 'sequence_id', n.get_int_value()),
-            "tone": lambda n : setattr(self, 'tone', n.get_enum_value(tone.Tone)),
+            "tone": lambda n : setattr(self, 'tone', n.get_enum_value(Tone)),
         }
         return fields
     

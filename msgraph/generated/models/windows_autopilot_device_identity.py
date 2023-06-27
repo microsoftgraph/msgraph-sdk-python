@@ -1,16 +1,17 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import enrollment_state, entity
+    from .enrollment_state import EnrollmentState
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WindowsAutopilotDeviceIdentity(entity.Entity):
+class WindowsAutopilotDeviceIdentity(Entity):
     """
     The windowsAutopilotDeviceIdentity resource represents a Windows Autopilot Device.
     """
@@ -21,11 +22,11 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
     # Display Name
     display_name: Optional[str] = None
     # The enrollmentState property
-    enrollment_state: Optional[enrollment_state.EnrollmentState] = None
+    enrollment_state: Optional[EnrollmentState] = None
     # Group Tag of the Windows autopilot device.
     group_tag: Optional[str] = None
     # Intune Last Contacted Date Time of the Windows autopilot device.
-    last_contacted_date_time: Optional[datetime] = None
+    last_contacted_date_time: Optional[datetime.datetime] = None
     # Managed Device ID
     managed_device_id: Optional[str] = None
     # Oem manufacturer of the Windows autopilot device.
@@ -66,15 +67,17 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import enrollment_state, entity
+        from .enrollment_state import EnrollmentState
+        from .entity import Entity
 
-        from . import enrollment_state, entity
+        from .enrollment_state import EnrollmentState
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "addressableUserName": lambda n : setattr(self, 'addressable_user_name', n.get_str_value()),
             "azureActiveDirectoryDeviceId": lambda n : setattr(self, 'azure_active_directory_device_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enrollmentState": lambda n : setattr(self, 'enrollment_state', n.get_enum_value(enrollment_state.EnrollmentState)),
+            "enrollmentState": lambda n : setattr(self, 'enrollment_state', n.get_enum_value(EnrollmentState)),
             "groupTag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
             "lastContactedDateTime": lambda n : setattr(self, 'last_contacted_date_time', n.get_datetime_value()),
             "managedDeviceId": lambda n : setattr(self, 'managed_device_id', n.get_str_value()),
@@ -106,7 +109,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("enrollmentState", self.enrollment_state)
         writer.write_str_value("groupTag", self.group_tag)
-        writer.write_datetime_value("lastContactedDateTime", self.last_contacted_date_time)
+        writer.write_datetime_value()("lastContactedDateTime", self.last_contacted_date_time)
         writer.write_str_value("managedDeviceId", self.managed_device_id)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)

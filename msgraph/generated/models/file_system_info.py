@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -10,11 +10,11 @@ class FileSystemInfo(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The UTC date and time the file was created on a client.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The UTC date and time the file was last accessed. Available for the recent file list only.
-    last_accessed_date_time: Optional[datetime] = None
+    last_accessed_date_time: Optional[datetime.datetime] = None
     # The UTC date and time the file was last modified on a client.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -51,9 +51,9 @@ class FileSystemInfo(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("lastAccessedDateTime", self.last_accessed_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("lastAccessedDateTime", self.last_accessed_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

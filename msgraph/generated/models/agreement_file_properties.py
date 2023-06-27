@@ -1,22 +1,26 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import agreement_file, agreement_file_data, agreement_file_localization, agreement_file_version, entity
+    from .agreement_file import AgreementFile
+    from .agreement_file_data import AgreementFileData
+    from .agreement_file_localization import AgreementFileLocalization
+    from .agreement_file_version import AgreementFileVersion
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AgreementFileProperties(entity.Entity):
+class AgreementFileProperties(Entity):
     # The date time representing when the file was created.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Localized display name of the policy file of an agreement. The localized display name is shown to end users who view the agreement.
     display_name: Optional[str] = None
     # Data that represents the terms of use PDF document. Read-only.
-    file_data: Optional[agreement_file_data.AgreementFileData] = None
+    file_data: Optional[AgreementFileData] = None
     # Name of the agreement file (for example, TOU.pdf). Read-only.
     file_name: Optional[str] = None
     # If none of the languages matches the client preference, indicates whether this is the default agreement file . If none of the files are marked as default, the first one is treated as the default. Read-only.
@@ -43,17 +47,17 @@ class AgreementFileProperties(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreementFile".casefold():
-            from . import agreement_file
+            from .agreement_file import AgreementFile
 
-            return agreement_file.AgreementFile()
+            return AgreementFile()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreementFileLocalization".casefold():
-            from . import agreement_file_localization
+            from .agreement_file_localization import AgreementFileLocalization
 
-            return agreement_file_localization.AgreementFileLocalization()
+            return AgreementFileLocalization()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreementFileVersion".casefold():
-            from . import agreement_file_version
+            from .agreement_file_version import AgreementFileVersion
 
-            return agreement_file_version.AgreementFileVersion()
+            return AgreementFileVersion()
         return AgreementFileProperties()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -61,14 +65,22 @@ class AgreementFileProperties(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import agreement_file, agreement_file_data, agreement_file_localization, agreement_file_version, entity
+        from .agreement_file import AgreementFile
+        from .agreement_file_data import AgreementFileData
+        from .agreement_file_localization import AgreementFileLocalization
+        from .agreement_file_version import AgreementFileVersion
+        from .entity import Entity
 
-        from . import agreement_file, agreement_file_data, agreement_file_localization, agreement_file_version, entity
+        from .agreement_file import AgreementFile
+        from .agreement_file_data import AgreementFileData
+        from .agreement_file_localization import AgreementFileLocalization
+        from .agreement_file_version import AgreementFileVersion
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "fileData": lambda n : setattr(self, 'file_data', n.get_object_value(agreement_file_data.AgreementFileData)),
+            "fileData": lambda n : setattr(self, 'file_data', n.get_object_value(AgreementFileData)),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "isMajorVersion": lambda n : setattr(self, 'is_major_version', n.get_bool_value()),
@@ -87,7 +99,7 @@ class AgreementFileProperties(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("fileData", self.file_data)
         writer.write_str_value("fileName", self.file_name)

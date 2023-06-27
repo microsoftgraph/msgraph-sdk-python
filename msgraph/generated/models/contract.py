@@ -5,12 +5,12 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import directory_object
+    from .directory_object import DirectoryObject
 
-from . import directory_object
+from .directory_object import DirectoryObject
 
 @dataclass
-class Contract(directory_object.DirectoryObject):
+class Contract(DirectoryObject):
     odata_type = "#microsoft.graph.contract"
     # Type of contract. Possible values are:  SyndicationPartner, BreadthPartner, ResellerPartner. See more in the table below.
     contract_type: Optional[str] = None
@@ -38,9 +38,9 @@ class Contract(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object
+        from .directory_object import DirectoryObject
 
-        from . import directory_object
+        from .directory_object import DirectoryObject
 
         fields: Dict[str, Callable[[Any], None]] = {
             "contractType": lambda n : setattr(self, 'contract_type', n.get_str_value()),

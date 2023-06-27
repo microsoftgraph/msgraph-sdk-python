@@ -4,30 +4,34 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, json, workbook_chart_axis_format, workbook_chart_axis_title, workbook_chart_gridlines
+    from .entity import Entity
+    from .json import Json
+    from .workbook_chart_axis_format import WorkbookChartAxisFormat
+    from .workbook_chart_axis_title import WorkbookChartAxisTitle
+    from .workbook_chart_gridlines import WorkbookChartGridlines
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartAxis(entity.Entity):
+class WorkbookChartAxis(Entity):
     # Represents the formatting of a chart object, which includes line and font formatting. Read-only.
-    format: Optional[workbook_chart_axis_format.WorkbookChartAxisFormat] = None
+    format: Optional[WorkbookChartAxisFormat] = None
     # Returns a gridlines object that represents the major gridlines for the specified axis. Read-only.
-    major_gridlines: Optional[workbook_chart_gridlines.WorkbookChartGridlines] = None
+    major_gridlines: Optional[WorkbookChartGridlines] = None
     # Represents the interval between two major tick marks. Can be set to a numeric value or an empty string.  The returned value is always a number.
-    major_unit: Optional[json.Json] = None
+    major_unit: Optional[Json] = None
     # Represents the maximum value on the value axis.  Can be set to a numeric value or an empty string (for automatic axis values).  The returned value is always a number.
-    maximum: Optional[json.Json] = None
+    maximum: Optional[Json] = None
     # Represents the minimum value on the value axis. Can be set to a numeric value or an empty string (for automatic axis values).  The returned value is always a number.
-    minimum: Optional[json.Json] = None
+    minimum: Optional[Json] = None
     # Returns a Gridlines object that represents the minor gridlines for the specified axis. Read-only.
-    minor_gridlines: Optional[workbook_chart_gridlines.WorkbookChartGridlines] = None
+    minor_gridlines: Optional[WorkbookChartGridlines] = None
     # Represents the interval between two minor tick marks. 'Can be set to a numeric value or an empty string (for automatic axis values). The returned value is always a number.
-    minor_unit: Optional[json.Json] = None
+    minor_unit: Optional[Json] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents the axis title. Read-only.
-    title: Optional[workbook_chart_axis_title.WorkbookChartAxisTitle] = None
+    title: Optional[WorkbookChartAxisTitle] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartAxis:
@@ -46,19 +50,27 @@ class WorkbookChartAxis(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, json, workbook_chart_axis_format, workbook_chart_axis_title, workbook_chart_gridlines
+        from .entity import Entity
+        from .json import Json
+        from .workbook_chart_axis_format import WorkbookChartAxisFormat
+        from .workbook_chart_axis_title import WorkbookChartAxisTitle
+        from .workbook_chart_gridlines import WorkbookChartGridlines
 
-        from . import entity, json, workbook_chart_axis_format, workbook_chart_axis_title, workbook_chart_gridlines
+        from .entity import Entity
+        from .json import Json
+        from .workbook_chart_axis_format import WorkbookChartAxisFormat
+        from .workbook_chart_axis_title import WorkbookChartAxisTitle
+        from .workbook_chart_gridlines import WorkbookChartGridlines
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_axis_format.WorkbookChartAxisFormat)),
-            "majorGridlines": lambda n : setattr(self, 'major_gridlines', n.get_object_value(workbook_chart_gridlines.WorkbookChartGridlines)),
-            "majorUnit": lambda n : setattr(self, 'major_unit', n.get_object_value(json.Json)),
-            "maximum": lambda n : setattr(self, 'maximum', n.get_object_value(json.Json)),
-            "minimum": lambda n : setattr(self, 'minimum', n.get_object_value(json.Json)),
-            "minorGridlines": lambda n : setattr(self, 'minor_gridlines', n.get_object_value(workbook_chart_gridlines.WorkbookChartGridlines)),
-            "minorUnit": lambda n : setattr(self, 'minor_unit', n.get_object_value(json.Json)),
-            "title": lambda n : setattr(self, 'title', n.get_object_value(workbook_chart_axis_title.WorkbookChartAxisTitle)),
+            "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartAxisFormat)),
+            "majorGridlines": lambda n : setattr(self, 'major_gridlines', n.get_object_value(WorkbookChartGridlines)),
+            "majorUnit": lambda n : setattr(self, 'major_unit', n.get_object_value(Json)),
+            "maximum": lambda n : setattr(self, 'maximum', n.get_object_value(Json)),
+            "minimum": lambda n : setattr(self, 'minimum', n.get_object_value(Json)),
+            "minorGridlines": lambda n : setattr(self, 'minor_gridlines', n.get_object_value(WorkbookChartGridlines)),
+            "minorUnit": lambda n : setattr(self, 'minor_unit', n.get_object_value(Json)),
+            "title": lambda n : setattr(self, 'title', n.get_object_value(WorkbookChartAxisTitle)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

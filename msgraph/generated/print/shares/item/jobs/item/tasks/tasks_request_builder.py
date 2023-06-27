@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import print_task, print_task_collection_response
-    from .......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import print_task_item_request_builder
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.print_task import PrintTask
+    from .......models.print_task_collection_response import PrintTaskCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.print_task_item_request_builder import PrintTaskItemRequestBuilder
 
 class TasksRequestBuilder():
     """
@@ -37,67 +38,67 @@ class TasksRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_print_task_id(self,print_task_id: str) -> print_task_item_request_builder.PrintTaskItemRequestBuilder:
+    def by_print_task_id(self,print_task_id: str) -> PrintTaskItemRequestBuilder:
         """
         Provides operations to manage the tasks property of the microsoft.graph.printJob entity.
         Args:
             print_task_id: Unique identifier of the item
-        Returns: print_task_item_request_builder.PrintTaskItemRequestBuilder
+        Returns: PrintTaskItemRequestBuilder
         """
         if not print_task_id:
             raise TypeError("print_task_id cannot be null.")
-        from .item import print_task_item_request_builder
+        from .item.print_task_item_request_builder import PrintTaskItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printTask%2Did"] = print_task_id
-        return print_task_item_request_builder.PrintTaskItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return PrintTaskItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> Optional[print_task_collection_response.PrintTaskCollectionResponse]:
+    async def get(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintTaskCollectionResponse]:
         """
         A list of printTasks that were triggered by this print job.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_task_collection_response.PrintTaskCollectionResponse]
+        Returns: Optional[PrintTaskCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import print_task_collection_response
+        from .......models.print_task_collection_response import PrintTaskCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, print_task_collection_response.PrintTaskCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintTaskCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[print_task.PrintTask] = None, request_configuration: Optional[TasksRequestBuilderPostRequestConfiguration] = None) -> Optional[print_task.PrintTask]:
+    async def post(self,body: Optional[PrintTask] = None, request_configuration: Optional[TasksRequestBuilderPostRequestConfiguration] = None) -> Optional[PrintTask]:
         """
         Create new navigation property to tasks for print
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_task.PrintTask]
+        Returns: Optional[PrintTask]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import print_task
+        from .......models.print_task import PrintTask
 
-        return await self.request_adapter.send_async(request_info, print_task.PrintTask, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintTask, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class TasksRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[print_task.PrintTask] = None, request_configuration: Optional[TasksRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PrintTask] = None, request_configuration: Optional[TasksRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to tasks for print
         Args:
@@ -139,13 +140,13 @@ class TasksRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TasksRequestBuilderGetQueryParameters():

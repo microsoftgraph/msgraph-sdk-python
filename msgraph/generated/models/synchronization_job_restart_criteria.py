@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import synchronization_job_restart_scope
+    from .synchronization_job_restart_scope import SynchronizationJobRestartScope
 
 @dataclass
 class SynchronizationJobRestartCriteria(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class SynchronizationJobRestartCriteria(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The resetScope property
-    reset_scope: Optional[synchronization_job_restart_scope.SynchronizationJobRestartScope] = None
+    reset_scope: Optional[SynchronizationJobRestartScope] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SynchronizationJobRestartCriteria:
@@ -33,13 +33,13 @@ class SynchronizationJobRestartCriteria(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import synchronization_job_restart_scope
+        from .synchronization_job_restart_scope import SynchronizationJobRestartScope
 
-        from . import synchronization_job_restart_scope
+        from .synchronization_job_restart_scope import SynchronizationJobRestartScope
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resetScope": lambda n : setattr(self, 'reset_scope', n.get_enum_value(synchronization_job_restart_scope.SynchronizationJobRestartScope)),
+            "resetScope": lambda n : setattr(self, 'reset_scope', n.get_enum_value(SynchronizationJobRestartScope)),
         }
         return fields
     

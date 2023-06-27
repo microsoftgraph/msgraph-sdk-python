@@ -1,16 +1,20 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import browser_shared_cookie, browser_site, browser_site_list_status, entity, identity_set
+    from .browser_shared_cookie import BrowserSharedCookie
+    from .browser_site import BrowserSite
+    from .browser_site_list_status import BrowserSiteListStatus
+    from .entity import Entity
+    from .identity_set import IdentitySet
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class BrowserSiteList(entity.Entity):
+class BrowserSiteList(Entity):
     """
     A singleton entity which is used to specify IE mode site list metadata
     """
@@ -19,23 +23,23 @@ class BrowserSiteList(entity.Entity):
     # The name of the site list.
     display_name: Optional[str] = None
     # The user who last modified the site list.
-    last_modified_by: Optional[identity_set.IdentitySet] = None
+    last_modified_by: Optional[IdentitySet] = None
     # The date and time when the site list was last modified.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The user who published the site list.
-    published_by: Optional[identity_set.IdentitySet] = None
+    published_by: Optional[IdentitySet] = None
     # The date and time when the site list was published.
-    published_date_time: Optional[datetime] = None
+    published_date_time: Optional[datetime.datetime] = None
     # The current revision of the site list.
     revision: Optional[str] = None
     # A collection of shared cookies defined for the site list.
-    shared_cookies: Optional[List[browser_shared_cookie.BrowserSharedCookie]] = None
+    shared_cookies: Optional[List[BrowserSharedCookie]] = None
     # A collection of sites defined for the site list.
-    sites: Optional[List[browser_site.BrowserSite]] = None
+    sites: Optional[List[BrowserSite]] = None
     # The status property
-    status: Optional[browser_site_list_status.BrowserSiteListStatus] = None
+    status: Optional[BrowserSiteListStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BrowserSiteList:
@@ -54,21 +58,29 @@ class BrowserSiteList(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import browser_shared_cookie, browser_site, browser_site_list_status, entity, identity_set
+        from .browser_shared_cookie import BrowserSharedCookie
+        from .browser_site import BrowserSite
+        from .browser_site_list_status import BrowserSiteListStatus
+        from .entity import Entity
+        from .identity_set import IdentitySet
 
-        from . import browser_shared_cookie, browser_site, browser_site_list_status, entity, identity_set
+        from .browser_shared_cookie import BrowserSharedCookie
+        from .browser_site import BrowserSite
+        from .browser_site_list_status import BrowserSiteListStatus
+        from .entity import Entity
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "publishedBy": lambda n : setattr(self, 'published_by', n.get_object_value(identity_set.IdentitySet)),
+            "publishedBy": lambda n : setattr(self, 'published_by', n.get_object_value(IdentitySet)),
             "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
             "revision": lambda n : setattr(self, 'revision', n.get_str_value()),
-            "sharedCookies": lambda n : setattr(self, 'shared_cookies', n.get_collection_of_object_values(browser_shared_cookie.BrowserSharedCookie)),
-            "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(browser_site.BrowserSite)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(browser_site_list_status.BrowserSiteListStatus)),
+            "sharedCookies": lambda n : setattr(self, 'shared_cookies', n.get_collection_of_object_values(BrowserSharedCookie)),
+            "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(BrowserSite)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(BrowserSiteListStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -86,9 +98,9 @@ class BrowserSiteList(entity.Entity):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_object_value("publishedBy", self.published_by)
-        writer.write_datetime_value("publishedDateTime", self.published_date_time)
+        writer.write_datetime_value()("publishedDateTime", self.published_date_time)
         writer.write_str_value("revision", self.revision)
         writer.write_collection_of_object_values("sharedCookies", self.shared_cookies)
         writer.write_collection_of_object_values("sites", self.sites)

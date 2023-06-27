@@ -1,39 +1,42 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_management_partner_app_type, device_management_partner_assignment, device_management_partner_tenant_state, entity
+    from .device_management_partner_app_type import DeviceManagementPartnerAppType
+    from .device_management_partner_assignment import DeviceManagementPartnerAssignment
+    from .device_management_partner_tenant_state import DeviceManagementPartnerTenantState
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceManagementPartner(entity.Entity):
+class DeviceManagementPartner(Entity):
     """
     Entity which represents a connection to device management partner.
     """
     # Partner display name
     display_name: Optional[str] = None
     # User groups that specifies whether enrollment is through partner.
-    groups_requiring_partner_enrollment: Optional[List[device_management_partner_assignment.DeviceManagementPartnerAssignment]] = None
+    groups_requiring_partner_enrollment: Optional[List[DeviceManagementPartnerAssignment]] = None
     # Whether device management partner is configured or not
     is_configured: Optional[bool] = None
     # Timestamp of last heartbeat after admin enabled option Connect to Device management Partner
-    last_heartbeat_date_time: Optional[datetime] = None
+    last_heartbeat_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Partner App Type.
-    partner_app_type: Optional[device_management_partner_app_type.DeviceManagementPartnerAppType] = None
+    partner_app_type: Optional[DeviceManagementPartnerAppType] = None
     # Partner state of this tenant.
-    partner_state: Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState] = None
+    partner_state: Optional[DeviceManagementPartnerTenantState] = None
     # Partner Single tenant App id
     single_tenant_app_id: Optional[str] = None
     # DateTime in UTC when PartnerDevices will be marked as NonCompliant
-    when_partner_devices_will_be_marked_as_non_compliant_date_time: Optional[datetime] = None
+    when_partner_devices_will_be_marked_as_non_compliant_date_time: Optional[datetime.datetime] = None
     # DateTime in UTC when PartnerDevices will be removed
-    when_partner_devices_will_be_removed_date_time: Optional[datetime] = None
+    when_partner_devices_will_be_removed_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagementPartner:
@@ -52,17 +55,23 @@ class DeviceManagementPartner(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_management_partner_app_type, device_management_partner_assignment, device_management_partner_tenant_state, entity
+        from .device_management_partner_app_type import DeviceManagementPartnerAppType
+        from .device_management_partner_assignment import DeviceManagementPartnerAssignment
+        from .device_management_partner_tenant_state import DeviceManagementPartnerTenantState
+        from .entity import Entity
 
-        from . import device_management_partner_app_type, device_management_partner_assignment, device_management_partner_tenant_state, entity
+        from .device_management_partner_app_type import DeviceManagementPartnerAppType
+        from .device_management_partner_assignment import DeviceManagementPartnerAssignment
+        from .device_management_partner_tenant_state import DeviceManagementPartnerTenantState
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "groupsRequiringPartnerEnrollment": lambda n : setattr(self, 'groups_requiring_partner_enrollment', n.get_collection_of_object_values(device_management_partner_assignment.DeviceManagementPartnerAssignment)),
+            "groupsRequiringPartnerEnrollment": lambda n : setattr(self, 'groups_requiring_partner_enrollment', n.get_collection_of_object_values(DeviceManagementPartnerAssignment)),
             "isConfigured": lambda n : setattr(self, 'is_configured', n.get_bool_value()),
             "lastHeartbeatDateTime": lambda n : setattr(self, 'last_heartbeat_date_time', n.get_datetime_value()),
-            "partnerAppType": lambda n : setattr(self, 'partner_app_type', n.get_enum_value(device_management_partner_app_type.DeviceManagementPartnerAppType)),
-            "partnerState": lambda n : setattr(self, 'partner_state', n.get_enum_value(device_management_partner_tenant_state.DeviceManagementPartnerTenantState)),
+            "partnerAppType": lambda n : setattr(self, 'partner_app_type', n.get_enum_value(DeviceManagementPartnerAppType)),
+            "partnerState": lambda n : setattr(self, 'partner_state', n.get_enum_value(DeviceManagementPartnerTenantState)),
             "singleTenantAppId": lambda n : setattr(self, 'single_tenant_app_id', n.get_str_value()),
             "whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime": lambda n : setattr(self, 'when_partner_devices_will_be_marked_as_non_compliant_date_time', n.get_datetime_value()),
             "whenPartnerDevicesWillBeRemovedDateTime": lambda n : setattr(self, 'when_partner_devices_will_be_removed_date_time', n.get_datetime_value()),
@@ -83,11 +92,11 @@ class DeviceManagementPartner(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("groupsRequiringPartnerEnrollment", self.groups_requiring_partner_enrollment)
         writer.write_bool_value("isConfigured", self.is_configured)
-        writer.write_datetime_value("lastHeartbeatDateTime", self.last_heartbeat_date_time)
+        writer.write_datetime_value()("lastHeartbeatDateTime", self.last_heartbeat_date_time)
         writer.write_enum_value("partnerAppType", self.partner_app_type)
         writer.write_enum_value("partnerState", self.partner_state)
         writer.write_str_value("singleTenantAppId", self.single_tenant_app_id)
-        writer.write_datetime_value("whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime", self.when_partner_devices_will_be_marked_as_non_compliant_date_time)
-        writer.write_datetime_value("whenPartnerDevicesWillBeRemovedDateTime", self.when_partner_devices_will_be_removed_date_time)
+        writer.write_datetime_value()("whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime", self.when_partner_devices_will_be_marked_as_non_compliant_date_time)
+        writer.write_datetime_value()("whenPartnerDevicesWillBeRemovedDateTime", self.when_partner_devices_will_be_removed_date_time)
     
 

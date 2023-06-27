@@ -10,18 +10,18 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import workbook_worksheet
-    from ........models.o_data_errors import o_data_error
-    from .cell_with_row_with_column import cell_with_row_with_column_request_builder
-    from .charts import charts_request_builder
-    from .names import names_request_builder
-    from .pivot_tables import pivot_tables_request_builder
-    from .protection import protection_request_builder
-    from .range import range_request_builder
-    from .range_with_address import range_with_address_request_builder
-    from .tables import tables_request_builder
-    from .used_range import used_range_request_builder
-    from .used_range_with_values_only import used_range_with_values_only_request_builder
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.workbook_worksheet import WorkbookWorksheet
+    from .cell_with_row_with_column.cell_with_row_with_column_request_builder import CellWithRowWithColumnRequestBuilder
+    from .charts.charts_request_builder import ChartsRequestBuilder
+    from .names.names_request_builder import NamesRequestBuilder
+    from .pivot_tables.pivot_tables_request_builder import PivotTablesRequestBuilder
+    from .protection.protection_request_builder import ProtectionRequestBuilder
+    from .range.range_request_builder import RangeRequestBuilder
+    from .range_with_address.range_with_address_request_builder import RangeWithAddressRequestBuilder
+    from .tables.tables_request_builder import TablesRequestBuilder
+    from .used_range.used_range_request_builder import UsedRangeRequestBuilder
+    from .used_range_with_values_only.used_range_with_values_only_request_builder import UsedRangeWithValuesOnlyRequestBuilder
 
 class WorkbookWorksheetItemRequestBuilder():
     """
@@ -45,21 +45,21 @@ class WorkbookWorksheetItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def cell_with_row_with_column(self,column: Optional[int] = None, row: Optional[int] = None) -> cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder:
+    def cell_with_row_with_column(self,column: Optional[int] = None, row: Optional[int] = None) -> CellWithRowWithColumnRequestBuilder:
         """
         Provides operations to call the cell method.
         Args:
             column: Usage: column={column}
             row: Usage: row={row}
-        Returns: cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder
+        Returns: CellWithRowWithColumnRequestBuilder
         """
         if not column:
             raise TypeError("column cannot be null.")
         if not row:
             raise TypeError("row cannot be null.")
-        from .cell_with_row_with_column import cell_with_row_with_column_request_builder
+        from .cell_with_row_with_column.cell_with_row_with_column_request_builder import CellWithRowWithColumnRequestBuilder
 
-        return cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder(self.request_adapter, self.path_parameters, column, row)
+        return CellWithRowWithColumnRequestBuilder(self.request_adapter, self.path_parameters, column, row)
     
     async def delete(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -70,75 +70,75 @@ class WorkbookWorksheetItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_worksheet.WorkbookWorksheet]:
+    async def get(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookWorksheet]:
         """
         Retrieve the properties and relationships of worksheet object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_worksheet.WorkbookWorksheet]
+        Returns: Optional[WorkbookWorksheet]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import workbook_worksheet
+        from ........models.workbook_worksheet import WorkbookWorksheet
 
-        return await self.request_adapter.send_async(request_info, workbook_worksheet.WorkbookWorksheet, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookWorksheet, error_mapping)
     
-    async def patch(self,body: Optional[workbook_worksheet.WorkbookWorksheet] = None, request_configuration: Optional[WorkbookWorksheetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_worksheet.WorkbookWorksheet]:
+    async def patch(self,body: Optional[WorkbookWorksheet] = None, request_configuration: Optional[WorkbookWorksheetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookWorksheet]:
         """
         Update the properties of worksheet object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_worksheet.WorkbookWorksheet]
+        Returns: Optional[WorkbookWorksheet]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import workbook_worksheet
+        from ........models.workbook_worksheet import WorkbookWorksheet
 
-        return await self.request_adapter.send_async(request_info, workbook_worksheet.WorkbookWorksheet, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookWorksheet, error_mapping)
     
-    def range_with_address(self,address: Optional[str] = None) -> range_with_address_request_builder.RangeWithAddressRequestBuilder:
+    def range_with_address(self,address: Optional[str] = None) -> RangeWithAddressRequestBuilder:
         """
         Provides operations to call the range method.
         Args:
             address: Usage: address='{address}'
-        Returns: range_with_address_request_builder.RangeWithAddressRequestBuilder
+        Returns: RangeWithAddressRequestBuilder
         """
         if not address:
             raise TypeError("address cannot be null.")
-        from .range_with_address import range_with_address_request_builder
+        from .range_with_address.range_with_address_request_builder import RangeWithAddressRequestBuilder
 
-        return range_with_address_request_builder.RangeWithAddressRequestBuilder(self.request_adapter, self.path_parameters, address)
+        return RangeWithAddressRequestBuilder(self.request_adapter, self.path_parameters, address)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -174,7 +174,7 @@ class WorkbookWorksheetItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_worksheet.WorkbookWorksheet] = None, request_configuration: Optional[WorkbookWorksheetItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookWorksheet] = None, request_configuration: Optional[WorkbookWorksheetItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of worksheet object.
         Args:
@@ -195,81 +195,81 @@ class WorkbookWorksheetItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def used_range_with_values_only(self,values_only: Optional[bool] = None) -> used_range_with_values_only_request_builder.UsedRangeWithValuesOnlyRequestBuilder:
+    def used_range_with_values_only(self,values_only: Optional[bool] = None) -> UsedRangeWithValuesOnlyRequestBuilder:
         """
         Provides operations to call the usedRange method.
         Args:
             valuesOnly: Usage: valuesOnly={valuesOnly}
-        Returns: used_range_with_values_only_request_builder.UsedRangeWithValuesOnlyRequestBuilder
+        Returns: UsedRangeWithValuesOnlyRequestBuilder
         """
         if not values_only:
             raise TypeError("values_only cannot be null.")
-        from .used_range_with_values_only import used_range_with_values_only_request_builder
+        from .used_range_with_values_only.used_range_with_values_only_request_builder import UsedRangeWithValuesOnlyRequestBuilder
 
-        return used_range_with_values_only_request_builder.UsedRangeWithValuesOnlyRequestBuilder(self.request_adapter, self.path_parameters, values_only)
+        return UsedRangeWithValuesOnlyRequestBuilder(self.request_adapter, self.path_parameters, values_only)
     
     @property
-    def charts(self) -> charts_request_builder.ChartsRequestBuilder:
+    def charts(self) -> ChartsRequestBuilder:
         """
         Provides operations to manage the charts property of the microsoft.graph.workbookWorksheet entity.
         """
-        from .charts import charts_request_builder
+        from .charts.charts_request_builder import ChartsRequestBuilder
 
-        return charts_request_builder.ChartsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ChartsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def names(self) -> names_request_builder.NamesRequestBuilder:
+    def names(self) -> NamesRequestBuilder:
         """
         Provides operations to manage the names property of the microsoft.graph.workbookWorksheet entity.
         """
-        from .names import names_request_builder
+        from .names.names_request_builder import NamesRequestBuilder
 
-        return names_request_builder.NamesRequestBuilder(self.request_adapter, self.path_parameters)
+        return NamesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def pivot_tables(self) -> pivot_tables_request_builder.PivotTablesRequestBuilder:
+    def pivot_tables(self) -> PivotTablesRequestBuilder:
         """
         Provides operations to manage the pivotTables property of the microsoft.graph.workbookWorksheet entity.
         """
-        from .pivot_tables import pivot_tables_request_builder
+        from .pivot_tables.pivot_tables_request_builder import PivotTablesRequestBuilder
 
-        return pivot_tables_request_builder.PivotTablesRequestBuilder(self.request_adapter, self.path_parameters)
+        return PivotTablesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def protection(self) -> protection_request_builder.ProtectionRequestBuilder:
+    def protection(self) -> ProtectionRequestBuilder:
         """
         Provides operations to manage the protection property of the microsoft.graph.workbookWorksheet entity.
         """
-        from .protection import protection_request_builder
+        from .protection.protection_request_builder import ProtectionRequestBuilder
 
-        return protection_request_builder.ProtectionRequestBuilder(self.request_adapter, self.path_parameters)
+        return ProtectionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def range(self) -> range_request_builder.RangeRequestBuilder:
+    def range(self) -> RangeRequestBuilder:
         """
         Provides operations to call the range method.
         """
-        from .range import range_request_builder
+        from .range.range_request_builder import RangeRequestBuilder
 
-        return range_request_builder.RangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return RangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tables(self) -> tables_request_builder.TablesRequestBuilder:
+    def tables(self) -> TablesRequestBuilder:
         """
         Provides operations to manage the tables property of the microsoft.graph.workbookWorksheet entity.
         """
-        from .tables import tables_request_builder
+        from .tables.tables_request_builder import TablesRequestBuilder
 
-        return tables_request_builder.TablesRequestBuilder(self.request_adapter, self.path_parameters)
+        return TablesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def used_range(self) -> used_range_request_builder.UsedRangeRequestBuilder:
+    def used_range(self) -> UsedRangeRequestBuilder:
         """
         Provides operations to call the usedRange method.
         """
-        from .used_range import used_range_request_builder
+        from .used_range.used_range_request_builder import UsedRangeRequestBuilder
 
-        return used_range_request_builder.UsedRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return UsedRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration():

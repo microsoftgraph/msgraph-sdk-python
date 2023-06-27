@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_management_export_job, entity
+    from .device_management_export_job import DeviceManagementExportJob
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceManagementReports(entity.Entity):
+class DeviceManagementReports(Entity):
     # Entity representing a job to export a report
-    export_jobs: Optional[List[device_management_export_job.DeviceManagementExportJob]] = None
+    export_jobs: Optional[List[DeviceManagementExportJob]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class DeviceManagementReports(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_management_export_job, entity
+        from .device_management_export_job import DeviceManagementExportJob
+        from .entity import Entity
 
-        from . import device_management_export_job, entity
+        from .device_management_export_job import DeviceManagementExportJob
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "exportJobs": lambda n : setattr(self, 'export_jobs', n.get_collection_of_object_values(device_management_export_job.DeviceManagementExportJob)),
+            "exportJobs": lambda n : setattr(self, 'export_jobs', n.get_collection_of_object_values(DeviceManagementExportJob)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

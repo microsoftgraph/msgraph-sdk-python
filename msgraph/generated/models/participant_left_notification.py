@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import call, entity
+    from .call import Call
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ParticipantLeftNotification(entity.Entity):
+class ParticipantLeftNotification(Entity):
     # The call property
-    call: Optional[call.Call] = None
+    call: Optional[Call] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # ID of the participant under the policy who has left the meeting.
@@ -34,12 +35,14 @@ class ParticipantLeftNotification(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import call, entity
+        from .call import Call
+        from .entity import Entity
 
-        from . import call, entity
+        from .call import Call
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "call": lambda n : setattr(self, 'call', n.get_object_value(call.Call)),
+            "call": lambda n : setattr(self, 'call', n.get_object_value(Call)),
             "participantId": lambda n : setattr(self, 'participant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

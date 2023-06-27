@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import change_tracked_entity, time_off_item
+    from .change_tracked_entity import ChangeTrackedEntity
+    from .time_off_item import TimeOffItem
 
-from . import change_tracked_entity
+from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class TimeOff(change_tracked_entity.ChangeTrackedEntity):
+class TimeOff(ChangeTrackedEntity):
     odata_type = "#microsoft.graph.timeOff"
     # The draft version of this timeOff that is viewable by managers. Required.
-    draft_time_off: Optional[time_off_item.TimeOffItem] = None
+    draft_time_off: Optional[TimeOffItem] = None
     # The shared version of this timeOff that is viewable by both employees and managers. Required.
-    shared_time_off: Optional[time_off_item.TimeOffItem] = None
+    shared_time_off: Optional[TimeOffItem] = None
     # ID of the user assigned to the timeOff. Required.
     user_id: Optional[str] = None
     
@@ -35,13 +36,15 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import change_tracked_entity, time_off_item
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .time_off_item import TimeOffItem
 
-        from . import change_tracked_entity, time_off_item
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .time_off_item import TimeOffItem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "draftTimeOff": lambda n : setattr(self, 'draft_time_off', n.get_object_value(time_off_item.TimeOffItem)),
-            "sharedTimeOff": lambda n : setattr(self, 'shared_time_off', n.get_object_value(time_off_item.TimeOffItem)),
+            "draftTimeOff": lambda n : setattr(self, 'draft_time_off', n.get_object_value(TimeOffItem)),
+            "sharedTimeOff": lambda n : setattr(self, 'shared_time_off', n.get_object_value(TimeOffItem)),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

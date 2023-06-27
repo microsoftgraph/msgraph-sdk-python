@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import user_settings
-    from ...models.o_data_errors import o_data_error
-    from .shift_preferences import shift_preferences_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.user_settings import UserSettings
+    from .shift_preferences.shift_preferences_request_builder import ShiftPreferencesRequestBuilder
 
 class SettingsRequestBuilder():
     """
@@ -45,62 +45,62 @@ class SettingsRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[user_settings.UserSettings]:
+    async def get(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[UserSettings]:
         """
         Read the user and organization userSettings object.To learn how to update the properties of the userSettings object, see update user settings.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_settings.UserSettings]
+        Returns: Optional[UserSettings]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import user_settings
+        from ...models.user_settings import UserSettings
 
-        return await self.request_adapter.send_async(request_info, user_settings.UserSettings, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserSettings, error_mapping)
     
-    async def patch(self,body: Optional[user_settings.UserSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[user_settings.UserSettings]:
+    async def patch(self,body: Optional[UserSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[UserSettings]:
         """
-        Update the navigation property settings in me
+        Update the properties of the userSettings object. Users in the same organization can have different settings based on their preference or on the organization policies. To get the user current settings, see current user settings. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_settings.UserSettings]
+        Returns: Optional[UserSettings]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import user_settings
+        from ...models.user_settings import UserSettings
 
-        return await self.request_adapter.send_async(request_info, user_settings.UserSettings, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserSettings, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SettingsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,9 +136,9 @@ class SettingsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[user_settings.UserSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UserSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property settings in me
+        Update the properties of the userSettings object. Users in the same organization can have different settings based on their preference or on the organization policies. To get the user current settings, see current user settings. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -158,13 +158,13 @@ class SettingsRequestBuilder():
         return request_info
     
     @property
-    def shift_preferences(self) -> shift_preferences_request_builder.ShiftPreferencesRequestBuilder:
+    def shift_preferences(self) -> ShiftPreferencesRequestBuilder:
         """
         Provides operations to manage the shiftPreferences property of the microsoft.graph.userSettings entity.
         """
-        from .shift_preferences import shift_preferences_request_builder
+        from .shift_preferences.shift_preferences_request_builder import ShiftPreferencesRequestBuilder
 
-        return shift_preferences_request_builder.ShiftPreferencesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ShiftPreferencesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SettingsRequestBuilderDeleteRequestConfiguration():

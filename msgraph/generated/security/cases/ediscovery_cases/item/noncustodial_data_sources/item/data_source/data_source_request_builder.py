@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.o_data_errors import o_data_error
-    from ........models.security import data_source
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.security.data_source import DataSource
 
 class DataSourceRequestBuilder():
     """
@@ -44,62 +44,62 @@ class DataSourceRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DataSourceRequestBuilderGetRequestConfiguration] = None) -> Optional[data_source.DataSource]:
+    async def get(self,request_configuration: Optional[DataSourceRequestBuilderGetRequestConfiguration] = None) -> Optional[DataSource]:
         """
         User source or SharePoint site data source as non-custodial data source.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[data_source.DataSource]
+        Returns: Optional[DataSource]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.security import data_source
+        from ........models.security.data_source import DataSource
 
-        return await self.request_adapter.send_async(request_info, data_source.DataSource, error_mapping)
+        return await self.request_adapter.send_async(request_info, DataSource, error_mapping)
     
-    async def patch(self,body: Optional[data_source.DataSource] = None, request_configuration: Optional[DataSourceRequestBuilderPatchRequestConfiguration] = None) -> Optional[data_source.DataSource]:
+    async def patch(self,body: Optional[DataSource] = None, request_configuration: Optional[DataSourceRequestBuilderPatchRequestConfiguration] = None) -> Optional[DataSource]:
         """
         Update the navigation property dataSource in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[data_source.DataSource]
+        Returns: Optional[DataSource]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.security import data_source
+        from ........models.security.data_source import DataSource
 
-        return await self.request_adapter.send_async(request_info, data_source.DataSource, error_mapping)
+        return await self.request_adapter.send_async(request_info, DataSource, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DataSourceRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class DataSourceRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[data_source.DataSource] = None, request_configuration: Optional[DataSourceRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DataSource] = None, request_configuration: Optional[DataSourceRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property dataSource in security
         Args:

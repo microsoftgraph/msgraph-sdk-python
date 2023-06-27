@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
@@ -15,7 +15,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     # The displayName property
     display_name: Optional[str] = None
     # The endDateTime property
-    end_date_time: Optional[datetime] = None
+    end_date_time: Optional[datetime.datetime] = None
     # The key property
     key: Optional[bytes] = None
     # The keyId property
@@ -23,7 +23,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The startDateTime property
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     # The thumbprint property
     thumbprint: Optional[str] = None
     # The type property
@@ -70,13 +70,13 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("customKeyIdentifier", self.custom_key_identifier)
+        writer.write_bytes_value("customKeyIdentifier", self.custom_key_identifier)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_object_value("key", self.key)
+        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_bytes_value("key", self.key)
         writer.write_uuid_value("keyId", self.key_id)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
         writer.write_str_value("thumbprint", self.thumbprint)
         writer.write_str_value("type", self.type)
         writer.write_str_value("usage", self.usage)

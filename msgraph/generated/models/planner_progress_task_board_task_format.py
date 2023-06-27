@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PlannerProgressTaskBoardTaskFormat(entity.Entity):
+class PlannerProgressTaskBoardTaskFormat(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Hint value used to order the task on the progress view of the task board. For details about the supported format, see Using order hints in Planner.
@@ -32,9 +32,9 @@ class PlannerProgressTaskBoardTaskFormat(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "orderHint": lambda n : setattr(self, 'order_hint', n.get_str_value()),

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_app_assignment_settings
+    from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-from . import mobile_app_assignment_settings
+from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class MacOsLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
+class MacOsLobAppAssignmentSettings(MobileAppAssignmentSettings):
     odata_type = "#microsoft.graph.macOsLobAppAssignmentSettings"
     # When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune.
     uninstall_on_device_removal: Optional[bool] = None
@@ -31,9 +31,9 @@ class MacOsLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "uninstallOnDeviceRemoval": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import teamwork_user_identity
+    from ......models.teamwork_user_identity import TeamworkUserIdentity
 
 @dataclass
 class HideForUserPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class HideForUserPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The user property
-    user: Optional[teamwork_user_identity.TeamworkUserIdentity] = None
+    user: Optional[TeamworkUserIdentity] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> HideForUserPostRequestBody:
@@ -31,12 +31,12 @@ class HideForUserPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models import teamwork_user_identity
+        from ......models.teamwork_user_identity import TeamworkUserIdentity
 
-        from ......models import teamwork_user_identity
+        from ......models.teamwork_user_identity import TeamworkUserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "user": lambda n : setattr(self, 'user', n.get_object_value(teamwork_user_identity.TeamworkUserIdentity)),
+            "user": lambda n : setattr(self, 'user', n.get_object_value(TeamworkUserIdentity)),
         }
         return fields
     

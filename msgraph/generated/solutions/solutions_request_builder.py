@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import solutions_root
-    from ..models.o_data_errors import o_data_error
-    from .booking_businesses import booking_businesses_request_builder
-    from .booking_currencies import booking_currencies_request_builder
+    from ..models.o_data_errors.o_data_error import ODataError
+    from ..models.solutions_root import SolutionsRoot
+    from .booking_businesses.booking_businesses_request_builder import BookingBusinessesRequestBuilder
+    from .booking_currencies.booking_currencies_request_builder import BookingCurrenciesRequestBuilder
 
 class SolutionsRequestBuilder():
     """
@@ -37,52 +37,52 @@ class SolutionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SolutionsRequestBuilderGetRequestConfiguration] = None) -> Optional[solutions_root.SolutionsRoot]:
+    async def get(self,request_configuration: Optional[SolutionsRequestBuilderGetRequestConfiguration] = None) -> Optional[SolutionsRoot]:
         """
         Get solutions
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[solutions_root.SolutionsRoot]
+        Returns: Optional[SolutionsRoot]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import solutions_root
+        from ..models.solutions_root import SolutionsRoot
 
-        return await self.request_adapter.send_async(request_info, solutions_root.SolutionsRoot, error_mapping)
+        return await self.request_adapter.send_async(request_info, SolutionsRoot, error_mapping)
     
-    async def patch(self,body: Optional[solutions_root.SolutionsRoot] = None, request_configuration: Optional[SolutionsRequestBuilderPatchRequestConfiguration] = None) -> Optional[solutions_root.SolutionsRoot]:
+    async def patch(self,body: Optional[SolutionsRoot] = None, request_configuration: Optional[SolutionsRequestBuilderPatchRequestConfiguration] = None) -> Optional[SolutionsRoot]:
         """
         Update solutions
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[solutions_root.SolutionsRoot]
+        Returns: Optional[SolutionsRoot]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import solutions_root
+        from ..models.solutions_root import SolutionsRoot
 
-        return await self.request_adapter.send_async(request_info, solutions_root.SolutionsRoot, error_mapping)
+        return await self.request_adapter.send_async(request_info, SolutionsRoot, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SolutionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -102,7 +102,7 @@ class SolutionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[solutions_root.SolutionsRoot] = None, request_configuration: Optional[SolutionsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SolutionsRoot] = None, request_configuration: Optional[SolutionsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update solutions
         Args:
@@ -124,22 +124,22 @@ class SolutionsRequestBuilder():
         return request_info
     
     @property
-    def booking_businesses(self) -> booking_businesses_request_builder.BookingBusinessesRequestBuilder:
+    def booking_businesses(self) -> BookingBusinessesRequestBuilder:
         """
         Provides operations to manage the bookingBusinesses property of the microsoft.graph.solutionsRoot entity.
         """
-        from .booking_businesses import booking_businesses_request_builder
+        from .booking_businesses.booking_businesses_request_builder import BookingBusinessesRequestBuilder
 
-        return booking_businesses_request_builder.BookingBusinessesRequestBuilder(self.request_adapter, self.path_parameters)
+        return BookingBusinessesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def booking_currencies(self) -> booking_currencies_request_builder.BookingCurrenciesRequestBuilder:
+    def booking_currencies(self) -> BookingCurrenciesRequestBuilder:
         """
         Provides operations to manage the bookingCurrencies property of the microsoft.graph.solutionsRoot entity.
         """
-        from .booking_currencies import booking_currencies_request_builder
+        from .booking_currencies.booking_currencies_request_builder import BookingCurrenciesRequestBuilder
 
-        return booking_currencies_request_builder.BookingCurrenciesRequestBuilder(self.request_adapter, self.path_parameters)
+        return BookingCurrenciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SolutionsRequestBuilderGetQueryParameters():

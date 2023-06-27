@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import extension
+    from .extension import Extension
 
-from . import extension
+from .extension import Extension
 
 @dataclass
-class OpenTypeExtension(extension.Extension):
+class OpenTypeExtension(Extension):
     odata_type = "#microsoft.graph.openTypeExtension"
     # A unique text identifier for an open type data extension. Optional.
     extension_name: Optional[str] = None
@@ -31,9 +31,9 @@ class OpenTypeExtension(extension.Extension):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import extension
+        from .extension import Extension
 
-        from . import extension
+        from .extension import Extension
 
         fields: Dict[str, Callable[[Any], None]] = {
             "extensionName": lambda n : setattr(self, 'extension_name', n.get_str_value()),

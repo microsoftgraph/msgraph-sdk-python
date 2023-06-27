@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import restore_post_request_body
-    from ......models import drive_item
-    from ......models.o_data_errors import o_data_error
+    from ......models.drive_item import DriveItem
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .restore_post_request_body import RestorePostRequestBody
 
 class RestoreRequestBuilder():
     """
@@ -36,32 +36,32 @@ class RestoreRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[restore_post_request_body.RestorePostRequestBody] = None, request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
+    async def post(self,body: Optional[RestorePostRequestBody] = None, request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> Optional[DriveItem]:
         """
         Restore a driveItem that has been deleted and is currently in the recycle bin. **NOTE**: This functionality is currently only available for OneDrive Personal.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[drive_item.DriveItem]
+        Returns: Optional[DriveItem]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import drive_item
+        from ......models.drive_item import DriveItem
 
-        return await self.request_adapter.send_async(request_info, drive_item.DriveItem, error_mapping)
+        return await self.request_adapter.send_async(request_info, DriveItem, error_mapping)
     
-    def to_post_request_information(self,body: Optional[restore_post_request_body.RestorePostRequestBody] = None, request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[RestorePostRequestBody] = None, request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Restore a driveItem that has been deleted and is currently in the recycle bin. **NOTE**: This functionality is currently only available for OneDrive Personal.
         Args:

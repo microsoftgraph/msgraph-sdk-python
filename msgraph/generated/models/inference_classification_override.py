@@ -4,18 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import email_address, entity, inference_classification_type
+    from .email_address import EmailAddress
+    from .entity import Entity
+    from .inference_classification_type import InferenceClassificationType
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class InferenceClassificationOverride(entity.Entity):
+class InferenceClassificationOverride(Entity):
     # Specifies how incoming messages from a specific sender should always be classified as. The possible values are: focused, other.
-    classify_as: Optional[inference_classification_type.InferenceClassificationType] = None
+    classify_as: Optional[InferenceClassificationType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The email address information of the sender for whom the override is created.
-    sender_email_address: Optional[email_address.EmailAddress] = None
+    sender_email_address: Optional[EmailAddress] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InferenceClassificationOverride:
@@ -34,13 +36,17 @@ class InferenceClassificationOverride(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import email_address, entity, inference_classification_type
+        from .email_address import EmailAddress
+        from .entity import Entity
+        from .inference_classification_type import InferenceClassificationType
 
-        from . import email_address, entity, inference_classification_type
+        from .email_address import EmailAddress
+        from .entity import Entity
+        from .inference_classification_type import InferenceClassificationType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "classifyAs": lambda n : setattr(self, 'classify_as', n.get_enum_value(inference_classification_type.InferenceClassificationType)),
-            "senderEmailAddress": lambda n : setattr(self, 'sender_email_address', n.get_object_value(email_address.EmailAddress)),
+            "classifyAs": lambda n : setattr(self, 'classify_as', n.get_enum_value(InferenceClassificationType)),
+            "senderEmailAddress": lambda n : setattr(self, 'sender_email_address', n.get_object_value(EmailAddress)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

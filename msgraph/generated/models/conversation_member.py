@@ -1,16 +1,22 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import aad_user_conversation_member, anonymous_guest_conversation_member, azure_communication_services_user_conversation_member, entity, microsoft_account_user_conversation_member, skype_for_business_user_conversation_member, skype_user_conversation_member
+    from .aad_user_conversation_member import AadUserConversationMember
+    from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
+    from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
+    from .entity import Entity
+    from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
+    from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
+    from .skype_user_conversation_member import SkypeUserConversationMember
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ConversationMember(entity.Entity):
+class ConversationMember(Entity):
     # The display name of the user.
     display_name: Optional[str] = None
     # The OdataType property
@@ -18,7 +24,7 @@ class ConversationMember(entity.Entity):
     # The roles for that user. This property contains additional qualifiers only when relevant - for example, if the member has owner privileges, the roles property contains owner as one of the values. Similarly, if the member is an in-tenant guest, the roles property contains guest as one of the values. A basic member should not have any values specified in the roles property. An Out-of-tenant external member is assigned the owner role.
     roles: Optional[List[str]] = None
     # The timestamp denoting how far back a conversation's history is shared with the conversation member. This property is settable only for members of a chat.
-    visible_history_start_date_time: Optional[datetime] = None
+    visible_history_start_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConversationMember:
@@ -35,29 +41,29 @@ class ConversationMember(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.aadUserConversationMember".casefold():
-            from . import aad_user_conversation_member
+            from .aad_user_conversation_member import AadUserConversationMember
 
-            return aad_user_conversation_member.AadUserConversationMember()
+            return AadUserConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousGuestConversationMember".casefold():
-            from . import anonymous_guest_conversation_member
+            from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
 
-            return anonymous_guest_conversation_member.AnonymousGuestConversationMember()
+            return AnonymousGuestConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureCommunicationServicesUserConversationMember".casefold():
-            from . import azure_communication_services_user_conversation_member
+            from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
 
-            return azure_communication_services_user_conversation_member.AzureCommunicationServicesUserConversationMember()
+            return AzureCommunicationServicesUserConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAccountUserConversationMember".casefold():
-            from . import microsoft_account_user_conversation_member
+            from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
 
-            return microsoft_account_user_conversation_member.MicrosoftAccountUserConversationMember()
+            return MicrosoftAccountUserConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.skypeForBusinessUserConversationMember".casefold():
-            from . import skype_for_business_user_conversation_member
+            from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
 
-            return skype_for_business_user_conversation_member.SkypeForBusinessUserConversationMember()
+            return SkypeForBusinessUserConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.skypeUserConversationMember".casefold():
-            from . import skype_user_conversation_member
+            from .skype_user_conversation_member import SkypeUserConversationMember
 
-            return skype_user_conversation_member.SkypeUserConversationMember()
+            return SkypeUserConversationMember()
         return ConversationMember()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -65,9 +71,21 @@ class ConversationMember(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import aad_user_conversation_member, anonymous_guest_conversation_member, azure_communication_services_user_conversation_member, entity, microsoft_account_user_conversation_member, skype_for_business_user_conversation_member, skype_user_conversation_member
+        from .aad_user_conversation_member import AadUserConversationMember
+        from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
+        from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
+        from .entity import Entity
+        from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
+        from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
+        from .skype_user_conversation_member import SkypeUserConversationMember
 
-        from . import aad_user_conversation_member, anonymous_guest_conversation_member, azure_communication_services_user_conversation_member, entity, microsoft_account_user_conversation_member, skype_for_business_user_conversation_member, skype_user_conversation_member
+        from .aad_user_conversation_member import AadUserConversationMember
+        from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
+        from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
+        from .entity import Entity
+        from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
+        from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
+        from .skype_user_conversation_member import SkypeUserConversationMember
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -89,6 +107,6 @@ class ConversationMember(entity.Entity):
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_primitive_values("roles", self.roles)
-        writer.write_datetime_value("visibleHistoryStartDateTime", self.visible_history_start_date_time)
+        writer.write_datetime_value()("visibleHistoryStartDateTime", self.visible_history_start_date_time)
     
 

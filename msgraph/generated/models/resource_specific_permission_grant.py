@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import directory_object
+    from .directory_object import DirectoryObject
 
-from . import directory_object
+from .directory_object import DirectoryObject
 
 @dataclass
-class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
+class ResourceSpecificPermissionGrant(DirectoryObject):
     odata_type = "#microsoft.graph.resourceSpecificPermissionGrant"
     # ID of the service principal of the Azure AD app that has been granted access. Read-only.
     client_app_id: Optional[str] = None
@@ -39,9 +39,9 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object
+        from .directory_object import DirectoryObject
 
-        from . import directory_object
+        from .directory_object import DirectoryObject
 
         fields: Dict[str, Callable[[Any], None]] = {
             "clientAppId": lambda n : setattr(self, 'client_app_id', n.get_str_value()),

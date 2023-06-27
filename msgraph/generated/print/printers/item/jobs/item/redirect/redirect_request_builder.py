@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import redirect_post_request_body
-    from .......models import print_job
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.print_job import PrintJob
+    from .redirect_post_request_body import RedirectPostRequestBody
 
 class RedirectRequestBuilder():
     """
@@ -36,32 +36,32 @@ class RedirectRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[redirect_post_request_body.RedirectPostRequestBody] = None, request_configuration: Optional[RedirectRequestBuilderPostRequestConfiguration] = None) -> Optional[print_job.PrintJob]:
+    async def post(self,body: Optional[RedirectPostRequestBody] = None, request_configuration: Optional[RedirectRequestBuilderPostRequestConfiguration] = None) -> Optional[PrintJob]:
         """
         Redirect a print job to a different printer. Redirecting a print job will only succeed if there is a printTask in a `processing` state on the associated print job, started by a trigger that the requesting app created.  For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_job.PrintJob]
+        Returns: Optional[PrintJob]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import print_job
+        from .......models.print_job import PrintJob
 
-        return await self.request_adapter.send_async(request_info, print_job.PrintJob, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintJob, error_mapping)
     
-    def to_post_request_information(self,body: Optional[redirect_post_request_body.RedirectPostRequestBody] = None, request_configuration: Optional[RedirectRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[RedirectPostRequestBody] = None, request_configuration: Optional[RedirectRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Redirect a print job to a different printer. Redirecting a print job will only succeed if there is a printTask in a `processing` state on the associated print job, started by a trigger that the requesting app created.  For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:

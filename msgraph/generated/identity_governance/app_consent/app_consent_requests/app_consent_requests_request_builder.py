@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import app_consent_request, app_consent_request_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
-    from .item import app_consent_request_item_request_builder
+    from ....models.app_consent_request import AppConsentRequest
+    from ....models.app_consent_request_collection_response import AppConsentRequestCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
+    from .item.app_consent_request_item_request_builder import AppConsentRequestItemRequestBuilder
 
 class AppConsentRequestsRequestBuilder():
     """
@@ -38,80 +39,80 @@ class AppConsentRequestsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_app_consent_request_id(self,app_consent_request_id: str) -> app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder:
+    def by_app_consent_request_id(self,app_consent_request_id: str) -> AppConsentRequestItemRequestBuilder:
         """
         Provides operations to manage the appConsentRequests property of the microsoft.graph.appConsentApprovalRoute entity.
         Args:
             app_consent_request_id: Unique identifier of the item
-        Returns: app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder
+        Returns: AppConsentRequestItemRequestBuilder
         """
         if not app_consent_request_id:
             raise TypeError("app_consent_request_id cannot be null.")
-        from .item import app_consent_request_item_request_builder
+        from .item.app_consent_request_item_request_builder import AppConsentRequestItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["appConsentRequest%2Did"] = app_consent_request_id
-        return app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AppConsentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
         Args:
             on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        Returns: FilterByCurrentUserWithOnRequestBuilder
         """
         if not on:
             raise TypeError("on cannot be null.")
-        from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+        from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
 
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+        return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[AppConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[app_consent_request_collection_response.AppConsentRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[AppConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[AppConsentRequestCollectionResponse]:
         """
         Retrieve appConsentRequest objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[app_consent_request_collection_response.AppConsentRequestCollectionResponse]
+        Returns: Optional[AppConsentRequestCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import app_consent_request_collection_response
+        from ....models.app_consent_request_collection_response import AppConsentRequestCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, app_consent_request_collection_response.AppConsentRequestCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AppConsentRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[app_consent_request.AppConsentRequest] = None, request_configuration: Optional[AppConsentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[app_consent_request.AppConsentRequest]:
+    async def post(self,body: Optional[AppConsentRequest] = None, request_configuration: Optional[AppConsentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[AppConsentRequest]:
         """
         Create new navigation property to appConsentRequests for identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[app_consent_request.AppConsentRequest]
+        Returns: Optional[AppConsentRequest]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import app_consent_request
+        from ....models.app_consent_request import AppConsentRequest
 
-        return await self.request_adapter.send_async(request_info, app_consent_request.AppConsentRequest, error_mapping)
+        return await self.request_adapter.send_async(request_info, AppConsentRequest, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AppConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -131,7 +132,7 @@ class AppConsentRequestsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[app_consent_request.AppConsentRequest] = None, request_configuration: Optional[AppConsentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AppConsentRequest] = None, request_configuration: Optional[AppConsentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to appConsentRequests for identityGovernance
         Args:
@@ -153,13 +154,13 @@ class AppConsentRequestsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AppConsentRequestsRequestBuilderGetQueryParameters():

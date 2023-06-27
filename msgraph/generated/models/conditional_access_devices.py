@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_filter
+    from .conditional_access_filter import ConditionalAccessFilter
 
 @dataclass
 class ConditionalAccessDevices(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ConditionalAccessDevices(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Filter that defines the dynamic-device-syntax rule to include/exclude devices. A filter can use device properties (such as extension attributes) to include/exclude them.
-    device_filter: Optional[conditional_access_filter.ConditionalAccessFilter] = None
+    device_filter: Optional[ConditionalAccessFilter] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,12 +33,12 @@ class ConditionalAccessDevices(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_filter
+        from .conditional_access_filter import ConditionalAccessFilter
 
-        from . import conditional_access_filter
+        from .conditional_access_filter import ConditionalAccessFilter
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceFilter": lambda n : setattr(self, 'device_filter', n.get_object_value(conditional_access_filter.ConditionalAccessFilter)),
+            "deviceFilter": lambda n : setattr(self, 'device_filter', n.get_object_value(ConditionalAccessFilter)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

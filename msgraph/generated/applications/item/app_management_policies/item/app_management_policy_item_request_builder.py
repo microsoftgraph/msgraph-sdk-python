@@ -4,7 +4,7 @@ from kiota_abstractions.request_adapter import RequestAdapter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .ref import ref_request_builder
+    from .ref.ref_request_builder import RefRequestBuilder
 
 class AppManagementPolicyItemRequestBuilder():
     """
@@ -29,12 +29,12 @@ class AppManagementPolicyItemRequestBuilder():
         self.request_adapter = request_adapter
     
     @property
-    def ref(self) -> ref_request_builder.RefRequestBuilder:
+    def ref(self) -> RefRequestBuilder:
         """
         Provides operations to manage the collection of application entities.
         """
-        from .ref import ref_request_builder
+        from .ref.ref_request_builder import RefRequestBuilder
 
-        return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
+        return RefRequestBuilder(self.request_adapter, self.path_parameters)
     
 

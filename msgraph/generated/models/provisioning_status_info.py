@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import provisioning_error_info, provisioning_result
+    from .provisioning_error_info import ProvisioningErrorInfo
+    from .provisioning_result import ProvisioningResult
 
 @dataclass
 class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # If status is not success/ skipped details for the error are contained in this.
-    error_information: Optional[provisioning_error_info.ProvisioningErrorInfo] = None
+    error_information: Optional[ProvisioningErrorInfo] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Possible values are: success, warning, failure, skipped, unknownFutureValue.
-    status: Optional[provisioning_result.ProvisioningResult] = None
+    status: Optional[ProvisioningResult] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisioningStatusInfo:
@@ -35,14 +36,16 @@ class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import provisioning_error_info, provisioning_result
+        from .provisioning_error_info import ProvisioningErrorInfo
+        from .provisioning_result import ProvisioningResult
 
-        from . import provisioning_error_info, provisioning_result
+        from .provisioning_error_info import ProvisioningErrorInfo
+        from .provisioning_result import ProvisioningResult
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "errorInformation": lambda n : setattr(self, 'error_information', n.get_object_value(provisioning_error_info.ProvisioningErrorInfo)),
+            "errorInformation": lambda n : setattr(self, 'error_information', n.get_object_value(ProvisioningErrorInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(provisioning_result.ProvisioningResult)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ProvisioningResult)),
         }
         return fields
     

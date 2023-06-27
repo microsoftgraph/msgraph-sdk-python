@@ -4,18 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, item_activity_stat
+    from .entity import Entity
+    from .item_activity_stat import ItemActivityStat
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ItemAnalytics(entity.Entity):
+class ItemAnalytics(Entity):
     # The allTime property
-    all_time: Optional[item_activity_stat.ItemActivityStat] = None
+    all_time: Optional[ItemActivityStat] = None
     # The itemActivityStats property
-    item_activity_stats: Optional[List[item_activity_stat.ItemActivityStat]] = None
+    item_activity_stats: Optional[List[ItemActivityStat]] = None
     # The lastSevenDays property
-    last_seven_days: Optional[item_activity_stat.ItemActivityStat] = None
+    last_seven_days: Optional[ItemActivityStat] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -36,14 +37,16 @@ class ItemAnalytics(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, item_activity_stat
+        from .entity import Entity
+        from .item_activity_stat import ItemActivityStat
 
-        from . import entity, item_activity_stat
+        from .entity import Entity
+        from .item_activity_stat import ItemActivityStat
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allTime": lambda n : setattr(self, 'all_time', n.get_object_value(item_activity_stat.ItemActivityStat)),
-            "itemActivityStats": lambda n : setattr(self, 'item_activity_stats', n.get_collection_of_object_values(item_activity_stat.ItemActivityStat)),
-            "lastSevenDays": lambda n : setattr(self, 'last_seven_days', n.get_object_value(item_activity_stat.ItemActivityStat)),
+            "allTime": lambda n : setattr(self, 'all_time', n.get_object_value(ItemActivityStat)),
+            "itemActivityStats": lambda n : setattr(self, 'item_activity_stats', n.get_collection_of_object_values(ItemActivityStat)),
+            "lastSevenDays": lambda n : setattr(self, 'last_seven_days', n.get_object_value(ItemActivityStat)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

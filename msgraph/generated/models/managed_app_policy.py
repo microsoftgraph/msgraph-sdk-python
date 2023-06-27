@@ -1,27 +1,37 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_managed_app_protection, default_managed_app_protection, entity, ios_managed_app_protection, managed_app_configuration, managed_app_protection, mdm_windows_information_protection_policy, targeted_managed_app_configuration, targeted_managed_app_protection, windows_information_protection, windows_information_protection_policy
+    from .android_managed_app_protection import AndroidManagedAppProtection
+    from .default_managed_app_protection import DefaultManagedAppProtection
+    from .entity import Entity
+    from .ios_managed_app_protection import IosManagedAppProtection
+    from .managed_app_configuration import ManagedAppConfiguration
+    from .managed_app_protection import ManagedAppProtection
+    from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
+    from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
+    from .targeted_managed_app_protection import TargetedManagedAppProtection
+    from .windows_information_protection import WindowsInformationProtection
+    from .windows_information_protection_policy import WindowsInformationProtectionPolicy
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ManagedAppPolicy(entity.Entity):
+class ManagedAppPolicy(Entity):
     """
     The ManagedAppPolicy resource represents a base type for platform specific policies.
     """
     # The date and time the policy was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The policy's description.
     description: Optional[str] = None
     # Policy display name.
     display_name: Optional[str] = None
     # Last time the policy was modified.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Version of the entity.
@@ -42,45 +52,45 @@ class ManagedAppPolicy(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidManagedAppProtection".casefold():
-            from . import android_managed_app_protection
+            from .android_managed_app_protection import AndroidManagedAppProtection
 
-            return android_managed_app_protection.AndroidManagedAppProtection()
+            return AndroidManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.defaultManagedAppProtection".casefold():
-            from . import default_managed_app_protection
+            from .default_managed_app_protection import DefaultManagedAppProtection
 
-            return default_managed_app_protection.DefaultManagedAppProtection()
+            return DefaultManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosManagedAppProtection".casefold():
-            from . import ios_managed_app_protection
+            from .ios_managed_app_protection import IosManagedAppProtection
 
-            return ios_managed_app_protection.IosManagedAppProtection()
+            return IosManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppConfiguration".casefold():
-            from . import managed_app_configuration
+            from .managed_app_configuration import ManagedAppConfiguration
 
-            return managed_app_configuration.ManagedAppConfiguration()
+            return ManagedAppConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppProtection".casefold():
-            from . import managed_app_protection
+            from .managed_app_protection import ManagedAppProtection
 
-            return managed_app_protection.ManagedAppProtection()
+            return ManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mdmWindowsInformationProtectionPolicy".casefold():
-            from . import mdm_windows_information_protection_policy
+            from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
 
-            return mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy()
+            return MdmWindowsInformationProtectionPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppConfiguration".casefold():
-            from . import targeted_managed_app_configuration
+            from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
-            return targeted_managed_app_configuration.TargetedManagedAppConfiguration()
+            return TargetedManagedAppConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppProtection".casefold():
-            from . import targeted_managed_app_protection
+            from .targeted_managed_app_protection import TargetedManagedAppProtection
 
-            return targeted_managed_app_protection.TargetedManagedAppProtection()
+            return TargetedManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtection".casefold():
-            from . import windows_information_protection
+            from .windows_information_protection import WindowsInformationProtection
 
-            return windows_information_protection.WindowsInformationProtection()
+            return WindowsInformationProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtectionPolicy".casefold():
-            from . import windows_information_protection_policy
+            from .windows_information_protection_policy import WindowsInformationProtectionPolicy
 
-            return windows_information_protection_policy.WindowsInformationProtectionPolicy()
+            return WindowsInformationProtectionPolicy()
         return ManagedAppPolicy()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -88,9 +98,29 @@ class ManagedAppPolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_managed_app_protection, default_managed_app_protection, entity, ios_managed_app_protection, managed_app_configuration, managed_app_protection, mdm_windows_information_protection_policy, targeted_managed_app_configuration, targeted_managed_app_protection, windows_information_protection, windows_information_protection_policy
+        from .android_managed_app_protection import AndroidManagedAppProtection
+        from .default_managed_app_protection import DefaultManagedAppProtection
+        from .entity import Entity
+        from .ios_managed_app_protection import IosManagedAppProtection
+        from .managed_app_configuration import ManagedAppConfiguration
+        from .managed_app_protection import ManagedAppProtection
+        from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
+        from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
+        from .targeted_managed_app_protection import TargetedManagedAppProtection
+        from .windows_information_protection import WindowsInformationProtection
+        from .windows_information_protection_policy import WindowsInformationProtectionPolicy
 
-        from . import android_managed_app_protection, default_managed_app_protection, entity, ios_managed_app_protection, managed_app_configuration, managed_app_protection, mdm_windows_information_protection_policy, targeted_managed_app_configuration, targeted_managed_app_protection, windows_information_protection, windows_information_protection_policy
+        from .android_managed_app_protection import AndroidManagedAppProtection
+        from .default_managed_app_protection import DefaultManagedAppProtection
+        from .entity import Entity
+        from .ios_managed_app_protection import IosManagedAppProtection
+        from .managed_app_configuration import ManagedAppConfiguration
+        from .managed_app_protection import ManagedAppProtection
+        from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
+        from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
+        from .targeted_managed_app_protection import TargetedManagedAppProtection
+        from .windows_information_protection import WindowsInformationProtection
+        from .windows_information_protection_policy import WindowsInformationProtectionPolicy
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -112,10 +142,10 @@ class ManagedAppPolicy(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("version", self.version)
     
 

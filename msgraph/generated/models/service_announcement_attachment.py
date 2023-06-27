@@ -1,22 +1,22 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ServiceAnnouncementAttachment(entity.Entity):
+class ServiceAnnouncementAttachment(Entity):
     # The attachment content.
     content: Optional[bytes] = None
     # The contentType property
     content_type: Optional[str] = None
     # The lastModifiedDateTime property
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The name property
     name: Optional[str] = None
     # The OdataType property
@@ -41,9 +41,9 @@ class ServiceAnnouncementAttachment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
@@ -65,9 +65,9 @@ class ServiceAnnouncementAttachment(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("content", self.content)
+        writer.write_bytes_value("content", self.content)
         writer.write_str_value("contentType", self.content_type)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("name", self.name)
         writer.write_int_value("size", self.size)
     

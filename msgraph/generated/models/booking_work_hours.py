@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import booking_work_time_slot, day_of_week
+    from .booking_work_time_slot import BookingWorkTimeSlot
+    from .day_of_week import DayOfWeek
 
 @dataclass
 class BookingWorkHours(AdditionalDataHolder, Parsable):
@@ -15,11 +16,11 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The day property
-    day: Optional[day_of_week.DayOfWeek] = None
+    day: Optional[DayOfWeek] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A list of start/end times during a day.
-    time_slots: Optional[List[booking_work_time_slot.BookingWorkTimeSlot]] = None
+    time_slots: Optional[List[BookingWorkTimeSlot]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingWorkHours:
@@ -38,14 +39,16 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_work_time_slot, day_of_week
+        from .booking_work_time_slot import BookingWorkTimeSlot
+        from .day_of_week import DayOfWeek
 
-        from . import booking_work_time_slot, day_of_week
+        from .booking_work_time_slot import BookingWorkTimeSlot
+        from .day_of_week import DayOfWeek
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "day": lambda n : setattr(self, 'day', n.get_enum_value(day_of_week.DayOfWeek)),
+            "day": lambda n : setattr(self, 'day', n.get_enum_value(DayOfWeek)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(booking_work_time_slot.BookingWorkTimeSlot)),
+            "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(BookingWorkTimeSlot)),
         }
         return fields
     

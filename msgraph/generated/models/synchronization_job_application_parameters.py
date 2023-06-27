@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import synchronization_job_subject
+    from .synchronization_job_subject import SynchronizationJobSubject
 
 @dataclass
 class SynchronizationJobApplicationParameters(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class SynchronizationJobApplicationParameters(AdditionalDataHolder, Parsable):
     # The ruleId property
     rule_id: Optional[str] = None
     # The subjects property
-    subjects: Optional[List[synchronization_job_subject.SynchronizationJobSubject]] = None
+    subjects: Optional[List[SynchronizationJobSubject]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SynchronizationJobApplicationParameters:
@@ -35,14 +35,14 @@ class SynchronizationJobApplicationParameters(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import synchronization_job_subject
+        from .synchronization_job_subject import SynchronizationJobSubject
 
-        from . import synchronization_job_subject
+        from .synchronization_job_subject import SynchronizationJobSubject
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "ruleId": lambda n : setattr(self, 'rule_id', n.get_str_value()),
-            "subjects": lambda n : setattr(self, 'subjects', n.get_collection_of_object_values(synchronization_job_subject.SynchronizationJobSubject)),
+            "subjects": lambda n : setattr(self, 'subjects', n.get_collection_of_object_values(SynchronizationJobSubject)),
         }
         return fields
     

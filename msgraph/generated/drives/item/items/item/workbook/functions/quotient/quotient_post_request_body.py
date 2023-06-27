@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class QuotientPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class QuotientPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The denominator property
-    denominator: Optional[json.Json] = None
+    denominator: Optional[Json] = None
     # The numerator property
-    numerator: Optional[json.Json] = None
+    numerator: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> QuotientPostRequestBody:
@@ -33,13 +33,13 @@ class QuotientPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "denominator": lambda n : setattr(self, 'denominator', n.get_object_value(json.Json)),
-            "numerator": lambda n : setattr(self, 'numerator', n.get_object_value(json.Json)),
+            "denominator": lambda n : setattr(self, 'denominator', n.get_object_value(Json)),
+            "numerator": lambda n : setattr(self, 'numerator', n.get_object_value(Json)),
         }
         return fields
     

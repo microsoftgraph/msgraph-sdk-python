@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_app_assignment_settings
+    from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-from . import mobile_app_assignment_settings
+from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
+class IosStoreAppAssignmentSettings(MobileAppAssignmentSettings):
     odata_type = "#microsoft.graph.iosStoreAppAssignmentSettings"
     # The VPN Configuration Id to apply for this app.
     vpn_configuration_id: Optional[str] = None
@@ -31,9 +31,9 @@ class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "vpnConfigurationId": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),

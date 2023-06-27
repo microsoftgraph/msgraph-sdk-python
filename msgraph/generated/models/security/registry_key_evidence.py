@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert_evidence
+    from .alert_evidence import AlertEvidence
 
-from . import alert_evidence
+from .alert_evidence import AlertEvidence
 
 @dataclass
-class RegistryKeyEvidence(alert_evidence.AlertEvidence):
+class RegistryKeyEvidence(AlertEvidence):
     # The OdataType property
     odata_type: Optional[str] = None
     # Registry hive of the key that the recorded action was applied to.
@@ -34,9 +34,9 @@ class RegistryKeyEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_evidence
+        from .alert_evidence import AlertEvidence
 
-        from . import alert_evidence
+        from .alert_evidence import AlertEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
             "registryHive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),

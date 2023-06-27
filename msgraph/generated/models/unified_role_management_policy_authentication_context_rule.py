@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import unified_role_management_policy_rule
+    from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-from . import unified_role_management_policy_rule
+from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
 @dataclass
-class UnifiedRoleManagementPolicyAuthenticationContextRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
+class UnifiedRoleManagementPolicyAuthenticationContextRule(UnifiedRoleManagementPolicyRule):
     odata_type = "#microsoft.graph.unifiedRoleManagementPolicyAuthenticationContextRule"
     # The value of the authentication context claim.
     claim_value: Optional[str] = None
@@ -33,9 +33,9 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(unified_role_manageme
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import unified_role_management_policy_rule
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-        from . import unified_role_management_policy_rule
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         fields: Dict[str, Callable[[Any], None]] = {
             "claimValue": lambda n : setattr(self, 'claim_value', n.get_str_value()),

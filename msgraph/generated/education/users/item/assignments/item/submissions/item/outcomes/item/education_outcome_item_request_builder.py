@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import education_outcome
-    from ..........models.o_data_errors import o_data_error
+    from ..........models.education_outcome import EducationOutcome
+    from ..........models.o_data_errors.o_data_error import ODataError
 
 class EducationOutcomeItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class EducationOutcomeItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EducationOutcomeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[education_outcome.EducationOutcome]:
+    async def get(self,request_configuration: Optional[EducationOutcomeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationOutcome]:
         """
         Get outcomes from education
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_outcome.EducationOutcome]
+        Returns: Optional[EducationOutcome]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import education_outcome
+        from ..........models.education_outcome import EducationOutcome
 
-        return await self.request_adapter.send_async(request_info, education_outcome.EducationOutcome, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationOutcome, error_mapping)
     
-    async def patch(self,body: Optional[education_outcome.EducationOutcome] = None, request_configuration: Optional[EducationOutcomeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_outcome.EducationOutcome]:
+    async def patch(self,body: Optional[EducationOutcome] = None, request_configuration: Optional[EducationOutcomeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationOutcome]:
         """
         Update the properties of an educationOutcome object. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_outcome.EducationOutcome]
+        Returns: Optional[EducationOutcome]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import education_outcome
+        from ..........models.education_outcome import EducationOutcome
 
-        return await self.request_adapter.send_async(request_info, education_outcome.EducationOutcome, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationOutcome, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EducationOutcomeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class EducationOutcomeItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[education_outcome.EducationOutcome] = None, request_configuration: Optional[EducationOutcomeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EducationOutcome] = None, request_configuration: Optional[EducationOutcomeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an educationOutcome object. Only teachers can perform this operation.
         Args:

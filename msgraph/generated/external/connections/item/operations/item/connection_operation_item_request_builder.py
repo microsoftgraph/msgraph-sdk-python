@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models.external_connectors import connection_operation
-    from ......models.o_data_errors import o_data_error
+    from ......models.external_connectors.connection_operation import ConnectionOperation
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class ConnectionOperationItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class ConnectionOperationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ConnectionOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[connection_operation.ConnectionOperation]:
+    async def get(self,request_configuration: Optional[ConnectionOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConnectionOperation]:
         """
         Read the properties and relationships of a connectionOperation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[connection_operation.ConnectionOperation]
+        Returns: Optional[ConnectionOperation]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.external_connectors import connection_operation
+        from ......models.external_connectors.connection_operation import ConnectionOperation
 
-        return await self.request_adapter.send_async(request_info, connection_operation.ConnectionOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, ConnectionOperation, error_mapping)
     
-    async def patch(self,body: Optional[connection_operation.ConnectionOperation] = None, request_configuration: Optional[ConnectionOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[connection_operation.ConnectionOperation]:
+    async def patch(self,body: Optional[ConnectionOperation] = None, request_configuration: Optional[ConnectionOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ConnectionOperation]:
         """
         Update the navigation property operations in external
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[connection_operation.ConnectionOperation]
+        Returns: Optional[ConnectionOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.external_connectors import connection_operation
+        from ......models.external_connectors.connection_operation import ConnectionOperation
 
-        return await self.request_adapter.send_async(request_info, connection_operation.ConnectionOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, ConnectionOperation, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ConnectionOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class ConnectionOperationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[connection_operation.ConnectionOperation] = None, request_configuration: Optional[ConnectionOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ConnectionOperation] = None, request_configuration: Optional[ConnectionOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property operations in external
         Args:

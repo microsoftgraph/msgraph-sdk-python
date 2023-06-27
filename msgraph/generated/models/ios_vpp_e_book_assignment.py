@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import managed_e_book_assignment
+    from .managed_e_book_assignment import ManagedEBookAssignment
 
-from . import managed_e_book_assignment
+from .managed_e_book_assignment import ManagedEBookAssignment
 
 @dataclass
-class IosVppEBookAssignment(managed_e_book_assignment.ManagedEBookAssignment):
+class IosVppEBookAssignment(ManagedEBookAssignment):
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -30,9 +30,9 @@ class IosVppEBookAssignment(managed_e_book_assignment.ManagedEBookAssignment):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_e_book_assignment
+        from .managed_e_book_assignment import ManagedEBookAssignment
 
-        from . import managed_e_book_assignment
+        from .managed_e_book_assignment import ManagedEBookAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

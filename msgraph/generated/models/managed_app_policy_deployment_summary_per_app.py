@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_app_identifier
+    from .mobile_app_identifier import MobileAppIdentifier
 
 @dataclass
 class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
@@ -17,7 +17,7 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
     # Number of users the policy is applied.
     configuration_applied_user_count: Optional[int] = None
     # Deployment of an app.
-    mobile_app_identifier: Optional[mobile_app_identifier.MobileAppIdentifier] = None
+    mobile_app_identifier: Optional[MobileAppIdentifier] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -38,13 +38,13 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_identifier
+        from .mobile_app_identifier import MobileAppIdentifier
 
-        from . import mobile_app_identifier
+        from .mobile_app_identifier import MobileAppIdentifier
 
         fields: Dict[str, Callable[[Any], None]] = {
             "configurationAppliedUserCount": lambda n : setattr(self, 'configuration_applied_user_count', n.get_int_value()),
-            "mobileAppIdentifier": lambda n : setattr(self, 'mobile_app_identifier', n.get_object_value(mobile_app_identifier.MobileAppIdentifier)),
+            "mobileAppIdentifier": lambda n : setattr(self, 'mobile_app_identifier', n.get_object_value(MobileAppIdentifier)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

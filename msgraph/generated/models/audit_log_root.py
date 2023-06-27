@@ -4,20 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import directory_audit, entity, provisioning_object_summary, sign_in
+    from .directory_audit import DirectoryAudit
+    from .entity import Entity
+    from .provisioning_object_summary import ProvisioningObjectSummary
+    from .sign_in import SignIn
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AuditLogRoot(entity.Entity):
+class AuditLogRoot(Entity):
     # The directoryAudits property
-    directory_audits: Optional[List[directory_audit.DirectoryAudit]] = None
+    directory_audits: Optional[List[DirectoryAudit]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The provisioning property
-    provisioning: Optional[List[provisioning_object_summary.ProvisioningObjectSummary]] = None
+    provisioning: Optional[List[ProvisioningObjectSummary]] = None
     # The signIns property
-    sign_ins: Optional[List[sign_in.SignIn]] = None
+    sign_ins: Optional[List[SignIn]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuditLogRoot:
@@ -36,14 +39,20 @@ class AuditLogRoot(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_audit, entity, provisioning_object_summary, sign_in
+        from .directory_audit import DirectoryAudit
+        from .entity import Entity
+        from .provisioning_object_summary import ProvisioningObjectSummary
+        from .sign_in import SignIn
 
-        from . import directory_audit, entity, provisioning_object_summary, sign_in
+        from .directory_audit import DirectoryAudit
+        from .entity import Entity
+        from .provisioning_object_summary import ProvisioningObjectSummary
+        from .sign_in import SignIn
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "directoryAudits": lambda n : setattr(self, 'directory_audits', n.get_collection_of_object_values(directory_audit.DirectoryAudit)),
-            "provisioning": lambda n : setattr(self, 'provisioning', n.get_collection_of_object_values(provisioning_object_summary.ProvisioningObjectSummary)),
-            "signIns": lambda n : setattr(self, 'sign_ins', n.get_collection_of_object_values(sign_in.SignIn)),
+            "directoryAudits": lambda n : setattr(self, 'directory_audits', n.get_collection_of_object_values(DirectoryAudit)),
+            "provisioning": lambda n : setattr(self, 'provisioning', n.get_collection_of_object_values(ProvisioningObjectSummary)),
+            "signIns": lambda n : setattr(self, 'sign_ins', n.get_collection_of_object_values(SignIn)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

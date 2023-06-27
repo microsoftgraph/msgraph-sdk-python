@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import synchronization_secret_key_string_value_pair
+    from .......models.synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
 
 @dataclass
 class ValidateCredentialsPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class ValidateCredentialsPostRequestBody(AdditionalDataHolder, Parsable):
     # The applicationIdentifier property
     application_identifier: Optional[str] = None
     # The credentials property
-    credentials: Optional[List[synchronization_secret_key_string_value_pair.SynchronizationSecretKeyStringValuePair]] = None
+    credentials: Optional[List[SynchronizationSecretKeyStringValuePair]] = None
     # The templateId property
     template_id: Optional[str] = None
     # The useSavedCredentials property
@@ -37,13 +37,13 @@ class ValidateCredentialsPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .......models import synchronization_secret_key_string_value_pair
+        from .......models.synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
 
-        from .......models import synchronization_secret_key_string_value_pair
+        from .......models.synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applicationIdentifier": lambda n : setattr(self, 'application_identifier', n.get_str_value()),
-            "credentials": lambda n : setattr(self, 'credentials', n.get_collection_of_object_values(synchronization_secret_key_string_value_pair.SynchronizationSecretKeyStringValuePair)),
+            "credentials": lambda n : setattr(self, 'credentials', n.get_collection_of_object_values(SynchronizationSecretKeyStringValuePair)),
             "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
             "useSavedCredentials": lambda n : setattr(self, 'use_saved_credentials', n.get_bool_value()),
         }

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import user_install_state_summary
-    from ......models.o_data_errors import o_data_error
-    from .device_states import device_states_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.user_install_state_summary import UserInstallStateSummary
+    from .device_states.device_states_request_builder import DeviceStatesRequestBuilder
 
 class UserInstallStateSummaryItemRequestBuilder():
     """
@@ -38,73 +38,73 @@ class UserInstallStateSummaryItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property userStateSummary for deviceAppManagement
+        Deletes a userInstallStateSummary.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[user_install_state_summary.UserInstallStateSummary]:
+    async def get(self,request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserInstallStateSummary]:
         """
-        The list of installation states for this eBook.
+        Read properties and relationships of the userInstallStateSummary object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_install_state_summary.UserInstallStateSummary]
+        Returns: Optional[UserInstallStateSummary]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import user_install_state_summary
+        from ......models.user_install_state_summary import UserInstallStateSummary
 
-        return await self.request_adapter.send_async(request_info, user_install_state_summary.UserInstallStateSummary, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserInstallStateSummary, error_mapping)
     
-    async def patch(self,body: Optional[user_install_state_summary.UserInstallStateSummary] = None, request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[user_install_state_summary.UserInstallStateSummary]:
+    async def patch(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UserInstallStateSummary]:
         """
-        Update the navigation property userStateSummary in deviceAppManagement
+        Update the properties of a userInstallStateSummary object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_install_state_summary.UserInstallStateSummary]
+        Returns: Optional[UserInstallStateSummary]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import user_install_state_summary
+        from ......models.user_install_state_summary import UserInstallStateSummary
 
-        return await self.request_adapter.send_async(request_info, user_install_state_summary.UserInstallStateSummary, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserInstallStateSummary, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property userStateSummary for deviceAppManagement
+        Deletes a userInstallStateSummary.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class UserInstallStateSummaryItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of installation states for this eBook.
+        Read properties and relationships of the userInstallStateSummary object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -136,9 +136,9 @@ class UserInstallStateSummaryItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[user_install_state_summary.UserInstallStateSummary] = None, request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property userStateSummary in deviceAppManagement
+        Update the properties of a userInstallStateSummary object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -158,13 +158,13 @@ class UserInstallStateSummaryItemRequestBuilder():
         return request_info
     
     @property
-    def device_states(self) -> device_states_request_builder.DeviceStatesRequestBuilder:
+    def device_states(self) -> DeviceStatesRequestBuilder:
         """
         Provides operations to manage the deviceStates property of the microsoft.graph.userInstallStateSummary entity.
         """
-        from .device_states import device_states_request_builder
+        from .device_states.device_states_request_builder import DeviceStatesRequestBuilder
 
-        return device_states_request_builder.DeviceStatesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceStatesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class UserInstallStateSummaryItemRequestBuilderDeleteRequestConfiguration():
@@ -181,7 +181,7 @@ class UserInstallStateSummaryItemRequestBuilder():
     @dataclass
     class UserInstallStateSummaryItemRequestBuilderGetQueryParameters():
         """
-        The list of installation states for this eBook.
+        Read properties and relationships of the userInstallStateSummary object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

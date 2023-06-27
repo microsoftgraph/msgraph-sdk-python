@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import content_sharing_session, content_sharing_session_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import content_sharing_session_item_request_builder
+    from .....models.content_sharing_session import ContentSharingSession
+    from .....models.content_sharing_session_collection_response import ContentSharingSessionCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.content_sharing_session_item_request_builder import ContentSharingSessionItemRequestBuilder
 
 class ContentSharingSessionsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class ContentSharingSessionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_content_sharing_session_id(self,content_sharing_session_id: str) -> content_sharing_session_item_request_builder.ContentSharingSessionItemRequestBuilder:
+    def by_content_sharing_session_id(self,content_sharing_session_id: str) -> ContentSharingSessionItemRequestBuilder:
         """
         Provides operations to manage the contentSharingSessions property of the microsoft.graph.call entity.
         Args:
             content_sharing_session_id: Unique identifier of the item
-        Returns: content_sharing_session_item_request_builder.ContentSharingSessionItemRequestBuilder
+        Returns: ContentSharingSessionItemRequestBuilder
         """
         if not content_sharing_session_id:
             raise TypeError("content_sharing_session_id cannot be null.")
-        from .item import content_sharing_session_item_request_builder
+        from .item.content_sharing_session_item_request_builder import ContentSharingSessionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["contentSharingSession%2Did"] = content_sharing_session_id
-        return content_sharing_session_item_request_builder.ContentSharingSessionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ContentSharingSessionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ContentSharingSessionsRequestBuilderGetRequestConfiguration] = None) -> Optional[content_sharing_session_collection_response.ContentSharingSessionCollectionResponse]:
+    async def get(self,request_configuration: Optional[ContentSharingSessionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ContentSharingSessionCollectionResponse]:
         """
         Retrieve a list of contentSharingSession objects in a call.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[content_sharing_session_collection_response.ContentSharingSessionCollectionResponse]
+        Returns: Optional[ContentSharingSessionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import content_sharing_session_collection_response
+        from .....models.content_sharing_session_collection_response import ContentSharingSessionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, content_sharing_session_collection_response.ContentSharingSessionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ContentSharingSessionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[content_sharing_session.ContentSharingSession] = None, request_configuration: Optional[ContentSharingSessionsRequestBuilderPostRequestConfiguration] = None) -> Optional[content_sharing_session.ContentSharingSession]:
+    async def post(self,body: Optional[ContentSharingSession] = None, request_configuration: Optional[ContentSharingSessionsRequestBuilderPostRequestConfiguration] = None) -> Optional[ContentSharingSession]:
         """
         Create new navigation property to contentSharingSessions for communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[content_sharing_session.ContentSharingSession]
+        Returns: Optional[ContentSharingSession]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import content_sharing_session
+        from .....models.content_sharing_session import ContentSharingSession
 
-        return await self.request_adapter.send_async(request_info, content_sharing_session.ContentSharingSession, error_mapping)
+        return await self.request_adapter.send_async(request_info, ContentSharingSession, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ContentSharingSessionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class ContentSharingSessionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[content_sharing_session.ContentSharingSession] = None, request_configuration: Optional[ContentSharingSessionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ContentSharingSession] = None, request_configuration: Optional[ContentSharingSessionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to contentSharingSessions for communications
         Args:
@@ -139,13 +140,13 @@ class ContentSharingSessionsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ContentSharingSessionsRequestBuilderGetQueryParameters():

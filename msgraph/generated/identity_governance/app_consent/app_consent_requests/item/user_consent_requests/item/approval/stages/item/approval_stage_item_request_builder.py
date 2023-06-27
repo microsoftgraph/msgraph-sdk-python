@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import approval_stage
-    from ..........models.o_data_errors import o_data_error
+    from ..........models.approval_stage import ApprovalStage
+    from ..........models.o_data_errors.o_data_error import ODataError
 
 class ApprovalStageItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class ApprovalStageItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ApprovalStageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[approval_stage.ApprovalStage]:
+    async def get(self,request_configuration: Optional[ApprovalStageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ApprovalStage]:
         """
         In Azure AD entitlement management, retrieve the properties of an approvalStage object. An approval stage is contained within an approval object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[approval_stage.ApprovalStage]
+        Returns: Optional[ApprovalStage]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import approval_stage
+        from ..........models.approval_stage import ApprovalStage
 
-        return await self.request_adapter.send_async(request_info, approval_stage.ApprovalStage, error_mapping)
+        return await self.request_adapter.send_async(request_info, ApprovalStage, error_mapping)
     
-    async def patch(self,body: Optional[approval_stage.ApprovalStage] = None, request_configuration: Optional[ApprovalStageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[approval_stage.ApprovalStage]:
+    async def patch(self,body: Optional[ApprovalStage] = None, request_configuration: Optional[ApprovalStageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ApprovalStage]:
         """
         In Azure AD entitlement management, approve or deny an approvalStage object in an approval.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[approval_stage.ApprovalStage]
+        Returns: Optional[ApprovalStage]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import approval_stage
+        from ..........models.approval_stage import ApprovalStage
 
-        return await self.request_adapter.send_async(request_info, approval_stage.ApprovalStage, error_mapping)
+        return await self.request_adapter.send_async(request_info, ApprovalStage, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ApprovalStageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class ApprovalStageItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[approval_stage.ApprovalStage] = None, request_configuration: Optional[ApprovalStageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ApprovalStage] = None, request_configuration: Optional[ApprovalStageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         In Azure AD entitlement management, approve or deny an approvalStage object in an approval.
         Args:

@@ -1,11 +1,12 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import insight_identity, resource_reference
+    from .insight_identity import InsightIdentity
+    from .resource_reference import ResourceReference
 
 @dataclass
 class SharingDetail(AdditionalDataHolder, Parsable):
@@ -15,11 +16,11 @@ class SharingDetail(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The user who shared the document.
-    shared_by: Optional[insight_identity.InsightIdentity] = None
+    shared_by: Optional[InsightIdentity] = None
     # The date and time the file was last shared. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    shared_date_time: Optional[datetime] = None
+    shared_date_time: Optional[datetime.datetime] = None
     # The sharingReference property
-    sharing_reference: Optional[resource_reference.ResourceReference] = None
+    sharing_reference: Optional[ResourceReference] = None
     # The subject with which the document was shared.
     sharing_subject: Optional[str] = None
     # Determines the way the document was shared, can be by a 'Link', 'Attachment', 'Group', 'Site'.
@@ -42,15 +43,17 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import insight_identity, resource_reference
+        from .insight_identity import InsightIdentity
+        from .resource_reference import ResourceReference
 
-        from . import insight_identity, resource_reference
+        from .insight_identity import InsightIdentity
+        from .resource_reference import ResourceReference
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sharedBy": lambda n : setattr(self, 'shared_by', n.get_object_value(insight_identity.InsightIdentity)),
+            "sharedBy": lambda n : setattr(self, 'shared_by', n.get_object_value(InsightIdentity)),
             "sharedDateTime": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
-            "sharingReference": lambda n : setattr(self, 'sharing_reference', n.get_object_value(resource_reference.ResourceReference)),
+            "sharingReference": lambda n : setattr(self, 'sharing_reference', n.get_object_value(ResourceReference)),
             "sharingSubject": lambda n : setattr(self, 'sharing_subject', n.get_str_value()),
             "sharingType": lambda n : setattr(self, 'sharing_type', n.get_str_value()),
         }
@@ -66,7 +69,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("sharedBy", self.shared_by)
-        writer.write_datetime_value("sharedDateTime", self.shared_date_time)
+        writer.write_datetime_value()("sharedDateTime", self.shared_date_time)
         writer.write_str_value("sharingSubject", self.sharing_subject)
         writer.write_str_value("sharingType", self.sharing_type)
         writer.write_additional_data_value(self.additional_data)

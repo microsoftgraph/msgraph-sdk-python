@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import synchronization
-    from ....models.o_data_errors import o_data_error
-    from .acquire_access_token import acquire_access_token_request_builder
-    from .jobs import jobs_request_builder
-    from .secrets import secrets_request_builder
-    from .templates import templates_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.synchronization import Synchronization
+    from .acquire_access_token.acquire_access_token_request_builder import AcquireAccessTokenRequestBuilder
+    from .jobs.jobs_request_builder import JobsRequestBuilder
+    from .secrets.secrets_request_builder import SecretsRequestBuilder
+    from .templates.templates_request_builder import TemplatesRequestBuilder
 
 class SynchronizationRequestBuilder():
     """
@@ -48,62 +48,62 @@ class SynchronizationRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[synchronization.Synchronization]:
+    async def get(self,request_configuration: Optional[SynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[Synchronization]:
         """
         Get synchronization from servicePrincipals
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[synchronization.Synchronization]
+        Returns: Optional[Synchronization]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import synchronization
+        from ....models.synchronization import Synchronization
 
-        return await self.request_adapter.send_async(request_info, synchronization.Synchronization, error_mapping)
+        return await self.request_adapter.send_async(request_info, Synchronization, error_mapping)
     
-    async def put(self,body: Optional[synchronization.Synchronization] = None, request_configuration: Optional[SynchronizationRequestBuilderPutRequestConfiguration] = None) -> Optional[synchronization.Synchronization]:
+    async def put(self,body: Optional[Synchronization] = None, request_configuration: Optional[SynchronizationRequestBuilderPutRequestConfiguration] = None) -> Optional[Synchronization]:
         """
         Update the navigation property synchronization in servicePrincipals
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[synchronization.Synchronization]
+        Returns: Optional[Synchronization]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_put_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import synchronization
+        from ....models.synchronization import Synchronization
 
-        return await self.request_adapter.send_async(request_info, synchronization.Synchronization, error_mapping)
+        return await self.request_adapter.send_async(request_info, Synchronization, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SynchronizationRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -139,7 +139,7 @@ class SynchronizationRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_put_request_information(self,body: Optional[synchronization.Synchronization] = None, request_configuration: Optional[SynchronizationRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: Optional[Synchronization] = None, request_configuration: Optional[SynchronizationRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property synchronization in servicePrincipals
         Args:
@@ -161,40 +161,40 @@ class SynchronizationRequestBuilder():
         return request_info
     
     @property
-    def acquire_access_token(self) -> acquire_access_token_request_builder.AcquireAccessTokenRequestBuilder:
+    def acquire_access_token(self) -> AcquireAccessTokenRequestBuilder:
         """
         Provides operations to call the acquireAccessToken method.
         """
-        from .acquire_access_token import acquire_access_token_request_builder
+        from .acquire_access_token.acquire_access_token_request_builder import AcquireAccessTokenRequestBuilder
 
-        return acquire_access_token_request_builder.AcquireAccessTokenRequestBuilder(self.request_adapter, self.path_parameters)
+        return AcquireAccessTokenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def jobs(self) -> jobs_request_builder.JobsRequestBuilder:
+    def jobs(self) -> JobsRequestBuilder:
         """
         Provides operations to manage the jobs property of the microsoft.graph.synchronization entity.
         """
-        from .jobs import jobs_request_builder
+        from .jobs.jobs_request_builder import JobsRequestBuilder
 
-        return jobs_request_builder.JobsRequestBuilder(self.request_adapter, self.path_parameters)
+        return JobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def secrets(self) -> secrets_request_builder.SecretsRequestBuilder:
+    def secrets(self) -> SecretsRequestBuilder:
         """
         The secrets property
         """
-        from .secrets import secrets_request_builder
+        from .secrets.secrets_request_builder import SecretsRequestBuilder
 
-        return secrets_request_builder.SecretsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SecretsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def templates(self) -> templates_request_builder.TemplatesRequestBuilder:
+    def templates(self) -> TemplatesRequestBuilder:
         """
         Provides operations to manage the templates property of the microsoft.graph.synchronization entity.
         """
-        from .templates import templates_request_builder
+        from .templates.templates_request_builder import TemplatesRequestBuilder
 
-        return templates_request_builder.TemplatesRequestBuilder(self.request_adapter, self.path_parameters)
+        return TemplatesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SynchronizationRequestBuilderDeleteRequestConfiguration():

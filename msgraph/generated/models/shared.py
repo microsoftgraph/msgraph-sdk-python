@@ -1,11 +1,11 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set
+    from .identity_set import IdentitySet
 
 @dataclass
 class Shared(AdditionalDataHolder, Parsable):
@@ -15,13 +15,13 @@ class Shared(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The identity of the owner of the shared item. Read-only.
-    owner: Optional[identity_set.IdentitySet] = None
+    owner: Optional[IdentitySet] = None
     # Indicates the scope of how the item is shared: anonymous, organization, or users. Read-only.
     scope: Optional[str] = None
     # The identity of the user who shared the item. Read-only.
-    shared_by: Optional[identity_set.IdentitySet] = None
+    shared_by: Optional[IdentitySet] = None
     # The UTC date and time when the item was shared. Read-only.
-    shared_date_time: Optional[datetime] = None
+    shared_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Shared:
@@ -40,15 +40,15 @@ class Shared(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set
+        from .identity_set import IdentitySet
 
-        from . import identity_set
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "owner": lambda n : setattr(self, 'owner', n.get_object_value(identity_set.IdentitySet)),
+            "owner": lambda n : setattr(self, 'owner', n.get_object_value(IdentitySet)),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),
-            "sharedBy": lambda n : setattr(self, 'shared_by', n.get_object_value(identity_set.IdentitySet)),
+            "sharedBy": lambda n : setattr(self, 'shared_by', n.get_object_value(IdentitySet)),
             "sharedDateTime": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
         }
         return fields
@@ -65,7 +65,7 @@ class Shared(AdditionalDataHolder, Parsable):
         writer.write_object_value("owner", self.owner)
         writer.write_str_value("scope", self.scope)
         writer.write_object_value("sharedBy", self.shared_by)
-        writer.write_datetime_value("sharedDateTime", self.shared_date_time)
+        writer.write_datetime_value()("sharedDateTime", self.shared_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

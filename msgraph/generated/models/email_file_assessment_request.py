@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mail_destination_routing_reason, threat_assessment_request
+    from .mail_destination_routing_reason import MailDestinationRoutingReason
+    from .threat_assessment_request import ThreatAssessmentRequest
 
-from . import threat_assessment_request
+from .threat_assessment_request import ThreatAssessmentRequest
 
 @dataclass
-class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
+class EmailFileAssessmentRequest(ThreatAssessmentRequest):
     odata_type = "#microsoft.graph.emailFileAssessmentRequest"
     # Base64 encoded .eml email file content. The file content cannot fetch back because it isn't stored.
     content_data: Optional[str] = None
     # The reason for mail routed to its destination. Possible values are: none, mailFlowRule, safeSender, blockedSender, advancedSpamFiltering, domainAllowList, domainBlockList, notInAddressBook, firstTimeSender, autoPurgeToInbox, autoPurgeToJunk, autoPurgeToDeleted, outbound, notJunk, junk.
-    destination_routing_reason: Optional[mail_destination_routing_reason.MailDestinationRoutingReason] = None
+    destination_routing_reason: Optional[MailDestinationRoutingReason] = None
     # The mail recipient whose policies are used to assess the mail.
     recipient_email: Optional[str] = None
     
@@ -35,13 +36,15 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mail_destination_routing_reason, threat_assessment_request
+        from .mail_destination_routing_reason import MailDestinationRoutingReason
+        from .threat_assessment_request import ThreatAssessmentRequest
 
-        from . import mail_destination_routing_reason, threat_assessment_request
+        from .mail_destination_routing_reason import MailDestinationRoutingReason
+        from .threat_assessment_request import ThreatAssessmentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
             "contentData": lambda n : setattr(self, 'content_data', n.get_str_value()),
-            "destinationRoutingReason": lambda n : setattr(self, 'destination_routing_reason', n.get_enum_value(mail_destination_routing_reason.MailDestinationRoutingReason)),
+            "destinationRoutingReason": lambda n : setattr(self, 'destination_routing_reason', n.get_enum_value(MailDestinationRoutingReason)),
             "recipientEmail": lambda n : setattr(self, 'recipient_email', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

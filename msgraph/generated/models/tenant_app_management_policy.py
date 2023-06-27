@@ -4,19 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import app_management_configuration, policy_base
+    from .app_management_configuration import AppManagementConfiguration
+    from .policy_base import PolicyBase
 
-from . import policy_base
+from .policy_base import PolicyBase
 
 @dataclass
-class TenantAppManagementPolicy(policy_base.PolicyBase):
+class TenantAppManagementPolicy(PolicyBase):
     odata_type = "#microsoft.graph.tenantAppManagementPolicy"
     # Restrictions that apply as default to all application objects in the tenant.
-    application_restrictions: Optional[app_management_configuration.AppManagementConfiguration] = None
+    application_restrictions: Optional[AppManagementConfiguration] = None
     # Denotes whether the policy is enabled. Default value is false.
     is_enabled: Optional[bool] = None
     # Restrictions that apply as default to all service principal objects in the tenant.
-    service_principal_restrictions: Optional[app_management_configuration.AppManagementConfiguration] = None
+    service_principal_restrictions: Optional[AppManagementConfiguration] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TenantAppManagementPolicy:
@@ -35,14 +36,16 @@ class TenantAppManagementPolicy(policy_base.PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_management_configuration, policy_base
+        from .app_management_configuration import AppManagementConfiguration
+        from .policy_base import PolicyBase
 
-        from . import app_management_configuration, policy_base
+        from .app_management_configuration import AppManagementConfiguration
+        from .policy_base import PolicyBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationRestrictions": lambda n : setattr(self, 'application_restrictions', n.get_object_value(app_management_configuration.AppManagementConfiguration)),
+            "applicationRestrictions": lambda n : setattr(self, 'application_restrictions', n.get_object_value(AppManagementConfiguration)),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "servicePrincipalRestrictions": lambda n : setattr(self, 'service_principal_restrictions', n.get_object_value(app_management_configuration.AppManagementConfiguration)),
+            "servicePrincipalRestrictions": lambda n : setattr(self, 'service_principal_restrictions', n.get_object_value(AppManagementConfiguration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

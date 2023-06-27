@@ -10,18 +10,18 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import schedule
-    from ......models.o_data_errors import o_data_error
-    from .offer_shift_requests import offer_shift_requests_request_builder
-    from .open_shift_change_requests import open_shift_change_requests_request_builder
-    from .open_shifts import open_shifts_request_builder
-    from .scheduling_groups import scheduling_groups_request_builder
-    from .share import share_request_builder
-    from .shifts import shifts_request_builder
-    from .swap_shifts_change_requests import swap_shifts_change_requests_request_builder
-    from .time_off_reasons import time_off_reasons_request_builder
-    from .time_off_requests import time_off_requests_request_builder
-    from .times_off import times_off_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.schedule import Schedule
+    from .offer_shift_requests.offer_shift_requests_request_builder import OfferShiftRequestsRequestBuilder
+    from .open_shift_change_requests.open_shift_change_requests_request_builder import OpenShiftChangeRequestsRequestBuilder
+    from .open_shifts.open_shifts_request_builder import OpenShiftsRequestBuilder
+    from .scheduling_groups.scheduling_groups_request_builder import SchedulingGroupsRequestBuilder
+    from .share.share_request_builder import ShareRequestBuilder
+    from .shifts.shifts_request_builder import ShiftsRequestBuilder
+    from .swap_shifts_change_requests.swap_shifts_change_requests_request_builder import SwapShiftsChangeRequestsRequestBuilder
+    from .time_off_reasons.time_off_reasons_request_builder import TimeOffReasonsRequestBuilder
+    from .time_off_requests.time_off_requests_request_builder import TimeOffRequestsRequestBuilder
+    from .times_off.times_off_request_builder import TimesOffRequestBuilder
 
 class ScheduleRequestBuilder():
     """
@@ -54,62 +54,62 @@ class ScheduleRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ScheduleRequestBuilderGetRequestConfiguration] = None) -> Optional[schedule.Schedule]:
+    async def get(self,request_configuration: Optional[ScheduleRequestBuilderGetRequestConfiguration] = None) -> Optional[Schedule]:
         """
         Retrieve the properties and relationships of a schedule object. The schedule creation process conforms to the One API guideline for resource based long running operations (RELO).When clients use the PUT method, if the schedule is provisioned, the operation updates the schedule; otherwise, the operation starts the schedule provisioning process in the background. During schedule provisioning, clients can use the GET method to get the schedule and look at the `provisionStatus` property for the current state of the provisioning. If the provisioning failed, clients can get additional information from the `provisionStatusCode` property. Clients can also inspect the configuration of the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[schedule.Schedule]
+        Returns: Optional[Schedule]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import schedule
+        from ......models.schedule import Schedule
 
-        return await self.request_adapter.send_async(request_info, schedule.Schedule, error_mapping)
+        return await self.request_adapter.send_async(request_info, Schedule, error_mapping)
     
-    async def put(self,body: Optional[schedule.Schedule] = None, request_configuration: Optional[ScheduleRequestBuilderPutRequestConfiguration] = None) -> Optional[schedule.Schedule]:
+    async def put(self,body: Optional[Schedule] = None, request_configuration: Optional[ScheduleRequestBuilderPutRequestConfiguration] = None) -> Optional[Schedule]:
         """
         Update the navigation property schedule in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[schedule.Schedule]
+        Returns: Optional[Schedule]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_put_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import schedule
+        from ......models.schedule import Schedule
 
-        return await self.request_adapter.send_async(request_info, schedule.Schedule, error_mapping)
+        return await self.request_adapter.send_async(request_info, Schedule, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ScheduleRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -145,7 +145,7 @@ class ScheduleRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_put_request_information(self,body: Optional[schedule.Schedule] = None, request_configuration: Optional[ScheduleRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: Optional[Schedule] = None, request_configuration: Optional[ScheduleRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property schedule in users
         Args:
@@ -167,94 +167,94 @@ class ScheduleRequestBuilder():
         return request_info
     
     @property
-    def offer_shift_requests(self) -> offer_shift_requests_request_builder.OfferShiftRequestsRequestBuilder:
+    def offer_shift_requests(self) -> OfferShiftRequestsRequestBuilder:
         """
         Provides operations to manage the offerShiftRequests property of the microsoft.graph.schedule entity.
         """
-        from .offer_shift_requests import offer_shift_requests_request_builder
+        from .offer_shift_requests.offer_shift_requests_request_builder import OfferShiftRequestsRequestBuilder
 
-        return offer_shift_requests_request_builder.OfferShiftRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+        return OfferShiftRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def open_shift_change_requests(self) -> open_shift_change_requests_request_builder.OpenShiftChangeRequestsRequestBuilder:
+    def open_shift_change_requests(self) -> OpenShiftChangeRequestsRequestBuilder:
         """
         Provides operations to manage the openShiftChangeRequests property of the microsoft.graph.schedule entity.
         """
-        from .open_shift_change_requests import open_shift_change_requests_request_builder
+        from .open_shift_change_requests.open_shift_change_requests_request_builder import OpenShiftChangeRequestsRequestBuilder
 
-        return open_shift_change_requests_request_builder.OpenShiftChangeRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+        return OpenShiftChangeRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def open_shifts(self) -> open_shifts_request_builder.OpenShiftsRequestBuilder:
+    def open_shifts(self) -> OpenShiftsRequestBuilder:
         """
         Provides operations to manage the openShifts property of the microsoft.graph.schedule entity.
         """
-        from .open_shifts import open_shifts_request_builder
+        from .open_shifts.open_shifts_request_builder import OpenShiftsRequestBuilder
 
-        return open_shifts_request_builder.OpenShiftsRequestBuilder(self.request_adapter, self.path_parameters)
+        return OpenShiftsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def scheduling_groups(self) -> scheduling_groups_request_builder.SchedulingGroupsRequestBuilder:
+    def scheduling_groups(self) -> SchedulingGroupsRequestBuilder:
         """
         Provides operations to manage the schedulingGroups property of the microsoft.graph.schedule entity.
         """
-        from .scheduling_groups import scheduling_groups_request_builder
+        from .scheduling_groups.scheduling_groups_request_builder import SchedulingGroupsRequestBuilder
 
-        return scheduling_groups_request_builder.SchedulingGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SchedulingGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def share(self) -> share_request_builder.ShareRequestBuilder:
+    def share(self) -> ShareRequestBuilder:
         """
         Provides operations to call the share method.
         """
-        from .share import share_request_builder
+        from .share.share_request_builder import ShareRequestBuilder
 
-        return share_request_builder.ShareRequestBuilder(self.request_adapter, self.path_parameters)
+        return ShareRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def shifts(self) -> shifts_request_builder.ShiftsRequestBuilder:
+    def shifts(self) -> ShiftsRequestBuilder:
         """
         Provides operations to manage the shifts property of the microsoft.graph.schedule entity.
         """
-        from .shifts import shifts_request_builder
+        from .shifts.shifts_request_builder import ShiftsRequestBuilder
 
-        return shifts_request_builder.ShiftsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ShiftsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def swap_shifts_change_requests(self) -> swap_shifts_change_requests_request_builder.SwapShiftsChangeRequestsRequestBuilder:
+    def swap_shifts_change_requests(self) -> SwapShiftsChangeRequestsRequestBuilder:
         """
         Provides operations to manage the swapShiftsChangeRequests property of the microsoft.graph.schedule entity.
         """
-        from .swap_shifts_change_requests import swap_shifts_change_requests_request_builder
+        from .swap_shifts_change_requests.swap_shifts_change_requests_request_builder import SwapShiftsChangeRequestsRequestBuilder
 
-        return swap_shifts_change_requests_request_builder.SwapShiftsChangeRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SwapShiftsChangeRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def time_off_reasons(self) -> time_off_reasons_request_builder.TimeOffReasonsRequestBuilder:
+    def time_off_reasons(self) -> TimeOffReasonsRequestBuilder:
         """
         Provides operations to manage the timeOffReasons property of the microsoft.graph.schedule entity.
         """
-        from .time_off_reasons import time_off_reasons_request_builder
+        from .time_off_reasons.time_off_reasons_request_builder import TimeOffReasonsRequestBuilder
 
-        return time_off_reasons_request_builder.TimeOffReasonsRequestBuilder(self.request_adapter, self.path_parameters)
+        return TimeOffReasonsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def time_off_requests(self) -> time_off_requests_request_builder.TimeOffRequestsRequestBuilder:
+    def time_off_requests(self) -> TimeOffRequestsRequestBuilder:
         """
         Provides operations to manage the timeOffRequests property of the microsoft.graph.schedule entity.
         """
-        from .time_off_requests import time_off_requests_request_builder
+        from .time_off_requests.time_off_requests_request_builder import TimeOffRequestsRequestBuilder
 
-        return time_off_requests_request_builder.TimeOffRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+        return TimeOffRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def times_off(self) -> times_off_request_builder.TimesOffRequestBuilder:
+    def times_off(self) -> TimesOffRequestBuilder:
         """
         Provides operations to manage the timesOff property of the microsoft.graph.schedule entity.
         """
-        from .times_off import times_off_request_builder
+        from .times_off.times_off_request_builder import TimesOffRequestBuilder
 
-        return times_off_request_builder.TimesOffRequestBuilder(self.request_adapter, self.path_parameters)
+        return TimesOffRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ScheduleRequestBuilderDeleteRequestConfiguration():

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attachment_type
+    from .attachment_type import AttachmentType
 
 @dataclass
 class AttachmentItem(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The type of attachment. Possible values are: file, item, reference. Required.
-    attachment_type: Optional[attachment_type.AttachmentType] = None
+    attachment_type: Optional[AttachmentType] = None
     # The CID or Content-Id of the attachment for referencing in case of in-line attachments using <img src='cid:contentId'> tag in HTML messages. Optional.
     content_id: Optional[str] = None
     # The nature of the data in the attachment. Optional.
@@ -43,12 +43,12 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attachment_type
+        from .attachment_type import AttachmentType
 
-        from . import attachment_type
+        from .attachment_type import AttachmentType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(attachment_type.AttachmentType)),
+            "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(AttachmentType)),
             "contentId": lambda n : setattr(self, 'content_id', n.get_str_value()),
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "isInline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import get_audit_activity_types_with_category_response
-    from ....models.o_data_errors import o_data_error
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .get_audit_activity_types_with_category_response import GetAuditActivityTypesWithCategoryResponse
 
 class GetAuditActivityTypesWithCategoryRequestBuilder():
     """
@@ -37,27 +37,27 @@ class GetAuditActivityTypesWithCategoryRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[GetAuditActivityTypesWithCategoryRequestBuilderGetRequestConfiguration] = None) -> Optional[get_audit_activity_types_with_category_response.GetAuditActivityTypesWithCategoryResponse]:
+    async def get(self,request_configuration: Optional[GetAuditActivityTypesWithCategoryRequestBuilderGetRequestConfiguration] = None) -> Optional[GetAuditActivityTypesWithCategoryResponse]:
         """
         Invoke function getAuditActivityTypes
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[get_audit_activity_types_with_category_response.GetAuditActivityTypesWithCategoryResponse]
+        Returns: Optional[GetAuditActivityTypesWithCategoryResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import get_audit_activity_types_with_category_response
+        from .get_audit_activity_types_with_category_response import GetAuditActivityTypesWithCategoryResponse
 
-        return await self.request_adapter.send_async(request_info, get_audit_activity_types_with_category_response.GetAuditActivityTypesWithCategoryResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAuditActivityTypesWithCategoryResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetAuditActivityTypesWithCategoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

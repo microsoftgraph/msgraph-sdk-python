@@ -1,11 +1,13 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import connection_direction, connection_status, security_network_protocol
+    from .connection_direction import ConnectionDirection
+    from .connection_status import ConnectionStatus
+    from .security_network_protocol import SecurityNetworkProtocol
 
 @dataclass
 class NetworkConnection(AdditionalDataHolder, Parsable):
@@ -25,9 +27,9 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
     # Network connection URL/URI string - excluding parameters. (for example 'www.contoso.com/products/default.html')
     destination_url: Optional[str] = None
     # Network connection direction. Possible values are: unknown, inbound, outbound.
-    direction: Optional[connection_direction.ConnectionDirection] = None
+    direction: Optional[ConnectionDirection] = None
     # Date when the destination domain was registered. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    domain_registered_date_time: Optional[datetime] = None
+    domain_registered_date_time: Optional[datetime.datetime] = None
     # The local DNS name resolution as it appears in the host's local DNS cache (for example, in case the 'hosts' file was tampered with).
     local_dns_name: Optional[str] = None
     # Network Address Translation destination IP address.
@@ -41,7 +43,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Network protocol. Possible values are: unknown, ip, icmp, igmp, ggp, ipv4, tcp, pup, udp, idp, ipv6, ipv6RoutingHeader, ipv6FragmentHeader, ipSecEncapsulatingSecurityPayload, ipSecAuthenticationHeader, icmpV6, ipv6NoNextHeader, ipv6DestinationOptions, nd, raw, ipx, spx, spxII.
-    protocol: Optional[security_network_protocol.SecurityNetworkProtocol] = None
+    protocol: Optional[SecurityNetworkProtocol] = None
     # Provider generated/calculated risk score of the network connection. Recommended value range of 0-1, which equates to a percentage.
     risk_score: Optional[str] = None
     # Source (i.e. origin) IP address (of the network connection).
@@ -51,7 +53,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
     # Source (i.e. origin) IP port (of the network connection).
     source_port: Optional[str] = None
     # Network connection status. Possible values are: unknown, attempted, succeeded, blocked, failed.
-    status: Optional[connection_status.ConnectionStatus] = None
+    status: Optional[ConnectionStatus] = None
     # Parameters (suffix) of the destination URL.
     url_parameters: Optional[str] = None
     
@@ -72,9 +74,13 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import connection_direction, connection_status, security_network_protocol
+        from .connection_direction import ConnectionDirection
+        from .connection_status import ConnectionStatus
+        from .security_network_protocol import SecurityNetworkProtocol
 
-        from . import connection_direction, connection_status, security_network_protocol
+        from .connection_direction import ConnectionDirection
+        from .connection_status import ConnectionStatus
+        from .security_network_protocol import SecurityNetworkProtocol
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
@@ -83,7 +89,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             "destinationLocation": lambda n : setattr(self, 'destination_location', n.get_str_value()),
             "destinationPort": lambda n : setattr(self, 'destination_port', n.get_str_value()),
             "destinationUrl": lambda n : setattr(self, 'destination_url', n.get_str_value()),
-            "direction": lambda n : setattr(self, 'direction', n.get_enum_value(connection_direction.ConnectionDirection)),
+            "direction": lambda n : setattr(self, 'direction', n.get_enum_value(ConnectionDirection)),
             "domainRegisteredDateTime": lambda n : setattr(self, 'domain_registered_date_time', n.get_datetime_value()),
             "localDnsName": lambda n : setattr(self, 'local_dns_name', n.get_str_value()),
             "natDestinationAddress": lambda n : setattr(self, 'nat_destination_address', n.get_str_value()),
@@ -91,12 +97,12 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             "natSourceAddress": lambda n : setattr(self, 'nat_source_address', n.get_str_value()),
             "natSourcePort": lambda n : setattr(self, 'nat_source_port', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(security_network_protocol.SecurityNetworkProtocol)),
+            "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(SecurityNetworkProtocol)),
             "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
             "sourceAddress": lambda n : setattr(self, 'source_address', n.get_str_value()),
             "sourceLocation": lambda n : setattr(self, 'source_location', n.get_str_value()),
             "sourcePort": lambda n : setattr(self, 'source_port', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(connection_status.ConnectionStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ConnectionStatus)),
             "urlParameters": lambda n : setattr(self, 'url_parameters', n.get_str_value()),
         }
         return fields
@@ -116,7 +122,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         writer.write_str_value("destinationPort", self.destination_port)
         writer.write_str_value("destinationUrl", self.destination_url)
         writer.write_enum_value("direction", self.direction)
-        writer.write_datetime_value("domainRegisteredDateTime", self.domain_registered_date_time)
+        writer.write_datetime_value()("domainRegisteredDateTime", self.domain_registered_date_time)
         writer.write_str_value("localDnsName", self.local_dns_name)
         writer.write_str_value("natDestinationAddress", self.nat_destination_address)
         writer.write_str_value("natDestinationPort", self.nat_destination_port)

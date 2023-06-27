@@ -4,18 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, teams_app_definition, teams_app_distribution_method
+    from .entity import Entity
+    from .teams_app_definition import TeamsAppDefinition
+    from .teams_app_distribution_method import TeamsAppDistributionMethod
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class TeamsApp(entity.Entity):
+class TeamsApp(Entity):
     # The details for each version of the app.
-    app_definitions: Optional[List[teams_app_definition.TeamsAppDefinition]] = None
+    app_definitions: Optional[List[TeamsAppDefinition]] = None
     # The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.
     display_name: Optional[str] = None
     # The method of distribution for the app. Read-only.
-    distribution_method: Optional[teams_app_distribution_method.TeamsAppDistributionMethod] = None
+    distribution_method: Optional[TeamsAppDistributionMethod] = None
     # The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.
     external_id: Optional[str] = None
     # The OdataType property
@@ -38,14 +40,18 @@ class TeamsApp(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, teams_app_definition, teams_app_distribution_method
+        from .entity import Entity
+        from .teams_app_definition import TeamsAppDefinition
+        from .teams_app_distribution_method import TeamsAppDistributionMethod
 
-        from . import entity, teams_app_definition, teams_app_distribution_method
+        from .entity import Entity
+        from .teams_app_definition import TeamsAppDefinition
+        from .teams_app_distribution_method import TeamsAppDistributionMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appDefinitions": lambda n : setattr(self, 'app_definitions', n.get_collection_of_object_values(teams_app_definition.TeamsAppDefinition)),
+            "appDefinitions": lambda n : setattr(self, 'app_definitions', n.get_collection_of_object_values(TeamsAppDefinition)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "distributionMethod": lambda n : setattr(self, 'distribution_method', n.get_enum_value(teams_app_distribution_method.TeamsAppDistributionMethod)),
+            "distributionMethod": lambda n : setattr(self, 'distribution_method', n.get_enum_value(TeamsAppDistributionMethod)),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

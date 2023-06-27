@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class Z_TestPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class Z_TestPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The array property
-    array: Optional[json.Json] = None
+    array: Optional[Json] = None
     # The sigma property
-    sigma: Optional[json.Json] = None
+    sigma: Optional[Json] = None
     # The x property
-    x: Optional[json.Json] = None
+    x: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Z_TestPostRequestBody:
@@ -35,14 +35,14 @@ class Z_TestPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "array": lambda n : setattr(self, 'array', n.get_object_value(json.Json)),
-            "sigma": lambda n : setattr(self, 'sigma', n.get_object_value(json.Json)),
-            "x": lambda n : setattr(self, 'x', n.get_object_value(json.Json)),
+            "array": lambda n : setattr(self, 'array', n.get_object_value(Json)),
+            "sigma": lambda n : setattr(self, 'sigma', n.get_object_value(Json)),
+            "x": lambda n : setattr(self, 'x', n.get_object_value(Json)),
         }
         return fields
     

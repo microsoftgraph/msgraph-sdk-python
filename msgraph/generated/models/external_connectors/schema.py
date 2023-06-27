@@ -4,19 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import property_
-    from .. import entity
+    from ..entity import Entity
+    from .property_ import Property_
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class Schema(entity.Entity):
+class Schema(Entity):
     # Must be set to microsoft.graph.externalConnector.externalItem. Required.
     base_type: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
-    properties: Optional[List[property_.Property_]] = None
+    properties: Optional[List[Property_]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Schema:
@@ -35,15 +35,15 @@ class Schema(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import property_
-        from .. import entity
+        from ..entity import Entity
+        from .property_ import Property_
 
-        from . import property_
-        from .. import entity
+        from ..entity import Entity
+        from .property_ import Property_
 
         fields: Dict[str, Callable[[Any], None]] = {
             "baseType": lambda n : setattr(self, 'base_type', n.get_str_value()),
-            "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(property_.Property_)),
+            "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(Property_)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

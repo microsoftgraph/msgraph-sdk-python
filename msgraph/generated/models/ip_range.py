@@ -4,7 +4,10 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import i_pv4_cidr_range, i_pv4_range, i_pv6_cidr_range, i_pv6_range
+    from .i_pv4_cidr_range import IPv4CidrRange
+    from .i_pv4_range import IPv4Range
+    from .i_pv6_cidr_range import IPv6CidrRange
+    from .i_pv6_range import IPv6Range
 
 @dataclass
 class IpRange(AdditionalDataHolder, Parsable):
@@ -29,21 +32,21 @@ class IpRange(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iPv4CidrRange".casefold():
-            from . import i_pv4_cidr_range
+            from .i_pv4_cidr_range import IPv4CidrRange
 
-            return i_pv4_cidr_range.IPv4CidrRange()
+            return IPv4CidrRange()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iPv4Range".casefold():
-            from . import i_pv4_range
+            from .i_pv4_range import IPv4Range
 
-            return i_pv4_range.IPv4Range()
+            return IPv4Range()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iPv6CidrRange".casefold():
-            from . import i_pv6_cidr_range
+            from .i_pv6_cidr_range import IPv6CidrRange
 
-            return i_pv6_cidr_range.IPv6CidrRange()
+            return IPv6CidrRange()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iPv6Range".casefold():
-            from . import i_pv6_range
+            from .i_pv6_range import IPv6Range
 
-            return i_pv6_range.IPv6Range()
+            return IPv6Range()
         return IpRange()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -51,9 +54,15 @@ class IpRange(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import i_pv4_cidr_range, i_pv4_range, i_pv6_cidr_range, i_pv6_range
+        from .i_pv4_cidr_range import IPv4CidrRange
+        from .i_pv4_range import IPv4Range
+        from .i_pv6_cidr_range import IPv6CidrRange
+        from .i_pv6_range import IPv6Range
 
-        from . import i_pv4_cidr_range, i_pv4_range, i_pv6_cidr_range, i_pv6_range
+        from .i_pv4_cidr_range import IPv4CidrRange
+        from .i_pv4_range import IPv4Range
+        from .i_pv6_cidr_range import IPv6CidrRange
+        from .i_pv6_range import IPv6Range
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

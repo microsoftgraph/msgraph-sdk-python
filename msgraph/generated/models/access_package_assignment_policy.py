@@ -1,46 +1,56 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_package, access_package_assignment_approval_settings, access_package_assignment_requestor_settings, access_package_assignment_review_settings, access_package_automatic_request_settings, access_package_catalog, access_package_question, allowed_target_scope, entity, expiration_pattern, subject_set
+    from .access_package import AccessPackage
+    from .access_package_assignment_approval_settings import AccessPackageAssignmentApprovalSettings
+    from .access_package_assignment_requestor_settings import AccessPackageAssignmentRequestorSettings
+    from .access_package_assignment_review_settings import AccessPackageAssignmentReviewSettings
+    from .access_package_automatic_request_settings import AccessPackageAutomaticRequestSettings
+    from .access_package_catalog import AccessPackageCatalog
+    from .access_package_question import AccessPackageQuestion
+    from .allowed_target_scope import AllowedTargetScope
+    from .entity import Entity
+    from .expiration_pattern import ExpirationPattern
+    from .subject_set import SubjectSet
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AccessPackageAssignmentPolicy(entity.Entity):
+class AccessPackageAssignmentPolicy(Entity):
     # Access package containing this policy. Read-only.
-    access_package: Optional[access_package.AccessPackage] = None
+    access_package: Optional[AccessPackage] = None
     # Principals that can be assigned the access package through this policy. The possible values are: notSpecified, specificDirectoryUsers, specificConnectedOrganizationUsers, specificDirectoryServicePrincipals, allMemberUsers, allDirectoryUsers, allDirectoryServicePrincipals, allConfiguredConnectedOrganizationUsers, allExternalUsers, unknownFutureValue.
-    allowed_target_scope: Optional[allowed_target_scope.AllowedTargetScope] = None
+    allowed_target_scope: Optional[AllowedTargetScope] = None
     # This property is only present for an auto assignment policy; if absent, this is a request-based policy.
-    automatic_request_settings: Optional[access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings] = None
+    automatic_request_settings: Optional[AccessPackageAutomaticRequestSettings] = None
     # Catalog of the access package containing this policy. Read-only.
-    catalog: Optional[access_package_catalog.AccessPackageCatalog] = None
+    catalog: Optional[AccessPackageCatalog] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The description of the policy.
     description: Optional[str] = None
     # The display name of the policy.
     display_name: Optional[str] = None
     # The expiration date for assignments created in this policy.
-    expiration: Optional[expiration_pattern.ExpirationPattern] = None
+    expiration: Optional[ExpirationPattern] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    modified_date_time: Optional[datetime] = None
+    modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Questions that are posed to the  requestor.
-    questions: Optional[List[access_package_question.AccessPackageQuestion]] = None
+    questions: Optional[List[AccessPackageQuestion]] = None
     # Specifies the settings for approval of requests for an access package assignment through this policy. For example, if approval is required for new requests.
-    request_approval_settings: Optional[access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings] = None
+    request_approval_settings: Optional[AccessPackageAssignmentApprovalSettings] = None
     # Provides additional settings to select who can create a request for an access package assignment through this policy, and what they can include in their request.
-    requestor_settings: Optional[access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings] = None
+    requestor_settings: Optional[AccessPackageAssignmentRequestorSettings] = None
     # Settings for access reviews of assignments through this policy.
-    review_settings: Optional[access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings] = None
+    review_settings: Optional[AccessPackageAssignmentReviewSettings] = None
     # The principals that can be assigned access from an access package through this policy.
-    specific_allowed_targets: Optional[List[subject_set.SubjectSet]] = None
+    specific_allowed_targets: Optional[List[SubjectSet]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentPolicy:
@@ -59,25 +69,45 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package, access_package_assignment_approval_settings, access_package_assignment_requestor_settings, access_package_assignment_review_settings, access_package_automatic_request_settings, access_package_catalog, access_package_question, allowed_target_scope, entity, expiration_pattern, subject_set
+        from .access_package import AccessPackage
+        from .access_package_assignment_approval_settings import AccessPackageAssignmentApprovalSettings
+        from .access_package_assignment_requestor_settings import AccessPackageAssignmentRequestorSettings
+        from .access_package_assignment_review_settings import AccessPackageAssignmentReviewSettings
+        from .access_package_automatic_request_settings import AccessPackageAutomaticRequestSettings
+        from .access_package_catalog import AccessPackageCatalog
+        from .access_package_question import AccessPackageQuestion
+        from .allowed_target_scope import AllowedTargetScope
+        from .entity import Entity
+        from .expiration_pattern import ExpirationPattern
+        from .subject_set import SubjectSet
 
-        from . import access_package, access_package_assignment_approval_settings, access_package_assignment_requestor_settings, access_package_assignment_review_settings, access_package_automatic_request_settings, access_package_catalog, access_package_question, allowed_target_scope, entity, expiration_pattern, subject_set
+        from .access_package import AccessPackage
+        from .access_package_assignment_approval_settings import AccessPackageAssignmentApprovalSettings
+        from .access_package_assignment_requestor_settings import AccessPackageAssignmentRequestorSettings
+        from .access_package_assignment_review_settings import AccessPackageAssignmentReviewSettings
+        from .access_package_automatic_request_settings import AccessPackageAutomaticRequestSettings
+        from .access_package_catalog import AccessPackageCatalog
+        from .access_package_question import AccessPackageQuestion
+        from .allowed_target_scope import AllowedTargetScope
+        from .entity import Entity
+        from .expiration_pattern import ExpirationPattern
+        from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
-            "allowedTargetScope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(allowed_target_scope.AllowedTargetScope)),
-            "automaticRequestSettings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings)),
-            "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(access_package_catalog.AccessPackageCatalog)),
+            "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(AccessPackage)),
+            "allowedTargetScope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(AllowedTargetScope)),
+            "automaticRequestSettings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(AccessPackageAutomaticRequestSettings)),
+            "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(AccessPackageCatalog)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(expiration_pattern.ExpirationPattern)),
+            "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(ExpirationPattern)),
             "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "questions": lambda n : setattr(self, 'questions', n.get_collection_of_object_values(access_package_question.AccessPackageQuestion)),
-            "requestApprovalSettings": lambda n : setattr(self, 'request_approval_settings', n.get_object_value(access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings)),
-            "requestorSettings": lambda n : setattr(self, 'requestor_settings', n.get_object_value(access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings)),
-            "reviewSettings": lambda n : setattr(self, 'review_settings', n.get_object_value(access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings)),
-            "specificAllowedTargets": lambda n : setattr(self, 'specific_allowed_targets', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "questions": lambda n : setattr(self, 'questions', n.get_collection_of_object_values(AccessPackageQuestion)),
+            "requestApprovalSettings": lambda n : setattr(self, 'request_approval_settings', n.get_object_value(AccessPackageAssignmentApprovalSettings)),
+            "requestorSettings": lambda n : setattr(self, 'requestor_settings', n.get_object_value(AccessPackageAssignmentRequestorSettings)),
+            "reviewSettings": lambda n : setattr(self, 'review_settings', n.get_object_value(AccessPackageAssignmentReviewSettings)),
+            "specificAllowedTargets": lambda n : setattr(self, 'specific_allowed_targets', n.get_collection_of_object_values(SubjectSet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -96,11 +126,11 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         writer.write_enum_value("allowedTargetScope", self.allowed_target_scope)
         writer.write_object_value("automaticRequestSettings", self.automatic_request_settings)
         writer.write_object_value("catalog", self.catalog)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("expiration", self.expiration)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
+        writer.write_datetime_value()("modifiedDateTime", self.modified_date_time)
         writer.write_collection_of_object_values("questions", self.questions)
         writer.write_object_value("requestApprovalSettings", self.request_approval_settings)
         writer.write_object_value("requestorSettings", self.requestor_settings)

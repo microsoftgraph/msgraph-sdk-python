@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import teleconference_device_media_quality, teleconference_device_screen_sharing_quality
+    from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
+    from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
 
-from . import teleconference_device_media_quality
+from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
 @dataclass
-class TeleconferenceDeviceVideoQuality(teleconference_device_media_quality.TeleconferenceDeviceMediaQuality):
+class TeleconferenceDeviceVideoQuality(TeleconferenceDeviceMediaQuality):
     odata_type = "#microsoft.graph.teleconferenceDeviceVideoQuality"
     # The average inbound stream video bit rate per second.
     average_inbound_bit_rate: Optional[float] = None
@@ -35,9 +36,9 @@ class TeleconferenceDeviceVideoQuality(teleconference_device_media_quality.Telec
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teleconferenceDeviceScreenSharingQuality".casefold():
-            from . import teleconference_device_screen_sharing_quality
+            from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
 
-            return teleconference_device_screen_sharing_quality.TeleconferenceDeviceScreenSharingQuality()
+            return TeleconferenceDeviceScreenSharingQuality()
         return TeleconferenceDeviceVideoQuality()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -45,9 +46,11 @@ class TeleconferenceDeviceVideoQuality(teleconference_device_media_quality.Telec
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teleconference_device_media_quality, teleconference_device_screen_sharing_quality
+        from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
+        from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
 
-        from . import teleconference_device_media_quality, teleconference_device_screen_sharing_quality
+        from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
+        from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
 
         fields: Dict[str, Callable[[Any], None]] = {
             "averageInboundBitRate": lambda n : setattr(self, 'average_inbound_bit_rate', n.get_float_value()),

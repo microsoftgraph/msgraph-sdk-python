@@ -4,8 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import rule_operation
-    from .. import binary_operator
+    from ..binary_operator import BinaryOperator
+    from .rule_operation import RuleOperation
 
 @dataclass
 class PropertyRule(AdditionalDataHolder, Parsable):
@@ -15,13 +15,13 @@ class PropertyRule(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The operation property
-    operation: Optional[rule_operation.RuleOperation] = None
+    operation: Optional[RuleOperation] = None
     # The property from the externalItem schema. Required.
     property_: Optional[str] = None
     # A collection with one or many strings. The specified string(s) will be matched with the specified property using the specified operation. Required.
     values: Optional[List[str]] = None
     # The valuesJoinedBy property
-    values_joined_by: Optional[binary_operator.BinaryOperator] = None
+    values_joined_by: Optional[BinaryOperator] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PropertyRule:
@@ -40,18 +40,18 @@ class PropertyRule(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import rule_operation
-        from .. import binary_operator
+        from ..binary_operator import BinaryOperator
+        from .rule_operation import RuleOperation
 
-        from . import rule_operation
-        from .. import binary_operator
+        from ..binary_operator import BinaryOperator
+        from .rule_operation import RuleOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "operation": lambda n : setattr(self, 'operation', n.get_enum_value(rule_operation.RuleOperation)),
+            "operation": lambda n : setattr(self, 'operation', n.get_enum_value(RuleOperation)),
             "property": lambda n : setattr(self, 'property_', n.get_str_value()),
             "values": lambda n : setattr(self, 'values', n.get_collection_of_primitive_values(str)),
-            "valuesJoinedBy": lambda n : setattr(self, 'values_joined_by', n.get_enum_value(binary_operator.BinaryOperator)),
+            "valuesJoinedBy": lambda n : setattr(self, 'values_joined_by', n.get_enum_value(BinaryOperator)),
         }
         return fields
     

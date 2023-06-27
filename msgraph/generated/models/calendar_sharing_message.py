@@ -4,19 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import calendar_sharing_message_action, message
+    from .calendar_sharing_message_action import CalendarSharingMessageAction
+    from .message import Message
 
-from . import message
+from .message import Message
 
 @dataclass
-class CalendarSharingMessage(message.Message):
+class CalendarSharingMessage(Message):
     odata_type = "#microsoft.graph.calendarSharingMessage"
     # The canAccept property
     can_accept: Optional[bool] = None
     # The sharingMessageAction property
-    sharing_message_action: Optional[calendar_sharing_message_action.CalendarSharingMessageAction] = None
+    sharing_message_action: Optional[CalendarSharingMessageAction] = None
     # The sharingMessageActions property
-    sharing_message_actions: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]] = None
+    sharing_message_actions: Optional[List[CalendarSharingMessageAction]] = None
     # The suggestedCalendarName property
     suggested_calendar_name: Optional[str] = None
     
@@ -37,14 +38,16 @@ class CalendarSharingMessage(message.Message):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import calendar_sharing_message_action, message
+        from .calendar_sharing_message_action import CalendarSharingMessageAction
+        from .message import Message
 
-        from . import calendar_sharing_message_action, message
+        from .calendar_sharing_message_action import CalendarSharingMessageAction
+        from .message import Message
 
         fields: Dict[str, Callable[[Any], None]] = {
             "canAccept": lambda n : setattr(self, 'can_accept', n.get_bool_value()),
-            "sharingMessageAction": lambda n : setattr(self, 'sharing_message_action', n.get_object_value(calendar_sharing_message_action.CalendarSharingMessageAction)),
-            "sharingMessageActions": lambda n : setattr(self, 'sharing_message_actions', n.get_collection_of_object_values(calendar_sharing_message_action.CalendarSharingMessageAction)),
+            "sharingMessageAction": lambda n : setattr(self, 'sharing_message_action', n.get_object_value(CalendarSharingMessageAction)),
+            "sharingMessageActions": lambda n : setattr(self, 'sharing_message_actions', n.get_collection_of_object_values(CalendarSharingMessageAction)),
             "suggestedCalendarName": lambda n : setattr(self, 'suggested_calendar_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

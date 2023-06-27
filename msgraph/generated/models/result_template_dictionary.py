@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import dictionary
+    from .dictionary import Dictionary
 
-from . import dictionary
+from .dictionary import Dictionary
 
 @dataclass
-class ResultTemplateDictionary(dictionary.Dictionary):
+class ResultTemplateDictionary(Dictionary):
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -30,9 +30,9 @@ class ResultTemplateDictionary(dictionary.Dictionary):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import dictionary
+        from .dictionary import Dictionary
 
-        from . import dictionary
+        from .dictionary import Dictionary
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

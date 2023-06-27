@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import planner
-    from ..models.o_data_errors import o_data_error
-    from .buckets import buckets_request_builder
-    from .plans import plans_request_builder
-    from .tasks import tasks_request_builder
+    from ..models.o_data_errors.o_data_error import ODataError
+    from ..models.planner import Planner
+    from .buckets.buckets_request_builder import BucketsRequestBuilder
+    from .plans.plans_request_builder import PlansRequestBuilder
+    from .tasks.tasks_request_builder import TasksRequestBuilder
 
 class PlannerRequestBuilder():
     """
@@ -38,52 +38,52 @@ class PlannerRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[PlannerRequestBuilderGetRequestConfiguration] = None) -> Optional[planner.Planner]:
+    async def get(self,request_configuration: Optional[PlannerRequestBuilderGetRequestConfiguration] = None) -> Optional[Planner]:
         """
         Get planner
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner.Planner]
+        Returns: Optional[Planner]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import planner
+        from ..models.planner import Planner
 
-        return await self.request_adapter.send_async(request_info, planner.Planner, error_mapping)
+        return await self.request_adapter.send_async(request_info, Planner, error_mapping)
     
-    async def patch(self,body: Optional[planner.Planner] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner.Planner]:
+    async def patch(self,body: Optional[Planner] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> Optional[Planner]:
         """
         Update planner
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[planner.Planner]
+        Returns: Optional[Planner]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import planner
+        from ..models.planner import Planner
 
-        return await self.request_adapter.send_async(request_info, planner.Planner, error_mapping)
+        return await self.request_adapter.send_async(request_info, Planner, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PlannerRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -103,7 +103,7 @@ class PlannerRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[planner.Planner] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Planner] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update planner
         Args:
@@ -125,31 +125,31 @@ class PlannerRequestBuilder():
         return request_info
     
     @property
-    def buckets(self) -> buckets_request_builder.BucketsRequestBuilder:
+    def buckets(self) -> BucketsRequestBuilder:
         """
         Provides operations to manage the buckets property of the microsoft.graph.planner entity.
         """
-        from .buckets import buckets_request_builder
+        from .buckets.buckets_request_builder import BucketsRequestBuilder
 
-        return buckets_request_builder.BucketsRequestBuilder(self.request_adapter, self.path_parameters)
+        return BucketsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def plans(self) -> plans_request_builder.PlansRequestBuilder:
+    def plans(self) -> PlansRequestBuilder:
         """
         Provides operations to manage the plans property of the microsoft.graph.planner entity.
         """
-        from .plans import plans_request_builder
+        from .plans.plans_request_builder import PlansRequestBuilder
 
-        return plans_request_builder.PlansRequestBuilder(self.request_adapter, self.path_parameters)
+        return PlansRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tasks(self) -> tasks_request_builder.TasksRequestBuilder:
+    def tasks(self) -> TasksRequestBuilder:
         """
         Provides operations to manage the tasks property of the microsoft.graph.planner entity.
         """
-        from .tasks import tasks_request_builder
+        from .tasks.tasks_request_builder import TasksRequestBuilder
 
-        return tasks_request_builder.TasksRequestBuilder(self.request_adapter, self.path_parameters)
+        return TasksRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PlannerRequestBuilderGetQueryParameters():

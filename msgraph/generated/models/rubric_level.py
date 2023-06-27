@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_assignment_grade_type, education_item_body
+    from .education_assignment_grade_type import EducationAssignmentGradeType
+    from .education_item_body import EducationItemBody
 
 @dataclass
 class RubricLevel(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class RubricLevel(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The description of this rubric level.
-    description: Optional[education_item_body.EducationItemBody] = None
+    description: Optional[EducationItemBody] = None
     # The name of this rubric level.
     display_name: Optional[str] = None
     # Null if this is a no-points rubric; educationAssignmentPointsGradeType if it is a points rubric.
-    grading: Optional[education_assignment_grade_type.EducationAssignmentGradeType] = None
+    grading: Optional[EducationAssignmentGradeType] = None
     # The ID of this resource.
     level_id: Optional[str] = None
     # The OdataType property
@@ -39,14 +40,16 @@ class RubricLevel(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_assignment_grade_type, education_item_body
+        from .education_assignment_grade_type import EducationAssignmentGradeType
+        from .education_item_body import EducationItemBody
 
-        from . import education_assignment_grade_type, education_item_body
+        from .education_assignment_grade_type import EducationAssignmentGradeType
+        from .education_item_body import EducationItemBody
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "description": lambda n : setattr(self, 'description', n.get_object_value(education_item_body.EducationItemBody)),
+            "description": lambda n : setattr(self, 'description', n.get_object_value(EducationItemBody)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "grading": lambda n : setattr(self, 'grading', n.get_object_value(education_assignment_grade_type.EducationAssignmentGradeType)),
+            "grading": lambda n : setattr(self, 'grading', n.get_object_value(EducationAssignmentGradeType)),
             "levelId": lambda n : setattr(self, 'level_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

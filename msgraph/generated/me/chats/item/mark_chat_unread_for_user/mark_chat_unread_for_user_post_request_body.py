@@ -1,11 +1,11 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import teamwork_user_identity
+    from .....models.teamwork_user_identity import TeamworkUserIdentity
 
 @dataclass
 class MarkChatUnreadForUserPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,9 +13,9 @@ class MarkChatUnreadForUserPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The lastMessageReadDateTime property
-    last_message_read_date_time: Optional[datetime] = None
+    last_message_read_date_time: Optional[datetime.datetime] = None
     # The user property
-    user: Optional[teamwork_user_identity.TeamworkUserIdentity] = None
+    user: Optional[TeamworkUserIdentity] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MarkChatUnreadForUserPostRequestBody:
@@ -34,13 +34,13 @@ class MarkChatUnreadForUserPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import teamwork_user_identity
+        from .....models.teamwork_user_identity import TeamworkUserIdentity
 
-        from .....models import teamwork_user_identity
+        from .....models.teamwork_user_identity import TeamworkUserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "lastMessageReadDateTime": lambda n : setattr(self, 'last_message_read_date_time', n.get_datetime_value()),
-            "user": lambda n : setattr(self, 'user', n.get_object_value(teamwork_user_identity.TeamworkUserIdentity)),
+            "user": lambda n : setattr(self, 'user', n.get_object_value(TeamworkUserIdentity)),
         }
         return fields
     
@@ -52,7 +52,7 @@ class MarkChatUnreadForUserPostRequestBody(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("lastMessageReadDateTime", self.last_message_read_date_time)
+        writer.write_datetime_value()("lastMessageReadDateTime", self.last_message_read_date_time)
         writer.write_object_value("user", self.user)
         writer.write_additional_data_value(self.additional_data)
     

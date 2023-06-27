@@ -10,13 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import printer
-    from ....models.o_data_errors import o_data_error
-    from .connectors import connectors_request_builder
-    from .jobs import jobs_request_builder
-    from .restore_factory_defaults import restore_factory_defaults_request_builder
-    from .shares import shares_request_builder
-    from .task_triggers import task_triggers_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.printer import Printer
+    from .connectors.connectors_request_builder import ConnectorsRequestBuilder
+    from .jobs.jobs_request_builder import JobsRequestBuilder
+    from .restore_factory_defaults.restore_factory_defaults_request_builder import RestoreFactoryDefaultsRequestBuilder
+    from .shares.shares_request_builder import SharesRequestBuilder
+    from .task_triggers.task_triggers_request_builder import TaskTriggersRequestBuilder
 
 class PrinterItemRequestBuilder():
     """
@@ -49,62 +49,62 @@ class PrinterItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PrinterItemRequestBuilderGetRequestConfiguration] = None) -> Optional[printer.Printer]:
+    async def get(self,request_configuration: Optional[PrinterItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Printer]:
         """
         Retrieve the properties and relationships of a printer object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[printer.Printer]
+        Returns: Optional[Printer]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import printer
+        from ....models.printer import Printer
 
-        return await self.request_adapter.send_async(request_info, printer.Printer, error_mapping)
+        return await self.request_adapter.send_async(request_info, Printer, error_mapping)
     
-    async def patch(self,body: Optional[printer.Printer] = None, request_configuration: Optional[PrinterItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[printer.Printer]:
+    async def patch(self,body: Optional[Printer] = None, request_configuration: Optional[PrinterItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Printer]:
         """
         Update the properties of a printer object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[printer.Printer]
+        Returns: Optional[Printer]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import printer
+        from ....models.printer import Printer
 
-        return await self.request_adapter.send_async(request_info, printer.Printer, error_mapping)
+        return await self.request_adapter.send_async(request_info, Printer, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PrinterItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -140,7 +140,7 @@ class PrinterItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[printer.Printer] = None, request_configuration: Optional[PrinterItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Printer] = None, request_configuration: Optional[PrinterItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a printer object.
         Args:
@@ -162,49 +162,49 @@ class PrinterItemRequestBuilder():
         return request_info
     
     @property
-    def connectors(self) -> connectors_request_builder.ConnectorsRequestBuilder:
+    def connectors(self) -> ConnectorsRequestBuilder:
         """
         Provides operations to manage the connectors property of the microsoft.graph.printer entity.
         """
-        from .connectors import connectors_request_builder
+        from .connectors.connectors_request_builder import ConnectorsRequestBuilder
 
-        return connectors_request_builder.ConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def jobs(self) -> jobs_request_builder.JobsRequestBuilder:
+    def jobs(self) -> JobsRequestBuilder:
         """
         Provides operations to manage the jobs property of the microsoft.graph.printerBase entity.
         """
-        from .jobs import jobs_request_builder
+        from .jobs.jobs_request_builder import JobsRequestBuilder
 
-        return jobs_request_builder.JobsRequestBuilder(self.request_adapter, self.path_parameters)
+        return JobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore_factory_defaults(self) -> restore_factory_defaults_request_builder.RestoreFactoryDefaultsRequestBuilder:
+    def restore_factory_defaults(self) -> RestoreFactoryDefaultsRequestBuilder:
         """
         Provides operations to call the restoreFactoryDefaults method.
         """
-        from .restore_factory_defaults import restore_factory_defaults_request_builder
+        from .restore_factory_defaults.restore_factory_defaults_request_builder import RestoreFactoryDefaultsRequestBuilder
 
-        return restore_factory_defaults_request_builder.RestoreFactoryDefaultsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RestoreFactoryDefaultsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def shares(self) -> shares_request_builder.SharesRequestBuilder:
+    def shares(self) -> SharesRequestBuilder:
         """
         Provides operations to manage the shares property of the microsoft.graph.printer entity.
         """
-        from .shares import shares_request_builder
+        from .shares.shares_request_builder import SharesRequestBuilder
 
-        return shares_request_builder.SharesRequestBuilder(self.request_adapter, self.path_parameters)
+        return SharesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def task_triggers(self) -> task_triggers_request_builder.TaskTriggersRequestBuilder:
+    def task_triggers(self) -> TaskTriggersRequestBuilder:
         """
         Provides operations to manage the taskTriggers property of the microsoft.graph.printer entity.
         """
-        from .task_triggers import task_triggers_request_builder
+        from .task_triggers.task_triggers_request_builder import TaskTriggersRequestBuilder
 
-        return task_triggers_request_builder.TaskTriggersRequestBuilder(self.request_adapter, self.path_parameters)
+        return TaskTriggersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PrinterItemRequestBuilderDeleteRequestConfiguration():

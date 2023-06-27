@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import terms_and_conditions_acceptance_status
-    from ......models.o_data_errors import o_data_error
-    from .terms_and_conditions import terms_and_conditions_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
+    from .terms_and_conditions.terms_and_conditions_request_builder import TermsAndConditionsRequestBuilder
 
 class TermsAndConditionsAcceptanceStatusItemRequestBuilder():
     """
@@ -38,73 +38,73 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property acceptanceStatuses for deviceManagement
+        Deletes a termsAndConditionsAcceptanceStatus.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]:
+    async def get(self,request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatus]:
         """
-        The list of acceptance statuses for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAcceptanceStatus object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]
+        Returns: Optional[TermsAndConditionsAcceptanceStatus]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import terms_and_conditions_acceptance_status
+        from ......models.terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus, error_mapping)
+        return await self.request_adapter.send_async(request_info, TermsAndConditionsAcceptanceStatus, error_mapping)
     
-    async def patch(self,body: Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]:
+    async def patch(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatus]:
         """
-        Update the navigation property acceptanceStatuses in deviceManagement
+        Update the properties of a termsAndConditionsAcceptanceStatus object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]
+        Returns: Optional[TermsAndConditionsAcceptanceStatus]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import terms_and_conditions_acceptance_status
+        from ......models.terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus, error_mapping)
+        return await self.request_adapter.send_async(request_info, TermsAndConditionsAcceptanceStatus, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property acceptanceStatuses for deviceManagement
+        Deletes a termsAndConditionsAcceptanceStatus.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of acceptance statuses for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAcceptanceStatus object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -136,9 +136,9 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property acceptanceStatuses in deviceManagement
+        Update the properties of a termsAndConditionsAcceptanceStatus object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -158,13 +158,13 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder():
         return request_info
     
     @property
-    def terms_and_conditions(self) -> terms_and_conditions_request_builder.TermsAndConditionsRequestBuilder:
+    def terms_and_conditions(self) -> TermsAndConditionsRequestBuilder:
         """
         Provides operations to manage the termsAndConditions property of the microsoft.graph.termsAndConditionsAcceptanceStatus entity.
         """
-        from .terms_and_conditions import terms_and_conditions_request_builder
+        from .terms_and_conditions.terms_and_conditions_request_builder import TermsAndConditionsRequestBuilder
 
-        return terms_and_conditions_request_builder.TermsAndConditionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return TermsAndConditionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TermsAndConditionsAcceptanceStatusItemRequestBuilderDeleteRequestConfiguration():
@@ -181,7 +181,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder():
     @dataclass
     class TermsAndConditionsAcceptanceStatusItemRequestBuilderGetQueryParameters():
         """
-        The list of acceptance statuses for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAcceptanceStatus object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

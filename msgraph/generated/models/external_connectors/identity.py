@@ -4,17 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_type
-    from .. import entity
+    from ..entity import Entity
+    from .identity_type import IdentityType
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class Identity(entity.Entity):
+class Identity(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of identity. Possible values are: user or group for Azure AD identities and externalgroup for groups in an external system.
-    type: Optional[identity_type.IdentityType] = None
+    type: Optional[IdentityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Identity:
@@ -33,14 +33,14 @@ class Identity(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_type
-        from .. import entity
+        from ..entity import Entity
+        from .identity_type import IdentityType
 
-        from . import identity_type
-        from .. import entity
+        from ..entity import Entity
+        from .identity_type import IdentityType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(identity_type.IdentityType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(IdentityType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

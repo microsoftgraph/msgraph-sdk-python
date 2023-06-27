@@ -1,11 +1,13 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import attendee_base, location_constraint, time_constraint
+    from ...models.attendee_base import AttendeeBase
+    from ...models.location_constraint import LocationConstraint
+    from ...models.time_constraint import TimeConstraint
 
 @dataclass
 class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,21 +15,21 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The attendees property
-    attendees: Optional[List[attendee_base.AttendeeBase]] = None
+    attendees: Optional[List[AttendeeBase]] = None
     # The isOrganizerOptional property
     is_organizer_optional: Optional[bool] = None
     # The locationConstraint property
-    location_constraint: Optional[location_constraint.LocationConstraint] = None
+    location_constraint: Optional[LocationConstraint] = None
     # The maxCandidates property
     max_candidates: Optional[int] = None
     # The meetingDuration property
-    meeting_duration: Optional[timedelta] = None
+    meeting_duration: Optional[datetime.timedelta] = None
     # The minimumAttendeePercentage property
     minimum_attendee_percentage: Optional[float] = None
     # The returnSuggestionReasons property
     return_suggestion_reasons: Optional[bool] = None
     # The timeConstraint property
-    time_constraint: Optional[time_constraint.TimeConstraint] = None
+    time_constraint: Optional[TimeConstraint] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FindMeetingTimesPostRequestBody:
@@ -46,19 +48,23 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ...models import attendee_base, location_constraint, time_constraint
+        from ...models.attendee_base import AttendeeBase
+        from ...models.location_constraint import LocationConstraint
+        from ...models.time_constraint import TimeConstraint
 
-        from ...models import attendee_base, location_constraint, time_constraint
+        from ...models.attendee_base import AttendeeBase
+        from ...models.location_constraint import LocationConstraint
+        from ...models.time_constraint import TimeConstraint
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(attendee_base.AttendeeBase)),
+            "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(AttendeeBase)),
             "isOrganizerOptional": lambda n : setattr(self, 'is_organizer_optional', n.get_bool_value()),
-            "locationConstraint": lambda n : setattr(self, 'location_constraint', n.get_object_value(location_constraint.LocationConstraint)),
+            "locationConstraint": lambda n : setattr(self, 'location_constraint', n.get_object_value(LocationConstraint)),
             "maxCandidates": lambda n : setattr(self, 'max_candidates', n.get_int_value()),
             "meetingDuration": lambda n : setattr(self, 'meeting_duration', n.get_timedelta_value()),
             "minimumAttendeePercentage": lambda n : setattr(self, 'minimum_attendee_percentage', n.get_float_value()),
             "returnSuggestionReasons": lambda n : setattr(self, 'return_suggestion_reasons', n.get_bool_value()),
-            "timeConstraint": lambda n : setattr(self, 'time_constraint', n.get_object_value(time_constraint.TimeConstraint)),
+            "timeConstraint": lambda n : setattr(self, 'time_constraint', n.get_object_value(TimeConstraint)),
         }
         return fields
     
@@ -74,7 +80,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_bool_value("isOrganizerOptional", self.is_organizer_optional)
         writer.write_object_value("locationConstraint", self.location_constraint)
         writer.write_int_value("maxCandidates", self.max_candidates)
-        writer.write_timedelta_value("meetingDuration", self.meeting_duration)
+        writer.write_timedelta_value()("meetingDuration", self.meeting_duration)
         writer.write_float_value("minimumAttendeePercentage", self.minimum_attendee_percentage)
         writer.write_bool_value("returnSuggestionReasons", self.return_suggestion_reasons)
         writer.write_object_value("timeConstraint", self.time_constraint)

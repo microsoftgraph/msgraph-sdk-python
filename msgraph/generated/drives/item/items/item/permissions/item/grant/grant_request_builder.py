@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import grant_post_request_body, grant_response
-    from ........models.o_data_errors import o_data_error
+    from ........models.o_data_errors.o_data_error import ODataError
+    from .grant_post_request_body import GrantPostRequestBody
+    from .grant_response import GrantResponse
 
 class GrantRequestBuilder():
     """
@@ -35,32 +36,32 @@ class GrantRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[grant_post_request_body.GrantPostRequestBody] = None, request_configuration: Optional[GrantRequestBuilderPostRequestConfiguration] = None) -> Optional[grant_response.GrantResponse]:
+    async def post(self,body: Optional[GrantPostRequestBody] = None, request_configuration: Optional[GrantRequestBuilderPostRequestConfiguration] = None) -> Optional[GrantResponse]:
         """
         Grant users access to a link represented by a [permission][].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[grant_response.GrantResponse]
+        Returns: Optional[GrantResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import grant_response
+        from .grant_response import GrantResponse
 
-        return await self.request_adapter.send_async(request_info, grant_response.GrantResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GrantResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[grant_post_request_body.GrantPostRequestBody] = None, request_configuration: Optional[GrantRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GrantPostRequestBody] = None, request_configuration: Optional[GrantRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Grant users access to a link represented by a [permission][].
         Args:

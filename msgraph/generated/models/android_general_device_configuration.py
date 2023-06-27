@@ -4,12 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_required_password_type, app_list_item, app_list_type, device_configuration, web_browser_cookie_settings
+    from .android_required_password_type import AndroidRequiredPasswordType
+    from .app_list_item import AppListItem
+    from .app_list_type import AppListType
+    from .device_configuration import DeviceConfiguration
+    from .web_browser_cookie_settings import WebBrowserCookieSettings
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
+class AndroidGeneralDeviceConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.androidGeneralDeviceConfiguration"
     # Indicates whether or not to block clipboard sharing to copy and paste between applications.
     apps_block_clipboard_sharing: Optional[bool] = None
@@ -18,11 +22,11 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
     # Indicates whether or not to block the YouTube app.
     apps_block_you_tube: Optional[bool] = None
     # List of apps to be hidden on the KNOX device. This collection can contain a maximum of 500 elements.
-    apps_hide_list: Optional[List[app_list_item.AppListItem]] = None
+    apps_hide_list: Optional[List[AppListItem]] = None
     # List of apps which can be installed on the KNOX device. This collection can contain a maximum of 500 elements.
-    apps_install_allow_list: Optional[List[app_list_item.AppListItem]] = None
+    apps_install_allow_list: Optional[List[AppListItem]] = None
     # List of apps which are blocked from being launched on the KNOX device. This collection can contain a maximum of 500 elements.
-    apps_launch_block_list: Optional[List[app_list_item.AppListItem]] = None
+    apps_launch_block_list: Optional[List[AppListItem]] = None
     # Indicates whether or not to block Bluetooth.
     bluetooth_blocked: Optional[bool] = None
     # Indicates whether or not to block the use of the camera.
@@ -36,9 +40,9 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
     # Indicates whether or not to block syncing Wi-Fi tethering.
     cellular_block_wi_fi_tethering: Optional[bool] = None
     # Possible values of the compliance app list.
-    compliant_app_list_type: Optional[app_list_type.AppListType] = None
+    compliant_app_list_type: Optional[AppListType] = None
     # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-    compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
+    compliant_apps_list: Optional[List[AppListItem]] = None
     # Indicates whether or not to allow device sharing mode.
     device_sharing_allowed: Optional[bool] = None
     # Indicates whether or not to block diagnostic data submission.
@@ -50,7 +54,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
     # Indicates whether or not to block the Google Play store.
     google_play_store_blocked: Optional[bool] = None
     # A list of apps that will be allowed to run when the device is in Kiosk Mode. This collection can contain a maximum of 500 elements.
-    kiosk_mode_apps: Optional[List[app_list_item.AppListItem]] = None
+    kiosk_mode_apps: Optional[List[AppListItem]] = None
     # Indicates whether or not to block the screen sleep button while in Kiosk Mode.
     kiosk_mode_block_sleep_button: Optional[bool] = None
     # Indicates whether or not to block the volume buttons while in Kiosk Mode.
@@ -74,7 +78,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
     # Indicates whether or not to require a password.
     password_required: Optional[bool] = None
     # Android required password type.
-    password_required_type: Optional[android_required_password_type.AndroidRequiredPasswordType] = None
+    password_required_type: Optional[AndroidRequiredPasswordType] = None
     # Number of sign in failures allowed before factory reset. Valid values 1 to 16
     password_sign_in_failure_count_before_factory_reset: Optional[int] = None
     # Indicates whether or not to block powering off the device.
@@ -104,7 +108,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
     # Indicates whether or not to block the web browser.
     web_browser_blocked: Optional[bool] = None
     # Web Browser Cookie Settings.
-    web_browser_cookie_settings: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None
+    web_browser_cookie_settings: Optional[WebBrowserCookieSettings] = None
     # Indicates whether or not to block syncing Wi-Fi.
     wi_fi_blocked: Optional[bool] = None
     
@@ -125,31 +129,39 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_required_password_type, app_list_item, app_list_type, device_configuration, web_browser_cookie_settings
+        from .android_required_password_type import AndroidRequiredPasswordType
+        from .app_list_item import AppListItem
+        from .app_list_type import AppListType
+        from .device_configuration import DeviceConfiguration
+        from .web_browser_cookie_settings import WebBrowserCookieSettings
 
-        from . import android_required_password_type, app_list_item, app_list_type, device_configuration, web_browser_cookie_settings
+        from .android_required_password_type import AndroidRequiredPasswordType
+        from .app_list_item import AppListItem
+        from .app_list_type import AppListType
+        from .device_configuration import DeviceConfiguration
+        from .web_browser_cookie_settings import WebBrowserCookieSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appsBlockClipboardSharing": lambda n : setattr(self, 'apps_block_clipboard_sharing', n.get_bool_value()),
             "appsBlockCopyPaste": lambda n : setattr(self, 'apps_block_copy_paste', n.get_bool_value()),
             "appsBlockYouTube": lambda n : setattr(self, 'apps_block_you_tube', n.get_bool_value()),
-            "appsHideList": lambda n : setattr(self, 'apps_hide_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
-            "appsInstallAllowList": lambda n : setattr(self, 'apps_install_allow_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
-            "appsLaunchBlockList": lambda n : setattr(self, 'apps_launch_block_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
+            "appsHideList": lambda n : setattr(self, 'apps_hide_list', n.get_collection_of_object_values(AppListItem)),
+            "appsInstallAllowList": lambda n : setattr(self, 'apps_install_allow_list', n.get_collection_of_object_values(AppListItem)),
+            "appsLaunchBlockList": lambda n : setattr(self, 'apps_launch_block_list', n.get_collection_of_object_values(AppListItem)),
             "bluetoothBlocked": lambda n : setattr(self, 'bluetooth_blocked', n.get_bool_value()),
             "cameraBlocked": lambda n : setattr(self, 'camera_blocked', n.get_bool_value()),
             "cellularBlockDataRoaming": lambda n : setattr(self, 'cellular_block_data_roaming', n.get_bool_value()),
             "cellularBlockMessaging": lambda n : setattr(self, 'cellular_block_messaging', n.get_bool_value()),
             "cellularBlockVoiceRoaming": lambda n : setattr(self, 'cellular_block_voice_roaming', n.get_bool_value()),
             "cellularBlockWiFiTethering": lambda n : setattr(self, 'cellular_block_wi_fi_tethering', n.get_bool_value()),
-            "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(app_list_type.AppListType)),
-            "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
+            "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(AppListType)),
+            "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(AppListItem)),
             "deviceSharingAllowed": lambda n : setattr(self, 'device_sharing_allowed', n.get_bool_value()),
             "diagnosticDataBlockSubmission": lambda n : setattr(self, 'diagnostic_data_block_submission', n.get_bool_value()),
             "factoryResetBlocked": lambda n : setattr(self, 'factory_reset_blocked', n.get_bool_value()),
             "googleAccountBlockAutoSync": lambda n : setattr(self, 'google_account_block_auto_sync', n.get_bool_value()),
             "googlePlayStoreBlocked": lambda n : setattr(self, 'google_play_store_blocked', n.get_bool_value()),
-            "kioskModeApps": lambda n : setattr(self, 'kiosk_mode_apps', n.get_collection_of_object_values(app_list_item.AppListItem)),
+            "kioskModeApps": lambda n : setattr(self, 'kiosk_mode_apps', n.get_collection_of_object_values(AppListItem)),
             "kioskModeBlockSleepButton": lambda n : setattr(self, 'kiosk_mode_block_sleep_button', n.get_bool_value()),
             "kioskModeBlockVolumeButtons": lambda n : setattr(self, 'kiosk_mode_block_volume_buttons', n.get_bool_value()),
             "locationServicesBlocked": lambda n : setattr(self, 'location_services_blocked', n.get_bool_value()),
@@ -161,7 +173,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
             "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
             "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(android_required_password_type.AndroidRequiredPasswordType)),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(AndroidRequiredPasswordType)),
             "passwordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
             "powerOffBlocked": lambda n : setattr(self, 'power_off_blocked', n.get_bool_value()),
             "screenCaptureBlocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
@@ -176,7 +188,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             "webBrowserBlockJavaScript": lambda n : setattr(self, 'web_browser_block_java_script', n.get_bool_value()),
             "webBrowserBlockPopups": lambda n : setattr(self, 'web_browser_block_popups', n.get_bool_value()),
             "webBrowserBlocked": lambda n : setattr(self, 'web_browser_blocked', n.get_bool_value()),
-            "webBrowserCookieSettings": lambda n : setattr(self, 'web_browser_cookie_settings', n.get_enum_value(web_browser_cookie_settings.WebBrowserCookieSettings)),
+            "webBrowserCookieSettings": lambda n : setattr(self, 'web_browser_cookie_settings', n.get_enum_value(WebBrowserCookieSettings)),
             "wiFiBlocked": lambda n : setattr(self, 'wi_fi_blocked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

@@ -1,11 +1,13 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set, notebook_links, onenote_user_role
+    from .identity_set import IdentitySet
+    from .notebook_links import NotebookLinks
+    from .onenote_user_role import OnenoteUserRole
 
 @dataclass
 class CopyNotebookModel(AdditionalDataHolder, Parsable):
@@ -15,9 +17,9 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
     # The createdBy property
     created_by: Optional[str] = None
     # The createdByIdentity property
-    created_by_identity: Optional[identity_set.IdentitySet] = None
+    created_by_identity: Optional[IdentitySet] = None
     # The createdTime property
-    created_time: Optional[datetime] = None
+    created_time: Optional[datetime.datetime] = None
     # The id property
     id: Optional[str] = None
     # The isDefault property
@@ -27,11 +29,11 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
     # The lastModifiedBy property
     last_modified_by: Optional[str] = None
     # The lastModifiedByIdentity property
-    last_modified_by_identity: Optional[identity_set.IdentitySet] = None
+    last_modified_by_identity: Optional[IdentitySet] = None
     # The lastModifiedTime property
-    last_modified_time: Optional[datetime] = None
+    last_modified_time: Optional[datetime.datetime] = None
     # The links property
-    links: Optional[notebook_links.NotebookLinks] = None
+    links: Optional[NotebookLinks] = None
     # The name property
     name: Optional[str] = None
     # The OdataType property
@@ -43,7 +45,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
     # The self property
     self: Optional[str] = None
     # The userRole property
-    user_role: Optional[onenote_user_role.OnenoteUserRole] = None
+    user_role: Optional[OnenoteUserRole] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CopyNotebookModel:
@@ -62,27 +64,31 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set, notebook_links, onenote_user_role
+        from .identity_set import IdentitySet
+        from .notebook_links import NotebookLinks
+        from .onenote_user_role import OnenoteUserRole
 
-        from . import identity_set, notebook_links, onenote_user_role
+        from .identity_set import IdentitySet
+        from .notebook_links import NotebookLinks
+        from .onenote_user_role import OnenoteUserRole
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_str_value()),
-            "createdByIdentity": lambda n : setattr(self, 'created_by_identity', n.get_object_value(identity_set.IdentitySet)),
+            "createdByIdentity": lambda n : setattr(self, 'created_by_identity', n.get_object_value(IdentitySet)),
             "createdTime": lambda n : setattr(self, 'created_time', n.get_datetime_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),
-            "lastModifiedByIdentity": lambda n : setattr(self, 'last_modified_by_identity', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedByIdentity": lambda n : setattr(self, 'last_modified_by_identity', n.get_object_value(IdentitySet)),
             "lastModifiedTime": lambda n : setattr(self, 'last_modified_time', n.get_datetime_value()),
-            "links": lambda n : setattr(self, 'links', n.get_object_value(notebook_links.NotebookLinks)),
+            "links": lambda n : setattr(self, 'links', n.get_object_value(NotebookLinks)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
             "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
             "self": lambda n : setattr(self, 'self', n.get_str_value()),
-            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(onenote_user_role.OnenoteUserRole)),
+            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(OnenoteUserRole)),
         }
         return fields
     
@@ -96,13 +102,13 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("createdBy", self.created_by)
         writer.write_object_value("createdByIdentity", self.created_by_identity)
-        writer.write_datetime_value("createdTime", self.created_time)
+        writer.write_datetime_value()("createdTime", self.created_time)
         writer.write_str_value("id", self.id)
         writer.write_bool_value("isDefault", self.is_default)
         writer.write_bool_value("isShared", self.is_shared)
         writer.write_str_value("lastModifiedBy", self.last_modified_by)
         writer.write_object_value("lastModifiedByIdentity", self.last_modified_by_identity)
-        writer.write_datetime_value("lastModifiedTime", self.last_modified_time)
+        writer.write_datetime_value()("lastModifiedTime", self.last_modified_time)
         writer.write_object_value("links", self.links)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)

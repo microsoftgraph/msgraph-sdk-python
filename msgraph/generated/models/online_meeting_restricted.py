@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import online_meeting_content_sharing_disabled_reason, online_meeting_video_disabled_reason
+    from .online_meeting_content_sharing_disabled_reason import OnlineMeetingContentSharingDisabledReason
+    from .online_meeting_video_disabled_reason import OnlineMeetingVideoDisabledReason
 
 @dataclass
 class OnlineMeetingRestricted(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class OnlineMeetingRestricted(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Specifies the reason shared content from this participant is disabled. Possible values are: watermarkProtection, unknownFutureValue.
-    content_sharing_disabled: Optional[online_meeting_content_sharing_disabled_reason.OnlineMeetingContentSharingDisabledReason] = None
+    content_sharing_disabled: Optional[OnlineMeetingContentSharingDisabledReason] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies the reason video from this participant is disabled. Possible values are: watermarkProtection, unknownFutureValue.
-    video_disabled: Optional[online_meeting_video_disabled_reason.OnlineMeetingVideoDisabledReason] = None
+    video_disabled: Optional[OnlineMeetingVideoDisabledReason] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnlineMeetingRestricted:
@@ -35,14 +36,16 @@ class OnlineMeetingRestricted(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import online_meeting_content_sharing_disabled_reason, online_meeting_video_disabled_reason
+        from .online_meeting_content_sharing_disabled_reason import OnlineMeetingContentSharingDisabledReason
+        from .online_meeting_video_disabled_reason import OnlineMeetingVideoDisabledReason
 
-        from . import online_meeting_content_sharing_disabled_reason, online_meeting_video_disabled_reason
+        from .online_meeting_content_sharing_disabled_reason import OnlineMeetingContentSharingDisabledReason
+        from .online_meeting_video_disabled_reason import OnlineMeetingVideoDisabledReason
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentSharingDisabled": lambda n : setattr(self, 'content_sharing_disabled', n.get_enum_value(online_meeting_content_sharing_disabled_reason.OnlineMeetingContentSharingDisabledReason)),
+            "contentSharingDisabled": lambda n : setattr(self, 'content_sharing_disabled', n.get_enum_value(OnlineMeetingContentSharingDisabledReason)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "videoDisabled": lambda n : setattr(self, 'video_disabled', n.get_enum_value(online_meeting_video_disabled_reason.OnlineMeetingVideoDisabledReason)),
+            "videoDisabled": lambda n : setattr(self, 'video_disabled', n.get_enum_value(OnlineMeetingVideoDisabledReason)),
         }
         return fields
     

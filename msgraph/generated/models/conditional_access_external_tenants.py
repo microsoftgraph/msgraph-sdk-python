@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_all_external_tenants, conditional_access_enumerated_external_tenants, conditional_access_external_tenants_membership_kind
+    from .conditional_access_all_external_tenants import ConditionalAccessAllExternalTenants
+    from .conditional_access_enumerated_external_tenants import ConditionalAccessEnumeratedExternalTenants
+    from .conditional_access_external_tenants_membership_kind import ConditionalAccessExternalTenantsMembershipKind
 
 @dataclass
 class ConditionalAccessExternalTenants(AdditionalDataHolder, Parsable):
@@ -12,7 +14,7 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The membership kind. Possible values are: all, enumerated, unknownFutureValue. The enumerated member references an conditionalAccessEnumeratedExternalTenants object.
-    membership_kind: Optional[conditional_access_external_tenants_membership_kind.ConditionalAccessExternalTenantsMembershipKind] = None
+    membership_kind: Optional[ConditionalAccessExternalTenantsMembershipKind] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -31,13 +33,13 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.conditionalAccessAllExternalTenants".casefold():
-            from . import conditional_access_all_external_tenants
+            from .conditional_access_all_external_tenants import ConditionalAccessAllExternalTenants
 
-            return conditional_access_all_external_tenants.ConditionalAccessAllExternalTenants()
+            return ConditionalAccessAllExternalTenants()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.conditionalAccessEnumeratedExternalTenants".casefold():
-            from . import conditional_access_enumerated_external_tenants
+            from .conditional_access_enumerated_external_tenants import ConditionalAccessEnumeratedExternalTenants
 
-            return conditional_access_enumerated_external_tenants.ConditionalAccessEnumeratedExternalTenants()
+            return ConditionalAccessEnumeratedExternalTenants()
         return ConditionalAccessExternalTenants()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -45,12 +47,16 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_all_external_tenants, conditional_access_enumerated_external_tenants, conditional_access_external_tenants_membership_kind
+        from .conditional_access_all_external_tenants import ConditionalAccessAllExternalTenants
+        from .conditional_access_enumerated_external_tenants import ConditionalAccessEnumeratedExternalTenants
+        from .conditional_access_external_tenants_membership_kind import ConditionalAccessExternalTenantsMembershipKind
 
-        from . import conditional_access_all_external_tenants, conditional_access_enumerated_external_tenants, conditional_access_external_tenants_membership_kind
+        from .conditional_access_all_external_tenants import ConditionalAccessAllExternalTenants
+        from .conditional_access_enumerated_external_tenants import ConditionalAccessEnumeratedExternalTenants
+        from .conditional_access_external_tenants_membership_kind import ConditionalAccessExternalTenantsMembershipKind
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "membershipKind": lambda n : setattr(self, 'membership_kind', n.get_enum_value(conditional_access_external_tenants_membership_kind.ConditionalAccessExternalTenantsMembershipKind)),
+            "membershipKind": lambda n : setattr(self, 'membership_kind', n.get_enum_value(ConditionalAccessExternalTenantsMembershipKind)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

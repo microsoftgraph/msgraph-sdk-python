@@ -1,23 +1,25 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_message_detail, identity_set, teamwork_user_identity
+    from .event_message_detail import EventMessageDetail
+    from .identity_set import IdentitySet
+    from .teamwork_user_identity import TeamworkUserIdentity
 
-from . import event_message_detail
+from .event_message_detail import EventMessageDetail
 
 @dataclass
-class MembersAddedEventMessageDetail(event_message_detail.EventMessageDetail):
+class MembersAddedEventMessageDetail(EventMessageDetail):
     odata_type = "#microsoft.graph.membersAddedEventMessageDetail"
     # Initiator of the event.
-    initiator: Optional[identity_set.IdentitySet] = None
+    initiator: Optional[IdentitySet] = None
     # List of members added.
-    members: Optional[List[teamwork_user_identity.TeamworkUserIdentity]] = None
+    members: Optional[List[TeamworkUserIdentity]] = None
     # The timestamp that denotes how far back a conversation's history is shared with the conversation members.
-    visible_history_start_date_time: Optional[datetime] = None
+    visible_history_start_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MembersAddedEventMessageDetail:
@@ -36,13 +38,17 @@ class MembersAddedEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message_detail, identity_set, teamwork_user_identity
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+        from .teamwork_user_identity import TeamworkUserIdentity
 
-        from . import event_message_detail, identity_set, teamwork_user_identity
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+        from .teamwork_user_identity import TeamworkUserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
-            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(teamwork_user_identity.TeamworkUserIdentity)),
+            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
+            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(TeamworkUserIdentity)),
             "visibleHistoryStartDateTime": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -60,6 +66,6 @@ class MembersAddedEventMessageDetail(event_message_detail.EventMessageDetail):
         super().serialize(writer)
         writer.write_object_value("initiator", self.initiator)
         writer.write_collection_of_object_values("members", self.members)
-        writer.write_datetime_value("visibleHistoryStartDateTime", self.visible_history_start_date_time)
+        writer.write_datetime_value()("visibleHistoryStartDateTime", self.visible_history_start_date_time)
     
 

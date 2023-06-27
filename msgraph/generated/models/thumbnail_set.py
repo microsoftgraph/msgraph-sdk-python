@@ -4,22 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, thumbnail
+    from .entity import Entity
+    from .thumbnail import Thumbnail
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ThumbnailSet(entity.Entity):
+class ThumbnailSet(Entity):
     # A 1920x1920 scaled thumbnail.
-    large: Optional[thumbnail.Thumbnail] = None
+    large: Optional[Thumbnail] = None
     # A 176x176 scaled thumbnail.
-    medium: Optional[thumbnail.Thumbnail] = None
+    medium: Optional[Thumbnail] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A 48x48 cropped thumbnail.
-    small: Optional[thumbnail.Thumbnail] = None
+    small: Optional[Thumbnail] = None
     # A custom thumbnail image or the original image used to generate other thumbnails.
-    source: Optional[thumbnail.Thumbnail] = None
+    source: Optional[Thumbnail] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ThumbnailSet:
@@ -38,15 +39,17 @@ class ThumbnailSet(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, thumbnail
+        from .entity import Entity
+        from .thumbnail import Thumbnail
 
-        from . import entity, thumbnail
+        from .entity import Entity
+        from .thumbnail import Thumbnail
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "large": lambda n : setattr(self, 'large', n.get_object_value(thumbnail.Thumbnail)),
-            "medium": lambda n : setattr(self, 'medium', n.get_object_value(thumbnail.Thumbnail)),
-            "small": lambda n : setattr(self, 'small', n.get_object_value(thumbnail.Thumbnail)),
-            "source": lambda n : setattr(self, 'source', n.get_object_value(thumbnail.Thumbnail)),
+            "large": lambda n : setattr(self, 'large', n.get_object_value(Thumbnail)),
+            "medium": lambda n : setattr(self, 'medium', n.get_object_value(Thumbnail)),
+            "small": lambda n : setattr(self, 'small', n.get_object_value(Thumbnail)),
+            "source": lambda n : setattr(self, 'source', n.get_object_value(Thumbnail)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_source
+    from .identity_source import IdentitySource
 
-from . import identity_source
+from .identity_source import IdentitySource
 
 @dataclass
-class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
+class CrossCloudAzureActiveDirectoryTenant(IdentitySource):
     odata_type = "#microsoft.graph.crossCloudAzureActiveDirectoryTenant"
     # The ID of the cloud where the tenant is located, one of microsoftonline.com, microsoftonline.us or partner.microsoftonline.cn. Read only.
     cloud_instance: Optional[str] = None
@@ -35,9 +35,9 @@ class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_source
+        from .identity_source import IdentitySource
 
-        from . import identity_source
+        from .identity_source import IdentitySource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "cloudInstance": lambda n : setattr(self, 'cloud_instance', n.get_str_value()),

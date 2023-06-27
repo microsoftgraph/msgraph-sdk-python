@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import unified_approval_stage
+    from .unified_approval_stage import UnifiedApprovalStage
 
 @dataclass
 class ApprovalSettings(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
     # One of SingleStage, Serial, Parallel, NoApproval (default). NoApproval is used when isApprovalRequired is false.
     approval_mode: Optional[str] = None
     # If approval is required, the one or two elements of this collection define each of the stages of approval. An empty array if no approval is required.
-    approval_stages: Optional[List[unified_approval_stage.UnifiedApprovalStage]] = None
+    approval_stages: Optional[List[UnifiedApprovalStage]] = None
     # Indicates whether approval is required for requests in this policy.
     is_approval_required: Optional[bool] = None
     # Indicates whether approval is required for a user to extend their assignment.
@@ -41,13 +41,13 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import unified_approval_stage
+        from .unified_approval_stage import UnifiedApprovalStage
 
-        from . import unified_approval_stage
+        from .unified_approval_stage import UnifiedApprovalStage
 
         fields: Dict[str, Callable[[Any], None]] = {
             "approvalMode": lambda n : setattr(self, 'approval_mode', n.get_str_value()),
-            "approvalStages": lambda n : setattr(self, 'approval_stages', n.get_collection_of_object_values(unified_approval_stage.UnifiedApprovalStage)),
+            "approvalStages": lambda n : setattr(self, 'approval_stages', n.get_collection_of_object_values(UnifiedApprovalStage)),
             "isApprovalRequired": lambda n : setattr(self, 'is_approval_required', n.get_bool_value()),
             "isApprovalRequiredForExtension": lambda n : setattr(self, 'is_approval_required_for_extension', n.get_bool_value()),
             "isRequestorJustificationRequired": lambda n : setattr(self, 'is_requestor_justification_required', n.get_bool_value()),

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import imported_windows_autopilot_device_identity
+    from ....models.imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
 
 @dataclass
 class ImportPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ImportPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The importedWindowsAutopilotDeviceIdentities property
-    imported_windows_autopilot_device_identities: Optional[List[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]] = None
+    imported_windows_autopilot_device_identities: Optional[List[ImportedWindowsAutopilotDeviceIdentity]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ImportPostRequestBody:
@@ -31,12 +31,12 @@ class ImportPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import imported_windows_autopilot_device_identity
+        from ....models.imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
 
-        from ....models import imported_windows_autopilot_device_identity
+        from ....models.imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "importedWindowsAutopilotDeviceIdentities": lambda n : setattr(self, 'imported_windows_autopilot_device_identities', n.get_collection_of_object_values(imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity)),
+            "importedWindowsAutopilotDeviceIdentities": lambda n : setattr(self, 'imported_windows_autopilot_device_identities', n.get_collection_of_object_values(ImportedWindowsAutopilotDeviceIdentity)),
         }
         return fields
     

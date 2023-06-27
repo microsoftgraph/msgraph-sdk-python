@@ -1,16 +1,18 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_management_exchange_connector_status, device_management_exchange_connector_type, entity
+    from .device_management_exchange_connector_status import DeviceManagementExchangeConnectorStatus
+    from .device_management_exchange_connector_type import DeviceManagementExchangeConnectorType
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceManagementExchangeConnector(entity.Entity):
+class DeviceManagementExchangeConnector(Entity):
     """
     Entity which represents a connection to an Exchange environment.
     """
@@ -19,11 +21,11 @@ class DeviceManagementExchangeConnector(entity.Entity):
     # An alias assigned to the Exchange server
     exchange_alias: Optional[str] = None
     # The type of Exchange Connector.
-    exchange_connector_type: Optional[device_management_exchange_connector_type.DeviceManagementExchangeConnectorType] = None
+    exchange_connector_type: Optional[DeviceManagementExchangeConnectorType] = None
     # Exchange Organization to the Exchange server
     exchange_organization: Optional[str] = None
     # Last sync time for the Exchange Connector
-    last_sync_date_time: Optional[datetime] = None
+    last_sync_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Email address used to configure the Service To Service Exchange Connector.
@@ -31,7 +33,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
     # The name of the Exchange server.
     server_name: Optional[str] = None
     # The current status of the Exchange Connector.
-    status: Optional[device_management_exchange_connector_status.DeviceManagementExchangeConnectorStatus] = None
+    status: Optional[DeviceManagementExchangeConnectorStatus] = None
     # The version of the ExchangeConnectorAgent
     version: Optional[str] = None
     
@@ -52,19 +54,23 @@ class DeviceManagementExchangeConnector(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_management_exchange_connector_status, device_management_exchange_connector_type, entity
+        from .device_management_exchange_connector_status import DeviceManagementExchangeConnectorStatus
+        from .device_management_exchange_connector_type import DeviceManagementExchangeConnectorType
+        from .entity import Entity
 
-        from . import device_management_exchange_connector_status, device_management_exchange_connector_type, entity
+        from .device_management_exchange_connector_status import DeviceManagementExchangeConnectorStatus
+        from .device_management_exchange_connector_type import DeviceManagementExchangeConnectorType
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "connectorServerName": lambda n : setattr(self, 'connector_server_name', n.get_str_value()),
             "exchangeAlias": lambda n : setattr(self, 'exchange_alias', n.get_str_value()),
-            "exchangeConnectorType": lambda n : setattr(self, 'exchange_connector_type', n.get_enum_value(device_management_exchange_connector_type.DeviceManagementExchangeConnectorType)),
+            "exchangeConnectorType": lambda n : setattr(self, 'exchange_connector_type', n.get_enum_value(DeviceManagementExchangeConnectorType)),
             "exchangeOrganization": lambda n : setattr(self, 'exchange_organization', n.get_str_value()),
             "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
             "primarySmtpAddress": lambda n : setattr(self, 'primary_smtp_address', n.get_str_value()),
             "serverName": lambda n : setattr(self, 'server_name', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(device_management_exchange_connector_status.DeviceManagementExchangeConnectorStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(DeviceManagementExchangeConnectorStatus)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -84,7 +90,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         writer.write_str_value("exchangeAlias", self.exchange_alias)
         writer.write_enum_value("exchangeConnectorType", self.exchange_connector_type)
         writer.write_str_value("exchangeOrganization", self.exchange_organization)
-        writer.write_datetime_value("lastSyncDateTime", self.last_sync_date_time)
+        writer.write_datetime_value()("lastSyncDateTime", self.last_sync_date_time)
         writer.write_str_value("primarySmtpAddress", self.primary_smtp_address)
         writer.write_str_value("serverName", self.server_name)
         writer.write_enum_value("status", self.status)

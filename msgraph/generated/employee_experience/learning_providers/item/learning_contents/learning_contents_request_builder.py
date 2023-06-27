@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import learning_content, learning_content_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import learning_content_item_request_builder
+    from .....models.learning_content import LearningContent
+    from .....models.learning_content_collection_response import LearningContentCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.learning_content_item_request_builder import LearningContentItemRequestBuilder
 
 class LearningContentsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class LearningContentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_learning_content_id(self,learning_content_id: str) -> learning_content_item_request_builder.LearningContentItemRequestBuilder:
+    def by_learning_content_id(self,learning_content_id: str) -> LearningContentItemRequestBuilder:
         """
         Provides operations to manage the learningContents property of the microsoft.graph.learningProvider entity.
         Args:
             learning_content_id: Unique identifier of the item
-        Returns: learning_content_item_request_builder.LearningContentItemRequestBuilder
+        Returns: LearningContentItemRequestBuilder
         """
         if not learning_content_id:
             raise TypeError("learning_content_id cannot be null.")
-        from .item import learning_content_item_request_builder
+        from .item.learning_content_item_request_builder import LearningContentItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["learningContent%2Did"] = learning_content_id
-        return learning_content_item_request_builder.LearningContentItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return LearningContentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[LearningContentsRequestBuilderGetRequestConfiguration] = None) -> Optional[learning_content_collection_response.LearningContentCollectionResponse]:
+    async def get(self,request_configuration: Optional[LearningContentsRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningContentCollectionResponse]:
         """
         Get a list of the learningContent resources and their properties. This list represents the metadata of the specified provider's content in Viva Learning.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[learning_content_collection_response.LearningContentCollectionResponse]
+        Returns: Optional[LearningContentCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import learning_content_collection_response
+        from .....models.learning_content_collection_response import LearningContentCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, learning_content_collection_response.LearningContentCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, LearningContentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[learning_content.LearningContent] = None, request_configuration: Optional[LearningContentsRequestBuilderPostRequestConfiguration] = None) -> Optional[learning_content.LearningContent]:
+    async def post(self,body: Optional[LearningContent] = None, request_configuration: Optional[LearningContentsRequestBuilderPostRequestConfiguration] = None) -> Optional[LearningContent]:
         """
         Create new navigation property to learningContents for employeeExperience
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[learning_content.LearningContent]
+        Returns: Optional[LearningContent]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import learning_content
+        from .....models.learning_content import LearningContent
 
-        return await self.request_adapter.send_async(request_info, learning_content.LearningContent, error_mapping)
+        return await self.request_adapter.send_async(request_info, LearningContent, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LearningContentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class LearningContentsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[learning_content.LearningContent] = None, request_configuration: Optional[LearningContentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[LearningContent] = None, request_configuration: Optional[LearningContentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to learningContents for employeeExperience
         Args:
@@ -139,13 +140,13 @@ class LearningContentsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class LearningContentsRequestBuilderGetQueryParameters():

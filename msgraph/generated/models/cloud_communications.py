@@ -4,8 +4,10 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import call, online_meeting, presence
-    from .call_records import call_record
+    from .call import Call
+    from .call_records.call_record import CallRecord
+    from .online_meeting import OnlineMeeting
+    from .presence import Presence
 
 @dataclass
 class CloudCommunications(AdditionalDataHolder, Parsable):
@@ -13,15 +15,15 @@ class CloudCommunications(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The callRecords property
-    call_records: Optional[List[call_record.CallRecord]] = None
+    call_records: Optional[List[CallRecord]] = None
     # The calls property
-    calls: Optional[List[call.Call]] = None
+    calls: Optional[List[Call]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The onlineMeetings property
-    online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
+    online_meetings: Optional[List[OnlineMeeting]] = None
     # The presences property
-    presences: Optional[List[presence.Presence]] = None
+    presences: Optional[List[Presence]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CloudCommunications:
@@ -40,18 +42,22 @@ class CloudCommunications(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import call, online_meeting, presence
-        from .call_records import call_record
+        from .call import Call
+        from .call_records.call_record import CallRecord
+        from .online_meeting import OnlineMeeting
+        from .presence import Presence
 
-        from . import call, online_meeting, presence
-        from .call_records import call_record
+        from .call import Call
+        from .call_records.call_record import CallRecord
+        from .online_meeting import OnlineMeeting
+        from .presence import Presence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callRecords": lambda n : setattr(self, 'call_records', n.get_collection_of_object_values(call_record.CallRecord)),
-            "calls": lambda n : setattr(self, 'calls', n.get_collection_of_object_values(call.Call)),
+            "callRecords": lambda n : setattr(self, 'call_records', n.get_collection_of_object_values(CallRecord)),
+            "calls": lambda n : setattr(self, 'calls', n.get_collection_of_object_values(Call)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "onlineMeetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(online_meeting.OnlineMeeting)),
-            "presences": lambda n : setattr(self, 'presences', n.get_collection_of_object_values(presence.Presence)),
+            "onlineMeetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(OnlineMeeting)),
+            "presences": lambda n : setattr(self, 'presences', n.get_collection_of_object_values(Presence)),
         }
         return fields
     

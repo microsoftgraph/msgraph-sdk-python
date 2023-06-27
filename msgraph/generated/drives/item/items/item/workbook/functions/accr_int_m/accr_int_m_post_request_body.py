@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class AccrIntMPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,15 +12,15 @@ class AccrIntMPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The basis property
-    basis: Optional[json.Json] = None
+    basis: Optional[Json] = None
     # The issue property
-    issue: Optional[json.Json] = None
+    issue: Optional[Json] = None
     # The par property
-    par: Optional[json.Json] = None
+    par: Optional[Json] = None
     # The rate property
-    rate: Optional[json.Json] = None
+    rate: Optional[Json] = None
     # The settlement property
-    settlement: Optional[json.Json] = None
+    settlement: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccrIntMPostRequestBody:
@@ -39,16 +39,16 @@ class AccrIntMPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "basis": lambda n : setattr(self, 'basis', n.get_object_value(json.Json)),
-            "issue": lambda n : setattr(self, 'issue', n.get_object_value(json.Json)),
-            "par": lambda n : setattr(self, 'par', n.get_object_value(json.Json)),
-            "rate": lambda n : setattr(self, 'rate', n.get_object_value(json.Json)),
-            "settlement": lambda n : setattr(self, 'settlement', n.get_object_value(json.Json)),
+            "basis": lambda n : setattr(self, 'basis', n.get_object_value(Json)),
+            "issue": lambda n : setattr(self, 'issue', n.get_object_value(Json)),
+            "par": lambda n : setattr(self, 'par', n.get_object_value(Json)),
+            "rate": lambda n : setattr(self, 'rate', n.get_object_value(Json)),
+            "settlement": lambda n : setattr(self, 'settlement', n.get_object_value(Json)),
         }
         return fields
     

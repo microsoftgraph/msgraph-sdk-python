@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import print_job_configuration
+    from .......models.print_job_configuration import PrintJobConfiguration
 
 @dataclass
 class RedirectPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class RedirectPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The configuration property
-    configuration: Optional[print_job_configuration.PrintJobConfiguration] = None
+    configuration: Optional[PrintJobConfiguration] = None
     # The destinationPrinterId property
     destination_printer_id: Optional[str] = None
     
@@ -33,12 +33,12 @@ class RedirectPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .......models import print_job_configuration
+        from .......models.print_job_configuration import PrintJobConfiguration
 
-        from .......models import print_job_configuration
+        from .......models.print_job_configuration import PrintJobConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(print_job_configuration.PrintJobConfiguration)),
+            "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(PrintJobConfiguration)),
             "destinationPrinterId": lambda n : setattr(self, 'destination_printer_id', n.get_str_value()),
         }
         return fields

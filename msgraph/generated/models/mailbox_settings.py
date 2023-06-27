@@ -4,7 +4,11 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import automatic_replies_setting, delegate_meeting_message_delivery_options, locale_info, user_purpose, working_hours
+    from .automatic_replies_setting import AutomaticRepliesSetting
+    from .delegate_meeting_message_delivery_options import DelegateMeetingMessageDeliveryOptions
+    from .locale_info import LocaleInfo
+    from .user_purpose import UserPurpose
+    from .working_hours import WorkingHours
 
 @dataclass
 class MailboxSettings(AdditionalDataHolder, Parsable):
@@ -14,13 +18,13 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
     # Folder ID of an archive folder for the user.
     archive_folder: Optional[str] = None
     # Configuration settings to automatically notify the sender of an incoming email with a message from the signed-in user.
-    automatic_replies_setting: Optional[automatic_replies_setting.AutomaticRepliesSetting] = None
+    automatic_replies_setting: Optional[AutomaticRepliesSetting] = None
     # The date format for the user's mailbox.
     date_format: Optional[str] = None
     # If the user has a calendar delegate, this specifies whether the delegate, mailbox owner, or both receive meeting messages and meeting responses. Possible values are: sendToDelegateAndInformationToPrincipal, sendToDelegateAndPrincipal, sendToDelegateOnly.
-    delegate_meeting_message_delivery_options: Optional[delegate_meeting_message_delivery_options.DelegateMeetingMessageDeliveryOptions] = None
+    delegate_meeting_message_delivery_options: Optional[DelegateMeetingMessageDeliveryOptions] = None
     # The locale information for the user, including the preferred language and country/region.
-    language: Optional[locale_info.LocaleInfo] = None
+    language: Optional[LocaleInfo] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The time format for the user's mailbox.
@@ -28,9 +32,9 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
     # The default time zone for the user's mailbox.
     time_zone: Optional[str] = None
     # The purpose of the mailbox. Differentiates a mailbox for a single user from a shared mailbox and equipment mailbox in Exchange Online. Possible values are: user, linked, shared, room, equipment, others, unknownFutureValue. Read-only.
-    user_purpose: Optional[user_purpose.UserPurpose] = None
+    user_purpose: Optional[UserPurpose] = None
     # The days of the week and hours in a specific time zone that the user works.
-    working_hours: Optional[working_hours.WorkingHours] = None
+    working_hours: Optional[WorkingHours] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MailboxSettings:
@@ -49,21 +53,29 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import automatic_replies_setting, delegate_meeting_message_delivery_options, locale_info, user_purpose, working_hours
+        from .automatic_replies_setting import AutomaticRepliesSetting
+        from .delegate_meeting_message_delivery_options import DelegateMeetingMessageDeliveryOptions
+        from .locale_info import LocaleInfo
+        from .user_purpose import UserPurpose
+        from .working_hours import WorkingHours
 
-        from . import automatic_replies_setting, delegate_meeting_message_delivery_options, locale_info, user_purpose, working_hours
+        from .automatic_replies_setting import AutomaticRepliesSetting
+        from .delegate_meeting_message_delivery_options import DelegateMeetingMessageDeliveryOptions
+        from .locale_info import LocaleInfo
+        from .user_purpose import UserPurpose
+        from .working_hours import WorkingHours
 
         fields: Dict[str, Callable[[Any], None]] = {
             "archiveFolder": lambda n : setattr(self, 'archive_folder', n.get_str_value()),
-            "automaticRepliesSetting": lambda n : setattr(self, 'automatic_replies_setting', n.get_object_value(automatic_replies_setting.AutomaticRepliesSetting)),
+            "automaticRepliesSetting": lambda n : setattr(self, 'automatic_replies_setting', n.get_object_value(AutomaticRepliesSetting)),
             "dateFormat": lambda n : setattr(self, 'date_format', n.get_str_value()),
-            "delegateMeetingMessageDeliveryOptions": lambda n : setattr(self, 'delegate_meeting_message_delivery_options', n.get_enum_value(delegate_meeting_message_delivery_options.DelegateMeetingMessageDeliveryOptions)),
-            "language": lambda n : setattr(self, 'language', n.get_object_value(locale_info.LocaleInfo)),
+            "delegateMeetingMessageDeliveryOptions": lambda n : setattr(self, 'delegate_meeting_message_delivery_options', n.get_enum_value(DelegateMeetingMessageDeliveryOptions)),
+            "language": lambda n : setattr(self, 'language', n.get_object_value(LocaleInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "timeFormat": lambda n : setattr(self, 'time_format', n.get_str_value()),
             "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
-            "userPurpose": lambda n : setattr(self, 'user_purpose', n.get_enum_value(user_purpose.UserPurpose)),
-            "workingHours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
+            "userPurpose": lambda n : setattr(self, 'user_purpose', n.get_enum_value(UserPurpose)),
+            "workingHours": lambda n : setattr(self, 'working_hours', n.get_object_value(WorkingHours)),
         }
         return fields
     

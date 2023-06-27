@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ios_home_screen_app, ios_home_screen_folder
+    from .ios_home_screen_app import IosHomeScreenApp
+    from .ios_home_screen_folder import IosHomeScreenFolder
 
 @dataclass
 class IosHomeScreenItem(AdditionalDataHolder, Parsable):
@@ -34,13 +35,13 @@ class IosHomeScreenItem(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosHomeScreenApp".casefold():
-            from . import ios_home_screen_app
+            from .ios_home_screen_app import IosHomeScreenApp
 
-            return ios_home_screen_app.IosHomeScreenApp()
+            return IosHomeScreenApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosHomeScreenFolder".casefold():
-            from . import ios_home_screen_folder
+            from .ios_home_screen_folder import IosHomeScreenFolder
 
-            return ios_home_screen_folder.IosHomeScreenFolder()
+            return IosHomeScreenFolder()
         return IosHomeScreenItem()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -48,9 +49,11 @@ class IosHomeScreenItem(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ios_home_screen_app, ios_home_screen_folder
+        from .ios_home_screen_app import IosHomeScreenApp
+        from .ios_home_screen_folder import IosHomeScreenFolder
 
-        from . import ios_home_screen_app, ios_home_screen_folder
+        from .ios_home_screen_app import IosHomeScreenApp
+        from .ios_home_screen_folder import IosHomeScreenFolder
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

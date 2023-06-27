@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_type, acl_type
+    from .access_type import AccessType
+    from .acl_type import AclType
 
 @dataclass
 class Acl(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class Acl(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The accessType property
-    access_type: Optional[access_type.AccessType] = None
+    access_type: Optional[AccessType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The type property
-    type: Optional[acl_type.AclType] = None
+    type: Optional[AclType] = None
     # The unique identifer of the identity. In case of Azure Active Directory identities, value is set to the object identifier of the user, group or tenant for types user, group and everyone (and everyoneExceptGuests) respectively. In case of external groups value is set to the ID of the externalGroup
     value: Optional[str] = None
     
@@ -37,14 +38,16 @@ class Acl(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_type, acl_type
+        from .access_type import AccessType
+        from .acl_type import AclType
 
-        from . import access_type, acl_type
+        from .access_type import AccessType
+        from .acl_type import AclType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(access_type.AccessType)),
+            "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(AccessType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(acl_type.AclType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(AclType)),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         return fields

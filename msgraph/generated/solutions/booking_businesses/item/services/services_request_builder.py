@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import booking_service, booking_service_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import booking_service_item_request_builder
+    from .....models.booking_service import BookingService
+    from .....models.booking_service_collection_response import BookingServiceCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.booking_service_item_request_builder import BookingServiceItemRequestBuilder
 
 class ServicesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class ServicesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_booking_service_id(self,booking_service_id: str) -> booking_service_item_request_builder.BookingServiceItemRequestBuilder:
+    def by_booking_service_id(self,booking_service_id: str) -> BookingServiceItemRequestBuilder:
         """
         Provides operations to manage the services property of the microsoft.graph.bookingBusiness entity.
         Args:
             booking_service_id: Unique identifier of the item
-        Returns: booking_service_item_request_builder.BookingServiceItemRequestBuilder
+        Returns: BookingServiceItemRequestBuilder
         """
         if not booking_service_id:
             raise TypeError("booking_service_id cannot be null.")
-        from .item import booking_service_item_request_builder
+        from .item.booking_service_item_request_builder import BookingServiceItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["bookingService%2Did"] = booking_service_id
-        return booking_service_item_request_builder.BookingServiceItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return BookingServiceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ServicesRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_service_collection_response.BookingServiceCollectionResponse]:
+    async def get(self,request_configuration: Optional[ServicesRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingServiceCollectionResponse]:
         """
         Get a list of bookingService objects in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[booking_service_collection_response.BookingServiceCollectionResponse]
+        Returns: Optional[BookingServiceCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import booking_service_collection_response
+        from .....models.booking_service_collection_response import BookingServiceCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, booking_service_collection_response.BookingServiceCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, BookingServiceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[booking_service.BookingService] = None, request_configuration: Optional[ServicesRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_service.BookingService]:
+    async def post(self,body: Optional[BookingService] = None, request_configuration: Optional[ServicesRequestBuilderPostRequestConfiguration] = None) -> Optional[BookingService]:
         """
         Create a new bookingService for the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[booking_service.BookingService]
+        Returns: Optional[BookingService]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import booking_service
+        from .....models.booking_service import BookingService
 
-        return await self.request_adapter.send_async(request_info, booking_service.BookingService, error_mapping)
+        return await self.request_adapter.send_async(request_info, BookingService, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ServicesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class ServicesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[booking_service.BookingService] = None, request_configuration: Optional[ServicesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[BookingService] = None, request_configuration: Optional[ServicesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new bookingService for the specified bookingBusiness.
         Args:
@@ -139,13 +140,13 @@ class ServicesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ServicesRequestBuilderGetQueryParameters():

@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import synchronization_schema
-    from .......models.o_data_errors import o_data_error
-    from .directories import directories_request_builder
-    from .filter_operators import filter_operators_request_builder
-    from .functions import functions_request_builder
-    from .parse_expression import parse_expression_request_builder
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.synchronization_schema import SynchronizationSchema
+    from .directories.directories_request_builder import DirectoriesRequestBuilder
+    from .filter_operators.filter_operators_request_builder import FilterOperatorsRequestBuilder
+    from .functions.functions_request_builder import FunctionsRequestBuilder
+    from .parse_expression.parse_expression_request_builder import ParseExpressionRequestBuilder
 
 class SchemaRequestBuilder():
     """
@@ -48,62 +48,62 @@ class SchemaRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SchemaRequestBuilderGetRequestConfiguration] = None) -> Optional[synchronization_schema.SynchronizationSchema]:
+    async def get(self,request_configuration: Optional[SchemaRequestBuilderGetRequestConfiguration] = None) -> Optional[SynchronizationSchema]:
         """
         Get schema from servicePrincipals
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[synchronization_schema.SynchronizationSchema]
+        Returns: Optional[SynchronizationSchema]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import synchronization_schema
+        from .......models.synchronization_schema import SynchronizationSchema
 
-        return await self.request_adapter.send_async(request_info, synchronization_schema.SynchronizationSchema, error_mapping)
+        return await self.request_adapter.send_async(request_info, SynchronizationSchema, error_mapping)
     
-    async def patch(self,body: Optional[synchronization_schema.SynchronizationSchema] = None, request_configuration: Optional[SchemaRequestBuilderPatchRequestConfiguration] = None) -> Optional[synchronization_schema.SynchronizationSchema]:
+    async def patch(self,body: Optional[SynchronizationSchema] = None, request_configuration: Optional[SchemaRequestBuilderPatchRequestConfiguration] = None) -> Optional[SynchronizationSchema]:
         """
         Update the navigation property schema in servicePrincipals
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[synchronization_schema.SynchronizationSchema]
+        Returns: Optional[SynchronizationSchema]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import synchronization_schema
+        from .......models.synchronization_schema import SynchronizationSchema
 
-        return await self.request_adapter.send_async(request_info, synchronization_schema.SynchronizationSchema, error_mapping)
+        return await self.request_adapter.send_async(request_info, SynchronizationSchema, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SchemaRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -139,7 +139,7 @@ class SchemaRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[synchronization_schema.SynchronizationSchema] = None, request_configuration: Optional[SchemaRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SynchronizationSchema] = None, request_configuration: Optional[SchemaRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property schema in servicePrincipals
         Args:
@@ -161,40 +161,40 @@ class SchemaRequestBuilder():
         return request_info
     
     @property
-    def directories(self) -> directories_request_builder.DirectoriesRequestBuilder:
+    def directories(self) -> DirectoriesRequestBuilder:
         """
         Provides operations to manage the directories property of the microsoft.graph.synchronizationSchema entity.
         """
-        from .directories import directories_request_builder
+        from .directories.directories_request_builder import DirectoriesRequestBuilder
 
-        return directories_request_builder.DirectoriesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DirectoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def filter_operators(self) -> filter_operators_request_builder.FilterOperatorsRequestBuilder:
+    def filter_operators(self) -> FilterOperatorsRequestBuilder:
         """
         Provides operations to call the filterOperators method.
         """
-        from .filter_operators import filter_operators_request_builder
+        from .filter_operators.filter_operators_request_builder import FilterOperatorsRequestBuilder
 
-        return filter_operators_request_builder.FilterOperatorsRequestBuilder(self.request_adapter, self.path_parameters)
+        return FilterOperatorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def functions(self) -> functions_request_builder.FunctionsRequestBuilder:
+    def functions(self) -> FunctionsRequestBuilder:
         """
         Provides operations to call the functions method.
         """
-        from .functions import functions_request_builder
+        from .functions.functions_request_builder import FunctionsRequestBuilder
 
-        return functions_request_builder.FunctionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return FunctionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def parse_expression(self) -> parse_expression_request_builder.ParseExpressionRequestBuilder:
+    def parse_expression(self) -> ParseExpressionRequestBuilder:
         """
         Provides operations to call the parseExpression method.
         """
-        from .parse_expression import parse_expression_request_builder
+        from .parse_expression.parse_expression_request_builder import ParseExpressionRequestBuilder
 
-        return parse_expression_request_builder.ParseExpressionRequestBuilder(self.request_adapter, self.path_parameters)
+        return ParseExpressionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SchemaRequestBuilderDeleteRequestConfiguration():

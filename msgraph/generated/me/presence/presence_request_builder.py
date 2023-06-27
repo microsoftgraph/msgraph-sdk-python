@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import presence
-    from ...models.o_data_errors import o_data_error
-    from .clear_presence import clear_presence_request_builder
-    from .clear_user_preferred_presence import clear_user_preferred_presence_request_builder
-    from .set_presence import set_presence_request_builder
-    from .set_user_preferred_presence import set_user_preferred_presence_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.presence import Presence
+    from .clear_presence.clear_presence_request_builder import ClearPresenceRequestBuilder
+    from .clear_user_preferred_presence.clear_user_preferred_presence_request_builder import ClearUserPreferredPresenceRequestBuilder
+    from .set_presence.set_presence_request_builder import SetPresenceRequestBuilder
+    from .set_user_preferred_presence.set_user_preferred_presence_request_builder import SetUserPreferredPresenceRequestBuilder
 
 class PresenceRequestBuilder():
     """
@@ -48,62 +48,62 @@ class PresenceRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PresenceRequestBuilderGetRequestConfiguration] = None) -> Optional[presence.Presence]:
+    async def get(self,request_configuration: Optional[PresenceRequestBuilderGetRequestConfiguration] = None) -> Optional[Presence]:
         """
         Get a user's presence information.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[presence.Presence]
+        Returns: Optional[Presence]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import presence
+        from ...models.presence import Presence
 
-        return await self.request_adapter.send_async(request_info, presence.Presence, error_mapping)
+        return await self.request_adapter.send_async(request_info, Presence, error_mapping)
     
-    async def patch(self,body: Optional[presence.Presence] = None, request_configuration: Optional[PresenceRequestBuilderPatchRequestConfiguration] = None) -> Optional[presence.Presence]:
+    async def patch(self,body: Optional[Presence] = None, request_configuration: Optional[PresenceRequestBuilderPatchRequestConfiguration] = None) -> Optional[Presence]:
         """
         Update the navigation property presence in me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[presence.Presence]
+        Returns: Optional[Presence]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import presence
+        from ...models.presence import Presence
 
-        return await self.request_adapter.send_async(request_info, presence.Presence, error_mapping)
+        return await self.request_adapter.send_async(request_info, Presence, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PresenceRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -139,7 +139,7 @@ class PresenceRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[presence.Presence] = None, request_configuration: Optional[PresenceRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Presence] = None, request_configuration: Optional[PresenceRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property presence in me
         Args:
@@ -161,40 +161,40 @@ class PresenceRequestBuilder():
         return request_info
     
     @property
-    def clear_presence(self) -> clear_presence_request_builder.ClearPresenceRequestBuilder:
+    def clear_presence(self) -> ClearPresenceRequestBuilder:
         """
         Provides operations to call the clearPresence method.
         """
-        from .clear_presence import clear_presence_request_builder
+        from .clear_presence.clear_presence_request_builder import ClearPresenceRequestBuilder
 
-        return clear_presence_request_builder.ClearPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return ClearPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def clear_user_preferred_presence(self) -> clear_user_preferred_presence_request_builder.ClearUserPreferredPresenceRequestBuilder:
+    def clear_user_preferred_presence(self) -> ClearUserPreferredPresenceRequestBuilder:
         """
         Provides operations to call the clearUserPreferredPresence method.
         """
-        from .clear_user_preferred_presence import clear_user_preferred_presence_request_builder
+        from .clear_user_preferred_presence.clear_user_preferred_presence_request_builder import ClearUserPreferredPresenceRequestBuilder
 
-        return clear_user_preferred_presence_request_builder.ClearUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return ClearUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def set_presence(self) -> set_presence_request_builder.SetPresenceRequestBuilder:
+    def set_presence(self) -> SetPresenceRequestBuilder:
         """
         Provides operations to call the setPresence method.
         """
-        from .set_presence import set_presence_request_builder
+        from .set_presence.set_presence_request_builder import SetPresenceRequestBuilder
 
-        return set_presence_request_builder.SetPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return SetPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def set_user_preferred_presence(self) -> set_user_preferred_presence_request_builder.SetUserPreferredPresenceRequestBuilder:
+    def set_user_preferred_presence(self) -> SetUserPreferredPresenceRequestBuilder:
         """
         Provides operations to call the setUserPreferredPresence method.
         """
-        from .set_user_preferred_presence import set_user_preferred_presence_request_builder
+        from .set_user_preferred_presence.set_user_preferred_presence_request_builder import SetUserPreferredPresenceRequestBuilder
 
-        return set_user_preferred_presence_request_builder.SetUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return SetUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PresenceRequestBuilderDeleteRequestConfiguration():

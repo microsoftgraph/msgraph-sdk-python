@@ -4,15 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import notebook, onenote_entity_hierarchy_model, onenote_section
+    from .notebook import Notebook
+    from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+    from .onenote_section import OnenoteSection
 
-from . import onenote_entity_hierarchy_model
+from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
 
 @dataclass
-class SectionGroup(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
+class SectionGroup(OnenoteEntityHierarchyModel):
     odata_type = "#microsoft.graph.sectionGroup"
     # The notebook that contains the section group. Read-only.
-    parent_notebook: Optional[notebook.Notebook] = None
+    parent_notebook: Optional[Notebook] = None
     # The section group that contains the section group. Read-only.
     parent_section_group: Optional[SectionGroup] = None
     # The section groups in the section. Read-only. Nullable.
@@ -20,7 +22,7 @@ class SectionGroup(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
     # The URL for the sectionGroups navigation property, which returns all the section groups in the section group. Read-only.
     section_groups_url: Optional[str] = None
     # The sections in the section group. Read-only. Nullable.
-    sections: Optional[List[onenote_section.OnenoteSection]] = None
+    sections: Optional[List[OnenoteSection]] = None
     # The URL for the sections navigation property, which returns all the sections in the section group. Read-only.
     sections_url: Optional[str] = None
     
@@ -41,16 +43,20 @@ class SectionGroup(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import notebook, onenote_entity_hierarchy_model, onenote_section
+        from .notebook import Notebook
+        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+        from .onenote_section import OnenoteSection
 
-        from . import notebook, onenote_entity_hierarchy_model, onenote_section
+        from .notebook import Notebook
+        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+        from .onenote_section import OnenoteSection
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
+            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(Notebook)),
             "parentSectionGroup": lambda n : setattr(self, 'parent_section_group', n.get_object_value(SectionGroup)),
             "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(SectionGroup)),
             "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
-            "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(onenote_section.OnenoteSection)),
+            "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(OnenoteSection)),
             "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

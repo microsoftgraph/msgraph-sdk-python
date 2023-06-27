@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_package_answer_string, access_package_question
+    from .access_package_answer_string import AccessPackageAnswerString
+    from .access_package_question import AccessPackageQuestion
 
 @dataclass
 class AccessPackageAnswer(AdditionalDataHolder, Parsable):
@@ -12,7 +13,7 @@ class AccessPackageAnswer(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The answeredQuestion property
-    answered_question: Optional[access_package_question.AccessPackageQuestion] = None
+    answered_question: Optional[AccessPackageQuestion] = None
     # The localized display value shown to the requestor and approvers.
     display_value: Optional[str] = None
     # The OdataType property
@@ -33,9 +34,9 @@ class AccessPackageAnswer(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAnswerString".casefold():
-            from . import access_package_answer_string
+            from .access_package_answer_string import AccessPackageAnswerString
 
-            return access_package_answer_string.AccessPackageAnswerString()
+            return AccessPackageAnswerString()
         return AccessPackageAnswer()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -43,12 +44,14 @@ class AccessPackageAnswer(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_answer_string, access_package_question
+        from .access_package_answer_string import AccessPackageAnswerString
+        from .access_package_question import AccessPackageQuestion
 
-        from . import access_package_answer_string, access_package_question
+        from .access_package_answer_string import AccessPackageAnswerString
+        from .access_package_question import AccessPackageQuestion
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "answeredQuestion": lambda n : setattr(self, 'answered_question', n.get_object_value(access_package_question.AccessPackageQuestion)),
+            "answeredQuestion": lambda n : setattr(self, 'answered_question', n.get_object_value(AccessPackageQuestion)),
             "displayValue": lambda n : setattr(self, 'display_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

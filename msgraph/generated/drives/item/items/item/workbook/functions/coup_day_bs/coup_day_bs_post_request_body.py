@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class CoupDayBsPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,13 +12,13 @@ class CoupDayBsPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The basis property
-    basis: Optional[json.Json] = None
+    basis: Optional[Json] = None
     # The frequency property
-    frequency: Optional[json.Json] = None
+    frequency: Optional[Json] = None
     # The maturity property
-    maturity: Optional[json.Json] = None
+    maturity: Optional[Json] = None
     # The settlement property
-    settlement: Optional[json.Json] = None
+    settlement: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CoupDayBsPostRequestBody:
@@ -37,15 +37,15 @@ class CoupDayBsPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "basis": lambda n : setattr(self, 'basis', n.get_object_value(json.Json)),
-            "frequency": lambda n : setattr(self, 'frequency', n.get_object_value(json.Json)),
-            "maturity": lambda n : setattr(self, 'maturity', n.get_object_value(json.Json)),
-            "settlement": lambda n : setattr(self, 'settlement', n.get_object_value(json.Json)),
+            "basis": lambda n : setattr(self, 'basis', n.get_object_value(Json)),
+            "frequency": lambda n : setattr(self, 'frequency', n.get_object_value(Json)),
+            "maturity": lambda n : setattr(self, 'maturity', n.get_object_value(Json)),
+            "settlement": lambda n : setattr(self, 'settlement', n.get_object_value(Json)),
         }
         return fields
     

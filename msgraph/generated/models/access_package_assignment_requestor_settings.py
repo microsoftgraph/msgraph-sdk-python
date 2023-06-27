@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import subject_set
+    from .subject_set import SubjectSet
 
 @dataclass
 class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
@@ -28,7 +28,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The principals who can request on-behalf-of others.
-    on_behalf_requestors: Optional[List[subject_set.SubjectSet]] = None
+    on_behalf_requestors: Optional[List[SubjectSet]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentRequestorSettings:
@@ -47,9 +47,9 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import subject_set
+        from .subject_set import SubjectSet
 
-        from . import subject_set
+        from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowCustomAssignmentSchedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
@@ -60,7 +60,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             "enableTargetsToSelfRemoveAccess": lambda n : setattr(self, 'enable_targets_to_self_remove_access', n.get_bool_value()),
             "enableTargetsToSelfUpdateAccess": lambda n : setattr(self, 'enable_targets_to_self_update_access', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "onBehalfRequestors": lambda n : setattr(self, 'on_behalf_requestors', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "onBehalfRequestors": lambda n : setattr(self, 'on_behalf_requestors', n.get_collection_of_object_values(SubjectSet)),
         }
         return fields
     

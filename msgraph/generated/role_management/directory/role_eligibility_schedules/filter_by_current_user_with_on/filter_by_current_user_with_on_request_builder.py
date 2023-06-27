@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import filter_by_current_user_with_on_response
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .filter_by_current_user_with_on_response import FilterByCurrentUserWithOnResponse
 
 class FilterByCurrentUserWithOnRequestBuilder():
     """
@@ -37,27 +37,27 @@ class FilterByCurrentUserWithOnRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> Optional[filter_by_current_user_with_on_response.FilterByCurrentUserWithOnResponse]:
+    async def get(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> Optional[FilterByCurrentUserWithOnResponse]:
         """
         Invoke function filterByCurrentUser
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[filter_by_current_user_with_on_response.FilterByCurrentUserWithOnResponse]
+        Returns: Optional[FilterByCurrentUserWithOnResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import filter_by_current_user_with_on_response
+        from .filter_by_current_user_with_on_response import FilterByCurrentUserWithOnResponse
 
-        return await self.request_adapter.send_async(request_info, filter_by_current_user_with_on_response.FilterByCurrentUserWithOnResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, FilterByCurrentUserWithOnResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

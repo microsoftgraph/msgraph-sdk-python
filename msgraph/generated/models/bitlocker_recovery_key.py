@@ -1,18 +1,19 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, volume_type
+    from .entity import Entity
+    from .volume_type import VolumeType
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class BitlockerRecoveryKey(entity.Entity):
+class BitlockerRecoveryKey(Entity):
     # The date and time when the key was originally backed up to Azure Active Directory. Not nullable.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Identifier of the device the BitLocker key is originally backed up from. Supports $filter (eq).
     device_id: Optional[str] = None
     # The BitLocker recovery key. Returned only on $select. Not nullable.
@@ -20,7 +21,7 @@ class BitlockerRecoveryKey(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the type of volume the BitLocker key is associated with. The possible values are: 1 (for operatingSystemVolume), 2 (for fixedDataVolume), 3 (for removableDataVolume), and 4 (for unknownFutureValue).
-    volume_type: Optional[volume_type.VolumeType] = None
+    volume_type: Optional[VolumeType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BitlockerRecoveryKey:
@@ -39,15 +40,17 @@ class BitlockerRecoveryKey(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, volume_type
+        from .entity import Entity
+        from .volume_type import VolumeType
 
-        from . import entity, volume_type
+        from .entity import Entity
+        from .volume_type import VolumeType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),
-            "volumeType": lambda n : setattr(self, 'volume_type', n.get_enum_value(volume_type.VolumeType)),
+            "volumeType": lambda n : setattr(self, 'volume_type', n.get_enum_value(VolumeType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -62,7 +65,7 @@ class BitlockerRecoveryKey(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("key", self.key)
         writer.write_enum_value("volumeType", self.volume_type)

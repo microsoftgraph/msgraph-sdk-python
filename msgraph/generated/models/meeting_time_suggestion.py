@@ -4,7 +4,10 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attendee_availability, free_busy_status, location, time_slot
+    from .attendee_availability import AttendeeAvailability
+    from .free_busy_status import FreeBusyStatus
+    from .location import Location
+    from .time_slot import TimeSlot
 
 @dataclass
 class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
@@ -12,19 +15,19 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # An array that shows the availability status of each attendee for this meeting suggestion.
-    attendee_availability: Optional[List[attendee_availability.AttendeeAvailability]] = None
+    attendee_availability: Optional[List[AttendeeAvailability]] = None
     # A percentage that represents the likelhood of all the attendees attending.
     confidence: Optional[float] = None
     # An array that specifies the name and geographic location of each meeting location for this meeting suggestion.
-    locations: Optional[List[location.Location]] = None
+    locations: Optional[List[Location]] = None
     # A time period suggested for the meeting.
-    meeting_time_slot: Optional[time_slot.TimeSlot] = None
+    meeting_time_slot: Optional[TimeSlot] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Order of meeting time suggestions sorted by their computed confidence value from high to low, then by chronology if there are suggestions with the same confidence.
     order: Optional[int] = None
     # Availability of the meeting organizer for this meeting suggestion. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
-    organizer_availability: Optional[free_busy_status.FreeBusyStatus] = None
+    organizer_availability: Optional[FreeBusyStatus] = None
     # Reason for suggesting the meeting time.
     suggestion_reason: Optional[str] = None
     
@@ -45,18 +48,24 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attendee_availability, free_busy_status, location, time_slot
+        from .attendee_availability import AttendeeAvailability
+        from .free_busy_status import FreeBusyStatus
+        from .location import Location
+        from .time_slot import TimeSlot
 
-        from . import attendee_availability, free_busy_status, location, time_slot
+        from .attendee_availability import AttendeeAvailability
+        from .free_busy_status import FreeBusyStatus
+        from .location import Location
+        from .time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attendeeAvailability": lambda n : setattr(self, 'attendee_availability', n.get_collection_of_object_values(attendee_availability.AttendeeAvailability)),
+            "attendeeAvailability": lambda n : setattr(self, 'attendee_availability', n.get_collection_of_object_values(AttendeeAvailability)),
             "confidence": lambda n : setattr(self, 'confidence', n.get_float_value()),
-            "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(location.Location)),
-            "meetingTimeSlot": lambda n : setattr(self, 'meeting_time_slot', n.get_object_value(time_slot.TimeSlot)),
+            "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(Location)),
+            "meetingTimeSlot": lambda n : setattr(self, 'meeting_time_slot', n.get_object_value(TimeSlot)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "order": lambda n : setattr(self, 'order', n.get_int_value()),
-            "organizerAvailability": lambda n : setattr(self, 'organizer_availability', n.get_enum_value(free_busy_status.FreeBusyStatus)),
+            "organizerAvailability": lambda n : setattr(self, 'organizer_availability', n.get_enum_value(FreeBusyStatus)),
             "suggestionReason": lambda n : setattr(self, 'suggestion_reason', n.get_str_value()),
         }
         return fields

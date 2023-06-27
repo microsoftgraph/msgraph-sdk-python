@@ -4,11 +4,716 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import aad_user_conversation_member, access_package, access_package_assignment, access_package_assignment_policy, access_package_assignment_request, access_package_catalog, access_package_multiple_choice_question, access_package_question, access_package_subject, access_package_text_input_question, access_review_history_definition, access_review_history_instance, access_review_instance, access_review_instance_decision_item, access_review_reviewer, access_review_schedule_definition, access_review_set, access_review_stage, activity_based_timeout_policy, activity_history_item, add_large_gallery_view_operation, administrative_unit, admin_consent_request_policy, agreement, agreement_acceptance, agreement_file, agreement_file_localization, agreement_file_properties, agreement_file_version, alert, allowed_value, android_compliance_policy, android_custom_configuration, android_general_device_configuration, android_lob_app, android_managed_app_protection, android_managed_app_registration, android_store_app, android_work_profile_compliance_policy, android_work_profile_custom_configuration, android_work_profile_general_device_configuration, anonymous_guest_conversation_member, apple_device_features_configuration_base, apple_managed_identity_provider, apple_push_notification_certificate, application, application_template, approval, approval_stage, app_catalogs, app_consent_approval_route, app_consent_request, app_management_policy, app_role_assignment, app_scope, associated_team_info, attachment, attachment_base, attachment_session, attack_simulation_root, attendance_record, attribute_mapping_function_schema, attribute_set, audio_routing_group, audit_event, audit_log_root, authentication, authentication_combination_configuration, authentication_context_class_reference, authentication_flows_policy, authentication_method, authentication_methods_policy, authentication_method_configuration, authentication_method_mode_detail, authentication_method_target, authentication_strength_policy, authentication_strength_root, authored_note, authorization_policy, azure_communication_services_user_conversation_member, b2x_identity_user_flow, base_item, base_item_version, bitlocker, bitlocker_recovery_key, booking_appointment, booking_business, booking_currency, booking_customer, booking_customer_base, booking_custom_question, booking_service, booking_staff_member, booking_staff_member_base, browser_shared_cookie, browser_site, browser_site_list, built_in_identity_provider, calendar, calendar_group, calendar_permission, calendar_sharing_message, call, cancel_media_processing_operation, certificate_based_auth_configuration, change_tracked_entity, channel, chat, chat_message, chat_message_hosted_content, chat_message_info, checklist_item, claims_mapping_policy, column_definition, column_link, comms_operation, compliance_management_partner, conditional_access_policy, conditional_access_root, conditional_access_template, connected_organization, contact, contact_folder, content_sharing_session, content_type, contract, conversation, conversation_member, conversation_thread, country_named_location, cross_tenant_access_policy, cross_tenant_access_policy_configuration_default, custom_security_attribute_definition, data_policy_operation, default_managed_app_protection, delegated_admin_access_assignment, delegated_admin_customer, delegated_admin_relationship, delegated_admin_relationship_operation, delegated_admin_relationship_request, delegated_admin_service_management_detail, delegated_permission_classification, deleted_team, detected_app, device, device_and_app_management_role_assignment, device_and_app_management_role_definition, device_app_management, device_category, device_compliance_action_item, device_compliance_device_overview, device_compliance_device_status, device_compliance_policy, device_compliance_policy_assignment, device_compliance_policy_device_state_summary, device_compliance_policy_setting_state_summary, device_compliance_policy_state, device_compliance_scheduled_action_for_rule, device_compliance_setting_state, device_compliance_user_overview, device_compliance_user_status, device_configuration, device_configuration_assignment, device_configuration_device_overview, device_configuration_device_state_summary, device_configuration_device_status, device_configuration_state, device_configuration_user_overview, device_configuration_user_status, device_enrollment_configuration, device_enrollment_limit_configuration, device_enrollment_platform_restrictions_configuration, device_enrollment_windows_hello_for_business_configuration, device_install_state, device_management, device_management_exchange_connector, device_management_export_job, device_management_partner, device_management_reports, device_management_troubleshooting_event, directory, directory_audit, directory_definition, directory_object, directory_object_partner_reference, directory_role, directory_role_template, document_set_version, domain, domain_dns_cname_record, domain_dns_mx_record, domain_dns_record, domain_dns_srv_record, domain_dns_txt_record, domain_dns_unavailable_record, drive, drive_item, drive_item_version, edge, edition_upgrade_configuration, education_assignment, education_assignment_defaults, education_assignment_resource, education_assignment_settings, education_category, education_class, education_feedback_outcome, education_feedback_resource_outcome, education_organization, education_outcome, education_points_outcome, education_rubric, education_rubric_outcome, education_school, education_submission, education_submission_resource, education_user, email_authentication_method, email_authentication_method_configuration, email_file_assessment_request, endpoint, enrollment_configuration_assignment, enrollment_troubleshooting_event, enterprise_code_signing_certificate, entitlement_management, entitlement_management_settings, event, event_message, event_message_request, event_message_response, extension, extension_property, external_domain_name, e_book_install_summary, feature_rollout_policy, federated_identity_credential, fido2_authentication_method, fido2_authentication_method_configuration, fido2_combination_configuration, field_value_set, file_assessment_request, file_attachment, filter_operator_schema, group, group_lifecycle_policy, group_setting, group_setting_template, home_realm_discovery_policy, identity_api_connector, identity_built_in_user_flow_attribute, identity_container, identity_custom_user_flow_attribute, identity_provider, identity_provider_base, identity_security_defaults_enforcement_policy, identity_user_flow, identity_user_flow_attribute, identity_user_flow_attribute_assignment, imported_windows_autopilot_device_identity, imported_windows_autopilot_device_identity_upload, inference_classification, inference_classification_override, internal_domain_federation, internet_explorer_mode, invitation, invite_participants_operation, iosi_pad_o_s_web_clip, ios_certificate_profile, ios_compliance_policy, ios_custom_configuration, ios_device_features_configuration, ios_general_device_configuration, ios_lob_app, ios_lob_app_provisioning_configuration_assignment, ios_managed_app_protection, ios_managed_app_registration, ios_mobile_app_configuration, ios_store_app, ios_update_configuration, ios_update_device_status, ios_vpp_app, ios_vpp_e_book, ios_vpp_e_book_assignment, ip_named_location, item_activity, item_activity_stat, item_analytics, item_attachment, learning_content, learning_provider, license_details, linked_resource, list, list_item, list_item_version, localized_notification_message, long_running_operation, mac_o_s_compliance_policy, mac_o_s_custom_configuration, mac_o_s_device_features_configuration, mac_o_s_general_device_configuration, mac_o_s_lob_app, mac_o_s_microsoft_edge_app, mac_o_s_office_suite_app, mail_assessment_request, mail_folder, mail_search_folder, managed_android_lob_app, managed_android_store_app, managed_app, managed_app_configuration, managed_app_operation, managed_app_policy, managed_app_policy_deployment_summary, managed_app_protection, managed_app_registration, managed_app_status, managed_app_status_raw, managed_device, managed_device_mobile_app_configuration, managed_device_mobile_app_configuration_assignment, managed_device_mobile_app_configuration_device_status, managed_device_mobile_app_configuration_device_summary, managed_device_mobile_app_configuration_user_status, managed_device_mobile_app_configuration_user_summary, managed_device_overview, managed_e_book, managed_e_book_assignment, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_app, managed_mobile_lob_app, mdm_windows_information_protection_policy, meeting_attendance_report, message, message_rule, microsoft_account_user_conversation_member, microsoft_authenticator_authentication_method, microsoft_authenticator_authentication_method_configuration, microsoft_authenticator_authentication_method_target, microsoft_store_for_business_app, mobile_app, mobile_app_assignment, mobile_app_category, mobile_app_content, mobile_app_content_file, mobile_contained_app, mobile_lob_app, mobile_threat_defense_connector, multi_value_legacy_extended_property, mute_participant_operation, named_location, notebook, notification_message_template, offer_shift_request, office_graph_insights, onenote, onenote_entity_base_model, onenote_entity_hierarchy_model, onenote_entity_schema_object_model, onenote_operation, onenote_page, onenote_resource, onenote_section, online_meeting, on_premises_conditional_access_settings, on_premises_directory_synchronization, open_shift, open_shift_change_request, open_type_extension, operation, organization, organizational_branding, organizational_branding_localization, organizational_branding_properties, org_contact, outlook_category, outlook_item, outlook_user, o_auth2_permission_grant, participant, participant_joining_notification, participant_left_notification, password_authentication_method, permission, permission_grant_condition_set, permission_grant_policy, person, phone_authentication_method, pinned_chat_message_info, place, planner, planner_assigned_to_task_board_task_format, planner_bucket, planner_bucket_task_board_task_format, planner_group, planner_plan, planner_plan_details, planner_progress_task_board_task_format, planner_task, planner_task_details, planner_user, play_prompt_operation, policy_base, policy_root, post, presence, printer, printer_base, printer_create_operation, printer_share, print_connector, print_document, print_job, print_operation, print_service, print_service_endpoint, print_task, print_task_definition, print_task_trigger, print_usage, print_usage_by_printer, print_usage_by_user, profile_photo, provisioning_object_summary, rbac_application, record_operation, reference_attachment, remote_assistance_partner, request, resource_operation, resource_specific_permission_grant, rich_long_running_operation, risky_service_principal, risky_service_principal_history_item, risky_user, risky_user_history_item, risk_detection, role_assignment, role_definition, room, room_list, saml_or_ws_fed_external_domain_federation, saml_or_ws_fed_provider, schedule, schedule_change_request, scheduling_group, schema_extension, scoped_role_membership, search_entity, section_group, secure_score, secure_score_control_profile, security_reports_root, service_announcement, service_announcement_attachment, service_announcement_base, service_health, service_health_issue, service_principal, service_principal_risk_detection, service_update_message, setting_state_device_summary, shared_drive_item, shared_insight, shared_p_c_configuration, shared_with_channel_team_info, sharepoint, sharepoint_settings, shift, shift_preferences, sign_in, simulation, simulation_automation, simulation_automation_run, single_value_legacy_extended_property, site, skype_for_business_user_conversation_member, skype_user_conversation_member, sms_authentication_method_configuration, sms_authentication_method_target, social_identity_provider, software_oath_authentication_method, software_oath_authentication_method_configuration, software_update_status_summary, start_hold_music_operation, stop_hold_music_operation, sts_policy, subject_rights_request, subscribed_sku, subscribe_to_tone_operation, subscription, swap_shifts_change_request, synchronization, synchronization_job, synchronization_schema, synchronization_template, targeted_managed_app_configuration, targeted_managed_app_policy_assignment, targeted_managed_app_protection, task_file_attachment, team, teams_app, teams_app_definition, teams_app_installation, teams_async_operation, teams_tab, teams_template, teamwork, teamwork_bot, teamwork_hosted_content, teamwork_tag, teamwork_tag_member, team_info, telecom_expense_management_partner, temporary_access_pass_authentication_method, temporary_access_pass_authentication_method_configuration, tenant_app_management_policy, terms_and_conditions, terms_and_conditions_acceptance_status, terms_and_conditions_assignment, terms_of_use_container, threat_assessment_request, threat_assessment_result, thumbnail_set, time_off, time_off_reason, time_off_request, todo, todo_task, todo_task_list, token_issuance_policy, token_lifetime_policy, trending, unified_rbac_resource_action, unified_rbac_resource_namespace, unified_role_assignment, unified_role_assignment_schedule, unified_role_assignment_schedule_instance, unified_role_assignment_schedule_request, unified_role_definition, unified_role_eligibility_schedule, unified_role_eligibility_schedule_instance, unified_role_eligibility_schedule_request, unified_role_management_policy, unified_role_management_policy_approval_rule, unified_role_management_policy_assignment, unified_role_management_policy_authentication_context_rule, unified_role_management_policy_enablement_rule, unified_role_management_policy_expiration_rule, unified_role_management_policy_notification_rule, unified_role_management_policy_rule, unified_role_schedule_base, unified_role_schedule_instance_base, unmute_participant_operation, update_recording_status_operation, url_assessment_request, used_insight, user, user_activity, user_consent_request, user_experience_analytics_device_performance, user_flow_language_configuration, user_flow_language_page, user_install_state_summary, user_scope_teams_app_installation, user_settings, user_teamwork, voice_authentication_method_configuration, vpp_token, web_app, win32_lob_app, windows10_compliance_policy, windows10_custom_configuration, windows10_endpoint_protection_configuration, windows10_enterprise_modern_app_management_configuration, windows10_general_configuration, windows10_mobile_compliance_policy, windows10_secure_assessment_configuration, windows10_team_general_configuration, windows81_compliance_policy, windows81_general_configuration, windows_app_x, windows_autopilot_device_identity, windows_defender_advanced_threat_protection_configuration, windows_hello_for_business_authentication_method, windows_information_protection, windows_information_protection_app_learning_summary, windows_information_protection_app_locker_file, windows_information_protection_network_learning_summary, windows_information_protection_policy, windows_microsoft_edge_app, windows_mobile_m_s_i, windows_phone81_compliance_policy, windows_phone81_custom_configuration, windows_phone81_general_configuration, windows_universal_app_x, windows_universal_app_x_contained_app, windows_update_for_business_configuration, windows_web_app, workbook, workbook_application, workbook_chart, workbook_chart_area_format, workbook_chart_axes, workbook_chart_axis, workbook_chart_axis_format, workbook_chart_axis_title, workbook_chart_axis_title_format, workbook_chart_data_labels, workbook_chart_data_label_format, workbook_chart_fill, workbook_chart_font, workbook_chart_gridlines, workbook_chart_gridlines_format, workbook_chart_legend, workbook_chart_legend_format, workbook_chart_line_format, workbook_chart_point, workbook_chart_point_format, workbook_chart_series, workbook_chart_series_format, workbook_chart_title, workbook_chart_title_format, workbook_comment, workbook_comment_reply, workbook_filter, workbook_format_protection, workbook_functions, workbook_function_result, workbook_named_item, workbook_operation, workbook_pivot_table, workbook_range, workbook_range_border, workbook_range_fill, workbook_range_font, workbook_range_format, workbook_range_sort, workbook_range_view, workbook_table, workbook_table_column, workbook_table_row, workbook_table_sort, workbook_worksheet, workbook_worksheet_protection, workforce_integration, x509_certificate_authentication_method_configuration
-    from .call_records import call_record, segment, session
-    from .external_connectors import connection_operation, external_activity, external_activity_result, external_connection, external_group, external_item, identity, schema
-    from .security import alert, case, cases_root, case_operation, data_set, data_source, data_source_container, ediscovery_add_to_review_set_operation, ediscovery_case, ediscovery_case_settings, ediscovery_custodian, ediscovery_estimate_operation, ediscovery_hold_operation, ediscovery_index_operation, ediscovery_noncustodial_data_source, ediscovery_purge_data_operation, ediscovery_review_set, ediscovery_review_set_query, ediscovery_review_tag, ediscovery_search, ediscovery_tag_operation, incident, retention_event, retention_event_type, search, security, site_source, tag, triggers_root, trigger_types_root, unified_group_source, user_source
-    from .term_store import group, relation, set, store, term
+    from .aad_user_conversation_member import AadUserConversationMember
+    from .access_package import AccessPackage
+    from .access_package_assignment import AccessPackageAssignment
+    from .access_package_assignment_policy import AccessPackageAssignmentPolicy
+    from .access_package_assignment_request import AccessPackageAssignmentRequest
+    from .access_package_catalog import AccessPackageCatalog
+    from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
+    from .access_package_question import AccessPackageQuestion
+    from .access_package_subject import AccessPackageSubject
+    from .access_package_text_input_question import AccessPackageTextInputQuestion
+    from .access_review_history_definition import AccessReviewHistoryDefinition
+    from .access_review_history_instance import AccessReviewHistoryInstance
+    from .access_review_instance import AccessReviewInstance
+    from .access_review_instance_decision_item import AccessReviewInstanceDecisionItem
+    from .access_review_reviewer import AccessReviewReviewer
+    from .access_review_schedule_definition import AccessReviewScheduleDefinition
+    from .access_review_set import AccessReviewSet
+    from .access_review_stage import AccessReviewStage
+    from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+    from .activity_history_item import ActivityHistoryItem
+    from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
+    from .admin_consent_request_policy import AdminConsentRequestPolicy
+    from .administrative_unit import AdministrativeUnit
+    from .agreement import Agreement
+    from .agreement_acceptance import AgreementAcceptance
+    from .agreement_file import AgreementFile
+    from .agreement_file_localization import AgreementFileLocalization
+    from .agreement_file_properties import AgreementFileProperties
+    from .agreement_file_version import AgreementFileVersion
+    from .alert import Alert
+    from .allowed_value import AllowedValue
+    from .android_compliance_policy import AndroidCompliancePolicy
+    from .android_custom_configuration import AndroidCustomConfiguration
+    from .android_general_device_configuration import AndroidGeneralDeviceConfiguration
+    from .android_lob_app import AndroidLobApp
+    from .android_managed_app_protection import AndroidManagedAppProtection
+    from .android_managed_app_registration import AndroidManagedAppRegistration
+    from .android_store_app import AndroidStoreApp
+    from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
+    from .android_work_profile_custom_configuration import AndroidWorkProfileCustomConfiguration
+    from .android_work_profile_general_device_configuration import AndroidWorkProfileGeneralDeviceConfiguration
+    from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
+    from .app_catalogs import AppCatalogs
+    from .app_consent_approval_route import AppConsentApprovalRoute
+    from .app_consent_request import AppConsentRequest
+    from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
+    from .apple_managed_identity_provider import AppleManagedIdentityProvider
+    from .apple_push_notification_certificate import ApplePushNotificationCertificate
+    from .application import Application
+    from .application_template import ApplicationTemplate
+    from .app_management_policy import AppManagementPolicy
+    from .app_role_assignment import AppRoleAssignment
+    from .approval import Approval
+    from .approval_stage import ApprovalStage
+    from .app_scope import AppScope
+    from .associated_team_info import AssociatedTeamInfo
+    from .attachment import Attachment
+    from .attachment_base import AttachmentBase
+    from .attachment_session import AttachmentSession
+    from .attack_simulation_root import AttackSimulationRoot
+    from .attendance_record import AttendanceRecord
+    from .attribute_mapping_function_schema import AttributeMappingFunctionSchema
+    from .attribute_set import AttributeSet
+    from .audio_routing_group import AudioRoutingGroup
+    from .audit_event import AuditEvent
+    from .audit_log_root import AuditLogRoot
+    from .authentication import Authentication
+    from .authentication_combination_configuration import AuthenticationCombinationConfiguration
+    from .authentication_context_class_reference import AuthenticationContextClassReference
+    from .authentication_flows_policy import AuthenticationFlowsPolicy
+    from .authentication_method import AuthenticationMethod
+    from .authentication_method_configuration import AuthenticationMethodConfiguration
+    from .authentication_method_mode_detail import AuthenticationMethodModeDetail
+    from .authentication_methods_policy import AuthenticationMethodsPolicy
+    from .authentication_method_target import AuthenticationMethodTarget
+    from .authentication_strength_policy import AuthenticationStrengthPolicy
+    from .authentication_strength_root import AuthenticationStrengthRoot
+    from .authored_note import AuthoredNote
+    from .authorization_policy import AuthorizationPolicy
+    from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
+    from .b2x_identity_user_flow import B2xIdentityUserFlow
+    from .base_item import BaseItem
+    from .base_item_version import BaseItemVersion
+    from .bitlocker import Bitlocker
+    from .bitlocker_recovery_key import BitlockerRecoveryKey
+    from .booking_appointment import BookingAppointment
+    from .booking_business import BookingBusiness
+    from .booking_currency import BookingCurrency
+    from .booking_customer import BookingCustomer
+    from .booking_customer_base import BookingCustomerBase
+    from .booking_custom_question import BookingCustomQuestion
+    from .booking_service import BookingService
+    from .booking_staff_member import BookingStaffMember
+    from .booking_staff_member_base import BookingStaffMemberBase
+    from .browser_shared_cookie import BrowserSharedCookie
+    from .browser_site import BrowserSite
+    from .browser_site_list import BrowserSiteList
+    from .built_in_identity_provider import BuiltInIdentityProvider
+    from .calendar import Calendar
+    from .calendar_group import CalendarGroup
+    from .calendar_permission import CalendarPermission
+    from .calendar_sharing_message import CalendarSharingMessage
+    from .call import Call
+    from .call_records.call_record import CallRecord
+    from .call_records.segment import Segment
+    from .call_records.session import Session
+    from .cancel_media_processing_operation import CancelMediaProcessingOperation
+    from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
+    from .change_tracked_entity import ChangeTrackedEntity
+    from .channel import Channel
+    from .chat import Chat
+    from .chat_message import ChatMessage
+    from .chat_message_hosted_content import ChatMessageHostedContent
+    from .chat_message_info import ChatMessageInfo
+    from .checklist_item import ChecklistItem
+    from .claims_mapping_policy import ClaimsMappingPolicy
+    from .column_definition import ColumnDefinition
+    from .column_link import ColumnLink
+    from .comms_operation import CommsOperation
+    from .compliance_management_partner import ComplianceManagementPartner
+    from .conditional_access_policy import ConditionalAccessPolicy
+    from .conditional_access_root import ConditionalAccessRoot
+    from .conditional_access_template import ConditionalAccessTemplate
+    from .connected_organization import ConnectedOrganization
+    from .contact import Contact
+    from .contact_folder import ContactFolder
+    from .content_sharing_session import ContentSharingSession
+    from .content_type import ContentType
+    from .contract import Contract
+    from .conversation import Conversation
+    from .conversation_member import ConversationMember
+    from .conversation_thread import ConversationThread
+    from .country_named_location import CountryNamedLocation
+    from .cross_tenant_access_policy import CrossTenantAccessPolicy
+    from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
+    from .custom_callout_extension import CustomCalloutExtension
+    from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
+    from .data_policy_operation import DataPolicyOperation
+    from .default_managed_app_protection import DefaultManagedAppProtection
+    from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
+    from .delegated_admin_customer import DelegatedAdminCustomer
+    from .delegated_admin_relationship import DelegatedAdminRelationship
+    from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
+    from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
+    from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
+    from .delegated_permission_classification import DelegatedPermissionClassification
+    from .deleted_item_container import DeletedItemContainer
+    from .deleted_team import DeletedTeam
+    from .detected_app import DetectedApp
+    from .device import Device
+    from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
+    from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
+    from .device_app_management import DeviceAppManagement
+    from .device_category import DeviceCategory
+    from .device_compliance_action_item import DeviceComplianceActionItem
+    from .device_compliance_device_overview import DeviceComplianceDeviceOverview
+    from .device_compliance_device_status import DeviceComplianceDeviceStatus
+    from .device_compliance_policy import DeviceCompliancePolicy
+    from .device_compliance_policy_assignment import DeviceCompliancePolicyAssignment
+    from .device_compliance_policy_device_state_summary import DeviceCompliancePolicyDeviceStateSummary
+    from .device_compliance_policy_setting_state_summary import DeviceCompliancePolicySettingStateSummary
+    from .device_compliance_policy_state import DeviceCompliancePolicyState
+    from .device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
+    from .device_compliance_setting_state import DeviceComplianceSettingState
+    from .device_compliance_user_overview import DeviceComplianceUserOverview
+    from .device_compliance_user_status import DeviceComplianceUserStatus
+    from .device_configuration import DeviceConfiguration
+    from .device_configuration_assignment import DeviceConfigurationAssignment
+    from .device_configuration_device_overview import DeviceConfigurationDeviceOverview
+    from .device_configuration_device_state_summary import DeviceConfigurationDeviceStateSummary
+    from .device_configuration_device_status import DeviceConfigurationDeviceStatus
+    from .device_configuration_state import DeviceConfigurationState
+    from .device_configuration_user_overview import DeviceConfigurationUserOverview
+    from .device_configuration_user_status import DeviceConfigurationUserStatus
+    from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+    from .device_enrollment_limit_configuration import DeviceEnrollmentLimitConfiguration
+    from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
+    from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
+    from .device_install_state import DeviceInstallState
+    from .device_management import DeviceManagement
+    from .device_management_exchange_connector import DeviceManagementExchangeConnector
+    from .device_management_export_job import DeviceManagementExportJob
+    from .device_management_partner import DeviceManagementPartner
+    from .device_management_reports import DeviceManagementReports
+    from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+    from .directory import Directory
+    from .directory_audit import DirectoryAudit
+    from .directory_definition import DirectoryDefinition
+    from .directory_object import DirectoryObject
+    from .directory_object_partner_reference import DirectoryObjectPartnerReference
+    from .directory_role import DirectoryRole
+    from .directory_role_template import DirectoryRoleTemplate
+    from .document_set_version import DocumentSetVersion
+    from .domain import Domain
+    from .domain_dns_cname_record import DomainDnsCnameRecord
+    from .domain_dns_mx_record import DomainDnsMxRecord
+    from .domain_dns_record import DomainDnsRecord
+    from .domain_dns_srv_record import DomainDnsSrvRecord
+    from .domain_dns_txt_record import DomainDnsTxtRecord
+    from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
+    from .drive import Drive
+    from .drive_item import DriveItem
+    from .drive_item_version import DriveItemVersion
+    from .e_book_install_summary import EBookInstallSummary
+    from .edge import Edge
+    from .edition_upgrade_configuration import EditionUpgradeConfiguration
+    from .education_assignment import EducationAssignment
+    from .education_assignment_defaults import EducationAssignmentDefaults
+    from .education_assignment_resource import EducationAssignmentResource
+    from .education_assignment_settings import EducationAssignmentSettings
+    from .education_category import EducationCategory
+    from .education_class import EducationClass
+    from .education_feedback_outcome import EducationFeedbackOutcome
+    from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
+    from .education_organization import EducationOrganization
+    from .education_outcome import EducationOutcome
+    from .education_points_outcome import EducationPointsOutcome
+    from .education_rubric import EducationRubric
+    from .education_rubric_outcome import EducationRubricOutcome
+    from .education_school import EducationSchool
+    from .education_submission import EducationSubmission
+    from .education_submission_resource import EducationSubmissionResource
+    from .education_user import EducationUser
+    from .email_authentication_method import EmailAuthenticationMethod
+    from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
+    from .email_file_assessment_request import EmailFileAssessmentRequest
+    from .endpoint import Endpoint
+    from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
+    from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
+    from .enterprise_code_signing_certificate import EnterpriseCodeSigningCertificate
+    from .entitlement_management import EntitlementManagement
+    from .entitlement_management_settings import EntitlementManagementSettings
+    from .event import Event
+    from .event_message import EventMessage
+    from .event_message_request import EventMessageRequest
+    from .event_message_response import EventMessageResponse
+    from .extension import Extension
+    from .extension_property import ExtensionProperty
+    from .external_connectors.connection_operation import ConnectionOperation
+    from .external_connectors.external_activity import ExternalActivity
+    from .external_connectors.external_activity_result import ExternalActivityResult
+    from .external_connectors.external_connection import ExternalConnection
+    from .external_connectors.external_group import ExternalGroup
+    from .external_connectors.external_item import ExternalItem
+    from .external_connectors.identity import Identity
+    from .external_connectors.schema import Schema
+    from .external_domain_name import ExternalDomainName
+    from .feature_rollout_policy import FeatureRolloutPolicy
+    from .federated_identity_credential import FederatedIdentityCredential
+    from .fido2_authentication_method import Fido2AuthenticationMethod
+    from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
+    from .fido2_combination_configuration import Fido2CombinationConfiguration
+    from .field_value_set import FieldValueSet
+    from .file_assessment_request import FileAssessmentRequest
+    from .file_attachment import FileAttachment
+    from .filter_operator_schema import FilterOperatorSchema
+    from .governance_insight import GovernanceInsight
+    from .group import Group
+    from .group_lifecycle_policy import GroupLifecyclePolicy
+    from .group_setting import GroupSetting
+    from .group_setting_template import GroupSettingTemplate
+    from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+    from .identity_api_connector import IdentityApiConnector
+    from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
+    from .identity_container import IdentityContainer
+    from .identity_custom_user_flow_attribute import IdentityCustomUserFlowAttribute
+    from .identity_governance.custom_task_extension import CustomTaskExtension
+    from .identity_governance.lifecycle_management_settings import LifecycleManagementSettings
+    from .identity_governance.lifecycle_workflows_container import LifecycleWorkflowsContainer
+    from .identity_governance.run import Run
+    from .identity_governance.task import Task
+    from .identity_governance.task_definition import TaskDefinition
+    from .identity_governance.task_processing_result import TaskProcessingResult
+    from .identity_governance.task_report import TaskReport
+    from .identity_governance.user_processing_result import UserProcessingResult
+    from .identity_governance.workflow_template import WorkflowTemplate
+    from .identity_provider import IdentityProvider
+    from .identity_provider_base import IdentityProviderBase
+    from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+    from .identity_user_flow import IdentityUserFlow
+    from .identity_user_flow_attribute import IdentityUserFlowAttribute
+    from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
+    from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
+    from .imported_windows_autopilot_device_identity_upload import ImportedWindowsAutopilotDeviceIdentityUpload
+    from .inference_classification import InferenceClassification
+    from .inference_classification_override import InferenceClassificationOverride
+    from .internal_domain_federation import InternalDomainFederation
+    from .internet_explorer_mode import InternetExplorerMode
+    from .invitation import Invitation
+    from .invite_participants_operation import InviteParticipantsOperation
+    from .ios_certificate_profile import IosCertificateProfile
+    from .ios_compliance_policy import IosCompliancePolicy
+    from .ios_custom_configuration import IosCustomConfiguration
+    from .ios_device_features_configuration import IosDeviceFeaturesConfiguration
+    from .ios_general_device_configuration import IosGeneralDeviceConfiguration
+    from .iosi_pad_o_s_web_clip import IosiPadOSWebClip
+    from .ios_lob_app import IosLobApp
+    from .ios_lob_app_provisioning_configuration_assignment import IosLobAppProvisioningConfigurationAssignment
+    from .ios_managed_app_protection import IosManagedAppProtection
+    from .ios_managed_app_registration import IosManagedAppRegistration
+    from .ios_mobile_app_configuration import IosMobileAppConfiguration
+    from .ios_store_app import IosStoreApp
+    from .ios_update_configuration import IosUpdateConfiguration
+    from .ios_update_device_status import IosUpdateDeviceStatus
+    from .ios_vpp_app import IosVppApp
+    from .ios_vpp_e_book import IosVppEBook
+    from .ios_vpp_e_book_assignment import IosVppEBookAssignment
+    from .ip_named_location import IpNamedLocation
+    from .item_activity import ItemActivity
+    from .item_activity_stat import ItemActivityStat
+    from .item_analytics import ItemAnalytics
+    from .item_attachment import ItemAttachment
+    from .learning_content import LearningContent
+    from .learning_provider import LearningProvider
+    from .license_details import LicenseDetails
+    from .linked_resource import LinkedResource
+    from .list_item import ListItem
+    from .list_item_version import ListItemVersion
+    from .list_ import List_
+    from .localized_notification_message import LocalizedNotificationMessage
+    from .long_running_operation import LongRunningOperation
+    from .mac_o_s_compliance_policy import MacOSCompliancePolicy
+    from .mac_o_s_custom_configuration import MacOSCustomConfiguration
+    from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
+    from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
+    from .mac_o_s_lob_app import MacOSLobApp
+    from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
+    from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
+    from .mail_assessment_request import MailAssessmentRequest
+    from .mail_folder import MailFolder
+    from .mail_search_folder import MailSearchFolder
+    from .managed_android_lob_app import ManagedAndroidLobApp
+    from .managed_android_store_app import ManagedAndroidStoreApp
+    from .managed_app import ManagedApp
+    from .managed_app_configuration import ManagedAppConfiguration
+    from .managed_app_operation import ManagedAppOperation
+    from .managed_app_policy import ManagedAppPolicy
+    from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+    from .managed_app_protection import ManagedAppProtection
+    from .managed_app_registration import ManagedAppRegistration
+    from .managed_app_status import ManagedAppStatus
+    from .managed_app_status_raw import ManagedAppStatusRaw
+    from .managed_device import ManagedDevice
+    from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
+    from .managed_device_mobile_app_configuration_assignment import ManagedDeviceMobileAppConfigurationAssignment
+    from .managed_device_mobile_app_configuration_device_status import ManagedDeviceMobileAppConfigurationDeviceStatus
+    from .managed_device_mobile_app_configuration_device_summary import ManagedDeviceMobileAppConfigurationDeviceSummary
+    from .managed_device_mobile_app_configuration_user_status import ManagedDeviceMobileAppConfigurationUserStatus
+    from .managed_device_mobile_app_configuration_user_summary import ManagedDeviceMobileAppConfigurationUserSummary
+    from .managed_device_overview import ManagedDeviceOverview
+    from .managed_e_book import ManagedEBook
+    from .managed_e_book_assignment import ManagedEBookAssignment
+    from .managed_i_o_s_lob_app import ManagedIOSLobApp
+    from .managed_i_o_s_store_app import ManagedIOSStoreApp
+    from .managed_mobile_app import ManagedMobileApp
+    from .managed_mobile_lob_app import ManagedMobileLobApp
+    from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
+    from .meeting_attendance_report import MeetingAttendanceReport
+    from .message import Message
+    from .message_rule import MessageRule
+    from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
+    from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
+    from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
+    from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+    from .microsoft_store_for_business_app import MicrosoftStoreForBusinessApp
+    from .mobile_app import MobileApp
+    from .mobile_app_assignment import MobileAppAssignment
+    from .mobile_app_category import MobileAppCategory
+    from .mobile_app_content import MobileAppContent
+    from .mobile_app_content_file import MobileAppContentFile
+    from .mobile_contained_app import MobileContainedApp
+    from .mobile_lob_app import MobileLobApp
+    from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+    from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+    from .mute_participant_operation import MuteParticipantOperation
+    from .named_location import NamedLocation
+    from .notebook import Notebook
+    from .notification_message_template import NotificationMessageTemplate
+    from .o_auth2_permission_grant import OAuth2PermissionGrant
+    from .offer_shift_request import OfferShiftRequest
+    from .office_graph_insights import OfficeGraphInsights
+    from .onenote import Onenote
+    from .onenote_entity_base_model import OnenoteEntityBaseModel
+    from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+    from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
+    from .onenote_operation import OnenoteOperation
+    from .onenote_page import OnenotePage
+    from .onenote_resource import OnenoteResource
+    from .onenote_section import OnenoteSection
+    from .online_meeting import OnlineMeeting
+    from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
+    from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+    from .open_shift import OpenShift
+    from .open_shift_change_request import OpenShiftChangeRequest
+    from .open_type_extension import OpenTypeExtension
+    from .operation import Operation
+    from .organization import Organization
+    from .organizational_branding import OrganizationalBranding
+    from .organizational_branding_localization import OrganizationalBrandingLocalization
+    from .organizational_branding_properties import OrganizationalBrandingProperties
+    from .org_contact import OrgContact
+    from .outlook_category import OutlookCategory
+    from .outlook_item import OutlookItem
+    from .outlook_user import OutlookUser
+    from .participant import Participant
+    from .participant_joining_notification import ParticipantJoiningNotification
+    from .participant_left_notification import ParticipantLeftNotification
+    from .password_authentication_method import PasswordAuthenticationMethod
+    from .permission import Permission
+    from .permission_grant_condition_set import PermissionGrantConditionSet
+    from .permission_grant_policy import PermissionGrantPolicy
+    from .person import Person
+    from .phone_authentication_method import PhoneAuthenticationMethod
+    from .pinned_chat_message_info import PinnedChatMessageInfo
+    from .place import Place
+    from .planner import Planner
+    from .planner_assigned_to_task_board_task_format import PlannerAssignedToTaskBoardTaskFormat
+    from .planner_bucket import PlannerBucket
+    from .planner_bucket_task_board_task_format import PlannerBucketTaskBoardTaskFormat
+    from .planner_group import PlannerGroup
+    from .planner_plan import PlannerPlan
+    from .planner_plan_details import PlannerPlanDetails
+    from .planner_progress_task_board_task_format import PlannerProgressTaskBoardTaskFormat
+    from .planner_task import PlannerTask
+    from .planner_task_details import PlannerTaskDetails
+    from .planner_user import PlannerUser
+    from .play_prompt_operation import PlayPromptOperation
+    from .policy_base import PolicyBase
+    from .policy_root import PolicyRoot
+    from .post import Post
+    from .presence import Presence
+    from .print_connector import PrintConnector
+    from .print_document import PrintDocument
+    from .printer import Printer
+    from .printer_base import PrinterBase
+    from .printer_create_operation import PrinterCreateOperation
+    from .printer_share import PrinterShare
+    from .print_job import PrintJob
+    from .print_operation import PrintOperation
+    from .print_service import PrintService
+    from .print_service_endpoint import PrintServiceEndpoint
+    from .print_task import PrintTask
+    from .print_task_definition import PrintTaskDefinition
+    from .print_task_trigger import PrintTaskTrigger
+    from .print_usage import PrintUsage
+    from .print_usage_by_printer import PrintUsageByPrinter
+    from .print_usage_by_user import PrintUsageByUser
+    from .profile_photo import ProfilePhoto
+    from .provisioning_object_summary import ProvisioningObjectSummary
+    from .rbac_application import RbacApplication
+    from .record_operation import RecordOperation
+    from .reference_attachment import ReferenceAttachment
+    from .remote_assistance_partner import RemoteAssistancePartner
+    from .request import Request
+    from .resource_operation import ResourceOperation
+    from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+    from .rich_long_running_operation import RichLongRunningOperation
+    from .risk_detection import RiskDetection
+    from .risky_service_principal import RiskyServicePrincipal
+    from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
+    from .risky_user import RiskyUser
+    from .risky_user_history_item import RiskyUserHistoryItem
+    from .role_assignment import RoleAssignment
+    from .role_definition import RoleDefinition
+    from .room import Room
+    from .room_list import RoomList
+    from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
+    from .saml_or_ws_fed_provider import SamlOrWsFedProvider
+    from .schedule import Schedule
+    from .schedule_change_request import ScheduleChangeRequest
+    from .scheduling_group import SchedulingGroup
+    from .schema_extension import SchemaExtension
+    from .scoped_role_membership import ScopedRoleMembership
+    from .search_entity import SearchEntity
+    from .section_group import SectionGroup
+    from .secure_score import SecureScore
+    from .secure_score_control_profile import SecureScoreControlProfile
+    from .security.alert import Alert
+    from .security.case import Case
+    from .security.case_operation import CaseOperation
+    from .security.cases_root import CasesRoot
+    from .security.data_set import DataSet
+    from .security.data_source import DataSource
+    from .security.data_source_container import DataSourceContainer
+    from .security.ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
+    from .security.ediscovery_case import EdiscoveryCase
+    from .security.ediscovery_case_settings import EdiscoveryCaseSettings
+    from .security.ediscovery_custodian import EdiscoveryCustodian
+    from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
+    from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
+    from .security.ediscovery_index_operation import EdiscoveryIndexOperation
+    from .security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
+    from .security.ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
+    from .security.ediscovery_review_set import EdiscoveryReviewSet
+    from .security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
+    from .security.ediscovery_review_tag import EdiscoveryReviewTag
+    from .security.ediscovery_search import EdiscoverySearch
+    from .security.ediscovery_tag_operation import EdiscoveryTagOperation
+    from .security.incident import Incident
+    from .security.retention_event import RetentionEvent
+    from .security.retention_event_type import RetentionEventType
+    from .security.search import Search
+    from .security.security import Security
+    from .security.site_source import SiteSource
+    from .security.tag import Tag
+    from .security.triggers_root import TriggersRoot
+    from .security.trigger_types_root import TriggerTypesRoot
+    from .security.unified_group_source import UnifiedGroupSource
+    from .security.user_source import UserSource
+    from .security_reports_root import SecurityReportsRoot
+    from .service_announcement import ServiceAnnouncement
+    from .service_announcement_attachment import ServiceAnnouncementAttachment
+    from .service_announcement_base import ServiceAnnouncementBase
+    from .service_health import ServiceHealth
+    from .service_health_issue import ServiceHealthIssue
+    from .service_principal import ServicePrincipal
+    from .service_principal_risk_detection import ServicePrincipalRiskDetection
+    from .service_update_message import ServiceUpdateMessage
+    from .setting_state_device_summary import SettingStateDeviceSummary
+    from .shared_drive_item import SharedDriveItem
+    from .shared_insight import SharedInsight
+    from .shared_p_c_configuration import SharedPCConfiguration
+    from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+    from .sharepoint import Sharepoint
+    from .sharepoint_settings import SharepointSettings
+    from .shift import Shift
+    from .shift_preferences import ShiftPreferences
+    from .sign_in import SignIn
+    from .simulation import Simulation
+    from .simulation_automation import SimulationAutomation
+    from .simulation_automation_run import SimulationAutomationRun
+    from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
+    from .site import Site
+    from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
+    from .skype_user_conversation_member import SkypeUserConversationMember
+    from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
+    from .sms_authentication_method_target import SmsAuthenticationMethodTarget
+    from .social_identity_provider import SocialIdentityProvider
+    from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
+    from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
+    from .software_update_status_summary import SoftwareUpdateStatusSummary
+    from .start_hold_music_operation import StartHoldMusicOperation
+    from .stop_hold_music_operation import StopHoldMusicOperation
+    from .sts_policy import StsPolicy
+    from .subject_rights_request import SubjectRightsRequest
+    from .subscribed_sku import SubscribedSku
+    from .subscribe_to_tone_operation import SubscribeToToneOperation
+    from .subscription import Subscription
+    from .swap_shifts_change_request import SwapShiftsChangeRequest
+    from .synchronization import Synchronization
+    from .synchronization_job import SynchronizationJob
+    from .synchronization_schema import SynchronizationSchema
+    from .synchronization_template import SynchronizationTemplate
+    from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
+    from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
+    from .targeted_managed_app_protection import TargetedManagedAppProtection
+    from .task_file_attachment import TaskFileAttachment
+    from .team import Team
+    from .team_info import TeamInfo
+    from .teams_app import TeamsApp
+    from .teams_app_definition import TeamsAppDefinition
+    from .teams_app_installation import TeamsAppInstallation
+    from .teams_async_operation import TeamsAsyncOperation
+    from .teams_tab import TeamsTab
+    from .teams_template import TeamsTemplate
+    from .teamwork import Teamwork
+    from .teamwork_bot import TeamworkBot
+    from .teamwork_hosted_content import TeamworkHostedContent
+    from .teamwork_tag import TeamworkTag
+    from .teamwork_tag_member import TeamworkTagMember
+    from .telecom_expense_management_partner import TelecomExpenseManagementPartner
+    from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
+    from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
+    from .tenant_app_management_policy import TenantAppManagementPolicy
+    from .terms_and_conditions import TermsAndConditions
+    from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
+    from .terms_and_conditions_assignment import TermsAndConditionsAssignment
+    from .terms_of_use_container import TermsOfUseContainer
+    from .term_store.group import Group
+    from .term_store.relation import Relation
+    from .term_store.set import Set
+    from .term_store.store import Store
+    from .term_store.term import Term
+    from .threat_assessment_request import ThreatAssessmentRequest
+    from .threat_assessment_result import ThreatAssessmentResult
+    from .thumbnail_set import ThumbnailSet
+    from .time_off import TimeOff
+    from .time_off_reason import TimeOffReason
+    from .time_off_request import TimeOffRequest
+    from .todo import Todo
+    from .todo_task import TodoTask
+    from .todo_task_list import TodoTaskList
+    from .token_issuance_policy import TokenIssuancePolicy
+    from .token_lifetime_policy import TokenLifetimePolicy
+    from .trending import Trending
+    from .unified_rbac_resource_action import UnifiedRbacResourceAction
+    from .unified_rbac_resource_namespace import UnifiedRbacResourceNamespace
+    from .unified_role_assignment import UnifiedRoleAssignment
+    from .unified_role_assignment_schedule import UnifiedRoleAssignmentSchedule
+    from .unified_role_assignment_schedule_instance import UnifiedRoleAssignmentScheduleInstance
+    from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
+    from .unified_role_definition import UnifiedRoleDefinition
+    from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
+    from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
+    from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
+    from .unified_role_management_policy import UnifiedRoleManagementPolicy
+    from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
+    from .unified_role_management_policy_assignment import UnifiedRoleManagementPolicyAssignment
+    from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+    from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
+    from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
+    from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
+    from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
+    from .unified_role_schedule_base import UnifiedRoleScheduleBase
+    from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
+    from .unmute_participant_operation import UnmuteParticipantOperation
+    from .update_recording_status_operation import UpdateRecordingStatusOperation
+    from .url_assessment_request import UrlAssessmentRequest
+    from .used_insight import UsedInsight
+    from .user import User
+    from .user_activity import UserActivity
+    from .user_consent_request import UserConsentRequest
+    from .user_experience_analytics_device_performance import UserExperienceAnalyticsDevicePerformance
+    from .user_flow_language_configuration import UserFlowLanguageConfiguration
+    from .user_flow_language_page import UserFlowLanguagePage
+    from .user_install_state_summary import UserInstallStateSummary
+    from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
+    from .user_settings import UserSettings
+    from .user_sign_in_insight import UserSignInInsight
+    from .user_teamwork import UserTeamwork
+    from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
+    from .vpp_token import VppToken
+    from .web_app import WebApp
+    from .win32_lob_app import Win32LobApp
+    from .windows10_compliance_policy import Windows10CompliancePolicy
+    from .windows10_custom_configuration import Windows10CustomConfiguration
+    from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
+    from .windows10_enterprise_modern_app_management_configuration import Windows10EnterpriseModernAppManagementConfiguration
+    from .windows10_general_configuration import Windows10GeneralConfiguration
+    from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
+    from .windows10_secure_assessment_configuration import Windows10SecureAssessmentConfiguration
+    from .windows10_team_general_configuration import Windows10TeamGeneralConfiguration
+    from .windows81_compliance_policy import Windows81CompliancePolicy
+    from .windows81_general_configuration import Windows81GeneralConfiguration
+    from .windows_app_x import WindowsAppX
+    from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
+    from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
+    from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
+    from .windows_information_protection import WindowsInformationProtection
+    from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
+    from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
+    from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
+    from .windows_information_protection_policy import WindowsInformationProtectionPolicy
+    from .windows_microsoft_edge_app import WindowsMicrosoftEdgeApp
+    from .windows_mobile_m_s_i import WindowsMobileMSI
+    from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
+    from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
+    from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
+    from .windows_universal_app_x import WindowsUniversalAppX
+    from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
+    from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
+    from .windows_web_app import WindowsWebApp
+    from .workbook import Workbook
+    from .workbook_application import WorkbookApplication
+    from .workbook_chart import WorkbookChart
+    from .workbook_chart_area_format import WorkbookChartAreaFormat
+    from .workbook_chart_axes import WorkbookChartAxes
+    from .workbook_chart_axis import WorkbookChartAxis
+    from .workbook_chart_axis_format import WorkbookChartAxisFormat
+    from .workbook_chart_axis_title import WorkbookChartAxisTitle
+    from .workbook_chart_axis_title_format import WorkbookChartAxisTitleFormat
+    from .workbook_chart_data_label_format import WorkbookChartDataLabelFormat
+    from .workbook_chart_data_labels import WorkbookChartDataLabels
+    from .workbook_chart_fill import WorkbookChartFill
+    from .workbook_chart_font import WorkbookChartFont
+    from .workbook_chart_gridlines import WorkbookChartGridlines
+    from .workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
+    from .workbook_chart_legend import WorkbookChartLegend
+    from .workbook_chart_legend_format import WorkbookChartLegendFormat
+    from .workbook_chart_line_format import WorkbookChartLineFormat
+    from .workbook_chart_point import WorkbookChartPoint
+    from .workbook_chart_point_format import WorkbookChartPointFormat
+    from .workbook_chart_series import WorkbookChartSeries
+    from .workbook_chart_series_format import WorkbookChartSeriesFormat
+    from .workbook_chart_title import WorkbookChartTitle
+    from .workbook_chart_title_format import WorkbookChartTitleFormat
+    from .workbook_comment import WorkbookComment
+    from .workbook_comment_reply import WorkbookCommentReply
+    from .workbook_filter import WorkbookFilter
+    from .workbook_format_protection import WorkbookFormatProtection
+    from .workbook_function_result import WorkbookFunctionResult
+    from .workbook_functions import WorkbookFunctions
+    from .workbook_named_item import WorkbookNamedItem
+    from .workbook_operation import WorkbookOperation
+    from .workbook_pivot_table import WorkbookPivotTable
+    from .workbook_range import WorkbookRange
+    from .workbook_range_border import WorkbookRangeBorder
+    from .workbook_range_fill import WorkbookRangeFill
+    from .workbook_range_font import WorkbookRangeFont
+    from .workbook_range_format import WorkbookRangeFormat
+    from .workbook_range_sort import WorkbookRangeSort
+    from .workbook_range_view import WorkbookRangeView
+    from .workbook_table import WorkbookTable
+    from .workbook_table_column import WorkbookTableColumn
+    from .workbook_table_row import WorkbookTableRow
+    from .workbook_table_sort import WorkbookTableSort
+    from .workbook_worksheet import WorkbookWorksheet
+    from .workbook_worksheet_protection import WorkbookWorksheetProtection
+    from .workforce_integration import WorkforceIntegration
+    from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
 
 @dataclass
 class Entity(AdditionalDataHolder, Parsable):
@@ -35,2793 +740,2849 @@ class Entity(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.aadUserConversationMember".casefold():
-            from . import aad_user_conversation_member
+            from .aad_user_conversation_member import AadUserConversationMember
 
-            return aad_user_conversation_member.AadUserConversationMember()
+            return AadUserConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackage".casefold():
-            from . import access_package
+            from .access_package import AccessPackage
 
-            return access_package.AccessPackage()
+            return AccessPackage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignment".casefold():
-            from . import access_package_assignment
+            from .access_package_assignment import AccessPackageAssignment
 
-            return access_package_assignment.AccessPackageAssignment()
+            return AccessPackageAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentPolicy".casefold():
-            from . import access_package_assignment_policy
+            from .access_package_assignment_policy import AccessPackageAssignmentPolicy
 
-            return access_package_assignment_policy.AccessPackageAssignmentPolicy()
+            return AccessPackageAssignmentPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentRequest".casefold():
-            from . import access_package_assignment_request
+            from .access_package_assignment_request import AccessPackageAssignmentRequest
 
-            return access_package_assignment_request.AccessPackageAssignmentRequest()
+            return AccessPackageAssignmentRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageCatalog".casefold():
-            from . import access_package_catalog
+            from .access_package_catalog import AccessPackageCatalog
 
-            return access_package_catalog.AccessPackageCatalog()
+            return AccessPackageCatalog()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageMultipleChoiceQuestion".casefold():
-            from . import access_package_multiple_choice_question
+            from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
 
-            return access_package_multiple_choice_question.AccessPackageMultipleChoiceQuestion()
+            return AccessPackageMultipleChoiceQuestion()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageQuestion".casefold():
-            from . import access_package_question
+            from .access_package_question import AccessPackageQuestion
 
-            return access_package_question.AccessPackageQuestion()
+            return AccessPackageQuestion()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageSubject".casefold():
-            from . import access_package_subject
+            from .access_package_subject import AccessPackageSubject
 
-            return access_package_subject.AccessPackageSubject()
+            return AccessPackageSubject()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageTextInputQuestion".casefold():
-            from . import access_package_text_input_question
+            from .access_package_text_input_question import AccessPackageTextInputQuestion
 
-            return access_package_text_input_question.AccessPackageTextInputQuestion()
+            return AccessPackageTextInputQuestion()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewHistoryDefinition".casefold():
-            from . import access_review_history_definition
+            from .access_review_history_definition import AccessReviewHistoryDefinition
 
-            return access_review_history_definition.AccessReviewHistoryDefinition()
+            return AccessReviewHistoryDefinition()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewHistoryInstance".casefold():
-            from . import access_review_history_instance
+            from .access_review_history_instance import AccessReviewHistoryInstance
 
-            return access_review_history_instance.AccessReviewHistoryInstance()
+            return AccessReviewHistoryInstance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstance".casefold():
-            from . import access_review_instance
+            from .access_review_instance import AccessReviewInstance
 
-            return access_review_instance.AccessReviewInstance()
+            return AccessReviewInstance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInstanceDecisionItem".casefold():
-            from . import access_review_instance_decision_item
+            from .access_review_instance_decision_item import AccessReviewInstanceDecisionItem
 
-            return access_review_instance_decision_item.AccessReviewInstanceDecisionItem()
+            return AccessReviewInstanceDecisionItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewReviewer".casefold():
-            from . import access_review_reviewer
+            from .access_review_reviewer import AccessReviewReviewer
 
-            return access_review_reviewer.AccessReviewReviewer()
+            return AccessReviewReviewer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewScheduleDefinition".casefold():
-            from . import access_review_schedule_definition
+            from .access_review_schedule_definition import AccessReviewScheduleDefinition
 
-            return access_review_schedule_definition.AccessReviewScheduleDefinition()
+            return AccessReviewScheduleDefinition()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewSet".casefold():
-            from . import access_review_set
+            from .access_review_set import AccessReviewSet
 
-            return access_review_set.AccessReviewSet()
+            return AccessReviewSet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewStage".casefold():
-            from . import access_review_stage
+            from .access_review_stage import AccessReviewStage
 
-            return access_review_stage.AccessReviewStage()
+            return AccessReviewStage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.activityBasedTimeoutPolicy".casefold():
-            from . import activity_based_timeout_policy
+            from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
 
-            return activity_based_timeout_policy.ActivityBasedTimeoutPolicy()
+            return ActivityBasedTimeoutPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.activityHistoryItem".casefold():
-            from . import activity_history_item
+            from .activity_history_item import ActivityHistoryItem
 
-            return activity_history_item.ActivityHistoryItem()
+            return ActivityHistoryItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.addLargeGalleryViewOperation".casefold():
-            from . import add_large_gallery_view_operation
+            from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
 
-            return add_large_gallery_view_operation.AddLargeGalleryViewOperation()
+            return AddLargeGalleryViewOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.adminConsentRequestPolicy".casefold():
-            from . import admin_consent_request_policy
+            from .admin_consent_request_policy import AdminConsentRequestPolicy
 
-            return admin_consent_request_policy.AdminConsentRequestPolicy()
+            return AdminConsentRequestPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.administrativeUnit".casefold():
-            from . import administrative_unit
+            from .administrative_unit import AdministrativeUnit
 
-            return administrative_unit.AdministrativeUnit()
+            return AdministrativeUnit()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreement".casefold():
-            from . import agreement
+            from .agreement import Agreement
 
-            return agreement.Agreement()
+            return Agreement()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreementAcceptance".casefold():
-            from . import agreement_acceptance
+            from .agreement_acceptance import AgreementAcceptance
 
-            return agreement_acceptance.AgreementAcceptance()
+            return AgreementAcceptance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreementFile".casefold():
-            from . import agreement_file
+            from .agreement_file import AgreementFile
 
-            return agreement_file.AgreementFile()
+            return AgreementFile()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreementFileLocalization".casefold():
-            from . import agreement_file_localization
+            from .agreement_file_localization import AgreementFileLocalization
 
-            return agreement_file_localization.AgreementFileLocalization()
+            return AgreementFileLocalization()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreementFileProperties".casefold():
-            from . import agreement_file_properties
+            from .agreement_file_properties import AgreementFileProperties
 
-            return agreement_file_properties.AgreementFileProperties()
+            return AgreementFileProperties()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreementFileVersion".casefold():
-            from . import agreement_file_version
+            from .agreement_file_version import AgreementFileVersion
 
-            return agreement_file_version.AgreementFileVersion()
+            return AgreementFileVersion()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.alert".casefold():
-            from . import alert
-            from .security import alert
+            from .alert import Alert
+            from .security.alert import Alert
 
-            return alert.Alert()
+            return Alert()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.allowedValue".casefold():
-            from . import allowed_value
+            from .allowed_value import AllowedValue
 
-            return allowed_value.AllowedValue()
+            return AllowedValue()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidCompliancePolicy".casefold():
-            from . import android_compliance_policy
+            from .android_compliance_policy import AndroidCompliancePolicy
 
-            return android_compliance_policy.AndroidCompliancePolicy()
+            return AndroidCompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidCustomConfiguration".casefold():
-            from . import android_custom_configuration
+            from .android_custom_configuration import AndroidCustomConfiguration
 
-            return android_custom_configuration.AndroidCustomConfiguration()
+            return AndroidCustomConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidGeneralDeviceConfiguration".casefold():
-            from . import android_general_device_configuration
+            from .android_general_device_configuration import AndroidGeneralDeviceConfiguration
 
-            return android_general_device_configuration.AndroidGeneralDeviceConfiguration()
+            return AndroidGeneralDeviceConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidLobApp".casefold():
-            from . import android_lob_app
+            from .android_lob_app import AndroidLobApp
 
-            return android_lob_app.AndroidLobApp()
+            return AndroidLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidManagedAppProtection".casefold():
-            from . import android_managed_app_protection
+            from .android_managed_app_protection import AndroidManagedAppProtection
 
-            return android_managed_app_protection.AndroidManagedAppProtection()
+            return AndroidManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidManagedAppRegistration".casefold():
-            from . import android_managed_app_registration
+            from .android_managed_app_registration import AndroidManagedAppRegistration
 
-            return android_managed_app_registration.AndroidManagedAppRegistration()
+            return AndroidManagedAppRegistration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidStoreApp".casefold():
-            from . import android_store_app
+            from .android_store_app import AndroidStoreApp
 
-            return android_store_app.AndroidStoreApp()
+            return AndroidStoreApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidWorkProfileCompliancePolicy".casefold():
-            from . import android_work_profile_compliance_policy
+            from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
 
-            return android_work_profile_compliance_policy.AndroidWorkProfileCompliancePolicy()
+            return AndroidWorkProfileCompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidWorkProfileCustomConfiguration".casefold():
-            from . import android_work_profile_custom_configuration
+            from .android_work_profile_custom_configuration import AndroidWorkProfileCustomConfiguration
 
-            return android_work_profile_custom_configuration.AndroidWorkProfileCustomConfiguration()
+            return AndroidWorkProfileCustomConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidWorkProfileGeneralDeviceConfiguration".casefold():
-            from . import android_work_profile_general_device_configuration
+            from .android_work_profile_general_device_configuration import AndroidWorkProfileGeneralDeviceConfiguration
 
-            return android_work_profile_general_device_configuration.AndroidWorkProfileGeneralDeviceConfiguration()
+            return AndroidWorkProfileGeneralDeviceConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.anonymousGuestConversationMember".casefold():
-            from . import anonymous_guest_conversation_member
+            from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
 
-            return anonymous_guest_conversation_member.AnonymousGuestConversationMember()
+            return AnonymousGuestConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appCatalogs".casefold():
-            from . import app_catalogs
+            from .app_catalogs import AppCatalogs
 
-            return app_catalogs.AppCatalogs()
+            return AppCatalogs()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appConsentApprovalRoute".casefold():
-            from . import app_consent_approval_route
+            from .app_consent_approval_route import AppConsentApprovalRoute
 
-            return app_consent_approval_route.AppConsentApprovalRoute()
+            return AppConsentApprovalRoute()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appConsentRequest".casefold():
-            from . import app_consent_request
+            from .app_consent_request import AppConsentRequest
 
-            return app_consent_request.AppConsentRequest()
+            return AppConsentRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appleDeviceFeaturesConfigurationBase".casefold():
-            from . import apple_device_features_configuration_base
+            from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
 
-            return apple_device_features_configuration_base.AppleDeviceFeaturesConfigurationBase()
+            return AppleDeviceFeaturesConfigurationBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appleManagedIdentityProvider".casefold():
-            from . import apple_managed_identity_provider
+            from .apple_managed_identity_provider import AppleManagedIdentityProvider
 
-            return apple_managed_identity_provider.AppleManagedIdentityProvider()
+            return AppleManagedIdentityProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.applePushNotificationCertificate".casefold():
-            from . import apple_push_notification_certificate
+            from .apple_push_notification_certificate import ApplePushNotificationCertificate
 
-            return apple_push_notification_certificate.ApplePushNotificationCertificate()
+            return ApplePushNotificationCertificate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.application".casefold():
-            from . import application
+            from .application import Application
 
-            return application.Application()
+            return Application()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.applicationTemplate".casefold():
-            from . import application_template
+            from .application_template import ApplicationTemplate
 
-            return application_template.ApplicationTemplate()
+            return ApplicationTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appManagementPolicy".casefold():
-            from . import app_management_policy
+            from .app_management_policy import AppManagementPolicy
 
-            return app_management_policy.AppManagementPolicy()
+            return AppManagementPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appRoleAssignment".casefold():
-            from . import app_role_assignment
+            from .app_role_assignment import AppRoleAssignment
 
-            return app_role_assignment.AppRoleAssignment()
+            return AppRoleAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.approval".casefold():
-            from . import approval
+            from .approval import Approval
 
-            return approval.Approval()
+            return Approval()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.approvalStage".casefold():
-            from . import approval_stage
+            from .approval_stage import ApprovalStage
 
-            return approval_stage.ApprovalStage()
+            return ApprovalStage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appScope".casefold():
-            from . import app_scope
+            from .app_scope import AppScope
 
-            return app_scope.AppScope()
+            return AppScope()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.associatedTeamInfo".casefold():
-            from . import associated_team_info
+            from .associated_team_info import AssociatedTeamInfo
 
-            return associated_team_info.AssociatedTeamInfo()
+            return AssociatedTeamInfo()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.attachment".casefold():
-            from . import attachment
+            from .attachment import Attachment
 
-            return attachment.Attachment()
+            return Attachment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.attachmentBase".casefold():
-            from . import attachment_base
+            from .attachment_base import AttachmentBase
 
-            return attachment_base.AttachmentBase()
+            return AttachmentBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.attachmentSession".casefold():
-            from . import attachment_session
+            from .attachment_session import AttachmentSession
 
-            return attachment_session.AttachmentSession()
+            return AttachmentSession()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.attackSimulationRoot".casefold():
-            from . import attack_simulation_root
+            from .attack_simulation_root import AttackSimulationRoot
 
-            return attack_simulation_root.AttackSimulationRoot()
+            return AttackSimulationRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.attendanceRecord".casefold():
-            from . import attendance_record
+            from .attendance_record import AttendanceRecord
 
-            return attendance_record.AttendanceRecord()
+            return AttendanceRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.attributeMappingFunctionSchema".casefold():
-            from . import attribute_mapping_function_schema
+            from .attribute_mapping_function_schema import AttributeMappingFunctionSchema
 
-            return attribute_mapping_function_schema.AttributeMappingFunctionSchema()
+            return AttributeMappingFunctionSchema()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.attributeSet".casefold():
-            from . import attribute_set
+            from .attribute_set import AttributeSet
 
-            return attribute_set.AttributeSet()
+            return AttributeSet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.audioRoutingGroup".casefold():
-            from . import audio_routing_group
+            from .audio_routing_group import AudioRoutingGroup
 
-            return audio_routing_group.AudioRoutingGroup()
+            return AudioRoutingGroup()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.auditEvent".casefold():
-            from . import audit_event
+            from .audit_event import AuditEvent
 
-            return audit_event.AuditEvent()
+            return AuditEvent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.auditLogRoot".casefold():
-            from . import audit_log_root
+            from .audit_log_root import AuditLogRoot
 
-            return audit_log_root.AuditLogRoot()
+            return AuditLogRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authentication".casefold():
-            from . import authentication
+            from .authentication import Authentication
 
-            return authentication.Authentication()
+            return Authentication()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationCombinationConfiguration".casefold():
-            from . import authentication_combination_configuration
+            from .authentication_combination_configuration import AuthenticationCombinationConfiguration
 
-            return authentication_combination_configuration.AuthenticationCombinationConfiguration()
+            return AuthenticationCombinationConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationContextClassReference".casefold():
-            from . import authentication_context_class_reference
+            from .authentication_context_class_reference import AuthenticationContextClassReference
 
-            return authentication_context_class_reference.AuthenticationContextClassReference()
+            return AuthenticationContextClassReference()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationFlowsPolicy".casefold():
-            from . import authentication_flows_policy
+            from .authentication_flows_policy import AuthenticationFlowsPolicy
 
-            return authentication_flows_policy.AuthenticationFlowsPolicy()
+            return AuthenticationFlowsPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationMethod".casefold():
-            from . import authentication_method
+            from .authentication_method import AuthenticationMethod
 
-            return authentication_method.AuthenticationMethod()
+            return AuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationMethodConfiguration".casefold():
-            from . import authentication_method_configuration
+            from .authentication_method_configuration import AuthenticationMethodConfiguration
 
-            return authentication_method_configuration.AuthenticationMethodConfiguration()
+            return AuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationMethodModeDetail".casefold():
-            from . import authentication_method_mode_detail
+            from .authentication_method_mode_detail import AuthenticationMethodModeDetail
 
-            return authentication_method_mode_detail.AuthenticationMethodModeDetail()
+            return AuthenticationMethodModeDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationMethodsPolicy".casefold():
-            from . import authentication_methods_policy
+            from .authentication_methods_policy import AuthenticationMethodsPolicy
 
-            return authentication_methods_policy.AuthenticationMethodsPolicy()
+            return AuthenticationMethodsPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationMethodTarget".casefold():
-            from . import authentication_method_target
+            from .authentication_method_target import AuthenticationMethodTarget
 
-            return authentication_method_target.AuthenticationMethodTarget()
+            return AuthenticationMethodTarget()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationStrengthPolicy".casefold():
-            from . import authentication_strength_policy
+            from .authentication_strength_policy import AuthenticationStrengthPolicy
 
-            return authentication_strength_policy.AuthenticationStrengthPolicy()
+            return AuthenticationStrengthPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationStrengthRoot".casefold():
-            from . import authentication_strength_root
+            from .authentication_strength_root import AuthenticationStrengthRoot
 
-            return authentication_strength_root.AuthenticationStrengthRoot()
+            return AuthenticationStrengthRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authoredNote".casefold():
-            from . import authored_note
+            from .authored_note import AuthoredNote
 
-            return authored_note.AuthoredNote()
+            return AuthoredNote()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authorizationPolicy".casefold():
-            from . import authorization_policy
+            from .authorization_policy import AuthorizationPolicy
 
-            return authorization_policy.AuthorizationPolicy()
+            return AuthorizationPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureCommunicationServicesUserConversationMember".casefold():
-            from . import azure_communication_services_user_conversation_member
+            from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
 
-            return azure_communication_services_user_conversation_member.AzureCommunicationServicesUserConversationMember()
+            return AzureCommunicationServicesUserConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2xIdentityUserFlow".casefold():
-            from . import b2x_identity_user_flow
+            from .b2x_identity_user_flow import B2xIdentityUserFlow
 
-            return b2x_identity_user_flow.B2xIdentityUserFlow()
+            return B2xIdentityUserFlow()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.baseItem".casefold():
-            from . import base_item
+            from .base_item import BaseItem
 
-            return base_item.BaseItem()
+            return BaseItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.baseItemVersion".casefold():
-            from . import base_item_version
+            from .base_item_version import BaseItemVersion
 
-            return base_item_version.BaseItemVersion()
+            return BaseItemVersion()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bitlocker".casefold():
-            from . import bitlocker
+            from .bitlocker import Bitlocker
 
-            return bitlocker.Bitlocker()
+            return Bitlocker()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bitlockerRecoveryKey".casefold():
-            from . import bitlocker_recovery_key
+            from .bitlocker_recovery_key import BitlockerRecoveryKey
 
-            return bitlocker_recovery_key.BitlockerRecoveryKey()
+            return BitlockerRecoveryKey()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingAppointment".casefold():
-            from . import booking_appointment
+            from .booking_appointment import BookingAppointment
 
-            return booking_appointment.BookingAppointment()
+            return BookingAppointment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingBusiness".casefold():
-            from . import booking_business
+            from .booking_business import BookingBusiness
 
-            return booking_business.BookingBusiness()
+            return BookingBusiness()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingCurrency".casefold():
-            from . import booking_currency
+            from .booking_currency import BookingCurrency
 
-            return booking_currency.BookingCurrency()
+            return BookingCurrency()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingCustomer".casefold():
-            from . import booking_customer
+            from .booking_customer import BookingCustomer
 
-            return booking_customer.BookingCustomer()
+            return BookingCustomer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingCustomerBase".casefold():
-            from . import booking_customer_base
+            from .booking_customer_base import BookingCustomerBase
 
-            return booking_customer_base.BookingCustomerBase()
+            return BookingCustomerBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingCustomQuestion".casefold():
-            from . import booking_custom_question
+            from .booking_custom_question import BookingCustomQuestion
 
-            return booking_custom_question.BookingCustomQuestion()
+            return BookingCustomQuestion()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingService".casefold():
-            from . import booking_service
+            from .booking_service import BookingService
 
-            return booking_service.BookingService()
+            return BookingService()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingStaffMember".casefold():
-            from . import booking_staff_member
+            from .booking_staff_member import BookingStaffMember
 
-            return booking_staff_member.BookingStaffMember()
+            return BookingStaffMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingStaffMemberBase".casefold():
-            from . import booking_staff_member_base
+            from .booking_staff_member_base import BookingStaffMemberBase
 
-            return booking_staff_member_base.BookingStaffMemberBase()
+            return BookingStaffMemberBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.browserSharedCookie".casefold():
-            from . import browser_shared_cookie
+            from .browser_shared_cookie import BrowserSharedCookie
 
-            return browser_shared_cookie.BrowserSharedCookie()
+            return BrowserSharedCookie()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.browserSite".casefold():
-            from . import browser_site
+            from .browser_site import BrowserSite
 
-            return browser_site.BrowserSite()
+            return BrowserSite()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.browserSiteList".casefold():
-            from . import browser_site_list
+            from .browser_site_list import BrowserSiteList
 
-            return browser_site_list.BrowserSiteList()
+            return BrowserSiteList()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.builtInIdentityProvider".casefold():
-            from . import built_in_identity_provider
+            from .built_in_identity_provider import BuiltInIdentityProvider
 
-            return built_in_identity_provider.BuiltInIdentityProvider()
+            return BuiltInIdentityProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.calendar".casefold():
-            from . import calendar
+            from .calendar import Calendar
 
-            return calendar.Calendar()
+            return Calendar()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.calendarGroup".casefold():
-            from . import calendar_group
+            from .calendar_group import CalendarGroup
 
-            return calendar_group.CalendarGroup()
+            return CalendarGroup()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.calendarPermission".casefold():
-            from . import calendar_permission
+            from .calendar_permission import CalendarPermission
 
-            return calendar_permission.CalendarPermission()
+            return CalendarPermission()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.calendarSharingMessage".casefold():
-            from . import calendar_sharing_message
+            from .calendar_sharing_message import CalendarSharingMessage
 
-            return calendar_sharing_message.CalendarSharingMessage()
+            return CalendarSharingMessage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.call".casefold():
-            from . import call
+            from .call import Call
 
-            return call.Call()
+            return Call()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.callRecord".casefold():
-            from .call_records import call_record
+            from .call_records.call_record import CallRecord
 
-            return call_record.CallRecord()
+            return CallRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.segment".casefold():
-            from .call_records import segment
+            from .call_records.segment import Segment
 
-            return segment.Segment()
+            return Segment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.session".casefold():
-            from .call_records import session
+            from .call_records.session import Session
 
-            return session.Session()
+            return Session()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.cancelMediaProcessingOperation".casefold():
-            from . import cancel_media_processing_operation
+            from .cancel_media_processing_operation import CancelMediaProcessingOperation
 
-            return cancel_media_processing_operation.CancelMediaProcessingOperation()
+            return CancelMediaProcessingOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.certificateBasedAuthConfiguration".casefold():
-            from . import certificate_based_auth_configuration
+            from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
 
-            return certificate_based_auth_configuration.CertificateBasedAuthConfiguration()
+            return CertificateBasedAuthConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.changeTrackedEntity".casefold():
-            from . import change_tracked_entity
+            from .change_tracked_entity import ChangeTrackedEntity
 
-            return change_tracked_entity.ChangeTrackedEntity()
+            return ChangeTrackedEntity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.channel".casefold():
-            from . import channel
+            from .channel import Channel
 
-            return channel.Channel()
+            return Channel()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chat".casefold():
-            from . import chat
+            from .chat import Chat
 
-            return chat.Chat()
+            return Chat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessage".casefold():
-            from . import chat_message
+            from .chat_message import ChatMessage
 
-            return chat_message.ChatMessage()
+            return ChatMessage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageHostedContent".casefold():
-            from . import chat_message_hosted_content
+            from .chat_message_hosted_content import ChatMessageHostedContent
 
-            return chat_message_hosted_content.ChatMessageHostedContent()
+            return ChatMessageHostedContent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageInfo".casefold():
-            from . import chat_message_info
+            from .chat_message_info import ChatMessageInfo
 
-            return chat_message_info.ChatMessageInfo()
+            return ChatMessageInfo()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.checklistItem".casefold():
-            from . import checklist_item
+            from .checklist_item import ChecklistItem
 
-            return checklist_item.ChecklistItem()
+            return ChecklistItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.claimsMappingPolicy".casefold():
-            from . import claims_mapping_policy
+            from .claims_mapping_policy import ClaimsMappingPolicy
 
-            return claims_mapping_policy.ClaimsMappingPolicy()
+            return ClaimsMappingPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.columnDefinition".casefold():
-            from . import column_definition
+            from .column_definition import ColumnDefinition
 
-            return column_definition.ColumnDefinition()
+            return ColumnDefinition()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.columnLink".casefold():
-            from . import column_link
+            from .column_link import ColumnLink
 
-            return column_link.ColumnLink()
+            return ColumnLink()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.commsOperation".casefold():
-            from . import comms_operation
+            from .comms_operation import CommsOperation
 
-            return comms_operation.CommsOperation()
+            return CommsOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.complianceManagementPartner".casefold():
-            from . import compliance_management_partner
+            from .compliance_management_partner import ComplianceManagementPartner
 
-            return compliance_management_partner.ComplianceManagementPartner()
+            return ComplianceManagementPartner()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.conditionalAccessPolicy".casefold():
-            from . import conditional_access_policy
+            from .conditional_access_policy import ConditionalAccessPolicy
 
-            return conditional_access_policy.ConditionalAccessPolicy()
+            return ConditionalAccessPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.conditionalAccessRoot".casefold():
-            from . import conditional_access_root
+            from .conditional_access_root import ConditionalAccessRoot
 
-            return conditional_access_root.ConditionalAccessRoot()
+            return ConditionalAccessRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.conditionalAccessTemplate".casefold():
-            from . import conditional_access_template
+            from .conditional_access_template import ConditionalAccessTemplate
 
-            return conditional_access_template.ConditionalAccessTemplate()
+            return ConditionalAccessTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.connectedOrganization".casefold():
-            from . import connected_organization
+            from .connected_organization import ConnectedOrganization
 
-            return connected_organization.ConnectedOrganization()
+            return ConnectedOrganization()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.contact".casefold():
-            from . import contact
+            from .contact import Contact
 
-            return contact.Contact()
+            return Contact()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.contactFolder".casefold():
-            from . import contact_folder
+            from .contact_folder import ContactFolder
 
-            return contact_folder.ContactFolder()
+            return ContactFolder()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.contentSharingSession".casefold():
-            from . import content_sharing_session
+            from .content_sharing_session import ContentSharingSession
 
-            return content_sharing_session.ContentSharingSession()
+            return ContentSharingSession()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.contentType".casefold():
-            from . import content_type
+            from .content_type import ContentType
 
-            return content_type.ContentType()
+            return ContentType()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.contract".casefold():
-            from . import contract
+            from .contract import Contract
 
-            return contract.Contract()
+            return Contract()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.conversation".casefold():
-            from . import conversation
+            from .conversation import Conversation
 
-            return conversation.Conversation()
+            return Conversation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.conversationMember".casefold():
-            from . import conversation_member
+            from .conversation_member import ConversationMember
 
-            return conversation_member.ConversationMember()
+            return ConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.conversationThread".casefold():
-            from . import conversation_thread
+            from .conversation_thread import ConversationThread
 
-            return conversation_thread.ConversationThread()
+            return ConversationThread()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.countryNamedLocation".casefold():
-            from . import country_named_location
+            from .country_named_location import CountryNamedLocation
 
-            return country_named_location.CountryNamedLocation()
+            return CountryNamedLocation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantAccessPolicy".casefold():
-            from . import cross_tenant_access_policy
+            from .cross_tenant_access_policy import CrossTenantAccessPolicy
 
-            return cross_tenant_access_policy.CrossTenantAccessPolicy()
+            return CrossTenantAccessPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossTenantAccessPolicyConfigurationDefault".casefold():
-            from . import cross_tenant_access_policy_configuration_default
+            from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
 
-            return cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault()
+            return CrossTenantAccessPolicyConfigurationDefault()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customCalloutExtension".casefold():
+            from .custom_callout_extension import CustomCalloutExtension
+
+            return CustomCalloutExtension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.customSecurityAttributeDefinition".casefold():
-            from . import custom_security_attribute_definition
+            from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
 
-            return custom_security_attribute_definition.CustomSecurityAttributeDefinition()
+            return CustomSecurityAttributeDefinition()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.dataPolicyOperation".casefold():
-            from . import data_policy_operation
+            from .data_policy_operation import DataPolicyOperation
 
-            return data_policy_operation.DataPolicyOperation()
+            return DataPolicyOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.defaultManagedAppProtection".casefold():
-            from . import default_managed_app_protection
+            from .default_managed_app_protection import DefaultManagedAppProtection
 
-            return default_managed_app_protection.DefaultManagedAppProtection()
+            return DefaultManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.delegatedAdminAccessAssignment".casefold():
-            from . import delegated_admin_access_assignment
+            from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
 
-            return delegated_admin_access_assignment.DelegatedAdminAccessAssignment()
+            return DelegatedAdminAccessAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.delegatedAdminCustomer".casefold():
-            from . import delegated_admin_customer
+            from .delegated_admin_customer import DelegatedAdminCustomer
 
-            return delegated_admin_customer.DelegatedAdminCustomer()
+            return DelegatedAdminCustomer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.delegatedAdminRelationship".casefold():
-            from . import delegated_admin_relationship
+            from .delegated_admin_relationship import DelegatedAdminRelationship
 
-            return delegated_admin_relationship.DelegatedAdminRelationship()
+            return DelegatedAdminRelationship()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.delegatedAdminRelationshipOperation".casefold():
-            from . import delegated_admin_relationship_operation
+            from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
 
-            return delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation()
+            return DelegatedAdminRelationshipOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.delegatedAdminRelationshipRequest".casefold():
-            from . import delegated_admin_relationship_request
+            from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
 
-            return delegated_admin_relationship_request.DelegatedAdminRelationshipRequest()
+            return DelegatedAdminRelationshipRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.delegatedAdminServiceManagementDetail".casefold():
-            from . import delegated_admin_service_management_detail
+            from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
 
-            return delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail()
+            return DelegatedAdminServiceManagementDetail()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.delegatedPermissionClassification".casefold():
-            from . import delegated_permission_classification
+            from .delegated_permission_classification import DelegatedPermissionClassification
 
-            return delegated_permission_classification.DelegatedPermissionClassification()
+            return DelegatedPermissionClassification()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deletedItemContainer".casefold():
+            from .deleted_item_container import DeletedItemContainer
+
+            return DeletedItemContainer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deletedTeam".casefold():
-            from . import deleted_team
+            from .deleted_team import DeletedTeam
 
-            return deleted_team.DeletedTeam()
+            return DeletedTeam()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.detectedApp".casefold():
-            from . import detected_app
+            from .detected_app import DetectedApp
 
-            return detected_app.DetectedApp()
+            return DetectedApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.device".casefold():
-            from . import device
+            from .device import Device
 
-            return device.Device()
+            return Device()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceAndAppManagementRoleAssignment".casefold():
-            from . import device_and_app_management_role_assignment
+            from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
 
-            return device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment()
+            return DeviceAndAppManagementRoleAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceAndAppManagementRoleDefinition".casefold():
-            from . import device_and_app_management_role_definition
+            from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
 
-            return device_and_app_management_role_definition.DeviceAndAppManagementRoleDefinition()
+            return DeviceAndAppManagementRoleDefinition()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceAppManagement".casefold():
-            from . import device_app_management
+            from .device_app_management import DeviceAppManagement
 
-            return device_app_management.DeviceAppManagement()
+            return DeviceAppManagement()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceCategory".casefold():
-            from . import device_category
+            from .device_category import DeviceCategory
 
-            return device_category.DeviceCategory()
+            return DeviceCategory()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceComplianceActionItem".casefold():
-            from . import device_compliance_action_item
+            from .device_compliance_action_item import DeviceComplianceActionItem
 
-            return device_compliance_action_item.DeviceComplianceActionItem()
+            return DeviceComplianceActionItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceComplianceDeviceOverview".casefold():
-            from . import device_compliance_device_overview
+            from .device_compliance_device_overview import DeviceComplianceDeviceOverview
 
-            return device_compliance_device_overview.DeviceComplianceDeviceOverview()
+            return DeviceComplianceDeviceOverview()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceComplianceDeviceStatus".casefold():
-            from . import device_compliance_device_status
+            from .device_compliance_device_status import DeviceComplianceDeviceStatus
 
-            return device_compliance_device_status.DeviceComplianceDeviceStatus()
+            return DeviceComplianceDeviceStatus()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceCompliancePolicy".casefold():
-            from . import device_compliance_policy
+            from .device_compliance_policy import DeviceCompliancePolicy
 
-            return device_compliance_policy.DeviceCompliancePolicy()
+            return DeviceCompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceCompliancePolicyAssignment".casefold():
-            from . import device_compliance_policy_assignment
+            from .device_compliance_policy_assignment import DeviceCompliancePolicyAssignment
 
-            return device_compliance_policy_assignment.DeviceCompliancePolicyAssignment()
+            return DeviceCompliancePolicyAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceCompliancePolicyDeviceStateSummary".casefold():
-            from . import device_compliance_policy_device_state_summary
+            from .device_compliance_policy_device_state_summary import DeviceCompliancePolicyDeviceStateSummary
 
-            return device_compliance_policy_device_state_summary.DeviceCompliancePolicyDeviceStateSummary()
+            return DeviceCompliancePolicyDeviceStateSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceCompliancePolicySettingStateSummary".casefold():
-            from . import device_compliance_policy_setting_state_summary
+            from .device_compliance_policy_setting_state_summary import DeviceCompliancePolicySettingStateSummary
 
-            return device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary()
+            return DeviceCompliancePolicySettingStateSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceCompliancePolicyState".casefold():
-            from . import device_compliance_policy_state
+            from .device_compliance_policy_state import DeviceCompliancePolicyState
 
-            return device_compliance_policy_state.DeviceCompliancePolicyState()
+            return DeviceCompliancePolicyState()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceComplianceScheduledActionForRule".casefold():
-            from . import device_compliance_scheduled_action_for_rule
+            from .device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
 
-            return device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule()
+            return DeviceComplianceScheduledActionForRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceComplianceSettingState".casefold():
-            from . import device_compliance_setting_state
+            from .device_compliance_setting_state import DeviceComplianceSettingState
 
-            return device_compliance_setting_state.DeviceComplianceSettingState()
+            return DeviceComplianceSettingState()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceComplianceUserOverview".casefold():
-            from . import device_compliance_user_overview
+            from .device_compliance_user_overview import DeviceComplianceUserOverview
 
-            return device_compliance_user_overview.DeviceComplianceUserOverview()
+            return DeviceComplianceUserOverview()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceComplianceUserStatus".casefold():
-            from . import device_compliance_user_status
+            from .device_compliance_user_status import DeviceComplianceUserStatus
 
-            return device_compliance_user_status.DeviceComplianceUserStatus()
+            return DeviceComplianceUserStatus()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceConfiguration".casefold():
-            from . import device_configuration
+            from .device_configuration import DeviceConfiguration
 
-            return device_configuration.DeviceConfiguration()
+            return DeviceConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceConfigurationAssignment".casefold():
-            from . import device_configuration_assignment
+            from .device_configuration_assignment import DeviceConfigurationAssignment
 
-            return device_configuration_assignment.DeviceConfigurationAssignment()
+            return DeviceConfigurationAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceConfigurationDeviceOverview".casefold():
-            from . import device_configuration_device_overview
+            from .device_configuration_device_overview import DeviceConfigurationDeviceOverview
 
-            return device_configuration_device_overview.DeviceConfigurationDeviceOverview()
+            return DeviceConfigurationDeviceOverview()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceConfigurationDeviceStateSummary".casefold():
-            from . import device_configuration_device_state_summary
+            from .device_configuration_device_state_summary import DeviceConfigurationDeviceStateSummary
 
-            return device_configuration_device_state_summary.DeviceConfigurationDeviceStateSummary()
+            return DeviceConfigurationDeviceStateSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceConfigurationDeviceStatus".casefold():
-            from . import device_configuration_device_status
+            from .device_configuration_device_status import DeviceConfigurationDeviceStatus
 
-            return device_configuration_device_status.DeviceConfigurationDeviceStatus()
+            return DeviceConfigurationDeviceStatus()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceConfigurationState".casefold():
-            from . import device_configuration_state
+            from .device_configuration_state import DeviceConfigurationState
 
-            return device_configuration_state.DeviceConfigurationState()
+            return DeviceConfigurationState()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceConfigurationUserOverview".casefold():
-            from . import device_configuration_user_overview
+            from .device_configuration_user_overview import DeviceConfigurationUserOverview
 
-            return device_configuration_user_overview.DeviceConfigurationUserOverview()
+            return DeviceConfigurationUserOverview()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceConfigurationUserStatus".casefold():
-            from . import device_configuration_user_status
+            from .device_configuration_user_status import DeviceConfigurationUserStatus
 
-            return device_configuration_user_status.DeviceConfigurationUserStatus()
+            return DeviceConfigurationUserStatus()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentConfiguration".casefold():
-            from . import device_enrollment_configuration
+            from .device_enrollment_configuration import DeviceEnrollmentConfiguration
 
-            return device_enrollment_configuration.DeviceEnrollmentConfiguration()
+            return DeviceEnrollmentConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentLimitConfiguration".casefold():
-            from . import device_enrollment_limit_configuration
+            from .device_enrollment_limit_configuration import DeviceEnrollmentLimitConfiguration
 
-            return device_enrollment_limit_configuration.DeviceEnrollmentLimitConfiguration()
+            return DeviceEnrollmentLimitConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentPlatformRestrictionsConfiguration".casefold():
-            from . import device_enrollment_platform_restrictions_configuration
+            from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
 
-            return device_enrollment_platform_restrictions_configuration.DeviceEnrollmentPlatformRestrictionsConfiguration()
+            return DeviceEnrollmentPlatformRestrictionsConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentWindowsHelloForBusinessConfiguration".casefold():
-            from . import device_enrollment_windows_hello_for_business_configuration
+            from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
 
-            return device_enrollment_windows_hello_for_business_configuration.DeviceEnrollmentWindowsHelloForBusinessConfiguration()
+            return DeviceEnrollmentWindowsHelloForBusinessConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceInstallState".casefold():
-            from . import device_install_state
+            from .device_install_state import DeviceInstallState
 
-            return device_install_state.DeviceInstallState()
+            return DeviceInstallState()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceManagement".casefold():
-            from . import device_management
+            from .device_management import DeviceManagement
 
-            return device_management.DeviceManagement()
+            return DeviceManagement()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceManagementExchangeConnector".casefold():
-            from . import device_management_exchange_connector
+            from .device_management_exchange_connector import DeviceManagementExchangeConnector
 
-            return device_management_exchange_connector.DeviceManagementExchangeConnector()
+            return DeviceManagementExchangeConnector()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceManagementExportJob".casefold():
-            from . import device_management_export_job
+            from .device_management_export_job import DeviceManagementExportJob
 
-            return device_management_export_job.DeviceManagementExportJob()
+            return DeviceManagementExportJob()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceManagementPartner".casefold():
-            from . import device_management_partner
+            from .device_management_partner import DeviceManagementPartner
 
-            return device_management_partner.DeviceManagementPartner()
+            return DeviceManagementPartner()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceManagementReports".casefold():
-            from . import device_management_reports
+            from .device_management_reports import DeviceManagementReports
 
-            return device_management_reports.DeviceManagementReports()
+            return DeviceManagementReports()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceManagementTroubleshootingEvent".casefold():
-            from . import device_management_troubleshooting_event
+            from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
-            return device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent()
+            return DeviceManagementTroubleshootingEvent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directory".casefold():
-            from . import directory
+            from .directory import Directory
 
-            return directory.Directory()
+            return Directory()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directoryAudit".casefold():
-            from . import directory_audit
+            from .directory_audit import DirectoryAudit
 
-            return directory_audit.DirectoryAudit()
+            return DirectoryAudit()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directoryDefinition".casefold():
-            from . import directory_definition
+            from .directory_definition import DirectoryDefinition
 
-            return directory_definition.DirectoryDefinition()
+            return DirectoryDefinition()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directoryObject".casefold():
-            from . import directory_object
+            from .directory_object import DirectoryObject
 
-            return directory_object.DirectoryObject()
+            return DirectoryObject()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directoryObjectPartnerReference".casefold():
-            from . import directory_object_partner_reference
+            from .directory_object_partner_reference import DirectoryObjectPartnerReference
 
-            return directory_object_partner_reference.DirectoryObjectPartnerReference()
+            return DirectoryObjectPartnerReference()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directoryRole".casefold():
-            from . import directory_role
+            from .directory_role import DirectoryRole
 
-            return directory_role.DirectoryRole()
+            return DirectoryRole()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directoryRoleTemplate".casefold():
-            from . import directory_role_template
+            from .directory_role_template import DirectoryRoleTemplate
 
-            return directory_role_template.DirectoryRoleTemplate()
+            return DirectoryRoleTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.documentSetVersion".casefold():
-            from . import document_set_version
+            from .document_set_version import DocumentSetVersion
 
-            return document_set_version.DocumentSetVersion()
+            return DocumentSetVersion()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domain".casefold():
-            from . import domain
+            from .domain import Domain
 
-            return domain.Domain()
+            return Domain()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsCnameRecord".casefold():
-            from . import domain_dns_cname_record
+            from .domain_dns_cname_record import DomainDnsCnameRecord
 
-            return domain_dns_cname_record.DomainDnsCnameRecord()
+            return DomainDnsCnameRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsMxRecord".casefold():
-            from . import domain_dns_mx_record
+            from .domain_dns_mx_record import DomainDnsMxRecord
 
-            return domain_dns_mx_record.DomainDnsMxRecord()
+            return DomainDnsMxRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsRecord".casefold():
-            from . import domain_dns_record
+            from .domain_dns_record import DomainDnsRecord
 
-            return domain_dns_record.DomainDnsRecord()
+            return DomainDnsRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsSrvRecord".casefold():
-            from . import domain_dns_srv_record
+            from .domain_dns_srv_record import DomainDnsSrvRecord
 
-            return domain_dns_srv_record.DomainDnsSrvRecord()
+            return DomainDnsSrvRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsTxtRecord".casefold():
-            from . import domain_dns_txt_record
+            from .domain_dns_txt_record import DomainDnsTxtRecord
 
-            return domain_dns_txt_record.DomainDnsTxtRecord()
+            return DomainDnsTxtRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsUnavailableRecord".casefold():
-            from . import domain_dns_unavailable_record
+            from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
 
-            return domain_dns_unavailable_record.DomainDnsUnavailableRecord()
+            return DomainDnsUnavailableRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.drive".casefold():
-            from . import drive
+            from .drive import Drive
 
-            return drive.Drive()
+            return Drive()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveItem".casefold():
-            from . import drive_item
+            from .drive_item import DriveItem
 
-            return drive_item.DriveItem()
+            return DriveItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.driveItemVersion".casefold():
-            from . import drive_item_version
+            from .drive_item_version import DriveItemVersion
 
-            return drive_item_version.DriveItemVersion()
+            return DriveItemVersion()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.eBookInstallSummary".casefold():
-            from . import e_book_install_summary
+            from .e_book_install_summary import EBookInstallSummary
 
-            return e_book_install_summary.EBookInstallSummary()
+            return EBookInstallSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.edge".casefold():
-            from . import edge
+            from .edge import Edge
 
-            return edge.Edge()
+            return Edge()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.editionUpgradeConfiguration".casefold():
-            from . import edition_upgrade_configuration
+            from .edition_upgrade_configuration import EditionUpgradeConfiguration
 
-            return edition_upgrade_configuration.EditionUpgradeConfiguration()
+            return EditionUpgradeConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignment".casefold():
-            from . import education_assignment
+            from .education_assignment import EducationAssignment
 
-            return education_assignment.EducationAssignment()
+            return EducationAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentDefaults".casefold():
-            from . import education_assignment_defaults
+            from .education_assignment_defaults import EducationAssignmentDefaults
 
-            return education_assignment_defaults.EducationAssignmentDefaults()
+            return EducationAssignmentDefaults()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentResource".casefold():
-            from . import education_assignment_resource
+            from .education_assignment_resource import EducationAssignmentResource
 
-            return education_assignment_resource.EducationAssignmentResource()
+            return EducationAssignmentResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentSettings".casefold():
-            from . import education_assignment_settings
+            from .education_assignment_settings import EducationAssignmentSettings
 
-            return education_assignment_settings.EducationAssignmentSettings()
+            return EducationAssignmentSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationCategory".casefold():
-            from . import education_category
+            from .education_category import EducationCategory
 
-            return education_category.EducationCategory()
+            return EducationCategory()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationClass".casefold():
-            from . import education_class
+            from .education_class import EducationClass
 
-            return education_class.EducationClass()
+            return EducationClass()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationFeedbackOutcome".casefold():
-            from . import education_feedback_outcome
+            from .education_feedback_outcome import EducationFeedbackOutcome
 
-            return education_feedback_outcome.EducationFeedbackOutcome()
+            return EducationFeedbackOutcome()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationFeedbackResourceOutcome".casefold():
-            from . import education_feedback_resource_outcome
+            from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
 
-            return education_feedback_resource_outcome.EducationFeedbackResourceOutcome()
+            return EducationFeedbackResourceOutcome()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationOrganization".casefold():
-            from . import education_organization
+            from .education_organization import EducationOrganization
 
-            return education_organization.EducationOrganization()
+            return EducationOrganization()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationOutcome".casefold():
-            from . import education_outcome
+            from .education_outcome import EducationOutcome
 
-            return education_outcome.EducationOutcome()
+            return EducationOutcome()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationPointsOutcome".casefold():
-            from . import education_points_outcome
+            from .education_points_outcome import EducationPointsOutcome
 
-            return education_points_outcome.EducationPointsOutcome()
+            return EducationPointsOutcome()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationRubric".casefold():
-            from . import education_rubric
+            from .education_rubric import EducationRubric
 
-            return education_rubric.EducationRubric()
+            return EducationRubric()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationRubricOutcome".casefold():
-            from . import education_rubric_outcome
+            from .education_rubric_outcome import EducationRubricOutcome
 
-            return education_rubric_outcome.EducationRubricOutcome()
+            return EducationRubricOutcome()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationSchool".casefold():
-            from . import education_school
+            from .education_school import EducationSchool
 
-            return education_school.EducationSchool()
+            return EducationSchool()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationSubmission".casefold():
-            from . import education_submission
+            from .education_submission import EducationSubmission
 
-            return education_submission.EducationSubmission()
+            return EducationSubmission()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationSubmissionResource".casefold():
-            from . import education_submission_resource
+            from .education_submission_resource import EducationSubmissionResource
 
-            return education_submission_resource.EducationSubmissionResource()
+            return EducationSubmissionResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationUser".casefold():
-            from . import education_user
+            from .education_user import EducationUser
 
-            return education_user.EducationUser()
+            return EducationUser()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailAuthenticationMethod".casefold():
-            from . import email_authentication_method
+            from .email_authentication_method import EmailAuthenticationMethod
 
-            return email_authentication_method.EmailAuthenticationMethod()
+            return EmailAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailAuthenticationMethodConfiguration".casefold():
-            from . import email_authentication_method_configuration
+            from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
 
-            return email_authentication_method_configuration.EmailAuthenticationMethodConfiguration()
+            return EmailAuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailFileAssessmentRequest".casefold():
-            from . import email_file_assessment_request
+            from .email_file_assessment_request import EmailFileAssessmentRequest
 
-            return email_file_assessment_request.EmailFileAssessmentRequest()
+            return EmailFileAssessmentRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.endpoint".casefold():
-            from . import endpoint
+            from .endpoint import Endpoint
 
-            return endpoint.Endpoint()
+            return Endpoint()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.enrollmentConfigurationAssignment".casefold():
-            from . import enrollment_configuration_assignment
+            from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
 
-            return enrollment_configuration_assignment.EnrollmentConfigurationAssignment()
+            return EnrollmentConfigurationAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.enrollmentTroubleshootingEvent".casefold():
-            from . import enrollment_troubleshooting_event
+            from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
 
-            return enrollment_troubleshooting_event.EnrollmentTroubleshootingEvent()
+            return EnrollmentTroubleshootingEvent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.enterpriseCodeSigningCertificate".casefold():
-            from . import enterprise_code_signing_certificate
+            from .enterprise_code_signing_certificate import EnterpriseCodeSigningCertificate
 
-            return enterprise_code_signing_certificate.EnterpriseCodeSigningCertificate()
+            return EnterpriseCodeSigningCertificate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.entitlementManagement".casefold():
-            from . import entitlement_management
+            from .entitlement_management import EntitlementManagement
 
-            return entitlement_management.EntitlementManagement()
+            return EntitlementManagement()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.entitlementManagementSettings".casefold():
-            from . import entitlement_management_settings
+            from .entitlement_management_settings import EntitlementManagementSettings
 
-            return entitlement_management_settings.EntitlementManagementSettings()
+            return EntitlementManagementSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.event".casefold():
-            from . import event
+            from .event import Event
 
-            return event.Event()
+            return Event()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessage".casefold():
-            from . import event_message
+            from .event_message import EventMessage
 
-            return event_message.EventMessage()
+            return EventMessage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessageRequest".casefold():
-            from . import event_message_request
+            from .event_message_request import EventMessageRequest
 
-            return event_message_request.EventMessageRequest()
+            return EventMessageRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.eventMessageResponse".casefold():
-            from . import event_message_response
+            from .event_message_response import EventMessageResponse
 
-            return event_message_response.EventMessageResponse()
+            return EventMessageResponse()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.extension".casefold():
-            from . import extension
+            from .extension import Extension
 
-            return extension.Extension()
+            return Extension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.extensionProperty".casefold():
-            from . import extension_property
+            from .extension_property import ExtensionProperty
 
-            return extension_property.ExtensionProperty()
+            return ExtensionProperty()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.connectionOperation".casefold():
-            from .external_connectors import connection_operation
+            from .external_connectors.connection_operation import ConnectionOperation
 
-            return connection_operation.ConnectionOperation()
+            return ConnectionOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.externalActivity".casefold():
-            from .external_connectors import external_activity
+            from .external_connectors.external_activity import ExternalActivity
 
-            return external_activity.ExternalActivity()
+            return ExternalActivity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.externalActivityResult".casefold():
-            from .external_connectors import external_activity_result
+            from .external_connectors.external_activity_result import ExternalActivityResult
 
-            return external_activity_result.ExternalActivityResult()
+            return ExternalActivityResult()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.externalConnection".casefold():
-            from .external_connectors import external_connection
+            from .external_connectors.external_connection import ExternalConnection
 
-            return external_connection.ExternalConnection()
+            return ExternalConnection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.externalGroup".casefold():
-            from .external_connectors import external_group
+            from .external_connectors.external_group import ExternalGroup
 
-            return external_group.ExternalGroup()
+            return ExternalGroup()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.externalItem".casefold():
-            from .external_connectors import external_item
+            from .external_connectors.external_item import ExternalItem
 
-            return external_item.ExternalItem()
+            return ExternalItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.identity".casefold():
-            from .external_connectors import identity
+            from .external_connectors.identity import Identity
 
-            return identity.Identity()
+            return Identity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.schema".casefold():
-            from .external_connectors import schema
+            from .external_connectors.schema import Schema
 
-            return schema.Schema()
+            return Schema()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalDomainName".casefold():
-            from . import external_domain_name
+            from .external_domain_name import ExternalDomainName
 
-            return external_domain_name.ExternalDomainName()
+            return ExternalDomainName()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.featureRolloutPolicy".casefold():
-            from . import feature_rollout_policy
+            from .feature_rollout_policy import FeatureRolloutPolicy
 
-            return feature_rollout_policy.FeatureRolloutPolicy()
+            return FeatureRolloutPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.federatedIdentityCredential".casefold():
-            from . import federated_identity_credential
+            from .federated_identity_credential import FederatedIdentityCredential
 
-            return federated_identity_credential.FederatedIdentityCredential()
+            return FederatedIdentityCredential()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2AuthenticationMethod".casefold():
-            from . import fido2_authentication_method
+            from .fido2_authentication_method import Fido2AuthenticationMethod
 
-            return fido2_authentication_method.Fido2AuthenticationMethod()
+            return Fido2AuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2AuthenticationMethodConfiguration".casefold():
-            from . import fido2_authentication_method_configuration
+            from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
 
-            return fido2_authentication_method_configuration.Fido2AuthenticationMethodConfiguration()
+            return Fido2AuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2CombinationConfiguration".casefold():
-            from . import fido2_combination_configuration
+            from .fido2_combination_configuration import Fido2CombinationConfiguration
 
-            return fido2_combination_configuration.Fido2CombinationConfiguration()
+            return Fido2CombinationConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fieldValueSet".casefold():
-            from . import field_value_set
+            from .field_value_set import FieldValueSet
 
-            return field_value_set.FieldValueSet()
+            return FieldValueSet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fileAssessmentRequest".casefold():
-            from . import file_assessment_request
+            from .file_assessment_request import FileAssessmentRequest
 
-            return file_assessment_request.FileAssessmentRequest()
+            return FileAssessmentRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fileAttachment".casefold():
-            from . import file_attachment
+            from .file_attachment import FileAttachment
 
-            return file_attachment.FileAttachment()
+            return FileAttachment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.filterOperatorSchema".casefold():
-            from . import filter_operator_schema
+            from .filter_operator_schema import FilterOperatorSchema
 
-            return filter_operator_schema.FilterOperatorSchema()
+            return FilterOperatorSchema()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.governanceInsight".casefold():
+            from .governance_insight import GovernanceInsight
+
+            return GovernanceInsight()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.group".casefold():
-            from . import group
-            from .term_store import group
+            from .group import Group
+            from .term_store.group import Group
 
-            return group.Group()
+            return Group()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupLifecyclePolicy".casefold():
-            from . import group_lifecycle_policy
+            from .group_lifecycle_policy import GroupLifecyclePolicy
 
-            return group_lifecycle_policy.GroupLifecyclePolicy()
+            return GroupLifecyclePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupSetting".casefold():
-            from . import group_setting
+            from .group_setting import GroupSetting
 
-            return group_setting.GroupSetting()
+            return GroupSetting()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupSettingTemplate".casefold():
-            from . import group_setting_template
+            from .group_setting_template import GroupSettingTemplate
 
-            return group_setting_template.GroupSettingTemplate()
+            return GroupSettingTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.homeRealmDiscoveryPolicy".casefold():
-            from . import home_realm_discovery_policy
+            from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
 
-            return home_realm_discovery_policy.HomeRealmDiscoveryPolicy()
+            return HomeRealmDiscoveryPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityApiConnector".casefold():
-            from . import identity_api_connector
+            from .identity_api_connector import IdentityApiConnector
 
-            return identity_api_connector.IdentityApiConnector()
+            return IdentityApiConnector()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityBuiltInUserFlowAttribute".casefold():
-            from . import identity_built_in_user_flow_attribute
+            from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
 
-            return identity_built_in_user_flow_attribute.IdentityBuiltInUserFlowAttribute()
+            return IdentityBuiltInUserFlowAttribute()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityContainer".casefold():
-            from . import identity_container
+            from .identity_container import IdentityContainer
 
-            return identity_container.IdentityContainer()
+            return IdentityContainer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityCustomUserFlowAttribute".casefold():
-            from . import identity_custom_user_flow_attribute
+            from .identity_custom_user_flow_attribute import IdentityCustomUserFlowAttribute
 
-            return identity_custom_user_flow_attribute.IdentityCustomUserFlowAttribute()
+            return IdentityCustomUserFlowAttribute()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtension".casefold():
+            from .identity_governance.custom_task_extension import CustomTaskExtension
+
+            return CustomTaskExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.lifecycleManagementSettings".casefold():
+            from .identity_governance.lifecycle_management_settings import LifecycleManagementSettings
+
+            return LifecycleManagementSettings()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.lifecycleWorkflowsContainer".casefold():
+            from .identity_governance.lifecycle_workflows_container import LifecycleWorkflowsContainer
+
+            return LifecycleWorkflowsContainer()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.run".casefold():
+            from .identity_governance.run import Run
+
+            return Run()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.task".casefold():
+            from .identity_governance.task import Task
+
+            return Task()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.taskDefinition".casefold():
+            from .identity_governance.task_definition import TaskDefinition
+
+            return TaskDefinition()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.taskProcessingResult".casefold():
+            from .identity_governance.task_processing_result import TaskProcessingResult
+
+            return TaskProcessingResult()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.taskReport".casefold():
+            from .identity_governance.task_report import TaskReport
+
+            return TaskReport()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.userProcessingResult".casefold():
+            from .identity_governance.user_processing_result import UserProcessingResult
+
+            return UserProcessingResult()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.workflowTemplate".casefold():
+            from .identity_governance.workflow_template import WorkflowTemplate
+
+            return WorkflowTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityProvider".casefold():
-            from . import identity_provider
+            from .identity_provider import IdentityProvider
 
-            return identity_provider.IdentityProvider()
+            return IdentityProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityProviderBase".casefold():
-            from . import identity_provider_base
+            from .identity_provider_base import IdentityProviderBase
 
-            return identity_provider_base.IdentityProviderBase()
+            return IdentityProviderBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identitySecurityDefaultsEnforcementPolicy".casefold():
-            from . import identity_security_defaults_enforcement_policy
+            from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
 
-            return identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy()
+            return IdentitySecurityDefaultsEnforcementPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityUserFlow".casefold():
-            from . import identity_user_flow
+            from .identity_user_flow import IdentityUserFlow
 
-            return identity_user_flow.IdentityUserFlow()
+            return IdentityUserFlow()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityUserFlowAttribute".casefold():
-            from . import identity_user_flow_attribute
+            from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
-            return identity_user_flow_attribute.IdentityUserFlowAttribute()
+            return IdentityUserFlowAttribute()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityUserFlowAttributeAssignment".casefold():
-            from . import identity_user_flow_attribute_assignment
+            from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
 
-            return identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment()
+            return IdentityUserFlowAttributeAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.importedWindowsAutopilotDeviceIdentity".casefold():
-            from . import imported_windows_autopilot_device_identity
+            from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
 
-            return imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity()
+            return ImportedWindowsAutopilotDeviceIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.importedWindowsAutopilotDeviceIdentityUpload".casefold():
-            from . import imported_windows_autopilot_device_identity_upload
+            from .imported_windows_autopilot_device_identity_upload import ImportedWindowsAutopilotDeviceIdentityUpload
 
-            return imported_windows_autopilot_device_identity_upload.ImportedWindowsAutopilotDeviceIdentityUpload()
+            return ImportedWindowsAutopilotDeviceIdentityUpload()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.inferenceClassification".casefold():
-            from . import inference_classification
+            from .inference_classification import InferenceClassification
 
-            return inference_classification.InferenceClassification()
+            return InferenceClassification()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.inferenceClassificationOverride".casefold():
-            from . import inference_classification_override
+            from .inference_classification_override import InferenceClassificationOverride
 
-            return inference_classification_override.InferenceClassificationOverride()
+            return InferenceClassificationOverride()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.internalDomainFederation".casefold():
-            from . import internal_domain_federation
+            from .internal_domain_federation import InternalDomainFederation
 
-            return internal_domain_federation.InternalDomainFederation()
+            return InternalDomainFederation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.internetExplorerMode".casefold():
-            from . import internet_explorer_mode
+            from .internet_explorer_mode import InternetExplorerMode
 
-            return internet_explorer_mode.InternetExplorerMode()
+            return InternetExplorerMode()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.invitation".casefold():
-            from . import invitation
+            from .invitation import Invitation
 
-            return invitation.Invitation()
+            return Invitation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.inviteParticipantsOperation".casefold():
-            from . import invite_participants_operation
+            from .invite_participants_operation import InviteParticipantsOperation
 
-            return invite_participants_operation.InviteParticipantsOperation()
+            return InviteParticipantsOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosCertificateProfile".casefold():
-            from . import ios_certificate_profile
+            from .ios_certificate_profile import IosCertificateProfile
 
-            return ios_certificate_profile.IosCertificateProfile()
+            return IosCertificateProfile()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosCompliancePolicy".casefold():
-            from . import ios_compliance_policy
+            from .ios_compliance_policy import IosCompliancePolicy
 
-            return ios_compliance_policy.IosCompliancePolicy()
+            return IosCompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosCustomConfiguration".casefold():
-            from . import ios_custom_configuration
+            from .ios_custom_configuration import IosCustomConfiguration
 
-            return ios_custom_configuration.IosCustomConfiguration()
+            return IosCustomConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosDeviceFeaturesConfiguration".casefold():
-            from . import ios_device_features_configuration
+            from .ios_device_features_configuration import IosDeviceFeaturesConfiguration
 
-            return ios_device_features_configuration.IosDeviceFeaturesConfiguration()
+            return IosDeviceFeaturesConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosGeneralDeviceConfiguration".casefold():
-            from . import ios_general_device_configuration
+            from .ios_general_device_configuration import IosGeneralDeviceConfiguration
 
-            return ios_general_device_configuration.IosGeneralDeviceConfiguration()
+            return IosGeneralDeviceConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosiPadOSWebClip".casefold():
-            from . import iosi_pad_o_s_web_clip
+            from .iosi_pad_o_s_web_clip import IosiPadOSWebClip
 
-            return iosi_pad_o_s_web_clip.IosiPadOSWebClip()
+            return IosiPadOSWebClip()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosLobApp".casefold():
-            from . import ios_lob_app
+            from .ios_lob_app import IosLobApp
 
-            return ios_lob_app.IosLobApp()
+            return IosLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosLobAppProvisioningConfigurationAssignment".casefold():
-            from . import ios_lob_app_provisioning_configuration_assignment
+            from .ios_lob_app_provisioning_configuration_assignment import IosLobAppProvisioningConfigurationAssignment
 
-            return ios_lob_app_provisioning_configuration_assignment.IosLobAppProvisioningConfigurationAssignment()
+            return IosLobAppProvisioningConfigurationAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosManagedAppProtection".casefold():
-            from . import ios_managed_app_protection
+            from .ios_managed_app_protection import IosManagedAppProtection
 
-            return ios_managed_app_protection.IosManagedAppProtection()
+            return IosManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosManagedAppRegistration".casefold():
-            from . import ios_managed_app_registration
+            from .ios_managed_app_registration import IosManagedAppRegistration
 
-            return ios_managed_app_registration.IosManagedAppRegistration()
+            return IosManagedAppRegistration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosMobileAppConfiguration".casefold():
-            from . import ios_mobile_app_configuration
+            from .ios_mobile_app_configuration import IosMobileAppConfiguration
 
-            return ios_mobile_app_configuration.IosMobileAppConfiguration()
+            return IosMobileAppConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosStoreApp".casefold():
-            from . import ios_store_app
+            from .ios_store_app import IosStoreApp
 
-            return ios_store_app.IosStoreApp()
+            return IosStoreApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosUpdateConfiguration".casefold():
-            from . import ios_update_configuration
+            from .ios_update_configuration import IosUpdateConfiguration
 
-            return ios_update_configuration.IosUpdateConfiguration()
+            return IosUpdateConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosUpdateDeviceStatus".casefold():
-            from . import ios_update_device_status
+            from .ios_update_device_status import IosUpdateDeviceStatus
 
-            return ios_update_device_status.IosUpdateDeviceStatus()
+            return IosUpdateDeviceStatus()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosVppApp".casefold():
-            from . import ios_vpp_app
+            from .ios_vpp_app import IosVppApp
 
-            return ios_vpp_app.IosVppApp()
+            return IosVppApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosVppEBook".casefold():
-            from . import ios_vpp_e_book
+            from .ios_vpp_e_book import IosVppEBook
 
-            return ios_vpp_e_book.IosVppEBook()
+            return IosVppEBook()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosVppEBookAssignment".casefold():
-            from . import ios_vpp_e_book_assignment
+            from .ios_vpp_e_book_assignment import IosVppEBookAssignment
 
-            return ios_vpp_e_book_assignment.IosVppEBookAssignment()
+            return IosVppEBookAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.ipNamedLocation".casefold():
-            from . import ip_named_location
+            from .ip_named_location import IpNamedLocation
 
-            return ip_named_location.IpNamedLocation()
+            return IpNamedLocation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.itemActivity".casefold():
-            from . import item_activity
+            from .item_activity import ItemActivity
 
-            return item_activity.ItemActivity()
+            return ItemActivity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.itemActivityStat".casefold():
-            from . import item_activity_stat
+            from .item_activity_stat import ItemActivityStat
 
-            return item_activity_stat.ItemActivityStat()
+            return ItemActivityStat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.itemAnalytics".casefold():
-            from . import item_analytics
+            from .item_analytics import ItemAnalytics
 
-            return item_analytics.ItemAnalytics()
+            return ItemAnalytics()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.itemAttachment".casefold():
-            from . import item_attachment
+            from .item_attachment import ItemAttachment
 
-            return item_attachment.ItemAttachment()
+            return ItemAttachment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.learningContent".casefold():
-            from . import learning_content
+            from .learning_content import LearningContent
 
-            return learning_content.LearningContent()
+            return LearningContent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.learningProvider".casefold():
-            from . import learning_provider
+            from .learning_provider import LearningProvider
 
-            return learning_provider.LearningProvider()
+            return LearningProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.licenseDetails".casefold():
-            from . import license_details
+            from .license_details import LicenseDetails
 
-            return license_details.LicenseDetails()
+            return LicenseDetails()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.linkedResource".casefold():
-            from . import linked_resource
+            from .linked_resource import LinkedResource
 
-            return linked_resource.LinkedResource()
+            return LinkedResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.list".casefold():
-            from . import list
+            from .list_ import List_
 
-            return list.List()
+            return List_()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.listItem".casefold():
-            from . import list_item
+            from .list_item import ListItem
 
-            return list_item.ListItem()
+            return ListItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.listItemVersion".casefold():
-            from . import list_item_version
+            from .list_item_version import ListItemVersion
 
-            return list_item_version.ListItemVersion()
+            return ListItemVersion()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.localizedNotificationMessage".casefold():
-            from . import localized_notification_message
+            from .localized_notification_message import LocalizedNotificationMessage
 
-            return localized_notification_message.LocalizedNotificationMessage()
+            return LocalizedNotificationMessage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.longRunningOperation".casefold():
-            from . import long_running_operation
+            from .long_running_operation import LongRunningOperation
 
-            return long_running_operation.LongRunningOperation()
+            return LongRunningOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSCompliancePolicy".casefold():
-            from . import mac_o_s_compliance_policy
+            from .mac_o_s_compliance_policy import MacOSCompliancePolicy
 
-            return mac_o_s_compliance_policy.MacOSCompliancePolicy()
+            return MacOSCompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSCustomConfiguration".casefold():
-            from . import mac_o_s_custom_configuration
+            from .mac_o_s_custom_configuration import MacOSCustomConfiguration
 
-            return mac_o_s_custom_configuration.MacOSCustomConfiguration()
+            return MacOSCustomConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSDeviceFeaturesConfiguration".casefold():
-            from . import mac_o_s_device_features_configuration
+            from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
 
-            return mac_o_s_device_features_configuration.MacOSDeviceFeaturesConfiguration()
+            return MacOSDeviceFeaturesConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSGeneralDeviceConfiguration".casefold():
-            from . import mac_o_s_general_device_configuration
+            from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
 
-            return mac_o_s_general_device_configuration.MacOSGeneralDeviceConfiguration()
+            return MacOSGeneralDeviceConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSLobApp".casefold():
-            from . import mac_o_s_lob_app
+            from .mac_o_s_lob_app import MacOSLobApp
 
-            return mac_o_s_lob_app.MacOSLobApp()
+            return MacOSLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSMicrosoftEdgeApp".casefold():
-            from . import mac_o_s_microsoft_edge_app
+            from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
 
-            return mac_o_s_microsoft_edge_app.MacOSMicrosoftEdgeApp()
+            return MacOSMicrosoftEdgeApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSOfficeSuiteApp".casefold():
-            from . import mac_o_s_office_suite_app
+            from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
 
-            return mac_o_s_office_suite_app.MacOSOfficeSuiteApp()
+            return MacOSOfficeSuiteApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailAssessmentRequest".casefold():
-            from . import mail_assessment_request
+            from .mail_assessment_request import MailAssessmentRequest
 
-            return mail_assessment_request.MailAssessmentRequest()
+            return MailAssessmentRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailFolder".casefold():
-            from . import mail_folder
+            from .mail_folder import MailFolder
 
-            return mail_folder.MailFolder()
+            return MailFolder()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mailSearchFolder".casefold():
-            from . import mail_search_folder
+            from .mail_search_folder import MailSearchFolder
 
-            return mail_search_folder.MailSearchFolder()
+            return MailSearchFolder()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAndroidLobApp".casefold():
-            from . import managed_android_lob_app
+            from .managed_android_lob_app import ManagedAndroidLobApp
 
-            return managed_android_lob_app.ManagedAndroidLobApp()
+            return ManagedAndroidLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAndroidStoreApp".casefold():
-            from . import managed_android_store_app
+            from .managed_android_store_app import ManagedAndroidStoreApp
 
-            return managed_android_store_app.ManagedAndroidStoreApp()
+            return ManagedAndroidStoreApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedApp".casefold():
-            from . import managed_app
+            from .managed_app import ManagedApp
 
-            return managed_app.ManagedApp()
+            return ManagedApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppConfiguration".casefold():
-            from . import managed_app_configuration
+            from .managed_app_configuration import ManagedAppConfiguration
 
-            return managed_app_configuration.ManagedAppConfiguration()
+            return ManagedAppConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppOperation".casefold():
-            from . import managed_app_operation
+            from .managed_app_operation import ManagedAppOperation
 
-            return managed_app_operation.ManagedAppOperation()
+            return ManagedAppOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppPolicy".casefold():
-            from . import managed_app_policy
+            from .managed_app_policy import ManagedAppPolicy
 
-            return managed_app_policy.ManagedAppPolicy()
+            return ManagedAppPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppPolicyDeploymentSummary".casefold():
-            from . import managed_app_policy_deployment_summary
+            from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
 
-            return managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary()
+            return ManagedAppPolicyDeploymentSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppProtection".casefold():
-            from . import managed_app_protection
+            from .managed_app_protection import ManagedAppProtection
 
-            return managed_app_protection.ManagedAppProtection()
+            return ManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppRegistration".casefold():
-            from . import managed_app_registration
+            from .managed_app_registration import ManagedAppRegistration
 
-            return managed_app_registration.ManagedAppRegistration()
+            return ManagedAppRegistration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppStatus".casefold():
-            from . import managed_app_status
+            from .managed_app_status import ManagedAppStatus
 
-            return managed_app_status.ManagedAppStatus()
+            return ManagedAppStatus()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppStatusRaw".casefold():
-            from . import managed_app_status_raw
+            from .managed_app_status_raw import ManagedAppStatusRaw
 
-            return managed_app_status_raw.ManagedAppStatusRaw()
+            return ManagedAppStatusRaw()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedDevice".casefold():
-            from . import managed_device
+            from .managed_device import ManagedDevice
 
-            return managed_device.ManagedDevice()
+            return ManagedDevice()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedDeviceMobileAppConfiguration".casefold():
-            from . import managed_device_mobile_app_configuration
+            from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
 
-            return managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration()
+            return ManagedDeviceMobileAppConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedDeviceMobileAppConfigurationAssignment".casefold():
-            from . import managed_device_mobile_app_configuration_assignment
+            from .managed_device_mobile_app_configuration_assignment import ManagedDeviceMobileAppConfigurationAssignment
 
-            return managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment()
+            return ManagedDeviceMobileAppConfigurationAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedDeviceMobileAppConfigurationDeviceStatus".casefold():
-            from . import managed_device_mobile_app_configuration_device_status
+            from .managed_device_mobile_app_configuration_device_status import ManagedDeviceMobileAppConfigurationDeviceStatus
 
-            return managed_device_mobile_app_configuration_device_status.ManagedDeviceMobileAppConfigurationDeviceStatus()
+            return ManagedDeviceMobileAppConfigurationDeviceStatus()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedDeviceMobileAppConfigurationDeviceSummary".casefold():
-            from . import managed_device_mobile_app_configuration_device_summary
+            from .managed_device_mobile_app_configuration_device_summary import ManagedDeviceMobileAppConfigurationDeviceSummary
 
-            return managed_device_mobile_app_configuration_device_summary.ManagedDeviceMobileAppConfigurationDeviceSummary()
+            return ManagedDeviceMobileAppConfigurationDeviceSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedDeviceMobileAppConfigurationUserStatus".casefold():
-            from . import managed_device_mobile_app_configuration_user_status
+            from .managed_device_mobile_app_configuration_user_status import ManagedDeviceMobileAppConfigurationUserStatus
 
-            return managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus()
+            return ManagedDeviceMobileAppConfigurationUserStatus()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedDeviceMobileAppConfigurationUserSummary".casefold():
-            from . import managed_device_mobile_app_configuration_user_summary
+            from .managed_device_mobile_app_configuration_user_summary import ManagedDeviceMobileAppConfigurationUserSummary
 
-            return managed_device_mobile_app_configuration_user_summary.ManagedDeviceMobileAppConfigurationUserSummary()
+            return ManagedDeviceMobileAppConfigurationUserSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedDeviceOverview".casefold():
-            from . import managed_device_overview
+            from .managed_device_overview import ManagedDeviceOverview
 
-            return managed_device_overview.ManagedDeviceOverview()
+            return ManagedDeviceOverview()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedEBook".casefold():
-            from . import managed_e_book
+            from .managed_e_book import ManagedEBook
 
-            return managed_e_book.ManagedEBook()
+            return ManagedEBook()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedEBookAssignment".casefold():
-            from . import managed_e_book_assignment
+            from .managed_e_book_assignment import ManagedEBookAssignment
 
-            return managed_e_book_assignment.ManagedEBookAssignment()
+            return ManagedEBookAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedIOSLobApp".casefold():
-            from . import managed_i_o_s_lob_app
+            from .managed_i_o_s_lob_app import ManagedIOSLobApp
 
-            return managed_i_o_s_lob_app.ManagedIOSLobApp()
+            return ManagedIOSLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedIOSStoreApp".casefold():
-            from . import managed_i_o_s_store_app
+            from .managed_i_o_s_store_app import ManagedIOSStoreApp
 
-            return managed_i_o_s_store_app.ManagedIOSStoreApp()
+            return ManagedIOSStoreApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedMobileApp".casefold():
-            from . import managed_mobile_app
+            from .managed_mobile_app import ManagedMobileApp
 
-            return managed_mobile_app.ManagedMobileApp()
+            return ManagedMobileApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedMobileLobApp".casefold():
-            from . import managed_mobile_lob_app
+            from .managed_mobile_lob_app import ManagedMobileLobApp
 
-            return managed_mobile_lob_app.ManagedMobileLobApp()
+            return ManagedMobileLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mdmWindowsInformationProtectionPolicy".casefold():
-            from . import mdm_windows_information_protection_policy
+            from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
 
-            return mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy()
+            return MdmWindowsInformationProtectionPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.meetingAttendanceReport".casefold():
-            from . import meeting_attendance_report
+            from .meeting_attendance_report import MeetingAttendanceReport
 
-            return meeting_attendance_report.MeetingAttendanceReport()
+            return MeetingAttendanceReport()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.message".casefold():
-            from . import message
+            from .message import Message
 
-            return message.Message()
+            return Message()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.messageRule".casefold():
-            from . import message_rule
+            from .message_rule import MessageRule
 
-            return message_rule.MessageRule()
+            return MessageRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAccountUserConversationMember".casefold():
-            from . import microsoft_account_user_conversation_member
+            from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
 
-            return microsoft_account_user_conversation_member.MicrosoftAccountUserConversationMember()
+            return MicrosoftAccountUserConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethod".casefold():
-            from . import microsoft_authenticator_authentication_method
+            from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
 
-            return microsoft_authenticator_authentication_method.MicrosoftAuthenticatorAuthenticationMethod()
+            return MicrosoftAuthenticatorAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration".casefold():
-            from . import microsoft_authenticator_authentication_method_configuration
+            from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
 
-            return microsoft_authenticator_authentication_method_configuration.MicrosoftAuthenticatorAuthenticationMethodConfiguration()
+            return MicrosoftAuthenticatorAuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodTarget".casefold():
-            from . import microsoft_authenticator_authentication_method_target
+            from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
 
-            return microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget()
+            return MicrosoftAuthenticatorAuthenticationMethodTarget()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftStoreForBusinessApp".casefold():
-            from . import microsoft_store_for_business_app
+            from .microsoft_store_for_business_app import MicrosoftStoreForBusinessApp
 
-            return microsoft_store_for_business_app.MicrosoftStoreForBusinessApp()
+            return MicrosoftStoreForBusinessApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileApp".casefold():
-            from . import mobile_app
+            from .mobile_app import MobileApp
 
-            return mobile_app.MobileApp()
+            return MobileApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileAppAssignment".casefold():
-            from . import mobile_app_assignment
+            from .mobile_app_assignment import MobileAppAssignment
 
-            return mobile_app_assignment.MobileAppAssignment()
+            return MobileAppAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileAppCategory".casefold():
-            from . import mobile_app_category
+            from .mobile_app_category import MobileAppCategory
 
-            return mobile_app_category.MobileAppCategory()
+            return MobileAppCategory()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileAppContent".casefold():
-            from . import mobile_app_content
+            from .mobile_app_content import MobileAppContent
 
-            return mobile_app_content.MobileAppContent()
+            return MobileAppContent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileAppContentFile".casefold():
-            from . import mobile_app_content_file
+            from .mobile_app_content_file import MobileAppContentFile
 
-            return mobile_app_content_file.MobileAppContentFile()
+            return MobileAppContentFile()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileContainedApp".casefold():
-            from . import mobile_contained_app
+            from .mobile_contained_app import MobileContainedApp
 
-            return mobile_contained_app.MobileContainedApp()
+            return MobileContainedApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileLobApp".casefold():
-            from . import mobile_lob_app
+            from .mobile_lob_app import MobileLobApp
 
-            return mobile_lob_app.MobileLobApp()
+            return MobileLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileThreatDefenseConnector".casefold():
-            from . import mobile_threat_defense_connector
+            from .mobile_threat_defense_connector import MobileThreatDefenseConnector
 
-            return mobile_threat_defense_connector.MobileThreatDefenseConnector()
+            return MobileThreatDefenseConnector()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiValueLegacyExtendedProperty".casefold():
-            from . import multi_value_legacy_extended_property
+            from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
 
-            return multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty()
+            return MultiValueLegacyExtendedProperty()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.muteParticipantOperation".casefold():
-            from . import mute_participant_operation
+            from .mute_participant_operation import MuteParticipantOperation
 
-            return mute_participant_operation.MuteParticipantOperation()
+            return MuteParticipantOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.namedLocation".casefold():
-            from . import named_location
+            from .named_location import NamedLocation
 
-            return named_location.NamedLocation()
+            return NamedLocation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.notebook".casefold():
-            from . import notebook
+            from .notebook import Notebook
 
-            return notebook.Notebook()
+            return Notebook()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.notificationMessageTemplate".casefold():
-            from . import notification_message_template
+            from .notification_message_template import NotificationMessageTemplate
 
-            return notification_message_template.NotificationMessageTemplate()
+            return NotificationMessageTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.oAuth2PermissionGrant".casefold():
-            from . import o_auth2_permission_grant
+            from .o_auth2_permission_grant import OAuth2PermissionGrant
 
-            return o_auth2_permission_grant.OAuth2PermissionGrant()
+            return OAuth2PermissionGrant()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.offerShiftRequest".casefold():
-            from . import offer_shift_request
+            from .offer_shift_request import OfferShiftRequest
 
-            return offer_shift_request.OfferShiftRequest()
+            return OfferShiftRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.officeGraphInsights".casefold():
-            from . import office_graph_insights
+            from .office_graph_insights import OfficeGraphInsights
 
-            return office_graph_insights.OfficeGraphInsights()
+            return OfficeGraphInsights()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenote".casefold():
-            from . import onenote
+            from .onenote import Onenote
 
-            return onenote.Onenote()
+            return Onenote()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteEntityBaseModel".casefold():
-            from . import onenote_entity_base_model
+            from .onenote_entity_base_model import OnenoteEntityBaseModel
 
-            return onenote_entity_base_model.OnenoteEntityBaseModel()
+            return OnenoteEntityBaseModel()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteEntityHierarchyModel".casefold():
-            from . import onenote_entity_hierarchy_model
+            from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
 
-            return onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel()
+            return OnenoteEntityHierarchyModel()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteEntitySchemaObjectModel".casefold():
-            from . import onenote_entity_schema_object_model
+            from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
 
-            return onenote_entity_schema_object_model.OnenoteEntitySchemaObjectModel()
+            return OnenoteEntitySchemaObjectModel()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteOperation".casefold():
-            from . import onenote_operation
+            from .onenote_operation import OnenoteOperation
 
-            return onenote_operation.OnenoteOperation()
+            return OnenoteOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenotePage".casefold():
-            from . import onenote_page
+            from .onenote_page import OnenotePage
 
-            return onenote_page.OnenotePage()
+            return OnenotePage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteResource".casefold():
-            from . import onenote_resource
+            from .onenote_resource import OnenoteResource
 
-            return onenote_resource.OnenoteResource()
+            return OnenoteResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteSection".casefold():
-            from . import onenote_section
+            from .onenote_section import OnenoteSection
 
-            return onenote_section.OnenoteSection()
+            return OnenoteSection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onlineMeeting".casefold():
-            from . import online_meeting
+            from .online_meeting import OnlineMeeting
 
-            return online_meeting.OnlineMeeting()
+            return OnlineMeeting()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onPremisesConditionalAccessSettings".casefold():
-            from . import on_premises_conditional_access_settings
+            from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
 
-            return on_premises_conditional_access_settings.OnPremisesConditionalAccessSettings()
+            return OnPremisesConditionalAccessSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onPremisesDirectorySynchronization".casefold():
-            from . import on_premises_directory_synchronization
+            from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
 
-            return on_premises_directory_synchronization.OnPremisesDirectorySynchronization()
+            return OnPremisesDirectorySynchronization()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.openShift".casefold():
-            from . import open_shift
+            from .open_shift import OpenShift
 
-            return open_shift.OpenShift()
+            return OpenShift()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.openShiftChangeRequest".casefold():
-            from . import open_shift_change_request
+            from .open_shift_change_request import OpenShiftChangeRequest
 
-            return open_shift_change_request.OpenShiftChangeRequest()
+            return OpenShiftChangeRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.openTypeExtension".casefold():
-            from . import open_type_extension
+            from .open_type_extension import OpenTypeExtension
 
-            return open_type_extension.OpenTypeExtension()
+            return OpenTypeExtension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.operation".casefold():
-            from . import operation
+            from .operation import Operation
 
-            return operation.Operation()
+            return Operation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.organization".casefold():
-            from . import organization
+            from .organization import Organization
 
-            return organization.Organization()
+            return Organization()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.organizationalBranding".casefold():
-            from . import organizational_branding
+            from .organizational_branding import OrganizationalBranding
 
-            return organizational_branding.OrganizationalBranding()
+            return OrganizationalBranding()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.organizationalBrandingLocalization".casefold():
-            from . import organizational_branding_localization
+            from .organizational_branding_localization import OrganizationalBrandingLocalization
 
-            return organizational_branding_localization.OrganizationalBrandingLocalization()
+            return OrganizationalBrandingLocalization()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.organizationalBrandingProperties".casefold():
-            from . import organizational_branding_properties
+            from .organizational_branding_properties import OrganizationalBrandingProperties
 
-            return organizational_branding_properties.OrganizationalBrandingProperties()
+            return OrganizationalBrandingProperties()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.orgContact".casefold():
-            from . import org_contact
+            from .org_contact import OrgContact
 
-            return org_contact.OrgContact()
+            return OrgContact()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.outlookCategory".casefold():
-            from . import outlook_category
+            from .outlook_category import OutlookCategory
 
-            return outlook_category.OutlookCategory()
+            return OutlookCategory()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.outlookItem".casefold():
-            from . import outlook_item
+            from .outlook_item import OutlookItem
 
-            return outlook_item.OutlookItem()
+            return OutlookItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.outlookUser".casefold():
-            from . import outlook_user
+            from .outlook_user import OutlookUser
 
-            return outlook_user.OutlookUser()
+            return OutlookUser()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.participant".casefold():
-            from . import participant
+            from .participant import Participant
 
-            return participant.Participant()
+            return Participant()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.participantJoiningNotification".casefold():
-            from . import participant_joining_notification
+            from .participant_joining_notification import ParticipantJoiningNotification
 
-            return participant_joining_notification.ParticipantJoiningNotification()
+            return ParticipantJoiningNotification()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.participantLeftNotification".casefold():
-            from . import participant_left_notification
+            from .participant_left_notification import ParticipantLeftNotification
 
-            return participant_left_notification.ParticipantLeftNotification()
+            return ParticipantLeftNotification()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.passwordAuthenticationMethod".casefold():
-            from . import password_authentication_method
+            from .password_authentication_method import PasswordAuthenticationMethod
 
-            return password_authentication_method.PasswordAuthenticationMethod()
+            return PasswordAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.permission".casefold():
-            from . import permission
+            from .permission import Permission
 
-            return permission.Permission()
+            return Permission()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.permissionGrantConditionSet".casefold():
-            from . import permission_grant_condition_set
+            from .permission_grant_condition_set import PermissionGrantConditionSet
 
-            return permission_grant_condition_set.PermissionGrantConditionSet()
+            return PermissionGrantConditionSet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.permissionGrantPolicy".casefold():
-            from . import permission_grant_policy
+            from .permission_grant_policy import PermissionGrantPolicy
 
-            return permission_grant_policy.PermissionGrantPolicy()
+            return PermissionGrantPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.person".casefold():
-            from . import person
+            from .person import Person
 
-            return person.Person()
+            return Person()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.phoneAuthenticationMethod".casefold():
-            from . import phone_authentication_method
+            from .phone_authentication_method import PhoneAuthenticationMethod
 
-            return phone_authentication_method.PhoneAuthenticationMethod()
+            return PhoneAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.pinnedChatMessageInfo".casefold():
-            from . import pinned_chat_message_info
+            from .pinned_chat_message_info import PinnedChatMessageInfo
 
-            return pinned_chat_message_info.PinnedChatMessageInfo()
+            return PinnedChatMessageInfo()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.place".casefold():
-            from . import place
+            from .place import Place
 
-            return place.Place()
+            return Place()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.planner".casefold():
-            from . import planner
+            from .planner import Planner
 
-            return planner.Planner()
+            return Planner()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.plannerAssignedToTaskBoardTaskFormat".casefold():
-            from . import planner_assigned_to_task_board_task_format
+            from .planner_assigned_to_task_board_task_format import PlannerAssignedToTaskBoardTaskFormat
 
-            return planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat()
+            return PlannerAssignedToTaskBoardTaskFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.plannerBucket".casefold():
-            from . import planner_bucket
+            from .planner_bucket import PlannerBucket
 
-            return planner_bucket.PlannerBucket()
+            return PlannerBucket()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.plannerBucketTaskBoardTaskFormat".casefold():
-            from . import planner_bucket_task_board_task_format
+            from .planner_bucket_task_board_task_format import PlannerBucketTaskBoardTaskFormat
 
-            return planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat()
+            return PlannerBucketTaskBoardTaskFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.plannerGroup".casefold():
-            from . import planner_group
+            from .planner_group import PlannerGroup
 
-            return planner_group.PlannerGroup()
+            return PlannerGroup()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.plannerPlan".casefold():
-            from . import planner_plan
+            from .planner_plan import PlannerPlan
 
-            return planner_plan.PlannerPlan()
+            return PlannerPlan()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.plannerPlanDetails".casefold():
-            from . import planner_plan_details
+            from .planner_plan_details import PlannerPlanDetails
 
-            return planner_plan_details.PlannerPlanDetails()
+            return PlannerPlanDetails()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.plannerProgressTaskBoardTaskFormat".casefold():
-            from . import planner_progress_task_board_task_format
+            from .planner_progress_task_board_task_format import PlannerProgressTaskBoardTaskFormat
 
-            return planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat()
+            return PlannerProgressTaskBoardTaskFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.plannerTask".casefold():
-            from . import planner_task
+            from .planner_task import PlannerTask
 
-            return planner_task.PlannerTask()
+            return PlannerTask()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.plannerTaskDetails".casefold():
-            from . import planner_task_details
+            from .planner_task_details import PlannerTaskDetails
 
-            return planner_task_details.PlannerTaskDetails()
+            return PlannerTaskDetails()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.plannerUser".casefold():
-            from . import planner_user
+            from .planner_user import PlannerUser
 
-            return planner_user.PlannerUser()
+            return PlannerUser()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.playPromptOperation".casefold():
-            from . import play_prompt_operation
+            from .play_prompt_operation import PlayPromptOperation
 
-            return play_prompt_operation.PlayPromptOperation()
+            return PlayPromptOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.policyBase".casefold():
-            from . import policy_base
+            from .policy_base import PolicyBase
 
-            return policy_base.PolicyBase()
+            return PolicyBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.policyRoot".casefold():
-            from . import policy_root
+            from .policy_root import PolicyRoot
 
-            return policy_root.PolicyRoot()
+            return PolicyRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.post".casefold():
-            from . import post
+            from .post import Post
 
-            return post.Post()
+            return Post()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.presence".casefold():
-            from . import presence
+            from .presence import Presence
 
-            return presence.Presence()
+            return Presence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printConnector".casefold():
-            from . import print_connector
+            from .print_connector import PrintConnector
 
-            return print_connector.PrintConnector()
+            return PrintConnector()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printDocument".casefold():
-            from . import print_document
+            from .print_document import PrintDocument
 
-            return print_document.PrintDocument()
+            return PrintDocument()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printer".casefold():
-            from . import printer
+            from .printer import Printer
 
-            return printer.Printer()
+            return Printer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printerBase".casefold():
-            from . import printer_base
+            from .printer_base import PrinterBase
 
-            return printer_base.PrinterBase()
+            return PrinterBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printerCreateOperation".casefold():
-            from . import printer_create_operation
+            from .printer_create_operation import PrinterCreateOperation
 
-            return printer_create_operation.PrinterCreateOperation()
+            return PrinterCreateOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printerShare".casefold():
-            from . import printer_share
+            from .printer_share import PrinterShare
 
-            return printer_share.PrinterShare()
+            return PrinterShare()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printJob".casefold():
-            from . import print_job
+            from .print_job import PrintJob
 
-            return print_job.PrintJob()
+            return PrintJob()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printOperation".casefold():
-            from . import print_operation
+            from .print_operation import PrintOperation
 
-            return print_operation.PrintOperation()
+            return PrintOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printService".casefold():
-            from . import print_service
+            from .print_service import PrintService
 
-            return print_service.PrintService()
+            return PrintService()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printServiceEndpoint".casefold():
-            from . import print_service_endpoint
+            from .print_service_endpoint import PrintServiceEndpoint
 
-            return print_service_endpoint.PrintServiceEndpoint()
+            return PrintServiceEndpoint()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printTask".casefold():
-            from . import print_task
+            from .print_task import PrintTask
 
-            return print_task.PrintTask()
+            return PrintTask()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printTaskDefinition".casefold():
-            from . import print_task_definition
+            from .print_task_definition import PrintTaskDefinition
 
-            return print_task_definition.PrintTaskDefinition()
+            return PrintTaskDefinition()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printTaskTrigger".casefold():
-            from . import print_task_trigger
+            from .print_task_trigger import PrintTaskTrigger
 
-            return print_task_trigger.PrintTaskTrigger()
+            return PrintTaskTrigger()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printUsage".casefold():
-            from . import print_usage
+            from .print_usage import PrintUsage
 
-            return print_usage.PrintUsage()
+            return PrintUsage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printUsageByPrinter".casefold():
-            from . import print_usage_by_printer
+            from .print_usage_by_printer import PrintUsageByPrinter
 
-            return print_usage_by_printer.PrintUsageByPrinter()
+            return PrintUsageByPrinter()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printUsageByUser".casefold():
-            from . import print_usage_by_user
+            from .print_usage_by_user import PrintUsageByUser
 
-            return print_usage_by_user.PrintUsageByUser()
+            return PrintUsageByUser()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.profilePhoto".casefold():
-            from . import profile_photo
+            from .profile_photo import ProfilePhoto
 
-            return profile_photo.ProfilePhoto()
+            return ProfilePhoto()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.provisioningObjectSummary".casefold():
-            from . import provisioning_object_summary
+            from .provisioning_object_summary import ProvisioningObjectSummary
 
-            return provisioning_object_summary.ProvisioningObjectSummary()
+            return ProvisioningObjectSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.rbacApplication".casefold():
-            from . import rbac_application
+            from .rbac_application import RbacApplication
 
-            return rbac_application.RbacApplication()
+            return RbacApplication()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.recordOperation".casefold():
-            from . import record_operation
+            from .record_operation import RecordOperation
 
-            return record_operation.RecordOperation()
+            return RecordOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.referenceAttachment".casefold():
-            from . import reference_attachment
+            from .reference_attachment import ReferenceAttachment
 
-            return reference_attachment.ReferenceAttachment()
+            return ReferenceAttachment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.remoteAssistancePartner".casefold():
-            from . import remote_assistance_partner
+            from .remote_assistance_partner import RemoteAssistancePartner
 
-            return remote_assistance_partner.RemoteAssistancePartner()
+            return RemoteAssistancePartner()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.request".casefold():
-            from . import request
+            from .request import Request
 
-            return request.Request()
+            return Request()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.resourceOperation".casefold():
-            from . import resource_operation
+            from .resource_operation import ResourceOperation
 
-            return resource_operation.ResourceOperation()
+            return ResourceOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.resourceSpecificPermissionGrant".casefold():
-            from . import resource_specific_permission_grant
+            from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
 
-            return resource_specific_permission_grant.ResourceSpecificPermissionGrant()
+            return ResourceSpecificPermissionGrant()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.richLongRunningOperation".casefold():
-            from . import rich_long_running_operation
+            from .rich_long_running_operation import RichLongRunningOperation
 
-            return rich_long_running_operation.RichLongRunningOperation()
+            return RichLongRunningOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.riskDetection".casefold():
-            from . import risk_detection
+            from .risk_detection import RiskDetection
 
-            return risk_detection.RiskDetection()
+            return RiskDetection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.riskyServicePrincipal".casefold():
-            from . import risky_service_principal
+            from .risky_service_principal import RiskyServicePrincipal
 
-            return risky_service_principal.RiskyServicePrincipal()
+            return RiskyServicePrincipal()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.riskyServicePrincipalHistoryItem".casefold():
-            from . import risky_service_principal_history_item
+            from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
 
-            return risky_service_principal_history_item.RiskyServicePrincipalHistoryItem()
+            return RiskyServicePrincipalHistoryItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.riskyUser".casefold():
-            from . import risky_user
+            from .risky_user import RiskyUser
 
-            return risky_user.RiskyUser()
+            return RiskyUser()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.riskyUserHistoryItem".casefold():
-            from . import risky_user_history_item
+            from .risky_user_history_item import RiskyUserHistoryItem
 
-            return risky_user_history_item.RiskyUserHistoryItem()
+            return RiskyUserHistoryItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.roleAssignment".casefold():
-            from . import role_assignment
+            from .role_assignment import RoleAssignment
 
-            return role_assignment.RoleAssignment()
+            return RoleAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.roleDefinition".casefold():
-            from . import role_definition
+            from .role_definition import RoleDefinition
 
-            return role_definition.RoleDefinition()
+            return RoleDefinition()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.room".casefold():
-            from . import room
+            from .room import Room
 
-            return room.Room()
+            return Room()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.roomList".casefold():
-            from . import room_list
+            from .room_list import RoomList
 
-            return room_list.RoomList()
+            return RoomList()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.samlOrWsFedExternalDomainFederation".casefold():
-            from . import saml_or_ws_fed_external_domain_federation
+            from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
 
-            return saml_or_ws_fed_external_domain_federation.SamlOrWsFedExternalDomainFederation()
+            return SamlOrWsFedExternalDomainFederation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.samlOrWsFedProvider".casefold():
-            from . import saml_or_ws_fed_provider
+            from .saml_or_ws_fed_provider import SamlOrWsFedProvider
 
-            return saml_or_ws_fed_provider.SamlOrWsFedProvider()
+            return SamlOrWsFedProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.schedule".casefold():
-            from . import schedule
+            from .schedule import Schedule
 
-            return schedule.Schedule()
+            return Schedule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.scheduleChangeRequest".casefold():
-            from . import schedule_change_request
+            from .schedule_change_request import ScheduleChangeRequest
 
-            return schedule_change_request.ScheduleChangeRequest()
+            return ScheduleChangeRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.schedulingGroup".casefold():
-            from . import scheduling_group
+            from .scheduling_group import SchedulingGroup
 
-            return scheduling_group.SchedulingGroup()
+            return SchedulingGroup()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.schemaExtension".casefold():
-            from . import schema_extension
+            from .schema_extension import SchemaExtension
 
-            return schema_extension.SchemaExtension()
+            return SchemaExtension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.scopedRoleMembership".casefold():
-            from . import scoped_role_membership
+            from .scoped_role_membership import ScopedRoleMembership
 
-            return scoped_role_membership.ScopedRoleMembership()
+            return ScopedRoleMembership()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.searchEntity".casefold():
-            from . import search_entity
+            from .search_entity import SearchEntity
 
-            return search_entity.SearchEntity()
+            return SearchEntity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sectionGroup".casefold():
-            from . import section_group
+            from .section_group import SectionGroup
 
-            return section_group.SectionGroup()
+            return SectionGroup()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.secureScore".casefold():
-            from . import secure_score
+            from .secure_score import SecureScore
 
-            return secure_score.SecureScore()
+            return SecureScore()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.secureScoreControlProfile".casefold():
-            from . import secure_score_control_profile
+            from .secure_score_control_profile import SecureScoreControlProfile
 
-            return secure_score_control_profile.SecureScoreControlProfile()
+            return SecureScoreControlProfile()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security".casefold():
-            from .security import security
+            from .security.security import Security
 
-            return security.Security()
+            return Security()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.alert".casefold():
-            from . import alert
-            from .security import alert
+            from .alert import Alert
+            from .security.alert import Alert
 
-            return alert.Alert()
+            return Alert()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.case".casefold():
-            from .security import case
+            from .security.case import Case
 
-            return case.Case()
+            return Case()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.caseOperation".casefold():
-            from .security import case_operation
+            from .security.case_operation import CaseOperation
 
-            return case_operation.CaseOperation()
+            return CaseOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.casesRoot".casefold():
-            from .security import cases_root
+            from .security.cases_root import CasesRoot
 
-            return cases_root.CasesRoot()
+            return CasesRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.dataSet".casefold():
-            from .security import data_set
+            from .security.data_set import DataSet
 
-            return data_set.DataSet()
+            return DataSet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.dataSource".casefold():
-            from .security import data_source
+            from .security.data_source import DataSource
 
-            return data_source.DataSource()
+            return DataSource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.dataSourceContainer".casefold():
-            from .security import data_source_container
+            from .security.data_source_container import DataSourceContainer
 
-            return data_source_container.DataSourceContainer()
+            return DataSourceContainer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryAddToReviewSetOperation".casefold():
-            from .security import ediscovery_add_to_review_set_operation
+            from .security.ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
 
-            return ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation()
+            return EdiscoveryAddToReviewSetOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryCase".casefold():
-            from .security import ediscovery_case
+            from .security.ediscovery_case import EdiscoveryCase
 
-            return ediscovery_case.EdiscoveryCase()
+            return EdiscoveryCase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryCaseSettings".casefold():
-            from .security import ediscovery_case_settings
+            from .security.ediscovery_case_settings import EdiscoveryCaseSettings
 
-            return ediscovery_case_settings.EdiscoveryCaseSettings()
+            return EdiscoveryCaseSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryCustodian".casefold():
-            from .security import ediscovery_custodian
+            from .security.ediscovery_custodian import EdiscoveryCustodian
 
-            return ediscovery_custodian.EdiscoveryCustodian()
+            return EdiscoveryCustodian()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryEstimateOperation".casefold():
-            from .security import ediscovery_estimate_operation
+            from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
 
-            return ediscovery_estimate_operation.EdiscoveryEstimateOperation()
+            return EdiscoveryEstimateOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryHoldOperation".casefold():
-            from .security import ediscovery_hold_operation
+            from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
 
-            return ediscovery_hold_operation.EdiscoveryHoldOperation()
+            return EdiscoveryHoldOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryIndexOperation".casefold():
-            from .security import ediscovery_index_operation
+            from .security.ediscovery_index_operation import EdiscoveryIndexOperation
 
-            return ediscovery_index_operation.EdiscoveryIndexOperation()
+            return EdiscoveryIndexOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryNoncustodialDataSource".casefold():
-            from .security import ediscovery_noncustodial_data_source
+            from .security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
 
-            return ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource()
+            return EdiscoveryNoncustodialDataSource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryPurgeDataOperation".casefold():
-            from .security import ediscovery_purge_data_operation
+            from .security.ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
 
-            return ediscovery_purge_data_operation.EdiscoveryPurgeDataOperation()
+            return EdiscoveryPurgeDataOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryReviewSet".casefold():
-            from .security import ediscovery_review_set
+            from .security.ediscovery_review_set import EdiscoveryReviewSet
 
-            return ediscovery_review_set.EdiscoveryReviewSet()
+            return EdiscoveryReviewSet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryReviewSetQuery".casefold():
-            from .security import ediscovery_review_set_query
+            from .security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
 
-            return ediscovery_review_set_query.EdiscoveryReviewSetQuery()
+            return EdiscoveryReviewSetQuery()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryReviewTag".casefold():
-            from .security import ediscovery_review_tag
+            from .security.ediscovery_review_tag import EdiscoveryReviewTag
 
-            return ediscovery_review_tag.EdiscoveryReviewTag()
+            return EdiscoveryReviewTag()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoverySearch".casefold():
-            from .security import ediscovery_search
+            from .security.ediscovery_search import EdiscoverySearch
 
-            return ediscovery_search.EdiscoverySearch()
+            return EdiscoverySearch()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryTagOperation".casefold():
-            from .security import ediscovery_tag_operation
+            from .security.ediscovery_tag_operation import EdiscoveryTagOperation
 
-            return ediscovery_tag_operation.EdiscoveryTagOperation()
+            return EdiscoveryTagOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.incident".casefold():
-            from .security import incident
+            from .security.incident import Incident
 
-            return incident.Incident()
+            return Incident()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.retentionEvent".casefold():
-            from .security import retention_event
+            from .security.retention_event import RetentionEvent
 
-            return retention_event.RetentionEvent()
+            return RetentionEvent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.retentionEventType".casefold():
-            from .security import retention_event_type
+            from .security.retention_event_type import RetentionEventType
 
-            return retention_event_type.RetentionEventType()
+            return RetentionEventType()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.search".casefold():
-            from .security import search
+            from .security.search import Search
 
-            return search.Search()
+            return Search()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.siteSource".casefold():
-            from .security import site_source
+            from .security.site_source import SiteSource
 
-            return site_source.SiteSource()
+            return SiteSource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.tag".casefold():
-            from .security import tag
+            from .security.tag import Tag
 
-            return tag.Tag()
+            return Tag()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.triggersRoot".casefold():
-            from .security import triggers_root
+            from .security.triggers_root import TriggersRoot
 
-            return triggers_root.TriggersRoot()
+            return TriggersRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.triggerTypesRoot".casefold():
-            from .security import trigger_types_root
+            from .security.trigger_types_root import TriggerTypesRoot
 
-            return trigger_types_root.TriggerTypesRoot()
+            return TriggerTypesRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.unifiedGroupSource".casefold():
-            from .security import unified_group_source
+            from .security.unified_group_source import UnifiedGroupSource
 
-            return unified_group_source.UnifiedGroupSource()
+            return UnifiedGroupSource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.userSource".casefold():
-            from .security import user_source
+            from .security.user_source import UserSource
 
-            return user_source.UserSource()
+            return UserSource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.securityReportsRoot".casefold():
-            from . import security_reports_root
+            from .security_reports_root import SecurityReportsRoot
 
-            return security_reports_root.SecurityReportsRoot()
+            return SecurityReportsRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceAnnouncement".casefold():
-            from . import service_announcement
+            from .service_announcement import ServiceAnnouncement
 
-            return service_announcement.ServiceAnnouncement()
+            return ServiceAnnouncement()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceAnnouncementAttachment".casefold():
-            from . import service_announcement_attachment
+            from .service_announcement_attachment import ServiceAnnouncementAttachment
 
-            return service_announcement_attachment.ServiceAnnouncementAttachment()
+            return ServiceAnnouncementAttachment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceAnnouncementBase".casefold():
-            from . import service_announcement_base
+            from .service_announcement_base import ServiceAnnouncementBase
 
-            return service_announcement_base.ServiceAnnouncementBase()
+            return ServiceAnnouncementBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceHealth".casefold():
-            from . import service_health
+            from .service_health import ServiceHealth
 
-            return service_health.ServiceHealth()
+            return ServiceHealth()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceHealthIssue".casefold():
-            from . import service_health_issue
+            from .service_health_issue import ServiceHealthIssue
 
-            return service_health_issue.ServiceHealthIssue()
+            return ServiceHealthIssue()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.servicePrincipal".casefold():
-            from . import service_principal
+            from .service_principal import ServicePrincipal
 
-            return service_principal.ServicePrincipal()
+            return ServicePrincipal()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.servicePrincipalRiskDetection".casefold():
-            from . import service_principal_risk_detection
+            from .service_principal_risk_detection import ServicePrincipalRiskDetection
 
-            return service_principal_risk_detection.ServicePrincipalRiskDetection()
+            return ServicePrincipalRiskDetection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.serviceUpdateMessage".casefold():
-            from . import service_update_message
+            from .service_update_message import ServiceUpdateMessage
 
-            return service_update_message.ServiceUpdateMessage()
+            return ServiceUpdateMessage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.settingStateDeviceSummary".casefold():
-            from . import setting_state_device_summary
+            from .setting_state_device_summary import SettingStateDeviceSummary
 
-            return setting_state_device_summary.SettingStateDeviceSummary()
+            return SettingStateDeviceSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharedDriveItem".casefold():
-            from . import shared_drive_item
+            from .shared_drive_item import SharedDriveItem
 
-            return shared_drive_item.SharedDriveItem()
+            return SharedDriveItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharedInsight".casefold():
-            from . import shared_insight
+            from .shared_insight import SharedInsight
 
-            return shared_insight.SharedInsight()
+            return SharedInsight()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharedPCConfiguration".casefold():
-            from . import shared_p_c_configuration
+            from .shared_p_c_configuration import SharedPCConfiguration
 
-            return shared_p_c_configuration.SharedPCConfiguration()
+            return SharedPCConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharedWithChannelTeamInfo".casefold():
-            from . import shared_with_channel_team_info
+            from .shared_with_channel_team_info import SharedWithChannelTeamInfo
 
-            return shared_with_channel_team_info.SharedWithChannelTeamInfo()
+            return SharedWithChannelTeamInfo()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharepoint".casefold():
-            from . import sharepoint
+            from .sharepoint import Sharepoint
 
-            return sharepoint.Sharepoint()
+            return Sharepoint()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharepointSettings".casefold():
-            from . import sharepoint_settings
+            from .sharepoint_settings import SharepointSettings
 
-            return sharepoint_settings.SharepointSettings()
+            return SharepointSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.shift".casefold():
-            from . import shift
+            from .shift import Shift
 
-            return shift.Shift()
+            return Shift()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.shiftPreferences".casefold():
-            from . import shift_preferences
+            from .shift_preferences import ShiftPreferences
 
-            return shift_preferences.ShiftPreferences()
+            return ShiftPreferences()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.signIn".casefold():
-            from . import sign_in
+            from .sign_in import SignIn
 
-            return sign_in.SignIn()
+            return SignIn()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.simulation".casefold():
-            from . import simulation
+            from .simulation import Simulation
 
-            return simulation.Simulation()
+            return Simulation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.simulationAutomation".casefold():
-            from . import simulation_automation
+            from .simulation_automation import SimulationAutomation
 
-            return simulation_automation.SimulationAutomation()
+            return SimulationAutomation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.simulationAutomationRun".casefold():
-            from . import simulation_automation_run
+            from .simulation_automation_run import SimulationAutomationRun
 
-            return simulation_automation_run.SimulationAutomationRun()
+            return SimulationAutomationRun()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.singleValueLegacyExtendedProperty".casefold():
-            from . import single_value_legacy_extended_property
+            from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
-            return single_value_legacy_extended_property.SingleValueLegacyExtendedProperty()
+            return SingleValueLegacyExtendedProperty()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.site".casefold():
-            from . import site
+            from .site import Site
 
-            return site.Site()
+            return Site()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.skypeForBusinessUserConversationMember".casefold():
-            from . import skype_for_business_user_conversation_member
+            from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
 
-            return skype_for_business_user_conversation_member.SkypeForBusinessUserConversationMember()
+            return SkypeForBusinessUserConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.skypeUserConversationMember".casefold():
-            from . import skype_user_conversation_member
+            from .skype_user_conversation_member import SkypeUserConversationMember
 
-            return skype_user_conversation_member.SkypeUserConversationMember()
+            return SkypeUserConversationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.smsAuthenticationMethodConfiguration".casefold():
-            from . import sms_authentication_method_configuration
+            from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
 
-            return sms_authentication_method_configuration.SmsAuthenticationMethodConfiguration()
+            return SmsAuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.smsAuthenticationMethodTarget".casefold():
-            from . import sms_authentication_method_target
+            from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
-            return sms_authentication_method_target.SmsAuthenticationMethodTarget()
+            return SmsAuthenticationMethodTarget()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.socialIdentityProvider".casefold():
-            from . import social_identity_provider
+            from .social_identity_provider import SocialIdentityProvider
 
-            return social_identity_provider.SocialIdentityProvider()
+            return SocialIdentityProvider()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.softwareOathAuthenticationMethod".casefold():
-            from . import software_oath_authentication_method
+            from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
 
-            return software_oath_authentication_method.SoftwareOathAuthenticationMethod()
+            return SoftwareOathAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.softwareOathAuthenticationMethodConfiguration".casefold():
-            from . import software_oath_authentication_method_configuration
+            from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
 
-            return software_oath_authentication_method_configuration.SoftwareOathAuthenticationMethodConfiguration()
+            return SoftwareOathAuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.softwareUpdateStatusSummary".casefold():
-            from . import software_update_status_summary
+            from .software_update_status_summary import SoftwareUpdateStatusSummary
 
-            return software_update_status_summary.SoftwareUpdateStatusSummary()
+            return SoftwareUpdateStatusSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.startHoldMusicOperation".casefold():
-            from . import start_hold_music_operation
+            from .start_hold_music_operation import StartHoldMusicOperation
 
-            return start_hold_music_operation.StartHoldMusicOperation()
+            return StartHoldMusicOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.stopHoldMusicOperation".casefold():
-            from . import stop_hold_music_operation
+            from .stop_hold_music_operation import StopHoldMusicOperation
 
-            return stop_hold_music_operation.StopHoldMusicOperation()
+            return StopHoldMusicOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.stsPolicy".casefold():
-            from . import sts_policy
+            from .sts_policy import StsPolicy
 
-            return sts_policy.StsPolicy()
+            return StsPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.subjectRightsRequest".casefold():
-            from . import subject_rights_request
+            from .subject_rights_request import SubjectRightsRequest
 
-            return subject_rights_request.SubjectRightsRequest()
+            return SubjectRightsRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.subscribedSku".casefold():
-            from . import subscribed_sku
+            from .subscribed_sku import SubscribedSku
 
-            return subscribed_sku.SubscribedSku()
+            return SubscribedSku()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.subscribeToToneOperation".casefold():
-            from . import subscribe_to_tone_operation
+            from .subscribe_to_tone_operation import SubscribeToToneOperation
 
-            return subscribe_to_tone_operation.SubscribeToToneOperation()
+            return SubscribeToToneOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.subscription".casefold():
-            from . import subscription
+            from .subscription import Subscription
 
-            return subscription.Subscription()
+            return Subscription()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.swapShiftsChangeRequest".casefold():
-            from . import swap_shifts_change_request
+            from .swap_shifts_change_request import SwapShiftsChangeRequest
 
-            return swap_shifts_change_request.SwapShiftsChangeRequest()
+            return SwapShiftsChangeRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.synchronization".casefold():
-            from . import synchronization
+            from .synchronization import Synchronization
 
-            return synchronization.Synchronization()
+            return Synchronization()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.synchronizationJob".casefold():
-            from . import synchronization_job
+            from .synchronization_job import SynchronizationJob
 
-            return synchronization_job.SynchronizationJob()
+            return SynchronizationJob()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.synchronizationSchema".casefold():
-            from . import synchronization_schema
+            from .synchronization_schema import SynchronizationSchema
 
-            return synchronization_schema.SynchronizationSchema()
+            return SynchronizationSchema()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.synchronizationTemplate".casefold():
-            from . import synchronization_template
+            from .synchronization_template import SynchronizationTemplate
 
-            return synchronization_template.SynchronizationTemplate()
+            return SynchronizationTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppConfiguration".casefold():
-            from . import targeted_managed_app_configuration
+            from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
-            return targeted_managed_app_configuration.TargetedManagedAppConfiguration()
+            return TargetedManagedAppConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppPolicyAssignment".casefold():
-            from . import targeted_managed_app_policy_assignment
+            from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
-            return targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment()
+            return TargetedManagedAppPolicyAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppProtection".casefold():
-            from . import targeted_managed_app_protection
+            from .targeted_managed_app_protection import TargetedManagedAppProtection
 
-            return targeted_managed_app_protection.TargetedManagedAppProtection()
+            return TargetedManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.taskFileAttachment".casefold():
-            from . import task_file_attachment
+            from .task_file_attachment import TaskFileAttachment
 
-            return task_file_attachment.TaskFileAttachment()
+            return TaskFileAttachment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.team".casefold():
-            from . import team
+            from .team import Team
 
-            return team.Team()
+            return Team()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamInfo".casefold():
-            from . import team_info
+            from .team_info import TeamInfo
 
-            return team_info.TeamInfo()
+            return TeamInfo()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsApp".casefold():
-            from . import teams_app
+            from .teams_app import TeamsApp
 
-            return teams_app.TeamsApp()
+            return TeamsApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAppDefinition".casefold():
-            from . import teams_app_definition
+            from .teams_app_definition import TeamsAppDefinition
 
-            return teams_app_definition.TeamsAppDefinition()
+            return TeamsAppDefinition()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAppInstallation".casefold():
-            from . import teams_app_installation
+            from .teams_app_installation import TeamsAppInstallation
 
-            return teams_app_installation.TeamsAppInstallation()
+            return TeamsAppInstallation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAsyncOperation".casefold():
-            from . import teams_async_operation
+            from .teams_async_operation import TeamsAsyncOperation
 
-            return teams_async_operation.TeamsAsyncOperation()
+            return TeamsAsyncOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsTab".casefold():
-            from . import teams_tab
+            from .teams_tab import TeamsTab
 
-            return teams_tab.TeamsTab()
+            return TeamsTab()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsTemplate".casefold():
-            from . import teams_template
+            from .teams_template import TeamsTemplate
 
-            return teams_template.TeamsTemplate()
+            return TeamsTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamwork".casefold():
-            from . import teamwork
+            from .teamwork import Teamwork
 
-            return teamwork.Teamwork()
+            return Teamwork()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkBot".casefold():
-            from . import teamwork_bot
+            from .teamwork_bot import TeamworkBot
 
-            return teamwork_bot.TeamworkBot()
+            return TeamworkBot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkHostedContent".casefold():
-            from . import teamwork_hosted_content
+            from .teamwork_hosted_content import TeamworkHostedContent
 
-            return teamwork_hosted_content.TeamworkHostedContent()
+            return TeamworkHostedContent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkTag".casefold():
-            from . import teamwork_tag
+            from .teamwork_tag import TeamworkTag
 
-            return teamwork_tag.TeamworkTag()
+            return TeamworkTag()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamworkTagMember".casefold():
-            from . import teamwork_tag_member
+            from .teamwork_tag_member import TeamworkTagMember
 
-            return teamwork_tag_member.TeamworkTagMember()
+            return TeamworkTagMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.telecomExpenseManagementPartner".casefold():
-            from . import telecom_expense_management_partner
+            from .telecom_expense_management_partner import TelecomExpenseManagementPartner
 
-            return telecom_expense_management_partner.TelecomExpenseManagementPartner()
+            return TelecomExpenseManagementPartner()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.temporaryAccessPassAuthenticationMethod".casefold():
-            from . import temporary_access_pass_authentication_method
+            from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
 
-            return temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod()
+            return TemporaryAccessPassAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.temporaryAccessPassAuthenticationMethodConfiguration".casefold():
-            from . import temporary_access_pass_authentication_method_configuration
+            from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
 
-            return temporary_access_pass_authentication_method_configuration.TemporaryAccessPassAuthenticationMethodConfiguration()
+            return TemporaryAccessPassAuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.tenantAppManagementPolicy".casefold():
-            from . import tenant_app_management_policy
+            from .tenant_app_management_policy import TenantAppManagementPolicy
 
-            return tenant_app_management_policy.TenantAppManagementPolicy()
+            return TenantAppManagementPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.termsAndConditions".casefold():
-            from . import terms_and_conditions
+            from .terms_and_conditions import TermsAndConditions
 
-            return terms_and_conditions.TermsAndConditions()
+            return TermsAndConditions()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.termsAndConditionsAcceptanceStatus".casefold():
-            from . import terms_and_conditions_acceptance_status
+            from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
 
-            return terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus()
+            return TermsAndConditionsAcceptanceStatus()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.termsAndConditionsAssignment".casefold():
-            from . import terms_and_conditions_assignment
+            from .terms_and_conditions_assignment import TermsAndConditionsAssignment
 
-            return terms_and_conditions_assignment.TermsAndConditionsAssignment()
+            return TermsAndConditionsAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.termsOfUseContainer".casefold():
-            from . import terms_of_use_container
+            from .terms_of_use_container import TermsOfUseContainer
 
-            return terms_of_use_container.TermsOfUseContainer()
+            return TermsOfUseContainer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.termStore.group".casefold():
-            from . import group
-            from .term_store import group
+            from .group import Group
+            from .term_store.group import Group
 
-            return group.Group()
+            return Group()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.termStore.relation".casefold():
-            from .term_store import relation
+            from .term_store.relation import Relation
 
-            return relation.Relation()
+            return Relation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.termStore.set".casefold():
-            from .term_store import set
+            from .term_store.set import Set
 
-            return set.Set()
+            return Set()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.termStore.store".casefold():
-            from .term_store import store
+            from .term_store.store import Store
 
-            return store.Store()
+            return Store()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.termStore.term".casefold():
-            from .term_store import term
+            from .term_store.term import Term
 
-            return term.Term()
+            return Term()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.threatAssessmentRequest".casefold():
-            from . import threat_assessment_request
+            from .threat_assessment_request import ThreatAssessmentRequest
 
-            return threat_assessment_request.ThreatAssessmentRequest()
+            return ThreatAssessmentRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.threatAssessmentResult".casefold():
-            from . import threat_assessment_result
+            from .threat_assessment_result import ThreatAssessmentResult
 
-            return threat_assessment_result.ThreatAssessmentResult()
+            return ThreatAssessmentResult()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.thumbnailSet".casefold():
-            from . import thumbnail_set
+            from .thumbnail_set import ThumbnailSet
 
-            return thumbnail_set.ThumbnailSet()
+            return ThumbnailSet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOff".casefold():
-            from . import time_off
+            from .time_off import TimeOff
 
-            return time_off.TimeOff()
+            return TimeOff()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOffReason".casefold():
-            from . import time_off_reason
+            from .time_off_reason import TimeOffReason
 
-            return time_off_reason.TimeOffReason()
+            return TimeOffReason()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.timeOffRequest".casefold():
-            from . import time_off_request
+            from .time_off_request import TimeOffRequest
 
-            return time_off_request.TimeOffRequest()
+            return TimeOffRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.todo".casefold():
-            from . import todo
+            from .todo import Todo
 
-            return todo.Todo()
+            return Todo()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.todoTask".casefold():
-            from . import todo_task
+            from .todo_task import TodoTask
 
-            return todo_task.TodoTask()
+            return TodoTask()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.todoTaskList".casefold():
-            from . import todo_task_list
+            from .todo_task_list import TodoTaskList
 
-            return todo_task_list.TodoTaskList()
+            return TodoTaskList()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.tokenIssuancePolicy".casefold():
-            from . import token_issuance_policy
+            from .token_issuance_policy import TokenIssuancePolicy
 
-            return token_issuance_policy.TokenIssuancePolicy()
+            return TokenIssuancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.tokenLifetimePolicy".casefold():
-            from . import token_lifetime_policy
+            from .token_lifetime_policy import TokenLifetimePolicy
 
-            return token_lifetime_policy.TokenLifetimePolicy()
+            return TokenLifetimePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.trending".casefold():
-            from . import trending
+            from .trending import Trending
 
-            return trending.Trending()
+            return Trending()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRbacResourceAction".casefold():
-            from . import unified_rbac_resource_action
+            from .unified_rbac_resource_action import UnifiedRbacResourceAction
 
-            return unified_rbac_resource_action.UnifiedRbacResourceAction()
+            return UnifiedRbacResourceAction()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRbacResourceNamespace".casefold():
-            from . import unified_rbac_resource_namespace
+            from .unified_rbac_resource_namespace import UnifiedRbacResourceNamespace
 
-            return unified_rbac_resource_namespace.UnifiedRbacResourceNamespace()
+            return UnifiedRbacResourceNamespace()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleAssignment".casefold():
-            from . import unified_role_assignment
+            from .unified_role_assignment import UnifiedRoleAssignment
 
-            return unified_role_assignment.UnifiedRoleAssignment()
+            return UnifiedRoleAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleAssignmentSchedule".casefold():
-            from . import unified_role_assignment_schedule
+            from .unified_role_assignment_schedule import UnifiedRoleAssignmentSchedule
 
-            return unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule()
+            return UnifiedRoleAssignmentSchedule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleAssignmentScheduleInstance".casefold():
-            from . import unified_role_assignment_schedule_instance
+            from .unified_role_assignment_schedule_instance import UnifiedRoleAssignmentScheduleInstance
 
-            return unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance()
+            return UnifiedRoleAssignmentScheduleInstance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleAssignmentScheduleRequest".casefold():
-            from . import unified_role_assignment_schedule_request
+            from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
 
-            return unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest()
+            return UnifiedRoleAssignmentScheduleRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleDefinition".casefold():
-            from . import unified_role_definition
+            from .unified_role_definition import UnifiedRoleDefinition
 
-            return unified_role_definition.UnifiedRoleDefinition()
+            return UnifiedRoleDefinition()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleEligibilitySchedule".casefold():
-            from . import unified_role_eligibility_schedule
+            from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
 
-            return unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule()
+            return UnifiedRoleEligibilitySchedule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleEligibilityScheduleInstance".casefold():
-            from . import unified_role_eligibility_schedule_instance
+            from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
 
-            return unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance()
+            return UnifiedRoleEligibilityScheduleInstance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleEligibilityScheduleRequest".casefold():
-            from . import unified_role_eligibility_schedule_request
+            from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
 
-            return unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest()
+            return UnifiedRoleEligibilityScheduleRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicy".casefold():
-            from . import unified_role_management_policy
+            from .unified_role_management_policy import UnifiedRoleManagementPolicy
 
-            return unified_role_management_policy.UnifiedRoleManagementPolicy()
+            return UnifiedRoleManagementPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyApprovalRule".casefold():
-            from . import unified_role_management_policy_approval_rule
+            from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
 
-            return unified_role_management_policy_approval_rule.UnifiedRoleManagementPolicyApprovalRule()
+            return UnifiedRoleManagementPolicyApprovalRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyAssignment".casefold():
-            from . import unified_role_management_policy_assignment
+            from .unified_role_management_policy_assignment import UnifiedRoleManagementPolicyAssignment
 
-            return unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment()
+            return UnifiedRoleManagementPolicyAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyAuthenticationContextRule".casefold():
-            from . import unified_role_management_policy_authentication_context_rule
+            from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
 
-            return unified_role_management_policy_authentication_context_rule.UnifiedRoleManagementPolicyAuthenticationContextRule()
+            return UnifiedRoleManagementPolicyAuthenticationContextRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyEnablementRule".casefold():
-            from . import unified_role_management_policy_enablement_rule
+            from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
 
-            return unified_role_management_policy_enablement_rule.UnifiedRoleManagementPolicyEnablementRule()
+            return UnifiedRoleManagementPolicyEnablementRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyExpirationRule".casefold():
-            from . import unified_role_management_policy_expiration_rule
+            from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
 
-            return unified_role_management_policy_expiration_rule.UnifiedRoleManagementPolicyExpirationRule()
+            return UnifiedRoleManagementPolicyExpirationRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyNotificationRule".casefold():
-            from . import unified_role_management_policy_notification_rule
+            from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
 
-            return unified_role_management_policy_notification_rule.UnifiedRoleManagementPolicyNotificationRule()
+            return UnifiedRoleManagementPolicyNotificationRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyRule".casefold():
-            from . import unified_role_management_policy_rule
+            from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-            return unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule()
+            return UnifiedRoleManagementPolicyRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleScheduleBase".casefold():
-            from . import unified_role_schedule_base
+            from .unified_role_schedule_base import UnifiedRoleScheduleBase
 
-            return unified_role_schedule_base.UnifiedRoleScheduleBase()
+            return UnifiedRoleScheduleBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleScheduleInstanceBase".casefold():
-            from . import unified_role_schedule_instance_base
+            from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
 
-            return unified_role_schedule_instance_base.UnifiedRoleScheduleInstanceBase()
+            return UnifiedRoleScheduleInstanceBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unmuteParticipantOperation".casefold():
-            from . import unmute_participant_operation
+            from .unmute_participant_operation import UnmuteParticipantOperation
 
-            return unmute_participant_operation.UnmuteParticipantOperation()
+            return UnmuteParticipantOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.updateRecordingStatusOperation".casefold():
-            from . import update_recording_status_operation
+            from .update_recording_status_operation import UpdateRecordingStatusOperation
 
-            return update_recording_status_operation.UpdateRecordingStatusOperation()
+            return UpdateRecordingStatusOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.urlAssessmentRequest".casefold():
-            from . import url_assessment_request
+            from .url_assessment_request import UrlAssessmentRequest
 
-            return url_assessment_request.UrlAssessmentRequest()
+            return UrlAssessmentRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.usedInsight".casefold():
-            from . import used_insight
+            from .used_insight import UsedInsight
 
-            return used_insight.UsedInsight()
+            return UsedInsight()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.user".casefold():
-            from . import user
+            from .user import User
 
-            return user.User()
+            return User()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userActivity".casefold():
-            from . import user_activity
+            from .user_activity import UserActivity
 
-            return user_activity.UserActivity()
+            return UserActivity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userConsentRequest".casefold():
-            from . import user_consent_request
+            from .user_consent_request import UserConsentRequest
 
-            return user_consent_request.UserConsentRequest()
+            return UserConsentRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsDevicePerformance".casefold():
-            from . import user_experience_analytics_device_performance
+            from .user_experience_analytics_device_performance import UserExperienceAnalyticsDevicePerformance
 
-            return user_experience_analytics_device_performance.UserExperienceAnalyticsDevicePerformance()
+            return UserExperienceAnalyticsDevicePerformance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userFlowLanguageConfiguration".casefold():
-            from . import user_flow_language_configuration
+            from .user_flow_language_configuration import UserFlowLanguageConfiguration
 
-            return user_flow_language_configuration.UserFlowLanguageConfiguration()
+            return UserFlowLanguageConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userFlowLanguagePage".casefold():
-            from . import user_flow_language_page
+            from .user_flow_language_page import UserFlowLanguagePage
 
-            return user_flow_language_page.UserFlowLanguagePage()
+            return UserFlowLanguagePage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userInstallStateSummary".casefold():
-            from . import user_install_state_summary
+            from .user_install_state_summary import UserInstallStateSummary
 
-            return user_install_state_summary.UserInstallStateSummary()
+            return UserInstallStateSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userScopeTeamsAppInstallation".casefold():
-            from . import user_scope_teams_app_installation
+            from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
-            return user_scope_teams_app_installation.UserScopeTeamsAppInstallation()
+            return UserScopeTeamsAppInstallation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userSettings".casefold():
-            from . import user_settings
+            from .user_settings import UserSettings
 
-            return user_settings.UserSettings()
+            return UserSettings()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userSignInInsight".casefold():
+            from .user_sign_in_insight import UserSignInInsight
+
+            return UserSignInInsight()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userTeamwork".casefold():
-            from . import user_teamwork
+            from .user_teamwork import UserTeamwork
 
-            return user_teamwork.UserTeamwork()
+            return UserTeamwork()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.voiceAuthenticationMethodConfiguration".casefold():
-            from . import voice_authentication_method_configuration
+            from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
 
-            return voice_authentication_method_configuration.VoiceAuthenticationMethodConfiguration()
+            return VoiceAuthenticationMethodConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.vppToken".casefold():
-            from . import vpp_token
+            from .vpp_token import VppToken
 
-            return vpp_token.VppToken()
+            return VppToken()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.webApp".casefold():
-            from . import web_app
+            from .web_app import WebApp
 
-            return web_app.WebApp()
+            return WebApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobApp".casefold():
-            from . import win32_lob_app
+            from .win32_lob_app import Win32LobApp
 
-            return win32_lob_app.Win32LobApp()
+            return Win32LobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10CompliancePolicy".casefold():
-            from . import windows10_compliance_policy
+            from .windows10_compliance_policy import Windows10CompliancePolicy
 
-            return windows10_compliance_policy.Windows10CompliancePolicy()
+            return Windows10CompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10CustomConfiguration".casefold():
-            from . import windows10_custom_configuration
+            from .windows10_custom_configuration import Windows10CustomConfiguration
 
-            return windows10_custom_configuration.Windows10CustomConfiguration()
+            return Windows10CustomConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10EndpointProtectionConfiguration".casefold():
-            from . import windows10_endpoint_protection_configuration
+            from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
 
-            return windows10_endpoint_protection_configuration.Windows10EndpointProtectionConfiguration()
+            return Windows10EndpointProtectionConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10EnterpriseModernAppManagementConfiguration".casefold():
-            from . import windows10_enterprise_modern_app_management_configuration
+            from .windows10_enterprise_modern_app_management_configuration import Windows10EnterpriseModernAppManagementConfiguration
 
-            return windows10_enterprise_modern_app_management_configuration.Windows10EnterpriseModernAppManagementConfiguration()
+            return Windows10EnterpriseModernAppManagementConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10GeneralConfiguration".casefold():
-            from . import windows10_general_configuration
+            from .windows10_general_configuration import Windows10GeneralConfiguration
 
-            return windows10_general_configuration.Windows10GeneralConfiguration()
+            return Windows10GeneralConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10MobileCompliancePolicy".casefold():
-            from . import windows10_mobile_compliance_policy
+            from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
 
-            return windows10_mobile_compliance_policy.Windows10MobileCompliancePolicy()
+            return Windows10MobileCompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10SecureAssessmentConfiguration".casefold():
-            from . import windows10_secure_assessment_configuration
+            from .windows10_secure_assessment_configuration import Windows10SecureAssessmentConfiguration
 
-            return windows10_secure_assessment_configuration.Windows10SecureAssessmentConfiguration()
+            return Windows10SecureAssessmentConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10TeamGeneralConfiguration".casefold():
-            from . import windows10_team_general_configuration
+            from .windows10_team_general_configuration import Windows10TeamGeneralConfiguration
 
-            return windows10_team_general_configuration.Windows10TeamGeneralConfiguration()
+            return Windows10TeamGeneralConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows81CompliancePolicy".casefold():
-            from . import windows81_compliance_policy
+            from .windows81_compliance_policy import Windows81CompliancePolicy
 
-            return windows81_compliance_policy.Windows81CompliancePolicy()
+            return Windows81CompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows81GeneralConfiguration".casefold():
-            from . import windows81_general_configuration
+            from .windows81_general_configuration import Windows81GeneralConfiguration
 
-            return windows81_general_configuration.Windows81GeneralConfiguration()
+            return Windows81GeneralConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsAppX".casefold():
-            from . import windows_app_x
+            from .windows_app_x import WindowsAppX
 
-            return windows_app_x.WindowsAppX()
+            return WindowsAppX()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsAutopilotDeviceIdentity".casefold():
-            from . import windows_autopilot_device_identity
+            from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
 
-            return windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity()
+            return WindowsAutopilotDeviceIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsDefenderAdvancedThreatProtectionConfiguration".casefold():
-            from . import windows_defender_advanced_threat_protection_configuration
+            from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
 
-            return windows_defender_advanced_threat_protection_configuration.WindowsDefenderAdvancedThreatProtectionConfiguration()
+            return WindowsDefenderAdvancedThreatProtectionConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsHelloForBusinessAuthenticationMethod".casefold():
-            from . import windows_hello_for_business_authentication_method
+            from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
 
-            return windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod()
+            return WindowsHelloForBusinessAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtection".casefold():
-            from . import windows_information_protection
+            from .windows_information_protection import WindowsInformationProtection
 
-            return windows_information_protection.WindowsInformationProtection()
+            return WindowsInformationProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtectionAppLearningSummary".casefold():
-            from . import windows_information_protection_app_learning_summary
+            from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
 
-            return windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary()
+            return WindowsInformationProtectionAppLearningSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtectionAppLockerFile".casefold():
-            from . import windows_information_protection_app_locker_file
+            from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
 
-            return windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile()
+            return WindowsInformationProtectionAppLockerFile()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtectionNetworkLearningSummary".casefold():
-            from . import windows_information_protection_network_learning_summary
+            from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
 
-            return windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary()
+            return WindowsInformationProtectionNetworkLearningSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtectionPolicy".casefold():
-            from . import windows_information_protection_policy
+            from .windows_information_protection_policy import WindowsInformationProtectionPolicy
 
-            return windows_information_protection_policy.WindowsInformationProtectionPolicy()
+            return WindowsInformationProtectionPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsMicrosoftEdgeApp".casefold():
-            from . import windows_microsoft_edge_app
+            from .windows_microsoft_edge_app import WindowsMicrosoftEdgeApp
 
-            return windows_microsoft_edge_app.WindowsMicrosoftEdgeApp()
+            return WindowsMicrosoftEdgeApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsMobileMSI".casefold():
-            from . import windows_mobile_m_s_i
+            from .windows_mobile_m_s_i import WindowsMobileMSI
 
-            return windows_mobile_m_s_i.WindowsMobileMSI()
+            return WindowsMobileMSI()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsPhone81CompliancePolicy".casefold():
-            from . import windows_phone81_compliance_policy
+            from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
 
-            return windows_phone81_compliance_policy.WindowsPhone81CompliancePolicy()
+            return WindowsPhone81CompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsPhone81CustomConfiguration".casefold():
-            from . import windows_phone81_custom_configuration
+            from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
 
-            return windows_phone81_custom_configuration.WindowsPhone81CustomConfiguration()
+            return WindowsPhone81CustomConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsPhone81GeneralConfiguration".casefold():
-            from . import windows_phone81_general_configuration
+            from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
 
-            return windows_phone81_general_configuration.WindowsPhone81GeneralConfiguration()
+            return WindowsPhone81GeneralConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppX".casefold():
-            from . import windows_universal_app_x
+            from .windows_universal_app_x import WindowsUniversalAppX
 
-            return windows_universal_app_x.WindowsUniversalAppX()
+            return WindowsUniversalAppX()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppXContainedApp".casefold():
-            from . import windows_universal_app_x_contained_app
+            from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
 
-            return windows_universal_app_x_contained_app.WindowsUniversalAppXContainedApp()
+            return WindowsUniversalAppXContainedApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUpdateForBusinessConfiguration".casefold():
-            from . import windows_update_for_business_configuration
+            from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
 
-            return windows_update_for_business_configuration.WindowsUpdateForBusinessConfiguration()
+            return WindowsUpdateForBusinessConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsWebApp".casefold():
-            from . import windows_web_app
+            from .windows_web_app import WindowsWebApp
 
-            return windows_web_app.WindowsWebApp()
+            return WindowsWebApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbook".casefold():
-            from . import workbook
+            from .workbook import Workbook
 
-            return workbook.Workbook()
+            return Workbook()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookApplication".casefold():
-            from . import workbook_application
+            from .workbook_application import WorkbookApplication
 
-            return workbook_application.WorkbookApplication()
+            return WorkbookApplication()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChart".casefold():
-            from . import workbook_chart
+            from .workbook_chart import WorkbookChart
 
-            return workbook_chart.WorkbookChart()
+            return WorkbookChart()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartAreaFormat".casefold():
-            from . import workbook_chart_area_format
+            from .workbook_chart_area_format import WorkbookChartAreaFormat
 
-            return workbook_chart_area_format.WorkbookChartAreaFormat()
+            return WorkbookChartAreaFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartAxes".casefold():
-            from . import workbook_chart_axes
+            from .workbook_chart_axes import WorkbookChartAxes
 
-            return workbook_chart_axes.WorkbookChartAxes()
+            return WorkbookChartAxes()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartAxis".casefold():
-            from . import workbook_chart_axis
+            from .workbook_chart_axis import WorkbookChartAxis
 
-            return workbook_chart_axis.WorkbookChartAxis()
+            return WorkbookChartAxis()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartAxisFormat".casefold():
-            from . import workbook_chart_axis_format
+            from .workbook_chart_axis_format import WorkbookChartAxisFormat
 
-            return workbook_chart_axis_format.WorkbookChartAxisFormat()
+            return WorkbookChartAxisFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartAxisTitle".casefold():
-            from . import workbook_chart_axis_title
+            from .workbook_chart_axis_title import WorkbookChartAxisTitle
 
-            return workbook_chart_axis_title.WorkbookChartAxisTitle()
+            return WorkbookChartAxisTitle()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartAxisTitleFormat".casefold():
-            from . import workbook_chart_axis_title_format
+            from .workbook_chart_axis_title_format import WorkbookChartAxisTitleFormat
 
-            return workbook_chart_axis_title_format.WorkbookChartAxisTitleFormat()
+            return WorkbookChartAxisTitleFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartDataLabelFormat".casefold():
-            from . import workbook_chart_data_label_format
+            from .workbook_chart_data_label_format import WorkbookChartDataLabelFormat
 
-            return workbook_chart_data_label_format.WorkbookChartDataLabelFormat()
+            return WorkbookChartDataLabelFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartDataLabels".casefold():
-            from . import workbook_chart_data_labels
+            from .workbook_chart_data_labels import WorkbookChartDataLabels
 
-            return workbook_chart_data_labels.WorkbookChartDataLabels()
+            return WorkbookChartDataLabels()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartFill".casefold():
-            from . import workbook_chart_fill
+            from .workbook_chart_fill import WorkbookChartFill
 
-            return workbook_chart_fill.WorkbookChartFill()
+            return WorkbookChartFill()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartFont".casefold():
-            from . import workbook_chart_font
+            from .workbook_chart_font import WorkbookChartFont
 
-            return workbook_chart_font.WorkbookChartFont()
+            return WorkbookChartFont()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartGridlines".casefold():
-            from . import workbook_chart_gridlines
+            from .workbook_chart_gridlines import WorkbookChartGridlines
 
-            return workbook_chart_gridlines.WorkbookChartGridlines()
+            return WorkbookChartGridlines()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartGridlinesFormat".casefold():
-            from . import workbook_chart_gridlines_format
+            from .workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
 
-            return workbook_chart_gridlines_format.WorkbookChartGridlinesFormat()
+            return WorkbookChartGridlinesFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartLegend".casefold():
-            from . import workbook_chart_legend
+            from .workbook_chart_legend import WorkbookChartLegend
 
-            return workbook_chart_legend.WorkbookChartLegend()
+            return WorkbookChartLegend()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartLegendFormat".casefold():
-            from . import workbook_chart_legend_format
+            from .workbook_chart_legend_format import WorkbookChartLegendFormat
 
-            return workbook_chart_legend_format.WorkbookChartLegendFormat()
+            return WorkbookChartLegendFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartLineFormat".casefold():
-            from . import workbook_chart_line_format
+            from .workbook_chart_line_format import WorkbookChartLineFormat
 
-            return workbook_chart_line_format.WorkbookChartLineFormat()
+            return WorkbookChartLineFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartPoint".casefold():
-            from . import workbook_chart_point
+            from .workbook_chart_point import WorkbookChartPoint
 
-            return workbook_chart_point.WorkbookChartPoint()
+            return WorkbookChartPoint()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartPointFormat".casefold():
-            from . import workbook_chart_point_format
+            from .workbook_chart_point_format import WorkbookChartPointFormat
 
-            return workbook_chart_point_format.WorkbookChartPointFormat()
+            return WorkbookChartPointFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartSeries".casefold():
-            from . import workbook_chart_series
+            from .workbook_chart_series import WorkbookChartSeries
 
-            return workbook_chart_series.WorkbookChartSeries()
+            return WorkbookChartSeries()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartSeriesFormat".casefold():
-            from . import workbook_chart_series_format
+            from .workbook_chart_series_format import WorkbookChartSeriesFormat
 
-            return workbook_chart_series_format.WorkbookChartSeriesFormat()
+            return WorkbookChartSeriesFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartTitle".casefold():
-            from . import workbook_chart_title
+            from .workbook_chart_title import WorkbookChartTitle
 
-            return workbook_chart_title.WorkbookChartTitle()
+            return WorkbookChartTitle()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookChartTitleFormat".casefold():
-            from . import workbook_chart_title_format
+            from .workbook_chart_title_format import WorkbookChartTitleFormat
 
-            return workbook_chart_title_format.WorkbookChartTitleFormat()
+            return WorkbookChartTitleFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookComment".casefold():
-            from . import workbook_comment
+            from .workbook_comment import WorkbookComment
 
-            return workbook_comment.WorkbookComment()
+            return WorkbookComment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookCommentReply".casefold():
-            from . import workbook_comment_reply
+            from .workbook_comment_reply import WorkbookCommentReply
 
-            return workbook_comment_reply.WorkbookCommentReply()
+            return WorkbookCommentReply()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookFilter".casefold():
-            from . import workbook_filter
+            from .workbook_filter import WorkbookFilter
 
-            return workbook_filter.WorkbookFilter()
+            return WorkbookFilter()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookFormatProtection".casefold():
-            from . import workbook_format_protection
+            from .workbook_format_protection import WorkbookFormatProtection
 
-            return workbook_format_protection.WorkbookFormatProtection()
+            return WorkbookFormatProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookFunctionResult".casefold():
-            from . import workbook_function_result
+            from .workbook_function_result import WorkbookFunctionResult
 
-            return workbook_function_result.WorkbookFunctionResult()
+            return WorkbookFunctionResult()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookFunctions".casefold():
-            from . import workbook_functions
+            from .workbook_functions import WorkbookFunctions
 
-            return workbook_functions.WorkbookFunctions()
+            return WorkbookFunctions()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookNamedItem".casefold():
-            from . import workbook_named_item
+            from .workbook_named_item import WorkbookNamedItem
 
-            return workbook_named_item.WorkbookNamedItem()
+            return WorkbookNamedItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookOperation".casefold():
-            from . import workbook_operation
+            from .workbook_operation import WorkbookOperation
 
-            return workbook_operation.WorkbookOperation()
+            return WorkbookOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookPivotTable".casefold():
-            from . import workbook_pivot_table
+            from .workbook_pivot_table import WorkbookPivotTable
 
-            return workbook_pivot_table.WorkbookPivotTable()
+            return WorkbookPivotTable()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookRange".casefold():
-            from . import workbook_range
+            from .workbook_range import WorkbookRange
 
-            return workbook_range.WorkbookRange()
+            return WorkbookRange()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookRangeBorder".casefold():
-            from . import workbook_range_border
+            from .workbook_range_border import WorkbookRangeBorder
 
-            return workbook_range_border.WorkbookRangeBorder()
+            return WorkbookRangeBorder()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookRangeFill".casefold():
-            from . import workbook_range_fill
+            from .workbook_range_fill import WorkbookRangeFill
 
-            return workbook_range_fill.WorkbookRangeFill()
+            return WorkbookRangeFill()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookRangeFont".casefold():
-            from . import workbook_range_font
+            from .workbook_range_font import WorkbookRangeFont
 
-            return workbook_range_font.WorkbookRangeFont()
+            return WorkbookRangeFont()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookRangeFormat".casefold():
-            from . import workbook_range_format
+            from .workbook_range_format import WorkbookRangeFormat
 
-            return workbook_range_format.WorkbookRangeFormat()
+            return WorkbookRangeFormat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookRangeSort".casefold():
-            from . import workbook_range_sort
+            from .workbook_range_sort import WorkbookRangeSort
 
-            return workbook_range_sort.WorkbookRangeSort()
+            return WorkbookRangeSort()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookRangeView".casefold():
-            from . import workbook_range_view
+            from .workbook_range_view import WorkbookRangeView
 
-            return workbook_range_view.WorkbookRangeView()
+            return WorkbookRangeView()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookTable".casefold():
-            from . import workbook_table
+            from .workbook_table import WorkbookTable
 
-            return workbook_table.WorkbookTable()
+            return WorkbookTable()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookTableColumn".casefold():
-            from . import workbook_table_column
+            from .workbook_table_column import WorkbookTableColumn
 
-            return workbook_table_column.WorkbookTableColumn()
+            return WorkbookTableColumn()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookTableRow".casefold():
-            from . import workbook_table_row
+            from .workbook_table_row import WorkbookTableRow
 
-            return workbook_table_row.WorkbookTableRow()
+            return WorkbookTableRow()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookTableSort".casefold():
-            from . import workbook_table_sort
+            from .workbook_table_sort import WorkbookTableSort
 
-            return workbook_table_sort.WorkbookTableSort()
+            return WorkbookTableSort()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookWorksheet".casefold():
-            from . import workbook_worksheet
+            from .workbook_worksheet import WorkbookWorksheet
 
-            return workbook_worksheet.WorkbookWorksheet()
+            return WorkbookWorksheet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workbookWorksheetProtection".casefold():
-            from . import workbook_worksheet_protection
+            from .workbook_worksheet_protection import WorkbookWorksheetProtection
 
-            return workbook_worksheet_protection.WorkbookWorksheetProtection()
+            return WorkbookWorksheetProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.workforceIntegration".casefold():
-            from . import workforce_integration
+            from .workforce_integration import WorkforceIntegration
 
-            return workforce_integration.WorkforceIntegration()
+            return WorkforceIntegration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.x509CertificateAuthenticationMethodConfiguration".casefold():
-            from . import x509_certificate_authentication_method_configuration
+            from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
 
-            return x509_certificate_authentication_method_configuration.X509CertificateAuthenticationMethodConfiguration()
+            return X509CertificateAuthenticationMethodConfiguration()
         return Entity()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -2829,17 +3590,1427 @@ class Entity(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import aad_user_conversation_member, access_package, access_package_assignment, access_package_assignment_policy, access_package_assignment_request, access_package_catalog, access_package_multiple_choice_question, access_package_question, access_package_subject, access_package_text_input_question, access_review_history_definition, access_review_history_instance, access_review_instance, access_review_instance_decision_item, access_review_reviewer, access_review_schedule_definition, access_review_set, access_review_stage, activity_based_timeout_policy, activity_history_item, add_large_gallery_view_operation, administrative_unit, admin_consent_request_policy, agreement, agreement_acceptance, agreement_file, agreement_file_localization, agreement_file_properties, agreement_file_version, alert, allowed_value, android_compliance_policy, android_custom_configuration, android_general_device_configuration, android_lob_app, android_managed_app_protection, android_managed_app_registration, android_store_app, android_work_profile_compliance_policy, android_work_profile_custom_configuration, android_work_profile_general_device_configuration, anonymous_guest_conversation_member, apple_device_features_configuration_base, apple_managed_identity_provider, apple_push_notification_certificate, application, application_template, approval, approval_stage, app_catalogs, app_consent_approval_route, app_consent_request, app_management_policy, app_role_assignment, app_scope, associated_team_info, attachment, attachment_base, attachment_session, attack_simulation_root, attendance_record, attribute_mapping_function_schema, attribute_set, audio_routing_group, audit_event, audit_log_root, authentication, authentication_combination_configuration, authentication_context_class_reference, authentication_flows_policy, authentication_method, authentication_methods_policy, authentication_method_configuration, authentication_method_mode_detail, authentication_method_target, authentication_strength_policy, authentication_strength_root, authored_note, authorization_policy, azure_communication_services_user_conversation_member, b2x_identity_user_flow, base_item, base_item_version, bitlocker, bitlocker_recovery_key, booking_appointment, booking_business, booking_currency, booking_customer, booking_customer_base, booking_custom_question, booking_service, booking_staff_member, booking_staff_member_base, browser_shared_cookie, browser_site, browser_site_list, built_in_identity_provider, calendar, calendar_group, calendar_permission, calendar_sharing_message, call, cancel_media_processing_operation, certificate_based_auth_configuration, change_tracked_entity, channel, chat, chat_message, chat_message_hosted_content, chat_message_info, checklist_item, claims_mapping_policy, column_definition, column_link, comms_operation, compliance_management_partner, conditional_access_policy, conditional_access_root, conditional_access_template, connected_organization, contact, contact_folder, content_sharing_session, content_type, contract, conversation, conversation_member, conversation_thread, country_named_location, cross_tenant_access_policy, cross_tenant_access_policy_configuration_default, custom_security_attribute_definition, data_policy_operation, default_managed_app_protection, delegated_admin_access_assignment, delegated_admin_customer, delegated_admin_relationship, delegated_admin_relationship_operation, delegated_admin_relationship_request, delegated_admin_service_management_detail, delegated_permission_classification, deleted_team, detected_app, device, device_and_app_management_role_assignment, device_and_app_management_role_definition, device_app_management, device_category, device_compliance_action_item, device_compliance_device_overview, device_compliance_device_status, device_compliance_policy, device_compliance_policy_assignment, device_compliance_policy_device_state_summary, device_compliance_policy_setting_state_summary, device_compliance_policy_state, device_compliance_scheduled_action_for_rule, device_compliance_setting_state, device_compliance_user_overview, device_compliance_user_status, device_configuration, device_configuration_assignment, device_configuration_device_overview, device_configuration_device_state_summary, device_configuration_device_status, device_configuration_state, device_configuration_user_overview, device_configuration_user_status, device_enrollment_configuration, device_enrollment_limit_configuration, device_enrollment_platform_restrictions_configuration, device_enrollment_windows_hello_for_business_configuration, device_install_state, device_management, device_management_exchange_connector, device_management_export_job, device_management_partner, device_management_reports, device_management_troubleshooting_event, directory, directory_audit, directory_definition, directory_object, directory_object_partner_reference, directory_role, directory_role_template, document_set_version, domain, domain_dns_cname_record, domain_dns_mx_record, domain_dns_record, domain_dns_srv_record, domain_dns_txt_record, domain_dns_unavailable_record, drive, drive_item, drive_item_version, edge, edition_upgrade_configuration, education_assignment, education_assignment_defaults, education_assignment_resource, education_assignment_settings, education_category, education_class, education_feedback_outcome, education_feedback_resource_outcome, education_organization, education_outcome, education_points_outcome, education_rubric, education_rubric_outcome, education_school, education_submission, education_submission_resource, education_user, email_authentication_method, email_authentication_method_configuration, email_file_assessment_request, endpoint, enrollment_configuration_assignment, enrollment_troubleshooting_event, enterprise_code_signing_certificate, entitlement_management, entitlement_management_settings, event, event_message, event_message_request, event_message_response, extension, extension_property, external_domain_name, e_book_install_summary, feature_rollout_policy, federated_identity_credential, fido2_authentication_method, fido2_authentication_method_configuration, fido2_combination_configuration, field_value_set, file_assessment_request, file_attachment, filter_operator_schema, group, group_lifecycle_policy, group_setting, group_setting_template, home_realm_discovery_policy, identity_api_connector, identity_built_in_user_flow_attribute, identity_container, identity_custom_user_flow_attribute, identity_provider, identity_provider_base, identity_security_defaults_enforcement_policy, identity_user_flow, identity_user_flow_attribute, identity_user_flow_attribute_assignment, imported_windows_autopilot_device_identity, imported_windows_autopilot_device_identity_upload, inference_classification, inference_classification_override, internal_domain_federation, internet_explorer_mode, invitation, invite_participants_operation, iosi_pad_o_s_web_clip, ios_certificate_profile, ios_compliance_policy, ios_custom_configuration, ios_device_features_configuration, ios_general_device_configuration, ios_lob_app, ios_lob_app_provisioning_configuration_assignment, ios_managed_app_protection, ios_managed_app_registration, ios_mobile_app_configuration, ios_store_app, ios_update_configuration, ios_update_device_status, ios_vpp_app, ios_vpp_e_book, ios_vpp_e_book_assignment, ip_named_location, item_activity, item_activity_stat, item_analytics, item_attachment, learning_content, learning_provider, license_details, linked_resource, list, list_item, list_item_version, localized_notification_message, long_running_operation, mac_o_s_compliance_policy, mac_o_s_custom_configuration, mac_o_s_device_features_configuration, mac_o_s_general_device_configuration, mac_o_s_lob_app, mac_o_s_microsoft_edge_app, mac_o_s_office_suite_app, mail_assessment_request, mail_folder, mail_search_folder, managed_android_lob_app, managed_android_store_app, managed_app, managed_app_configuration, managed_app_operation, managed_app_policy, managed_app_policy_deployment_summary, managed_app_protection, managed_app_registration, managed_app_status, managed_app_status_raw, managed_device, managed_device_mobile_app_configuration, managed_device_mobile_app_configuration_assignment, managed_device_mobile_app_configuration_device_status, managed_device_mobile_app_configuration_device_summary, managed_device_mobile_app_configuration_user_status, managed_device_mobile_app_configuration_user_summary, managed_device_overview, managed_e_book, managed_e_book_assignment, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_app, managed_mobile_lob_app, mdm_windows_information_protection_policy, meeting_attendance_report, message, message_rule, microsoft_account_user_conversation_member, microsoft_authenticator_authentication_method, microsoft_authenticator_authentication_method_configuration, microsoft_authenticator_authentication_method_target, microsoft_store_for_business_app, mobile_app, mobile_app_assignment, mobile_app_category, mobile_app_content, mobile_app_content_file, mobile_contained_app, mobile_lob_app, mobile_threat_defense_connector, multi_value_legacy_extended_property, mute_participant_operation, named_location, notebook, notification_message_template, offer_shift_request, office_graph_insights, onenote, onenote_entity_base_model, onenote_entity_hierarchy_model, onenote_entity_schema_object_model, onenote_operation, onenote_page, onenote_resource, onenote_section, online_meeting, on_premises_conditional_access_settings, on_premises_directory_synchronization, open_shift, open_shift_change_request, open_type_extension, operation, organization, organizational_branding, organizational_branding_localization, organizational_branding_properties, org_contact, outlook_category, outlook_item, outlook_user, o_auth2_permission_grant, participant, participant_joining_notification, participant_left_notification, password_authentication_method, permission, permission_grant_condition_set, permission_grant_policy, person, phone_authentication_method, pinned_chat_message_info, place, planner, planner_assigned_to_task_board_task_format, planner_bucket, planner_bucket_task_board_task_format, planner_group, planner_plan, planner_plan_details, planner_progress_task_board_task_format, planner_task, planner_task_details, planner_user, play_prompt_operation, policy_base, policy_root, post, presence, printer, printer_base, printer_create_operation, printer_share, print_connector, print_document, print_job, print_operation, print_service, print_service_endpoint, print_task, print_task_definition, print_task_trigger, print_usage, print_usage_by_printer, print_usage_by_user, profile_photo, provisioning_object_summary, rbac_application, record_operation, reference_attachment, remote_assistance_partner, request, resource_operation, resource_specific_permission_grant, rich_long_running_operation, risky_service_principal, risky_service_principal_history_item, risky_user, risky_user_history_item, risk_detection, role_assignment, role_definition, room, room_list, saml_or_ws_fed_external_domain_federation, saml_or_ws_fed_provider, schedule, schedule_change_request, scheduling_group, schema_extension, scoped_role_membership, search_entity, section_group, secure_score, secure_score_control_profile, security_reports_root, service_announcement, service_announcement_attachment, service_announcement_base, service_health, service_health_issue, service_principal, service_principal_risk_detection, service_update_message, setting_state_device_summary, shared_drive_item, shared_insight, shared_p_c_configuration, shared_with_channel_team_info, sharepoint, sharepoint_settings, shift, shift_preferences, sign_in, simulation, simulation_automation, simulation_automation_run, single_value_legacy_extended_property, site, skype_for_business_user_conversation_member, skype_user_conversation_member, sms_authentication_method_configuration, sms_authentication_method_target, social_identity_provider, software_oath_authentication_method, software_oath_authentication_method_configuration, software_update_status_summary, start_hold_music_operation, stop_hold_music_operation, sts_policy, subject_rights_request, subscribed_sku, subscribe_to_tone_operation, subscription, swap_shifts_change_request, synchronization, synchronization_job, synchronization_schema, synchronization_template, targeted_managed_app_configuration, targeted_managed_app_policy_assignment, targeted_managed_app_protection, task_file_attachment, team, teams_app, teams_app_definition, teams_app_installation, teams_async_operation, teams_tab, teams_template, teamwork, teamwork_bot, teamwork_hosted_content, teamwork_tag, teamwork_tag_member, team_info, telecom_expense_management_partner, temporary_access_pass_authentication_method, temporary_access_pass_authentication_method_configuration, tenant_app_management_policy, terms_and_conditions, terms_and_conditions_acceptance_status, terms_and_conditions_assignment, terms_of_use_container, threat_assessment_request, threat_assessment_result, thumbnail_set, time_off, time_off_reason, time_off_request, todo, todo_task, todo_task_list, token_issuance_policy, token_lifetime_policy, trending, unified_rbac_resource_action, unified_rbac_resource_namespace, unified_role_assignment, unified_role_assignment_schedule, unified_role_assignment_schedule_instance, unified_role_assignment_schedule_request, unified_role_definition, unified_role_eligibility_schedule, unified_role_eligibility_schedule_instance, unified_role_eligibility_schedule_request, unified_role_management_policy, unified_role_management_policy_approval_rule, unified_role_management_policy_assignment, unified_role_management_policy_authentication_context_rule, unified_role_management_policy_enablement_rule, unified_role_management_policy_expiration_rule, unified_role_management_policy_notification_rule, unified_role_management_policy_rule, unified_role_schedule_base, unified_role_schedule_instance_base, unmute_participant_operation, update_recording_status_operation, url_assessment_request, used_insight, user, user_activity, user_consent_request, user_experience_analytics_device_performance, user_flow_language_configuration, user_flow_language_page, user_install_state_summary, user_scope_teams_app_installation, user_settings, user_teamwork, voice_authentication_method_configuration, vpp_token, web_app, win32_lob_app, windows10_compliance_policy, windows10_custom_configuration, windows10_endpoint_protection_configuration, windows10_enterprise_modern_app_management_configuration, windows10_general_configuration, windows10_mobile_compliance_policy, windows10_secure_assessment_configuration, windows10_team_general_configuration, windows81_compliance_policy, windows81_general_configuration, windows_app_x, windows_autopilot_device_identity, windows_defender_advanced_threat_protection_configuration, windows_hello_for_business_authentication_method, windows_information_protection, windows_information_protection_app_learning_summary, windows_information_protection_app_locker_file, windows_information_protection_network_learning_summary, windows_information_protection_policy, windows_microsoft_edge_app, windows_mobile_m_s_i, windows_phone81_compliance_policy, windows_phone81_custom_configuration, windows_phone81_general_configuration, windows_universal_app_x, windows_universal_app_x_contained_app, windows_update_for_business_configuration, windows_web_app, workbook, workbook_application, workbook_chart, workbook_chart_area_format, workbook_chart_axes, workbook_chart_axis, workbook_chart_axis_format, workbook_chart_axis_title, workbook_chart_axis_title_format, workbook_chart_data_labels, workbook_chart_data_label_format, workbook_chart_fill, workbook_chart_font, workbook_chart_gridlines, workbook_chart_gridlines_format, workbook_chart_legend, workbook_chart_legend_format, workbook_chart_line_format, workbook_chart_point, workbook_chart_point_format, workbook_chart_series, workbook_chart_series_format, workbook_chart_title, workbook_chart_title_format, workbook_comment, workbook_comment_reply, workbook_filter, workbook_format_protection, workbook_functions, workbook_function_result, workbook_named_item, workbook_operation, workbook_pivot_table, workbook_range, workbook_range_border, workbook_range_fill, workbook_range_font, workbook_range_format, workbook_range_sort, workbook_range_view, workbook_table, workbook_table_column, workbook_table_row, workbook_table_sort, workbook_worksheet, workbook_worksheet_protection, workforce_integration, x509_certificate_authentication_method_configuration
-        from .call_records import call_record, segment, session
-        from .external_connectors import connection_operation, external_activity, external_activity_result, external_connection, external_group, external_item, identity, schema
-        from .security import alert, case, cases_root, case_operation, data_set, data_source, data_source_container, ediscovery_add_to_review_set_operation, ediscovery_case, ediscovery_case_settings, ediscovery_custodian, ediscovery_estimate_operation, ediscovery_hold_operation, ediscovery_index_operation, ediscovery_noncustodial_data_source, ediscovery_purge_data_operation, ediscovery_review_set, ediscovery_review_set_query, ediscovery_review_tag, ediscovery_search, ediscovery_tag_operation, incident, retention_event, retention_event_type, search, security, site_source, tag, triggers_root, trigger_types_root, unified_group_source, user_source
-        from .term_store import group, relation, set, store, term
+        from .aad_user_conversation_member import AadUserConversationMember
+        from .access_package import AccessPackage
+        from .access_package_assignment import AccessPackageAssignment
+        from .access_package_assignment_policy import AccessPackageAssignmentPolicy
+        from .access_package_assignment_request import AccessPackageAssignmentRequest
+        from .access_package_catalog import AccessPackageCatalog
+        from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
+        from .access_package_question import AccessPackageQuestion
+        from .access_package_subject import AccessPackageSubject
+        from .access_package_text_input_question import AccessPackageTextInputQuestion
+        from .access_review_history_definition import AccessReviewHistoryDefinition
+        from .access_review_history_instance import AccessReviewHistoryInstance
+        from .access_review_instance import AccessReviewInstance
+        from .access_review_instance_decision_item import AccessReviewInstanceDecisionItem
+        from .access_review_reviewer import AccessReviewReviewer
+        from .access_review_schedule_definition import AccessReviewScheduleDefinition
+        from .access_review_set import AccessReviewSet
+        from .access_review_stage import AccessReviewStage
+        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+        from .activity_history_item import ActivityHistoryItem
+        from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
+        from .admin_consent_request_policy import AdminConsentRequestPolicy
+        from .administrative_unit import AdministrativeUnit
+        from .agreement import Agreement
+        from .agreement_acceptance import AgreementAcceptance
+        from .agreement_file import AgreementFile
+        from .agreement_file_localization import AgreementFileLocalization
+        from .agreement_file_properties import AgreementFileProperties
+        from .agreement_file_version import AgreementFileVersion
+        from .alert import Alert
+        from .allowed_value import AllowedValue
+        from .android_compliance_policy import AndroidCompliancePolicy
+        from .android_custom_configuration import AndroidCustomConfiguration
+        from .android_general_device_configuration import AndroidGeneralDeviceConfiguration
+        from .android_lob_app import AndroidLobApp
+        from .android_managed_app_protection import AndroidManagedAppProtection
+        from .android_managed_app_registration import AndroidManagedAppRegistration
+        from .android_store_app import AndroidStoreApp
+        from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
+        from .android_work_profile_custom_configuration import AndroidWorkProfileCustomConfiguration
+        from .android_work_profile_general_device_configuration import AndroidWorkProfileGeneralDeviceConfiguration
+        from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
+        from .app_catalogs import AppCatalogs
+        from .app_consent_approval_route import AppConsentApprovalRoute
+        from .app_consent_request import AppConsentRequest
+        from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
+        from .apple_managed_identity_provider import AppleManagedIdentityProvider
+        from .apple_push_notification_certificate import ApplePushNotificationCertificate
+        from .application import Application
+        from .application_template import ApplicationTemplate
+        from .app_management_policy import AppManagementPolicy
+        from .app_role_assignment import AppRoleAssignment
+        from .approval import Approval
+        from .approval_stage import ApprovalStage
+        from .app_scope import AppScope
+        from .associated_team_info import AssociatedTeamInfo
+        from .attachment import Attachment
+        from .attachment_base import AttachmentBase
+        from .attachment_session import AttachmentSession
+        from .attack_simulation_root import AttackSimulationRoot
+        from .attendance_record import AttendanceRecord
+        from .attribute_mapping_function_schema import AttributeMappingFunctionSchema
+        from .attribute_set import AttributeSet
+        from .audio_routing_group import AudioRoutingGroup
+        from .audit_event import AuditEvent
+        from .audit_log_root import AuditLogRoot
+        from .authentication import Authentication
+        from .authentication_combination_configuration import AuthenticationCombinationConfiguration
+        from .authentication_context_class_reference import AuthenticationContextClassReference
+        from .authentication_flows_policy import AuthenticationFlowsPolicy
+        from .authentication_method import AuthenticationMethod
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_mode_detail import AuthenticationMethodModeDetail
+        from .authentication_methods_policy import AuthenticationMethodsPolicy
+        from .authentication_method_target import AuthenticationMethodTarget
+        from .authentication_strength_policy import AuthenticationStrengthPolicy
+        from .authentication_strength_root import AuthenticationStrengthRoot
+        from .authored_note import AuthoredNote
+        from .authorization_policy import AuthorizationPolicy
+        from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
+        from .b2x_identity_user_flow import B2xIdentityUserFlow
+        from .base_item import BaseItem
+        from .base_item_version import BaseItemVersion
+        from .bitlocker import Bitlocker
+        from .bitlocker_recovery_key import BitlockerRecoveryKey
+        from .booking_appointment import BookingAppointment
+        from .booking_business import BookingBusiness
+        from .booking_currency import BookingCurrency
+        from .booking_customer import BookingCustomer
+        from .booking_customer_base import BookingCustomerBase
+        from .booking_custom_question import BookingCustomQuestion
+        from .booking_service import BookingService
+        from .booking_staff_member import BookingStaffMember
+        from .booking_staff_member_base import BookingStaffMemberBase
+        from .browser_shared_cookie import BrowserSharedCookie
+        from .browser_site import BrowserSite
+        from .browser_site_list import BrowserSiteList
+        from .built_in_identity_provider import BuiltInIdentityProvider
+        from .calendar import Calendar
+        from .calendar_group import CalendarGroup
+        from .calendar_permission import CalendarPermission
+        from .calendar_sharing_message import CalendarSharingMessage
+        from .call import Call
+        from .call_records.call_record import CallRecord
+        from .call_records.segment import Segment
+        from .call_records.session import Session
+        from .cancel_media_processing_operation import CancelMediaProcessingOperation
+        from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .channel import Channel
+        from .chat import Chat
+        from .chat_message import ChatMessage
+        from .chat_message_hosted_content import ChatMessageHostedContent
+        from .chat_message_info import ChatMessageInfo
+        from .checklist_item import ChecklistItem
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .column_definition import ColumnDefinition
+        from .column_link import ColumnLink
+        from .comms_operation import CommsOperation
+        from .compliance_management_partner import ComplianceManagementPartner
+        from .conditional_access_policy import ConditionalAccessPolicy
+        from .conditional_access_root import ConditionalAccessRoot
+        from .conditional_access_template import ConditionalAccessTemplate
+        from .connected_organization import ConnectedOrganization
+        from .contact import Contact
+        from .contact_folder import ContactFolder
+        from .content_sharing_session import ContentSharingSession
+        from .content_type import ContentType
+        from .contract import Contract
+        from .conversation import Conversation
+        from .conversation_member import ConversationMember
+        from .conversation_thread import ConversationThread
+        from .country_named_location import CountryNamedLocation
+        from .cross_tenant_access_policy import CrossTenantAccessPolicy
+        from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
+        from .custom_callout_extension import CustomCalloutExtension
+        from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
+        from .data_policy_operation import DataPolicyOperation
+        from .default_managed_app_protection import DefaultManagedAppProtection
+        from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
+        from .delegated_admin_customer import DelegatedAdminCustomer
+        from .delegated_admin_relationship import DelegatedAdminRelationship
+        from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
+        from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
+        from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
+        from .delegated_permission_classification import DelegatedPermissionClassification
+        from .deleted_item_container import DeletedItemContainer
+        from .deleted_team import DeletedTeam
+        from .detected_app import DetectedApp
+        from .device import Device
+        from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
+        from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
+        from .device_app_management import DeviceAppManagement
+        from .device_category import DeviceCategory
+        from .device_compliance_action_item import DeviceComplianceActionItem
+        from .device_compliance_device_overview import DeviceComplianceDeviceOverview
+        from .device_compliance_device_status import DeviceComplianceDeviceStatus
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .device_compliance_policy_assignment import DeviceCompliancePolicyAssignment
+        from .device_compliance_policy_device_state_summary import DeviceCompliancePolicyDeviceStateSummary
+        from .device_compliance_policy_setting_state_summary import DeviceCompliancePolicySettingStateSummary
+        from .device_compliance_policy_state import DeviceCompliancePolicyState
+        from .device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
+        from .device_compliance_setting_state import DeviceComplianceSettingState
+        from .device_compliance_user_overview import DeviceComplianceUserOverview
+        from .device_compliance_user_status import DeviceComplianceUserStatus
+        from .device_configuration import DeviceConfiguration
+        from .device_configuration_assignment import DeviceConfigurationAssignment
+        from .device_configuration_device_overview import DeviceConfigurationDeviceOverview
+        from .device_configuration_device_state_summary import DeviceConfigurationDeviceStateSummary
+        from .device_configuration_device_status import DeviceConfigurationDeviceStatus
+        from .device_configuration_state import DeviceConfigurationState
+        from .device_configuration_user_overview import DeviceConfigurationUserOverview
+        from .device_configuration_user_status import DeviceConfigurationUserStatus
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+        from .device_enrollment_limit_configuration import DeviceEnrollmentLimitConfiguration
+        from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
+        from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
+        from .device_install_state import DeviceInstallState
+        from .device_management import DeviceManagement
+        from .device_management_exchange_connector import DeviceManagementExchangeConnector
+        from .device_management_export_job import DeviceManagementExportJob
+        from .device_management_partner import DeviceManagementPartner
+        from .device_management_reports import DeviceManagementReports
+        from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+        from .directory import Directory
+        from .directory_audit import DirectoryAudit
+        from .directory_definition import DirectoryDefinition
+        from .directory_object import DirectoryObject
+        from .directory_object_partner_reference import DirectoryObjectPartnerReference
+        from .directory_role import DirectoryRole
+        from .directory_role_template import DirectoryRoleTemplate
+        from .document_set_version import DocumentSetVersion
+        from .domain import Domain
+        from .domain_dns_cname_record import DomainDnsCnameRecord
+        from .domain_dns_mx_record import DomainDnsMxRecord
+        from .domain_dns_record import DomainDnsRecord
+        from .domain_dns_srv_record import DomainDnsSrvRecord
+        from .domain_dns_txt_record import DomainDnsTxtRecord
+        from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
+        from .drive import Drive
+        from .drive_item import DriveItem
+        from .drive_item_version import DriveItemVersion
+        from .e_book_install_summary import EBookInstallSummary
+        from .edge import Edge
+        from .edition_upgrade_configuration import EditionUpgradeConfiguration
+        from .education_assignment import EducationAssignment
+        from .education_assignment_defaults import EducationAssignmentDefaults
+        from .education_assignment_resource import EducationAssignmentResource
+        from .education_assignment_settings import EducationAssignmentSettings
+        from .education_category import EducationCategory
+        from .education_class import EducationClass
+        from .education_feedback_outcome import EducationFeedbackOutcome
+        from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
+        from .education_organization import EducationOrganization
+        from .education_outcome import EducationOutcome
+        from .education_points_outcome import EducationPointsOutcome
+        from .education_rubric import EducationRubric
+        from .education_rubric_outcome import EducationRubricOutcome
+        from .education_school import EducationSchool
+        from .education_submission import EducationSubmission
+        from .education_submission_resource import EducationSubmissionResource
+        from .education_user import EducationUser
+        from .email_authentication_method import EmailAuthenticationMethod
+        from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
+        from .email_file_assessment_request import EmailFileAssessmentRequest
+        from .endpoint import Endpoint
+        from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
+        from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
+        from .enterprise_code_signing_certificate import EnterpriseCodeSigningCertificate
+        from .entitlement_management import EntitlementManagement
+        from .entitlement_management_settings import EntitlementManagementSettings
+        from .event import Event
+        from .event_message import EventMessage
+        from .event_message_request import EventMessageRequest
+        from .event_message_response import EventMessageResponse
+        from .extension import Extension
+        from .extension_property import ExtensionProperty
+        from .external_connectors.connection_operation import ConnectionOperation
+        from .external_connectors.external_activity import ExternalActivity
+        from .external_connectors.external_activity_result import ExternalActivityResult
+        from .external_connectors.external_connection import ExternalConnection
+        from .external_connectors.external_group import ExternalGroup
+        from .external_connectors.external_item import ExternalItem
+        from .external_connectors.identity import Identity
+        from .external_connectors.schema import Schema
+        from .external_domain_name import ExternalDomainName
+        from .feature_rollout_policy import FeatureRolloutPolicy
+        from .federated_identity_credential import FederatedIdentityCredential
+        from .fido2_authentication_method import Fido2AuthenticationMethod
+        from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
+        from .fido2_combination_configuration import Fido2CombinationConfiguration
+        from .field_value_set import FieldValueSet
+        from .file_assessment_request import FileAssessmentRequest
+        from .file_attachment import FileAttachment
+        from .filter_operator_schema import FilterOperatorSchema
+        from .governance_insight import GovernanceInsight
+        from .group import Group
+        from .group_lifecycle_policy import GroupLifecyclePolicy
+        from .group_setting import GroupSetting
+        from .group_setting_template import GroupSettingTemplate
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .identity_api_connector import IdentityApiConnector
+        from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
+        from .identity_container import IdentityContainer
+        from .identity_custom_user_flow_attribute import IdentityCustomUserFlowAttribute
+        from .identity_governance.custom_task_extension import CustomTaskExtension
+        from .identity_governance.lifecycle_management_settings import LifecycleManagementSettings
+        from .identity_governance.lifecycle_workflows_container import LifecycleWorkflowsContainer
+        from .identity_governance.run import Run
+        from .identity_governance.task import Task
+        from .identity_governance.task_definition import TaskDefinition
+        from .identity_governance.task_processing_result import TaskProcessingResult
+        from .identity_governance.task_report import TaskReport
+        from .identity_governance.user_processing_result import UserProcessingResult
+        from .identity_governance.workflow_template import WorkflowTemplate
+        from .identity_provider import IdentityProvider
+        from .identity_provider_base import IdentityProviderBase
+        from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .identity_user_flow import IdentityUserFlow
+        from .identity_user_flow_attribute import IdentityUserFlowAttribute
+        from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
+        from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
+        from .imported_windows_autopilot_device_identity_upload import ImportedWindowsAutopilotDeviceIdentityUpload
+        from .inference_classification import InferenceClassification
+        from .inference_classification_override import InferenceClassificationOverride
+        from .internal_domain_federation import InternalDomainFederation
+        from .internet_explorer_mode import InternetExplorerMode
+        from .invitation import Invitation
+        from .invite_participants_operation import InviteParticipantsOperation
+        from .ios_certificate_profile import IosCertificateProfile
+        from .ios_compliance_policy import IosCompliancePolicy
+        from .ios_custom_configuration import IosCustomConfiguration
+        from .ios_device_features_configuration import IosDeviceFeaturesConfiguration
+        from .ios_general_device_configuration import IosGeneralDeviceConfiguration
+        from .iosi_pad_o_s_web_clip import IosiPadOSWebClip
+        from .ios_lob_app import IosLobApp
+        from .ios_lob_app_provisioning_configuration_assignment import IosLobAppProvisioningConfigurationAssignment
+        from .ios_managed_app_protection import IosManagedAppProtection
+        from .ios_managed_app_registration import IosManagedAppRegistration
+        from .ios_mobile_app_configuration import IosMobileAppConfiguration
+        from .ios_store_app import IosStoreApp
+        from .ios_update_configuration import IosUpdateConfiguration
+        from .ios_update_device_status import IosUpdateDeviceStatus
+        from .ios_vpp_app import IosVppApp
+        from .ios_vpp_e_book import IosVppEBook
+        from .ios_vpp_e_book_assignment import IosVppEBookAssignment
+        from .ip_named_location import IpNamedLocation
+        from .item_activity import ItemActivity
+        from .item_activity_stat import ItemActivityStat
+        from .item_analytics import ItemAnalytics
+        from .item_attachment import ItemAttachment
+        from .learning_content import LearningContent
+        from .learning_provider import LearningProvider
+        from .license_details import LicenseDetails
+        from .linked_resource import LinkedResource
+        from .list_item import ListItem
+        from .list_item_version import ListItemVersion
+        from .list_ import List_
+        from .localized_notification_message import LocalizedNotificationMessage
+        from .long_running_operation import LongRunningOperation
+        from .mac_o_s_compliance_policy import MacOSCompliancePolicy
+        from .mac_o_s_custom_configuration import MacOSCustomConfiguration
+        from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
+        from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
+        from .mac_o_s_lob_app import MacOSLobApp
+        from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
+        from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
+        from .mail_assessment_request import MailAssessmentRequest
+        from .mail_folder import MailFolder
+        from .mail_search_folder import MailSearchFolder
+        from .managed_android_lob_app import ManagedAndroidLobApp
+        from .managed_android_store_app import ManagedAndroidStoreApp
+        from .managed_app import ManagedApp
+        from .managed_app_configuration import ManagedAppConfiguration
+        from .managed_app_operation import ManagedAppOperation
+        from .managed_app_policy import ManagedAppPolicy
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_app_protection import ManagedAppProtection
+        from .managed_app_registration import ManagedAppRegistration
+        from .managed_app_status import ManagedAppStatus
+        from .managed_app_status_raw import ManagedAppStatusRaw
+        from .managed_device import ManagedDevice
+        from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
+        from .managed_device_mobile_app_configuration_assignment import ManagedDeviceMobileAppConfigurationAssignment
+        from .managed_device_mobile_app_configuration_device_status import ManagedDeviceMobileAppConfigurationDeviceStatus
+        from .managed_device_mobile_app_configuration_device_summary import ManagedDeviceMobileAppConfigurationDeviceSummary
+        from .managed_device_mobile_app_configuration_user_status import ManagedDeviceMobileAppConfigurationUserStatus
+        from .managed_device_mobile_app_configuration_user_summary import ManagedDeviceMobileAppConfigurationUserSummary
+        from .managed_device_overview import ManagedDeviceOverview
+        from .managed_e_book import ManagedEBook
+        from .managed_e_book_assignment import ManagedEBookAssignment
+        from .managed_i_o_s_lob_app import ManagedIOSLobApp
+        from .managed_i_o_s_store_app import ManagedIOSStoreApp
+        from .managed_mobile_app import ManagedMobileApp
+        from .managed_mobile_lob_app import ManagedMobileLobApp
+        from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
+        from .meeting_attendance_report import MeetingAttendanceReport
+        from .message import Message
+        from .message_rule import MessageRule
+        from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
+        from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
+        from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
+        from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+        from .microsoft_store_for_business_app import MicrosoftStoreForBusinessApp
+        from .mobile_app import MobileApp
+        from .mobile_app_assignment import MobileAppAssignment
+        from .mobile_app_category import MobileAppCategory
+        from .mobile_app_content import MobileAppContent
+        from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_contained_app import MobileContainedApp
+        from .mobile_lob_app import MobileLobApp
+        from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+        from .mute_participant_operation import MuteParticipantOperation
+        from .named_location import NamedLocation
+        from .notebook import Notebook
+        from .notification_message_template import NotificationMessageTemplate
+        from .o_auth2_permission_grant import OAuth2PermissionGrant
+        from .offer_shift_request import OfferShiftRequest
+        from .office_graph_insights import OfficeGraphInsights
+        from .onenote import Onenote
+        from .onenote_entity_base_model import OnenoteEntityBaseModel
+        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+        from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
+        from .onenote_operation import OnenoteOperation
+        from .onenote_page import OnenotePage
+        from .onenote_resource import OnenoteResource
+        from .onenote_section import OnenoteSection
+        from .online_meeting import OnlineMeeting
+        from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
+        from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+        from .open_shift import OpenShift
+        from .open_shift_change_request import OpenShiftChangeRequest
+        from .open_type_extension import OpenTypeExtension
+        from .operation import Operation
+        from .organization import Organization
+        from .organizational_branding import OrganizationalBranding
+        from .organizational_branding_localization import OrganizationalBrandingLocalization
+        from .organizational_branding_properties import OrganizationalBrandingProperties
+        from .org_contact import OrgContact
+        from .outlook_category import OutlookCategory
+        from .outlook_item import OutlookItem
+        from .outlook_user import OutlookUser
+        from .participant import Participant
+        from .participant_joining_notification import ParticipantJoiningNotification
+        from .participant_left_notification import ParticipantLeftNotification
+        from .password_authentication_method import PasswordAuthenticationMethod
+        from .permission import Permission
+        from .permission_grant_condition_set import PermissionGrantConditionSet
+        from .permission_grant_policy import PermissionGrantPolicy
+        from .person import Person
+        from .phone_authentication_method import PhoneAuthenticationMethod
+        from .pinned_chat_message_info import PinnedChatMessageInfo
+        from .place import Place
+        from .planner import Planner
+        from .planner_assigned_to_task_board_task_format import PlannerAssignedToTaskBoardTaskFormat
+        from .planner_bucket import PlannerBucket
+        from .planner_bucket_task_board_task_format import PlannerBucketTaskBoardTaskFormat
+        from .planner_group import PlannerGroup
+        from .planner_plan import PlannerPlan
+        from .planner_plan_details import PlannerPlanDetails
+        from .planner_progress_task_board_task_format import PlannerProgressTaskBoardTaskFormat
+        from .planner_task import PlannerTask
+        from .planner_task_details import PlannerTaskDetails
+        from .planner_user import PlannerUser
+        from .play_prompt_operation import PlayPromptOperation
+        from .policy_base import PolicyBase
+        from .policy_root import PolicyRoot
+        from .post import Post
+        from .presence import Presence
+        from .print_connector import PrintConnector
+        from .print_document import PrintDocument
+        from .printer import Printer
+        from .printer_base import PrinterBase
+        from .printer_create_operation import PrinterCreateOperation
+        from .printer_share import PrinterShare
+        from .print_job import PrintJob
+        from .print_operation import PrintOperation
+        from .print_service import PrintService
+        from .print_service_endpoint import PrintServiceEndpoint
+        from .print_task import PrintTask
+        from .print_task_definition import PrintTaskDefinition
+        from .print_task_trigger import PrintTaskTrigger
+        from .print_usage import PrintUsage
+        from .print_usage_by_printer import PrintUsageByPrinter
+        from .print_usage_by_user import PrintUsageByUser
+        from .profile_photo import ProfilePhoto
+        from .provisioning_object_summary import ProvisioningObjectSummary
+        from .rbac_application import RbacApplication
+        from .record_operation import RecordOperation
+        from .reference_attachment import ReferenceAttachment
+        from .remote_assistance_partner import RemoteAssistancePartner
+        from .request import Request
+        from .resource_operation import ResourceOperation
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .rich_long_running_operation import RichLongRunningOperation
+        from .risk_detection import RiskDetection
+        from .risky_service_principal import RiskyServicePrincipal
+        from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
+        from .risky_user import RiskyUser
+        from .risky_user_history_item import RiskyUserHistoryItem
+        from .role_assignment import RoleAssignment
+        from .role_definition import RoleDefinition
+        from .room import Room
+        from .room_list import RoomList
+        from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
+        from .saml_or_ws_fed_provider import SamlOrWsFedProvider
+        from .schedule import Schedule
+        from .schedule_change_request import ScheduleChangeRequest
+        from .scheduling_group import SchedulingGroup
+        from .schema_extension import SchemaExtension
+        from .scoped_role_membership import ScopedRoleMembership
+        from .search_entity import SearchEntity
+        from .section_group import SectionGroup
+        from .secure_score import SecureScore
+        from .secure_score_control_profile import SecureScoreControlProfile
+        from .security.alert import Alert
+        from .security.case import Case
+        from .security.case_operation import CaseOperation
+        from .security.cases_root import CasesRoot
+        from .security.data_set import DataSet
+        from .security.data_source import DataSource
+        from .security.data_source_container import DataSourceContainer
+        from .security.ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
+        from .security.ediscovery_case import EdiscoveryCase
+        from .security.ediscovery_case_settings import EdiscoveryCaseSettings
+        from .security.ediscovery_custodian import EdiscoveryCustodian
+        from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
+        from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
+        from .security.ediscovery_index_operation import EdiscoveryIndexOperation
+        from .security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
+        from .security.ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
+        from .security.ediscovery_review_set import EdiscoveryReviewSet
+        from .security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
+        from .security.ediscovery_review_tag import EdiscoveryReviewTag
+        from .security.ediscovery_search import EdiscoverySearch
+        from .security.ediscovery_tag_operation import EdiscoveryTagOperation
+        from .security.incident import Incident
+        from .security.retention_event import RetentionEvent
+        from .security.retention_event_type import RetentionEventType
+        from .security.search import Search
+        from .security.security import Security
+        from .security.site_source import SiteSource
+        from .security.tag import Tag
+        from .security.triggers_root import TriggersRoot
+        from .security.trigger_types_root import TriggerTypesRoot
+        from .security.unified_group_source import UnifiedGroupSource
+        from .security.user_source import UserSource
+        from .security_reports_root import SecurityReportsRoot
+        from .service_announcement import ServiceAnnouncement
+        from .service_announcement_attachment import ServiceAnnouncementAttachment
+        from .service_announcement_base import ServiceAnnouncementBase
+        from .service_health import ServiceHealth
+        from .service_health_issue import ServiceHealthIssue
+        from .service_principal import ServicePrincipal
+        from .service_principal_risk_detection import ServicePrincipalRiskDetection
+        from .service_update_message import ServiceUpdateMessage
+        from .setting_state_device_summary import SettingStateDeviceSummary
+        from .shared_drive_item import SharedDriveItem
+        from .shared_insight import SharedInsight
+        from .shared_p_c_configuration import SharedPCConfiguration
+        from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+        from .sharepoint import Sharepoint
+        from .sharepoint_settings import SharepointSettings
+        from .shift import Shift
+        from .shift_preferences import ShiftPreferences
+        from .sign_in import SignIn
+        from .simulation import Simulation
+        from .simulation_automation import SimulationAutomation
+        from .simulation_automation_run import SimulationAutomationRun
+        from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
+        from .site import Site
+        from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
+        from .skype_user_conversation_member import SkypeUserConversationMember
+        from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
+        from .sms_authentication_method_target import SmsAuthenticationMethodTarget
+        from .social_identity_provider import SocialIdentityProvider
+        from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
+        from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
+        from .software_update_status_summary import SoftwareUpdateStatusSummary
+        from .start_hold_music_operation import StartHoldMusicOperation
+        from .stop_hold_music_operation import StopHoldMusicOperation
+        from .sts_policy import StsPolicy
+        from .subject_rights_request import SubjectRightsRequest
+        from .subscribed_sku import SubscribedSku
+        from .subscribe_to_tone_operation import SubscribeToToneOperation
+        from .subscription import Subscription
+        from .swap_shifts_change_request import SwapShiftsChangeRequest
+        from .synchronization import Synchronization
+        from .synchronization_job import SynchronizationJob
+        from .synchronization_schema import SynchronizationSchema
+        from .synchronization_template import SynchronizationTemplate
+        from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
+        from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
+        from .targeted_managed_app_protection import TargetedManagedAppProtection
+        from .task_file_attachment import TaskFileAttachment
+        from .team import Team
+        from .team_info import TeamInfo
+        from .teams_app import TeamsApp
+        from .teams_app_definition import TeamsAppDefinition
+        from .teams_app_installation import TeamsAppInstallation
+        from .teams_async_operation import TeamsAsyncOperation
+        from .teams_tab import TeamsTab
+        from .teams_template import TeamsTemplate
+        from .teamwork import Teamwork
+        from .teamwork_bot import TeamworkBot
+        from .teamwork_hosted_content import TeamworkHostedContent
+        from .teamwork_tag import TeamworkTag
+        from .teamwork_tag_member import TeamworkTagMember
+        from .telecom_expense_management_partner import TelecomExpenseManagementPartner
+        from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
+        from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
+        from .tenant_app_management_policy import TenantAppManagementPolicy
+        from .terms_and_conditions import TermsAndConditions
+        from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
+        from .terms_and_conditions_assignment import TermsAndConditionsAssignment
+        from .terms_of_use_container import TermsOfUseContainer
+        from .term_store.group import Group
+        from .term_store.relation import Relation
+        from .term_store.set import Set
+        from .term_store.store import Store
+        from .term_store.term import Term
+        from .threat_assessment_request import ThreatAssessmentRequest
+        from .threat_assessment_result import ThreatAssessmentResult
+        from .thumbnail_set import ThumbnailSet
+        from .time_off import TimeOff
+        from .time_off_reason import TimeOffReason
+        from .time_off_request import TimeOffRequest
+        from .todo import Todo
+        from .todo_task import TodoTask
+        from .todo_task_list import TodoTaskList
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
+        from .trending import Trending
+        from .unified_rbac_resource_action import UnifiedRbacResourceAction
+        from .unified_rbac_resource_namespace import UnifiedRbacResourceNamespace
+        from .unified_role_assignment import UnifiedRoleAssignment
+        from .unified_role_assignment_schedule import UnifiedRoleAssignmentSchedule
+        from .unified_role_assignment_schedule_instance import UnifiedRoleAssignmentScheduleInstance
+        from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
+        from .unified_role_definition import UnifiedRoleDefinition
+        from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
+        from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
+        from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
+        from .unified_role_management_policy import UnifiedRoleManagementPolicy
+        from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
+        from .unified_role_management_policy_assignment import UnifiedRoleManagementPolicyAssignment
+        from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+        from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
+        from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
+        from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
+        from .unified_role_schedule_base import UnifiedRoleScheduleBase
+        from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
+        from .unmute_participant_operation import UnmuteParticipantOperation
+        from .update_recording_status_operation import UpdateRecordingStatusOperation
+        from .url_assessment_request import UrlAssessmentRequest
+        from .used_insight import UsedInsight
+        from .user import User
+        from .user_activity import UserActivity
+        from .user_consent_request import UserConsentRequest
+        from .user_experience_analytics_device_performance import UserExperienceAnalyticsDevicePerformance
+        from .user_flow_language_configuration import UserFlowLanguageConfiguration
+        from .user_flow_language_page import UserFlowLanguagePage
+        from .user_install_state_summary import UserInstallStateSummary
+        from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
+        from .user_settings import UserSettings
+        from .user_sign_in_insight import UserSignInInsight
+        from .user_teamwork import UserTeamwork
+        from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
+        from .vpp_token import VppToken
+        from .web_app import WebApp
+        from .win32_lob_app import Win32LobApp
+        from .windows10_compliance_policy import Windows10CompliancePolicy
+        from .windows10_custom_configuration import Windows10CustomConfiguration
+        from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
+        from .windows10_enterprise_modern_app_management_configuration import Windows10EnterpriseModernAppManagementConfiguration
+        from .windows10_general_configuration import Windows10GeneralConfiguration
+        from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
+        from .windows10_secure_assessment_configuration import Windows10SecureAssessmentConfiguration
+        from .windows10_team_general_configuration import Windows10TeamGeneralConfiguration
+        from .windows81_compliance_policy import Windows81CompliancePolicy
+        from .windows81_general_configuration import Windows81GeneralConfiguration
+        from .windows_app_x import WindowsAppX
+        from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
+        from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
+        from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
+        from .windows_information_protection import WindowsInformationProtection
+        from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
+        from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
+        from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
+        from .windows_information_protection_policy import WindowsInformationProtectionPolicy
+        from .windows_microsoft_edge_app import WindowsMicrosoftEdgeApp
+        from .windows_mobile_m_s_i import WindowsMobileMSI
+        from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
+        from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
+        from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
+        from .windows_universal_app_x import WindowsUniversalAppX
+        from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
+        from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
+        from .windows_web_app import WindowsWebApp
+        from .workbook import Workbook
+        from .workbook_application import WorkbookApplication
+        from .workbook_chart import WorkbookChart
+        from .workbook_chart_area_format import WorkbookChartAreaFormat
+        from .workbook_chart_axes import WorkbookChartAxes
+        from .workbook_chart_axis import WorkbookChartAxis
+        from .workbook_chart_axis_format import WorkbookChartAxisFormat
+        from .workbook_chart_axis_title import WorkbookChartAxisTitle
+        from .workbook_chart_axis_title_format import WorkbookChartAxisTitleFormat
+        from .workbook_chart_data_label_format import WorkbookChartDataLabelFormat
+        from .workbook_chart_data_labels import WorkbookChartDataLabels
+        from .workbook_chart_fill import WorkbookChartFill
+        from .workbook_chart_font import WorkbookChartFont
+        from .workbook_chart_gridlines import WorkbookChartGridlines
+        from .workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
+        from .workbook_chart_legend import WorkbookChartLegend
+        from .workbook_chart_legend_format import WorkbookChartLegendFormat
+        from .workbook_chart_line_format import WorkbookChartLineFormat
+        from .workbook_chart_point import WorkbookChartPoint
+        from .workbook_chart_point_format import WorkbookChartPointFormat
+        from .workbook_chart_series import WorkbookChartSeries
+        from .workbook_chart_series_format import WorkbookChartSeriesFormat
+        from .workbook_chart_title import WorkbookChartTitle
+        from .workbook_chart_title_format import WorkbookChartTitleFormat
+        from .workbook_comment import WorkbookComment
+        from .workbook_comment_reply import WorkbookCommentReply
+        from .workbook_filter import WorkbookFilter
+        from .workbook_format_protection import WorkbookFormatProtection
+        from .workbook_function_result import WorkbookFunctionResult
+        from .workbook_functions import WorkbookFunctions
+        from .workbook_named_item import WorkbookNamedItem
+        from .workbook_operation import WorkbookOperation
+        from .workbook_pivot_table import WorkbookPivotTable
+        from .workbook_range import WorkbookRange
+        from .workbook_range_border import WorkbookRangeBorder
+        from .workbook_range_fill import WorkbookRangeFill
+        from .workbook_range_font import WorkbookRangeFont
+        from .workbook_range_format import WorkbookRangeFormat
+        from .workbook_range_sort import WorkbookRangeSort
+        from .workbook_range_view import WorkbookRangeView
+        from .workbook_table import WorkbookTable
+        from .workbook_table_column import WorkbookTableColumn
+        from .workbook_table_row import WorkbookTableRow
+        from .workbook_table_sort import WorkbookTableSort
+        from .workbook_worksheet import WorkbookWorksheet
+        from .workbook_worksheet_protection import WorkbookWorksheetProtection
+        from .workforce_integration import WorkforceIntegration
+        from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
 
-        from . import aad_user_conversation_member, access_package, access_package_assignment, access_package_assignment_policy, access_package_assignment_request, access_package_catalog, access_package_multiple_choice_question, access_package_question, access_package_subject, access_package_text_input_question, access_review_history_definition, access_review_history_instance, access_review_instance, access_review_instance_decision_item, access_review_reviewer, access_review_schedule_definition, access_review_set, access_review_stage, activity_based_timeout_policy, activity_history_item, add_large_gallery_view_operation, administrative_unit, admin_consent_request_policy, agreement, agreement_acceptance, agreement_file, agreement_file_localization, agreement_file_properties, agreement_file_version, alert, allowed_value, android_compliance_policy, android_custom_configuration, android_general_device_configuration, android_lob_app, android_managed_app_protection, android_managed_app_registration, android_store_app, android_work_profile_compliance_policy, android_work_profile_custom_configuration, android_work_profile_general_device_configuration, anonymous_guest_conversation_member, apple_device_features_configuration_base, apple_managed_identity_provider, apple_push_notification_certificate, application, application_template, approval, approval_stage, app_catalogs, app_consent_approval_route, app_consent_request, app_management_policy, app_role_assignment, app_scope, associated_team_info, attachment, attachment_base, attachment_session, attack_simulation_root, attendance_record, attribute_mapping_function_schema, attribute_set, audio_routing_group, audit_event, audit_log_root, authentication, authentication_combination_configuration, authentication_context_class_reference, authentication_flows_policy, authentication_method, authentication_methods_policy, authentication_method_configuration, authentication_method_mode_detail, authentication_method_target, authentication_strength_policy, authentication_strength_root, authored_note, authorization_policy, azure_communication_services_user_conversation_member, b2x_identity_user_flow, base_item, base_item_version, bitlocker, bitlocker_recovery_key, booking_appointment, booking_business, booking_currency, booking_customer, booking_customer_base, booking_custom_question, booking_service, booking_staff_member, booking_staff_member_base, browser_shared_cookie, browser_site, browser_site_list, built_in_identity_provider, calendar, calendar_group, calendar_permission, calendar_sharing_message, call, cancel_media_processing_operation, certificate_based_auth_configuration, change_tracked_entity, channel, chat, chat_message, chat_message_hosted_content, chat_message_info, checklist_item, claims_mapping_policy, column_definition, column_link, comms_operation, compliance_management_partner, conditional_access_policy, conditional_access_root, conditional_access_template, connected_organization, contact, contact_folder, content_sharing_session, content_type, contract, conversation, conversation_member, conversation_thread, country_named_location, cross_tenant_access_policy, cross_tenant_access_policy_configuration_default, custom_security_attribute_definition, data_policy_operation, default_managed_app_protection, delegated_admin_access_assignment, delegated_admin_customer, delegated_admin_relationship, delegated_admin_relationship_operation, delegated_admin_relationship_request, delegated_admin_service_management_detail, delegated_permission_classification, deleted_team, detected_app, device, device_and_app_management_role_assignment, device_and_app_management_role_definition, device_app_management, device_category, device_compliance_action_item, device_compliance_device_overview, device_compliance_device_status, device_compliance_policy, device_compliance_policy_assignment, device_compliance_policy_device_state_summary, device_compliance_policy_setting_state_summary, device_compliance_policy_state, device_compliance_scheduled_action_for_rule, device_compliance_setting_state, device_compliance_user_overview, device_compliance_user_status, device_configuration, device_configuration_assignment, device_configuration_device_overview, device_configuration_device_state_summary, device_configuration_device_status, device_configuration_state, device_configuration_user_overview, device_configuration_user_status, device_enrollment_configuration, device_enrollment_limit_configuration, device_enrollment_platform_restrictions_configuration, device_enrollment_windows_hello_for_business_configuration, device_install_state, device_management, device_management_exchange_connector, device_management_export_job, device_management_partner, device_management_reports, device_management_troubleshooting_event, directory, directory_audit, directory_definition, directory_object, directory_object_partner_reference, directory_role, directory_role_template, document_set_version, domain, domain_dns_cname_record, domain_dns_mx_record, domain_dns_record, domain_dns_srv_record, domain_dns_txt_record, domain_dns_unavailable_record, drive, drive_item, drive_item_version, edge, edition_upgrade_configuration, education_assignment, education_assignment_defaults, education_assignment_resource, education_assignment_settings, education_category, education_class, education_feedback_outcome, education_feedback_resource_outcome, education_organization, education_outcome, education_points_outcome, education_rubric, education_rubric_outcome, education_school, education_submission, education_submission_resource, education_user, email_authentication_method, email_authentication_method_configuration, email_file_assessment_request, endpoint, enrollment_configuration_assignment, enrollment_troubleshooting_event, enterprise_code_signing_certificate, entitlement_management, entitlement_management_settings, event, event_message, event_message_request, event_message_response, extension, extension_property, external_domain_name, e_book_install_summary, feature_rollout_policy, federated_identity_credential, fido2_authentication_method, fido2_authentication_method_configuration, fido2_combination_configuration, field_value_set, file_assessment_request, file_attachment, filter_operator_schema, group, group_lifecycle_policy, group_setting, group_setting_template, home_realm_discovery_policy, identity_api_connector, identity_built_in_user_flow_attribute, identity_container, identity_custom_user_flow_attribute, identity_provider, identity_provider_base, identity_security_defaults_enforcement_policy, identity_user_flow, identity_user_flow_attribute, identity_user_flow_attribute_assignment, imported_windows_autopilot_device_identity, imported_windows_autopilot_device_identity_upload, inference_classification, inference_classification_override, internal_domain_federation, internet_explorer_mode, invitation, invite_participants_operation, iosi_pad_o_s_web_clip, ios_certificate_profile, ios_compliance_policy, ios_custom_configuration, ios_device_features_configuration, ios_general_device_configuration, ios_lob_app, ios_lob_app_provisioning_configuration_assignment, ios_managed_app_protection, ios_managed_app_registration, ios_mobile_app_configuration, ios_store_app, ios_update_configuration, ios_update_device_status, ios_vpp_app, ios_vpp_e_book, ios_vpp_e_book_assignment, ip_named_location, item_activity, item_activity_stat, item_analytics, item_attachment, learning_content, learning_provider, license_details, linked_resource, list, list_item, list_item_version, localized_notification_message, long_running_operation, mac_o_s_compliance_policy, mac_o_s_custom_configuration, mac_o_s_device_features_configuration, mac_o_s_general_device_configuration, mac_o_s_lob_app, mac_o_s_microsoft_edge_app, mac_o_s_office_suite_app, mail_assessment_request, mail_folder, mail_search_folder, managed_android_lob_app, managed_android_store_app, managed_app, managed_app_configuration, managed_app_operation, managed_app_policy, managed_app_policy_deployment_summary, managed_app_protection, managed_app_registration, managed_app_status, managed_app_status_raw, managed_device, managed_device_mobile_app_configuration, managed_device_mobile_app_configuration_assignment, managed_device_mobile_app_configuration_device_status, managed_device_mobile_app_configuration_device_summary, managed_device_mobile_app_configuration_user_status, managed_device_mobile_app_configuration_user_summary, managed_device_overview, managed_e_book, managed_e_book_assignment, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_app, managed_mobile_lob_app, mdm_windows_information_protection_policy, meeting_attendance_report, message, message_rule, microsoft_account_user_conversation_member, microsoft_authenticator_authentication_method, microsoft_authenticator_authentication_method_configuration, microsoft_authenticator_authentication_method_target, microsoft_store_for_business_app, mobile_app, mobile_app_assignment, mobile_app_category, mobile_app_content, mobile_app_content_file, mobile_contained_app, mobile_lob_app, mobile_threat_defense_connector, multi_value_legacy_extended_property, mute_participant_operation, named_location, notebook, notification_message_template, offer_shift_request, office_graph_insights, onenote, onenote_entity_base_model, onenote_entity_hierarchy_model, onenote_entity_schema_object_model, onenote_operation, onenote_page, onenote_resource, onenote_section, online_meeting, on_premises_conditional_access_settings, on_premises_directory_synchronization, open_shift, open_shift_change_request, open_type_extension, operation, organization, organizational_branding, organizational_branding_localization, organizational_branding_properties, org_contact, outlook_category, outlook_item, outlook_user, o_auth2_permission_grant, participant, participant_joining_notification, participant_left_notification, password_authentication_method, permission, permission_grant_condition_set, permission_grant_policy, person, phone_authentication_method, pinned_chat_message_info, place, planner, planner_assigned_to_task_board_task_format, planner_bucket, planner_bucket_task_board_task_format, planner_group, planner_plan, planner_plan_details, planner_progress_task_board_task_format, planner_task, planner_task_details, planner_user, play_prompt_operation, policy_base, policy_root, post, presence, printer, printer_base, printer_create_operation, printer_share, print_connector, print_document, print_job, print_operation, print_service, print_service_endpoint, print_task, print_task_definition, print_task_trigger, print_usage, print_usage_by_printer, print_usage_by_user, profile_photo, provisioning_object_summary, rbac_application, record_operation, reference_attachment, remote_assistance_partner, request, resource_operation, resource_specific_permission_grant, rich_long_running_operation, risky_service_principal, risky_service_principal_history_item, risky_user, risky_user_history_item, risk_detection, role_assignment, role_definition, room, room_list, saml_or_ws_fed_external_domain_federation, saml_or_ws_fed_provider, schedule, schedule_change_request, scheduling_group, schema_extension, scoped_role_membership, search_entity, section_group, secure_score, secure_score_control_profile, security_reports_root, service_announcement, service_announcement_attachment, service_announcement_base, service_health, service_health_issue, service_principal, service_principal_risk_detection, service_update_message, setting_state_device_summary, shared_drive_item, shared_insight, shared_p_c_configuration, shared_with_channel_team_info, sharepoint, sharepoint_settings, shift, shift_preferences, sign_in, simulation, simulation_automation, simulation_automation_run, single_value_legacy_extended_property, site, skype_for_business_user_conversation_member, skype_user_conversation_member, sms_authentication_method_configuration, sms_authentication_method_target, social_identity_provider, software_oath_authentication_method, software_oath_authentication_method_configuration, software_update_status_summary, start_hold_music_operation, stop_hold_music_operation, sts_policy, subject_rights_request, subscribed_sku, subscribe_to_tone_operation, subscription, swap_shifts_change_request, synchronization, synchronization_job, synchronization_schema, synchronization_template, targeted_managed_app_configuration, targeted_managed_app_policy_assignment, targeted_managed_app_protection, task_file_attachment, team, teams_app, teams_app_definition, teams_app_installation, teams_async_operation, teams_tab, teams_template, teamwork, teamwork_bot, teamwork_hosted_content, teamwork_tag, teamwork_tag_member, team_info, telecom_expense_management_partner, temporary_access_pass_authentication_method, temporary_access_pass_authentication_method_configuration, tenant_app_management_policy, terms_and_conditions, terms_and_conditions_acceptance_status, terms_and_conditions_assignment, terms_of_use_container, threat_assessment_request, threat_assessment_result, thumbnail_set, time_off, time_off_reason, time_off_request, todo, todo_task, todo_task_list, token_issuance_policy, token_lifetime_policy, trending, unified_rbac_resource_action, unified_rbac_resource_namespace, unified_role_assignment, unified_role_assignment_schedule, unified_role_assignment_schedule_instance, unified_role_assignment_schedule_request, unified_role_definition, unified_role_eligibility_schedule, unified_role_eligibility_schedule_instance, unified_role_eligibility_schedule_request, unified_role_management_policy, unified_role_management_policy_approval_rule, unified_role_management_policy_assignment, unified_role_management_policy_authentication_context_rule, unified_role_management_policy_enablement_rule, unified_role_management_policy_expiration_rule, unified_role_management_policy_notification_rule, unified_role_management_policy_rule, unified_role_schedule_base, unified_role_schedule_instance_base, unmute_participant_operation, update_recording_status_operation, url_assessment_request, used_insight, user, user_activity, user_consent_request, user_experience_analytics_device_performance, user_flow_language_configuration, user_flow_language_page, user_install_state_summary, user_scope_teams_app_installation, user_settings, user_teamwork, voice_authentication_method_configuration, vpp_token, web_app, win32_lob_app, windows10_compliance_policy, windows10_custom_configuration, windows10_endpoint_protection_configuration, windows10_enterprise_modern_app_management_configuration, windows10_general_configuration, windows10_mobile_compliance_policy, windows10_secure_assessment_configuration, windows10_team_general_configuration, windows81_compliance_policy, windows81_general_configuration, windows_app_x, windows_autopilot_device_identity, windows_defender_advanced_threat_protection_configuration, windows_hello_for_business_authentication_method, windows_information_protection, windows_information_protection_app_learning_summary, windows_information_protection_app_locker_file, windows_information_protection_network_learning_summary, windows_information_protection_policy, windows_microsoft_edge_app, windows_mobile_m_s_i, windows_phone81_compliance_policy, windows_phone81_custom_configuration, windows_phone81_general_configuration, windows_universal_app_x, windows_universal_app_x_contained_app, windows_update_for_business_configuration, windows_web_app, workbook, workbook_application, workbook_chart, workbook_chart_area_format, workbook_chart_axes, workbook_chart_axis, workbook_chart_axis_format, workbook_chart_axis_title, workbook_chart_axis_title_format, workbook_chart_data_labels, workbook_chart_data_label_format, workbook_chart_fill, workbook_chart_font, workbook_chart_gridlines, workbook_chart_gridlines_format, workbook_chart_legend, workbook_chart_legend_format, workbook_chart_line_format, workbook_chart_point, workbook_chart_point_format, workbook_chart_series, workbook_chart_series_format, workbook_chart_title, workbook_chart_title_format, workbook_comment, workbook_comment_reply, workbook_filter, workbook_format_protection, workbook_functions, workbook_function_result, workbook_named_item, workbook_operation, workbook_pivot_table, workbook_range, workbook_range_border, workbook_range_fill, workbook_range_font, workbook_range_format, workbook_range_sort, workbook_range_view, workbook_table, workbook_table_column, workbook_table_row, workbook_table_sort, workbook_worksheet, workbook_worksheet_protection, workforce_integration, x509_certificate_authentication_method_configuration
-        from .call_records import call_record, segment, session
-        from .external_connectors import connection_operation, external_activity, external_activity_result, external_connection, external_group, external_item, identity, schema
-        from .security import alert, case, cases_root, case_operation, data_set, data_source, data_source_container, ediscovery_add_to_review_set_operation, ediscovery_case, ediscovery_case_settings, ediscovery_custodian, ediscovery_estimate_operation, ediscovery_hold_operation, ediscovery_index_operation, ediscovery_noncustodial_data_source, ediscovery_purge_data_operation, ediscovery_review_set, ediscovery_review_set_query, ediscovery_review_tag, ediscovery_search, ediscovery_tag_operation, incident, retention_event, retention_event_type, search, security, site_source, tag, triggers_root, trigger_types_root, unified_group_source, user_source
-        from .term_store import group, relation, set, store, term
+        from .aad_user_conversation_member import AadUserConversationMember
+        from .access_package import AccessPackage
+        from .access_package_assignment import AccessPackageAssignment
+        from .access_package_assignment_policy import AccessPackageAssignmentPolicy
+        from .access_package_assignment_request import AccessPackageAssignmentRequest
+        from .access_package_catalog import AccessPackageCatalog
+        from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
+        from .access_package_question import AccessPackageQuestion
+        from .access_package_subject import AccessPackageSubject
+        from .access_package_text_input_question import AccessPackageTextInputQuestion
+        from .access_review_history_definition import AccessReviewHistoryDefinition
+        from .access_review_history_instance import AccessReviewHistoryInstance
+        from .access_review_instance import AccessReviewInstance
+        from .access_review_instance_decision_item import AccessReviewInstanceDecisionItem
+        from .access_review_reviewer import AccessReviewReviewer
+        from .access_review_schedule_definition import AccessReviewScheduleDefinition
+        from .access_review_set import AccessReviewSet
+        from .access_review_stage import AccessReviewStage
+        from .activity_based_timeout_policy import ActivityBasedTimeoutPolicy
+        from .activity_history_item import ActivityHistoryItem
+        from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
+        from .admin_consent_request_policy import AdminConsentRequestPolicy
+        from .administrative_unit import AdministrativeUnit
+        from .agreement import Agreement
+        from .agreement_acceptance import AgreementAcceptance
+        from .agreement_file import AgreementFile
+        from .agreement_file_localization import AgreementFileLocalization
+        from .agreement_file_properties import AgreementFileProperties
+        from .agreement_file_version import AgreementFileVersion
+        from .alert import Alert
+        from .allowed_value import AllowedValue
+        from .android_compliance_policy import AndroidCompliancePolicy
+        from .android_custom_configuration import AndroidCustomConfiguration
+        from .android_general_device_configuration import AndroidGeneralDeviceConfiguration
+        from .android_lob_app import AndroidLobApp
+        from .android_managed_app_protection import AndroidManagedAppProtection
+        from .android_managed_app_registration import AndroidManagedAppRegistration
+        from .android_store_app import AndroidStoreApp
+        from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
+        from .android_work_profile_custom_configuration import AndroidWorkProfileCustomConfiguration
+        from .android_work_profile_general_device_configuration import AndroidWorkProfileGeneralDeviceConfiguration
+        from .anonymous_guest_conversation_member import AnonymousGuestConversationMember
+        from .app_catalogs import AppCatalogs
+        from .app_consent_approval_route import AppConsentApprovalRoute
+        from .app_consent_request import AppConsentRequest
+        from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
+        from .apple_managed_identity_provider import AppleManagedIdentityProvider
+        from .apple_push_notification_certificate import ApplePushNotificationCertificate
+        from .application import Application
+        from .application_template import ApplicationTemplate
+        from .app_management_policy import AppManagementPolicy
+        from .app_role_assignment import AppRoleAssignment
+        from .approval import Approval
+        from .approval_stage import ApprovalStage
+        from .app_scope import AppScope
+        from .associated_team_info import AssociatedTeamInfo
+        from .attachment import Attachment
+        from .attachment_base import AttachmentBase
+        from .attachment_session import AttachmentSession
+        from .attack_simulation_root import AttackSimulationRoot
+        from .attendance_record import AttendanceRecord
+        from .attribute_mapping_function_schema import AttributeMappingFunctionSchema
+        from .attribute_set import AttributeSet
+        from .audio_routing_group import AudioRoutingGroup
+        from .audit_event import AuditEvent
+        from .audit_log_root import AuditLogRoot
+        from .authentication import Authentication
+        from .authentication_combination_configuration import AuthenticationCombinationConfiguration
+        from .authentication_context_class_reference import AuthenticationContextClassReference
+        from .authentication_flows_policy import AuthenticationFlowsPolicy
+        from .authentication_method import AuthenticationMethod
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_mode_detail import AuthenticationMethodModeDetail
+        from .authentication_methods_policy import AuthenticationMethodsPolicy
+        from .authentication_method_target import AuthenticationMethodTarget
+        from .authentication_strength_policy import AuthenticationStrengthPolicy
+        from .authentication_strength_root import AuthenticationStrengthRoot
+        from .authored_note import AuthoredNote
+        from .authorization_policy import AuthorizationPolicy
+        from .azure_communication_services_user_conversation_member import AzureCommunicationServicesUserConversationMember
+        from .b2x_identity_user_flow import B2xIdentityUserFlow
+        from .base_item import BaseItem
+        from .base_item_version import BaseItemVersion
+        from .bitlocker import Bitlocker
+        from .bitlocker_recovery_key import BitlockerRecoveryKey
+        from .booking_appointment import BookingAppointment
+        from .booking_business import BookingBusiness
+        from .booking_currency import BookingCurrency
+        from .booking_customer import BookingCustomer
+        from .booking_customer_base import BookingCustomerBase
+        from .booking_custom_question import BookingCustomQuestion
+        from .booking_service import BookingService
+        from .booking_staff_member import BookingStaffMember
+        from .booking_staff_member_base import BookingStaffMemberBase
+        from .browser_shared_cookie import BrowserSharedCookie
+        from .browser_site import BrowserSite
+        from .browser_site_list import BrowserSiteList
+        from .built_in_identity_provider import BuiltInIdentityProvider
+        from .calendar import Calendar
+        from .calendar_group import CalendarGroup
+        from .calendar_permission import CalendarPermission
+        from .calendar_sharing_message import CalendarSharingMessage
+        from .call import Call
+        from .call_records.call_record import CallRecord
+        from .call_records.segment import Segment
+        from .call_records.session import Session
+        from .cancel_media_processing_operation import CancelMediaProcessingOperation
+        from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .channel import Channel
+        from .chat import Chat
+        from .chat_message import ChatMessage
+        from .chat_message_hosted_content import ChatMessageHostedContent
+        from .chat_message_info import ChatMessageInfo
+        from .checklist_item import ChecklistItem
+        from .claims_mapping_policy import ClaimsMappingPolicy
+        from .column_definition import ColumnDefinition
+        from .column_link import ColumnLink
+        from .comms_operation import CommsOperation
+        from .compliance_management_partner import ComplianceManagementPartner
+        from .conditional_access_policy import ConditionalAccessPolicy
+        from .conditional_access_root import ConditionalAccessRoot
+        from .conditional_access_template import ConditionalAccessTemplate
+        from .connected_organization import ConnectedOrganization
+        from .contact import Contact
+        from .contact_folder import ContactFolder
+        from .content_sharing_session import ContentSharingSession
+        from .content_type import ContentType
+        from .contract import Contract
+        from .conversation import Conversation
+        from .conversation_member import ConversationMember
+        from .conversation_thread import ConversationThread
+        from .country_named_location import CountryNamedLocation
+        from .cross_tenant_access_policy import CrossTenantAccessPolicy
+        from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
+        from .custom_callout_extension import CustomCalloutExtension
+        from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
+        from .data_policy_operation import DataPolicyOperation
+        from .default_managed_app_protection import DefaultManagedAppProtection
+        from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
+        from .delegated_admin_customer import DelegatedAdminCustomer
+        from .delegated_admin_relationship import DelegatedAdminRelationship
+        from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
+        from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
+        from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
+        from .delegated_permission_classification import DelegatedPermissionClassification
+        from .deleted_item_container import DeletedItemContainer
+        from .deleted_team import DeletedTeam
+        from .detected_app import DetectedApp
+        from .device import Device
+        from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
+        from .device_and_app_management_role_definition import DeviceAndAppManagementRoleDefinition
+        from .device_app_management import DeviceAppManagement
+        from .device_category import DeviceCategory
+        from .device_compliance_action_item import DeviceComplianceActionItem
+        from .device_compliance_device_overview import DeviceComplianceDeviceOverview
+        from .device_compliance_device_status import DeviceComplianceDeviceStatus
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .device_compliance_policy_assignment import DeviceCompliancePolicyAssignment
+        from .device_compliance_policy_device_state_summary import DeviceCompliancePolicyDeviceStateSummary
+        from .device_compliance_policy_setting_state_summary import DeviceCompliancePolicySettingStateSummary
+        from .device_compliance_policy_state import DeviceCompliancePolicyState
+        from .device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
+        from .device_compliance_setting_state import DeviceComplianceSettingState
+        from .device_compliance_user_overview import DeviceComplianceUserOverview
+        from .device_compliance_user_status import DeviceComplianceUserStatus
+        from .device_configuration import DeviceConfiguration
+        from .device_configuration_assignment import DeviceConfigurationAssignment
+        from .device_configuration_device_overview import DeviceConfigurationDeviceOverview
+        from .device_configuration_device_state_summary import DeviceConfigurationDeviceStateSummary
+        from .device_configuration_device_status import DeviceConfigurationDeviceStatus
+        from .device_configuration_state import DeviceConfigurationState
+        from .device_configuration_user_overview import DeviceConfigurationUserOverview
+        from .device_configuration_user_status import DeviceConfigurationUserStatus
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
+        from .device_enrollment_limit_configuration import DeviceEnrollmentLimitConfiguration
+        from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
+        from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
+        from .device_install_state import DeviceInstallState
+        from .device_management import DeviceManagement
+        from .device_management_exchange_connector import DeviceManagementExchangeConnector
+        from .device_management_export_job import DeviceManagementExportJob
+        from .device_management_partner import DeviceManagementPartner
+        from .device_management_reports import DeviceManagementReports
+        from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+        from .directory import Directory
+        from .directory_audit import DirectoryAudit
+        from .directory_definition import DirectoryDefinition
+        from .directory_object import DirectoryObject
+        from .directory_object_partner_reference import DirectoryObjectPartnerReference
+        from .directory_role import DirectoryRole
+        from .directory_role_template import DirectoryRoleTemplate
+        from .document_set_version import DocumentSetVersion
+        from .domain import Domain
+        from .domain_dns_cname_record import DomainDnsCnameRecord
+        from .domain_dns_mx_record import DomainDnsMxRecord
+        from .domain_dns_record import DomainDnsRecord
+        from .domain_dns_srv_record import DomainDnsSrvRecord
+        from .domain_dns_txt_record import DomainDnsTxtRecord
+        from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
+        from .drive import Drive
+        from .drive_item import DriveItem
+        from .drive_item_version import DriveItemVersion
+        from .e_book_install_summary import EBookInstallSummary
+        from .edge import Edge
+        from .edition_upgrade_configuration import EditionUpgradeConfiguration
+        from .education_assignment import EducationAssignment
+        from .education_assignment_defaults import EducationAssignmentDefaults
+        from .education_assignment_resource import EducationAssignmentResource
+        from .education_assignment_settings import EducationAssignmentSettings
+        from .education_category import EducationCategory
+        from .education_class import EducationClass
+        from .education_feedback_outcome import EducationFeedbackOutcome
+        from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
+        from .education_organization import EducationOrganization
+        from .education_outcome import EducationOutcome
+        from .education_points_outcome import EducationPointsOutcome
+        from .education_rubric import EducationRubric
+        from .education_rubric_outcome import EducationRubricOutcome
+        from .education_school import EducationSchool
+        from .education_submission import EducationSubmission
+        from .education_submission_resource import EducationSubmissionResource
+        from .education_user import EducationUser
+        from .email_authentication_method import EmailAuthenticationMethod
+        from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
+        from .email_file_assessment_request import EmailFileAssessmentRequest
+        from .endpoint import Endpoint
+        from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
+        from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
+        from .enterprise_code_signing_certificate import EnterpriseCodeSigningCertificate
+        from .entitlement_management import EntitlementManagement
+        from .entitlement_management_settings import EntitlementManagementSettings
+        from .event import Event
+        from .event_message import EventMessage
+        from .event_message_request import EventMessageRequest
+        from .event_message_response import EventMessageResponse
+        from .extension import Extension
+        from .extension_property import ExtensionProperty
+        from .external_connectors.connection_operation import ConnectionOperation
+        from .external_connectors.external_activity import ExternalActivity
+        from .external_connectors.external_activity_result import ExternalActivityResult
+        from .external_connectors.external_connection import ExternalConnection
+        from .external_connectors.external_group import ExternalGroup
+        from .external_connectors.external_item import ExternalItem
+        from .external_connectors.identity import Identity
+        from .external_connectors.schema import Schema
+        from .external_domain_name import ExternalDomainName
+        from .feature_rollout_policy import FeatureRolloutPolicy
+        from .federated_identity_credential import FederatedIdentityCredential
+        from .fido2_authentication_method import Fido2AuthenticationMethod
+        from .fido2_authentication_method_configuration import Fido2AuthenticationMethodConfiguration
+        from .fido2_combination_configuration import Fido2CombinationConfiguration
+        from .field_value_set import FieldValueSet
+        from .file_assessment_request import FileAssessmentRequest
+        from .file_attachment import FileAttachment
+        from .filter_operator_schema import FilterOperatorSchema
+        from .governance_insight import GovernanceInsight
+        from .group import Group
+        from .group_lifecycle_policy import GroupLifecyclePolicy
+        from .group_setting import GroupSetting
+        from .group_setting_template import GroupSettingTemplate
+        from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .identity_api_connector import IdentityApiConnector
+        from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
+        from .identity_container import IdentityContainer
+        from .identity_custom_user_flow_attribute import IdentityCustomUserFlowAttribute
+        from .identity_governance.custom_task_extension import CustomTaskExtension
+        from .identity_governance.lifecycle_management_settings import LifecycleManagementSettings
+        from .identity_governance.lifecycle_workflows_container import LifecycleWorkflowsContainer
+        from .identity_governance.run import Run
+        from .identity_governance.task import Task
+        from .identity_governance.task_definition import TaskDefinition
+        from .identity_governance.task_processing_result import TaskProcessingResult
+        from .identity_governance.task_report import TaskReport
+        from .identity_governance.user_processing_result import UserProcessingResult
+        from .identity_governance.workflow_template import WorkflowTemplate
+        from .identity_provider import IdentityProvider
+        from .identity_provider_base import IdentityProviderBase
+        from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .identity_user_flow import IdentityUserFlow
+        from .identity_user_flow_attribute import IdentityUserFlowAttribute
+        from .identity_user_flow_attribute_assignment import IdentityUserFlowAttributeAssignment
+        from .imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
+        from .imported_windows_autopilot_device_identity_upload import ImportedWindowsAutopilotDeviceIdentityUpload
+        from .inference_classification import InferenceClassification
+        from .inference_classification_override import InferenceClassificationOverride
+        from .internal_domain_federation import InternalDomainFederation
+        from .internet_explorer_mode import InternetExplorerMode
+        from .invitation import Invitation
+        from .invite_participants_operation import InviteParticipantsOperation
+        from .ios_certificate_profile import IosCertificateProfile
+        from .ios_compliance_policy import IosCompliancePolicy
+        from .ios_custom_configuration import IosCustomConfiguration
+        from .ios_device_features_configuration import IosDeviceFeaturesConfiguration
+        from .ios_general_device_configuration import IosGeneralDeviceConfiguration
+        from .iosi_pad_o_s_web_clip import IosiPadOSWebClip
+        from .ios_lob_app import IosLobApp
+        from .ios_lob_app_provisioning_configuration_assignment import IosLobAppProvisioningConfigurationAssignment
+        from .ios_managed_app_protection import IosManagedAppProtection
+        from .ios_managed_app_registration import IosManagedAppRegistration
+        from .ios_mobile_app_configuration import IosMobileAppConfiguration
+        from .ios_store_app import IosStoreApp
+        from .ios_update_configuration import IosUpdateConfiguration
+        from .ios_update_device_status import IosUpdateDeviceStatus
+        from .ios_vpp_app import IosVppApp
+        from .ios_vpp_e_book import IosVppEBook
+        from .ios_vpp_e_book_assignment import IosVppEBookAssignment
+        from .ip_named_location import IpNamedLocation
+        from .item_activity import ItemActivity
+        from .item_activity_stat import ItemActivityStat
+        from .item_analytics import ItemAnalytics
+        from .item_attachment import ItemAttachment
+        from .learning_content import LearningContent
+        from .learning_provider import LearningProvider
+        from .license_details import LicenseDetails
+        from .linked_resource import LinkedResource
+        from .list_item import ListItem
+        from .list_item_version import ListItemVersion
+        from .list_ import List_
+        from .localized_notification_message import LocalizedNotificationMessage
+        from .long_running_operation import LongRunningOperation
+        from .mac_o_s_compliance_policy import MacOSCompliancePolicy
+        from .mac_o_s_custom_configuration import MacOSCustomConfiguration
+        from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
+        from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
+        from .mac_o_s_lob_app import MacOSLobApp
+        from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
+        from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
+        from .mail_assessment_request import MailAssessmentRequest
+        from .mail_folder import MailFolder
+        from .mail_search_folder import MailSearchFolder
+        from .managed_android_lob_app import ManagedAndroidLobApp
+        from .managed_android_store_app import ManagedAndroidStoreApp
+        from .managed_app import ManagedApp
+        from .managed_app_configuration import ManagedAppConfiguration
+        from .managed_app_operation import ManagedAppOperation
+        from .managed_app_policy import ManagedAppPolicy
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_app_protection import ManagedAppProtection
+        from .managed_app_registration import ManagedAppRegistration
+        from .managed_app_status import ManagedAppStatus
+        from .managed_app_status_raw import ManagedAppStatusRaw
+        from .managed_device import ManagedDevice
+        from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
+        from .managed_device_mobile_app_configuration_assignment import ManagedDeviceMobileAppConfigurationAssignment
+        from .managed_device_mobile_app_configuration_device_status import ManagedDeviceMobileAppConfigurationDeviceStatus
+        from .managed_device_mobile_app_configuration_device_summary import ManagedDeviceMobileAppConfigurationDeviceSummary
+        from .managed_device_mobile_app_configuration_user_status import ManagedDeviceMobileAppConfigurationUserStatus
+        from .managed_device_mobile_app_configuration_user_summary import ManagedDeviceMobileAppConfigurationUserSummary
+        from .managed_device_overview import ManagedDeviceOverview
+        from .managed_e_book import ManagedEBook
+        from .managed_e_book_assignment import ManagedEBookAssignment
+        from .managed_i_o_s_lob_app import ManagedIOSLobApp
+        from .managed_i_o_s_store_app import ManagedIOSStoreApp
+        from .managed_mobile_app import ManagedMobileApp
+        from .managed_mobile_lob_app import ManagedMobileLobApp
+        from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
+        from .meeting_attendance_report import MeetingAttendanceReport
+        from .message import Message
+        from .message_rule import MessageRule
+        from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
+        from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
+        from .microsoft_authenticator_authentication_method_configuration import MicrosoftAuthenticatorAuthenticationMethodConfiguration
+        from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+        from .microsoft_store_for_business_app import MicrosoftStoreForBusinessApp
+        from .mobile_app import MobileApp
+        from .mobile_app_assignment import MobileAppAssignment
+        from .mobile_app_category import MobileAppCategory
+        from .mobile_app_content import MobileAppContent
+        from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_contained_app import MobileContainedApp
+        from .mobile_lob_app import MobileLobApp
+        from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+        from .mute_participant_operation import MuteParticipantOperation
+        from .named_location import NamedLocation
+        from .notebook import Notebook
+        from .notification_message_template import NotificationMessageTemplate
+        from .o_auth2_permission_grant import OAuth2PermissionGrant
+        from .offer_shift_request import OfferShiftRequest
+        from .office_graph_insights import OfficeGraphInsights
+        from .onenote import Onenote
+        from .onenote_entity_base_model import OnenoteEntityBaseModel
+        from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
+        from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
+        from .onenote_operation import OnenoteOperation
+        from .onenote_page import OnenotePage
+        from .onenote_resource import OnenoteResource
+        from .onenote_section import OnenoteSection
+        from .online_meeting import OnlineMeeting
+        from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
+        from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+        from .open_shift import OpenShift
+        from .open_shift_change_request import OpenShiftChangeRequest
+        from .open_type_extension import OpenTypeExtension
+        from .operation import Operation
+        from .organization import Organization
+        from .organizational_branding import OrganizationalBranding
+        from .organizational_branding_localization import OrganizationalBrandingLocalization
+        from .organizational_branding_properties import OrganizationalBrandingProperties
+        from .org_contact import OrgContact
+        from .outlook_category import OutlookCategory
+        from .outlook_item import OutlookItem
+        from .outlook_user import OutlookUser
+        from .participant import Participant
+        from .participant_joining_notification import ParticipantJoiningNotification
+        from .participant_left_notification import ParticipantLeftNotification
+        from .password_authentication_method import PasswordAuthenticationMethod
+        from .permission import Permission
+        from .permission_grant_condition_set import PermissionGrantConditionSet
+        from .permission_grant_policy import PermissionGrantPolicy
+        from .person import Person
+        from .phone_authentication_method import PhoneAuthenticationMethod
+        from .pinned_chat_message_info import PinnedChatMessageInfo
+        from .place import Place
+        from .planner import Planner
+        from .planner_assigned_to_task_board_task_format import PlannerAssignedToTaskBoardTaskFormat
+        from .planner_bucket import PlannerBucket
+        from .planner_bucket_task_board_task_format import PlannerBucketTaskBoardTaskFormat
+        from .planner_group import PlannerGroup
+        from .planner_plan import PlannerPlan
+        from .planner_plan_details import PlannerPlanDetails
+        from .planner_progress_task_board_task_format import PlannerProgressTaskBoardTaskFormat
+        from .planner_task import PlannerTask
+        from .planner_task_details import PlannerTaskDetails
+        from .planner_user import PlannerUser
+        from .play_prompt_operation import PlayPromptOperation
+        from .policy_base import PolicyBase
+        from .policy_root import PolicyRoot
+        from .post import Post
+        from .presence import Presence
+        from .print_connector import PrintConnector
+        from .print_document import PrintDocument
+        from .printer import Printer
+        from .printer_base import PrinterBase
+        from .printer_create_operation import PrinterCreateOperation
+        from .printer_share import PrinterShare
+        from .print_job import PrintJob
+        from .print_operation import PrintOperation
+        from .print_service import PrintService
+        from .print_service_endpoint import PrintServiceEndpoint
+        from .print_task import PrintTask
+        from .print_task_definition import PrintTaskDefinition
+        from .print_task_trigger import PrintTaskTrigger
+        from .print_usage import PrintUsage
+        from .print_usage_by_printer import PrintUsageByPrinter
+        from .print_usage_by_user import PrintUsageByUser
+        from .profile_photo import ProfilePhoto
+        from .provisioning_object_summary import ProvisioningObjectSummary
+        from .rbac_application import RbacApplication
+        from .record_operation import RecordOperation
+        from .reference_attachment import ReferenceAttachment
+        from .remote_assistance_partner import RemoteAssistancePartner
+        from .request import Request
+        from .resource_operation import ResourceOperation
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .rich_long_running_operation import RichLongRunningOperation
+        from .risk_detection import RiskDetection
+        from .risky_service_principal import RiskyServicePrincipal
+        from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
+        from .risky_user import RiskyUser
+        from .risky_user_history_item import RiskyUserHistoryItem
+        from .role_assignment import RoleAssignment
+        from .role_definition import RoleDefinition
+        from .room import Room
+        from .room_list import RoomList
+        from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
+        from .saml_or_ws_fed_provider import SamlOrWsFedProvider
+        from .schedule import Schedule
+        from .schedule_change_request import ScheduleChangeRequest
+        from .scheduling_group import SchedulingGroup
+        from .schema_extension import SchemaExtension
+        from .scoped_role_membership import ScopedRoleMembership
+        from .search_entity import SearchEntity
+        from .section_group import SectionGroup
+        from .secure_score import SecureScore
+        from .secure_score_control_profile import SecureScoreControlProfile
+        from .security.alert import Alert
+        from .security.case import Case
+        from .security.case_operation import CaseOperation
+        from .security.cases_root import CasesRoot
+        from .security.data_set import DataSet
+        from .security.data_source import DataSource
+        from .security.data_source_container import DataSourceContainer
+        from .security.ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
+        from .security.ediscovery_case import EdiscoveryCase
+        from .security.ediscovery_case_settings import EdiscoveryCaseSettings
+        from .security.ediscovery_custodian import EdiscoveryCustodian
+        from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
+        from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
+        from .security.ediscovery_index_operation import EdiscoveryIndexOperation
+        from .security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
+        from .security.ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
+        from .security.ediscovery_review_set import EdiscoveryReviewSet
+        from .security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
+        from .security.ediscovery_review_tag import EdiscoveryReviewTag
+        from .security.ediscovery_search import EdiscoverySearch
+        from .security.ediscovery_tag_operation import EdiscoveryTagOperation
+        from .security.incident import Incident
+        from .security.retention_event import RetentionEvent
+        from .security.retention_event_type import RetentionEventType
+        from .security.search import Search
+        from .security.security import Security
+        from .security.site_source import SiteSource
+        from .security.tag import Tag
+        from .security.triggers_root import TriggersRoot
+        from .security.trigger_types_root import TriggerTypesRoot
+        from .security.unified_group_source import UnifiedGroupSource
+        from .security.user_source import UserSource
+        from .security_reports_root import SecurityReportsRoot
+        from .service_announcement import ServiceAnnouncement
+        from .service_announcement_attachment import ServiceAnnouncementAttachment
+        from .service_announcement_base import ServiceAnnouncementBase
+        from .service_health import ServiceHealth
+        from .service_health_issue import ServiceHealthIssue
+        from .service_principal import ServicePrincipal
+        from .service_principal_risk_detection import ServicePrincipalRiskDetection
+        from .service_update_message import ServiceUpdateMessage
+        from .setting_state_device_summary import SettingStateDeviceSummary
+        from .shared_drive_item import SharedDriveItem
+        from .shared_insight import SharedInsight
+        from .shared_p_c_configuration import SharedPCConfiguration
+        from .shared_with_channel_team_info import SharedWithChannelTeamInfo
+        from .sharepoint import Sharepoint
+        from .sharepoint_settings import SharepointSettings
+        from .shift import Shift
+        from .shift_preferences import ShiftPreferences
+        from .sign_in import SignIn
+        from .simulation import Simulation
+        from .simulation_automation import SimulationAutomation
+        from .simulation_automation_run import SimulationAutomationRun
+        from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
+        from .site import Site
+        from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
+        from .skype_user_conversation_member import SkypeUserConversationMember
+        from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
+        from .sms_authentication_method_target import SmsAuthenticationMethodTarget
+        from .social_identity_provider import SocialIdentityProvider
+        from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
+        from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
+        from .software_update_status_summary import SoftwareUpdateStatusSummary
+        from .start_hold_music_operation import StartHoldMusicOperation
+        from .stop_hold_music_operation import StopHoldMusicOperation
+        from .sts_policy import StsPolicy
+        from .subject_rights_request import SubjectRightsRequest
+        from .subscribed_sku import SubscribedSku
+        from .subscribe_to_tone_operation import SubscribeToToneOperation
+        from .subscription import Subscription
+        from .swap_shifts_change_request import SwapShiftsChangeRequest
+        from .synchronization import Synchronization
+        from .synchronization_job import SynchronizationJob
+        from .synchronization_schema import SynchronizationSchema
+        from .synchronization_template import SynchronizationTemplate
+        from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
+        from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
+        from .targeted_managed_app_protection import TargetedManagedAppProtection
+        from .task_file_attachment import TaskFileAttachment
+        from .team import Team
+        from .team_info import TeamInfo
+        from .teams_app import TeamsApp
+        from .teams_app_definition import TeamsAppDefinition
+        from .teams_app_installation import TeamsAppInstallation
+        from .teams_async_operation import TeamsAsyncOperation
+        from .teams_tab import TeamsTab
+        from .teams_template import TeamsTemplate
+        from .teamwork import Teamwork
+        from .teamwork_bot import TeamworkBot
+        from .teamwork_hosted_content import TeamworkHostedContent
+        from .teamwork_tag import TeamworkTag
+        from .teamwork_tag_member import TeamworkTagMember
+        from .telecom_expense_management_partner import TelecomExpenseManagementPartner
+        from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
+        from .temporary_access_pass_authentication_method_configuration import TemporaryAccessPassAuthenticationMethodConfiguration
+        from .tenant_app_management_policy import TenantAppManagementPolicy
+        from .terms_and_conditions import TermsAndConditions
+        from .terms_and_conditions_acceptance_status import TermsAndConditionsAcceptanceStatus
+        from .terms_and_conditions_assignment import TermsAndConditionsAssignment
+        from .terms_of_use_container import TermsOfUseContainer
+        from .term_store.group import Group
+        from .term_store.relation import Relation
+        from .term_store.set import Set
+        from .term_store.store import Store
+        from .term_store.term import Term
+        from .threat_assessment_request import ThreatAssessmentRequest
+        from .threat_assessment_result import ThreatAssessmentResult
+        from .thumbnail_set import ThumbnailSet
+        from .time_off import TimeOff
+        from .time_off_reason import TimeOffReason
+        from .time_off_request import TimeOffRequest
+        from .todo import Todo
+        from .todo_task import TodoTask
+        from .todo_task_list import TodoTaskList
+        from .token_issuance_policy import TokenIssuancePolicy
+        from .token_lifetime_policy import TokenLifetimePolicy
+        from .trending import Trending
+        from .unified_rbac_resource_action import UnifiedRbacResourceAction
+        from .unified_rbac_resource_namespace import UnifiedRbacResourceNamespace
+        from .unified_role_assignment import UnifiedRoleAssignment
+        from .unified_role_assignment_schedule import UnifiedRoleAssignmentSchedule
+        from .unified_role_assignment_schedule_instance import UnifiedRoleAssignmentScheduleInstance
+        from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
+        from .unified_role_definition import UnifiedRoleDefinition
+        from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
+        from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
+        from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
+        from .unified_role_management_policy import UnifiedRoleManagementPolicy
+        from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
+        from .unified_role_management_policy_assignment import UnifiedRoleManagementPolicyAssignment
+        from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+        from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
+        from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
+        from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
+        from .unified_role_schedule_base import UnifiedRoleScheduleBase
+        from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
+        from .unmute_participant_operation import UnmuteParticipantOperation
+        from .update_recording_status_operation import UpdateRecordingStatusOperation
+        from .url_assessment_request import UrlAssessmentRequest
+        from .used_insight import UsedInsight
+        from .user import User
+        from .user_activity import UserActivity
+        from .user_consent_request import UserConsentRequest
+        from .user_experience_analytics_device_performance import UserExperienceAnalyticsDevicePerformance
+        from .user_flow_language_configuration import UserFlowLanguageConfiguration
+        from .user_flow_language_page import UserFlowLanguagePage
+        from .user_install_state_summary import UserInstallStateSummary
+        from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
+        from .user_settings import UserSettings
+        from .user_sign_in_insight import UserSignInInsight
+        from .user_teamwork import UserTeamwork
+        from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
+        from .vpp_token import VppToken
+        from .web_app import WebApp
+        from .win32_lob_app import Win32LobApp
+        from .windows10_compliance_policy import Windows10CompliancePolicy
+        from .windows10_custom_configuration import Windows10CustomConfiguration
+        from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
+        from .windows10_enterprise_modern_app_management_configuration import Windows10EnterpriseModernAppManagementConfiguration
+        from .windows10_general_configuration import Windows10GeneralConfiguration
+        from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
+        from .windows10_secure_assessment_configuration import Windows10SecureAssessmentConfiguration
+        from .windows10_team_general_configuration import Windows10TeamGeneralConfiguration
+        from .windows81_compliance_policy import Windows81CompliancePolicy
+        from .windows81_general_configuration import Windows81GeneralConfiguration
+        from .windows_app_x import WindowsAppX
+        from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
+        from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
+        from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
+        from .windows_information_protection import WindowsInformationProtection
+        from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
+        from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
+        from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
+        from .windows_information_protection_policy import WindowsInformationProtectionPolicy
+        from .windows_microsoft_edge_app import WindowsMicrosoftEdgeApp
+        from .windows_mobile_m_s_i import WindowsMobileMSI
+        from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
+        from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
+        from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
+        from .windows_universal_app_x import WindowsUniversalAppX
+        from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
+        from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
+        from .windows_web_app import WindowsWebApp
+        from .workbook import Workbook
+        from .workbook_application import WorkbookApplication
+        from .workbook_chart import WorkbookChart
+        from .workbook_chart_area_format import WorkbookChartAreaFormat
+        from .workbook_chart_axes import WorkbookChartAxes
+        from .workbook_chart_axis import WorkbookChartAxis
+        from .workbook_chart_axis_format import WorkbookChartAxisFormat
+        from .workbook_chart_axis_title import WorkbookChartAxisTitle
+        from .workbook_chart_axis_title_format import WorkbookChartAxisTitleFormat
+        from .workbook_chart_data_label_format import WorkbookChartDataLabelFormat
+        from .workbook_chart_data_labels import WorkbookChartDataLabels
+        from .workbook_chart_fill import WorkbookChartFill
+        from .workbook_chart_font import WorkbookChartFont
+        from .workbook_chart_gridlines import WorkbookChartGridlines
+        from .workbook_chart_gridlines_format import WorkbookChartGridlinesFormat
+        from .workbook_chart_legend import WorkbookChartLegend
+        from .workbook_chart_legend_format import WorkbookChartLegendFormat
+        from .workbook_chart_line_format import WorkbookChartLineFormat
+        from .workbook_chart_point import WorkbookChartPoint
+        from .workbook_chart_point_format import WorkbookChartPointFormat
+        from .workbook_chart_series import WorkbookChartSeries
+        from .workbook_chart_series_format import WorkbookChartSeriesFormat
+        from .workbook_chart_title import WorkbookChartTitle
+        from .workbook_chart_title_format import WorkbookChartTitleFormat
+        from .workbook_comment import WorkbookComment
+        from .workbook_comment_reply import WorkbookCommentReply
+        from .workbook_filter import WorkbookFilter
+        from .workbook_format_protection import WorkbookFormatProtection
+        from .workbook_function_result import WorkbookFunctionResult
+        from .workbook_functions import WorkbookFunctions
+        from .workbook_named_item import WorkbookNamedItem
+        from .workbook_operation import WorkbookOperation
+        from .workbook_pivot_table import WorkbookPivotTable
+        from .workbook_range import WorkbookRange
+        from .workbook_range_border import WorkbookRangeBorder
+        from .workbook_range_fill import WorkbookRangeFill
+        from .workbook_range_font import WorkbookRangeFont
+        from .workbook_range_format import WorkbookRangeFormat
+        from .workbook_range_sort import WorkbookRangeSort
+        from .workbook_range_view import WorkbookRangeView
+        from .workbook_table import WorkbookTable
+        from .workbook_table_column import WorkbookTableColumn
+        from .workbook_table_row import WorkbookTableRow
+        from .workbook_table_sort import WorkbookTableSort
+        from .workbook_worksheet import WorkbookWorksheet
+        from .workbook_worksheet_protection import WorkbookWorksheetProtection
+        from .workforce_integration import WorkforceIntegration
+        from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),

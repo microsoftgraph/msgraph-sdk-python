@@ -4,21 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_outcome, rubric_quality_feedback_model, rubric_quality_selected_column_model
+    from .education_outcome import EducationOutcome
+    from .rubric_quality_feedback_model import RubricQualityFeedbackModel
+    from .rubric_quality_selected_column_model import RubricQualitySelectedColumnModel
 
-from . import education_outcome
+from .education_outcome import EducationOutcome
 
 @dataclass
-class EducationRubricOutcome(education_outcome.EducationOutcome):
+class EducationRubricOutcome(EducationOutcome):
     odata_type = "#microsoft.graph.educationRubricOutcome"
     # A copy of the rubricQualityFeedback property that is made when the grade is released to the student.
-    published_rubric_quality_feedback: Optional[List[rubric_quality_feedback_model.RubricQualityFeedbackModel]] = None
+    published_rubric_quality_feedback: Optional[List[RubricQualityFeedbackModel]] = None
     # A copy of the rubricQualitySelectedLevels property that is made when the grade is released to the student.
-    published_rubric_quality_selected_levels: Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]] = None
+    published_rubric_quality_selected_levels: Optional[List[RubricQualitySelectedColumnModel]] = None
     # A collection of specific feedback for each quality of this rubric.
-    rubric_quality_feedback: Optional[List[rubric_quality_feedback_model.RubricQualityFeedbackModel]] = None
+    rubric_quality_feedback: Optional[List[RubricQualityFeedbackModel]] = None
     # The level that the teacher has selected for each quality while grading this assignment.
-    rubric_quality_selected_levels: Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]] = None
+    rubric_quality_selected_levels: Optional[List[RubricQualitySelectedColumnModel]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationRubricOutcome:
@@ -37,15 +39,19 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_outcome, rubric_quality_feedback_model, rubric_quality_selected_column_model
+        from .education_outcome import EducationOutcome
+        from .rubric_quality_feedback_model import RubricQualityFeedbackModel
+        from .rubric_quality_selected_column_model import RubricQualitySelectedColumnModel
 
-        from . import education_outcome, rubric_quality_feedback_model, rubric_quality_selected_column_model
+        from .education_outcome import EducationOutcome
+        from .rubric_quality_feedback_model import RubricQualityFeedbackModel
+        from .rubric_quality_selected_column_model import RubricQualitySelectedColumnModel
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "publishedRubricQualityFeedback": lambda n : setattr(self, 'published_rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),
-            "publishedRubricQualitySelectedLevels": lambda n : setattr(self, 'published_rubric_quality_selected_levels', n.get_collection_of_object_values(rubric_quality_selected_column_model.RubricQualitySelectedColumnModel)),
-            "rubricQualityFeedback": lambda n : setattr(self, 'rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),
-            "rubricQualitySelectedLevels": lambda n : setattr(self, 'rubric_quality_selected_levels', n.get_collection_of_object_values(rubric_quality_selected_column_model.RubricQualitySelectedColumnModel)),
+            "publishedRubricQualityFeedback": lambda n : setattr(self, 'published_rubric_quality_feedback', n.get_collection_of_object_values(RubricQualityFeedbackModel)),
+            "publishedRubricQualitySelectedLevels": lambda n : setattr(self, 'published_rubric_quality_selected_levels', n.get_collection_of_object_values(RubricQualitySelectedColumnModel)),
+            "rubricQualityFeedback": lambda n : setattr(self, 'rubric_quality_feedback', n.get_collection_of_object_values(RubricQualityFeedbackModel)),
+            "rubricQualitySelectedLevels": lambda n : setattr(self, 'rubric_quality_selected_levels', n.get_collection_of_object_values(RubricQualitySelectedColumnModel)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

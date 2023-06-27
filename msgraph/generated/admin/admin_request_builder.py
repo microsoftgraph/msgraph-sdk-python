@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import admin
-    from ..models.o_data_errors import o_data_error
-    from .edge import edge_request_builder
-    from .service_announcement import service_announcement_request_builder
-    from .sharepoint import sharepoint_request_builder
+    from ..models.admin import Admin
+    from ..models.o_data_errors.o_data_error import ODataError
+    from .edge.edge_request_builder import EdgeRequestBuilder
+    from .service_announcement.service_announcement_request_builder import ServiceAnnouncementRequestBuilder
+    from .sharepoint.sharepoint_request_builder import SharepointRequestBuilder
 
 class AdminRequestBuilder():
     """
@@ -38,52 +38,52 @@ class AdminRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AdminRequestBuilderGetRequestConfiguration] = None) -> Optional[admin.Admin]:
+    async def get(self,request_configuration: Optional[AdminRequestBuilderGetRequestConfiguration] = None) -> Optional[Admin]:
         """
         Get admin
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[admin.Admin]
+        Returns: Optional[Admin]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import admin
+        from ..models.admin import Admin
 
-        return await self.request_adapter.send_async(request_info, admin.Admin, error_mapping)
+        return await self.request_adapter.send_async(request_info, Admin, error_mapping)
     
-    async def patch(self,body: Optional[admin.Admin] = None, request_configuration: Optional[AdminRequestBuilderPatchRequestConfiguration] = None) -> Optional[admin.Admin]:
+    async def patch(self,body: Optional[Admin] = None, request_configuration: Optional[AdminRequestBuilderPatchRequestConfiguration] = None) -> Optional[Admin]:
         """
         Update admin
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[admin.Admin]
+        Returns: Optional[Admin]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import admin
+        from ..models.admin import Admin
 
-        return await self.request_adapter.send_async(request_info, admin.Admin, error_mapping)
+        return await self.request_adapter.send_async(request_info, Admin, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AdminRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -103,7 +103,7 @@ class AdminRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[admin.Admin] = None, request_configuration: Optional[AdminRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Admin] = None, request_configuration: Optional[AdminRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update admin
         Args:
@@ -125,31 +125,31 @@ class AdminRequestBuilder():
         return request_info
     
     @property
-    def edge(self) -> edge_request_builder.EdgeRequestBuilder:
+    def edge(self) -> EdgeRequestBuilder:
         """
         Provides operations to manage the edge property of the microsoft.graph.admin entity.
         """
-        from .edge import edge_request_builder
+        from .edge.edge_request_builder import EdgeRequestBuilder
 
-        return edge_request_builder.EdgeRequestBuilder(self.request_adapter, self.path_parameters)
+        return EdgeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def service_announcement(self) -> service_announcement_request_builder.ServiceAnnouncementRequestBuilder:
+    def service_announcement(self) -> ServiceAnnouncementRequestBuilder:
         """
         Provides operations to manage the serviceAnnouncement property of the microsoft.graph.admin entity.
         """
-        from .service_announcement import service_announcement_request_builder
+        from .service_announcement.service_announcement_request_builder import ServiceAnnouncementRequestBuilder
 
-        return service_announcement_request_builder.ServiceAnnouncementRequestBuilder(self.request_adapter, self.path_parameters)
+        return ServiceAnnouncementRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sharepoint(self) -> sharepoint_request_builder.SharepointRequestBuilder:
+    def sharepoint(self) -> SharepointRequestBuilder:
         """
         Provides operations to manage the sharepoint property of the microsoft.graph.admin entity.
         """
-        from .sharepoint import sharepoint_request_builder
+        from .sharepoint.sharepoint_request_builder import SharepointRequestBuilder
 
-        return sharepoint_request_builder.SharepointRequestBuilder(self.request_adapter, self.path_parameters)
+        return SharepointRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AdminRequestBuilderGetQueryParameters():

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class ImSubPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class ImSubPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The inumber1 property
-    inumber1: Optional[json.Json] = None
+    inumber1: Optional[Json] = None
     # The inumber2 property
-    inumber2: Optional[json.Json] = None
+    inumber2: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ImSubPostRequestBody:
@@ -33,13 +33,13 @@ class ImSubPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "inumber1": lambda n : setattr(self, 'inumber1', n.get_object_value(json.Json)),
-            "inumber2": lambda n : setattr(self, 'inumber2', n.get_object_value(json.Json)),
+            "inumber1": lambda n : setattr(self, 'inumber1', n.get_object_value(Json)),
+            "inumber2": lambda n : setattr(self, 'inumber2', n.get_object_value(Json)),
         }
         return fields
     

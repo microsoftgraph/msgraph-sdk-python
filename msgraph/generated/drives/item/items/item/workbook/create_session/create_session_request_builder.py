@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import create_session_post_request_body
-    from .......models import workbook_session_info
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.workbook_session_info import WorkbookSessionInfo
+    from .create_session_post_request_body import CreateSessionPostRequestBody
 
 class CreateSessionRequestBuilder():
     """
@@ -36,32 +36,32 @@ class CreateSessionRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[create_session_post_request_body.CreateSessionPostRequestBody] = None, request_configuration: Optional[CreateSessionRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_session_info.WorkbookSessionInfo]:
+    async def post(self,body: Optional[CreateSessionPostRequestBody] = None, request_configuration: Optional[CreateSessionRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookSessionInfo]:
         """
         Create a new workbook session.  Excel APIs can be called in one of two modes:  To represent the session in the API, use the `workbook-session-id: {session-id}` header.  In some cases, creating a new session requires an indeterminate time to complete. Microsoft Graph also provides a long running operations pattern. This pattern provides a way to poll for creation status updates, without waiting for the creation to complete. The following are the steps:
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_session_info.WorkbookSessionInfo]
+        Returns: Optional[WorkbookSessionInfo]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import workbook_session_info
+        from .......models.workbook_session_info import WorkbookSessionInfo
 
-        return await self.request_adapter.send_async(request_info, workbook_session_info.WorkbookSessionInfo, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookSessionInfo, error_mapping)
     
-    def to_post_request_information(self,body: Optional[create_session_post_request_body.CreateSessionPostRequestBody] = None, request_configuration: Optional[CreateSessionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CreateSessionPostRequestBody] = None, request_configuration: Optional[CreateSessionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new workbook session.  Excel APIs can be called in one of two modes:  To represent the session in the API, use the `workbook-session-id: {session-id}` header.  In some cases, creating a new session requires an indeterminate time to complete. Microsoft Graph also provides a long running operations pattern. This pattern provides a way to poll for creation status updates, without waiting for the creation to complete. The following are the steps:
         Args:

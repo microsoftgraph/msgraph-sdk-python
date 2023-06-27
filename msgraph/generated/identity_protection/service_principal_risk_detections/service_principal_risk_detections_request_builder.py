@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import service_principal_risk_detection, service_principal_risk_detection_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import service_principal_risk_detection_item_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.service_principal_risk_detection import ServicePrincipalRiskDetection
+    from ...models.service_principal_risk_detection_collection_response import ServicePrincipalRiskDetectionCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.service_principal_risk_detection_item_request_builder import ServicePrincipalRiskDetectionItemRequestBuilder
 
 class ServicePrincipalRiskDetectionsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class ServicePrincipalRiskDetectionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_service_principal_risk_detection_id(self,service_principal_risk_detection_id: str) -> service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder:
+    def by_service_principal_risk_detection_id(self,service_principal_risk_detection_id: str) -> ServicePrincipalRiskDetectionItemRequestBuilder:
         """
         Provides operations to manage the servicePrincipalRiskDetections property of the microsoft.graph.identityProtectionRoot entity.
         Args:
             service_principal_risk_detection_id: Unique identifier of the item
-        Returns: service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder
+        Returns: ServicePrincipalRiskDetectionItemRequestBuilder
         """
         if not service_principal_risk_detection_id:
             raise TypeError("service_principal_risk_detection_id cannot be null.")
-        from .item import service_principal_risk_detection_item_request_builder
+        from .item.service_principal_risk_detection_item_request_builder import ServicePrincipalRiskDetectionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["servicePrincipalRiskDetection%2Did"] = service_principal_risk_detection_id
-        return service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ServicePrincipalRiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[service_principal_risk_detection_collection_response.ServicePrincipalRiskDetectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ServicePrincipalRiskDetectionCollectionResponse]:
         """
         Retrieve the properties of a collection of servicePrincipalRiskDetection objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[service_principal_risk_detection_collection_response.ServicePrincipalRiskDetectionCollectionResponse]
+        Returns: Optional[ServicePrincipalRiskDetectionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import service_principal_risk_detection_collection_response
+        from ...models.service_principal_risk_detection_collection_response import ServicePrincipalRiskDetectionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, service_principal_risk_detection_collection_response.ServicePrincipalRiskDetectionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ServicePrincipalRiskDetectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection] = None, request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]:
+    async def post(self,body: Optional[ServicePrincipalRiskDetection] = None, request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[ServicePrincipalRiskDetection]:
         """
         Create new navigation property to servicePrincipalRiskDetections for identityProtection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]
+        Returns: Optional[ServicePrincipalRiskDetection]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import service_principal_risk_detection
+        from ...models.service_principal_risk_detection import ServicePrincipalRiskDetection
 
-        return await self.request_adapter.send_async(request_info, service_principal_risk_detection.ServicePrincipalRiskDetection, error_mapping)
+        return await self.request_adapter.send_async(request_info, ServicePrincipalRiskDetection, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class ServicePrincipalRiskDetectionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection] = None, request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ServicePrincipalRiskDetection] = None, request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to servicePrincipalRiskDetections for identityProtection
         Args:
@@ -139,13 +140,13 @@ class ServicePrincipalRiskDetectionsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ServicePrincipalRiskDetectionsRequestBuilderGetQueryParameters():

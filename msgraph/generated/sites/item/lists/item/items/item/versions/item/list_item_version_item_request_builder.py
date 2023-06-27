@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import list_item_version
-    from .........models.o_data_errors import o_data_error
-    from .fields import fields_request_builder
-    from .restore_version import restore_version_request_builder
+    from .........models.list_item_version import ListItemVersion
+    from .........models.o_data_errors.o_data_error import ODataError
+    from .fields.fields_request_builder import FieldsRequestBuilder
+    from .restore_version.restore_version_request_builder import RestoreVersionRequestBuilder
 
 class ListItemVersionItemRequestBuilder():
     """
@@ -46,62 +46,62 @@ class ListItemVersionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ListItemVersionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[list_item_version.ListItemVersion]:
+    async def get(self,request_configuration: Optional[ListItemVersionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ListItemVersion]:
         """
         Retrieve the metadata for a specific version of a ListItem.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[list_item_version.ListItemVersion]
+        Returns: Optional[ListItemVersion]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import list_item_version
+        from .........models.list_item_version import ListItemVersion
 
-        return await self.request_adapter.send_async(request_info, list_item_version.ListItemVersion, error_mapping)
+        return await self.request_adapter.send_async(request_info, ListItemVersion, error_mapping)
     
-    async def patch(self,body: Optional[list_item_version.ListItemVersion] = None, request_configuration: Optional[ListItemVersionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[list_item_version.ListItemVersion]:
+    async def patch(self,body: Optional[ListItemVersion] = None, request_configuration: Optional[ListItemVersionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ListItemVersion]:
         """
         Update the navigation property versions in sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[list_item_version.ListItemVersion]
+        Returns: Optional[ListItemVersion]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import list_item_version
+        from .........models.list_item_version import ListItemVersion
 
-        return await self.request_adapter.send_async(request_info, list_item_version.ListItemVersion, error_mapping)
+        return await self.request_adapter.send_async(request_info, ListItemVersion, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ListItemVersionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class ListItemVersionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[list_item_version.ListItemVersion] = None, request_configuration: Optional[ListItemVersionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ListItemVersion] = None, request_configuration: Optional[ListItemVersionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property versions in sites
         Args:
@@ -159,22 +159,22 @@ class ListItemVersionItemRequestBuilder():
         return request_info
     
     @property
-    def fields(self) -> fields_request_builder.FieldsRequestBuilder:
+    def fields(self) -> FieldsRequestBuilder:
         """
         Provides operations to manage the fields property of the microsoft.graph.listItemVersion entity.
         """
-        from .fields import fields_request_builder
+        from .fields.fields_request_builder import FieldsRequestBuilder
 
-        return fields_request_builder.FieldsRequestBuilder(self.request_adapter, self.path_parameters)
+        return FieldsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore_version(self) -> restore_version_request_builder.RestoreVersionRequestBuilder:
+    def restore_version(self) -> RestoreVersionRequestBuilder:
         """
         Provides operations to call the restoreVersion method.
         """
-        from .restore_version import restore_version_request_builder
+        from .restore_version.restore_version_request_builder import RestoreVersionRequestBuilder
 
-        return restore_version_request_builder.RestoreVersionRequestBuilder(self.request_adapter, self.path_parameters)
+        return RestoreVersionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ListItemVersionItemRequestBuilderDeleteRequestConfiguration():

@@ -10,17 +10,17 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import device_compliance_policy
-    from ....models.o_data_errors import o_data_error
-    from .assign import assign_request_builder
-    from .assignments import assignments_request_builder
-    from .device_setting_state_summaries import device_setting_state_summaries_request_builder
-    from .device_statuses import device_statuses_request_builder
-    from .device_status_overview import device_status_overview_request_builder
-    from .schedule_actions_for_rules import schedule_actions_for_rules_request_builder
-    from .scheduled_actions_for_rule import scheduled_actions_for_rule_request_builder
-    from .user_statuses import user_statuses_request_builder
-    from .user_status_overview import user_status_overview_request_builder
+    from ....models.device_compliance_policy import DeviceCompliancePolicy
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .assign.assign_request_builder import AssignRequestBuilder
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .device_setting_state_summaries.device_setting_state_summaries_request_builder import DeviceSettingStateSummariesRequestBuilder
+    from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
+    from .device_status_overview.device_status_overview_request_builder import DeviceStatusOverviewRequestBuilder
+    from .schedule_actions_for_rules.schedule_actions_for_rules_request_builder import ScheduleActionsForRulesRequestBuilder
+    from .scheduled_actions_for_rule.scheduled_actions_for_rule_request_builder import ScheduledActionsForRuleRequestBuilder
+    from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
+    from .user_status_overview.user_status_overview_request_builder import UserStatusOverviewRequestBuilder
 
 class DeviceCompliancePolicyItemRequestBuilder():
     """
@@ -46,73 +46,73 @@ class DeviceCompliancePolicyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceCompliancePolicies for deviceManagement
+        Deletes a windowsPhone81CompliancePolicy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[device_compliance_policy.DeviceCompliancePolicy]:
+    async def get(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicy]:
         """
-        The device compliance policies.
+        Read properties and relationships of the windows10CompliancePolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_compliance_policy.DeviceCompliancePolicy]
+        Returns: Optional[DeviceCompliancePolicy]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import device_compliance_policy
+        from ....models.device_compliance_policy import DeviceCompliancePolicy
 
-        return await self.request_adapter.send_async(request_info, device_compliance_policy.DeviceCompliancePolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceCompliancePolicy, error_mapping)
     
-    async def patch(self,body: Optional[device_compliance_policy.DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_compliance_policy.DeviceCompliancePolicy]:
+    async def patch(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceCompliancePolicy]:
         """
-        Update the navigation property deviceCompliancePolicies in deviceManagement
+        Update the properties of a macOSCompliancePolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_compliance_policy.DeviceCompliancePolicy]
+        Returns: Optional[DeviceCompliancePolicy]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import device_compliance_policy
+        from ....models.device_compliance_policy import DeviceCompliancePolicy
 
-        return await self.request_adapter.send_async(request_info, device_compliance_policy.DeviceCompliancePolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceCompliancePolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceCompliancePolicies for deviceManagement
+        Deletes a windowsPhone81CompliancePolicy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -128,7 +128,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The device compliance policies.
+        Read properties and relationships of the windows10CompliancePolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -144,9 +144,9 @@ class DeviceCompliancePolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device_compliance_policy.DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceCompliancePolicies in deviceManagement
+        Update the properties of a macOSCompliancePolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -166,85 +166,85 @@ class DeviceCompliancePolicyItemRequestBuilder():
         return request_info
     
     @property
-    def assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def assign(self) -> AssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        from .assign import assign_request_builder
+        from .assign.assign_request_builder import AssignRequestBuilder
 
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+    def assignments(self) -> AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.deviceCompliancePolicy entity.
         """
-        from .assignments import assignments_request_builder
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_setting_state_summaries(self) -> device_setting_state_summaries_request_builder.DeviceSettingStateSummariesRequestBuilder:
+    def device_setting_state_summaries(self) -> DeviceSettingStateSummariesRequestBuilder:
         """
         Provides operations to manage the deviceSettingStateSummaries property of the microsoft.graph.deviceCompliancePolicy entity.
         """
-        from .device_setting_state_summaries import device_setting_state_summaries_request_builder
+        from .device_setting_state_summaries.device_setting_state_summaries_request_builder import DeviceSettingStateSummariesRequestBuilder
 
-        return device_setting_state_summaries_request_builder.DeviceSettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceSettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_statuses(self) -> device_statuses_request_builder.DeviceStatusesRequestBuilder:
+    def device_statuses(self) -> DeviceStatusesRequestBuilder:
         """
         Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
         """
-        from .device_statuses import device_statuses_request_builder
+        from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
 
-        return device_statuses_request_builder.DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_status_overview(self) -> device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder:
+    def device_status_overview(self) -> DeviceStatusOverviewRequestBuilder:
         """
         Provides operations to manage the deviceStatusOverview property of the microsoft.graph.deviceCompliancePolicy entity.
         """
-        from .device_status_overview import device_status_overview_request_builder
+        from .device_status_overview.device_status_overview_request_builder import DeviceStatusOverviewRequestBuilder
 
-        return device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def schedule_actions_for_rules(self) -> schedule_actions_for_rules_request_builder.ScheduleActionsForRulesRequestBuilder:
+    def schedule_actions_for_rules(self) -> ScheduleActionsForRulesRequestBuilder:
         """
         Provides operations to call the scheduleActionsForRules method.
         """
-        from .schedule_actions_for_rules import schedule_actions_for_rules_request_builder
+        from .schedule_actions_for_rules.schedule_actions_for_rules_request_builder import ScheduleActionsForRulesRequestBuilder
 
-        return schedule_actions_for_rules_request_builder.ScheduleActionsForRulesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ScheduleActionsForRulesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def scheduled_actions_for_rule(self) -> scheduled_actions_for_rule_request_builder.ScheduledActionsForRuleRequestBuilder:
+    def scheduled_actions_for_rule(self) -> ScheduledActionsForRuleRequestBuilder:
         """
         Provides operations to manage the scheduledActionsForRule property of the microsoft.graph.deviceCompliancePolicy entity.
         """
-        from .scheduled_actions_for_rule import scheduled_actions_for_rule_request_builder
+        from .scheduled_actions_for_rule.scheduled_actions_for_rule_request_builder import ScheduledActionsForRuleRequestBuilder
 
-        return scheduled_actions_for_rule_request_builder.ScheduledActionsForRuleRequestBuilder(self.request_adapter, self.path_parameters)
+        return ScheduledActionsForRuleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_statuses(self) -> user_statuses_request_builder.UserStatusesRequestBuilder:
+    def user_statuses(self) -> UserStatusesRequestBuilder:
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
         """
-        from .user_statuses import user_statuses_request_builder
+        from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
 
-        return user_statuses_request_builder.UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+        return UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_status_overview(self) -> user_status_overview_request_builder.UserStatusOverviewRequestBuilder:
+    def user_status_overview(self) -> UserStatusOverviewRequestBuilder:
         """
         Provides operations to manage the userStatusOverview property of the microsoft.graph.deviceCompliancePolicy entity.
         """
-        from .user_status_overview import user_status_overview_request_builder
+        from .user_status_overview.user_status_overview_request_builder import UserStatusOverviewRequestBuilder
 
-        return user_status_overview_request_builder.UserStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
+        return UserStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceCompliancePolicyItemRequestBuilderDeleteRequestConfiguration():
@@ -261,7 +261,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
     @dataclass
     class DeviceCompliancePolicyItemRequestBuilderGetQueryParameters():
         """
-        The device compliance policies.
+        Read properties and relationships of the windows10CompliancePolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

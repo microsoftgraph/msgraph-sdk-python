@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_reviewer_scope, entity
+    from .access_review_reviewer_scope import AccessReviewReviewerScope
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AdminConsentRequestPolicy(entity.Entity):
+class AdminConsentRequestPolicy(Entity):
     # Specifies whether the admin consent request feature is enabled or disabled. Required.
     is_enabled: Optional[bool] = None
     # Specifies whether reviewers will receive notifications. Required.
@@ -21,7 +22,7 @@ class AdminConsentRequestPolicy(entity.Entity):
     # Specifies the duration the request is active before it automatically expires if no decision is applied.
     request_duration_in_days: Optional[int] = None
     # The list of reviewers for the admin consent. Required.
-    reviewers: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None
+    reviewers: Optional[List[AccessReviewReviewerScope]] = None
     # Specifies the version of this policy. When the policy is updated, this version is updated. Read-only.
     version: Optional[int] = None
     
@@ -42,16 +43,18 @@ class AdminConsentRequestPolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_reviewer_scope, entity
+        from .access_review_reviewer_scope import AccessReviewReviewerScope
+        from .entity import Entity
 
-        from . import access_review_reviewer_scope, entity
+        from .access_review_reviewer_scope import AccessReviewReviewerScope
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "notifyReviewers": lambda n : setattr(self, 'notify_reviewers', n.get_bool_value()),
             "remindersEnabled": lambda n : setattr(self, 'reminders_enabled', n.get_bool_value()),
             "requestDurationInDays": lambda n : setattr(self, 'request_duration_in_days', n.get_int_value()),
-            "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
+            "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

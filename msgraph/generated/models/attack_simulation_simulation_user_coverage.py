@@ -1,11 +1,11 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attack_simulation_user
+    from .attack_simulation_user import AttackSimulationUser
 
 @dataclass
 class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
@@ -13,13 +13,13 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # User in an attack simulation and training campaign.
-    attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
+    attack_simulation_user: Optional[AttackSimulationUser] = None
     # Number of link clicks in the received payloads by the user in attack simulation and training campaigns.
     click_count: Optional[int] = None
     # Number of compromising actions by the user in attack simulation and training campaigns.
     compromised_count: Optional[int] = None
     # Date and time of the latest attack simulation and training campaign that the user was included in.
-    latest_simulation_date_time: Optional[datetime] = None
+    latest_simulation_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Number of attack simulation and training campaigns that the user was included in.
@@ -42,12 +42,12 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attack_simulation_user
+        from .attack_simulation_user import AttackSimulationUser
 
-        from . import attack_simulation_user
+        from .attack_simulation_user import AttackSimulationUser
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
+            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(AttackSimulationUser)),
             "clickCount": lambda n : setattr(self, 'click_count', n.get_int_value()),
             "compromisedCount": lambda n : setattr(self, 'compromised_count', n.get_int_value()),
             "latestSimulationDateTime": lambda n : setattr(self, 'latest_simulation_date_time', n.get_datetime_value()),
@@ -67,7 +67,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         writer.write_object_value("attackSimulationUser", self.attack_simulation_user)
         writer.write_int_value("clickCount", self.click_count)
         writer.write_int_value("compromisedCount", self.compromised_count)
-        writer.write_datetime_value("latestSimulationDateTime", self.latest_simulation_date_time)
+        writer.write_datetime_value()("latestSimulationDateTime", self.latest_simulation_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("simulationCount", self.simulation_count)
         writer.write_additional_data_value(self.additional_data)

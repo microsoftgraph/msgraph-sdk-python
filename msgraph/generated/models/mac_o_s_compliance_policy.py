@@ -4,17 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_compliance_policy, device_threat_protection_level, required_password_type
+    from .device_compliance_policy import DeviceCompliancePolicy
+    from .device_threat_protection_level import DeviceThreatProtectionLevel
+    from .required_password_type import RequiredPasswordType
 
-from . import device_compliance_policy
+from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
-class MacOSCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
+class MacOSCompliancePolicy(DeviceCompliancePolicy):
     odata_type = "#microsoft.graph.macOSCompliancePolicy"
     # Require that devices have enabled device threat protection.
     device_threat_protection_enabled: Optional[bool] = None
     # Device threat protection levels for the Device Threat Protection API.
-    device_threat_protection_required_security_level: Optional[device_threat_protection_level.DeviceThreatProtectionLevel] = None
+    device_threat_protection_required_security_level: Optional[DeviceThreatProtectionLevel] = None
     # Corresponds to the 'Block all incoming connections' option.
     firewall_block_all_incoming: Optional[bool] = None
     # Corresponds to 'Enable stealth mode.'
@@ -40,7 +42,7 @@ class MacOSCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
     # Whether or not to require a password.
     password_required: Optional[bool] = None
     # Possible values of required passwords.
-    password_required_type: Optional[required_password_type.RequiredPasswordType] = None
+    password_required_type: Optional[RequiredPasswordType] = None
     # Require encryption on Mac OS devices.
     storage_require_encryption: Optional[bool] = None
     # Require that devices have enabled system integrity protection.
@@ -63,13 +65,17 @@ class MacOSCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_compliance_policy, device_threat_protection_level, required_password_type
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .device_threat_protection_level import DeviceThreatProtectionLevel
+        from .required_password_type import RequiredPasswordType
 
-        from . import device_compliance_policy, device_threat_protection_level, required_password_type
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .device_threat_protection_level import DeviceThreatProtectionLevel
+        from .required_password_type import RequiredPasswordType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "deviceThreatProtectionEnabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
-            "deviceThreatProtectionRequiredSecurityLevel": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(device_threat_protection_level.DeviceThreatProtectionLevel)),
+            "deviceThreatProtectionRequiredSecurityLevel": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(DeviceThreatProtectionLevel)),
             "firewallBlockAllIncoming": lambda n : setattr(self, 'firewall_block_all_incoming', n.get_bool_value()),
             "firewallEnableStealthMode": lambda n : setattr(self, 'firewall_enable_stealth_mode', n.get_bool_value()),
             "firewallEnabled": lambda n : setattr(self, 'firewall_enabled', n.get_bool_value()),
@@ -82,7 +88,7 @@ class MacOSCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             "passwordMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
             "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
             "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
             "storageRequireEncryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
             "systemIntegrityProtectionEnabled": lambda n : setattr(self, 'system_integrity_protection_enabled', n.get_bool_value()),
         }

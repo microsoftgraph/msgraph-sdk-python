@@ -4,22 +4,26 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, key_value_pair, synchronization_schedule, synchronization_schema, synchronization_status
+    from .entity import Entity
+    from .key_value_pair import KeyValuePair
+    from .synchronization_schedule import SynchronizationSchedule
+    from .synchronization_schema import SynchronizationSchema
+    from .synchronization_status import SynchronizationStatus
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class SynchronizationJob(entity.Entity):
+class SynchronizationJob(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The schedule property
-    schedule: Optional[synchronization_schedule.SynchronizationSchedule] = None
+    schedule: Optional[SynchronizationSchedule] = None
     # The schema property
-    schema: Optional[synchronization_schema.SynchronizationSchema] = None
+    schema: Optional[SynchronizationSchema] = None
     # The status property
-    status: Optional[synchronization_status.SynchronizationStatus] = None
+    status: Optional[SynchronizationStatus] = None
     # The synchronizationJobSettings property
-    synchronization_job_settings: Optional[List[key_value_pair.KeyValuePair]] = None
+    synchronization_job_settings: Optional[List[KeyValuePair]] = None
     # The templateId property
     template_id: Optional[str] = None
     
@@ -40,15 +44,23 @@ class SynchronizationJob(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, key_value_pair, synchronization_schedule, synchronization_schema, synchronization_status
+        from .entity import Entity
+        from .key_value_pair import KeyValuePair
+        from .synchronization_schedule import SynchronizationSchedule
+        from .synchronization_schema import SynchronizationSchema
+        from .synchronization_status import SynchronizationStatus
 
-        from . import entity, key_value_pair, synchronization_schedule, synchronization_schema, synchronization_status
+        from .entity import Entity
+        from .key_value_pair import KeyValuePair
+        from .synchronization_schedule import SynchronizationSchedule
+        from .synchronization_schema import SynchronizationSchema
+        from .synchronization_status import SynchronizationStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(synchronization_schedule.SynchronizationSchedule)),
-            "schema": lambda n : setattr(self, 'schema', n.get_object_value(synchronization_schema.SynchronizationSchema)),
-            "status": lambda n : setattr(self, 'status', n.get_object_value(synchronization_status.SynchronizationStatus)),
-            "synchronizationJobSettings": lambda n : setattr(self, 'synchronization_job_settings', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
+            "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(SynchronizationSchedule)),
+            "schema": lambda n : setattr(self, 'schema', n.get_object_value(SynchronizationSchema)),
+            "status": lambda n : setattr(self, 'status', n.get_object_value(SynchronizationStatus)),
+            "synchronizationJobSettings": lambda n : setattr(self, 'synchronization_job_settings', n.get_collection_of_object_values(KeyValuePair)),
             "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

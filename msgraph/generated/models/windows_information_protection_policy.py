@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import windows_information_protection, windows_information_protection_pin_character_requirements
+    from .windows_information_protection import WindowsInformationProtection
+    from .windows_information_protection_pin_character_requirements import WindowsInformationProtectionPinCharacterRequirements
 
-from . import windows_information_protection
+from .windows_information_protection import WindowsInformationProtection
 
 @dataclass
-class WindowsInformationProtectionPolicy(windows_information_protection.WindowsInformationProtection):
+class WindowsInformationProtectionPolicy(WindowsInformationProtection):
     odata_type = "#microsoft.graph.windowsInformationProtectionPolicy"
     # Offline interval before app data is wiped (days)
     days_without_contact_before_unenroll: Optional[int] = None
@@ -24,13 +25,13 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
     # Integer value specifies the period of time (in days) that a PIN can be used before the system requires the user to change it. The largest number you can configure for this policy setting is 730. The lowest number you can configure for this policy setting is 0. If this policy is set to 0, then the user's PIN will never expire. This node was added in Windows 10, version 1511. Default is 0.
     pin_expiration_days: Optional[int] = None
     # Pin Character Requirements
-    pin_lowercase_letters: Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements] = None
+    pin_lowercase_letters: Optional[WindowsInformationProtectionPinCharacterRequirements] = None
     # Integer value that sets the minimum number of characters required for the PIN. Default value is 4. The lowest number you can configure for this policy setting is 4. The largest number you can configure must be less than the number configured in the Maximum PIN length policy setting or the number 127, whichever is the lowest.
     pin_minimum_length: Optional[int] = None
     # Pin Character Requirements
-    pin_special_characters: Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements] = None
+    pin_special_characters: Optional[WindowsInformationProtectionPinCharacterRequirements] = None
     # Pin Character Requirements
-    pin_uppercase_letters: Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements] = None
+    pin_uppercase_letters: Optional[WindowsInformationProtectionPinCharacterRequirements] = None
     # New property in RS2, pending documentation
     revoke_on_mdm_handoff_disabled: Optional[bool] = None
     # Boolean value that sets Windows Hello for Business as a method for signing into Windows.
@@ -53,9 +54,11 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_information_protection, windows_information_protection_pin_character_requirements
+        from .windows_information_protection import WindowsInformationProtection
+        from .windows_information_protection_pin_character_requirements import WindowsInformationProtectionPinCharacterRequirements
 
-        from . import windows_information_protection, windows_information_protection_pin_character_requirements
+        from .windows_information_protection import WindowsInformationProtection
+        from .windows_information_protection_pin_character_requirements import WindowsInformationProtectionPinCharacterRequirements
 
         fields: Dict[str, Callable[[Any], None]] = {
             "daysWithoutContactBeforeUnenroll": lambda n : setattr(self, 'days_without_contact_before_unenroll', n.get_int_value()),
@@ -64,10 +67,10 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             "numberOfPastPinsRemembered": lambda n : setattr(self, 'number_of_past_pins_remembered', n.get_int_value()),
             "passwordMaximumAttemptCount": lambda n : setattr(self, 'password_maximum_attempt_count', n.get_int_value()),
             "pinExpirationDays": lambda n : setattr(self, 'pin_expiration_days', n.get_int_value()),
-            "pinLowercaseLetters": lambda n : setattr(self, 'pin_lowercase_letters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
+            "pinLowercaseLetters": lambda n : setattr(self, 'pin_lowercase_letters', n.get_enum_value(WindowsInformationProtectionPinCharacterRequirements)),
             "pinMinimumLength": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
-            "pinSpecialCharacters": lambda n : setattr(self, 'pin_special_characters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
-            "pinUppercaseLetters": lambda n : setattr(self, 'pin_uppercase_letters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
+            "pinSpecialCharacters": lambda n : setattr(self, 'pin_special_characters', n.get_enum_value(WindowsInformationProtectionPinCharacterRequirements)),
+            "pinUppercaseLetters": lambda n : setattr(self, 'pin_uppercase_letters', n.get_enum_value(WindowsInformationProtectionPinCharacterRequirements)),
             "revokeOnMdmHandoffDisabled": lambda n : setattr(self, 'revoke_on_mdm_handoff_disabled', n.get_bool_value()),
             "windowsHelloForBusinessBlocked": lambda n : setattr(self, 'windows_hello_for_business_blocked', n.get_bool_value()),
         }

@@ -1,16 +1,16 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Subscription(entity.Entity):
+class Subscription(Entity):
     # Optional. Identifier of the application used to create the subscription. Read-only.
     application_id: Optional[str] = None
     # Required. Indicates the type of change in the subscribed resource that will raise a change notification. The supported values are: created, updated, deleted. Multiple values can be combined using a comma-separated list. Note:  Drive root item and list change notifications support only the updated changeType. User and group change notifications support updated and deleted changeType. Use updated to receive notifications when user or group is created, updated or soft deleted.  Use deleted to receive notifications when user or group is permanently deleted.
@@ -24,7 +24,7 @@ class Subscription(entity.Entity):
     # Optional. A custom app-provided identifier to help identify the certificate needed to decrypt resource data.
     encryption_certificate_id: Optional[str] = None
     # Required. Specifies the date and time when the webhook subscription expires. The time is in UTC, and can be an amount of time from subscription creation that varies for the resource subscribed to. For the maximum supported subscription length of time, see the table below.
-    expiration_date_time: Optional[datetime] = None
+    expiration_date_time: Optional[datetime.datetime] = None
     # Optional. When set to true, change notifications include resource data (such as content of a chat message).
     include_resource_data: Optional[bool] = None
     # Optional. Specifies the latest version of Transport Layer Security (TLS) that the notification endpoint, specified by notificationUrl, supports. The possible values are: v1_0, v1_1, v1_2, v1_3. For subscribers whose notification endpoint supports a version lower than the currently recommended version (TLS 1.2), specifying this property by a set timeline allows them to temporarily use their deprecated version of TLS before completing their upgrade to TLS 1.2. For these subscribers, not setting this property per the timeline would result in subscription operations failing. For subscribers whose notification endpoint already supports TLS 1.2, setting this property is optional. In such cases, Microsoft Graph defaults the property to v1_2.
@@ -59,9 +59,9 @@ class Subscription(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applicationId": lambda n : setattr(self, 'application_id', n.get_str_value()),
@@ -98,7 +98,7 @@ class Subscription(entity.Entity):
         writer.write_str_value("creatorId", self.creator_id)
         writer.write_str_value("encryptionCertificate", self.encryption_certificate)
         writer.write_str_value("encryptionCertificateId", self.encryption_certificate_id)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
         writer.write_bool_value("includeResourceData", self.include_resource_data)
         writer.write_str_value("latestSupportedTlsVersion", self.latest_supported_tls_version)
         writer.write_str_value("lifecycleNotificationUrl", self.lifecycle_notification_url)

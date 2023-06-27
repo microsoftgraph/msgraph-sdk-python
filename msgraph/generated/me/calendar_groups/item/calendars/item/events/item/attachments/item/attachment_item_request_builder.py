@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import attachment
-    from ..........models.o_data_errors import o_data_error
+    from ..........models.attachment import Attachment
+    from ..........models.o_data_errors.o_data_error import ODataError
 
 class AttachmentItemRequestBuilder():
     """
@@ -44,37 +44,37 @@ class AttachmentItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AttachmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[attachment.Attachment]:
+    async def get(self,request_configuration: Optional[AttachmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Attachment]:
         """
         The collection of FileAttachment, ItemAttachment, and referenceAttachment attachments for the event. Navigation property. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[attachment.Attachment]
+        Returns: Optional[Attachment]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import attachment
+        from ..........models.attachment import Attachment
 
-        return await self.request_adapter.send_async(request_info, attachment.Attachment, error_mapping)
+        return await self.request_adapter.send_async(request_info, Attachment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AttachmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

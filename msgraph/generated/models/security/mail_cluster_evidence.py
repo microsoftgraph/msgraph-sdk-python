@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert_evidence
+    from .alert_evidence import AlertEvidence
 
-from . import alert_evidence
+from .alert_evidence import AlertEvidence
 
 @dataclass
-class MailClusterEvidence(alert_evidence.AlertEvidence):
+class MailClusterEvidence(AlertEvidence):
     # The clustering logic of the emails inside the cluster.
     cluster_by: Optional[str] = None
     # The value utilized to cluster the similar emails.
@@ -42,9 +42,9 @@ class MailClusterEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_evidence
+        from .alert_evidence import AlertEvidence
 
-        from . import alert_evidence
+        from .alert_evidence import AlertEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
             "clusterBy": lambda n : setattr(self, 'cluster_by', n.get_str_value()),

@@ -4,7 +4,11 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import network_connection_type, network_transport_protocol, trace_route_hop, wifi_band, wifi_radio_type
+    from .network_connection_type import NetworkConnectionType
+    from .network_transport_protocol import NetworkTransportProtocol
+    from .trace_route_hop import TraceRouteHop
+    from .wifi_band import WifiBand
+    from .wifi_radio_type import WifiRadioType
 
 @dataclass
 class NetworkInfo(AdditionalDataHolder, Parsable):
@@ -16,7 +20,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     # The wireless LAN basic service set identifier of the media endpoint used to connect to the network.
     basic_service_set_identifier: Optional[str] = None
     # The connectionType property
-    connection_type: Optional[network_connection_type.NetworkConnectionType] = None
+    connection_type: Optional[NetworkConnectionType] = None
     # Fraction of the call that the media endpoint detected the network delay was significant enough to impact the ability to have real-time two-way communication.
     delay_event_ratio: Optional[float] = None
     # DNS suffix associated with the network adapter of the media endpoint.
@@ -28,7 +32,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     # The media access control (MAC) address of the media endpoint's network device.
     mac_address: Optional[str] = None
     # The networkTransportProtocol property
-    network_transport_protocol: Optional[network_transport_protocol.NetworkTransportProtocol] = None
+    network_transport_protocol: Optional[NetworkTransportProtocol] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Network port number used by media endpoint.
@@ -46,9 +50,9 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     # Subnet used for media stream by the media endpoint.
     subnet: Optional[str] = None
     # List of network trace route hops collected for this media stream.*
-    trace_route_hops: Optional[List[trace_route_hop.TraceRouteHop]] = None
+    trace_route_hops: Optional[List[TraceRouteHop]] = None
     # The wifiBand property
-    wifi_band: Optional[wifi_band.WifiBand] = None
+    wifi_band: Optional[WifiBand] = None
     # Estimated remaining battery charge in percentage reported by the media endpoint.
     wifi_battery_charge: Optional[int] = None
     # WiFi channel used by the media endpoint.
@@ -58,7 +62,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     # Version of the Microsoft WiFi driver used by the media endpoint.
     wifi_microsoft_driver_version: Optional[str] = None
     # The wifiRadioType property
-    wifi_radio_type: Optional[wifi_radio_type.WifiRadioType] = None
+    wifi_radio_type: Optional[WifiRadioType] = None
     # WiFi signal strength in percentage reported by the media endpoint.
     wifi_signal_strength: Optional[int] = None
     # Name of the WiFi driver used by the media endpoint. Value may be localized based on the language used by endpoint.
@@ -83,20 +87,28 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import network_connection_type, network_transport_protocol, trace_route_hop, wifi_band, wifi_radio_type
+        from .network_connection_type import NetworkConnectionType
+        from .network_transport_protocol import NetworkTransportProtocol
+        from .trace_route_hop import TraceRouteHop
+        from .wifi_band import WifiBand
+        from .wifi_radio_type import WifiRadioType
 
-        from . import network_connection_type, network_transport_protocol, trace_route_hop, wifi_band, wifi_radio_type
+        from .network_connection_type import NetworkConnectionType
+        from .network_transport_protocol import NetworkTransportProtocol
+        from .trace_route_hop import TraceRouteHop
+        from .wifi_band import WifiBand
+        from .wifi_radio_type import WifiRadioType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bandwidthLowEventRatio": lambda n : setattr(self, 'bandwidth_low_event_ratio', n.get_float_value()),
             "basicServiceSetIdentifier": lambda n : setattr(self, 'basic_service_set_identifier', n.get_str_value()),
-            "connectionType": lambda n : setattr(self, 'connection_type', n.get_enum_value(network_connection_type.NetworkConnectionType)),
+            "connectionType": lambda n : setattr(self, 'connection_type', n.get_enum_value(NetworkConnectionType)),
             "delayEventRatio": lambda n : setattr(self, 'delay_event_ratio', n.get_float_value()),
             "dnsSuffix": lambda n : setattr(self, 'dns_suffix', n.get_str_value()),
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "linkSpeed": lambda n : setattr(self, 'link_speed', n.get_int_value()),
             "macAddress": lambda n : setattr(self, 'mac_address', n.get_str_value()),
-            "networkTransportProtocol": lambda n : setattr(self, 'network_transport_protocol', n.get_enum_value(network_transport_protocol.NetworkTransportProtocol)),
+            "networkTransportProtocol": lambda n : setattr(self, 'network_transport_protocol', n.get_enum_value(NetworkTransportProtocol)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
             "receivedQualityEventRatio": lambda n : setattr(self, 'received_quality_event_ratio', n.get_float_value()),
@@ -105,13 +117,13 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             "relayPort": lambda n : setattr(self, 'relay_port', n.get_int_value()),
             "sentQualityEventRatio": lambda n : setattr(self, 'sent_quality_event_ratio', n.get_float_value()),
             "subnet": lambda n : setattr(self, 'subnet', n.get_str_value()),
-            "traceRouteHops": lambda n : setattr(self, 'trace_route_hops', n.get_collection_of_object_values(trace_route_hop.TraceRouteHop)),
-            "wifiBand": lambda n : setattr(self, 'wifi_band', n.get_enum_value(wifi_band.WifiBand)),
+            "traceRouteHops": lambda n : setattr(self, 'trace_route_hops', n.get_collection_of_object_values(TraceRouteHop)),
+            "wifiBand": lambda n : setattr(self, 'wifi_band', n.get_enum_value(WifiBand)),
             "wifiBatteryCharge": lambda n : setattr(self, 'wifi_battery_charge', n.get_int_value()),
             "wifiChannel": lambda n : setattr(self, 'wifi_channel', n.get_int_value()),
             "wifiMicrosoftDriver": lambda n : setattr(self, 'wifi_microsoft_driver', n.get_str_value()),
             "wifiMicrosoftDriverVersion": lambda n : setattr(self, 'wifi_microsoft_driver_version', n.get_str_value()),
-            "wifiRadioType": lambda n : setattr(self, 'wifi_radio_type', n.get_enum_value(wifi_radio_type.WifiRadioType)),
+            "wifiRadioType": lambda n : setattr(self, 'wifi_radio_type', n.get_enum_value(WifiRadioType)),
             "wifiSignalStrength": lambda n : setattr(self, 'wifi_signal_strength', n.get_int_value()),
             "wifiVendorDriver": lambda n : setattr(self, 'wifi_vendor_driver', n.get_str_value()),
             "wifiVendorDriverVersion": lambda n : setattr(self, 'wifi_vendor_driver_version', n.get_str_value()),

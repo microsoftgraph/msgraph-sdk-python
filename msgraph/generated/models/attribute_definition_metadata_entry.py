@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attribute_definition_metadata
+    from .attribute_definition_metadata import AttributeDefinitionMetadata
 
 @dataclass
 class AttributeDefinitionMetadataEntry(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AttributeDefinitionMetadataEntry(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The key property
-    key: Optional[attribute_definition_metadata.AttributeDefinitionMetadata] = None
+    key: Optional[AttributeDefinitionMetadata] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The value property
@@ -35,12 +35,12 @@ class AttributeDefinitionMetadataEntry(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attribute_definition_metadata
+        from .attribute_definition_metadata import AttributeDefinitionMetadata
 
-        from . import attribute_definition_metadata
+        from .attribute_definition_metadata import AttributeDefinitionMetadata
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "key": lambda n : setattr(self, 'key', n.get_enum_value(attribute_definition_metadata.AttributeDefinitionMetadata)),
+            "key": lambda n : setattr(self, 'key', n.get_enum_value(AttributeDefinitionMetadata)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }

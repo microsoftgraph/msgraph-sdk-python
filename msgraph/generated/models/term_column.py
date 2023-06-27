@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .term_store import set, term
+    from .term_store.set import Set
+    from .term_store.term import Term
 
 @dataclass
 class TermColumn(AdditionalDataHolder, Parsable):
@@ -16,11 +17,11 @@ class TermColumn(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The parentTerm property
-    parent_term: Optional[term.Term] = None
+    parent_term: Optional[Term] = None
     # Specifies whether to display the entire term path or only the term label.
     show_fully_qualified_name: Optional[bool] = None
     # The termSet property
-    term_set: Optional[set.Set] = None
+    term_set: Optional[Set] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermColumn:
@@ -39,16 +40,18 @@ class TermColumn(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .term_store import set, term
+        from .term_store.set import Set
+        from .term_store.term import Term
 
-        from .term_store import set, term
+        from .term_store.set import Set
+        from .term_store.term import Term
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowMultipleValues": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "parentTerm": lambda n : setattr(self, 'parent_term', n.get_object_value(term.Term)),
+            "parentTerm": lambda n : setattr(self, 'parent_term', n.get_object_value(Term)),
             "showFullyQualifiedName": lambda n : setattr(self, 'show_fully_qualified_name', n.get_bool_value()),
-            "termSet": lambda n : setattr(self, 'term_set', n.get_object_value(set.Set)),
+            "termSet": lambda n : setattr(self, 'term_set', n.get_object_value(Set)),
         }
         return fields
     

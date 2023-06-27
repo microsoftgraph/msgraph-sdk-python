@@ -1,21 +1,22 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import compliance_status, entity
+    from .compliance_status import ComplianceStatus
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceComplianceSettingState(entity.Entity):
+class DeviceComplianceSettingState(Entity):
     """
     Device compliance setting State for a given device.
     """
     # The DateTime when device compliance grace period expires
-    compliance_grace_period_expiration_date_time: Optional[datetime] = None
+    compliance_grace_period_expiration_date_time: Optional[datetime.datetime] = None
     # The Device Id that is being reported
     device_id: Optional[str] = None
     # The device model that is being reported
@@ -29,7 +30,7 @@ class DeviceComplianceSettingState(entity.Entity):
     # The Setting Name that is being reported
     setting_name: Optional[str] = None
     # The state property
-    state: Optional[compliance_status.ComplianceStatus] = None
+    state: Optional[ComplianceStatus] = None
     # The User email address that is being reported
     user_email: Optional[str] = None
     # The user Id that is being reported
@@ -56,9 +57,11 @@ class DeviceComplianceSettingState(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import compliance_status, entity
+        from .compliance_status import ComplianceStatus
+        from .entity import Entity
 
-        from . import compliance_status, entity
+        from .compliance_status import ComplianceStatus
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "complianceGracePeriodExpirationDateTime": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
@@ -67,7 +70,7 @@ class DeviceComplianceSettingState(entity.Entity):
             "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
             "setting": lambda n : setattr(self, 'setting', n.get_str_value()),
             "settingName": lambda n : setattr(self, 'setting_name', n.get_str_value()),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(compliance_status.ComplianceStatus)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(ComplianceStatus)),
             "userEmail": lambda n : setattr(self, 'user_email', n.get_str_value()),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
             "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
@@ -86,7 +89,7 @@ class DeviceComplianceSettingState(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("complianceGracePeriodExpirationDateTime", self.compliance_grace_period_expiration_date_time)
+        writer.write_datetime_value()("complianceGracePeriodExpirationDateTime", self.compliance_grace_period_expiration_date_time)
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("deviceModel", self.device_model)
         writer.write_str_value("deviceName", self.device_name)

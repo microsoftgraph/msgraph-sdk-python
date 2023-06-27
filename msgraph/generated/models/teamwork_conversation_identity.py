@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity, teamwork_conversation_identity_type
+    from .identity import Identity
+    from .teamwork_conversation_identity_type import TeamworkConversationIdentityType
 
-from . import identity
+from .identity import Identity
 
 @dataclass
-class TeamworkConversationIdentity(identity.Identity):
+class TeamworkConversationIdentity(Identity):
     odata_type = "#microsoft.graph.teamworkConversationIdentity"
     # Type of conversation. Possible values are: team, channel, chat, and unknownFutureValue.
-    conversation_identity_type: Optional[teamwork_conversation_identity_type.TeamworkConversationIdentityType] = None
+    conversation_identity_type: Optional[TeamworkConversationIdentityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkConversationIdentity:
@@ -31,12 +32,14 @@ class TeamworkConversationIdentity(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity, teamwork_conversation_identity_type
+        from .identity import Identity
+        from .teamwork_conversation_identity_type import TeamworkConversationIdentityType
 
-        from . import identity, teamwork_conversation_identity_type
+        from .identity import Identity
+        from .teamwork_conversation_identity_type import TeamworkConversationIdentityType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "conversationIdentityType": lambda n : setattr(self, 'conversation_identity_type', n.get_enum_value(teamwork_conversation_identity_type.TeamworkConversationIdentityType)),
+            "conversationIdentityType": lambda n : setattr(self, 'conversation_identity_type', n.get_enum_value(TeamworkConversationIdentityType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

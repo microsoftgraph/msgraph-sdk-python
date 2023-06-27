@@ -1,23 +1,29 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import email_address, extension, multi_value_legacy_extended_property, outlook_item, physical_address, profile_photo, single_value_legacy_extended_property
+    from .email_address import EmailAddress
+    from .extension import Extension
+    from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+    from .outlook_item import OutlookItem
+    from .physical_address import PhysicalAddress
+    from .profile_photo import ProfilePhoto
+    from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
-from . import outlook_item
+from .outlook_item import OutlookItem
 
 @dataclass
-class Contact(outlook_item.OutlookItem):
+class Contact(OutlookItem):
     odata_type = "#microsoft.graph.contact"
     # The name of the contact's assistant.
     assistant_name: Optional[str] = None
     # The contact's birthday. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    birthday: Optional[datetime] = None
+    birthday: Optional[datetime.datetime] = None
     # The contact's business address.
-    business_address: Optional[physical_address.PhysicalAddress] = None
+    business_address: Optional[PhysicalAddress] = None
     # The business home page of the contact.
     business_home_page: Optional[str] = None
     # The contact's business phone numbers.
@@ -31,9 +37,9 @@ class Contact(outlook_item.OutlookItem):
     # The contact's display name. You can specify the display name in a create or update operation. Note that later updates to other properties may cause an automatically generated value to overwrite the displayName value you have specified. To preserve a pre-existing value, always include it as displayName in an update operation.
     display_name: Optional[str] = None
     # The contact's email addresses.
-    email_addresses: Optional[List[email_address.EmailAddress]] = None
+    email_addresses: Optional[List[EmailAddress]] = None
     # The collection of open extensions defined for the contact. Read-only. Nullable.
-    extensions: Optional[List[extension.Extension]] = None
+    extensions: Optional[List[Extension]] = None
     # The name the contact is filed under.
     file_as: Optional[str] = None
     # The contact's generation.
@@ -41,7 +47,7 @@ class Contact(outlook_item.OutlookItem):
     # The contact's given name.
     given_name: Optional[str] = None
     # The contact's home address.
-    home_address: Optional[physical_address.PhysicalAddress] = None
+    home_address: Optional[PhysicalAddress] = None
     # The contact's home phone numbers.
     home_phones: Optional[List[str]] = None
     # The imAddresses property
@@ -57,23 +63,23 @@ class Contact(outlook_item.OutlookItem):
     # The mobilePhone property
     mobile_phone: Optional[str] = None
     # The collection of multi-value extended properties defined for the contact. Read-only. Nullable.
-    multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
+    multi_value_extended_properties: Optional[List[MultiValueLegacyExtendedProperty]] = None
     # The nickName property
     nick_name: Optional[str] = None
     # The officeLocation property
     office_location: Optional[str] = None
     # The otherAddress property
-    other_address: Optional[physical_address.PhysicalAddress] = None
+    other_address: Optional[PhysicalAddress] = None
     # The parentFolderId property
     parent_folder_id: Optional[str] = None
     # The personalNotes property
     personal_notes: Optional[str] = None
     # Optional contact picture. You can get or set a photo for a contact.
-    photo: Optional[profile_photo.ProfilePhoto] = None
+    photo: Optional[ProfilePhoto] = None
     # The profession property
     profession: Optional[str] = None
     # The collection of single-value extended properties defined for the contact. Read-only. Nullable.
-    single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
+    single_value_extended_properties: Optional[List[SingleValueLegacyExtendedProperty]] = None
     # The spouseName property
     spouse_name: Optional[str] = None
     # The surname property
@@ -104,26 +110,38 @@ class Contact(outlook_item.OutlookItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import email_address, extension, multi_value_legacy_extended_property, outlook_item, physical_address, profile_photo, single_value_legacy_extended_property
+        from .email_address import EmailAddress
+        from .extension import Extension
+        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+        from .outlook_item import OutlookItem
+        from .physical_address import PhysicalAddress
+        from .profile_photo import ProfilePhoto
+        from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
-        from . import email_address, extension, multi_value_legacy_extended_property, outlook_item, physical_address, profile_photo, single_value_legacy_extended_property
+        from .email_address import EmailAddress
+        from .extension import Extension
+        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+        from .outlook_item import OutlookItem
+        from .physical_address import PhysicalAddress
+        from .profile_photo import ProfilePhoto
+        from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assistantName": lambda n : setattr(self, 'assistant_name', n.get_str_value()),
             "birthday": lambda n : setattr(self, 'birthday', n.get_datetime_value()),
-            "businessAddress": lambda n : setattr(self, 'business_address', n.get_object_value(physical_address.PhysicalAddress)),
+            "businessAddress": lambda n : setattr(self, 'business_address', n.get_object_value(PhysicalAddress)),
             "businessHomePage": lambda n : setattr(self, 'business_home_page', n.get_str_value()),
             "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
             "children": lambda n : setattr(self, 'children', n.get_collection_of_primitive_values(str)),
             "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "emailAddresses": lambda n : setattr(self, 'email_addresses', n.get_collection_of_object_values(email_address.EmailAddress)),
-            "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
+            "emailAddresses": lambda n : setattr(self, 'email_addresses', n.get_collection_of_object_values(EmailAddress)),
+            "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
             "fileAs": lambda n : setattr(self, 'file_as', n.get_str_value()),
             "generation": lambda n : setattr(self, 'generation', n.get_str_value()),
             "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "homeAddress": lambda n : setattr(self, 'home_address', n.get_object_value(physical_address.PhysicalAddress)),
+            "homeAddress": lambda n : setattr(self, 'home_address', n.get_object_value(PhysicalAddress)),
             "homePhones": lambda n : setattr(self, 'home_phones', n.get_collection_of_primitive_values(str)),
             "imAddresses": lambda n : setattr(self, 'im_addresses', n.get_collection_of_primitive_values(str)),
             "initials": lambda n : setattr(self, 'initials', n.get_str_value()),
@@ -131,15 +149,15 @@ class Contact(outlook_item.OutlookItem):
             "manager": lambda n : setattr(self, 'manager', n.get_str_value()),
             "middleName": lambda n : setattr(self, 'middle_name', n.get_str_value()),
             "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
-            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
+            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
             "nickName": lambda n : setattr(self, 'nick_name', n.get_str_value()),
             "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "otherAddress": lambda n : setattr(self, 'other_address', n.get_object_value(physical_address.PhysicalAddress)),
+            "otherAddress": lambda n : setattr(self, 'other_address', n.get_object_value(PhysicalAddress)),
             "parentFolderId": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
             "personalNotes": lambda n : setattr(self, 'personal_notes', n.get_str_value()),
-            "photo": lambda n : setattr(self, 'photo', n.get_object_value(profile_photo.ProfilePhoto)),
+            "photo": lambda n : setattr(self, 'photo', n.get_object_value(ProfilePhoto)),
             "profession": lambda n : setattr(self, 'profession', n.get_str_value()),
-            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
+            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
             "spouseName": lambda n : setattr(self, 'spouse_name', n.get_str_value()),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
@@ -161,7 +179,7 @@ class Contact(outlook_item.OutlookItem):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("assistantName", self.assistant_name)
-        writer.write_datetime_value("birthday", self.birthday)
+        writer.write_datetime_value()("birthday", self.birthday)
         writer.write_object_value("businessAddress", self.business_address)
         writer.write_str_value("businessHomePage", self.business_home_page)
         writer.write_collection_of_primitive_values("businessPhones", self.business_phones)

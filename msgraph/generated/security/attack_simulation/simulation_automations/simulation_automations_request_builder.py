@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import simulation_automation, simulation_automation_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import simulation_automation_item_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.simulation_automation import SimulationAutomation
+    from ....models.simulation_automation_collection_response import SimulationAutomationCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.simulation_automation_item_request_builder import SimulationAutomationItemRequestBuilder
 
 class SimulationAutomationsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class SimulationAutomationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_simulation_automation_id(self,simulation_automation_id: str) -> simulation_automation_item_request_builder.SimulationAutomationItemRequestBuilder:
+    def by_simulation_automation_id(self,simulation_automation_id: str) -> SimulationAutomationItemRequestBuilder:
         """
         Provides operations to manage the simulationAutomations property of the microsoft.graph.attackSimulationRoot entity.
         Args:
             simulation_automation_id: Unique identifier of the item
-        Returns: simulation_automation_item_request_builder.SimulationAutomationItemRequestBuilder
+        Returns: SimulationAutomationItemRequestBuilder
         """
         if not simulation_automation_id:
             raise TypeError("simulation_automation_id cannot be null.")
-        from .item import simulation_automation_item_request_builder
+        from .item.simulation_automation_item_request_builder import SimulationAutomationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["simulationAutomation%2Did"] = simulation_automation_id
-        return simulation_automation_item_request_builder.SimulationAutomationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return SimulationAutomationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SimulationAutomationsRequestBuilderGetRequestConfiguration] = None) -> Optional[simulation_automation_collection_response.SimulationAutomationCollectionResponse]:
+    async def get(self,request_configuration: Optional[SimulationAutomationsRequestBuilderGetRequestConfiguration] = None) -> Optional[SimulationAutomationCollectionResponse]:
         """
         Get a list of attack simulation automations for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[simulation_automation_collection_response.SimulationAutomationCollectionResponse]
+        Returns: Optional[SimulationAutomationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import simulation_automation_collection_response
+        from ....models.simulation_automation_collection_response import SimulationAutomationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, simulation_automation_collection_response.SimulationAutomationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SimulationAutomationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[simulation_automation.SimulationAutomation] = None, request_configuration: Optional[SimulationAutomationsRequestBuilderPostRequestConfiguration] = None) -> Optional[simulation_automation.SimulationAutomation]:
+    async def post(self,body: Optional[SimulationAutomation] = None, request_configuration: Optional[SimulationAutomationsRequestBuilderPostRequestConfiguration] = None) -> Optional[SimulationAutomation]:
         """
         Create new navigation property to simulationAutomations for security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[simulation_automation.SimulationAutomation]
+        Returns: Optional[SimulationAutomation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import simulation_automation
+        from ....models.simulation_automation import SimulationAutomation
 
-        return await self.request_adapter.send_async(request_info, simulation_automation.SimulationAutomation, error_mapping)
+        return await self.request_adapter.send_async(request_info, SimulationAutomation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SimulationAutomationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class SimulationAutomationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[simulation_automation.SimulationAutomation] = None, request_configuration: Optional[SimulationAutomationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SimulationAutomation] = None, request_configuration: Optional[SimulationAutomationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to simulationAutomations for security
         Args:
@@ -139,13 +140,13 @@ class SimulationAutomationsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SimulationAutomationsRequestBuilderGetQueryParameters():

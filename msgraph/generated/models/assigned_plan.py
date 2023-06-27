@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
@@ -11,7 +11,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The date and time at which the plan was assigned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    assigned_date_time: Optional[datetime] = None
+    assigned_date_time: Optional[datetime.datetime] = None
     # Condition of the capability assignment. The possible values are Enabled, Warning, Suspended, Deleted, LockedOut. See a detailed description of each value.
     capability_status: Optional[str] = None
     # The OdataType property
@@ -55,7 +55,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("assignedDateTime", self.assigned_date_time)
+        writer.write_datetime_value()("assignedDateTime", self.assigned_date_time)
         writer.write_str_value("capabilityStatus", self.capability_status)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("service", self.service)

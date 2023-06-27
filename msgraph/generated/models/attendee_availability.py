@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attendee_base, free_busy_status
+    from .attendee_base import AttendeeBase
+    from .free_busy_status import FreeBusyStatus
 
 @dataclass
 class AttendeeAvailability(AdditionalDataHolder, Parsable):
@@ -12,9 +13,9 @@ class AttendeeAvailability(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The email address and type of attendee - whether it's a person or a resource, and whether required or optional if it's a person.
-    attendee: Optional[attendee_base.AttendeeBase] = None
+    attendee: Optional[AttendeeBase] = None
     # The availability status of the attendee. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
-    availability: Optional[free_busy_status.FreeBusyStatus] = None
+    availability: Optional[FreeBusyStatus] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,13 +36,15 @@ class AttendeeAvailability(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attendee_base, free_busy_status
+        from .attendee_base import AttendeeBase
+        from .free_busy_status import FreeBusyStatus
 
-        from . import attendee_base, free_busy_status
+        from .attendee_base import AttendeeBase
+        from .free_busy_status import FreeBusyStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attendee": lambda n : setattr(self, 'attendee', n.get_object_value(attendee_base.AttendeeBase)),
-            "availability": lambda n : setattr(self, 'availability', n.get_enum_value(free_busy_status.FreeBusyStatus)),
+            "attendee": lambda n : setattr(self, 'attendee', n.get_object_value(AttendeeBase)),
+            "availability": lambda n : setattr(self, 'availability', n.get_enum_value(FreeBusyStatus)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

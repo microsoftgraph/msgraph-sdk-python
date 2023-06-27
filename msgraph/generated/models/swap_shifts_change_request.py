@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import offer_shift_request
+    from .offer_shift_request import OfferShiftRequest
 
-from . import offer_shift_request
+from .offer_shift_request import OfferShiftRequest
 
 @dataclass
-class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
+class SwapShiftsChangeRequest(OfferShiftRequest):
     odata_type = "#microsoft.graph.swapShiftsChangeRequest"
     # ShiftId for the recipient user with whom the request is to swap.
     recipient_shift_id: Optional[str] = None
@@ -31,9 +31,9 @@ class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import offer_shift_request
+        from .offer_shift_request import OfferShiftRequest
 
-        from . import offer_shift_request
+        from .offer_shift_request import OfferShiftRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
             "recipientShiftId": lambda n : setattr(self, 'recipient_shift_id', n.get_str_value()),

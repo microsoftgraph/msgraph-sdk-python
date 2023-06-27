@@ -1,32 +1,37 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, identity_set, planner_bucket, planner_plan_container, planner_plan_details, planner_task
+    from .entity import Entity
+    from .identity_set import IdentitySet
+    from .planner_bucket import PlannerBucket
+    from .planner_plan_container import PlannerPlanContainer
+    from .planner_plan_details import PlannerPlanDetails
+    from .planner_task import PlannerTask
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PlannerPlan(entity.Entity):
+class PlannerPlan(Entity):
     # Read-only. Nullable. Collection of buckets in the plan.
-    buckets: Optional[List[planner_bucket.PlannerBucket]] = None
+    buckets: Optional[List[PlannerBucket]] = None
     # Identifies the container of the plan. Specify only the url, the containerId and type, or all properties. After it is set, this property can’t be updated. Required.
-    container: Optional[planner_plan_container.PlannerPlanContainer] = None
+    container: Optional[PlannerPlanContainer] = None
     # Read-only. The user who created the plan.
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # Read-only. Date and time at which the plan is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Read-only. Nullable. Additional details about the plan.
-    details: Optional[planner_plan_details.PlannerPlanDetails] = None
+    details: Optional[PlannerPlanDetails] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The owner property
     owner: Optional[str] = None
     # Read-only. Nullable. Collection of tasks in the plan.
-    tasks: Optional[List[planner_task.PlannerTask]] = None
+    tasks: Optional[List[PlannerTask]] = None
     # Required. Title of the plan.
     title: Optional[str] = None
     
@@ -47,18 +52,28 @@ class PlannerPlan(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, identity_set, planner_bucket, planner_plan_container, planner_plan_details, planner_task
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .planner_bucket import PlannerBucket
+        from .planner_plan_container import PlannerPlanContainer
+        from .planner_plan_details import PlannerPlanDetails
+        from .planner_task import PlannerTask
 
-        from . import entity, identity_set, planner_bucket, planner_plan_container, planner_plan_details, planner_task
+        from .entity import Entity
+        from .identity_set import IdentitySet
+        from .planner_bucket import PlannerBucket
+        from .planner_plan_container import PlannerPlanContainer
+        from .planner_plan_details import PlannerPlanDetails
+        from .planner_task import PlannerTask
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "buckets": lambda n : setattr(self, 'buckets', n.get_collection_of_object_values(planner_bucket.PlannerBucket)),
-            "container": lambda n : setattr(self, 'container', n.get_object_value(planner_plan_container.PlannerPlanContainer)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "buckets": lambda n : setattr(self, 'buckets', n.get_collection_of_object_values(PlannerBucket)),
+            "container": lambda n : setattr(self, 'container', n.get_object_value(PlannerPlanContainer)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "details": lambda n : setattr(self, 'details', n.get_object_value(planner_plan_details.PlannerPlanDetails)),
+            "details": lambda n : setattr(self, 'details', n.get_object_value(PlannerPlanDetails)),
             "owner": lambda n : setattr(self, 'owner', n.get_str_value()),
-            "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(planner_task.PlannerTask)),
+            "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(PlannerTask)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -77,7 +92,7 @@ class PlannerPlan(entity.Entity):
         writer.write_collection_of_object_values("buckets", self.buckets)
         writer.write_object_value("container", self.container)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_object_value("details", self.details)
         writer.write_str_value("owner", self.owner)
         writer.write_collection_of_object_values("tasks", self.tasks)

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import data_policy_operation, data_policy_operation_collection_response
-    from ..models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import data_policy_operation_item_request_builder
+    from ..models.data_policy_operation import DataPolicyOperation
+    from ..models.data_policy_operation_collection_response import DataPolicyOperationCollectionResponse
+    from ..models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.data_policy_operation_item_request_builder import DataPolicyOperationItemRequestBuilder
 
 class DataPolicyOperationsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class DataPolicyOperationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_data_policy_operation_id(self,data_policy_operation_id: str) -> data_policy_operation_item_request_builder.DataPolicyOperationItemRequestBuilder:
+    def by_data_policy_operation_id(self,data_policy_operation_id: str) -> DataPolicyOperationItemRequestBuilder:
         """
         Provides operations to manage the collection of dataPolicyOperation entities.
         Args:
             data_policy_operation_id: Unique identifier of the item
-        Returns: data_policy_operation_item_request_builder.DataPolicyOperationItemRequestBuilder
+        Returns: DataPolicyOperationItemRequestBuilder
         """
         if not data_policy_operation_id:
             raise TypeError("data_policy_operation_id cannot be null.")
-        from .item import data_policy_operation_item_request_builder
+        from .item.data_policy_operation_item_request_builder import DataPolicyOperationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["dataPolicyOperation%2Did"] = data_policy_operation_id
-        return data_policy_operation_item_request_builder.DataPolicyOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DataPolicyOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DataPolicyOperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[data_policy_operation_collection_response.DataPolicyOperationCollectionResponse]:
+    async def get(self,request_configuration: Optional[DataPolicyOperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[DataPolicyOperationCollectionResponse]:
         """
         Retrieve the properties of a **dataPolicyOperation** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[data_policy_operation_collection_response.DataPolicyOperationCollectionResponse]
+        Returns: Optional[DataPolicyOperationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import data_policy_operation_collection_response
+        from ..models.data_policy_operation_collection_response import DataPolicyOperationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, data_policy_operation_collection_response.DataPolicyOperationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DataPolicyOperationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[data_policy_operation.DataPolicyOperation] = None, request_configuration: Optional[DataPolicyOperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[data_policy_operation.DataPolicyOperation]:
+    async def post(self,body: Optional[DataPolicyOperation] = None, request_configuration: Optional[DataPolicyOperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[DataPolicyOperation]:
         """
         Add new entity to dataPolicyOperations
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[data_policy_operation.DataPolicyOperation]
+        Returns: Optional[DataPolicyOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import data_policy_operation
+        from ..models.data_policy_operation import DataPolicyOperation
 
-        return await self.request_adapter.send_async(request_info, data_policy_operation.DataPolicyOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, DataPolicyOperation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DataPolicyOperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class DataPolicyOperationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[data_policy_operation.DataPolicyOperation] = None, request_configuration: Optional[DataPolicyOperationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DataPolicyOperation] = None, request_configuration: Optional[DataPolicyOperationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add new entity to dataPolicyOperations
         Args:
@@ -139,13 +140,13 @@ class DataPolicyOperationsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DataPolicyOperationsRequestBuilderGetQueryParameters():

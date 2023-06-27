@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_resource
+    from .education_resource import EducationResource
 
-from . import education_resource
+from .education_resource import EducationResource
 
 @dataclass
-class EducationTeamsAppResource(education_resource.EducationResource):
+class EducationTeamsAppResource(EducationResource):
     odata_type = "#microsoft.graph.educationTeamsAppResource"
     # URL that points to the icon of the app.
     app_icon_web_url: Optional[str] = None
@@ -37,9 +37,9 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_resource
+        from .education_resource import EducationResource
 
-        from . import education_resource
+        from .education_resource import EducationResource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appIconWebUrl": lambda n : setattr(self, 'app_icon_web_url', n.get_str_value()),

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class RandBetweenPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class RandBetweenPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The bottom property
-    bottom: Optional[json.Json] = None
+    bottom: Optional[Json] = None
     # The top property
-    top: Optional[json.Json] = None
+    top: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RandBetweenPostRequestBody:
@@ -33,13 +33,13 @@ class RandBetweenPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "bottom": lambda n : setattr(self, 'bottom', n.get_object_value(json.Json)),
-            "top": lambda n : setattr(self, 'top', n.get_object_value(json.Json)),
+            "bottom": lambda n : setattr(self, 'bottom', n.get_object_value(Json)),
+            "top": lambda n : setattr(self, 'top', n.get_object_value(Json)),
         }
         return fields
     

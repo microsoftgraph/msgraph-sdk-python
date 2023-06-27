@@ -10,13 +10,14 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import workbook_chart, workbook_chart_collection_response
-    from .........models.o_data_errors import o_data_error
-    from .add import add_request_builder
-    from .count import count_request_builder
-    from .item import workbook_chart_item_request_builder
-    from .item_at_with_index import item_at_with_index_request_builder
-    from .item_with_name import item_with_name_request_builder
+    from .........models.o_data_errors.o_data_error import ODataError
+    from .........models.workbook_chart import WorkbookChart
+    from .........models.workbook_chart_collection_response import WorkbookChartCollectionResponse
+    from .add.add_request_builder import AddRequestBuilder
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.workbook_chart_item_request_builder import WorkbookChartItemRequestBuilder
+    from .item_at_with_index.item_at_with_index_request_builder import ItemAtWithIndexRequestBuilder
+    from .item_with_name.item_with_name_request_builder import ItemWithNameRequestBuilder
 
 class ChartsRequestBuilder():
     """
@@ -40,93 +41,93 @@ class ChartsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_workbook_chart_id(self,workbook_chart_id: str) -> workbook_chart_item_request_builder.WorkbookChartItemRequestBuilder:
+    def by_workbook_chart_id(self,workbook_chart_id: str) -> WorkbookChartItemRequestBuilder:
         """
         Provides operations to manage the charts property of the microsoft.graph.workbookWorksheet entity.
         Args:
             workbook_chart_id: Unique identifier of the item
-        Returns: workbook_chart_item_request_builder.WorkbookChartItemRequestBuilder
+        Returns: WorkbookChartItemRequestBuilder
         """
         if not workbook_chart_id:
             raise TypeError("workbook_chart_id cannot be null.")
-        from .item import workbook_chart_item_request_builder
+        from .item.workbook_chart_item_request_builder import WorkbookChartItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookChart%2Did"] = workbook_chart_id
-        return workbook_chart_item_request_builder.WorkbookChartItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return WorkbookChartItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ChartsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_collection_response.WorkbookChartCollectionResponse]:
+    async def get(self,request_configuration: Optional[ChartsRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartCollectionResponse]:
         """
         Retrieve a list of chart objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart_collection_response.WorkbookChartCollectionResponse]
+        Returns: Optional[WorkbookChartCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import workbook_chart_collection_response
+        from .........models.workbook_chart_collection_response import WorkbookChartCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, workbook_chart_collection_response.WorkbookChartCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChartCollectionResponse, error_mapping)
     
-    def item_at_with_index(self,index: Optional[int] = None) -> item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder:
+    def item_at_with_index(self,index: Optional[int] = None) -> ItemAtWithIndexRequestBuilder:
         """
         Provides operations to call the itemAt method.
         Args:
             index: Usage: index={index}
-        Returns: item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder
+        Returns: ItemAtWithIndexRequestBuilder
         """
         if not index:
             raise TypeError("index cannot be null.")
-        from .item_at_with_index import item_at_with_index_request_builder
+        from .item_at_with_index.item_at_with_index_request_builder import ItemAtWithIndexRequestBuilder
 
-        return item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder(self.request_adapter, self.path_parameters, index)
+        return ItemAtWithIndexRequestBuilder(self.request_adapter, self.path_parameters, index)
     
-    def item_with_name(self,name: Optional[str] = None) -> item_with_name_request_builder.ItemWithNameRequestBuilder:
+    def item_with_name(self,name: Optional[str] = None) -> ItemWithNameRequestBuilder:
         """
         Provides operations to call the item method.
         Args:
             name: Usage: name='{name}'
-        Returns: item_with_name_request_builder.ItemWithNameRequestBuilder
+        Returns: ItemWithNameRequestBuilder
         """
         if not name:
             raise TypeError("name cannot be null.")
-        from .item_with_name import item_with_name_request_builder
+        from .item_with_name.item_with_name_request_builder import ItemWithNameRequestBuilder
 
-        return item_with_name_request_builder.ItemWithNameRequestBuilder(self.request_adapter, self.path_parameters, name)
+        return ItemWithNameRequestBuilder(self.request_adapter, self.path_parameters, name)
     
-    async def post(self,body: Optional[workbook_chart.WorkbookChart] = None, request_configuration: Optional[ChartsRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_chart.WorkbookChart]:
+    async def post(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[ChartsRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookChart]:
         """
         Use this API to create a new Chart.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart.WorkbookChart]
+        Returns: Optional[WorkbookChart]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import workbook_chart
+        from .........models.workbook_chart import WorkbookChart
 
-        return await self.request_adapter.send_async(request_info, workbook_chart.WorkbookChart, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChart, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ChartsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -146,7 +147,7 @@ class ChartsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[workbook_chart.WorkbookChart] = None, request_configuration: Optional[ChartsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[ChartsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Use this API to create a new Chart.
         Args:
@@ -168,22 +169,22 @@ class ChartsRequestBuilder():
         return request_info
     
     @property
-    def add(self) -> add_request_builder.AddRequestBuilder:
+    def add(self) -> AddRequestBuilder:
         """
         Provides operations to call the add method.
         """
-        from .add import add_request_builder
+        from .add.add_request_builder import AddRequestBuilder
 
-        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
+        return AddRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to call the count method.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ChartsRequestBuilderGetQueryParameters():

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import filter_group
+    from .filter_group import FilterGroup
 
 @dataclass
 class Filter(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class Filter(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The categoryFilterGroups property
-    category_filter_groups: Optional[List[filter_group.FilterGroup]] = None
+    category_filter_groups: Optional[List[FilterGroup]] = None
     # The groups property
-    groups: Optional[List[filter_group.FilterGroup]] = None
+    groups: Optional[List[FilterGroup]] = None
     # The inputFilterGroups property
-    input_filter_groups: Optional[List[filter_group.FilterGroup]] = None
+    input_filter_groups: Optional[List[FilterGroup]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -37,14 +37,14 @@ class Filter(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import filter_group
+        from .filter_group import FilterGroup
 
-        from . import filter_group
+        from .filter_group import FilterGroup
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "categoryFilterGroups": lambda n : setattr(self, 'category_filter_groups', n.get_collection_of_object_values(filter_group.FilterGroup)),
-            "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(filter_group.FilterGroup)),
-            "inputFilterGroups": lambda n : setattr(self, 'input_filter_groups', n.get_collection_of_object_values(filter_group.FilterGroup)),
+            "categoryFilterGroups": lambda n : setattr(self, 'category_filter_groups', n.get_collection_of_object_values(FilterGroup)),
+            "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(FilterGroup)),
+            "inputFilterGroups": lambda n : setattr(self, 'input_filter_groups', n.get_collection_of_object_values(FilterGroup)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

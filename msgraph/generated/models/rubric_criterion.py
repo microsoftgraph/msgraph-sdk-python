@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_item_body
+    from .education_item_body import EducationItemBody
 
 @dataclass
 class RubricCriterion(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class RubricCriterion(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The description of this criterion.
-    description: Optional[education_item_body.EducationItemBody] = None
+    description: Optional[EducationItemBody] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,12 +33,12 @@ class RubricCriterion(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_item_body
+        from .education_item_body import EducationItemBody
 
-        from . import education_item_body
+        from .education_item_body import EducationItemBody
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "description": lambda n : setattr(self, 'description', n.get_object_value(education_item_body.EducationItemBody)),
+            "description": lambda n : setattr(self, 'description', n.get_object_value(EducationItemBody)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

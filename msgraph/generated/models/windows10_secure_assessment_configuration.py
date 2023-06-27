@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_configuration
+    from .device_configuration import DeviceConfiguration
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfiguration):
+class Windows10SecureAssessmentConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.windows10SecureAssessmentConfiguration"
     # Indicates whether or not to allow the app from printing during the test.
     allow_printing: Optional[bool] = None
@@ -39,9 +39,9 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration
+        from .device_configuration import DeviceConfiguration
 
-        from . import device_configuration
+        from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowPrinting": lambda n : setattr(self, 'allow_printing', n.get_bool_value()),

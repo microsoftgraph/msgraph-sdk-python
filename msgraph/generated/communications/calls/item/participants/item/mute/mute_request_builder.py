@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mute_post_request_body
-    from .......models import mute_participant_operation
-    from .......models.o_data_errors import o_data_error
+    from .......models.mute_participant_operation import MuteParticipantOperation
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .mute_post_request_body import MutePostRequestBody
 
 class MuteRequestBuilder():
     """
@@ -36,32 +36,32 @@ class MuteRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[mute_post_request_body.MutePostRequestBody] = None, request_configuration: Optional[MuteRequestBuilderPostRequestConfiguration] = None) -> Optional[mute_participant_operation.MuteParticipantOperation]:
+    async def post(self,body: Optional[MutePostRequestBody] = None, request_configuration: Optional[MuteRequestBuilderPostRequestConfiguration] = None) -> Optional[MuteParticipantOperation]:
         """
         Mute a specific participant in the call. This is a server mute, meaning that the server will drop all audio packets for this participant, even if the participant continues to stream audio. For more information about how to handle mute operations, see muteParticipantOperation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mute_participant_operation.MuteParticipantOperation]
+        Returns: Optional[MuteParticipantOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import mute_participant_operation
+        from .......models.mute_participant_operation import MuteParticipantOperation
 
-        return await self.request_adapter.send_async(request_info, mute_participant_operation.MuteParticipantOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, MuteParticipantOperation, error_mapping)
     
-    def to_post_request_information(self,body: Optional[mute_post_request_body.MutePostRequestBody] = None, request_configuration: Optional[MuteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[MutePostRequestBody] = None, request_configuration: Optional[MuteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Mute a specific participant in the call. This is a server mute, meaning that the server will drop all audio packets for this participant, even if the participant continues to stream audio. For more information about how to handle mute operations, see muteParticipantOperation.
         Args:

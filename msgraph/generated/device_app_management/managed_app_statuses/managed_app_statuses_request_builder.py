@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import managed_app_status, managed_app_status_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import managed_app_status_item_request_builder
+    from ...models.managed_app_status import ManagedAppStatus
+    from ...models.managed_app_status_collection_response import ManagedAppStatusCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.managed_app_status_item_request_builder import ManagedAppStatusItemRequestBuilder
 
 class ManagedAppStatusesRequestBuilder():
     """
@@ -37,71 +38,71 @@ class ManagedAppStatusesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_managed_app_status_id(self,managed_app_status_id: str) -> managed_app_status_item_request_builder.ManagedAppStatusItemRequestBuilder:
+    def by_managed_app_status_id(self,managed_app_status_id: str) -> ManagedAppStatusItemRequestBuilder:
         """
         Provides operations to manage the managedAppStatuses property of the microsoft.graph.deviceAppManagement entity.
         Args:
             managed_app_status_id: Unique identifier of the item
-        Returns: managed_app_status_item_request_builder.ManagedAppStatusItemRequestBuilder
+        Returns: ManagedAppStatusItemRequestBuilder
         """
         if not managed_app_status_id:
             raise TypeError("managed_app_status_id cannot be null.")
-        from .item import managed_app_status_item_request_builder
+        from .item.managed_app_status_item_request_builder import ManagedAppStatusItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedAppStatus%2Did"] = managed_app_status_id
-        return managed_app_status_item_request_builder.ManagedAppStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ManagedAppStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ManagedAppStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_app_status_collection_response.ManagedAppStatusCollectionResponse]:
+    async def get(self,request_configuration: Optional[ManagedAppStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppStatusCollectionResponse]:
         """
-        The managed app statuses.
+        List properties and relationships of the managedAppStatusRaw objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_app_status_collection_response.ManagedAppStatusCollectionResponse]
+        Returns: Optional[ManagedAppStatusCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import managed_app_status_collection_response
+        from ...models.managed_app_status_collection_response import ManagedAppStatusCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, managed_app_status_collection_response.ManagedAppStatusCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedAppStatusCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[managed_app_status.ManagedAppStatus] = None, request_configuration: Optional[ManagedAppStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[managed_app_status.ManagedAppStatus]:
+    async def post(self,body: Optional[ManagedAppStatus] = None, request_configuration: Optional[ManagedAppStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedAppStatus]:
         """
         Create new navigation property to managedAppStatuses for deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_app_status.ManagedAppStatus]
+        Returns: Optional[ManagedAppStatus]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import managed_app_status
+        from ...models.managed_app_status import ManagedAppStatus
 
-        return await self.request_adapter.send_async(request_info, managed_app_status.ManagedAppStatus, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedAppStatus, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The managed app statuses.
+        List properties and relationships of the managedAppStatusRaw objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,7 +118,7 @@ class ManagedAppStatusesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[managed_app_status.ManagedAppStatus] = None, request_configuration: Optional[ManagedAppStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ManagedAppStatus] = None, request_configuration: Optional[ManagedAppStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to managedAppStatuses for deviceAppManagement
         Args:
@@ -139,18 +140,18 @@ class ManagedAppStatusesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ManagedAppStatusesRequestBuilderGetQueryParameters():
         """
-        The managed app statuses.
+        List properties and relationships of the managedAppStatusRaw objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

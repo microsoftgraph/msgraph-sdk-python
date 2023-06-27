@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import organizational_branding_localization, organizational_branding_localization_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import organizational_branding_localization_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.organizational_branding_localization import OrganizationalBrandingLocalization
+    from .....models.organizational_branding_localization_collection_response import OrganizationalBrandingLocalizationCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.organizational_branding_localization_item_request_builder import OrganizationalBrandingLocalizationItemRequestBuilder
 
 class LocalizationsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class LocalizationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_organizational_branding_localization_id(self,organizational_branding_localization_id: str) -> organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder:
+    def by_organizational_branding_localization_id(self,organizational_branding_localization_id: str) -> OrganizationalBrandingLocalizationItemRequestBuilder:
         """
         Provides operations to manage the localizations property of the microsoft.graph.organizationalBranding entity.
         Args:
             organizational_branding_localization_id: Unique identifier of the item
-        Returns: organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder
+        Returns: OrganizationalBrandingLocalizationItemRequestBuilder
         """
         if not organizational_branding_localization_id:
             raise TypeError("organizational_branding_localization_id cannot be null.")
-        from .item import organizational_branding_localization_item_request_builder
+        from .item.organizational_branding_localization_item_request_builder import OrganizationalBrandingLocalizationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["organizationalBrandingLocalization%2Did"] = organizational_branding_localization_id
-        return organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return OrganizationalBrandingLocalizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None) -> Optional[organizational_branding_localization_collection_response.OrganizationalBrandingLocalizationCollectionResponse]:
+    async def get(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalizationCollectionResponse]:
         """
         Retrieve all localization branding objects, including the default branding.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[organizational_branding_localization_collection_response.OrganizationalBrandingLocalizationCollectionResponse]
+        Returns: Optional[OrganizationalBrandingLocalizationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import organizational_branding_localization_collection_response
+        from .....models.organizational_branding_localization_collection_response import OrganizationalBrandingLocalizationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, organizational_branding_localization_collection_response.OrganizationalBrandingLocalizationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, OrganizationalBrandingLocalizationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[LocalizationsRequestBuilderPostRequestConfiguration] = None) -> Optional[organizational_branding_localization.OrganizationalBrandingLocalization]:
+    async def post(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[LocalizationsRequestBuilderPostRequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalization]:
         """
         Create a new organizationalBrandingLocalization object. This creates a localized branding and at the same time, the default branding if it doesn't exist. The default branding is created only once. It's loaded when a localized branding isn't configured for the user's browser language. To retrieve the default branding, see Get branding.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[organizational_branding_localization.OrganizationalBrandingLocalization]
+        Returns: Optional[OrganizationalBrandingLocalization]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import organizational_branding_localization
+        from .....models.organizational_branding_localization import OrganizationalBrandingLocalization
 
-        return await self.request_adapter.send_async(request_info, organizational_branding_localization.OrganizationalBrandingLocalization, error_mapping)
+        return await self.request_adapter.send_async(request_info, OrganizationalBrandingLocalization, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class LocalizationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[LocalizationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[LocalizationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new organizationalBrandingLocalization object. This creates a localized branding and at the same time, the default branding if it doesn't exist. The default branding is created only once. It's loaded when a localized branding isn't configured for the user's browser language. To retrieve the default branding, see Get branding.
         Args:
@@ -139,13 +140,13 @@ class LocalizationsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class LocalizationsRequestBuilderGetQueryParameters():

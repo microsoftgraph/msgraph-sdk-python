@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class NumberValuePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class NumberValuePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The decimalSeparator property
-    decimal_separator: Optional[json.Json] = None
+    decimal_separator: Optional[Json] = None
     # The groupSeparator property
-    group_separator: Optional[json.Json] = None
+    group_separator: Optional[Json] = None
     # The text property
-    text: Optional[json.Json] = None
+    text: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NumberValuePostRequestBody:
@@ -35,14 +35,14 @@ class NumberValuePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "decimalSeparator": lambda n : setattr(self, 'decimal_separator', n.get_object_value(json.Json)),
-            "groupSeparator": lambda n : setattr(self, 'group_separator', n.get_object_value(json.Json)),
-            "text": lambda n : setattr(self, 'text', n.get_object_value(json.Json)),
+            "decimalSeparator": lambda n : setattr(self, 'decimal_separator', n.get_object_value(Json)),
+            "groupSeparator": lambda n : setattr(self, 'group_separator', n.get_object_value(Json)),
+            "text": lambda n : setattr(self, 'text', n.get_object_value(Json)),
         }
         return fields
     

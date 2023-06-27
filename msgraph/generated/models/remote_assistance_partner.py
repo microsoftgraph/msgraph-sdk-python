@@ -1,27 +1,28 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, remote_assistance_onboarding_status
+    from .entity import Entity
+    from .remote_assistance_onboarding_status import RemoteAssistanceOnboardingStatus
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class RemoteAssistancePartner(entity.Entity):
+class RemoteAssistancePartner(Entity):
     """
     RemoteAssistPartner resources represent the metadata and status of a given Remote Assistance partner service.
     """
     # Display name of the partner.
     display_name: Optional[str] = None
     # Timestamp of the last request sent to Intune by the TEM partner.
-    last_connection_date_time: Optional[datetime] = None
+    last_connection_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The current TeamViewer connector status
-    onboarding_status: Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus] = None
+    onboarding_status: Optional[RemoteAssistanceOnboardingStatus] = None
     # URL of the partner's onboarding portal, where an administrator can configure their Remote Assistance service.
     onboarding_url: Optional[str] = None
     
@@ -42,14 +43,16 @@ class RemoteAssistancePartner(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, remote_assistance_onboarding_status
+        from .entity import Entity
+        from .remote_assistance_onboarding_status import RemoteAssistanceOnboardingStatus
 
-        from . import entity, remote_assistance_onboarding_status
+        from .entity import Entity
+        from .remote_assistance_onboarding_status import RemoteAssistanceOnboardingStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastConnectionDateTime": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
-            "onboardingStatus": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus)),
+            "onboardingStatus": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(RemoteAssistanceOnboardingStatus)),
             "onboardingUrl": lambda n : setattr(self, 'onboarding_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -66,7 +69,7 @@ class RemoteAssistancePartner(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastConnectionDateTime", self.last_connection_date_time)
+        writer.write_datetime_value()("lastConnectionDateTime", self.last_connection_date_time)
         writer.write_enum_value("onboardingStatus", self.onboarding_status)
         writer.write_str_value("onboardingUrl", self.onboarding_url)
     

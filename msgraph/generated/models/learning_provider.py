@@ -4,18 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, learning_content
+    from .entity import Entity
+    from .learning_content import LearningContent
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class LearningProvider(entity.Entity):
+class LearningProvider(Entity):
     # The display name that appears in Viva Learning. Required.
     display_name: Optional[str] = None
     # Indicates whether a provider can ingest learning course activity records. The default value is false. Set to true to make learningCourseActivities available for this provider.
     is_course_activity_sync_enabled: Optional[bool] = None
     # Learning catalog items for the provider.
-    learning_contents: Optional[List[learning_content.LearningContent]] = None
+    learning_contents: Optional[List[LearningContent]] = None
     # Authentication URL to access the courses for the provider. Optional.
     login_web_url: Optional[str] = None
     # The long logo URL for the dark mode that needs to be a publicly accessible image. This image would be saved to the blob storage of Viva Learning for rendering within the Viva Learning app. Required.
@@ -46,14 +47,16 @@ class LearningProvider(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, learning_content
+        from .entity import Entity
+        from .learning_content import LearningContent
 
-        from . import entity, learning_content
+        from .entity import Entity
+        from .learning_content import LearningContent
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isCourseActivitySyncEnabled": lambda n : setattr(self, 'is_course_activity_sync_enabled', n.get_bool_value()),
-            "learningContents": lambda n : setattr(self, 'learning_contents', n.get_collection_of_object_values(learning_content.LearningContent)),
+            "learningContents": lambda n : setattr(self, 'learning_contents', n.get_collection_of_object_values(LearningContent)),
             "loginWebUrl": lambda n : setattr(self, 'login_web_url', n.get_str_value()),
             "longLogoWebUrlForDarkTheme": lambda n : setattr(self, 'long_logo_web_url_for_dark_theme', n.get_str_value()),
             "longLogoWebUrlForLightTheme": lambda n : setattr(self, 'long_logo_web_url_for_light_theme', n.get_str_value()),

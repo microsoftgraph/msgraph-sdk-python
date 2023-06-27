@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import authentication_combination_configuration, authentication_combination_configuration_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import authentication_combination_configuration_item_request_builder
+    from .....models.authentication_combination_configuration import AuthenticationCombinationConfiguration
+    from .....models.authentication_combination_configuration_collection_response import AuthenticationCombinationConfigurationCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.authentication_combination_configuration_item_request_builder import AuthenticationCombinationConfigurationItemRequestBuilder
 
 class CombinationConfigurationsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class CombinationConfigurationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_authentication_combination_configuration_id(self,authentication_combination_configuration_id: str) -> authentication_combination_configuration_item_request_builder.AuthenticationCombinationConfigurationItemRequestBuilder:
+    def by_authentication_combination_configuration_id(self,authentication_combination_configuration_id: str) -> AuthenticationCombinationConfigurationItemRequestBuilder:
         """
         Provides operations to manage the combinationConfigurations property of the microsoft.graph.authenticationStrengthPolicy entity.
         Args:
             authentication_combination_configuration_id: Unique identifier of the item
-        Returns: authentication_combination_configuration_item_request_builder.AuthenticationCombinationConfigurationItemRequestBuilder
+        Returns: AuthenticationCombinationConfigurationItemRequestBuilder
         """
         if not authentication_combination_configuration_id:
             raise TypeError("authentication_combination_configuration_id cannot be null.")
-        from .item import authentication_combination_configuration_item_request_builder
+        from .item.authentication_combination_configuration_item_request_builder import AuthenticationCombinationConfigurationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["authenticationCombinationConfiguration%2Did"] = authentication_combination_configuration_id
-        return authentication_combination_configuration_item_request_builder.AuthenticationCombinationConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AuthenticationCombinationConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[CombinationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_combination_configuration_collection_response.AuthenticationCombinationConfigurationCollectionResponse]:
+    async def get(self,request_configuration: Optional[CombinationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationCombinationConfigurationCollectionResponse]:
         """
         Get the authenticationCombinationConfiguration objects for an authentication strength policy. authenticationCombinationConfiguration represents requirements placed on specific authentication method combinations that require specified variants of those authentication methods to be used when authenticating. Currently, only fido2combinationConfigurations objects are supported. authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[authentication_combination_configuration_collection_response.AuthenticationCombinationConfigurationCollectionResponse]
+        Returns: Optional[AuthenticationCombinationConfigurationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import authentication_combination_configuration_collection_response
+        from .....models.authentication_combination_configuration_collection_response import AuthenticationCombinationConfigurationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, authentication_combination_configuration_collection_response.AuthenticationCombinationConfigurationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuthenticationCombinationConfigurationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration] = None, request_configuration: Optional[CombinationConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration]:
+    async def post(self,body: Optional[AuthenticationCombinationConfiguration] = None, request_configuration: Optional[CombinationConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[AuthenticationCombinationConfiguration]:
         """
         Create a new authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be created, and these may only be created for custom authentication strength policies.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration]
+        Returns: Optional[AuthenticationCombinationConfiguration]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import authentication_combination_configuration
+        from .....models.authentication_combination_configuration import AuthenticationCombinationConfiguration
 
-        return await self.request_adapter.send_async(request_info, authentication_combination_configuration.AuthenticationCombinationConfiguration, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuthenticationCombinationConfiguration, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CombinationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class CombinationConfigurationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration] = None, request_configuration: Optional[CombinationConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AuthenticationCombinationConfiguration] = None, request_configuration: Optional[CombinationConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be created, and these may only be created for custom authentication strength policies.
         Args:
@@ -139,13 +140,13 @@ class CombinationConfigurationsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CombinationConfigurationsRequestBuilderGetQueryParameters():

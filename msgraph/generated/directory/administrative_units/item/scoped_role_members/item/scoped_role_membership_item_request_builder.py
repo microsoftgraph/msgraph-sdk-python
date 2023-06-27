@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import scoped_role_membership
-    from ......models.o_data_errors import o_data_error
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.scoped_role_membership import ScopedRoleMembership
 
 class ScopedRoleMembershipItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class ScopedRoleMembershipItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None) -> Optional[scoped_role_membership.ScopedRoleMembership]:
+    async def get(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
         """
         Get an Azure Active Directory (Azure AD) role assignment with administrative unit scope.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[scoped_role_membership.ScopedRoleMembership]
+        Returns: Optional[ScopedRoleMembership]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import scoped_role_membership
+        from ......models.scoped_role_membership import ScopedRoleMembership
 
-        return await self.request_adapter.send_async(request_info, scoped_role_membership.ScopedRoleMembership, error_mapping)
+        return await self.request_adapter.send_async(request_info, ScopedRoleMembership, error_mapping)
     
-    async def patch(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[scoped_role_membership.ScopedRoleMembership]:
+    async def patch(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
         """
         Update the navigation property scopedRoleMembers in directory
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[scoped_role_membership.ScopedRoleMembership]
+        Returns: Optional[ScopedRoleMembership]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import scoped_role_membership
+        from ......models.scoped_role_membership import ScopedRoleMembership
 
-        return await self.request_adapter.send_async(request_info, scoped_role_membership.ScopedRoleMembership, error_mapping)
+        return await self.request_adapter.send_async(request_info, ScopedRoleMembership, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class ScopedRoleMembershipItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property scopedRoleMembers in directory
         Args:

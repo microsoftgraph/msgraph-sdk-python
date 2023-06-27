@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import windows_information_protection_desktop_app, windows_information_protection_store_app
+    from .windows_information_protection_desktop_app import WindowsInformationProtectionDesktopApp
+    from .windows_information_protection_store_app import WindowsInformationProtectionStoreApp
 
 @dataclass
 class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
@@ -42,13 +43,13 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtectionDesktopApp".casefold():
-            from . import windows_information_protection_desktop_app
+            from .windows_information_protection_desktop_app import WindowsInformationProtectionDesktopApp
 
-            return windows_information_protection_desktop_app.WindowsInformationProtectionDesktopApp()
+            return WindowsInformationProtectionDesktopApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsInformationProtectionStoreApp".casefold():
-            from . import windows_information_protection_store_app
+            from .windows_information_protection_store_app import WindowsInformationProtectionStoreApp
 
-            return windows_information_protection_store_app.WindowsInformationProtectionStoreApp()
+            return WindowsInformationProtectionStoreApp()
         return WindowsInformationProtectionApp()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -56,9 +57,11 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_information_protection_desktop_app, windows_information_protection_store_app
+        from .windows_information_protection_desktop_app import WindowsInformationProtectionDesktopApp
+        from .windows_information_protection_store_app import WindowsInformationProtectionStoreApp
 
-        from . import windows_information_protection_desktop_app, windows_information_protection_store_app
+        from .windows_information_protection_desktop_app import WindowsInformationProtectionDesktopApp
+        from .windows_information_protection_store_app import WindowsInformationProtectionStoreApp
 
         fields: Dict[str, Callable[[Any], None]] = {
             "denied": lambda n : setattr(self, 'denied', n.get_bool_value()),

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import linked_resource, linked_resource_collection_response
-    from .........models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import linked_resource_item_request_builder
+    from .........models.linked_resource import LinkedResource
+    from .........models.linked_resource_collection_response import LinkedResourceCollectionResponse
+    from .........models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.linked_resource_item_request_builder import LinkedResourceItemRequestBuilder
 
 class LinkedResourcesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class LinkedResourcesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_linked_resource_id(self,linked_resource_id: str) -> linked_resource_item_request_builder.LinkedResourceItemRequestBuilder:
+    def by_linked_resource_id(self,linked_resource_id: str) -> LinkedResourceItemRequestBuilder:
         """
         Provides operations to manage the linkedResources property of the microsoft.graph.todoTask entity.
         Args:
             linked_resource_id: Unique identifier of the item
-        Returns: linked_resource_item_request_builder.LinkedResourceItemRequestBuilder
+        Returns: LinkedResourceItemRequestBuilder
         """
         if not linked_resource_id:
             raise TypeError("linked_resource_id cannot be null.")
-        from .item import linked_resource_item_request_builder
+        from .item.linked_resource_item_request_builder import LinkedResourceItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["linkedResource%2Did"] = linked_resource_id
-        return linked_resource_item_request_builder.LinkedResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return LinkedResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[LinkedResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[linked_resource_collection_response.LinkedResourceCollectionResponse]:
+    async def get(self,request_configuration: Optional[LinkedResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[LinkedResourceCollectionResponse]:
         """
         Get information of one or more items in a partner application, based on which a specified task was created. The information is represented in a linkedResource object for each item. It includes an external ID for the item in the partner application, and if applicable, a deep link to that item in the application.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[linked_resource_collection_response.LinkedResourceCollectionResponse]
+        Returns: Optional[LinkedResourceCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import linked_resource_collection_response
+        from .........models.linked_resource_collection_response import LinkedResourceCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, linked_resource_collection_response.LinkedResourceCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, LinkedResourceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[linked_resource.LinkedResource] = None, request_configuration: Optional[LinkedResourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[linked_resource.LinkedResource]:
+    async def post(self,body: Optional[LinkedResource] = None, request_configuration: Optional[LinkedResourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[LinkedResource]:
         """
         Create a linkedResource object to associate a specified task with an item in a partner application. For example, you can associate a task with an email item in Outlook that spurred the task, and you can create a **linkedResource** object to track its association. You can also create a **linkedResource** object while creating a task.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[linked_resource.LinkedResource]
+        Returns: Optional[LinkedResource]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import linked_resource
+        from .........models.linked_resource import LinkedResource
 
-        return await self.request_adapter.send_async(request_info, linked_resource.LinkedResource, error_mapping)
+        return await self.request_adapter.send_async(request_info, LinkedResource, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LinkedResourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class LinkedResourcesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[linked_resource.LinkedResource] = None, request_configuration: Optional[LinkedResourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[LinkedResource] = None, request_configuration: Optional[LinkedResourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a linkedResource object to associate a specified task with an item in a partner application. For example, you can associate a task with an email item in Outlook that spurred the task, and you can create a **linkedResource** object to track its association. You can also create a **linkedResource** object while creating a task.
         Args:
@@ -139,13 +140,13 @@ class LinkedResourcesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class LinkedResourcesRequestBuilderGetQueryParameters():

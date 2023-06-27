@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import connected_organization
-    from .....models.o_data_errors import o_data_error
-    from .external_sponsors import external_sponsors_request_builder
-    from .internal_sponsors import internal_sponsors_request_builder
+    from .....models.connected_organization import ConnectedOrganization
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .external_sponsors.external_sponsors_request_builder import ExternalSponsorsRequestBuilder
+    from .internal_sponsors.internal_sponsors_request_builder import InternalSponsorsRequestBuilder
 
 class ConnectedOrganizationItemRequestBuilder():
     """
@@ -46,62 +46,62 @@ class ConnectedOrganizationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[connected_organization.ConnectedOrganization]:
+    async def get(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConnectedOrganization]:
         """
         Retrieve the properties and relationships of a connectedOrganization object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[connected_organization.ConnectedOrganization]
+        Returns: Optional[ConnectedOrganization]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import connected_organization
+        from .....models.connected_organization import ConnectedOrganization
 
-        return await self.request_adapter.send_async(request_info, connected_organization.ConnectedOrganization, error_mapping)
+        return await self.request_adapter.send_async(request_info, ConnectedOrganization, error_mapping)
     
-    async def patch(self,body: Optional[connected_organization.ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[connected_organization.ConnectedOrganization]:
+    async def patch(self,body: Optional[ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ConnectedOrganization]:
         """
         Update a connectedOrganization object to change one or more of its properties.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[connected_organization.ConnectedOrganization]
+        Returns: Optional[ConnectedOrganization]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import connected_organization
+        from .....models.connected_organization import ConnectedOrganization
 
-        return await self.request_adapter.send_async(request_info, connected_organization.ConnectedOrganization, error_mapping)
+        return await self.request_adapter.send_async(request_info, ConnectedOrganization, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class ConnectedOrganizationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[connected_organization.ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update a connectedOrganization object to change one or more of its properties.
         Args:
@@ -159,22 +159,22 @@ class ConnectedOrganizationItemRequestBuilder():
         return request_info
     
     @property
-    def external_sponsors(self) -> external_sponsors_request_builder.ExternalSponsorsRequestBuilder:
+    def external_sponsors(self) -> ExternalSponsorsRequestBuilder:
         """
         Provides operations to manage the externalSponsors property of the microsoft.graph.connectedOrganization entity.
         """
-        from .external_sponsors import external_sponsors_request_builder
+        from .external_sponsors.external_sponsors_request_builder import ExternalSponsorsRequestBuilder
 
-        return external_sponsors_request_builder.ExternalSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExternalSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def internal_sponsors(self) -> internal_sponsors_request_builder.InternalSponsorsRequestBuilder:
+    def internal_sponsors(self) -> InternalSponsorsRequestBuilder:
         """
         Provides operations to manage the internalSponsors property of the microsoft.graph.connectedOrganization entity.
         """
-        from .internal_sponsors import internal_sponsors_request_builder
+        from .internal_sponsors.internal_sponsors_request_builder import InternalSponsorsRequestBuilder
 
-        return internal_sponsors_request_builder.InternalSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
+        return InternalSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ConnectedOrganizationItemRequestBuilderDeleteRequestConfiguration():

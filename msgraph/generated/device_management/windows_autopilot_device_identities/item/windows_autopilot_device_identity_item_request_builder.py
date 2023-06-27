@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import windows_autopilot_device_identity
-    from ....models.o_data_errors import o_data_error
-    from .assign_user_to_device import assign_user_to_device_request_builder
-    from .unassign_user_from_device import unassign_user_from_device_request_builder
-    from .update_device_properties import update_device_properties_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
+    from .assign_user_to_device.assign_user_to_device_request_builder import AssignUserToDeviceRequestBuilder
+    from .unassign_user_from_device.unassign_user_from_device_request_builder import UnassignUserFromDeviceRequestBuilder
+    from .update_device_properties.update_device_properties_request_builder import UpdateDevicePropertiesRequestBuilder
 
 class WindowsAutopilotDeviceIdentityItemRequestBuilder():
     """
@@ -40,73 +40,73 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[WindowsAutopilotDeviceIdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property windowsAutopilotDeviceIdentities for deviceManagement
+        Deletes a windowsAutopilotDeviceIdentity.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WindowsAutopilotDeviceIdentityItemRequestBuilderGetRequestConfiguration] = None) -> Optional[windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity]:
+    async def get(self,request_configuration: Optional[WindowsAutopilotDeviceIdentityItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsAutopilotDeviceIdentity]:
         """
-        The Windows autopilot device identities contained collection.
+        Read properties and relationships of the windowsAutopilotDeviceIdentity object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity]
+        Returns: Optional[WindowsAutopilotDeviceIdentity]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import windows_autopilot_device_identity
+        from ....models.windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
 
-        return await self.request_adapter.send_async(request_info, windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity, error_mapping)
+        return await self.request_adapter.send_async(request_info, WindowsAutopilotDeviceIdentity, error_mapping)
     
-    async def patch(self,body: Optional[windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[WindowsAutopilotDeviceIdentityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity]:
+    async def patch(self,body: Optional[WindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[WindowsAutopilotDeviceIdentityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WindowsAutopilotDeviceIdentity]:
         """
         Update the navigation property windowsAutopilotDeviceIdentities in deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity]
+        Returns: Optional[WindowsAutopilotDeviceIdentity]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import windows_autopilot_device_identity
+        from ....models.windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
 
-        return await self.request_adapter.send_async(request_info, windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity, error_mapping)
+        return await self.request_adapter.send_async(request_info, WindowsAutopilotDeviceIdentity, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WindowsAutopilotDeviceIdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property windowsAutopilotDeviceIdentities for deviceManagement
+        Deletes a windowsAutopilotDeviceIdentity.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WindowsAutopilotDeviceIdentityItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Windows autopilot device identities contained collection.
+        Read properties and relationships of the windowsAutopilotDeviceIdentity object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[WindowsAutopilotDeviceIdentityItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[WindowsAutopilotDeviceIdentityItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property windowsAutopilotDeviceIdentities in deviceManagement
         Args:
@@ -160,31 +160,31 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
         return request_info
     
     @property
-    def assign_user_to_device(self) -> assign_user_to_device_request_builder.AssignUserToDeviceRequestBuilder:
+    def assign_user_to_device(self) -> AssignUserToDeviceRequestBuilder:
         """
         Provides operations to call the assignUserToDevice method.
         """
-        from .assign_user_to_device import assign_user_to_device_request_builder
+        from .assign_user_to_device.assign_user_to_device_request_builder import AssignUserToDeviceRequestBuilder
 
-        return assign_user_to_device_request_builder.AssignUserToDeviceRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignUserToDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def unassign_user_from_device(self) -> unassign_user_from_device_request_builder.UnassignUserFromDeviceRequestBuilder:
+    def unassign_user_from_device(self) -> UnassignUserFromDeviceRequestBuilder:
         """
         Provides operations to call the unassignUserFromDevice method.
         """
-        from .unassign_user_from_device import unassign_user_from_device_request_builder
+        from .unassign_user_from_device.unassign_user_from_device_request_builder import UnassignUserFromDeviceRequestBuilder
 
-        return unassign_user_from_device_request_builder.UnassignUserFromDeviceRequestBuilder(self.request_adapter, self.path_parameters)
+        return UnassignUserFromDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def update_device_properties(self) -> update_device_properties_request_builder.UpdateDevicePropertiesRequestBuilder:
+    def update_device_properties(self) -> UpdateDevicePropertiesRequestBuilder:
         """
         Provides operations to call the updateDeviceProperties method.
         """
-        from .update_device_properties import update_device_properties_request_builder
+        from .update_device_properties.update_device_properties_request_builder import UpdateDevicePropertiesRequestBuilder
 
-        return update_device_properties_request_builder.UpdateDevicePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return UpdateDevicePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class WindowsAutopilotDeviceIdentityItemRequestBuilderDeleteRequestConfiguration():
@@ -201,7 +201,7 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
     @dataclass
     class WindowsAutopilotDeviceIdentityItemRequestBuilderGetQueryParameters():
         """
-        The Windows autopilot device identities contained collection.
+        Read properties and relationships of the windowsAutopilotDeviceIdentity object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

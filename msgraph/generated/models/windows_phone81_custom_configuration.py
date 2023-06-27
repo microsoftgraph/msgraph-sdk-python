@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_configuration, oma_setting
+    from .device_configuration import DeviceConfiguration
+    from .oma_setting import OmaSetting
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class WindowsPhone81CustomConfiguration(device_configuration.DeviceConfiguration):
+class WindowsPhone81CustomConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.windowsPhone81CustomConfiguration"
     # OMA settings. This collection can contain a maximum of 1000 elements.
-    oma_settings: Optional[List[oma_setting.OmaSetting]] = None
+    oma_settings: Optional[List[OmaSetting]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsPhone81CustomConfiguration:
@@ -31,12 +32,14 @@ class WindowsPhone81CustomConfiguration(device_configuration.DeviceConfiguration
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration, oma_setting
+        from .device_configuration import DeviceConfiguration
+        from .oma_setting import OmaSetting
 
-        from . import device_configuration, oma_setting
+        from .device_configuration import DeviceConfiguration
+        from .oma_setting import OmaSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "omaSettings": lambda n : setattr(self, 'oma_settings', n.get_collection_of_object_values(oma_setting.OmaSetting)),
+            "omaSettings": lambda n : setattr(self, 'oma_settings', n.get_collection_of_object_values(OmaSetting)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

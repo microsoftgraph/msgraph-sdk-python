@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import weak_algorithms
+    from .weak_algorithms import WeakAlgorithms
 
 @dataclass
 class RequestSignatureVerification(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class RequestSignatureVerification(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Specifies which weak algorithms are allowed.  The possible values are: rsaSha1, unknownFutureValue.
-    allowed_weak_algorithms: Optional[weak_algorithms.WeakAlgorithms] = None
+    allowed_weak_algorithms: Optional[WeakAlgorithms] = None
     # Specifies whether signed authentication requests for this application should be required.
     is_signed_request_required: Optional[bool] = None
     # The OdataType property
@@ -35,12 +35,12 @@ class RequestSignatureVerification(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import weak_algorithms
+        from .weak_algorithms import WeakAlgorithms
 
-        from . import weak_algorithms
+        from .weak_algorithms import WeakAlgorithms
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedWeakAlgorithms": lambda n : setattr(self, 'allowed_weak_algorithms', n.get_enum_value(weak_algorithms.WeakAlgorithms)),
+            "allowedWeakAlgorithms": lambda n : setattr(self, 'allowed_weak_algorithms', n.get_enum_value(WeakAlgorithms)),
             "isSignedRequestRequired": lambda n : setattr(self, 'is_signed_request_required', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

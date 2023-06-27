@@ -10,374 +10,374 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import workbook_functions
-    from .......models.o_data_errors import o_data_error
-    from .abs import abs_request_builder
-    from .accr_int import accr_int_request_builder
-    from .accr_int_m import accr_int_m_request_builder
-    from .acos import acos_request_builder
-    from .acosh import acosh_request_builder
-    from .acot import acot_request_builder
-    from .acoth import acoth_request_builder
-    from .amor_degrc import amor_degrc_request_builder
-    from .amor_linc import amor_linc_request_builder
-    from .and_ import and_request_builder
-    from .arabic import arabic_request_builder
-    from .areas import areas_request_builder
-    from .asc import asc_request_builder
-    from .asin import asin_request_builder
-    from .asinh import asinh_request_builder
-    from .atan import atan_request_builder
-    from .atan2 import atan2_request_builder
-    from .atanh import atanh_request_builder
-    from .ave_dev import ave_dev_request_builder
-    from .average import average_request_builder
-    from .average_a import average_a_request_builder
-    from .average_if import average_if_request_builder
-    from .average_ifs import average_ifs_request_builder
-    from .baht_text import baht_text_request_builder
-    from .base import base_request_builder
-    from .bessel_i import bessel_i_request_builder
-    from .bessel_j import bessel_j_request_builder
-    from .bessel_k import bessel_k_request_builder
-    from .bessel_y import bessel_y_request_builder
-    from .beta_dist import beta_dist_request_builder
-    from .beta_inv import beta_inv_request_builder
-    from .bin2_dec import bin2_dec_request_builder
-    from .bin2_hex import bin2_hex_request_builder
-    from .bin2_oct import bin2_oct_request_builder
-    from .binom_dist import binom_dist_request_builder
-    from .binom_dist_range import binom_dist_range_request_builder
-    from .binom_inv import binom_inv_request_builder
-    from .bitand import bitand_request_builder
-    from .bitlshift import bitlshift_request_builder
-    from .bitor import bitor_request_builder
-    from .bitrshift import bitrshift_request_builder
-    from .bitxor import bitxor_request_builder
-    from .ceiling_math import ceiling_math_request_builder
-    from .ceiling_precise import ceiling_precise_request_builder
-    from .char import char_request_builder
-    from .chi_sq_dist import chi_sq_dist_request_builder
-    from .chi_sq_dist_r_t import chi_sq_dist_r_t_request_builder
-    from .chi_sq_inv import chi_sq_inv_request_builder
-    from .chi_sq_inv_r_t import chi_sq_inv_r_t_request_builder
-    from .choose import choose_request_builder
-    from .clean import clean_request_builder
-    from .code import code_request_builder
-    from .columns import columns_request_builder
-    from .combin import combin_request_builder
-    from .combina import combina_request_builder
-    from .complex import complex_request_builder
-    from .concatenate import concatenate_request_builder
-    from .confidence_norm import confidence_norm_request_builder
-    from .confidence_t import confidence_t_request_builder
-    from .convert import convert_request_builder
-    from .cos import cos_request_builder
-    from .cosh import cosh_request_builder
-    from .cot import cot_request_builder
-    from .coth import coth_request_builder
-    from .count import count_request_builder
-    from .count_a import count_a_request_builder
-    from .count_blank import count_blank_request_builder
-    from .count_if import count_if_request_builder
-    from .count_ifs import count_ifs_request_builder
-    from .coup_day_bs import coup_day_bs_request_builder
-    from .coup_days import coup_days_request_builder
-    from .coup_days_nc import coup_days_nc_request_builder
-    from .coup_ncd import coup_ncd_request_builder
-    from .coup_num import coup_num_request_builder
-    from .coup_pcd import coup_pcd_request_builder
-    from .csc import csc_request_builder
-    from .csch import csch_request_builder
-    from .cum_i_pmt import cum_i_pmt_request_builder
-    from .cum_princ import cum_princ_request_builder
-    from .date import date_request_builder
-    from .datevalue import datevalue_request_builder
-    from .daverage import daverage_request_builder
-    from .day import day_request_builder
-    from .days import days_request_builder
-    from .days360 import days360_request_builder
-    from .db import db_request_builder
-    from .dbcs import dbcs_request_builder
-    from .dcount import dcount_request_builder
-    from .dcount_a import dcount_a_request_builder
-    from .ddb import ddb_request_builder
-    from .dec2_bin import dec2_bin_request_builder
-    from .dec2_hex import dec2_hex_request_builder
-    from .dec2_oct import dec2_oct_request_builder
-    from .decimal import decimal_request_builder
-    from .degrees import degrees_request_builder
-    from .delta import delta_request_builder
-    from .dev_sq import dev_sq_request_builder
-    from .dget import dget_request_builder
-    from .disc import disc_request_builder
-    from .dmax import dmax_request_builder
-    from .dmin import dmin_request_builder
-    from .dollar import dollar_request_builder
-    from .dollar_de import dollar_de_request_builder
-    from .dollar_fr import dollar_fr_request_builder
-    from .dproduct import dproduct_request_builder
-    from .dst_dev import dst_dev_request_builder
-    from .dst_dev_p import dst_dev_p_request_builder
-    from .dsum import dsum_request_builder
-    from .duration import duration_request_builder
-    from .dvar import dvar_request_builder
-    from .dvar_p import dvar_p_request_builder
-    from .ecma_ceiling import ecma_ceiling_request_builder
-    from .edate import edate_request_builder
-    from .effect import effect_request_builder
-    from .eo_month import eo_month_request_builder
-    from .erf import erf_request_builder
-    from .erf_c import erf_c_request_builder
-    from .erf_c_precise import erf_c_precise_request_builder
-    from .erf_precise import erf_precise_request_builder
-    from .error_type import error_type_request_builder
-    from .even import even_request_builder
-    from .exact import exact_request_builder
-    from .exp import exp_request_builder
-    from .expon_dist import expon_dist_request_builder
-    from .fact import fact_request_builder
-    from .fact_double import fact_double_request_builder
-    from .false_ import false_request_builder
-    from .find import find_request_builder
-    from .find_b import find_b_request_builder
-    from .fisher import fisher_request_builder
-    from .fisher_inv import fisher_inv_request_builder
-    from .fixed import fixed_request_builder
-    from .floor_math import floor_math_request_builder
-    from .floor_precise import floor_precise_request_builder
-    from .fv import fv_request_builder
-    from .fvschedule import fvschedule_request_builder
-    from .f_dist import f_dist_request_builder
-    from .f_dist_r_t import f_dist_r_t_request_builder
-    from .f_inv import f_inv_request_builder
-    from .f_inv_r_t import f_inv_r_t_request_builder
-    from .gamma import gamma_request_builder
-    from .gamma_ln import gamma_ln_request_builder
-    from .gamma_ln_precise import gamma_ln_precise_request_builder
-    from .gamma_dist import gamma_dist_request_builder
-    from .gamma_inv import gamma_inv_request_builder
-    from .gauss import gauss_request_builder
-    from .gcd import gcd_request_builder
-    from .geo_mean import geo_mean_request_builder
-    from .ge_step import ge_step_request_builder
-    from .har_mean import har_mean_request_builder
-    from .hex2_bin import hex2_bin_request_builder
-    from .hex2_dec import hex2_dec_request_builder
-    from .hex2_oct import hex2_oct_request_builder
-    from .hlookup import hlookup_request_builder
-    from .hour import hour_request_builder
-    from .hyperlink import hyperlink_request_builder
-    from .hyp_geom_dist import hyp_geom_dist_request_builder
-    from .if_ import if_request_builder
-    from .im_abs import im_abs_request_builder
-    from .imaginary import imaginary_request_builder
-    from .im_argument import im_argument_request_builder
-    from .im_conjugate import im_conjugate_request_builder
-    from .im_cos import im_cos_request_builder
-    from .im_cosh import im_cosh_request_builder
-    from .im_cot import im_cot_request_builder
-    from .im_csc import im_csc_request_builder
-    from .im_csch import im_csch_request_builder
-    from .im_div import im_div_request_builder
-    from .im_exp import im_exp_request_builder
-    from .im_ln import im_ln_request_builder
-    from .im_log10 import im_log10_request_builder
-    from .im_log2 import im_log2_request_builder
-    from .im_power import im_power_request_builder
-    from .im_product import im_product_request_builder
-    from .im_real import im_real_request_builder
-    from .im_sec import im_sec_request_builder
-    from .im_sech import im_sech_request_builder
-    from .im_sin import im_sin_request_builder
-    from .im_sinh import im_sinh_request_builder
-    from .im_sqrt import im_sqrt_request_builder
-    from .im_sub import im_sub_request_builder
-    from .im_sum import im_sum_request_builder
-    from .im_tan import im_tan_request_builder
-    from .int import int_request_builder
-    from .int_rate import int_rate_request_builder
-    from .ipmt import ipmt_request_builder
-    from .irr import irr_request_builder
-    from .is_err import is_err_request_builder
-    from .is_error import is_error_request_builder
-    from .is_even import is_even_request_builder
-    from .is_formula import is_formula_request_builder
-    from .is_logical import is_logical_request_builder
-    from .is_n_a import is_n_a_request_builder
-    from .is_non_text import is_non_text_request_builder
-    from .is_number import is_number_request_builder
-    from .is_odd import is_odd_request_builder
-    from .iso_week_num import iso_week_num_request_builder
-    from .iso_ceiling import iso_ceiling_request_builder
-    from .ispmt import ispmt_request_builder
-    from .isref import isref_request_builder
-    from .is_text import is_text_request_builder
-    from .kurt import kurt_request_builder
-    from .large import large_request_builder
-    from .lcm import lcm_request_builder
-    from .left import left_request_builder
-    from .leftb import leftb_request_builder
-    from .len import len_request_builder
-    from .lenb import lenb_request_builder
-    from .ln import ln_request_builder
-    from .log import log_request_builder
-    from .log10 import log10_request_builder
-    from .log_norm_dist import log_norm_dist_request_builder
-    from .log_norm_inv import log_norm_inv_request_builder
-    from .lookup import lookup_request_builder
-    from .lower import lower_request_builder
-    from .match import match_request_builder
-    from .max import max_request_builder
-    from .max_a import max_a_request_builder
-    from .mduration import mduration_request_builder
-    from .median import median_request_builder
-    from .mid import mid_request_builder
-    from .midb import midb_request_builder
-    from .min import min_request_builder
-    from .min_a import min_a_request_builder
-    from .minute import minute_request_builder
-    from .mirr import mirr_request_builder
-    from .mod import mod_request_builder
-    from .month import month_request_builder
-    from .mround import mround_request_builder
-    from .multi_nomial import multi_nomial_request_builder
-    from .n import n_request_builder
-    from .na import na_request_builder
-    from .neg_binom_dist import neg_binom_dist_request_builder
-    from .network_days import network_days_request_builder
-    from .network_days_intl import network_days_intl_request_builder
-    from .nominal import nominal_request_builder
-    from .norm_dist import norm_dist_request_builder
-    from .norm_inv import norm_inv_request_builder
-    from .norm_s_dist import norm_s_dist_request_builder
-    from .norm_s_inv import norm_s_inv_request_builder
-    from .not_ import not_request_builder
-    from .now import now_request_builder
-    from .nper import nper_request_builder
-    from .npv import npv_request_builder
-    from .number_value import number_value_request_builder
-    from .oct2_bin import oct2_bin_request_builder
-    from .oct2_dec import oct2_dec_request_builder
-    from .oct2_hex import oct2_hex_request_builder
-    from .odd import odd_request_builder
-    from .odd_f_price import odd_f_price_request_builder
-    from .odd_f_yield import odd_f_yield_request_builder
-    from .odd_l_price import odd_l_price_request_builder
-    from .odd_l_yield import odd_l_yield_request_builder
-    from .or_ import or_request_builder
-    from .pduration import pduration_request_builder
-    from .percentile_exc import percentile_exc_request_builder
-    from .percentile_inc import percentile_inc_request_builder
-    from .percent_rank_exc import percent_rank_exc_request_builder
-    from .percent_rank_inc import percent_rank_inc_request_builder
-    from .permut import permut_request_builder
-    from .permutationa import permutationa_request_builder
-    from .phi import phi_request_builder
-    from .pi import pi_request_builder
-    from .pmt import pmt_request_builder
-    from .poisson_dist import poisson_dist_request_builder
-    from .power import power_request_builder
-    from .ppmt import ppmt_request_builder
-    from .price import price_request_builder
-    from .price_disc import price_disc_request_builder
-    from .price_mat import price_mat_request_builder
-    from .product import product_request_builder
-    from .proper import proper_request_builder
-    from .pv import pv_request_builder
-    from .quartile_exc import quartile_exc_request_builder
-    from .quartile_inc import quartile_inc_request_builder
-    from .quotient import quotient_request_builder
-    from .radians import radians_request_builder
-    from .rand import rand_request_builder
-    from .rand_between import rand_between_request_builder
-    from .rank_avg import rank_avg_request_builder
-    from .rank_eq import rank_eq_request_builder
-    from .rate import rate_request_builder
-    from .received import received_request_builder
-    from .replace import replace_request_builder
-    from .replace_b import replace_b_request_builder
-    from .rept import rept_request_builder
-    from .right import right_request_builder
-    from .rightb import rightb_request_builder
-    from .roman import roman_request_builder
-    from .round import round_request_builder
-    from .round_down import round_down_request_builder
-    from .round_up import round_up_request_builder
-    from .rows import rows_request_builder
-    from .rri import rri_request_builder
-    from .sec import sec_request_builder
-    from .sech import sech_request_builder
-    from .second import second_request_builder
-    from .series_sum import series_sum_request_builder
-    from .sheet import sheet_request_builder
-    from .sheets import sheets_request_builder
-    from .sign import sign_request_builder
-    from .sin import sin_request_builder
-    from .sinh import sinh_request_builder
-    from .skew import skew_request_builder
-    from .skew_p import skew_p_request_builder
-    from .sln import sln_request_builder
-    from .small import small_request_builder
-    from .sqrt import sqrt_request_builder
-    from .sqrt_pi import sqrt_pi_request_builder
-    from .standardize import standardize_request_builder
-    from .st_dev_a import st_dev_a_request_builder
-    from .st_dev_p_a import st_dev_p_a_request_builder
-    from .st_dev_p import st_dev_p_request_builder
-    from .st_dev_s import st_dev_s_request_builder
-    from .substitute import substitute_request_builder
-    from .subtotal import subtotal_request_builder
-    from .sum import sum_request_builder
-    from .sum_if import sum_if_request_builder
-    from .sum_ifs import sum_ifs_request_builder
-    from .sum_sq import sum_sq_request_builder
-    from .syd import syd_request_builder
-    from .t import t_request_builder
-    from .tan import tan_request_builder
-    from .tanh import tanh_request_builder
-    from .tbill_eq import tbill_eq_request_builder
-    from .tbill_price import tbill_price_request_builder
-    from .tbill_yield import tbill_yield_request_builder
-    from .text import text_request_builder
-    from .time import time_request_builder
-    from .timevalue import timevalue_request_builder
-    from .today import today_request_builder
-    from .trim import trim_request_builder
-    from .trim_mean import trim_mean_request_builder
-    from .true_ import true_request_builder
-    from .trunc import trunc_request_builder
-    from .type import type_request_builder
-    from .t_dist import t_dist_request_builder
-    from .t_dist_2_t import t_dist_2_t_request_builder
-    from .t_dist_r_t import t_dist_r_t_request_builder
-    from .t_inv import t_inv_request_builder
-    from .t_inv_2_t import t_inv_2_t_request_builder
-    from .unichar import unichar_request_builder
-    from .unicode import unicode_request_builder
-    from .upper import upper_request_builder
-    from .usdollar import usdollar_request_builder
-    from .value import value_request_builder
-    from .var_a import var_a_request_builder
-    from .var_p_a import var_p_a_request_builder
-    from .var_p import var_p_request_builder
-    from .var_s import var_s_request_builder
-    from .vdb import vdb_request_builder
-    from .vlookup import vlookup_request_builder
-    from .weekday import weekday_request_builder
-    from .week_num import week_num_request_builder
-    from .weibull_dist import weibull_dist_request_builder
-    from .work_day import work_day_request_builder
-    from .work_day_intl import work_day_intl_request_builder
-    from .xirr import xirr_request_builder
-    from .xnpv import xnpv_request_builder
-    from .xor import xor_request_builder
-    from .year import year_request_builder
-    from .year_frac import year_frac_request_builder
-    from .yield_disc import yield_disc_request_builder
-    from .yield_mat import yield_mat_request_builder
-    from .yield_ import yield_request_builder
-    from .z_test import z_test_request_builder
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.workbook_functions import WorkbookFunctions
+    from .abs.abs_request_builder import AbsRequestBuilder
+    from .accr_int.accr_int_request_builder import AccrIntRequestBuilder
+    from .accr_int_m.accr_int_m_request_builder import AccrIntMRequestBuilder
+    from .acos.acos_request_builder import AcosRequestBuilder
+    from .acosh.acosh_request_builder import AcoshRequestBuilder
+    from .acot.acot_request_builder import AcotRequestBuilder
+    from .acoth.acoth_request_builder import AcothRequestBuilder
+    from .amor_degrc.amor_degrc_request_builder import AmorDegrcRequestBuilder
+    from .amor_linc.amor_linc_request_builder import AmorLincRequestBuilder
+    from .and_.and_request_builder import AndRequestBuilder
+    from .arabic.arabic_request_builder import ArabicRequestBuilder
+    from .areas.areas_request_builder import AreasRequestBuilder
+    from .asc.asc_request_builder import AscRequestBuilder
+    from .asin.asin_request_builder import AsinRequestBuilder
+    from .asinh.asinh_request_builder import AsinhRequestBuilder
+    from .atan.atan_request_builder import AtanRequestBuilder
+    from .atan2.atan2_request_builder import Atan2RequestBuilder
+    from .atanh.atanh_request_builder import AtanhRequestBuilder
+    from .ave_dev.ave_dev_request_builder import AveDevRequestBuilder
+    from .average.average_request_builder import AverageRequestBuilder
+    from .average_a.average_a_request_builder import AverageARequestBuilder
+    from .average_if.average_if_request_builder import AverageIfRequestBuilder
+    from .average_ifs.average_ifs_request_builder import AverageIfsRequestBuilder
+    from .baht_text.baht_text_request_builder import BahtTextRequestBuilder
+    from .base.base_request_builder import BaseRequestBuilder
+    from .bessel_i.bessel_i_request_builder import BesselIRequestBuilder
+    from .bessel_j.bessel_j_request_builder import BesselJRequestBuilder
+    from .bessel_k.bessel_k_request_builder import BesselKRequestBuilder
+    from .bessel_y.bessel_y_request_builder import BesselYRequestBuilder
+    from .beta_dist.beta_dist_request_builder import Beta_DistRequestBuilder
+    from .beta_inv.beta_inv_request_builder import Beta_InvRequestBuilder
+    from .bin2_dec.bin2_dec_request_builder import Bin2DecRequestBuilder
+    from .bin2_hex.bin2_hex_request_builder import Bin2HexRequestBuilder
+    from .bin2_oct.bin2_oct_request_builder import Bin2OctRequestBuilder
+    from .binom_dist.binom_dist_request_builder import Binom_DistRequestBuilder
+    from .binom_dist_range.binom_dist_range_request_builder import Binom_Dist_RangeRequestBuilder
+    from .binom_inv.binom_inv_request_builder import Binom_InvRequestBuilder
+    from .bitand.bitand_request_builder import BitandRequestBuilder
+    from .bitlshift.bitlshift_request_builder import BitlshiftRequestBuilder
+    from .bitor.bitor_request_builder import BitorRequestBuilder
+    from .bitrshift.bitrshift_request_builder import BitrshiftRequestBuilder
+    from .bitxor.bitxor_request_builder import BitxorRequestBuilder
+    from .ceiling_math.ceiling_math_request_builder import Ceiling_MathRequestBuilder
+    from .ceiling_precise.ceiling_precise_request_builder import Ceiling_PreciseRequestBuilder
+    from .char.char_request_builder import CharRequestBuilder
+    from .chi_sq_dist.chi_sq_dist_request_builder import ChiSq_DistRequestBuilder
+    from .chi_sq_dist_r_t.chi_sq_dist_r_t_request_builder import ChiSq_Dist_RTRequestBuilder
+    from .chi_sq_inv.chi_sq_inv_request_builder import ChiSq_InvRequestBuilder
+    from .chi_sq_inv_r_t.chi_sq_inv_r_t_request_builder import ChiSq_Inv_RTRequestBuilder
+    from .choose.choose_request_builder import ChooseRequestBuilder
+    from .clean.clean_request_builder import CleanRequestBuilder
+    from .code.code_request_builder import CodeRequestBuilder
+    from .columns.columns_request_builder import ColumnsRequestBuilder
+    from .combin.combin_request_builder import CombinRequestBuilder
+    from .combina.combina_request_builder import CombinaRequestBuilder
+    from .complex.complex_request_builder import ComplexRequestBuilder
+    from .concatenate.concatenate_request_builder import ConcatenateRequestBuilder
+    from .confidence_norm.confidence_norm_request_builder import Confidence_NormRequestBuilder
+    from .confidence_t.confidence_t_request_builder import Confidence_TRequestBuilder
+    from .convert.convert_request_builder import ConvertRequestBuilder
+    from .cos.cos_request_builder import CosRequestBuilder
+    from .cosh.cosh_request_builder import CoshRequestBuilder
+    from .cot.cot_request_builder import CotRequestBuilder
+    from .coth.coth_request_builder import CothRequestBuilder
+    from .count.count_request_builder import CountRequestBuilder
+    from .count_a.count_a_request_builder import CountARequestBuilder
+    from .count_blank.count_blank_request_builder import CountBlankRequestBuilder
+    from .count_if.count_if_request_builder import CountIfRequestBuilder
+    from .count_ifs.count_ifs_request_builder import CountIfsRequestBuilder
+    from .coup_day_bs.coup_day_bs_request_builder import CoupDayBsRequestBuilder
+    from .coup_days.coup_days_request_builder import CoupDaysRequestBuilder
+    from .coup_days_nc.coup_days_nc_request_builder import CoupDaysNcRequestBuilder
+    from .coup_ncd.coup_ncd_request_builder import CoupNcdRequestBuilder
+    from .coup_num.coup_num_request_builder import CoupNumRequestBuilder
+    from .coup_pcd.coup_pcd_request_builder import CoupPcdRequestBuilder
+    from .csc.csc_request_builder import CscRequestBuilder
+    from .csch.csch_request_builder import CschRequestBuilder
+    from .cum_i_pmt.cum_i_pmt_request_builder import CumIPmtRequestBuilder
+    from .cum_princ.cum_princ_request_builder import CumPrincRequestBuilder
+    from .date.date_request_builder import DateRequestBuilder
+    from .datevalue.datevalue_request_builder import DatevalueRequestBuilder
+    from .daverage.daverage_request_builder import DaverageRequestBuilder
+    from .day.day_request_builder import DayRequestBuilder
+    from .days.days_request_builder import DaysRequestBuilder
+    from .days360.days360_request_builder import Days360RequestBuilder
+    from .db.db_request_builder import DbRequestBuilder
+    from .dbcs.dbcs_request_builder import DbcsRequestBuilder
+    from .dcount.dcount_request_builder import DcountRequestBuilder
+    from .dcount_a.dcount_a_request_builder import DcountARequestBuilder
+    from .ddb.ddb_request_builder import DdbRequestBuilder
+    from .dec2_bin.dec2_bin_request_builder import Dec2BinRequestBuilder
+    from .dec2_hex.dec2_hex_request_builder import Dec2HexRequestBuilder
+    from .dec2_oct.dec2_oct_request_builder import Dec2OctRequestBuilder
+    from .decimal.decimal_request_builder import DecimalRequestBuilder
+    from .degrees.degrees_request_builder import DegreesRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
+    from .dev_sq.dev_sq_request_builder import DevSqRequestBuilder
+    from .dget.dget_request_builder import DgetRequestBuilder
+    from .disc.disc_request_builder import DiscRequestBuilder
+    from .dmax.dmax_request_builder import DmaxRequestBuilder
+    from .dmin.dmin_request_builder import DminRequestBuilder
+    from .dollar.dollar_request_builder import DollarRequestBuilder
+    from .dollar_de.dollar_de_request_builder import DollarDeRequestBuilder
+    from .dollar_fr.dollar_fr_request_builder import DollarFrRequestBuilder
+    from .dproduct.dproduct_request_builder import DproductRequestBuilder
+    from .dst_dev.dst_dev_request_builder import DstDevRequestBuilder
+    from .dst_dev_p.dst_dev_p_request_builder import DstDevPRequestBuilder
+    from .dsum.dsum_request_builder import DsumRequestBuilder
+    from .duration.duration_request_builder import DurationRequestBuilder
+    from .dvar.dvar_request_builder import DvarRequestBuilder
+    from .dvar_p.dvar_p_request_builder import DvarPRequestBuilder
+    from .ecma_ceiling.ecma_ceiling_request_builder import Ecma_CeilingRequestBuilder
+    from .edate.edate_request_builder import EdateRequestBuilder
+    from .effect.effect_request_builder import EffectRequestBuilder
+    from .eo_month.eo_month_request_builder import EoMonthRequestBuilder
+    from .erf.erf_request_builder import ErfRequestBuilder
+    from .erf_c.erf_c_request_builder import ErfCRequestBuilder
+    from .erf_c_precise.erf_c_precise_request_builder import ErfC_PreciseRequestBuilder
+    from .erf_precise.erf_precise_request_builder import Erf_PreciseRequestBuilder
+    from .error_type.error_type_request_builder import Error_TypeRequestBuilder
+    from .even.even_request_builder import EvenRequestBuilder
+    from .exact.exact_request_builder import ExactRequestBuilder
+    from .exp.exp_request_builder import ExpRequestBuilder
+    from .expon_dist.expon_dist_request_builder import Expon_DistRequestBuilder
+    from .fact.fact_request_builder import FactRequestBuilder
+    from .fact_double.fact_double_request_builder import FactDoubleRequestBuilder
+    from .false_.false_request_builder import FalseRequestBuilder
+    from .find.find_request_builder import FindRequestBuilder
+    from .find_b.find_b_request_builder import FindBRequestBuilder
+    from .fisher.fisher_request_builder import FisherRequestBuilder
+    from .fisher_inv.fisher_inv_request_builder import FisherInvRequestBuilder
+    from .fixed.fixed_request_builder import FixedRequestBuilder
+    from .floor_math.floor_math_request_builder import Floor_MathRequestBuilder
+    from .floor_precise.floor_precise_request_builder import Floor_PreciseRequestBuilder
+    from .fv.fv_request_builder import FvRequestBuilder
+    from .fvschedule.fvschedule_request_builder import FvscheduleRequestBuilder
+    from .f_dist.f_dist_request_builder import F_DistRequestBuilder
+    from .f_dist_r_t.f_dist_r_t_request_builder import F_Dist_RTRequestBuilder
+    from .f_inv.f_inv_request_builder import F_InvRequestBuilder
+    from .f_inv_r_t.f_inv_r_t_request_builder import F_Inv_RTRequestBuilder
+    from .gamma.gamma_request_builder import GammaRequestBuilder
+    from .gamma_ln.gamma_ln_request_builder import GammaLnRequestBuilder
+    from .gamma_ln_precise.gamma_ln_precise_request_builder import GammaLn_PreciseRequestBuilder
+    from .gamma_dist.gamma_dist_request_builder import Gamma_DistRequestBuilder
+    from .gamma_inv.gamma_inv_request_builder import Gamma_InvRequestBuilder
+    from .gauss.gauss_request_builder import GaussRequestBuilder
+    from .gcd.gcd_request_builder import GcdRequestBuilder
+    from .geo_mean.geo_mean_request_builder import GeoMeanRequestBuilder
+    from .ge_step.ge_step_request_builder import GeStepRequestBuilder
+    from .har_mean.har_mean_request_builder import HarMeanRequestBuilder
+    from .hex2_bin.hex2_bin_request_builder import Hex2BinRequestBuilder
+    from .hex2_dec.hex2_dec_request_builder import Hex2DecRequestBuilder
+    from .hex2_oct.hex2_oct_request_builder import Hex2OctRequestBuilder
+    from .hlookup.hlookup_request_builder import HlookupRequestBuilder
+    from .hour.hour_request_builder import HourRequestBuilder
+    from .hyperlink.hyperlink_request_builder import HyperlinkRequestBuilder
+    from .hyp_geom_dist.hyp_geom_dist_request_builder import HypGeom_DistRequestBuilder
+    from .if_.if_request_builder import IfRequestBuilder
+    from .im_abs.im_abs_request_builder import ImAbsRequestBuilder
+    from .imaginary.imaginary_request_builder import ImaginaryRequestBuilder
+    from .im_argument.im_argument_request_builder import ImArgumentRequestBuilder
+    from .im_conjugate.im_conjugate_request_builder import ImConjugateRequestBuilder
+    from .im_cos.im_cos_request_builder import ImCosRequestBuilder
+    from .im_cosh.im_cosh_request_builder import ImCoshRequestBuilder
+    from .im_cot.im_cot_request_builder import ImCotRequestBuilder
+    from .im_csc.im_csc_request_builder import ImCscRequestBuilder
+    from .im_csch.im_csch_request_builder import ImCschRequestBuilder
+    from .im_div.im_div_request_builder import ImDivRequestBuilder
+    from .im_exp.im_exp_request_builder import ImExpRequestBuilder
+    from .im_ln.im_ln_request_builder import ImLnRequestBuilder
+    from .im_log10.im_log10_request_builder import ImLog10RequestBuilder
+    from .im_log2.im_log2_request_builder import ImLog2RequestBuilder
+    from .im_power.im_power_request_builder import ImPowerRequestBuilder
+    from .im_product.im_product_request_builder import ImProductRequestBuilder
+    from .im_real.im_real_request_builder import ImRealRequestBuilder
+    from .im_sec.im_sec_request_builder import ImSecRequestBuilder
+    from .im_sech.im_sech_request_builder import ImSechRequestBuilder
+    from .im_sin.im_sin_request_builder import ImSinRequestBuilder
+    from .im_sinh.im_sinh_request_builder import ImSinhRequestBuilder
+    from .im_sqrt.im_sqrt_request_builder import ImSqrtRequestBuilder
+    from .im_sub.im_sub_request_builder import ImSubRequestBuilder
+    from .im_sum.im_sum_request_builder import ImSumRequestBuilder
+    from .im_tan.im_tan_request_builder import ImTanRequestBuilder
+    from .int.int_request_builder import IntRequestBuilder
+    from .int_rate.int_rate_request_builder import IntRateRequestBuilder
+    from .ipmt.ipmt_request_builder import IpmtRequestBuilder
+    from .irr.irr_request_builder import IrrRequestBuilder
+    from .is_err.is_err_request_builder import IsErrRequestBuilder
+    from .is_error.is_error_request_builder import IsErrorRequestBuilder
+    from .is_even.is_even_request_builder import IsEvenRequestBuilder
+    from .is_formula.is_formula_request_builder import IsFormulaRequestBuilder
+    from .is_logical.is_logical_request_builder import IsLogicalRequestBuilder
+    from .is_n_a.is_n_a_request_builder import IsNARequestBuilder
+    from .is_non_text.is_non_text_request_builder import IsNonTextRequestBuilder
+    from .is_number.is_number_request_builder import IsNumberRequestBuilder
+    from .is_odd.is_odd_request_builder import IsOddRequestBuilder
+    from .iso_week_num.iso_week_num_request_builder import IsoWeekNumRequestBuilder
+    from .iso_ceiling.iso_ceiling_request_builder import Iso_CeilingRequestBuilder
+    from .ispmt.ispmt_request_builder import IspmtRequestBuilder
+    from .isref.isref_request_builder import IsrefRequestBuilder
+    from .is_text.is_text_request_builder import IsTextRequestBuilder
+    from .kurt.kurt_request_builder import KurtRequestBuilder
+    from .large.large_request_builder import LargeRequestBuilder
+    from .lcm.lcm_request_builder import LcmRequestBuilder
+    from .left.left_request_builder import LeftRequestBuilder
+    from .leftb.leftb_request_builder import LeftbRequestBuilder
+    from .len.len_request_builder import LenRequestBuilder
+    from .lenb.lenb_request_builder import LenbRequestBuilder
+    from .ln.ln_request_builder import LnRequestBuilder
+    from .log.log_request_builder import LogRequestBuilder
+    from .log10.log10_request_builder import Log10RequestBuilder
+    from .log_norm_dist.log_norm_dist_request_builder import LogNorm_DistRequestBuilder
+    from .log_norm_inv.log_norm_inv_request_builder import LogNorm_InvRequestBuilder
+    from .lookup.lookup_request_builder import LookupRequestBuilder
+    from .lower.lower_request_builder import LowerRequestBuilder
+    from .match.match_request_builder import MatchRequestBuilder
+    from .max.max_request_builder import MaxRequestBuilder
+    from .max_a.max_a_request_builder import MaxARequestBuilder
+    from .mduration.mduration_request_builder import MdurationRequestBuilder
+    from .median.median_request_builder import MedianRequestBuilder
+    from .mid.mid_request_builder import MidRequestBuilder
+    from .midb.midb_request_builder import MidbRequestBuilder
+    from .min.min_request_builder import MinRequestBuilder
+    from .min_a.min_a_request_builder import MinARequestBuilder
+    from .minute.minute_request_builder import MinuteRequestBuilder
+    from .mirr.mirr_request_builder import MirrRequestBuilder
+    from .mod.mod_request_builder import ModRequestBuilder
+    from .month.month_request_builder import MonthRequestBuilder
+    from .mround.mround_request_builder import MroundRequestBuilder
+    from .multi_nomial.multi_nomial_request_builder import MultiNomialRequestBuilder
+    from .n.n_request_builder import NRequestBuilder
+    from .na.na_request_builder import NaRequestBuilder
+    from .neg_binom_dist.neg_binom_dist_request_builder import NegBinom_DistRequestBuilder
+    from .network_days.network_days_request_builder import NetworkDaysRequestBuilder
+    from .network_days_intl.network_days_intl_request_builder import NetworkDays_IntlRequestBuilder
+    from .nominal.nominal_request_builder import NominalRequestBuilder
+    from .norm_dist.norm_dist_request_builder import Norm_DistRequestBuilder
+    from .norm_inv.norm_inv_request_builder import Norm_InvRequestBuilder
+    from .norm_s_dist.norm_s_dist_request_builder import Norm_S_DistRequestBuilder
+    from .norm_s_inv.norm_s_inv_request_builder import Norm_S_InvRequestBuilder
+    from .not_.not_request_builder import NotRequestBuilder
+    from .now.now_request_builder import NowRequestBuilder
+    from .nper.nper_request_builder import NperRequestBuilder
+    from .npv.npv_request_builder import NpvRequestBuilder
+    from .number_value.number_value_request_builder import NumberValueRequestBuilder
+    from .oct2_bin.oct2_bin_request_builder import Oct2BinRequestBuilder
+    from .oct2_dec.oct2_dec_request_builder import Oct2DecRequestBuilder
+    from .oct2_hex.oct2_hex_request_builder import Oct2HexRequestBuilder
+    from .odd.odd_request_builder import OddRequestBuilder
+    from .odd_f_price.odd_f_price_request_builder import OddFPriceRequestBuilder
+    from .odd_f_yield.odd_f_yield_request_builder import OddFYieldRequestBuilder
+    from .odd_l_price.odd_l_price_request_builder import OddLPriceRequestBuilder
+    from .odd_l_yield.odd_l_yield_request_builder import OddLYieldRequestBuilder
+    from .or_.or_request_builder import OrRequestBuilder
+    from .pduration.pduration_request_builder import PdurationRequestBuilder
+    from .percentile_exc.percentile_exc_request_builder import Percentile_ExcRequestBuilder
+    from .percentile_inc.percentile_inc_request_builder import Percentile_IncRequestBuilder
+    from .percent_rank_exc.percent_rank_exc_request_builder import PercentRank_ExcRequestBuilder
+    from .percent_rank_inc.percent_rank_inc_request_builder import PercentRank_IncRequestBuilder
+    from .permut.permut_request_builder import PermutRequestBuilder
+    from .permutationa.permutationa_request_builder import PermutationaRequestBuilder
+    from .phi.phi_request_builder import PhiRequestBuilder
+    from .pi.pi_request_builder import PiRequestBuilder
+    from .pmt.pmt_request_builder import PmtRequestBuilder
+    from .poisson_dist.poisson_dist_request_builder import Poisson_DistRequestBuilder
+    from .power.power_request_builder import PowerRequestBuilder
+    from .ppmt.ppmt_request_builder import PpmtRequestBuilder
+    from .price.price_request_builder import PriceRequestBuilder
+    from .price_disc.price_disc_request_builder import PriceDiscRequestBuilder
+    from .price_mat.price_mat_request_builder import PriceMatRequestBuilder
+    from .product.product_request_builder import ProductRequestBuilder
+    from .proper.proper_request_builder import ProperRequestBuilder
+    from .pv.pv_request_builder import PvRequestBuilder
+    from .quartile_exc.quartile_exc_request_builder import Quartile_ExcRequestBuilder
+    from .quartile_inc.quartile_inc_request_builder import Quartile_IncRequestBuilder
+    from .quotient.quotient_request_builder import QuotientRequestBuilder
+    from .radians.radians_request_builder import RadiansRequestBuilder
+    from .rand.rand_request_builder import RandRequestBuilder
+    from .rand_between.rand_between_request_builder import RandBetweenRequestBuilder
+    from .rank_avg.rank_avg_request_builder import Rank_AvgRequestBuilder
+    from .rank_eq.rank_eq_request_builder import Rank_EqRequestBuilder
+    from .rate.rate_request_builder import RateRequestBuilder
+    from .received.received_request_builder import ReceivedRequestBuilder
+    from .replace.replace_request_builder import ReplaceRequestBuilder
+    from .replace_b.replace_b_request_builder import ReplaceBRequestBuilder
+    from .rept.rept_request_builder import ReptRequestBuilder
+    from .right.right_request_builder import RightRequestBuilder
+    from .rightb.rightb_request_builder import RightbRequestBuilder
+    from .roman.roman_request_builder import RomanRequestBuilder
+    from .round.round_request_builder import RoundRequestBuilder
+    from .round_down.round_down_request_builder import RoundDownRequestBuilder
+    from .round_up.round_up_request_builder import RoundUpRequestBuilder
+    from .rows.rows_request_builder import RowsRequestBuilder
+    from .rri.rri_request_builder import RriRequestBuilder
+    from .sec.sec_request_builder import SecRequestBuilder
+    from .sech.sech_request_builder import SechRequestBuilder
+    from .second.second_request_builder import SecondRequestBuilder
+    from .series_sum.series_sum_request_builder import SeriesSumRequestBuilder
+    from .sheet.sheet_request_builder import SheetRequestBuilder
+    from .sheets.sheets_request_builder import SheetsRequestBuilder
+    from .sign.sign_request_builder import SignRequestBuilder
+    from .sin.sin_request_builder import SinRequestBuilder
+    from .sinh.sinh_request_builder import SinhRequestBuilder
+    from .skew.skew_request_builder import SkewRequestBuilder
+    from .skew_p.skew_p_request_builder import Skew_pRequestBuilder
+    from .sln.sln_request_builder import SlnRequestBuilder
+    from .small.small_request_builder import SmallRequestBuilder
+    from .sqrt.sqrt_request_builder import SqrtRequestBuilder
+    from .sqrt_pi.sqrt_pi_request_builder import SqrtPiRequestBuilder
+    from .standardize.standardize_request_builder import StandardizeRequestBuilder
+    from .st_dev_a.st_dev_a_request_builder import StDevARequestBuilder
+    from .st_dev_p_a.st_dev_p_a_request_builder import StDevPARequestBuilder
+    from .st_dev_p.st_dev_p_request_builder import StDev_PRequestBuilder
+    from .st_dev_s.st_dev_s_request_builder import StDev_SRequestBuilder
+    from .substitute.substitute_request_builder import SubstituteRequestBuilder
+    from .subtotal.subtotal_request_builder import SubtotalRequestBuilder
+    from .sum.sum_request_builder import SumRequestBuilder
+    from .sum_if.sum_if_request_builder import SumIfRequestBuilder
+    from .sum_ifs.sum_ifs_request_builder import SumIfsRequestBuilder
+    from .sum_sq.sum_sq_request_builder import SumSqRequestBuilder
+    from .syd.syd_request_builder import SydRequestBuilder
+    from .t.t_request_builder import TRequestBuilder
+    from .tan.tan_request_builder import TanRequestBuilder
+    from .tanh.tanh_request_builder import TanhRequestBuilder
+    from .tbill_eq.tbill_eq_request_builder import TbillEqRequestBuilder
+    from .tbill_price.tbill_price_request_builder import TbillPriceRequestBuilder
+    from .tbill_yield.tbill_yield_request_builder import TbillYieldRequestBuilder
+    from .text.text_request_builder import TextRequestBuilder
+    from .time.time_request_builder import TimeRequestBuilder
+    from .timevalue.timevalue_request_builder import TimevalueRequestBuilder
+    from .today.today_request_builder import TodayRequestBuilder
+    from .trim.trim_request_builder import TrimRequestBuilder
+    from .trim_mean.trim_mean_request_builder import TrimMeanRequestBuilder
+    from .true_.true_request_builder import TrueRequestBuilder
+    from .trunc.trunc_request_builder import TruncRequestBuilder
+    from .type.type_request_builder import TypeRequestBuilder
+    from .t_dist.t_dist_request_builder import T_DistRequestBuilder
+    from .t_dist_2_t.t_dist_2_t_request_builder import T_Dist_2TRequestBuilder
+    from .t_dist_r_t.t_dist_r_t_request_builder import T_Dist_RTRequestBuilder
+    from .t_inv.t_inv_request_builder import T_InvRequestBuilder
+    from .t_inv_2_t.t_inv_2_t_request_builder import T_Inv_2TRequestBuilder
+    from .unichar.unichar_request_builder import UnicharRequestBuilder
+    from .unicode.unicode_request_builder import UnicodeRequestBuilder
+    from .upper.upper_request_builder import UpperRequestBuilder
+    from .usdollar.usdollar_request_builder import UsdollarRequestBuilder
+    from .value.value_request_builder import ValueRequestBuilder
+    from .var_a.var_a_request_builder import VarARequestBuilder
+    from .var_p_a.var_p_a_request_builder import VarPARequestBuilder
+    from .var_p.var_p_request_builder import Var_PRequestBuilder
+    from .var_s.var_s_request_builder import Var_SRequestBuilder
+    from .vdb.vdb_request_builder import VdbRequestBuilder
+    from .vlookup.vlookup_request_builder import VlookupRequestBuilder
+    from .weekday.weekday_request_builder import WeekdayRequestBuilder
+    from .week_num.week_num_request_builder import WeekNumRequestBuilder
+    from .weibull_dist.weibull_dist_request_builder import Weibull_DistRequestBuilder
+    from .work_day.work_day_request_builder import WorkDayRequestBuilder
+    from .work_day_intl.work_day_intl_request_builder import WorkDay_IntlRequestBuilder
+    from .xirr.xirr_request_builder import XirrRequestBuilder
+    from .xnpv.xnpv_request_builder import XnpvRequestBuilder
+    from .xor.xor_request_builder import XorRequestBuilder
+    from .year.year_request_builder import YearRequestBuilder
+    from .year_frac.year_frac_request_builder import YearFracRequestBuilder
+    from .yield_disc.yield_disc_request_builder import YieldDiscRequestBuilder
+    from .yield_mat.yield_mat_request_builder import YieldMatRequestBuilder
+    from .yield_.yield_request_builder import YieldRequestBuilder
+    from .z_test.z_test_request_builder import Z_TestRequestBuilder
 
 class FunctionsRequestBuilder():
     """
@@ -410,62 +410,62 @@ class FunctionsRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[FunctionsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_functions.WorkbookFunctions]:
+    async def get(self,request_configuration: Optional[FunctionsRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookFunctions]:
         """
         Get functions from drives
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_functions.WorkbookFunctions]
+        Returns: Optional[WorkbookFunctions]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import workbook_functions
+        from .......models.workbook_functions import WorkbookFunctions
 
-        return await self.request_adapter.send_async(request_info, workbook_functions.WorkbookFunctions, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookFunctions, error_mapping)
     
-    async def patch(self,body: Optional[workbook_functions.WorkbookFunctions] = None, request_configuration: Optional[FunctionsRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_functions.WorkbookFunctions]:
+    async def patch(self,body: Optional[WorkbookFunctions] = None, request_configuration: Optional[FunctionsRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookFunctions]:
         """
         Update the navigation property functions in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_functions.WorkbookFunctions]
+        Returns: Optional[WorkbookFunctions]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import workbook_functions
+        from .......models.workbook_functions import WorkbookFunctions
 
-        return await self.request_adapter.send_async(request_info, workbook_functions.WorkbookFunctions, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookFunctions, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[FunctionsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -501,7 +501,7 @@ class FunctionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_functions.WorkbookFunctions] = None, request_configuration: Optional[FunctionsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookFunctions] = None, request_configuration: Optional[FunctionsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property functions in drives
         Args:
@@ -523,3298 +523,3298 @@ class FunctionsRequestBuilder():
         return request_info
     
     @property
-    def abs(self) -> abs_request_builder.AbsRequestBuilder:
+    def abs(self) -> AbsRequestBuilder:
         """
         Provides operations to call the abs method.
         """
-        from .abs import abs_request_builder
+        from .abs.abs_request_builder import AbsRequestBuilder
 
-        return abs_request_builder.AbsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AbsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def accr_int(self) -> accr_int_request_builder.AccrIntRequestBuilder:
+    def accr_int(self) -> AccrIntRequestBuilder:
         """
         Provides operations to call the accrInt method.
         """
-        from .accr_int import accr_int_request_builder
+        from .accr_int.accr_int_request_builder import AccrIntRequestBuilder
 
-        return accr_int_request_builder.AccrIntRequestBuilder(self.request_adapter, self.path_parameters)
+        return AccrIntRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def accr_int_m(self) -> accr_int_m_request_builder.AccrIntMRequestBuilder:
+    def accr_int_m(self) -> AccrIntMRequestBuilder:
         """
         Provides operations to call the accrIntM method.
         """
-        from .accr_int_m import accr_int_m_request_builder
+        from .accr_int_m.accr_int_m_request_builder import AccrIntMRequestBuilder
 
-        return accr_int_m_request_builder.AccrIntMRequestBuilder(self.request_adapter, self.path_parameters)
+        return AccrIntMRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def acos(self) -> acos_request_builder.AcosRequestBuilder:
+    def acos(self) -> AcosRequestBuilder:
         """
         Provides operations to call the acos method.
         """
-        from .acos import acos_request_builder
+        from .acos.acos_request_builder import AcosRequestBuilder
 
-        return acos_request_builder.AcosRequestBuilder(self.request_adapter, self.path_parameters)
+        return AcosRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def acosh(self) -> acosh_request_builder.AcoshRequestBuilder:
+    def acosh(self) -> AcoshRequestBuilder:
         """
         Provides operations to call the acosh method.
         """
-        from .acosh import acosh_request_builder
+        from .acosh.acosh_request_builder import AcoshRequestBuilder
 
-        return acosh_request_builder.AcoshRequestBuilder(self.request_adapter, self.path_parameters)
+        return AcoshRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def acot(self) -> acot_request_builder.AcotRequestBuilder:
+    def acot(self) -> AcotRequestBuilder:
         """
         Provides operations to call the acot method.
         """
-        from .acot import acot_request_builder
+        from .acot.acot_request_builder import AcotRequestBuilder
 
-        return acot_request_builder.AcotRequestBuilder(self.request_adapter, self.path_parameters)
+        return AcotRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def acoth(self) -> acoth_request_builder.AcothRequestBuilder:
+    def acoth(self) -> AcothRequestBuilder:
         """
         Provides operations to call the acoth method.
         """
-        from .acoth import acoth_request_builder
+        from .acoth.acoth_request_builder import AcothRequestBuilder
 
-        return acoth_request_builder.AcothRequestBuilder(self.request_adapter, self.path_parameters)
+        return AcothRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def amor_degrc(self) -> amor_degrc_request_builder.AmorDegrcRequestBuilder:
+    def amor_degrc(self) -> AmorDegrcRequestBuilder:
         """
         Provides operations to call the amorDegrc method.
         """
-        from .amor_degrc import amor_degrc_request_builder
+        from .amor_degrc.amor_degrc_request_builder import AmorDegrcRequestBuilder
 
-        return amor_degrc_request_builder.AmorDegrcRequestBuilder(self.request_adapter, self.path_parameters)
+        return AmorDegrcRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def amor_linc(self) -> amor_linc_request_builder.AmorLincRequestBuilder:
+    def amor_linc(self) -> AmorLincRequestBuilder:
         """
         Provides operations to call the amorLinc method.
         """
-        from .amor_linc import amor_linc_request_builder
+        from .amor_linc.amor_linc_request_builder import AmorLincRequestBuilder
 
-        return amor_linc_request_builder.AmorLincRequestBuilder(self.request_adapter, self.path_parameters)
+        return AmorLincRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def and_(self) -> and_request_builder.AndRequestBuilder:
+    def and_(self) -> AndRequestBuilder:
         """
         Provides operations to call the and method.
         """
-        from .and_ import and_request_builder
+        from .and_.and_request_builder import AndRequestBuilder
 
-        return and_request_builder.AndRequestBuilder(self.request_adapter, self.path_parameters)
+        return AndRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def arabic(self) -> arabic_request_builder.ArabicRequestBuilder:
+    def arabic(self) -> ArabicRequestBuilder:
         """
         Provides operations to call the arabic method.
         """
-        from .arabic import arabic_request_builder
+        from .arabic.arabic_request_builder import ArabicRequestBuilder
 
-        return arabic_request_builder.ArabicRequestBuilder(self.request_adapter, self.path_parameters)
+        return ArabicRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def areas(self) -> areas_request_builder.AreasRequestBuilder:
+    def areas(self) -> AreasRequestBuilder:
         """
         Provides operations to call the areas method.
         """
-        from .areas import areas_request_builder
+        from .areas.areas_request_builder import AreasRequestBuilder
 
-        return areas_request_builder.AreasRequestBuilder(self.request_adapter, self.path_parameters)
+        return AreasRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def asc(self) -> asc_request_builder.AscRequestBuilder:
+    def asc(self) -> AscRequestBuilder:
         """
         Provides operations to call the asc method.
         """
-        from .asc import asc_request_builder
+        from .asc.asc_request_builder import AscRequestBuilder
 
-        return asc_request_builder.AscRequestBuilder(self.request_adapter, self.path_parameters)
+        return AscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def asin(self) -> asin_request_builder.AsinRequestBuilder:
+    def asin(self) -> AsinRequestBuilder:
         """
         Provides operations to call the asin method.
         """
-        from .asin import asin_request_builder
+        from .asin.asin_request_builder import AsinRequestBuilder
 
-        return asin_request_builder.AsinRequestBuilder(self.request_adapter, self.path_parameters)
+        return AsinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def asinh(self) -> asinh_request_builder.AsinhRequestBuilder:
+    def asinh(self) -> AsinhRequestBuilder:
         """
         Provides operations to call the asinh method.
         """
-        from .asinh import asinh_request_builder
+        from .asinh.asinh_request_builder import AsinhRequestBuilder
 
-        return asinh_request_builder.AsinhRequestBuilder(self.request_adapter, self.path_parameters)
+        return AsinhRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def atan(self) -> atan_request_builder.AtanRequestBuilder:
+    def atan(self) -> AtanRequestBuilder:
         """
         Provides operations to call the atan method.
         """
-        from .atan import atan_request_builder
+        from .atan.atan_request_builder import AtanRequestBuilder
 
-        return atan_request_builder.AtanRequestBuilder(self.request_adapter, self.path_parameters)
+        return AtanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def atan2(self) -> atan2_request_builder.Atan2RequestBuilder:
+    def atan2(self) -> Atan2RequestBuilder:
         """
         Provides operations to call the atan2 method.
         """
-        from .atan2 import atan2_request_builder
+        from .atan2.atan2_request_builder import Atan2RequestBuilder
 
-        return atan2_request_builder.Atan2RequestBuilder(self.request_adapter, self.path_parameters)
+        return Atan2RequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def atanh(self) -> atanh_request_builder.AtanhRequestBuilder:
+    def atanh(self) -> AtanhRequestBuilder:
         """
         Provides operations to call the atanh method.
         """
-        from .atanh import atanh_request_builder
+        from .atanh.atanh_request_builder import AtanhRequestBuilder
 
-        return atanh_request_builder.AtanhRequestBuilder(self.request_adapter, self.path_parameters)
+        return AtanhRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ave_dev(self) -> ave_dev_request_builder.AveDevRequestBuilder:
+    def ave_dev(self) -> AveDevRequestBuilder:
         """
         Provides operations to call the aveDev method.
         """
-        from .ave_dev import ave_dev_request_builder
+        from .ave_dev.ave_dev_request_builder import AveDevRequestBuilder
 
-        return ave_dev_request_builder.AveDevRequestBuilder(self.request_adapter, self.path_parameters)
+        return AveDevRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def average(self) -> average_request_builder.AverageRequestBuilder:
+    def average(self) -> AverageRequestBuilder:
         """
         Provides operations to call the average method.
         """
-        from .average import average_request_builder
+        from .average.average_request_builder import AverageRequestBuilder
 
-        return average_request_builder.AverageRequestBuilder(self.request_adapter, self.path_parameters)
+        return AverageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def average_a(self) -> average_a_request_builder.AverageARequestBuilder:
+    def average_a(self) -> AverageARequestBuilder:
         """
         Provides operations to call the averageA method.
         """
-        from .average_a import average_a_request_builder
+        from .average_a.average_a_request_builder import AverageARequestBuilder
 
-        return average_a_request_builder.AverageARequestBuilder(self.request_adapter, self.path_parameters)
+        return AverageARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def average_if(self) -> average_if_request_builder.AverageIfRequestBuilder:
+    def average_if(self) -> AverageIfRequestBuilder:
         """
         Provides operations to call the averageIf method.
         """
-        from .average_if import average_if_request_builder
+        from .average_if.average_if_request_builder import AverageIfRequestBuilder
 
-        return average_if_request_builder.AverageIfRequestBuilder(self.request_adapter, self.path_parameters)
+        return AverageIfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def average_ifs(self) -> average_ifs_request_builder.AverageIfsRequestBuilder:
+    def average_ifs(self) -> AverageIfsRequestBuilder:
         """
         Provides operations to call the averageIfs method.
         """
-        from .average_ifs import average_ifs_request_builder
+        from .average_ifs.average_ifs_request_builder import AverageIfsRequestBuilder
 
-        return average_ifs_request_builder.AverageIfsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AverageIfsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def baht_text(self) -> baht_text_request_builder.BahtTextRequestBuilder:
+    def baht_text(self) -> BahtTextRequestBuilder:
         """
         Provides operations to call the bahtText method.
         """
-        from .baht_text import baht_text_request_builder
+        from .baht_text.baht_text_request_builder import BahtTextRequestBuilder
 
-        return baht_text_request_builder.BahtTextRequestBuilder(self.request_adapter, self.path_parameters)
+        return BahtTextRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def base(self) -> base_request_builder.BaseRequestBuilder:
+    def base(self) -> BaseRequestBuilder:
         """
         Provides operations to call the base method.
         """
-        from .base import base_request_builder
+        from .base.base_request_builder import BaseRequestBuilder
 
-        return base_request_builder.BaseRequestBuilder(self.request_adapter, self.path_parameters)
+        return BaseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bessel_i(self) -> bessel_i_request_builder.BesselIRequestBuilder:
+    def bessel_i(self) -> BesselIRequestBuilder:
         """
         Provides operations to call the besselI method.
         """
-        from .bessel_i import bessel_i_request_builder
+        from .bessel_i.bessel_i_request_builder import BesselIRequestBuilder
 
-        return bessel_i_request_builder.BesselIRequestBuilder(self.request_adapter, self.path_parameters)
+        return BesselIRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bessel_j(self) -> bessel_j_request_builder.BesselJRequestBuilder:
+    def bessel_j(self) -> BesselJRequestBuilder:
         """
         Provides operations to call the besselJ method.
         """
-        from .bessel_j import bessel_j_request_builder
+        from .bessel_j.bessel_j_request_builder import BesselJRequestBuilder
 
-        return bessel_j_request_builder.BesselJRequestBuilder(self.request_adapter, self.path_parameters)
+        return BesselJRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bessel_k(self) -> bessel_k_request_builder.BesselKRequestBuilder:
+    def bessel_k(self) -> BesselKRequestBuilder:
         """
         Provides operations to call the besselK method.
         """
-        from .bessel_k import bessel_k_request_builder
+        from .bessel_k.bessel_k_request_builder import BesselKRequestBuilder
 
-        return bessel_k_request_builder.BesselKRequestBuilder(self.request_adapter, self.path_parameters)
+        return BesselKRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bessel_y(self) -> bessel_y_request_builder.BesselYRequestBuilder:
+    def bessel_y(self) -> BesselYRequestBuilder:
         """
         Provides operations to call the besselY method.
         """
-        from .bessel_y import bessel_y_request_builder
+        from .bessel_y.bessel_y_request_builder import BesselYRequestBuilder
 
-        return bessel_y_request_builder.BesselYRequestBuilder(self.request_adapter, self.path_parameters)
+        return BesselYRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def beta_dist(self) -> beta_dist_request_builder.Beta_DistRequestBuilder:
+    def beta_dist(self) -> Beta_DistRequestBuilder:
         """
         Provides operations to call the beta_Dist method.
         """
-        from .beta_dist import beta_dist_request_builder
+        from .beta_dist.beta_dist_request_builder import Beta_DistRequestBuilder
 
-        return beta_dist_request_builder.Beta_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return Beta_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def beta_inv(self) -> beta_inv_request_builder.Beta_InvRequestBuilder:
+    def beta_inv(self) -> Beta_InvRequestBuilder:
         """
         Provides operations to call the beta_Inv method.
         """
-        from .beta_inv import beta_inv_request_builder
+        from .beta_inv.beta_inv_request_builder import Beta_InvRequestBuilder
 
-        return beta_inv_request_builder.Beta_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return Beta_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bin2_dec(self) -> bin2_dec_request_builder.Bin2DecRequestBuilder:
+    def bin2_dec(self) -> Bin2DecRequestBuilder:
         """
         Provides operations to call the bin2Dec method.
         """
-        from .bin2_dec import bin2_dec_request_builder
+        from .bin2_dec.bin2_dec_request_builder import Bin2DecRequestBuilder
 
-        return bin2_dec_request_builder.Bin2DecRequestBuilder(self.request_adapter, self.path_parameters)
+        return Bin2DecRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bin2_hex(self) -> bin2_hex_request_builder.Bin2HexRequestBuilder:
+    def bin2_hex(self) -> Bin2HexRequestBuilder:
         """
         Provides operations to call the bin2Hex method.
         """
-        from .bin2_hex import bin2_hex_request_builder
+        from .bin2_hex.bin2_hex_request_builder import Bin2HexRequestBuilder
 
-        return bin2_hex_request_builder.Bin2HexRequestBuilder(self.request_adapter, self.path_parameters)
+        return Bin2HexRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bin2_oct(self) -> bin2_oct_request_builder.Bin2OctRequestBuilder:
+    def bin2_oct(self) -> Bin2OctRequestBuilder:
         """
         Provides operations to call the bin2Oct method.
         """
-        from .bin2_oct import bin2_oct_request_builder
+        from .bin2_oct.bin2_oct_request_builder import Bin2OctRequestBuilder
 
-        return bin2_oct_request_builder.Bin2OctRequestBuilder(self.request_adapter, self.path_parameters)
+        return Bin2OctRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def binom_dist(self) -> binom_dist_request_builder.Binom_DistRequestBuilder:
+    def binom_dist(self) -> Binom_DistRequestBuilder:
         """
         Provides operations to call the binom_Dist method.
         """
-        from .binom_dist import binom_dist_request_builder
+        from .binom_dist.binom_dist_request_builder import Binom_DistRequestBuilder
 
-        return binom_dist_request_builder.Binom_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return Binom_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def binom_dist_range(self) -> binom_dist_range_request_builder.Binom_Dist_RangeRequestBuilder:
+    def binom_dist_range(self) -> Binom_Dist_RangeRequestBuilder:
         """
         Provides operations to call the binom_Dist_Range method.
         """
-        from .binom_dist_range import binom_dist_range_request_builder
+        from .binom_dist_range.binom_dist_range_request_builder import Binom_Dist_RangeRequestBuilder
 
-        return binom_dist_range_request_builder.Binom_Dist_RangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return Binom_Dist_RangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def binom_inv(self) -> binom_inv_request_builder.Binom_InvRequestBuilder:
+    def binom_inv(self) -> Binom_InvRequestBuilder:
         """
         Provides operations to call the binom_Inv method.
         """
-        from .binom_inv import binom_inv_request_builder
+        from .binom_inv.binom_inv_request_builder import Binom_InvRequestBuilder
 
-        return binom_inv_request_builder.Binom_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return Binom_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bitand(self) -> bitand_request_builder.BitandRequestBuilder:
+    def bitand(self) -> BitandRequestBuilder:
         """
         Provides operations to call the bitand method.
         """
-        from .bitand import bitand_request_builder
+        from .bitand.bitand_request_builder import BitandRequestBuilder
 
-        return bitand_request_builder.BitandRequestBuilder(self.request_adapter, self.path_parameters)
+        return BitandRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bitlshift(self) -> bitlshift_request_builder.BitlshiftRequestBuilder:
+    def bitlshift(self) -> BitlshiftRequestBuilder:
         """
         Provides operations to call the bitlshift method.
         """
-        from .bitlshift import bitlshift_request_builder
+        from .bitlshift.bitlshift_request_builder import BitlshiftRequestBuilder
 
-        return bitlshift_request_builder.BitlshiftRequestBuilder(self.request_adapter, self.path_parameters)
+        return BitlshiftRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bitor(self) -> bitor_request_builder.BitorRequestBuilder:
+    def bitor(self) -> BitorRequestBuilder:
         """
         Provides operations to call the bitor method.
         """
-        from .bitor import bitor_request_builder
+        from .bitor.bitor_request_builder import BitorRequestBuilder
 
-        return bitor_request_builder.BitorRequestBuilder(self.request_adapter, self.path_parameters)
+        return BitorRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bitrshift(self) -> bitrshift_request_builder.BitrshiftRequestBuilder:
+    def bitrshift(self) -> BitrshiftRequestBuilder:
         """
         Provides operations to call the bitrshift method.
         """
-        from .bitrshift import bitrshift_request_builder
+        from .bitrshift.bitrshift_request_builder import BitrshiftRequestBuilder
 
-        return bitrshift_request_builder.BitrshiftRequestBuilder(self.request_adapter, self.path_parameters)
+        return BitrshiftRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def bitxor(self) -> bitxor_request_builder.BitxorRequestBuilder:
+    def bitxor(self) -> BitxorRequestBuilder:
         """
         Provides operations to call the bitxor method.
         """
-        from .bitxor import bitxor_request_builder
+        from .bitxor.bitxor_request_builder import BitxorRequestBuilder
 
-        return bitxor_request_builder.BitxorRequestBuilder(self.request_adapter, self.path_parameters)
+        return BitxorRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ceiling_math(self) -> ceiling_math_request_builder.Ceiling_MathRequestBuilder:
+    def ceiling_math(self) -> Ceiling_MathRequestBuilder:
         """
         Provides operations to call the ceiling_Math method.
         """
-        from .ceiling_math import ceiling_math_request_builder
+        from .ceiling_math.ceiling_math_request_builder import Ceiling_MathRequestBuilder
 
-        return ceiling_math_request_builder.Ceiling_MathRequestBuilder(self.request_adapter, self.path_parameters)
+        return Ceiling_MathRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ceiling_precise(self) -> ceiling_precise_request_builder.Ceiling_PreciseRequestBuilder:
+    def ceiling_precise(self) -> Ceiling_PreciseRequestBuilder:
         """
         Provides operations to call the ceiling_Precise method.
         """
-        from .ceiling_precise import ceiling_precise_request_builder
+        from .ceiling_precise.ceiling_precise_request_builder import Ceiling_PreciseRequestBuilder
 
-        return ceiling_precise_request_builder.Ceiling_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
+        return Ceiling_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def char(self) -> char_request_builder.CharRequestBuilder:
+    def char(self) -> CharRequestBuilder:
         """
         Provides operations to call the char method.
         """
-        from .char import char_request_builder
+        from .char.char_request_builder import CharRequestBuilder
 
-        return char_request_builder.CharRequestBuilder(self.request_adapter, self.path_parameters)
+        return CharRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def chi_sq_dist(self) -> chi_sq_dist_request_builder.ChiSq_DistRequestBuilder:
+    def chi_sq_dist(self) -> ChiSq_DistRequestBuilder:
         """
         Provides operations to call the chiSq_Dist method.
         """
-        from .chi_sq_dist import chi_sq_dist_request_builder
+        from .chi_sq_dist.chi_sq_dist_request_builder import ChiSq_DistRequestBuilder
 
-        return chi_sq_dist_request_builder.ChiSq_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return ChiSq_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def chi_sq_dist_r_t(self) -> chi_sq_dist_r_t_request_builder.ChiSq_Dist_RTRequestBuilder:
+    def chi_sq_dist_r_t(self) -> ChiSq_Dist_RTRequestBuilder:
         """
         Provides operations to call the chiSq_Dist_RT method.
         """
-        from .chi_sq_dist_r_t import chi_sq_dist_r_t_request_builder
+        from .chi_sq_dist_r_t.chi_sq_dist_r_t_request_builder import ChiSq_Dist_RTRequestBuilder
 
-        return chi_sq_dist_r_t_request_builder.ChiSq_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
+        return ChiSq_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def chi_sq_inv(self) -> chi_sq_inv_request_builder.ChiSq_InvRequestBuilder:
+    def chi_sq_inv(self) -> ChiSq_InvRequestBuilder:
         """
         Provides operations to call the chiSq_Inv method.
         """
-        from .chi_sq_inv import chi_sq_inv_request_builder
+        from .chi_sq_inv.chi_sq_inv_request_builder import ChiSq_InvRequestBuilder
 
-        return chi_sq_inv_request_builder.ChiSq_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return ChiSq_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def chi_sq_inv_r_t(self) -> chi_sq_inv_r_t_request_builder.ChiSq_Inv_RTRequestBuilder:
+    def chi_sq_inv_r_t(self) -> ChiSq_Inv_RTRequestBuilder:
         """
         Provides operations to call the chiSq_Inv_RT method.
         """
-        from .chi_sq_inv_r_t import chi_sq_inv_r_t_request_builder
+        from .chi_sq_inv_r_t.chi_sq_inv_r_t_request_builder import ChiSq_Inv_RTRequestBuilder
 
-        return chi_sq_inv_r_t_request_builder.ChiSq_Inv_RTRequestBuilder(self.request_adapter, self.path_parameters)
+        return ChiSq_Inv_RTRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def choose(self) -> choose_request_builder.ChooseRequestBuilder:
+    def choose(self) -> ChooseRequestBuilder:
         """
         Provides operations to call the choose method.
         """
-        from .choose import choose_request_builder
+        from .choose.choose_request_builder import ChooseRequestBuilder
 
-        return choose_request_builder.ChooseRequestBuilder(self.request_adapter, self.path_parameters)
+        return ChooseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def clean(self) -> clean_request_builder.CleanRequestBuilder:
+    def clean(self) -> CleanRequestBuilder:
         """
         Provides operations to call the clean method.
         """
-        from .clean import clean_request_builder
+        from .clean.clean_request_builder import CleanRequestBuilder
 
-        return clean_request_builder.CleanRequestBuilder(self.request_adapter, self.path_parameters)
+        return CleanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def code(self) -> code_request_builder.CodeRequestBuilder:
+    def code(self) -> CodeRequestBuilder:
         """
         Provides operations to call the code method.
         """
-        from .code import code_request_builder
+        from .code.code_request_builder import CodeRequestBuilder
 
-        return code_request_builder.CodeRequestBuilder(self.request_adapter, self.path_parameters)
+        return CodeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def columns(self) -> columns_request_builder.ColumnsRequestBuilder:
+    def columns(self) -> ColumnsRequestBuilder:
         """
         Provides operations to call the columns method.
         """
-        from .columns import columns_request_builder
+        from .columns.columns_request_builder import ColumnsRequestBuilder
 
-        return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def combin(self) -> combin_request_builder.CombinRequestBuilder:
+    def combin(self) -> CombinRequestBuilder:
         """
         Provides operations to call the combin method.
         """
-        from .combin import combin_request_builder
+        from .combin.combin_request_builder import CombinRequestBuilder
 
-        return combin_request_builder.CombinRequestBuilder(self.request_adapter, self.path_parameters)
+        return CombinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def combina(self) -> combina_request_builder.CombinaRequestBuilder:
+    def combina(self) -> CombinaRequestBuilder:
         """
         Provides operations to call the combina method.
         """
-        from .combina import combina_request_builder
+        from .combina.combina_request_builder import CombinaRequestBuilder
 
-        return combina_request_builder.CombinaRequestBuilder(self.request_adapter, self.path_parameters)
+        return CombinaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def complex(self) -> complex_request_builder.ComplexRequestBuilder:
+    def complex(self) -> ComplexRequestBuilder:
         """
         Provides operations to call the complex method.
         """
-        from .complex import complex_request_builder
+        from .complex.complex_request_builder import ComplexRequestBuilder
 
-        return complex_request_builder.ComplexRequestBuilder(self.request_adapter, self.path_parameters)
+        return ComplexRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def concatenate(self) -> concatenate_request_builder.ConcatenateRequestBuilder:
+    def concatenate(self) -> ConcatenateRequestBuilder:
         """
         Provides operations to call the concatenate method.
         """
-        from .concatenate import concatenate_request_builder
+        from .concatenate.concatenate_request_builder import ConcatenateRequestBuilder
 
-        return concatenate_request_builder.ConcatenateRequestBuilder(self.request_adapter, self.path_parameters)
+        return ConcatenateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def confidence_norm(self) -> confidence_norm_request_builder.Confidence_NormRequestBuilder:
+    def confidence_norm(self) -> Confidence_NormRequestBuilder:
         """
         Provides operations to call the confidence_Norm method.
         """
-        from .confidence_norm import confidence_norm_request_builder
+        from .confidence_norm.confidence_norm_request_builder import Confidence_NormRequestBuilder
 
-        return confidence_norm_request_builder.Confidence_NormRequestBuilder(self.request_adapter, self.path_parameters)
+        return Confidence_NormRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def confidence_t(self) -> confidence_t_request_builder.Confidence_TRequestBuilder:
+    def confidence_t(self) -> Confidence_TRequestBuilder:
         """
         Provides operations to call the confidence_T method.
         """
-        from .confidence_t import confidence_t_request_builder
+        from .confidence_t.confidence_t_request_builder import Confidence_TRequestBuilder
 
-        return confidence_t_request_builder.Confidence_TRequestBuilder(self.request_adapter, self.path_parameters)
+        return Confidence_TRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def convert(self) -> convert_request_builder.ConvertRequestBuilder:
+    def convert(self) -> ConvertRequestBuilder:
         """
         Provides operations to call the convert method.
         """
-        from .convert import convert_request_builder
+        from .convert.convert_request_builder import ConvertRequestBuilder
 
-        return convert_request_builder.ConvertRequestBuilder(self.request_adapter, self.path_parameters)
+        return ConvertRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def cos(self) -> cos_request_builder.CosRequestBuilder:
+    def cos(self) -> CosRequestBuilder:
         """
         Provides operations to call the cos method.
         """
-        from .cos import cos_request_builder
+        from .cos.cos_request_builder import CosRequestBuilder
 
-        return cos_request_builder.CosRequestBuilder(self.request_adapter, self.path_parameters)
+        return CosRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def cosh(self) -> cosh_request_builder.CoshRequestBuilder:
+    def cosh(self) -> CoshRequestBuilder:
         """
         Provides operations to call the cosh method.
         """
-        from .cosh import cosh_request_builder
+        from .cosh.cosh_request_builder import CoshRequestBuilder
 
-        return cosh_request_builder.CoshRequestBuilder(self.request_adapter, self.path_parameters)
+        return CoshRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def cot(self) -> cot_request_builder.CotRequestBuilder:
+    def cot(self) -> CotRequestBuilder:
         """
         Provides operations to call the cot method.
         """
-        from .cot import cot_request_builder
+        from .cot.cot_request_builder import CotRequestBuilder
 
-        return cot_request_builder.CotRequestBuilder(self.request_adapter, self.path_parameters)
+        return CotRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def coth(self) -> coth_request_builder.CothRequestBuilder:
+    def coth(self) -> CothRequestBuilder:
         """
         Provides operations to call the coth method.
         """
-        from .coth import coth_request_builder
+        from .coth.coth_request_builder import CothRequestBuilder
 
-        return coth_request_builder.CothRequestBuilder(self.request_adapter, self.path_parameters)
+        return CothRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to call the count method.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count_a(self) -> count_a_request_builder.CountARequestBuilder:
+    def count_a(self) -> CountARequestBuilder:
         """
         Provides operations to call the countA method.
         """
-        from .count_a import count_a_request_builder
+        from .count_a.count_a_request_builder import CountARequestBuilder
 
-        return count_a_request_builder.CountARequestBuilder(self.request_adapter, self.path_parameters)
+        return CountARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count_blank(self) -> count_blank_request_builder.CountBlankRequestBuilder:
+    def count_blank(self) -> CountBlankRequestBuilder:
         """
         Provides operations to call the countBlank method.
         """
-        from .count_blank import count_blank_request_builder
+        from .count_blank.count_blank_request_builder import CountBlankRequestBuilder
 
-        return count_blank_request_builder.CountBlankRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountBlankRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count_if(self) -> count_if_request_builder.CountIfRequestBuilder:
+    def count_if(self) -> CountIfRequestBuilder:
         """
         Provides operations to call the countIf method.
         """
-        from .count_if import count_if_request_builder
+        from .count_if.count_if_request_builder import CountIfRequestBuilder
 
-        return count_if_request_builder.CountIfRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountIfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count_ifs(self) -> count_ifs_request_builder.CountIfsRequestBuilder:
+    def count_ifs(self) -> CountIfsRequestBuilder:
         """
         Provides operations to call the countIfs method.
         """
-        from .count_ifs import count_ifs_request_builder
+        from .count_ifs.count_ifs_request_builder import CountIfsRequestBuilder
 
-        return count_ifs_request_builder.CountIfsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountIfsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def coup_day_bs(self) -> coup_day_bs_request_builder.CoupDayBsRequestBuilder:
+    def coup_day_bs(self) -> CoupDayBsRequestBuilder:
         """
         Provides operations to call the coupDayBs method.
         """
-        from .coup_day_bs import coup_day_bs_request_builder
+        from .coup_day_bs.coup_day_bs_request_builder import CoupDayBsRequestBuilder
 
-        return coup_day_bs_request_builder.CoupDayBsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CoupDayBsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def coup_days(self) -> coup_days_request_builder.CoupDaysRequestBuilder:
+    def coup_days(self) -> CoupDaysRequestBuilder:
         """
         Provides operations to call the coupDays method.
         """
-        from .coup_days import coup_days_request_builder
+        from .coup_days.coup_days_request_builder import CoupDaysRequestBuilder
 
-        return coup_days_request_builder.CoupDaysRequestBuilder(self.request_adapter, self.path_parameters)
+        return CoupDaysRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def coup_days_nc(self) -> coup_days_nc_request_builder.CoupDaysNcRequestBuilder:
+    def coup_days_nc(self) -> CoupDaysNcRequestBuilder:
         """
         Provides operations to call the coupDaysNc method.
         """
-        from .coup_days_nc import coup_days_nc_request_builder
+        from .coup_days_nc.coup_days_nc_request_builder import CoupDaysNcRequestBuilder
 
-        return coup_days_nc_request_builder.CoupDaysNcRequestBuilder(self.request_adapter, self.path_parameters)
+        return CoupDaysNcRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def coup_ncd(self) -> coup_ncd_request_builder.CoupNcdRequestBuilder:
+    def coup_ncd(self) -> CoupNcdRequestBuilder:
         """
         Provides operations to call the coupNcd method.
         """
-        from .coup_ncd import coup_ncd_request_builder
+        from .coup_ncd.coup_ncd_request_builder import CoupNcdRequestBuilder
 
-        return coup_ncd_request_builder.CoupNcdRequestBuilder(self.request_adapter, self.path_parameters)
+        return CoupNcdRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def coup_num(self) -> coup_num_request_builder.CoupNumRequestBuilder:
+    def coup_num(self) -> CoupNumRequestBuilder:
         """
         Provides operations to call the coupNum method.
         """
-        from .coup_num import coup_num_request_builder
+        from .coup_num.coup_num_request_builder import CoupNumRequestBuilder
 
-        return coup_num_request_builder.CoupNumRequestBuilder(self.request_adapter, self.path_parameters)
+        return CoupNumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def coup_pcd(self) -> coup_pcd_request_builder.CoupPcdRequestBuilder:
+    def coup_pcd(self) -> CoupPcdRequestBuilder:
         """
         Provides operations to call the coupPcd method.
         """
-        from .coup_pcd import coup_pcd_request_builder
+        from .coup_pcd.coup_pcd_request_builder import CoupPcdRequestBuilder
 
-        return coup_pcd_request_builder.CoupPcdRequestBuilder(self.request_adapter, self.path_parameters)
+        return CoupPcdRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def csc(self) -> csc_request_builder.CscRequestBuilder:
+    def csc(self) -> CscRequestBuilder:
         """
         Provides operations to call the csc method.
         """
-        from .csc import csc_request_builder
+        from .csc.csc_request_builder import CscRequestBuilder
 
-        return csc_request_builder.CscRequestBuilder(self.request_adapter, self.path_parameters)
+        return CscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def csch(self) -> csch_request_builder.CschRequestBuilder:
+    def csch(self) -> CschRequestBuilder:
         """
         Provides operations to call the csch method.
         """
-        from .csch import csch_request_builder
+        from .csch.csch_request_builder import CschRequestBuilder
 
-        return csch_request_builder.CschRequestBuilder(self.request_adapter, self.path_parameters)
+        return CschRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def cum_i_pmt(self) -> cum_i_pmt_request_builder.CumIPmtRequestBuilder:
+    def cum_i_pmt(self) -> CumIPmtRequestBuilder:
         """
         Provides operations to call the cumIPmt method.
         """
-        from .cum_i_pmt import cum_i_pmt_request_builder
+        from .cum_i_pmt.cum_i_pmt_request_builder import CumIPmtRequestBuilder
 
-        return cum_i_pmt_request_builder.CumIPmtRequestBuilder(self.request_adapter, self.path_parameters)
+        return CumIPmtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def cum_princ(self) -> cum_princ_request_builder.CumPrincRequestBuilder:
+    def cum_princ(self) -> CumPrincRequestBuilder:
         """
         Provides operations to call the cumPrinc method.
         """
-        from .cum_princ import cum_princ_request_builder
+        from .cum_princ.cum_princ_request_builder import CumPrincRequestBuilder
 
-        return cum_princ_request_builder.CumPrincRequestBuilder(self.request_adapter, self.path_parameters)
+        return CumPrincRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def date(self) -> date_request_builder.DateRequestBuilder:
+    def date(self) -> DateRequestBuilder:
         """
         Provides operations to call the date method.
         """
-        from .date import date_request_builder
+        from .date.date_request_builder import DateRequestBuilder
 
-        return date_request_builder.DateRequestBuilder(self.request_adapter, self.path_parameters)
+        return DateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def datevalue(self) -> datevalue_request_builder.DatevalueRequestBuilder:
+    def datevalue(self) -> DatevalueRequestBuilder:
         """
         Provides operations to call the datevalue method.
         """
-        from .datevalue import datevalue_request_builder
+        from .datevalue.datevalue_request_builder import DatevalueRequestBuilder
 
-        return datevalue_request_builder.DatevalueRequestBuilder(self.request_adapter, self.path_parameters)
+        return DatevalueRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def daverage(self) -> daverage_request_builder.DaverageRequestBuilder:
+    def daverage(self) -> DaverageRequestBuilder:
         """
         Provides operations to call the daverage method.
         """
-        from .daverage import daverage_request_builder
+        from .daverage.daverage_request_builder import DaverageRequestBuilder
 
-        return daverage_request_builder.DaverageRequestBuilder(self.request_adapter, self.path_parameters)
+        return DaverageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def day(self) -> day_request_builder.DayRequestBuilder:
+    def day(self) -> DayRequestBuilder:
         """
         Provides operations to call the day method.
         """
-        from .day import day_request_builder
+        from .day.day_request_builder import DayRequestBuilder
 
-        return day_request_builder.DayRequestBuilder(self.request_adapter, self.path_parameters)
+        return DayRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def days(self) -> days_request_builder.DaysRequestBuilder:
+    def days(self) -> DaysRequestBuilder:
         """
         Provides operations to call the days method.
         """
-        from .days import days_request_builder
+        from .days.days_request_builder import DaysRequestBuilder
 
-        return days_request_builder.DaysRequestBuilder(self.request_adapter, self.path_parameters)
+        return DaysRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def days360(self) -> days360_request_builder.Days360RequestBuilder:
+    def days360(self) -> Days360RequestBuilder:
         """
         Provides operations to call the days360 method.
         """
-        from .days360 import days360_request_builder
+        from .days360.days360_request_builder import Days360RequestBuilder
 
-        return days360_request_builder.Days360RequestBuilder(self.request_adapter, self.path_parameters)
+        return Days360RequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def db(self) -> db_request_builder.DbRequestBuilder:
+    def db(self) -> DbRequestBuilder:
         """
         Provides operations to call the db method.
         """
-        from .db import db_request_builder
+        from .db.db_request_builder import DbRequestBuilder
 
-        return db_request_builder.DbRequestBuilder(self.request_adapter, self.path_parameters)
+        return DbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dbcs(self) -> dbcs_request_builder.DbcsRequestBuilder:
+    def dbcs(self) -> DbcsRequestBuilder:
         """
         Provides operations to call the dbcs method.
         """
-        from .dbcs import dbcs_request_builder
+        from .dbcs.dbcs_request_builder import DbcsRequestBuilder
 
-        return dbcs_request_builder.DbcsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DbcsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dcount(self) -> dcount_request_builder.DcountRequestBuilder:
+    def dcount(self) -> DcountRequestBuilder:
         """
         Provides operations to call the dcount method.
         """
-        from .dcount import dcount_request_builder
+        from .dcount.dcount_request_builder import DcountRequestBuilder
 
-        return dcount_request_builder.DcountRequestBuilder(self.request_adapter, self.path_parameters)
+        return DcountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dcount_a(self) -> dcount_a_request_builder.DcountARequestBuilder:
+    def dcount_a(self) -> DcountARequestBuilder:
         """
         Provides operations to call the dcountA method.
         """
-        from .dcount_a import dcount_a_request_builder
+        from .dcount_a.dcount_a_request_builder import DcountARequestBuilder
 
-        return dcount_a_request_builder.DcountARequestBuilder(self.request_adapter, self.path_parameters)
+        return DcountARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ddb(self) -> ddb_request_builder.DdbRequestBuilder:
+    def ddb(self) -> DdbRequestBuilder:
         """
         Provides operations to call the ddb method.
         """
-        from .ddb import ddb_request_builder
+        from .ddb.ddb_request_builder import DdbRequestBuilder
 
-        return ddb_request_builder.DdbRequestBuilder(self.request_adapter, self.path_parameters)
+        return DdbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dec2_bin(self) -> dec2_bin_request_builder.Dec2BinRequestBuilder:
+    def dec2_bin(self) -> Dec2BinRequestBuilder:
         """
         Provides operations to call the dec2Bin method.
         """
-        from .dec2_bin import dec2_bin_request_builder
+        from .dec2_bin.dec2_bin_request_builder import Dec2BinRequestBuilder
 
-        return dec2_bin_request_builder.Dec2BinRequestBuilder(self.request_adapter, self.path_parameters)
+        return Dec2BinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dec2_hex(self) -> dec2_hex_request_builder.Dec2HexRequestBuilder:
+    def dec2_hex(self) -> Dec2HexRequestBuilder:
         """
         Provides operations to call the dec2Hex method.
         """
-        from .dec2_hex import dec2_hex_request_builder
+        from .dec2_hex.dec2_hex_request_builder import Dec2HexRequestBuilder
 
-        return dec2_hex_request_builder.Dec2HexRequestBuilder(self.request_adapter, self.path_parameters)
+        return Dec2HexRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dec2_oct(self) -> dec2_oct_request_builder.Dec2OctRequestBuilder:
+    def dec2_oct(self) -> Dec2OctRequestBuilder:
         """
         Provides operations to call the dec2Oct method.
         """
-        from .dec2_oct import dec2_oct_request_builder
+        from .dec2_oct.dec2_oct_request_builder import Dec2OctRequestBuilder
 
-        return dec2_oct_request_builder.Dec2OctRequestBuilder(self.request_adapter, self.path_parameters)
+        return Dec2OctRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def decimal(self) -> decimal_request_builder.DecimalRequestBuilder:
+    def decimal(self) -> DecimalRequestBuilder:
         """
         Provides operations to call the decimal method.
         """
-        from .decimal import decimal_request_builder
+        from .decimal.decimal_request_builder import DecimalRequestBuilder
 
-        return decimal_request_builder.DecimalRequestBuilder(self.request_adapter, self.path_parameters)
+        return DecimalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def degrees(self) -> degrees_request_builder.DegreesRequestBuilder:
+    def degrees(self) -> DegreesRequestBuilder:
         """
         Provides operations to call the degrees method.
         """
-        from .degrees import degrees_request_builder
+        from .degrees.degrees_request_builder import DegreesRequestBuilder
 
-        return degrees_request_builder.DegreesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DegreesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def delta(self) -> DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        from .delta import delta_request_builder
+        from .delta.delta_request_builder import DeltaRequestBuilder
 
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dev_sq(self) -> dev_sq_request_builder.DevSqRequestBuilder:
+    def dev_sq(self) -> DevSqRequestBuilder:
         """
         Provides operations to call the devSq method.
         """
-        from .dev_sq import dev_sq_request_builder
+        from .dev_sq.dev_sq_request_builder import DevSqRequestBuilder
 
-        return dev_sq_request_builder.DevSqRequestBuilder(self.request_adapter, self.path_parameters)
+        return DevSqRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dget(self) -> dget_request_builder.DgetRequestBuilder:
+    def dget(self) -> DgetRequestBuilder:
         """
         Provides operations to call the dget method.
         """
-        from .dget import dget_request_builder
+        from .dget.dget_request_builder import DgetRequestBuilder
 
-        return dget_request_builder.DgetRequestBuilder(self.request_adapter, self.path_parameters)
+        return DgetRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def disc(self) -> disc_request_builder.DiscRequestBuilder:
+    def disc(self) -> DiscRequestBuilder:
         """
         Provides operations to call the disc method.
         """
-        from .disc import disc_request_builder
+        from .disc.disc_request_builder import DiscRequestBuilder
 
-        return disc_request_builder.DiscRequestBuilder(self.request_adapter, self.path_parameters)
+        return DiscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dmax(self) -> dmax_request_builder.DmaxRequestBuilder:
+    def dmax(self) -> DmaxRequestBuilder:
         """
         Provides operations to call the dmax method.
         """
-        from .dmax import dmax_request_builder
+        from .dmax.dmax_request_builder import DmaxRequestBuilder
 
-        return dmax_request_builder.DmaxRequestBuilder(self.request_adapter, self.path_parameters)
+        return DmaxRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dmin(self) -> dmin_request_builder.DminRequestBuilder:
+    def dmin(self) -> DminRequestBuilder:
         """
         Provides operations to call the dmin method.
         """
-        from .dmin import dmin_request_builder
+        from .dmin.dmin_request_builder import DminRequestBuilder
 
-        return dmin_request_builder.DminRequestBuilder(self.request_adapter, self.path_parameters)
+        return DminRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dollar(self) -> dollar_request_builder.DollarRequestBuilder:
+    def dollar(self) -> DollarRequestBuilder:
         """
         Provides operations to call the dollar method.
         """
-        from .dollar import dollar_request_builder
+        from .dollar.dollar_request_builder import DollarRequestBuilder
 
-        return dollar_request_builder.DollarRequestBuilder(self.request_adapter, self.path_parameters)
+        return DollarRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dollar_de(self) -> dollar_de_request_builder.DollarDeRequestBuilder:
+    def dollar_de(self) -> DollarDeRequestBuilder:
         """
         Provides operations to call the dollarDe method.
         """
-        from .dollar_de import dollar_de_request_builder
+        from .dollar_de.dollar_de_request_builder import DollarDeRequestBuilder
 
-        return dollar_de_request_builder.DollarDeRequestBuilder(self.request_adapter, self.path_parameters)
+        return DollarDeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dollar_fr(self) -> dollar_fr_request_builder.DollarFrRequestBuilder:
+    def dollar_fr(self) -> DollarFrRequestBuilder:
         """
         Provides operations to call the dollarFr method.
         """
-        from .dollar_fr import dollar_fr_request_builder
+        from .dollar_fr.dollar_fr_request_builder import DollarFrRequestBuilder
 
-        return dollar_fr_request_builder.DollarFrRequestBuilder(self.request_adapter, self.path_parameters)
+        return DollarFrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dproduct(self) -> dproduct_request_builder.DproductRequestBuilder:
+    def dproduct(self) -> DproductRequestBuilder:
         """
         Provides operations to call the dproduct method.
         """
-        from .dproduct import dproduct_request_builder
+        from .dproduct.dproduct_request_builder import DproductRequestBuilder
 
-        return dproduct_request_builder.DproductRequestBuilder(self.request_adapter, self.path_parameters)
+        return DproductRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dst_dev(self) -> dst_dev_request_builder.DstDevRequestBuilder:
+    def dst_dev(self) -> DstDevRequestBuilder:
         """
         Provides operations to call the dstDev method.
         """
-        from .dst_dev import dst_dev_request_builder
+        from .dst_dev.dst_dev_request_builder import DstDevRequestBuilder
 
-        return dst_dev_request_builder.DstDevRequestBuilder(self.request_adapter, self.path_parameters)
+        return DstDevRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dst_dev_p(self) -> dst_dev_p_request_builder.DstDevPRequestBuilder:
+    def dst_dev_p(self) -> DstDevPRequestBuilder:
         """
         Provides operations to call the dstDevP method.
         """
-        from .dst_dev_p import dst_dev_p_request_builder
+        from .dst_dev_p.dst_dev_p_request_builder import DstDevPRequestBuilder
 
-        return dst_dev_p_request_builder.DstDevPRequestBuilder(self.request_adapter, self.path_parameters)
+        return DstDevPRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dsum(self) -> dsum_request_builder.DsumRequestBuilder:
+    def dsum(self) -> DsumRequestBuilder:
         """
         Provides operations to call the dsum method.
         """
-        from .dsum import dsum_request_builder
+        from .dsum.dsum_request_builder import DsumRequestBuilder
 
-        return dsum_request_builder.DsumRequestBuilder(self.request_adapter, self.path_parameters)
+        return DsumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def duration(self) -> duration_request_builder.DurationRequestBuilder:
+    def duration(self) -> DurationRequestBuilder:
         """
         Provides operations to call the duration method.
         """
-        from .duration import duration_request_builder
+        from .duration.duration_request_builder import DurationRequestBuilder
 
-        return duration_request_builder.DurationRequestBuilder(self.request_adapter, self.path_parameters)
+        return DurationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dvar(self) -> dvar_request_builder.DvarRequestBuilder:
+    def dvar(self) -> DvarRequestBuilder:
         """
         Provides operations to call the dvar method.
         """
-        from .dvar import dvar_request_builder
+        from .dvar.dvar_request_builder import DvarRequestBuilder
 
-        return dvar_request_builder.DvarRequestBuilder(self.request_adapter, self.path_parameters)
+        return DvarRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dvar_p(self) -> dvar_p_request_builder.DvarPRequestBuilder:
+    def dvar_p(self) -> DvarPRequestBuilder:
         """
         Provides operations to call the dvarP method.
         """
-        from .dvar_p import dvar_p_request_builder
+        from .dvar_p.dvar_p_request_builder import DvarPRequestBuilder
 
-        return dvar_p_request_builder.DvarPRequestBuilder(self.request_adapter, self.path_parameters)
+        return DvarPRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ecma_ceiling(self) -> ecma_ceiling_request_builder.Ecma_CeilingRequestBuilder:
+    def ecma_ceiling(self) -> Ecma_CeilingRequestBuilder:
         """
         Provides operations to call the ecma_Ceiling method.
         """
-        from .ecma_ceiling import ecma_ceiling_request_builder
+        from .ecma_ceiling.ecma_ceiling_request_builder import Ecma_CeilingRequestBuilder
 
-        return ecma_ceiling_request_builder.Ecma_CeilingRequestBuilder(self.request_adapter, self.path_parameters)
+        return Ecma_CeilingRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def edate(self) -> edate_request_builder.EdateRequestBuilder:
+    def edate(self) -> EdateRequestBuilder:
         """
         Provides operations to call the edate method.
         """
-        from .edate import edate_request_builder
+        from .edate.edate_request_builder import EdateRequestBuilder
 
-        return edate_request_builder.EdateRequestBuilder(self.request_adapter, self.path_parameters)
+        return EdateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def effect(self) -> effect_request_builder.EffectRequestBuilder:
+    def effect(self) -> EffectRequestBuilder:
         """
         Provides operations to call the effect method.
         """
-        from .effect import effect_request_builder
+        from .effect.effect_request_builder import EffectRequestBuilder
 
-        return effect_request_builder.EffectRequestBuilder(self.request_adapter, self.path_parameters)
+        return EffectRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def eo_month(self) -> eo_month_request_builder.EoMonthRequestBuilder:
+    def eo_month(self) -> EoMonthRequestBuilder:
         """
         Provides operations to call the eoMonth method.
         """
-        from .eo_month import eo_month_request_builder
+        from .eo_month.eo_month_request_builder import EoMonthRequestBuilder
 
-        return eo_month_request_builder.EoMonthRequestBuilder(self.request_adapter, self.path_parameters)
+        return EoMonthRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def erf(self) -> erf_request_builder.ErfRequestBuilder:
+    def erf(self) -> ErfRequestBuilder:
         """
         Provides operations to call the erf method.
         """
-        from .erf import erf_request_builder
+        from .erf.erf_request_builder import ErfRequestBuilder
 
-        return erf_request_builder.ErfRequestBuilder(self.request_adapter, self.path_parameters)
+        return ErfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def erf_precise(self) -> erf_precise_request_builder.Erf_PreciseRequestBuilder:
+    def erf_precise(self) -> Erf_PreciseRequestBuilder:
         """
         Provides operations to call the erf_Precise method.
         """
-        from .erf_precise import erf_precise_request_builder
+        from .erf_precise.erf_precise_request_builder import Erf_PreciseRequestBuilder
 
-        return erf_precise_request_builder.Erf_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
+        return Erf_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def erf_c(self) -> erf_c_request_builder.ErfCRequestBuilder:
+    def erf_c(self) -> ErfCRequestBuilder:
         """
         Provides operations to call the erfC method.
         """
-        from .erf_c import erf_c_request_builder
+        from .erf_c.erf_c_request_builder import ErfCRequestBuilder
 
-        return erf_c_request_builder.ErfCRequestBuilder(self.request_adapter, self.path_parameters)
+        return ErfCRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def erf_c_precise(self) -> erf_c_precise_request_builder.ErfC_PreciseRequestBuilder:
+    def erf_c_precise(self) -> ErfC_PreciseRequestBuilder:
         """
         Provides operations to call the erfC_Precise method.
         """
-        from .erf_c_precise import erf_c_precise_request_builder
+        from .erf_c_precise.erf_c_precise_request_builder import ErfC_PreciseRequestBuilder
 
-        return erf_c_precise_request_builder.ErfC_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
+        return ErfC_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def error_type(self) -> error_type_request_builder.Error_TypeRequestBuilder:
+    def error_type(self) -> Error_TypeRequestBuilder:
         """
         Provides operations to call the error_Type method.
         """
-        from .error_type import error_type_request_builder
+        from .error_type.error_type_request_builder import Error_TypeRequestBuilder
 
-        return error_type_request_builder.Error_TypeRequestBuilder(self.request_adapter, self.path_parameters)
+        return Error_TypeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def even(self) -> even_request_builder.EvenRequestBuilder:
+    def even(self) -> EvenRequestBuilder:
         """
         Provides operations to call the even method.
         """
-        from .even import even_request_builder
+        from .even.even_request_builder import EvenRequestBuilder
 
-        return even_request_builder.EvenRequestBuilder(self.request_adapter, self.path_parameters)
+        return EvenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def exact(self) -> exact_request_builder.ExactRequestBuilder:
+    def exact(self) -> ExactRequestBuilder:
         """
         Provides operations to call the exact method.
         """
-        from .exact import exact_request_builder
+        from .exact.exact_request_builder import ExactRequestBuilder
 
-        return exact_request_builder.ExactRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExactRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def exp(self) -> exp_request_builder.ExpRequestBuilder:
+    def exp(self) -> ExpRequestBuilder:
         """
         Provides operations to call the exp method.
         """
-        from .exp import exp_request_builder
+        from .exp.exp_request_builder import ExpRequestBuilder
 
-        return exp_request_builder.ExpRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExpRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def expon_dist(self) -> expon_dist_request_builder.Expon_DistRequestBuilder:
+    def expon_dist(self) -> Expon_DistRequestBuilder:
         """
         Provides operations to call the expon_Dist method.
         """
-        from .expon_dist import expon_dist_request_builder
+        from .expon_dist.expon_dist_request_builder import Expon_DistRequestBuilder
 
-        return expon_dist_request_builder.Expon_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return Expon_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def f_dist(self) -> f_dist_request_builder.F_DistRequestBuilder:
+    def f_dist(self) -> F_DistRequestBuilder:
         """
         Provides operations to call the f_Dist method.
         """
-        from .f_dist import f_dist_request_builder
+        from .f_dist.f_dist_request_builder import F_DistRequestBuilder
 
-        return f_dist_request_builder.F_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return F_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def f_dist_r_t(self) -> f_dist_r_t_request_builder.F_Dist_RTRequestBuilder:
+    def f_dist_r_t(self) -> F_Dist_RTRequestBuilder:
         """
         Provides operations to call the f_Dist_RT method.
         """
-        from .f_dist_r_t import f_dist_r_t_request_builder
+        from .f_dist_r_t.f_dist_r_t_request_builder import F_Dist_RTRequestBuilder
 
-        return f_dist_r_t_request_builder.F_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
+        return F_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def f_inv(self) -> f_inv_request_builder.F_InvRequestBuilder:
+    def f_inv(self) -> F_InvRequestBuilder:
         """
         Provides operations to call the f_Inv method.
         """
-        from .f_inv import f_inv_request_builder
+        from .f_inv.f_inv_request_builder import F_InvRequestBuilder
 
-        return f_inv_request_builder.F_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return F_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def f_inv_r_t(self) -> f_inv_r_t_request_builder.F_Inv_RTRequestBuilder:
+    def f_inv_r_t(self) -> F_Inv_RTRequestBuilder:
         """
         Provides operations to call the f_Inv_RT method.
         """
-        from .f_inv_r_t import f_inv_r_t_request_builder
+        from .f_inv_r_t.f_inv_r_t_request_builder import F_Inv_RTRequestBuilder
 
-        return f_inv_r_t_request_builder.F_Inv_RTRequestBuilder(self.request_adapter, self.path_parameters)
+        return F_Inv_RTRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def fact(self) -> fact_request_builder.FactRequestBuilder:
+    def fact(self) -> FactRequestBuilder:
         """
         Provides operations to call the fact method.
         """
-        from .fact import fact_request_builder
+        from .fact.fact_request_builder import FactRequestBuilder
 
-        return fact_request_builder.FactRequestBuilder(self.request_adapter, self.path_parameters)
+        return FactRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def fact_double(self) -> fact_double_request_builder.FactDoubleRequestBuilder:
+    def fact_double(self) -> FactDoubleRequestBuilder:
         """
         Provides operations to call the factDouble method.
         """
-        from .fact_double import fact_double_request_builder
+        from .fact_double.fact_double_request_builder import FactDoubleRequestBuilder
 
-        return fact_double_request_builder.FactDoubleRequestBuilder(self.request_adapter, self.path_parameters)
+        return FactDoubleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def false_(self) -> false_request_builder.FalseRequestBuilder:
+    def false_(self) -> FalseRequestBuilder:
         """
         Provides operations to call the false method.
         """
-        from .false_ import false_request_builder
+        from .false_.false_request_builder import FalseRequestBuilder
 
-        return false_request_builder.FalseRequestBuilder(self.request_adapter, self.path_parameters)
+        return FalseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def find(self) -> find_request_builder.FindRequestBuilder:
+    def find(self) -> FindRequestBuilder:
         """
         Provides operations to call the find method.
         """
-        from .find import find_request_builder
+        from .find.find_request_builder import FindRequestBuilder
 
-        return find_request_builder.FindRequestBuilder(self.request_adapter, self.path_parameters)
+        return FindRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def find_b(self) -> find_b_request_builder.FindBRequestBuilder:
+    def find_b(self) -> FindBRequestBuilder:
         """
         Provides operations to call the findB method.
         """
-        from .find_b import find_b_request_builder
+        from .find_b.find_b_request_builder import FindBRequestBuilder
 
-        return find_b_request_builder.FindBRequestBuilder(self.request_adapter, self.path_parameters)
+        return FindBRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def fisher(self) -> fisher_request_builder.FisherRequestBuilder:
+    def fisher(self) -> FisherRequestBuilder:
         """
         Provides operations to call the fisher method.
         """
-        from .fisher import fisher_request_builder
+        from .fisher.fisher_request_builder import FisherRequestBuilder
 
-        return fisher_request_builder.FisherRequestBuilder(self.request_adapter, self.path_parameters)
+        return FisherRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def fisher_inv(self) -> fisher_inv_request_builder.FisherInvRequestBuilder:
+    def fisher_inv(self) -> FisherInvRequestBuilder:
         """
         Provides operations to call the fisherInv method.
         """
-        from .fisher_inv import fisher_inv_request_builder
+        from .fisher_inv.fisher_inv_request_builder import FisherInvRequestBuilder
 
-        return fisher_inv_request_builder.FisherInvRequestBuilder(self.request_adapter, self.path_parameters)
+        return FisherInvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def fixed(self) -> fixed_request_builder.FixedRequestBuilder:
+    def fixed(self) -> FixedRequestBuilder:
         """
         Provides operations to call the fixed method.
         """
-        from .fixed import fixed_request_builder
+        from .fixed.fixed_request_builder import FixedRequestBuilder
 
-        return fixed_request_builder.FixedRequestBuilder(self.request_adapter, self.path_parameters)
+        return FixedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def floor_math(self) -> floor_math_request_builder.Floor_MathRequestBuilder:
+    def floor_math(self) -> Floor_MathRequestBuilder:
         """
         Provides operations to call the floor_Math method.
         """
-        from .floor_math import floor_math_request_builder
+        from .floor_math.floor_math_request_builder import Floor_MathRequestBuilder
 
-        return floor_math_request_builder.Floor_MathRequestBuilder(self.request_adapter, self.path_parameters)
+        return Floor_MathRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def floor_precise(self) -> floor_precise_request_builder.Floor_PreciseRequestBuilder:
+    def floor_precise(self) -> Floor_PreciseRequestBuilder:
         """
         Provides operations to call the floor_Precise method.
         """
-        from .floor_precise import floor_precise_request_builder
+        from .floor_precise.floor_precise_request_builder import Floor_PreciseRequestBuilder
 
-        return floor_precise_request_builder.Floor_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
+        return Floor_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def fv(self) -> fv_request_builder.FvRequestBuilder:
+    def fv(self) -> FvRequestBuilder:
         """
         Provides operations to call the fv method.
         """
-        from .fv import fv_request_builder
+        from .fv.fv_request_builder import FvRequestBuilder
 
-        return fv_request_builder.FvRequestBuilder(self.request_adapter, self.path_parameters)
+        return FvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def fvschedule(self) -> fvschedule_request_builder.FvscheduleRequestBuilder:
+    def fvschedule(self) -> FvscheduleRequestBuilder:
         """
         Provides operations to call the fvschedule method.
         """
-        from .fvschedule import fvschedule_request_builder
+        from .fvschedule.fvschedule_request_builder import FvscheduleRequestBuilder
 
-        return fvschedule_request_builder.FvscheduleRequestBuilder(self.request_adapter, self.path_parameters)
+        return FvscheduleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def gamma(self) -> gamma_request_builder.GammaRequestBuilder:
+    def gamma(self) -> GammaRequestBuilder:
         """
         Provides operations to call the gamma method.
         """
-        from .gamma import gamma_request_builder
+        from .gamma.gamma_request_builder import GammaRequestBuilder
 
-        return gamma_request_builder.GammaRequestBuilder(self.request_adapter, self.path_parameters)
+        return GammaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def gamma_dist(self) -> gamma_dist_request_builder.Gamma_DistRequestBuilder:
+    def gamma_dist(self) -> Gamma_DistRequestBuilder:
         """
         Provides operations to call the gamma_Dist method.
         """
-        from .gamma_dist import gamma_dist_request_builder
+        from .gamma_dist.gamma_dist_request_builder import Gamma_DistRequestBuilder
 
-        return gamma_dist_request_builder.Gamma_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return Gamma_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def gamma_inv(self) -> gamma_inv_request_builder.Gamma_InvRequestBuilder:
+    def gamma_inv(self) -> Gamma_InvRequestBuilder:
         """
         Provides operations to call the gamma_Inv method.
         """
-        from .gamma_inv import gamma_inv_request_builder
+        from .gamma_inv.gamma_inv_request_builder import Gamma_InvRequestBuilder
 
-        return gamma_inv_request_builder.Gamma_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return Gamma_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def gamma_ln(self) -> gamma_ln_request_builder.GammaLnRequestBuilder:
+    def gamma_ln(self) -> GammaLnRequestBuilder:
         """
         Provides operations to call the gammaLn method.
         """
-        from .gamma_ln import gamma_ln_request_builder
+        from .gamma_ln.gamma_ln_request_builder import GammaLnRequestBuilder
 
-        return gamma_ln_request_builder.GammaLnRequestBuilder(self.request_adapter, self.path_parameters)
+        return GammaLnRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def gamma_ln_precise(self) -> gamma_ln_precise_request_builder.GammaLn_PreciseRequestBuilder:
+    def gamma_ln_precise(self) -> GammaLn_PreciseRequestBuilder:
         """
         Provides operations to call the gammaLn_Precise method.
         """
-        from .gamma_ln_precise import gamma_ln_precise_request_builder
+        from .gamma_ln_precise.gamma_ln_precise_request_builder import GammaLn_PreciseRequestBuilder
 
-        return gamma_ln_precise_request_builder.GammaLn_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
+        return GammaLn_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def gauss(self) -> gauss_request_builder.GaussRequestBuilder:
+    def gauss(self) -> GaussRequestBuilder:
         """
         Provides operations to call the gauss method.
         """
-        from .gauss import gauss_request_builder
+        from .gauss.gauss_request_builder import GaussRequestBuilder
 
-        return gauss_request_builder.GaussRequestBuilder(self.request_adapter, self.path_parameters)
+        return GaussRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def gcd(self) -> gcd_request_builder.GcdRequestBuilder:
+    def gcd(self) -> GcdRequestBuilder:
         """
         Provides operations to call the gcd method.
         """
-        from .gcd import gcd_request_builder
+        from .gcd.gcd_request_builder import GcdRequestBuilder
 
-        return gcd_request_builder.GcdRequestBuilder(self.request_adapter, self.path_parameters)
+        return GcdRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def geo_mean(self) -> geo_mean_request_builder.GeoMeanRequestBuilder:
+    def geo_mean(self) -> GeoMeanRequestBuilder:
         """
         Provides operations to call the geoMean method.
         """
-        from .geo_mean import geo_mean_request_builder
+        from .geo_mean.geo_mean_request_builder import GeoMeanRequestBuilder
 
-        return geo_mean_request_builder.GeoMeanRequestBuilder(self.request_adapter, self.path_parameters)
+        return GeoMeanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ge_step(self) -> ge_step_request_builder.GeStepRequestBuilder:
+    def ge_step(self) -> GeStepRequestBuilder:
         """
         Provides operations to call the geStep method.
         """
-        from .ge_step import ge_step_request_builder
+        from .ge_step.ge_step_request_builder import GeStepRequestBuilder
 
-        return ge_step_request_builder.GeStepRequestBuilder(self.request_adapter, self.path_parameters)
+        return GeStepRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def har_mean(self) -> har_mean_request_builder.HarMeanRequestBuilder:
+    def har_mean(self) -> HarMeanRequestBuilder:
         """
         Provides operations to call the harMean method.
         """
-        from .har_mean import har_mean_request_builder
+        from .har_mean.har_mean_request_builder import HarMeanRequestBuilder
 
-        return har_mean_request_builder.HarMeanRequestBuilder(self.request_adapter, self.path_parameters)
+        return HarMeanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def hex2_bin(self) -> hex2_bin_request_builder.Hex2BinRequestBuilder:
+    def hex2_bin(self) -> Hex2BinRequestBuilder:
         """
         Provides operations to call the hex2Bin method.
         """
-        from .hex2_bin import hex2_bin_request_builder
+        from .hex2_bin.hex2_bin_request_builder import Hex2BinRequestBuilder
 
-        return hex2_bin_request_builder.Hex2BinRequestBuilder(self.request_adapter, self.path_parameters)
+        return Hex2BinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def hex2_dec(self) -> hex2_dec_request_builder.Hex2DecRequestBuilder:
+    def hex2_dec(self) -> Hex2DecRequestBuilder:
         """
         Provides operations to call the hex2Dec method.
         """
-        from .hex2_dec import hex2_dec_request_builder
+        from .hex2_dec.hex2_dec_request_builder import Hex2DecRequestBuilder
 
-        return hex2_dec_request_builder.Hex2DecRequestBuilder(self.request_adapter, self.path_parameters)
+        return Hex2DecRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def hex2_oct(self) -> hex2_oct_request_builder.Hex2OctRequestBuilder:
+    def hex2_oct(self) -> Hex2OctRequestBuilder:
         """
         Provides operations to call the hex2Oct method.
         """
-        from .hex2_oct import hex2_oct_request_builder
+        from .hex2_oct.hex2_oct_request_builder import Hex2OctRequestBuilder
 
-        return hex2_oct_request_builder.Hex2OctRequestBuilder(self.request_adapter, self.path_parameters)
+        return Hex2OctRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def hlookup(self) -> hlookup_request_builder.HlookupRequestBuilder:
+    def hlookup(self) -> HlookupRequestBuilder:
         """
         Provides operations to call the hlookup method.
         """
-        from .hlookup import hlookup_request_builder
+        from .hlookup.hlookup_request_builder import HlookupRequestBuilder
 
-        return hlookup_request_builder.HlookupRequestBuilder(self.request_adapter, self.path_parameters)
+        return HlookupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def hour(self) -> hour_request_builder.HourRequestBuilder:
+    def hour(self) -> HourRequestBuilder:
         """
         Provides operations to call the hour method.
         """
-        from .hour import hour_request_builder
+        from .hour.hour_request_builder import HourRequestBuilder
 
-        return hour_request_builder.HourRequestBuilder(self.request_adapter, self.path_parameters)
+        return HourRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def hyperlink(self) -> hyperlink_request_builder.HyperlinkRequestBuilder:
+    def hyperlink(self) -> HyperlinkRequestBuilder:
         """
         Provides operations to call the hyperlink method.
         """
-        from .hyperlink import hyperlink_request_builder
+        from .hyperlink.hyperlink_request_builder import HyperlinkRequestBuilder
 
-        return hyperlink_request_builder.HyperlinkRequestBuilder(self.request_adapter, self.path_parameters)
+        return HyperlinkRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def hyp_geom_dist(self) -> hyp_geom_dist_request_builder.HypGeom_DistRequestBuilder:
+    def hyp_geom_dist(self) -> HypGeom_DistRequestBuilder:
         """
         Provides operations to call the hypGeom_Dist method.
         """
-        from .hyp_geom_dist import hyp_geom_dist_request_builder
+        from .hyp_geom_dist.hyp_geom_dist_request_builder import HypGeom_DistRequestBuilder
 
-        return hyp_geom_dist_request_builder.HypGeom_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return HypGeom_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def if_(self) -> if_request_builder.IfRequestBuilder:
+    def if_(self) -> IfRequestBuilder:
         """
         Provides operations to call the if method.
         """
-        from .if_ import if_request_builder
+        from .if_.if_request_builder import IfRequestBuilder
 
-        return if_request_builder.IfRequestBuilder(self.request_adapter, self.path_parameters)
+        return IfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_abs(self) -> im_abs_request_builder.ImAbsRequestBuilder:
+    def im_abs(self) -> ImAbsRequestBuilder:
         """
         Provides operations to call the imAbs method.
         """
-        from .im_abs import im_abs_request_builder
+        from .im_abs.im_abs_request_builder import ImAbsRequestBuilder
 
-        return im_abs_request_builder.ImAbsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImAbsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def imaginary(self) -> imaginary_request_builder.ImaginaryRequestBuilder:
+    def imaginary(self) -> ImaginaryRequestBuilder:
         """
         Provides operations to call the imaginary method.
         """
-        from .imaginary import imaginary_request_builder
+        from .imaginary.imaginary_request_builder import ImaginaryRequestBuilder
 
-        return imaginary_request_builder.ImaginaryRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImaginaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_argument(self) -> im_argument_request_builder.ImArgumentRequestBuilder:
+    def im_argument(self) -> ImArgumentRequestBuilder:
         """
         Provides operations to call the imArgument method.
         """
-        from .im_argument import im_argument_request_builder
+        from .im_argument.im_argument_request_builder import ImArgumentRequestBuilder
 
-        return im_argument_request_builder.ImArgumentRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImArgumentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_conjugate(self) -> im_conjugate_request_builder.ImConjugateRequestBuilder:
+    def im_conjugate(self) -> ImConjugateRequestBuilder:
         """
         Provides operations to call the imConjugate method.
         """
-        from .im_conjugate import im_conjugate_request_builder
+        from .im_conjugate.im_conjugate_request_builder import ImConjugateRequestBuilder
 
-        return im_conjugate_request_builder.ImConjugateRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImConjugateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_cos(self) -> im_cos_request_builder.ImCosRequestBuilder:
+    def im_cos(self) -> ImCosRequestBuilder:
         """
         Provides operations to call the imCos method.
         """
-        from .im_cos import im_cos_request_builder
+        from .im_cos.im_cos_request_builder import ImCosRequestBuilder
 
-        return im_cos_request_builder.ImCosRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImCosRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_cosh(self) -> im_cosh_request_builder.ImCoshRequestBuilder:
+    def im_cosh(self) -> ImCoshRequestBuilder:
         """
         Provides operations to call the imCosh method.
         """
-        from .im_cosh import im_cosh_request_builder
+        from .im_cosh.im_cosh_request_builder import ImCoshRequestBuilder
 
-        return im_cosh_request_builder.ImCoshRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImCoshRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_cot(self) -> im_cot_request_builder.ImCotRequestBuilder:
+    def im_cot(self) -> ImCotRequestBuilder:
         """
         Provides operations to call the imCot method.
         """
-        from .im_cot import im_cot_request_builder
+        from .im_cot.im_cot_request_builder import ImCotRequestBuilder
 
-        return im_cot_request_builder.ImCotRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImCotRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_csc(self) -> im_csc_request_builder.ImCscRequestBuilder:
+    def im_csc(self) -> ImCscRequestBuilder:
         """
         Provides operations to call the imCsc method.
         """
-        from .im_csc import im_csc_request_builder
+        from .im_csc.im_csc_request_builder import ImCscRequestBuilder
 
-        return im_csc_request_builder.ImCscRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImCscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_csch(self) -> im_csch_request_builder.ImCschRequestBuilder:
+    def im_csch(self) -> ImCschRequestBuilder:
         """
         Provides operations to call the imCsch method.
         """
-        from .im_csch import im_csch_request_builder
+        from .im_csch.im_csch_request_builder import ImCschRequestBuilder
 
-        return im_csch_request_builder.ImCschRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImCschRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_div(self) -> im_div_request_builder.ImDivRequestBuilder:
+    def im_div(self) -> ImDivRequestBuilder:
         """
         Provides operations to call the imDiv method.
         """
-        from .im_div import im_div_request_builder
+        from .im_div.im_div_request_builder import ImDivRequestBuilder
 
-        return im_div_request_builder.ImDivRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImDivRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_exp(self) -> im_exp_request_builder.ImExpRequestBuilder:
+    def im_exp(self) -> ImExpRequestBuilder:
         """
         Provides operations to call the imExp method.
         """
-        from .im_exp import im_exp_request_builder
+        from .im_exp.im_exp_request_builder import ImExpRequestBuilder
 
-        return im_exp_request_builder.ImExpRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImExpRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_ln(self) -> im_ln_request_builder.ImLnRequestBuilder:
+    def im_ln(self) -> ImLnRequestBuilder:
         """
         Provides operations to call the imLn method.
         """
-        from .im_ln import im_ln_request_builder
+        from .im_ln.im_ln_request_builder import ImLnRequestBuilder
 
-        return im_ln_request_builder.ImLnRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImLnRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_log10(self) -> im_log10_request_builder.ImLog10RequestBuilder:
+    def im_log10(self) -> ImLog10RequestBuilder:
         """
         Provides operations to call the imLog10 method.
         """
-        from .im_log10 import im_log10_request_builder
+        from .im_log10.im_log10_request_builder import ImLog10RequestBuilder
 
-        return im_log10_request_builder.ImLog10RequestBuilder(self.request_adapter, self.path_parameters)
+        return ImLog10RequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_log2(self) -> im_log2_request_builder.ImLog2RequestBuilder:
+    def im_log2(self) -> ImLog2RequestBuilder:
         """
         Provides operations to call the imLog2 method.
         """
-        from .im_log2 import im_log2_request_builder
+        from .im_log2.im_log2_request_builder import ImLog2RequestBuilder
 
-        return im_log2_request_builder.ImLog2RequestBuilder(self.request_adapter, self.path_parameters)
+        return ImLog2RequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_power(self) -> im_power_request_builder.ImPowerRequestBuilder:
+    def im_power(self) -> ImPowerRequestBuilder:
         """
         Provides operations to call the imPower method.
         """
-        from .im_power import im_power_request_builder
+        from .im_power.im_power_request_builder import ImPowerRequestBuilder
 
-        return im_power_request_builder.ImPowerRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImPowerRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_product(self) -> im_product_request_builder.ImProductRequestBuilder:
+    def im_product(self) -> ImProductRequestBuilder:
         """
         Provides operations to call the imProduct method.
         """
-        from .im_product import im_product_request_builder
+        from .im_product.im_product_request_builder import ImProductRequestBuilder
 
-        return im_product_request_builder.ImProductRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImProductRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_real(self) -> im_real_request_builder.ImRealRequestBuilder:
+    def im_real(self) -> ImRealRequestBuilder:
         """
         Provides operations to call the imReal method.
         """
-        from .im_real import im_real_request_builder
+        from .im_real.im_real_request_builder import ImRealRequestBuilder
 
-        return im_real_request_builder.ImRealRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImRealRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_sec(self) -> im_sec_request_builder.ImSecRequestBuilder:
+    def im_sec(self) -> ImSecRequestBuilder:
         """
         Provides operations to call the imSec method.
         """
-        from .im_sec import im_sec_request_builder
+        from .im_sec.im_sec_request_builder import ImSecRequestBuilder
 
-        return im_sec_request_builder.ImSecRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImSecRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_sech(self) -> im_sech_request_builder.ImSechRequestBuilder:
+    def im_sech(self) -> ImSechRequestBuilder:
         """
         Provides operations to call the imSech method.
         """
-        from .im_sech import im_sech_request_builder
+        from .im_sech.im_sech_request_builder import ImSechRequestBuilder
 
-        return im_sech_request_builder.ImSechRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImSechRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_sin(self) -> im_sin_request_builder.ImSinRequestBuilder:
+    def im_sin(self) -> ImSinRequestBuilder:
         """
         Provides operations to call the imSin method.
         """
-        from .im_sin import im_sin_request_builder
+        from .im_sin.im_sin_request_builder import ImSinRequestBuilder
 
-        return im_sin_request_builder.ImSinRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImSinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_sinh(self) -> im_sinh_request_builder.ImSinhRequestBuilder:
+    def im_sinh(self) -> ImSinhRequestBuilder:
         """
         Provides operations to call the imSinh method.
         """
-        from .im_sinh import im_sinh_request_builder
+        from .im_sinh.im_sinh_request_builder import ImSinhRequestBuilder
 
-        return im_sinh_request_builder.ImSinhRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImSinhRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_sqrt(self) -> im_sqrt_request_builder.ImSqrtRequestBuilder:
+    def im_sqrt(self) -> ImSqrtRequestBuilder:
         """
         Provides operations to call the imSqrt method.
         """
-        from .im_sqrt import im_sqrt_request_builder
+        from .im_sqrt.im_sqrt_request_builder import ImSqrtRequestBuilder
 
-        return im_sqrt_request_builder.ImSqrtRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImSqrtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_sub(self) -> im_sub_request_builder.ImSubRequestBuilder:
+    def im_sub(self) -> ImSubRequestBuilder:
         """
         Provides operations to call the imSub method.
         """
-        from .im_sub import im_sub_request_builder
+        from .im_sub.im_sub_request_builder import ImSubRequestBuilder
 
-        return im_sub_request_builder.ImSubRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImSubRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_sum(self) -> im_sum_request_builder.ImSumRequestBuilder:
+    def im_sum(self) -> ImSumRequestBuilder:
         """
         Provides operations to call the imSum method.
         """
-        from .im_sum import im_sum_request_builder
+        from .im_sum.im_sum_request_builder import ImSumRequestBuilder
 
-        return im_sum_request_builder.ImSumRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImSumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def im_tan(self) -> im_tan_request_builder.ImTanRequestBuilder:
+    def im_tan(self) -> ImTanRequestBuilder:
         """
         Provides operations to call the imTan method.
         """
-        from .im_tan import im_tan_request_builder
+        from .im_tan.im_tan_request_builder import ImTanRequestBuilder
 
-        return im_tan_request_builder.ImTanRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImTanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def int(self) -> int_request_builder.IntRequestBuilder:
+    def int(self) -> IntRequestBuilder:
         """
         Provides operations to call the int method.
         """
-        from .int import int_request_builder
+        from .int.int_request_builder import IntRequestBuilder
 
-        return int_request_builder.IntRequestBuilder(self.request_adapter, self.path_parameters)
+        return IntRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def int_rate(self) -> int_rate_request_builder.IntRateRequestBuilder:
+    def int_rate(self) -> IntRateRequestBuilder:
         """
         Provides operations to call the intRate method.
         """
-        from .int_rate import int_rate_request_builder
+        from .int_rate.int_rate_request_builder import IntRateRequestBuilder
 
-        return int_rate_request_builder.IntRateRequestBuilder(self.request_adapter, self.path_parameters)
+        return IntRateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ipmt(self) -> ipmt_request_builder.IpmtRequestBuilder:
+    def ipmt(self) -> IpmtRequestBuilder:
         """
         Provides operations to call the ipmt method.
         """
-        from .ipmt import ipmt_request_builder
+        from .ipmt.ipmt_request_builder import IpmtRequestBuilder
 
-        return ipmt_request_builder.IpmtRequestBuilder(self.request_adapter, self.path_parameters)
+        return IpmtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def irr(self) -> irr_request_builder.IrrRequestBuilder:
+    def irr(self) -> IrrRequestBuilder:
         """
         Provides operations to call the irr method.
         """
-        from .irr import irr_request_builder
+        from .irr.irr_request_builder import IrrRequestBuilder
 
-        return irr_request_builder.IrrRequestBuilder(self.request_adapter, self.path_parameters)
+        return IrrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def is_err(self) -> is_err_request_builder.IsErrRequestBuilder:
+    def is_err(self) -> IsErrRequestBuilder:
         """
         Provides operations to call the isErr method.
         """
-        from .is_err import is_err_request_builder
+        from .is_err.is_err_request_builder import IsErrRequestBuilder
 
-        return is_err_request_builder.IsErrRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsErrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def is_error(self) -> is_error_request_builder.IsErrorRequestBuilder:
+    def is_error(self) -> IsErrorRequestBuilder:
         """
         Provides operations to call the isError method.
         """
-        from .is_error import is_error_request_builder
+        from .is_error.is_error_request_builder import IsErrorRequestBuilder
 
-        return is_error_request_builder.IsErrorRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsErrorRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def is_even(self) -> is_even_request_builder.IsEvenRequestBuilder:
+    def is_even(self) -> IsEvenRequestBuilder:
         """
         Provides operations to call the isEven method.
         """
-        from .is_even import is_even_request_builder
+        from .is_even.is_even_request_builder import IsEvenRequestBuilder
 
-        return is_even_request_builder.IsEvenRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsEvenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def is_formula(self) -> is_formula_request_builder.IsFormulaRequestBuilder:
+    def is_formula(self) -> IsFormulaRequestBuilder:
         """
         Provides operations to call the isFormula method.
         """
-        from .is_formula import is_formula_request_builder
+        from .is_formula.is_formula_request_builder import IsFormulaRequestBuilder
 
-        return is_formula_request_builder.IsFormulaRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsFormulaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def is_logical(self) -> is_logical_request_builder.IsLogicalRequestBuilder:
+    def is_logical(self) -> IsLogicalRequestBuilder:
         """
         Provides operations to call the isLogical method.
         """
-        from .is_logical import is_logical_request_builder
+        from .is_logical.is_logical_request_builder import IsLogicalRequestBuilder
 
-        return is_logical_request_builder.IsLogicalRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsLogicalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def is_n_a(self) -> is_n_a_request_builder.IsNARequestBuilder:
+    def is_n_a(self) -> IsNARequestBuilder:
         """
         Provides operations to call the isNA method.
         """
-        from .is_n_a import is_n_a_request_builder
+        from .is_n_a.is_n_a_request_builder import IsNARequestBuilder
 
-        return is_n_a_request_builder.IsNARequestBuilder(self.request_adapter, self.path_parameters)
+        return IsNARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def is_non_text(self) -> is_non_text_request_builder.IsNonTextRequestBuilder:
+    def is_non_text(self) -> IsNonTextRequestBuilder:
         """
         Provides operations to call the isNonText method.
         """
-        from .is_non_text import is_non_text_request_builder
+        from .is_non_text.is_non_text_request_builder import IsNonTextRequestBuilder
 
-        return is_non_text_request_builder.IsNonTextRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsNonTextRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def is_number(self) -> is_number_request_builder.IsNumberRequestBuilder:
+    def is_number(self) -> IsNumberRequestBuilder:
         """
         Provides operations to call the isNumber method.
         """
-        from .is_number import is_number_request_builder
+        from .is_number.is_number_request_builder import IsNumberRequestBuilder
 
-        return is_number_request_builder.IsNumberRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsNumberRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def iso_ceiling(self) -> iso_ceiling_request_builder.Iso_CeilingRequestBuilder:
+    def iso_ceiling(self) -> Iso_CeilingRequestBuilder:
         """
         Provides operations to call the iso_Ceiling method.
         """
-        from .iso_ceiling import iso_ceiling_request_builder
+        from .iso_ceiling.iso_ceiling_request_builder import Iso_CeilingRequestBuilder
 
-        return iso_ceiling_request_builder.Iso_CeilingRequestBuilder(self.request_adapter, self.path_parameters)
+        return Iso_CeilingRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def is_odd(self) -> is_odd_request_builder.IsOddRequestBuilder:
+    def is_odd(self) -> IsOddRequestBuilder:
         """
         Provides operations to call the isOdd method.
         """
-        from .is_odd import is_odd_request_builder
+        from .is_odd.is_odd_request_builder import IsOddRequestBuilder
 
-        return is_odd_request_builder.IsOddRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsOddRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def iso_week_num(self) -> iso_week_num_request_builder.IsoWeekNumRequestBuilder:
+    def iso_week_num(self) -> IsoWeekNumRequestBuilder:
         """
         Provides operations to call the isoWeekNum method.
         """
-        from .iso_week_num import iso_week_num_request_builder
+        from .iso_week_num.iso_week_num_request_builder import IsoWeekNumRequestBuilder
 
-        return iso_week_num_request_builder.IsoWeekNumRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsoWeekNumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ispmt(self) -> ispmt_request_builder.IspmtRequestBuilder:
+    def ispmt(self) -> IspmtRequestBuilder:
         """
         Provides operations to call the ispmt method.
         """
-        from .ispmt import ispmt_request_builder
+        from .ispmt.ispmt_request_builder import IspmtRequestBuilder
 
-        return ispmt_request_builder.IspmtRequestBuilder(self.request_adapter, self.path_parameters)
+        return IspmtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def isref(self) -> isref_request_builder.IsrefRequestBuilder:
+    def isref(self) -> IsrefRequestBuilder:
         """
         Provides operations to call the isref method.
         """
-        from .isref import isref_request_builder
+        from .isref.isref_request_builder import IsrefRequestBuilder
 
-        return isref_request_builder.IsrefRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsrefRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def is_text(self) -> is_text_request_builder.IsTextRequestBuilder:
+    def is_text(self) -> IsTextRequestBuilder:
         """
         Provides operations to call the isText method.
         """
-        from .is_text import is_text_request_builder
+        from .is_text.is_text_request_builder import IsTextRequestBuilder
 
-        return is_text_request_builder.IsTextRequestBuilder(self.request_adapter, self.path_parameters)
+        return IsTextRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def kurt(self) -> kurt_request_builder.KurtRequestBuilder:
+    def kurt(self) -> KurtRequestBuilder:
         """
         Provides operations to call the kurt method.
         """
-        from .kurt import kurt_request_builder
+        from .kurt.kurt_request_builder import KurtRequestBuilder
 
-        return kurt_request_builder.KurtRequestBuilder(self.request_adapter, self.path_parameters)
+        return KurtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def large(self) -> large_request_builder.LargeRequestBuilder:
+    def large(self) -> LargeRequestBuilder:
         """
         Provides operations to call the large method.
         """
-        from .large import large_request_builder
+        from .large.large_request_builder import LargeRequestBuilder
 
-        return large_request_builder.LargeRequestBuilder(self.request_adapter, self.path_parameters)
+        return LargeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def lcm(self) -> lcm_request_builder.LcmRequestBuilder:
+    def lcm(self) -> LcmRequestBuilder:
         """
         Provides operations to call the lcm method.
         """
-        from .lcm import lcm_request_builder
+        from .lcm.lcm_request_builder import LcmRequestBuilder
 
-        return lcm_request_builder.LcmRequestBuilder(self.request_adapter, self.path_parameters)
+        return LcmRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def left(self) -> left_request_builder.LeftRequestBuilder:
+    def left(self) -> LeftRequestBuilder:
         """
         Provides operations to call the left method.
         """
-        from .left import left_request_builder
+        from .left.left_request_builder import LeftRequestBuilder
 
-        return left_request_builder.LeftRequestBuilder(self.request_adapter, self.path_parameters)
+        return LeftRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def leftb(self) -> leftb_request_builder.LeftbRequestBuilder:
+    def leftb(self) -> LeftbRequestBuilder:
         """
         Provides operations to call the leftb method.
         """
-        from .leftb import leftb_request_builder
+        from .leftb.leftb_request_builder import LeftbRequestBuilder
 
-        return leftb_request_builder.LeftbRequestBuilder(self.request_adapter, self.path_parameters)
+        return LeftbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def len(self) -> len_request_builder.LenRequestBuilder:
+    def len(self) -> LenRequestBuilder:
         """
         Provides operations to call the len method.
         """
-        from .len import len_request_builder
+        from .len.len_request_builder import LenRequestBuilder
 
-        return len_request_builder.LenRequestBuilder(self.request_adapter, self.path_parameters)
+        return LenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def lenb(self) -> lenb_request_builder.LenbRequestBuilder:
+    def lenb(self) -> LenbRequestBuilder:
         """
         Provides operations to call the lenb method.
         """
-        from .lenb import lenb_request_builder
+        from .lenb.lenb_request_builder import LenbRequestBuilder
 
-        return lenb_request_builder.LenbRequestBuilder(self.request_adapter, self.path_parameters)
+        return LenbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ln(self) -> ln_request_builder.LnRequestBuilder:
+    def ln(self) -> LnRequestBuilder:
         """
         Provides operations to call the ln method.
         """
-        from .ln import ln_request_builder
+        from .ln.ln_request_builder import LnRequestBuilder
 
-        return ln_request_builder.LnRequestBuilder(self.request_adapter, self.path_parameters)
+        return LnRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def log(self) -> log_request_builder.LogRequestBuilder:
+    def log(self) -> LogRequestBuilder:
         """
         Provides operations to call the log method.
         """
-        from .log import log_request_builder
+        from .log.log_request_builder import LogRequestBuilder
 
-        return log_request_builder.LogRequestBuilder(self.request_adapter, self.path_parameters)
+        return LogRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def log10(self) -> log10_request_builder.Log10RequestBuilder:
+    def log10(self) -> Log10RequestBuilder:
         """
         Provides operations to call the log10 method.
         """
-        from .log10 import log10_request_builder
+        from .log10.log10_request_builder import Log10RequestBuilder
 
-        return log10_request_builder.Log10RequestBuilder(self.request_adapter, self.path_parameters)
+        return Log10RequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def log_norm_dist(self) -> log_norm_dist_request_builder.LogNorm_DistRequestBuilder:
+    def log_norm_dist(self) -> LogNorm_DistRequestBuilder:
         """
         Provides operations to call the logNorm_Dist method.
         """
-        from .log_norm_dist import log_norm_dist_request_builder
+        from .log_norm_dist.log_norm_dist_request_builder import LogNorm_DistRequestBuilder
 
-        return log_norm_dist_request_builder.LogNorm_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return LogNorm_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def log_norm_inv(self) -> log_norm_inv_request_builder.LogNorm_InvRequestBuilder:
+    def log_norm_inv(self) -> LogNorm_InvRequestBuilder:
         """
         Provides operations to call the logNorm_Inv method.
         """
-        from .log_norm_inv import log_norm_inv_request_builder
+        from .log_norm_inv.log_norm_inv_request_builder import LogNorm_InvRequestBuilder
 
-        return log_norm_inv_request_builder.LogNorm_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return LogNorm_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def lookup(self) -> lookup_request_builder.LookupRequestBuilder:
+    def lookup(self) -> LookupRequestBuilder:
         """
         Provides operations to call the lookup method.
         """
-        from .lookup import lookup_request_builder
+        from .lookup.lookup_request_builder import LookupRequestBuilder
 
-        return lookup_request_builder.LookupRequestBuilder(self.request_adapter, self.path_parameters)
+        return LookupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def lower(self) -> lower_request_builder.LowerRequestBuilder:
+    def lower(self) -> LowerRequestBuilder:
         """
         Provides operations to call the lower method.
         """
-        from .lower import lower_request_builder
+        from .lower.lower_request_builder import LowerRequestBuilder
 
-        return lower_request_builder.LowerRequestBuilder(self.request_adapter, self.path_parameters)
+        return LowerRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def match(self) -> match_request_builder.MatchRequestBuilder:
+    def match(self) -> MatchRequestBuilder:
         """
         Provides operations to call the match method.
         """
-        from .match import match_request_builder
+        from .match.match_request_builder import MatchRequestBuilder
 
-        return match_request_builder.MatchRequestBuilder(self.request_adapter, self.path_parameters)
+        return MatchRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def max(self) -> max_request_builder.MaxRequestBuilder:
+    def max(self) -> MaxRequestBuilder:
         """
         Provides operations to call the max method.
         """
-        from .max import max_request_builder
+        from .max.max_request_builder import MaxRequestBuilder
 
-        return max_request_builder.MaxRequestBuilder(self.request_adapter, self.path_parameters)
+        return MaxRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def max_a(self) -> max_a_request_builder.MaxARequestBuilder:
+    def max_a(self) -> MaxARequestBuilder:
         """
         Provides operations to call the maxA method.
         """
-        from .max_a import max_a_request_builder
+        from .max_a.max_a_request_builder import MaxARequestBuilder
 
-        return max_a_request_builder.MaxARequestBuilder(self.request_adapter, self.path_parameters)
+        return MaxARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def mduration(self) -> mduration_request_builder.MdurationRequestBuilder:
+    def mduration(self) -> MdurationRequestBuilder:
         """
         Provides operations to call the mduration method.
         """
-        from .mduration import mduration_request_builder
+        from .mduration.mduration_request_builder import MdurationRequestBuilder
 
-        return mduration_request_builder.MdurationRequestBuilder(self.request_adapter, self.path_parameters)
+        return MdurationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def median(self) -> median_request_builder.MedianRequestBuilder:
+    def median(self) -> MedianRequestBuilder:
         """
         Provides operations to call the median method.
         """
-        from .median import median_request_builder
+        from .median.median_request_builder import MedianRequestBuilder
 
-        return median_request_builder.MedianRequestBuilder(self.request_adapter, self.path_parameters)
+        return MedianRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def mid(self) -> mid_request_builder.MidRequestBuilder:
+    def mid(self) -> MidRequestBuilder:
         """
         Provides operations to call the mid method.
         """
-        from .mid import mid_request_builder
+        from .mid.mid_request_builder import MidRequestBuilder
 
-        return mid_request_builder.MidRequestBuilder(self.request_adapter, self.path_parameters)
+        return MidRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def midb(self) -> midb_request_builder.MidbRequestBuilder:
+    def midb(self) -> MidbRequestBuilder:
         """
         Provides operations to call the midb method.
         """
-        from .midb import midb_request_builder
+        from .midb.midb_request_builder import MidbRequestBuilder
 
-        return midb_request_builder.MidbRequestBuilder(self.request_adapter, self.path_parameters)
+        return MidbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def min(self) -> min_request_builder.MinRequestBuilder:
+    def min(self) -> MinRequestBuilder:
         """
         Provides operations to call the min method.
         """
-        from .min import min_request_builder
+        from .min.min_request_builder import MinRequestBuilder
 
-        return min_request_builder.MinRequestBuilder(self.request_adapter, self.path_parameters)
+        return MinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def min_a(self) -> min_a_request_builder.MinARequestBuilder:
+    def min_a(self) -> MinARequestBuilder:
         """
         Provides operations to call the minA method.
         """
-        from .min_a import min_a_request_builder
+        from .min_a.min_a_request_builder import MinARequestBuilder
 
-        return min_a_request_builder.MinARequestBuilder(self.request_adapter, self.path_parameters)
+        return MinARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def minute(self) -> minute_request_builder.MinuteRequestBuilder:
+    def minute(self) -> MinuteRequestBuilder:
         """
         Provides operations to call the minute method.
         """
-        from .minute import minute_request_builder
+        from .minute.minute_request_builder import MinuteRequestBuilder
 
-        return minute_request_builder.MinuteRequestBuilder(self.request_adapter, self.path_parameters)
+        return MinuteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def mirr(self) -> mirr_request_builder.MirrRequestBuilder:
+    def mirr(self) -> MirrRequestBuilder:
         """
         Provides operations to call the mirr method.
         """
-        from .mirr import mirr_request_builder
+        from .mirr.mirr_request_builder import MirrRequestBuilder
 
-        return mirr_request_builder.MirrRequestBuilder(self.request_adapter, self.path_parameters)
+        return MirrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def mod(self) -> mod_request_builder.ModRequestBuilder:
+    def mod(self) -> ModRequestBuilder:
         """
         Provides operations to call the mod method.
         """
-        from .mod import mod_request_builder
+        from .mod.mod_request_builder import ModRequestBuilder
 
-        return mod_request_builder.ModRequestBuilder(self.request_adapter, self.path_parameters)
+        return ModRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def month(self) -> month_request_builder.MonthRequestBuilder:
+    def month(self) -> MonthRequestBuilder:
         """
         Provides operations to call the month method.
         """
-        from .month import month_request_builder
+        from .month.month_request_builder import MonthRequestBuilder
 
-        return month_request_builder.MonthRequestBuilder(self.request_adapter, self.path_parameters)
+        return MonthRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def mround(self) -> mround_request_builder.MroundRequestBuilder:
+    def mround(self) -> MroundRequestBuilder:
         """
         Provides operations to call the mround method.
         """
-        from .mround import mround_request_builder
+        from .mround.mround_request_builder import MroundRequestBuilder
 
-        return mround_request_builder.MroundRequestBuilder(self.request_adapter, self.path_parameters)
+        return MroundRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def multi_nomial(self) -> multi_nomial_request_builder.MultiNomialRequestBuilder:
+    def multi_nomial(self) -> MultiNomialRequestBuilder:
         """
         Provides operations to call the multiNomial method.
         """
-        from .multi_nomial import multi_nomial_request_builder
+        from .multi_nomial.multi_nomial_request_builder import MultiNomialRequestBuilder
 
-        return multi_nomial_request_builder.MultiNomialRequestBuilder(self.request_adapter, self.path_parameters)
+        return MultiNomialRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def n(self) -> n_request_builder.NRequestBuilder:
+    def n(self) -> NRequestBuilder:
         """
         Provides operations to call the n method.
         """
-        from .n import n_request_builder
+        from .n.n_request_builder import NRequestBuilder
 
-        return n_request_builder.NRequestBuilder(self.request_adapter, self.path_parameters)
+        return NRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def na(self) -> na_request_builder.NaRequestBuilder:
+    def na(self) -> NaRequestBuilder:
         """
         Provides operations to call the na method.
         """
-        from .na import na_request_builder
+        from .na.na_request_builder import NaRequestBuilder
 
-        return na_request_builder.NaRequestBuilder(self.request_adapter, self.path_parameters)
+        return NaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def neg_binom_dist(self) -> neg_binom_dist_request_builder.NegBinom_DistRequestBuilder:
+    def neg_binom_dist(self) -> NegBinom_DistRequestBuilder:
         """
         Provides operations to call the negBinom_Dist method.
         """
-        from .neg_binom_dist import neg_binom_dist_request_builder
+        from .neg_binom_dist.neg_binom_dist_request_builder import NegBinom_DistRequestBuilder
 
-        return neg_binom_dist_request_builder.NegBinom_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return NegBinom_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def network_days(self) -> network_days_request_builder.NetworkDaysRequestBuilder:
+    def network_days(self) -> NetworkDaysRequestBuilder:
         """
         Provides operations to call the networkDays method.
         """
-        from .network_days import network_days_request_builder
+        from .network_days.network_days_request_builder import NetworkDaysRequestBuilder
 
-        return network_days_request_builder.NetworkDaysRequestBuilder(self.request_adapter, self.path_parameters)
+        return NetworkDaysRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def network_days_intl(self) -> network_days_intl_request_builder.NetworkDays_IntlRequestBuilder:
+    def network_days_intl(self) -> NetworkDays_IntlRequestBuilder:
         """
         Provides operations to call the networkDays_Intl method.
         """
-        from .network_days_intl import network_days_intl_request_builder
+        from .network_days_intl.network_days_intl_request_builder import NetworkDays_IntlRequestBuilder
 
-        return network_days_intl_request_builder.NetworkDays_IntlRequestBuilder(self.request_adapter, self.path_parameters)
+        return NetworkDays_IntlRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def nominal(self) -> nominal_request_builder.NominalRequestBuilder:
+    def nominal(self) -> NominalRequestBuilder:
         """
         Provides operations to call the nominal method.
         """
-        from .nominal import nominal_request_builder
+        from .nominal.nominal_request_builder import NominalRequestBuilder
 
-        return nominal_request_builder.NominalRequestBuilder(self.request_adapter, self.path_parameters)
+        return NominalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def norm_dist(self) -> norm_dist_request_builder.Norm_DistRequestBuilder:
+    def norm_dist(self) -> Norm_DistRequestBuilder:
         """
         Provides operations to call the norm_Dist method.
         """
-        from .norm_dist import norm_dist_request_builder
+        from .norm_dist.norm_dist_request_builder import Norm_DistRequestBuilder
 
-        return norm_dist_request_builder.Norm_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return Norm_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def norm_inv(self) -> norm_inv_request_builder.Norm_InvRequestBuilder:
+    def norm_inv(self) -> Norm_InvRequestBuilder:
         """
         Provides operations to call the norm_Inv method.
         """
-        from .norm_inv import norm_inv_request_builder
+        from .norm_inv.norm_inv_request_builder import Norm_InvRequestBuilder
 
-        return norm_inv_request_builder.Norm_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return Norm_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def norm_s_dist(self) -> norm_s_dist_request_builder.Norm_S_DistRequestBuilder:
+    def norm_s_dist(self) -> Norm_S_DistRequestBuilder:
         """
         Provides operations to call the norm_S_Dist method.
         """
-        from .norm_s_dist import norm_s_dist_request_builder
+        from .norm_s_dist.norm_s_dist_request_builder import Norm_S_DistRequestBuilder
 
-        return norm_s_dist_request_builder.Norm_S_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return Norm_S_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def norm_s_inv(self) -> norm_s_inv_request_builder.Norm_S_InvRequestBuilder:
+    def norm_s_inv(self) -> Norm_S_InvRequestBuilder:
         """
         Provides operations to call the norm_S_Inv method.
         """
-        from .norm_s_inv import norm_s_inv_request_builder
+        from .norm_s_inv.norm_s_inv_request_builder import Norm_S_InvRequestBuilder
 
-        return norm_s_inv_request_builder.Norm_S_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return Norm_S_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def not_(self) -> not_request_builder.NotRequestBuilder:
+    def not_(self) -> NotRequestBuilder:
         """
         Provides operations to call the not method.
         """
-        from .not_ import not_request_builder
+        from .not_.not_request_builder import NotRequestBuilder
 
-        return not_request_builder.NotRequestBuilder(self.request_adapter, self.path_parameters)
+        return NotRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def now(self) -> now_request_builder.NowRequestBuilder:
+    def now(self) -> NowRequestBuilder:
         """
         Provides operations to call the now method.
         """
-        from .now import now_request_builder
+        from .now.now_request_builder import NowRequestBuilder
 
-        return now_request_builder.NowRequestBuilder(self.request_adapter, self.path_parameters)
+        return NowRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def nper(self) -> nper_request_builder.NperRequestBuilder:
+    def nper(self) -> NperRequestBuilder:
         """
         Provides operations to call the nper method.
         """
-        from .nper import nper_request_builder
+        from .nper.nper_request_builder import NperRequestBuilder
 
-        return nper_request_builder.NperRequestBuilder(self.request_adapter, self.path_parameters)
+        return NperRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def npv(self) -> npv_request_builder.NpvRequestBuilder:
+    def npv(self) -> NpvRequestBuilder:
         """
         Provides operations to call the npv method.
         """
-        from .npv import npv_request_builder
+        from .npv.npv_request_builder import NpvRequestBuilder
 
-        return npv_request_builder.NpvRequestBuilder(self.request_adapter, self.path_parameters)
+        return NpvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def number_value(self) -> number_value_request_builder.NumberValueRequestBuilder:
+    def number_value(self) -> NumberValueRequestBuilder:
         """
         Provides operations to call the numberValue method.
         """
-        from .number_value import number_value_request_builder
+        from .number_value.number_value_request_builder import NumberValueRequestBuilder
 
-        return number_value_request_builder.NumberValueRequestBuilder(self.request_adapter, self.path_parameters)
+        return NumberValueRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def oct2_bin(self) -> oct2_bin_request_builder.Oct2BinRequestBuilder:
+    def oct2_bin(self) -> Oct2BinRequestBuilder:
         """
         Provides operations to call the oct2Bin method.
         """
-        from .oct2_bin import oct2_bin_request_builder
+        from .oct2_bin.oct2_bin_request_builder import Oct2BinRequestBuilder
 
-        return oct2_bin_request_builder.Oct2BinRequestBuilder(self.request_adapter, self.path_parameters)
+        return Oct2BinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def oct2_dec(self) -> oct2_dec_request_builder.Oct2DecRequestBuilder:
+    def oct2_dec(self) -> Oct2DecRequestBuilder:
         """
         Provides operations to call the oct2Dec method.
         """
-        from .oct2_dec import oct2_dec_request_builder
+        from .oct2_dec.oct2_dec_request_builder import Oct2DecRequestBuilder
 
-        return oct2_dec_request_builder.Oct2DecRequestBuilder(self.request_adapter, self.path_parameters)
+        return Oct2DecRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def oct2_hex(self) -> oct2_hex_request_builder.Oct2HexRequestBuilder:
+    def oct2_hex(self) -> Oct2HexRequestBuilder:
         """
         Provides operations to call the oct2Hex method.
         """
-        from .oct2_hex import oct2_hex_request_builder
+        from .oct2_hex.oct2_hex_request_builder import Oct2HexRequestBuilder
 
-        return oct2_hex_request_builder.Oct2HexRequestBuilder(self.request_adapter, self.path_parameters)
+        return Oct2HexRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def odd(self) -> odd_request_builder.OddRequestBuilder:
+    def odd(self) -> OddRequestBuilder:
         """
         Provides operations to call the odd method.
         """
-        from .odd import odd_request_builder
+        from .odd.odd_request_builder import OddRequestBuilder
 
-        return odd_request_builder.OddRequestBuilder(self.request_adapter, self.path_parameters)
+        return OddRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def odd_f_price(self) -> odd_f_price_request_builder.OddFPriceRequestBuilder:
+    def odd_f_price(self) -> OddFPriceRequestBuilder:
         """
         Provides operations to call the oddFPrice method.
         """
-        from .odd_f_price import odd_f_price_request_builder
+        from .odd_f_price.odd_f_price_request_builder import OddFPriceRequestBuilder
 
-        return odd_f_price_request_builder.OddFPriceRequestBuilder(self.request_adapter, self.path_parameters)
+        return OddFPriceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def odd_f_yield(self) -> odd_f_yield_request_builder.OddFYieldRequestBuilder:
+    def odd_f_yield(self) -> OddFYieldRequestBuilder:
         """
         Provides operations to call the oddFYield method.
         """
-        from .odd_f_yield import odd_f_yield_request_builder
+        from .odd_f_yield.odd_f_yield_request_builder import OddFYieldRequestBuilder
 
-        return odd_f_yield_request_builder.OddFYieldRequestBuilder(self.request_adapter, self.path_parameters)
+        return OddFYieldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def odd_l_price(self) -> odd_l_price_request_builder.OddLPriceRequestBuilder:
+    def odd_l_price(self) -> OddLPriceRequestBuilder:
         """
         Provides operations to call the oddLPrice method.
         """
-        from .odd_l_price import odd_l_price_request_builder
+        from .odd_l_price.odd_l_price_request_builder import OddLPriceRequestBuilder
 
-        return odd_l_price_request_builder.OddLPriceRequestBuilder(self.request_adapter, self.path_parameters)
+        return OddLPriceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def odd_l_yield(self) -> odd_l_yield_request_builder.OddLYieldRequestBuilder:
+    def odd_l_yield(self) -> OddLYieldRequestBuilder:
         """
         Provides operations to call the oddLYield method.
         """
-        from .odd_l_yield import odd_l_yield_request_builder
+        from .odd_l_yield.odd_l_yield_request_builder import OddLYieldRequestBuilder
 
-        return odd_l_yield_request_builder.OddLYieldRequestBuilder(self.request_adapter, self.path_parameters)
+        return OddLYieldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def or_(self) -> or_request_builder.OrRequestBuilder:
+    def or_(self) -> OrRequestBuilder:
         """
         Provides operations to call the or method.
         """
-        from .or_ import or_request_builder
+        from .or_.or_request_builder import OrRequestBuilder
 
-        return or_request_builder.OrRequestBuilder(self.request_adapter, self.path_parameters)
+        return OrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def pduration(self) -> pduration_request_builder.PdurationRequestBuilder:
+    def pduration(self) -> PdurationRequestBuilder:
         """
         Provides operations to call the pduration method.
         """
-        from .pduration import pduration_request_builder
+        from .pduration.pduration_request_builder import PdurationRequestBuilder
 
-        return pduration_request_builder.PdurationRequestBuilder(self.request_adapter, self.path_parameters)
+        return PdurationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def percentile_exc(self) -> percentile_exc_request_builder.Percentile_ExcRequestBuilder:
+    def percentile_exc(self) -> Percentile_ExcRequestBuilder:
         """
         Provides operations to call the percentile_Exc method.
         """
-        from .percentile_exc import percentile_exc_request_builder
+        from .percentile_exc.percentile_exc_request_builder import Percentile_ExcRequestBuilder
 
-        return percentile_exc_request_builder.Percentile_ExcRequestBuilder(self.request_adapter, self.path_parameters)
+        return Percentile_ExcRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def percentile_inc(self) -> percentile_inc_request_builder.Percentile_IncRequestBuilder:
+    def percentile_inc(self) -> Percentile_IncRequestBuilder:
         """
         Provides operations to call the percentile_Inc method.
         """
-        from .percentile_inc import percentile_inc_request_builder
+        from .percentile_inc.percentile_inc_request_builder import Percentile_IncRequestBuilder
 
-        return percentile_inc_request_builder.Percentile_IncRequestBuilder(self.request_adapter, self.path_parameters)
+        return Percentile_IncRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def percent_rank_exc(self) -> percent_rank_exc_request_builder.PercentRank_ExcRequestBuilder:
+    def percent_rank_exc(self) -> PercentRank_ExcRequestBuilder:
         """
         Provides operations to call the percentRank_Exc method.
         """
-        from .percent_rank_exc import percent_rank_exc_request_builder
+        from .percent_rank_exc.percent_rank_exc_request_builder import PercentRank_ExcRequestBuilder
 
-        return percent_rank_exc_request_builder.PercentRank_ExcRequestBuilder(self.request_adapter, self.path_parameters)
+        return PercentRank_ExcRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def percent_rank_inc(self) -> percent_rank_inc_request_builder.PercentRank_IncRequestBuilder:
+    def percent_rank_inc(self) -> PercentRank_IncRequestBuilder:
         """
         Provides operations to call the percentRank_Inc method.
         """
-        from .percent_rank_inc import percent_rank_inc_request_builder
+        from .percent_rank_inc.percent_rank_inc_request_builder import PercentRank_IncRequestBuilder
 
-        return percent_rank_inc_request_builder.PercentRank_IncRequestBuilder(self.request_adapter, self.path_parameters)
+        return PercentRank_IncRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def permut(self) -> permut_request_builder.PermutRequestBuilder:
+    def permut(self) -> PermutRequestBuilder:
         """
         Provides operations to call the permut method.
         """
-        from .permut import permut_request_builder
+        from .permut.permut_request_builder import PermutRequestBuilder
 
-        return permut_request_builder.PermutRequestBuilder(self.request_adapter, self.path_parameters)
+        return PermutRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def permutationa(self) -> permutationa_request_builder.PermutationaRequestBuilder:
+    def permutationa(self) -> PermutationaRequestBuilder:
         """
         Provides operations to call the permutationa method.
         """
-        from .permutationa import permutationa_request_builder
+        from .permutationa.permutationa_request_builder import PermutationaRequestBuilder
 
-        return permutationa_request_builder.PermutationaRequestBuilder(self.request_adapter, self.path_parameters)
+        return PermutationaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def phi(self) -> phi_request_builder.PhiRequestBuilder:
+    def phi(self) -> PhiRequestBuilder:
         """
         Provides operations to call the phi method.
         """
-        from .phi import phi_request_builder
+        from .phi.phi_request_builder import PhiRequestBuilder
 
-        return phi_request_builder.PhiRequestBuilder(self.request_adapter, self.path_parameters)
+        return PhiRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def pi(self) -> pi_request_builder.PiRequestBuilder:
+    def pi(self) -> PiRequestBuilder:
         """
         Provides operations to call the pi method.
         """
-        from .pi import pi_request_builder
+        from .pi.pi_request_builder import PiRequestBuilder
 
-        return pi_request_builder.PiRequestBuilder(self.request_adapter, self.path_parameters)
+        return PiRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def pmt(self) -> pmt_request_builder.PmtRequestBuilder:
+    def pmt(self) -> PmtRequestBuilder:
         """
         Provides operations to call the pmt method.
         """
-        from .pmt import pmt_request_builder
+        from .pmt.pmt_request_builder import PmtRequestBuilder
 
-        return pmt_request_builder.PmtRequestBuilder(self.request_adapter, self.path_parameters)
+        return PmtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def poisson_dist(self) -> poisson_dist_request_builder.Poisson_DistRequestBuilder:
+    def poisson_dist(self) -> Poisson_DistRequestBuilder:
         """
         Provides operations to call the poisson_Dist method.
         """
-        from .poisson_dist import poisson_dist_request_builder
+        from .poisson_dist.poisson_dist_request_builder import Poisson_DistRequestBuilder
 
-        return poisson_dist_request_builder.Poisson_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return Poisson_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def power(self) -> power_request_builder.PowerRequestBuilder:
+    def power(self) -> PowerRequestBuilder:
         """
         Provides operations to call the power method.
         """
-        from .power import power_request_builder
+        from .power.power_request_builder import PowerRequestBuilder
 
-        return power_request_builder.PowerRequestBuilder(self.request_adapter, self.path_parameters)
+        return PowerRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ppmt(self) -> ppmt_request_builder.PpmtRequestBuilder:
+    def ppmt(self) -> PpmtRequestBuilder:
         """
         Provides operations to call the ppmt method.
         """
-        from .ppmt import ppmt_request_builder
+        from .ppmt.ppmt_request_builder import PpmtRequestBuilder
 
-        return ppmt_request_builder.PpmtRequestBuilder(self.request_adapter, self.path_parameters)
+        return PpmtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def price(self) -> price_request_builder.PriceRequestBuilder:
+    def price(self) -> PriceRequestBuilder:
         """
         Provides operations to call the price method.
         """
-        from .price import price_request_builder
+        from .price.price_request_builder import PriceRequestBuilder
 
-        return price_request_builder.PriceRequestBuilder(self.request_adapter, self.path_parameters)
+        return PriceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def price_disc(self) -> price_disc_request_builder.PriceDiscRequestBuilder:
+    def price_disc(self) -> PriceDiscRequestBuilder:
         """
         Provides operations to call the priceDisc method.
         """
-        from .price_disc import price_disc_request_builder
+        from .price_disc.price_disc_request_builder import PriceDiscRequestBuilder
 
-        return price_disc_request_builder.PriceDiscRequestBuilder(self.request_adapter, self.path_parameters)
+        return PriceDiscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def price_mat(self) -> price_mat_request_builder.PriceMatRequestBuilder:
+    def price_mat(self) -> PriceMatRequestBuilder:
         """
         Provides operations to call the priceMat method.
         """
-        from .price_mat import price_mat_request_builder
+        from .price_mat.price_mat_request_builder import PriceMatRequestBuilder
 
-        return price_mat_request_builder.PriceMatRequestBuilder(self.request_adapter, self.path_parameters)
+        return PriceMatRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def product(self) -> product_request_builder.ProductRequestBuilder:
+    def product(self) -> ProductRequestBuilder:
         """
         Provides operations to call the product method.
         """
-        from .product import product_request_builder
+        from .product.product_request_builder import ProductRequestBuilder
 
-        return product_request_builder.ProductRequestBuilder(self.request_adapter, self.path_parameters)
+        return ProductRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def proper(self) -> proper_request_builder.ProperRequestBuilder:
+    def proper(self) -> ProperRequestBuilder:
         """
         Provides operations to call the proper method.
         """
-        from .proper import proper_request_builder
+        from .proper.proper_request_builder import ProperRequestBuilder
 
-        return proper_request_builder.ProperRequestBuilder(self.request_adapter, self.path_parameters)
+        return ProperRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def pv(self) -> pv_request_builder.PvRequestBuilder:
+    def pv(self) -> PvRequestBuilder:
         """
         Provides operations to call the pv method.
         """
-        from .pv import pv_request_builder
+        from .pv.pv_request_builder import PvRequestBuilder
 
-        return pv_request_builder.PvRequestBuilder(self.request_adapter, self.path_parameters)
+        return PvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def quartile_exc(self) -> quartile_exc_request_builder.Quartile_ExcRequestBuilder:
+    def quartile_exc(self) -> Quartile_ExcRequestBuilder:
         """
         Provides operations to call the quartile_Exc method.
         """
-        from .quartile_exc import quartile_exc_request_builder
+        from .quartile_exc.quartile_exc_request_builder import Quartile_ExcRequestBuilder
 
-        return quartile_exc_request_builder.Quartile_ExcRequestBuilder(self.request_adapter, self.path_parameters)
+        return Quartile_ExcRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def quartile_inc(self) -> quartile_inc_request_builder.Quartile_IncRequestBuilder:
+    def quartile_inc(self) -> Quartile_IncRequestBuilder:
         """
         Provides operations to call the quartile_Inc method.
         """
-        from .quartile_inc import quartile_inc_request_builder
+        from .quartile_inc.quartile_inc_request_builder import Quartile_IncRequestBuilder
 
-        return quartile_inc_request_builder.Quartile_IncRequestBuilder(self.request_adapter, self.path_parameters)
+        return Quartile_IncRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def quotient(self) -> quotient_request_builder.QuotientRequestBuilder:
+    def quotient(self) -> QuotientRequestBuilder:
         """
         Provides operations to call the quotient method.
         """
-        from .quotient import quotient_request_builder
+        from .quotient.quotient_request_builder import QuotientRequestBuilder
 
-        return quotient_request_builder.QuotientRequestBuilder(self.request_adapter, self.path_parameters)
+        return QuotientRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def radians(self) -> radians_request_builder.RadiansRequestBuilder:
+    def radians(self) -> RadiansRequestBuilder:
         """
         Provides operations to call the radians method.
         """
-        from .radians import radians_request_builder
+        from .radians.radians_request_builder import RadiansRequestBuilder
 
-        return radians_request_builder.RadiansRequestBuilder(self.request_adapter, self.path_parameters)
+        return RadiansRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rand(self) -> rand_request_builder.RandRequestBuilder:
+    def rand(self) -> RandRequestBuilder:
         """
         Provides operations to call the rand method.
         """
-        from .rand import rand_request_builder
+        from .rand.rand_request_builder import RandRequestBuilder
 
-        return rand_request_builder.RandRequestBuilder(self.request_adapter, self.path_parameters)
+        return RandRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rand_between(self) -> rand_between_request_builder.RandBetweenRequestBuilder:
+    def rand_between(self) -> RandBetweenRequestBuilder:
         """
         Provides operations to call the randBetween method.
         """
-        from .rand_between import rand_between_request_builder
+        from .rand_between.rand_between_request_builder import RandBetweenRequestBuilder
 
-        return rand_between_request_builder.RandBetweenRequestBuilder(self.request_adapter, self.path_parameters)
+        return RandBetweenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rank_avg(self) -> rank_avg_request_builder.Rank_AvgRequestBuilder:
+    def rank_avg(self) -> Rank_AvgRequestBuilder:
         """
         Provides operations to call the rank_Avg method.
         """
-        from .rank_avg import rank_avg_request_builder
+        from .rank_avg.rank_avg_request_builder import Rank_AvgRequestBuilder
 
-        return rank_avg_request_builder.Rank_AvgRequestBuilder(self.request_adapter, self.path_parameters)
+        return Rank_AvgRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rank_eq(self) -> rank_eq_request_builder.Rank_EqRequestBuilder:
+    def rank_eq(self) -> Rank_EqRequestBuilder:
         """
         Provides operations to call the rank_Eq method.
         """
-        from .rank_eq import rank_eq_request_builder
+        from .rank_eq.rank_eq_request_builder import Rank_EqRequestBuilder
 
-        return rank_eq_request_builder.Rank_EqRequestBuilder(self.request_adapter, self.path_parameters)
+        return Rank_EqRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rate(self) -> rate_request_builder.RateRequestBuilder:
+    def rate(self) -> RateRequestBuilder:
         """
         Provides operations to call the rate method.
         """
-        from .rate import rate_request_builder
+        from .rate.rate_request_builder import RateRequestBuilder
 
-        return rate_request_builder.RateRequestBuilder(self.request_adapter, self.path_parameters)
+        return RateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def received(self) -> received_request_builder.ReceivedRequestBuilder:
+    def received(self) -> ReceivedRequestBuilder:
         """
         Provides operations to call the received method.
         """
-        from .received import received_request_builder
+        from .received.received_request_builder import ReceivedRequestBuilder
 
-        return received_request_builder.ReceivedRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReceivedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def replace(self) -> replace_request_builder.ReplaceRequestBuilder:
+    def replace(self) -> ReplaceRequestBuilder:
         """
         Provides operations to call the replace method.
         """
-        from .replace import replace_request_builder
+        from .replace.replace_request_builder import ReplaceRequestBuilder
 
-        return replace_request_builder.ReplaceRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReplaceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def replace_b(self) -> replace_b_request_builder.ReplaceBRequestBuilder:
+    def replace_b(self) -> ReplaceBRequestBuilder:
         """
         Provides operations to call the replaceB method.
         """
-        from .replace_b import replace_b_request_builder
+        from .replace_b.replace_b_request_builder import ReplaceBRequestBuilder
 
-        return replace_b_request_builder.ReplaceBRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReplaceBRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rept(self) -> rept_request_builder.ReptRequestBuilder:
+    def rept(self) -> ReptRequestBuilder:
         """
         Provides operations to call the rept method.
         """
-        from .rept import rept_request_builder
+        from .rept.rept_request_builder import ReptRequestBuilder
 
-        return rept_request_builder.ReptRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReptRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def right(self) -> right_request_builder.RightRequestBuilder:
+    def right(self) -> RightRequestBuilder:
         """
         Provides operations to call the right method.
         """
-        from .right import right_request_builder
+        from .right.right_request_builder import RightRequestBuilder
 
-        return right_request_builder.RightRequestBuilder(self.request_adapter, self.path_parameters)
+        return RightRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rightb(self) -> rightb_request_builder.RightbRequestBuilder:
+    def rightb(self) -> RightbRequestBuilder:
         """
         Provides operations to call the rightb method.
         """
-        from .rightb import rightb_request_builder
+        from .rightb.rightb_request_builder import RightbRequestBuilder
 
-        return rightb_request_builder.RightbRequestBuilder(self.request_adapter, self.path_parameters)
+        return RightbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def roman(self) -> roman_request_builder.RomanRequestBuilder:
+    def roman(self) -> RomanRequestBuilder:
         """
         Provides operations to call the roman method.
         """
-        from .roman import roman_request_builder
+        from .roman.roman_request_builder import RomanRequestBuilder
 
-        return roman_request_builder.RomanRequestBuilder(self.request_adapter, self.path_parameters)
+        return RomanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def round(self) -> round_request_builder.RoundRequestBuilder:
+    def round(self) -> RoundRequestBuilder:
         """
         Provides operations to call the round method.
         """
-        from .round import round_request_builder
+        from .round.round_request_builder import RoundRequestBuilder
 
-        return round_request_builder.RoundRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoundRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def round_down(self) -> round_down_request_builder.RoundDownRequestBuilder:
+    def round_down(self) -> RoundDownRequestBuilder:
         """
         Provides operations to call the roundDown method.
         """
-        from .round_down import round_down_request_builder
+        from .round_down.round_down_request_builder import RoundDownRequestBuilder
 
-        return round_down_request_builder.RoundDownRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoundDownRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def round_up(self) -> round_up_request_builder.RoundUpRequestBuilder:
+    def round_up(self) -> RoundUpRequestBuilder:
         """
         Provides operations to call the roundUp method.
         """
-        from .round_up import round_up_request_builder
+        from .round_up.round_up_request_builder import RoundUpRequestBuilder
 
-        return round_up_request_builder.RoundUpRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoundUpRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rows(self) -> rows_request_builder.RowsRequestBuilder:
+    def rows(self) -> RowsRequestBuilder:
         """
         Provides operations to call the rows method.
         """
-        from .rows import rows_request_builder
+        from .rows.rows_request_builder import RowsRequestBuilder
 
-        return rows_request_builder.RowsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RowsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rri(self) -> rri_request_builder.RriRequestBuilder:
+    def rri(self) -> RriRequestBuilder:
         """
         Provides operations to call the rri method.
         """
-        from .rri import rri_request_builder
+        from .rri.rri_request_builder import RriRequestBuilder
 
-        return rri_request_builder.RriRequestBuilder(self.request_adapter, self.path_parameters)
+        return RriRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sec(self) -> sec_request_builder.SecRequestBuilder:
+    def sec(self) -> SecRequestBuilder:
         """
         Provides operations to call the sec method.
         """
-        from .sec import sec_request_builder
+        from .sec.sec_request_builder import SecRequestBuilder
 
-        return sec_request_builder.SecRequestBuilder(self.request_adapter, self.path_parameters)
+        return SecRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sech(self) -> sech_request_builder.SechRequestBuilder:
+    def sech(self) -> SechRequestBuilder:
         """
         Provides operations to call the sech method.
         """
-        from .sech import sech_request_builder
+        from .sech.sech_request_builder import SechRequestBuilder
 
-        return sech_request_builder.SechRequestBuilder(self.request_adapter, self.path_parameters)
+        return SechRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def second(self) -> second_request_builder.SecondRequestBuilder:
+    def second(self) -> SecondRequestBuilder:
         """
         Provides operations to call the second method.
         """
-        from .second import second_request_builder
+        from .second.second_request_builder import SecondRequestBuilder
 
-        return second_request_builder.SecondRequestBuilder(self.request_adapter, self.path_parameters)
+        return SecondRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def series_sum(self) -> series_sum_request_builder.SeriesSumRequestBuilder:
+    def series_sum(self) -> SeriesSumRequestBuilder:
         """
         Provides operations to call the seriesSum method.
         """
-        from .series_sum import series_sum_request_builder
+        from .series_sum.series_sum_request_builder import SeriesSumRequestBuilder
 
-        return series_sum_request_builder.SeriesSumRequestBuilder(self.request_adapter, self.path_parameters)
+        return SeriesSumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sheet(self) -> sheet_request_builder.SheetRequestBuilder:
+    def sheet(self) -> SheetRequestBuilder:
         """
         Provides operations to call the sheet method.
         """
-        from .sheet import sheet_request_builder
+        from .sheet.sheet_request_builder import SheetRequestBuilder
 
-        return sheet_request_builder.SheetRequestBuilder(self.request_adapter, self.path_parameters)
+        return SheetRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sheets(self) -> sheets_request_builder.SheetsRequestBuilder:
+    def sheets(self) -> SheetsRequestBuilder:
         """
         Provides operations to call the sheets method.
         """
-        from .sheets import sheets_request_builder
+        from .sheets.sheets_request_builder import SheetsRequestBuilder
 
-        return sheets_request_builder.SheetsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SheetsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sign(self) -> sign_request_builder.SignRequestBuilder:
+    def sign(self) -> SignRequestBuilder:
         """
         Provides operations to call the sign method.
         """
-        from .sign import sign_request_builder
+        from .sign.sign_request_builder import SignRequestBuilder
 
-        return sign_request_builder.SignRequestBuilder(self.request_adapter, self.path_parameters)
+        return SignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sin(self) -> sin_request_builder.SinRequestBuilder:
+    def sin(self) -> SinRequestBuilder:
         """
         Provides operations to call the sin method.
         """
-        from .sin import sin_request_builder
+        from .sin.sin_request_builder import SinRequestBuilder
 
-        return sin_request_builder.SinRequestBuilder(self.request_adapter, self.path_parameters)
+        return SinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sinh(self) -> sinh_request_builder.SinhRequestBuilder:
+    def sinh(self) -> SinhRequestBuilder:
         """
         Provides operations to call the sinh method.
         """
-        from .sinh import sinh_request_builder
+        from .sinh.sinh_request_builder import SinhRequestBuilder
 
-        return sinh_request_builder.SinhRequestBuilder(self.request_adapter, self.path_parameters)
+        return SinhRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def skew(self) -> skew_request_builder.SkewRequestBuilder:
+    def skew(self) -> SkewRequestBuilder:
         """
         Provides operations to call the skew method.
         """
-        from .skew import skew_request_builder
+        from .skew.skew_request_builder import SkewRequestBuilder
 
-        return skew_request_builder.SkewRequestBuilder(self.request_adapter, self.path_parameters)
+        return SkewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def skew_p(self) -> skew_p_request_builder.Skew_pRequestBuilder:
+    def skew_p(self) -> Skew_pRequestBuilder:
         """
         Provides operations to call the skew_p method.
         """
-        from .skew_p import skew_p_request_builder
+        from .skew_p.skew_p_request_builder import Skew_pRequestBuilder
 
-        return skew_p_request_builder.Skew_pRequestBuilder(self.request_adapter, self.path_parameters)
+        return Skew_pRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sln(self) -> sln_request_builder.SlnRequestBuilder:
+    def sln(self) -> SlnRequestBuilder:
         """
         Provides operations to call the sln method.
         """
-        from .sln import sln_request_builder
+        from .sln.sln_request_builder import SlnRequestBuilder
 
-        return sln_request_builder.SlnRequestBuilder(self.request_adapter, self.path_parameters)
+        return SlnRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def small(self) -> small_request_builder.SmallRequestBuilder:
+    def small(self) -> SmallRequestBuilder:
         """
         Provides operations to call the small method.
         """
-        from .small import small_request_builder
+        from .small.small_request_builder import SmallRequestBuilder
 
-        return small_request_builder.SmallRequestBuilder(self.request_adapter, self.path_parameters)
+        return SmallRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sqrt(self) -> sqrt_request_builder.SqrtRequestBuilder:
+    def sqrt(self) -> SqrtRequestBuilder:
         """
         Provides operations to call the sqrt method.
         """
-        from .sqrt import sqrt_request_builder
+        from .sqrt.sqrt_request_builder import SqrtRequestBuilder
 
-        return sqrt_request_builder.SqrtRequestBuilder(self.request_adapter, self.path_parameters)
+        return SqrtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sqrt_pi(self) -> sqrt_pi_request_builder.SqrtPiRequestBuilder:
+    def sqrt_pi(self) -> SqrtPiRequestBuilder:
         """
         Provides operations to call the sqrtPi method.
         """
-        from .sqrt_pi import sqrt_pi_request_builder
+        from .sqrt_pi.sqrt_pi_request_builder import SqrtPiRequestBuilder
 
-        return sqrt_pi_request_builder.SqrtPiRequestBuilder(self.request_adapter, self.path_parameters)
+        return SqrtPiRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def standardize(self) -> standardize_request_builder.StandardizeRequestBuilder:
+    def standardize(self) -> StandardizeRequestBuilder:
         """
         Provides operations to call the standardize method.
         """
-        from .standardize import standardize_request_builder
+        from .standardize.standardize_request_builder import StandardizeRequestBuilder
 
-        return standardize_request_builder.StandardizeRequestBuilder(self.request_adapter, self.path_parameters)
+        return StandardizeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def st_dev_p(self) -> st_dev_p_request_builder.StDev_PRequestBuilder:
+    def st_dev_p(self) -> StDev_PRequestBuilder:
         """
         Provides operations to call the stDev_P method.
         """
-        from .st_dev_p import st_dev_p_request_builder
+        from .st_dev_p.st_dev_p_request_builder import StDev_PRequestBuilder
 
-        return st_dev_p_request_builder.StDev_PRequestBuilder(self.request_adapter, self.path_parameters)
+        return StDev_PRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def st_dev_s(self) -> st_dev_s_request_builder.StDev_SRequestBuilder:
+    def st_dev_s(self) -> StDev_SRequestBuilder:
         """
         Provides operations to call the stDev_S method.
         """
-        from .st_dev_s import st_dev_s_request_builder
+        from .st_dev_s.st_dev_s_request_builder import StDev_SRequestBuilder
 
-        return st_dev_s_request_builder.StDev_SRequestBuilder(self.request_adapter, self.path_parameters)
+        return StDev_SRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def st_dev_a(self) -> st_dev_a_request_builder.StDevARequestBuilder:
+    def st_dev_a(self) -> StDevARequestBuilder:
         """
         Provides operations to call the stDevA method.
         """
-        from .st_dev_a import st_dev_a_request_builder
+        from .st_dev_a.st_dev_a_request_builder import StDevARequestBuilder
 
-        return st_dev_a_request_builder.StDevARequestBuilder(self.request_adapter, self.path_parameters)
+        return StDevARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def st_dev_p_a(self) -> st_dev_p_a_request_builder.StDevPARequestBuilder:
+    def st_dev_p_a(self) -> StDevPARequestBuilder:
         """
         Provides operations to call the stDevPA method.
         """
-        from .st_dev_p_a import st_dev_p_a_request_builder
+        from .st_dev_p_a.st_dev_p_a_request_builder import StDevPARequestBuilder
 
-        return st_dev_p_a_request_builder.StDevPARequestBuilder(self.request_adapter, self.path_parameters)
+        return StDevPARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def substitute(self) -> substitute_request_builder.SubstituteRequestBuilder:
+    def substitute(self) -> SubstituteRequestBuilder:
         """
         Provides operations to call the substitute method.
         """
-        from .substitute import substitute_request_builder
+        from .substitute.substitute_request_builder import SubstituteRequestBuilder
 
-        return substitute_request_builder.SubstituteRequestBuilder(self.request_adapter, self.path_parameters)
+        return SubstituteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def subtotal(self) -> subtotal_request_builder.SubtotalRequestBuilder:
+    def subtotal(self) -> SubtotalRequestBuilder:
         """
         Provides operations to call the subtotal method.
         """
-        from .subtotal import subtotal_request_builder
+        from .subtotal.subtotal_request_builder import SubtotalRequestBuilder
 
-        return subtotal_request_builder.SubtotalRequestBuilder(self.request_adapter, self.path_parameters)
+        return SubtotalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sum(self) -> sum_request_builder.SumRequestBuilder:
+    def sum(self) -> SumRequestBuilder:
         """
         Provides operations to call the sum method.
         """
-        from .sum import sum_request_builder
+        from .sum.sum_request_builder import SumRequestBuilder
 
-        return sum_request_builder.SumRequestBuilder(self.request_adapter, self.path_parameters)
+        return SumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sum_if(self) -> sum_if_request_builder.SumIfRequestBuilder:
+    def sum_if(self) -> SumIfRequestBuilder:
         """
         Provides operations to call the sumIf method.
         """
-        from .sum_if import sum_if_request_builder
+        from .sum_if.sum_if_request_builder import SumIfRequestBuilder
 
-        return sum_if_request_builder.SumIfRequestBuilder(self.request_adapter, self.path_parameters)
+        return SumIfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sum_ifs(self) -> sum_ifs_request_builder.SumIfsRequestBuilder:
+    def sum_ifs(self) -> SumIfsRequestBuilder:
         """
         Provides operations to call the sumIfs method.
         """
-        from .sum_ifs import sum_ifs_request_builder
+        from .sum_ifs.sum_ifs_request_builder import SumIfsRequestBuilder
 
-        return sum_ifs_request_builder.SumIfsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SumIfsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sum_sq(self) -> sum_sq_request_builder.SumSqRequestBuilder:
+    def sum_sq(self) -> SumSqRequestBuilder:
         """
         Provides operations to call the sumSq method.
         """
-        from .sum_sq import sum_sq_request_builder
+        from .sum_sq.sum_sq_request_builder import SumSqRequestBuilder
 
-        return sum_sq_request_builder.SumSqRequestBuilder(self.request_adapter, self.path_parameters)
+        return SumSqRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def syd(self) -> syd_request_builder.SydRequestBuilder:
+    def syd(self) -> SydRequestBuilder:
         """
         Provides operations to call the syd method.
         """
-        from .syd import syd_request_builder
+        from .syd.syd_request_builder import SydRequestBuilder
 
-        return syd_request_builder.SydRequestBuilder(self.request_adapter, self.path_parameters)
+        return SydRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def t(self) -> t_request_builder.TRequestBuilder:
+    def t(self) -> TRequestBuilder:
         """
         Provides operations to call the t method.
         """
-        from .t import t_request_builder
+        from .t.t_request_builder import TRequestBuilder
 
-        return t_request_builder.TRequestBuilder(self.request_adapter, self.path_parameters)
+        return TRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def t_dist(self) -> t_dist_request_builder.T_DistRequestBuilder:
+    def t_dist(self) -> T_DistRequestBuilder:
         """
         Provides operations to call the t_Dist method.
         """
-        from .t_dist import t_dist_request_builder
+        from .t_dist.t_dist_request_builder import T_DistRequestBuilder
 
-        return t_dist_request_builder.T_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return T_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def t_dist_2_t(self) -> t_dist_2_t_request_builder.T_Dist_2TRequestBuilder:
+    def t_dist_2_t(self) -> T_Dist_2TRequestBuilder:
         """
         Provides operations to call the t_Dist_2T method.
         """
-        from .t_dist_2_t import t_dist_2_t_request_builder
+        from .t_dist_2_t.t_dist_2_t_request_builder import T_Dist_2TRequestBuilder
 
-        return t_dist_2_t_request_builder.T_Dist_2TRequestBuilder(self.request_adapter, self.path_parameters)
+        return T_Dist_2TRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def t_dist_r_t(self) -> t_dist_r_t_request_builder.T_Dist_RTRequestBuilder:
+    def t_dist_r_t(self) -> T_Dist_RTRequestBuilder:
         """
         Provides operations to call the t_Dist_RT method.
         """
-        from .t_dist_r_t import t_dist_r_t_request_builder
+        from .t_dist_r_t.t_dist_r_t_request_builder import T_Dist_RTRequestBuilder
 
-        return t_dist_r_t_request_builder.T_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
+        return T_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def t_inv(self) -> t_inv_request_builder.T_InvRequestBuilder:
+    def t_inv(self) -> T_InvRequestBuilder:
         """
         Provides operations to call the t_Inv method.
         """
-        from .t_inv import t_inv_request_builder
+        from .t_inv.t_inv_request_builder import T_InvRequestBuilder
 
-        return t_inv_request_builder.T_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return T_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def t_inv_2_t(self) -> t_inv_2_t_request_builder.T_Inv_2TRequestBuilder:
+    def t_inv_2_t(self) -> T_Inv_2TRequestBuilder:
         """
         Provides operations to call the t_Inv_2T method.
         """
-        from .t_inv_2_t import t_inv_2_t_request_builder
+        from .t_inv_2_t.t_inv_2_t_request_builder import T_Inv_2TRequestBuilder
 
-        return t_inv_2_t_request_builder.T_Inv_2TRequestBuilder(self.request_adapter, self.path_parameters)
+        return T_Inv_2TRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tan(self) -> tan_request_builder.TanRequestBuilder:
+    def tan(self) -> TanRequestBuilder:
         """
         Provides operations to call the tan method.
         """
-        from .tan import tan_request_builder
+        from .tan.tan_request_builder import TanRequestBuilder
 
-        return tan_request_builder.TanRequestBuilder(self.request_adapter, self.path_parameters)
+        return TanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tanh(self) -> tanh_request_builder.TanhRequestBuilder:
+    def tanh(self) -> TanhRequestBuilder:
         """
         Provides operations to call the tanh method.
         """
-        from .tanh import tanh_request_builder
+        from .tanh.tanh_request_builder import TanhRequestBuilder
 
-        return tanh_request_builder.TanhRequestBuilder(self.request_adapter, self.path_parameters)
+        return TanhRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tbill_eq(self) -> tbill_eq_request_builder.TbillEqRequestBuilder:
+    def tbill_eq(self) -> TbillEqRequestBuilder:
         """
         Provides operations to call the tbillEq method.
         """
-        from .tbill_eq import tbill_eq_request_builder
+        from .tbill_eq.tbill_eq_request_builder import TbillEqRequestBuilder
 
-        return tbill_eq_request_builder.TbillEqRequestBuilder(self.request_adapter, self.path_parameters)
+        return TbillEqRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tbill_price(self) -> tbill_price_request_builder.TbillPriceRequestBuilder:
+    def tbill_price(self) -> TbillPriceRequestBuilder:
         """
         Provides operations to call the tbillPrice method.
         """
-        from .tbill_price import tbill_price_request_builder
+        from .tbill_price.tbill_price_request_builder import TbillPriceRequestBuilder
 
-        return tbill_price_request_builder.TbillPriceRequestBuilder(self.request_adapter, self.path_parameters)
+        return TbillPriceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tbill_yield(self) -> tbill_yield_request_builder.TbillYieldRequestBuilder:
+    def tbill_yield(self) -> TbillYieldRequestBuilder:
         """
         Provides operations to call the tbillYield method.
         """
-        from .tbill_yield import tbill_yield_request_builder
+        from .tbill_yield.tbill_yield_request_builder import TbillYieldRequestBuilder
 
-        return tbill_yield_request_builder.TbillYieldRequestBuilder(self.request_adapter, self.path_parameters)
+        return TbillYieldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def text(self) -> text_request_builder.TextRequestBuilder:
+    def text(self) -> TextRequestBuilder:
         """
         Provides operations to call the text method.
         """
-        from .text import text_request_builder
+        from .text.text_request_builder import TextRequestBuilder
 
-        return text_request_builder.TextRequestBuilder(self.request_adapter, self.path_parameters)
+        return TextRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def time(self) -> time_request_builder.TimeRequestBuilder:
+    def time(self) -> TimeRequestBuilder:
         """
         Provides operations to call the time method.
         """
-        from .time import time_request_builder
+        from .time.time_request_builder import TimeRequestBuilder
 
-        return time_request_builder.TimeRequestBuilder(self.request_adapter, self.path_parameters)
+        return TimeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def timevalue(self) -> timevalue_request_builder.TimevalueRequestBuilder:
+    def timevalue(self) -> TimevalueRequestBuilder:
         """
         Provides operations to call the timevalue method.
         """
-        from .timevalue import timevalue_request_builder
+        from .timevalue.timevalue_request_builder import TimevalueRequestBuilder
 
-        return timevalue_request_builder.TimevalueRequestBuilder(self.request_adapter, self.path_parameters)
+        return TimevalueRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def today(self) -> today_request_builder.TodayRequestBuilder:
+    def today(self) -> TodayRequestBuilder:
         """
         Provides operations to call the today method.
         """
-        from .today import today_request_builder
+        from .today.today_request_builder import TodayRequestBuilder
 
-        return today_request_builder.TodayRequestBuilder(self.request_adapter, self.path_parameters)
+        return TodayRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def trim(self) -> trim_request_builder.TrimRequestBuilder:
+    def trim(self) -> TrimRequestBuilder:
         """
         Provides operations to call the trim method.
         """
-        from .trim import trim_request_builder
+        from .trim.trim_request_builder import TrimRequestBuilder
 
-        return trim_request_builder.TrimRequestBuilder(self.request_adapter, self.path_parameters)
+        return TrimRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def trim_mean(self) -> trim_mean_request_builder.TrimMeanRequestBuilder:
+    def trim_mean(self) -> TrimMeanRequestBuilder:
         """
         Provides operations to call the trimMean method.
         """
-        from .trim_mean import trim_mean_request_builder
+        from .trim_mean.trim_mean_request_builder import TrimMeanRequestBuilder
 
-        return trim_mean_request_builder.TrimMeanRequestBuilder(self.request_adapter, self.path_parameters)
+        return TrimMeanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def true_(self) -> true_request_builder.TrueRequestBuilder:
+    def true_(self) -> TrueRequestBuilder:
         """
         Provides operations to call the true method.
         """
-        from .true_ import true_request_builder
+        from .true_.true_request_builder import TrueRequestBuilder
 
-        return true_request_builder.TrueRequestBuilder(self.request_adapter, self.path_parameters)
+        return TrueRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def trunc(self) -> trunc_request_builder.TruncRequestBuilder:
+    def trunc(self) -> TruncRequestBuilder:
         """
         Provides operations to call the trunc method.
         """
-        from .trunc import trunc_request_builder
+        from .trunc.trunc_request_builder import TruncRequestBuilder
 
-        return trunc_request_builder.TruncRequestBuilder(self.request_adapter, self.path_parameters)
+        return TruncRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def type(self) -> type_request_builder.TypeRequestBuilder:
+    def type(self) -> TypeRequestBuilder:
         """
         Provides operations to call the type method.
         """
-        from .type import type_request_builder
+        from .type.type_request_builder import TypeRequestBuilder
 
-        return type_request_builder.TypeRequestBuilder(self.request_adapter, self.path_parameters)
+        return TypeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def unichar(self) -> unichar_request_builder.UnicharRequestBuilder:
+    def unichar(self) -> UnicharRequestBuilder:
         """
         Provides operations to call the unichar method.
         """
-        from .unichar import unichar_request_builder
+        from .unichar.unichar_request_builder import UnicharRequestBuilder
 
-        return unichar_request_builder.UnicharRequestBuilder(self.request_adapter, self.path_parameters)
+        return UnicharRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def unicode(self) -> unicode_request_builder.UnicodeRequestBuilder:
+    def unicode(self) -> UnicodeRequestBuilder:
         """
         Provides operations to call the unicode method.
         """
-        from .unicode import unicode_request_builder
+        from .unicode.unicode_request_builder import UnicodeRequestBuilder
 
-        return unicode_request_builder.UnicodeRequestBuilder(self.request_adapter, self.path_parameters)
+        return UnicodeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def upper(self) -> upper_request_builder.UpperRequestBuilder:
+    def upper(self) -> UpperRequestBuilder:
         """
         Provides operations to call the upper method.
         """
-        from .upper import upper_request_builder
+        from .upper.upper_request_builder import UpperRequestBuilder
 
-        return upper_request_builder.UpperRequestBuilder(self.request_adapter, self.path_parameters)
+        return UpperRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def usdollar(self) -> usdollar_request_builder.UsdollarRequestBuilder:
+    def usdollar(self) -> UsdollarRequestBuilder:
         """
         Provides operations to call the usdollar method.
         """
-        from .usdollar import usdollar_request_builder
+        from .usdollar.usdollar_request_builder import UsdollarRequestBuilder
 
-        return usdollar_request_builder.UsdollarRequestBuilder(self.request_adapter, self.path_parameters)
+        return UsdollarRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def value(self) -> value_request_builder.ValueRequestBuilder:
+    def value(self) -> ValueRequestBuilder:
         """
         Provides operations to call the value method.
         """
-        from .value import value_request_builder
+        from .value.value_request_builder import ValueRequestBuilder
 
-        return value_request_builder.ValueRequestBuilder(self.request_adapter, self.path_parameters)
+        return ValueRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def var_p(self) -> var_p_request_builder.Var_PRequestBuilder:
+    def var_p(self) -> Var_PRequestBuilder:
         """
         Provides operations to call the var_P method.
         """
-        from .var_p import var_p_request_builder
+        from .var_p.var_p_request_builder import Var_PRequestBuilder
 
-        return var_p_request_builder.Var_PRequestBuilder(self.request_adapter, self.path_parameters)
+        return Var_PRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def var_s(self) -> var_s_request_builder.Var_SRequestBuilder:
+    def var_s(self) -> Var_SRequestBuilder:
         """
         Provides operations to call the var_S method.
         """
-        from .var_s import var_s_request_builder
+        from .var_s.var_s_request_builder import Var_SRequestBuilder
 
-        return var_s_request_builder.Var_SRequestBuilder(self.request_adapter, self.path_parameters)
+        return Var_SRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def var_a(self) -> var_a_request_builder.VarARequestBuilder:
+    def var_a(self) -> VarARequestBuilder:
         """
         Provides operations to call the varA method.
         """
-        from .var_a import var_a_request_builder
+        from .var_a.var_a_request_builder import VarARequestBuilder
 
-        return var_a_request_builder.VarARequestBuilder(self.request_adapter, self.path_parameters)
+        return VarARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def var_p_a(self) -> var_p_a_request_builder.VarPARequestBuilder:
+    def var_p_a(self) -> VarPARequestBuilder:
         """
         Provides operations to call the varPA method.
         """
-        from .var_p_a import var_p_a_request_builder
+        from .var_p_a.var_p_a_request_builder import VarPARequestBuilder
 
-        return var_p_a_request_builder.VarPARequestBuilder(self.request_adapter, self.path_parameters)
+        return VarPARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def vdb(self) -> vdb_request_builder.VdbRequestBuilder:
+    def vdb(self) -> VdbRequestBuilder:
         """
         Provides operations to call the vdb method.
         """
-        from .vdb import vdb_request_builder
+        from .vdb.vdb_request_builder import VdbRequestBuilder
 
-        return vdb_request_builder.VdbRequestBuilder(self.request_adapter, self.path_parameters)
+        return VdbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def vlookup(self) -> vlookup_request_builder.VlookupRequestBuilder:
+    def vlookup(self) -> VlookupRequestBuilder:
         """
         Provides operations to call the vlookup method.
         """
-        from .vlookup import vlookup_request_builder
+        from .vlookup.vlookup_request_builder import VlookupRequestBuilder
 
-        return vlookup_request_builder.VlookupRequestBuilder(self.request_adapter, self.path_parameters)
+        return VlookupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def weekday(self) -> weekday_request_builder.WeekdayRequestBuilder:
+    def weekday(self) -> WeekdayRequestBuilder:
         """
         Provides operations to call the weekday method.
         """
-        from .weekday import weekday_request_builder
+        from .weekday.weekday_request_builder import WeekdayRequestBuilder
 
-        return weekday_request_builder.WeekdayRequestBuilder(self.request_adapter, self.path_parameters)
+        return WeekdayRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def week_num(self) -> week_num_request_builder.WeekNumRequestBuilder:
+    def week_num(self) -> WeekNumRequestBuilder:
         """
         Provides operations to call the weekNum method.
         """
-        from .week_num import week_num_request_builder
+        from .week_num.week_num_request_builder import WeekNumRequestBuilder
 
-        return week_num_request_builder.WeekNumRequestBuilder(self.request_adapter, self.path_parameters)
+        return WeekNumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def weibull_dist(self) -> weibull_dist_request_builder.Weibull_DistRequestBuilder:
+    def weibull_dist(self) -> Weibull_DistRequestBuilder:
         """
         Provides operations to call the weibull_Dist method.
         """
-        from .weibull_dist import weibull_dist_request_builder
+        from .weibull_dist.weibull_dist_request_builder import Weibull_DistRequestBuilder
 
-        return weibull_dist_request_builder.Weibull_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return Weibull_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def work_day(self) -> work_day_request_builder.WorkDayRequestBuilder:
+    def work_day(self) -> WorkDayRequestBuilder:
         """
         Provides operations to call the workDay method.
         """
-        from .work_day import work_day_request_builder
+        from .work_day.work_day_request_builder import WorkDayRequestBuilder
 
-        return work_day_request_builder.WorkDayRequestBuilder(self.request_adapter, self.path_parameters)
+        return WorkDayRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def work_day_intl(self) -> work_day_intl_request_builder.WorkDay_IntlRequestBuilder:
+    def work_day_intl(self) -> WorkDay_IntlRequestBuilder:
         """
         Provides operations to call the workDay_Intl method.
         """
-        from .work_day_intl import work_day_intl_request_builder
+        from .work_day_intl.work_day_intl_request_builder import WorkDay_IntlRequestBuilder
 
-        return work_day_intl_request_builder.WorkDay_IntlRequestBuilder(self.request_adapter, self.path_parameters)
+        return WorkDay_IntlRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def xirr(self) -> xirr_request_builder.XirrRequestBuilder:
+    def xirr(self) -> XirrRequestBuilder:
         """
         Provides operations to call the xirr method.
         """
-        from .xirr import xirr_request_builder
+        from .xirr.xirr_request_builder import XirrRequestBuilder
 
-        return xirr_request_builder.XirrRequestBuilder(self.request_adapter, self.path_parameters)
+        return XirrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def xnpv(self) -> xnpv_request_builder.XnpvRequestBuilder:
+    def xnpv(self) -> XnpvRequestBuilder:
         """
         Provides operations to call the xnpv method.
         """
-        from .xnpv import xnpv_request_builder
+        from .xnpv.xnpv_request_builder import XnpvRequestBuilder
 
-        return xnpv_request_builder.XnpvRequestBuilder(self.request_adapter, self.path_parameters)
+        return XnpvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def xor(self) -> xor_request_builder.XorRequestBuilder:
+    def xor(self) -> XorRequestBuilder:
         """
         Provides operations to call the xor method.
         """
-        from .xor import xor_request_builder
+        from .xor.xor_request_builder import XorRequestBuilder
 
-        return xor_request_builder.XorRequestBuilder(self.request_adapter, self.path_parameters)
+        return XorRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def year(self) -> year_request_builder.YearRequestBuilder:
+    def year(self) -> YearRequestBuilder:
         """
         Provides operations to call the year method.
         """
-        from .year import year_request_builder
+        from .year.year_request_builder import YearRequestBuilder
 
-        return year_request_builder.YearRequestBuilder(self.request_adapter, self.path_parameters)
+        return YearRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def year_frac(self) -> year_frac_request_builder.YearFracRequestBuilder:
+    def year_frac(self) -> YearFracRequestBuilder:
         """
         Provides operations to call the yearFrac method.
         """
-        from .year_frac import year_frac_request_builder
+        from .year_frac.year_frac_request_builder import YearFracRequestBuilder
 
-        return year_frac_request_builder.YearFracRequestBuilder(self.request_adapter, self.path_parameters)
+        return YearFracRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def yield_(self) -> yield_request_builder.YieldRequestBuilder:
+    def yield_(self) -> YieldRequestBuilder:
         """
         Provides operations to call the yield method.
         """
-        from .yield_ import yield_request_builder
+        from .yield_.yield_request_builder import YieldRequestBuilder
 
-        return yield_request_builder.YieldRequestBuilder(self.request_adapter, self.path_parameters)
+        return YieldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def yield_disc(self) -> yield_disc_request_builder.YieldDiscRequestBuilder:
+    def yield_disc(self) -> YieldDiscRequestBuilder:
         """
         Provides operations to call the yieldDisc method.
         """
-        from .yield_disc import yield_disc_request_builder
+        from .yield_disc.yield_disc_request_builder import YieldDiscRequestBuilder
 
-        return yield_disc_request_builder.YieldDiscRequestBuilder(self.request_adapter, self.path_parameters)
+        return YieldDiscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def yield_mat(self) -> yield_mat_request_builder.YieldMatRequestBuilder:
+    def yield_mat(self) -> YieldMatRequestBuilder:
         """
         Provides operations to call the yieldMat method.
         """
-        from .yield_mat import yield_mat_request_builder
+        from .yield_mat.yield_mat_request_builder import YieldMatRequestBuilder
 
-        return yield_mat_request_builder.YieldMatRequestBuilder(self.request_adapter, self.path_parameters)
+        return YieldMatRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def z_test(self) -> z_test_request_builder.Z_TestRequestBuilder:
+    def z_test(self) -> Z_TestRequestBuilder:
         """
         Provides operations to call the z_Test method.
         """
-        from .z_test import z_test_request_builder
+        from .z_test.z_test_request_builder import Z_TestRequestBuilder
 
-        return z_test_request_builder.Z_TestRequestBuilder(self.request_adapter, self.path_parameters)
+        return Z_TestRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class FunctionsRequestBuilderDeleteRequestConfiguration():

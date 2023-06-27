@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import search_entity
-    from ..models.o_data_errors import o_data_error
-    from .query import query_request_builder
+    from ..models.o_data_errors.o_data_error import ODataError
+    from ..models.search_entity import SearchEntity
+    from .query.query_request_builder import QueryRequestBuilder
 
 class SearchRequestBuilder():
     """
@@ -36,52 +36,52 @@ class SearchRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SearchRequestBuilderGetRequestConfiguration] = None) -> Optional[search_entity.SearchEntity]:
+    async def get(self,request_configuration: Optional[SearchRequestBuilderGetRequestConfiguration] = None) -> Optional[SearchEntity]:
         """
         Get search
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[search_entity.SearchEntity]
+        Returns: Optional[SearchEntity]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import search_entity
+        from ..models.search_entity import SearchEntity
 
-        return await self.request_adapter.send_async(request_info, search_entity.SearchEntity, error_mapping)
+        return await self.request_adapter.send_async(request_info, SearchEntity, error_mapping)
     
-    async def patch(self,body: Optional[search_entity.SearchEntity] = None, request_configuration: Optional[SearchRequestBuilderPatchRequestConfiguration] = None) -> Optional[search_entity.SearchEntity]:
+    async def patch(self,body: Optional[SearchEntity] = None, request_configuration: Optional[SearchRequestBuilderPatchRequestConfiguration] = None) -> Optional[SearchEntity]:
         """
         Update search
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[search_entity.SearchEntity]
+        Returns: Optional[SearchEntity]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import search_entity
+        from ..models.search_entity import SearchEntity
 
-        return await self.request_adapter.send_async(request_info, search_entity.SearchEntity, error_mapping)
+        return await self.request_adapter.send_async(request_info, SearchEntity, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SearchRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -101,7 +101,7 @@ class SearchRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[search_entity.SearchEntity] = None, request_configuration: Optional[SearchRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SearchEntity] = None, request_configuration: Optional[SearchRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update search
         Args:
@@ -123,13 +123,13 @@ class SearchRequestBuilder():
         return request_info
     
     @property
-    def query(self) -> query_request_builder.QueryRequestBuilder:
+    def query(self) -> QueryRequestBuilder:
         """
         Provides operations to call the query method.
         """
-        from .query import query_request_builder
+        from .query.query_request_builder import QueryRequestBuilder
 
-        return query_request_builder.QueryRequestBuilder(self.request_adapter, self.path_parameters)
+        return QueryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SearchRequestBuilderGetQueryParameters():

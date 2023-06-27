@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attendee, attendee_base, email_address
+    from .attendee import Attendee
+    from .attendee_base import AttendeeBase
+    from .email_address import EmailAddress
 
 @dataclass
 class Recipient(AdditionalDataHolder, Parsable):
@@ -12,7 +14,7 @@ class Recipient(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The recipient's email address.
-    email_address: Optional[email_address.EmailAddress] = None
+    email_address: Optional[EmailAddress] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -31,13 +33,13 @@ class Recipient(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.attendee".casefold():
-            from . import attendee
+            from .attendee import Attendee
 
-            return attendee.Attendee()
+            return Attendee()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.attendeeBase".casefold():
-            from . import attendee_base
+            from .attendee_base import AttendeeBase
 
-            return attendee_base.AttendeeBase()
+            return AttendeeBase()
         return Recipient()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -45,12 +47,16 @@ class Recipient(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attendee, attendee_base, email_address
+        from .attendee import Attendee
+        from .attendee_base import AttendeeBase
+        from .email_address import EmailAddress
 
-        from . import attendee, attendee_base, email_address
+        from .attendee import Attendee
+        from .attendee_base import AttendeeBase
+        from .email_address import EmailAddress
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(EmailAddress)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

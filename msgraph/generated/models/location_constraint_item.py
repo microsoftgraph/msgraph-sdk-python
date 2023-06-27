@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import location
+    from .location import Location
 
-from . import location
+from .location import Location
 
 @dataclass
-class LocationConstraintItem(location.Location):
+class LocationConstraintItem(Location):
     odata_type = "#microsoft.graph.locationConstraintItem"
     # If set to true and the specified resource is busy, findMeetingTimes looks for another resource that is free. If set to false and the specified resource is busy, findMeetingTimes returns the resource best ranked in the user's cache without checking if it's free. Default is true.
     resolve_availability: Optional[bool] = None
@@ -31,9 +31,9 @@ class LocationConstraintItem(location.Location):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import location
+        from .location import Location
 
-        from . import location
+        from .location import Location
 
         fields: Dict[str, Callable[[Any], None]] = {
             "resolveAvailability": lambda n : setattr(self, 'resolve_availability', n.get_bool_value()),

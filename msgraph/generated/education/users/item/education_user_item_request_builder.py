@@ -10,14 +10,14 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import education_user
-    from ....models.o_data_errors import o_data_error
-    from .assignments import assignments_request_builder
-    from .classes import classes_request_builder
-    from .rubrics import rubrics_request_builder
-    from .schools import schools_request_builder
-    from .taught_classes import taught_classes_request_builder
-    from .user import user_request_builder
+    from ....models.education_user import EducationUser
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .classes.classes_request_builder import ClassesRequestBuilder
+    from .rubrics.rubrics_request_builder import RubricsRequestBuilder
+    from .schools.schools_request_builder import SchoolsRequestBuilder
+    from .taught_classes.taught_classes_request_builder import TaughtClassesRequestBuilder
+    from .user.user_request_builder import UserRequestBuilder
 
 class EducationUserItemRequestBuilder():
     """
@@ -50,62 +50,62 @@ class EducationUserItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EducationUserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[education_user.EducationUser]:
+    async def get(self,request_configuration: Optional[EducationUserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationUser]:
         """
         Read the properties and relationships of an educationUser object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_user.EducationUser]
+        Returns: Optional[EducationUser]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import education_user
+        from ....models.education_user import EducationUser
 
-        return await self.request_adapter.send_async(request_info, education_user.EducationUser, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationUser, error_mapping)
     
-    async def patch(self,body: Optional[education_user.EducationUser] = None, request_configuration: Optional[EducationUserItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_user.EducationUser]:
+    async def patch(self,body: Optional[EducationUser] = None, request_configuration: Optional[EducationUserItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationUser]:
         """
         Update the properties of an educationUser object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_user.EducationUser]
+        Returns: Optional[EducationUser]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import education_user
+        from ....models.education_user import EducationUser
 
-        return await self.request_adapter.send_async(request_info, education_user.EducationUser, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationUser, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EducationUserItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -141,7 +141,7 @@ class EducationUserItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[education_user.EducationUser] = None, request_configuration: Optional[EducationUserItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EducationUser] = None, request_configuration: Optional[EducationUserItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an educationUser object.
         Args:
@@ -163,58 +163,58 @@ class EducationUserItemRequestBuilder():
         return request_info
     
     @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+    def assignments(self) -> AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.educationUser entity.
         """
-        from .assignments import assignments_request_builder
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def classes(self) -> classes_request_builder.ClassesRequestBuilder:
+    def classes(self) -> ClassesRequestBuilder:
         """
         Provides operations to manage the classes property of the microsoft.graph.educationUser entity.
         """
-        from .classes import classes_request_builder
+        from .classes.classes_request_builder import ClassesRequestBuilder
 
-        return classes_request_builder.ClassesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ClassesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rubrics(self) -> rubrics_request_builder.RubricsRequestBuilder:
+    def rubrics(self) -> RubricsRequestBuilder:
         """
         Provides operations to manage the rubrics property of the microsoft.graph.educationUser entity.
         """
-        from .rubrics import rubrics_request_builder
+        from .rubrics.rubrics_request_builder import RubricsRequestBuilder
 
-        return rubrics_request_builder.RubricsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RubricsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def schools(self) -> schools_request_builder.SchoolsRequestBuilder:
+    def schools(self) -> SchoolsRequestBuilder:
         """
         Provides operations to manage the schools property of the microsoft.graph.educationUser entity.
         """
-        from .schools import schools_request_builder
+        from .schools.schools_request_builder import SchoolsRequestBuilder
 
-        return schools_request_builder.SchoolsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SchoolsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def taught_classes(self) -> taught_classes_request_builder.TaughtClassesRequestBuilder:
+    def taught_classes(self) -> TaughtClassesRequestBuilder:
         """
         Provides operations to manage the taughtClasses property of the microsoft.graph.educationUser entity.
         """
-        from .taught_classes import taught_classes_request_builder
+        from .taught_classes.taught_classes_request_builder import TaughtClassesRequestBuilder
 
-        return taught_classes_request_builder.TaughtClassesRequestBuilder(self.request_adapter, self.path_parameters)
+        return TaughtClassesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user(self) -> user_request_builder.UserRequestBuilder:
+    def user(self) -> UserRequestBuilder:
         """
         Provides operations to manage the user property of the microsoft.graph.educationUser entity.
         """
-        from .user import user_request_builder
+        from .user.user_request_builder import UserRequestBuilder
 
-        return user_request_builder.UserRequestBuilder(self.request_adapter, self.path_parameters)
+        return UserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EducationUserItemRequestBuilderDeleteRequestConfiguration():

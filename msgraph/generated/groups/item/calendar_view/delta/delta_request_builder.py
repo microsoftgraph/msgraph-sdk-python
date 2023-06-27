@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import delta_response
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .delta_response import DeltaResponse
 
 class DeltaRequestBuilder():
     """
@@ -29,33 +29,33 @@ class DeltaRequestBuilder():
         if not request_adapter:
             raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/groups/{group%2Did}/calendarView/delta(){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}"
+        self.url_template: str = "{+baseurl}/groups/{group%2Did}/calendarView/delta(){?startDateTime*,endDateTime*,%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DeltaRequestBuilderGetRequestConfiguration] = None) -> Optional[delta_response.DeltaResponse]:
+    async def get(self,request_configuration: Optional[DeltaRequestBuilderGetRequestConfiguration] = None) -> Optional[DeltaResponse]:
         """
         Get a set of event resources that have been added, deleted, or updated in a **calendarView** (a range of events defined by start and end dates) of the user's primary calendar. Typically, synchronizing events in a **calendarView** in a local store entails a round of multiple **delta** function calls. The initial call is a full synchronization, and every subsequent **delta** call in the same round gets the incremental changes (additions, deletions, or updates). This allows you to maintain and synchronize a local store of events in the specified **calendarView**, without having to fetch all the events of that calendar from the server every time.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delta_response.DeltaResponse]
+        Returns: Optional[DeltaResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import delta_response
+        from .delta_response import DeltaResponse
 
-        return await self.request_adapter.send_async(request_info, delta_response.DeltaResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeltaResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DeltaRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -103,10 +103,17 @@ class DeltaRequestBuilder():
                 return "%24skip"
             if original_name == "top":
                 return "%24top"
+            if original_name == "end_date_time":
+                return "endDateTime"
+            if original_name == "start_date_time":
+                return "startDateTime"
             return original_name
         
         # Include count of items
         count: Optional[bool] = None
+
+        # The end date and time of the time range in the function, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00
+        end_date_time: Optional[str] = None
 
         # Filter items by property values
         filter: Optional[str] = None
@@ -122,6 +129,9 @@ class DeltaRequestBuilder():
 
         # Skip the first n items
         skip: Optional[int] = None
+
+        # The start date and time of the time range in the function, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00
+        start_date_time: Optional[str] = None
 
         # Show only the first n items
         top: Optional[int] = None

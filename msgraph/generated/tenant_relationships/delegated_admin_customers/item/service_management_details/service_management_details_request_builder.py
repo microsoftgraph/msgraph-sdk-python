@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import delegated_admin_service_management_detail, delegated_admin_service_management_detail_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import delegated_admin_service_management_detail_item_request_builder
+    from .....models.delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
+    from .....models.delegated_admin_service_management_detail_collection_response import DelegatedAdminServiceManagementDetailCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.delegated_admin_service_management_detail_item_request_builder import DelegatedAdminServiceManagementDetailItemRequestBuilder
 
 class ServiceManagementDetailsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class ServiceManagementDetailsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_delegated_admin_service_management_detail_id(self,delegated_admin_service_management_detail_id: str) -> delegated_admin_service_management_detail_item_request_builder.DelegatedAdminServiceManagementDetailItemRequestBuilder:
+    def by_delegated_admin_service_management_detail_id(self,delegated_admin_service_management_detail_id: str) -> DelegatedAdminServiceManagementDetailItemRequestBuilder:
         """
         Provides operations to manage the serviceManagementDetails property of the microsoft.graph.delegatedAdminCustomer entity.
         Args:
             delegated_admin_service_management_detail_id: Unique identifier of the item
-        Returns: delegated_admin_service_management_detail_item_request_builder.DelegatedAdminServiceManagementDetailItemRequestBuilder
+        Returns: DelegatedAdminServiceManagementDetailItemRequestBuilder
         """
         if not delegated_admin_service_management_detail_id:
             raise TypeError("delegated_admin_service_management_detail_id cannot be null.")
-        from .item import delegated_admin_service_management_detail_item_request_builder
+        from .item.delegated_admin_service_management_detail_item_request_builder import DelegatedAdminServiceManagementDetailItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["delegatedAdminServiceManagementDetail%2Did"] = delegated_admin_service_management_detail_id
-        return delegated_admin_service_management_detail_item_request_builder.DelegatedAdminServiceManagementDetailItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DelegatedAdminServiceManagementDetailItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ServiceManagementDetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_service_management_detail_collection_response.DelegatedAdminServiceManagementDetailCollectionResponse]:
+    async def get(self,request_configuration: Optional[ServiceManagementDetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetailCollectionResponse]:
         """
         Get a list of the delegatedAdminServiceManagementDetail objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_admin_service_management_detail_collection_response.DelegatedAdminServiceManagementDetailCollectionResponse]
+        Returns: Optional[DelegatedAdminServiceManagementDetailCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import delegated_admin_service_management_detail_collection_response
+        from .....models.delegated_admin_service_management_detail_collection_response import DelegatedAdminServiceManagementDetailCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, delegated_admin_service_management_detail_collection_response.DelegatedAdminServiceManagementDetailCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedAdminServiceManagementDetailCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[ServiceManagementDetailsRequestBuilderPostRequestConfiguration] = None) -> Optional[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]:
+    async def post(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[ServiceManagementDetailsRequestBuilderPostRequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetail]:
         """
         Create new navigation property to serviceManagementDetails for tenantRelationships
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]
+        Returns: Optional[DelegatedAdminServiceManagementDetail]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import delegated_admin_service_management_detail
+        from .....models.delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
 
-        return await self.request_adapter.send_async(request_info, delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedAdminServiceManagementDetail, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ServiceManagementDetailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class ServiceManagementDetailsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[ServiceManagementDetailsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[ServiceManagementDetailsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to serviceManagementDetails for tenantRelationships
         Args:
@@ -139,13 +140,13 @@ class ServiceManagementDetailsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ServiceManagementDetailsRequestBuilderGetQueryParameters():

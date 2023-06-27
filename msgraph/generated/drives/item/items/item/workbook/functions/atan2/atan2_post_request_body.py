@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class Atan2PostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class Atan2PostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The xNum property
-    x_num: Optional[json.Json] = None
+    x_num: Optional[Json] = None
     # The yNum property
-    y_num: Optional[json.Json] = None
+    y_num: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Atan2PostRequestBody:
@@ -33,13 +33,13 @@ class Atan2PostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "xNum": lambda n : setattr(self, 'x_num', n.get_object_value(json.Json)),
-            "yNum": lambda n : setattr(self, 'y_num', n.get_object_value(json.Json)),
+            "xNum": lambda n : setattr(self, 'x_num', n.get_object_value(Json)),
+            "yNum": lambda n : setattr(self, 'y_num', n.get_object_value(Json)),
         }
         return fields
     

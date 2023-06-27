@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_app_identifier
+    from .mobile_app_identifier import MobileAppIdentifier
 
-from . import mobile_app_identifier
+from .mobile_app_identifier import MobileAppIdentifier
 
 @dataclass
-class IosMobileAppIdentifier(mobile_app_identifier.MobileAppIdentifier):
+class IosMobileAppIdentifier(MobileAppIdentifier):
     odata_type = "#microsoft.graph.iosMobileAppIdentifier"
     # The identifier for an app, as specified in the app store.
     bundle_id: Optional[str] = None
@@ -31,9 +31,9 @@ class IosMobileAppIdentifier(mobile_app_identifier.MobileAppIdentifier):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_identifier
+        from .mobile_app_identifier import MobileAppIdentifier
 
-        from . import mobile_app_identifier
+        from .mobile_app_identifier import MobileAppIdentifier
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),

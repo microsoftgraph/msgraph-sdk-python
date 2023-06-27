@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import result_template_dictionary
+    from .result_template_dictionary import ResultTemplateDictionary
 
 @dataclass
 class Dictionary(AdditionalDataHolder, Parsable):
@@ -29,9 +29,9 @@ class Dictionary(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.resultTemplateDictionary".casefold():
-            from . import result_template_dictionary
+            from .result_template_dictionary import ResultTemplateDictionary
 
-            return result_template_dictionary.ResultTemplateDictionary()
+            return ResultTemplateDictionary()
         return Dictionary()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -39,9 +39,9 @@ class Dictionary(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import result_template_dictionary
+        from .result_template_dictionary import ResultTemplateDictionary
 
-        from . import result_template_dictionary
+        from .result_template_dictionary import ResultTemplateDictionary
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

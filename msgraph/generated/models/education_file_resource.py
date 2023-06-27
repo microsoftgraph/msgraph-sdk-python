@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_resource
+    from .education_resource import EducationResource
 
-from . import education_resource
+from .education_resource import EducationResource
 
 @dataclass
-class EducationFileResource(education_resource.EducationResource):
+class EducationFileResource(EducationResource):
     odata_type = "#microsoft.graph.educationFileResource"
     # Location on disk of the file resource.
     file_url: Optional[str] = None
@@ -31,9 +31,9 @@ class EducationFileResource(education_resource.EducationResource):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_resource
+        from .education_resource import EducationResource
 
-        from . import education_resource
+        from .education_resource import EducationResource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "fileUrl": lambda n : setattr(self, 'file_url', n.get_str_value()),

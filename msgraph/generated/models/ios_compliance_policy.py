@@ -4,17 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_compliance_policy, device_threat_protection_level, required_password_type
+    from .device_compliance_policy import DeviceCompliancePolicy
+    from .device_threat_protection_level import DeviceThreatProtectionLevel
+    from .required_password_type import RequiredPasswordType
 
-from . import device_compliance_policy
+from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
-class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
+class IosCompliancePolicy(DeviceCompliancePolicy):
     odata_type = "#microsoft.graph.iosCompliancePolicy"
     # Require that devices have enabled device threat protection .
     device_threat_protection_enabled: Optional[bool] = None
     # Device threat protection levels for the Device Threat Protection API.
-    device_threat_protection_required_security_level: Optional[device_threat_protection_level.DeviceThreatProtectionLevel] = None
+    device_threat_protection_required_security_level: Optional[DeviceThreatProtectionLevel] = None
     # Indicates whether or not to require a managed email profile.
     managed_email_profile_required: Optional[bool] = None
     # Maximum IOS version.
@@ -36,7 +38,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
     # Indicates whether or not to require a passcode.
     passcode_required: Optional[bool] = None
     # Possible values of required passwords.
-    passcode_required_type: Optional[required_password_type.RequiredPasswordType] = None
+    passcode_required_type: Optional[RequiredPasswordType] = None
     # Devices must not be jailbroken or rooted.
     security_block_jailbroken_devices: Optional[bool] = None
     
@@ -57,13 +59,17 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_compliance_policy, device_threat_protection_level, required_password_type
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .device_threat_protection_level import DeviceThreatProtectionLevel
+        from .required_password_type import RequiredPasswordType
 
-        from . import device_compliance_policy, device_threat_protection_level, required_password_type
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .device_threat_protection_level import DeviceThreatProtectionLevel
+        from .required_password_type import RequiredPasswordType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "deviceThreatProtectionEnabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
-            "deviceThreatProtectionRequiredSecurityLevel": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(device_threat_protection_level.DeviceThreatProtectionLevel)),
+            "deviceThreatProtectionRequiredSecurityLevel": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(DeviceThreatProtectionLevel)),
             "managedEmailProfileRequired": lambda n : setattr(self, 'managed_email_profile_required', n.get_bool_value()),
             "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
             "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
@@ -74,7 +80,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             "passcodeMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'passcode_minutes_of_inactivity_before_lock', n.get_int_value()),
             "passcodePreviousPasscodeBlockCount": lambda n : setattr(self, 'passcode_previous_passcode_block_count', n.get_int_value()),
             "passcodeRequired": lambda n : setattr(self, 'passcode_required', n.get_bool_value()),
-            "passcodeRequiredType": lambda n : setattr(self, 'passcode_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "passcodeRequiredType": lambda n : setattr(self, 'passcode_required_type', n.get_enum_value(RequiredPasswordType)),
             "securityBlockJailbrokenDevices": lambda n : setattr(self, 'security_block_jailbroken_devices', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

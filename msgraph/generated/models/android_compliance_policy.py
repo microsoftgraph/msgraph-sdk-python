@@ -4,17 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_required_password_type, device_compliance_policy, device_threat_protection_level
+    from .android_required_password_type import AndroidRequiredPasswordType
+    from .device_compliance_policy import DeviceCompliancePolicy
+    from .device_threat_protection_level import DeviceThreatProtectionLevel
 
-from . import device_compliance_policy
+from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
-class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
+class AndroidCompliancePolicy(DeviceCompliancePolicy):
     odata_type = "#microsoft.graph.androidCompliancePolicy"
     # Require that devices have enabled device threat protection.
     device_threat_protection_enabled: Optional[bool] = None
     # Device threat protection levels for the Device Threat Protection API.
-    device_threat_protection_required_security_level: Optional[device_threat_protection_level.DeviceThreatProtectionLevel] = None
+    device_threat_protection_required_security_level: Optional[DeviceThreatProtectionLevel] = None
     # Minimum Android security patch level.
     min_android_security_patch_level: Optional[str] = None
     # Maximum Android version.
@@ -32,7 +34,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
     # Require a password to unlock device.
     password_required: Optional[bool] = None
     # Android required password type.
-    password_required_type: Optional[android_required_password_type.AndroidRequiredPasswordType] = None
+    password_required_type: Optional[AndroidRequiredPasswordType] = None
     # Devices must not be jailbroken or rooted.
     security_block_jailbroken_devices: Optional[bool] = None
     # Disable USB debugging on Android devices.
@@ -71,13 +73,17 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_required_password_type, device_compliance_policy, device_threat_protection_level
+        from .android_required_password_type import AndroidRequiredPasswordType
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .device_threat_protection_level import DeviceThreatProtectionLevel
 
-        from . import android_required_password_type, device_compliance_policy, device_threat_protection_level
+        from .android_required_password_type import AndroidRequiredPasswordType
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .device_threat_protection_level import DeviceThreatProtectionLevel
 
         fields: Dict[str, Callable[[Any], None]] = {
             "deviceThreatProtectionEnabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
-            "deviceThreatProtectionRequiredSecurityLevel": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(device_threat_protection_level.DeviceThreatProtectionLevel)),
+            "deviceThreatProtectionRequiredSecurityLevel": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(DeviceThreatProtectionLevel)),
             "minAndroidSecurityPatchLevel": lambda n : setattr(self, 'min_android_security_patch_level', n.get_str_value()),
             "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
             "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
@@ -86,7 +92,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             "passwordMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
             "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
             "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(android_required_password_type.AndroidRequiredPasswordType)),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(AndroidRequiredPasswordType)),
             "securityBlockJailbrokenDevices": lambda n : setattr(self, 'security_block_jailbroken_devices', n.get_bool_value()),
             "securityDisableUsbDebugging": lambda n : setattr(self, 'security_disable_usb_debugging', n.get_bool_value()),
             "securityPreventInstallAppsFromUnknownSources": lambda n : setattr(self, 'security_prevent_install_apps_from_unknown_sources', n.get_bool_value()),

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ............models import onenote_patch_content_command
+    from ............models.onenote_patch_content_command import OnenotePatchContentCommand
 
 @dataclass
 class OnenotePatchContentPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class OnenotePatchContentPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The commands property
-    commands: Optional[List[onenote_patch_content_command.OnenotePatchContentCommand]] = None
+    commands: Optional[List[OnenotePatchContentCommand]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenotePatchContentPostRequestBody:
@@ -31,12 +31,12 @@ class OnenotePatchContentPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ............models import onenote_patch_content_command
+        from ............models.onenote_patch_content_command import OnenotePatchContentCommand
 
-        from ............models import onenote_patch_content_command
+        from ............models.onenote_patch_content_command import OnenotePatchContentCommand
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "commands": lambda n : setattr(self, 'commands', n.get_collection_of_object_values(onenote_patch_content_command.OnenotePatchContentCommand)),
+            "commands": lambda n : setattr(self, 'commands', n.get_collection_of_object_values(OnenotePatchContentCommand)),
         }
         return fields
     

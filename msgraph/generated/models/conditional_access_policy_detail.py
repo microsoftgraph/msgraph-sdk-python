@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_condition_set, conditional_access_grant_controls, conditional_access_session_controls
+    from .conditional_access_condition_set import ConditionalAccessConditionSet
+    from .conditional_access_grant_controls import ConditionalAccessGrantControls
+    from .conditional_access_session_controls import ConditionalAccessSessionControls
 
 @dataclass
 class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
@@ -12,13 +14,13 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The conditions property
-    conditions: Optional[conditional_access_condition_set.ConditionalAccessConditionSet] = None
+    conditions: Optional[ConditionalAccessConditionSet] = None
     # Represents grant controls that must be fulfilled for the policy.
-    grant_controls: Optional[conditional_access_grant_controls.ConditionalAccessGrantControls] = None
+    grant_controls: Optional[ConditionalAccessGrantControls] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents a complex type of session controls that is enforced after sign-in.
-    session_controls: Optional[conditional_access_session_controls.ConditionalAccessSessionControls] = None
+    session_controls: Optional[ConditionalAccessSessionControls] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessPolicyDetail:
@@ -37,15 +39,19 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_condition_set, conditional_access_grant_controls, conditional_access_session_controls
+        from .conditional_access_condition_set import ConditionalAccessConditionSet
+        from .conditional_access_grant_controls import ConditionalAccessGrantControls
+        from .conditional_access_session_controls import ConditionalAccessSessionControls
 
-        from . import conditional_access_condition_set, conditional_access_grant_controls, conditional_access_session_controls
+        from .conditional_access_condition_set import ConditionalAccessConditionSet
+        from .conditional_access_grant_controls import ConditionalAccessGrantControls
+        from .conditional_access_session_controls import ConditionalAccessSessionControls
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(conditional_access_condition_set.ConditionalAccessConditionSet)),
-            "grantControls": lambda n : setattr(self, 'grant_controls', n.get_object_value(conditional_access_grant_controls.ConditionalAccessGrantControls)),
+            "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(ConditionalAccessConditionSet)),
+            "grantControls": lambda n : setattr(self, 'grant_controls', n.get_object_value(ConditionalAccessGrantControls)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sessionControls": lambda n : setattr(self, 'session_controls', n.get_object_value(conditional_access_session_controls.ConditionalAccessSessionControls)),
+            "sessionControls": lambda n : setattr(self, 'session_controls', n.get_object_value(ConditionalAccessSessionControls)),
         }
         return fields
     

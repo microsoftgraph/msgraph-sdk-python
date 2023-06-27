@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import access_review_stage
-    from .........models.o_data_errors import o_data_error
-    from .decisions import decisions_request_builder
-    from .stop import stop_request_builder
+    from .........models.access_review_stage import AccessReviewStage
+    from .........models.o_data_errors.o_data_error import ODataError
+    from .decisions.decisions_request_builder import DecisionsRequestBuilder
+    from .stop.stop_request_builder import StopRequestBuilder
 
 class AccessReviewStageItemRequestBuilder():
     """
@@ -46,62 +46,62 @@ class AccessReviewStageItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AccessReviewStageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_stage.AccessReviewStage]:
+    async def get(self,request_configuration: Optional[AccessReviewStageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessReviewStage]:
         """
         Retrieve the properties and relationships of an accessReviewStage object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_review_stage.AccessReviewStage]
+        Returns: Optional[AccessReviewStage]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import access_review_stage
+        from .........models.access_review_stage import AccessReviewStage
 
-        return await self.request_adapter.send_async(request_info, access_review_stage.AccessReviewStage, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessReviewStage, error_mapping)
     
-    async def patch(self,body: Optional[access_review_stage.AccessReviewStage] = None, request_configuration: Optional[AccessReviewStageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_review_stage.AccessReviewStage]:
+    async def patch(self,body: Optional[AccessReviewStage] = None, request_configuration: Optional[AccessReviewStageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AccessReviewStage]:
         """
         Update the properties of an accessReviewStage object. Only the **reviewers** and **fallbackReviewers** properties can be updated. You can only add reviewers to the **fallbackReviewers** property but can't remove existing **fallbackReviewers**. To update an **accessReviewStage**, its **status** must be `NotStarted`, `Initializing`, or `InProgress`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_review_stage.AccessReviewStage]
+        Returns: Optional[AccessReviewStage]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import access_review_stage
+        from .........models.access_review_stage import AccessReviewStage
 
-        return await self.request_adapter.send_async(request_info, access_review_stage.AccessReviewStage, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessReviewStage, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AccessReviewStageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class AccessReviewStageItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[access_review_stage.AccessReviewStage] = None, request_configuration: Optional[AccessReviewStageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AccessReviewStage] = None, request_configuration: Optional[AccessReviewStageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an accessReviewStage object. Only the **reviewers** and **fallbackReviewers** properties can be updated. You can only add reviewers to the **fallbackReviewers** property but can't remove existing **fallbackReviewers**. To update an **accessReviewStage**, its **status** must be `NotStarted`, `Initializing`, or `InProgress`.
         Args:
@@ -159,22 +159,22 @@ class AccessReviewStageItemRequestBuilder():
         return request_info
     
     @property
-    def decisions(self) -> decisions_request_builder.DecisionsRequestBuilder:
+    def decisions(self) -> DecisionsRequestBuilder:
         """
         Provides operations to manage the decisions property of the microsoft.graph.accessReviewStage entity.
         """
-        from .decisions import decisions_request_builder
+        from .decisions.decisions_request_builder import DecisionsRequestBuilder
 
-        return decisions_request_builder.DecisionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def stop(self) -> stop_request_builder.StopRequestBuilder:
+    def stop(self) -> StopRequestBuilder:
         """
         Provides operations to call the stop method.
         """
-        from .stop import stop_request_builder
+        from .stop.stop_request_builder import StopRequestBuilder
 
-        return stop_request_builder.StopRequestBuilder(self.request_adapter, self.path_parameters)
+        return StopRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AccessReviewStageItemRequestBuilderDeleteRequestConfiguration():

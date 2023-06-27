@@ -4,7 +4,13 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import printer, printer_share, print_connector, print_operation, print_service, print_settings, print_task_definition
+    from .print_connector import PrintConnector
+    from .printer import Printer
+    from .printer_share import PrinterShare
+    from .print_operation import PrintOperation
+    from .print_service import PrintService
+    from .print_settings import PrintSettings
+    from .print_task_definition import PrintTaskDefinition
 
 @dataclass
 class Print(AdditionalDataHolder, Parsable):
@@ -12,21 +18,21 @@ class Print(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The list of available print connectors.
-    connectors: Optional[List[print_connector.PrintConnector]] = None
+    connectors: Optional[List[PrintConnector]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The list of print long running operations.
-    operations: Optional[List[print_operation.PrintOperation]] = None
+    operations: Optional[List[PrintOperation]] = None
     # The list of printers registered in the tenant.
-    printers: Optional[List[printer.Printer]] = None
+    printers: Optional[List[Printer]] = None
     # The list of available Universal Print service endpoints.
-    services: Optional[List[print_service.PrintService]] = None
+    services: Optional[List[PrintService]] = None
     # Tenant-wide settings for the Universal Print service.
-    settings: Optional[print_settings.PrintSettings] = None
+    settings: Optional[PrintSettings] = None
     # The list of printer shares registered in the tenant.
-    shares: Optional[List[printer_share.PrinterShare]] = None
+    shares: Optional[List[PrinterShare]] = None
     # List of abstract definition for a task that can be triggered when various events occur within Universal Print.
-    task_definitions: Optional[List[print_task_definition.PrintTaskDefinition]] = None
+    task_definitions: Optional[List[PrintTaskDefinition]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Print:
@@ -45,19 +51,31 @@ class Print(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import printer, printer_share, print_connector, print_operation, print_service, print_settings, print_task_definition
+        from .print_connector import PrintConnector
+        from .printer import Printer
+        from .printer_share import PrinterShare
+        from .print_operation import PrintOperation
+        from .print_service import PrintService
+        from .print_settings import PrintSettings
+        from .print_task_definition import PrintTaskDefinition
 
-        from . import printer, printer_share, print_connector, print_operation, print_service, print_settings, print_task_definition
+        from .print_connector import PrintConnector
+        from .printer import Printer
+        from .printer_share import PrinterShare
+        from .print_operation import PrintOperation
+        from .print_service import PrintService
+        from .print_settings import PrintSettings
+        from .print_task_definition import PrintTaskDefinition
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "connectors": lambda n : setattr(self, 'connectors', n.get_collection_of_object_values(print_connector.PrintConnector)),
+            "connectors": lambda n : setattr(self, 'connectors', n.get_collection_of_object_values(PrintConnector)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(print_operation.PrintOperation)),
-            "printers": lambda n : setattr(self, 'printers', n.get_collection_of_object_values(printer.Printer)),
-            "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(print_service.PrintService)),
-            "settings": lambda n : setattr(self, 'settings', n.get_object_value(print_settings.PrintSettings)),
-            "shares": lambda n : setattr(self, 'shares', n.get_collection_of_object_values(printer_share.PrinterShare)),
-            "taskDefinitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(print_task_definition.PrintTaskDefinition)),
+            "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(PrintOperation)),
+            "printers": lambda n : setattr(self, 'printers', n.get_collection_of_object_values(Printer)),
+            "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(PrintService)),
+            "settings": lambda n : setattr(self, 'settings', n.get_object_value(PrintSettings)),
+            "shares": lambda n : setattr(self, 'shares', n.get_collection_of_object_values(PrinterShare)),
+            "taskDefinitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(PrintTaskDefinition)),
         }
         return fields
     

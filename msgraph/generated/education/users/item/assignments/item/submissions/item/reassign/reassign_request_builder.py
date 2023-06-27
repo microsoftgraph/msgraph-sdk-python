@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import education_submission
-    from .........models.o_data_errors import o_data_error
+    from .........models.education_submission import EducationSubmission
+    from .........models.o_data_errors.o_data_error import ODataError
 
 class ReassignRequestBuilder():
     """
@@ -35,27 +35,27 @@ class ReassignRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[ReassignRequestBuilderPostRequestConfiguration] = None) -> Optional[education_submission.EducationSubmission]:
+    async def post(self,request_configuration: Optional[ReassignRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationSubmission]:
         """
         Reassign the submission to the student with feedback for review. Only teachers can perform this action.  Include the `Prefer: include-unknown-enum-members` header when you call this method; otherwise, a reassigned submission will be treated as a returned submission. This means that the `reassigned` status will be mapped to the `returned` status, and **reassignedDateTime** and **reassignedBy** properties will be mapped to **returnedDateTime** and **returnedBy** respectively. If the header `Prefer: include-unknown-enum-members` is provided, a reassigned submission retains the `reassigned` status. For details, see the examples section.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_submission.EducationSubmission]
+        Returns: Optional[EducationSubmission]
         """
         request_info = self.to_post_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import education_submission
+        from .........models.education_submission import EducationSubmission
 
-        return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationSubmission, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[ReassignRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

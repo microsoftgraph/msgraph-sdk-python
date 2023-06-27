@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_source
+    from .identity_source import IdentitySource
 
-from . import identity_source
+from .identity_source import IdentitySource
 
 @dataclass
-class AzureActiveDirectoryTenant(identity_source.IdentitySource):
+class AzureActiveDirectoryTenant(IdentitySource):
     odata_type = "#microsoft.graph.azureActiveDirectoryTenant"
     # The name of the Azure Active Directory tenant. Read only.
     display_name: Optional[str] = None
@@ -33,9 +33,9 @@ class AzureActiveDirectoryTenant(identity_source.IdentitySource):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_source
+        from .identity_source import IdentitySource
 
-        from . import identity_source
+        from .identity_source import IdentitySource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

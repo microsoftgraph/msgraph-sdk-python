@@ -1,10 +1,13 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_apply_action, patterned_recurrence
+    from .access_review_apply_action import AccessReviewApplyAction
+    from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
+    from .patterned_recurrence import PatternedRecurrence
 
 @dataclass
 class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
@@ -12,7 +15,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Optional field. Describes the  actions to take once a review is complete. There are two types that are currently supported: removeAccessApplyAction (default) and disableAndDeleteUserApplyAction. Field only needs to be specified in the case of disableAndDeleteUserApplyAction.
-    apply_actions: Optional[List[access_review_apply_action.AccessReviewApplyAction]] = None
+    apply_actions: Optional[List[AccessReviewApplyAction]] = None
     # Indicates whether decisions are automatically applied. When set to false, an admin must apply the decisions manually once the reviewer completes the access review. When set to true, decisions are applied automatically after the access review instance duration ends, whether or not the reviewers have responded. Default value is false.  CAUTION: If both autoApplyDecisionsEnabled and defaultDecisionEnabled are true, all access for the principals to the resource risks being revoked if the reviewers fail to respond.
     auto_apply_decisions_enabled: Optional[bool] = None
     # Indicates whether decisions on previous access review stages are available for reviewers on an accessReviewInstance with multiple subsequent stages. If not provided, the default is disabled (false).
@@ -29,10 +32,14 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
     mail_notifications_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The recommendationInsightSettings property
+    recommendation_insight_settings: Optional[List[AccessReviewRecommendationInsightSetting]] = None
+    # The recommendationLookBackDuration property
+    recommendation_look_back_duration: Optional[datetime.timedelta] = None
     # Indicates whether decision recommendations are enabled or disabled. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationsEnabled setting will be used instead of the value of this property.
     recommendations_enabled: Optional[bool] = None
     # Detailed settings for recurrence using the standard Outlook recurrence object. Note: Only dayOfMonth, interval, and type (weekly, absoluteMonthly) properties are supported. Use the property startDate on recurrenceRange to determine the day the review starts.
-    recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
+    recurrence: Optional[PatternedRecurrence] = None
     # Indicates whether reminders are enabled or disabled. Default value is false.
     reminder_notifications_enabled: Optional[bool] = None
     
@@ -53,12 +60,16 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_apply_action, patterned_recurrence
+        from .access_review_apply_action import AccessReviewApplyAction
+        from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
+        from .patterned_recurrence import PatternedRecurrence
 
-        from . import access_review_apply_action, patterned_recurrence
+        from .access_review_apply_action import AccessReviewApplyAction
+        from .access_review_recommendation_insight_setting import AccessReviewRecommendationInsightSetting
+        from .patterned_recurrence import PatternedRecurrence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applyActions": lambda n : setattr(self, 'apply_actions', n.get_collection_of_object_values(access_review_apply_action.AccessReviewApplyAction)),
+            "applyActions": lambda n : setattr(self, 'apply_actions', n.get_collection_of_object_values(AccessReviewApplyAction)),
             "autoApplyDecisionsEnabled": lambda n : setattr(self, 'auto_apply_decisions_enabled', n.get_bool_value()),
             "decisionHistoriesForReviewersEnabled": lambda n : setattr(self, 'decision_histories_for_reviewers_enabled', n.get_bool_value()),
             "defaultDecision": lambda n : setattr(self, 'default_decision', n.get_str_value()),
@@ -67,8 +78,10 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             "justificationRequiredOnApproval": lambda n : setattr(self, 'justification_required_on_approval', n.get_bool_value()),
             "mailNotificationsEnabled": lambda n : setattr(self, 'mail_notifications_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "recommendationInsightSettings": lambda n : setattr(self, 'recommendation_insight_settings', n.get_collection_of_object_values(AccessReviewRecommendationInsightSetting)),
+            "recommendationLookBackDuration": lambda n : setattr(self, 'recommendation_look_back_duration', n.get_timedelta_value()),
             "recommendationsEnabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
-            "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
+            "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(PatternedRecurrence)),
             "reminderNotificationsEnabled": lambda n : setattr(self, 'reminder_notifications_enabled', n.get_bool_value()),
         }
         return fields
@@ -90,6 +103,8 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         writer.write_bool_value("justificationRequiredOnApproval", self.justification_required_on_approval)
         writer.write_bool_value("mailNotificationsEnabled", self.mail_notifications_enabled)
         writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("recommendationInsightSettings", self.recommendation_insight_settings)
+        writer.write_timedelta_value()("recommendationLookBackDuration", self.recommendation_look_back_duration)
         writer.write_bool_value("recommendationsEnabled", self.recommendations_enabled)
         writer.write_object_value("recurrence", self.recurrence)
         writer.write_bool_value("reminderNotificationsEnabled", self.reminder_notifications_enabled)

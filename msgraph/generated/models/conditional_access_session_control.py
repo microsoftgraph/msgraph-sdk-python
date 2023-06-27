@@ -4,7 +4,10 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import application_enforced_restrictions_session_control, cloud_app_security_session_control, persistent_browser_session_control, sign_in_frequency_session_control
+    from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
+    from .cloud_app_security_session_control import CloudAppSecuritySessionControl
+    from .persistent_browser_session_control import PersistentBrowserSessionControl
+    from .sign_in_frequency_session_control import SignInFrequencySessionControl
 
 @dataclass
 class ConditionalAccessSessionControl(AdditionalDataHolder, Parsable):
@@ -31,21 +34,21 @@ class ConditionalAccessSessionControl(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.applicationEnforcedRestrictionsSessionControl".casefold():
-            from . import application_enforced_restrictions_session_control
+            from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
 
-            return application_enforced_restrictions_session_control.ApplicationEnforcedRestrictionsSessionControl()
+            return ApplicationEnforcedRestrictionsSessionControl()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudAppSecuritySessionControl".casefold():
-            from . import cloud_app_security_session_control
+            from .cloud_app_security_session_control import CloudAppSecuritySessionControl
 
-            return cloud_app_security_session_control.CloudAppSecuritySessionControl()
+            return CloudAppSecuritySessionControl()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.persistentBrowserSessionControl".casefold():
-            from . import persistent_browser_session_control
+            from .persistent_browser_session_control import PersistentBrowserSessionControl
 
-            return persistent_browser_session_control.PersistentBrowserSessionControl()
+            return PersistentBrowserSessionControl()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.signInFrequencySessionControl".casefold():
-            from . import sign_in_frequency_session_control
+            from .sign_in_frequency_session_control import SignInFrequencySessionControl
 
-            return sign_in_frequency_session_control.SignInFrequencySessionControl()
+            return SignInFrequencySessionControl()
         return ConditionalAccessSessionControl()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -53,9 +56,15 @@ class ConditionalAccessSessionControl(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import application_enforced_restrictions_session_control, cloud_app_security_session_control, persistent_browser_session_control, sign_in_frequency_session_control
+        from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
+        from .cloud_app_security_session_control import CloudAppSecuritySessionControl
+        from .persistent_browser_session_control import PersistentBrowserSessionControl
+        from .sign_in_frequency_session_control import SignInFrequencySessionControl
 
-        from . import application_enforced_restrictions_session_control, cloud_app_security_session_control, persistent_browser_session_control, sign_in_frequency_session_control
+        from .application_enforced_restrictions_session_control import ApplicationEnforcedRestrictionsSessionControl
+        from .cloud_app_security_session_control import CloudAppSecuritySessionControl
+        from .persistent_browser_session_control import PersistentBrowserSessionControl
+        from .sign_in_frequency_session_control import SignInFrequencySessionControl
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),

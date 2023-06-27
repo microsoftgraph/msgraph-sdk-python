@@ -4,18 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_resource, entity
+    from .education_resource import EducationResource
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class EducationSubmissionResource(entity.Entity):
+class EducationSubmissionResource(Entity):
     # Pointer to the assignment from which this resource was copied. If this is null, the student uploaded the resource.
     assignment_resource_url: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Resource object.
-    resource: Optional[education_resource.EducationResource] = None
+    resource: Optional[EducationResource] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationSubmissionResource:
@@ -34,13 +35,15 @@ class EducationSubmissionResource(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_resource, entity
+        from .education_resource import EducationResource
+        from .entity import Entity
 
-        from . import education_resource, entity
+        from .education_resource import EducationResource
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignmentResourceUrl": lambda n : setattr(self, 'assignment_resource_url', n.get_str_value()),
-            "resource": lambda n : setattr(self, 'resource', n.get_object_value(education_resource.EducationResource)),
+            "resource": lambda n : setattr(self, 'resource', n.get_object_value(EducationResource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.o_data_errors import o_data_error
-    from ........models.security import site_source, site_source_collection_response
-    from .count import count_request_builder
-    from .item import site_source_item_request_builder
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.security.site_source import SiteSource
+    from ........models.security.site_source_collection_response import SiteSourceCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.site_source_item_request_builder import SiteSourceItemRequestBuilder
 
 class SiteSourcesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class SiteSourcesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_site_source_id(self,site_source_id: str) -> site_source_item_request_builder.SiteSourceItemRequestBuilder:
+    def by_site_source_id(self,site_source_id: str) -> SiteSourceItemRequestBuilder:
         """
         Provides operations to manage the siteSources property of the microsoft.graph.security.ediscoveryCustodian entity.
         Args:
             site_source_id: Unique identifier of the item
-        Returns: site_source_item_request_builder.SiteSourceItemRequestBuilder
+        Returns: SiteSourceItemRequestBuilder
         """
         if not site_source_id:
             raise TypeError("site_source_id cannot be null.")
-        from .item import site_source_item_request_builder
+        from .item.site_source_item_request_builder import SiteSourceItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["siteSource%2Did"] = site_source_id
-        return site_source_item_request_builder.SiteSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return SiteSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SiteSourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[site_source_collection_response.SiteSourceCollectionResponse]:
+    async def get(self,request_configuration: Optional[SiteSourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[SiteSourceCollectionResponse]:
         """
         Get a list of the siteSource objects associated with an ediscoveryCustodian.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[site_source_collection_response.SiteSourceCollectionResponse]
+        Returns: Optional[SiteSourceCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.security import site_source_collection_response
+        from ........models.security.site_source_collection_response import SiteSourceCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, site_source_collection_response.SiteSourceCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SiteSourceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[site_source.SiteSource] = None, request_configuration: Optional[SiteSourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[site_source.SiteSource]:
+    async def post(self,body: Optional[SiteSource] = None, request_configuration: Optional[SiteSourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[SiteSource]:
         """
         Create a new siteSource object associated with an eDiscovery custodian.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[site_source.SiteSource]
+        Returns: Optional[SiteSource]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.security import site_source
+        from ........models.security.site_source import SiteSource
 
-        return await self.request_adapter.send_async(request_info, site_source.SiteSource, error_mapping)
+        return await self.request_adapter.send_async(request_info, SiteSource, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SiteSourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class SiteSourcesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[site_source.SiteSource] = None, request_configuration: Optional[SiteSourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SiteSource] = None, request_configuration: Optional[SiteSourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new siteSource object associated with an eDiscovery custodian.
         Args:
@@ -139,13 +140,13 @@ class SiteSourcesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SiteSourcesRequestBuilderGetQueryParameters():

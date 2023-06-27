@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import managed_device_overview
-    from ...models.o_data_errors import o_data_error
+    from ...models.managed_device_overview import ManagedDeviceOverview
+    from ...models.o_data_errors.o_data_error import ODataError
 
 class ManagedDeviceOverviewRequestBuilder():
     """
@@ -35,31 +35,31 @@ class ManagedDeviceOverviewRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ManagedDeviceOverviewRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_device_overview.ManagedDeviceOverview]:
+    async def get(self,request_configuration: Optional[ManagedDeviceOverviewRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDeviceOverview]:
         """
-        Device overview
+        Read properties and relationships of the managedDeviceOverview object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_device_overview.ManagedDeviceOverview]
+        Returns: Optional[ManagedDeviceOverview]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import managed_device_overview
+        from ...models.managed_device_overview import ManagedDeviceOverview
 
-        return await self.request_adapter.send_async(request_info, managed_device_overview.ManagedDeviceOverview, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedDeviceOverview, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ManagedDeviceOverviewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Device overview
+        Read properties and relationships of the managedDeviceOverview object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -78,7 +78,7 @@ class ManagedDeviceOverviewRequestBuilder():
     @dataclass
     class ManagedDeviceOverviewRequestBuilderGetQueryParameters():
         """
-        Device overview
+        Read properties and relationships of the managedDeviceOverview object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

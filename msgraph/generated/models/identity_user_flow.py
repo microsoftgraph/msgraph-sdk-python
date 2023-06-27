@@ -4,16 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import b2x_identity_user_flow, entity, user_flow_type
+    from .b2x_identity_user_flow import B2xIdentityUserFlow
+    from .entity import Entity
+    from .user_flow_type import UserFlowType
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class IdentityUserFlow(entity.Entity):
+class IdentityUserFlow(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The userFlowType property
-    user_flow_type: Optional[user_flow_type.UserFlowType] = None
+    user_flow_type: Optional[UserFlowType] = None
     # The userFlowTypeVersion property
     user_flow_type_version: Optional[float] = None
     
@@ -32,9 +34,9 @@ class IdentityUserFlow(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.b2xIdentityUserFlow".casefold():
-            from . import b2x_identity_user_flow
+            from .b2x_identity_user_flow import B2xIdentityUserFlow
 
-            return b2x_identity_user_flow.B2xIdentityUserFlow()
+            return B2xIdentityUserFlow()
         return IdentityUserFlow()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -42,12 +44,16 @@ class IdentityUserFlow(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import b2x_identity_user_flow, entity, user_flow_type
+        from .b2x_identity_user_flow import B2xIdentityUserFlow
+        from .entity import Entity
+        from .user_flow_type import UserFlowType
 
-        from . import b2x_identity_user_flow, entity, user_flow_type
+        from .b2x_identity_user_flow import B2xIdentityUserFlow
+        from .entity import Entity
+        from .user_flow_type import UserFlowType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "userFlowType": lambda n : setattr(self, 'user_flow_type', n.get_enum_value(user_flow_type.UserFlowType)),
+            "userFlowType": lambda n : setattr(self, 'user_flow_type', n.get_enum_value(UserFlowType)),
             "userFlowTypeVersion": lambda n : setattr(self, 'user_flow_type_version', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()

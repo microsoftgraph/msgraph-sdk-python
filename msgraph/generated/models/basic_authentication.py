@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import api_authentication_configuration_base
+    from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
-from . import api_authentication_configuration_base
+from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
 @dataclass
-class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticationConfigurationBase):
+class BasicAuthentication(ApiAuthenticationConfigurationBase):
     odata_type = "#microsoft.graph.basicAuthentication"
     # The password. It is not returned in the responses.
     password: Optional[str] = None
@@ -33,9 +33,9 @@ class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticatio
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import api_authentication_configuration_base
+        from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
-        from . import api_authentication_configuration_base
+        from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "password": lambda n : setattr(self, 'password', n.get_str_value()),

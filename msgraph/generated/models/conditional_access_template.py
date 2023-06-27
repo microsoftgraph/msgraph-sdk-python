@@ -4,22 +4,24 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_policy_detail, entity, template_scenarios
+    from .conditional_access_policy_detail import ConditionalAccessPolicyDetail
+    from .entity import Entity
+    from .template_scenarios import TemplateScenarios
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ConditionalAccessTemplate(entity.Entity):
+class ConditionalAccessTemplate(Entity):
     # The user-friendly name of the template.
     description: Optional[str] = None
     # The details property
-    details: Optional[conditional_access_policy_detail.ConditionalAccessPolicyDetail] = None
+    details: Optional[ConditionalAccessPolicyDetail] = None
     # The user-friendly name of the template.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The scenarios property
-    scenarios: Optional[template_scenarios.TemplateScenarios] = None
+    scenarios: Optional[TemplateScenarios] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessTemplate:
@@ -38,15 +40,19 @@ class ConditionalAccessTemplate(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_policy_detail, entity, template_scenarios
+        from .conditional_access_policy_detail import ConditionalAccessPolicyDetail
+        from .entity import Entity
+        from .template_scenarios import TemplateScenarios
 
-        from . import conditional_access_policy_detail, entity, template_scenarios
+        from .conditional_access_policy_detail import ConditionalAccessPolicyDetail
+        from .entity import Entity
+        from .template_scenarios import TemplateScenarios
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "details": lambda n : setattr(self, 'details', n.get_object_value(conditional_access_policy_detail.ConditionalAccessPolicyDetail)),
+            "details": lambda n : setattr(self, 'details', n.get_object_value(ConditionalAccessPolicyDetail)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "scenarios": lambda n : setattr(self, 'scenarios', n.get_enum_value(template_scenarios.TemplateScenarios)),
+            "scenarios": lambda n : setattr(self, 'scenarios', n.get_enum_value(TemplateScenarios)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

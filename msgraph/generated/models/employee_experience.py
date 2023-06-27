@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import learning_provider
+    from .learning_provider import LearningProvider
 
 @dataclass
 class EmployeeExperience(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class EmployeeExperience(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # A collection of learning providers.
-    learning_providers: Optional[List[learning_provider.LearningProvider]] = None
+    learning_providers: Optional[List[LearningProvider]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,12 +33,12 @@ class EmployeeExperience(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import learning_provider
+        from .learning_provider import LearningProvider
 
-        from . import learning_provider
+        from .learning_provider import LearningProvider
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "learningProviders": lambda n : setattr(self, 'learning_providers', n.get_collection_of_object_values(learning_provider.LearningProvider)),
+            "learningProviders": lambda n : setattr(self, 'learning_providers', n.get_collection_of_object_values(LearningProvider)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

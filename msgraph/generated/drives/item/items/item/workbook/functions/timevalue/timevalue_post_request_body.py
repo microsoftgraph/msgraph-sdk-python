@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class TimevaluePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class TimevaluePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The timeText property
-    time_text: Optional[json.Json] = None
+    time_text: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimevaluePostRequestBody:
@@ -31,12 +31,12 @@ class TimevaluePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "timeText": lambda n : setattr(self, 'time_text', n.get_object_value(json.Json)),
+            "timeText": lambda n : setattr(self, 'time_text', n.get_object_value(Json)),
         }
         return fields
     

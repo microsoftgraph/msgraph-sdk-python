@@ -10,13 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import targeted_managed_app_configuration
-    from ....models.o_data_errors import o_data_error
-    from .apps import apps_request_builder
-    from .assign import assign_request_builder
-    from .assignments import assignments_request_builder
-    from .deployment_summary import deployment_summary_request_builder
-    from .target_apps import target_apps_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.targeted_managed_app_configuration import TargetedManagedAppConfiguration
+    from .apps.apps_request_builder import AppsRequestBuilder
+    from .assign.assign_request_builder import AssignRequestBuilder
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .deployment_summary.deployment_summary_request_builder import DeploymentSummaryRequestBuilder
+    from .target_apps.target_apps_request_builder import TargetAppsRequestBuilder
 
 class TargetedManagedAppConfigurationItemRequestBuilder():
     """
@@ -42,73 +42,73 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property targetedManagedAppConfigurations for deviceAppManagement
+        Deletes a targetedManagedAppConfiguration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]:
+    async def get(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TargetedManagedAppConfiguration]:
         """
-        Targeted managed app configurations.
+        Read properties and relationships of the targetedManagedAppConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]
+        Returns: Optional[TargetedManagedAppConfiguration]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import targeted_managed_app_configuration
+        from ....models.targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
-        return await self.request_adapter.send_async(request_info, targeted_managed_app_configuration.TargetedManagedAppConfiguration, error_mapping)
+        return await self.request_adapter.send_async(request_info, TargetedManagedAppConfiguration, error_mapping)
     
-    async def patch(self,body: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]:
+    async def patch(self,body: Optional[TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TargetedManagedAppConfiguration]:
         """
-        Update the navigation property targetedManagedAppConfigurations in deviceAppManagement
+        Update the properties of a targetedManagedAppConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]
+        Returns: Optional[TargetedManagedAppConfiguration]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import targeted_managed_app_configuration
+        from ....models.targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
-        return await self.request_adapter.send_async(request_info, targeted_managed_app_configuration.TargetedManagedAppConfiguration, error_mapping)
+        return await self.request_adapter.send_async(request_info, TargetedManagedAppConfiguration, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property targetedManagedAppConfigurations for deviceAppManagement
+        Deletes a targetedManagedAppConfiguration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -124,7 +124,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Targeted managed app configurations.
+        Read properties and relationships of the targetedManagedAppConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,9 +140,9 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property targetedManagedAppConfigurations in deviceAppManagement
+        Update the properties of a targetedManagedAppConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -162,49 +162,49 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         return request_info
     
     @property
-    def apps(self) -> apps_request_builder.AppsRequestBuilder:
+    def apps(self) -> AppsRequestBuilder:
         """
         Provides operations to manage the apps property of the microsoft.graph.targetedManagedAppConfiguration entity.
         """
-        from .apps import apps_request_builder
+        from .apps.apps_request_builder import AppsRequestBuilder
 
-        return apps_request_builder.AppsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def assign(self) -> AssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        from .assign import assign_request_builder
+        from .assign.assign_request_builder import AssignRequestBuilder
 
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+    def assignments(self) -> AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.targetedManagedAppConfiguration entity.
         """
-        from .assignments import assignments_request_builder
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def deployment_summary(self) -> deployment_summary_request_builder.DeploymentSummaryRequestBuilder:
+    def deployment_summary(self) -> DeploymentSummaryRequestBuilder:
         """
         Provides operations to manage the deploymentSummary property of the microsoft.graph.targetedManagedAppConfiguration entity.
         """
-        from .deployment_summary import deployment_summary_request_builder
+        from .deployment_summary.deployment_summary_request_builder import DeploymentSummaryRequestBuilder
 
-        return deployment_summary_request_builder.DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def target_apps(self) -> target_apps_request_builder.TargetAppsRequestBuilder:
+    def target_apps(self) -> TargetAppsRequestBuilder:
         """
         Provides operations to call the targetApps method.
         """
-        from .target_apps import target_apps_request_builder
+        from .target_apps.target_apps_request_builder import TargetAppsRequestBuilder
 
-        return target_apps_request_builder.TargetAppsRequestBuilder(self.request_adapter, self.path_parameters)
+        return TargetAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TargetedManagedAppConfigurationItemRequestBuilderDeleteRequestConfiguration():
@@ -221,7 +221,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
     @dataclass
     class TargetedManagedAppConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Targeted managed app configurations.
+        Read properties and relationships of the targetedManagedAppConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

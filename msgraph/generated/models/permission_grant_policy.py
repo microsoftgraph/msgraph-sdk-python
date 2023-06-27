@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import permission_grant_condition_set, policy_base
+    from .permission_grant_condition_set import PermissionGrantConditionSet
+    from .policy_base import PolicyBase
 
-from . import policy_base
+from .policy_base import PolicyBase
 
 @dataclass
-class PermissionGrantPolicy(policy_base.PolicyBase):
+class PermissionGrantPolicy(PolicyBase):
     odata_type = "#microsoft.graph.permissionGrantPolicy"
     # Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
-    excludes: Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]] = None
+    excludes: Optional[List[PermissionGrantConditionSet]] = None
     # Condition sets which are included in this permission grant policy. Automatically expanded on GET.
-    includes: Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]] = None
+    includes: Optional[List[PermissionGrantConditionSet]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PermissionGrantPolicy:
@@ -33,13 +34,15 @@ class PermissionGrantPolicy(policy_base.PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import permission_grant_condition_set, policy_base
+        from .permission_grant_condition_set import PermissionGrantConditionSet
+        from .policy_base import PolicyBase
 
-        from . import permission_grant_condition_set, policy_base
+        from .permission_grant_condition_set import PermissionGrantConditionSet
+        from .policy_base import PolicyBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "excludes": lambda n : setattr(self, 'excludes', n.get_collection_of_object_values(permission_grant_condition_set.PermissionGrantConditionSet)),
-            "includes": lambda n : setattr(self, 'includes', n.get_collection_of_object_values(permission_grant_condition_set.PermissionGrantConditionSet)),
+            "excludes": lambda n : setattr(self, 'excludes', n.get_collection_of_object_values(PermissionGrantConditionSet)),
+            "includes": lambda n : setattr(self, 'includes', n.get_collection_of_object_values(PermissionGrantConditionSet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,7 +4,10 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import azure_active_directory_tenant, cross_cloud_azure_active_directory_tenant, domain_identity_source, external_domain_federation
+    from .azure_active_directory_tenant import AzureActiveDirectoryTenant
+    from .cross_cloud_azure_active_directory_tenant import CrossCloudAzureActiveDirectoryTenant
+    from .domain_identity_source import DomainIdentitySource
+    from .external_domain_federation import ExternalDomainFederation
 
 @dataclass
 class IdentitySource(AdditionalDataHolder, Parsable):
@@ -29,21 +32,21 @@ class IdentitySource(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureActiveDirectoryTenant".casefold():
-            from . import azure_active_directory_tenant
+            from .azure_active_directory_tenant import AzureActiveDirectoryTenant
 
-            return azure_active_directory_tenant.AzureActiveDirectoryTenant()
+            return AzureActiveDirectoryTenant()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.crossCloudAzureActiveDirectoryTenant".casefold():
-            from . import cross_cloud_azure_active_directory_tenant
+            from .cross_cloud_azure_active_directory_tenant import CrossCloudAzureActiveDirectoryTenant
 
-            return cross_cloud_azure_active_directory_tenant.CrossCloudAzureActiveDirectoryTenant()
+            return CrossCloudAzureActiveDirectoryTenant()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainIdentitySource".casefold():
-            from . import domain_identity_source
+            from .domain_identity_source import DomainIdentitySource
 
-            return domain_identity_source.DomainIdentitySource()
+            return DomainIdentitySource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalDomainFederation".casefold():
-            from . import external_domain_federation
+            from .external_domain_federation import ExternalDomainFederation
 
-            return external_domain_federation.ExternalDomainFederation()
+            return ExternalDomainFederation()
         return IdentitySource()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -51,9 +54,15 @@ class IdentitySource(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import azure_active_directory_tenant, cross_cloud_azure_active_directory_tenant, domain_identity_source, external_domain_federation
+        from .azure_active_directory_tenant import AzureActiveDirectoryTenant
+        from .cross_cloud_azure_active_directory_tenant import CrossCloudAzureActiveDirectoryTenant
+        from .domain_identity_source import DomainIdentitySource
+        from .external_domain_federation import ExternalDomainFederation
 
-        from . import azure_active_directory_tenant, cross_cloud_azure_active_directory_tenant, domain_identity_source, external_domain_federation
+        from .azure_active_directory_tenant import AzureActiveDirectoryTenant
+        from .cross_cloud_azure_active_directory_tenant import CrossCloudAzureActiveDirectoryTenant
+        from .domain_identity_source import DomainIdentitySource
+        from .external_domain_federation import ExternalDomainFederation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

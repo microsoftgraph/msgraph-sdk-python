@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class WorkDayPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class WorkDayPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The days property
-    days: Optional[json.Json] = None
+    days: Optional[Json] = None
     # The holidays property
-    holidays: Optional[json.Json] = None
+    holidays: Optional[Json] = None
     # The startDate property
-    start_date: Optional[json.Json] = None
+    start_date: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkDayPostRequestBody:
@@ -35,14 +35,14 @@ class WorkDayPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "days": lambda n : setattr(self, 'days', n.get_object_value(json.Json)),
-            "holidays": lambda n : setattr(self, 'holidays', n.get_object_value(json.Json)),
-            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(json.Json)),
+            "days": lambda n : setattr(self, 'days', n.get_object_value(Json)),
+            "holidays": lambda n : setattr(self, 'holidays', n.get_object_value(Json)),
+            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(Json)),
         }
         return fields
     

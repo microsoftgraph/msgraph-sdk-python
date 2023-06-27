@@ -5,14 +5,15 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import calendar, entity
+    from .calendar import Calendar
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class CalendarGroup(entity.Entity):
+class CalendarGroup(Entity):
     # The calendars in the calendar group. Navigation property. Read-only. Nullable.
-    calendars: Optional[List[calendar.Calendar]] = None
+    calendars: Optional[List[Calendar]] = None
     # Identifies the version of the calendar group. Every time the calendar group is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
     change_key: Optional[str] = None
     # The class identifier. Read-only.
@@ -39,12 +40,14 @@ class CalendarGroup(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import calendar, entity
+        from .calendar import Calendar
+        from .entity import Entity
 
-        from . import calendar, entity
+        from .calendar import Calendar
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(calendar.Calendar)),
+            "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(Calendar)),
             "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
             "classId": lambda n : setattr(self, 'class_id', n.get_uuid_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),

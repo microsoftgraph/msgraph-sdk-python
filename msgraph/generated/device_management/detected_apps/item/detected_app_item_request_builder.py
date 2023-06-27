@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import detected_app
-    from ....models.o_data_errors import o_data_error
-    from .managed_devices import managed_devices_request_builder
+    from ....models.detected_app import DetectedApp
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .managed_devices.managed_devices_request_builder import ManagedDevicesRequestBuilder
 
 class DetectedAppItemRequestBuilder():
     """
@@ -38,73 +38,73 @@ class DetectedAppItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DetectedAppItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property detectedApps for deviceManagement
+        Deletes a detectedApp.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DetectedAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[detected_app.DetectedApp]:
+    async def get(self,request_configuration: Optional[DetectedAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DetectedApp]:
         """
-        The list of detected apps associated with a device.
+        Read properties and relationships of the detectedApp object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[detected_app.DetectedApp]
+        Returns: Optional[DetectedApp]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import detected_app
+        from ....models.detected_app import DetectedApp
 
-        return await self.request_adapter.send_async(request_info, detected_app.DetectedApp, error_mapping)
+        return await self.request_adapter.send_async(request_info, DetectedApp, error_mapping)
     
-    async def patch(self,body: Optional[detected_app.DetectedApp] = None, request_configuration: Optional[DetectedAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[detected_app.DetectedApp]:
+    async def patch(self,body: Optional[DetectedApp] = None, request_configuration: Optional[DetectedAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DetectedApp]:
         """
-        Update the navigation property detectedApps in deviceManagement
+        Update the properties of a detectedApp object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[detected_app.DetectedApp]
+        Returns: Optional[DetectedApp]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import detected_app
+        from ....models.detected_app import DetectedApp
 
-        return await self.request_adapter.send_async(request_info, detected_app.DetectedApp, error_mapping)
+        return await self.request_adapter.send_async(request_info, DetectedApp, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DetectedAppItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property detectedApps for deviceManagement
+        Deletes a detectedApp.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class DetectedAppItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DetectedAppItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of detected apps associated with a device.
+        Read properties and relationships of the detectedApp object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -136,9 +136,9 @@ class DetectedAppItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[detected_app.DetectedApp] = None, request_configuration: Optional[DetectedAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DetectedApp] = None, request_configuration: Optional[DetectedAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property detectedApps in deviceManagement
+        Update the properties of a detectedApp object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -158,13 +158,13 @@ class DetectedAppItemRequestBuilder():
         return request_info
     
     @property
-    def managed_devices(self) -> managed_devices_request_builder.ManagedDevicesRequestBuilder:
+    def managed_devices(self) -> ManagedDevicesRequestBuilder:
         """
         Provides operations to manage the managedDevices property of the microsoft.graph.detectedApp entity.
         """
-        from .managed_devices import managed_devices_request_builder
+        from .managed_devices.managed_devices_request_builder import ManagedDevicesRequestBuilder
 
-        return managed_devices_request_builder.ManagedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ManagedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DetectedAppItemRequestBuilderDeleteRequestConfiguration():
@@ -181,7 +181,7 @@ class DetectedAppItemRequestBuilder():
     @dataclass
     class DetectedAppItemRequestBuilderGetQueryParameters():
         """
-        The list of detected apps associated with a device.
+        Read properties and relationships of the detectedApp object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import run_hunting_query_post_request_body
-    from ...models.o_data_errors import o_data_error
-    from ...models.security import hunting_query_results
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.security.hunting_query_results import HuntingQueryResults
+    from .run_hunting_query_post_request_body import RunHuntingQueryPostRequestBody
 
 class MicrosoftGraphSecurityRunHuntingQueryRequestBuilder():
     """
@@ -36,32 +36,32 @@ class MicrosoftGraphSecurityRunHuntingQueryRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[run_hunting_query_post_request_body.RunHuntingQueryPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityRunHuntingQueryRequestBuilderPostRequestConfiguration] = None) -> Optional[hunting_query_results.HuntingQueryResults]:
+    async def post(self,body: Optional[RunHuntingQueryPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityRunHuntingQueryRequestBuilderPostRequestConfiguration] = None) -> Optional[HuntingQueryResults]:
         """
         Invoke action runHuntingQuery
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[hunting_query_results.HuntingQueryResults]
+        Returns: Optional[HuntingQueryResults]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.security import hunting_query_results
+        from ...models.security.hunting_query_results import HuntingQueryResults
 
-        return await self.request_adapter.send_async(request_info, hunting_query_results.HuntingQueryResults, error_mapping)
+        return await self.request_adapter.send_async(request_info, HuntingQueryResults, error_mapping)
     
-    def to_post_request_information(self,body: Optional[run_hunting_query_post_request_body.RunHuntingQueryPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityRunHuntingQueryRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[RunHuntingQueryPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityRunHuntingQueryRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action runHuntingQuery
         Args:

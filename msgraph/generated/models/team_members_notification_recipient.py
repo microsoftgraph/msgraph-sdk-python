@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import teamwork_notification_recipient
+    from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
-from . import teamwork_notification_recipient
+from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
 @dataclass
-class TeamMembersNotificationRecipient(teamwork_notification_recipient.TeamworkNotificationRecipient):
+class TeamMembersNotificationRecipient(TeamworkNotificationRecipient):
     odata_type = "#microsoft.graph.teamMembersNotificationRecipient"
     # The unique identifier for the team whose members should receive the notification.
     team_id: Optional[str] = None
@@ -31,9 +31,9 @@ class TeamMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teamwork_notification_recipient
+        from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
-        from . import teamwork_notification_recipient
+        from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
             "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),

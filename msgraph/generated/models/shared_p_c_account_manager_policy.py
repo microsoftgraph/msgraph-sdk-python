@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import shared_p_c_account_deletion_policy_type
+    from .shared_p_c_account_deletion_policy_type import SharedPCAccountDeletionPolicyType
 
 @dataclass
 class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
@@ -15,7 +15,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Possible values for when accounts are deleted on a shared PC.
-    account_deletion_policy: Optional[shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType] = None
+    account_deletion_policy: Optional[SharedPCAccountDeletionPolicyType] = None
     # Sets the percentage of available disk space a PC should have before it stops deleting cached shared PC accounts. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
     cache_accounts_above_disk_free_percentage: Optional[int] = None
     # Specifies when the accounts will start being deleted when they have not been logged on during the specified period, given as number of days. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold.
@@ -42,12 +42,12 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import shared_p_c_account_deletion_policy_type
+        from .shared_p_c_account_deletion_policy_type import SharedPCAccountDeletionPolicyType
 
-        from . import shared_p_c_account_deletion_policy_type
+        from .shared_p_c_account_deletion_policy_type import SharedPCAccountDeletionPolicyType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accountDeletionPolicy": lambda n : setattr(self, 'account_deletion_policy', n.get_enum_value(shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType)),
+            "accountDeletionPolicy": lambda n : setattr(self, 'account_deletion_policy', n.get_enum_value(SharedPCAccountDeletionPolicyType)),
             "cacheAccountsAboveDiskFreePercentage": lambda n : setattr(self, 'cache_accounts_above_disk_free_percentage', n.get_int_value()),
             "inactiveThresholdDays": lambda n : setattr(self, 'inactive_threshold_days', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

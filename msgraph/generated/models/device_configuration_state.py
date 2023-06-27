@@ -4,12 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import compliance_status, device_configuration_setting_state, entity, policy_platform_type
+    from .compliance_status import ComplianceStatus
+    from .device_configuration_setting_state import DeviceConfigurationSettingState
+    from .entity import Entity
+    from .policy_platform_type import PolicyPlatformType
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceConfigurationState(entity.Entity):
+class DeviceConfigurationState(Entity):
     """
     Device Configuration State for a given device.
     """
@@ -18,13 +21,13 @@ class DeviceConfigurationState(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Supported platform types for policies.
-    platform_type: Optional[policy_platform_type.PolicyPlatformType] = None
+    platform_type: Optional[PolicyPlatformType] = None
     # Count of how many setting a policy holds
     setting_count: Optional[int] = None
     # The settingStates property
-    setting_states: Optional[List[device_configuration_setting_state.DeviceConfigurationSettingState]] = None
+    setting_states: Optional[List[DeviceConfigurationSettingState]] = None
     # The state property
-    state: Optional[compliance_status.ComplianceStatus] = None
+    state: Optional[ComplianceStatus] = None
     # The version of the policy
     version: Optional[int] = None
     
@@ -45,16 +48,22 @@ class DeviceConfigurationState(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import compliance_status, device_configuration_setting_state, entity, policy_platform_type
+        from .compliance_status import ComplianceStatus
+        from .device_configuration_setting_state import DeviceConfigurationSettingState
+        from .entity import Entity
+        from .policy_platform_type import PolicyPlatformType
 
-        from . import compliance_status, device_configuration_setting_state, entity, policy_platform_type
+        from .compliance_status import ComplianceStatus
+        from .device_configuration_setting_state import DeviceConfigurationSettingState
+        from .entity import Entity
+        from .policy_platform_type import PolicyPlatformType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "platformType": lambda n : setattr(self, 'platform_type', n.get_enum_value(policy_platform_type.PolicyPlatformType)),
+            "platformType": lambda n : setattr(self, 'platform_type', n.get_enum_value(PolicyPlatformType)),
             "settingCount": lambda n : setattr(self, 'setting_count', n.get_int_value()),
-            "settingStates": lambda n : setattr(self, 'setting_states', n.get_collection_of_object_values(device_configuration_setting_state.DeviceConfigurationSettingState)),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(compliance_status.ComplianceStatus)),
+            "settingStates": lambda n : setattr(self, 'setting_states', n.get_collection_of_object_values(DeviceConfigurationSettingState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(ComplianceStatus)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

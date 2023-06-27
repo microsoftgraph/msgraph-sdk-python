@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import threat_assessment_request
+    from .threat_assessment_request import ThreatAssessmentRequest
 
-from . import threat_assessment_request
+from .threat_assessment_request import ThreatAssessmentRequest
 
 @dataclass
-class UrlAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
+class UrlAssessmentRequest(ThreatAssessmentRequest):
     odata_type = "#microsoft.graph.urlAssessmentRequest"
     # The URL string.
     url: Optional[str] = None
@@ -31,9 +31,9 @@ class UrlAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import threat_assessment_request
+        from .threat_assessment_request import ThreatAssessmentRequest
 
-        from . import threat_assessment_request
+        from .threat_assessment_request import ThreatAssessmentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
             "url": lambda n : setattr(self, 'url', n.get_str_value()),

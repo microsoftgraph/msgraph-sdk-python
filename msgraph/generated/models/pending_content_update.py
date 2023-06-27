@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -12,7 +12,7 @@ class PendingContentUpdate(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Date and time the pending binary operation was queued in UTC time. Read-only.
-    queued_date_time: Optional[datetime] = None
+    queued_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PendingContentUpdate:
@@ -46,7 +46,7 @@ class PendingContentUpdate(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_datetime_value("queuedDateTime", self.queued_date_time)
+        writer.write_datetime_value()("queuedDateTime", self.queued_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

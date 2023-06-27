@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import token_issuance_policy
-    from ....models.o_data_errors import o_data_error
-    from .applies_to import applies_to_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.token_issuance_policy import TokenIssuancePolicy
+    from .applies_to.applies_to_request_builder import AppliesToRequestBuilder
 
 class TokenIssuancePolicyItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class TokenIssuancePolicyItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[token_issuance_policy.TokenIssuancePolicy]:
+    async def get(self,request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TokenIssuancePolicy]:
         """
         The policy that specifies the characteristics of SAML tokens issued by Azure AD.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[token_issuance_policy.TokenIssuancePolicy]
+        Returns: Optional[TokenIssuancePolicy]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import token_issuance_policy
+        from ....models.token_issuance_policy import TokenIssuancePolicy
 
-        return await self.request_adapter.send_async(request_info, token_issuance_policy.TokenIssuancePolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, TokenIssuancePolicy, error_mapping)
     
-    async def patch(self,body: Optional[token_issuance_policy.TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[token_issuance_policy.TokenIssuancePolicy]:
+    async def patch(self,body: Optional[TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TokenIssuancePolicy]:
         """
         Update the properties of a tokenIssuancePolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[token_issuance_policy.TokenIssuancePolicy]
+        Returns: Optional[TokenIssuancePolicy]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import token_issuance_policy
+        from ....models.token_issuance_policy import TokenIssuancePolicy
 
-        return await self.request_adapter.send_async(request_info, token_issuance_policy.TokenIssuancePolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, TokenIssuancePolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class TokenIssuancePolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[token_issuance_policy.TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a tokenIssuancePolicy object.
         Args:
@@ -158,13 +158,13 @@ class TokenIssuancePolicyItemRequestBuilder():
         return request_info
     
     @property
-    def applies_to(self) -> applies_to_request_builder.AppliesToRequestBuilder:
+    def applies_to(self) -> AppliesToRequestBuilder:
         """
         Provides operations to manage the appliesTo property of the microsoft.graph.stsPolicy entity.
         """
-        from .applies_to import applies_to_request_builder
+        from .applies_to.applies_to_request_builder import AppliesToRequestBuilder
 
-        return applies_to_request_builder.AppliesToRequestBuilder(self.request_adapter, self.path_parameters)
+        return AppliesToRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TokenIssuancePolicyItemRequestBuilderDeleteRequestConfiguration():

@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import edge, service_announcement, sharepoint
+    from .edge import Edge
+    from .service_announcement import ServiceAnnouncement
+    from .sharepoint import Sharepoint
 
 @dataclass
 class Admin(AdditionalDataHolder, Parsable):
@@ -12,13 +14,13 @@ class Admin(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # A container for Microsoft Edge resources. Read-only.
-    edge: Optional[edge.Edge] = None
+    edge: Optional[Edge] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A container for service communications resources. Read-only.
-    service_announcement: Optional[service_announcement.ServiceAnnouncement] = None
+    service_announcement: Optional[ServiceAnnouncement] = None
     # The sharepoint property
-    sharepoint: Optional[sharepoint.Sharepoint] = None
+    sharepoint: Optional[Sharepoint] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Admin:
@@ -37,15 +39,19 @@ class Admin(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import edge, service_announcement, sharepoint
+        from .edge import Edge
+        from .service_announcement import ServiceAnnouncement
+        from .sharepoint import Sharepoint
 
-        from . import edge, service_announcement, sharepoint
+        from .edge import Edge
+        from .service_announcement import ServiceAnnouncement
+        from .sharepoint import Sharepoint
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "edge": lambda n : setattr(self, 'edge', n.get_object_value(edge.Edge)),
+            "edge": lambda n : setattr(self, 'edge', n.get_object_value(Edge)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "serviceAnnouncement": lambda n : setattr(self, 'service_announcement', n.get_object_value(service_announcement.ServiceAnnouncement)),
-            "sharepoint": lambda n : setattr(self, 'sharepoint', n.get_object_value(sharepoint.Sharepoint)),
+            "serviceAnnouncement": lambda n : setattr(self, 'service_announcement', n.get_object_value(ServiceAnnouncement)),
+            "sharepoint": lambda n : setattr(self, 'sharepoint', n.get_object_value(Sharepoint)),
         }
         return fields
     

@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_session_control, persistent_browser_session_mode
+    from .conditional_access_session_control import ConditionalAccessSessionControl
+    from .persistent_browser_session_mode import PersistentBrowserSessionMode
 
-from . import conditional_access_session_control
+from .conditional_access_session_control import ConditionalAccessSessionControl
 
 @dataclass
-class PersistentBrowserSessionControl(conditional_access_session_control.ConditionalAccessSessionControl):
+class PersistentBrowserSessionControl(ConditionalAccessSessionControl):
     odata_type = "#microsoft.graph.persistentBrowserSessionControl"
     # Possible values are: always, never.
-    mode: Optional[persistent_browser_session_mode.PersistentBrowserSessionMode] = None
+    mode: Optional[PersistentBrowserSessionMode] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PersistentBrowserSessionControl:
@@ -31,12 +32,14 @@ class PersistentBrowserSessionControl(conditional_access_session_control.Conditi
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_session_control, persistent_browser_session_mode
+        from .conditional_access_session_control import ConditionalAccessSessionControl
+        from .persistent_browser_session_mode import PersistentBrowserSessionMode
 
-        from . import conditional_access_session_control, persistent_browser_session_mode
+        from .conditional_access_session_control import ConditionalAccessSessionControl
+        from .persistent_browser_session_mode import PersistentBrowserSessionMode
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "mode": lambda n : setattr(self, 'mode', n.get_enum_value(persistent_browser_session_mode.PersistentBrowserSessionMode)),
+            "mode": lambda n : setattr(self, 'mode', n.get_enum_value(PersistentBrowserSessionMode)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

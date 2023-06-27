@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, todo_task_list
+    from .entity import Entity
+    from .todo_task_list import TodoTaskList
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Todo(entity.Entity):
+class Todo(Entity):
     # The task lists in the users mailbox.
-    lists: Optional[List[todo_task_list.TodoTaskList]] = None
+    lists: Optional[List[TodoTaskList]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class Todo(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, todo_task_list
+        from .entity import Entity
+        from .todo_task_list import TodoTaskList
 
-        from . import entity, todo_task_list
+        from .entity import Entity
+        from .todo_task_list import TodoTaskList
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lists": lambda n : setattr(self, 'lists', n.get_collection_of_object_values(todo_task_list.TodoTaskList)),
+            "lists": lambda n : setattr(self, 'lists', n.get_collection_of_object_values(TodoTaskList)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

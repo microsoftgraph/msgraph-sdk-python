@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import simulation_event
+    from .simulation_event import SimulationEvent
 
 @dataclass
 class SimulationEventsContent(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
     # Actual percentage of users who fell for the simulated attack in an attack simulation and training campaign.
     compromised_rate: Optional[float] = None
     # List of simulation events in an attack simulation and training campaign.
-    events: Optional[List[simulation_event.SimulationEvent]] = None
+    events: Optional[List[SimulationEvent]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,13 +35,13 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import simulation_event
+        from .simulation_event import SimulationEvent
 
-        from . import simulation_event
+        from .simulation_event import SimulationEvent
 
         fields: Dict[str, Callable[[Any], None]] = {
             "compromisedRate": lambda n : setattr(self, 'compromised_rate', n.get_float_value()),
-            "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(simulation_event.SimulationEvent)),
+            "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(SimulationEvent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

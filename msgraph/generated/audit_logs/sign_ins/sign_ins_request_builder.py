@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import sign_in, sign_in_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import sign_in_item_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.sign_in import SignIn
+    from ...models.sign_in_collection_response import SignInCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.sign_in_item_request_builder import SignInItemRequestBuilder
 
 class SignInsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class SignInsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_sign_in_id(self,sign_in_id: str) -> sign_in_item_request_builder.SignInItemRequestBuilder:
+    def by_sign_in_id(self,sign_in_id: str) -> SignInItemRequestBuilder:
         """
         Provides operations to manage the signIns property of the microsoft.graph.auditLogRoot entity.
         Args:
             sign_in_id: Unique identifier of the item
-        Returns: sign_in_item_request_builder.SignInItemRequestBuilder
+        Returns: SignInItemRequestBuilder
         """
         if not sign_in_id:
             raise TypeError("sign_in_id cannot be null.")
-        from .item import sign_in_item_request_builder
+        from .item.sign_in_item_request_builder import SignInItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["signIn%2Did"] = sign_in_id
-        return sign_in_item_request_builder.SignInItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return SignInItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SignInsRequestBuilderGetRequestConfiguration] = None) -> Optional[sign_in_collection_response.SignInCollectionResponse]:
+    async def get(self,request_configuration: Optional[SignInsRequestBuilderGetRequestConfiguration] = None) -> Optional[SignInCollectionResponse]:
         """
         Retrieve the Azure AD user sign-ins for your tenant. Sign-ins that are interactive in nature (where a username/password is passed as part of auth token) and successful federated sign-ins are currently included in the sign-in logs.  The maximum and default page size is 1,000 objects and by default, the most recent sign-ins are returned first. Only sign-in events that occurred within the Azure Active Directory (Azure AD) default retention period are available.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[sign_in_collection_response.SignInCollectionResponse]
+        Returns: Optional[SignInCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import sign_in_collection_response
+        from ...models.sign_in_collection_response import SignInCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, sign_in_collection_response.SignInCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SignInCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[sign_in.SignIn] = None, request_configuration: Optional[SignInsRequestBuilderPostRequestConfiguration] = None) -> Optional[sign_in.SignIn]:
+    async def post(self,body: Optional[SignIn] = None, request_configuration: Optional[SignInsRequestBuilderPostRequestConfiguration] = None) -> Optional[SignIn]:
         """
         Create new navigation property to signIns for auditLogs
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[sign_in.SignIn]
+        Returns: Optional[SignIn]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import sign_in
+        from ...models.sign_in import SignIn
 
-        return await self.request_adapter.send_async(request_info, sign_in.SignIn, error_mapping)
+        return await self.request_adapter.send_async(request_info, SignIn, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SignInsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class SignInsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[sign_in.SignIn] = None, request_configuration: Optional[SignInsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SignIn] = None, request_configuration: Optional[SignInsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to signIns for auditLogs
         Args:
@@ -139,13 +140,13 @@ class SignInsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SignInsRequestBuilderGetQueryParameters():

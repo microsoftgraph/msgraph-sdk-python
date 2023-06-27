@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import standard_time_zone_offset
+    from .standard_time_zone_offset import StandardTimeZoneOffset
 
-from . import standard_time_zone_offset
+from .standard_time_zone_offset import StandardTimeZoneOffset
 
 @dataclass
-class DaylightTimeZoneOffset(standard_time_zone_offset.StandardTimeZoneOffset):
+class DaylightTimeZoneOffset(StandardTimeZoneOffset):
     odata_type = "#microsoft.graph.daylightTimeZoneOffset"
     # The time offset from Coordinated Universal Time (UTC) for daylight saving time. This value is in minutes.
     daylight_bias: Optional[int] = None
@@ -31,9 +31,9 @@ class DaylightTimeZoneOffset(standard_time_zone_offset.StandardTimeZoneOffset):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import standard_time_zone_offset
+        from .standard_time_zone_offset import StandardTimeZoneOffset
 
-        from . import standard_time_zone_offset
+        from .standard_time_zone_offset import StandardTimeZoneOffset
 
         fields: Dict[str, Callable[[Any], None]] = {
             "daylightBias": lambda n : setattr(self, 'daylight_bias', n.get_int_value()),

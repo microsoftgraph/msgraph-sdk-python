@@ -1,25 +1,26 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, mobile_app_content_file_upload_state
+    from .entity import Entity
+    from .mobile_app_content_file_upload_state import MobileAppContentFileUploadState
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class MobileAppContentFile(entity.Entity):
+class MobileAppContentFile(Entity):
     """
     Contains properties for a single installer file that is associated with a given mobileAppContent version.
     """
     # The Azure Storage URI.
     azure_storage_uri: Optional[str] = None
     # The time the Azure storage Uri expires.
-    azure_storage_uri_expiration_date_time: Optional[datetime] = None
+    azure_storage_uri_expiration_date_time: Optional[datetime.datetime] = None
     # The time the file was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # A value indicating whether the file is committed.
     is_committed: Optional[bool] = None
     # The manifest information.
@@ -33,7 +34,7 @@ class MobileAppContentFile(entity.Entity):
     # The size of the file after encryption.
     size_encrypted: Optional[int] = None
     # Contains properties for upload request states.
-    upload_state: Optional[mobile_app_content_file_upload_state.MobileAppContentFileUploadState] = None
+    upload_state: Optional[MobileAppContentFileUploadState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileAppContentFile:
@@ -52,9 +53,11 @@ class MobileAppContentFile(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, mobile_app_content_file_upload_state
+        from .entity import Entity
+        from .mobile_app_content_file_upload_state import MobileAppContentFileUploadState
 
-        from . import entity, mobile_app_content_file_upload_state
+        from .entity import Entity
+        from .mobile_app_content_file_upload_state import MobileAppContentFileUploadState
 
         fields: Dict[str, Callable[[Any], None]] = {
             "azureStorageUri": lambda n : setattr(self, 'azure_storage_uri', n.get_str_value()),
@@ -65,7 +68,7 @@ class MobileAppContentFile(entity.Entity):
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
             "sizeEncrypted": lambda n : setattr(self, 'size_encrypted', n.get_int_value()),
-            "uploadState": lambda n : setattr(self, 'upload_state', n.get_enum_value(mobile_app_content_file_upload_state.MobileAppContentFileUploadState)),
+            "uploadState": lambda n : setattr(self, 'upload_state', n.get_enum_value(MobileAppContentFileUploadState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -81,10 +84,10 @@ class MobileAppContentFile(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("azureStorageUri", self.azure_storage_uri)
-        writer.write_datetime_value("azureStorageUriExpirationDateTime", self.azure_storage_uri_expiration_date_time)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("azureStorageUriExpirationDateTime", self.azure_storage_uri_expiration_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_bool_value("isCommitted", self.is_committed)
-        writer.write_object_value("manifest", self.manifest)
+        writer.write_bytes_value("manifest", self.manifest)
         writer.write_str_value("name", self.name)
         writer.write_int_value("size", self.size)
         writer.write_int_value("sizeEncrypted", self.size_encrypted)

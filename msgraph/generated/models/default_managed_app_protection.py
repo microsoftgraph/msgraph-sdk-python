@@ -4,23 +4,27 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import key_value_pair, managed_app_data_encryption_type, managed_app_policy_deployment_summary, managed_app_protection, managed_mobile_app
+    from .key_value_pair import KeyValuePair
+    from .managed_app_data_encryption_type import ManagedAppDataEncryptionType
+    from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+    from .managed_app_protection import ManagedAppProtection
+    from .managed_mobile_app import ManagedMobileApp
 
-from . import managed_app_protection
+from .managed_app_protection import ManagedAppProtection
 
 @dataclass
-class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
+class DefaultManagedAppProtection(ManagedAppProtection):
     odata_type = "#microsoft.graph.defaultManagedAppProtection"
     # Represents the level to which app data is encrypted for managed apps
-    app_data_encryption_type: Optional[managed_app_data_encryption_type.ManagedAppDataEncryptionType] = None
+    app_data_encryption_type: Optional[ManagedAppDataEncryptionType] = None
     # List of apps to which the policy is deployed.
-    apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
+    apps: Optional[List[ManagedMobileApp]] = None
     # A set of string key and string value pairs to be sent to the affected users, unalterned by this service
-    custom_settings: Optional[List[key_value_pair.KeyValuePair]] = None
+    custom_settings: Optional[List[KeyValuePair]] = None
     # Count of apps to which the current policy is deployed.
     deployed_app_count: Optional[int] = None
     # Navigation property to deployment summary of the configuration.
-    deployment_summary: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None
+    deployment_summary: Optional[ManagedAppPolicyDeploymentSummary] = None
     # When this setting is enabled, app level encryption is disabled if device level encryption is enabled. (Android only)
     disable_app_encryption_if_device_encryption_is_enabled: Optional[bool] = None
     # Indicates whether managed-app data should be encrypted. (Android only)
@@ -53,16 +57,24 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import key_value_pair, managed_app_data_encryption_type, managed_app_policy_deployment_summary, managed_app_protection, managed_mobile_app
+        from .key_value_pair import KeyValuePair
+        from .managed_app_data_encryption_type import ManagedAppDataEncryptionType
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_app_protection import ManagedAppProtection
+        from .managed_mobile_app import ManagedMobileApp
 
-        from . import key_value_pair, managed_app_data_encryption_type, managed_app_policy_deployment_summary, managed_app_protection, managed_mobile_app
+        from .key_value_pair import KeyValuePair
+        from .managed_app_data_encryption_type import ManagedAppDataEncryptionType
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_app_protection import ManagedAppProtection
+        from .managed_mobile_app import ManagedMobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appDataEncryptionType": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(managed_app_data_encryption_type.ManagedAppDataEncryptionType)),
-            "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
-            "customSettings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
+            "appDataEncryptionType": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(ManagedAppDataEncryptionType)),
+            "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(ManagedMobileApp)),
+            "customSettings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(KeyValuePair)),
             "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
+            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(ManagedAppPolicyDeploymentSummary)),
             "disableAppEncryptionIfDeviceEncryptionIsEnabled": lambda n : setattr(self, 'disable_app_encryption_if_device_encryption_is_enabled', n.get_bool_value()),
             "encryptAppData": lambda n : setattr(self, 'encrypt_app_data', n.get_bool_value()),
             "faceIdBlocked": lambda n : setattr(self, 'face_id_blocked', n.get_bool_value()),

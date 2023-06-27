@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import alert
-    from ....models.o_data_errors import o_data_error
+    from ....models.alert import Alert
+    from ....models.o_data_errors.o_data_error import ODataError
 
 class AlertItemRequestBuilder():
     """
@@ -35,52 +35,52 @@ class AlertItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AlertItemRequestBuilderGetRequestConfiguration] = None) -> Optional[alert.Alert]:
+    async def get(self,request_configuration: Optional[AlertItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Alert]:
         """
         Retrieve the properties and relationships of an alert object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[alert.Alert]
+        Returns: Optional[Alert]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import alert
+        from ....models.alert import Alert
 
-        return await self.request_adapter.send_async(request_info, alert.Alert, error_mapping)
+        return await self.request_adapter.send_async(request_info, Alert, error_mapping)
     
-    async def patch(self,body: Optional[alert.Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[alert.Alert]:
+    async def patch(self,body: Optional[Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Alert]:
         """
         Update an editable **alert** property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[alert.Alert]
+        Returns: Optional[Alert]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import alert
+        from ....models.alert import Alert
 
-        return await self.request_adapter.send_async(request_info, alert.Alert, error_mapping)
+        return await self.request_adapter.send_async(request_info, Alert, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AlertItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -100,7 +100,7 @@ class AlertItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[alert.Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update an editable **alert** property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID.
         Args:

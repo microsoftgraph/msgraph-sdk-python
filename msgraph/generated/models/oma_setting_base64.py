@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import oma_setting
+    from .oma_setting import OmaSetting
 
-from . import oma_setting
+from .oma_setting import OmaSetting
 
 @dataclass
-class OmaSettingBase64(oma_setting.OmaSetting):
+class OmaSettingBase64(OmaSetting):
     odata_type = "#microsoft.graph.omaSettingBase64"
     # File name associated with the Value property (.cer
     file_name: Optional[str] = None
@@ -33,9 +33,9 @@ class OmaSettingBase64(oma_setting.OmaSetting):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import oma_setting
+        from .oma_setting import OmaSetting
 
-        from . import oma_setting
+        from .oma_setting import OmaSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),

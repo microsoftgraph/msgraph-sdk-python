@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..............models import workbook_filter_criteria
+    from ..............models.workbook_filter_criteria import WorkbookFilterCriteria
 
 @dataclass
 class ApplyPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ApplyPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The criteria property
-    criteria: Optional[workbook_filter_criteria.WorkbookFilterCriteria] = None
+    criteria: Optional[WorkbookFilterCriteria] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplyPostRequestBody:
@@ -31,12 +31,12 @@ class ApplyPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ..............models import workbook_filter_criteria
+        from ..............models.workbook_filter_criteria import WorkbookFilterCriteria
 
-        from ..............models import workbook_filter_criteria
+        from ..............models.workbook_filter_criteria import WorkbookFilterCriteria
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(workbook_filter_criteria.WorkbookFilterCriteria)),
+            "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(WorkbookFilterCriteria)),
         }
         return fields
     

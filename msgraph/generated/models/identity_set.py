@@ -4,7 +4,11 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import chat_message_from_identity_set, chat_message_mentioned_identity_set, chat_message_reaction_identity_set, identity, share_point_identity_set
+    from .chat_message_from_identity_set import ChatMessageFromIdentitySet
+    from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
+    from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
+    from .identity import Identity
+    from .share_point_identity_set import SharePointIdentitySet
 
 @dataclass
 class IdentitySet(AdditionalDataHolder, Parsable):
@@ -12,13 +16,13 @@ class IdentitySet(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Optional. The application associated with this action.
-    application: Optional[identity.Identity] = None
+    application: Optional[Identity] = None
     # Optional. The device associated with this action.
-    device: Optional[identity.Identity] = None
+    device: Optional[Identity] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Optional. The user associated with this action.
-    user: Optional[identity.Identity] = None
+    user: Optional[Identity] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentitySet:
@@ -35,21 +39,21 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageFromIdentitySet".casefold():
-            from . import chat_message_from_identity_set
+            from .chat_message_from_identity_set import ChatMessageFromIdentitySet
 
-            return chat_message_from_identity_set.ChatMessageFromIdentitySet()
+            return ChatMessageFromIdentitySet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageMentionedIdentitySet".casefold():
-            from . import chat_message_mentioned_identity_set
+            from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
 
-            return chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet()
+            return ChatMessageMentionedIdentitySet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageReactionIdentitySet".casefold():
-            from . import chat_message_reaction_identity_set
+            from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
 
-            return chat_message_reaction_identity_set.ChatMessageReactionIdentitySet()
+            return ChatMessageReactionIdentitySet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointIdentitySet".casefold():
-            from . import share_point_identity_set
+            from .share_point_identity_set import SharePointIdentitySet
 
-            return share_point_identity_set.SharePointIdentitySet()
+            return SharePointIdentitySet()
         return IdentitySet()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -57,15 +61,23 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import chat_message_from_identity_set, chat_message_mentioned_identity_set, chat_message_reaction_identity_set, identity, share_point_identity_set
+        from .chat_message_from_identity_set import ChatMessageFromIdentitySet
+        from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
+        from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
+        from .identity import Identity
+        from .share_point_identity_set import SharePointIdentitySet
 
-        from . import chat_message_from_identity_set, chat_message_mentioned_identity_set, chat_message_reaction_identity_set, identity, share_point_identity_set
+        from .chat_message_from_identity_set import ChatMessageFromIdentitySet
+        from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
+        from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
+        from .identity import Identity
+        from .share_point_identity_set import SharePointIdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "application": lambda n : setattr(self, 'application', n.get_object_value(identity.Identity)),
-            "device": lambda n : setattr(self, 'device', n.get_object_value(identity.Identity)),
+            "application": lambda n : setattr(self, 'application', n.get_object_value(Identity)),
+            "device": lambda n : setattr(self, 'device', n.get_object_value(Identity)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "user": lambda n : setattr(self, 'user', n.get_object_value(identity.Identity)),
+            "user": lambda n : setattr(self, 'user', n.get_object_value(Identity)),
         }
         return fields
     

@@ -1,19 +1,19 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method
+    from .authentication_method import AuthenticationMethod
 
-from . import authentication_method
+from .authentication_method import AuthenticationMethod
 
 @dataclass
-class TemporaryAccessPassAuthenticationMethod(authentication_method.AuthenticationMethod):
+class TemporaryAccessPassAuthenticationMethod(AuthenticationMethod):
     odata_type = "#microsoft.graph.temporaryAccessPassAuthenticationMethod"
     # The date and time when the Temporary Access Pass was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The state of the authentication method that indicates whether it's currently usable by the user.
     is_usable: Optional[bool] = None
     # Determines whether the pass is limited to a one-time use. If true, the pass can be used once; if false, the pass can be used multiple times within the Temporary Access Pass lifetime.
@@ -23,7 +23,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
     # Details about the usability state (isUsable). Reasons can include: EnabledByPolicy, DisabledByPolicy, Expired, NotYetValid, OneTimeUsed.
     method_usability_reason: Optional[str] = None
     # The date and time when the Temporary Access Pass becomes available to use and when isUsable is true is enforced.
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     # The Temporary Access Pass used to authenticate. Returned only on creation of a new temporaryAccessPassAuthenticationMethod object; Hidden in subsequent read operations and returned as null with GET.
     temporary_access_pass: Optional[str] = None
     
@@ -44,9 +44,9 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method
+        from .authentication_method import AuthenticationMethod
 
-        from . import authentication_method
+        from .authentication_method import AuthenticationMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -70,12 +70,12 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_bool_value("isUsable", self.is_usable)
         writer.write_bool_value("isUsableOnce", self.is_usable_once)
         writer.write_int_value("lifetimeInMinutes", self.lifetime_in_minutes)
         writer.write_str_value("methodUsabilityReason", self.method_usability_reason)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
         writer.write_str_value("temporaryAccessPass", self.temporary_access_pass)
     
 

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_user_flow_attribute
+    from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
-from . import identity_user_flow_attribute
+from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
 @dataclass
-class IdentityBuiltInUserFlowAttribute(identity_user_flow_attribute.IdentityUserFlowAttribute):
+class IdentityBuiltInUserFlowAttribute(IdentityUserFlowAttribute):
     odata_type = "#microsoft.graph.identityBuiltInUserFlowAttribute"
     
     @staticmethod
@@ -29,9 +29,9 @@ class IdentityBuiltInUserFlowAttribute(identity_user_flow_attribute.IdentityUser
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_user_flow_attribute
+        from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
-        from . import identity_user_flow_attribute
+        from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

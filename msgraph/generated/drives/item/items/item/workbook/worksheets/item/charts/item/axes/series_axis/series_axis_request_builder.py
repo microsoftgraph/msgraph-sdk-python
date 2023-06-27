@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ............models import workbook_chart_axis
-    from ............models.o_data_errors import o_data_error
-    from .format import format_request_builder
-    from .major_gridlines import major_gridlines_request_builder
-    from .minor_gridlines import minor_gridlines_request_builder
-    from .title import title_request_builder
+    from ............models.o_data_errors.o_data_error import ODataError
+    from ............models.workbook_chart_axis import WorkbookChartAxis
+    from .format.format_request_builder import FormatRequestBuilder
+    from .major_gridlines.major_gridlines_request_builder import MajorGridlinesRequestBuilder
+    from .minor_gridlines.minor_gridlines_request_builder import MinorGridlinesRequestBuilder
+    from .title.title_request_builder import TitleRequestBuilder
 
 class SeriesAxisRequestBuilder():
     """
@@ -48,62 +48,62 @@ class SeriesAxisRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SeriesAxisRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_axis.WorkbookChartAxis]:
+    async def get(self,request_configuration: Optional[SeriesAxisRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartAxis]:
         """
         Represents the series axis of a 3-dimensional chart. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart_axis.WorkbookChartAxis]
+        Returns: Optional[WorkbookChartAxis]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ............models import workbook_chart_axis
+        from ............models.workbook_chart_axis import WorkbookChartAxis
 
-        return await self.request_adapter.send_async(request_info, workbook_chart_axis.WorkbookChartAxis, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChartAxis, error_mapping)
     
-    async def patch(self,body: Optional[workbook_chart_axis.WorkbookChartAxis] = None, request_configuration: Optional[SeriesAxisRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_axis.WorkbookChartAxis]:
+    async def patch(self,body: Optional[WorkbookChartAxis] = None, request_configuration: Optional[SeriesAxisRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChartAxis]:
         """
         Update the navigation property seriesAxis in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart_axis.WorkbookChartAxis]
+        Returns: Optional[WorkbookChartAxis]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ............models.o_data_errors import o_data_error
+        from ............models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ............models import workbook_chart_axis
+        from ............models.workbook_chart_axis import WorkbookChartAxis
 
-        return await self.request_adapter.send_async(request_info, workbook_chart_axis.WorkbookChartAxis, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChartAxis, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SeriesAxisRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -139,7 +139,7 @@ class SeriesAxisRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_chart_axis.WorkbookChartAxis] = None, request_configuration: Optional[SeriesAxisRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookChartAxis] = None, request_configuration: Optional[SeriesAxisRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property seriesAxis in drives
         Args:
@@ -161,40 +161,40 @@ class SeriesAxisRequestBuilder():
         return request_info
     
     @property
-    def format(self) -> format_request_builder.FormatRequestBuilder:
+    def format(self) -> FormatRequestBuilder:
         """
         Provides operations to manage the format property of the microsoft.graph.workbookChartAxis entity.
         """
-        from .format import format_request_builder
+        from .format.format_request_builder import FormatRequestBuilder
 
-        return format_request_builder.FormatRequestBuilder(self.request_adapter, self.path_parameters)
+        return FormatRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def major_gridlines(self) -> major_gridlines_request_builder.MajorGridlinesRequestBuilder:
+    def major_gridlines(self) -> MajorGridlinesRequestBuilder:
         """
         Provides operations to manage the majorGridlines property of the microsoft.graph.workbookChartAxis entity.
         """
-        from .major_gridlines import major_gridlines_request_builder
+        from .major_gridlines.major_gridlines_request_builder import MajorGridlinesRequestBuilder
 
-        return major_gridlines_request_builder.MajorGridlinesRequestBuilder(self.request_adapter, self.path_parameters)
+        return MajorGridlinesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def minor_gridlines(self) -> minor_gridlines_request_builder.MinorGridlinesRequestBuilder:
+    def minor_gridlines(self) -> MinorGridlinesRequestBuilder:
         """
         Provides operations to manage the minorGridlines property of the microsoft.graph.workbookChartAxis entity.
         """
-        from .minor_gridlines import minor_gridlines_request_builder
+        from .minor_gridlines.minor_gridlines_request_builder import MinorGridlinesRequestBuilder
 
-        return minor_gridlines_request_builder.MinorGridlinesRequestBuilder(self.request_adapter, self.path_parameters)
+        return MinorGridlinesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def title(self) -> title_request_builder.TitleRequestBuilder:
+    def title(self) -> TitleRequestBuilder:
         """
         Provides operations to manage the title property of the microsoft.graph.workbookChartAxis entity.
         """
-        from .title import title_request_builder
+        from .title.title_request_builder import TitleRequestBuilder
 
-        return title_request_builder.TitleRequestBuilder(self.request_adapter, self.path_parameters)
+        return TitleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SeriesAxisRequestBuilderDeleteRequestConfiguration():

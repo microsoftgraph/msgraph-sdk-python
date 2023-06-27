@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import filter_mode
+    from .filter_mode import FilterMode
 
 @dataclass
 class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The mode property
-    mode: Optional[filter_mode.FilterMode] = None
+    mode: Optional[FilterMode] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Rule syntax is similar to that used for membership rules for groups in Azure Active Directory (Azure AD). For details, see rules with multiple expressions
@@ -35,12 +35,12 @@ class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import filter_mode
+        from .filter_mode import FilterMode
 
-        from . import filter_mode
+        from .filter_mode import FilterMode
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "mode": lambda n : setattr(self, 'mode', n.get_enum_value(filter_mode.FilterMode)),
+            "mode": lambda n : setattr(self, 'mode', n.get_enum_value(FilterMode)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rule": lambda n : setattr(self, 'rule', n.get_str_value()),
         }

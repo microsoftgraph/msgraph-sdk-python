@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_info, media_stream, network_info
+    from .device_info import DeviceInfo
+    from .media_stream import MediaStream
+    from .network_info import NetworkInfo
 
 @dataclass
 class Media(AdditionalDataHolder, Parsable):
@@ -12,19 +14,19 @@ class Media(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Device information associated with the callee endpoint of this media.
-    callee_device: Optional[device_info.DeviceInfo] = None
+    callee_device: Optional[DeviceInfo] = None
     # Network information associated with the callee endpoint of this media.
-    callee_network: Optional[network_info.NetworkInfo] = None
+    callee_network: Optional[NetworkInfo] = None
     # Device information associated with the caller endpoint of this media.
-    caller_device: Optional[device_info.DeviceInfo] = None
+    caller_device: Optional[DeviceInfo] = None
     # Network information associated with the caller endpoint of this media.
-    caller_network: Optional[network_info.NetworkInfo] = None
+    caller_network: Optional[NetworkInfo] = None
     # How the media was identified during media negotiation stage.
     label: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Network streams associated with this media.
-    streams: Optional[List[media_stream.MediaStream]] = None
+    streams: Optional[List[MediaStream]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Media:
@@ -43,18 +45,22 @@ class Media(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_info, media_stream, network_info
+        from .device_info import DeviceInfo
+        from .media_stream import MediaStream
+        from .network_info import NetworkInfo
 
-        from . import device_info, media_stream, network_info
+        from .device_info import DeviceInfo
+        from .media_stream import MediaStream
+        from .network_info import NetworkInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "calleeDevice": lambda n : setattr(self, 'callee_device', n.get_object_value(device_info.DeviceInfo)),
-            "calleeNetwork": lambda n : setattr(self, 'callee_network', n.get_object_value(network_info.NetworkInfo)),
-            "callerDevice": lambda n : setattr(self, 'caller_device', n.get_object_value(device_info.DeviceInfo)),
-            "callerNetwork": lambda n : setattr(self, 'caller_network', n.get_object_value(network_info.NetworkInfo)),
+            "calleeDevice": lambda n : setattr(self, 'callee_device', n.get_object_value(DeviceInfo)),
+            "calleeNetwork": lambda n : setattr(self, 'callee_network', n.get_object_value(NetworkInfo)),
+            "callerDevice": lambda n : setattr(self, 'caller_device', n.get_object_value(DeviceInfo)),
+            "callerNetwork": lambda n : setattr(self, 'caller_network', n.get_object_value(NetworkInfo)),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "streams": lambda n : setattr(self, 'streams', n.get_collection_of_object_values(media_stream.MediaStream)),
+            "streams": lambda n : setattr(self, 'streams', n.get_collection_of_object_values(MediaStream)),
         }
         return fields
     

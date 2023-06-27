@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import user_activity, user_activity_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import user_activity_item_request_builder
-    from .recent import recent_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.user_activity import UserActivity
+    from ...models.user_activity_collection_response import UserActivityCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.user_activity_item_request_builder import UserActivityItemRequestBuilder
+    from .recent.recent_request_builder import RecentRequestBuilder
 
 class ActivitiesRequestBuilder():
     """
@@ -38,71 +39,71 @@ class ActivitiesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_user_activity_id(self,user_activity_id: str) -> user_activity_item_request_builder.UserActivityItemRequestBuilder:
+    def by_user_activity_id(self,user_activity_id: str) -> UserActivityItemRequestBuilder:
         """
         Provides operations to manage the activities property of the microsoft.graph.user entity.
         Args:
             user_activity_id: Unique identifier of the item
-        Returns: user_activity_item_request_builder.UserActivityItemRequestBuilder
+        Returns: UserActivityItemRequestBuilder
         """
         if not user_activity_id:
             raise TypeError("user_activity_id cannot be null.")
-        from .item import user_activity_item_request_builder
+        from .item.user_activity_item_request_builder import UserActivityItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["userActivity%2Did"] = user_activity_id
-        return user_activity_item_request_builder.UserActivityItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return UserActivityItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ActivitiesRequestBuilderGetRequestConfiguration] = None) -> Optional[user_activity_collection_response.UserActivityCollectionResponse]:
+    async def get(self,request_configuration: Optional[ActivitiesRequestBuilderGetRequestConfiguration] = None) -> Optional[UserActivityCollectionResponse]:
         """
-        The user's activities across devices. Read-only. Nullable.
+        Get activities for a given user. Unlike the **recent** OData function, activities without histories will be returned. The permission UserActivity.ReadWrite.CreatedByApp will apply extra filtering to the response, so that only activities created by your application are returned. This server-side filtering might result in empty pages if the user is particularly active and other applications have created more recent activities. To get your application's activities, use the **nextLink** property to paginate.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_activity_collection_response.UserActivityCollectionResponse]
+        Returns: Optional[UserActivityCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import user_activity_collection_response
+        from ...models.user_activity_collection_response import UserActivityCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, user_activity_collection_response.UserActivityCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserActivityCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[user_activity.UserActivity] = None, request_configuration: Optional[ActivitiesRequestBuilderPostRequestConfiguration] = None) -> Optional[user_activity.UserActivity]:
+    async def post(self,body: Optional[UserActivity] = None, request_configuration: Optional[ActivitiesRequestBuilderPostRequestConfiguration] = None) -> Optional[UserActivity]:
         """
         Create new navigation property to activities for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_activity.UserActivity]
+        Returns: Optional[UserActivity]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import user_activity
+        from ...models.user_activity import UserActivity
 
-        return await self.request_adapter.send_async(request_info, user_activity.UserActivity, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserActivity, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ActivitiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The user's activities across devices. Read-only. Nullable.
+        Get activities for a given user. Unlike the **recent** OData function, activities without histories will be returned. The permission UserActivity.ReadWrite.CreatedByApp will apply extra filtering to the response, so that only activities created by your application are returned. This server-side filtering might result in empty pages if the user is particularly active and other applications have created more recent activities. To get your application's activities, use the **nextLink** property to paginate.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -118,7 +119,7 @@ class ActivitiesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[user_activity.UserActivity] = None, request_configuration: Optional[ActivitiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserActivity] = None, request_configuration: Optional[ActivitiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to activities for me
         Args:
@@ -140,27 +141,27 @@ class ActivitiesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def recent(self) -> recent_request_builder.RecentRequestBuilder:
+    def recent(self) -> RecentRequestBuilder:
         """
         Provides operations to call the recent method.
         """
-        from .recent import recent_request_builder
+        from .recent.recent_request_builder import RecentRequestBuilder
 
-        return recent_request_builder.RecentRequestBuilder(self.request_adapter, self.path_parameters)
+        return RecentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ActivitiesRequestBuilderGetQueryParameters():
         """
-        The user's activities across devices. Read-only. Nullable.
+        Get activities for a given user. Unlike the **recent** OData function, activities without histories will be returned. The permission UserActivity.ReadWrite.CreatedByApp will apply extra filtering to the response, so that only activities created by your application are returned. This server-side filtering might result in empty pages if the user is particularly active and other applications have created more recent activities. To get your application's activities, use the **nextLink** property to paginate.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

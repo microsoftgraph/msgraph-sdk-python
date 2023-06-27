@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import add_large_gallery_view_post_request_body
-    from .....models import add_large_gallery_view_operation
-    from .....models.o_data_errors import o_data_error
+    from .....models.add_large_gallery_view_operation import AddLargeGalleryViewOperation
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .add_large_gallery_view_post_request_body import AddLargeGalleryViewPostRequestBody
 
 class AddLargeGalleryViewRequestBuilder():
     """
@@ -36,32 +36,32 @@ class AddLargeGalleryViewRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[add_large_gallery_view_post_request_body.AddLargeGalleryViewPostRequestBody] = None, request_configuration: Optional[AddLargeGalleryViewRequestBuilderPostRequestConfiguration] = None) -> Optional[add_large_gallery_view_operation.AddLargeGalleryViewOperation]:
+    async def post(self,body: Optional[AddLargeGalleryViewPostRequestBody] = None, request_configuration: Optional[AddLargeGalleryViewRequestBuilderPostRequestConfiguration] = None) -> Optional[AddLargeGalleryViewOperation]:
         """
         Add the large gallery view to a call.  For details about how to identify a large gallery view participant in a roster so that you can retrieve the relevant data to subscribe to the video feed, see Identify large gallery view participants in a roster.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[add_large_gallery_view_operation.AddLargeGalleryViewOperation]
+        Returns: Optional[AddLargeGalleryViewOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import add_large_gallery_view_operation
+        from .....models.add_large_gallery_view_operation import AddLargeGalleryViewOperation
 
-        return await self.request_adapter.send_async(request_info, add_large_gallery_view_operation.AddLargeGalleryViewOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, AddLargeGalleryViewOperation, error_mapping)
     
-    def to_post_request_information(self,body: Optional[add_large_gallery_view_post_request_body.AddLargeGalleryViewPostRequestBody] = None, request_configuration: Optional[AddLargeGalleryViewRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AddLargeGalleryViewPostRequestBody] = None, request_configuration: Optional[AddLargeGalleryViewRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add the large gallery view to a call.  For details about how to identify a large gallery view participant in a roster so that you can retrieve the relevant data to subscribe to the video feed, see Identify large gallery view participants in a roster.
         Args:

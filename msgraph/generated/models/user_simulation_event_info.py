@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -12,7 +12,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
     # Browser information from where the simulation event was initiated by a user in an attack simulation and training campaign.
     browser: Optional[str] = None
     # Date and time of the simulation event by a user in an attack simulation and training campaign.
-    event_date_time: Optional[datetime] = None
+    event_date_time: Optional[datetime.datetime] = None
     # Name of the simulation event by a user in an attack simulation and training campaign.
     event_name: Optional[str] = None
     # IP address from where the simulation event was initiated by a user in an attack simulation and training campaign.
@@ -58,7 +58,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("browser", self.browser)
-        writer.write_datetime_value("eventDateTime", self.event_date_time)
+        writer.write_datetime_value()("eventDateTime", self.event_date_time)
         writer.write_str_value("eventName", self.event_name)
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_str_value("@odata.type", self.odata_type)

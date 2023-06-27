@@ -1,28 +1,32 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import audit_activity_initiator, entity, key_value, operation_result, target_resource
+    from .audit_activity_initiator import AuditActivityInitiator
+    from .entity import Entity
+    from .key_value import KeyValue
+    from .operation_result import OperationResult
+    from .target_resource import TargetResource
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DirectoryAudit(entity.Entity):
+class DirectoryAudit(Entity):
     # Indicates the date and time the activity was performed. The Timestamp type is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    activity_date_time: Optional[datetime] = None
+    activity_date_time: Optional[datetime.datetime] = None
     # Indicates the activity name or the operation name (examples: 'Create User' and 'Add member to group'). For full list, see Azure AD activity list.
     activity_display_name: Optional[str] = None
     # Indicates additional details on the activity.
-    additional_details: Optional[List[key_value.KeyValue]] = None
+    additional_details: Optional[List[KeyValue]] = None
     # Indicates which resource category that's targeted by the activity. For example: UserManagement, GroupManagement, ApplicationManagement, RoleManagement.
     category: Optional[str] = None
     # Indicates a unique ID that helps correlate activities that span across various services. Can be used to trace logs across services.
     correlation_id: Optional[str] = None
     # The initiatedBy property
-    initiated_by: Optional[audit_activity_initiator.AuditActivityInitiator] = None
+    initiated_by: Optional[AuditActivityInitiator] = None
     # Indicates information on which service initiated the activity (For example: Self-service Password Management, Core Directory, B2C, Invited Users, Microsoft Identity Manager, Privileged Identity Management.
     logged_by_service: Optional[str] = None
     # The OdataType property
@@ -30,11 +34,11 @@ class DirectoryAudit(entity.Entity):
     # Indicates the type of operation that was performed. The possible values include but are not limited to the following: Add, Assign, Update, Unassign, and Delete.
     operation_type: Optional[str] = None
     # Indicates the result of the activity. Possible values are: success, failure, timeout, unknownFutureValue.
-    result: Optional[operation_result.OperationResult] = None
+    result: Optional[OperationResult] = None
     # Indicates the reason for failure if the result is failure or timeout.
     result_reason: Optional[str] = None
     # Indicates information on which resource was changed due to the activity. Target Resource Type can be User, Device, Directory, App, Role, Group, Policy or Other.
-    target_resources: Optional[List[target_resource.TargetResource]] = None
+    target_resources: Optional[List[TargetResource]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DirectoryAudit:
@@ -53,22 +57,30 @@ class DirectoryAudit(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import audit_activity_initiator, entity, key_value, operation_result, target_resource
+        from .audit_activity_initiator import AuditActivityInitiator
+        from .entity import Entity
+        from .key_value import KeyValue
+        from .operation_result import OperationResult
+        from .target_resource import TargetResource
 
-        from . import audit_activity_initiator, entity, key_value, operation_result, target_resource
+        from .audit_activity_initiator import AuditActivityInitiator
+        from .entity import Entity
+        from .key_value import KeyValue
+        from .operation_result import OperationResult
+        from .target_resource import TargetResource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "activityDisplayName": lambda n : setattr(self, 'activity_display_name', n.get_str_value()),
-            "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_collection_of_object_values(key_value.KeyValue)),
+            "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_collection_of_object_values(KeyValue)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
             "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_object_value(audit_activity_initiator.AuditActivityInitiator)),
+            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_object_value(AuditActivityInitiator)),
             "loggedByService": lambda n : setattr(self, 'logged_by_service', n.get_str_value()),
             "operationType": lambda n : setattr(self, 'operation_type', n.get_str_value()),
-            "result": lambda n : setattr(self, 'result', n.get_enum_value(operation_result.OperationResult)),
+            "result": lambda n : setattr(self, 'result', n.get_enum_value(OperationResult)),
             "resultReason": lambda n : setattr(self, 'result_reason', n.get_str_value()),
-            "targetResources": lambda n : setattr(self, 'target_resources', n.get_collection_of_object_values(target_resource.TargetResource)),
+            "targetResources": lambda n : setattr(self, 'target_resources', n.get_collection_of_object_values(TargetResource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -83,7 +95,7 @@ class DirectoryAudit(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("activityDateTime", self.activity_date_time)
+        writer.write_datetime_value()("activityDateTime", self.activity_date_time)
         writer.write_str_value("activityDisplayName", self.activity_display_name)
         writer.write_collection_of_object_values("additionalDetails", self.additional_details)
         writer.write_str_value("category", self.category)

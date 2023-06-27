@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import token_issuance_policy_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import token_issuance_policy_item_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.token_issuance_policy_collection_response import TokenIssuancePolicyCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.token_issuance_policy_item_request_builder import TokenIssuancePolicyItemRequestBuilder
 
 class TokenIssuancePoliciesRequestBuilder():
     """
@@ -37,42 +37,42 @@ class TokenIssuancePoliciesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_token_issuance_policy_id(self,token_issuance_policy_id: str) -> token_issuance_policy_item_request_builder.TokenIssuancePolicyItemRequestBuilder:
+    def by_token_issuance_policy_id(self,token_issuance_policy_id: str) -> TokenIssuancePolicyItemRequestBuilder:
         """
         Provides operations to manage the tokenIssuancePolicies property of the microsoft.graph.servicePrincipal entity.
         Args:
             token_issuance_policy_id: Unique identifier of the item
-        Returns: token_issuance_policy_item_request_builder.TokenIssuancePolicyItemRequestBuilder
+        Returns: TokenIssuancePolicyItemRequestBuilder
         """
         if not token_issuance_policy_id:
             raise TypeError("token_issuance_policy_id cannot be null.")
-        from .item import token_issuance_policy_item_request_builder
+        from .item.token_issuance_policy_item_request_builder import TokenIssuancePolicyItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["tokenIssuancePolicy%2Did"] = token_issuance_policy_id
-        return token_issuance_policy_item_request_builder.TokenIssuancePolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return TokenIssuancePolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[token_issuance_policy_collection_response.TokenIssuancePolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[TokenIssuancePolicyCollectionResponse]:
         """
         The tokenIssuancePolicies assigned to this service principal.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[token_issuance_policy_collection_response.TokenIssuancePolicyCollectionResponse]
+        Returns: Optional[TokenIssuancePolicyCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import token_issuance_policy_collection_response
+        from ....models.token_issuance_policy_collection_response import TokenIssuancePolicyCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, token_issuance_policy_collection_response.TokenIssuancePolicyCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TokenIssuancePolicyCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class TokenIssuancePoliciesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TokenIssuancePoliciesRequestBuilderGetQueryParameters():

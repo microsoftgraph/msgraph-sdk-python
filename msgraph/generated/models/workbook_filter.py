@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_filter_criteria
+    from .entity import Entity
+    from .workbook_filter_criteria import WorkbookFilterCriteria
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookFilter(entity.Entity):
+class WorkbookFilter(Entity):
     # The currently applied filter on the given column. Read-only.
-    criteria: Optional[workbook_filter_criteria.WorkbookFilterCriteria] = None
+    criteria: Optional[WorkbookFilterCriteria] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class WorkbookFilter(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_filter_criteria
+        from .entity import Entity
+        from .workbook_filter_criteria import WorkbookFilterCriteria
 
-        from . import entity, workbook_filter_criteria
+        from .entity import Entity
+        from .workbook_filter_criteria import WorkbookFilterCriteria
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(workbook_filter_criteria.WorkbookFilterCriteria)),
+            "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(WorkbookFilterCriteria)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

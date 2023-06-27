@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import role_definition
+    from .role_definition import RoleDefinition
 
-from . import role_definition
+from .role_definition import RoleDefinition
 
 @dataclass
-class DeviceAndAppManagementRoleDefinition(role_definition.RoleDefinition):
+class DeviceAndAppManagementRoleDefinition(RoleDefinition):
     odata_type = "#microsoft.graph.deviceAndAppManagementRoleDefinition"
     
     @staticmethod
@@ -29,9 +29,9 @@ class DeviceAndAppManagementRoleDefinition(role_definition.RoleDefinition):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import role_definition
+        from .role_definition import RoleDefinition
 
-        from . import role_definition
+        from .role_definition import RoleDefinition
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

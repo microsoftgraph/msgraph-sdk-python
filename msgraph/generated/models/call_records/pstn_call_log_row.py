@@ -1,11 +1,11 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import pstn_call_duration_source
+    from .pstn_call_duration_source import PstnCallDurationSource
 
 @dataclass
 class PstnCallLogRow(AdditionalDataHolder, Parsable):
@@ -13,7 +13,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The source of the call duration data. If the call uses a third-party telecommunications operator via the Operator Connect Program, the operator may provide their own call duration data. In this case, the property value is operator. Otherwise, the value is microsoft.
-    call_duration_source: Optional[pstn_call_duration_source.PstnCallDurationSource] = None
+    call_duration_source: Optional[PstnCallDurationSource] = None
     # Call identifier. Not guaranteed to be unique.
     call_id: Optional[str] = None
     # Whether the call was a PSTN outbound or inbound call and the type of call such as a call placed by a user or an audio conference.
@@ -37,7 +37,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     # How long the call was connected, in seconds.
     duration: Optional[int] = None
     # Call end time.
-    end_date_time: Optional[datetime] = None
+    end_date_time: Optional[datetime.datetime] = None
     # Unique call identifier. GUID.
     id: Optional[str] = None
     # User's phone number type, such as a service of toll-free number.
@@ -49,7 +49,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     # The telecommunications operator which provided PSTN services for this call. This may be Microsoft, or it may be a third-party operator via the Operator Connect Program.
     operator: Optional[str] = None
     # Call start time.
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     # Country code of the tenant. For details, see ISO 3166-1 alpha-2.
     tenant_country_code: Optional[str] = None
     # Country code of the user. For details, see ISO 3166-1 alpha-2.
@@ -78,12 +78,12 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import pstn_call_duration_source
+        from .pstn_call_duration_source import PstnCallDurationSource
 
-        from . import pstn_call_duration_source
+        from .pstn_call_duration_source import PstnCallDurationSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callDurationSource": lambda n : setattr(self, 'call_duration_source', n.get_enum_value(pstn_call_duration_source.PstnCallDurationSource)),
+            "callDurationSource": lambda n : setattr(self, 'call_duration_source', n.get_enum_value(PstnCallDurationSource)),
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "callType": lambda n : setattr(self, 'call_type', n.get_str_value()),
             "calleeNumber": lambda n : setattr(self, 'callee_number', n.get_str_value()),
@@ -130,13 +130,13 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         writer.write_str_value("destinationContext", self.destination_context)
         writer.write_str_value("destinationName", self.destination_name)
         writer.write_int_value("duration", self.duration)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
+        writer.write_datetime_value()("endDateTime", self.end_date_time)
         writer.write_str_value("id", self.id)
         writer.write_str_value("inventoryType", self.inventory_type)
         writer.write_str_value("licenseCapability", self.license_capability)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("operator", self.operator)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
         writer.write_str_value("tenantCountryCode", self.tenant_country_code)
         writer.write_str_value("usageCountryCode", self.usage_country_code)
         writer.write_str_value("userDisplayName", self.user_display_name)

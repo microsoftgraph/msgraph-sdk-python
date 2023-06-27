@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class TbillPricePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class TbillPricePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The discount property
-    discount: Optional[json.Json] = None
+    discount: Optional[Json] = None
     # The maturity property
-    maturity: Optional[json.Json] = None
+    maturity: Optional[Json] = None
     # The settlement property
-    settlement: Optional[json.Json] = None
+    settlement: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TbillPricePostRequestBody:
@@ -35,14 +35,14 @@ class TbillPricePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "discount": lambda n : setattr(self, 'discount', n.get_object_value(json.Json)),
-            "maturity": lambda n : setattr(self, 'maturity', n.get_object_value(json.Json)),
-            "settlement": lambda n : setattr(self, 'settlement', n.get_object_value(json.Json)),
+            "discount": lambda n : setattr(self, 'discount', n.get_object_value(Json)),
+            "maturity": lambda n : setattr(self, 'maturity', n.get_object_value(Json)),
+            "settlement": lambda n : setattr(self, 'settlement', n.get_object_value(Json)),
         }
         return fields
     

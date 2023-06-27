@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_configuration
+    from .device_configuration import DeviceConfiguration
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class Windows10EnterpriseModernAppManagementConfiguration(device_configuration.DeviceConfiguration):
+class Windows10EnterpriseModernAppManagementConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.windows10EnterpriseModernAppManagementConfiguration"
     # Indicates whether or not to uninstall a fixed list of built-in Windows apps.
     uninstall_built_in_apps: Optional[bool] = None
@@ -31,9 +31,9 @@ class Windows10EnterpriseModernAppManagementConfiguration(device_configuration.D
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration
+        from .device_configuration import DeviceConfiguration
 
-        from . import device_configuration
+        from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "uninstallBuiltInApps": lambda n : setattr(self, 'uninstall_built_in_apps', n.get_bool_value()),

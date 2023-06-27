@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class FindPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class FindPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The findText property
-    find_text: Optional[json.Json] = None
+    find_text: Optional[Json] = None
     # The startNum property
-    start_num: Optional[json.Json] = None
+    start_num: Optional[Json] = None
     # The withinText property
-    within_text: Optional[json.Json] = None
+    within_text: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FindPostRequestBody:
@@ -35,14 +35,14 @@ class FindPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "findText": lambda n : setattr(self, 'find_text', n.get_object_value(json.Json)),
-            "startNum": lambda n : setattr(self, 'start_num', n.get_object_value(json.Json)),
-            "withinText": lambda n : setattr(self, 'within_text', n.get_object_value(json.Json)),
+            "findText": lambda n : setattr(self, 'find_text', n.get_object_value(Json)),
+            "startNum": lambda n : setattr(self, 'start_num', n.get_object_value(Json)),
+            "withinText": lambda n : setattr(self, 'within_text', n.get_object_value(Json)),
         }
         return fields
     

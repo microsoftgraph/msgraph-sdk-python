@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import directory_object
+    from .directory_object import DirectoryObject
 
-from . import directory_object
+from .directory_object import DirectoryObject
 
 @dataclass
-class Endpoint(directory_object.DirectoryObject):
+class Endpoint(DirectoryObject):
     odata_type = "#microsoft.graph.endpoint"
     # The capability property
     capability: Optional[str] = None
@@ -39,9 +39,9 @@ class Endpoint(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object
+        from .directory_object import DirectoryObject
 
-        from . import directory_object
+        from .directory_object import DirectoryObject
 
         fields: Dict[str, Callable[[Any], None]] = {
             "capability": lambda n : setattr(self, 'capability', n.get_str_value()),

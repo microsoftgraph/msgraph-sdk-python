@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import threat_assessment_request, threat_assessment_request_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import threat_assessment_request_item_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.threat_assessment_request import ThreatAssessmentRequest
+    from ...models.threat_assessment_request_collection_response import ThreatAssessmentRequestCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.threat_assessment_request_item_request_builder import ThreatAssessmentRequestItemRequestBuilder
 
 class ThreatAssessmentRequestsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class ThreatAssessmentRequestsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_threat_assessment_request_id(self,threat_assessment_request_id: str) -> threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder:
+    def by_threat_assessment_request_id(self,threat_assessment_request_id: str) -> ThreatAssessmentRequestItemRequestBuilder:
         """
         Provides operations to manage the threatAssessmentRequests property of the microsoft.graph.informationProtection entity.
         Args:
             threat_assessment_request_id: Unique identifier of the item
-        Returns: threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder
+        Returns: ThreatAssessmentRequestItemRequestBuilder
         """
         if not threat_assessment_request_id:
             raise TypeError("threat_assessment_request_id cannot be null.")
-        from .item import threat_assessment_request_item_request_builder
+        from .item.threat_assessment_request_item_request_builder import ThreatAssessmentRequestItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["threatAssessmentRequest%2Did"] = threat_assessment_request_id
-        return threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ThreatAssessmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[threat_assessment_request_collection_response.ThreatAssessmentRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[ThreatAssessmentRequestCollectionResponse]:
         """
         Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[threat_assessment_request_collection_response.ThreatAssessmentRequestCollectionResponse]
+        Returns: Optional[ThreatAssessmentRequestCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import threat_assessment_request_collection_response
+        from ...models.threat_assessment_request_collection_response import ThreatAssessmentRequestCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, threat_assessment_request_collection_response.ThreatAssessmentRequestCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ThreatAssessmentRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[threat_assessment_request.ThreatAssessmentRequest] = None, request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[threat_assessment_request.ThreatAssessmentRequest]:
+    async def post(self,body: Optional[ThreatAssessmentRequest] = None, request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[ThreatAssessmentRequest]:
         """
         Create a new threat assessment request. A threat assessment request can be one of the following types:
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[threat_assessment_request.ThreatAssessmentRequest]
+        Returns: Optional[ThreatAssessmentRequest]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import threat_assessment_request
+        from ...models.threat_assessment_request import ThreatAssessmentRequest
 
-        return await self.request_adapter.send_async(request_info, threat_assessment_request.ThreatAssessmentRequest, error_mapping)
+        return await self.request_adapter.send_async(request_info, ThreatAssessmentRequest, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class ThreatAssessmentRequestsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[threat_assessment_request.ThreatAssessmentRequest] = None, request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ThreatAssessmentRequest] = None, request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new threat assessment request. A threat assessment request can be one of the following types:
         Args:
@@ -139,13 +140,13 @@ class ThreatAssessmentRequestsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ThreatAssessmentRequestsRequestBuilderGetQueryParameters():

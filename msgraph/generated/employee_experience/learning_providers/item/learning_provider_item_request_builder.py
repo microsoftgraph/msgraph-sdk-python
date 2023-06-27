@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import learning_provider
-    from ....models.o_data_errors import o_data_error
-    from .learning_contents import learning_contents_request_builder
+    from ....models.learning_provider import LearningProvider
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .learning_contents.learning_contents_request_builder import LearningContentsRequestBuilder
 
 class LearningProviderItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class LearningProviderItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[LearningProviderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[learning_provider.LearningProvider]:
+    async def get(self,request_configuration: Optional[LearningProviderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningProvider]:
         """
         Read the properties and relationships of a learningProvider object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[learning_provider.LearningProvider]
+        Returns: Optional[LearningProvider]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import learning_provider
+        from ....models.learning_provider import LearningProvider
 
-        return await self.request_adapter.send_async(request_info, learning_provider.LearningProvider, error_mapping)
+        return await self.request_adapter.send_async(request_info, LearningProvider, error_mapping)
     
-    async def patch(self,body: Optional[learning_provider.LearningProvider] = None, request_configuration: Optional[LearningProviderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[learning_provider.LearningProvider]:
+    async def patch(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProviderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[LearningProvider]:
         """
         Update the properties of a learningProvider object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[learning_provider.LearningProvider]
+        Returns: Optional[LearningProvider]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import learning_provider
+        from ....models.learning_provider import LearningProvider
 
-        return await self.request_adapter.send_async(request_info, learning_provider.LearningProvider, error_mapping)
+        return await self.request_adapter.send_async(request_info, LearningProvider, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[LearningProviderItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class LearningProviderItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[learning_provider.LearningProvider] = None, request_configuration: Optional[LearningProviderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProviderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a learningProvider object.
         Args:
@@ -158,13 +158,13 @@ class LearningProviderItemRequestBuilder():
         return request_info
     
     @property
-    def learning_contents(self) -> learning_contents_request_builder.LearningContentsRequestBuilder:
+    def learning_contents(self) -> LearningContentsRequestBuilder:
         """
         Provides operations to manage the learningContents property of the microsoft.graph.learningProvider entity.
         """
-        from .learning_contents import learning_contents_request_builder
+        from .learning_contents.learning_contents_request_builder import LearningContentsRequestBuilder
 
-        return learning_contents_request_builder.LearningContentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return LearningContentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class LearningProviderItemRequestBuilderDeleteRequestConfiguration():

@@ -4,24 +4,26 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, invited_user_message_info, user
+    from .entity import Entity
+    from .invited_user_message_info import InvitedUserMessageInfo
+    from .user import User
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Invitation(entity.Entity):
+class Invitation(Entity):
     # The URL the user can use to redeem their invitation. Read-only.
     invite_redeem_url: Optional[str] = None
     # The URL the user should be redirected to once the invitation is redeemed. Required.
     invite_redirect_url: Optional[str] = None
     # The user created as part of the invitation creation. Read-Only
-    invited_user: Optional[user.User] = None
+    invited_user: Optional[User] = None
     # The display name of the user being invited.
     invited_user_display_name: Optional[str] = None
     # The email address of the user being invited. Required. The following special characters are not permitted in the email address:Tilde (~)Exclamation point (!)Number sign (#)Dollar sign ($)Percent (%)Circumflex (^)Ampersand (&)Asterisk (*)Parentheses (( ))Plus sign (+)Equal sign (=)Brackets ([ ])Braces ({ })Backslash (/)Slash mark (/)Pipe (/|)Semicolon (;)Colon (:)Quotation marks (')Angle brackets (< >)Question mark (?)Comma (,)However, the following exceptions apply:A period (.) or a hyphen (-) is permitted anywhere in the user name, except at the beginning or end of the name.An underscore (_) is permitted anywhere in the user name. This includes at the beginning or end of the name.
     invited_user_email_address: Optional[str] = None
     # Additional configuration for the message being sent to the invited user, including customizing message text, language and cc recipient list.
-    invited_user_message_info: Optional[invited_user_message_info.InvitedUserMessageInfo] = None
+    invited_user_message_info: Optional[InvitedUserMessageInfo] = None
     # The userType of the user being invited. By default, this is Guest. You can invite as Member if you are a company administrator.
     invited_user_type: Optional[str] = None
     # The OdataType property
@@ -50,17 +52,21 @@ class Invitation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, invited_user_message_info, user
+        from .entity import Entity
+        from .invited_user_message_info import InvitedUserMessageInfo
+        from .user import User
 
-        from . import entity, invited_user_message_info, user
+        from .entity import Entity
+        from .invited_user_message_info import InvitedUserMessageInfo
+        from .user import User
 
         fields: Dict[str, Callable[[Any], None]] = {
             "inviteRedeemUrl": lambda n : setattr(self, 'invite_redeem_url', n.get_str_value()),
             "inviteRedirectUrl": lambda n : setattr(self, 'invite_redirect_url', n.get_str_value()),
-            "invitedUser": lambda n : setattr(self, 'invited_user', n.get_object_value(user.User)),
+            "invitedUser": lambda n : setattr(self, 'invited_user', n.get_object_value(User)),
             "invitedUserDisplayName": lambda n : setattr(self, 'invited_user_display_name', n.get_str_value()),
             "invitedUserEmailAddress": lambda n : setattr(self, 'invited_user_email_address', n.get_str_value()),
-            "invitedUserMessageInfo": lambda n : setattr(self, 'invited_user_message_info', n.get_object_value(invited_user_message_info.InvitedUserMessageInfo)),
+            "invitedUserMessageInfo": lambda n : setattr(self, 'invited_user_message_info', n.get_object_value(InvitedUserMessageInfo)),
             "invitedUserType": lambda n : setattr(self, 'invited_user_type', n.get_str_value()),
             "resetRedemption": lambda n : setattr(self, 'reset_redemption', n.get_bool_value()),
             "sendInvitationMessage": lambda n : setattr(self, 'send_invitation_message', n.get_bool_value()),

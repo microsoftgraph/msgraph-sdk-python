@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import shift_item
+    from .shift_item import ShiftItem
 
-from . import shift_item
+from .shift_item import ShiftItem
 
 @dataclass
-class OpenShiftItem(shift_item.ShiftItem):
+class OpenShiftItem(ShiftItem):
     odata_type = "#microsoft.graph.openShiftItem"
     # Count of the number of slots for the given open shift.
     open_slot_count: Optional[int] = None
@@ -31,9 +31,9 @@ class OpenShiftItem(shift_item.ShiftItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import shift_item
+        from .shift_item import ShiftItem
 
-        from . import shift_item
+        from .shift_item import ShiftItem
 
         fields: Dict[str, Callable[[Any], None]] = {
             "openSlotCount": lambda n : setattr(self, 'open_slot_count', n.get_int_value()),

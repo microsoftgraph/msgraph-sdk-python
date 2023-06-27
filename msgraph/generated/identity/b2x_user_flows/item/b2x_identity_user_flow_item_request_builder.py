@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import b2x_identity_user_flow
-    from ....models.o_data_errors import o_data_error
-    from .identity_providers import identity_providers_request_builder
-    from .languages import languages_request_builder
-    from .user_attribute_assignments import user_attribute_assignments_request_builder
-    from .user_flow_identity_providers import user_flow_identity_providers_request_builder
+    from ....models.b2x_identity_user_flow import B2xIdentityUserFlow
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .identity_providers.identity_providers_request_builder import IdentityProvidersRequestBuilder
+    from .languages.languages_request_builder import LanguagesRequestBuilder
+    from .user_attribute_assignments.user_attribute_assignments_request_builder import UserAttributeAssignmentsRequestBuilder
+    from .user_flow_identity_providers.user_flow_identity_providers_request_builder import UserFlowIdentityProvidersRequestBuilder
 
 class B2xIdentityUserFlowItemRequestBuilder():
     """
@@ -48,62 +48,62 @@ class B2xIdentityUserFlowItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
+    async def get(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[B2xIdentityUserFlow]:
         """
         Retrieve the properties and relationships of a b2xIdentityUserFlow object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[b2x_identity_user_flow.B2xIdentityUserFlow]
+        Returns: Optional[B2xIdentityUserFlow]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import b2x_identity_user_flow
+        from ....models.b2x_identity_user_flow import B2xIdentityUserFlow
 
-        return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, error_mapping)
+        return await self.request_adapter.send_async(request_info, B2xIdentityUserFlow, error_mapping)
     
-    async def patch(self,body: Optional[b2x_identity_user_flow.B2xIdentityUserFlow] = None, request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
+    async def patch(self,body: Optional[B2xIdentityUserFlow] = None, request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[B2xIdentityUserFlow]:
         """
         Update the navigation property b2xUserFlows in identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[b2x_identity_user_flow.B2xIdentityUserFlow]
+        Returns: Optional[B2xIdentityUserFlow]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import b2x_identity_user_flow
+        from ....models.b2x_identity_user_flow import B2xIdentityUserFlow
 
-        return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, error_mapping)
+        return await self.request_adapter.send_async(request_info, B2xIdentityUserFlow, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -139,7 +139,7 @@ class B2xIdentityUserFlowItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[b2x_identity_user_flow.B2xIdentityUserFlow] = None, request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[B2xIdentityUserFlow] = None, request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property b2xUserFlows in identity
         Args:
@@ -161,40 +161,40 @@ class B2xIdentityUserFlowItemRequestBuilder():
         return request_info
     
     @property
-    def identity_providers(self) -> identity_providers_request_builder.IdentityProvidersRequestBuilder:
+    def identity_providers(self) -> IdentityProvidersRequestBuilder:
         """
         Provides operations to manage the identityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
         """
-        from .identity_providers import identity_providers_request_builder
+        from .identity_providers.identity_providers_request_builder import IdentityProvidersRequestBuilder
 
-        return identity_providers_request_builder.IdentityProvidersRequestBuilder(self.request_adapter, self.path_parameters)
+        return IdentityProvidersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def languages(self) -> languages_request_builder.LanguagesRequestBuilder:
+    def languages(self) -> LanguagesRequestBuilder:
         """
         Provides operations to manage the languages property of the microsoft.graph.b2xIdentityUserFlow entity.
         """
-        from .languages import languages_request_builder
+        from .languages.languages_request_builder import LanguagesRequestBuilder
 
-        return languages_request_builder.LanguagesRequestBuilder(self.request_adapter, self.path_parameters)
+        return LanguagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_attribute_assignments(self) -> user_attribute_assignments_request_builder.UserAttributeAssignmentsRequestBuilder:
+    def user_attribute_assignments(self) -> UserAttributeAssignmentsRequestBuilder:
         """
         Provides operations to manage the userAttributeAssignments property of the microsoft.graph.b2xIdentityUserFlow entity.
         """
-        from .user_attribute_assignments import user_attribute_assignments_request_builder
+        from .user_attribute_assignments.user_attribute_assignments_request_builder import UserAttributeAssignmentsRequestBuilder
 
-        return user_attribute_assignments_request_builder.UserAttributeAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return UserAttributeAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_flow_identity_providers(self) -> user_flow_identity_providers_request_builder.UserFlowIdentityProvidersRequestBuilder:
+    def user_flow_identity_providers(self) -> UserFlowIdentityProvidersRequestBuilder:
         """
         Provides operations to manage the userFlowIdentityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
         """
-        from .user_flow_identity_providers import user_flow_identity_providers_request_builder
+        from .user_flow_identity_providers.user_flow_identity_providers_request_builder import UserFlowIdentityProvidersRequestBuilder
 
-        return user_flow_identity_providers_request_builder.UserFlowIdentityProvidersRequestBuilder(self.request_adapter, self.path_parameters)
+        return UserFlowIdentityProvidersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration():

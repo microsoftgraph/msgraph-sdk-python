@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import column_definition, column_definition_collection_response
-    from ........models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import column_definition_item_request_builder
+    from ........models.column_definition import ColumnDefinition
+    from ........models.column_definition_collection_response import ColumnDefinitionCollectionResponse
+    from ........models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.column_definition_item_request_builder import ColumnDefinitionItemRequestBuilder
 
 class ColumnsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class ColumnsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_column_definition_id(self,column_definition_id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
+    def by_column_definition_id(self,column_definition_id: str) -> ColumnDefinitionItemRequestBuilder:
         """
         Provides operations to manage the columns property of the microsoft.graph.contentType entity.
         Args:
             column_definition_id: Unique identifier of the item
-        Returns: column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder
+        Returns: ColumnDefinitionItemRequestBuilder
         """
         if not column_definition_id:
             raise TypeError("column_definition_id cannot be null.")
-        from .item import column_definition_item_request_builder
+        from .item.column_definition_item_request_builder import ColumnDefinitionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["columnDefinition%2Did"] = column_definition_id
-        return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> Optional[column_definition_collection_response.ColumnDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> Optional[ColumnDefinitionCollectionResponse]:
         """
         Get the collection of columns represented as [columnDefinition][columnDefinition] resources in a [content type][contentType].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[column_definition_collection_response.ColumnDefinitionCollectionResponse]
+        Returns: Optional[ColumnDefinitionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import column_definition_collection_response
+        from ........models.column_definition_collection_response import ColumnDefinitionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, column_definition_collection_response.ColumnDefinitionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ColumnDefinitionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[column_definition.ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> Optional[column_definition.ColumnDefinition]:
+    async def post(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> Optional[ColumnDefinition]:
         """
         Add a column to a [content type][contentType] in a site, or a list with a request that specifies a [columnDefinition][columnDefinition].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[column_definition.ColumnDefinition]
+        Returns: Optional[ColumnDefinition]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import column_definition
+        from ........models.column_definition import ColumnDefinition
 
-        return await self.request_adapter.send_async(request_info, column_definition.ColumnDefinition, error_mapping)
+        return await self.request_adapter.send_async(request_info, ColumnDefinition, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class ColumnsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[column_definition.ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add a column to a [content type][contentType] in a site, or a list with a request that specifies a [columnDefinition][columnDefinition].
         Args:
@@ -139,13 +140,13 @@ class ColumnsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ColumnsRequestBuilderGetQueryParameters():

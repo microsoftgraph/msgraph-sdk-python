@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import free_busy_error, schedule_item, working_hours
+    from .free_busy_error import FreeBusyError
+    from .schedule_item import ScheduleItem
+    from .working_hours import WorkingHours
 
 @dataclass
 class ScheduleInformation(AdditionalDataHolder, Parsable):
@@ -14,15 +16,15 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
     # Represents a merged view of availability of all the items in scheduleItems. The view consists of time slots. Availability during each time slot is indicated with: 0= free, 1= tentative, 2= busy, 3= out of office, 4= working elsewhere.
     availability_view: Optional[str] = None
     # Error information from attempting to get the availability of the user, distribution list, or resource.
-    error: Optional[free_busy_error.FreeBusyError] = None
+    error: Optional[FreeBusyError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # An SMTP address of the user, distribution list, or resource, identifying an instance of scheduleInformation.
     schedule_id: Optional[str] = None
     # Contains the items that describe the availability of the user or resource.
-    schedule_items: Optional[List[schedule_item.ScheduleItem]] = None
+    schedule_items: Optional[List[ScheduleItem]] = None
     # The days of the week and hours in a specific time zone that the user works. These are set as part of the user's mailboxSettings.
-    working_hours: Optional[working_hours.WorkingHours] = None
+    working_hours: Optional[WorkingHours] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleInformation:
@@ -41,17 +43,21 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import free_busy_error, schedule_item, working_hours
+        from .free_busy_error import FreeBusyError
+        from .schedule_item import ScheduleItem
+        from .working_hours import WorkingHours
 
-        from . import free_busy_error, schedule_item, working_hours
+        from .free_busy_error import FreeBusyError
+        from .schedule_item import ScheduleItem
+        from .working_hours import WorkingHours
 
         fields: Dict[str, Callable[[Any], None]] = {
             "availabilityView": lambda n : setattr(self, 'availability_view', n.get_str_value()),
-            "error": lambda n : setattr(self, 'error', n.get_object_value(free_busy_error.FreeBusyError)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(FreeBusyError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "scheduleId": lambda n : setattr(self, 'schedule_id', n.get_str_value()),
-            "scheduleItems": lambda n : setattr(self, 'schedule_items', n.get_collection_of_object_values(schedule_item.ScheduleItem)),
-            "workingHours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
+            "scheduleItems": lambda n : setattr(self, 'schedule_items', n.get_collection_of_object_values(ScheduleItem)),
+            "workingHours": lambda n : setattr(self, 'working_hours', n.get_object_value(WorkingHours)),
         }
         return fields
     

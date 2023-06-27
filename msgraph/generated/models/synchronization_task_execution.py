@@ -1,11 +1,12 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import synchronization_error, synchronization_task_execution_result
+    from .synchronization_error import SynchronizationError
+    from .synchronization_task_execution_result import SynchronizationTaskExecutionResult
 
 @dataclass
 class SynchronizationTaskExecution(AdditionalDataHolder, Parsable):
@@ -33,15 +34,15 @@ class SynchronizationTaskExecution(AdditionalDataHolder, Parsable):
     # The countImportedReferenceDeltas property
     count_imported_reference_deltas: Optional[int] = None
     # The error property
-    error: Optional[synchronization_error.SynchronizationError] = None
+    error: Optional[SynchronizationError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The state property
-    state: Optional[synchronization_task_execution_result.SynchronizationTaskExecutionResult] = None
+    state: Optional[SynchronizationTaskExecutionResult] = None
     # The timeBegan property
-    time_began: Optional[datetime] = None
+    time_began: Optional[datetime.datetime] = None
     # The timeEnded property
-    time_ended: Optional[datetime] = None
+    time_ended: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SynchronizationTaskExecution:
@@ -60,9 +61,11 @@ class SynchronizationTaskExecution(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import synchronization_error, synchronization_task_execution_result
+        from .synchronization_error import SynchronizationError
+        from .synchronization_task_execution_result import SynchronizationTaskExecutionResult
 
-        from . import synchronization_error, synchronization_task_execution_result
+        from .synchronization_error import SynchronizationError
+        from .synchronization_task_execution_result import SynchronizationTaskExecutionResult
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activityIdentifier": lambda n : setattr(self, 'activity_identifier', n.get_str_value()),
@@ -75,9 +78,9 @@ class SynchronizationTaskExecution(AdditionalDataHolder, Parsable):
             "countImported": lambda n : setattr(self, 'count_imported', n.get_int_value()),
             "countImportedDeltas": lambda n : setattr(self, 'count_imported_deltas', n.get_int_value()),
             "countImportedReferenceDeltas": lambda n : setattr(self, 'count_imported_reference_deltas', n.get_int_value()),
-            "error": lambda n : setattr(self, 'error', n.get_object_value(synchronization_error.SynchronizationError)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(SynchronizationError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(synchronization_task_execution_result.SynchronizationTaskExecutionResult)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(SynchronizationTaskExecutionResult)),
             "timeBegan": lambda n : setattr(self, 'time_began', n.get_datetime_value()),
             "timeEnded": lambda n : setattr(self, 'time_ended', n.get_datetime_value()),
         }
@@ -104,8 +107,8 @@ class SynchronizationTaskExecution(AdditionalDataHolder, Parsable):
         writer.write_object_value("error", self.error)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("state", self.state)
-        writer.write_datetime_value("timeBegan", self.time_began)
-        writer.write_datetime_value("timeEnded", self.time_ended)
+        writer.write_datetime_value()("timeBegan", self.time_began)
+        writer.write_datetime_value()("timeEnded", self.time_ended)
         writer.write_additional_data_value(self.additional_data)
     
 

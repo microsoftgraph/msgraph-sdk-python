@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import workforce_integration, workforce_integration_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import workforce_integration_item_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.workforce_integration import WorkforceIntegration
+    from ...models.workforce_integration_collection_response import WorkforceIntegrationCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.workforce_integration_item_request_builder import WorkforceIntegrationItemRequestBuilder
 
 class WorkforceIntegrationsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class WorkforceIntegrationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_workforce_integration_id(self,workforce_integration_id: str) -> workforce_integration_item_request_builder.WorkforceIntegrationItemRequestBuilder:
+    def by_workforce_integration_id(self,workforce_integration_id: str) -> WorkforceIntegrationItemRequestBuilder:
         """
         Provides operations to manage the workforceIntegrations property of the microsoft.graph.teamwork entity.
         Args:
             workforce_integration_id: Unique identifier of the item
-        Returns: workforce_integration_item_request_builder.WorkforceIntegrationItemRequestBuilder
+        Returns: WorkforceIntegrationItemRequestBuilder
         """
         if not workforce_integration_id:
             raise TypeError("workforce_integration_id cannot be null.")
-        from .item import workforce_integration_item_request_builder
+        from .item.workforce_integration_item_request_builder import WorkforceIntegrationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workforceIntegration%2Did"] = workforce_integration_id
-        return workforce_integration_item_request_builder.WorkforceIntegrationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return WorkforceIntegrationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[WorkforceIntegrationsRequestBuilderGetRequestConfiguration] = None) -> Optional[workforce_integration_collection_response.WorkforceIntegrationCollectionResponse]:
+    async def get(self,request_configuration: Optional[WorkforceIntegrationsRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkforceIntegrationCollectionResponse]:
         """
         Retrieve a list of workforceIntegration objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workforce_integration_collection_response.WorkforceIntegrationCollectionResponse]
+        Returns: Optional[WorkforceIntegrationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import workforce_integration_collection_response
+        from ...models.workforce_integration_collection_response import WorkforceIntegrationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, workforce_integration_collection_response.WorkforceIntegrationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkforceIntegrationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[workforce_integration.WorkforceIntegration] = None, request_configuration: Optional[WorkforceIntegrationsRequestBuilderPostRequestConfiguration] = None) -> Optional[workforce_integration.WorkforceIntegration]:
+    async def post(self,body: Optional[WorkforceIntegration] = None, request_configuration: Optional[WorkforceIntegrationsRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkforceIntegration]:
         """
         Create a new workforceIntegration object.You can set up which entities you want to receive Shifts synchronous change notifications on and set entities to configure filtering by WFM rules eligibility for, including swap requests.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workforce_integration.WorkforceIntegration]
+        Returns: Optional[WorkforceIntegration]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import workforce_integration
+        from ...models.workforce_integration import WorkforceIntegration
 
-        return await self.request_adapter.send_async(request_info, workforce_integration.WorkforceIntegration, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkforceIntegration, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[WorkforceIntegrationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class WorkforceIntegrationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[workforce_integration.WorkforceIntegration] = None, request_configuration: Optional[WorkforceIntegrationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WorkforceIntegration] = None, request_configuration: Optional[WorkforceIntegrationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new workforceIntegration object.You can set up which entities you want to receive Shifts synchronous change notifications on and set entities to configure filtering by WFM rules eligibility for, including swap requests.
         Args:
@@ -139,13 +140,13 @@ class WorkforceIntegrationsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class WorkforceIntegrationsRequestBuilderGetQueryParameters():

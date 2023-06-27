@@ -4,16 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, extension, todo_task, wellknown_list_name
+    from .entity import Entity
+    from .extension import Extension
+    from .todo_task import TodoTask
+    from .wellknown_list_name import WellknownListName
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class TodoTaskList(entity.Entity):
+class TodoTaskList(Entity):
     # The name of the task list.
     display_name: Optional[str] = None
     # The collection of open extensions defined for the task list. Nullable.
-    extensions: Optional[List[extension.Extension]] = None
+    extensions: Optional[List[Extension]] = None
     # True if the user is owner of the given task list.
     is_owner: Optional[bool] = None
     # True if the task list is shared with other users
@@ -21,9 +24,9 @@ class TodoTaskList(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The tasks in this task list. Read-only. Nullable.
-    tasks: Optional[List[todo_task.TodoTask]] = None
+    tasks: Optional[List[TodoTask]] = None
     # The wellknownListName property
-    wellknown_list_name: Optional[wellknown_list_name.WellknownListName] = None
+    wellknown_list_name: Optional[WellknownListName] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TodoTaskList:
@@ -42,17 +45,23 @@ class TodoTaskList(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, extension, todo_task, wellknown_list_name
+        from .entity import Entity
+        from .extension import Extension
+        from .todo_task import TodoTask
+        from .wellknown_list_name import WellknownListName
 
-        from . import entity, extension, todo_task, wellknown_list_name
+        from .entity import Entity
+        from .extension import Extension
+        from .todo_task import TodoTask
+        from .wellknown_list_name import WellknownListName
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
+            "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
             "isOwner": lambda n : setattr(self, 'is_owner', n.get_bool_value()),
             "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
-            "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(todo_task.TodoTask)),
-            "wellknownListName": lambda n : setattr(self, 'wellknown_list_name', n.get_enum_value(wellknown_list_name.WellknownListName)),
+            "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(TodoTask)),
+            "wellknownListName": lambda n : setattr(self, 'wellknown_list_name', n.get_enum_value(WellknownListName)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

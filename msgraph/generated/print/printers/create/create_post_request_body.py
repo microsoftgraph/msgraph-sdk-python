@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import print_certificate_signing_request
+    from ....models.print_certificate_signing_request import PrintCertificateSigningRequest
 
 @dataclass
 class CreatePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The certificateSigningRequest property
-    certificate_signing_request: Optional[print_certificate_signing_request.PrintCertificateSigningRequest] = None
+    certificate_signing_request: Optional[PrintCertificateSigningRequest] = None
     # The connectorId property
     connector_id: Optional[str] = None
     # The displayName property
@@ -43,12 +43,12 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import print_certificate_signing_request
+        from ....models.print_certificate_signing_request import PrintCertificateSigningRequest
 
-        from ....models import print_certificate_signing_request
+        from ....models.print_certificate_signing_request import PrintCertificateSigningRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "certificateSigningRequest": lambda n : setattr(self, 'certificate_signing_request', n.get_object_value(print_certificate_signing_request.PrintCertificateSigningRequest)),
+            "certificateSigningRequest": lambda n : setattr(self, 'certificate_signing_request', n.get_object_value(PrintCertificateSigningRequest)),
             "connectorId": lambda n : setattr(self, 'connector_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "hasPhysicalDevice": lambda n : setattr(self, 'has_physical_device', n.get_bool_value()),

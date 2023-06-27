@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import label, property_type
+    from .label import Label
+    from .property_type import PropertyType
 
 @dataclass
 class Property_(AdditionalDataHolder, Parsable):
@@ -22,13 +23,13 @@ class Property_(AdditionalDataHolder, Parsable):
     # Specifies if the property is searchable. Only properties of type String or StringCollection can be searchable. Non-searchable properties are not added to the search index. Optional.
     is_searchable: Optional[bool] = None
     # Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (e.g. better relevance). The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, unknownFutureValue. Optional.
-    labels: Optional[List[label.Label]] = None
+    labels: Optional[List[Label]] = None
     # The name of the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^.  Required.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The type property
-    type: Optional[property_type.PropertyType] = None
+    type: Optional[PropertyType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Property_:
@@ -47,9 +48,11 @@ class Property_(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import label, property_type
+        from .label import Label
+        from .property_type import PropertyType
 
-        from . import label, property_type
+        from .label import Label
+        from .property_type import PropertyType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "aliases": lambda n : setattr(self, 'aliases', n.get_collection_of_primitive_values(str)),
@@ -57,10 +60,10 @@ class Property_(AdditionalDataHolder, Parsable):
             "isRefinable": lambda n : setattr(self, 'is_refinable', n.get_bool_value()),
             "isRetrievable": lambda n : setattr(self, 'is_retrievable', n.get_bool_value()),
             "isSearchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
-            "labels": lambda n : setattr(self, 'labels', n.get_collection_of_enum_values(label.Label)),
+            "labels": lambda n : setattr(self, 'labels', n.get_collection_of_enum_values(Label)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(property_type.PropertyType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(PropertyType)),
         }
         return fields
     

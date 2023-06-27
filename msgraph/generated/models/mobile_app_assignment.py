@@ -4,23 +4,26 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_and_app_management_assignment_target, entity, install_intent, mobile_app_assignment_settings
+    from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+    from .entity import Entity
+    from .install_intent import InstallIntent
+    from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class MobileAppAssignment(entity.Entity):
+class MobileAppAssignment(Entity):
     """
     A class containing the properties used for Group Assignment of a Mobile App.
     """
     # Possible values for the install intent chosen by the admin.
-    intent: Optional[install_intent.InstallIntent] = None
+    intent: Optional[InstallIntent] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The settings for target assignment defined by the admin.
-    settings: Optional[mobile_app_assignment_settings.MobileAppAssignmentSettings] = None
+    settings: Optional[MobileAppAssignmentSettings] = None
     # The target group assignment defined by the admin.
-    target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None
+    target: Optional[DeviceAndAppManagementAssignmentTarget] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileAppAssignment:
@@ -39,14 +42,20 @@ class MobileAppAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_assignment_target, entity, install_intent, mobile_app_assignment_settings
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+        from .entity import Entity
+        from .install_intent import InstallIntent
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-        from . import device_and_app_management_assignment_target, entity, install_intent, mobile_app_assignment_settings
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+        from .entity import Entity
+        from .install_intent import InstallIntent
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "intent": lambda n : setattr(self, 'intent', n.get_enum_value(install_intent.InstallIntent)),
-            "settings": lambda n : setattr(self, 'settings', n.get_object_value(mobile_app_assignment_settings.MobileAppAssignmentSettings)),
-            "target": lambda n : setattr(self, 'target', n.get_object_value(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget)),
+            "intent": lambda n : setattr(self, 'intent', n.get_enum_value(InstallIntent)),
+            "settings": lambda n : setattr(self, 'settings', n.get_object_value(MobileAppAssignmentSettings)),
+            "target": lambda n : setattr(self, 'target', n.get_object_value(DeviceAndAppManagementAssignmentTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

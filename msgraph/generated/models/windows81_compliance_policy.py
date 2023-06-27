@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_compliance_policy, required_password_type
+    from .device_compliance_policy import DeviceCompliancePolicy
+    from .required_password_type import RequiredPasswordType
 
-from . import device_compliance_policy
+from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
-class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
+class Windows81CompliancePolicy(DeviceCompliancePolicy):
     odata_type = "#microsoft.graph.windows81CompliancePolicy"
     # Maximum Windows 8.1 version.
     os_maximum_version: Optional[str] = None
@@ -30,7 +31,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
     # Require a password to unlock Windows device.
     password_required: Optional[bool] = None
     # Possible values of required passwords.
-    password_required_type: Optional[required_password_type.RequiredPasswordType] = None
+    password_required_type: Optional[RequiredPasswordType] = None
     # Indicates whether or not to require encryption on a windows 8.1 device.
     storage_require_encryption: Optional[bool] = None
     
@@ -51,9 +52,11 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_compliance_policy, required_password_type
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .required_password_type import RequiredPasswordType
 
-        from . import device_compliance_policy, required_password_type
+        from .device_compliance_policy import DeviceCompliancePolicy
+        from .required_password_type import RequiredPasswordType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
@@ -65,7 +68,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             "passwordMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
             "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
             "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
             "storageRequireEncryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

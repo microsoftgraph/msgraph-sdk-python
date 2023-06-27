@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import incoming_call_options, outgoing_call_options
+    from .incoming_call_options import IncomingCallOptions
+    from .outgoing_call_options import OutgoingCallOptions
 
 @dataclass
 class CallOptions(AdditionalDataHolder, Parsable):
@@ -33,13 +34,13 @@ class CallOptions(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.incomingCallOptions".casefold():
-            from . import incoming_call_options
+            from .incoming_call_options import IncomingCallOptions
 
-            return incoming_call_options.IncomingCallOptions()
+            return IncomingCallOptions()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.outgoingCallOptions".casefold():
-            from . import outgoing_call_options
+            from .outgoing_call_options import OutgoingCallOptions
 
-            return outgoing_call_options.OutgoingCallOptions()
+            return OutgoingCallOptions()
         return CallOptions()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -47,9 +48,11 @@ class CallOptions(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import incoming_call_options, outgoing_call_options
+        from .incoming_call_options import IncomingCallOptions
+        from .outgoing_call_options import OutgoingCallOptions
 
-        from . import incoming_call_options, outgoing_call_options
+        from .incoming_call_options import IncomingCallOptions
+        from .outgoing_call_options import OutgoingCallOptions
 
         fields: Dict[str, Callable[[Any], None]] = {
             "hideBotAfterEscalation": lambda n : setattr(self, 'hide_bot_after_escalation', n.get_bool_value()),

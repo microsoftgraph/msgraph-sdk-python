@@ -4,15 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import store
-    from .. import base_collection_pagination_count_response
+    from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .store import Store
 
-from .. import base_collection_pagination_count_response
+from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class StoreCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class StoreCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[store.Store]] = None
+    value: Optional[List[Store]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> StoreCollectionResponse:
@@ -31,14 +31,14 @@ class StoreCollectionResponse(base_collection_pagination_count_response.BaseColl
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import store
-        from .. import base_collection_pagination_count_response
+        from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .store import Store
 
-        from . import store
-        from .. import base_collection_pagination_count_response
+        from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .store import Store
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(store.Store)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(Store)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

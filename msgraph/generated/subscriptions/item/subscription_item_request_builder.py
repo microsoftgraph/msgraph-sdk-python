@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import subscription
-    from ...models.o_data_errors import o_data_error
-    from .reauthorize import reauthorize_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.subscription import Subscription
+    from .reauthorize.reauthorize_request_builder import ReauthorizeRequestBuilder
 
 class SubscriptionItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class SubscriptionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SubscriptionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[subscription.Subscription]:
+    async def get(self,request_configuration: Optional[SubscriptionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Subscription]:
         """
         Retrieve the properties and relationships of a subscription. See the table in the Permissions section for the list of resources that support subscribing to change notifications.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[subscription.Subscription]
+        Returns: Optional[Subscription]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import subscription
+        from ...models.subscription import Subscription
 
-        return await self.request_adapter.send_async(request_info, subscription.Subscription, error_mapping)
+        return await self.request_adapter.send_async(request_info, Subscription, error_mapping)
     
-    async def patch(self,body: Optional[subscription.Subscription] = None, request_configuration: Optional[SubscriptionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[subscription.Subscription]:
+    async def patch(self,body: Optional[Subscription] = None, request_configuration: Optional[SubscriptionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Subscription]:
         """
         Renew a subscription by extending its expiry time. The table in the Permissions section lists the resources that support subscribing to change notifications. Subscriptions expire after a length of time that varies by resource type. In order to avoid missing change notifications, an app should renew its subscriptions well in advance of their expiry date. See subscription for maximum length of a subscription for each resource type.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[subscription.Subscription]
+        Returns: Optional[Subscription]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import subscription
+        from ...models.subscription import Subscription
 
-        return await self.request_adapter.send_async(request_info, subscription.Subscription, error_mapping)
+        return await self.request_adapter.send_async(request_info, Subscription, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SubscriptionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class SubscriptionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[subscription.Subscription] = None, request_configuration: Optional[SubscriptionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Subscription] = None, request_configuration: Optional[SubscriptionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Renew a subscription by extending its expiry time. The table in the Permissions section lists the resources that support subscribing to change notifications. Subscriptions expire after a length of time that varies by resource type. In order to avoid missing change notifications, an app should renew its subscriptions well in advance of their expiry date. See subscription for maximum length of a subscription for each resource type.
         Args:
@@ -158,13 +158,13 @@ class SubscriptionItemRequestBuilder():
         return request_info
     
     @property
-    def reauthorize(self) -> reauthorize_request_builder.ReauthorizeRequestBuilder:
+    def reauthorize(self) -> ReauthorizeRequestBuilder:
         """
         Provides operations to call the reauthorize method.
         """
-        from .reauthorize import reauthorize_request_builder
+        from .reauthorize.reauthorize_request_builder import ReauthorizeRequestBuilder
 
-        return reauthorize_request_builder.ReauthorizeRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReauthorizeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SubscriptionItemRequestBuilderDeleteRequestConfiguration():

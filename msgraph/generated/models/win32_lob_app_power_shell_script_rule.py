@@ -4,12 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import run_as_account_type, win32_lob_app_power_shell_script_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+    from .run_as_account_type import RunAsAccountType
+    from .win32_lob_app_power_shell_script_rule_operation_type import Win32LobAppPowerShellScriptRuleOperationType
+    from .win32_lob_app_rule import Win32LobAppRule
+    from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-from . import win32_lob_app_rule
+from .win32_lob_app_rule import Win32LobAppRule
 
 @dataclass
-class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
+class Win32LobAppPowerShellScriptRule(Win32LobAppRule):
     odata_type = "#microsoft.graph.win32LobAppPowerShellScriptRule"
     # The script output comparison value. Do not specify a value if the rule is used for detection.
     comparison_value: Optional[str] = None
@@ -18,11 +21,11 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
     # A value indicating whether a signature check is enforced.
     enforce_signature_check: Optional[bool] = None
     # Contains all supported Powershell Script output detection type.
-    operation_type: Optional[win32_lob_app_power_shell_script_rule_operation_type.Win32LobAppPowerShellScriptRuleOperationType] = None
+    operation_type: Optional[Win32LobAppPowerShellScriptRuleOperationType] = None
     # Contains properties for detection operator.
-    operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
+    operator: Optional[Win32LobAppRuleOperator] = None
     # The execution context of the script. Do not specify this value if the rule is used for detection. Script detection rules will run in the same context as the associated app install context. Possible values are: system, user.
-    run_as_account: Optional[run_as_account_type.RunAsAccountType] = None
+    run_as_account: Optional[RunAsAccountType] = None
     # A value indicating whether the script should run as 32-bit.
     run_as32_bit: Optional[bool] = None
     # The base64-encoded script content.
@@ -45,17 +48,23 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import run_as_account_type, win32_lob_app_power_shell_script_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+        from .run_as_account_type import RunAsAccountType
+        from .win32_lob_app_power_shell_script_rule_operation_type import Win32LobAppPowerShellScriptRuleOperationType
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-        from . import run_as_account_type, win32_lob_app_power_shell_script_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+        from .run_as_account_type import RunAsAccountType
+        from .win32_lob_app_power_shell_script_rule_operation_type import Win32LobAppPowerShellScriptRuleOperationType
+        from .win32_lob_app_rule import Win32LobAppRule
+        from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
         fields: Dict[str, Callable[[Any], None]] = {
             "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "enforceSignatureCheck": lambda n : setattr(self, 'enforce_signature_check', n.get_bool_value()),
-            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_power_shell_script_rule_operation_type.Win32LobAppPowerShellScriptRuleOperationType)),
-            "operator": lambda n : setattr(self, 'operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
-            "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(run_as_account_type.RunAsAccountType)),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(Win32LobAppPowerShellScriptRuleOperationType)),
+            "operator": lambda n : setattr(self, 'operator', n.get_enum_value(Win32LobAppRuleOperator)),
+            "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(RunAsAccountType)),
             "runAs32Bit": lambda n : setattr(self, 'run_as32_bit', n.get_bool_value()),
             "scriptContent": lambda n : setattr(self, 'script_content', n.get_str_value()),
         }

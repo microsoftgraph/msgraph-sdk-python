@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set
+    from .identity_set import IdentitySet
 
 @dataclass
 class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
     # Optional. Whether to hide the participant from the roster.
     hidden: Optional[bool] = None
     # The identity property
-    identity: Optional[identity_set.IdentitySet] = None
+    identity: Optional[IdentitySet] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Optional. The ID of the target participant.
@@ -41,13 +41,13 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set
+        from .identity_set import IdentitySet
 
-        from . import identity_set
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
-            "identity": lambda n : setattr(self, 'identity', n.get_object_value(identity_set.IdentitySet)),
+            "identity": lambda n : setattr(self, 'identity', n.get_object_value(IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "participantId": lambda n : setattr(self, 'participant_id', n.get_str_value()),
             "removeFromDefaultAudioRoutingGroup": lambda n : setattr(self, 'remove_from_default_audio_routing_group', n.get_bool_value()),

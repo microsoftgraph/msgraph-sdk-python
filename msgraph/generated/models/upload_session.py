@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -10,7 +10,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The date and time in UTC that the upload session will expire. The complete file must be uploaded before this expiration time is reached.
-    expiration_date_time: Optional[datetime] = None
+    expiration_date_time: Optional[datetime.datetime] = None
     # A collection of byte ranges that the server is missing for the file. These ranges are zero indexed and of the format 'start-end' (e.g. '0-26' to indicate the first 27 bytes of the file). When uploading files as Outlook attachments, instead of a collection of ranges, this property always indicates a single value '{start}', the location in the file where the next upload should begin.
     next_expected_ranges: Optional[List[str]] = None
     # The OdataType property
@@ -51,7 +51,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
         writer.write_collection_of_primitive_values("nextExpectedRanges", self.next_expected_ranges)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("uploadUrl", self.upload_url)

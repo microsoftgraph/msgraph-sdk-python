@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import json, managed_app_status
+    from .json import Json
+    from .managed_app_status import ManagedAppStatus
 
-from . import managed_app_status
+from .managed_app_status import ManagedAppStatus
 
 @dataclass
-class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
+class ManagedAppStatusRaw(ManagedAppStatus):
     odata_type = "#microsoft.graph.managedAppStatusRaw"
     # Status report content.
-    content: Optional[json.Json] = None
+    content: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppStatusRaw:
@@ -31,12 +32,14 @@ class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import json, managed_app_status
+        from .json import Json
+        from .managed_app_status import ManagedAppStatus
 
-        from . import json, managed_app_status
+        from .json import Json
+        from .managed_app_status import ManagedAppStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "content": lambda n : setattr(self, 'content', n.get_object_value(json.Json)),
+            "content": lambda n : setattr(self, 'content', n.get_object_value(Json)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

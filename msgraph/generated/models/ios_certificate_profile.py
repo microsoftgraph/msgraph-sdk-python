@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_configuration
+    from .device_configuration import DeviceConfiguration
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class IosCertificateProfile(device_configuration.DeviceConfiguration):
+class IosCertificateProfile(DeviceConfiguration):
     odata_type = "#microsoft.graph.iosCertificateProfile"
     
     @staticmethod
@@ -29,9 +29,9 @@ class IosCertificateProfile(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration
+        from .device_configuration import DeviceConfiguration
 
-        from . import device_configuration
+        from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

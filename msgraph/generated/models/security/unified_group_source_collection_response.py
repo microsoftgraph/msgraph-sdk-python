@@ -4,15 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import unified_group_source
-    from .. import base_collection_pagination_count_response
+    from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .unified_group_source import UnifiedGroupSource
 
-from .. import base_collection_pagination_count_response
+from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class UnifiedGroupSourceCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class UnifiedGroupSourceCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[unified_group_source.UnifiedGroupSource]] = None
+    value: Optional[List[UnifiedGroupSource]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedGroupSourceCollectionResponse:
@@ -31,14 +31,14 @@ class UnifiedGroupSourceCollectionResponse(base_collection_pagination_count_resp
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import unified_group_source
-        from .. import base_collection_pagination_count_response
+        from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .unified_group_source import UnifiedGroupSource
 
-        from . import unified_group_source
-        from .. import base_collection_pagination_count_response
+        from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .unified_group_source import UnifiedGroupSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(unified_group_source.UnifiedGroupSource)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(UnifiedGroupSource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

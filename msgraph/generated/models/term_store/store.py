@@ -4,23 +4,24 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import group, set
-    from .. import entity
+    from ..entity import Entity
+    from .group import Group
+    from .set import Set
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class Store(entity.Entity):
+class Store(Entity):
     # Default language of the term store.
     default_language_tag: Optional[str] = None
     # Collection of all groups available in the term store.
-    groups: Optional[List[group.Group]] = None
+    groups: Optional[List[Group]] = None
     # List of languages for the term store.
     language_tags: Optional[List[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
-    sets: Optional[List[set.Set]] = None
+    sets: Optional[List[Set]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Store:
@@ -39,17 +40,19 @@ class Store(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import group, set
-        from .. import entity
+        from ..entity import Entity
+        from .group import Group
+        from .set import Set
 
-        from . import group, set
-        from .. import entity
+        from ..entity import Entity
+        from .group import Group
+        from .set import Set
 
         fields: Dict[str, Callable[[Any], None]] = {
             "defaultLanguageTag": lambda n : setattr(self, 'default_language_tag', n.get_str_value()),
-            "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(group.Group)),
+            "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(Group)),
             "languageTags": lambda n : setattr(self, 'language_tags', n.get_collection_of_primitive_values(str)),
-            "sets": lambda n : setattr(self, 'sets', n.get_collection_of_object_values(set.Set)),
+            "sets": lambda n : setattr(self, 'sets', n.get_collection_of_object_values(Set)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

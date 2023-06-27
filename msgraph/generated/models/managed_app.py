@@ -4,15 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import managed_android_lob_app, managed_android_store_app, managed_app_availability, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_lob_app, mobile_app
+    from .managed_android_lob_app import ManagedAndroidLobApp
+    from .managed_android_store_app import ManagedAndroidStoreApp
+    from .managed_app_availability import ManagedAppAvailability
+    from .managed_i_o_s_lob_app import ManagedIOSLobApp
+    from .managed_i_o_s_store_app import ManagedIOSStoreApp
+    from .managed_mobile_lob_app import ManagedMobileLobApp
+    from .mobile_app import MobileApp
 
-from . import mobile_app
+from .mobile_app import MobileApp
 
 @dataclass
-class ManagedApp(mobile_app.MobileApp):
+class ManagedApp(MobileApp):
     odata_type = "#microsoft.graph.managedApp"
     # A managed (MAM) application's availability.
-    app_availability: Optional[managed_app_availability.ManagedAppAvailability] = None
+    app_availability: Optional[ManagedAppAvailability] = None
     # The Application's version.
     version: Optional[str] = None
     
@@ -31,25 +37,25 @@ class ManagedApp(mobile_app.MobileApp):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAndroidLobApp".casefold():
-            from . import managed_android_lob_app
+            from .managed_android_lob_app import ManagedAndroidLobApp
 
-            return managed_android_lob_app.ManagedAndroidLobApp()
+            return ManagedAndroidLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAndroidStoreApp".casefold():
-            from . import managed_android_store_app
+            from .managed_android_store_app import ManagedAndroidStoreApp
 
-            return managed_android_store_app.ManagedAndroidStoreApp()
+            return ManagedAndroidStoreApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedIOSLobApp".casefold():
-            from . import managed_i_o_s_lob_app
+            from .managed_i_o_s_lob_app import ManagedIOSLobApp
 
-            return managed_i_o_s_lob_app.ManagedIOSLobApp()
+            return ManagedIOSLobApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedIOSStoreApp".casefold():
-            from . import managed_i_o_s_store_app
+            from .managed_i_o_s_store_app import ManagedIOSStoreApp
 
-            return managed_i_o_s_store_app.ManagedIOSStoreApp()
+            return ManagedIOSStoreApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedMobileLobApp".casefold():
-            from . import managed_mobile_lob_app
+            from .managed_mobile_lob_app import ManagedMobileLobApp
 
-            return managed_mobile_lob_app.ManagedMobileLobApp()
+            return ManagedMobileLobApp()
         return ManagedApp()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -57,12 +63,24 @@ class ManagedApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_android_lob_app, managed_android_store_app, managed_app_availability, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_lob_app, mobile_app
+        from .managed_android_lob_app import ManagedAndroidLobApp
+        from .managed_android_store_app import ManagedAndroidStoreApp
+        from .managed_app_availability import ManagedAppAvailability
+        from .managed_i_o_s_lob_app import ManagedIOSLobApp
+        from .managed_i_o_s_store_app import ManagedIOSStoreApp
+        from .managed_mobile_lob_app import ManagedMobileLobApp
+        from .mobile_app import MobileApp
 
-        from . import managed_android_lob_app, managed_android_store_app, managed_app_availability, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_lob_app, mobile_app
+        from .managed_android_lob_app import ManagedAndroidLobApp
+        from .managed_android_store_app import ManagedAndroidStoreApp
+        from .managed_app_availability import ManagedAppAvailability
+        from .managed_i_o_s_lob_app import ManagedIOSLobApp
+        from .managed_i_o_s_store_app import ManagedIOSStoreApp
+        from .managed_mobile_lob_app import ManagedMobileLobApp
+        from .mobile_app import MobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appAvailability": lambda n : setattr(self, 'app_availability', n.get_enum_value(managed_app_availability.ManagedAppAvailability)),
+            "appAvailability": lambda n : setattr(self, 'app_availability', n.get_enum_value(ManagedAppAvailability)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

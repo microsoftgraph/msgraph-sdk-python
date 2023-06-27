@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_install_state, entity
+    from .device_install_state import DeviceInstallState
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class UserInstallStateSummary(entity.Entity):
+class UserInstallStateSummary(Entity):
     """
     Contains properties for the installation state summary for a user.
     """
     # The install state of the eBook.
-    device_states: Optional[List[device_install_state.DeviceInstallState]] = None
+    device_states: Optional[List[DeviceInstallState]] = None
     # Failed Device Count.
     failed_device_count: Optional[int] = None
     # Installed Device Count.
@@ -43,12 +44,14 @@ class UserInstallStateSummary(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_install_state, entity
+        from .device_install_state import DeviceInstallState
+        from .entity import Entity
 
-        from . import device_install_state, entity
+        from .device_install_state import DeviceInstallState
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceStates": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(device_install_state.DeviceInstallState)),
+            "deviceStates": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(DeviceInstallState)),
             "failedDeviceCount": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
             "installedDeviceCount": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
             "notInstalledDeviceCount": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),

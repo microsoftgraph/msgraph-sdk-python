@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import chat_message_mentioned_identity_set
+    from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
 
 @dataclass
 class ChatMessageMention(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
     # String used to represent the mention. For example, a user's display name, a team name.
     mention_text: Optional[str] = None
     # The entity (user, application, team, or channel) that was @mentioned.
-    mentioned: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet] = None
+    mentioned: Optional[ChatMessageMentionedIdentitySet] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -37,14 +37,14 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import chat_message_mentioned_identity_set
+        from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
 
-        from . import chat_message_mentioned_identity_set
+        from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "id": lambda n : setattr(self, 'id', n.get_int_value()),
             "mentionText": lambda n : setattr(self, 'mention_text', n.get_str_value()),
-            "mentioned": lambda n : setattr(self, 'mentioned', n.get_object_value(chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet)),
+            "mentioned": lambda n : setattr(self, 'mentioned', n.get_object_value(ChatMessageMentionedIdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

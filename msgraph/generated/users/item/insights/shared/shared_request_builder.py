@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import shared_insight, shared_insight_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import shared_insight_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.shared_insight import SharedInsight
+    from .....models.shared_insight_collection_response import SharedInsightCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.shared_insight_item_request_builder import SharedInsightItemRequestBuilder
 
 class SharedRequestBuilder():
     """
@@ -37,67 +38,67 @@ class SharedRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_shared_insight_id(self,shared_insight_id: str) -> shared_insight_item_request_builder.SharedInsightItemRequestBuilder:
+    def by_shared_insight_id(self,shared_insight_id: str) -> SharedInsightItemRequestBuilder:
         """
         Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
         Args:
             shared_insight_id: Unique identifier of the item
-        Returns: shared_insight_item_request_builder.SharedInsightItemRequestBuilder
+        Returns: SharedInsightItemRequestBuilder
         """
         if not shared_insight_id:
             raise TypeError("shared_insight_id cannot be null.")
-        from .item import shared_insight_item_request_builder
+        from .item.shared_insight_item_request_builder import SharedInsightItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["sharedInsight%2Did"] = shared_insight_id
-        return shared_insight_item_request_builder.SharedInsightItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return SharedInsightItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SharedRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_insight_collection_response.SharedInsightCollectionResponse]:
+    async def get(self,request_configuration: Optional[SharedRequestBuilderGetRequestConfiguration] = None) -> Optional[SharedInsightCollectionResponse]:
         """
         Calculated insight that includes the list of documents shared with a user. This insight includes documents hosted on OneDrive/SharePoint in the user's Microsoft 365 tenant that are shared with the user, and documents that are attached as files and sent to the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[shared_insight_collection_response.SharedInsightCollectionResponse]
+        Returns: Optional[SharedInsightCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import shared_insight_collection_response
+        from .....models.shared_insight_collection_response import SharedInsightCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, shared_insight_collection_response.SharedInsightCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SharedInsightCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[shared_insight.SharedInsight] = None, request_configuration: Optional[SharedRequestBuilderPostRequestConfiguration] = None) -> Optional[shared_insight.SharedInsight]:
+    async def post(self,body: Optional[SharedInsight] = None, request_configuration: Optional[SharedRequestBuilderPostRequestConfiguration] = None) -> Optional[SharedInsight]:
         """
         Create new navigation property to shared for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[shared_insight.SharedInsight]
+        Returns: Optional[SharedInsight]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import shared_insight
+        from .....models.shared_insight import SharedInsight
 
-        return await self.request_adapter.send_async(request_info, shared_insight.SharedInsight, error_mapping)
+        return await self.request_adapter.send_async(request_info, SharedInsight, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SharedRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class SharedRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[shared_insight.SharedInsight] = None, request_configuration: Optional[SharedRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SharedInsight] = None, request_configuration: Optional[SharedRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to shared for users
         Args:
@@ -139,13 +140,13 @@ class SharedRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SharedRequestBuilderGetQueryParameters():

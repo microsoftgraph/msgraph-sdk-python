@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import certificate_authority, entity
+    from .certificate_authority import CertificateAuthority
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class CertificateBasedAuthConfiguration(entity.Entity):
+class CertificateBasedAuthConfiguration(Entity):
     # Collection of certificate authorities which creates a trusted certificate chain.
-    certificate_authorities: Optional[List[certificate_authority.CertificateAuthority]] = None
+    certificate_authorities: Optional[List[CertificateAuthority]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class CertificateBasedAuthConfiguration(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import certificate_authority, entity
+        from .certificate_authority import CertificateAuthority
+        from .entity import Entity
 
-        from . import certificate_authority, entity
+        from .certificate_authority import CertificateAuthority
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "certificateAuthorities": lambda n : setattr(self, 'certificate_authorities', n.get_collection_of_object_values(certificate_authority.CertificateAuthority)),
+            "certificateAuthorities": lambda n : setattr(self, 'certificate_authorities', n.get_collection_of_object_values(CertificateAuthority)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,14 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, json, workbook_filter
+    from .entity import Entity
+    from .json import Json
+    from .workbook_filter import WorkbookFilter
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookTableColumn(entity.Entity):
+class WorkbookTableColumn(Entity):
     # Retrieve the filter applied to the column. Read-only.
-    filter: Optional[workbook_filter.WorkbookFilter] = None
+    filter: Optional[WorkbookFilter] = None
     # Returns the index number of the column within the columns collection of the table. Zero-indexed. Read-only.
     index: Optional[int] = None
     # Returns the name of the table column.
@@ -19,7 +21,7 @@ class WorkbookTableColumn(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
-    values: Optional[json.Json] = None
+    values: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookTableColumn:
@@ -38,15 +40,19 @@ class WorkbookTableColumn(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, json, workbook_filter
+        from .entity import Entity
+        from .json import Json
+        from .workbook_filter import WorkbookFilter
 
-        from . import entity, json, workbook_filter
+        from .entity import Entity
+        from .json import Json
+        from .workbook_filter import WorkbookFilter
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "filter": lambda n : setattr(self, 'filter', n.get_object_value(workbook_filter.WorkbookFilter)),
+            "filter": lambda n : setattr(self, 'filter', n.get_object_value(WorkbookFilter)),
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "values": lambda n : setattr(self, 'values', n.get_object_value(json.Json)),
+            "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

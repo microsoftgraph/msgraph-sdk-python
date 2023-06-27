@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import device_configuration_user_status
-    from ......models.o_data_errors import o_data_error
+    from ......models.device_configuration_user_status import DeviceConfigurationUserStatus
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class DeviceConfigurationUserStatusItemRequestBuilder():
     """
@@ -37,73 +37,73 @@ class DeviceConfigurationUserStatusItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property userStatuses for deviceManagement
+        Deletes a deviceConfigurationUserStatus.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[device_configuration_user_status.DeviceConfigurationUserStatus]:
+    async def get(self,request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatus]:
         """
-        Device configuration installation status by user.
+        Read properties and relationships of the deviceConfigurationUserStatus object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_configuration_user_status.DeviceConfigurationUserStatus]
+        Returns: Optional[DeviceConfigurationUserStatus]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import device_configuration_user_status
+        from ......models.device_configuration_user_status import DeviceConfigurationUserStatus
 
-        return await self.request_adapter.send_async(request_info, device_configuration_user_status.DeviceConfigurationUserStatus, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceConfigurationUserStatus, error_mapping)
     
-    async def patch(self,body: Optional[device_configuration_user_status.DeviceConfigurationUserStatus] = None, request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_configuration_user_status.DeviceConfigurationUserStatus]:
+    async def patch(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatus]:
         """
-        Update the navigation property userStatuses in deviceManagement
+        Update the properties of a deviceConfigurationUserStatus object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_configuration_user_status.DeviceConfigurationUserStatus]
+        Returns: Optional[DeviceConfigurationUserStatus]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import device_configuration_user_status
+        from ......models.device_configuration_user_status import DeviceConfigurationUserStatus
 
-        return await self.request_adapter.send_async(request_info, device_configuration_user_status.DeviceConfigurationUserStatus, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceConfigurationUserStatus, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property userStatuses for deviceManagement
+        Deletes a deviceConfigurationUserStatus.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Device configuration installation status by user.
+        Read properties and relationships of the deviceConfigurationUserStatus object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class DeviceConfigurationUserStatusItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device_configuration_user_status.DeviceConfigurationUserStatus] = None, request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property userStatuses in deviceManagement
+        Update the properties of a deviceConfigurationUserStatus object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder():
     @dataclass
     class DeviceConfigurationUserStatusItemRequestBuilderGetQueryParameters():
         """
-        Device configuration installation status by user.
+        Read properties and relationships of the deviceConfigurationUserStatus object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

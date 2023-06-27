@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -13,11 +13,11 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The time at which the app should be installed.
-    deadline_date_time: Optional[datetime] = None
+    deadline_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The time at which the app should be available for installation.
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     # Whether the local device time or UTC time should be used when determining the available and deadline times.
     use_local_time: Optional[bool] = None
     
@@ -54,9 +54,9 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("deadlineDateTime", self.deadline_date_time)
+        writer.write_datetime_value()("deadlineDateTime", self.deadline_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
         writer.write_bool_value("useLocalTime", self.use_local_time)
         writer.write_additional_data_value(self.additional_data)
     

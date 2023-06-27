@@ -1,22 +1,24 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, identity, item_body
+    from .entity import Entity
+    from .identity import Identity
+    from .item_body import ItemBody
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AuthoredNote(entity.Entity):
+class AuthoredNote(Entity):
     # Identity information about the note's author.
-    author: Optional[identity.Identity] = None
+    author: Optional[Identity] = None
     # The content of the note.
-    content: Optional[item_body.ItemBody] = None
+    content: Optional[ItemBody] = None
     # The date and time when the entity was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -37,13 +39,17 @@ class AuthoredNote(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, identity, item_body
+        from .entity import Entity
+        from .identity import Identity
+        from .item_body import ItemBody
 
-        from . import entity, identity, item_body
+        from .entity import Entity
+        from .identity import Identity
+        from .item_body import ItemBody
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "author": lambda n : setattr(self, 'author', n.get_object_value(identity.Identity)),
-            "content": lambda n : setattr(self, 'content', n.get_object_value(item_body.ItemBody)),
+            "author": lambda n : setattr(self, 'author', n.get_object_value(Identity)),
+            "content": lambda n : setattr(self, 'content', n.get_object_value(ItemBody)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -61,6 +67,6 @@ class AuthoredNote(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("author", self.author)
         writer.write_object_value("content", self.content)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
     
 

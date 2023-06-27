@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class FvschedulePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class FvschedulePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The principal property
-    principal: Optional[json.Json] = None
+    principal: Optional[Json] = None
     # The schedule property
-    schedule: Optional[json.Json] = None
+    schedule: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FvschedulePostRequestBody:
@@ -33,13 +33,13 @@ class FvschedulePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "principal": lambda n : setattr(self, 'principal', n.get_object_value(json.Json)),
-            "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(json.Json)),
+            "principal": lambda n : setattr(self, 'principal', n.get_object_value(Json)),
+            "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(Json)),
         }
         return fields
     

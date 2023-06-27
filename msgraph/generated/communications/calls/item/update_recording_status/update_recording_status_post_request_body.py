@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import recording_status
+    from .....models.recording_status import RecordingStatus
 
 @dataclass
 class UpdateRecordingStatusPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class UpdateRecordingStatusPostRequestBody(AdditionalDataHolder, Parsable):
     # The clientContext property
     client_context: Optional[str] = None
     # The status property
-    status: Optional[recording_status.RecordingStatus] = None
+    status: Optional[RecordingStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UpdateRecordingStatusPostRequestBody:
@@ -33,13 +33,13 @@ class UpdateRecordingStatusPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import recording_status
+        from .....models.recording_status import RecordingStatus
 
-        from .....models import recording_status
+        from .....models.recording_status import RecordingStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(recording_status.RecordingStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(RecordingStatus)),
         }
         return fields
     

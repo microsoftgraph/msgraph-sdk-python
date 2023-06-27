@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ios_notification_alert_type
+    from .ios_notification_alert_type import IosNotificationAlertType
 
 @dataclass
 class IosNotificationSettings(AdditionalDataHolder, Parsable):
@@ -15,7 +15,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Notification Settings Alert Type.
-    alert_type: Optional[ios_notification_alert_type.IosNotificationAlertType] = None
+    alert_type: Optional[IosNotificationAlertType] = None
     # Application name to be associated with the bundleID.
     app_name: Optional[str] = None
     # Indicates whether badges are allowed for this app.
@@ -52,12 +52,12 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ios_notification_alert_type
+        from .ios_notification_alert_type import IosNotificationAlertType
 
-        from . import ios_notification_alert_type
+        from .ios_notification_alert_type import IosNotificationAlertType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "alertType": lambda n : setattr(self, 'alert_type', n.get_enum_value(ios_notification_alert_type.IosNotificationAlertType)),
+            "alertType": lambda n : setattr(self, 'alert_type', n.get_enum_value(IosNotificationAlertType)),
             "appName": lambda n : setattr(self, 'app_name', n.get_str_value()),
             "badgesEnabled": lambda n : setattr(self, 'badges_enabled', n.get_bool_value()),
             "bundleID": lambda n : setattr(self, 'bundle_i_d', n.get_str_value()),

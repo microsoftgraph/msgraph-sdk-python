@@ -1,26 +1,28 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, resource_reference, resource_visualization
+    from .entity import Entity
+    from .resource_reference import ResourceReference
+    from .resource_visualization import ResourceVisualization
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Trending(entity.Entity):
+class Trending(Entity):
     # The lastModifiedDateTime property
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Used for navigating to the trending document.
-    resource: Optional[entity.Entity] = None
+    resource: Optional[Entity] = None
     # Reference properties of the trending document, such as the url and type of the document.
-    resource_reference: Optional[resource_reference.ResourceReference] = None
+    resource_reference: Optional[ResourceReference] = None
     # Properties that you can use to visualize the document in your experience.
-    resource_visualization: Optional[resource_visualization.ResourceVisualization] = None
+    resource_visualization: Optional[ResourceVisualization] = None
     # Value indicating how much the document is currently trending. The larger the number, the more the document is currently trending around the user (the more relevant it is). Returned documents are sorted by this value.
     weight: Optional[float] = None
     
@@ -41,15 +43,19 @@ class Trending(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, resource_reference, resource_visualization
+        from .entity import Entity
+        from .resource_reference import ResourceReference
+        from .resource_visualization import ResourceVisualization
 
-        from . import entity, resource_reference, resource_visualization
+        from .entity import Entity
+        from .resource_reference import ResourceReference
+        from .resource_visualization import ResourceVisualization
 
         fields: Dict[str, Callable[[Any], None]] = {
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
-            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
-            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
+            "resource": lambda n : setattr(self, 'resource', n.get_object_value(Entity)),
+            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(ResourceReference)),
+            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(ResourceVisualization)),
             "weight": lambda n : setattr(self, 'weight', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -65,7 +71,7 @@ class Trending(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_object_value("resource", self.resource)
         writer.write_float_value("weight", self.weight)
     

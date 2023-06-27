@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_package_answer
+    from .access_package_answer import AccessPackageAnswer
 
-from . import access_package_answer
+from .access_package_answer import AccessPackageAnswer
 
 @dataclass
-class AccessPackageAnswerString(access_package_answer.AccessPackageAnswer):
+class AccessPackageAnswerString(AccessPackageAnswer):
     odata_type = "#microsoft.graph.accessPackageAnswerString"
     # The value stored on the requestor's user profile, if this answer is configured to be stored as a specific attribute.
     value: Optional[str] = None
@@ -31,9 +31,9 @@ class AccessPackageAnswerString(access_package_answer.AccessPackageAnswer):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_answer
+        from .access_package_answer import AccessPackageAnswer
 
-        from . import access_package_answer
+        from .access_package_answer import AccessPackageAnswer
 
         fields: Dict[str, Callable[[Any], None]] = {
             "value": lambda n : setattr(self, 'value', n.get_str_value()),

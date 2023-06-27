@@ -4,23 +4,25 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import relation_type, set, term
-    from .. import entity
+    from ..entity import Entity
+    from .relation_type import RelationType
+    from .set import Set
+    from .term import Term
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class Relation(entity.Entity):
+class Relation(Entity):
     # The from [term] of the relation. The term from which the relationship is defined. A null value would indicate the relation is directly with the [set].
-    from_term: Optional[term.Term] = None
+    from_term: Optional[Term] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of relation. Possible values are: pin, reuse.
-    relationship: Optional[relation_type.RelationType] = None
+    relationship: Optional[RelationType] = None
     # The [set] in which the relation is relevant.
-    set: Optional[set.Set] = None
+    set: Optional[Set] = None
     # The to [term] of the relation. The term to which the relationship is defined.
-    to_term: Optional[term.Term] = None
+    to_term: Optional[Term] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Relation:
@@ -39,17 +41,21 @@ class Relation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import relation_type, set, term
-        from .. import entity
+        from ..entity import Entity
+        from .relation_type import RelationType
+        from .set import Set
+        from .term import Term
 
-        from . import relation_type, set, term
-        from .. import entity
+        from ..entity import Entity
+        from .relation_type import RelationType
+        from .set import Set
+        from .term import Term
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fromTerm": lambda n : setattr(self, 'from_term', n.get_object_value(term.Term)),
-            "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(relation_type.RelationType)),
-            "set": lambda n : setattr(self, 'set', n.get_object_value(set.Set)),
-            "toTerm": lambda n : setattr(self, 'to_term', n.get_object_value(term.Term)),
+            "fromTerm": lambda n : setattr(self, 'from_term', n.get_object_value(Term)),
+            "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(RelationType)),
+            "set": lambda n : setattr(self, 'set', n.get_object_value(Set)),
+            "toTerm": lambda n : setattr(self, 'to_term', n.get_object_value(Term)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

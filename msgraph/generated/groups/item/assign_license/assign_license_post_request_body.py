@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from ....models import assigned_license
+    from ....models.assigned_license import AssignedLicense
 
 @dataclass
 class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +13,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The addLicenses property
-    add_licenses: Optional[List[assigned_license.AssignedLicense]] = None
+    add_licenses: Optional[List[AssignedLicense]] = None
     # The removeLicenses property
     remove_licenses: Optional[List[UUID]] = None
     
@@ -34,12 +34,12 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import assigned_license
+        from ....models.assigned_license import AssignedLicense
 
-        from ....models import assigned_license
+        from ....models.assigned_license import AssignedLicense
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "addLicenses": lambda n : setattr(self, 'add_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
+            "addLicenses": lambda n : setattr(self, 'add_licenses', n.get_collection_of_object_values(AssignedLicense)),
             "removeLicenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(UUID)),
         }
         return fields

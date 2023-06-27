@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import allowed_value
-    from ......models.o_data_errors import o_data_error
+    from ......models.allowed_value import AllowedValue
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class AllowedValueItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class AllowedValueItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AllowedValueItemRequestBuilderGetRequestConfiguration] = None) -> Optional[allowed_value.AllowedValue]:
+    async def get(self,request_configuration: Optional[AllowedValueItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AllowedValue]:
         """
         Read the properties and relationships of an allowedValue object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[allowed_value.AllowedValue]
+        Returns: Optional[AllowedValue]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import allowed_value
+        from ......models.allowed_value import AllowedValue
 
-        return await self.request_adapter.send_async(request_info, allowed_value.AllowedValue, error_mapping)
+        return await self.request_adapter.send_async(request_info, AllowedValue, error_mapping)
     
-    async def patch(self,body: Optional[allowed_value.AllowedValue] = None, request_configuration: Optional[AllowedValueItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[allowed_value.AllowedValue]:
+    async def patch(self,body: Optional[AllowedValue] = None, request_configuration: Optional[AllowedValueItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AllowedValue]:
         """
         Update the properties of an allowedValue object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[allowed_value.AllowedValue]
+        Returns: Optional[AllowedValue]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import allowed_value
+        from ......models.allowed_value import AllowedValue
 
-        return await self.request_adapter.send_async(request_info, allowed_value.AllowedValue, error_mapping)
+        return await self.request_adapter.send_async(request_info, AllowedValue, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AllowedValueItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class AllowedValueItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[allowed_value.AllowedValue] = None, request_configuration: Optional[AllowedValueItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AllowedValue] = None, request_configuration: Optional[AllowedValueItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an allowedValue object.
         Args:

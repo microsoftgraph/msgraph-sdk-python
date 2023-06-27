@@ -10,18 +10,18 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import device
-    from ...models.o_data_errors import o_data_error
-    from .check_member_groups import check_member_groups_request_builder
-    from .check_member_objects import check_member_objects_request_builder
-    from .extensions import extensions_request_builder
-    from .get_member_groups import get_member_groups_request_builder
-    from .get_member_objects import get_member_objects_request_builder
-    from .member_of import member_of_request_builder
-    from .registered_owners import registered_owners_request_builder
-    from .registered_users import registered_users_request_builder
-    from .restore import restore_request_builder
-    from .transitive_member_of import transitive_member_of_request_builder
+    from ...models.device import Device
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
+    from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
+    from .extensions.extensions_request_builder import ExtensionsRequestBuilder
+    from .get_member_groups.get_member_groups_request_builder import GetMemberGroupsRequestBuilder
+    from .get_member_objects.get_member_objects_request_builder import GetMemberObjectsRequestBuilder
+    from .member_of.member_of_request_builder import MemberOfRequestBuilder
+    from .registered_owners.registered_owners_request_builder import RegisteredOwnersRequestBuilder
+    from .registered_users.registered_users_request_builder import RegisteredUsersRequestBuilder
+    from .restore.restore_request_builder import RestoreRequestBuilder
+    from .transitive_member_of.transitive_member_of_request_builder import TransitiveMemberOfRequestBuilder
 
 class DeviceItemRequestBuilder():
     """
@@ -54,62 +54,62 @@ class DeviceItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeviceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[device.Device]:
+    async def get(self,request_configuration: Optional[DeviceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Device]:
         """
         Get the properties and relationships of a device object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device.Device]
+        Returns: Optional[Device]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device
+        from ...models.device import Device
 
-        return await self.request_adapter.send_async(request_info, device.Device, error_mapping)
+        return await self.request_adapter.send_async(request_info, Device, error_mapping)
     
-    async def patch(self,body: Optional[device.Device] = None, request_configuration: Optional[DeviceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device.Device]:
+    async def patch(self,body: Optional[Device] = None, request_configuration: Optional[DeviceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Device]:
         """
         Update the properties of a registered device. Only certain properties of a device can be updated through approved Mobile Device Managment (MDM) apps.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device.Device]
+        Returns: Optional[Device]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device
+        from ...models.device import Device
 
-        return await self.request_adapter.send_async(request_info, device.Device, error_mapping)
+        return await self.request_adapter.send_async(request_info, Device, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -145,7 +145,7 @@ class DeviceItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device.Device] = None, request_configuration: Optional[DeviceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Device] = None, request_configuration: Optional[DeviceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a registered device. Only certain properties of a device can be updated through approved Mobile Device Managment (MDM) apps.
         Args:
@@ -167,94 +167,94 @@ class DeviceItemRequestBuilder():
         return request_info
     
     @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+    def check_member_groups(self) -> CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
-        from .check_member_groups import check_member_groups_request_builder
+        from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
 
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+    def check_member_objects(self) -> CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
-        from .check_member_objects import check_member_objects_request_builder
+        from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
 
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+    def extensions(self) -> ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.device entity.
         """
-        from .extensions import extensions_request_builder
+        from .extensions.extensions_request_builder import ExtensionsRequestBuilder
 
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+    def get_member_groups(self) -> GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
-        from .get_member_groups import get_member_groups_request_builder
+        from .get_member_groups.get_member_groups_request_builder import GetMemberGroupsRequestBuilder
 
-        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+    def get_member_objects(self) -> GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
-        from .get_member_objects import get_member_objects_request_builder
+        from .get_member_objects.get_member_objects_request_builder import GetMemberObjectsRequestBuilder
 
-        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def member_of(self) -> member_of_request_builder.MemberOfRequestBuilder:
+    def member_of(self) -> MemberOfRequestBuilder:
         """
         Provides operations to manage the memberOf property of the microsoft.graph.device entity.
         """
-        from .member_of import member_of_request_builder
+        from .member_of.member_of_request_builder import MemberOfRequestBuilder
 
-        return member_of_request_builder.MemberOfRequestBuilder(self.request_adapter, self.path_parameters)
+        return MemberOfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def registered_owners(self) -> registered_owners_request_builder.RegisteredOwnersRequestBuilder:
+    def registered_owners(self) -> RegisteredOwnersRequestBuilder:
         """
         Provides operations to manage the registeredOwners property of the microsoft.graph.device entity.
         """
-        from .registered_owners import registered_owners_request_builder
+        from .registered_owners.registered_owners_request_builder import RegisteredOwnersRequestBuilder
 
-        return registered_owners_request_builder.RegisteredOwnersRequestBuilder(self.request_adapter, self.path_parameters)
+        return RegisteredOwnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def registered_users(self) -> registered_users_request_builder.RegisteredUsersRequestBuilder:
+    def registered_users(self) -> RegisteredUsersRequestBuilder:
         """
         Provides operations to manage the registeredUsers property of the microsoft.graph.device entity.
         """
-        from .registered_users import registered_users_request_builder
+        from .registered_users.registered_users_request_builder import RegisteredUsersRequestBuilder
 
-        return registered_users_request_builder.RegisteredUsersRequestBuilder(self.request_adapter, self.path_parameters)
+        return RegisteredUsersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def restore(self) -> RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
-        from .restore import restore_request_builder
+        from .restore.restore_request_builder import RestoreRequestBuilder
 
-        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+        return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def transitive_member_of(self) -> transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder:
+    def transitive_member_of(self) -> TransitiveMemberOfRequestBuilder:
         """
         Provides operations to manage the transitiveMemberOf property of the microsoft.graph.device entity.
         """
-        from .transitive_member_of import transitive_member_of_request_builder
+        from .transitive_member_of.transitive_member_of_request_builder import TransitiveMemberOfRequestBuilder
 
-        return transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder(self.request_adapter, self.path_parameters)
+        return TransitiveMemberOfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceItemRequestBuilderDeleteRequestConfiguration():

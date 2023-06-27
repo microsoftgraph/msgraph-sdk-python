@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import item_reference
+    from ......models.item_reference import ItemReference
 
 @dataclass
 class RestorePostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
     # The name property
     name: Optional[str] = None
     # The parentReference property
-    parent_reference: Optional[item_reference.ItemReference] = None
+    parent_reference: Optional[ItemReference] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RestorePostRequestBody:
@@ -33,13 +33,13 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models import item_reference
+        from ......models.item_reference import ItemReference
 
-        from ......models import item_reference
+        from ......models.item_reference import ItemReference
 
         fields: Dict[str, Callable[[Any], None]] = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "parentReference": lambda n : setattr(self, 'parent_reference', n.get_object_value(item_reference.ItemReference)),
+            "parentReference": lambda n : setattr(self, 'parent_reference', n.get_object_value(ItemReference)),
         }
         return fields
     

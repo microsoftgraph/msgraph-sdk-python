@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import query_post_request_body, query_response
-    from ...models.o_data_errors import o_data_error
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .query_post_request_body import QueryPostRequestBody
+    from .query_response import QueryResponse
 
 class QueryRequestBuilder():
     """
@@ -35,32 +36,32 @@ class QueryRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[query_post_request_body.QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> Optional[query_response.QueryResponse]:
+    async def post(self,body: Optional[QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> Optional[QueryResponse]:
         """
         Invoke action query
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[query_response.QueryResponse]
+        Returns: Optional[QueryResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import query_response
+        from .query_response import QueryResponse
 
-        return await self.request_adapter.send_async(request_info, query_response.QueryResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, QueryResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[query_post_request_body.QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action query
         Args:

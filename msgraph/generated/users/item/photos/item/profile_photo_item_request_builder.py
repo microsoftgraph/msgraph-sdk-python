@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import profile_photo
-    from .....models.o_data_errors import o_data_error
-    from .value import content_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.profile_photo import ProfilePhoto
+    from .value.content_request_builder import ContentRequestBuilder
 
 class ProfilePhotoItemRequestBuilder():
     """
@@ -36,27 +36,27 @@ class ProfilePhotoItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ProfilePhotoItemRequestBuilderGetRequestConfiguration] = None) -> Optional[profile_photo.ProfilePhoto]:
+    async def get(self,request_configuration: Optional[ProfilePhotoItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ProfilePhoto]:
         """
         Get photos from users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[profile_photo.ProfilePhoto]
+        Returns: Optional[ProfilePhoto]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import profile_photo
+        from .....models.profile_photo import ProfilePhoto
 
-        return await self.request_adapter.send_async(request_info, profile_photo.ProfilePhoto, error_mapping)
+        return await self.request_adapter.send_async(request_info, ProfilePhoto, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ProfilePhotoItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -77,13 +77,13 @@ class ProfilePhotoItemRequestBuilder():
         return request_info
     
     @property
-    def content(self) -> content_request_builder.ContentRequestBuilder:
+    def content(self) -> ContentRequestBuilder:
         """
         Provides operations to manage the media for the user entity.
         """
-        from .value import content_request_builder
+        from .value.content_request_builder import ContentRequestBuilder
 
-        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+        return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ProfilePhotoItemRequestBuilderGetQueryParameters():

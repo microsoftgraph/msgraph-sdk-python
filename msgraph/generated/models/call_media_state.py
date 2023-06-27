@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import media_state
+    from .media_state import MediaState
 
 @dataclass
 class CallMediaState(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class CallMediaState(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The audio media state. Possible values are: active, inactive, unknownFutureValue.
-    audio: Optional[media_state.MediaState] = None
+    audio: Optional[MediaState] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,12 +33,12 @@ class CallMediaState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import media_state
+        from .media_state import MediaState
 
-        from . import media_state
+        from .media_state import MediaState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "audio": lambda n : setattr(self, 'audio', n.get_enum_value(media_state.MediaState)),
+            "audio": lambda n : setattr(self, 'audio', n.get_enum_value(MediaState)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

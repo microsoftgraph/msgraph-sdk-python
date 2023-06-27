@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DelegatedAdminServiceManagementDetail(entity.Entity):
+class DelegatedAdminServiceManagementDetail(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The URL of the management portal for the managed service. Read-only.
@@ -34,9 +34,9 @@ class DelegatedAdminServiceManagementDetail(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "serviceManagementUrl": lambda n : setattr(self, 'service_management_url', n.get_str_value()),

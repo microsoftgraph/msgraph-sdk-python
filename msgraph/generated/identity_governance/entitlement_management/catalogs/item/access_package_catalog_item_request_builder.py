@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import access_package_catalog
-    from .....models.o_data_errors import o_data_error
-    from .access_packages import access_packages_request_builder
+    from .....models.access_package_catalog import AccessPackageCatalog
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .access_packages.access_packages_request_builder import AccessPackagesRequestBuilder
 
 class AccessPackageCatalogItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class AccessPackageCatalogItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_catalog.AccessPackageCatalog]:
+    async def get(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageCatalog]:
         """
         Retrieve the properties and relationships of an accessPackageCatalog object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_catalog.AccessPackageCatalog]
+        Returns: Optional[AccessPackageCatalog]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import access_package_catalog
+        from .....models.access_package_catalog import AccessPackageCatalog
 
-        return await self.request_adapter.send_async(request_info, access_package_catalog.AccessPackageCatalog, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageCatalog, error_mapping)
     
-    async def patch(self,body: Optional[access_package_catalog.AccessPackageCatalog] = None, request_configuration: Optional[AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_package_catalog.AccessPackageCatalog]:
+    async def patch(self,body: Optional[AccessPackageCatalog] = None, request_configuration: Optional[AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AccessPackageCatalog]:
         """
         Update an existing accessPackageCatalog object to change one or more of its properties, such as the display name or description.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package_catalog.AccessPackageCatalog]
+        Returns: Optional[AccessPackageCatalog]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import access_package_catalog
+        from .....models.access_package_catalog import AccessPackageCatalog
 
-        return await self.request_adapter.send_async(request_info, access_package_catalog.AccessPackageCatalog, error_mapping)
+        return await self.request_adapter.send_async(request_info, AccessPackageCatalog, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class AccessPackageCatalogItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[access_package_catalog.AccessPackageCatalog] = None, request_configuration: Optional[AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AccessPackageCatalog] = None, request_configuration: Optional[AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update an existing accessPackageCatalog object to change one or more of its properties, such as the display name or description.
         Args:
@@ -158,13 +158,13 @@ class AccessPackageCatalogItemRequestBuilder():
         return request_info
     
     @property
-    def access_packages(self) -> access_packages_request_builder.AccessPackagesRequestBuilder:
+    def access_packages(self) -> AccessPackagesRequestBuilder:
         """
         Provides operations to manage the accessPackages property of the microsoft.graph.accessPackageCatalog entity.
         """
-        from .access_packages import access_packages_request_builder
+        from .access_packages.access_packages_request_builder import AccessPackagesRequestBuilder
 
-        return access_packages_request_builder.AccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
+        return AccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration():

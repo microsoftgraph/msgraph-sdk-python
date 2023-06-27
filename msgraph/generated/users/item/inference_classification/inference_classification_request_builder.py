@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import inference_classification
-    from ....models.o_data_errors import o_data_error
-    from .overrides import overrides_request_builder
+    from ....models.inference_classification import InferenceClassification
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .overrides.overrides_request_builder import OverridesRequestBuilder
 
 class InferenceClassificationRequestBuilder():
     """
@@ -36,52 +36,52 @@ class InferenceClassificationRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[InferenceClassificationRequestBuilderGetRequestConfiguration] = None) -> Optional[inference_classification.InferenceClassification]:
+    async def get(self,request_configuration: Optional[InferenceClassificationRequestBuilderGetRequestConfiguration] = None) -> Optional[InferenceClassification]:
         """
         Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[inference_classification.InferenceClassification]
+        Returns: Optional[InferenceClassification]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import inference_classification
+        from ....models.inference_classification import InferenceClassification
 
-        return await self.request_adapter.send_async(request_info, inference_classification.InferenceClassification, error_mapping)
+        return await self.request_adapter.send_async(request_info, InferenceClassification, error_mapping)
     
-    async def patch(self,body: Optional[inference_classification.InferenceClassification] = None, request_configuration: Optional[InferenceClassificationRequestBuilderPatchRequestConfiguration] = None) -> Optional[inference_classification.InferenceClassification]:
+    async def patch(self,body: Optional[InferenceClassification] = None, request_configuration: Optional[InferenceClassificationRequestBuilderPatchRequestConfiguration] = None) -> Optional[InferenceClassification]:
         """
         Update the navigation property inferenceClassification in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[inference_classification.InferenceClassification]
+        Returns: Optional[InferenceClassification]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import inference_classification
+        from ....models.inference_classification import InferenceClassification
 
-        return await self.request_adapter.send_async(request_info, inference_classification.InferenceClassification, error_mapping)
+        return await self.request_adapter.send_async(request_info, InferenceClassification, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[InferenceClassificationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -101,7 +101,7 @@ class InferenceClassificationRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[inference_classification.InferenceClassification] = None, request_configuration: Optional[InferenceClassificationRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[InferenceClassification] = None, request_configuration: Optional[InferenceClassificationRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property inferenceClassification in users
         Args:
@@ -123,13 +123,13 @@ class InferenceClassificationRequestBuilder():
         return request_info
     
     @property
-    def overrides(self) -> overrides_request_builder.OverridesRequestBuilder:
+    def overrides(self) -> OverridesRequestBuilder:
         """
         Provides operations to manage the overrides property of the microsoft.graph.inferenceClassification entity.
         """
-        from .overrides import overrides_request_builder
+        from .overrides.overrides_request_builder import OverridesRequestBuilder
 
-        return overrides_request_builder.OverridesRequestBuilder(self.request_adapter, self.path_parameters)
+        return OverridesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class InferenceClassificationRequestBuilderGetQueryParameters():

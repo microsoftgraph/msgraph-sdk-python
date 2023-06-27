@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import drive_recipient
+    from ......models.drive_recipient import DriveRecipient
 
 @dataclass
 class InvitePostRequestBody(AdditionalDataHolder, Parsable):
@@ -18,7 +18,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
     # The password property
     password: Optional[str] = None
     # The recipients property
-    recipients: Optional[List[drive_recipient.DriveRecipient]] = None
+    recipients: Optional[List[DriveRecipient]] = None
     # The requireSignIn property
     require_sign_in: Optional[bool] = None
     # The retainInheritedPermissions property
@@ -45,15 +45,15 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models import drive_recipient
+        from ......models.drive_recipient import DriveRecipient
 
-        from ......models import drive_recipient
+        from ......models.drive_recipient import DriveRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_str_value()),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
-            "recipients": lambda n : setattr(self, 'recipients', n.get_collection_of_object_values(drive_recipient.DriveRecipient)),
+            "recipients": lambda n : setattr(self, 'recipients', n.get_collection_of_object_values(DriveRecipient)),
             "requireSignIn": lambda n : setattr(self, 'require_sign_in', n.get_bool_value()),
             "retainInheritedPermissions": lambda n : setattr(self, 'retain_inherited_permissions', n.get_bool_value()),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),

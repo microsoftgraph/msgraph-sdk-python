@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models.o_data_errors import o_data_error
-    from ....models.security import retention_event_type, retention_event_type_collection_response
-    from .count import count_request_builder
-    from .item import retention_event_type_item_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.security.retention_event_type import RetentionEventType
+    from ....models.security.retention_event_type_collection_response import RetentionEventTypeCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.retention_event_type_item_request_builder import RetentionEventTypeItemRequestBuilder
 
 class RetentionEventTypesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class RetentionEventTypesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_retention_event_type_id(self,retention_event_type_id: str) -> retention_event_type_item_request_builder.RetentionEventTypeItemRequestBuilder:
+    def by_retention_event_type_id(self,retention_event_type_id: str) -> RetentionEventTypeItemRequestBuilder:
         """
         Provides operations to manage the retentionEventTypes property of the microsoft.graph.security.triggerTypesRoot entity.
         Args:
             retention_event_type_id: Unique identifier of the item
-        Returns: retention_event_type_item_request_builder.RetentionEventTypeItemRequestBuilder
+        Returns: RetentionEventTypeItemRequestBuilder
         """
         if not retention_event_type_id:
             raise TypeError("retention_event_type_id cannot be null.")
-        from .item import retention_event_type_item_request_builder
+        from .item.retention_event_type_item_request_builder import RetentionEventTypeItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["retentionEventType%2Did"] = retention_event_type_id
-        return retention_event_type_item_request_builder.RetentionEventTypeItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return RetentionEventTypeItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RetentionEventTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[retention_event_type_collection_response.RetentionEventTypeCollectionResponse]:
+    async def get(self,request_configuration: Optional[RetentionEventTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[RetentionEventTypeCollectionResponse]:
         """
         Get a list of the retentionEventType objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[retention_event_type_collection_response.RetentionEventTypeCollectionResponse]
+        Returns: Optional[RetentionEventTypeCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.security import retention_event_type_collection_response
+        from ....models.security.retention_event_type_collection_response import RetentionEventTypeCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, retention_event_type_collection_response.RetentionEventTypeCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, RetentionEventTypeCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[retention_event_type.RetentionEventType] = None, request_configuration: Optional[RetentionEventTypesRequestBuilderPostRequestConfiguration] = None) -> Optional[retention_event_type.RetentionEventType]:
+    async def post(self,body: Optional[RetentionEventType] = None, request_configuration: Optional[RetentionEventTypesRequestBuilderPostRequestConfiguration] = None) -> Optional[RetentionEventType]:
         """
         Create a new retentionEventType object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[retention_event_type.RetentionEventType]
+        Returns: Optional[RetentionEventType]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.security import retention_event_type
+        from ....models.security.retention_event_type import RetentionEventType
 
-        return await self.request_adapter.send_async(request_info, retention_event_type.RetentionEventType, error_mapping)
+        return await self.request_adapter.send_async(request_info, RetentionEventType, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RetentionEventTypesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class RetentionEventTypesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[retention_event_type.RetentionEventType] = None, request_configuration: Optional[RetentionEventTypesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[RetentionEventType] = None, request_configuration: Optional[RetentionEventTypesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new retentionEventType object.
         Args:
@@ -139,13 +140,13 @@ class RetentionEventTypesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RetentionEventTypesRequestBuilderGetQueryParameters():

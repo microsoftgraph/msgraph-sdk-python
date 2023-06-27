@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.o_data_errors import o_data_error
-    from ........models.security import ediscovery_review_set_query, ediscovery_review_set_query_collection_response
-    from .count import count_request_builder
-    from .item import ediscovery_review_set_query_item_request_builder
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
+    from ........models.security.ediscovery_review_set_query_collection_response import EdiscoveryReviewSetQueryCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.ediscovery_review_set_query_item_request_builder import EdiscoveryReviewSetQueryItemRequestBuilder
 
 class QueriesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class QueriesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_ediscovery_review_set_query_id(self,ediscovery_review_set_query_id: str) -> ediscovery_review_set_query_item_request_builder.EdiscoveryReviewSetQueryItemRequestBuilder:
+    def by_ediscovery_review_set_query_id(self,ediscovery_review_set_query_id: str) -> EdiscoveryReviewSetQueryItemRequestBuilder:
         """
         Provides operations to manage the queries property of the microsoft.graph.security.ediscoveryReviewSet entity.
         Args:
             ediscovery_review_set_query_id: Unique identifier of the item
-        Returns: ediscovery_review_set_query_item_request_builder.EdiscoveryReviewSetQueryItemRequestBuilder
+        Returns: EdiscoveryReviewSetQueryItemRequestBuilder
         """
         if not ediscovery_review_set_query_id:
             raise TypeError("ediscovery_review_set_query_id cannot be null.")
-        from .item import ediscovery_review_set_query_item_request_builder
+        from .item.ediscovery_review_set_query_item_request_builder import EdiscoveryReviewSetQueryItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["ediscoveryReviewSetQuery%2Did"] = ediscovery_review_set_query_id
-        return ediscovery_review_set_query_item_request_builder.EdiscoveryReviewSetQueryItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return EdiscoveryReviewSetQueryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[QueriesRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_set_query_collection_response.EdiscoveryReviewSetQueryCollectionResponse]:
+    async def get(self,request_configuration: Optional[QueriesRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewSetQueryCollectionResponse]:
         """
         Get the list of queries associated with an eDiscovery review set.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_review_set_query_collection_response.EdiscoveryReviewSetQueryCollectionResponse]
+        Returns: Optional[EdiscoveryReviewSetQueryCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.security import ediscovery_review_set_query_collection_response
+        from ........models.security.ediscovery_review_set_query_collection_response import EdiscoveryReviewSetQueryCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, ediscovery_review_set_query_collection_response.EdiscoveryReviewSetQueryCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoveryReviewSetQueryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery] = None, request_configuration: Optional[QueriesRequestBuilderPostRequestConfiguration] = None) -> Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]:
+    async def post(self,body: Optional[EdiscoveryReviewSetQuery] = None, request_configuration: Optional[QueriesRequestBuilderPostRequestConfiguration] = None) -> Optional[EdiscoveryReviewSetQuery]:
         """
         Create a new ediscoveryReviewSetQuery object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]
+        Returns: Optional[EdiscoveryReviewSetQuery]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.security import ediscovery_review_set_query
+        from ........models.security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
 
-        return await self.request_adapter.send_async(request_info, ediscovery_review_set_query.EdiscoveryReviewSetQuery, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoveryReviewSetQuery, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[QueriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class QueriesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery] = None, request_configuration: Optional[QueriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EdiscoveryReviewSetQuery] = None, request_configuration: Optional[QueriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new ediscoveryReviewSetQuery object.
         Args:
@@ -139,13 +140,13 @@ class QueriesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class QueriesRequestBuilderGetQueryParameters():

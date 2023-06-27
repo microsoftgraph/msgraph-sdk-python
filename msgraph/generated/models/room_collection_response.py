@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, room
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .room import Room
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class RoomCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class RoomCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[room.Room]] = None
+    value: Optional[List[Room]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RoomCollectionResponse:
@@ -30,12 +31,14 @@ class RoomCollectionResponse(base_collection_pagination_count_response.BaseColle
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, room
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .room import Room
 
-        from . import base_collection_pagination_count_response, room
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .room import Room
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(room.Room)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(Room)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import subject_set
+    from .subject_set import SubjectSet
 
-from . import subject_set
+from .subject_set import SubjectSet
 
 @dataclass
-class ConnectedOrganizationMembers(subject_set.SubjectSet):
+class ConnectedOrganizationMembers(SubjectSet):
     odata_type = "#microsoft.graph.connectedOrganizationMembers"
     # The ID of the connected organization in entitlement management.
     connected_organization_id: Optional[str] = None
@@ -33,9 +33,9 @@ class ConnectedOrganizationMembers(subject_set.SubjectSet):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import subject_set
+        from .subject_set import SubjectSet
 
-        from . import subject_set
+        from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "connectedOrganizationId": lambda n : setattr(self, 'connected_organization_id', n.get_str_value()),

@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import outlook_user
-    from ....models.o_data_errors import o_data_error
-    from .master_categories import master_categories_request_builder
-    from .supported_languages import supported_languages_request_builder
-    from .supported_time_zones import supported_time_zones_request_builder
-    from .supported_time_zones_with_time_zone_standard import supported_time_zones_with_time_zone_standard_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.outlook_user import OutlookUser
+    from .master_categories.master_categories_request_builder import MasterCategoriesRequestBuilder
+    from .supported_languages.supported_languages_request_builder import SupportedLanguagesRequestBuilder
+    from .supported_time_zones.supported_time_zones_request_builder import SupportedTimeZonesRequestBuilder
+    from .supported_time_zones_with_time_zone_standard.supported_time_zones_with_time_zone_standard_request_builder import SupportedTimeZonesWithTimeZoneStandardRequestBuilder
 
 class OutlookRequestBuilder():
     """
@@ -39,40 +39,40 @@ class OutlookRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[OutlookRequestBuilderGetRequestConfiguration] = None) -> Optional[outlook_user.OutlookUser]:
+    async def get(self,request_configuration: Optional[OutlookRequestBuilderGetRequestConfiguration] = None) -> Optional[OutlookUser]:
         """
         Get outlook from users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[outlook_user.OutlookUser]
+        Returns: Optional[OutlookUser]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import outlook_user
+        from ....models.outlook_user import OutlookUser
 
-        return await self.request_adapter.send_async(request_info, outlook_user.OutlookUser, error_mapping)
+        return await self.request_adapter.send_async(request_info, OutlookUser, error_mapping)
     
-    def supported_time_zones_with_time_zone_standard(self,time_zone_standard: Optional[str] = None) -> supported_time_zones_with_time_zone_standard_request_builder.SupportedTimeZonesWithTimeZoneStandardRequestBuilder:
+    def supported_time_zones_with_time_zone_standard(self,time_zone_standard: Optional[str] = None) -> SupportedTimeZonesWithTimeZoneStandardRequestBuilder:
         """
         Provides operations to call the supportedTimeZones method.
         Args:
             TimeZoneStandard: Usage: TimeZoneStandard='{TimeZoneStandard}'
-        Returns: supported_time_zones_with_time_zone_standard_request_builder.SupportedTimeZonesWithTimeZoneStandardRequestBuilder
+        Returns: SupportedTimeZonesWithTimeZoneStandardRequestBuilder
         """
         if not time_zone_standard:
             raise TypeError("time_zone_standard cannot be null.")
-        from .supported_time_zones_with_time_zone_standard import supported_time_zones_with_time_zone_standard_request_builder
+        from .supported_time_zones_with_time_zone_standard.supported_time_zones_with_time_zone_standard_request_builder import SupportedTimeZonesWithTimeZoneStandardRequestBuilder
 
-        return supported_time_zones_with_time_zone_standard_request_builder.SupportedTimeZonesWithTimeZoneStandardRequestBuilder(self.request_adapter, self.path_parameters, time_zone_standard)
+        return SupportedTimeZonesWithTimeZoneStandardRequestBuilder(self.request_adapter, self.path_parameters, time_zone_standard)
     
     def to_get_request_information(self,request_configuration: Optional[OutlookRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,31 +93,31 @@ class OutlookRequestBuilder():
         return request_info
     
     @property
-    def master_categories(self) -> master_categories_request_builder.MasterCategoriesRequestBuilder:
+    def master_categories(self) -> MasterCategoriesRequestBuilder:
         """
         Provides operations to manage the masterCategories property of the microsoft.graph.outlookUser entity.
         """
-        from .master_categories import master_categories_request_builder
+        from .master_categories.master_categories_request_builder import MasterCategoriesRequestBuilder
 
-        return master_categories_request_builder.MasterCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+        return MasterCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def supported_languages(self) -> supported_languages_request_builder.SupportedLanguagesRequestBuilder:
+    def supported_languages(self) -> SupportedLanguagesRequestBuilder:
         """
         Provides operations to call the supportedLanguages method.
         """
-        from .supported_languages import supported_languages_request_builder
+        from .supported_languages.supported_languages_request_builder import SupportedLanguagesRequestBuilder
 
-        return supported_languages_request_builder.SupportedLanguagesRequestBuilder(self.request_adapter, self.path_parameters)
+        return SupportedLanguagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def supported_time_zones(self) -> supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder:
+    def supported_time_zones(self) -> SupportedTimeZonesRequestBuilder:
         """
         Provides operations to call the supportedTimeZones method.
         """
-        from .supported_time_zones import supported_time_zones_request_builder
+        from .supported_time_zones.supported_time_zones_request_builder import SupportedTimeZonesRequestBuilder
 
-        return supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder(self.request_adapter, self.path_parameters)
+        return SupportedTimeZonesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OutlookRequestBuilderGetQueryParameters():

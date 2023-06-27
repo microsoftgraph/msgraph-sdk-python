@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class TimePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class TimePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The hour property
-    hour: Optional[json.Json] = None
+    hour: Optional[Json] = None
     # The minute property
-    minute: Optional[json.Json] = None
+    minute: Optional[Json] = None
     # The second property
-    second: Optional[json.Json] = None
+    second: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimePostRequestBody:
@@ -35,14 +35,14 @@ class TimePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "hour": lambda n : setattr(self, 'hour', n.get_object_value(json.Json)),
-            "minute": lambda n : setattr(self, 'minute', n.get_object_value(json.Json)),
-            "second": lambda n : setattr(self, 'second', n.get_object_value(json.Json)),
+            "hour": lambda n : setattr(self, 'hour', n.get_object_value(Json)),
+            "minute": lambda n : setattr(self, 'minute', n.get_object_value(Json)),
+            "second": lambda n : setattr(self, 'second', n.get_object_value(Json)),
         }
         return fields
     

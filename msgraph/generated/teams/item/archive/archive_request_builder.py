@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import archive_post_request_body
-    from ....models.o_data_errors import o_data_error
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .archive_post_request_body import ArchivePostRequestBody
 
 class ArchiveRequestBuilder():
     """
@@ -35,7 +35,7 @@ class ArchiveRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[archive_post_request_body.ArchivePostRequestBody] = None, request_configuration: Optional[ArchiveRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[ArchivePostRequestBody] = None, request_configuration: Optional[ArchiveRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Archive the specified team. When a team is archived, users can no longer send or like messages on any channel in the team, edit the team's name, description, or other settings, or in general make most changes to the team.Membership changes to the team continue to be allowed. Archiving is an async operation. A team is archived once the async operation completes successfully, which may occur subsequent to a response from this API. To archive a team, the team and group must have an owner. To restore a team from its archived state, use the API to unarchive.
         Args:
@@ -47,17 +47,17 @@ class ArchiveRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[archive_post_request_body.ArchivePostRequestBody] = None, request_configuration: Optional[ArchiveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ArchivePostRequestBody] = None, request_configuration: Optional[ArchiveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Archive the specified team. When a team is archived, users can no longer send or like messages on any channel in the team, edit the team's name, description, or other settings, or in general make most changes to the team.Membership changes to the team continue to be allowed. Archiving is an async operation. A team is archived once the async operation completes successfully, which may occur subsequent to a response from this API. To archive a team, the team and group must have an owner. To restore a team from its archived state, use the API to unarchive.
         Args:

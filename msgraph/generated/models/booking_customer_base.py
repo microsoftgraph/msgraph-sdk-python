@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import booking_customer, entity
+    from .booking_customer import BookingCustomer
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class BookingCustomerBase(entity.Entity):
+class BookingCustomerBase(Entity):
     """
     Booking entities that provide a display name.
     """
@@ -31,9 +32,9 @@ class BookingCustomerBase(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bookingCustomer".casefold():
-            from . import booking_customer
+            from .booking_customer import BookingCustomer
 
-            return booking_customer.BookingCustomer()
+            return BookingCustomer()
         return BookingCustomerBase()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -41,9 +42,11 @@ class BookingCustomerBase(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_customer, entity
+        from .booking_customer import BookingCustomer
+        from .entity import Entity
 
-        from . import booking_customer, entity
+        from .booking_customer import BookingCustomer
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

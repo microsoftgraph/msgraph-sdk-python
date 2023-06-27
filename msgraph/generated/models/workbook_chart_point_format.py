@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_fill
+    from .entity import Entity
+    from .workbook_chart_fill import WorkbookChartFill
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartPointFormat(entity.Entity):
+class WorkbookChartPointFormat(Entity):
     # Represents the fill format of a chart, which includes background formating information. Read-only.
-    fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
+    fill: Optional[WorkbookChartFill] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class WorkbookChartPointFormat(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_fill
+        from .entity import Entity
+        from .workbook_chart_fill import WorkbookChartFill
 
-        from . import entity, workbook_chart_fill
+        from .entity import Entity
+        from .workbook_chart_fill import WorkbookChartFill
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fill": lambda n : setattr(self, 'fill', n.get_object_value(workbook_chart_fill.WorkbookChartFill)),
+            "fill": lambda n : setattr(self, 'fill', n.get_object_value(WorkbookChartFill)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

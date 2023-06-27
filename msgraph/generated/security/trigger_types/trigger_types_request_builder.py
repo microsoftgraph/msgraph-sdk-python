@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models.o_data_errors import o_data_error
-    from ...models.security import trigger_types_root
-    from .retention_event_types import retention_event_types_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.security.trigger_types_root import TriggerTypesRoot
+    from .retention_event_types.retention_event_types_request_builder import RetentionEventTypesRequestBuilder
 
 class TriggerTypesRequestBuilder():
     """
@@ -45,62 +45,62 @@ class TriggerTypesRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TriggerTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[trigger_types_root.TriggerTypesRoot]:
+    async def get(self,request_configuration: Optional[TriggerTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[TriggerTypesRoot]:
         """
         Get triggerTypes from security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[trigger_types_root.TriggerTypesRoot]
+        Returns: Optional[TriggerTypesRoot]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.security import trigger_types_root
+        from ...models.security.trigger_types_root import TriggerTypesRoot
 
-        return await self.request_adapter.send_async(request_info, trigger_types_root.TriggerTypesRoot, error_mapping)
+        return await self.request_adapter.send_async(request_info, TriggerTypesRoot, error_mapping)
     
-    async def patch(self,body: Optional[trigger_types_root.TriggerTypesRoot] = None, request_configuration: Optional[TriggerTypesRequestBuilderPatchRequestConfiguration] = None) -> Optional[trigger_types_root.TriggerTypesRoot]:
+    async def patch(self,body: Optional[TriggerTypesRoot] = None, request_configuration: Optional[TriggerTypesRequestBuilderPatchRequestConfiguration] = None) -> Optional[TriggerTypesRoot]:
         """
         Update the navigation property triggerTypes in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[trigger_types_root.TriggerTypesRoot]
+        Returns: Optional[TriggerTypesRoot]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.security import trigger_types_root
+        from ...models.security.trigger_types_root import TriggerTypesRoot
 
-        return await self.request_adapter.send_async(request_info, trigger_types_root.TriggerTypesRoot, error_mapping)
+        return await self.request_adapter.send_async(request_info, TriggerTypesRoot, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TriggerTypesRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class TriggerTypesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[trigger_types_root.TriggerTypesRoot] = None, request_configuration: Optional[TriggerTypesRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TriggerTypesRoot] = None, request_configuration: Optional[TriggerTypesRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property triggerTypes in security
         Args:
@@ -158,13 +158,13 @@ class TriggerTypesRequestBuilder():
         return request_info
     
     @property
-    def retention_event_types(self) -> retention_event_types_request_builder.RetentionEventTypesRequestBuilder:
+    def retention_event_types(self) -> RetentionEventTypesRequestBuilder:
         """
         Provides operations to manage the retentionEventTypes property of the microsoft.graph.security.triggerTypesRoot entity.
         """
-        from .retention_event_types import retention_event_types_request_builder
+        from .retention_event_types.retention_event_types_request_builder import RetentionEventTypesRequestBuilder
 
-        return retention_event_types_request_builder.RetentionEventTypesRequestBuilder(self.request_adapter, self.path_parameters)
+        return RetentionEventTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TriggerTypesRequestBuilderDeleteRequestConfiguration():

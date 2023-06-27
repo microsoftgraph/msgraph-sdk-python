@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import sharepoint_ids
+    from .sharepoint_ids import SharepointIds
 
 @dataclass
 class ItemReference(AdditionalDataHolder, Parsable):
@@ -26,7 +26,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
     # A unique identifier for a shared resource that can be accessed via the [Shares][] API.
     share_id: Optional[str] = None
     # Returns identifiers useful for SharePoint REST compatibility. Read-only.
-    sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
+    sharepoint_ids: Optional[SharepointIds] = None
     # For OneDrive for Business and SharePoint, this property represents the ID of the site that contains the parent document library of the driveItem resource or the parent list of the listItem resource. The value is the same as the id property of that [site][] resource. It is an opaque string that consists of three identifiers of the site. For OneDrive, this property is not populated.
     site_id: Optional[str] = None
     
@@ -47,9 +47,9 @@ class ItemReference(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import sharepoint_ids
+        from .sharepoint_ids import SharepointIds
 
-        from . import sharepoint_ids
+        from .sharepoint_ids import SharepointIds
 
         fields: Dict[str, Callable[[Any], None]] = {
             "driveId": lambda n : setattr(self, 'drive_id', n.get_str_value()),
@@ -59,7 +59,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
             "shareId": lambda n : setattr(self, 'share_id', n.get_str_value()),
-            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
             "siteId": lambda n : setattr(self, 'site_id', n.get_str_value()),
         }
         return fields

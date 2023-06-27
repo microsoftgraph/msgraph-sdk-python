@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import endpoint
+    from .endpoint import Endpoint
 
-from . import endpoint
+from .endpoint import Endpoint
 
 @dataclass
-class ServiceEndpoint(endpoint.Endpoint):
+class ServiceEndpoint(Endpoint):
     odata_type = "#microsoft.graph.callRecords.serviceEndpoint"
     
     @staticmethod
@@ -29,9 +29,9 @@ class ServiceEndpoint(endpoint.Endpoint):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import endpoint
+        from .endpoint import Endpoint
 
-        from . import endpoint
+        from .endpoint import Endpoint
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

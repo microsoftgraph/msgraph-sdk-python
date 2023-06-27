@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import role_assignment
-    from ......models.o_data_errors import o_data_error
-    from .role_definition import role_definition_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.role_assignment import RoleAssignment
+    from .role_definition.role_definition_request_builder import RoleDefinitionRequestBuilder
 
 class RoleAssignmentItemRequestBuilder():
     """
@@ -38,73 +38,73 @@ class RoleAssignmentItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[RoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property roleAssignments for deviceManagement
+        Deletes a roleAssignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[role_assignment.RoleAssignment]:
+    async def get(self,request_configuration: Optional[RoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[RoleAssignment]:
         """
-        List of Role assignments for this role definition.
+        Read properties and relationships of the roleAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[role_assignment.RoleAssignment]
+        Returns: Optional[RoleAssignment]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import role_assignment
+        from ......models.role_assignment import RoleAssignment
 
-        return await self.request_adapter.send_async(request_info, role_assignment.RoleAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, RoleAssignment, error_mapping)
     
-    async def patch(self,body: Optional[role_assignment.RoleAssignment] = None, request_configuration: Optional[RoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[role_assignment.RoleAssignment]:
+    async def patch(self,body: Optional[RoleAssignment] = None, request_configuration: Optional[RoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[RoleAssignment]:
         """
-        Update the navigation property roleAssignments in deviceManagement
+        Update the properties of a roleAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[role_assignment.RoleAssignment]
+        Returns: Optional[RoleAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import role_assignment
+        from ......models.role_assignment import RoleAssignment
 
-        return await self.request_adapter.send_async(request_info, role_assignment.RoleAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, RoleAssignment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property roleAssignments for deviceManagement
+        Deletes a roleAssignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class RoleAssignmentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of Role assignments for this role definition.
+        Read properties and relationships of the roleAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -136,9 +136,9 @@ class RoleAssignmentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[role_assignment.RoleAssignment] = None, request_configuration: Optional[RoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[RoleAssignment] = None, request_configuration: Optional[RoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property roleAssignments in deviceManagement
+        Update the properties of a roleAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -158,13 +158,13 @@ class RoleAssignmentItemRequestBuilder():
         return request_info
     
     @property
-    def role_definition(self) -> role_definition_request_builder.RoleDefinitionRequestBuilder:
+    def role_definition(self) -> RoleDefinitionRequestBuilder:
         """
         Provides operations to manage the roleDefinition property of the microsoft.graph.roleAssignment entity.
         """
-        from .role_definition import role_definition_request_builder
+        from .role_definition.role_definition_request_builder import RoleDefinitionRequestBuilder
 
-        return role_definition_request_builder.RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RoleAssignmentItemRequestBuilderDeleteRequestConfiguration():
@@ -181,7 +181,7 @@ class RoleAssignmentItemRequestBuilder():
     @dataclass
     class RoleAssignmentItemRequestBuilderGetQueryParameters():
         """
-        List of Role assignments for this role definition.
+        Read properties and relationships of the roleAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

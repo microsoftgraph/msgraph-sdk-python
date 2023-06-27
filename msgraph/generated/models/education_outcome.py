@@ -1,20 +1,25 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_feedback_outcome, education_feedback_resource_outcome, education_points_outcome, education_rubric_outcome, entity, identity_set
+    from .education_feedback_outcome import EducationFeedbackOutcome
+    from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
+    from .education_points_outcome import EducationPointsOutcome
+    from .education_rubric_outcome import EducationRubricOutcome
+    from .entity import Entity
+    from .identity_set import IdentitySet
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class EducationOutcome(entity.Entity):
+class EducationOutcome(Entity):
     # The individual who updated the resource.
-    last_modified_by: Optional[identity_set.IdentitySet] = None
+    last_modified_by: Optional[IdentitySet] = None
     # The moment in time when the resource was last modified. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2021 is 2021-01-01T00:00:00Z.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,21 +38,21 @@ class EducationOutcome(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationFeedbackOutcome".casefold():
-            from . import education_feedback_outcome
+            from .education_feedback_outcome import EducationFeedbackOutcome
 
-            return education_feedback_outcome.EducationFeedbackOutcome()
+            return EducationFeedbackOutcome()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationFeedbackResourceOutcome".casefold():
-            from . import education_feedback_resource_outcome
+            from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
 
-            return education_feedback_resource_outcome.EducationFeedbackResourceOutcome()
+            return EducationFeedbackResourceOutcome()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationPointsOutcome".casefold():
-            from . import education_points_outcome
+            from .education_points_outcome import EducationPointsOutcome
 
-            return education_points_outcome.EducationPointsOutcome()
+            return EducationPointsOutcome()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationRubricOutcome".casefold():
-            from . import education_rubric_outcome
+            from .education_rubric_outcome import EducationRubricOutcome
 
-            return education_rubric_outcome.EducationRubricOutcome()
+            return EducationRubricOutcome()
         return EducationOutcome()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -55,12 +60,22 @@ class EducationOutcome(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_feedback_outcome, education_feedback_resource_outcome, education_points_outcome, education_rubric_outcome, entity, identity_set
+        from .education_feedback_outcome import EducationFeedbackOutcome
+        from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
+        from .education_points_outcome import EducationPointsOutcome
+        from .education_rubric_outcome import EducationRubricOutcome
+        from .entity import Entity
+        from .identity_set import IdentitySet
 
-        from . import education_feedback_outcome, education_feedback_resource_outcome, education_points_outcome, education_rubric_outcome, entity, identity_set
+        from .education_feedback_outcome import EducationFeedbackOutcome
+        from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
+        from .education_points_outcome import EducationPointsOutcome
+        from .education_rubric_outcome import EducationRubricOutcome
+        from .entity import Entity
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -77,6 +92,6 @@ class EducationOutcome(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
     
 

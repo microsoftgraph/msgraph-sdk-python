@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models.external_connectors import external_connection
-    from ...models.o_data_errors import o_data_error
-    from .groups import groups_request_builder
-    from .items import items_request_builder
-    from .operations import operations_request_builder
-    from .schema import schema_request_builder
+    from ...models.external_connectors.external_connection import ExternalConnection
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .groups.groups_request_builder import GroupsRequestBuilder
+    from .items.items_request_builder import ItemsRequestBuilder
+    from .operations.operations_request_builder import OperationsRequestBuilder
+    from .schema.schema_request_builder import SchemaRequestBuilder
 
 class ExternalConnectionItemRequestBuilder():
     """
@@ -48,62 +48,62 @@ class ExternalConnectionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[external_connection.ExternalConnection]:
+    async def get(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ExternalConnection]:
         """
         Get entity from connections by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external_connection.ExternalConnection]
+        Returns: Optional[ExternalConnection]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.external_connectors import external_connection
+        from ...models.external_connectors.external_connection import ExternalConnection
 
-        return await self.request_adapter.send_async(request_info, external_connection.ExternalConnection, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExternalConnection, error_mapping)
     
-    async def patch(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[external_connection.ExternalConnection]:
+    async def patch(self,body: Optional[ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ExternalConnection]:
         """
         Update entity in connections
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external_connection.ExternalConnection]
+        Returns: Optional[ExternalConnection]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.external_connectors import external_connection
+        from ...models.external_connectors.external_connection import ExternalConnection
 
-        return await self.request_adapter.send_async(request_info, external_connection.ExternalConnection, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExternalConnection, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -139,7 +139,7 @@ class ExternalConnectionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in connections
         Args:
@@ -161,40 +161,40 @@ class ExternalConnectionItemRequestBuilder():
         return request_info
     
     @property
-    def groups(self) -> groups_request_builder.GroupsRequestBuilder:
+    def groups(self) -> GroupsRequestBuilder:
         """
         Provides operations to manage the groups property of the microsoft.graph.externalConnectors.externalConnection entity.
         """
-        from .groups import groups_request_builder
+        from .groups.groups_request_builder import GroupsRequestBuilder
 
-        return groups_request_builder.GroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def items(self) -> items_request_builder.ItemsRequestBuilder:
+    def items(self) -> ItemsRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.externalConnectors.externalConnection entity.
         """
-        from .items import items_request_builder
+        from .items.items_request_builder import ItemsRequestBuilder
 
-        return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+    def operations(self) -> OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.externalConnectors.externalConnection entity.
         """
-        from .operations import operations_request_builder
+        from .operations.operations_request_builder import OperationsRequestBuilder
 
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def schema(self) -> schema_request_builder.SchemaRequestBuilder:
+    def schema(self) -> SchemaRequestBuilder:
         """
         Provides operations to manage the schema property of the microsoft.graph.externalConnectors.externalConnection entity.
         """
-        from .schema import schema_request_builder
+        from .schema.schema_request_builder import SchemaRequestBuilder
 
-        return schema_request_builder.SchemaRequestBuilder(self.request_adapter, self.path_parameters)
+        return SchemaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ExternalConnectionItemRequestBuilderDeleteRequestConfiguration():

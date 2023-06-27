@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import service_principal
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.service_principal import ServicePrincipal
 
 class GraphServicePrincipalRequestBuilder():
     """
@@ -35,27 +35,27 @@ class GraphServicePrincipalRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[GraphServicePrincipalRequestBuilderGetRequestConfiguration] = None) -> Optional[service_principal.ServicePrincipal]:
+    async def get(self,request_configuration: Optional[GraphServicePrincipalRequestBuilderGetRequestConfiguration] = None) -> Optional[ServicePrincipal]:
         """
         Get the item of type microsoft.graph.directoryObject as microsoft.graph.servicePrincipal
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[service_principal.ServicePrincipal]
+        Returns: Optional[ServicePrincipal]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import service_principal
+        from .....models.service_principal import ServicePrincipal
 
-        return await self.request_adapter.send_async(request_info, service_principal.ServicePrincipal, error_mapping)
+        return await self.request_adapter.send_async(request_info, ServicePrincipal, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GraphServicePrincipalRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

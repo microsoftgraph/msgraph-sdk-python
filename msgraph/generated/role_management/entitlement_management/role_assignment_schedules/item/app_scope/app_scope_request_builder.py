@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import app_scope
-    from ......models.o_data_errors import o_data_error
+    from ......models.app_scope import AppScope
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class AppScopeRequestBuilder():
     """
@@ -35,27 +35,27 @@ class AppScopeRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AppScopeRequestBuilderGetRequestConfiguration] = None) -> Optional[app_scope.AppScope]:
+    async def get(self,request_configuration: Optional[AppScopeRequestBuilderGetRequestConfiguration] = None) -> Optional[AppScope]:
         """
         Read-only property with details of the app-specific scope when the role eligibility or assignment is scoped to an app. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[app_scope.AppScope]
+        Returns: Optional[AppScope]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import app_scope
+        from ......models.app_scope import AppScope
 
-        return await self.request_adapter.send_async(request_info, app_scope.AppScope, error_mapping)
+        return await self.request_adapter.send_async(request_info, AppScope, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AppScopeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

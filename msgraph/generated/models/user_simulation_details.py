@@ -1,11 +1,13 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attack_simulation_user, user_simulation_event_info, user_training_event_info
+    from .attack_simulation_user import AttackSimulationUser
+    from .user_simulation_event_info import UserSimulationEventInfo
+    from .user_training_event_info import UserTrainingEventInfo
 
 @dataclass
 class UserSimulationDetails(AdditionalDataHolder, Parsable):
@@ -17,7 +19,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
     # Number of trainings completed by a user in an attack simulation and training campaign.
     completed_trainings_count: Optional[int] = None
     # Date and time of the compromising online action by a user in an attack simulation and training campaign.
-    compromised_date_time: Optional[datetime] = None
+    compromised_date_time: Optional[datetime.datetime] = None
     # Number of trainings in progress by a user in an attack simulation and training campaign.
     in_progress_trainings_count: Optional[int] = None
     # Indicates whether a user was compromised in an attack simulation and training campaign.
@@ -25,13 +27,13 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Date and time when a user reported the delivered payload as phishing in the attack simulation and training campaign.
-    reported_phish_date_time: Optional[datetime] = None
+    reported_phish_date_time: Optional[datetime.datetime] = None
     # List of simulation events of a user in the attack simulation and training campaign.
-    simulation_events: Optional[List[user_simulation_event_info.UserSimulationEventInfo]] = None
+    simulation_events: Optional[List[UserSimulationEventInfo]] = None
     # User in an attack simulation and training campaign.
-    simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
+    simulation_user: Optional[AttackSimulationUser] = None
     # List of training events of a user in the attack simulation and training campaign.
-    training_events: Optional[List[user_training_event_info.UserTrainingEventInfo]] = None
+    training_events: Optional[List[UserTrainingEventInfo]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserSimulationDetails:
@@ -50,9 +52,13 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attack_simulation_user, user_simulation_event_info, user_training_event_info
+        from .attack_simulation_user import AttackSimulationUser
+        from .user_simulation_event_info import UserSimulationEventInfo
+        from .user_training_event_info import UserTrainingEventInfo
 
-        from . import attack_simulation_user, user_simulation_event_info, user_training_event_info
+        from .attack_simulation_user import AttackSimulationUser
+        from .user_simulation_event_info import UserSimulationEventInfo
+        from .user_training_event_info import UserTrainingEventInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignedTrainingsCount": lambda n : setattr(self, 'assigned_trainings_count', n.get_int_value()),
@@ -62,9 +68,9 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             "isCompromised": lambda n : setattr(self, 'is_compromised', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reportedPhishDateTime": lambda n : setattr(self, 'reported_phish_date_time', n.get_datetime_value()),
-            "simulationEvents": lambda n : setattr(self, 'simulation_events', n.get_collection_of_object_values(user_simulation_event_info.UserSimulationEventInfo)),
-            "simulationUser": lambda n : setattr(self, 'simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
-            "trainingEvents": lambda n : setattr(self, 'training_events', n.get_collection_of_object_values(user_training_event_info.UserTrainingEventInfo)),
+            "simulationEvents": lambda n : setattr(self, 'simulation_events', n.get_collection_of_object_values(UserSimulationEventInfo)),
+            "simulationUser": lambda n : setattr(self, 'simulation_user', n.get_object_value(AttackSimulationUser)),
+            "trainingEvents": lambda n : setattr(self, 'training_events', n.get_collection_of_object_values(UserTrainingEventInfo)),
         }
         return fields
     
@@ -78,11 +84,11 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_int_value("assignedTrainingsCount", self.assigned_trainings_count)
         writer.write_int_value("completedTrainingsCount", self.completed_trainings_count)
-        writer.write_datetime_value("compromisedDateTime", self.compromised_date_time)
+        writer.write_datetime_value()("compromisedDateTime", self.compromised_date_time)
         writer.write_int_value("inProgressTrainingsCount", self.in_progress_trainings_count)
         writer.write_bool_value("isCompromised", self.is_compromised)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_datetime_value("reportedPhishDateTime", self.reported_phish_date_time)
+        writer.write_datetime_value()("reportedPhishDateTime", self.reported_phish_date_time)
         writer.write_collection_of_object_values("simulationEvents", self.simulation_events)
         writer.write_object_value("simulationUser", self.simulation_user)
         writer.write_collection_of_object_values("trainingEvents", self.training_events)

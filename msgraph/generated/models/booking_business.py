@@ -4,26 +4,37 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import booking_appointment, booking_customer_base, booking_custom_question, booking_scheduling_policy, booking_service, booking_staff_member_base, booking_work_hours, entity, physical_address
+    from .booking_appointment import BookingAppointment
+    from .booking_customer_base import BookingCustomerBase
+    from .booking_custom_question import BookingCustomQuestion
+    from .booking_scheduling_policy import BookingSchedulingPolicy
+    from .booking_service import BookingService
+    from .booking_staff_member_base import BookingStaffMemberBase
+    from .booking_work_hours import BookingWorkHours
+    from .entity import Entity
+    from .physical_address import PhysicalAddress
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class BookingBusiness(entity.Entity):
+class BookingBusiness(Entity):
+    """
+    Represents a Microsot Bookings Business.
+    """
     # The street address of the business. The address property, together with phone and webSiteUrl, appear in the footer of a business scheduling page. The attribute type of physicalAddress is not supported in v1.0. Internally we map the addresses to the type others.
-    address: Optional[physical_address.PhysicalAddress] = None
+    address: Optional[PhysicalAddress] = None
     # All the appointments of this business. Read-only. Nullable.
-    appointments: Optional[List[booking_appointment.BookingAppointment]] = None
+    appointments: Optional[List[BookingAppointment]] = None
     # The hours of operation for the business.
-    business_hours: Optional[List[booking_work_hours.BookingWorkHours]] = None
+    business_hours: Optional[List[BookingWorkHours]] = None
     # The type of business.
     business_type: Optional[str] = None
     # The set of appointments of this business in a specified date range. Read-only. Nullable.
-    calendar_view: Optional[List[booking_appointment.BookingAppointment]] = None
+    calendar_view: Optional[List[BookingAppointment]] = None
     # All the custom questions of this business. Read-only. Nullable.
-    custom_questions: Optional[List[booking_custom_question.BookingCustomQuestion]] = None
+    custom_questions: Optional[List[BookingCustomQuestion]] = None
     # All the customers of this business. Read-only. Nullable.
-    customers: Optional[List[booking_customer_base.BookingCustomerBase]] = None
+    customers: Optional[List[BookingCustomerBase]] = None
     # The code for the currency that the business operates in on Microsoft Bookings.
     default_currency_iso: Optional[str] = None
     # The name of the business, which interfaces with customers. This name appears at the top of the business scheduling page.
@@ -41,11 +52,11 @@ class BookingBusiness(entity.Entity):
     # The URL for the scheduling page, which is set after you publish or unpublish the page. Read-only.
     public_url: Optional[str] = None
     # Specifies how bookings can be created for this business.
-    scheduling_policy: Optional[booking_scheduling_policy.BookingSchedulingPolicy] = None
+    scheduling_policy: Optional[BookingSchedulingPolicy] = None
     # All the services offered by this business. Read-only. Nullable.
-    services: Optional[List[booking_service.BookingService]] = None
+    services: Optional[List[BookingService]] = None
     # All the staff members that provide services in this business. Read-only. Nullable.
-    staff_members: Optional[List[booking_staff_member_base.BookingStaffMemberBase]] = None
+    staff_members: Optional[List[BookingStaffMemberBase]] = None
     # The URL of the business web site. The webSiteUrl property, together with address, phone, appear in the footer of a business scheduling page.
     web_site_url: Optional[str] = None
     
@@ -66,18 +77,34 @@ class BookingBusiness(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_appointment, booking_customer_base, booking_custom_question, booking_scheduling_policy, booking_service, booking_staff_member_base, booking_work_hours, entity, physical_address
+        from .booking_appointment import BookingAppointment
+        from .booking_customer_base import BookingCustomerBase
+        from .booking_custom_question import BookingCustomQuestion
+        from .booking_scheduling_policy import BookingSchedulingPolicy
+        from .booking_service import BookingService
+        from .booking_staff_member_base import BookingStaffMemberBase
+        from .booking_work_hours import BookingWorkHours
+        from .entity import Entity
+        from .physical_address import PhysicalAddress
 
-        from . import booking_appointment, booking_customer_base, booking_custom_question, booking_scheduling_policy, booking_service, booking_staff_member_base, booking_work_hours, entity, physical_address
+        from .booking_appointment import BookingAppointment
+        from .booking_customer_base import BookingCustomerBase
+        from .booking_custom_question import BookingCustomQuestion
+        from .booking_scheduling_policy import BookingSchedulingPolicy
+        from .booking_service import BookingService
+        from .booking_staff_member_base import BookingStaffMemberBase
+        from .booking_work_hours import BookingWorkHours
+        from .entity import Entity
+        from .physical_address import PhysicalAddress
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
-            "appointments": lambda n : setattr(self, 'appointments', n.get_collection_of_object_values(booking_appointment.BookingAppointment)),
-            "businessHours": lambda n : setattr(self, 'business_hours', n.get_collection_of_object_values(booking_work_hours.BookingWorkHours)),
+            "address": lambda n : setattr(self, 'address', n.get_object_value(PhysicalAddress)),
+            "appointments": lambda n : setattr(self, 'appointments', n.get_collection_of_object_values(BookingAppointment)),
+            "businessHours": lambda n : setattr(self, 'business_hours', n.get_collection_of_object_values(BookingWorkHours)),
             "businessType": lambda n : setattr(self, 'business_type', n.get_str_value()),
-            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(booking_appointment.BookingAppointment)),
-            "customQuestions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(booking_custom_question.BookingCustomQuestion)),
-            "customers": lambda n : setattr(self, 'customers', n.get_collection_of_object_values(booking_customer_base.BookingCustomerBase)),
+            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(BookingAppointment)),
+            "customQuestions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(BookingCustomQuestion)),
+            "customers": lambda n : setattr(self, 'customers', n.get_collection_of_object_values(BookingCustomerBase)),
             "defaultCurrencyIso": lambda n : setattr(self, 'default_currency_iso', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
@@ -85,9 +112,9 @@ class BookingBusiness(entity.Entity):
             "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
             "publicUrl": lambda n : setattr(self, 'public_url', n.get_str_value()),
-            "schedulingPolicy": lambda n : setattr(self, 'scheduling_policy', n.get_object_value(booking_scheduling_policy.BookingSchedulingPolicy)),
-            "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(booking_service.BookingService)),
-            "staffMembers": lambda n : setattr(self, 'staff_members', n.get_collection_of_object_values(booking_staff_member_base.BookingStaffMemberBase)),
+            "schedulingPolicy": lambda n : setattr(self, 'scheduling_policy', n.get_object_value(BookingSchedulingPolicy)),
+            "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(BookingService)),
+            "staffMembers": lambda n : setattr(self, 'staff_members', n.get_collection_of_object_values(BookingStaffMemberBase)),
             "webSiteUrl": lambda n : setattr(self, 'web_site_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

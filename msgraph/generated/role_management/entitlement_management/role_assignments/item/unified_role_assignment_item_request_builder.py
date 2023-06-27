@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import unified_role_assignment
-    from .....models.o_data_errors import o_data_error
-    from .app_scope import app_scope_request_builder
-    from .directory_scope import directory_scope_request_builder
-    from .principal import principal_request_builder
-    from .role_definition import role_definition_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.unified_role_assignment import UnifiedRoleAssignment
+    from .app_scope.app_scope_request_builder import AppScopeRequestBuilder
+    from .directory_scope.directory_scope_request_builder import DirectoryScopeRequestBuilder
+    from .principal.principal_request_builder import PrincipalRequestBuilder
+    from .role_definition.role_definition_request_builder import RoleDefinitionRequestBuilder
 
 class UnifiedRoleAssignmentItemRequestBuilder():
     """
@@ -48,62 +48,62 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_assignment.UnifiedRoleAssignment]:
+    async def get(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleAssignment]:
         """
         Retrieve the properties and relationships of a unifiedRoleAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_assignment.UnifiedRoleAssignment]
+        Returns: Optional[UnifiedRoleAssignment]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import unified_role_assignment
+        from .....models.unified_role_assignment import UnifiedRoleAssignment
 
-        return await self.request_adapter.send_async(request_info, unified_role_assignment.UnifiedRoleAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleAssignment, error_mapping)
     
-    async def patch(self,body: Optional[unified_role_assignment.UnifiedRoleAssignment] = None, request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[unified_role_assignment.UnifiedRoleAssignment]:
+    async def patch(self,body: Optional[UnifiedRoleAssignment] = None, request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UnifiedRoleAssignment]:
         """
         Update the navigation property roleAssignments in roleManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_assignment.UnifiedRoleAssignment]
+        Returns: Optional[UnifiedRoleAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import unified_role_assignment
+        from .....models.unified_role_assignment import UnifiedRoleAssignment
 
-        return await self.request_adapter.send_async(request_info, unified_role_assignment.UnifiedRoleAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleAssignment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -139,7 +139,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[unified_role_assignment.UnifiedRoleAssignment] = None, request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UnifiedRoleAssignment] = None, request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property roleAssignments in roleManagement
         Args:
@@ -161,40 +161,40 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         return request_info
     
     @property
-    def app_scope(self) -> app_scope_request_builder.AppScopeRequestBuilder:
+    def app_scope(self) -> AppScopeRequestBuilder:
         """
         Provides operations to manage the appScope property of the microsoft.graph.unifiedRoleAssignment entity.
         """
-        from .app_scope import app_scope_request_builder
+        from .app_scope.app_scope_request_builder import AppScopeRequestBuilder
 
-        return app_scope_request_builder.AppScopeRequestBuilder(self.request_adapter, self.path_parameters)
+        return AppScopeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def directory_scope(self) -> directory_scope_request_builder.DirectoryScopeRequestBuilder:
+    def directory_scope(self) -> DirectoryScopeRequestBuilder:
         """
         Provides operations to manage the directoryScope property of the microsoft.graph.unifiedRoleAssignment entity.
         """
-        from .directory_scope import directory_scope_request_builder
+        from .directory_scope.directory_scope_request_builder import DirectoryScopeRequestBuilder
 
-        return directory_scope_request_builder.DirectoryScopeRequestBuilder(self.request_adapter, self.path_parameters)
+        return DirectoryScopeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def principal(self) -> principal_request_builder.PrincipalRequestBuilder:
+    def principal(self) -> PrincipalRequestBuilder:
         """
         Provides operations to manage the principal property of the microsoft.graph.unifiedRoleAssignment entity.
         """
-        from .principal import principal_request_builder
+        from .principal.principal_request_builder import PrincipalRequestBuilder
 
-        return principal_request_builder.PrincipalRequestBuilder(self.request_adapter, self.path_parameters)
+        return PrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_definition(self) -> role_definition_request_builder.RoleDefinitionRequestBuilder:
+    def role_definition(self) -> RoleDefinitionRequestBuilder:
         """
         Provides operations to manage the roleDefinition property of the microsoft.graph.unifiedRoleAssignment entity.
         """
-        from .role_definition import role_definition_request_builder
+        from .role_definition.role_definition_request_builder import RoleDefinitionRequestBuilder
 
-        return role_definition_request_builder.RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
+        return RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration():

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import app_role_assignment, app_role_assignment_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import app_role_assignment_item_request_builder
+    from ....models.app_role_assignment import AppRoleAssignment
+    from ....models.app_role_assignment_collection_response import AppRoleAssignmentCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.app_role_assignment_item_request_builder import AppRoleAssignmentItemRequestBuilder
 
 class AppRoleAssignedToRequestBuilder():
     """
@@ -37,67 +38,67 @@ class AppRoleAssignedToRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_app_role_assignment_id(self,app_role_assignment_id: str) -> app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder:
+    def by_app_role_assignment_id(self,app_role_assignment_id: str) -> AppRoleAssignmentItemRequestBuilder:
         """
         Provides operations to manage the appRoleAssignedTo property of the microsoft.graph.servicePrincipal entity.
         Args:
             app_role_assignment_id: Unique identifier of the item
-        Returns: app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder
+        Returns: AppRoleAssignmentItemRequestBuilder
         """
         if not app_role_assignment_id:
             raise TypeError("app_role_assignment_id cannot be null.")
-        from .item import app_role_assignment_item_request_builder
+        from .item.app_role_assignment_item_request_builder import AppRoleAssignmentItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["appRoleAssignment%2Did"] = app_role_assignment_id
-        return app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AppRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AppRoleAssignedToRequestBuilderGetRequestConfiguration] = None) -> Optional[app_role_assignment_collection_response.AppRoleAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AppRoleAssignedToRequestBuilderGetRequestConfiguration] = None) -> Optional[AppRoleAssignmentCollectionResponse]:
         """
         Retrieve a list of appRoleAssignment that users, groups, or client service principals have been granted for the given resource service principal. For example, if the resource service principal is the service principal for the Microsoft Graph API, this will return all service principals that have been granted any app-only permissions to Microsoft Graph. If the resource service principal is an application that has app roles granted to users and groups, this will return all the users and groups assigned app roles for this application.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[app_role_assignment_collection_response.AppRoleAssignmentCollectionResponse]
+        Returns: Optional[AppRoleAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import app_role_assignment_collection_response
+        from ....models.app_role_assignment_collection_response import AppRoleAssignmentCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, app_role_assignment_collection_response.AppRoleAssignmentCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AppRoleAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[app_role_assignment.AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignedToRequestBuilderPostRequestConfiguration] = None) -> Optional[app_role_assignment.AppRoleAssignment]:
+    async def post(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignedToRequestBuilderPostRequestConfiguration] = None) -> Optional[AppRoleAssignment]:
         """
         Assign an app role for a resource service principal, to a user, group, or client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment, you need three identifiers:
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[app_role_assignment.AppRoleAssignment]
+        Returns: Optional[AppRoleAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import app_role_assignment
+        from ....models.app_role_assignment import AppRoleAssignment
 
-        return await self.request_adapter.send_async(request_info, app_role_assignment.AppRoleAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, AppRoleAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AppRoleAssignedToRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class AppRoleAssignedToRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[app_role_assignment.AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignedToRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignedToRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Assign an app role for a resource service principal, to a user, group, or client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment, you need three identifiers:
         Args:
@@ -139,13 +140,13 @@ class AppRoleAssignedToRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AppRoleAssignedToRequestBuilderGetQueryParameters():

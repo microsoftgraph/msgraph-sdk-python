@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import bookings_availability_status, date_time_time_zone
+    from .bookings_availability_status import BookingsAvailabilityStatus
+    from .date_time_time_zone import DateTimeTimeZone
 
 @dataclass
 class AvailabilityItem(AdditionalDataHolder, Parsable):
@@ -12,15 +13,15 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The endDateTime property
-    end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    end_date_time: Optional[DateTimeTimeZone] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the service ID in case of 1:n appointments. If the appointment is of type 1:n, this field will be present, otherwise, null.
     service_id: Optional[str] = None
     # The startDateTime property
-    start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    start_date_time: Optional[DateTimeTimeZone] = None
     # The status of the staff member. Possible values are: available, busy, slotsAvailable, outOfOffice, unknownFutureValue.
-    status: Optional[bookings_availability_status.BookingsAvailabilityStatus] = None
+    status: Optional[BookingsAvailabilityStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AvailabilityItem:
@@ -39,16 +40,18 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import bookings_availability_status, date_time_time_zone
+        from .bookings_availability_status import BookingsAvailabilityStatus
+        from .date_time_time_zone import DateTimeTimeZone
 
-        from . import bookings_availability_status, date_time_time_zone
+        from .bookings_availability_status import BookingsAvailabilityStatus
+        from .date_time_time_zone import DateTimeTimeZone
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "serviceId": lambda n : setattr(self, 'service_id', n.get_str_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(bookings_availability_status.BookingsAvailabilityStatus)),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(BookingsAvailabilityStatus)),
         }
         return fields
     

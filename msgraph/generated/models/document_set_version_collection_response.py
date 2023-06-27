@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, document_set_version
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .document_set_version import DocumentSetVersion
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class DocumentSetVersionCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class DocumentSetVersionCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[document_set_version.DocumentSetVersion]] = None
+    value: Optional[List[DocumentSetVersion]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DocumentSetVersionCollectionResponse:
@@ -30,12 +31,14 @@ class DocumentSetVersionCollectionResponse(base_collection_pagination_count_resp
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, document_set_version
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .document_set_version import DocumentSetVersion
 
-        from . import base_collection_pagination_count_response, document_set_version
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .document_set_version import DocumentSetVersion
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(document_set_version.DocumentSetVersion)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(DocumentSetVersion)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

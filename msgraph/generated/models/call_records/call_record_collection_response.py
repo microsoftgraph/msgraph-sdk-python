@@ -4,15 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import call_record
-    from .. import base_collection_pagination_count_response
+    from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .call_record import CallRecord
 
-from .. import base_collection_pagination_count_response
+from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class CallRecordCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class CallRecordCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[call_record.CallRecord]] = None
+    value: Optional[List[CallRecord]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallRecordCollectionResponse:
@@ -31,14 +31,14 @@ class CallRecordCollectionResponse(base_collection_pagination_count_response.Bas
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import call_record
-        from .. import base_collection_pagination_count_response
+        from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .call_record import CallRecord
 
-        from . import call_record
-        from .. import base_collection_pagination_count_response
+        from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .call_record import CallRecord
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(call_record.CallRecord)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(CallRecord)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

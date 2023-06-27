@@ -1,16 +1,17 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert_evidence, email_sender
+    from .alert_evidence import AlertEvidence
+    from .email_sender import EmailSender
 
-from . import alert_evidence
+from .alert_evidence import AlertEvidence
 
 @dataclass
-class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
+class AnalyzedMessageEvidence(AlertEvidence):
     # Direction of the email relative to your network. The possible values are: inbound, outbound or intraorg.
     anti_spam_direction: Optional[str] = None
     # Number of attachments in the email.
@@ -28,11 +29,11 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
     # The OdataType property
     odata_type: Optional[str] = None
     # The P1 sender.
-    p1_sender: Optional[email_sender.EmailSender] = None
+    p1_sender: Optional[EmailSender] = None
     # The P2 sender.
-    p2_sender: Optional[email_sender.EmailSender] = None
+    p2_sender: Optional[EmailSender] = None
     # Date and time when the email was received.
-    received_date_time: Optional[datetime] = None
+    received_date_time: Optional[datetime.datetime] = None
     # Email address of the recipient, or email address of the recipient after distribution list expansion.
     recipient_email_address: Optional[str] = None
     # IP address of the last detected mail server that relayed the message.
@@ -67,9 +68,11 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_evidence, email_sender
+        from .alert_evidence import AlertEvidence
+        from .email_sender import EmailSender
 
-        from . import alert_evidence, email_sender
+        from .alert_evidence import AlertEvidence
+        from .email_sender import EmailSender
 
         fields: Dict[str, Callable[[Any], None]] = {
             "antiSpamDirection": lambda n : setattr(self, 'anti_spam_direction', n.get_str_value()),
@@ -79,8 +82,8 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
             "internetMessageId": lambda n : setattr(self, 'internet_message_id', n.get_str_value()),
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
             "networkMessageId": lambda n : setattr(self, 'network_message_id', n.get_str_value()),
-            "p1Sender": lambda n : setattr(self, 'p1_sender', n.get_object_value(email_sender.EmailSender)),
-            "p2Sender": lambda n : setattr(self, 'p2_sender', n.get_object_value(email_sender.EmailSender)),
+            "p1Sender": lambda n : setattr(self, 'p1_sender', n.get_object_value(EmailSender)),
+            "p2Sender": lambda n : setattr(self, 'p2_sender', n.get_object_value(EmailSender)),
             "receivedDateTime": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
             "recipientEmailAddress": lambda n : setattr(self, 'recipient_email_address', n.get_str_value()),
             "senderIp": lambda n : setattr(self, 'sender_ip', n.get_str_value()),
@@ -113,7 +116,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         writer.write_str_value("networkMessageId", self.network_message_id)
         writer.write_object_value("p1Sender", self.p1_sender)
         writer.write_object_value("p2Sender", self.p2_sender)
-        writer.write_datetime_value("receivedDateTime", self.received_date_time)
+        writer.write_datetime_value()("receivedDateTime", self.received_date_time)
         writer.write_str_value("recipientEmailAddress", self.recipient_email_address)
         writer.write_str_value("senderIp", self.sender_ip)
         writer.write_str_value("subject", self.subject)

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import domain_dns_record
+    from .domain_dns_record import DomainDnsRecord
 
-from . import domain_dns_record
+from .domain_dns_record import DomainDnsRecord
 
 @dataclass
-class DomainDnsCnameRecord(domain_dns_record.DomainDnsRecord):
+class DomainDnsCnameRecord(DomainDnsRecord):
     # The canonical name of the CNAME record. Used to configure the CNAME record at the DNS host.
     canonical_name: Optional[str] = None
     # The OdataType property
@@ -32,9 +32,9 @@ class DomainDnsCnameRecord(domain_dns_record.DomainDnsRecord):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import domain_dns_record
+        from .domain_dns_record import DomainDnsRecord
 
-        from . import domain_dns_record
+        from .domain_dns_record import DomainDnsRecord
 
         fields: Dict[str, Callable[[Any], None]] = {
             "canonicalName": lambda n : setattr(self, 'canonical_name', n.get_str_value()),

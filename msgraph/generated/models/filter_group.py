@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import filter_clause
+    from .filter_clause import FilterClause
 
 @dataclass
 class FilterGroup(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class FilterGroup(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The clauses property
-    clauses: Optional[List[filter_clause.FilterClause]] = None
+    clauses: Optional[List[FilterClause]] = None
     # The name property
     name: Optional[str] = None
     # The OdataType property
@@ -35,12 +35,12 @@ class FilterGroup(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import filter_clause
+        from .filter_clause import FilterClause
 
-        from . import filter_clause
+        from .filter_clause import FilterClause
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "clauses": lambda n : setattr(self, 'clauses', n.get_collection_of_object_values(filter_clause.FilterClause)),
+            "clauses": lambda n : setattr(self, 'clauses', n.get_collection_of_object_values(FilterClause)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

@@ -4,12 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import domain_dns_cname_record, domain_dns_mx_record, domain_dns_srv_record, domain_dns_txt_record, domain_dns_unavailable_record, entity
+    from .domain_dns_cname_record import DomainDnsCnameRecord
+    from .domain_dns_mx_record import DomainDnsMxRecord
+    from .domain_dns_srv_record import DomainDnsSrvRecord
+    from .domain_dns_txt_record import DomainDnsTxtRecord
+    from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DomainDnsRecord(entity.Entity):
+class DomainDnsRecord(Entity):
     # If false, this record must be configured by the customer at the DNS host for Microsoft Online Services to operate correctly with the domain.
     is_optional: Optional[bool] = None
     # Value used when configuring the name of the DNS record at the DNS host.
@@ -38,25 +43,25 @@ class DomainDnsRecord(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsCnameRecord".casefold():
-            from . import domain_dns_cname_record
+            from .domain_dns_cname_record import DomainDnsCnameRecord
 
-            return domain_dns_cname_record.DomainDnsCnameRecord()
+            return DomainDnsCnameRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsMxRecord".casefold():
-            from . import domain_dns_mx_record
+            from .domain_dns_mx_record import DomainDnsMxRecord
 
-            return domain_dns_mx_record.DomainDnsMxRecord()
+            return DomainDnsMxRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsSrvRecord".casefold():
-            from . import domain_dns_srv_record
+            from .domain_dns_srv_record import DomainDnsSrvRecord
 
-            return domain_dns_srv_record.DomainDnsSrvRecord()
+            return DomainDnsSrvRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsTxtRecord".casefold():
-            from . import domain_dns_txt_record
+            from .domain_dns_txt_record import DomainDnsTxtRecord
 
-            return domain_dns_txt_record.DomainDnsTxtRecord()
+            return DomainDnsTxtRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.domainDnsUnavailableRecord".casefold():
-            from . import domain_dns_unavailable_record
+            from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
 
-            return domain_dns_unavailable_record.DomainDnsUnavailableRecord()
+            return DomainDnsUnavailableRecord()
         return DomainDnsRecord()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -64,9 +69,19 @@ class DomainDnsRecord(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import domain_dns_cname_record, domain_dns_mx_record, domain_dns_srv_record, domain_dns_txt_record, domain_dns_unavailable_record, entity
+        from .domain_dns_cname_record import DomainDnsCnameRecord
+        from .domain_dns_mx_record import DomainDnsMxRecord
+        from .domain_dns_srv_record import DomainDnsSrvRecord
+        from .domain_dns_txt_record import DomainDnsTxtRecord
+        from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
+        from .entity import Entity
 
-        from . import domain_dns_cname_record, domain_dns_mx_record, domain_dns_srv_record, domain_dns_txt_record, domain_dns_unavailable_record, entity
+        from .domain_dns_cname_record import DomainDnsCnameRecord
+        from .domain_dns_mx_record import DomainDnsMxRecord
+        from .domain_dns_srv_record import DomainDnsSrvRecord
+        from .domain_dns_txt_record import DomainDnsTxtRecord
+        from .domain_dns_unavailable_record import DomainDnsUnavailableRecord
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isOptional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),

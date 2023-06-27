@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import risky_user, risk_user_activity
+    from .risk_user_activity import RiskUserActivity
+    from .risky_user import RiskyUser
 
-from . import risky_user
+from .risky_user import RiskyUser
 
 @dataclass
-class RiskyUserHistoryItem(risky_user.RiskyUser):
+class RiskyUserHistoryItem(RiskyUser):
     # The activity related to user risk level change.
-    activity: Optional[risk_user_activity.RiskUserActivity] = None
+    activity: Optional[RiskUserActivity] = None
     # The ID of actor that does the operation.
     initiated_by: Optional[str] = None
     # The OdataType property
@@ -36,12 +37,14 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import risky_user, risk_user_activity
+        from .risk_user_activity import RiskUserActivity
+        from .risky_user import RiskyUser
 
-        from . import risky_user, risk_user_activity
+        from .risk_user_activity import RiskUserActivity
+        from .risky_user import RiskyUser
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activity": lambda n : setattr(self, 'activity', n.get_object_value(risk_user_activity.RiskUserActivity)),
+            "activity": lambda n : setattr(self, 'activity', n.get_object_value(RiskUserActivity)),
             "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }

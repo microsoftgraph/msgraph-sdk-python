@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import search_bucket
+    from .search_bucket import SearchBucket
 
 @dataclass
 class SearchAggregation(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class SearchAggregation(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The buckets property
-    buckets: Optional[List[search_bucket.SearchBucket]] = None
+    buckets: Optional[List[SearchBucket]] = None
     # The field property
     field: Optional[str] = None
     # The OdataType property
@@ -35,12 +35,12 @@ class SearchAggregation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import search_bucket
+        from .search_bucket import SearchBucket
 
-        from . import search_bucket
+        from .search_bucket import SearchBucket
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "buckets": lambda n : setattr(self, 'buckets', n.get_collection_of_object_values(search_bucket.SearchBucket)),
+            "buckets": lambda n : setattr(self, 'buckets', n.get_collection_of_object_values(SearchBucket)),
             "field": lambda n : setattr(self, 'field', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

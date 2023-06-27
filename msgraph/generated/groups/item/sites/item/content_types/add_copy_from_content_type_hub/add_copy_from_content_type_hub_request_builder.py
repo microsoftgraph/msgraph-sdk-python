@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import add_copy_from_content_type_hub_post_request_body
-    from .......models import content_type
-    from .......models.o_data_errors import o_data_error
+    from .......models.content_type import ContentType
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .add_copy_from_content_type_hub_post_request_body import AddCopyFromContentTypeHubPostRequestBody
 
 class AddCopyFromContentTypeHubRequestBuilder():
     """
@@ -36,32 +36,32 @@ class AddCopyFromContentTypeHubRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[add_copy_from_content_type_hub_post_request_body.AddCopyFromContentTypeHubPostRequestBody] = None, request_configuration: Optional[AddCopyFromContentTypeHubRequestBuilderPostRequestConfiguration] = None) -> Optional[content_type.ContentType]:
+    async def post(self,body: Optional[AddCopyFromContentTypeHubPostRequestBody] = None, request_configuration: Optional[AddCopyFromContentTypeHubRequestBuilderPostRequestConfiguration] = None) -> Optional[ContentType]:
         """
         Add or sync a copy of a published content type from the content type hub to a target site or a list. This method is part of the content type publishing changes to optimize the syncing of published content types to sites and lists, effectively switching from a 'push everywhere' to 'pull as needed' approach. The method allows users to pull content types directly from the content type hub to a site or list. For more information, see contentType: getCompatibleHubContentTypes and the blog post Syntex Product Updates – August 2021.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[content_type.ContentType]
+        Returns: Optional[ContentType]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import content_type
+        from .......models.content_type import ContentType
 
-        return await self.request_adapter.send_async(request_info, content_type.ContentType, error_mapping)
+        return await self.request_adapter.send_async(request_info, ContentType, error_mapping)
     
-    def to_post_request_information(self,body: Optional[add_copy_from_content_type_hub_post_request_body.AddCopyFromContentTypeHubPostRequestBody] = None, request_configuration: Optional[AddCopyFromContentTypeHubRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AddCopyFromContentTypeHubPostRequestBody] = None, request_configuration: Optional[AddCopyFromContentTypeHubRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add or sync a copy of a published content type from the content type hub to a target site or a list. This method is part of the content type publishing changes to optimize the syncing of published content types to sites and lists, effectively switching from a 'push everywhere' to 'pull as needed' approach. The method allows users to pull content types directly from the content type hub to a site or list. For more information, see contentType: getCompatibleHubContentTypes and the blog post Syntex Product Updates – August 2021.
         Args:

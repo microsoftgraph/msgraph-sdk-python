@@ -10,12 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import risky_service_principal, risky_service_principal_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .confirm_compromised import confirm_compromised_request_builder
-    from .count import count_request_builder
-    from .dismiss import dismiss_request_builder
-    from .item import risky_service_principal_item_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.risky_service_principal import RiskyServicePrincipal
+    from ...models.risky_service_principal_collection_response import RiskyServicePrincipalCollectionResponse
+    from .confirm_compromised.confirm_compromised_request_builder import ConfirmCompromisedRequestBuilder
+    from .count.count_request_builder import CountRequestBuilder
+    from .dismiss.dismiss_request_builder import DismissRequestBuilder
+    from .item.risky_service_principal_item_request_builder import RiskyServicePrincipalItemRequestBuilder
 
 class RiskyServicePrincipalsRequestBuilder():
     """
@@ -39,67 +40,67 @@ class RiskyServicePrincipalsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_risky_service_principal_id(self,risky_service_principal_id: str) -> risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder:
+    def by_risky_service_principal_id(self,risky_service_principal_id: str) -> RiskyServicePrincipalItemRequestBuilder:
         """
         Provides operations to manage the riskyServicePrincipals property of the microsoft.graph.identityProtectionRoot entity.
         Args:
             risky_service_principal_id: Unique identifier of the item
-        Returns: risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder
+        Returns: RiskyServicePrincipalItemRequestBuilder
         """
         if not risky_service_principal_id:
             raise TypeError("risky_service_principal_id cannot be null.")
-        from .item import risky_service_principal_item_request_builder
+        from .item.risky_service_principal_item_request_builder import RiskyServicePrincipalItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["riskyServicePrincipal%2Did"] = risky_service_principal_id
-        return risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return RiskyServicePrincipalItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RiskyServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_service_principal_collection_response.RiskyServicePrincipalCollectionResponse]:
+    async def get(self,request_configuration: Optional[RiskyServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> Optional[RiskyServicePrincipalCollectionResponse]:
         """
         Retrieve the properties and relationships of riskyServicePrincipal objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[risky_service_principal_collection_response.RiskyServicePrincipalCollectionResponse]
+        Returns: Optional[RiskyServicePrincipalCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import risky_service_principal_collection_response
+        from ...models.risky_service_principal_collection_response import RiskyServicePrincipalCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, risky_service_principal_collection_response.RiskyServicePrincipalCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, RiskyServicePrincipalCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[risky_service_principal.RiskyServicePrincipal] = None, request_configuration: Optional[RiskyServicePrincipalsRequestBuilderPostRequestConfiguration] = None) -> Optional[risky_service_principal.RiskyServicePrincipal]:
+    async def post(self,body: Optional[RiskyServicePrincipal] = None, request_configuration: Optional[RiskyServicePrincipalsRequestBuilderPostRequestConfiguration] = None) -> Optional[RiskyServicePrincipal]:
         """
         Create new navigation property to riskyServicePrincipals for identityProtection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[risky_service_principal.RiskyServicePrincipal]
+        Returns: Optional[RiskyServicePrincipal]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import risky_service_principal
+        from ...models.risky_service_principal import RiskyServicePrincipal
 
-        return await self.request_adapter.send_async(request_info, risky_service_principal.RiskyServicePrincipal, error_mapping)
+        return await self.request_adapter.send_async(request_info, RiskyServicePrincipal, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RiskyServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -119,7 +120,7 @@ class RiskyServicePrincipalsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[risky_service_principal.RiskyServicePrincipal] = None, request_configuration: Optional[RiskyServicePrincipalsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[RiskyServicePrincipal] = None, request_configuration: Optional[RiskyServicePrincipalsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to riskyServicePrincipals for identityProtection
         Args:
@@ -141,31 +142,31 @@ class RiskyServicePrincipalsRequestBuilder():
         return request_info
     
     @property
-    def confirm_compromised(self) -> confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder:
+    def confirm_compromised(self) -> ConfirmCompromisedRequestBuilder:
         """
         Provides operations to call the confirmCompromised method.
         """
-        from .confirm_compromised import confirm_compromised_request_builder
+        from .confirm_compromised.confirm_compromised_request_builder import ConfirmCompromisedRequestBuilder
 
-        return confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder(self.request_adapter, self.path_parameters)
+        return ConfirmCompromisedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dismiss(self) -> dismiss_request_builder.DismissRequestBuilder:
+    def dismiss(self) -> DismissRequestBuilder:
         """
         Provides operations to call the dismiss method.
         """
-        from .dismiss import dismiss_request_builder
+        from .dismiss.dismiss_request_builder import DismissRequestBuilder
 
-        return dismiss_request_builder.DismissRequestBuilder(self.request_adapter, self.path_parameters)
+        return DismissRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RiskyServicePrincipalsRequestBuilderGetQueryParameters():

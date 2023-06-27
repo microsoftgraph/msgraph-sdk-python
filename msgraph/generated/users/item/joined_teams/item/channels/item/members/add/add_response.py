@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import action_result_part, base_collection_pagination_count_response
+    from .........models.action_result_part import ActionResultPart
+    from .........models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
-from .........models import base_collection_pagination_count_response
+from .........models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class AddResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class AddResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[action_result_part.ActionResultPart]] = None
+    value: Optional[List[ActionResultPart]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddResponse:
@@ -30,12 +31,14 @@ class AddResponse(base_collection_pagination_count_response.BaseCollectionPagina
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .........models import action_result_part, base_collection_pagination_count_response
+        from .........models.action_result_part import ActionResultPart
+        from .........models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
-        from .........models import action_result_part, base_collection_pagination_count_response
+        from .........models.action_result_part import ActionResultPart
+        from .........models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(action_result_part.ActionResultPart)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(ActionResultPart)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

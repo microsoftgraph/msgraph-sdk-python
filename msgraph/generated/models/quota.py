@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import storage_plan_information
+    from .storage_plan_information import StoragePlanInformation
 
 @dataclass
 class Quota(AdditionalDataHolder, Parsable):
@@ -20,7 +20,7 @@ class Quota(AdditionalDataHolder, Parsable):
     # Enumeration value that indicates the state of the storage space. Read-only.
     state: Optional[str] = None
     # Information about the drive's storage quota plans. Only in Personal OneDrive.
-    storage_plan_information: Optional[storage_plan_information.StoragePlanInformation] = None
+    storage_plan_information: Optional[StoragePlanInformation] = None
     # Total allowed storage space, in bytes. Read-only.
     total: Optional[int] = None
     # Total space used, in bytes. Read-only.
@@ -43,16 +43,16 @@ class Quota(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import storage_plan_information
+        from .storage_plan_information import StoragePlanInformation
 
-        from . import storage_plan_information
+        from .storage_plan_information import StoragePlanInformation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "deleted": lambda n : setattr(self, 'deleted', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "remaining": lambda n : setattr(self, 'remaining', n.get_int_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
-            "storagePlanInformation": lambda n : setattr(self, 'storage_plan_information', n.get_object_value(storage_plan_information.StoragePlanInformation)),
+            "storagePlanInformation": lambda n : setattr(self, 'storage_plan_information', n.get_object_value(StoragePlanInformation)),
             "total": lambda n : setattr(self, 'total', n.get_int_value()),
             "used": lambda n : setattr(self, 'used', n.get_int_value()),
         }

@@ -4,16 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, print_event, print_task_definition
+    from .entity import Entity
+    from .print_event import PrintEvent
+    from .print_task_definition import PrintTaskDefinition
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PrintTaskTrigger(entity.Entity):
+class PrintTaskTrigger(Entity):
     # The definition property
-    definition: Optional[print_task_definition.PrintTaskDefinition] = None
+    definition: Optional[PrintTaskDefinition] = None
     # The event property
-    event: Optional[print_event.PrintEvent] = None
+    event: Optional[PrintEvent] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -34,13 +36,17 @@ class PrintTaskTrigger(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, print_event, print_task_definition
+        from .entity import Entity
+        from .print_event import PrintEvent
+        from .print_task_definition import PrintTaskDefinition
 
-        from . import entity, print_event, print_task_definition
+        from .entity import Entity
+        from .print_event import PrintEvent
+        from .print_task_definition import PrintTaskDefinition
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "definition": lambda n : setattr(self, 'definition', n.get_object_value(print_task_definition.PrintTaskDefinition)),
-            "event": lambda n : setattr(self, 'event', n.get_enum_value(print_event.PrintEvent)),
+            "definition": lambda n : setattr(self, 'definition', n.get_object_value(PrintTaskDefinition)),
+            "event": lambda n : setattr(self, 'event', n.get_enum_value(PrintEvent)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

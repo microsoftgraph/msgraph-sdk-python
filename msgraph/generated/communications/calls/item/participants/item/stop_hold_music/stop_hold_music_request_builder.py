@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import stop_hold_music_post_request_body
-    from .......models import stop_hold_music_operation
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.stop_hold_music_operation import StopHoldMusicOperation
+    from .stop_hold_music_post_request_body import StopHoldMusicPostRequestBody
 
 class StopHoldMusicRequestBuilder():
     """
@@ -36,32 +36,32 @@ class StopHoldMusicRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[stop_hold_music_post_request_body.StopHoldMusicPostRequestBody] = None, request_configuration: Optional[StopHoldMusicRequestBuilderPostRequestConfiguration] = None) -> Optional[stop_hold_music_operation.StopHoldMusicOperation]:
+    async def post(self,body: Optional[StopHoldMusicPostRequestBody] = None, request_configuration: Optional[StopHoldMusicRequestBuilderPostRequestConfiguration] = None) -> Optional[StopHoldMusicOperation]:
         """
         Reincorporate a participant previously put on hold to the call.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[stop_hold_music_operation.StopHoldMusicOperation]
+        Returns: Optional[StopHoldMusicOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import stop_hold_music_operation
+        from .......models.stop_hold_music_operation import StopHoldMusicOperation
 
-        return await self.request_adapter.send_async(request_info, stop_hold_music_operation.StopHoldMusicOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, StopHoldMusicOperation, error_mapping)
     
-    def to_post_request_information(self,body: Optional[stop_hold_music_post_request_body.StopHoldMusicPostRequestBody] = None, request_configuration: Optional[StopHoldMusicRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[StopHoldMusicPostRequestBody] = None, request_configuration: Optional[StopHoldMusicRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Reincorporate a participant previously put on hold to the call.
         Args:

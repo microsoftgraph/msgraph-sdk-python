@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import mobile_app_category
-    from ....models.o_data_errors import o_data_error
+    from ....models.mobile_app_category import MobileAppCategory
+    from ....models.o_data_errors.o_data_error import ODataError
 
 class MobileAppCategoryItemRequestBuilder():
     """
@@ -37,73 +37,73 @@ class MobileAppCategoryItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property mobileAppCategories for deviceAppManagement
+        Deletes a mobileAppCategory.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[mobile_app_category.MobileAppCategory]:
+    async def get(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileAppCategory]:
         """
-        The mobile app categories.
+        Read properties and relationships of the mobileAppCategory object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mobile_app_category.MobileAppCategory]
+        Returns: Optional[MobileAppCategory]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import mobile_app_category
+        from ....models.mobile_app_category import MobileAppCategory
 
-        return await self.request_adapter.send_async(request_info, mobile_app_category.MobileAppCategory, error_mapping)
+        return await self.request_adapter.send_async(request_info, MobileAppCategory, error_mapping)
     
-    async def patch(self,body: Optional[mobile_app_category.MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[mobile_app_category.MobileAppCategory]:
+    async def patch(self,body: Optional[MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MobileAppCategory]:
         """
-        Update the navigation property mobileAppCategories in deviceAppManagement
+        Update the properties of a mobileAppCategory object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mobile_app_category.MobileAppCategory]
+        Returns: Optional[MobileAppCategory]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import mobile_app_category
+        from ....models.mobile_app_category import MobileAppCategory
 
-        return await self.request_adapter.send_async(request_info, mobile_app_category.MobileAppCategory, error_mapping)
+        return await self.request_adapter.send_async(request_info, MobileAppCategory, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property mobileAppCategories for deviceAppManagement
+        Deletes a mobileAppCategory.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class MobileAppCategoryItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The mobile app categories.
+        Read properties and relationships of the mobileAppCategory object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class MobileAppCategoryItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[mobile_app_category.MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property mobileAppCategories in deviceAppManagement
+        Update the properties of a mobileAppCategory object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class MobileAppCategoryItemRequestBuilder():
     @dataclass
     class MobileAppCategoryItemRequestBuilderGetQueryParameters():
         """
-        The mobile app categories.
+        Read properties and relationships of the mobileAppCategory object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_assignment_points_grade_type
+    from .education_assignment_points_grade_type import EducationAssignmentPointsGradeType
 
 @dataclass
 class EducationAssignmentGradeType(AdditionalDataHolder, Parsable):
@@ -29,9 +29,9 @@ class EducationAssignmentGradeType(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentPointsGradeType".casefold():
-            from . import education_assignment_points_grade_type
+            from .education_assignment_points_grade_type import EducationAssignmentPointsGradeType
 
-            return education_assignment_points_grade_type.EducationAssignmentPointsGradeType()
+            return EducationAssignmentPointsGradeType()
         return EducationAssignmentGradeType()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -39,9 +39,9 @@ class EducationAssignmentGradeType(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_assignment_points_grade_type
+        from .education_assignment_points_grade_type import EducationAssignmentPointsGradeType
 
-        from . import education_assignment_points_grade_type
+        from .education_assignment_points_grade_type import EducationAssignmentPointsGradeType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

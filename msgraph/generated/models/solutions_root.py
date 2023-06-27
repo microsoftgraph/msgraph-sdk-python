@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import booking_business, booking_currency
+    from .booking_business import BookingBusiness
+    from .booking_currency import BookingCurrency
 
 @dataclass
 class SolutionsRoot(AdditionalDataHolder, Parsable):
@@ -12,9 +13,9 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The bookingBusinesses property
-    booking_businesses: Optional[List[booking_business.BookingBusiness]] = None
+    booking_businesses: Optional[List[BookingBusiness]] = None
     # The bookingCurrencies property
-    booking_currencies: Optional[List[booking_currency.BookingCurrency]] = None
+    booking_currencies: Optional[List[BookingCurrency]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,13 +36,15 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_business, booking_currency
+        from .booking_business import BookingBusiness
+        from .booking_currency import BookingCurrency
 
-        from . import booking_business, booking_currency
+        from .booking_business import BookingBusiness
+        from .booking_currency import BookingCurrency
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "bookingBusinesses": lambda n : setattr(self, 'booking_businesses', n.get_collection_of_object_values(booking_business.BookingBusiness)),
-            "bookingCurrencies": lambda n : setattr(self, 'booking_currencies', n.get_collection_of_object_values(booking_currency.BookingCurrency)),
+            "bookingBusinesses": lambda n : setattr(self, 'booking_businesses', n.get_collection_of_object_values(BookingBusiness)),
+            "bookingCurrencies": lambda n : setattr(self, 'booking_currencies', n.get_collection_of_object_values(BookingCurrency)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

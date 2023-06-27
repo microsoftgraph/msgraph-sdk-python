@@ -4,20 +4,22 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, service_health_issue, service_health_status
+    from .entity import Entity
+    from .service_health_issue import ServiceHealthIssue
+    from .service_health_status import ServiceHealthStatus
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ServiceHealth(entity.Entity):
+class ServiceHealth(Entity):
     # A collection of issues that happened on the service, with detailed information for each issue.
-    issues: Optional[List[service_health_issue.ServiceHealthIssue]] = None
+    issues: Optional[List[ServiceHealthIssue]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The service name. Use the list healthOverviews operation to get exact string names for services subscribed by the tenant.
     service: Optional[str] = None
     # The status property
-    status: Optional[service_health_status.ServiceHealthStatus] = None
+    status: Optional[ServiceHealthStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceHealth:
@@ -36,14 +38,18 @@ class ServiceHealth(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, service_health_issue, service_health_status
+        from .entity import Entity
+        from .service_health_issue import ServiceHealthIssue
+        from .service_health_status import ServiceHealthStatus
 
-        from . import entity, service_health_issue, service_health_status
+        from .entity import Entity
+        from .service_health_issue import ServiceHealthIssue
+        from .service_health_status import ServiceHealthStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "issues": lambda n : setattr(self, 'issues', n.get_collection_of_object_values(service_health_issue.ServiceHealthIssue)),
+            "issues": lambda n : setattr(self, 'issues', n.get_collection_of_object_values(ServiceHealthIssue)),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(service_health_status.ServiceHealthStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ServiceHealthStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

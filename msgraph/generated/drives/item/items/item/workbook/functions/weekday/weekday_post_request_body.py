@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class WeekdayPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class WeekdayPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The returnType property
-    return_type: Optional[json.Json] = None
+    return_type: Optional[Json] = None
     # The serialNumber property
-    serial_number: Optional[json.Json] = None
+    serial_number: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WeekdayPostRequestBody:
@@ -33,13 +33,13 @@ class WeekdayPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "returnType": lambda n : setattr(self, 'return_type', n.get_object_value(json.Json)),
-            "serialNumber": lambda n : setattr(self, 'serial_number', n.get_object_value(json.Json)),
+            "returnType": lambda n : setattr(self, 'return_type', n.get_object_value(Json)),
+            "serialNumber": lambda n : setattr(self, 'serial_number', n.get_object_value(Json)),
         }
         return fields
     

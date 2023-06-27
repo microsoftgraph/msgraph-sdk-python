@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_and_app_management_assignment_target, exclusion_group_assignment_target
+    from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+    from .exclusion_group_assignment_target import ExclusionGroupAssignmentTarget
 
-from . import device_and_app_management_assignment_target
+from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
 @dataclass
-class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget):
+class GroupAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
     odata_type = "#microsoft.graph.groupAssignmentTarget"
     # The group Id that is the target of the assignment.
     group_id: Optional[str] = None
@@ -29,9 +30,9 @@ class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAn
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.exclusionGroupAssignmentTarget".casefold():
-            from . import exclusion_group_assignment_target
+            from .exclusion_group_assignment_target import ExclusionGroupAssignmentTarget
 
-            return exclusion_group_assignment_target.ExclusionGroupAssignmentTarget()
+            return ExclusionGroupAssignmentTarget()
         return GroupAssignmentTarget()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -39,9 +40,11 @@ class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAn
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_assignment_target, exclusion_group_assignment_target
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+        from .exclusion_group_assignment_target import ExclusionGroupAssignmentTarget
 
-        from . import device_and_app_management_assignment_target, exclusion_group_assignment_target
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+        from .exclusion_group_assignment_target import ExclusionGroupAssignmentTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
             "groupId": lambda n : setattr(self, 'group_id', n.get_str_value()),

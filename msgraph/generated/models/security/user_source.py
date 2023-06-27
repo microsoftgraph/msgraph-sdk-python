@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import data_source, source_type
+    from .data_source import DataSource
+    from .source_type import SourceType
 
-from . import data_source
+from .data_source import DataSource
 
 @dataclass
-class UserSource(data_source.DataSource):
+class UserSource(DataSource):
     odata_type = "#microsoft.graph.security.userSource"
     # Email address of the user's mailbox.
     email: Optional[str] = None
     # Specifies which sources are included in this group. Possible values are: mailbox, site.
-    included_sources: Optional[source_type.SourceType] = None
+    included_sources: Optional[SourceType] = None
     # The URL of the user's OneDrive for Business site. Read-only.
     site_web_url: Optional[str] = None
     
@@ -35,13 +36,15 @@ class UserSource(data_source.DataSource):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import data_source, source_type
+        from .data_source import DataSource
+        from .source_type import SourceType
 
-        from . import data_source, source_type
+        from .data_source import DataSource
+        from .source_type import SourceType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(source_type.SourceType)),
+            "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(SourceType)),
             "siteWebUrl": lambda n : setattr(self, 'site_web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

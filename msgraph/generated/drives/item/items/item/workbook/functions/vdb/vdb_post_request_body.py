@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class VdbPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,19 +12,19 @@ class VdbPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The cost property
-    cost: Optional[json.Json] = None
+    cost: Optional[Json] = None
     # The endPeriod property
-    end_period: Optional[json.Json] = None
+    end_period: Optional[Json] = None
     # The factor property
-    factor: Optional[json.Json] = None
+    factor: Optional[Json] = None
     # The life property
-    life: Optional[json.Json] = None
+    life: Optional[Json] = None
     # The noSwitch property
-    no_switch: Optional[json.Json] = None
+    no_switch: Optional[Json] = None
     # The salvage property
-    salvage: Optional[json.Json] = None
+    salvage: Optional[Json] = None
     # The startPeriod property
-    start_period: Optional[json.Json] = None
+    start_period: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> VdbPostRequestBody:
@@ -43,18 +43,18 @@ class VdbPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cost": lambda n : setattr(self, 'cost', n.get_object_value(json.Json)),
-            "endPeriod": lambda n : setattr(self, 'end_period', n.get_object_value(json.Json)),
-            "factor": lambda n : setattr(self, 'factor', n.get_object_value(json.Json)),
-            "life": lambda n : setattr(self, 'life', n.get_object_value(json.Json)),
-            "noSwitch": lambda n : setattr(self, 'no_switch', n.get_object_value(json.Json)),
-            "salvage": lambda n : setattr(self, 'salvage', n.get_object_value(json.Json)),
-            "startPeriod": lambda n : setattr(self, 'start_period', n.get_object_value(json.Json)),
+            "cost": lambda n : setattr(self, 'cost', n.get_object_value(Json)),
+            "endPeriod": lambda n : setattr(self, 'end_period', n.get_object_value(Json)),
+            "factor": lambda n : setattr(self, 'factor', n.get_object_value(Json)),
+            "life": lambda n : setattr(self, 'life', n.get_object_value(Json)),
+            "noSwitch": lambda n : setattr(self, 'no_switch', n.get_object_value(Json)),
+            "salvage": lambda n : setattr(self, 'salvage', n.get_object_value(Json)),
+            "startPeriod": lambda n : setattr(self, 'start_period', n.get_object_value(Json)),
         }
         return fields
     

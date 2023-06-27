@@ -4,20 +4,22 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import directory_object, entity, staged_feature_name
+    from .directory_object import DirectoryObject
+    from .entity import Entity
+    from .staged_feature_name import StagedFeatureName
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class FeatureRolloutPolicy(entity.Entity):
+class FeatureRolloutPolicy(Entity):
     # Nullable. Specifies a list of directoryObjects that feature is enabled for.
-    applies_to: Optional[List[directory_object.DirectoryObject]] = None
+    applies_to: Optional[List[DirectoryObject]] = None
     # A description for this feature rollout policy.
     description: Optional[str] = None
     # The display name for this  feature rollout policy.
     display_name: Optional[str] = None
     # The feature property
-    feature: Optional[staged_feature_name.StagedFeatureName] = None
+    feature: Optional[StagedFeatureName] = None
     # Indicates whether this feature rollout policy should be applied to the entire organization.
     is_applied_to_organization: Optional[bool] = None
     # Indicates whether the feature rollout is enabled.
@@ -42,15 +44,19 @@ class FeatureRolloutPolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object, entity, staged_feature_name
+        from .directory_object import DirectoryObject
+        from .entity import Entity
+        from .staged_feature_name import StagedFeatureName
 
-        from . import directory_object, entity, staged_feature_name
+        from .directory_object import DirectoryObject
+        from .entity import Entity
+        from .staged_feature_name import StagedFeatureName
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(DirectoryObject)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "feature": lambda n : setattr(self, 'feature', n.get_enum_value(staged_feature_name.StagedFeatureName)),
+            "feature": lambda n : setattr(self, 'feature', n.get_enum_value(StagedFeatureName)),
             "isAppliedToOrganization": lambda n : setattr(self, 'is_applied_to_organization', n.get_bool_value()),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }

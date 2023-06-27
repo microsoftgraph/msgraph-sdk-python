@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -12,13 +12,13 @@ class Certification(AdditionalDataHolder, Parsable):
     # URL that shows certification details for the application.
     certification_details_url: Optional[str] = None
     # The timestamp when the current certification for the application will expire.
-    certification_expiration_date_time: Optional[datetime] = None
+    certification_expiration_date_time: Optional[datetime.datetime] = None
     # Indicates whether the application is certified by Microsoft.
     is_certified_by_microsoft: Optional[bool] = None
     # Indicates whether the application has been self-attested by the application developer or the publisher.
     is_publisher_attested: Optional[bool] = None
     # The timestamp when the certification for the application was most recently added or updated.
-    last_certification_date_time: Optional[datetime] = None
+    last_certification_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -57,9 +57,9 @@ class Certification(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("certificationExpirationDateTime", self.certification_expiration_date_time)
+        writer.write_datetime_value()("certificationExpirationDateTime", self.certification_expiration_date_time)
         writer.write_bool_value("isPublisherAttested", self.is_publisher_attested)
-        writer.write_datetime_value("lastCertificationDateTime", self.last_certification_date_time)
+        writer.write_datetime_value()("lastCertificationDateTime", self.last_certification_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

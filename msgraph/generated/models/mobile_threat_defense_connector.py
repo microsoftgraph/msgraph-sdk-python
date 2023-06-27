@@ -1,16 +1,17 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, mobile_threat_partner_tenant_state
+    from .entity import Entity
+    from .mobile_threat_partner_tenant_state import MobileThreatPartnerTenantState
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class MobileThreatDefenseConnector(entity.Entity):
+class MobileThreatDefenseConnector(Entity):
     """
     Entity which represents a connection to Mobile Threat Defense partner.
     """
@@ -31,13 +32,13 @@ class MobileThreatDefenseConnector(entity.Entity):
     # When TRUE, inidicates that data from the Mobile Threat Defense partner can be used during Mobile Application Management (MAM) evaluations for IOS devices. When FALSE, inidicates that data from the Mobile Threat Defense partner should not be used during Mobile Application Management (MAM) evaluations for IOS devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
     ios_mobile_application_management_enabled: Optional[bool] = None
     # DateTime of last Heartbeat recieved from the Mobile Threat Defense partner
-    last_heartbeat_date_time: Optional[datetime] = None
+    last_heartbeat_date_time: Optional[datetime.datetime] = None
     # When TRUE, inidicates that configuration profile management via Microsoft Defender for Endpoint is enabled. When FALSE, inidicates that configuration profile management via Microsoft Defender for Endpoint is disabled. Default value is FALSE.
     microsoft_defender_for_endpoint_attach_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Partner state of this tenant.
-    partner_state: Optional[mobile_threat_partner_tenant_state.MobileThreatPartnerTenantState] = None
+    partner_state: Optional[MobileThreatPartnerTenantState] = None
     # Get or Set days the per tenant tolerance to unresponsiveness for this partner integration
     partner_unresponsiveness_threshold_in_days: Optional[int] = None
     # Get or set whether to block devices on the enabled platforms that do not meet the minimum version requirements of the Mobile Threat Defense partner
@@ -64,9 +65,11 @@ class MobileThreatDefenseConnector(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, mobile_threat_partner_tenant_state
+        from .entity import Entity
+        from .mobile_threat_partner_tenant_state import MobileThreatPartnerTenantState
 
-        from . import entity, mobile_threat_partner_tenant_state
+        from .entity import Entity
+        from .mobile_threat_partner_tenant_state import MobileThreatPartnerTenantState
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowPartnerToCollectIOSApplicationMetadata": lambda n : setattr(self, 'allow_partner_to_collect_i_o_s_application_metadata', n.get_bool_value()),
@@ -79,7 +82,7 @@ class MobileThreatDefenseConnector(entity.Entity):
             "iosMobileApplicationManagementEnabled": lambda n : setattr(self, 'ios_mobile_application_management_enabled', n.get_bool_value()),
             "lastHeartbeatDateTime": lambda n : setattr(self, 'last_heartbeat_date_time', n.get_datetime_value()),
             "microsoftDefenderForEndpointAttachEnabled": lambda n : setattr(self, 'microsoft_defender_for_endpoint_attach_enabled', n.get_bool_value()),
-            "partnerState": lambda n : setattr(self, 'partner_state', n.get_enum_value(mobile_threat_partner_tenant_state.MobileThreatPartnerTenantState)),
+            "partnerState": lambda n : setattr(self, 'partner_state', n.get_enum_value(MobileThreatPartnerTenantState)),
             "partnerUnresponsivenessThresholdInDays": lambda n : setattr(self, 'partner_unresponsiveness_threshold_in_days', n.get_int_value()),
             "partnerUnsupportedOsVersionBlocked": lambda n : setattr(self, 'partner_unsupported_os_version_blocked', n.get_bool_value()),
             "windowsDeviceBlockedOnMissingPartnerData": lambda n : setattr(self, 'windows_device_blocked_on_missing_partner_data', n.get_bool_value()),
@@ -106,7 +109,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         writer.write_bool_value("iosDeviceBlockedOnMissingPartnerData", self.ios_device_blocked_on_missing_partner_data)
         writer.write_bool_value("iosEnabled", self.ios_enabled)
         writer.write_bool_value("iosMobileApplicationManagementEnabled", self.ios_mobile_application_management_enabled)
-        writer.write_datetime_value("lastHeartbeatDateTime", self.last_heartbeat_date_time)
+        writer.write_datetime_value()("lastHeartbeatDateTime", self.last_heartbeat_date_time)
         writer.write_bool_value("microsoftDefenderForEndpointAttachEnabled", self.microsoft_defender_for_endpoint_attach_enabled)
         writer.write_enum_value("partnerState", self.partner_state)
         writer.write_int_value("partnerUnresponsivenessThresholdInDays", self.partner_unresponsiveness_threshold_in_days)

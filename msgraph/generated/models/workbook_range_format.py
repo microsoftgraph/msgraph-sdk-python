@@ -4,26 +4,30 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_format_protection, workbook_range_border, workbook_range_fill, workbook_range_font
+    from .entity import Entity
+    from .workbook_format_protection import WorkbookFormatProtection
+    from .workbook_range_border import WorkbookRangeBorder
+    from .workbook_range_fill import WorkbookRangeFill
+    from .workbook_range_font import WorkbookRangeFont
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookRangeFormat(entity.Entity):
+class WorkbookRangeFormat(Entity):
     # Collection of border objects that apply to the overall range selected Read-only.
-    borders: Optional[List[workbook_range_border.WorkbookRangeBorder]] = None
+    borders: Optional[List[WorkbookRangeBorder]] = None
     # Gets or sets the width of all colums within the range. If the column widths are not uniform, null will be returned.
     column_width: Optional[float] = None
     # Returns the fill object defined on the overall range. Read-only.
-    fill: Optional[workbook_range_fill.WorkbookRangeFill] = None
+    fill: Optional[WorkbookRangeFill] = None
     # Returns the font object defined on the overall range selected Read-only.
-    font: Optional[workbook_range_font.WorkbookRangeFont] = None
+    font: Optional[WorkbookRangeFont] = None
     # Represents the horizontal alignment for the specified object. The possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
     horizontal_alignment: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Returns the format protection object for a range. Read-only.
-    protection: Optional[workbook_format_protection.WorkbookFormatProtection] = None
+    protection: Optional[WorkbookFormatProtection] = None
     # Gets or sets the height of all rows in the range. If the row heights are not uniform null will be returned.
     row_height: Optional[float] = None
     # Represents the vertical alignment for the specified object. The possible values are: Top, Center, Bottom, Justify, Distributed.
@@ -48,17 +52,25 @@ class WorkbookRangeFormat(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_format_protection, workbook_range_border, workbook_range_fill, workbook_range_font
+        from .entity import Entity
+        from .workbook_format_protection import WorkbookFormatProtection
+        from .workbook_range_border import WorkbookRangeBorder
+        from .workbook_range_fill import WorkbookRangeFill
+        from .workbook_range_font import WorkbookRangeFont
 
-        from . import entity, workbook_format_protection, workbook_range_border, workbook_range_fill, workbook_range_font
+        from .entity import Entity
+        from .workbook_format_protection import WorkbookFormatProtection
+        from .workbook_range_border import WorkbookRangeBorder
+        from .workbook_range_fill import WorkbookRangeFill
+        from .workbook_range_font import WorkbookRangeFont
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "borders": lambda n : setattr(self, 'borders', n.get_collection_of_object_values(workbook_range_border.WorkbookRangeBorder)),
+            "borders": lambda n : setattr(self, 'borders', n.get_collection_of_object_values(WorkbookRangeBorder)),
             "columnWidth": lambda n : setattr(self, 'column_width', n.get_float_value()),
-            "fill": lambda n : setattr(self, 'fill', n.get_object_value(workbook_range_fill.WorkbookRangeFill)),
-            "font": lambda n : setattr(self, 'font', n.get_object_value(workbook_range_font.WorkbookRangeFont)),
+            "fill": lambda n : setattr(self, 'fill', n.get_object_value(WorkbookRangeFill)),
+            "font": lambda n : setattr(self, 'font', n.get_object_value(WorkbookRangeFont)),
             "horizontalAlignment": lambda n : setattr(self, 'horizontal_alignment', n.get_str_value()),
-            "protection": lambda n : setattr(self, 'protection', n.get_object_value(workbook_format_protection.WorkbookFormatProtection)),
+            "protection": lambda n : setattr(self, 'protection', n.get_object_value(WorkbookFormatProtection)),
             "rowHeight": lambda n : setattr(self, 'row_height', n.get_float_value()),
             "verticalAlignment": lambda n : setattr(self, 'vertical_alignment', n.get_str_value()),
             "wrapText": lambda n : setattr(self, 'wrap_text', n.get_bool_value()),

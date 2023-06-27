@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity, teamwork_user_identity_type
+    from .identity import Identity
+    from .teamwork_user_identity_type import TeamworkUserIdentityType
 
-from . import identity
+from .identity import Identity
 
 @dataclass
-class TeamworkUserIdentity(identity.Identity):
+class TeamworkUserIdentity(Identity):
     odata_type = "#microsoft.graph.teamworkUserIdentity"
     # Type of user. Possible values are: aadUser, onPremiseAadUser, anonymousGuest, federatedUser, personalMicrosoftAccountUser, skypeUser, phoneUser, unknownFutureValue and emailUser.
-    user_identity_type: Optional[teamwork_user_identity_type.TeamworkUserIdentityType] = None
+    user_identity_type: Optional[TeamworkUserIdentityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkUserIdentity:
@@ -31,12 +32,14 @@ class TeamworkUserIdentity(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity, teamwork_user_identity_type
+        from .identity import Identity
+        from .teamwork_user_identity_type import TeamworkUserIdentityType
 
-        from . import identity, teamwork_user_identity_type
+        from .identity import Identity
+        from .teamwork_user_identity_type import TeamworkUserIdentityType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "userIdentityType": lambda n : setattr(self, 'user_identity_type', n.get_enum_value(teamwork_user_identity_type.TeamworkUserIdentityType)),
+            "userIdentityType": lambda n : setattr(self, 'user_identity_type', n.get_enum_value(TeamworkUserIdentityType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

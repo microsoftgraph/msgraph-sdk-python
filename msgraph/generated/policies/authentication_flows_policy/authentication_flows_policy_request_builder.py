@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import authentication_flows_policy
-    from ...models.o_data_errors import o_data_error
+    from ...models.authentication_flows_policy import AuthenticationFlowsPolicy
+    from ...models.o_data_errors.o_data_error import ODataError
 
 class AuthenticationFlowsPolicyRequestBuilder():
     """
@@ -44,62 +44,62 @@ class AuthenticationFlowsPolicyRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_flows_policy.AuthenticationFlowsPolicy]:
+    async def get(self,request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationFlowsPolicy]:
         """
         Read the properties and relationships of an authenticationFlowsPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[authentication_flows_policy.AuthenticationFlowsPolicy]
+        Returns: Optional[AuthenticationFlowsPolicy]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import authentication_flows_policy
+        from ...models.authentication_flows_policy import AuthenticationFlowsPolicy
 
-        return await self.request_adapter.send_async(request_info, authentication_flows_policy.AuthenticationFlowsPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuthenticationFlowsPolicy, error_mapping)
     
-    async def patch(self,body: Optional[authentication_flows_policy.AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[authentication_flows_policy.AuthenticationFlowsPolicy]:
+    async def patch(self,body: Optional[AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[AuthenticationFlowsPolicy]:
         """
         Update the **selfServiceSignUp** property of an authenticationFlowsPolicy object. The properties **id**, **type**, and **description** cannot be modified.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[authentication_flows_policy.AuthenticationFlowsPolicy]
+        Returns: Optional[AuthenticationFlowsPolicy]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import authentication_flows_policy
+        from ...models.authentication_flows_policy import AuthenticationFlowsPolicy
 
-        return await self.request_adapter.send_async(request_info, authentication_flows_policy.AuthenticationFlowsPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuthenticationFlowsPolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class AuthenticationFlowsPolicyRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[authentication_flows_policy.AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the **selfServiceSignUp** property of an authenticationFlowsPolicy object. The properties **id**, **type**, and **description** cannot be modified.
         Args:

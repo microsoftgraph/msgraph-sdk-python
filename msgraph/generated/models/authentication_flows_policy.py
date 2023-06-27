@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, self_service_sign_up_authentication_flow_configuration
+    from .entity import Entity
+    from .self_service_sign_up_authentication_flow_configuration import SelfServiceSignUpAuthenticationFlowConfiguration
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AuthenticationFlowsPolicy(entity.Entity):
+class AuthenticationFlowsPolicy(Entity):
     # Inherited property. A description of the policy. Optional. Read-only.
     description: Optional[str] = None
     # Inherited property. The human-readable name of the policy. Optional. Read-only.
@@ -17,7 +18,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Contains selfServiceSignUpAuthenticationFlowConfiguration settings that convey whether self-service sign-up is enabled or disabled. Optional. Read-only.
-    self_service_sign_up: Optional[self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration] = None
+    self_service_sign_up: Optional[SelfServiceSignUpAuthenticationFlowConfiguration] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationFlowsPolicy:
@@ -36,14 +37,16 @@ class AuthenticationFlowsPolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, self_service_sign_up_authentication_flow_configuration
+        from .entity import Entity
+        from .self_service_sign_up_authentication_flow_configuration import SelfServiceSignUpAuthenticationFlowConfiguration
 
-        from . import entity, self_service_sign_up_authentication_flow_configuration
+        from .entity import Entity
+        from .self_service_sign_up_authentication_flow_configuration import SelfServiceSignUpAuthenticationFlowConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "selfServiceSignUp": lambda n : setattr(self, 'self_service_sign_up', n.get_object_value(self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration)),
+            "selfServiceSignUp": lambda n : setattr(self, 'self_service_sign_up', n.get_object_value(SelfServiceSignUpAuthenticationFlowConfiguration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

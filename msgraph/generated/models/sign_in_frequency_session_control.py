@@ -4,19 +4,22 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_session_control, signin_frequency_type, sign_in_frequency_authentication_type, sign_in_frequency_interval
+    from .conditional_access_session_control import ConditionalAccessSessionControl
+    from .sign_in_frequency_authentication_type import SignInFrequencyAuthenticationType
+    from .sign_in_frequency_interval import SignInFrequencyInterval
+    from .signin_frequency_type import SigninFrequencyType
 
-from . import conditional_access_session_control
+from .conditional_access_session_control import ConditionalAccessSessionControl
 
 @dataclass
-class SignInFrequencySessionControl(conditional_access_session_control.ConditionalAccessSessionControl):
+class SignInFrequencySessionControl(ConditionalAccessSessionControl):
     odata_type = "#microsoft.graph.signInFrequencySessionControl"
     # The possible values are primaryAndSecondaryAuthentication, secondaryAuthentication, unknownFutureValue.
-    authentication_type: Optional[sign_in_frequency_authentication_type.SignInFrequencyAuthenticationType] = None
+    authentication_type: Optional[SignInFrequencyAuthenticationType] = None
     # The possible values are timeBased, everyTime, unknownFutureValue.
-    frequency_interval: Optional[sign_in_frequency_interval.SignInFrequencyInterval] = None
+    frequency_interval: Optional[SignInFrequencyInterval] = None
     # Possible values are: days, hours.
-    type: Optional[signin_frequency_type.SigninFrequencyType] = None
+    type: Optional[SigninFrequencyType] = None
     # The number of days or hours.
     value: Optional[int] = None
     
@@ -37,14 +40,20 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_session_control, signin_frequency_type, sign_in_frequency_authentication_type, sign_in_frequency_interval
+        from .conditional_access_session_control import ConditionalAccessSessionControl
+        from .sign_in_frequency_authentication_type import SignInFrequencyAuthenticationType
+        from .sign_in_frequency_interval import SignInFrequencyInterval
+        from .signin_frequency_type import SigninFrequencyType
 
-        from . import conditional_access_session_control, signin_frequency_type, sign_in_frequency_authentication_type, sign_in_frequency_interval
+        from .conditional_access_session_control import ConditionalAccessSessionControl
+        from .sign_in_frequency_authentication_type import SignInFrequencyAuthenticationType
+        from .sign_in_frequency_interval import SignInFrequencyInterval
+        from .signin_frequency_type import SigninFrequencyType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_enum_value(sign_in_frequency_authentication_type.SignInFrequencyAuthenticationType)),
-            "frequencyInterval": lambda n : setattr(self, 'frequency_interval', n.get_enum_value(sign_in_frequency_interval.SignInFrequencyInterval)),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(signin_frequency_type.SigninFrequencyType)),
+            "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_enum_value(SignInFrequencyAuthenticationType)),
+            "frequencyInterval": lambda n : setattr(self, 'frequency_interval', n.get_enum_value(SignInFrequencyInterval)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(SigninFrequencyType)),
             "value": lambda n : setattr(self, 'value', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

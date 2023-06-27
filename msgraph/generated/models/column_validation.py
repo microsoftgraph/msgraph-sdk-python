@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import display_name_localization
+    from .display_name_localization import DisplayNameLocalization
 
 @dataclass
 class ColumnValidation(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class ColumnValidation(AdditionalDataHolder, Parsable):
     # Default BCP 47 language tag for the description.
     default_language: Optional[str] = None
     # Localized messages that explain what is needed for this column's value to be considered valid. User will be prompted with this message if validation fails.
-    descriptions: Optional[List[display_name_localization.DisplayNameLocalization]] = None
+    descriptions: Optional[List[DisplayNameLocalization]] = None
     # The formula to validate column value. For examples, see Examples of common formulas in lists.
     formula: Optional[str] = None
     # The OdataType property
@@ -37,13 +37,13 @@ class ColumnValidation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import display_name_localization
+        from .display_name_localization import DisplayNameLocalization
 
-        from . import display_name_localization
+        from .display_name_localization import DisplayNameLocalization
 
         fields: Dict[str, Callable[[Any], None]] = {
             "defaultLanguage": lambda n : setattr(self, 'default_language', n.get_str_value()),
-            "descriptions": lambda n : setattr(self, 'descriptions', n.get_collection_of_object_values(display_name_localization.DisplayNameLocalization)),
+            "descriptions": lambda n : setattr(self, 'descriptions', n.get_collection_of_object_values(DisplayNameLocalization)),
             "formula": lambda n : setattr(self, 'formula', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

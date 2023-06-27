@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import drive_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import drive_item_request_builder
+    from ...models.drive_collection_response import DriveCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.drive_item_request_builder import DriveItemRequestBuilder
 
 class DrivesRequestBuilder():
     """
@@ -37,42 +37,42 @@ class DrivesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_drive_id(self,drive_id: str) -> drive_item_request_builder.DriveItemRequestBuilder:
+    def by_drive_id(self,drive_id: str) -> DriveItemRequestBuilder:
         """
         Provides operations to manage the drives property of the microsoft.graph.user entity.
         Args:
             drive_id: Unique identifier of the item
-        Returns: drive_item_request_builder.DriveItemRequestBuilder
+        Returns: DriveItemRequestBuilder
         """
         if not drive_id:
             raise TypeError("drive_id cannot be null.")
-        from .item import drive_item_request_builder
+        from .item.drive_item_request_builder import DriveItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["drive%2Did"] = drive_id
-        return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DriveItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DrivesRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_collection_response.DriveCollectionResponse]:
+    async def get(self,request_configuration: Optional[DrivesRequestBuilderGetRequestConfiguration] = None) -> Optional[DriveCollectionResponse]:
         """
         Retrieve the list of Drive resources available for a target User, Group, or Site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[drive_collection_response.DriveCollectionResponse]
+        Returns: Optional[DriveCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import drive_collection_response
+        from ...models.drive_collection_response import DriveCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, drive_collection_response.DriveCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DriveCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DrivesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class DrivesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DrivesRequestBuilderGetQueryParameters():

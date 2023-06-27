@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class EoMonthPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class EoMonthPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The months property
-    months: Optional[json.Json] = None
+    months: Optional[Json] = None
     # The startDate property
-    start_date: Optional[json.Json] = None
+    start_date: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EoMonthPostRequestBody:
@@ -33,13 +33,13 @@ class EoMonthPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "months": lambda n : setattr(self, 'months', n.get_object_value(json.Json)),
-            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(json.Json)),
+            "months": lambda n : setattr(self, 'months', n.get_object_value(Json)),
+            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(Json)),
         }
         return fields
     

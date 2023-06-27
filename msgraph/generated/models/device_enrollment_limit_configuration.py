@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_enrollment_configuration
+    from .device_enrollment_configuration import DeviceEnrollmentConfiguration
 
-from . import device_enrollment_configuration
+from .device_enrollment_configuration import DeviceEnrollmentConfiguration
 
 @dataclass
-class DeviceEnrollmentLimitConfiguration(device_enrollment_configuration.DeviceEnrollmentConfiguration):
+class DeviceEnrollmentLimitConfiguration(DeviceEnrollmentConfiguration):
     odata_type = "#microsoft.graph.deviceEnrollmentLimitConfiguration"
     # The maximum number of devices that a user can enroll
     limit: Optional[int] = None
@@ -31,9 +31,9 @@ class DeviceEnrollmentLimitConfiguration(device_enrollment_configuration.DeviceE
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_enrollment_configuration
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
 
-        from . import device_enrollment_configuration
+        from .device_enrollment_configuration import DeviceEnrollmentConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "limit": lambda n : setattr(self, 'limit', n.get_int_value()),

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import simulation_automation_run, simulation_automation_run_collection_response
-    from ......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import simulation_automation_run_item_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.simulation_automation_run import SimulationAutomationRun
+    from ......models.simulation_automation_run_collection_response import SimulationAutomationRunCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.simulation_automation_run_item_request_builder import SimulationAutomationRunItemRequestBuilder
 
 class RunsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class RunsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_simulation_automation_run_id(self,simulation_automation_run_id: str) -> simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder:
+    def by_simulation_automation_run_id(self,simulation_automation_run_id: str) -> SimulationAutomationRunItemRequestBuilder:
         """
         Provides operations to manage the runs property of the microsoft.graph.simulationAutomation entity.
         Args:
             simulation_automation_run_id: Unique identifier of the item
-        Returns: simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder
+        Returns: SimulationAutomationRunItemRequestBuilder
         """
         if not simulation_automation_run_id:
             raise TypeError("simulation_automation_run_id cannot be null.")
-        from .item import simulation_automation_run_item_request_builder
+        from .item.simulation_automation_run_item_request_builder import SimulationAutomationRunItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["simulationAutomationRun%2Did"] = simulation_automation_run_id
-        return simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return SimulationAutomationRunItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RunsRequestBuilderGetRequestConfiguration] = None) -> Optional[simulation_automation_run_collection_response.SimulationAutomationRunCollectionResponse]:
+    async def get(self,request_configuration: Optional[RunsRequestBuilderGetRequestConfiguration] = None) -> Optional[SimulationAutomationRunCollectionResponse]:
         """
         Get a list of the attack simulation automation runs for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[simulation_automation_run_collection_response.SimulationAutomationRunCollectionResponse]
+        Returns: Optional[SimulationAutomationRunCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import simulation_automation_run_collection_response
+        from ......models.simulation_automation_run_collection_response import SimulationAutomationRunCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, simulation_automation_run_collection_response.SimulationAutomationRunCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SimulationAutomationRunCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[simulation_automation_run.SimulationAutomationRun] = None, request_configuration: Optional[RunsRequestBuilderPostRequestConfiguration] = None) -> Optional[simulation_automation_run.SimulationAutomationRun]:
+    async def post(self,body: Optional[SimulationAutomationRun] = None, request_configuration: Optional[RunsRequestBuilderPostRequestConfiguration] = None) -> Optional[SimulationAutomationRun]:
         """
         Create new navigation property to runs for security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[simulation_automation_run.SimulationAutomationRun]
+        Returns: Optional[SimulationAutomationRun]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import simulation_automation_run
+        from ......models.simulation_automation_run import SimulationAutomationRun
 
-        return await self.request_adapter.send_async(request_info, simulation_automation_run.SimulationAutomationRun, error_mapping)
+        return await self.request_adapter.send_async(request_info, SimulationAutomationRun, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RunsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class RunsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[simulation_automation_run.SimulationAutomationRun] = None, request_configuration: Optional[RunsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SimulationAutomationRun] = None, request_configuration: Optional[RunsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to runs for security
         Args:
@@ -139,13 +140,13 @@ class RunsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RunsRequestBuilderGetQueryParameters():

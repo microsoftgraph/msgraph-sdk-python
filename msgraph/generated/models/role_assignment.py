@@ -4,12 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_and_app_management_role_assignment, entity, role_definition
+    from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
+    from .entity import Entity
+    from .role_definition import RoleDefinition
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class RoleAssignment(entity.Entity):
+class RoleAssignment(Entity):
     """
     The Role Assignment resource. Role assignments tie together a role definition with members and scopes. There can be one or more role assignments per role. This applies to custom and built-in roles.
     """
@@ -22,7 +24,7 @@ class RoleAssignment(entity.Entity):
     # List of ids of role scope member security groups.  These are IDs from Azure Active Directory.
     resource_scopes: Optional[List[str]] = None
     # Role definition this assignment is part of.
-    role_definition: Optional[role_definition.RoleDefinition] = None
+    role_definition: Optional[RoleDefinition] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RoleAssignment:
@@ -39,9 +41,9 @@ class RoleAssignment(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceAndAppManagementRoleAssignment".casefold():
-            from . import device_and_app_management_role_assignment
+            from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
 
-            return device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment()
+            return DeviceAndAppManagementRoleAssignment()
         return RoleAssignment()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -49,15 +51,19 @@ class RoleAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_role_assignment, entity, role_definition
+        from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
+        from .entity import Entity
+        from .role_definition import RoleDefinition
 
-        from . import device_and_app_management_role_assignment, entity, role_definition
+        from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
+        from .entity import Entity
+        from .role_definition import RoleDefinition
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_primitive_values(str)),
-            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(role_definition.RoleDefinition)),
+            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(RoleDefinition)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

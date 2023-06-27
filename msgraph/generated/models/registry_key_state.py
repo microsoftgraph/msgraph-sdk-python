@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import registry_hive, registry_operation, registry_value_type
+    from .registry_hive import RegistryHive
+    from .registry_operation import RegistryOperation
+    from .registry_value_type import RegistryValueType
 
 @dataclass
 class RegistryKeyState(AdditionalDataHolder, Parsable):
@@ -12,7 +14,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # A Windows registry hive : HKEY_CURRENT_CONFIG HKEY_CURRENT_USER HKEY_LOCAL_MACHINE/SAM HKEY_LOCAL_MACHINE/Security HKEY_LOCAL_MACHINE/Software HKEY_LOCAL_MACHINE/System HKEY_USERS/.Default. Possible values are: unknown, currentConfig, currentUser, localMachineSam, localMachineSecurity, localMachineSoftware, localMachineSystem, usersDefault.
-    hive: Optional[registry_hive.RegistryHive] = None
+    hive: Optional[RegistryHive] = None
     # Current (i.e. changed) registry key (excludes HIVE).
     key: Optional[str] = None
     # The OdataType property
@@ -24,7 +26,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
     # Previous (i.e. before changed) registry key value name.
     old_value_name: Optional[str] = None
     # Operation that changed the registry key name and/or value. Possible values are: unknown, create, modify, delete.
-    operation: Optional[registry_operation.RegistryOperation] = None
+    operation: Optional[RegistryOperation] = None
     # Process ID (PID) of the process that modified the registry key (process details will appear in the alert 'processes' collection).
     process_id: Optional[int] = None
     # Current (i.e. changed) registry key value data (contents).
@@ -32,7 +34,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
     # Current (i.e. changed) registry key value name
     value_name: Optional[str] = None
     # Registry key value type REG_BINARY REG_DWORD REG_DWORD_LITTLE_ENDIAN REG_DWORD_BIG_ENDIANREG_EXPAND_SZ REG_LINK REG_MULTI_SZ REG_NONE REG_QWORD REG_QWORD_LITTLE_ENDIAN REG_SZ Possible values are: unknown, binary, dword, dwordLittleEndian, dwordBigEndian, expandSz, link, multiSz, none, qword, qwordlittleEndian, sz.
-    value_type: Optional[registry_value_type.RegistryValueType] = None
+    value_type: Optional[RegistryValueType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RegistryKeyState:
@@ -51,22 +53,26 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import registry_hive, registry_operation, registry_value_type
+        from .registry_hive import RegistryHive
+        from .registry_operation import RegistryOperation
+        from .registry_value_type import RegistryValueType
 
-        from . import registry_hive, registry_operation, registry_value_type
+        from .registry_hive import RegistryHive
+        from .registry_operation import RegistryOperation
+        from .registry_value_type import RegistryValueType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "hive": lambda n : setattr(self, 'hive', n.get_enum_value(registry_hive.RegistryHive)),
+            "hive": lambda n : setattr(self, 'hive', n.get_enum_value(RegistryHive)),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "oldKey": lambda n : setattr(self, 'old_key', n.get_str_value()),
             "oldValueData": lambda n : setattr(self, 'old_value_data', n.get_str_value()),
             "oldValueName": lambda n : setattr(self, 'old_value_name', n.get_str_value()),
-            "operation": lambda n : setattr(self, 'operation', n.get_enum_value(registry_operation.RegistryOperation)),
+            "operation": lambda n : setattr(self, 'operation', n.get_enum_value(RegistryOperation)),
             "processId": lambda n : setattr(self, 'process_id', n.get_int_value()),
             "valueData": lambda n : setattr(self, 'value_data', n.get_str_value()),
             "valueName": lambda n : setattr(self, 'value_name', n.get_str_value()),
-            "valueType": lambda n : setattr(self, 'value_type', n.get_enum_value(registry_value_type.RegistryValueType)),
+            "valueType": lambda n : setattr(self, 'value_type', n.get_enum_value(RegistryValueType)),
         }
         return fields
     

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models.o_data_errors import o_data_error
-    from ......models.term_store import store, store_collection_response
-    from .count import count_request_builder
-    from .item import store_item_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.term_store.store import Store
+    from ......models.term_store.store_collection_response import StoreCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.store_item_request_builder import StoreItemRequestBuilder
 
 class TermStoresRequestBuilder():
     """
@@ -37,67 +38,67 @@ class TermStoresRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_store_id(self,store_id: str) -> store_item_request_builder.StoreItemRequestBuilder:
+    def by_store_id(self,store_id: str) -> StoreItemRequestBuilder:
         """
         Provides operations to manage the termStores property of the microsoft.graph.site entity.
         Args:
             store_id: Unique identifier of the item
-        Returns: store_item_request_builder.StoreItemRequestBuilder
+        Returns: StoreItemRequestBuilder
         """
         if not store_id:
             raise TypeError("store_id cannot be null.")
-        from .item import store_item_request_builder
+        from .item.store_item_request_builder import StoreItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["store%2Did"] = store_id
-        return store_item_request_builder.StoreItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return StoreItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TermStoresRequestBuilderGetRequestConfiguration] = None) -> Optional[store_collection_response.StoreCollectionResponse]:
+    async def get(self,request_configuration: Optional[TermStoresRequestBuilderGetRequestConfiguration] = None) -> Optional[StoreCollectionResponse]:
         """
         The collection of termStores under this site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[store_collection_response.StoreCollectionResponse]
+        Returns: Optional[StoreCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.term_store import store_collection_response
+        from ......models.term_store.store_collection_response import StoreCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, store_collection_response.StoreCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, StoreCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[store.Store] = None, request_configuration: Optional[TermStoresRequestBuilderPostRequestConfiguration] = None) -> Optional[store.Store]:
+    async def post(self,body: Optional[Store] = None, request_configuration: Optional[TermStoresRequestBuilderPostRequestConfiguration] = None) -> Optional[Store]:
         """
         Create new navigation property to termStores for groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[store.Store]
+        Returns: Optional[Store]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.term_store import store
+        from ......models.term_store.store import Store
 
-        return await self.request_adapter.send_async(request_info, store.Store, error_mapping)
+        return await self.request_adapter.send_async(request_info, Store, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TermStoresRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class TermStoresRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[store.Store] = None, request_configuration: Optional[TermStoresRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Store] = None, request_configuration: Optional[TermStoresRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to termStores for groups
         Args:
@@ -139,13 +140,13 @@ class TermStoresRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TermStoresRequestBuilderGetQueryParameters():

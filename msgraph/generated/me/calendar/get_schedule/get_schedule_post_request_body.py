@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import date_time_time_zone
+    from ....models.date_time_time_zone import DateTimeTimeZone
 
 @dataclass
 class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,11 +14,11 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
     # The AvailabilityViewInterval property
     availability_view_interval: Optional[int] = None
     # The EndTime property
-    end_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    end_time: Optional[DateTimeTimeZone] = None
     # The Schedules property
     schedules: Optional[List[str]] = None
     # The StartTime property
-    start_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    start_time: Optional[DateTimeTimeZone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetSchedulePostRequestBody:
@@ -37,15 +37,15 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import date_time_time_zone
+        from ....models.date_time_time_zone import DateTimeTimeZone
 
-        from ....models import date_time_time_zone
+        from ....models.date_time_time_zone import DateTimeTimeZone
 
         fields: Dict[str, Callable[[Any], None]] = {
             "AvailabilityViewInterval": lambda n : setattr(self, 'availability_view_interval', n.get_int_value()),
-            "EndTime": lambda n : setattr(self, 'end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "EndTime": lambda n : setattr(self, 'end_time', n.get_object_value(DateTimeTimeZone)),
             "Schedules": lambda n : setattr(self, 'schedules', n.get_collection_of_primitive_values(str)),
-            "StartTime": lambda n : setattr(self, 'start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "StartTime": lambda n : setattr(self, 'start_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
     

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import skew_p_post_request_body
-    from ........models import workbook_function_result
-    from ........models.o_data_errors import o_data_error
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.workbook_function_result import WorkbookFunctionResult
+    from .skew_p_post_request_body import Skew_pPostRequestBody
 
 class Skew_pRequestBuilder():
     """
@@ -36,32 +36,32 @@ class Skew_pRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[skew_p_post_request_body.Skew_pPostRequestBody] = None, request_configuration: Optional[Skew_pRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_function_result.WorkbookFunctionResult]:
+    async def post(self,body: Optional[Skew_pPostRequestBody] = None, request_configuration: Optional[Skew_pRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookFunctionResult]:
         """
         Invoke action skew_p
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_function_result.WorkbookFunctionResult]
+        Returns: Optional[WorkbookFunctionResult]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import workbook_function_result
+        from ........models.workbook_function_result import WorkbookFunctionResult
 
-        return await self.request_adapter.send_async(request_info, workbook_function_result.WorkbookFunctionResult, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookFunctionResult, error_mapping)
     
-    def to_post_request_information(self,body: Optional[skew_p_post_request_body.Skew_pPostRequestBody] = None, request_configuration: Optional[Skew_pRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Skew_pPostRequestBody] = None, request_configuration: Optional[Skew_pRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action skew_p
         Args:

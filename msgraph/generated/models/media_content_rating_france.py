@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import rating_france_movies_type, rating_france_television_type
+    from .rating_france_movies_type import RatingFranceMoviesType
+    from .rating_france_television_type import RatingFranceTelevisionType
 
 @dataclass
 class MediaContentRatingFrance(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class MediaContentRatingFrance(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Movies rating labels in France
-    movie_rating: Optional[rating_france_movies_type.RatingFranceMoviesType] = None
+    movie_rating: Optional[RatingFranceMoviesType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # TV content rating labels in France
-    tv_rating: Optional[rating_france_television_type.RatingFranceTelevisionType] = None
+    tv_rating: Optional[RatingFranceTelevisionType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MediaContentRatingFrance:
@@ -35,14 +36,16 @@ class MediaContentRatingFrance(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import rating_france_movies_type, rating_france_television_type
+        from .rating_france_movies_type import RatingFranceMoviesType
+        from .rating_france_television_type import RatingFranceTelevisionType
 
-        from . import rating_france_movies_type, rating_france_television_type
+        from .rating_france_movies_type import RatingFranceMoviesType
+        from .rating_france_television_type import RatingFranceTelevisionType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(rating_france_movies_type.RatingFranceMoviesType)),
+            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(RatingFranceMoviesType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(rating_france_television_type.RatingFranceTelevisionType)),
+            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(RatingFranceTelevisionType)),
         }
         return fields
     

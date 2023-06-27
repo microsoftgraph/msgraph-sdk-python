@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import instantiate_post_request_body
-    from ....models import application_service_principal
-    from ....models.o_data_errors import o_data_error
+    from ....models.application_service_principal import ApplicationServicePrincipal
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .instantiate_post_request_body import InstantiatePostRequestBody
 
 class InstantiateRequestBuilder():
     """
@@ -36,32 +36,32 @@ class InstantiateRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[instantiate_post_request_body.InstantiatePostRequestBody] = None, request_configuration: Optional[InstantiateRequestBuilderPostRequestConfiguration] = None) -> Optional[application_service_principal.ApplicationServicePrincipal]:
+    async def post(self,body: Optional[InstantiatePostRequestBody] = None, request_configuration: Optional[InstantiateRequestBuilderPostRequestConfiguration] = None) -> Optional[ApplicationServicePrincipal]:
         """
         Add an instance of an application from the Azure AD application gallery into your directory. You can also use this API to instantiate non-gallery apps. Use the following ID for the **applicationTemplate** object: `8adf8e6e-67b2-4cf2-a259-e3dc5476c621`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[application_service_principal.ApplicationServicePrincipal]
+        Returns: Optional[ApplicationServicePrincipal]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import application_service_principal
+        from ....models.application_service_principal import ApplicationServicePrincipal
 
-        return await self.request_adapter.send_async(request_info, application_service_principal.ApplicationServicePrincipal, error_mapping)
+        return await self.request_adapter.send_async(request_info, ApplicationServicePrincipal, error_mapping)
     
-    def to_post_request_information(self,body: Optional[instantiate_post_request_body.InstantiatePostRequestBody] = None, request_configuration: Optional[InstantiateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[InstantiatePostRequestBody] = None, request_configuration: Optional[InstantiateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add an instance of an application from the Azure AD application gallery into your directory. You can also use this API to instantiate non-gallery apps. Use the following ID for the **applicationTemplate** object: `8adf8e6e-67b2-4cf2-a259-e3dc5476c621`.
         Args:

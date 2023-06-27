@@ -4,18 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import data_source, source_type
-    from .. import group
+    from ..group import Group
+    from .data_source import DataSource
+    from .source_type import SourceType
 
-from . import data_source
+from .data_source import DataSource
 
 @dataclass
-class UnifiedGroupSource(data_source.DataSource):
+class UnifiedGroupSource(DataSource):
     odata_type = "#microsoft.graph.security.unifiedGroupSource"
     # The group property
-    group: Optional[group.Group] = None
+    group: Optional[Group] = None
     # Specifies which sources are included in this group. Possible values are: mailbox, site.
-    included_sources: Optional[source_type.SourceType] = None
+    included_sources: Optional[SourceType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedGroupSource:
@@ -34,15 +35,17 @@ class UnifiedGroupSource(data_source.DataSource):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import data_source, source_type
-        from .. import group
+        from ..group import Group
+        from .data_source import DataSource
+        from .source_type import SourceType
 
-        from . import data_source, source_type
-        from .. import group
+        from ..group import Group
+        from .data_source import DataSource
+        from .source_type import SourceType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "group": lambda n : setattr(self, 'group', n.get_object_value(group.Group)),
-            "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(source_type.SourceType)),
+            "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
+            "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(SourceType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

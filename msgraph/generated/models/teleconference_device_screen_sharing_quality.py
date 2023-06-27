@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import teleconference_device_video_quality
+    from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
 
-from . import teleconference_device_video_quality
+from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
 
 @dataclass
-class TeleconferenceDeviceScreenSharingQuality(teleconference_device_video_quality.TeleconferenceDeviceVideoQuality):
+class TeleconferenceDeviceScreenSharingQuality(TeleconferenceDeviceVideoQuality):
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -30,9 +30,9 @@ class TeleconferenceDeviceScreenSharingQuality(teleconference_device_video_quali
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teleconference_device_video_quality
+        from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
 
-        from . import teleconference_device_video_quality
+        from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

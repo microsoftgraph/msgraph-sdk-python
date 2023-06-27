@@ -4,18 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, json
+    from .entity import Entity
+    from .json import Json
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookFunctionResult(entity.Entity):
+class WorkbookFunctionResult(Entity):
     # The error property
     error: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The value property
-    value: Optional[json.Json] = None
+    value: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookFunctionResult:
@@ -34,13 +35,15 @@ class WorkbookFunctionResult(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, json
+        from .entity import Entity
+        from .json import Json
 
-        from . import entity, json
+        from .entity import Entity
+        from .json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
             "error": lambda n : setattr(self, 'error', n.get_str_value()),
-            "value": lambda n : setattr(self, 'value', n.get_object_value(json.Json)),
+            "value": lambda n : setattr(self, 'value', n.get_object_value(Json)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

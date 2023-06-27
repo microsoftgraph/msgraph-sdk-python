@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import terms_and_conditions_assignment
-    from ......models.o_data_errors import o_data_error
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.terms_and_conditions_assignment import TermsAndConditionsAssignment
 
 class TermsAndConditionsAssignmentItemRequestBuilder():
     """
@@ -37,73 +37,73 @@ class TermsAndConditionsAssignmentItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property assignments for deviceManagement
+        Deletes a termsAndConditionsAssignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment]:
+    async def get(self,request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TermsAndConditionsAssignment]:
         """
-        The list of assignments for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment]
+        Returns: Optional[TermsAndConditionsAssignment]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import terms_and_conditions_assignment
+        from ......models.terms_and_conditions_assignment import TermsAndConditionsAssignment
 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions_assignment.TermsAndConditionsAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, TermsAndConditionsAssignment, error_mapping)
     
-    async def patch(self,body: Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment] = None, request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment]:
+    async def patch(self,body: Optional[TermsAndConditionsAssignment] = None, request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TermsAndConditionsAssignment]:
         """
-        Update the navigation property assignments in deviceManagement
+        Update the properties of a termsAndConditionsAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment]
+        Returns: Optional[TermsAndConditionsAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import terms_and_conditions_assignment
+        from ......models.terms_and_conditions_assignment import TermsAndConditionsAssignment
 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions_assignment.TermsAndConditionsAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, TermsAndConditionsAssignment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property assignments for deviceManagement
+        Deletes a termsAndConditionsAssignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of assignments for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class TermsAndConditionsAssignmentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment] = None, request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TermsAndConditionsAssignment] = None, request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property assignments in deviceManagement
+        Update the properties of a termsAndConditionsAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder():
     @dataclass
     class TermsAndConditionsAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The list of assignments for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

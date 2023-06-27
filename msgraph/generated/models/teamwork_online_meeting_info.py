@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import teamwork_user_identity
+    from .teamwork_user_identity import TeamworkUserIdentity
 
 @dataclass
 class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
@@ -18,7 +18,7 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The organizer of the meeting.
-    organizer: Optional[teamwork_user_identity.TeamworkUserIdentity] = None
+    organizer: Optional[TeamworkUserIdentity] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkOnlineMeetingInfo:
@@ -37,15 +37,15 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teamwork_user_identity
+        from .teamwork_user_identity import TeamworkUserIdentity
 
-        from . import teamwork_user_identity
+        from .teamwork_user_identity import TeamworkUserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "calendarEventId": lambda n : setattr(self, 'calendar_event_id', n.get_str_value()),
             "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(teamwork_user_identity.TeamworkUserIdentity)),
+            "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(TeamworkUserIdentity)),
         }
         return fields
     

@@ -4,18 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, routing_mode
+    from .entity import Entity
+    from .routing_mode import RoutingMode
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AudioRoutingGroup(entity.Entity):
+class AudioRoutingGroup(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The receivers property
     receivers: Optional[List[str]] = None
     # The routingMode property
-    routing_mode: Optional[routing_mode.RoutingMode] = None
+    routing_mode: Optional[RoutingMode] = None
     # The sources property
     sources: Optional[List[str]] = None
     
@@ -36,13 +37,15 @@ class AudioRoutingGroup(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, routing_mode
+        from .entity import Entity
+        from .routing_mode import RoutingMode
 
-        from . import entity, routing_mode
+        from .entity import Entity
+        from .routing_mode import RoutingMode
 
         fields: Dict[str, Callable[[Any], None]] = {
             "receivers": lambda n : setattr(self, 'receivers', n.get_collection_of_primitive_values(str)),
-            "routingMode": lambda n : setattr(self, 'routing_mode', n.get_enum_value(routing_mode.RoutingMode)),
+            "routingMode": lambda n : setattr(self, 'routing_mode', n.get_enum_value(RoutingMode)),
             "sources": lambda n : setattr(self, 'sources', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()

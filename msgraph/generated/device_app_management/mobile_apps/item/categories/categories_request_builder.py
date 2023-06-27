@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import mobile_app_category_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import mobile_app_category_item_request_builder
+    from .....models.mobile_app_category_collection_response import MobileAppCategoryCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.mobile_app_category_item_request_builder import MobileAppCategoryItemRequestBuilder
 
 class CategoriesRequestBuilder():
     """
@@ -37,42 +37,42 @@ class CategoriesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_mobile_app_category_id(self,mobile_app_category_id: str) -> mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder:
+    def by_mobile_app_category_id(self,mobile_app_category_id: str) -> MobileAppCategoryItemRequestBuilder:
         """
         Provides operations to manage the categories property of the microsoft.graph.mobileApp entity.
         Args:
             mobile_app_category_id: Unique identifier of the item
-        Returns: mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder
+        Returns: MobileAppCategoryItemRequestBuilder
         """
         if not mobile_app_category_id:
             raise TypeError("mobile_app_category_id cannot be null.")
-        from .item import mobile_app_category_item_request_builder
+        from .item.mobile_app_category_item_request_builder import MobileAppCategoryItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["mobileAppCategory%2Did"] = mobile_app_category_id
-        return mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return MobileAppCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[mobile_app_category_collection_response.MobileAppCategoryCollectionResponse]:
+    async def get(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileAppCategoryCollectionResponse]:
         """
         The list of categories for this app.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mobile_app_category_collection_response.MobileAppCategoryCollectionResponse]
+        Returns: Optional[MobileAppCategoryCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import mobile_app_category_collection_response
+        from .....models.mobile_app_category_collection_response import MobileAppCategoryCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, mobile_app_category_collection_response.MobileAppCategoryCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, MobileAppCategoryCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class CategoriesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CategoriesRequestBuilderGetQueryParameters():

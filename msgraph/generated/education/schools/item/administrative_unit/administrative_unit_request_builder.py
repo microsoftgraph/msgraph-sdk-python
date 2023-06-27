@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import administrative_unit
-    from .....models.o_data_errors import o_data_error
+    from .....models.administrative_unit import AdministrativeUnit
+    from .....models.o_data_errors.o_data_error import ODataError
 
 class AdministrativeUnitRequestBuilder():
     """
@@ -35,52 +35,52 @@ class AdministrativeUnitRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AdministrativeUnitRequestBuilderGetRequestConfiguration] = None) -> Optional[administrative_unit.AdministrativeUnit]:
+    async def get(self,request_configuration: Optional[AdministrativeUnitRequestBuilderGetRequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
         Get a list of **administrativeUnits** associated with an educationSchool object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[administrative_unit.AdministrativeUnit]
+        Returns: Optional[AdministrativeUnit]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import administrative_unit
+        from .....models.administrative_unit import AdministrativeUnit
 
-        return await self.request_adapter.send_async(request_info, administrative_unit.AdministrativeUnit, error_mapping)
+        return await self.request_adapter.send_async(request_info, AdministrativeUnit, error_mapping)
     
-    async def patch(self,body: Optional[administrative_unit.AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitRequestBuilderPatchRequestConfiguration] = None) -> Optional[administrative_unit.AdministrativeUnit]:
+    async def patch(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitRequestBuilderPatchRequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
         Update the navigation property administrativeUnit in education
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[administrative_unit.AdministrativeUnit]
+        Returns: Optional[AdministrativeUnit]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import administrative_unit
+        from .....models.administrative_unit import AdministrativeUnit
 
-        return await self.request_adapter.send_async(request_info, administrative_unit.AdministrativeUnit, error_mapping)
+        return await self.request_adapter.send_async(request_info, AdministrativeUnit, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AdministrativeUnitRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -100,7 +100,7 @@ class AdministrativeUnitRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[administrative_unit.AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property administrativeUnit in education
         Args:

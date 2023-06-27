@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -28,7 +28,7 @@ class Photo(AdditionalDataHolder, Parsable):
     # The orientation value from the camera. Writable on OneDrive Personal.
     orientation: Optional[int] = None
     # Represents the date and time the photo was taken. Read-only.
-    taken_date_time: Optional[datetime] = None
+    taken_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Photo:
@@ -78,7 +78,7 @@ class Photo(AdditionalDataHolder, Parsable):
         writer.write_int_value("iso", self.iso)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("orientation", self.orientation)
-        writer.write_datetime_value("takenDateTime", self.taken_date_time)
+        writer.write_datetime_value()("takenDateTime", self.taken_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

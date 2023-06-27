@@ -1,27 +1,28 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import compliance_status, entity
+    from .compliance_status import ComplianceStatus
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ManagedDeviceMobileAppConfigurationUserStatus(entity.Entity):
+class ManagedDeviceMobileAppConfigurationUserStatus(Entity):
     """
     Contains properties, inherited properties and actions for an MDM mobile app configuration status for a user.
     """
     # Devices count for that user.
     devices_count: Optional[int] = None
     # Last modified date time of the policy report.
-    last_reported_date_time: Optional[datetime] = None
+    last_reported_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status property
-    status: Optional[compliance_status.ComplianceStatus] = None
+    status: Optional[ComplianceStatus] = None
     # User name of the DevicePolicyStatus.
     user_display_name: Optional[str] = None
     # UserPrincipalName.
@@ -44,14 +45,16 @@ class ManagedDeviceMobileAppConfigurationUserStatus(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import compliance_status, entity
+        from .compliance_status import ComplianceStatus
+        from .entity import Entity
 
-        from . import compliance_status, entity
+        from .compliance_status import ComplianceStatus
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "devicesCount": lambda n : setattr(self, 'devices_count', n.get_int_value()),
             "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(compliance_status.ComplianceStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ComplianceStatus)),
             "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
@@ -69,7 +72,7 @@ class ManagedDeviceMobileAppConfigurationUserStatus(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_int_value("devicesCount", self.devices_count)
-        writer.write_datetime_value("lastReportedDateTime", self.last_reported_date_time)
+        writer.write_datetime_value()("lastReportedDateTime", self.last_reported_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("userDisplayName", self.user_display_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)

@@ -4,7 +4,14 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import aggregation_option, collapse_property, entity_type, result_template_option, search_alteration_options, search_query, share_point_one_drive_options, sort_property
+    from .aggregation_option import AggregationOption
+    from .collapse_property import CollapseProperty
+    from .entity_type import EntityType
+    from .result_template_option import ResultTemplateOption
+    from .search_alteration_options import SearchAlterationOptions
+    from .search_query import SearchQuery
+    from .share_point_one_drive_options import SharePointOneDriveOptions
+    from .sort_property import SortProperty
 
 @dataclass
 class SearchRequest(AdditionalDataHolder, Parsable):
@@ -14,15 +21,15 @@ class SearchRequest(AdditionalDataHolder, Parsable):
     # The aggregationFilters property
     aggregation_filters: Optional[List[str]] = None
     # The aggregations property
-    aggregations: Optional[List[aggregation_option.AggregationOption]] = None
+    aggregations: Optional[List[AggregationOption]] = None
     # The collapseProperties property
-    collapse_properties: Optional[List[collapse_property.CollapseProperty]] = None
+    collapse_properties: Optional[List[CollapseProperty]] = None
     # The contentSources property
     content_sources: Optional[List[str]] = None
     # The enableTopResults property
     enable_top_results: Optional[bool] = None
     # The entityTypes property
-    entity_types: Optional[List[entity_type.EntityType]] = None
+    entity_types: Optional[List[EntityType]] = None
     # The fields property
     fields: Optional[List[str]] = None
     # The from property
@@ -30,19 +37,19 @@ class SearchRequest(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The query property
-    query: Optional[search_query.SearchQuery] = None
+    query: Optional[SearchQuery] = None
     # The queryAlterationOptions property
-    query_alteration_options: Optional[search_alteration_options.SearchAlterationOptions] = None
+    query_alteration_options: Optional[SearchAlterationOptions] = None
     # The region property
     region: Optional[str] = None
     # The resultTemplateOptions property
-    result_template_options: Optional[result_template_option.ResultTemplateOption] = None
+    result_template_options: Optional[ResultTemplateOption] = None
     # The sharePointOneDriveOptions property
-    share_point_one_drive_options: Optional[share_point_one_drive_options.SharePointOneDriveOptions] = None
+    share_point_one_drive_options: Optional[SharePointOneDriveOptions] = None
     # The size property
     size: Optional[int] = None
     # The sortProperties property
-    sort_properties: Optional[List[sort_property.SortProperty]] = None
+    sort_properties: Optional[List[SortProperty]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SearchRequest:
@@ -61,27 +68,41 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import aggregation_option, collapse_property, entity_type, result_template_option, search_alteration_options, search_query, share_point_one_drive_options, sort_property
+        from .aggregation_option import AggregationOption
+        from .collapse_property import CollapseProperty
+        from .entity_type import EntityType
+        from .result_template_option import ResultTemplateOption
+        from .search_alteration_options import SearchAlterationOptions
+        from .search_query import SearchQuery
+        from .share_point_one_drive_options import SharePointOneDriveOptions
+        from .sort_property import SortProperty
 
-        from . import aggregation_option, collapse_property, entity_type, result_template_option, search_alteration_options, search_query, share_point_one_drive_options, sort_property
+        from .aggregation_option import AggregationOption
+        from .collapse_property import CollapseProperty
+        from .entity_type import EntityType
+        from .result_template_option import ResultTemplateOption
+        from .search_alteration_options import SearchAlterationOptions
+        from .search_query import SearchQuery
+        from .share_point_one_drive_options import SharePointOneDriveOptions
+        from .sort_property import SortProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
             "aggregationFilters": lambda n : setattr(self, 'aggregation_filters', n.get_collection_of_primitive_values(str)),
-            "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(aggregation_option.AggregationOption)),
-            "collapseProperties": lambda n : setattr(self, 'collapse_properties', n.get_collection_of_object_values(collapse_property.CollapseProperty)),
+            "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(AggregationOption)),
+            "collapseProperties": lambda n : setattr(self, 'collapse_properties', n.get_collection_of_object_values(CollapseProperty)),
             "contentSources": lambda n : setattr(self, 'content_sources', n.get_collection_of_primitive_values(str)),
             "enableTopResults": lambda n : setattr(self, 'enable_top_results', n.get_bool_value()),
-            "entityTypes": lambda n : setattr(self, 'entity_types', n.get_collection_of_enum_values(entity_type.EntityType)),
+            "entityTypes": lambda n : setattr(self, 'entity_types', n.get_collection_of_enum_values(EntityType)),
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_primitive_values(str)),
             "from": lambda n : setattr(self, 'from_', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "query": lambda n : setattr(self, 'query', n.get_object_value(search_query.SearchQuery)),
-            "queryAlterationOptions": lambda n : setattr(self, 'query_alteration_options', n.get_object_value(search_alteration_options.SearchAlterationOptions)),
+            "query": lambda n : setattr(self, 'query', n.get_object_value(SearchQuery)),
+            "queryAlterationOptions": lambda n : setattr(self, 'query_alteration_options', n.get_object_value(SearchAlterationOptions)),
             "region": lambda n : setattr(self, 'region', n.get_str_value()),
-            "resultTemplateOptions": lambda n : setattr(self, 'result_template_options', n.get_object_value(result_template_option.ResultTemplateOption)),
-            "sharePointOneDriveOptions": lambda n : setattr(self, 'share_point_one_drive_options', n.get_object_value(share_point_one_drive_options.SharePointOneDriveOptions)),
+            "resultTemplateOptions": lambda n : setattr(self, 'result_template_options', n.get_object_value(ResultTemplateOption)),
+            "sharePointOneDriveOptions": lambda n : setattr(self, 'share_point_one_drive_options', n.get_object_value(SharePointOneDriveOptions)),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
-            "sortProperties": lambda n : setattr(self, 'sort_properties', n.get_collection_of_object_values(sort_property.SortProperty)),
+            "sortProperties": lambda n : setattr(self, 'sort_properties', n.get_collection_of_object_values(SortProperty)),
         }
         return fields
     

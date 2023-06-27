@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import recurrence_pattern, recurrence_range
+    from .recurrence_pattern import RecurrencePattern
+    from .recurrence_range import RecurrenceRange
 
 @dataclass
 class PatternedRecurrence(AdditionalDataHolder, Parsable):
@@ -14,9 +15,9 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The frequency of an event.  For access reviews: Do not specify this property for a one-time access review.  Only interval, dayOfMonth, and type (weekly, absoluteMonthly) properties of recurrencePattern are supported.
-    pattern: Optional[recurrence_pattern.RecurrencePattern] = None
+    pattern: Optional[RecurrencePattern] = None
     # The duration of an event.
-    range: Optional[recurrence_range.RecurrenceRange] = None
+    range: Optional[RecurrenceRange] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PatternedRecurrence:
@@ -35,14 +36,16 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import recurrence_pattern, recurrence_range
+        from .recurrence_pattern import RecurrencePattern
+        from .recurrence_range import RecurrenceRange
 
-        from . import recurrence_pattern, recurrence_range
+        from .recurrence_pattern import RecurrencePattern
+        from .recurrence_range import RecurrenceRange
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "pattern": lambda n : setattr(self, 'pattern', n.get_object_value(recurrence_pattern.RecurrencePattern)),
-            "range": lambda n : setattr(self, 'range', n.get_object_value(recurrence_range.RecurrenceRange)),
+            "pattern": lambda n : setattr(self, 'pattern', n.get_object_value(RecurrencePattern)),
+            "range": lambda n : setattr(self, 'range', n.get_object_value(RecurrenceRange)),
         }
         return fields
     

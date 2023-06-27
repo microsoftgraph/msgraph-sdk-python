@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, managed_app_status_raw
+    from .entity import Entity
+    from .managed_app_status_raw import ManagedAppStatusRaw
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ManagedAppStatus(entity.Entity):
+class ManagedAppStatus(Entity):
     """
     Represents app protection and configuration status for the organization.
     """
@@ -35,9 +36,9 @@ class ManagedAppStatus(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAppStatusRaw".casefold():
-            from . import managed_app_status_raw
+            from .managed_app_status_raw import ManagedAppStatusRaw
 
-            return managed_app_status_raw.ManagedAppStatusRaw()
+            return ManagedAppStatusRaw()
         return ManagedAppStatus()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -45,9 +46,11 @@ class ManagedAppStatus(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, managed_app_status_raw
+        from .entity import Entity
+        from .managed_app_status_raw import ManagedAppStatusRaw
 
-        from . import entity, managed_app_status_raw
+        from .entity import Entity
+        from .managed_app_status_raw import ManagedAppStatusRaw
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

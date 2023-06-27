@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import delegated_admin_relationship
-    from ....models.o_data_errors import o_data_error
-    from .access_assignments import access_assignments_request_builder
-    from .operations import operations_request_builder
-    from .requests import requests_request_builder
+    from ....models.delegated_admin_relationship import DelegatedAdminRelationship
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .access_assignments.access_assignments_request_builder import AccessAssignmentsRequestBuilder
+    from .operations.operations_request_builder import OperationsRequestBuilder
+    from .requests.requests_request_builder import RequestsRequestBuilder
 
 class DelegatedAdminRelationshipItemRequestBuilder():
     """
@@ -47,62 +47,62 @@ class DelegatedAdminRelationshipItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_relationship.DelegatedAdminRelationship]:
+    async def get(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
         Read the properties of a delegatedAdminRelationship object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_admin_relationship.DelegatedAdminRelationship]
+        Returns: Optional[DelegatedAdminRelationship]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import delegated_admin_relationship
+        from ....models.delegated_admin_relationship import DelegatedAdminRelationship
 
-        return await self.request_adapter.send_async(request_info, delegated_admin_relationship.DelegatedAdminRelationship, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedAdminRelationship, error_mapping)
     
-    async def patch(self,body: Optional[delegated_admin_relationship.DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[delegated_admin_relationship.DelegatedAdminRelationship]:
+    async def patch(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
         Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the `created` **status**.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[delegated_admin_relationship.DelegatedAdminRelationship]
+        Returns: Optional[DelegatedAdminRelationship]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import delegated_admin_relationship
+        from ....models.delegated_admin_relationship import DelegatedAdminRelationship
 
-        return await self.request_adapter.send_async(request_info, delegated_admin_relationship.DelegatedAdminRelationship, error_mapping)
+        return await self.request_adapter.send_async(request_info, DelegatedAdminRelationship, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class DelegatedAdminRelationshipItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[delegated_admin_relationship.DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the `created` **status**.
         Args:
@@ -160,31 +160,31 @@ class DelegatedAdminRelationshipItemRequestBuilder():
         return request_info
     
     @property
-    def access_assignments(self) -> access_assignments_request_builder.AccessAssignmentsRequestBuilder:
+    def access_assignments(self) -> AccessAssignmentsRequestBuilder:
         """
         Provides operations to manage the accessAssignments property of the microsoft.graph.delegatedAdminRelationship entity.
         """
-        from .access_assignments import access_assignments_request_builder
+        from .access_assignments.access_assignments_request_builder import AccessAssignmentsRequestBuilder
 
-        return access_assignments_request_builder.AccessAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AccessAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+    def operations(self) -> OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.delegatedAdminRelationship entity.
         """
-        from .operations import operations_request_builder
+        from .operations.operations_request_builder import OperationsRequestBuilder
 
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def requests(self) -> requests_request_builder.RequestsRequestBuilder:
+    def requests(self) -> RequestsRequestBuilder:
         """
         Provides operations to manage the requests property of the microsoft.graph.delegatedAdminRelationship entity.
         """
-        from .requests import requests_request_builder
+        from .requests.requests_request_builder import RequestsRequestBuilder
 
-        return requests_request_builder.RequestsRequestBuilder(self.request_adapter, self.path_parameters)
+        return RequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DelegatedAdminRelationshipItemRequestBuilderDeleteRequestConfiguration():

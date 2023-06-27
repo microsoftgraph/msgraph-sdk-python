@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import basic_authentication, client_certificate_authentication, pkcs12_certificate
+    from .basic_authentication import BasicAuthentication
+    from .client_certificate_authentication import ClientCertificateAuthentication
+    from .pkcs12_certificate import Pkcs12Certificate
 
 @dataclass
 class ApiAuthenticationConfigurationBase(AdditionalDataHolder, Parsable):
@@ -29,17 +31,17 @@ class ApiAuthenticationConfigurationBase(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.basicAuthentication".casefold():
-            from . import basic_authentication
+            from .basic_authentication import BasicAuthentication
 
-            return basic_authentication.BasicAuthentication()
+            return BasicAuthentication()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.clientCertificateAuthentication".casefold():
-            from . import client_certificate_authentication
+            from .client_certificate_authentication import ClientCertificateAuthentication
 
-            return client_certificate_authentication.ClientCertificateAuthentication()
+            return ClientCertificateAuthentication()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.pkcs12Certificate".casefold():
-            from . import pkcs12_certificate
+            from .pkcs12_certificate import Pkcs12Certificate
 
-            return pkcs12_certificate.Pkcs12Certificate()
+            return Pkcs12Certificate()
         return ApiAuthenticationConfigurationBase()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -47,9 +49,13 @@ class ApiAuthenticationConfigurationBase(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import basic_authentication, client_certificate_authentication, pkcs12_certificate
+        from .basic_authentication import BasicAuthentication
+        from .client_certificate_authentication import ClientCertificateAuthentication
+        from .pkcs12_certificate import Pkcs12Certificate
 
-        from . import basic_authentication, client_certificate_authentication, pkcs12_certificate
+        from .basic_authentication import BasicAuthentication
+        from .client_certificate_authentication import ClientCertificateAuthentication
+        from .pkcs12_certificate import Pkcs12Certificate
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import profile_photo
-    from ....models.o_data_errors import o_data_error
-    from .value import content_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.profile_photo import ProfilePhoto
+    from .value.content_request_builder import ContentRequestBuilder
 
 class PhotoRequestBuilder():
     """
@@ -45,62 +45,62 @@ class PhotoRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PhotoRequestBuilderGetRequestConfiguration] = None) -> Optional[profile_photo.ProfilePhoto]:
+    async def get(self,request_configuration: Optional[PhotoRequestBuilderGetRequestConfiguration] = None) -> Optional[ProfilePhoto]:
         """
         The profile photo for the team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[profile_photo.ProfilePhoto]
+        Returns: Optional[ProfilePhoto]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import profile_photo
+        from ....models.profile_photo import ProfilePhoto
 
-        return await self.request_adapter.send_async(request_info, profile_photo.ProfilePhoto, error_mapping)
+        return await self.request_adapter.send_async(request_info, ProfilePhoto, error_mapping)
     
-    async def patch(self,body: Optional[profile_photo.ProfilePhoto] = None, request_configuration: Optional[PhotoRequestBuilderPatchRequestConfiguration] = None) -> Optional[profile_photo.ProfilePhoto]:
+    async def patch(self,body: Optional[ProfilePhoto] = None, request_configuration: Optional[PhotoRequestBuilderPatchRequestConfiguration] = None) -> Optional[ProfilePhoto]:
         """
         Update the navigation property photo in teams
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[profile_photo.ProfilePhoto]
+        Returns: Optional[ProfilePhoto]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import profile_photo
+        from ....models.profile_photo import ProfilePhoto
 
-        return await self.request_adapter.send_async(request_info, profile_photo.ProfilePhoto, error_mapping)
+        return await self.request_adapter.send_async(request_info, ProfilePhoto, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PhotoRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class PhotoRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[profile_photo.ProfilePhoto] = None, request_configuration: Optional[PhotoRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ProfilePhoto] = None, request_configuration: Optional[PhotoRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property photo in teams
         Args:
@@ -158,13 +158,13 @@ class PhotoRequestBuilder():
         return request_info
     
     @property
-    def content(self) -> content_request_builder.ContentRequestBuilder:
+    def content(self) -> ContentRequestBuilder:
         """
         Provides operations to manage the media for the team entity.
         """
-        from .value import content_request_builder
+        from .value.content_request_builder import ContentRequestBuilder
 
-        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+        return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PhotoRequestBuilderDeleteRequestConfiguration():

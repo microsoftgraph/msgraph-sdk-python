@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attribute_type
+    from .attribute_type import AttributeType
 
 @dataclass
 class AttributeMappingParameterSchema(AdditionalDataHolder, Parsable):
@@ -20,7 +20,7 @@ class AttributeMappingParameterSchema(AdditionalDataHolder, Parsable):
     # The required property
     required: Optional[bool] = None
     # The type property
-    type: Optional[attribute_type.AttributeType] = None
+    type: Optional[AttributeType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttributeMappingParameterSchema:
@@ -39,16 +39,16 @@ class AttributeMappingParameterSchema(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attribute_type
+        from .attribute_type import AttributeType
 
-        from . import attribute_type
+        from .attribute_type import AttributeType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowMultipleOccurrences": lambda n : setattr(self, 'allow_multiple_occurrences', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "required": lambda n : setattr(self, 'required', n.get_bool_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(attribute_type.AttributeType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(AttributeType)),
         }
         return fields
     

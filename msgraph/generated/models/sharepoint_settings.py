@@ -5,12 +5,16 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import entity, idle_session_sign_out, image_tagging_choice, sharing_capabilities, sharing_domain_restriction_mode
+    from .entity import Entity
+    from .idle_session_sign_out import IdleSessionSignOut
+    from .image_tagging_choice import ImageTaggingChoice
+    from .sharing_capabilities import SharingCapabilities
+    from .sharing_domain_restriction_mode import SharingDomainRestrictionMode
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class SharepointSettings(entity.Entity):
+class SharepointSettings(Entity):
     # Collection of trusted domain GUIDs for the OneDrive sync app.
     allowed_domain_guids_for_sync_app: Optional[List[UUID]] = None
     # Collection of managed paths available for site creation. Read-only.
@@ -20,9 +24,9 @@ class SharepointSettings(entity.Entity):
     # Collection of file extensions not uploaded by the OneDrive sync app.
     excluded_file_extensions_for_sync_app: Optional[List[str]] = None
     # Specifies the idle session sign-out policies for the tenant.
-    idle_session_sign_out: Optional[idle_session_sign_out.IdleSessionSignOut] = None
+    idle_session_sign_out: Optional[IdleSessionSignOut] = None
     # Specifies the image tagging option for the tenant. Possible values are: disabled, basic, enhanced.
-    image_tagging_option: Optional[image_tagging_choice.ImageTaggingChoice] = None
+    image_tagging_option: Optional[ImageTaggingChoice] = None
     # Indicates whether comments are allowed on modern site pages in SharePoint.
     is_commenting_on_site_pages_enabled: Optional[bool] = None
     # Indicates whether push notifications are enabled for OneDrive events.
@@ -62,9 +66,9 @@ class SharepointSettings(entity.Entity):
     # Collection of email domains that are blocked for sharing outside the organization.
     sharing_blocked_domain_list: Optional[List[str]] = None
     # Sharing capability for the tenant. Possible values are: disabled, externalUserSharingOnly, externalUserAndGuestSharing, existingExternalUserSharingOnly.
-    sharing_capability: Optional[sharing_capabilities.SharingCapabilities] = None
+    sharing_capability: Optional[SharingCapabilities] = None
     # Specifies the external sharing mode for domains. Possible values are: none, allowList, blockList.
-    sharing_domain_restriction_mode: Optional[sharing_domain_restriction_mode.SharingDomainRestrictionMode] = None
+    sharing_domain_restriction_mode: Optional[SharingDomainRestrictionMode] = None
     # The value of the team site managed path. This is the path under which new team sites will be created.
     site_creation_default_managed_path: Optional[str] = None
     # The default storage quota for a new site upon creation. Measured in megabytes (MB).
@@ -89,17 +93,25 @@ class SharepointSettings(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, idle_session_sign_out, image_tagging_choice, sharing_capabilities, sharing_domain_restriction_mode
+        from .entity import Entity
+        from .idle_session_sign_out import IdleSessionSignOut
+        from .image_tagging_choice import ImageTaggingChoice
+        from .sharing_capabilities import SharingCapabilities
+        from .sharing_domain_restriction_mode import SharingDomainRestrictionMode
 
-        from . import entity, idle_session_sign_out, image_tagging_choice, sharing_capabilities, sharing_domain_restriction_mode
+        from .entity import Entity
+        from .idle_session_sign_out import IdleSessionSignOut
+        from .image_tagging_choice import ImageTaggingChoice
+        from .sharing_capabilities import SharingCapabilities
+        from .sharing_domain_restriction_mode import SharingDomainRestrictionMode
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowedDomainGuidsForSyncApp": lambda n : setattr(self, 'allowed_domain_guids_for_sync_app', n.get_collection_of_primitive_values(UUID)),
             "availableManagedPathsForSiteCreation": lambda n : setattr(self, 'available_managed_paths_for_site_creation', n.get_collection_of_primitive_values(str)),
             "deletedUserPersonalSiteRetentionPeriodInDays": lambda n : setattr(self, 'deleted_user_personal_site_retention_period_in_days', n.get_int_value()),
             "excludedFileExtensionsForSyncApp": lambda n : setattr(self, 'excluded_file_extensions_for_sync_app', n.get_collection_of_primitive_values(str)),
-            "idleSessionSignOut": lambda n : setattr(self, 'idle_session_sign_out', n.get_object_value(idle_session_sign_out.IdleSessionSignOut)),
-            "imageTaggingOption": lambda n : setattr(self, 'image_tagging_option', n.get_enum_value(image_tagging_choice.ImageTaggingChoice)),
+            "idleSessionSignOut": lambda n : setattr(self, 'idle_session_sign_out', n.get_object_value(IdleSessionSignOut)),
+            "imageTaggingOption": lambda n : setattr(self, 'image_tagging_option', n.get_enum_value(ImageTaggingChoice)),
             "isCommentingOnSitePagesEnabled": lambda n : setattr(self, 'is_commenting_on_site_pages_enabled', n.get_bool_value()),
             "isFileActivityNotificationEnabled": lambda n : setattr(self, 'is_file_activity_notification_enabled', n.get_bool_value()),
             "isLegacyAuthProtocolsEnabled": lambda n : setattr(self, 'is_legacy_auth_protocols_enabled', n.get_bool_value()),
@@ -118,8 +130,8 @@ class SharepointSettings(entity.Entity):
             "personalSiteDefaultStorageLimitInMB": lambda n : setattr(self, 'personal_site_default_storage_limit_in_m_b', n.get_int_value()),
             "sharingAllowedDomainList": lambda n : setattr(self, 'sharing_allowed_domain_list', n.get_collection_of_primitive_values(str)),
             "sharingBlockedDomainList": lambda n : setattr(self, 'sharing_blocked_domain_list', n.get_collection_of_primitive_values(str)),
-            "sharingCapability": lambda n : setattr(self, 'sharing_capability', n.get_enum_value(sharing_capabilities.SharingCapabilities)),
-            "sharingDomainRestrictionMode": lambda n : setattr(self, 'sharing_domain_restriction_mode', n.get_enum_value(sharing_domain_restriction_mode.SharingDomainRestrictionMode)),
+            "sharingCapability": lambda n : setattr(self, 'sharing_capability', n.get_enum_value(SharingCapabilities)),
+            "sharingDomainRestrictionMode": lambda n : setattr(self, 'sharing_domain_restriction_mode', n.get_enum_value(SharingDomainRestrictionMode)),
             "siteCreationDefaultManagedPath": lambda n : setattr(self, 'site_creation_default_managed_path', n.get_str_value()),
             "siteCreationDefaultStorageLimitInMB": lambda n : setattr(self, 'site_creation_default_storage_limit_in_m_b', n.get_int_value()),
             "tenantDefaultTimezone": lambda n : setattr(self, 'tenant_default_timezone', n.get_str_value()),

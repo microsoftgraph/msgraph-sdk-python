@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attack_simulation_user
+    from .attack_simulation_user import AttackSimulationUser
 
 @dataclass
 class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The user in an attack simulation and training campaign.
-    attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
+    attack_simulation_user: Optional[AttackSimulationUser] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Number of repeat offences of the user in attack simulation and training campaigns.
@@ -35,12 +35,12 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attack_simulation_user
+        from .attack_simulation_user import AttackSimulationUser
 
-        from . import attack_simulation_user
+        from .attack_simulation_user import AttackSimulationUser
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
+            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(AttackSimulationUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "repeatOffenceCount": lambda n : setattr(self, 'repeat_offence_count', n.get_int_value()),
         }

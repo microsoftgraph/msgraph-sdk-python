@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class EBookInstallSummary(entity.Entity):
+class EBookInstallSummary(Entity):
     # Number of Devices that have failed to install this book.
     failed_device_count: Optional[int] = None
     # Number of Users that have 1 or more device that failed to install this book.
@@ -42,9 +42,9 @@ class EBookInstallSummary(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "failedDeviceCount": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),

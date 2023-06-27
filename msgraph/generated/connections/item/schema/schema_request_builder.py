@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models.external_connectors import schema
-    from ....models.o_data_errors import o_data_error
+    from ....models.external_connectors.schema import Schema
+    from ....models.o_data_errors.o_data_error import ODataError
 
 class SchemaRequestBuilder():
     """
@@ -44,62 +44,62 @@ class SchemaRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SchemaRequestBuilderGetRequestConfiguration] = None) -> Optional[schema.Schema]:
+    async def get(self,request_configuration: Optional[SchemaRequestBuilderGetRequestConfiguration] = None) -> Optional[Schema]:
         """
         Read the properties and relationships of a schema object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[schema.Schema]
+        Returns: Optional[Schema]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.external_connectors import schema
+        from ....models.external_connectors.schema import Schema
 
-        return await self.request_adapter.send_async(request_info, schema.Schema, error_mapping)
+        return await self.request_adapter.send_async(request_info, Schema, error_mapping)
     
-    async def patch(self,body: Optional[schema.Schema] = None, request_configuration: Optional[SchemaRequestBuilderPatchRequestConfiguration] = None) -> Optional[schema.Schema]:
+    async def patch(self,body: Optional[Schema] = None, request_configuration: Optional[SchemaRequestBuilderPatchRequestConfiguration] = None) -> Optional[Schema]:
         """
         Update the navigation property schema in connections
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[schema.Schema]
+        Returns: Optional[Schema]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.external_connectors import schema
+        from ....models.external_connectors.schema import Schema
 
-        return await self.request_adapter.send_async(request_info, schema.Schema, error_mapping)
+        return await self.request_adapter.send_async(request_info, Schema, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SchemaRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class SchemaRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[schema.Schema] = None, request_configuration: Optional[SchemaRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Schema] = None, request_configuration: Optional[SchemaRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property schema in connections
         Args:

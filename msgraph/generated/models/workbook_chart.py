@@ -4,38 +4,45 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_area_format, workbook_chart_axes, workbook_chart_data_labels, workbook_chart_legend, workbook_chart_series, workbook_chart_title, workbook_worksheet
+    from .entity import Entity
+    from .workbook_chart_area_format import WorkbookChartAreaFormat
+    from .workbook_chart_axes import WorkbookChartAxes
+    from .workbook_chart_data_labels import WorkbookChartDataLabels
+    from .workbook_chart_legend import WorkbookChartLegend
+    from .workbook_chart_series import WorkbookChartSeries
+    from .workbook_chart_title import WorkbookChartTitle
+    from .workbook_worksheet import WorkbookWorksheet
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChart(entity.Entity):
+class WorkbookChart(Entity):
     # Represents chart axes. Read-only.
-    axes: Optional[workbook_chart_axes.WorkbookChartAxes] = None
+    axes: Optional[WorkbookChartAxes] = None
     # Represents the datalabels on the chart. Read-only.
-    data_labels: Optional[workbook_chart_data_labels.WorkbookChartDataLabels] = None
+    data_labels: Optional[WorkbookChartDataLabels] = None
     # Encapsulates the format properties for the chart area. Read-only.
-    format: Optional[workbook_chart_area_format.WorkbookChartAreaFormat] = None
+    format: Optional[WorkbookChartAreaFormat] = None
     # Represents the height, in points, of the chart object.
     height: Optional[float] = None
     # The distance, in points, from the left side of the chart to the worksheet origin.
     left: Optional[float] = None
     # Represents the legend for the chart. Read-only.
-    legend: Optional[workbook_chart_legend.WorkbookChartLegend] = None
+    legend: Optional[WorkbookChartLegend] = None
     # Represents the name of a chart object.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents either a single series or collection of series in the chart. Read-only.
-    series: Optional[List[workbook_chart_series.WorkbookChartSeries]] = None
+    series: Optional[List[WorkbookChartSeries]] = None
     # Represents the title of the specified chart, including the text, visibility, position and formating of the title. Read-only.
-    title: Optional[workbook_chart_title.WorkbookChartTitle] = None
+    title: Optional[WorkbookChartTitle] = None
     # Represents the distance, in points, from the top edge of the object to the top of row 1 (on a worksheet) or the top of the chart area (on a chart).
     top: Optional[float] = None
     # Represents the width, in points, of the chart object.
     width: Optional[float] = None
     # The worksheet containing the current chart. Read-only.
-    worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
+    worksheet: Optional[WorkbookWorksheet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChart:
@@ -54,23 +61,37 @@ class WorkbookChart(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_area_format, workbook_chart_axes, workbook_chart_data_labels, workbook_chart_legend, workbook_chart_series, workbook_chart_title, workbook_worksheet
+        from .entity import Entity
+        from .workbook_chart_area_format import WorkbookChartAreaFormat
+        from .workbook_chart_axes import WorkbookChartAxes
+        from .workbook_chart_data_labels import WorkbookChartDataLabels
+        from .workbook_chart_legend import WorkbookChartLegend
+        from .workbook_chart_series import WorkbookChartSeries
+        from .workbook_chart_title import WorkbookChartTitle
+        from .workbook_worksheet import WorkbookWorksheet
 
-        from . import entity, workbook_chart_area_format, workbook_chart_axes, workbook_chart_data_labels, workbook_chart_legend, workbook_chart_series, workbook_chart_title, workbook_worksheet
+        from .entity import Entity
+        from .workbook_chart_area_format import WorkbookChartAreaFormat
+        from .workbook_chart_axes import WorkbookChartAxes
+        from .workbook_chart_data_labels import WorkbookChartDataLabels
+        from .workbook_chart_legend import WorkbookChartLegend
+        from .workbook_chart_series import WorkbookChartSeries
+        from .workbook_chart_title import WorkbookChartTitle
+        from .workbook_worksheet import WorkbookWorksheet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "axes": lambda n : setattr(self, 'axes', n.get_object_value(workbook_chart_axes.WorkbookChartAxes)),
-            "dataLabels": lambda n : setattr(self, 'data_labels', n.get_object_value(workbook_chart_data_labels.WorkbookChartDataLabels)),
-            "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_area_format.WorkbookChartAreaFormat)),
+            "axes": lambda n : setattr(self, 'axes', n.get_object_value(WorkbookChartAxes)),
+            "dataLabels": lambda n : setattr(self, 'data_labels', n.get_object_value(WorkbookChartDataLabels)),
+            "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartAreaFormat)),
             "height": lambda n : setattr(self, 'height', n.get_float_value()),
             "left": lambda n : setattr(self, 'left', n.get_float_value()),
-            "legend": lambda n : setattr(self, 'legend', n.get_object_value(workbook_chart_legend.WorkbookChartLegend)),
+            "legend": lambda n : setattr(self, 'legend', n.get_object_value(WorkbookChartLegend)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "series": lambda n : setattr(self, 'series', n.get_collection_of_object_values(workbook_chart_series.WorkbookChartSeries)),
-            "title": lambda n : setattr(self, 'title', n.get_object_value(workbook_chart_title.WorkbookChartTitle)),
+            "series": lambda n : setattr(self, 'series', n.get_collection_of_object_values(WorkbookChartSeries)),
+            "title": lambda n : setattr(self, 'title', n.get_object_value(WorkbookChartTitle)),
             "top": lambda n : setattr(self, 'top', n.get_float_value()),
             "width": lambda n : setattr(self, 'width', n.get_float_value()),
-            "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(workbook_worksheet.WorkbookWorksheet)),
+            "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(WorkbookWorksheet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

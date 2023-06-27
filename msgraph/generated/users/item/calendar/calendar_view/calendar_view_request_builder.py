@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import event_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .delta import delta_request_builder
-    from .item import event_item_request_builder
+    from .....models.event_collection_response import EventCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
+    from .item.event_item_request_builder import EventItemRequestBuilder
 
 class CalendarViewRequestBuilder():
     """
@@ -38,42 +38,42 @@ class CalendarViewRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_event_id(self,event_id: str) -> event_item_request_builder.EventItemRequestBuilder:
+    def by_event_id(self,event_id: str) -> EventItemRequestBuilder:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.calendar entity.
         Args:
             event_id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
+        Returns: EventItemRequestBuilder
         """
         if not event_id:
             raise TypeError("event_id cannot be null.")
-        from .item import event_item_request_builder
+        from .item.event_item_request_builder import EventItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["event%2Did"] = event_id
-        return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return EventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> Optional[event_collection_response.EventCollectionResponse]:
+    async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> Optional[EventCollectionResponse]:
         """
         The calendar view for the calendar. Navigation property. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[event_collection_response.EventCollectionResponse]
+        Returns: Optional[EventCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import event_collection_response
+        from .....models.event_collection_response import EventCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, event_collection_response.EventCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, EventCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -94,22 +94,22 @@ class CalendarViewRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def delta(self) -> DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        from .delta import delta_request_builder
+        from .delta.delta_request_builder import DeltaRequestBuilder
 
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CalendarViewRequestBuilderGetQueryParameters():

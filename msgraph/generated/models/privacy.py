@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import subject_rights_request
+    from .subject_rights_request import SubjectRightsRequest
 
 @dataclass
 class Privacy(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class Privacy(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The subjectRightsRequests property
-    subject_rights_requests: Optional[List[subject_rights_request.SubjectRightsRequest]] = None
+    subject_rights_requests: Optional[List[SubjectRightsRequest]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Privacy:
@@ -33,13 +33,13 @@ class Privacy(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import subject_rights_request
+        from .subject_rights_request import SubjectRightsRequest
 
-        from . import subject_rights_request
+        from .subject_rights_request import SubjectRightsRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "subjectRightsRequests": lambda n : setattr(self, 'subject_rights_requests', n.get_collection_of_object_values(subject_rights_request.SubjectRightsRequest)),
+            "subjectRightsRequests": lambda n : setattr(self, 'subject_rights_requests', n.get_collection_of_object_values(SubjectRightsRequest)),
         }
         return fields
     

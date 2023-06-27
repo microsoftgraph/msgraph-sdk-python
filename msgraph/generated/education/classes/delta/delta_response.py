@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import base_delta_function_response, education_class
+    from ....models.base_delta_function_response import BaseDeltaFunctionResponse
+    from ....models.education_class import EducationClass
 
-from ....models import base_delta_function_response
+from ....models.base_delta_function_response import BaseDeltaFunctionResponse
 
 @dataclass
-class DeltaResponse(base_delta_function_response.BaseDeltaFunctionResponse):
+class DeltaResponse(BaseDeltaFunctionResponse):
     # The value property
-    value: Optional[List[education_class.EducationClass]] = None
+    value: Optional[List[EducationClass]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeltaResponse:
@@ -30,12 +31,14 @@ class DeltaResponse(base_delta_function_response.BaseDeltaFunctionResponse):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import base_delta_function_response, education_class
+        from ....models.base_delta_function_response import BaseDeltaFunctionResponse
+        from ....models.education_class import EducationClass
 
-        from ....models import base_delta_function_response, education_class
+        from ....models.base_delta_function_response import BaseDeltaFunctionResponse
+        from ....models.education_class import EducationClass
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(education_class.EducationClass)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(EducationClass)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

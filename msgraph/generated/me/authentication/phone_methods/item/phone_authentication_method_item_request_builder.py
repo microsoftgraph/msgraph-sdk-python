@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import phone_authentication_method
-    from .....models.o_data_errors import o_data_error
-    from .disable_sms_sign_in import disable_sms_sign_in_request_builder
-    from .enable_sms_sign_in import enable_sms_sign_in_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.phone_authentication_method import PhoneAuthenticationMethod
+    from .disable_sms_sign_in.disable_sms_sign_in_request_builder import DisableSmsSignInRequestBuilder
+    from .enable_sms_sign_in.enable_sms_sign_in_request_builder import EnableSmsSignInRequestBuilder
 
 class PhoneAuthenticationMethodItemRequestBuilder():
     """
@@ -46,62 +46,62 @@ class PhoneAuthenticationMethodItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PhoneAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[phone_authentication_method.PhoneAuthenticationMethod]:
+    async def get(self,request_configuration: Optional[PhoneAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PhoneAuthenticationMethod]:
         """
         Retrieve a single phoneAuthenticationMethod object for a user. This method is available only for standard Azure AD and B2B users, but not B2C users.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[phone_authentication_method.PhoneAuthenticationMethod]
+        Returns: Optional[PhoneAuthenticationMethod]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import phone_authentication_method
+        from .....models.phone_authentication_method import PhoneAuthenticationMethod
 
-        return await self.request_adapter.send_async(request_info, phone_authentication_method.PhoneAuthenticationMethod, error_mapping)
+        return await self.request_adapter.send_async(request_info, PhoneAuthenticationMethod, error_mapping)
     
-    async def patch(self,body: Optional[phone_authentication_method.PhoneAuthenticationMethod] = None, request_configuration: Optional[PhoneAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[phone_authentication_method.PhoneAuthenticationMethod]:
+    async def patch(self,body: Optional[PhoneAuthenticationMethod] = None, request_configuration: Optional[PhoneAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PhoneAuthenticationMethod]:
         """
         Update a user's phone number associated with a phone authentication method object. You can't change a phone's type. To change a phone's type, add a new number of the desired type and then delete the object with the original type. If a user is enabled by policy to use SMS to sign in and the `mobile` number is changed, the system will attempt to register the number for use in that system.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[phone_authentication_method.PhoneAuthenticationMethod]
+        Returns: Optional[PhoneAuthenticationMethod]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import phone_authentication_method
+        from .....models.phone_authentication_method import PhoneAuthenticationMethod
 
-        return await self.request_adapter.send_async(request_info, phone_authentication_method.PhoneAuthenticationMethod, error_mapping)
+        return await self.request_adapter.send_async(request_info, PhoneAuthenticationMethod, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PhoneAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class PhoneAuthenticationMethodItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[phone_authentication_method.PhoneAuthenticationMethod] = None, request_configuration: Optional[PhoneAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PhoneAuthenticationMethod] = None, request_configuration: Optional[PhoneAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update a user's phone number associated with a phone authentication method object. You can't change a phone's type. To change a phone's type, add a new number of the desired type and then delete the object with the original type. If a user is enabled by policy to use SMS to sign in and the `mobile` number is changed, the system will attempt to register the number for use in that system.
         Args:
@@ -159,22 +159,22 @@ class PhoneAuthenticationMethodItemRequestBuilder():
         return request_info
     
     @property
-    def disable_sms_sign_in(self) -> disable_sms_sign_in_request_builder.DisableSmsSignInRequestBuilder:
+    def disable_sms_sign_in(self) -> DisableSmsSignInRequestBuilder:
         """
         Provides operations to call the disableSmsSignIn method.
         """
-        from .disable_sms_sign_in import disable_sms_sign_in_request_builder
+        from .disable_sms_sign_in.disable_sms_sign_in_request_builder import DisableSmsSignInRequestBuilder
 
-        return disable_sms_sign_in_request_builder.DisableSmsSignInRequestBuilder(self.request_adapter, self.path_parameters)
+        return DisableSmsSignInRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def enable_sms_sign_in(self) -> enable_sms_sign_in_request_builder.EnableSmsSignInRequestBuilder:
+    def enable_sms_sign_in(self) -> EnableSmsSignInRequestBuilder:
         """
         Provides operations to call the enableSmsSignIn method.
         """
-        from .enable_sms_sign_in import enable_sms_sign_in_request_builder
+        from .enable_sms_sign_in.enable_sms_sign_in_request_builder import EnableSmsSignInRequestBuilder
 
-        return enable_sms_sign_in_request_builder.EnableSmsSignInRequestBuilder(self.request_adapter, self.path_parameters)
+        return EnableSmsSignInRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PhoneAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration():

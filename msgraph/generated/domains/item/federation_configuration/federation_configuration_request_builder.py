@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import internal_domain_federation, internal_domain_federation_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import internal_domain_federation_item_request_builder
+    from ....models.internal_domain_federation import InternalDomainFederation
+    from ....models.internal_domain_federation_collection_response import InternalDomainFederationCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.internal_domain_federation_item_request_builder import InternalDomainFederationItemRequestBuilder
 
 class FederationConfigurationRequestBuilder():
     """
@@ -37,67 +38,67 @@ class FederationConfigurationRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_internal_domain_federation_id(self,internal_domain_federation_id: str) -> internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder:
+    def by_internal_domain_federation_id(self,internal_domain_federation_id: str) -> InternalDomainFederationItemRequestBuilder:
         """
         Provides operations to manage the federationConfiguration property of the microsoft.graph.domain entity.
         Args:
             internal_domain_federation_id: Unique identifier of the item
-        Returns: internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder
+        Returns: InternalDomainFederationItemRequestBuilder
         """
         if not internal_domain_federation_id:
             raise TypeError("internal_domain_federation_id cannot be null.")
-        from .item import internal_domain_federation_item_request_builder
+        from .item.internal_domain_federation_item_request_builder import InternalDomainFederationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["internalDomainFederation%2Did"] = internal_domain_federation_id
-        return internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return InternalDomainFederationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[FederationConfigurationRequestBuilderGetRequestConfiguration] = None) -> Optional[internal_domain_federation_collection_response.InternalDomainFederationCollectionResponse]:
+    async def get(self,request_configuration: Optional[FederationConfigurationRequestBuilderGetRequestConfiguration] = None) -> Optional[InternalDomainFederationCollectionResponse]:
         """
         Read the properties and relationships of an internalDomainFederation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[internal_domain_federation_collection_response.InternalDomainFederationCollectionResponse]
+        Returns: Optional[InternalDomainFederationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import internal_domain_federation_collection_response
+        from ....models.internal_domain_federation_collection_response import InternalDomainFederationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, internal_domain_federation_collection_response.InternalDomainFederationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, InternalDomainFederationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[internal_domain_federation.InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> Optional[internal_domain_federation.InternalDomainFederation]:
+    async def post(self,body: Optional[InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> Optional[InternalDomainFederation]:
         """
         Create a new internalDomainFederation object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[internal_domain_federation.InternalDomainFederation]
+        Returns: Optional[InternalDomainFederation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import internal_domain_federation
+        from ....models.internal_domain_federation import InternalDomainFederation
 
-        return await self.request_adapter.send_async(request_info, internal_domain_federation.InternalDomainFederation, error_mapping)
+        return await self.request_adapter.send_async(request_info, InternalDomainFederation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[FederationConfigurationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class FederationConfigurationRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[internal_domain_federation.InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new internalDomainFederation object.
         Args:
@@ -139,13 +140,13 @@ class FederationConfigurationRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class FederationConfigurationRequestBuilderGetQueryParameters():

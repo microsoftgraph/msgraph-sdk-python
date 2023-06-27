@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_assignment_grade_type
+    from .education_assignment_grade_type import EducationAssignmentGradeType
 
-from . import education_assignment_grade_type
+from .education_assignment_grade_type import EducationAssignmentGradeType
 
 @dataclass
-class EducationAssignmentPointsGradeType(education_assignment_grade_type.EducationAssignmentGradeType):
+class EducationAssignmentPointsGradeType(EducationAssignmentGradeType):
     odata_type = "#microsoft.graph.educationAssignmentPointsGradeType"
     # Max points possible for this assignment.
     max_points: Optional[float] = None
@@ -31,9 +31,9 @@ class EducationAssignmentPointsGradeType(education_assignment_grade_type.Educati
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_assignment_grade_type
+        from .education_assignment_grade_type import EducationAssignmentGradeType
 
-        from . import education_assignment_grade_type
+        from .education_assignment_grade_type import EducationAssignmentGradeType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "maxPoints": lambda n : setattr(self, 'max_points', n.get_float_value()),

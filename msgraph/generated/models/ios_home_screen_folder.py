@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ios_home_screen_folder_page, ios_home_screen_item
+    from .ios_home_screen_folder_page import IosHomeScreenFolderPage
+    from .ios_home_screen_item import IosHomeScreenItem
 
-from . import ios_home_screen_item
+from .ios_home_screen_item import IosHomeScreenItem
 
 @dataclass
-class IosHomeScreenFolder(ios_home_screen_item.IosHomeScreenItem):
+class IosHomeScreenFolder(IosHomeScreenItem):
     odata_type = "#microsoft.graph.iosHomeScreenFolder"
     # Pages of Home Screen Layout Icons which must be applications or web clips. This collection can contain a maximum of 500 elements.
-    pages: Optional[List[ios_home_screen_folder_page.IosHomeScreenFolderPage]] = None
+    pages: Optional[List[IosHomeScreenFolderPage]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosHomeScreenFolder:
@@ -31,12 +32,14 @@ class IosHomeScreenFolder(ios_home_screen_item.IosHomeScreenItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ios_home_screen_folder_page, ios_home_screen_item
+        from .ios_home_screen_folder_page import IosHomeScreenFolderPage
+        from .ios_home_screen_item import IosHomeScreenItem
 
-        from . import ios_home_screen_folder_page, ios_home_screen_item
+        from .ios_home_screen_folder_page import IosHomeScreenFolderPage
+        from .ios_home_screen_item import IosHomeScreenItem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(ios_home_screen_folder_page.IosHomeScreenFolderPage)),
+            "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(IosHomeScreenFolderPage)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

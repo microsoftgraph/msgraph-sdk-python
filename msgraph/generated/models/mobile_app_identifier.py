@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_mobile_app_identifier, ios_mobile_app_identifier
+    from .android_mobile_app_identifier import AndroidMobileAppIdentifier
+    from .ios_mobile_app_identifier import IosMobileAppIdentifier
 
 @dataclass
 class MobileAppIdentifier(AdditionalDataHolder, Parsable):
@@ -32,13 +33,13 @@ class MobileAppIdentifier(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidMobileAppIdentifier".casefold():
-            from . import android_mobile_app_identifier
+            from .android_mobile_app_identifier import AndroidMobileAppIdentifier
 
-            return android_mobile_app_identifier.AndroidMobileAppIdentifier()
+            return AndroidMobileAppIdentifier()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosMobileAppIdentifier".casefold():
-            from . import ios_mobile_app_identifier
+            from .ios_mobile_app_identifier import IosMobileAppIdentifier
 
-            return ios_mobile_app_identifier.IosMobileAppIdentifier()
+            return IosMobileAppIdentifier()
         return MobileAppIdentifier()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -46,9 +47,11 @@ class MobileAppIdentifier(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_mobile_app_identifier, ios_mobile_app_identifier
+        from .android_mobile_app_identifier import AndroidMobileAppIdentifier
+        from .ios_mobile_app_identifier import IosMobileAppIdentifier
 
-        from . import android_mobile_app_identifier, ios_mobile_app_identifier
+        from .android_mobile_app_identifier import AndroidMobileAppIdentifier
+        from .ios_mobile_app_identifier import IosMobileAppIdentifier
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

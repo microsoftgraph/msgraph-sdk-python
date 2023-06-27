@@ -1,23 +1,25 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_configuration, shared_p_c_account_manager_policy, shared_p_c_allowed_account_type
+    from .device_configuration import DeviceConfiguration
+    from .shared_p_c_account_manager_policy import SharedPCAccountManagerPolicy
+    from .shared_p_c_allowed_account_type import SharedPCAllowedAccountType
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class SharedPCConfiguration(device_configuration.DeviceConfiguration):
+class SharedPCConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.sharedPCConfiguration"
     # Specifies how accounts are managed on a shared PC. Only applies when disableAccountManager is false.
-    account_manager_policy: Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy] = None
+    account_manager_policy: Optional[SharedPCAccountManagerPolicy] = None
     # Specifies whether local storage is allowed on a shared PC.
     allow_local_storage: Optional[bool] = None
     # Type of accounts that are allowed to share the PC.
-    allowed_accounts: Optional[shared_p_c_allowed_account_type.SharedPCAllowedAccountType] = None
+    allowed_accounts: Optional[SharedPCAllowedAccountType] = None
     # Disables the account manager for shared PC mode.
     disable_account_manager: Optional[bool] = None
     # Specifies whether the default shared PC education environment policies should be disabled. For Windows 10 RS2 and later, this policy will be applied without setting Enabled to true.
@@ -35,7 +37,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
     # Specifies the application user model ID of the app to use with assigned access.
     kiosk_app_user_model_id: Optional[str] = None
     # Specifies the daily start time of maintenance hour.
-    maintenance_start_time: Optional[time] = None
+    maintenance_start_time: Optional[datetime.time] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedPCConfiguration:
@@ -54,14 +56,18 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration, shared_p_c_account_manager_policy, shared_p_c_allowed_account_type
+        from .device_configuration import DeviceConfiguration
+        from .shared_p_c_account_manager_policy import SharedPCAccountManagerPolicy
+        from .shared_p_c_allowed_account_type import SharedPCAllowedAccountType
 
-        from . import device_configuration, shared_p_c_account_manager_policy, shared_p_c_allowed_account_type
+        from .device_configuration import DeviceConfiguration
+        from .shared_p_c_account_manager_policy import SharedPCAccountManagerPolicy
+        from .shared_p_c_allowed_account_type import SharedPCAllowedAccountType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accountManagerPolicy": lambda n : setattr(self, 'account_manager_policy', n.get_object_value(shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy)),
+            "accountManagerPolicy": lambda n : setattr(self, 'account_manager_policy', n.get_object_value(SharedPCAccountManagerPolicy)),
             "allowLocalStorage": lambda n : setattr(self, 'allow_local_storage', n.get_bool_value()),
-            "allowedAccounts": lambda n : setattr(self, 'allowed_accounts', n.get_enum_value(shared_p_c_allowed_account_type.SharedPCAllowedAccountType)),
+            "allowedAccounts": lambda n : setattr(self, 'allowed_accounts', n.get_enum_value(SharedPCAllowedAccountType)),
             "disableAccountManager": lambda n : setattr(self, 'disable_account_manager', n.get_bool_value()),
             "disableEduPolicies": lambda n : setattr(self, 'disable_edu_policies', n.get_bool_value()),
             "disablePowerPolicies": lambda n : setattr(self, 'disable_power_policies', n.get_bool_value()),
@@ -96,6 +102,6 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         writer.write_int_value("idleTimeBeforeSleepInSeconds", self.idle_time_before_sleep_in_seconds)
         writer.write_str_value("kioskAppDisplayName", self.kiosk_app_display_name)
         writer.write_str_value("kioskAppUserModelId", self.kiosk_app_user_model_id)
-        writer.write_time_value("maintenanceStartTime", self.maintenance_start_time)
+        writer.write_time_value()("maintenanceStartTime", self.maintenance_start_time)
     
 

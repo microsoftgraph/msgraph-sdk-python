@@ -1,11 +1,11 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import subject_set
+    from .subject_set import SubjectSet
 
 @dataclass
 class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
@@ -13,15 +13,15 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The number of days that a request can be pending a response before it is automatically denied.
-    duration_before_automatic_denial: Optional[timedelta] = None
+    duration_before_automatic_denial: Optional[datetime.timedelta] = None
     # If escalation is required, the time a request can be pending a response from a primary approver.
-    duration_before_escalation: Optional[timedelta] = None
+    duration_before_escalation: Optional[datetime.timedelta] = None
     # If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests.
-    escalation_approvers: Optional[List[subject_set.SubjectSet]] = None
+    escalation_approvers: Optional[List[SubjectSet]] = None
     # The subjects, typically users, who are the fallback escalation approvers.
-    fallback_escalation_approvers: Optional[List[subject_set.SubjectSet]] = None
+    fallback_escalation_approvers: Optional[List[SubjectSet]] = None
     # The subjects, typically users, who are the fallback primary approvers.
-    fallback_primary_approvers: Optional[List[subject_set.SubjectSet]] = None
+    fallback_primary_approvers: Optional[List[SubjectSet]] = None
     # Indicates whether the approver is required to provide a justification for approving a request.
     is_approver_justification_required: Optional[bool] = None
     # If true, then one or more escalationApprovers are configured in this approval stage.
@@ -29,7 +29,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The subjects, typically users, who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors or externalSponsors.
-    primary_approvers: Optional[List[subject_set.SubjectSet]] = None
+    primary_approvers: Optional[List[SubjectSet]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageApprovalStage:
@@ -48,20 +48,20 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import subject_set
+        from .subject_set import SubjectSet
 
-        from . import subject_set
+        from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "durationBeforeAutomaticDenial": lambda n : setattr(self, 'duration_before_automatic_denial', n.get_timedelta_value()),
             "durationBeforeEscalation": lambda n : setattr(self, 'duration_before_escalation', n.get_timedelta_value()),
-            "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "fallbackEscalationApprovers": lambda n : setattr(self, 'fallback_escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "fallbackPrimaryApprovers": lambda n : setattr(self, 'fallback_primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(SubjectSet)),
+            "fallbackEscalationApprovers": lambda n : setattr(self, 'fallback_escalation_approvers', n.get_collection_of_object_values(SubjectSet)),
+            "fallbackPrimaryApprovers": lambda n : setattr(self, 'fallback_primary_approvers', n.get_collection_of_object_values(SubjectSet)),
             "isApproverJustificationRequired": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
             "isEscalationEnabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(SubjectSet)),
         }
         return fields
     
@@ -73,8 +73,8 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_timedelta_value("durationBeforeAutomaticDenial", self.duration_before_automatic_denial)
-        writer.write_timedelta_value("durationBeforeEscalation", self.duration_before_escalation)
+        writer.write_timedelta_value()("durationBeforeAutomaticDenial", self.duration_before_automatic_denial)
+        writer.write_timedelta_value()("durationBeforeEscalation", self.duration_before_escalation)
         writer.write_collection_of_object_values("escalationApprovers", self.escalation_approvers)
         writer.write_collection_of_object_values("fallbackEscalationApprovers", self.fallback_escalation_approvers)
         writer.write_collection_of_object_values("fallbackPrimaryApprovers", self.fallback_primary_approvers)

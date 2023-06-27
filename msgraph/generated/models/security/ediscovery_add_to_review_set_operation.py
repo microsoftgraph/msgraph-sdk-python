@@ -4,18 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import case_operation, ediscovery_review_set, ediscovery_search
+    from .case_operation import CaseOperation
+    from .ediscovery_review_set import EdiscoveryReviewSet
+    from .ediscovery_search import EdiscoverySearch
 
-from . import case_operation
+from .case_operation import CaseOperation
 
 @dataclass
-class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
+class EdiscoveryAddToReviewSetOperation(CaseOperation):
     # The OdataType property
     odata_type: Optional[str] = None
     # eDiscovery review set to which items matching source collection query gets added.
-    review_set: Optional[ediscovery_review_set.EdiscoveryReviewSet] = None
+    review_set: Optional[EdiscoveryReviewSet] = None
     # eDiscovery search that gets added to review set.
-    search: Optional[ediscovery_search.EdiscoverySearch] = None
+    search: Optional[EdiscoverySearch] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryAddToReviewSetOperation:
@@ -34,13 +36,17 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import case_operation, ediscovery_review_set, ediscovery_search
+        from .case_operation import CaseOperation
+        from .ediscovery_review_set import EdiscoveryReviewSet
+        from .ediscovery_search import EdiscoverySearch
 
-        from . import case_operation, ediscovery_review_set, ediscovery_search
+        from .case_operation import CaseOperation
+        from .ediscovery_review_set import EdiscoveryReviewSet
+        from .ediscovery_search import EdiscoverySearch
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "reviewSet": lambda n : setattr(self, 'review_set', n.get_object_value(ediscovery_review_set.EdiscoveryReviewSet)),
-            "search": lambda n : setattr(self, 'search', n.get_object_value(ediscovery_search.EdiscoverySearch)),
+            "reviewSet": lambda n : setattr(self, 'review_set', n.get_object_value(EdiscoveryReviewSet)),
+            "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

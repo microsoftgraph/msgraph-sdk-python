@@ -4,8 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import property_rule
-    from .. import json
+    from ..json import Json
+    from .property_rule import PropertyRule
 
 @dataclass
 class DisplayTemplate(AdditionalDataHolder, Parsable):
@@ -15,13 +15,13 @@ class DisplayTemplate(AdditionalDataHolder, Parsable):
     # The text identifier for the display template; for example, contosoTickets. Maximum 16 characters. Only alphanumeric characters allowed.
     id: Optional[str] = None
     # The layout property
-    layout: Optional[json.Json] = None
+    layout: Optional[Json] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Defines the priority of a display template. A display template with priority 1 is evaluated before a template with priority 4. Gaps in priority values are supported. Must be positive value.
     priority: Optional[int] = None
     # Specifies additional rules for selecting this display template based on the item schema. Optional.
-    rules: Optional[List[property_rule.PropertyRule]] = None
+    rules: Optional[List[PropertyRule]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DisplayTemplate:
@@ -40,18 +40,18 @@ class DisplayTemplate(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import property_rule
-        from .. import json
+        from ..json import Json
+        from .property_rule import PropertyRule
 
-        from . import property_rule
-        from .. import json
+        from ..json import Json
+        from .property_rule import PropertyRule
 
         fields: Dict[str, Callable[[Any], None]] = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "layout": lambda n : setattr(self, 'layout', n.get_object_value(json.Json)),
+            "layout": lambda n : setattr(self, 'layout', n.get_object_value(Json)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
-            "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(property_rule.PropertyRule)),
+            "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(PropertyRule)),
         }
         return fields
     

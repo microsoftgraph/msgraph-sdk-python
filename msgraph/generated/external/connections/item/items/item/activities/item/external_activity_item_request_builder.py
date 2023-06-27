@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.external_connectors import external_activity
-    from ........models.o_data_errors import o_data_error
-    from .performed_by import performed_by_request_builder
+    from ........models.external_connectors.external_activity import ExternalActivity
+    from ........models.o_data_errors.o_data_error import ODataError
+    from .performed_by.performed_by_request_builder import PerformedByRequestBuilder
 
 class ExternalActivityItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class ExternalActivityItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ExternalActivityItemRequestBuilderGetRequestConfiguration] = None) -> Optional[external_activity.ExternalActivity]:
+    async def get(self,request_configuration: Optional[ExternalActivityItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ExternalActivity]:
         """
         Returns a list of activities performed on the item. Write-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external_activity.ExternalActivity]
+        Returns: Optional[ExternalActivity]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.external_connectors import external_activity
+        from ........models.external_connectors.external_activity import ExternalActivity
 
-        return await self.request_adapter.send_async(request_info, external_activity.ExternalActivity, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExternalActivity, error_mapping)
     
-    async def patch(self,body: Optional[external_activity.ExternalActivity] = None, request_configuration: Optional[ExternalActivityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[external_activity.ExternalActivity]:
+    async def patch(self,body: Optional[ExternalActivity] = None, request_configuration: Optional[ExternalActivityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ExternalActivity]:
         """
         Update the navigation property activities in external
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external_activity.ExternalActivity]
+        Returns: Optional[ExternalActivity]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.external_connectors import external_activity
+        from ........models.external_connectors.external_activity import ExternalActivity
 
-        return await self.request_adapter.send_async(request_info, external_activity.ExternalActivity, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExternalActivity, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ExternalActivityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class ExternalActivityItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[external_activity.ExternalActivity] = None, request_configuration: Optional[ExternalActivityItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ExternalActivity] = None, request_configuration: Optional[ExternalActivityItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property activities in external
         Args:
@@ -158,13 +158,13 @@ class ExternalActivityItemRequestBuilder():
         return request_info
     
     @property
-    def performed_by(self) -> performed_by_request_builder.PerformedByRequestBuilder:
+    def performed_by(self) -> PerformedByRequestBuilder:
         """
         Provides operations to manage the performedBy property of the microsoft.graph.externalConnectors.externalActivity entity.
         """
-        from .performed_by import performed_by_request_builder
+        from .performed_by.performed_by_request_builder import PerformedByRequestBuilder
 
-        return performed_by_request_builder.PerformedByRequestBuilder(self.request_adapter, self.path_parameters)
+        return PerformedByRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ExternalActivityItemRequestBuilderDeleteRequestConfiguration():

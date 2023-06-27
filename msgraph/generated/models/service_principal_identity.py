@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity
+    from .identity import Identity
 
-from . import identity
+from .identity import Identity
 
 @dataclass
-class ServicePrincipalIdentity(identity.Identity):
+class ServicePrincipalIdentity(Identity):
     odata_type = "#microsoft.graph.servicePrincipalIdentity"
     # The application identifier of the service principal.
     app_id: Optional[str] = None
@@ -31,9 +31,9 @@ class ServicePrincipalIdentity(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity
+        from .identity import Identity
 
-        from . import identity
+        from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),

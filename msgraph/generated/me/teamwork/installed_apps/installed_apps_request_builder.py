@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import user_scope_teams_app_installation, user_scope_teams_app_installation_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import user_scope_teams_app_installation_item_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.user_scope_teams_app_installation import UserScopeTeamsAppInstallation
+    from ....models.user_scope_teams_app_installation_collection_response import UserScopeTeamsAppInstallationCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.user_scope_teams_app_installation_item_request_builder import UserScopeTeamsAppInstallationItemRequestBuilder
 
 class InstalledAppsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class InstalledAppsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_user_scope_teams_app_installation_id(self,user_scope_teams_app_installation_id: str) -> user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder:
+    def by_user_scope_teams_app_installation_id(self,user_scope_teams_app_installation_id: str) -> UserScopeTeamsAppInstallationItemRequestBuilder:
         """
         Provides operations to manage the installedApps property of the microsoft.graph.userTeamwork entity.
         Args:
             user_scope_teams_app_installation_id: Unique identifier of the item
-        Returns: user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder
+        Returns: UserScopeTeamsAppInstallationItemRequestBuilder
         """
         if not user_scope_teams_app_installation_id:
             raise TypeError("user_scope_teams_app_installation_id cannot be null.")
-        from .item import user_scope_teams_app_installation_item_request_builder
+        from .item.user_scope_teams_app_installation_item_request_builder import UserScopeTeamsAppInstallationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["userScopeTeamsAppInstallation%2Did"] = user_scope_teams_app_installation_id
-        return user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return UserScopeTeamsAppInstallationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[user_scope_teams_app_installation_collection_response.UserScopeTeamsAppInstallationCollectionResponse]:
+    async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallationCollectionResponse]:
         """
         Retrieve the list of apps installed in the personal scope of the specified user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_scope_teams_app_installation_collection_response.UserScopeTeamsAppInstallationCollectionResponse]
+        Returns: Optional[UserScopeTeamsAppInstallationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import user_scope_teams_app_installation_collection_response
+        from ....models.user_scope_teams_app_installation_collection_response import UserScopeTeamsAppInstallationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, user_scope_teams_app_installation_collection_response.UserScopeTeamsAppInstallationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserScopeTeamsAppInstallationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]:
+    async def post(self,body: Optional[UserScopeTeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallation]:
         """
         Install an app in the personal scope of the specified user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]
+        Returns: Optional[UserScopeTeamsAppInstallation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import user_scope_teams_app_installation
+        from ....models.user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
-        return await self.request_adapter.send_async(request_info, user_scope_teams_app_installation.UserScopeTeamsAppInstallation, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserScopeTeamsAppInstallation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class InstalledAppsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserScopeTeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Install an app in the personal scope of the specified user.
         Args:
@@ -139,13 +140,13 @@ class InstalledAppsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class InstalledAppsRequestBuilderGetQueryParameters():

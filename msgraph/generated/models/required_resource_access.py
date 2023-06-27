@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import resource_access
+    from .resource_access import ResourceAccess
 
 @dataclass
 class RequiredResourceAccess(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The list of OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
-    resource_access: Optional[List[resource_access.ResourceAccess]] = None
+    resource_access: Optional[List[ResourceAccess]] = None
     # The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
     resource_app_id: Optional[str] = None
     
@@ -35,13 +35,13 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import resource_access
+        from .resource_access import ResourceAccess
 
-        from . import resource_access
+        from .resource_access import ResourceAccess
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resourceAccess": lambda n : setattr(self, 'resource_access', n.get_collection_of_object_values(resource_access.ResourceAccess)),
+            "resourceAccess": lambda n : setattr(self, 'resource_access', n.get_collection_of_object_values(ResourceAccess)),
             "resourceAppId": lambda n : setattr(self, 'resource_app_id', n.get_str_value()),
         }
         return fields

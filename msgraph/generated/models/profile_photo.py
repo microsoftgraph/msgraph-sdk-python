@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ProfilePhoto(entity.Entity):
+class ProfilePhoto(Entity):
     # The height of the photo. Read-only.
     height: Optional[int] = None
     # The OdataType property
@@ -34,9 +34,9 @@ class ProfilePhoto(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "height": lambda n : setattr(self, 'height', n.get_int_value()),

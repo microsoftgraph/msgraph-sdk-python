@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import selection_likelihood_info
+    from .selection_likelihood_info import SelectionLikelihoodInfo
 
 @dataclass
 class ScoredEmailAddress(AdditionalDataHolder, Parsable):
@@ -20,7 +20,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
     # The relevance score of the email address. A relevance score is used as a sort key, in relation to the other returned results. A higher relevance score value corresponds to a more relevant result. Relevance is determined by the user’s communication and collaboration patterns and business relationships.
     relevance_score: Optional[float] = None
     # The selectionLikelihood property
-    selection_likelihood: Optional[selection_likelihood_info.SelectionLikelihoodInfo] = None
+    selection_likelihood: Optional[SelectionLikelihoodInfo] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScoredEmailAddress:
@@ -39,16 +39,16 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import selection_likelihood_info
+        from .selection_likelihood_info import SelectionLikelihoodInfo
 
-        from . import selection_likelihood_info
+        from .selection_likelihood_info import SelectionLikelihoodInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
             "itemId": lambda n : setattr(self, 'item_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "relevanceScore": lambda n : setattr(self, 'relevance_score', n.get_float_value()),
-            "selectionLikelihood": lambda n : setattr(self, 'selection_likelihood', n.get_enum_value(selection_likelihood_info.SelectionLikelihoodInfo)),
+            "selectionLikelihood": lambda n : setattr(self, 'selection_likelihood', n.get_enum_value(SelectionLikelihoodInfo)),
         }
         return fields
     

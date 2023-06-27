@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models.o_data_errors import o_data_error
-    from .........models.security import user_source
+    from .........models.o_data_errors.o_data_error import ODataError
+    from .........models.security.user_source import UserSource
 
 class UserSourceItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class UserSourceItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UserSourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[user_source.UserSource]:
+    async def get(self,request_configuration: Optional[UserSourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserSource]:
         """
         Data source entity for a the custodian. This is the container for a custodian's mailbox and OneDrive for Business site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_source.UserSource]
+        Returns: Optional[UserSource]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models.security import user_source
+        from .........models.security.user_source import UserSource
 
-        return await self.request_adapter.send_async(request_info, user_source.UserSource, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserSource, error_mapping)
     
-    async def patch(self,body: Optional[user_source.UserSource] = None, request_configuration: Optional[UserSourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[user_source.UserSource]:
+    async def patch(self,body: Optional[UserSource] = None, request_configuration: Optional[UserSourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UserSource]:
         """
         Update the navigation property userSources in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[user_source.UserSource]
+        Returns: Optional[UserSource]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models.security import user_source
+        from .........models.security.user_source import UserSource
 
-        return await self.request_adapter.send_async(request_info, user_source.UserSource, error_mapping)
+        return await self.request_adapter.send_async(request_info, UserSource, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UserSourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class UserSourceItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[user_source.UserSource] = None, request_configuration: Optional[UserSourceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UserSource] = None, request_configuration: Optional[UserSourceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property userSources in security
         Args:

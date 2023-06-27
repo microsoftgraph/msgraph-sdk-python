@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import unified_role_management_policy_rule
+    from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-from . import unified_role_management_policy_rule
+from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
 @dataclass
-class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
+class UnifiedRoleManagementPolicyNotificationRule(UnifiedRoleManagementPolicyRule):
     odata_type = "#microsoft.graph.unifiedRoleManagementPolicyNotificationRule"
     # Indicates whether a default recipient will receive the notification email.
     is_default_recipients_enabled: Optional[bool] = None
@@ -39,9 +39,9 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import unified_role_management_policy_rule
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-        from . import unified_role_management_policy_rule
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isDefaultRecipientsEnabled": lambda n : setattr(self, 'is_default_recipients_enabled', n.get_bool_value()),

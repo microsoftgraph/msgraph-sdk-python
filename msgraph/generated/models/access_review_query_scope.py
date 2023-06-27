@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_inactive_users_query_scope, access_review_scope
+    from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
+    from .access_review_scope import AccessReviewScope
 
-from . import access_review_scope
+from .access_review_scope import AccessReviewScope
 
 @dataclass
-class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
+class AccessReviewQueryScope(AccessReviewScope):
     odata_type = "#microsoft.graph.accessReviewQueryScope"
     # The query representing what will be reviewed in an access review.
     query: Optional[str] = None
@@ -33,9 +34,9 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessReviewInactiveUsersQueryScope".casefold():
-            from . import access_review_inactive_users_query_scope
+            from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
 
-            return access_review_inactive_users_query_scope.AccessReviewInactiveUsersQueryScope()
+            return AccessReviewInactiveUsersQueryScope()
         return AccessReviewQueryScope()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -43,9 +44,11 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_inactive_users_query_scope, access_review_scope
+        from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
+        from .access_review_scope import AccessReviewScope
 
-        from . import access_review_inactive_users_query_scope, access_review_scope
+        from .access_review_inactive_users_query_scope import AccessReviewInactiveUsersQueryScope
+        from .access_review_scope import AccessReviewScope
 
         fields: Dict[str, Callable[[Any], None]] = {
             "query": lambda n : setattr(self, 'query', n.get_str_value()),

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models.external_connectors import external_activity
+    from ......models.external_connectors.external_activity import ExternalActivity
 
 @dataclass
 class AddActivitiesPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AddActivitiesPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The activities property
-    activities: Optional[List[external_activity.ExternalActivity]] = None
+    activities: Optional[List[ExternalActivity]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddActivitiesPostRequestBody:
@@ -31,12 +31,12 @@ class AddActivitiesPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models.external_connectors import external_activity
+        from ......models.external_connectors.external_activity import ExternalActivity
 
-        from ......models.external_connectors import external_activity
+        from ......models.external_connectors.external_activity import ExternalActivity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(external_activity.ExternalActivity)),
+            "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(ExternalActivity)),
         }
         return fields
     

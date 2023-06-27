@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import windows_device_azure_a_d_account, windows_device_a_d_account
+    from .windows_device_a_d_account import WindowsDeviceADAccount
+    from .windows_device_azure_a_d_account import WindowsDeviceAzureADAccount
 
 @dataclass
 class WindowsDeviceAccount(AdditionalDataHolder, Parsable):
@@ -31,13 +32,13 @@ class WindowsDeviceAccount(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsDeviceADAccount".casefold():
-            from . import windows_device_a_d_account
+            from .windows_device_a_d_account import WindowsDeviceADAccount
 
-            return windows_device_a_d_account.WindowsDeviceADAccount()
+            return WindowsDeviceADAccount()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsDeviceAzureADAccount".casefold():
-            from . import windows_device_azure_a_d_account
+            from .windows_device_azure_a_d_account import WindowsDeviceAzureADAccount
 
-            return windows_device_azure_a_d_account.WindowsDeviceAzureADAccount()
+            return WindowsDeviceAzureADAccount()
         return WindowsDeviceAccount()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -45,9 +46,11 @@ class WindowsDeviceAccount(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_device_azure_a_d_account, windows_device_a_d_account
+        from .windows_device_a_d_account import WindowsDeviceADAccount
+        from .windows_device_azure_a_d_account import WindowsDeviceAzureADAccount
 
-        from . import windows_device_azure_a_d_account, windows_device_a_d_account
+        from .windows_device_a_d_account import WindowsDeviceADAccount
+        from .windows_device_azure_a_d_account import WindowsDeviceAzureADAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

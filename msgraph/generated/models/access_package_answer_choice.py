@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_package_localized_text
+    from .access_package_localized_text import AccessPackageLocalizedText
 
 @dataclass
 class AccessPackageAnswerChoice(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class AccessPackageAnswerChoice(AdditionalDataHolder, Parsable):
     # The actual value of the selected choice. This is typically a string value which is understandable by applications. Required.
     actual_value: Optional[str] = None
     # The text of the answer choice represented in a format for a specific locale.
-    localizations: Optional[List[access_package_localized_text.AccessPackageLocalizedText]] = None
+    localizations: Optional[List[AccessPackageLocalizedText]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The text property
@@ -37,13 +37,13 @@ class AccessPackageAnswerChoice(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_localized_text
+        from .access_package_localized_text import AccessPackageLocalizedText
 
-        from . import access_package_localized_text
+        from .access_package_localized_text import AccessPackageLocalizedText
 
         fields: Dict[str, Callable[[Any], None]] = {
             "actualValue": lambda n : setattr(self, 'actual_value', n.get_str_value()),
-            "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(access_package_localized_text.AccessPackageLocalizedText)),
+            "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(AccessPackageLocalizedText)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "text": lambda n : setattr(self, 'text', n.get_str_value()),
         }

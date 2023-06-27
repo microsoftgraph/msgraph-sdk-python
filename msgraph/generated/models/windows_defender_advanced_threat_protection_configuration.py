@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_configuration
+    from .device_configuration import DeviceConfiguration
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.DeviceConfiguration):
+class WindowsDefenderAdvancedThreatProtectionConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.windowsDefenderAdvancedThreatProtectionConfiguration"
     # Windows Defender AdvancedThreatProtection 'Allow Sample Sharing' Rule
     allow_sample_sharing: Optional[bool] = None
@@ -33,9 +33,9 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration
+        from .device_configuration import DeviceConfiguration
 
-        from . import device_configuration
+        from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowSampleSharing": lambda n : setattr(self, 'allow_sample_sharing', n.get_bool_value()),

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import generic_error
+    from .generic_error import GenericError
 
 @dataclass
 class ConvertIdResult(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # An error object indicating the reason for the conversion failure. This value is not present if the conversion succeeded.
-    error_details: Optional[generic_error.GenericError] = None
+    error_details: Optional[GenericError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The identifier that was converted. This value is the original, un-converted identifier.
@@ -37,12 +37,12 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import generic_error
+        from .generic_error import GenericError
 
-        from . import generic_error
+        from .generic_error import GenericError
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "errorDetails": lambda n : setattr(self, 'error_details', n.get_object_value(generic_error.GenericError)),
+            "errorDetails": lambda n : setattr(self, 'error_details', n.get_object_value(GenericError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sourceId": lambda n : setattr(self, 'source_id', n.get_str_value()),
             "targetId": lambda n : setattr(self, 'target_id', n.get_str_value()),

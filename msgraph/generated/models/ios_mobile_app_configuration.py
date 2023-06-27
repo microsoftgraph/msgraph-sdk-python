@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import app_configuration_setting_item, managed_device_mobile_app_configuration
+    from .app_configuration_setting_item import AppConfigurationSettingItem
+    from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
 
-from . import managed_device_mobile_app_configuration
+from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
 
 @dataclass
-class IosMobileAppConfiguration(managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration):
+class IosMobileAppConfiguration(ManagedDeviceMobileAppConfiguration):
     odata_type = "#microsoft.graph.iosMobileAppConfiguration"
     # mdm app configuration Base64 binary.
     encoded_setting_xml: Optional[bytes] = None
     # app configuration setting items.
-    settings: Optional[List[app_configuration_setting_item.AppConfigurationSettingItem]] = None
+    settings: Optional[List[AppConfigurationSettingItem]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosMobileAppConfiguration:
@@ -33,13 +34,15 @@ class IosMobileAppConfiguration(managed_device_mobile_app_configuration.ManagedD
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_configuration_setting_item, managed_device_mobile_app_configuration
+        from .app_configuration_setting_item import AppConfigurationSettingItem
+        from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
 
-        from . import app_configuration_setting_item, managed_device_mobile_app_configuration
+        from .app_configuration_setting_item import AppConfigurationSettingItem
+        from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "encodedSettingXml": lambda n : setattr(self, 'encoded_setting_xml', n.get_bytes_value()),
-            "settings": lambda n : setattr(self, 'settings', n.get_collection_of_object_values(app_configuration_setting_item.AppConfigurationSettingItem)),
+            "settings": lambda n : setattr(self, 'settings', n.get_collection_of_object_values(AppConfigurationSettingItem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +57,7 @@ class IosMobileAppConfiguration(managed_device_mobile_app_configuration.ManagedD
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("encodedSettingXml", self.encoded_setting_xml)
+        writer.write_bytes_value("encodedSettingXml", self.encoded_setting_xml)
         writer.write_collection_of_object_values("settings", self.settings)
     
 

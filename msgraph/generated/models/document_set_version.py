@@ -1,25 +1,27 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import document_set_version_item, identity_set, list_item_version
+    from .document_set_version_item import DocumentSetVersionItem
+    from .identity_set import IdentitySet
+    from .list_item_version import ListItemVersion
 
-from . import list_item_version
+from .list_item_version import ListItemVersion
 
 @dataclass
-class DocumentSetVersion(list_item_version.ListItemVersion):
+class DocumentSetVersion(ListItemVersion):
     odata_type = "#microsoft.graph.documentSetVersion"
     # Comment about the captured version.
     comment: Optional[str] = None
     # User who captured the version.
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # Date and time when this version was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Items within the document set that are captured as part of this version.
-    items: Optional[List[document_set_version_item.DocumentSetVersionItem]] = None
+    items: Optional[List[DocumentSetVersionItem]] = None
     # If true, minor versions of items are also captured; otherwise, only major versions will be captured. Default value is false.
     should_capture_minor_version: Optional[bool] = None
     
@@ -40,15 +42,19 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import document_set_version_item, identity_set, list_item_version
+        from .document_set_version_item import DocumentSetVersionItem
+        from .identity_set import IdentitySet
+        from .list_item_version import ListItemVersion
 
-        from . import document_set_version_item, identity_set, list_item_version
+        from .document_set_version_item import DocumentSetVersionItem
+        from .identity_set import IdentitySet
+        from .list_item_version import ListItemVersion
 
         fields: Dict[str, Callable[[Any], None]] = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(document_set_version_item.DocumentSetVersionItem)),
+            "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(DocumentSetVersionItem)),
             "shouldCaptureMinorVersion": lambda n : setattr(self, 'should_capture_minor_version', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -66,7 +72,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         super().serialize(writer)
         writer.write_str_value("comment", self.comment)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_bool_value("shouldCaptureMinorVersion", self.should_capture_minor_version)
     

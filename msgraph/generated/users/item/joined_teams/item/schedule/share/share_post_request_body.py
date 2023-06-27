@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -10,11 +10,11 @@ class SharePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The endDateTime property
-    end_date_time: Optional[datetime] = None
+    end_date_time: Optional[datetime.datetime] = None
     # The notifyTeam property
     notify_team: Optional[bool] = None
     # The startDateTime property
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharePostRequestBody:
@@ -48,9 +48,9 @@ class SharePostRequestBody(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("endDateTime", self.end_date_time)
+        writer.write_datetime_value()("endDateTime", self.end_date_time)
         writer.write_bool_value("notifyTeam", self.notify_team)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

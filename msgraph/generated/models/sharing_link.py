@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity
+    from .identity import Identity
 
 @dataclass
 class SharingLink(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class SharingLink(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The app the link is associated with.
-    application: Optional[identity.Identity] = None
+    application: Optional[Identity] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # If true then the user can only use this link to view the item on the web, and cannot use it to download the contents of the item. Only for OneDrive for Business and SharePoint.
@@ -43,12 +43,12 @@ class SharingLink(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity
+        from .identity import Identity
 
-        from . import identity
+        from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "application": lambda n : setattr(self, 'application', n.get_object_value(identity.Identity)),
+            "application": lambda n : setattr(self, 'application', n.get_object_value(Identity)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "preventsDownload": lambda n : setattr(self, 'prevents_download', n.get_bool_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),

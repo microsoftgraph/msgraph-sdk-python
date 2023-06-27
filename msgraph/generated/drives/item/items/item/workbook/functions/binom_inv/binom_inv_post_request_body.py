@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class Binom_InvPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class Binom_InvPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The alpha property
-    alpha: Optional[json.Json] = None
+    alpha: Optional[Json] = None
     # The probabilityS property
-    probability_s: Optional[json.Json] = None
+    probability_s: Optional[Json] = None
     # The trials property
-    trials: Optional[json.Json] = None
+    trials: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Binom_InvPostRequestBody:
@@ -35,14 +35,14 @@ class Binom_InvPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "alpha": lambda n : setattr(self, 'alpha', n.get_object_value(json.Json)),
-            "probabilityS": lambda n : setattr(self, 'probability_s', n.get_object_value(json.Json)),
-            "trials": lambda n : setattr(self, 'trials', n.get_object_value(json.Json)),
+            "alpha": lambda n : setattr(self, 'alpha', n.get_object_value(Json)),
+            "probabilityS": lambda n : setattr(self, 'probability_s', n.get_object_value(Json)),
+            "trials": lambda n : setattr(self, 'trials', n.get_object_value(Json)),
         }
         return fields
     

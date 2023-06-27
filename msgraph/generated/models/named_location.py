@@ -1,22 +1,24 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import country_named_location, entity, ip_named_location
+    from .country_named_location import CountryNamedLocation
+    from .entity import Entity
+    from .ip_named_location import IpNamedLocation
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class NamedLocation(entity.Entity):
+class NamedLocation(Entity):
     # The Timestamp type represents creation date and time of the location using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Human-readable name of the location.
     display_name: Optional[str] = None
     # The Timestamp type represents last modified date and time of the location using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    modified_date_time: Optional[datetime] = None
+    modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,13 +37,13 @@ class NamedLocation(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.countryNamedLocation".casefold():
-            from . import country_named_location
+            from .country_named_location import CountryNamedLocation
 
-            return country_named_location.CountryNamedLocation()
+            return CountryNamedLocation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.ipNamedLocation".casefold():
-            from . import ip_named_location
+            from .ip_named_location import IpNamedLocation
 
-            return ip_named_location.IpNamedLocation()
+            return IpNamedLocation()
         return NamedLocation()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -49,9 +51,13 @@ class NamedLocation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import country_named_location, entity, ip_named_location
+        from .country_named_location import CountryNamedLocation
+        from .entity import Entity
+        from .ip_named_location import IpNamedLocation
 
-        from . import country_named_location, entity, ip_named_location
+        from .country_named_location import CountryNamedLocation
+        from .entity import Entity
+        from .ip_named_location import IpNamedLocation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -71,8 +77,8 @@ class NamedLocation(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
+        writer.write_datetime_value()("modifiedDateTime", self.modified_date_time)
     
 

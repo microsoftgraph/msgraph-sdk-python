@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import cross_tenant_access_policy
-    from ...models.o_data_errors import o_data_error
-    from .default import default_request_builder
-    from .partners import partners_request_builder
+    from ...models.cross_tenant_access_policy import CrossTenantAccessPolicy
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .default.default_request_builder import DefaultRequestBuilder
+    from .partners.partners_request_builder import PartnersRequestBuilder
 
 class CrossTenantAccessPolicyRequestBuilder():
     """
@@ -46,62 +46,62 @@ class CrossTenantAccessPolicyRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]:
+    async def get(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[CrossTenantAccessPolicy]:
         """
         Read the properties and relationships of a crossTenantAccessPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]
+        Returns: Optional[CrossTenantAccessPolicy]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import cross_tenant_access_policy
+        from ...models.cross_tenant_access_policy import CrossTenantAccessPolicy
 
-        return await self.request_adapter.send_async(request_info, cross_tenant_access_policy.CrossTenantAccessPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, CrossTenantAccessPolicy, error_mapping)
     
-    async def patch(self,body: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]:
+    async def patch(self,body: Optional[CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[CrossTenantAccessPolicy]:
         """
         Update the properties of a cross-tenant access policy.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]
+        Returns: Optional[CrossTenantAccessPolicy]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import cross_tenant_access_policy
+        from ...models.cross_tenant_access_policy import CrossTenantAccessPolicy
 
-        return await self.request_adapter.send_async(request_info, cross_tenant_access_policy.CrossTenantAccessPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, CrossTenantAccessPolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class CrossTenantAccessPolicyRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a cross-tenant access policy.
         Args:
@@ -159,22 +159,22 @@ class CrossTenantAccessPolicyRequestBuilder():
         return request_info
     
     @property
-    def default(self) -> default_request_builder.DefaultRequestBuilder:
+    def default(self) -> DefaultRequestBuilder:
         """
         Provides operations to manage the default property of the microsoft.graph.crossTenantAccessPolicy entity.
         """
-        from .default import default_request_builder
+        from .default.default_request_builder import DefaultRequestBuilder
 
-        return default_request_builder.DefaultRequestBuilder(self.request_adapter, self.path_parameters)
+        return DefaultRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def partners(self) -> partners_request_builder.PartnersRequestBuilder:
+    def partners(self) -> PartnersRequestBuilder:
         """
         Provides operations to manage the partners property of the microsoft.graph.crossTenantAccessPolicy entity.
         """
-        from .partners import partners_request_builder
+        from .partners.partners_request_builder import PartnersRequestBuilder
 
-        return partners_request_builder.PartnersRequestBuilder(self.request_adapter, self.path_parameters)
+        return PartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CrossTenantAccessPolicyRequestBuilderDeleteRequestConfiguration():

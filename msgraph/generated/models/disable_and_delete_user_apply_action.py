@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_apply_action
+    from .access_review_apply_action import AccessReviewApplyAction
 
-from . import access_review_apply_action
+from .access_review_apply_action import AccessReviewApplyAction
 
 @dataclass
-class DisableAndDeleteUserApplyAction(access_review_apply_action.AccessReviewApplyAction):
+class DisableAndDeleteUserApplyAction(AccessReviewApplyAction):
     odata_type = "#microsoft.graph.disableAndDeleteUserApplyAction"
     
     @staticmethod
@@ -29,9 +29,9 @@ class DisableAndDeleteUserApplyAction(access_review_apply_action.AccessReviewApp
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_apply_action
+        from .access_review_apply_action import AccessReviewApplyAction
 
-        from . import access_review_apply_action
+        from .access_review_apply_action import AccessReviewApplyAction
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

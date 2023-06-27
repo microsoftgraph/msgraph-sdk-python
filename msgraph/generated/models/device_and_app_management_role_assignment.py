@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import role_assignment
+    from .role_assignment import RoleAssignment
 
-from . import role_assignment
+from .role_assignment import RoleAssignment
 
 @dataclass
-class DeviceAndAppManagementRoleAssignment(role_assignment.RoleAssignment):
+class DeviceAndAppManagementRoleAssignment(RoleAssignment):
     # The list of ids of role member security groups. These are IDs from Azure Active Directory.
     members: Optional[List[str]] = None
     # The OdataType property
@@ -32,9 +32,9 @@ class DeviceAndAppManagementRoleAssignment(role_assignment.RoleAssignment):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import role_assignment
+        from .role_assignment import RoleAssignment
 
-        from . import role_assignment
+        from .role_assignment import RoleAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
             "members": lambda n : setattr(self, 'members', n.get_collection_of_primitive_values(str)),

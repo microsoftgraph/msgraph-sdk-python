@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import group_type, modified_property
+    from .group_type import GroupType
+    from .modified_property import ModifiedProperty
 
 @dataclass
 class TargetResource(AdditionalDataHolder, Parsable):
@@ -14,11 +15,11 @@ class TargetResource(AdditionalDataHolder, Parsable):
     # Indicates the visible name defined for the resource. Typically specified when the resource is created.
     display_name: Optional[str] = None
     # When type is set to Group, this indicates the group type. Possible values are: unifiedGroups, azureAD, and unknownFutureValue
-    group_type: Optional[group_type.GroupType] = None
+    group_type: Optional[GroupType] = None
     # Indicates the unique ID of the resource.
     id: Optional[str] = None
     # Indicates name, old value and new value of each attribute that changed. Property values depend on the operation type.
-    modified_properties: Optional[List[modified_property.ModifiedProperty]] = None
+    modified_properties: Optional[List[ModifiedProperty]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Describes the resource type.  Example values include Application, Group, ServicePrincipal, and User.
@@ -43,15 +44,17 @@ class TargetResource(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import group_type, modified_property
+        from .group_type import GroupType
+        from .modified_property import ModifiedProperty
 
-        from . import group_type, modified_property
+        from .group_type import GroupType
+        from .modified_property import ModifiedProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "groupType": lambda n : setattr(self, 'group_type', n.get_enum_value(group_type.GroupType)),
+            "groupType": lambda n : setattr(self, 'group_type', n.get_enum_value(GroupType)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(modified_property.ModifiedProperty)),
+            "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(ModifiedProperty)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),

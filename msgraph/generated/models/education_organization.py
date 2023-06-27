@@ -4,18 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_external_source, education_school, entity
+    from .education_external_source import EducationExternalSource
+    from .education_school import EducationSchool
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class EducationOrganization(entity.Entity):
+class EducationOrganization(Entity):
     # Organization description.
     description: Optional[str] = None
     # Organization display name.
     display_name: Optional[str] = None
     # Source where this organization was created from. Possible values are: sis, manual.
-    external_source: Optional[education_external_source.EducationExternalSource] = None
+    external_source: Optional[EducationExternalSource] = None
     # The name of the external source this resources was generated from.
     external_source_detail: Optional[str] = None
     # The OdataType property
@@ -36,9 +38,9 @@ class EducationOrganization(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationSchool".casefold():
-            from . import education_school
+            from .education_school import EducationSchool
 
-            return education_school.EducationSchool()
+            return EducationSchool()
         return EducationOrganization()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -46,14 +48,18 @@ class EducationOrganization(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_external_source, education_school, entity
+        from .education_external_source import EducationExternalSource
+        from .education_school import EducationSchool
+        from .entity import Entity
 
-        from . import education_external_source, education_school, entity
+        from .education_external_source import EducationExternalSource
+        from .education_school import EducationSchool
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
+            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationExternalSource)),
             "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

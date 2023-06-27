@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import shared_drive_item, shared_drive_item_collection_response
-    from ..models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import shared_drive_item_item_request_builder
+    from ..models.o_data_errors.o_data_error import ODataError
+    from ..models.shared_drive_item import SharedDriveItem
+    from ..models.shared_drive_item_collection_response import SharedDriveItemCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.shared_drive_item_item_request_builder import SharedDriveItemItemRequestBuilder
 
 class SharesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class SharesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_shared_drive_item_id(self,shared_drive_item_id: str) -> shared_drive_item_item_request_builder.SharedDriveItemItemRequestBuilder:
+    def by_shared_drive_item_id(self,shared_drive_item_id: str) -> SharedDriveItemItemRequestBuilder:
         """
         Provides operations to manage the collection of sharedDriveItem entities.
         Args:
             shared_drive_item_id: Unique identifier of the item
-        Returns: shared_drive_item_item_request_builder.SharedDriveItemItemRequestBuilder
+        Returns: SharedDriveItemItemRequestBuilder
         """
         if not shared_drive_item_id:
             raise TypeError("shared_drive_item_id cannot be null.")
-        from .item import shared_drive_item_item_request_builder
+        from .item.shared_drive_item_item_request_builder import SharedDriveItemItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["sharedDriveItem%2Did"] = shared_drive_item_id
-        return shared_drive_item_item_request_builder.SharedDriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return SharedDriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_drive_item_collection_response.SharedDriveItemCollectionResponse]:
+    async def get(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None) -> Optional[SharedDriveItemCollectionResponse]:
         """
         Access a shared DriveItem or a collection of shared items by using a **shareId** or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[shared_drive_item_collection_response.SharedDriveItemCollectionResponse]
+        Returns: Optional[SharedDriveItemCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import shared_drive_item_collection_response
+        from ..models.shared_drive_item_collection_response import SharedDriveItemCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, shared_drive_item_collection_response.SharedDriveItemCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SharedDriveItemCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[shared_drive_item.SharedDriveItem] = None, request_configuration: Optional[SharesRequestBuilderPostRequestConfiguration] = None) -> Optional[shared_drive_item.SharedDriveItem]:
+    async def post(self,body: Optional[SharedDriveItem] = None, request_configuration: Optional[SharesRequestBuilderPostRequestConfiguration] = None) -> Optional[SharedDriveItem]:
         """
         Add new entity to shares
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[shared_drive_item.SharedDriveItem]
+        Returns: Optional[SharedDriveItem]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import shared_drive_item
+        from ..models.shared_drive_item import SharedDriveItem
 
-        return await self.request_adapter.send_async(request_info, shared_drive_item.SharedDriveItem, error_mapping)
+        return await self.request_adapter.send_async(request_info, SharedDriveItem, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class SharesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[shared_drive_item.SharedDriveItem] = None, request_configuration: Optional[SharesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SharedDriveItem] = None, request_configuration: Optional[SharesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add new entity to shares
         Args:
@@ -139,13 +140,13 @@ class SharesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SharesRequestBuilderGetQueryParameters():

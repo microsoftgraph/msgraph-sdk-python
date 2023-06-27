@@ -4,28 +4,32 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, media_stream, online_meeting_restricted, participant_info, recording_info
+    from .entity import Entity
+    from .media_stream import MediaStream
+    from .online_meeting_restricted import OnlineMeetingRestricted
+    from .participant_info import ParticipantInfo
+    from .recording_info import RecordingInfo
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Participant(entity.Entity):
+class Participant(Entity):
     # The info property
-    info: Optional[participant_info.ParticipantInfo] = None
+    info: Optional[ParticipantInfo] = None
     # true if the participant is in lobby.
     is_in_lobby: Optional[bool] = None
     # true if the participant is muted (client or server muted).
     is_muted: Optional[bool] = None
     # The list of media streams.
-    media_streams: Optional[List[media_stream.MediaStream]] = None
+    media_streams: Optional[List[MediaStream]] = None
     # A blob of data provided by the participant in the roster.
     metadata: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Information about whether the participant has recording capability.
-    recording_info: Optional[recording_info.RecordingInfo] = None
+    recording_info: Optional[RecordingInfo] = None
     # Indicates the reason or reasons media content from this participant is restricted.
-    restricted_experience: Optional[online_meeting_restricted.OnlineMeetingRestricted] = None
+    restricted_experience: Optional[OnlineMeetingRestricted] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Participant:
@@ -44,18 +48,26 @@ class Participant(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, media_stream, online_meeting_restricted, participant_info, recording_info
+        from .entity import Entity
+        from .media_stream import MediaStream
+        from .online_meeting_restricted import OnlineMeetingRestricted
+        from .participant_info import ParticipantInfo
+        from .recording_info import RecordingInfo
 
-        from . import entity, media_stream, online_meeting_restricted, participant_info, recording_info
+        from .entity import Entity
+        from .media_stream import MediaStream
+        from .online_meeting_restricted import OnlineMeetingRestricted
+        from .participant_info import ParticipantInfo
+        from .recording_info import RecordingInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "info": lambda n : setattr(self, 'info', n.get_object_value(participant_info.ParticipantInfo)),
+            "info": lambda n : setattr(self, 'info', n.get_object_value(ParticipantInfo)),
             "isInLobby": lambda n : setattr(self, 'is_in_lobby', n.get_bool_value()),
             "isMuted": lambda n : setattr(self, 'is_muted', n.get_bool_value()),
-            "mediaStreams": lambda n : setattr(self, 'media_streams', n.get_collection_of_object_values(media_stream.MediaStream)),
+            "mediaStreams": lambda n : setattr(self, 'media_streams', n.get_collection_of_object_values(MediaStream)),
             "metadata": lambda n : setattr(self, 'metadata', n.get_str_value()),
-            "recordingInfo": lambda n : setattr(self, 'recording_info', n.get_object_value(recording_info.RecordingInfo)),
-            "restrictedExperience": lambda n : setattr(self, 'restricted_experience', n.get_object_value(online_meeting_restricted.OnlineMeetingRestricted)),
+            "recordingInfo": lambda n : setattr(self, 'recording_info', n.get_object_value(RecordingInfo)),
+            "restrictedExperience": lambda n : setattr(self, 'restricted_experience', n.get_object_value(OnlineMeetingRestricted)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,12 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, identity_user_flow_attribute, identity_user_flow_attribute_input_type, user_attribute_values_item
+    from .entity import Entity
+    from .identity_user_flow_attribute import IdentityUserFlowAttribute
+    from .identity_user_flow_attribute_input_type import IdentityUserFlowAttributeInputType
+    from .user_attribute_values_item import UserAttributeValuesItem
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class IdentityUserFlowAttributeAssignment(entity.Entity):
+class IdentityUserFlowAttributeAssignment(Entity):
     # The display name of the identityUserFlowAttribute within a user flow.
     display_name: Optional[str] = None
     # Determines whether the identityUserFlowAttribute is optional. true means the user doesn't have to provide a value. false means the user cannot complete sign-up without providing a value.
@@ -19,11 +22,11 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
     # Determines whether the identityUserFlowAttribute requires verification. This is only used for verifying the user's phone number or email address.
     requires_verification: Optional[bool] = None
     # The user attribute that you want to add to your user flow.
-    user_attribute: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute] = None
+    user_attribute: Optional[IdentityUserFlowAttribute] = None
     # The input options for the user flow attribute. Only applicable when the userInputType is radioSingleSelect, dropdownSingleSelect, or checkboxMultiSelect.
-    user_attribute_values: Optional[List[user_attribute_values_item.UserAttributeValuesItem]] = None
+    user_attribute_values: Optional[List[UserAttributeValuesItem]] = None
     # The userInputType property
-    user_input_type: Optional[identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType] = None
+    user_input_type: Optional[IdentityUserFlowAttributeInputType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityUserFlowAttributeAssignment:
@@ -42,17 +45,23 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, identity_user_flow_attribute, identity_user_flow_attribute_input_type, user_attribute_values_item
+        from .entity import Entity
+        from .identity_user_flow_attribute import IdentityUserFlowAttribute
+        from .identity_user_flow_attribute_input_type import IdentityUserFlowAttributeInputType
+        from .user_attribute_values_item import UserAttributeValuesItem
 
-        from . import entity, identity_user_flow_attribute, identity_user_flow_attribute_input_type, user_attribute_values_item
+        from .entity import Entity
+        from .identity_user_flow_attribute import IdentityUserFlowAttribute
+        from .identity_user_flow_attribute_input_type import IdentityUserFlowAttributeInputType
+        from .user_attribute_values_item import UserAttributeValuesItem
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isOptional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
             "requiresVerification": lambda n : setattr(self, 'requires_verification', n.get_bool_value()),
-            "userAttribute": lambda n : setattr(self, 'user_attribute', n.get_object_value(identity_user_flow_attribute.IdentityUserFlowAttribute)),
-            "userAttributeValues": lambda n : setattr(self, 'user_attribute_values', n.get_collection_of_object_values(user_attribute_values_item.UserAttributeValuesItem)),
-            "userInputType": lambda n : setattr(self, 'user_input_type', n.get_enum_value(identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType)),
+            "userAttribute": lambda n : setattr(self, 'user_attribute', n.get_object_value(IdentityUserFlowAttribute)),
+            "userAttributeValues": lambda n : setattr(self, 'user_attribute_values', n.get_collection_of_object_values(UserAttributeValuesItem)),
+            "userInputType": lambda n : setattr(self, 'user_input_type', n.get_enum_value(IdentityUserFlowAttributeInputType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

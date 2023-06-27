@@ -4,16 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import bitlocker_recovery_key, entity
+    from .bitlocker_recovery_key import BitlockerRecoveryKey
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Bitlocker(entity.Entity):
+class Bitlocker(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The recovery keys associated with the bitlocker entity.
-    recovery_keys: Optional[List[bitlocker_recovery_key.BitlockerRecoveryKey]] = None
+    recovery_keys: Optional[List[BitlockerRecoveryKey]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Bitlocker:
@@ -32,12 +33,14 @@ class Bitlocker(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import bitlocker_recovery_key, entity
+        from .bitlocker_recovery_key import BitlockerRecoveryKey
+        from .entity import Entity
 
-        from . import bitlocker_recovery_key, entity
+        from .bitlocker_recovery_key import BitlockerRecoveryKey
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "recoveryKeys": lambda n : setattr(self, 'recovery_keys', n.get_collection_of_object_values(bitlocker_recovery_key.BitlockerRecoveryKey)),
+            "recoveryKeys": lambda n : setattr(self, 'recovery_keys', n.get_collection_of_object_values(BitlockerRecoveryKey)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

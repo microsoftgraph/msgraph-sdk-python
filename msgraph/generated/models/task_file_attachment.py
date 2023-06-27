@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attachment_base
+    from .attachment_base import AttachmentBase
 
-from . import attachment_base
+from .attachment_base import AttachmentBase
 
 @dataclass
-class TaskFileAttachment(attachment_base.AttachmentBase):
+class TaskFileAttachment(AttachmentBase):
     odata_type = "#microsoft.graph.taskFileAttachment"
     # The base64-encoded contents of the file.
     content_bytes: Optional[bytes] = None
@@ -31,9 +31,9 @@ class TaskFileAttachment(attachment_base.AttachmentBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attachment_base
+        from .attachment_base import AttachmentBase
 
-        from . import attachment_base
+        from .attachment_base import AttachmentBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
@@ -51,6 +51,6 @@ class TaskFileAttachment(attachment_base.AttachmentBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("contentBytes", self.content_bytes)
+        writer.write_bytes_value("contentBytes", self.content_bytes)
     
 

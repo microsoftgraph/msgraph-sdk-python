@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_compliance_action_type, entity
+    from .device_compliance_action_type import DeviceComplianceActionType
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceComplianceActionItem(entity.Entity):
+class DeviceComplianceActionItem(Entity):
     """
     Scheduled Action Configuration
     """
     # Scheduled Action Type Enum
-    action_type: Optional[device_compliance_action_type.DeviceComplianceActionType] = None
+    action_type: Optional[DeviceComplianceActionType] = None
     # Number of hours to wait till the action will be enforced. Valid values 0 to 8760
     grace_period_hours: Optional[int] = None
     # A list of group IDs to speicify who to CC this notification message to.
@@ -41,12 +42,14 @@ class DeviceComplianceActionItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_compliance_action_type, entity
+        from .device_compliance_action_type import DeviceComplianceActionType
+        from .entity import Entity
 
-        from . import device_compliance_action_type, entity
+        from .device_compliance_action_type import DeviceComplianceActionType
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "actionType": lambda n : setattr(self, 'action_type', n.get_enum_value(device_compliance_action_type.DeviceComplianceActionType)),
+            "actionType": lambda n : setattr(self, 'action_type', n.get_enum_value(DeviceComplianceActionType)),
             "gracePeriodHours": lambda n : setattr(self, 'grace_period_hours', n.get_int_value()),
             "notificationMessageCCList": lambda n : setattr(self, 'notification_message_c_c_list', n.get_collection_of_primitive_values(str)),
             "notificationTemplateId": lambda n : setattr(self, 'notification_template_id', n.get_str_value()),

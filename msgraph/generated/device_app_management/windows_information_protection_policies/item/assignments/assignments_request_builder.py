@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import targeted_managed_app_policy_assignment, targeted_managed_app_policy_assignment_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import targeted_managed_app_policy_assignment_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
+    from .....models.targeted_managed_app_policy_assignment_collection_response import TargetedManagedAppPolicyAssignmentCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.targeted_managed_app_policy_assignment_item_request_builder import TargetedManagedAppPolicyAssignmentItemRequestBuilder
 
 class AssignmentsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class AssignmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_targeted_managed_app_policy_assignment_id(self,targeted_managed_app_policy_assignment_id: str) -> targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder:
+    def by_targeted_managed_app_policy_assignment_id(self,targeted_managed_app_policy_assignment_id: str) -> TargetedManagedAppPolicyAssignmentItemRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.windowsInformationProtection entity.
         Args:
             targeted_managed_app_policy_assignment_id: Unique identifier of the item
-        Returns: targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder
+        Returns: TargetedManagedAppPolicyAssignmentItemRequestBuilder
         """
         if not targeted_managed_app_policy_assignment_id:
             raise TypeError("targeted_managed_app_policy_assignment_id cannot be null.")
-        from .item import targeted_managed_app_policy_assignment_item_request_builder
+        from .item.targeted_managed_app_policy_assignment_item_request_builder import TargetedManagedAppPolicyAssignmentItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["targetedManagedAppPolicyAssignment%2Did"] = targeted_managed_app_policy_assignment_id
-        return targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return TargetedManagedAppPolicyAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[targeted_managed_app_policy_assignment_collection_response.TargetedManagedAppPolicyAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[TargetedManagedAppPolicyAssignmentCollectionResponse]:
         """
         Navigation property to list of security groups targeted for policy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[targeted_managed_app_policy_assignment_collection_response.TargetedManagedAppPolicyAssignmentCollectionResponse]
+        Returns: Optional[TargetedManagedAppPolicyAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import targeted_managed_app_policy_assignment_collection_response
+        from .....models.targeted_managed_app_policy_assignment_collection_response import TargetedManagedAppPolicyAssignmentCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, targeted_managed_app_policy_assignment_collection_response.TargetedManagedAppPolicyAssignmentCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TargetedManagedAppPolicyAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]:
+    async def post(self,body: Optional[TargetedManagedAppPolicyAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[TargetedManagedAppPolicyAssignment]:
         """
         Create new navigation property to assignments for deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]
+        Returns: Optional[TargetedManagedAppPolicyAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import targeted_managed_app_policy_assignment
+        from .....models.targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
-        return await self.request_adapter.send_async(request_info, targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, TargetedManagedAppPolicyAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class AssignmentsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TargetedManagedAppPolicyAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to assignments for deviceAppManagement
         Args:
@@ -139,13 +140,13 @@ class AssignmentsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AssignmentsRequestBuilderGetQueryParameters():

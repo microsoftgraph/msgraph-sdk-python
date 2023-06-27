@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mail_folder
+    from .mail_folder import MailFolder
 
-from . import mail_folder
+from .mail_folder import MailFolder
 
 @dataclass
-class MailSearchFolder(mail_folder.MailFolder):
+class MailSearchFolder(MailFolder):
     odata_type = "#microsoft.graph.mailSearchFolder"
     # The OData query to filter the messages.
     filter_query: Optional[str] = None
@@ -37,9 +37,9 @@ class MailSearchFolder(mail_folder.MailFolder):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mail_folder
+        from .mail_folder import MailFolder
 
-        from . import mail_folder
+        from .mail_folder import MailFolder
 
         fields: Dict[str, Callable[[Any], None]] = {
             "filterQuery": lambda n : setattr(self, 'filter_query', n.get_str_value()),

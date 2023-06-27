@@ -1,25 +1,26 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ediscovery_review_tag
-    from .. import entity, identity_set
+    from ..entity import Entity
+    from ..identity_set import IdentitySet
+    from .ediscovery_review_tag import EdiscoveryReviewTag
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class Tag(entity.Entity):
+class Tag(Entity):
     # The createdBy property
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # The description property
     description: Optional[str] = None
     # The displayName property
     display_name: Optional[str] = None
     # The lastModifiedDateTime property
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -38,9 +39,9 @@ class Tag(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryReviewTag".casefold():
-            from . import ediscovery_review_tag
+            from .ediscovery_review_tag import EdiscoveryReviewTag
 
-            return ediscovery_review_tag.EdiscoveryReviewTag()
+            return EdiscoveryReviewTag()
         return Tag()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -48,14 +49,16 @@ class Tag(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ediscovery_review_tag
-        from .. import entity, identity_set
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from .ediscovery_review_tag import EdiscoveryReviewTag
 
-        from . import ediscovery_review_tag
-        from .. import entity, identity_set
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from .ediscovery_review_tag import EdiscoveryReviewTag
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
@@ -76,6 +79,6 @@ class Tag(entity.Entity):
         writer.write_object_value("createdBy", self.created_by)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
     
 

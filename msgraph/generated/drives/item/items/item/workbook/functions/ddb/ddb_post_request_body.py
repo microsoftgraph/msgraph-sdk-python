@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class DdbPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,15 +12,15 @@ class DdbPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The cost property
-    cost: Optional[json.Json] = None
+    cost: Optional[Json] = None
     # The factor property
-    factor: Optional[json.Json] = None
+    factor: Optional[Json] = None
     # The life property
-    life: Optional[json.Json] = None
+    life: Optional[Json] = None
     # The period property
-    period: Optional[json.Json] = None
+    period: Optional[Json] = None
     # The salvage property
-    salvage: Optional[json.Json] = None
+    salvage: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DdbPostRequestBody:
@@ -39,16 +39,16 @@ class DdbPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cost": lambda n : setattr(self, 'cost', n.get_object_value(json.Json)),
-            "factor": lambda n : setattr(self, 'factor', n.get_object_value(json.Json)),
-            "life": lambda n : setattr(self, 'life', n.get_object_value(json.Json)),
-            "period": lambda n : setattr(self, 'period', n.get_object_value(json.Json)),
-            "salvage": lambda n : setattr(self, 'salvage', n.get_object_value(json.Json)),
+            "cost": lambda n : setattr(self, 'cost', n.get_object_value(Json)),
+            "factor": lambda n : setattr(self, 'factor', n.get_object_value(Json)),
+            "life": lambda n : setattr(self, 'life', n.get_object_value(Json)),
+            "period": lambda n : setattr(self, 'period', n.get_object_value(Json)),
+            "salvage": lambda n : setattr(self, 'salvage', n.get_object_value(Json)),
         }
         return fields
     

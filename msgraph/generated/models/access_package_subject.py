@@ -4,14 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_package_subject_type, connected_organization, entity
+    from .access_package_subject_type import AccessPackageSubjectType
+    from .connected_organization import ConnectedOrganization
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AccessPackageSubject(entity.Entity):
+class AccessPackageSubject(Entity):
     # The connected organization of the subject. Read-only. Nullable.
-    connected_organization: Optional[connected_organization.ConnectedOrganization] = None
+    connected_organization: Optional[ConnectedOrganization] = None
     # The display name of the subject.
     display_name: Optional[str] = None
     # The email address of the subject.
@@ -25,7 +27,7 @@ class AccessPackageSubject(entity.Entity):
     # The principal name, if known, of the subject.
     principal_name: Optional[str] = None
     # The resource type of the subject. The possible values are: notSpecified, user, servicePrincipal, unknownFutureValue.
-    subject_type: Optional[access_package_subject_type.AccessPackageSubjectType] = None
+    subject_type: Optional[AccessPackageSubjectType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageSubject:
@@ -44,18 +46,22 @@ class AccessPackageSubject(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_subject_type, connected_organization, entity
+        from .access_package_subject_type import AccessPackageSubjectType
+        from .connected_organization import ConnectedOrganization
+        from .entity import Entity
 
-        from . import access_package_subject_type, connected_organization, entity
+        from .access_package_subject_type import AccessPackageSubjectType
+        from .connected_organization import ConnectedOrganization
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "connectedOrganization": lambda n : setattr(self, 'connected_organization', n.get_object_value(connected_organization.ConnectedOrganization)),
+            "connectedOrganization": lambda n : setattr(self, 'connected_organization', n.get_object_value(ConnectedOrganization)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
             "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
             "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
             "principalName": lambda n : setattr(self, 'principal_name', n.get_str_value()),
-            "subjectType": lambda n : setattr(self, 'subject_type', n.get_enum_value(access_package_subject_type.AccessPackageSubjectType)),
+            "subjectType": lambda n : setattr(self, 'subject_type', n.get_enum_value(AccessPackageSubjectType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

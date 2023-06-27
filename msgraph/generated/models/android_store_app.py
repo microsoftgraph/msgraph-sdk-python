@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_minimum_operating_system, mobile_app
+    from .android_minimum_operating_system import AndroidMinimumOperatingSystem
+    from .mobile_app import MobileApp
 
-from . import mobile_app
+from .mobile_app import MobileApp
 
 @dataclass
-class AndroidStoreApp(mobile_app.MobileApp):
+class AndroidStoreApp(MobileApp):
     odata_type = "#microsoft.graph.androidStoreApp"
     # The Android app store URL.
     app_store_url: Optional[str] = None
     # The value for the minimum applicable operating system.
-    minimum_supported_operating_system: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem] = None
+    minimum_supported_operating_system: Optional[AndroidMinimumOperatingSystem] = None
     # The package identifier.
     package_id: Optional[str] = None
     
@@ -35,13 +36,15 @@ class AndroidStoreApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_minimum_operating_system, mobile_app
+        from .android_minimum_operating_system import AndroidMinimumOperatingSystem
+        from .mobile_app import MobileApp
 
-        from . import android_minimum_operating_system, mobile_app
+        from .android_minimum_operating_system import AndroidMinimumOperatingSystem
+        from .mobile_app import MobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(android_minimum_operating_system.AndroidMinimumOperatingSystem)),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(AndroidMinimumOperatingSystem)),
             "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

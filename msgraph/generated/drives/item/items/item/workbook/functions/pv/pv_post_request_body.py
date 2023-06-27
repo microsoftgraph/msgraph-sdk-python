@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class PvPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,15 +12,15 @@ class PvPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The fv property
-    fv: Optional[json.Json] = None
+    fv: Optional[Json] = None
     # The nper property
-    nper: Optional[json.Json] = None
+    nper: Optional[Json] = None
     # The pmt property
-    pmt: Optional[json.Json] = None
+    pmt: Optional[Json] = None
     # The rate property
-    rate: Optional[json.Json] = None
+    rate: Optional[Json] = None
     # The type property
-    type: Optional[json.Json] = None
+    type: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PvPostRequestBody:
@@ -39,16 +39,16 @@ class PvPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fv": lambda n : setattr(self, 'fv', n.get_object_value(json.Json)),
-            "nper": lambda n : setattr(self, 'nper', n.get_object_value(json.Json)),
-            "pmt": lambda n : setattr(self, 'pmt', n.get_object_value(json.Json)),
-            "rate": lambda n : setattr(self, 'rate', n.get_object_value(json.Json)),
-            "type": lambda n : setattr(self, 'type', n.get_object_value(json.Json)),
+            "fv": lambda n : setattr(self, 'fv', n.get_object_value(Json)),
+            "nper": lambda n : setattr(self, 'nper', n.get_object_value(Json)),
+            "pmt": lambda n : setattr(self, 'pmt', n.get_object_value(Json)),
+            "rate": lambda n : setattr(self, 'rate', n.get_object_value(Json)),
+            "type": lambda n : setattr(self, 'type', n.get_object_value(Json)),
         }
         return fields
     

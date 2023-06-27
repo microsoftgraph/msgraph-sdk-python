@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_notification_recipient_scope
+    from .access_review_notification_recipient_scope import AccessReviewNotificationRecipientScope
 
-from . import access_review_notification_recipient_scope
+from .access_review_notification_recipient_scope import AccessReviewNotificationRecipientScope
 
 @dataclass
-class AccessReviewNotificationRecipientQueryScope(access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope):
+class AccessReviewNotificationRecipientQueryScope(AccessReviewNotificationRecipientScope):
     odata_type = "#microsoft.graph.accessReviewNotificationRecipientQueryScope"
     # Represents the query for who the recipients are. For example, /groups/{group id}/members for group members and /users/{user id} for a specific user.
     query: Optional[str] = None
@@ -35,9 +35,9 @@ class AccessReviewNotificationRecipientQueryScope(access_review_notification_rec
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_notification_recipient_scope
+        from .access_review_notification_recipient_scope import AccessReviewNotificationRecipientScope
 
-        from . import access_review_notification_recipient_scope
+        from .access_review_notification_recipient_scope import AccessReviewNotificationRecipientScope
 
         fields: Dict[str, Callable[[Any], None]] = {
             "query": lambda n : setattr(self, 'query', n.get_str_value()),

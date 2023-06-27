@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import key_value_pair
+    from .key_value_pair import KeyValuePair
 
 @dataclass
 class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
     # Count of items that are excluded from the request.
     excluded_item_count: Optional[int] = None
     # Count of items per insight.
-    insight_counts: Optional[List[key_value_pair.KeyValuePair]] = None
+    insight_counts: Optional[List[KeyValuePair]] = None
     # Count of items found.
     item_count: Optional[int] = None
     # Count of item that need review.
@@ -22,7 +22,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Count of items per product, such as Exchange, SharePoint, OneDrive, and Teams.
-    product_item_counts: Optional[List[key_value_pair.KeyValuePair]] = None
+    product_item_counts: Optional[List[KeyValuePair]] = None
     # Count of items signed off by the administrator.
     signed_off_item_count: Optional[int] = None
     # Total item size in bytes.
@@ -45,17 +45,17 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import key_value_pair
+        from .key_value_pair import KeyValuePair
 
-        from . import key_value_pair
+        from .key_value_pair import KeyValuePair
 
         fields: Dict[str, Callable[[Any], None]] = {
             "excludedItemCount": lambda n : setattr(self, 'excluded_item_count', n.get_int_value()),
-            "insightCounts": lambda n : setattr(self, 'insight_counts', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
+            "insightCounts": lambda n : setattr(self, 'insight_counts', n.get_collection_of_object_values(KeyValuePair)),
             "itemCount": lambda n : setattr(self, 'item_count', n.get_int_value()),
             "itemNeedReview": lambda n : setattr(self, 'item_need_review', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "productItemCounts": lambda n : setattr(self, 'product_item_counts', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
+            "productItemCounts": lambda n : setattr(self, 'product_item_counts', n.get_collection_of_object_values(KeyValuePair)),
             "signedOffItemCount": lambda n : setattr(self, 'signed_off_item_count', n.get_int_value()),
             "totalItemSize": lambda n : setattr(self, 'total_item_size', n.get_int_value()),
         }

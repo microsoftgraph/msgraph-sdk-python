@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attachment, outlook_item
+    from .attachment import Attachment
+    from .outlook_item import OutlookItem
 
-from . import attachment
+from .attachment import Attachment
 
 @dataclass
-class ItemAttachment(attachment.Attachment):
+class ItemAttachment(Attachment):
     odata_type = "#microsoft.graph.itemAttachment"
     # The attached message or event. Navigation property.
-    item: Optional[outlook_item.OutlookItem] = None
+    item: Optional[OutlookItem] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemAttachment:
@@ -31,12 +32,14 @@ class ItemAttachment(attachment.Attachment):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attachment, outlook_item
+        from .attachment import Attachment
+        from .outlook_item import OutlookItem
 
-        from . import attachment, outlook_item
+        from .attachment import Attachment
+        from .outlook_item import OutlookItem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "item": lambda n : setattr(self, 'item', n.get_object_value(outlook_item.OutlookItem)),
+            "item": lambda n : setattr(self, 'item', n.get_object_value(OutlookItem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

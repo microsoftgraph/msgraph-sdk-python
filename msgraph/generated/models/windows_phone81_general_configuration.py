@@ -4,12 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import app_list_item, app_list_type, device_configuration, required_password_type
+    from .app_list_item import AppListItem
+    from .app_list_type import AppListType
+    from .device_configuration import DeviceConfiguration
+    from .required_password_type import RequiredPasswordType
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguration):
+class WindowsPhone81GeneralConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.windowsPhone81GeneralConfiguration"
     # Value indicating whether this policy only applies to Windows Phone 8.1. This property is read-only.
     apply_only_to_windows_phone81: Optional[bool] = None
@@ -22,9 +25,9 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
     # Indicates whether or not to block Wi-Fi tethering. Has no impact if Wi-Fi is blocked.
     cellular_block_wifi_tethering: Optional[bool] = None
     # Possible values of the compliance app list.
-    compliant_app_list_type: Optional[app_list_type.AppListType] = None
+    compliant_app_list_type: Optional[AppListType] = None
     # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-    compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
+    compliant_apps_list: Optional[List[AppListItem]] = None
     # Indicates whether or not to block diagnostic data submission.
     diagnostic_data_block_submission: Optional[bool] = None
     # Indicates whether or not to block custom email accounts.
@@ -50,7 +53,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
     # Indicates whether or not to require a password.
     password_required: Optional[bool] = None
     # Possible values of required passwords.
-    password_required_type: Optional[required_password_type.RequiredPasswordType] = None
+    password_required_type: Optional[RequiredPasswordType] = None
     # Number of sign in failures allowed before factory reset.
     password_sign_in_failure_count_before_factory_reset: Optional[int] = None
     # Indicates whether or not to block screenshots.
@@ -87,9 +90,15 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_list_item, app_list_type, device_configuration, required_password_type
+        from .app_list_item import AppListItem
+        from .app_list_type import AppListType
+        from .device_configuration import DeviceConfiguration
+        from .required_password_type import RequiredPasswordType
 
-        from . import app_list_item, app_list_type, device_configuration, required_password_type
+        from .app_list_item import AppListItem
+        from .app_list_type import AppListType
+        from .device_configuration import DeviceConfiguration
+        from .required_password_type import RequiredPasswordType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applyOnlyToWindowsPhone81": lambda n : setattr(self, 'apply_only_to_windows_phone81', n.get_bool_value()),
@@ -97,8 +106,8 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             "bluetoothBlocked": lambda n : setattr(self, 'bluetooth_blocked', n.get_bool_value()),
             "cameraBlocked": lambda n : setattr(self, 'camera_blocked', n.get_bool_value()),
             "cellularBlockWifiTethering": lambda n : setattr(self, 'cellular_block_wifi_tethering', n.get_bool_value()),
-            "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(app_list_type.AppListType)),
-            "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
+            "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(AppListType)),
+            "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(AppListItem)),
             "diagnosticDataBlockSubmission": lambda n : setattr(self, 'diagnostic_data_block_submission', n.get_bool_value()),
             "emailBlockAddingAccounts": lambda n : setattr(self, 'email_block_adding_accounts', n.get_bool_value()),
             "locationServicesBlocked": lambda n : setattr(self, 'location_services_blocked', n.get_bool_value()),
@@ -111,7 +120,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
             "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
             "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
             "passwordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
             "screenCaptureBlocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
             "storageBlockRemovableStorage": lambda n : setattr(self, 'storage_block_removable_storage', n.get_bool_value()),

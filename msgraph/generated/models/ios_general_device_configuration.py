@@ -4,12 +4,27 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import app_list_item, app_list_type, device_configuration, ios_network_usage_rule, media_content_rating_australia, media_content_rating_canada, media_content_rating_france, media_content_rating_germany, media_content_rating_ireland, media_content_rating_japan, media_content_rating_new_zealand, media_content_rating_united_kingdom, media_content_rating_united_states, rating_apps_type, required_password_type, web_browser_cookie_settings
+    from .app_list_item import AppListItem
+    from .app_list_type import AppListType
+    from .device_configuration import DeviceConfiguration
+    from .ios_network_usage_rule import IosNetworkUsageRule
+    from .media_content_rating_australia import MediaContentRatingAustralia
+    from .media_content_rating_canada import MediaContentRatingCanada
+    from .media_content_rating_france import MediaContentRatingFrance
+    from .media_content_rating_germany import MediaContentRatingGermany
+    from .media_content_rating_ireland import MediaContentRatingIreland
+    from .media_content_rating_japan import MediaContentRatingJapan
+    from .media_content_rating_new_zealand import MediaContentRatingNewZealand
+    from .media_content_rating_united_kingdom import MediaContentRatingUnitedKingdom
+    from .media_content_rating_united_states import MediaContentRatingUnitedStates
+    from .rating_apps_type import RatingAppsType
+    from .required_password_type import RequiredPasswordType
+    from .web_browser_cookie_settings import WebBrowserCookieSettings
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
+class IosGeneralDeviceConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.iosGeneralDeviceConfiguration"
     # Indicates whether or not to allow account modification when the device is in supervised mode.
     account_block_modification: Optional[bool] = None
@@ -38,11 +53,11 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to force a paired Apple Watch to use Wrist Detection (iOS 8.2 and later).
     apple_watch_force_wrist_detection: Optional[bool] = None
     # Gets or sets the list of iOS apps allowed to autonomously enter Single App Mode. Supervised only. iOS 7.0 and later. This collection can contain a maximum of 500 elements.
-    apps_single_app_mode_list: Optional[List[app_list_item.AppListItem]] = None
+    apps_single_app_mode_list: Optional[List[AppListItem]] = None
     # List of apps in the visibility list (either visible/launchable apps list or hidden/unlaunchable apps list, controlled by AppsVisibilityListType) (iOS 9.3 and later). This collection can contain a maximum of 10000 elements.
-    apps_visibility_list: Optional[List[app_list_item.AppListItem]] = None
+    apps_visibility_list: Optional[List[AppListItem]] = None
     # Possible values of the compliance app list.
-    apps_visibility_list_type: Optional[app_list_type.AppListType] = None
+    apps_visibility_list_type: Optional[AppListType] = None
     # Indicates whether or not to allow modification of Bluetooth settings when the device is in supervised mode (iOS 10.0 and later).
     bluetooth_block_modification: Optional[bool] = None
     # Indicates whether or not to block the user from accessing the camera of the device. Requires a supervised device for iOS 13 and later.
@@ -64,9 +79,9 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to automatically give permission to the teacher of a managed course on the Classroom app to view a student's screen without prompting when the device is in supervised mode.
     classroom_app_force_unprompted_screen_observation: Optional[bool] = None
     # Possible values of the compliance app list.
-    compliant_app_list_type: Optional[app_list_type.AppListType] = None
+    compliant_app_list_type: Optional[AppListType] = None
     # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-    compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
+    compliant_apps_list: Optional[List[AppListItem]] = None
     # Indicates whether or not to block the user from installing configuration profiles and certificates interactively when the device is in supervised mode.
     configuration_profile_block_changes: Optional[bool] = None
     # Indicates whether or not to block definition lookup when the device is in supervised mode (iOS 8.1.3 and later ).
@@ -186,29 +201,29 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to block the user from using the Today View on the lock screen.
     lock_screen_block_today_view: Optional[bool] = None
     # Apps rating as in media content
-    media_content_rating_apps: Optional[rating_apps_type.RatingAppsType] = None
+    media_content_rating_apps: Optional[RatingAppsType] = None
     # Media content rating settings for Australia
-    media_content_rating_australia: Optional[media_content_rating_australia.MediaContentRatingAustralia] = None
+    media_content_rating_australia: Optional[MediaContentRatingAustralia] = None
     # Media content rating settings for Canada
-    media_content_rating_canada: Optional[media_content_rating_canada.MediaContentRatingCanada] = None
+    media_content_rating_canada: Optional[MediaContentRatingCanada] = None
     # Media content rating settings for France
-    media_content_rating_france: Optional[media_content_rating_france.MediaContentRatingFrance] = None
+    media_content_rating_france: Optional[MediaContentRatingFrance] = None
     # Media content rating settings for Germany
-    media_content_rating_germany: Optional[media_content_rating_germany.MediaContentRatingGermany] = None
+    media_content_rating_germany: Optional[MediaContentRatingGermany] = None
     # Media content rating settings for Ireland
-    media_content_rating_ireland: Optional[media_content_rating_ireland.MediaContentRatingIreland] = None
+    media_content_rating_ireland: Optional[MediaContentRatingIreland] = None
     # Media content rating settings for Japan
-    media_content_rating_japan: Optional[media_content_rating_japan.MediaContentRatingJapan] = None
+    media_content_rating_japan: Optional[MediaContentRatingJapan] = None
     # Media content rating settings for New Zealand
-    media_content_rating_new_zealand: Optional[media_content_rating_new_zealand.MediaContentRatingNewZealand] = None
+    media_content_rating_new_zealand: Optional[MediaContentRatingNewZealand] = None
     # Media content rating settings for United Kingdom
-    media_content_rating_united_kingdom: Optional[media_content_rating_united_kingdom.MediaContentRatingUnitedKingdom] = None
+    media_content_rating_united_kingdom: Optional[MediaContentRatingUnitedKingdom] = None
     # Media content rating settings for United States
-    media_content_rating_united_states: Optional[media_content_rating_united_states.MediaContentRatingUnitedStates] = None
+    media_content_rating_united_states: Optional[MediaContentRatingUnitedStates] = None
     # Indicates whether or not to block the user from using the Messages app on the supervised device.
     messages_blocked: Optional[bool] = None
     # List of managed apps and the network rules that applies to them. This collection can contain a maximum of 1000 elements.
-    network_usage_rules: Optional[List[ios_network_usage_rule.IosNetworkUsageRule]] = None
+    network_usage_rules: Optional[List[IosNetworkUsageRule]] = None
     # Indicates whether or not to allow notifications settings modification (iOS 9.3 and later).
     notifications_block_settings_modification: Optional[bool] = None
     # Block modification of registered Touch ID fingerprints when in supervised mode.
@@ -234,7 +249,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to require a passcode.
     passcode_required: Optional[bool] = None
     # Possible values of required passwords.
-    passcode_required_type: Optional[required_password_type.RequiredPasswordType] = None
+    passcode_required_type: Optional[RequiredPasswordType] = None
     # Number of sign in failures allowed before wiping the device. Valid values 2 to 11
     passcode_sign_in_failure_count_before_wipe: Optional[int] = None
     # Indicates whether or not to block the user from using podcasts on the supervised device (iOS 8.0 and later).
@@ -248,7 +263,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to block the user from using Safari. Requires a supervised device for iOS 13 and later.
     safari_blocked: Optional[bool] = None
     # Web Browser Cookie Settings.
-    safari_cookie_settings: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None
+    safari_cookie_settings: Optional[WebBrowserCookieSettings] = None
     # URLs matching the patterns listed here will be considered managed.
     safari_managed_domains: Optional[List[str]] = None
     # Users can save passwords in Safari only from URLs matching the patterns listed here. Applies to devices in supervised mode (iOS 9.3 and later).
@@ -291,9 +306,39 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_list_item, app_list_type, device_configuration, ios_network_usage_rule, media_content_rating_australia, media_content_rating_canada, media_content_rating_france, media_content_rating_germany, media_content_rating_ireland, media_content_rating_japan, media_content_rating_new_zealand, media_content_rating_united_kingdom, media_content_rating_united_states, rating_apps_type, required_password_type, web_browser_cookie_settings
+        from .app_list_item import AppListItem
+        from .app_list_type import AppListType
+        from .device_configuration import DeviceConfiguration
+        from .ios_network_usage_rule import IosNetworkUsageRule
+        from .media_content_rating_australia import MediaContentRatingAustralia
+        from .media_content_rating_canada import MediaContentRatingCanada
+        from .media_content_rating_france import MediaContentRatingFrance
+        from .media_content_rating_germany import MediaContentRatingGermany
+        from .media_content_rating_ireland import MediaContentRatingIreland
+        from .media_content_rating_japan import MediaContentRatingJapan
+        from .media_content_rating_new_zealand import MediaContentRatingNewZealand
+        from .media_content_rating_united_kingdom import MediaContentRatingUnitedKingdom
+        from .media_content_rating_united_states import MediaContentRatingUnitedStates
+        from .rating_apps_type import RatingAppsType
+        from .required_password_type import RequiredPasswordType
+        from .web_browser_cookie_settings import WebBrowserCookieSettings
 
-        from . import app_list_item, app_list_type, device_configuration, ios_network_usage_rule, media_content_rating_australia, media_content_rating_canada, media_content_rating_france, media_content_rating_germany, media_content_rating_ireland, media_content_rating_japan, media_content_rating_new_zealand, media_content_rating_united_kingdom, media_content_rating_united_states, rating_apps_type, required_password_type, web_browser_cookie_settings
+        from .app_list_item import AppListItem
+        from .app_list_type import AppListType
+        from .device_configuration import DeviceConfiguration
+        from .ios_network_usage_rule import IosNetworkUsageRule
+        from .media_content_rating_australia import MediaContentRatingAustralia
+        from .media_content_rating_canada import MediaContentRatingCanada
+        from .media_content_rating_france import MediaContentRatingFrance
+        from .media_content_rating_germany import MediaContentRatingGermany
+        from .media_content_rating_ireland import MediaContentRatingIreland
+        from .media_content_rating_japan import MediaContentRatingJapan
+        from .media_content_rating_new_zealand import MediaContentRatingNewZealand
+        from .media_content_rating_united_kingdom import MediaContentRatingUnitedKingdom
+        from .media_content_rating_united_states import MediaContentRatingUnitedStates
+        from .rating_apps_type import RatingAppsType
+        from .required_password_type import RequiredPasswordType
+        from .web_browser_cookie_settings import WebBrowserCookieSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accountBlockModification": lambda n : setattr(self, 'account_block_modification', n.get_bool_value()),
@@ -309,9 +354,9 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             "appleNewsBlocked": lambda n : setattr(self, 'apple_news_blocked', n.get_bool_value()),
             "appleWatchBlockPairing": lambda n : setattr(self, 'apple_watch_block_pairing', n.get_bool_value()),
             "appleWatchForceWristDetection": lambda n : setattr(self, 'apple_watch_force_wrist_detection', n.get_bool_value()),
-            "appsSingleAppModeList": lambda n : setattr(self, 'apps_single_app_mode_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
-            "appsVisibilityList": lambda n : setattr(self, 'apps_visibility_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
-            "appsVisibilityListType": lambda n : setattr(self, 'apps_visibility_list_type', n.get_enum_value(app_list_type.AppListType)),
+            "appsSingleAppModeList": lambda n : setattr(self, 'apps_single_app_mode_list', n.get_collection_of_object_values(AppListItem)),
+            "appsVisibilityList": lambda n : setattr(self, 'apps_visibility_list', n.get_collection_of_object_values(AppListItem)),
+            "appsVisibilityListType": lambda n : setattr(self, 'apps_visibility_list_type', n.get_enum_value(AppListType)),
             "bluetoothBlockModification": lambda n : setattr(self, 'bluetooth_block_modification', n.get_bool_value()),
             "cameraBlocked": lambda n : setattr(self, 'camera_blocked', n.get_bool_value()),
             "cellularBlockDataRoaming": lambda n : setattr(self, 'cellular_block_data_roaming', n.get_bool_value()),
@@ -322,8 +367,8 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             "certificatesBlockUntrustedTlsCertificates": lambda n : setattr(self, 'certificates_block_untrusted_tls_certificates', n.get_bool_value()),
             "classroomAppBlockRemoteScreenObservation": lambda n : setattr(self, 'classroom_app_block_remote_screen_observation', n.get_bool_value()),
             "classroomAppForceUnpromptedScreenObservation": lambda n : setattr(self, 'classroom_app_force_unprompted_screen_observation', n.get_bool_value()),
-            "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(app_list_type.AppListType)),
-            "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
+            "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(AppListType)),
+            "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(AppListItem)),
             "configurationProfileBlockChanges": lambda n : setattr(self, 'configuration_profile_block_changes', n.get_bool_value()),
             "definitionLookupBlocked": lambda n : setattr(self, 'definition_lookup_blocked', n.get_bool_value()),
             "deviceBlockEnableRestrictions": lambda n : setattr(self, 'device_block_enable_restrictions', n.get_bool_value()),
@@ -383,18 +428,18 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             "lockScreenBlockNotificationView": lambda n : setattr(self, 'lock_screen_block_notification_view', n.get_bool_value()),
             "lockScreenBlockPassbook": lambda n : setattr(self, 'lock_screen_block_passbook', n.get_bool_value()),
             "lockScreenBlockTodayView": lambda n : setattr(self, 'lock_screen_block_today_view', n.get_bool_value()),
-            "mediaContentRatingApps": lambda n : setattr(self, 'media_content_rating_apps', n.get_enum_value(rating_apps_type.RatingAppsType)),
-            "mediaContentRatingAustralia": lambda n : setattr(self, 'media_content_rating_australia', n.get_object_value(media_content_rating_australia.MediaContentRatingAustralia)),
-            "mediaContentRatingCanada": lambda n : setattr(self, 'media_content_rating_canada', n.get_object_value(media_content_rating_canada.MediaContentRatingCanada)),
-            "mediaContentRatingFrance": lambda n : setattr(self, 'media_content_rating_france', n.get_object_value(media_content_rating_france.MediaContentRatingFrance)),
-            "mediaContentRatingGermany": lambda n : setattr(self, 'media_content_rating_germany', n.get_object_value(media_content_rating_germany.MediaContentRatingGermany)),
-            "mediaContentRatingIreland": lambda n : setattr(self, 'media_content_rating_ireland', n.get_object_value(media_content_rating_ireland.MediaContentRatingIreland)),
-            "mediaContentRatingJapan": lambda n : setattr(self, 'media_content_rating_japan', n.get_object_value(media_content_rating_japan.MediaContentRatingJapan)),
-            "mediaContentRatingNewZealand": lambda n : setattr(self, 'media_content_rating_new_zealand', n.get_object_value(media_content_rating_new_zealand.MediaContentRatingNewZealand)),
-            "mediaContentRatingUnitedKingdom": lambda n : setattr(self, 'media_content_rating_united_kingdom', n.get_object_value(media_content_rating_united_kingdom.MediaContentRatingUnitedKingdom)),
-            "mediaContentRatingUnitedStates": lambda n : setattr(self, 'media_content_rating_united_states', n.get_object_value(media_content_rating_united_states.MediaContentRatingUnitedStates)),
+            "mediaContentRatingApps": lambda n : setattr(self, 'media_content_rating_apps', n.get_enum_value(RatingAppsType)),
+            "mediaContentRatingAustralia": lambda n : setattr(self, 'media_content_rating_australia', n.get_object_value(MediaContentRatingAustralia)),
+            "mediaContentRatingCanada": lambda n : setattr(self, 'media_content_rating_canada', n.get_object_value(MediaContentRatingCanada)),
+            "mediaContentRatingFrance": lambda n : setattr(self, 'media_content_rating_france', n.get_object_value(MediaContentRatingFrance)),
+            "mediaContentRatingGermany": lambda n : setattr(self, 'media_content_rating_germany', n.get_object_value(MediaContentRatingGermany)),
+            "mediaContentRatingIreland": lambda n : setattr(self, 'media_content_rating_ireland', n.get_object_value(MediaContentRatingIreland)),
+            "mediaContentRatingJapan": lambda n : setattr(self, 'media_content_rating_japan', n.get_object_value(MediaContentRatingJapan)),
+            "mediaContentRatingNewZealand": lambda n : setattr(self, 'media_content_rating_new_zealand', n.get_object_value(MediaContentRatingNewZealand)),
+            "mediaContentRatingUnitedKingdom": lambda n : setattr(self, 'media_content_rating_united_kingdom', n.get_object_value(MediaContentRatingUnitedKingdom)),
+            "mediaContentRatingUnitedStates": lambda n : setattr(self, 'media_content_rating_united_states', n.get_object_value(MediaContentRatingUnitedStates)),
             "messagesBlocked": lambda n : setattr(self, 'messages_blocked', n.get_bool_value()),
-            "networkUsageRules": lambda n : setattr(self, 'network_usage_rules', n.get_collection_of_object_values(ios_network_usage_rule.IosNetworkUsageRule)),
+            "networkUsageRules": lambda n : setattr(self, 'network_usage_rules', n.get_collection_of_object_values(IosNetworkUsageRule)),
             "notificationsBlockSettingsModification": lambda n : setattr(self, 'notifications_block_settings_modification', n.get_bool_value()),
             "passcodeBlockFingerprintModification": lambda n : setattr(self, 'passcode_block_fingerprint_modification', n.get_bool_value()),
             "passcodeBlockFingerprintUnlock": lambda n : setattr(self, 'passcode_block_fingerprint_unlock', n.get_bool_value()),
@@ -407,14 +452,14 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             "passcodeMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'passcode_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
             "passcodePreviousPasscodeBlockCount": lambda n : setattr(self, 'passcode_previous_passcode_block_count', n.get_int_value()),
             "passcodeRequired": lambda n : setattr(self, 'passcode_required', n.get_bool_value()),
-            "passcodeRequiredType": lambda n : setattr(self, 'passcode_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "passcodeRequiredType": lambda n : setattr(self, 'passcode_required_type', n.get_enum_value(RequiredPasswordType)),
             "passcodeSignInFailureCountBeforeWipe": lambda n : setattr(self, 'passcode_sign_in_failure_count_before_wipe', n.get_int_value()),
             "podcastsBlocked": lambda n : setattr(self, 'podcasts_blocked', n.get_bool_value()),
             "safariBlockAutofill": lambda n : setattr(self, 'safari_block_autofill', n.get_bool_value()),
             "safariBlockJavaScript": lambda n : setattr(self, 'safari_block_java_script', n.get_bool_value()),
             "safariBlockPopups": lambda n : setattr(self, 'safari_block_popups', n.get_bool_value()),
             "safariBlocked": lambda n : setattr(self, 'safari_blocked', n.get_bool_value()),
-            "safariCookieSettings": lambda n : setattr(self, 'safari_cookie_settings', n.get_enum_value(web_browser_cookie_settings.WebBrowserCookieSettings)),
+            "safariCookieSettings": lambda n : setattr(self, 'safari_cookie_settings', n.get_enum_value(WebBrowserCookieSettings)),
             "safariManagedDomains": lambda n : setattr(self, 'safari_managed_domains', n.get_collection_of_primitive_values(str)),
             "safariPasswordAutoFillDomains": lambda n : setattr(self, 'safari_password_auto_fill_domains', n.get_collection_of_primitive_values(str)),
             "safariRequireFraudWarning": lambda n : setattr(self, 'safari_require_fraud_warning', n.get_bool_value()),

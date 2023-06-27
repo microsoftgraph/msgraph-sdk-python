@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -20,7 +20,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
     # ID of the user who updated tenant state.
     updated_by: Optional[str] = None
     # Time at which the control state was updated.
-    updated_date_time: Optional[datetime] = None
+    updated_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SecureScoreControlStateUpdate:
@@ -62,7 +62,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("state", self.state)
         writer.write_str_value("updatedBy", self.updated_by)
-        writer.write_datetime_value("updatedDateTime", self.updated_date_time)
+        writer.write_datetime_value()("updatedDateTime", self.updated_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

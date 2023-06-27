@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import rating_united_states_movies_type, rating_united_states_television_type
+    from .rating_united_states_movies_type import RatingUnitedStatesMoviesType
+    from .rating_united_states_television_type import RatingUnitedStatesTelevisionType
 
 @dataclass
 class MediaContentRatingUnitedStates(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class MediaContentRatingUnitedStates(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Movies rating labels in United States
-    movie_rating: Optional[rating_united_states_movies_type.RatingUnitedStatesMoviesType] = None
+    movie_rating: Optional[RatingUnitedStatesMoviesType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # TV content rating labels in United States
-    tv_rating: Optional[rating_united_states_television_type.RatingUnitedStatesTelevisionType] = None
+    tv_rating: Optional[RatingUnitedStatesTelevisionType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MediaContentRatingUnitedStates:
@@ -35,14 +36,16 @@ class MediaContentRatingUnitedStates(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import rating_united_states_movies_type, rating_united_states_television_type
+        from .rating_united_states_movies_type import RatingUnitedStatesMoviesType
+        from .rating_united_states_television_type import RatingUnitedStatesTelevisionType
 
-        from . import rating_united_states_movies_type, rating_united_states_television_type
+        from .rating_united_states_movies_type import RatingUnitedStatesMoviesType
+        from .rating_united_states_television_type import RatingUnitedStatesTelevisionType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(rating_united_states_movies_type.RatingUnitedStatesMoviesType)),
+            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(RatingUnitedStatesMoviesType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(rating_united_states_television_type.RatingUnitedStatesTelevisionType)),
+            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(RatingUnitedStatesTelevisionType)),
         }
         return fields
     

@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import onenote_operation_error, operation
+    from .onenote_operation_error import OnenoteOperationError
+    from .operation import Operation
 
-from . import operation
+from .operation import Operation
 
 @dataclass
-class OnenoteOperation(operation.Operation):
+class OnenoteOperation(Operation):
     # The error returned by the operation.
-    error: Optional[onenote_operation_error.OnenoteOperationError] = None
+    error: Optional[OnenoteOperationError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The operation percent complete if the operation is still in running status.
@@ -38,12 +39,14 @@ class OnenoteOperation(operation.Operation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import onenote_operation_error, operation
+        from .onenote_operation_error import OnenoteOperationError
+        from .operation import Operation
 
-        from . import onenote_operation_error, operation
+        from .onenote_operation_error import OnenoteOperationError
+        from .operation import Operation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "error": lambda n : setattr(self, 'error', n.get_object_value(onenote_operation_error.OnenoteOperationError)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(OnenoteOperationError)),
             "percentComplete": lambda n : setattr(self, 'percent_complete', n.get_str_value()),
             "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
             "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),

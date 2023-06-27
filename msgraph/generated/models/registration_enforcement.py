@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_methods_registration_campaign
+    from .authentication_methods_registration_campaign import AuthenticationMethodsRegistrationCampaign
 
 @dataclass
 class RegistrationEnforcement(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class RegistrationEnforcement(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Run campaigns to remind users to set up targeted authentication methods.
-    authentication_methods_registration_campaign: Optional[authentication_methods_registration_campaign.AuthenticationMethodsRegistrationCampaign] = None
+    authentication_methods_registration_campaign: Optional[AuthenticationMethodsRegistrationCampaign] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,12 +33,12 @@ class RegistrationEnforcement(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_methods_registration_campaign
+        from .authentication_methods_registration_campaign import AuthenticationMethodsRegistrationCampaign
 
-        from . import authentication_methods_registration_campaign
+        from .authentication_methods_registration_campaign import AuthenticationMethodsRegistrationCampaign
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationMethodsRegistrationCampaign": lambda n : setattr(self, 'authentication_methods_registration_campaign', n.get_object_value(authentication_methods_registration_campaign.AuthenticationMethodsRegistrationCampaign)),
+            "authenticationMethodsRegistrationCampaign": lambda n : setattr(self, 'authentication_methods_registration_campaign', n.get_object_value(AuthenticationMethodsRegistrationCampaign)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

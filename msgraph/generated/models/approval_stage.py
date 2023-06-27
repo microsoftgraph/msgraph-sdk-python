@@ -1,16 +1,17 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, identity
+    from .entity import Entity
+    from .identity import Identity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ApprovalStage(entity.Entity):
+class ApprovalStage(Entity):
     # Indicates whether the stage is assigned to the calling user to review. Read-only.
     assigned_to_me: Optional[bool] = None
     # The label provided by the policy creator to identify an approval stage. Read-only.
@@ -22,9 +23,9 @@ class ApprovalStage(entity.Entity):
     # The result of this approval record. Possible values include: NotReviewed, Approved, Denied.
     review_result: Optional[str] = None
     # The identifier of the reviewer. 00000000-0000-0000-0000-000000000000 if the assigned reviewer hasn't reviewed. Read-only.
-    reviewed_by: Optional[identity.Identity] = None
+    reviewed_by: Optional[Identity] = None
     # The date and time when a decision was recorded. The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    reviewed_date_time: Optional[datetime] = None
+    reviewed_date_time: Optional[datetime.datetime] = None
     # The stage status. Possible values: InProgress, Initializing, Completed, Expired. Read-only.
     status: Optional[str] = None
     
@@ -45,16 +46,18 @@ class ApprovalStage(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, identity
+        from .entity import Entity
+        from .identity import Identity
 
-        from . import entity, identity
+        from .entity import Entity
+        from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignedToMe": lambda n : setattr(self, 'assigned_to_me', n.get_bool_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
             "reviewResult": lambda n : setattr(self, 'review_result', n.get_str_value()),
-            "reviewedBy": lambda n : setattr(self, 'reviewed_by', n.get_object_value(identity.Identity)),
+            "reviewedBy": lambda n : setattr(self, 'reviewed_by', n.get_object_value(Identity)),
             "reviewedDateTime": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
@@ -76,7 +79,7 @@ class ApprovalStage(entity.Entity):
         writer.write_str_value("justification", self.justification)
         writer.write_str_value("reviewResult", self.review_result)
         writer.write_object_value("reviewedBy", self.reviewed_by)
-        writer.write_datetime_value("reviewedDateTime", self.reviewed_date_time)
+        writer.write_datetime_value()("reviewedDateTime", self.reviewed_date_time)
         writer.write_str_value("status", self.status)
     
 

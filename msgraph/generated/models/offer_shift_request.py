@@ -1,19 +1,20 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import schedule_change_request, swap_shifts_change_request
+    from .schedule_change_request import ScheduleChangeRequest
+    from .swap_shifts_change_request import SwapShiftsChangeRequest
 
-from . import schedule_change_request
+from .schedule_change_request import ScheduleChangeRequest
 
 @dataclass
-class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
+class OfferShiftRequest(ScheduleChangeRequest):
     odata_type = "#microsoft.graph.offerShiftRequest"
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-    recipient_action_date_time: Optional[datetime] = None
+    recipient_action_date_time: Optional[datetime.datetime] = None
     # Custom message sent by recipient of the offer shift request.
     recipient_action_message: Optional[str] = None
     # User ID of the recipient of the offer shift request.
@@ -36,9 +37,9 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.swapShiftsChangeRequest".casefold():
-            from . import swap_shifts_change_request
+            from .swap_shifts_change_request import SwapShiftsChangeRequest
 
-            return swap_shifts_change_request.SwapShiftsChangeRequest()
+            return SwapShiftsChangeRequest()
         return OfferShiftRequest()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -46,9 +47,11 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import schedule_change_request, swap_shifts_change_request
+        from .schedule_change_request import ScheduleChangeRequest
+        from .swap_shifts_change_request import SwapShiftsChangeRequest
 
-        from . import schedule_change_request, swap_shifts_change_request
+        from .schedule_change_request import ScheduleChangeRequest
+        from .swap_shifts_change_request import SwapShiftsChangeRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
             "recipientActionDateTime": lambda n : setattr(self, 'recipient_action_date_time', n.get_datetime_value()),

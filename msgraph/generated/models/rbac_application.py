@@ -4,32 +4,41 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, unified_rbac_resource_namespace, unified_role_assignment, unified_role_assignment_schedule, unified_role_assignment_schedule_instance, unified_role_assignment_schedule_request, unified_role_definition, unified_role_eligibility_schedule, unified_role_eligibility_schedule_instance, unified_role_eligibility_schedule_request
+    from .entity import Entity
+    from .unified_rbac_resource_namespace import UnifiedRbacResourceNamespace
+    from .unified_role_assignment import UnifiedRoleAssignment
+    from .unified_role_assignment_schedule import UnifiedRoleAssignmentSchedule
+    from .unified_role_assignment_schedule_instance import UnifiedRoleAssignmentScheduleInstance
+    from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
+    from .unified_role_definition import UnifiedRoleDefinition
+    from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
+    from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
+    from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class RbacApplication(entity.Entity):
+class RbacApplication(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The resourceNamespaces property
-    resource_namespaces: Optional[List[unified_rbac_resource_namespace.UnifiedRbacResourceNamespace]] = None
+    resource_namespaces: Optional[List[UnifiedRbacResourceNamespace]] = None
     # Instances for active role assignments.
-    role_assignment_schedule_instances: Optional[List[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]] = None
+    role_assignment_schedule_instances: Optional[List[UnifiedRoleAssignmentScheduleInstance]] = None
     # Requests for active role assignments to principals through PIM.
-    role_assignment_schedule_requests: Optional[List[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]] = None
+    role_assignment_schedule_requests: Optional[List[UnifiedRoleAssignmentScheduleRequest]] = None
     # Schedules for active role assignment operations.
-    role_assignment_schedules: Optional[List[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]] = None
+    role_assignment_schedules: Optional[List[UnifiedRoleAssignmentSchedule]] = None
     # Resource to grant access to users or groups.
-    role_assignments: Optional[List[unified_role_assignment.UnifiedRoleAssignment]] = None
+    role_assignments: Optional[List[UnifiedRoleAssignment]] = None
     # Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
-    role_definitions: Optional[List[unified_role_definition.UnifiedRoleDefinition]] = None
+    role_definitions: Optional[List[UnifiedRoleDefinition]] = None
     # Instances for role eligibility requests.
-    role_eligibility_schedule_instances: Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]] = None
+    role_eligibility_schedule_instances: Optional[List[UnifiedRoleEligibilityScheduleInstance]] = None
     # Requests for role eligibilities for principals through PIM.
-    role_eligibility_schedule_requests: Optional[List[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]] = None
+    role_eligibility_schedule_requests: Optional[List[UnifiedRoleEligibilityScheduleRequest]] = None
     # Schedules for role eligibility operations.
-    role_eligibility_schedules: Optional[List[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]] = None
+    role_eligibility_schedules: Optional[List[UnifiedRoleEligibilitySchedule]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RbacApplication:
@@ -48,20 +57,38 @@ class RbacApplication(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, unified_rbac_resource_namespace, unified_role_assignment, unified_role_assignment_schedule, unified_role_assignment_schedule_instance, unified_role_assignment_schedule_request, unified_role_definition, unified_role_eligibility_schedule, unified_role_eligibility_schedule_instance, unified_role_eligibility_schedule_request
+        from .entity import Entity
+        from .unified_rbac_resource_namespace import UnifiedRbacResourceNamespace
+        from .unified_role_assignment import UnifiedRoleAssignment
+        from .unified_role_assignment_schedule import UnifiedRoleAssignmentSchedule
+        from .unified_role_assignment_schedule_instance import UnifiedRoleAssignmentScheduleInstance
+        from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
+        from .unified_role_definition import UnifiedRoleDefinition
+        from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
+        from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
+        from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
 
-        from . import entity, unified_rbac_resource_namespace, unified_role_assignment, unified_role_assignment_schedule, unified_role_assignment_schedule_instance, unified_role_assignment_schedule_request, unified_role_definition, unified_role_eligibility_schedule, unified_role_eligibility_schedule_instance, unified_role_eligibility_schedule_request
+        from .entity import Entity
+        from .unified_rbac_resource_namespace import UnifiedRbacResourceNamespace
+        from .unified_role_assignment import UnifiedRoleAssignment
+        from .unified_role_assignment_schedule import UnifiedRoleAssignmentSchedule
+        from .unified_role_assignment_schedule_instance import UnifiedRoleAssignmentScheduleInstance
+        from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
+        from .unified_role_definition import UnifiedRoleDefinition
+        from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
+        from .unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
+        from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "resourceNamespaces": lambda n : setattr(self, 'resource_namespaces', n.get_collection_of_object_values(unified_rbac_resource_namespace.UnifiedRbacResourceNamespace)),
-            "roleAssignmentScheduleInstances": lambda n : setattr(self, 'role_assignment_schedule_instances', n.get_collection_of_object_values(unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance)),
-            "roleAssignmentScheduleRequests": lambda n : setattr(self, 'role_assignment_schedule_requests', n.get_collection_of_object_values(unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest)),
-            "roleAssignmentSchedules": lambda n : setattr(self, 'role_assignment_schedules', n.get_collection_of_object_values(unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule)),
-            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(unified_role_assignment.UnifiedRoleAssignment)),
-            "roleDefinitions": lambda n : setattr(self, 'role_definitions', n.get_collection_of_object_values(unified_role_definition.UnifiedRoleDefinition)),
-            "roleEligibilityScheduleInstances": lambda n : setattr(self, 'role_eligibility_schedule_instances', n.get_collection_of_object_values(unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance)),
-            "roleEligibilityScheduleRequests": lambda n : setattr(self, 'role_eligibility_schedule_requests', n.get_collection_of_object_values(unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest)),
-            "roleEligibilitySchedules": lambda n : setattr(self, 'role_eligibility_schedules', n.get_collection_of_object_values(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
+            "resourceNamespaces": lambda n : setattr(self, 'resource_namespaces', n.get_collection_of_object_values(UnifiedRbacResourceNamespace)),
+            "roleAssignmentScheduleInstances": lambda n : setattr(self, 'role_assignment_schedule_instances', n.get_collection_of_object_values(UnifiedRoleAssignmentScheduleInstance)),
+            "roleAssignmentScheduleRequests": lambda n : setattr(self, 'role_assignment_schedule_requests', n.get_collection_of_object_values(UnifiedRoleAssignmentScheduleRequest)),
+            "roleAssignmentSchedules": lambda n : setattr(self, 'role_assignment_schedules', n.get_collection_of_object_values(UnifiedRoleAssignmentSchedule)),
+            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(UnifiedRoleAssignment)),
+            "roleDefinitions": lambda n : setattr(self, 'role_definitions', n.get_collection_of_object_values(UnifiedRoleDefinition)),
+            "roleEligibilityScheduleInstances": lambda n : setattr(self, 'role_eligibility_schedule_instances', n.get_collection_of_object_values(UnifiedRoleEligibilityScheduleInstance)),
+            "roleEligibilityScheduleRequests": lambda n : setattr(self, 'role_eligibility_schedule_requests', n.get_collection_of_object_values(UnifiedRoleEligibilityScheduleRequest)),
+            "roleEligibilitySchedules": lambda n : setattr(self, 'role_eligibility_schedules', n.get_collection_of_object_values(UnifiedRoleEligibilitySchedule)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

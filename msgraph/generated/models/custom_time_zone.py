@@ -4,19 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import daylight_time_zone_offset, standard_time_zone_offset, time_zone_base
+    from .daylight_time_zone_offset import DaylightTimeZoneOffset
+    from .standard_time_zone_offset import StandardTimeZoneOffset
+    from .time_zone_base import TimeZoneBase
 
-from . import time_zone_base
+from .time_zone_base import TimeZoneBase
 
 @dataclass
-class CustomTimeZone(time_zone_base.TimeZoneBase):
+class CustomTimeZone(TimeZoneBase):
     odata_type = "#microsoft.graph.customTimeZone"
     # The time offset of the time zone from Coordinated Universal Time (UTC). This value is in minutes. Time zones that are ahead of UTC have a positive offset; time zones that are behind UTC have a negative offset.
     bias: Optional[int] = None
     # Specifies when the time zone switches from standard time to daylight saving time.
-    daylight_offset: Optional[daylight_time_zone_offset.DaylightTimeZoneOffset] = None
+    daylight_offset: Optional[DaylightTimeZoneOffset] = None
     # Specifies when the time zone switches from daylight saving time to standard time.
-    standard_offset: Optional[standard_time_zone_offset.StandardTimeZoneOffset] = None
+    standard_offset: Optional[StandardTimeZoneOffset] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CustomTimeZone:
@@ -35,14 +37,18 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import daylight_time_zone_offset, standard_time_zone_offset, time_zone_base
+        from .daylight_time_zone_offset import DaylightTimeZoneOffset
+        from .standard_time_zone_offset import StandardTimeZoneOffset
+        from .time_zone_base import TimeZoneBase
 
-        from . import daylight_time_zone_offset, standard_time_zone_offset, time_zone_base
+        from .daylight_time_zone_offset import DaylightTimeZoneOffset
+        from .standard_time_zone_offset import StandardTimeZoneOffset
+        from .time_zone_base import TimeZoneBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bias": lambda n : setattr(self, 'bias', n.get_int_value()),
-            "daylightOffset": lambda n : setattr(self, 'daylight_offset', n.get_object_value(daylight_time_zone_offset.DaylightTimeZoneOffset)),
-            "standardOffset": lambda n : setattr(self, 'standard_offset', n.get_object_value(standard_time_zone_offset.StandardTimeZoneOffset)),
+            "daylightOffset": lambda n : setattr(self, 'daylight_offset', n.get_object_value(DaylightTimeZoneOffset)),
+            "standardOffset": lambda n : setattr(self, 'standard_offset', n.get_object_value(StandardTimeZoneOffset)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

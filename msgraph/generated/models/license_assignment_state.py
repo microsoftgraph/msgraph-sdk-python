@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
@@ -17,7 +17,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     # The error property
     error: Optional[str] = None
     # The lastUpdatedDateTime property
-    last_updated_date_time: Optional[datetime] = None
+    last_updated_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The skuId property
@@ -64,7 +64,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         writer.write_str_value("assignedByGroup", self.assigned_by_group)
         writer.write_collection_of_primitive_values("disabledPlans", self.disabled_plans)
         writer.write_str_value("error", self.error)
-        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
+        writer.write_datetime_value()("lastUpdatedDateTime", self.last_updated_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("state", self.state)

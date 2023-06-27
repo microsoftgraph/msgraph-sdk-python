@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_feedback, education_outcome
+    from .education_feedback import EducationFeedback
+    from .education_outcome import EducationOutcome
 
-from . import education_outcome
+from .education_outcome import EducationOutcome
 
 @dataclass
-class EducationFeedbackOutcome(education_outcome.EducationOutcome):
+class EducationFeedbackOutcome(EducationOutcome):
     odata_type = "#microsoft.graph.educationFeedbackOutcome"
     # Teacher's written feedback to the student.
-    feedback: Optional[education_feedback.EducationFeedback] = None
+    feedback: Optional[EducationFeedback] = None
     # A copy of the feedback property that is made when the grade is released to the student.
-    published_feedback: Optional[education_feedback.EducationFeedback] = None
+    published_feedback: Optional[EducationFeedback] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationFeedbackOutcome:
@@ -33,13 +34,15 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_feedback, education_outcome
+        from .education_feedback import EducationFeedback
+        from .education_outcome import EducationOutcome
 
-        from . import education_feedback, education_outcome
+        from .education_feedback import EducationFeedback
+        from .education_outcome import EducationOutcome
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(education_feedback.EducationFeedback)),
-            "publishedFeedback": lambda n : setattr(self, 'published_feedback', n.get_object_value(education_feedback.EducationFeedback)),
+            "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(EducationFeedback)),
+            "publishedFeedback": lambda n : setattr(self, 'published_feedback', n.get_object_value(EducationFeedback)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

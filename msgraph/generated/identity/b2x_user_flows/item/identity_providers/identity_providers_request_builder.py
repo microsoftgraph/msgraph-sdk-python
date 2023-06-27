@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import identity_provider_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import identity_provider_item_request_builder
+    from .....models.identity_provider_collection_response import IdentityProviderCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.identity_provider_item_request_builder import IdentityProviderItemRequestBuilder
 
 class IdentityProvidersRequestBuilder():
     """
@@ -37,42 +37,42 @@ class IdentityProvidersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_identity_provider_id(self,identity_provider_id: str) -> identity_provider_item_request_builder.IdentityProviderItemRequestBuilder:
+    def by_identity_provider_id(self,identity_provider_id: str) -> IdentityProviderItemRequestBuilder:
         """
         Provides operations to manage the identityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
         Args:
             identity_provider_id: Unique identifier of the item
-        Returns: identity_provider_item_request_builder.IdentityProviderItemRequestBuilder
+        Returns: IdentityProviderItemRequestBuilder
         """
         if not identity_provider_id:
             raise TypeError("identity_provider_id cannot be null.")
-        from .item import identity_provider_item_request_builder
+        from .item.identity_provider_item_request_builder import IdentityProviderItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identityProvider%2Did"] = identity_provider_id
-        return identity_provider_item_request_builder.IdentityProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return IdentityProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_provider_collection_response.IdentityProviderCollectionResponse]:
+    async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProviderCollectionResponse]:
         """
         Get the identity providers in a b2xIdentityUserFlow object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity_provider_collection_response.IdentityProviderCollectionResponse]
+        Returns: Optional[IdentityProviderCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import identity_provider_collection_response
+        from .....models.identity_provider_collection_response import IdentityProviderCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, identity_provider_collection_response.IdentityProviderCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, IdentityProviderCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class IdentityProvidersRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class IdentityProvidersRequestBuilderGetQueryParameters():

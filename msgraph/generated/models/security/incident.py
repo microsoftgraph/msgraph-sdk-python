@@ -1,45 +1,50 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert, alert_classification, alert_comment, alert_determination, alert_severity, incident_status
-    from .. import entity
+    from ..entity import Entity
+    from .alert import Alert
+    from .alert_classification import AlertClassification
+    from .alert_comment import AlertComment
+    from .alert_determination import AlertDetermination
+    from .alert_severity import AlertSeverity
+    from .incident_status import IncidentStatus
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class Incident(entity.Entity):
+class Incident(Entity):
     # The list of related alerts. Supports $expand.
-    alerts: Optional[List[alert.Alert]] = None
+    alerts: Optional[List[Alert]] = None
     # Owner of the incident, or null if no owner is assigned. Free editable text.
     assigned_to: Optional[str] = None
     # The specification for the incident. Possible values are: unknown, falsePositive, truePositive, informationalExpectedActivity, unknownFutureValue.
-    classification: Optional[alert_classification.AlertClassification] = None
+    classification: Optional[AlertClassification] = None
     # Array of comments created by the Security Operations (SecOps) team when the incident is managed.
-    comments: Optional[List[alert_comment.AlertComment]] = None
+    comments: Optional[List[AlertComment]] = None
     # Time when the incident was first created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Array of custom tags associated with an incident.
     custom_tags: Optional[List[str]] = None
     # Specifies the determination of the incident. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
-    determination: Optional[alert_determination.AlertDetermination] = None
+    determination: Optional[AlertDetermination] = None
     # The incident name.
     display_name: Optional[str] = None
     # The URL for the incident page in the Microsoft 365 Defender portal.
     incident_web_url: Optional[str] = None
     # Time when the incident was last updated.
-    last_update_date_time: Optional[datetime] = None
+    last_update_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Only populated in case an incident is grouped together with another incident, as part of the logic that processes incidents. In such a case, the status property is redirected.
     redirect_incident_id: Optional[str] = None
     # The severity property
-    severity: Optional[alert_severity.AlertSeverity] = None
+    severity: Optional[AlertSeverity] = None
     # The status property
-    status: Optional[incident_status.IncidentStatus] = None
+    status: Optional[IncidentStatus] = None
     # The Azure Active Directory tenant in which the alert was created.
     tenant_id: Optional[str] = None
     
@@ -60,26 +65,36 @@ class Incident(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert, alert_classification, alert_comment, alert_determination, alert_severity, incident_status
-        from .. import entity
+        from ..entity import Entity
+        from .alert import Alert
+        from .alert_classification import AlertClassification
+        from .alert_comment import AlertComment
+        from .alert_determination import AlertDetermination
+        from .alert_severity import AlertSeverity
+        from .incident_status import IncidentStatus
 
-        from . import alert, alert_classification, alert_comment, alert_determination, alert_severity, incident_status
-        from .. import entity
+        from ..entity import Entity
+        from .alert import Alert
+        from .alert_classification import AlertClassification
+        from .alert_comment import AlertComment
+        from .alert_determination import AlertDetermination
+        from .alert_severity import AlertSeverity
+        from .incident_status import IncidentStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(alert.Alert)),
+            "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(Alert)),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
-            "classification": lambda n : setattr(self, 'classification', n.get_enum_value(alert_classification.AlertClassification)),
-            "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(alert_comment.AlertComment)),
+            "classification": lambda n : setattr(self, 'classification', n.get_enum_value(AlertClassification)),
+            "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(AlertComment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customTags": lambda n : setattr(self, 'custom_tags', n.get_collection_of_primitive_values(str)),
-            "determination": lambda n : setattr(self, 'determination', n.get_enum_value(alert_determination.AlertDetermination)),
+            "determination": lambda n : setattr(self, 'determination', n.get_enum_value(AlertDetermination)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "incidentWebUrl": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
             "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
             "redirectIncidentId": lambda n : setattr(self, 'redirect_incident_id', n.get_str_value()),
-            "severity": lambda n : setattr(self, 'severity', n.get_enum_value(alert_severity.AlertSeverity)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(incident_status.IncidentStatus)),
+            "severity": lambda n : setattr(self, 'severity', n.get_enum_value(AlertSeverity)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(IncidentStatus)),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -99,12 +114,12 @@ class Incident(entity.Entity):
         writer.write_str_value("assignedTo", self.assigned_to)
         writer.write_enum_value("classification", self.classification)
         writer.write_collection_of_object_values("comments", self.comments)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_collection_of_primitive_values("customTags", self.custom_tags)
         writer.write_enum_value("determination", self.determination)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("incidentWebUrl", self.incident_web_url)
-        writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
+        writer.write_datetime_value()("lastUpdateDateTime", self.last_update_date_time)
         writer.write_str_value("redirectIncidentId", self.redirect_incident_id)
         writer.write_enum_value("severity", self.severity)
         writer.write_enum_value("status", self.status)

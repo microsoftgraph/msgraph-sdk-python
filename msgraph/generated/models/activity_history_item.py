@@ -1,34 +1,36 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, status, user_activity
+    from .entity import Entity
+    from .status import Status
+    from .user_activity import UserActivity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ActivityHistoryItem(entity.Entity):
+class ActivityHistoryItem(Entity):
     # Optional. The duration of active user engagement. if not supplied, this is calculated from the startedDateTime and lastActiveDateTime.
     active_duration_seconds: Optional[int] = None
     # The activity property
-    activity: Optional[user_activity.UserActivity] = None
+    activity: Optional[UserActivity] = None
     # Set by the server. DateTime in UTC when the object was created on the server.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Optional. UTC DateTime when the historyItem will undergo hard-delete. Can be set by the client.
-    expiration_date_time: Optional[datetime] = None
+    expiration_date_time: Optional[datetime.datetime] = None
     # Optional. UTC DateTime when the historyItem (activity session) was last understood as active or finished - if null, historyItem status should be Ongoing.
-    last_active_date_time: Optional[datetime] = None
+    last_active_date_time: Optional[datetime.datetime] = None
     # Set by the server. DateTime in UTC when the object was modified on the server.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Required. UTC DateTime when the historyItem (activity session) was started. Required for timeline history.
-    started_date_time: Optional[datetime] = None
+    started_date_time: Optional[datetime.datetime] = None
     # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
-    status: Optional[status.Status] = None
+    status: Optional[Status] = None
     # Optional. The timezone in which the user's device used to generate the activity was located at activity creation time. Values supplied as Olson IDs in order to support cross-platform representation.
     user_timezone: Optional[str] = None
     
@@ -49,19 +51,23 @@ class ActivityHistoryItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, status, user_activity
+        from .entity import Entity
+        from .status import Status
+        from .user_activity import UserActivity
 
-        from . import entity, status, user_activity
+        from .entity import Entity
+        from .status import Status
+        from .user_activity import UserActivity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activeDurationSeconds": lambda n : setattr(self, 'active_duration_seconds', n.get_int_value()),
-            "activity": lambda n : setattr(self, 'activity', n.get_object_value(user_activity.UserActivity)),
+            "activity": lambda n : setattr(self, 'activity', n.get_object_value(UserActivity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "lastActiveDateTime": lambda n : setattr(self, 'last_active_date_time', n.get_datetime_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(status.Status)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(Status)),
             "userTimezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -79,11 +85,11 @@ class ActivityHistoryItem(entity.Entity):
         super().serialize(writer)
         writer.write_int_value("activeDurationSeconds", self.active_duration_seconds)
         writer.write_object_value("activity", self.activity)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value("lastActiveDateTime", self.last_active_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_datetime_value("startedDateTime", self.started_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value()("lastActiveDateTime", self.last_active_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("startedDateTime", self.started_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("userTimezone", self.user_timezone)
     

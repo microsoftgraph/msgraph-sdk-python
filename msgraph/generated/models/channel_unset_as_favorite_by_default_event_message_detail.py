@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_message_detail, identity_set
+    from .event_message_detail import EventMessageDetail
+    from .identity_set import IdentitySet
 
-from . import event_message_detail
+from .event_message_detail import EventMessageDetail
 
 @dataclass
-class ChannelUnsetAsFavoriteByDefaultEventMessageDetail(event_message_detail.EventMessageDetail):
+class ChannelUnsetAsFavoriteByDefaultEventMessageDetail(EventMessageDetail):
     odata_type = "#microsoft.graph.channelUnsetAsFavoriteByDefaultEventMessageDetail"
     # Unique identifier of the channel.
     channel_id: Optional[str] = None
     # Initiator of the event.
-    initiator: Optional[identity_set.IdentitySet] = None
+    initiator: Optional[IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChannelUnsetAsFavoriteByDefaultEventMessageDetail:
@@ -33,13 +34,15 @@ class ChannelUnsetAsFavoriteByDefaultEventMessageDetail(event_message_detail.Eve
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "channelId": lambda n : setattr(self, 'channel_id', n.get_str_value()),
-            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
+            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

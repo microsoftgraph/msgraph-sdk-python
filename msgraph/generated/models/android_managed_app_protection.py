@@ -4,15 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
+    from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+    from .managed_mobile_app import ManagedMobileApp
+    from .targeted_managed_app_protection import TargetedManagedAppProtection
 
-from . import targeted_managed_app_protection
+from .targeted_managed_app_protection import TargetedManagedAppProtection
 
 @dataclass
-class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManagedAppProtection):
+class AndroidManagedAppProtection(TargetedManagedAppProtection):
     odata_type = "#microsoft.graph.androidManagedAppProtection"
     # List of apps to which the policy is deployed.
-    apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
+    apps: Optional[List[ManagedMobileApp]] = None
     # Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
     custom_browser_display_name: Optional[str] = None
     # Unique identifier of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
@@ -20,7 +22,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
     # Count of apps to which the current policy is deployed.
     deployed_app_count: Optional[int] = None
     # Navigation property to deployment summary of the configuration.
-    deployment_summary: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None
+    deployment_summary: Optional[ManagedAppPolicyDeploymentSummary] = None
     # When this setting is enabled, app level encryption is disabled if device level encryption is enabled
     disable_app_encryption_if_device_encryption_is_enabled: Optional[bool] = None
     # Indicates whether application data for managed apps should be encrypted
@@ -49,16 +51,20 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_mobile_app import ManagedMobileApp
+        from .targeted_managed_app_protection import TargetedManagedAppProtection
 
-        from . import managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_mobile_app import ManagedMobileApp
+        from .targeted_managed_app_protection import TargetedManagedAppProtection
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
+            "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(ManagedMobileApp)),
             "customBrowserDisplayName": lambda n : setattr(self, 'custom_browser_display_name', n.get_str_value()),
             "customBrowserPackageId": lambda n : setattr(self, 'custom_browser_package_id', n.get_str_value()),
             "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
+            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(ManagedAppPolicyDeploymentSummary)),
             "disableAppEncryptionIfDeviceEncryptionIsEnabled": lambda n : setattr(self, 'disable_app_encryption_if_device_encryption_is_enabled', n.get_bool_value()),
             "encryptAppData": lambda n : setattr(self, 'encrypt_app_data', n.get_bool_value()),
             "minimumRequiredPatchVersion": lambda n : setattr(self, 'minimum_required_patch_version', n.get_str_value()),

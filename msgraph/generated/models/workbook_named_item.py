@@ -4,12 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, json, workbook_worksheet
+    from .entity import Entity
+    from .json import Json
+    from .workbook_worksheet import WorkbookWorksheet
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookNamedItem(entity.Entity):
+class WorkbookNamedItem(Entity):
     # Represents the comment associated with this name.
     comment: Optional[str] = None
     # The name of the object. Read-only.
@@ -21,11 +23,11 @@ class WorkbookNamedItem(entity.Entity):
     # Indicates what type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.
     type: Optional[str] = None
     # Represents the formula that the name is defined to refer to. E.g. =Sheet14!$B$2:$H$12, =4.75, etc. Read-only.
-    value: Optional[json.Json] = None
+    value: Optional[Json] = None
     # Specifies whether the object is visible or not.
     visible: Optional[bool] = None
     # Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
-    worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
+    worksheet: Optional[WorkbookWorksheet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookNamedItem:
@@ -44,18 +46,22 @@ class WorkbookNamedItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, json, workbook_worksheet
+        from .entity import Entity
+        from .json import Json
+        from .workbook_worksheet import WorkbookWorksheet
 
-        from . import entity, json, workbook_worksheet
+        from .entity import Entity
+        from .json import Json
+        from .workbook_worksheet import WorkbookWorksheet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
-            "value": lambda n : setattr(self, 'value', n.get_object_value(json.Json)),
+            "value": lambda n : setattr(self, 'value', n.get_object_value(Json)),
             "visible": lambda n : setattr(self, 'visible', n.get_bool_value()),
-            "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(workbook_worksheet.WorkbookWorksheet)),
+            "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(WorkbookWorksheet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

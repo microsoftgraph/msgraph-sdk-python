@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import place, room
+    from .place import Place
+    from .room import Room
 
-from . import place
+from .place import Place
 
 @dataclass
-class RoomList(place.Place):
+class RoomList(Place):
     odata_type = "#microsoft.graph.roomList"
     # The email address of the room list.
     email_address: Optional[str] = None
     # The rooms property
-    rooms: Optional[List[room.Room]] = None
+    rooms: Optional[List[Room]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RoomList:
@@ -33,13 +34,15 @@ class RoomList(place.Place):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import place, room
+        from .place import Place
+        from .room import Room
 
-        from . import place, room
+        from .place import Place
+        from .room import Room
 
         fields: Dict[str, Callable[[Any], None]] = {
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "rooms": lambda n : setattr(self, 'rooms', n.get_collection_of_object_values(room.Room)),
+            "rooms": lambda n : setattr(self, 'rooms', n.get_collection_of_object_values(Room)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

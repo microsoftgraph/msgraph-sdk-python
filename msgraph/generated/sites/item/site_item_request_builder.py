@@ -10,28 +10,28 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import site
-    from ...models.o_data_errors import o_data_error
-    from .analytics import analytics_request_builder
-    from .columns import columns_request_builder
-    from .content_types import content_types_request_builder
-    from .created_by_user import created_by_user_request_builder
-    from .drive import drive_request_builder
-    from .drives import drives_request_builder
-    from .external_columns import external_columns_request_builder
-    from .get_activities_by_interval import get_activities_by_interval_request_builder
-    from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval import get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder
-    from .get_applicable_content_types_for_list_with_list_id import get_applicable_content_types_for_list_with_list_id_request_builder
-    from .get_by_path_with_path import get_by_path_with_path_request_builder
-    from .items import items_request_builder
-    from .last_modified_by_user import last_modified_by_user_request_builder
-    from .lists import lists_request_builder
-    from .onenote import onenote_request_builder
-    from .operations import operations_request_builder
-    from .permissions import permissions_request_builder
-    from .sites import sites_request_builder
-    from .term_store import term_store_request_builder
-    from .term_stores import term_stores_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.site import Site
+    from .analytics.analytics_request_builder import AnalyticsRequestBuilder
+    from .columns.columns_request_builder import ColumnsRequestBuilder
+    from .content_types.content_types_request_builder import ContentTypesRequestBuilder
+    from .created_by_user.created_by_user_request_builder import CreatedByUserRequestBuilder
+    from .drive.drive_request_builder import DriveRequestBuilder
+    from .drives.drives_request_builder import DrivesRequestBuilder
+    from .external_columns.external_columns_request_builder import ExternalColumnsRequestBuilder
+    from .get_activities_by_interval.get_activities_by_interval_request_builder import GetActivitiesByIntervalRequestBuilder
+    from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+    from .get_applicable_content_types_for_list_with_list_id.get_applicable_content_types_for_list_with_list_id_request_builder import GetApplicableContentTypesForListWithListIdRequestBuilder
+    from .get_by_path_with_path.get_by_path_with_path_request_builder import GetByPathWithPathRequestBuilder
+    from .items.items_request_builder import ItemsRequestBuilder
+    from .last_modified_by_user.last_modified_by_user_request_builder import LastModifiedByUserRequestBuilder
+    from .lists.lists_request_builder import ListsRequestBuilder
+    from .onenote.onenote_request_builder import OnenoteRequestBuilder
+    from .operations.operations_request_builder import OperationsRequestBuilder
+    from .permissions.permissions_request_builder import PermissionsRequestBuilder
+    from .sites.sites_request_builder import SitesRequestBuilder
+    from .term_store.term_store_request_builder import TermStoreRequestBuilder
+    from .term_stores.term_stores_request_builder import TermStoresRequestBuilder
 
 class SiteItemRequestBuilder():
     """
@@ -55,36 +55,36 @@ class SiteItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[site.Site]:
+    async def get(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Site]:
         """
         Retrieve properties and relationships for a [site][] resource.A **site** resource represents a team site in SharePoint.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[site.Site]
+        Returns: Optional[Site]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import site
+        from ...models.site import Site
 
-        return await self.request_adapter.send_async(request_info, site.Site, error_mapping)
+        return await self.request_adapter.send_async(request_info, Site, error_mapping)
     
-    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
+    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         Args:
             endDateTime: Usage: endDateTime='{endDateTime}'
             interval: Usage: interval='{interval}'
             startDateTime: Usage: startDateTime='{startDateTime}'
-        Returns: get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+        Returns: GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
         """
         if not end_date_time:
             raise TypeError("end_date_time cannot be null.")
@@ -92,60 +92,60 @@ class SiteItemRequestBuilder():
             raise TypeError("interval cannot be null.")
         if not start_date_time:
             raise TypeError("start_date_time cannot be null.")
-        from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval import get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder
+        from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
 
-        return get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
+        return GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
     
-    def get_applicable_content_types_for_list_with_list_id(self,list_id: Optional[str] = None) -> get_applicable_content_types_for_list_with_list_id_request_builder.GetApplicableContentTypesForListWithListIdRequestBuilder:
+    def get_applicable_content_types_for_list_with_list_id(self,list_id: Optional[str] = None) -> GetApplicableContentTypesForListWithListIdRequestBuilder:
         """
         Provides operations to call the getApplicableContentTypesForList method.
         Args:
             listId: Usage: listId='{listId}'
-        Returns: get_applicable_content_types_for_list_with_list_id_request_builder.GetApplicableContentTypesForListWithListIdRequestBuilder
+        Returns: GetApplicableContentTypesForListWithListIdRequestBuilder
         """
         if not list_id:
             raise TypeError("list_id cannot be null.")
-        from .get_applicable_content_types_for_list_with_list_id import get_applicable_content_types_for_list_with_list_id_request_builder
+        from .get_applicable_content_types_for_list_with_list_id.get_applicable_content_types_for_list_with_list_id_request_builder import GetApplicableContentTypesForListWithListIdRequestBuilder
 
-        return get_applicable_content_types_for_list_with_list_id_request_builder.GetApplicableContentTypesForListWithListIdRequestBuilder(self.request_adapter, self.path_parameters, list_id)
+        return GetApplicableContentTypesForListWithListIdRequestBuilder(self.request_adapter, self.path_parameters, list_id)
     
-    def get_by_path_with_path(self,path: Optional[str] = None) -> get_by_path_with_path_request_builder.GetByPathWithPathRequestBuilder:
+    def get_by_path_with_path(self,path: Optional[str] = None) -> GetByPathWithPathRequestBuilder:
         """
         Provides operations to call the getByPath method.
         Args:
             path: Usage: path='{path}'
-        Returns: get_by_path_with_path_request_builder.GetByPathWithPathRequestBuilder
+        Returns: GetByPathWithPathRequestBuilder
         """
         if not path:
             raise TypeError("path cannot be null.")
-        from .get_by_path_with_path import get_by_path_with_path_request_builder
+        from .get_by_path_with_path.get_by_path_with_path_request_builder import GetByPathWithPathRequestBuilder
 
-        return get_by_path_with_path_request_builder.GetByPathWithPathRequestBuilder(self.request_adapter, self.path_parameters, path)
+        return GetByPathWithPathRequestBuilder(self.request_adapter, self.path_parameters, path)
     
-    async def patch(self,body: Optional[site.Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[site.Site]:
+    async def patch(self,body: Optional[Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Site]:
         """
         Update entity in sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[site.Site]
+        Returns: Optional[Site]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import site
+        from ...models.site import Site
 
-        return await self.request_adapter.send_async(request_info, site.Site, error_mapping)
+        return await self.request_adapter.send_async(request_info, Site, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -165,7 +165,7 @@ class SiteItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[site.Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in sites
         Args:
@@ -187,157 +187,157 @@ class SiteItemRequestBuilder():
         return request_info
     
     @property
-    def analytics(self) -> analytics_request_builder.AnalyticsRequestBuilder:
+    def analytics(self) -> AnalyticsRequestBuilder:
         """
         Provides operations to manage the analytics property of the microsoft.graph.site entity.
         """
-        from .analytics import analytics_request_builder
+        from .analytics.analytics_request_builder import AnalyticsRequestBuilder
 
-        return analytics_request_builder.AnalyticsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AnalyticsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def columns(self) -> columns_request_builder.ColumnsRequestBuilder:
+    def columns(self) -> ColumnsRequestBuilder:
         """
         Provides operations to manage the columns property of the microsoft.graph.site entity.
         """
-        from .columns import columns_request_builder
+        from .columns.columns_request_builder import ColumnsRequestBuilder
 
-        return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def content_types(self) -> content_types_request_builder.ContentTypesRequestBuilder:
+    def content_types(self) -> ContentTypesRequestBuilder:
         """
         Provides operations to manage the contentTypes property of the microsoft.graph.site entity.
         """
-        from .content_types import content_types_request_builder
+        from .content_types.content_types_request_builder import ContentTypesRequestBuilder
 
-        return content_types_request_builder.ContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def created_by_user(self) -> created_by_user_request_builder.CreatedByUserRequestBuilder:
+    def created_by_user(self) -> CreatedByUserRequestBuilder:
         """
         Provides operations to manage the createdByUser property of the microsoft.graph.baseItem entity.
         """
-        from .created_by_user import created_by_user_request_builder
+        from .created_by_user.created_by_user_request_builder import CreatedByUserRequestBuilder
 
-        return created_by_user_request_builder.CreatedByUserRequestBuilder(self.request_adapter, self.path_parameters)
+        return CreatedByUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def drive(self) -> drive_request_builder.DriveRequestBuilder:
+    def drive(self) -> DriveRequestBuilder:
         """
         Provides operations to manage the drive property of the microsoft.graph.site entity.
         """
-        from .drive import drive_request_builder
+        from .drive.drive_request_builder import DriveRequestBuilder
 
-        return drive_request_builder.DriveRequestBuilder(self.request_adapter, self.path_parameters)
+        return DriveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def drives(self) -> drives_request_builder.DrivesRequestBuilder:
+    def drives(self) -> DrivesRequestBuilder:
         """
         Provides operations to manage the drives property of the microsoft.graph.site entity.
         """
-        from .drives import drives_request_builder
+        from .drives.drives_request_builder import DrivesRequestBuilder
 
-        return drives_request_builder.DrivesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DrivesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def external_columns(self) -> external_columns_request_builder.ExternalColumnsRequestBuilder:
+    def external_columns(self) -> ExternalColumnsRequestBuilder:
         """
         Provides operations to manage the externalColumns property of the microsoft.graph.site entity.
         """
-        from .external_columns import external_columns_request_builder
+        from .external_columns.external_columns_request_builder import ExternalColumnsRequestBuilder
 
-        return external_columns_request_builder.ExternalColumnsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExternalColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_activities_by_interval(self) -> get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder:
+    def get_activities_by_interval(self) -> GetActivitiesByIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         """
-        from .get_activities_by_interval import get_activities_by_interval_request_builder
+        from .get_activities_by_interval.get_activities_by_interval_request_builder import GetActivitiesByIntervalRequestBuilder
 
-        return get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def items(self) -> items_request_builder.ItemsRequestBuilder:
+    def items(self) -> ItemsRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.site entity.
         """
-        from .items import items_request_builder
+        from .items.items_request_builder import ItemsRequestBuilder
 
-        return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def last_modified_by_user(self) -> last_modified_by_user_request_builder.LastModifiedByUserRequestBuilder:
+    def last_modified_by_user(self) -> LastModifiedByUserRequestBuilder:
         """
         Provides operations to manage the lastModifiedByUser property of the microsoft.graph.baseItem entity.
         """
-        from .last_modified_by_user import last_modified_by_user_request_builder
+        from .last_modified_by_user.last_modified_by_user_request_builder import LastModifiedByUserRequestBuilder
 
-        return last_modified_by_user_request_builder.LastModifiedByUserRequestBuilder(self.request_adapter, self.path_parameters)
+        return LastModifiedByUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def lists(self) -> lists_request_builder.ListsRequestBuilder:
+    def lists(self) -> ListsRequestBuilder:
         """
         Provides operations to manage the lists property of the microsoft.graph.site entity.
         """
-        from .lists import lists_request_builder
+        from .lists.lists_request_builder import ListsRequestBuilder
 
-        return lists_request_builder.ListsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ListsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def onenote(self) -> onenote_request_builder.OnenoteRequestBuilder:
+    def onenote(self) -> OnenoteRequestBuilder:
         """
         Provides operations to manage the onenote property of the microsoft.graph.site entity.
         """
-        from .onenote import onenote_request_builder
+        from .onenote.onenote_request_builder import OnenoteRequestBuilder
 
-        return onenote_request_builder.OnenoteRequestBuilder(self.request_adapter, self.path_parameters)
+        return OnenoteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+    def operations(self) -> OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.site entity.
         """
-        from .operations import operations_request_builder
+        from .operations.operations_request_builder import OperationsRequestBuilder
 
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def permissions(self) -> permissions_request_builder.PermissionsRequestBuilder:
+    def permissions(self) -> PermissionsRequestBuilder:
         """
         Provides operations to manage the permissions property of the microsoft.graph.site entity.
         """
-        from .permissions import permissions_request_builder
+        from .permissions.permissions_request_builder import PermissionsRequestBuilder
 
-        return permissions_request_builder.PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sites(self) -> sites_request_builder.SitesRequestBuilder:
+    def sites(self) -> SitesRequestBuilder:
         """
         Provides operations to manage the sites property of the microsoft.graph.site entity.
         """
-        from .sites import sites_request_builder
+        from .sites.sites_request_builder import SitesRequestBuilder
 
-        return sites_request_builder.SitesRequestBuilder(self.request_adapter, self.path_parameters)
+        return SitesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def term_store(self) -> term_store_request_builder.TermStoreRequestBuilder:
+    def term_store(self) -> TermStoreRequestBuilder:
         """
         Provides operations to manage the termStore property of the microsoft.graph.site entity.
         """
-        from .term_store import term_store_request_builder
+        from .term_store.term_store_request_builder import TermStoreRequestBuilder
 
-        return term_store_request_builder.TermStoreRequestBuilder(self.request_adapter, self.path_parameters)
+        return TermStoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def term_stores(self) -> term_stores_request_builder.TermStoresRequestBuilder:
+    def term_stores(self) -> TermStoresRequestBuilder:
         """
         Provides operations to manage the termStores property of the microsoft.graph.site entity.
         """
-        from .term_stores import term_stores_request_builder
+        from .term_stores.term_stores_request_builder import TermStoresRequestBuilder
 
-        return term_stores_request_builder.TermStoresRequestBuilder(self.request_adapter, self.path_parameters)
+        return TermStoresRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SiteItemRequestBuilderGetQueryParameters():

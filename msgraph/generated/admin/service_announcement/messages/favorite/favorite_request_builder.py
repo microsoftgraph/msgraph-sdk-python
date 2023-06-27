@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import favorite_post_request_body, favorite_response
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .favorite_post_request_body import FavoritePostRequestBody
+    from .favorite_response import FavoriteResponse
 
 class FavoriteRequestBuilder():
     """
@@ -35,32 +36,32 @@ class FavoriteRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[favorite_post_request_body.FavoritePostRequestBody] = None, request_configuration: Optional[FavoriteRequestBuilderPostRequestConfiguration] = None) -> Optional[favorite_response.FavoriteResponse]:
+    async def post(self,body: Optional[FavoritePostRequestBody] = None, request_configuration: Optional[FavoriteRequestBuilderPostRequestConfiguration] = None) -> Optional[FavoriteResponse]:
         """
         Change the status of a list of serviceUpdateMessages to favorite for the signed in user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[favorite_response.FavoriteResponse]
+        Returns: Optional[FavoriteResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import favorite_response
+        from .favorite_response import FavoriteResponse
 
-        return await self.request_adapter.send_async(request_info, favorite_response.FavoriteResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, FavoriteResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[favorite_post_request_body.FavoritePostRequestBody] = None, request_configuration: Optional[FavoriteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[FavoritePostRequestBody] = None, request_configuration: Optional[FavoriteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Change the status of a list of serviceUpdateMessages to favorite for the signed in user.
         Args:

@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import browser_shared_cookie, browser_site
+    from .......models.browser_shared_cookie import BrowserSharedCookie
+    from .......models.browser_site import BrowserSite
 
 @dataclass
 class PublishPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,9 +15,9 @@ class PublishPostRequestBody(AdditionalDataHolder, Parsable):
     # The revision property
     revision: Optional[str] = None
     # The sharedCookies property
-    shared_cookies: Optional[List[browser_shared_cookie.BrowserSharedCookie]] = None
+    shared_cookies: Optional[List[BrowserSharedCookie]] = None
     # The sites property
-    sites: Optional[List[browser_site.BrowserSite]] = None
+    sites: Optional[List[BrowserSite]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PublishPostRequestBody:
@@ -35,14 +36,16 @@ class PublishPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .......models import browser_shared_cookie, browser_site
+        from .......models.browser_shared_cookie import BrowserSharedCookie
+        from .......models.browser_site import BrowserSite
 
-        from .......models import browser_shared_cookie, browser_site
+        from .......models.browser_shared_cookie import BrowserSharedCookie
+        from .......models.browser_site import BrowserSite
 
         fields: Dict[str, Callable[[Any], None]] = {
             "revision": lambda n : setattr(self, 'revision', n.get_str_value()),
-            "sharedCookies": lambda n : setattr(self, 'shared_cookies', n.get_collection_of_object_values(browser_shared_cookie.BrowserSharedCookie)),
-            "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(browser_site.BrowserSite)),
+            "sharedCookies": lambda n : setattr(self, 'shared_cookies', n.get_collection_of_object_values(BrowserSharedCookie)),
+            "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(BrowserSite)),
         }
         return fields
     

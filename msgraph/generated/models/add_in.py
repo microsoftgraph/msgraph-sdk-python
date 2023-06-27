@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import key_value
+    from .key_value import KeyValue
 
 @dataclass
 class AddIn(AdditionalDataHolder, Parsable):
@@ -17,7 +17,7 @@ class AddIn(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The properties property
-    properties: Optional[List[key_value.KeyValue]] = None
+    properties: Optional[List[KeyValue]] = None
     # The type property
     type: Optional[str] = None
     
@@ -38,14 +38,14 @@ class AddIn(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import key_value
+        from .key_value import KeyValue
 
-        from . import key_value
+        from .key_value import KeyValue
 
         fields: Dict[str, Callable[[Any], None]] = {
             "id": lambda n : setattr(self, 'id', n.get_uuid_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(key_value.KeyValue)),
+            "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(KeyValue)),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         return fields

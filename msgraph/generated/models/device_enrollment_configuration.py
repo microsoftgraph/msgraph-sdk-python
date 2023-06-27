@@ -1,29 +1,33 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_enrollment_limit_configuration, device_enrollment_platform_restrictions_configuration, device_enrollment_windows_hello_for_business_configuration, enrollment_configuration_assignment, entity
+    from .device_enrollment_limit_configuration import DeviceEnrollmentLimitConfiguration
+    from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
+    from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
+    from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceEnrollmentConfiguration(entity.Entity):
+class DeviceEnrollmentConfiguration(Entity):
     """
     The Base Class of Device Enrollment Configuration
     """
     # The list of group assignments for the device configuration profile
-    assignments: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]] = None
+    assignments: Optional[List[EnrollmentConfigurationAssignment]] = None
     # Created date time in UTC of the device enrollment configuration
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The description of the device enrollment configuration
     description: Optional[str] = None
     # The display name of the device enrollment configuration
     display_name: Optional[str] = None
     # Last modified date time in UTC of the device enrollment configuration
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Priority is used when a user exists in multiple groups that are assigned enrollment configuration. Users are subject only to the configuration with the lowest priority value.
@@ -46,17 +50,17 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentLimitConfiguration".casefold():
-            from . import device_enrollment_limit_configuration
+            from .device_enrollment_limit_configuration import DeviceEnrollmentLimitConfiguration
 
-            return device_enrollment_limit_configuration.DeviceEnrollmentLimitConfiguration()
+            return DeviceEnrollmentLimitConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentPlatformRestrictionsConfiguration".casefold():
-            from . import device_enrollment_platform_restrictions_configuration
+            from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
 
-            return device_enrollment_platform_restrictions_configuration.DeviceEnrollmentPlatformRestrictionsConfiguration()
+            return DeviceEnrollmentPlatformRestrictionsConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceEnrollmentWindowsHelloForBusinessConfiguration".casefold():
-            from . import device_enrollment_windows_hello_for_business_configuration
+            from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
 
-            return device_enrollment_windows_hello_for_business_configuration.DeviceEnrollmentWindowsHelloForBusinessConfiguration()
+            return DeviceEnrollmentWindowsHelloForBusinessConfiguration()
         return DeviceEnrollmentConfiguration()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -64,12 +68,20 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_enrollment_limit_configuration, device_enrollment_platform_restrictions_configuration, device_enrollment_windows_hello_for_business_configuration, enrollment_configuration_assignment, entity
+        from .device_enrollment_limit_configuration import DeviceEnrollmentLimitConfiguration
+        from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
+        from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
+        from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
+        from .entity import Entity
 
-        from . import device_enrollment_limit_configuration, device_enrollment_platform_restrictions_configuration, device_enrollment_windows_hello_for_business_configuration, enrollment_configuration_assignment, entity
+        from .device_enrollment_limit_configuration import DeviceEnrollmentLimitConfiguration
+        from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
+        from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
+        from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(enrollment_configuration_assignment.EnrollmentConfigurationAssignment)),
+            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(EnrollmentConfigurationAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -91,10 +103,10 @@ class DeviceEnrollmentConfiguration(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_int_value("priority", self.priority)
         writer.write_int_value("version", self.version)
     

@@ -10,21 +10,21 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import workbook_chart
-    from ..........models.o_data_errors import o_data_error
-    from .axes import axes_request_builder
-    from .data_labels import data_labels_request_builder
-    from .format import format_request_builder
-    from .image import image_request_builder
-    from .image_with_width import image_with_width_request_builder
-    from .image_with_width_with_height import image_with_width_with_height_request_builder
-    from .image_with_width_with_height_with_fitting_mode import image_with_width_with_height_with_fitting_mode_request_builder
-    from .legend import legend_request_builder
-    from .series import series_request_builder
-    from .set_data import set_data_request_builder
-    from .set_position import set_position_request_builder
-    from .title import title_request_builder
-    from .worksheet import worksheet_request_builder
+    from ..........models.o_data_errors.o_data_error import ODataError
+    from ..........models.workbook_chart import WorkbookChart
+    from .axes.axes_request_builder import AxesRequestBuilder
+    from .data_labels.data_labels_request_builder import DataLabelsRequestBuilder
+    from .format.format_request_builder import FormatRequestBuilder
+    from .image.image_request_builder import ImageRequestBuilder
+    from .image_with_width.image_with_width_request_builder import ImageWithWidthRequestBuilder
+    from .image_with_width_with_height.image_with_width_with_height_request_builder import ImageWithWidthWithHeightRequestBuilder
+    from .image_with_width_with_height_with_fitting_mode.image_with_width_with_height_with_fitting_mode_request_builder import ImageWithWidthWithHeightWithFittingModeRequestBuilder
+    from .legend.legend_request_builder import LegendRequestBuilder
+    from .series.series_request_builder import SeriesRequestBuilder
+    from .set_data.set_data_request_builder import SetDataRequestBuilder
+    from .set_position.set_position_request_builder import SetPositionRequestBuilder
+    from .title.title_request_builder import TitleRequestBuilder
+    from .worksheet.worksheet_request_builder import WorksheetRequestBuilder
 
 class WorkbookChartItemRequestBuilder():
     """
@@ -57,75 +57,75 @@ class WorkbookChartItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WorkbookChartItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart.WorkbookChart]:
+    async def get(self,request_configuration: Optional[WorkbookChartItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChart]:
         """
         Retrieve the properties and relationships of chart object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart.WorkbookChart]
+        Returns: Optional[WorkbookChart]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import workbook_chart
+        from ..........models.workbook_chart import WorkbookChart
 
-        return await self.request_adapter.send_async(request_info, workbook_chart.WorkbookChart, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChart, error_mapping)
     
-    def image_with_width(self,width: Optional[int] = None) -> image_with_width_request_builder.ImageWithWidthRequestBuilder:
+    def image_with_width(self,width: Optional[int] = None) -> ImageWithWidthRequestBuilder:
         """
         Provides operations to call the image method.
         Args:
             width: Usage: width={width}
-        Returns: image_with_width_request_builder.ImageWithWidthRequestBuilder
+        Returns: ImageWithWidthRequestBuilder
         """
         if not width:
             raise TypeError("width cannot be null.")
-        from .image_with_width import image_with_width_request_builder
+        from .image_with_width.image_with_width_request_builder import ImageWithWidthRequestBuilder
 
-        return image_with_width_request_builder.ImageWithWidthRequestBuilder(self.request_adapter, self.path_parameters, width)
+        return ImageWithWidthRequestBuilder(self.request_adapter, self.path_parameters, width)
     
-    def image_with_width_with_height(self,height: Optional[int] = None, width: Optional[int] = None) -> image_with_width_with_height_request_builder.ImageWithWidthWithHeightRequestBuilder:
+    def image_with_width_with_height(self,height: Optional[int] = None, width: Optional[int] = None) -> ImageWithWidthWithHeightRequestBuilder:
         """
         Provides operations to call the image method.
         Args:
             height: Usage: height={height}
             width: Usage: width={width}
-        Returns: image_with_width_with_height_request_builder.ImageWithWidthWithHeightRequestBuilder
+        Returns: ImageWithWidthWithHeightRequestBuilder
         """
         if not height:
             raise TypeError("height cannot be null.")
         if not width:
             raise TypeError("width cannot be null.")
-        from .image_with_width_with_height import image_with_width_with_height_request_builder
+        from .image_with_width_with_height.image_with_width_with_height_request_builder import ImageWithWidthWithHeightRequestBuilder
 
-        return image_with_width_with_height_request_builder.ImageWithWidthWithHeightRequestBuilder(self.request_adapter, self.path_parameters, height, width)
+        return ImageWithWidthWithHeightRequestBuilder(self.request_adapter, self.path_parameters, height, width)
     
-    def image_with_width_with_height_with_fitting_mode(self,fitting_mode: Optional[str] = None, height: Optional[int] = None, width: Optional[int] = None) -> image_with_width_with_height_with_fitting_mode_request_builder.ImageWithWidthWithHeightWithFittingModeRequestBuilder:
+    def image_with_width_with_height_with_fitting_mode(self,fitting_mode: Optional[str] = None, height: Optional[int] = None, width: Optional[int] = None) -> ImageWithWidthWithHeightWithFittingModeRequestBuilder:
         """
         Provides operations to call the image method.
         Args:
             fittingMode: Usage: fittingMode='{fittingMode}'
             height: Usage: height={height}
             width: Usage: width={width}
-        Returns: image_with_width_with_height_with_fitting_mode_request_builder.ImageWithWidthWithHeightWithFittingModeRequestBuilder
+        Returns: ImageWithWidthWithHeightWithFittingModeRequestBuilder
         """
         if not fitting_mode:
             raise TypeError("fitting_mode cannot be null.")
@@ -133,34 +133,34 @@ class WorkbookChartItemRequestBuilder():
             raise TypeError("height cannot be null.")
         if not width:
             raise TypeError("width cannot be null.")
-        from .image_with_width_with_height_with_fitting_mode import image_with_width_with_height_with_fitting_mode_request_builder
+        from .image_with_width_with_height_with_fitting_mode.image_with_width_with_height_with_fitting_mode_request_builder import ImageWithWidthWithHeightWithFittingModeRequestBuilder
 
-        return image_with_width_with_height_with_fitting_mode_request_builder.ImageWithWidthWithHeightWithFittingModeRequestBuilder(self.request_adapter, self.path_parameters, fitting_mode, height, width)
+        return ImageWithWidthWithHeightWithFittingModeRequestBuilder(self.request_adapter, self.path_parameters, fitting_mode, height, width)
     
-    async def patch(self,body: Optional[workbook_chart.WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart.WorkbookChart]:
+    async def patch(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChart]:
         """
         Update the properties of chart object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart.WorkbookChart]
+        Returns: Optional[WorkbookChart]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import workbook_chart
+        from ..........models.workbook_chart import WorkbookChart
 
-        return await self.request_adapter.send_async(request_info, workbook_chart.WorkbookChart, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChart, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookChartItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -196,7 +196,7 @@ class WorkbookChartItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_chart.WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of chart object.
         Args:
@@ -218,94 +218,94 @@ class WorkbookChartItemRequestBuilder():
         return request_info
     
     @property
-    def axes(self) -> axes_request_builder.AxesRequestBuilder:
+    def axes(self) -> AxesRequestBuilder:
         """
         Provides operations to manage the axes property of the microsoft.graph.workbookChart entity.
         """
-        from .axes import axes_request_builder
+        from .axes.axes_request_builder import AxesRequestBuilder
 
-        return axes_request_builder.AxesRequestBuilder(self.request_adapter, self.path_parameters)
+        return AxesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def data_labels(self) -> data_labels_request_builder.DataLabelsRequestBuilder:
+    def data_labels(self) -> DataLabelsRequestBuilder:
         """
         Provides operations to manage the dataLabels property of the microsoft.graph.workbookChart entity.
         """
-        from .data_labels import data_labels_request_builder
+        from .data_labels.data_labels_request_builder import DataLabelsRequestBuilder
 
-        return data_labels_request_builder.DataLabelsRequestBuilder(self.request_adapter, self.path_parameters)
+        return DataLabelsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def format(self) -> format_request_builder.FormatRequestBuilder:
+    def format(self) -> FormatRequestBuilder:
         """
         Provides operations to manage the format property of the microsoft.graph.workbookChart entity.
         """
-        from .format import format_request_builder
+        from .format.format_request_builder import FormatRequestBuilder
 
-        return format_request_builder.FormatRequestBuilder(self.request_adapter, self.path_parameters)
+        return FormatRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def image(self) -> image_request_builder.ImageRequestBuilder:
+    def image(self) -> ImageRequestBuilder:
         """
         Provides operations to call the image method.
         """
-        from .image import image_request_builder
+        from .image.image_request_builder import ImageRequestBuilder
 
-        return image_request_builder.ImageRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def legend(self) -> legend_request_builder.LegendRequestBuilder:
+    def legend(self) -> LegendRequestBuilder:
         """
         Provides operations to manage the legend property of the microsoft.graph.workbookChart entity.
         """
-        from .legend import legend_request_builder
+        from .legend.legend_request_builder import LegendRequestBuilder
 
-        return legend_request_builder.LegendRequestBuilder(self.request_adapter, self.path_parameters)
+        return LegendRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def series(self) -> series_request_builder.SeriesRequestBuilder:
+    def series(self) -> SeriesRequestBuilder:
         """
         Provides operations to manage the series property of the microsoft.graph.workbookChart entity.
         """
-        from .series import series_request_builder
+        from .series.series_request_builder import SeriesRequestBuilder
 
-        return series_request_builder.SeriesRequestBuilder(self.request_adapter, self.path_parameters)
+        return SeriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def set_data(self) -> set_data_request_builder.SetDataRequestBuilder:
+    def set_data(self) -> SetDataRequestBuilder:
         """
         Provides operations to call the setData method.
         """
-        from .set_data import set_data_request_builder
+        from .set_data.set_data_request_builder import SetDataRequestBuilder
 
-        return set_data_request_builder.SetDataRequestBuilder(self.request_adapter, self.path_parameters)
+        return SetDataRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def set_position(self) -> set_position_request_builder.SetPositionRequestBuilder:
+    def set_position(self) -> SetPositionRequestBuilder:
         """
         Provides operations to call the setPosition method.
         """
-        from .set_position import set_position_request_builder
+        from .set_position.set_position_request_builder import SetPositionRequestBuilder
 
-        return set_position_request_builder.SetPositionRequestBuilder(self.request_adapter, self.path_parameters)
+        return SetPositionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def title(self) -> title_request_builder.TitleRequestBuilder:
+    def title(self) -> TitleRequestBuilder:
         """
         Provides operations to manage the title property of the microsoft.graph.workbookChart entity.
         """
-        from .title import title_request_builder
+        from .title.title_request_builder import TitleRequestBuilder
 
-        return title_request_builder.TitleRequestBuilder(self.request_adapter, self.path_parameters)
+        return TitleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def worksheet(self) -> worksheet_request_builder.WorksheetRequestBuilder:
+    def worksheet(self) -> WorksheetRequestBuilder:
         """
         Provides operations to manage the worksheet property of the microsoft.graph.workbookChart entity.
         """
-        from .worksheet import worksheet_request_builder
+        from .worksheet.worksheet_request_builder import WorksheetRequestBuilder
 
-        return worksheet_request_builder.WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
+        return WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class WorkbookChartItemRequestBuilderDeleteRequestConfiguration():

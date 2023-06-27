@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import reject_reason
+    from .....models.reject_reason import RejectReason
 
 @dataclass
 class RejectPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class RejectPostRequestBody(AdditionalDataHolder, Parsable):
     # The callbackUri property
     callback_uri: Optional[str] = None
     # The reason property
-    reason: Optional[reject_reason.RejectReason] = None
+    reason: Optional[RejectReason] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RejectPostRequestBody:
@@ -33,13 +33,13 @@ class RejectPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import reject_reason
+        from .....models.reject_reason import RejectReason
 
-        from .....models import reject_reason
+        from .....models.reject_reason import RejectReason
 
         fields: Dict[str, Callable[[Any], None]] = {
             "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
-            "reason": lambda n : setattr(self, 'reason', n.get_enum_value(reject_reason.RejectReason)),
+            "reason": lambda n : setattr(self, 'reason', n.get_enum_value(RejectReason)),
         }
         return fields
     

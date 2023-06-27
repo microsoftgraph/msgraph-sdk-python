@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import unified_role_definition, unified_role_definition_collection_response
-    from ......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import unified_role_definition_item_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.unified_role_definition import UnifiedRoleDefinition
+    from ......models.unified_role_definition_collection_response import UnifiedRoleDefinitionCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.unified_role_definition_item_request_builder import UnifiedRoleDefinitionItemRequestBuilder
 
 class InheritsPermissionsFromRequestBuilder():
     """
@@ -37,67 +38,67 @@ class InheritsPermissionsFromRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_unified_role_definition_id1(self,unified_role_definition_id1: str) -> unified_role_definition_item_request_builder.UnifiedRoleDefinitionItemRequestBuilder:
+    def by_unified_role_definition_id1(self,unified_role_definition_id1: str) -> UnifiedRoleDefinitionItemRequestBuilder:
         """
         Provides operations to manage the inheritsPermissionsFrom property of the microsoft.graph.unifiedRoleDefinition entity.
         Args:
             unified_role_definition_id1: Unique identifier of the item
-        Returns: unified_role_definition_item_request_builder.UnifiedRoleDefinitionItemRequestBuilder
+        Returns: UnifiedRoleDefinitionItemRequestBuilder
         """
         if not unified_role_definition_id1:
             raise TypeError("unified_role_definition_id1 cannot be null.")
-        from .item import unified_role_definition_item_request_builder
+        from .item.unified_role_definition_item_request_builder import UnifiedRoleDefinitionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleDefinition%2Did1"] = unified_role_definition_id1
-        return unified_role_definition_item_request_builder.UnifiedRoleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return UnifiedRoleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[InheritsPermissionsFromRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_definition_collection_response.UnifiedRoleDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[InheritsPermissionsFromRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleDefinitionCollectionResponse]:
         """
         Read-only collection of role definitions that the given role definition inherits from. Only Azure AD built-in roles (isBuiltIn is true) support this attribute. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_definition_collection_response.UnifiedRoleDefinitionCollectionResponse]
+        Returns: Optional[UnifiedRoleDefinitionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import unified_role_definition_collection_response
+        from ......models.unified_role_definition_collection_response import UnifiedRoleDefinitionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, unified_role_definition_collection_response.UnifiedRoleDefinitionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleDefinitionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[unified_role_definition.UnifiedRoleDefinition] = None, request_configuration: Optional[InheritsPermissionsFromRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_definition.UnifiedRoleDefinition]:
+    async def post(self,body: Optional[UnifiedRoleDefinition] = None, request_configuration: Optional[InheritsPermissionsFromRequestBuilderPostRequestConfiguration] = None) -> Optional[UnifiedRoleDefinition]:
         """
         Create new navigation property to inheritsPermissionsFrom for roleManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_definition.UnifiedRoleDefinition]
+        Returns: Optional[UnifiedRoleDefinition]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import unified_role_definition
+        from ......models.unified_role_definition import UnifiedRoleDefinition
 
-        return await self.request_adapter.send_async(request_info, unified_role_definition.UnifiedRoleDefinition, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleDefinition, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[InheritsPermissionsFromRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class InheritsPermissionsFromRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[unified_role_definition.UnifiedRoleDefinition] = None, request_configuration: Optional[InheritsPermissionsFromRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UnifiedRoleDefinition] = None, request_configuration: Optional[InheritsPermissionsFromRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to inheritsPermissionsFrom for roleManagement
         Args:
@@ -139,13 +140,13 @@ class InheritsPermissionsFromRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class InheritsPermissionsFromRequestBuilderGetQueryParameters():

@@ -4,7 +4,11 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import all_devices_assignment_target, all_licensed_users_assignment_target, configuration_manager_collection_assignment_target, exclusion_group_assignment_target, group_assignment_target
+    from .all_devices_assignment_target import AllDevicesAssignmentTarget
+    from .all_licensed_users_assignment_target import AllLicensedUsersAssignmentTarget
+    from .configuration_manager_collection_assignment_target import ConfigurationManagerCollectionAssignmentTarget
+    from .exclusion_group_assignment_target import ExclusionGroupAssignmentTarget
+    from .group_assignment_target import GroupAssignmentTarget
 
 @dataclass
 class DeviceAndAppManagementAssignmentTarget(AdditionalDataHolder, Parsable):
@@ -32,25 +36,25 @@ class DeviceAndAppManagementAssignmentTarget(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.allDevicesAssignmentTarget".casefold():
-            from . import all_devices_assignment_target
+            from .all_devices_assignment_target import AllDevicesAssignmentTarget
 
-            return all_devices_assignment_target.AllDevicesAssignmentTarget()
+            return AllDevicesAssignmentTarget()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.allLicensedUsersAssignmentTarget".casefold():
-            from . import all_licensed_users_assignment_target
+            from .all_licensed_users_assignment_target import AllLicensedUsersAssignmentTarget
 
-            return all_licensed_users_assignment_target.AllLicensedUsersAssignmentTarget()
+            return AllLicensedUsersAssignmentTarget()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.configurationManagerCollectionAssignmentTarget".casefold():
-            from . import configuration_manager_collection_assignment_target
+            from .configuration_manager_collection_assignment_target import ConfigurationManagerCollectionAssignmentTarget
 
-            return configuration_manager_collection_assignment_target.ConfigurationManagerCollectionAssignmentTarget()
+            return ConfigurationManagerCollectionAssignmentTarget()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.exclusionGroupAssignmentTarget".casefold():
-            from . import exclusion_group_assignment_target
+            from .exclusion_group_assignment_target import ExclusionGroupAssignmentTarget
 
-            return exclusion_group_assignment_target.ExclusionGroupAssignmentTarget()
+            return ExclusionGroupAssignmentTarget()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.groupAssignmentTarget".casefold():
-            from . import group_assignment_target
+            from .group_assignment_target import GroupAssignmentTarget
 
-            return group_assignment_target.GroupAssignmentTarget()
+            return GroupAssignmentTarget()
         return DeviceAndAppManagementAssignmentTarget()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -58,9 +62,17 @@ class DeviceAndAppManagementAssignmentTarget(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import all_devices_assignment_target, all_licensed_users_assignment_target, configuration_manager_collection_assignment_target, exclusion_group_assignment_target, group_assignment_target
+        from .all_devices_assignment_target import AllDevicesAssignmentTarget
+        from .all_licensed_users_assignment_target import AllLicensedUsersAssignmentTarget
+        from .configuration_manager_collection_assignment_target import ConfigurationManagerCollectionAssignmentTarget
+        from .exclusion_group_assignment_target import ExclusionGroupAssignmentTarget
+        from .group_assignment_target import GroupAssignmentTarget
 
-        from . import all_devices_assignment_target, all_licensed_users_assignment_target, configuration_manager_collection_assignment_target, exclusion_group_assignment_target, group_assignment_target
+        from .all_devices_assignment_target import AllDevicesAssignmentTarget
+        from .all_licensed_users_assignment_target import AllLicensedUsersAssignmentTarget
+        from .configuration_manager_collection_assignment_target import ConfigurationManagerCollectionAssignmentTarget
+        from .exclusion_group_assignment_target import ExclusionGroupAssignmentTarget
+        from .group_assignment_target import GroupAssignmentTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

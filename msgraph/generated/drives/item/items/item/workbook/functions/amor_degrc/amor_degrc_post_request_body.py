@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class AmorDegrcPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,19 +12,19 @@ class AmorDegrcPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The basis property
-    basis: Optional[json.Json] = None
+    basis: Optional[Json] = None
     # The cost property
-    cost: Optional[json.Json] = None
+    cost: Optional[Json] = None
     # The datePurchased property
-    date_purchased: Optional[json.Json] = None
+    date_purchased: Optional[Json] = None
     # The firstPeriod property
-    first_period: Optional[json.Json] = None
+    first_period: Optional[Json] = None
     # The period property
-    period: Optional[json.Json] = None
+    period: Optional[Json] = None
     # The rate property
-    rate: Optional[json.Json] = None
+    rate: Optional[Json] = None
     # The salvage property
-    salvage: Optional[json.Json] = None
+    salvage: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AmorDegrcPostRequestBody:
@@ -43,18 +43,18 @@ class AmorDegrcPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "basis": lambda n : setattr(self, 'basis', n.get_object_value(json.Json)),
-            "cost": lambda n : setattr(self, 'cost', n.get_object_value(json.Json)),
-            "datePurchased": lambda n : setattr(self, 'date_purchased', n.get_object_value(json.Json)),
-            "firstPeriod": lambda n : setattr(self, 'first_period', n.get_object_value(json.Json)),
-            "period": lambda n : setattr(self, 'period', n.get_object_value(json.Json)),
-            "rate": lambda n : setattr(self, 'rate', n.get_object_value(json.Json)),
-            "salvage": lambda n : setattr(self, 'salvage', n.get_object_value(json.Json)),
+            "basis": lambda n : setattr(self, 'basis', n.get_object_value(Json)),
+            "cost": lambda n : setattr(self, 'cost', n.get_object_value(Json)),
+            "datePurchased": lambda n : setattr(self, 'date_purchased', n.get_object_value(Json)),
+            "firstPeriod": lambda n : setattr(self, 'first_period', n.get_object_value(Json)),
+            "period": lambda n : setattr(self, 'period', n.get_object_value(Json)),
+            "rate": lambda n : setattr(self, 'rate', n.get_object_value(Json)),
+            "salvage": lambda n : setattr(self, 'salvage', n.get_object_value(Json)),
         }
         return fields
     

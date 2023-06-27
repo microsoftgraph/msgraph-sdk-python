@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_provider_base
+    from .identity_provider_base import IdentityProviderBase
 
-from . import identity_provider_base
+from .identity_provider_base import IdentityProviderBase
 
 @dataclass
-class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
+class SocialIdentityProvider(IdentityProviderBase):
     odata_type = "#microsoft.graph.socialIdentityProvider"
     # The identifier for the client application obtained when registering the application with the identity provider. Required.
     client_id: Optional[str] = None
@@ -35,9 +35,9 @@ class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_provider_base
+        from .identity_provider_base import IdentityProviderBase
 
-        from . import identity_provider_base
+        from .identity_provider_base import IdentityProviderBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),

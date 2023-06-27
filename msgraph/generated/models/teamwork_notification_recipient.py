@@ -4,7 +4,10 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import aad_user_notification_recipient, channel_members_notification_recipient, chat_members_notification_recipient, team_members_notification_recipient
+    from .aad_user_notification_recipient import AadUserNotificationRecipient
+    from .channel_members_notification_recipient import ChannelMembersNotificationRecipient
+    from .chat_members_notification_recipient import ChatMembersNotificationRecipient
+    from .team_members_notification_recipient import TeamMembersNotificationRecipient
 
 @dataclass
 class TeamworkNotificationRecipient(AdditionalDataHolder, Parsable):
@@ -29,21 +32,21 @@ class TeamworkNotificationRecipient(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.aadUserNotificationRecipient".casefold():
-            from . import aad_user_notification_recipient
+            from .aad_user_notification_recipient import AadUserNotificationRecipient
 
-            return aad_user_notification_recipient.AadUserNotificationRecipient()
+            return AadUserNotificationRecipient()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.channelMembersNotificationRecipient".casefold():
-            from . import channel_members_notification_recipient
+            from .channel_members_notification_recipient import ChannelMembersNotificationRecipient
 
-            return channel_members_notification_recipient.ChannelMembersNotificationRecipient()
+            return ChannelMembersNotificationRecipient()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMembersNotificationRecipient".casefold():
-            from . import chat_members_notification_recipient
+            from .chat_members_notification_recipient import ChatMembersNotificationRecipient
 
-            return chat_members_notification_recipient.ChatMembersNotificationRecipient()
+            return ChatMembersNotificationRecipient()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamMembersNotificationRecipient".casefold():
-            from . import team_members_notification_recipient
+            from .team_members_notification_recipient import TeamMembersNotificationRecipient
 
-            return team_members_notification_recipient.TeamMembersNotificationRecipient()
+            return TeamMembersNotificationRecipient()
         return TeamworkNotificationRecipient()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -51,9 +54,15 @@ class TeamworkNotificationRecipient(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import aad_user_notification_recipient, channel_members_notification_recipient, chat_members_notification_recipient, team_members_notification_recipient
+        from .aad_user_notification_recipient import AadUserNotificationRecipient
+        from .channel_members_notification_recipient import ChannelMembersNotificationRecipient
+        from .chat_members_notification_recipient import ChatMembersNotificationRecipient
+        from .team_members_notification_recipient import TeamMembersNotificationRecipient
 
-        from . import aad_user_notification_recipient, channel_members_notification_recipient, chat_members_notification_recipient, team_members_notification_recipient
+        from .aad_user_notification_recipient import AadUserNotificationRecipient
+        from .channel_members_notification_recipient import ChannelMembersNotificationRecipient
+        from .chat_members_notification_recipient import ChatMembersNotificationRecipient
+        from .team_members_notification_recipient import TeamMembersNotificationRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

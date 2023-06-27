@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import external_domain_name, saml_or_ws_fed_provider
+    from .external_domain_name import ExternalDomainName
+    from .saml_or_ws_fed_provider import SamlOrWsFedProvider
 
-from . import saml_or_ws_fed_provider
+from .saml_or_ws_fed_provider import SamlOrWsFedProvider
 
 @dataclass
-class SamlOrWsFedExternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
+class SamlOrWsFedExternalDomainFederation(SamlOrWsFedProvider):
     odata_type = "#microsoft.graph.samlOrWsFedExternalDomainFederation"
     # Collection of domain names of the external organizations that the tenant is federating with. Supports $filter (eq).
-    domains: Optional[List[external_domain_name.ExternalDomainName]] = None
+    domains: Optional[List[ExternalDomainName]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SamlOrWsFedExternalDomainFederation:
@@ -31,12 +32,14 @@ class SamlOrWsFedExternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedPro
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import external_domain_name, saml_or_ws_fed_provider
+        from .external_domain_name import ExternalDomainName
+        from .saml_or_ws_fed_provider import SamlOrWsFedProvider
 
-        from . import external_domain_name, saml_or_ws_fed_provider
+        from .external_domain_name import ExternalDomainName
+        from .saml_or_ws_fed_provider import SamlOrWsFedProvider
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "domains": lambda n : setattr(self, 'domains', n.get_collection_of_object_values(external_domain_name.ExternalDomainName)),
+            "domains": lambda n : setattr(self, 'domains', n.get_collection_of_object_values(ExternalDomainName)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

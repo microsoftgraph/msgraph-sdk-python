@@ -4,19 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity, identity_set, share_point_identity
+    from .identity import Identity
+    from .identity_set import IdentitySet
+    from .share_point_identity import SharePointIdentity
 
-from . import identity_set
+from .identity_set import IdentitySet
 
 @dataclass
-class SharePointIdentitySet(identity_set.IdentitySet):
+class SharePointIdentitySet(IdentitySet):
     odata_type = "#microsoft.graph.sharePointIdentitySet"
     # The group associated with this action. Optional.
-    group: Optional[identity.Identity] = None
+    group: Optional[Identity] = None
     # The SharePoint group associated with this action. Optional.
-    site_group: Optional[share_point_identity.SharePointIdentity] = None
+    site_group: Optional[SharePointIdentity] = None
     # The SharePoint user associated with this action. Optional.
-    site_user: Optional[share_point_identity.SharePointIdentity] = None
+    site_user: Optional[SharePointIdentity] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharePointIdentitySet:
@@ -35,14 +37,18 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity, identity_set, share_point_identity
+        from .identity import Identity
+        from .identity_set import IdentitySet
+        from .share_point_identity import SharePointIdentity
 
-        from . import identity, identity_set, share_point_identity
+        from .identity import Identity
+        from .identity_set import IdentitySet
+        from .share_point_identity import SharePointIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "group": lambda n : setattr(self, 'group', n.get_object_value(identity.Identity)),
-            "siteGroup": lambda n : setattr(self, 'site_group', n.get_object_value(share_point_identity.SharePointIdentity)),
-            "siteUser": lambda n : setattr(self, 'site_user', n.get_object_value(share_point_identity.SharePointIdentity)),
+            "group": lambda n : setattr(self, 'group', n.get_object_value(Identity)),
+            "siteGroup": lambda n : setattr(self, 'site_group', n.get_object_value(SharePointIdentity)),
+            "siteUser": lambda n : setattr(self, 'site_user', n.get_object_value(SharePointIdentity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

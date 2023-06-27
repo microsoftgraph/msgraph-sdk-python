@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class DollarFrPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class DollarFrPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The decimalDollar property
-    decimal_dollar: Optional[json.Json] = None
+    decimal_dollar: Optional[Json] = None
     # The fraction property
-    fraction: Optional[json.Json] = None
+    fraction: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DollarFrPostRequestBody:
@@ -33,13 +33,13 @@ class DollarFrPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "decimalDollar": lambda n : setattr(self, 'decimal_dollar', n.get_object_value(json.Json)),
-            "fraction": lambda n : setattr(self, 'fraction', n.get_object_value(json.Json)),
+            "decimalDollar": lambda n : setattr(self, 'decimal_dollar', n.get_object_value(Json)),
+            "fraction": lambda n : setattr(self, 'fraction', n.get_object_value(Json)),
         }
         return fields
     

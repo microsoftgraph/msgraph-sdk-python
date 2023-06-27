@@ -4,12 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_configuration, internet_site_security_level, required_password_type, site_security_level, windows_user_account_control_settings
+    from .device_configuration import DeviceConfiguration
+    from .internet_site_security_level import InternetSiteSecurityLevel
+    from .required_password_type import RequiredPasswordType
+    from .site_security_level import SiteSecurityLevel
+    from .windows_user_account_control_settings import WindowsUserAccountControlSettings
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
+class Windows81GeneralConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.windows81GeneralConfiguration"
     # Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
     accounts_block_adding_non_microsoft_account_email: Optional[bool] = None
@@ -34,9 +38,9 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
     # The enterprise mode site list location. Could be a local file, local network or http location.
     browser_enterprise_mode_site_list_location: Optional[str] = None
     # Possible values for internet site security level.
-    browser_internet_security_level: Optional[internet_site_security_level.InternetSiteSecurityLevel] = None
+    browser_internet_security_level: Optional[InternetSiteSecurityLevel] = None
     # Possible values for site security level.
-    browser_intranet_security_level: Optional[site_security_level.SiteSecurityLevel] = None
+    browser_intranet_security_level: Optional[SiteSecurityLevel] = None
     # The logging report location.
     browser_logging_report_location: Optional[str] = None
     # Indicates whether or not to require a firewall.
@@ -48,7 +52,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to require the user to use the smart screen filter.
     browser_require_smart_screen: Optional[bool] = None
     # Possible values for site security level.
-    browser_trusted_sites_security_level: Optional[site_security_level.SiteSecurityLevel] = None
+    browser_trusted_sites_security_level: Optional[SiteSecurityLevel] = None
     # Indicates whether or not to block data roaming.
     cellular_block_data_roaming: Optional[bool] = None
     # Indicates whether or not to block diagnostic data submission.
@@ -66,7 +70,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
     # The number of previous passwords to prevent re-use of. Valid values 0 to 24
     password_previous_password_block_count: Optional[int] = None
     # Possible values of required passwords.
-    password_required_type: Optional[required_password_type.RequiredPasswordType] = None
+    password_required_type: Optional[RequiredPasswordType] = None
     # The number of sign in failures before factory reset.
     password_sign_in_failure_count_before_factory_reset: Optional[int] = None
     # Indicates whether or not to require encryption on a mobile device.
@@ -74,7 +78,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
     # Indicates whether or not to require automatic updates.
     updates_require_automatic_updates: Optional[bool] = None
     # Possible values for Windows user account control settings.
-    user_account_control_settings: Optional[windows_user_account_control_settings.WindowsUserAccountControlSettings] = None
+    user_account_control_settings: Optional[WindowsUserAccountControlSettings] = None
     # The work folders url.
     work_folders_url: Optional[str] = None
     
@@ -95,9 +99,17 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration, internet_site_security_level, required_password_type, site_security_level, windows_user_account_control_settings
+        from .device_configuration import DeviceConfiguration
+        from .internet_site_security_level import InternetSiteSecurityLevel
+        from .required_password_type import RequiredPasswordType
+        from .site_security_level import SiteSecurityLevel
+        from .windows_user_account_control_settings import WindowsUserAccountControlSettings
 
-        from . import device_configuration, internet_site_security_level, required_password_type, site_security_level, windows_user_account_control_settings
+        from .device_configuration import DeviceConfiguration
+        from .internet_site_security_level import InternetSiteSecurityLevel
+        from .required_password_type import RequiredPasswordType
+        from .site_security_level import SiteSecurityLevel
+        from .windows_user_account_control_settings import WindowsUserAccountControlSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accountsBlockAddingNonMicrosoftAccountEmail": lambda n : setattr(self, 'accounts_block_adding_non_microsoft_account_email', n.get_bool_value()),
@@ -111,14 +123,14 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             "browserBlockSendingDoNotTrackHeader": lambda n : setattr(self, 'browser_block_sending_do_not_track_header', n.get_bool_value()),
             "browserBlockSingleWordEntryOnIntranetSites": lambda n : setattr(self, 'browser_block_single_word_entry_on_intranet_sites', n.get_bool_value()),
             "browserEnterpriseModeSiteListLocation": lambda n : setattr(self, 'browser_enterprise_mode_site_list_location', n.get_str_value()),
-            "browserInternetSecurityLevel": lambda n : setattr(self, 'browser_internet_security_level', n.get_enum_value(internet_site_security_level.InternetSiteSecurityLevel)),
-            "browserIntranetSecurityLevel": lambda n : setattr(self, 'browser_intranet_security_level', n.get_enum_value(site_security_level.SiteSecurityLevel)),
+            "browserInternetSecurityLevel": lambda n : setattr(self, 'browser_internet_security_level', n.get_enum_value(InternetSiteSecurityLevel)),
+            "browserIntranetSecurityLevel": lambda n : setattr(self, 'browser_intranet_security_level', n.get_enum_value(SiteSecurityLevel)),
             "browserLoggingReportLocation": lambda n : setattr(self, 'browser_logging_report_location', n.get_str_value()),
             "browserRequireFirewall": lambda n : setattr(self, 'browser_require_firewall', n.get_bool_value()),
             "browserRequireFraudWarning": lambda n : setattr(self, 'browser_require_fraud_warning', n.get_bool_value()),
             "browserRequireHighSecurityForRestrictedSites": lambda n : setattr(self, 'browser_require_high_security_for_restricted_sites', n.get_bool_value()),
             "browserRequireSmartScreen": lambda n : setattr(self, 'browser_require_smart_screen', n.get_bool_value()),
-            "browserTrustedSitesSecurityLevel": lambda n : setattr(self, 'browser_trusted_sites_security_level', n.get_enum_value(site_security_level.SiteSecurityLevel)),
+            "browserTrustedSitesSecurityLevel": lambda n : setattr(self, 'browser_trusted_sites_security_level', n.get_enum_value(SiteSecurityLevel)),
             "cellularBlockDataRoaming": lambda n : setattr(self, 'cellular_block_data_roaming', n.get_bool_value()),
             "diagnosticsBlockDataSubmission": lambda n : setattr(self, 'diagnostics_block_data_submission', n.get_bool_value()),
             "passwordBlockPicturePasswordAndPin": lambda n : setattr(self, 'password_block_picture_password_and_pin', n.get_bool_value()),
@@ -127,11 +139,11 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
             "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
             "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
             "passwordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
             "storageRequireDeviceEncryption": lambda n : setattr(self, 'storage_require_device_encryption', n.get_bool_value()),
             "updatesRequireAutomaticUpdates": lambda n : setattr(self, 'updates_require_automatic_updates', n.get_bool_value()),
-            "userAccountControlSettings": lambda n : setattr(self, 'user_account_control_settings', n.get_enum_value(windows_user_account_control_settings.WindowsUserAccountControlSettings)),
+            "userAccountControlSettings": lambda n : setattr(self, 'user_account_control_settings', n.get_enum_value(WindowsUserAccountControlSettings)),
             "workFoldersUrl": lambda n : setattr(self, 'work_folders_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

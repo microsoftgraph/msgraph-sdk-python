@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import workbook_operation
-    from ........models.o_data_errors import o_data_error
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.workbook_operation import WorkbookOperation
 
 class WorkbookOperationItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class WorkbookOperationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WorkbookOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_operation.WorkbookOperation]:
+    async def get(self,request_configuration: Optional[WorkbookOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookOperation]:
         """
         Meaningless if this url is called independently. This request is part of all async requests for excel. This is used to retrieve the status of a workbookOperation object. Currently not all requests support async. Take Create session request as an example. Issue an async Create session request, follow the documentation and you may get status code `202 Accepted`, async operation starts from here and you can find the url this document required from the response header, from the **location** part.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_operation.WorkbookOperation]
+        Returns: Optional[WorkbookOperation]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import workbook_operation
+        from ........models.workbook_operation import WorkbookOperation
 
-        return await self.request_adapter.send_async(request_info, workbook_operation.WorkbookOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookOperation, error_mapping)
     
-    async def patch(self,body: Optional[workbook_operation.WorkbookOperation] = None, request_configuration: Optional[WorkbookOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_operation.WorkbookOperation]:
+    async def patch(self,body: Optional[WorkbookOperation] = None, request_configuration: Optional[WorkbookOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookOperation]:
         """
         Update the navigation property operations in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_operation.WorkbookOperation]
+        Returns: Optional[WorkbookOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import workbook_operation
+        from ........models.workbook_operation import WorkbookOperation
 
-        return await self.request_adapter.send_async(request_info, workbook_operation.WorkbookOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookOperation, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class WorkbookOperationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_operation.WorkbookOperation] = None, request_configuration: Optional[WorkbookOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookOperation] = None, request_configuration: Optional[WorkbookOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property operations in drives
         Args:

@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import chat_message_hosted_content, entity
+    from .chat_message_hosted_content import ChatMessageHostedContent
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class TeamworkHostedContent(entity.Entity):
+class TeamworkHostedContent(Entity):
     # Write only. Bytes for the hosted content (such as images).
     content_bytes: Optional[bytes] = None
     # Write only. Content type. sicj as image/png, image/jpg.
@@ -32,9 +33,9 @@ class TeamworkHostedContent(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageHostedContent".casefold():
-            from . import chat_message_hosted_content
+            from .chat_message_hosted_content import ChatMessageHostedContent
 
-            return chat_message_hosted_content.ChatMessageHostedContent()
+            return ChatMessageHostedContent()
         return TeamworkHostedContent()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -42,9 +43,11 @@ class TeamworkHostedContent(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import chat_message_hosted_content, entity
+        from .chat_message_hosted_content import ChatMessageHostedContent
+        from .entity import Entity
 
-        from . import chat_message_hosted_content, entity
+        from .chat_message_hosted_content import ChatMessageHostedContent
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
@@ -63,7 +66,7 @@ class TeamworkHostedContent(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("contentBytes", self.content_bytes)
+        writer.write_bytes_value("contentBytes", self.content_bytes)
         writer.write_str_value("contentType", self.content_type)
     
 

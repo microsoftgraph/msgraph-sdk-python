@@ -59,7 +59,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("certificate", self.certificate)
+        writer.write_bytes_value("certificate", self.certificate)
         writer.write_str_value("certificateRevocationListUrl", self.certificate_revocation_list_url)
         writer.write_str_value("deltaCertificateRevocationListUrl", self.delta_certificate_revocation_list_url)
         writer.write_bool_value("isRootAuthority", self.is_root_authority)

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_app_assignment_settings
+    from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-from . import mobile_app_assignment_settings
+from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
+class IosVppAppAssignmentSettings(MobileAppAssignmentSettings):
     odata_type = "#microsoft.graph.iosVppAppAssignmentSettings"
     # Whether or not to use device licensing.
     use_device_licensing: Optional[bool] = None
@@ -33,9 +33,9 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "useDeviceLicensing": lambda n : setattr(self, 'use_device_licensing', n.get_bool_value()),

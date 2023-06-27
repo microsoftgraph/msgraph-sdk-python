@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, print_service_endpoint
+    from .entity import Entity
+    from .print_service_endpoint import PrintServiceEndpoint
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PrintService(entity.Entity):
+class PrintService(Entity):
     # Endpoints that can be used to access the service. Read-only. Nullable.
-    endpoints: Optional[List[print_service_endpoint.PrintServiceEndpoint]] = None
+    endpoints: Optional[List[PrintServiceEndpoint]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class PrintService(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, print_service_endpoint
+        from .entity import Entity
+        from .print_service_endpoint import PrintServiceEndpoint
 
-        from . import entity, print_service_endpoint
+        from .entity import Entity
+        from .print_service_endpoint import PrintServiceEndpoint
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endpoints": lambda n : setattr(self, 'endpoints', n.get_collection_of_object_values(print_service_endpoint.PrintServiceEndpoint)),
+            "endpoints": lambda n : setattr(self, 'endpoints', n.get_collection_of_object_values(PrintServiceEndpoint)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

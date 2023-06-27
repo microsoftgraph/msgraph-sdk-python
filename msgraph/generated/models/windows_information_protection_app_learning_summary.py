@@ -4,19 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import application_type, entity
+    from .application_type import ApplicationType
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WindowsInformationProtectionAppLearningSummary(entity.Entity):
+class WindowsInformationProtectionAppLearningSummary(Entity):
     """
     Windows Information Protection AppLearning Summary entity.
     """
     # Application Name
     application_name: Optional[str] = None
     # Possible types of Application
-    application_type: Optional[application_type.ApplicationType] = None
+    application_type: Optional[ApplicationType] = None
     # Device Count
     device_count: Optional[int] = None
     # The OdataType property
@@ -39,13 +40,15 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import application_type, entity
+        from .application_type import ApplicationType
+        from .entity import Entity
 
-        from . import application_type, entity
+        from .application_type import ApplicationType
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
-            "applicationType": lambda n : setattr(self, 'application_type', n.get_enum_value(application_type.ApplicationType)),
+            "applicationType": lambda n : setattr(self, 'application_type', n.get_enum_value(ApplicationType)),
             "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

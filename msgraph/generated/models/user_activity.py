@@ -1,16 +1,20 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import activity_history_item, entity, json, status, visual_info
+    from .activity_history_item import ActivityHistoryItem
+    from .entity import Entity
+    from .json import Json
+    from .status import Status
+    from .visual_info import VisualInfo
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class UserActivity(entity.Entity):
+class UserActivity(Entity):
     # Required. URL used to launch the activity in the best native experience represented by the appId. Might launch a web-based app if no native app exists.
     activation_url: Optional[str] = None
     # Required. URL for the domain representing the cross-platform identity mapping for the app. Mapping is stored either as a JSON file hosted on the domain or configurable via Windows Dev Center. The JSON file is named cross-platform-app-identifiers and is hosted at root of your HTTPS domain, either at the top level domain or include a sub domain. For example: https://contoso.com or https://myapp.contoso.com but NOT https://myapp.contoso.com/somepath. You must have a unique file and domain (or sub domain) per cross-platform app identity. For example, a separate file and domain is needed for Word vs. PowerPoint.
@@ -20,27 +24,27 @@ class UserActivity(entity.Entity):
     # Optional. Short text description of the app used to generate the activity for use in cases when the app is not installed on the user’s local device.
     app_display_name: Optional[str] = None
     # Optional. A custom piece of data - JSON-LD extensible description of content according to schema.org syntax.
-    content_info: Optional[json.Json] = None
+    content_info: Optional[Json] = None
     # Optional. Used in the event the content can be rendered outside of a native or web-based app experience (for example, a pointer to an item in an RSS feed).
     content_url: Optional[str] = None
     # Set by the server. DateTime in UTC when the object was created on the server.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Set by the server. DateTime in UTC when the object expired on the server.
-    expiration_date_time: Optional[datetime] = None
+    expiration_date_time: Optional[datetime.datetime] = None
     # Optional. URL used to launch the activity in a web-based app, if available.
     fallback_url: Optional[str] = None
     # Optional. NavigationProperty/Containment; navigation property to the activity's historyItems.
-    history_items: Optional[List[activity_history_item.ActivityHistoryItem]] = None
+    history_items: Optional[List[ActivityHistoryItem]] = None
     # Set by the server. DateTime in UTC when the object was modified on the server.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
-    status: Optional[status.Status] = None
+    status: Optional[Status] = None
     # Optional. The timezone in which the user's device used to generate the activity was located at activity creation time; values supplied as Olson IDs in order to support cross-platform representation.
     user_timezone: Optional[str] = None
     # The visualElements property
-    visual_elements: Optional[visual_info.VisualInfo] = None
+    visual_elements: Optional[VisualInfo] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserActivity:
@@ -59,25 +63,33 @@ class UserActivity(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import activity_history_item, entity, json, status, visual_info
+        from .activity_history_item import ActivityHistoryItem
+        from .entity import Entity
+        from .json import Json
+        from .status import Status
+        from .visual_info import VisualInfo
 
-        from . import activity_history_item, entity, json, status, visual_info
+        from .activity_history_item import ActivityHistoryItem
+        from .entity import Entity
+        from .json import Json
+        from .status import Status
+        from .visual_info import VisualInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activationUrl": lambda n : setattr(self, 'activation_url', n.get_str_value()),
             "activitySourceHost": lambda n : setattr(self, 'activity_source_host', n.get_str_value()),
             "appActivityId": lambda n : setattr(self, 'app_activity_id', n.get_str_value()),
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "contentInfo": lambda n : setattr(self, 'content_info', n.get_object_value(json.Json)),
+            "contentInfo": lambda n : setattr(self, 'content_info', n.get_object_value(Json)),
             "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "fallbackUrl": lambda n : setattr(self, 'fallback_url', n.get_str_value()),
-            "historyItems": lambda n : setattr(self, 'history_items', n.get_collection_of_object_values(activity_history_item.ActivityHistoryItem)),
+            "historyItems": lambda n : setattr(self, 'history_items', n.get_collection_of_object_values(ActivityHistoryItem)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(status.Status)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(Status)),
             "userTimezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
-            "visualElements": lambda n : setattr(self, 'visual_elements', n.get_object_value(visual_info.VisualInfo)),
+            "visualElements": lambda n : setattr(self, 'visual_elements', n.get_object_value(VisualInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -98,11 +110,11 @@ class UserActivity(entity.Entity):
         writer.write_str_value("appDisplayName", self.app_display_name)
         writer.write_object_value("contentInfo", self.content_info)
         writer.write_str_value("contentUrl", self.content_url)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("fallbackUrl", self.fallback_url)
         writer.write_collection_of_object_values("historyItems", self.history_items)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("userTimezone", self.user_timezone)
         writer.write_object_value("visualElements", self.visual_elements)

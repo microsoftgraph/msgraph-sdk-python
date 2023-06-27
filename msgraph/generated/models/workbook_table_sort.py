@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_sort_field
+    from .entity import Entity
+    from .workbook_sort_field import WorkbookSortField
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookTableSort(entity.Entity):
+class WorkbookTableSort(Entity):
     # Represents the current conditions used to last sort the table. Read-only.
-    fields: Optional[List[workbook_sort_field.WorkbookSortField]] = None
+    fields: Optional[List[WorkbookSortField]] = None
     # Represents whether the casing impacted the last sort of the table. Read-only.
     match_case: Optional[bool] = None
     # Represents Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
@@ -36,12 +37,14 @@ class WorkbookTableSort(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_sort_field
+        from .entity import Entity
+        from .workbook_sort_field import WorkbookSortField
 
-        from . import entity, workbook_sort_field
+        from .entity import Entity
+        from .workbook_sort_field import WorkbookSortField
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fields": lambda n : setattr(self, 'fields', n.get_collection_of_object_values(workbook_sort_field.WorkbookSortField)),
+            "fields": lambda n : setattr(self, 'fields', n.get_collection_of_object_values(WorkbookSortField)),
             "matchCase": lambda n : setattr(self, 'match_case', n.get_bool_value()),
             "method": lambda n : setattr(self, 'method', n.get_str_value()),
         }

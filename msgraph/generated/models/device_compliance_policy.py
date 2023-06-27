@@ -1,43 +1,58 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_compliance_policy, android_work_profile_compliance_policy, device_compliance_device_overview, device_compliance_device_status, device_compliance_policy_assignment, device_compliance_scheduled_action_for_rule, device_compliance_user_overview, device_compliance_user_status, entity, ios_compliance_policy, mac_o_s_compliance_policy, setting_state_device_summary, windows10_compliance_policy, windows10_mobile_compliance_policy, windows81_compliance_policy, windows_phone81_compliance_policy
+    from .android_compliance_policy import AndroidCompliancePolicy
+    from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
+    from .device_compliance_device_overview import DeviceComplianceDeviceOverview
+    from .device_compliance_device_status import DeviceComplianceDeviceStatus
+    from .device_compliance_policy_assignment import DeviceCompliancePolicyAssignment
+    from .device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
+    from .device_compliance_user_overview import DeviceComplianceUserOverview
+    from .device_compliance_user_status import DeviceComplianceUserStatus
+    from .entity import Entity
+    from .ios_compliance_policy import IosCompliancePolicy
+    from .mac_o_s_compliance_policy import MacOSCompliancePolicy
+    from .setting_state_device_summary import SettingStateDeviceSummary
+    from .windows10_compliance_policy import Windows10CompliancePolicy
+    from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
+    from .windows81_compliance_policy import Windows81CompliancePolicy
+    from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceCompliancePolicy(entity.Entity):
+class DeviceCompliancePolicy(Entity):
     """
     This is the base class for Compliance policy. Compliance policies are platform specific and individual per-platform compliance policies inherit from here. 
     """
     # The collection of assignments for this compliance policy.
-    assignments: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]] = None
+    assignments: Optional[List[DeviceCompliancePolicyAssignment]] = None
     # DateTime the object was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Admin provided description of the Device Configuration.
     description: Optional[str] = None
     # Compliance Setting State Device Summary
-    device_setting_state_summaries: Optional[List[setting_state_device_summary.SettingStateDeviceSummary]] = None
+    device_setting_state_summaries: Optional[List[SettingStateDeviceSummary]] = None
     # Device compliance devices status overview
-    device_status_overview: Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview] = None
+    device_status_overview: Optional[DeviceComplianceDeviceOverview] = None
     # List of DeviceComplianceDeviceStatus.
-    device_statuses: Optional[List[device_compliance_device_status.DeviceComplianceDeviceStatus]] = None
+    device_statuses: Optional[List[DeviceComplianceDeviceStatus]] = None
     # Admin provided name of the device configuration.
     display_name: Optional[str] = None
     # DateTime the object was last modified.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
-    scheduled_actions_for_rule: Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]] = None
+    scheduled_actions_for_rule: Optional[List[DeviceComplianceScheduledActionForRule]] = None
     # Device compliance users status overview
-    user_status_overview: Optional[device_compliance_user_overview.DeviceComplianceUserOverview] = None
+    user_status_overview: Optional[DeviceComplianceUserOverview] = None
     # List of DeviceComplianceUserStatus.
-    user_statuses: Optional[List[device_compliance_user_status.DeviceComplianceUserStatus]] = None
+    user_statuses: Optional[List[DeviceComplianceUserStatus]] = None
     # Version of the device configuration.
     version: Optional[int] = None
     
@@ -56,37 +71,37 @@ class DeviceCompliancePolicy(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidCompliancePolicy".casefold():
-            from . import android_compliance_policy
+            from .android_compliance_policy import AndroidCompliancePolicy
 
-            return android_compliance_policy.AndroidCompliancePolicy()
+            return AndroidCompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidWorkProfileCompliancePolicy".casefold():
-            from . import android_work_profile_compliance_policy
+            from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
 
-            return android_work_profile_compliance_policy.AndroidWorkProfileCompliancePolicy()
+            return AndroidWorkProfileCompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosCompliancePolicy".casefold():
-            from . import ios_compliance_policy
+            from .ios_compliance_policy import IosCompliancePolicy
 
-            return ios_compliance_policy.IosCompliancePolicy()
+            return IosCompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSCompliancePolicy".casefold():
-            from . import mac_o_s_compliance_policy
+            from .mac_o_s_compliance_policy import MacOSCompliancePolicy
 
-            return mac_o_s_compliance_policy.MacOSCompliancePolicy()
+            return MacOSCompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10CompliancePolicy".casefold():
-            from . import windows10_compliance_policy
+            from .windows10_compliance_policy import Windows10CompliancePolicy
 
-            return windows10_compliance_policy.Windows10CompliancePolicy()
+            return Windows10CompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10MobileCompliancePolicy".casefold():
-            from . import windows10_mobile_compliance_policy
+            from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
 
-            return windows10_mobile_compliance_policy.Windows10MobileCompliancePolicy()
+            return Windows10MobileCompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows81CompliancePolicy".casefold():
-            from . import windows81_compliance_policy
+            from .windows81_compliance_policy import Windows81CompliancePolicy
 
-            return windows81_compliance_policy.Windows81CompliancePolicy()
+            return Windows81CompliancePolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsPhone81CompliancePolicy".casefold():
-            from . import windows_phone81_compliance_policy
+            from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
 
-            return windows_phone81_compliance_policy.WindowsPhone81CompliancePolicy()
+            return WindowsPhone81CompliancePolicy()
         return DeviceCompliancePolicy()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -94,22 +109,52 @@ class DeviceCompliancePolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_compliance_policy, android_work_profile_compliance_policy, device_compliance_device_overview, device_compliance_device_status, device_compliance_policy_assignment, device_compliance_scheduled_action_for_rule, device_compliance_user_overview, device_compliance_user_status, entity, ios_compliance_policy, mac_o_s_compliance_policy, setting_state_device_summary, windows10_compliance_policy, windows10_mobile_compliance_policy, windows81_compliance_policy, windows_phone81_compliance_policy
+        from .android_compliance_policy import AndroidCompliancePolicy
+        from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
+        from .device_compliance_device_overview import DeviceComplianceDeviceOverview
+        from .device_compliance_device_status import DeviceComplianceDeviceStatus
+        from .device_compliance_policy_assignment import DeviceCompliancePolicyAssignment
+        from .device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
+        from .device_compliance_user_overview import DeviceComplianceUserOverview
+        from .device_compliance_user_status import DeviceComplianceUserStatus
+        from .entity import Entity
+        from .ios_compliance_policy import IosCompliancePolicy
+        from .mac_o_s_compliance_policy import MacOSCompliancePolicy
+        from .setting_state_device_summary import SettingStateDeviceSummary
+        from .windows10_compliance_policy import Windows10CompliancePolicy
+        from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
+        from .windows81_compliance_policy import Windows81CompliancePolicy
+        from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
 
-        from . import android_compliance_policy, android_work_profile_compliance_policy, device_compliance_device_overview, device_compliance_device_status, device_compliance_policy_assignment, device_compliance_scheduled_action_for_rule, device_compliance_user_overview, device_compliance_user_status, entity, ios_compliance_policy, mac_o_s_compliance_policy, setting_state_device_summary, windows10_compliance_policy, windows10_mobile_compliance_policy, windows81_compliance_policy, windows_phone81_compliance_policy
+        from .android_compliance_policy import AndroidCompliancePolicy
+        from .android_work_profile_compliance_policy import AndroidWorkProfileCompliancePolicy
+        from .device_compliance_device_overview import DeviceComplianceDeviceOverview
+        from .device_compliance_device_status import DeviceComplianceDeviceStatus
+        from .device_compliance_policy_assignment import DeviceCompliancePolicyAssignment
+        from .device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
+        from .device_compliance_user_overview import DeviceComplianceUserOverview
+        from .device_compliance_user_status import DeviceComplianceUserStatus
+        from .entity import Entity
+        from .ios_compliance_policy import IosCompliancePolicy
+        from .mac_o_s_compliance_policy import MacOSCompliancePolicy
+        from .setting_state_device_summary import SettingStateDeviceSummary
+        from .windows10_compliance_policy import Windows10CompliancePolicy
+        from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
+        from .windows81_compliance_policy import Windows81CompliancePolicy
+        from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(device_compliance_policy_assignment.DeviceCompliancePolicyAssignment)),
+            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(DeviceCompliancePolicyAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "deviceSettingStateSummaries": lambda n : setattr(self, 'device_setting_state_summaries', n.get_collection_of_object_values(setting_state_device_summary.SettingStateDeviceSummary)),
-            "deviceStatusOverview": lambda n : setattr(self, 'device_status_overview', n.get_object_value(device_compliance_device_overview.DeviceComplianceDeviceOverview)),
-            "deviceStatuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(device_compliance_device_status.DeviceComplianceDeviceStatus)),
+            "deviceSettingStateSummaries": lambda n : setattr(self, 'device_setting_state_summaries', n.get_collection_of_object_values(SettingStateDeviceSummary)),
+            "deviceStatusOverview": lambda n : setattr(self, 'device_status_overview', n.get_object_value(DeviceComplianceDeviceOverview)),
+            "deviceStatuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(DeviceComplianceDeviceStatus)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "scheduledActionsForRule": lambda n : setattr(self, 'scheduled_actions_for_rule', n.get_collection_of_object_values(device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule)),
-            "userStatusOverview": lambda n : setattr(self, 'user_status_overview', n.get_object_value(device_compliance_user_overview.DeviceComplianceUserOverview)),
-            "userStatuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(device_compliance_user_status.DeviceComplianceUserStatus)),
+            "scheduledActionsForRule": lambda n : setattr(self, 'scheduled_actions_for_rule', n.get_collection_of_object_values(DeviceComplianceScheduledActionForRule)),
+            "userStatusOverview": lambda n : setattr(self, 'user_status_overview', n.get_object_value(DeviceComplianceUserOverview)),
+            "userStatuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(DeviceComplianceUserStatus)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -126,13 +171,13 @@ class DeviceCompliancePolicy(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_collection_of_object_values("deviceSettingStateSummaries", self.device_setting_state_summaries)
         writer.write_object_value("deviceStatusOverview", self.device_status_overview)
         writer.write_collection_of_object_values("deviceStatuses", self.device_statuses)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("scheduledActionsForRule", self.scheduled_actions_for_rule)
         writer.write_object_value("userStatusOverview", self.user_status_overview)
         writer.write_collection_of_object_values("userStatuses", self.user_statuses)

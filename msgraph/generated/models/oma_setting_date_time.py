@@ -1,19 +1,19 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import oma_setting
+    from .oma_setting import OmaSetting
 
-from . import oma_setting
+from .oma_setting import OmaSetting
 
 @dataclass
-class OmaSettingDateTime(oma_setting.OmaSetting):
+class OmaSettingDateTime(OmaSetting):
     odata_type = "#microsoft.graph.omaSettingDateTime"
     # Value.
-    value: Optional[datetime] = None
+    value: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OmaSettingDateTime:
@@ -32,9 +32,9 @@ class OmaSettingDateTime(oma_setting.OmaSetting):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import oma_setting
+        from .oma_setting import OmaSetting
 
-        from . import oma_setting
+        from .oma_setting import OmaSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
             "value": lambda n : setattr(self, 'value', n.get_datetime_value()),
@@ -52,6 +52,6 @@ class OmaSettingDateTime(oma_setting.OmaSetting):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("value", self.value)
+        writer.write_datetime_value()("value", self.value)
     
 

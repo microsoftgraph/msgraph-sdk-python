@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import teleconference_device_quality
+    from ....models.teleconference_device_quality import TeleconferenceDeviceQuality
 
 @dataclass
 class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsab
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The quality property
-    quality: Optional[teleconference_device_quality.TeleconferenceDeviceQuality] = None
+    quality: Optional[TeleconferenceDeviceQuality] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LogTeleconferenceDeviceQualityPostRequestBody:
@@ -31,12 +31,12 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsab
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import teleconference_device_quality
+        from ....models.teleconference_device_quality import TeleconferenceDeviceQuality
 
-        from ....models import teleconference_device_quality
+        from ....models.teleconference_device_quality import TeleconferenceDeviceQuality
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "quality": lambda n : setattr(self, 'quality', n.get_object_value(teleconference_device_quality.TeleconferenceDeviceQuality)),
+            "quality": lambda n : setattr(self, 'quality', n.get_object_value(TeleconferenceDeviceQuality)),
         }
         return fields
     

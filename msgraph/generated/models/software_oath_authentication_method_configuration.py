@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_configuration, authentication_method_target
+    from .authentication_method_configuration import AuthenticationMethodConfiguration
+    from .authentication_method_target import AuthenticationMethodTarget
 
-from . import authentication_method_configuration
+from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class SoftwareOathAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
+class SoftwareOathAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     odata_type = "#microsoft.graph.softwareOathAuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method. Expanded by default.
-    include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
+    include_targets: Optional[List[AuthenticationMethodTarget]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SoftwareOathAuthenticationMethodConfiguration:
@@ -31,12 +32,14 @@ class SoftwareOathAuthenticationMethodConfiguration(authentication_method_config
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_configuration, authentication_method_target
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
 
-        from . import authentication_method_configuration, authentication_method_target
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

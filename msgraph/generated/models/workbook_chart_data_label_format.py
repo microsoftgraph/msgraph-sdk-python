@@ -4,16 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_fill, workbook_chart_font
+    from .entity import Entity
+    from .workbook_chart_fill import WorkbookChartFill
+    from .workbook_chart_font import WorkbookChartFont
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartDataLabelFormat(entity.Entity):
+class WorkbookChartDataLabelFormat(Entity):
     # Represents the fill format of the current chart data label. Read-only.
-    fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
+    fill: Optional[WorkbookChartFill] = None
     # Represents the font attributes (font name, font size, color, etc.) for a chart data label. Read-only.
-    font: Optional[workbook_chart_font.WorkbookChartFont] = None
+    font: Optional[WorkbookChartFont] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -34,13 +36,17 @@ class WorkbookChartDataLabelFormat(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_fill, workbook_chart_font
+        from .entity import Entity
+        from .workbook_chart_fill import WorkbookChartFill
+        from .workbook_chart_font import WorkbookChartFont
 
-        from . import entity, workbook_chart_fill, workbook_chart_font
+        from .entity import Entity
+        from .workbook_chart_fill import WorkbookChartFill
+        from .workbook_chart_font import WorkbookChartFont
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fill": lambda n : setattr(self, 'fill', n.get_object_value(workbook_chart_fill.WorkbookChartFill)),
-            "font": lambda n : setattr(self, 'font', n.get_object_value(workbook_chart_font.WorkbookChartFont)),
+            "fill": lambda n : setattr(self, 'fill', n.get_object_value(WorkbookChartFill)),
+            "font": lambda n : setattr(self, 'font', n.get_object_value(WorkbookChartFont)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

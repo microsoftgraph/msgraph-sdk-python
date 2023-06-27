@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity, teamwork_application_identity_type
+    from .identity import Identity
+    from .teamwork_application_identity_type import TeamworkApplicationIdentityType
 
-from . import identity
+from .identity import Identity
 
 @dataclass
-class TeamworkApplicationIdentity(identity.Identity):
+class TeamworkApplicationIdentity(Identity):
     odata_type = "#microsoft.graph.teamworkApplicationIdentity"
     # Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.
-    application_identity_type: Optional[teamwork_application_identity_type.TeamworkApplicationIdentityType] = None
+    application_identity_type: Optional[TeamworkApplicationIdentityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkApplicationIdentity:
@@ -31,12 +32,14 @@ class TeamworkApplicationIdentity(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity, teamwork_application_identity_type
+        from .identity import Identity
+        from .teamwork_application_identity_type import TeamworkApplicationIdentityType
 
-        from . import identity, teamwork_application_identity_type
+        from .identity import Identity
+        from .teamwork_application_identity_type import TeamworkApplicationIdentityType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationIdentityType": lambda n : setattr(self, 'application_identity_type', n.get_enum_value(teamwork_application_identity_type.TeamworkApplicationIdentityType)),
+            "applicationIdentityType": lambda n : setattr(self, 'application_identity_type', n.get_enum_value(TeamworkApplicationIdentityType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_target
+    from .authentication_method_target import AuthenticationMethodTarget
 
-from . import authentication_method_target
+from .authentication_method_target import AuthenticationMethodTarget
 
 @dataclass
-class SmsAuthenticationMethodTarget(authentication_method_target.AuthenticationMethodTarget):
+class SmsAuthenticationMethodTarget(AuthenticationMethodTarget):
     # Determines if users can use this authentication method to sign in to Azure AD. true if users can use this method for primary authentication, otherwise false.
     is_usable_for_sign_in: Optional[bool] = None
     # The OdataType property
@@ -32,9 +32,9 @@ class SmsAuthenticationMethodTarget(authentication_method_target.AuthenticationM
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_target
+        from .authentication_method_target import AuthenticationMethodTarget
 
-        from . import authentication_method_target
+        from .authentication_method_target import AuthenticationMethodTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isUsableForSignIn": lambda n : setattr(self, 'is_usable_for_sign_in', n.get_bool_value()),

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import windows_information_protection
+    from .windows_information_protection import WindowsInformationProtection
 
-from . import windows_information_protection
+from .windows_information_protection import WindowsInformationProtection
 
 @dataclass
-class MdmWindowsInformationProtectionPolicy(windows_information_protection.WindowsInformationProtection):
+class MdmWindowsInformationProtectionPolicy(WindowsInformationProtection):
     odata_type = "#microsoft.graph.mdmWindowsInformationProtectionPolicy"
     
     @staticmethod
@@ -29,9 +29,9 @@ class MdmWindowsInformationProtectionPolicy(windows_information_protection.Windo
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_information_protection
+        from .windows_information_protection import WindowsInformationProtection
 
-        from . import windows_information_protection
+        from .windows_information_protection import WindowsInformationProtection
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

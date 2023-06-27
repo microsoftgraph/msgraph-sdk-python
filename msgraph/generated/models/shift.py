@@ -4,19 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import change_tracked_entity, shift_item
+    from .change_tracked_entity import ChangeTrackedEntity
+    from .shift_item import ShiftItem
 
-from . import change_tracked_entity
+from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class Shift(change_tracked_entity.ChangeTrackedEntity):
+class Shift(ChangeTrackedEntity):
     odata_type = "#microsoft.graph.shift"
     # The draft version of this shift that is viewable by managers. Required.
-    draft_shift: Optional[shift_item.ShiftItem] = None
+    draft_shift: Optional[ShiftItem] = None
     # ID of the scheduling group the shift is part of. Required.
     scheduling_group_id: Optional[str] = None
     # The shared version of this shift that is viewable by both employees and managers. Required.
-    shared_shift: Optional[shift_item.ShiftItem] = None
+    shared_shift: Optional[ShiftItem] = None
     # ID of the user assigned to the shift. Required.
     user_id: Optional[str] = None
     
@@ -37,14 +38,16 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import change_tracked_entity, shift_item
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .shift_item import ShiftItem
 
-        from . import change_tracked_entity, shift_item
+        from .change_tracked_entity import ChangeTrackedEntity
+        from .shift_item import ShiftItem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "draftShift": lambda n : setattr(self, 'draft_shift', n.get_object_value(shift_item.ShiftItem)),
+            "draftShift": lambda n : setattr(self, 'draft_shift', n.get_object_value(ShiftItem)),
             "schedulingGroupId": lambda n : setattr(self, 'scheduling_group_id', n.get_str_value()),
-            "sharedShift": lambda n : setattr(self, 'shared_shift', n.get_object_value(shift_item.ShiftItem)),
+            "sharedShift": lambda n : setattr(self, 'shared_shift', n.get_object_value(ShiftItem)),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

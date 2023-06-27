@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import b2x_identity_user_flow, base_collection_pagination_count_response
+    from .b2x_identity_user_flow import B2xIdentityUserFlow
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class B2xIdentityUserFlowCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class B2xIdentityUserFlowCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]] = None
+    value: Optional[List[B2xIdentityUserFlow]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> B2xIdentityUserFlowCollectionResponse:
@@ -30,12 +31,14 @@ class B2xIdentityUserFlowCollectionResponse(base_collection_pagination_count_res
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import b2x_identity_user_flow, base_collection_pagination_count_response
+        from .b2x_identity_user_flow import B2xIdentityUserFlow
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
-        from . import b2x_identity_user_flow, base_collection_pagination_count_response
+        from .b2x_identity_user_flow import B2xIdentityUserFlow
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(b2x_identity_user_flow.B2xIdentityUserFlow)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(B2xIdentityUserFlow)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

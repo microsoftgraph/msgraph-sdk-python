@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.o_data_errors import o_data_error
-    from ........models.security import ediscovery_review_tag_collection_response
-    from .count import count_request_builder
-    from .item import ediscovery_review_tag_item_request_builder
+    from ........models.o_data_errors.o_data_error import ODataError
+    from ........models.security.ediscovery_review_tag_collection_response import EdiscoveryReviewTagCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.ediscovery_review_tag_item_request_builder import EdiscoveryReviewTagItemRequestBuilder
 
 class ChildTagsRequestBuilder():
     """
@@ -37,42 +37,42 @@ class ChildTagsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_ediscovery_review_tag_id1(self,ediscovery_review_tag_id1: str) -> ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder:
+    def by_ediscovery_review_tag_id1(self,ediscovery_review_tag_id1: str) -> EdiscoveryReviewTagItemRequestBuilder:
         """
         Provides operations to manage the childTags property of the microsoft.graph.security.ediscoveryReviewTag entity.
         Args:
             ediscovery_review_tag_id1: Unique identifier of the item
-        Returns: ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder
+        Returns: EdiscoveryReviewTagItemRequestBuilder
         """
         if not ediscovery_review_tag_id1:
             raise TypeError("ediscovery_review_tag_id1 cannot be null.")
-        from .item import ediscovery_review_tag_item_request_builder
+        from .item.ediscovery_review_tag_item_request_builder import EdiscoveryReviewTagItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["ediscoveryReviewTag%2Did1"] = ediscovery_review_tag_id1
-        return ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return EdiscoveryReviewTagItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ChildTagsRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_tag_collection_response.EdiscoveryReviewTagCollectionResponse]:
+    async def get(self,request_configuration: Optional[ChildTagsRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewTagCollectionResponse]:
         """
         Returns the tags that are a child of a tag.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_review_tag_collection_response.EdiscoveryReviewTagCollectionResponse]
+        Returns: Optional[EdiscoveryReviewTagCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.security import ediscovery_review_tag_collection_response
+        from ........models.security.ediscovery_review_tag_collection_response import EdiscoveryReviewTagCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, ediscovery_review_tag_collection_response.EdiscoveryReviewTagCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoveryReviewTagCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ChildTagsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class ChildTagsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ChildTagsRequestBuilderGetQueryParameters():

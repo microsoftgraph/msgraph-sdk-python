@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import used_insight
-    from .....models.o_data_errors import o_data_error
-    from .resource import resource_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.used_insight import UsedInsight
+    from .resource.resource_request_builder import ResourceRequestBuilder
 
 class UsedInsightItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class UsedInsightItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UsedInsightItemRequestBuilderGetRequestConfiguration] = None) -> Optional[used_insight.UsedInsight]:
+    async def get(self,request_configuration: Optional[UsedInsightItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UsedInsight]:
         """
         Calculated relationship identifying the latest documents viewed or modified by a user, including OneDrive for Business and SharePoint documents, ranked by recency of use.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[used_insight.UsedInsight]
+        Returns: Optional[UsedInsight]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import used_insight
+        from .....models.used_insight import UsedInsight
 
-        return await self.request_adapter.send_async(request_info, used_insight.UsedInsight, error_mapping)
+        return await self.request_adapter.send_async(request_info, UsedInsight, error_mapping)
     
-    async def patch(self,body: Optional[used_insight.UsedInsight] = None, request_configuration: Optional[UsedInsightItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[used_insight.UsedInsight]:
+    async def patch(self,body: Optional[UsedInsight] = None, request_configuration: Optional[UsedInsightItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UsedInsight]:
         """
         Update the navigation property used in me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[used_insight.UsedInsight]
+        Returns: Optional[UsedInsight]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import used_insight
+        from .....models.used_insight import UsedInsight
 
-        return await self.request_adapter.send_async(request_info, used_insight.UsedInsight, error_mapping)
+        return await self.request_adapter.send_async(request_info, UsedInsight, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UsedInsightItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class UsedInsightItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[used_insight.UsedInsight] = None, request_configuration: Optional[UsedInsightItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UsedInsight] = None, request_configuration: Optional[UsedInsightItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property used in me
         Args:
@@ -158,13 +158,13 @@ class UsedInsightItemRequestBuilder():
         return request_info
     
     @property
-    def resource(self) -> resource_request_builder.ResourceRequestBuilder:
+    def resource(self) -> ResourceRequestBuilder:
         """
         Provides operations to manage the resource property of the microsoft.graph.usedInsight entity.
         """
-        from .resource import resource_request_builder
+        from .resource.resource_request_builder import ResourceRequestBuilder
 
-        return resource_request_builder.ResourceRequestBuilder(self.request_adapter, self.path_parameters)
+        return ResourceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class UsedInsightItemRequestBuilderDeleteRequestConfiguration():

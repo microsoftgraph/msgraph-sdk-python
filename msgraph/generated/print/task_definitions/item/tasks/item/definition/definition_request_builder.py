@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import print_task_definition
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.print_task_definition import PrintTaskDefinition
 
 class DefinitionRequestBuilder():
     """
@@ -35,27 +35,27 @@ class DefinitionRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DefinitionRequestBuilderGetRequestConfiguration] = None) -> Optional[print_task_definition.PrintTaskDefinition]:
+    async def get(self,request_configuration: Optional[DefinitionRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintTaskDefinition]:
         """
         The printTaskDefinition that was used to create this task. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_task_definition.PrintTaskDefinition]
+        Returns: Optional[PrintTaskDefinition]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import print_task_definition
+        from .......models.print_task_definition import PrintTaskDefinition
 
-        return await self.request_adapter.send_async(request_info, print_task_definition.PrintTaskDefinition, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintTaskDefinition, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DefinitionRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, windows_information_protection_app_locker_file
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class WindowsInformationProtectionAppLockerFileCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class WindowsInformationProtectionAppLockerFileCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile]] = None
+    value: Optional[List[WindowsInformationProtectionAppLockerFile]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionAppLockerFileCollectionResponse:
@@ -30,12 +31,14 @@ class WindowsInformationProtectionAppLockerFileCollectionResponse(base_collectio
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, windows_information_protection_app_locker_file
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
 
-        from . import base_collection_pagination_count_response, windows_information_protection_app_locker_file
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(WindowsInformationProtectionAppLockerFile)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import home_realm_discovery_policy, home_realm_discovery_policy_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import home_realm_discovery_policy_item_request_builder
+    from ...models.home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+    from ...models.home_realm_discovery_policy_collection_response import HomeRealmDiscoveryPolicyCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.home_realm_discovery_policy_item_request_builder import HomeRealmDiscoveryPolicyItemRequestBuilder
 
 class HomeRealmDiscoveryPoliciesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_home_realm_discovery_policy_id(self,home_realm_discovery_policy_id: str) -> home_realm_discovery_policy_item_request_builder.HomeRealmDiscoveryPolicyItemRequestBuilder:
+    def by_home_realm_discovery_policy_id(self,home_realm_discovery_policy_id: str) -> HomeRealmDiscoveryPolicyItemRequestBuilder:
         """
         Provides operations to manage the homeRealmDiscoveryPolicies property of the microsoft.graph.policyRoot entity.
         Args:
             home_realm_discovery_policy_id: Unique identifier of the item
-        Returns: home_realm_discovery_policy_item_request_builder.HomeRealmDiscoveryPolicyItemRequestBuilder
+        Returns: HomeRealmDiscoveryPolicyItemRequestBuilder
         """
         if not home_realm_discovery_policy_id:
             raise TypeError("home_realm_discovery_policy_id cannot be null.")
-        from .item import home_realm_discovery_policy_item_request_builder
+        from .item.home_realm_discovery_policy_item_request_builder import HomeRealmDiscoveryPolicyItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["homeRealmDiscoveryPolicy%2Did"] = home_realm_discovery_policy_id
-        return home_realm_discovery_policy_item_request_builder.HomeRealmDiscoveryPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return HomeRealmDiscoveryPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicyCollectionResponse]:
         """
         Get a list of homeRealmDiscoveryPolicy objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse]
+        Returns: Optional[HomeRealmDiscoveryPolicyCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import home_realm_discovery_policy_collection_response
+        from ...models.home_realm_discovery_policy_collection_response import HomeRealmDiscoveryPolicyCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, HomeRealmDiscoveryPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]:
+    async def post(self,body: Optional[HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicy]:
         """
         Create a new homeRealmDiscoveryPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]
+        Returns: Optional[HomeRealmDiscoveryPolicy]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import home_realm_discovery_policy
+        from ...models.home_realm_discovery_policy import HomeRealmDiscoveryPolicy
 
-        return await self.request_adapter.send_async(request_info, home_realm_discovery_policy.HomeRealmDiscoveryPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, HomeRealmDiscoveryPolicy, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new homeRealmDiscoveryPolicy object.
         Args:
@@ -139,13 +140,13 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class HomeRealmDiscoveryPoliciesRequestBuilderGetQueryParameters():

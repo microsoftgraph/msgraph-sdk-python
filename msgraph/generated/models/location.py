@@ -4,7 +4,11 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import location_constraint_item, location_type, location_unique_id_type, outlook_geo_coordinates, physical_address
+    from .location_constraint_item import LocationConstraintItem
+    from .location_type import LocationType
+    from .location_unique_id_type import LocationUniqueIdType
+    from .outlook_geo_coordinates import OutlookGeoCoordinates
+    from .physical_address import PhysicalAddress
 
 @dataclass
 class Location(AdditionalDataHolder, Parsable):
@@ -12,15 +16,15 @@ class Location(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The street address of the location.
-    address: Optional[physical_address.PhysicalAddress] = None
+    address: Optional[PhysicalAddress] = None
     # The geographic coordinates and elevation of the location.
-    coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
+    coordinates: Optional[OutlookGeoCoordinates] = None
     # The name associated with the location.
     display_name: Optional[str] = None
     # Optional email address of the location.
     location_email_address: Optional[str] = None
     # The type of location. The possible values are: default, conferenceRoom, homeAddress, businessAddress,geoCoordinates, streetAddress, hotel, restaurant, localBusiness, postalAddress. Read-only.
-    location_type: Optional[location_type.LocationType] = None
+    location_type: Optional[LocationType] = None
     # Optional URI representing the location.
     location_uri: Optional[str] = None
     # The OdataType property
@@ -28,7 +32,7 @@ class Location(AdditionalDataHolder, Parsable):
     # For internal use only.
     unique_id: Optional[str] = None
     # For internal use only.
-    unique_id_type: Optional[location_unique_id_type.LocationUniqueIdType] = None
+    unique_id_type: Optional[LocationUniqueIdType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Location:
@@ -45,9 +49,9 @@ class Location(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.locationConstraintItem".casefold():
-            from . import location_constraint_item
+            from .location_constraint_item import LocationConstraintItem
 
-            return location_constraint_item.LocationConstraintItem()
+            return LocationConstraintItem()
         return Location()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -55,20 +59,28 @@ class Location(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import location_constraint_item, location_type, location_unique_id_type, outlook_geo_coordinates, physical_address
+        from .location_constraint_item import LocationConstraintItem
+        from .location_type import LocationType
+        from .location_unique_id_type import LocationUniqueIdType
+        from .outlook_geo_coordinates import OutlookGeoCoordinates
+        from .physical_address import PhysicalAddress
 
-        from . import location_constraint_item, location_type, location_unique_id_type, outlook_geo_coordinates, physical_address
+        from .location_constraint_item import LocationConstraintItem
+        from .location_type import LocationType
+        from .location_unique_id_type import LocationUniqueIdType
+        from .outlook_geo_coordinates import OutlookGeoCoordinates
+        from .physical_address import PhysicalAddress
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
-            "coordinates": lambda n : setattr(self, 'coordinates', n.get_object_value(outlook_geo_coordinates.OutlookGeoCoordinates)),
+            "address": lambda n : setattr(self, 'address', n.get_object_value(PhysicalAddress)),
+            "coordinates": lambda n : setattr(self, 'coordinates', n.get_object_value(OutlookGeoCoordinates)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "locationEmailAddress": lambda n : setattr(self, 'location_email_address', n.get_str_value()),
-            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(location_type.LocationType)),
+            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(LocationType)),
             "locationUri": lambda n : setattr(self, 'location_uri', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "uniqueId": lambda n : setattr(self, 'unique_id', n.get_str_value()),
-            "uniqueIdType": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(location_unique_id_type.LocationUniqueIdType)),
+            "uniqueIdType": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(LocationUniqueIdType)),
         }
         return fields
     

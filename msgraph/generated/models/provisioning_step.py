@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import details_info, provisioning_result, provisioning_step_type
+    from .details_info import DetailsInfo
+    from .provisioning_result import ProvisioningResult
+    from .provisioning_step_type import ProvisioningStepType
 
 @dataclass
 class ProvisioningStep(AdditionalDataHolder, Parsable):
@@ -14,15 +16,15 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
     # Summary of what occurred during the step.
     description: Optional[str] = None
     # Details of what occurred during the step.
-    details: Optional[details_info.DetailsInfo] = None
+    details: Optional[DetailsInfo] = None
     # Name of the step.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Type of step. Possible values are: import, scoping, matching, processing, referenceResolution, export, unknownFutureValue.
-    provisioning_step_type: Optional[provisioning_step_type.ProvisioningStepType] = None
+    provisioning_step_type: Optional[ProvisioningStepType] = None
     # Status of the step. Possible values are: success, warning,  failure, skipped, unknownFutureValue.
-    status: Optional[provisioning_result.ProvisioningResult] = None
+    status: Optional[ProvisioningResult] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisioningStep:
@@ -41,17 +43,21 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import details_info, provisioning_result, provisioning_step_type
+        from .details_info import DetailsInfo
+        from .provisioning_result import ProvisioningResult
+        from .provisioning_step_type import ProvisioningStepType
 
-        from . import details_info, provisioning_result, provisioning_step_type
+        from .details_info import DetailsInfo
+        from .provisioning_result import ProvisioningResult
+        from .provisioning_step_type import ProvisioningStepType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "details": lambda n : setattr(self, 'details', n.get_object_value(details_info.DetailsInfo)),
+            "details": lambda n : setattr(self, 'details', n.get_object_value(DetailsInfo)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "provisioningStepType": lambda n : setattr(self, 'provisioning_step_type', n.get_enum_value(provisioning_step_type.ProvisioningStepType)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(provisioning_result.ProvisioningResult)),
+            "provisioningStepType": lambda n : setattr(self, 'provisioning_step_type', n.get_enum_value(ProvisioningStepType)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ProvisioningResult)),
         }
         return fields
     

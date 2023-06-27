@@ -4,17 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import data_source, data_source_container, ediscovery_index_operation
+    from .data_source import DataSource
+    from .data_source_container import DataSourceContainer
+    from .ediscovery_index_operation import EdiscoveryIndexOperation
 
-from . import data_source_container
+from .data_source_container import DataSourceContainer
 
 @dataclass
-class EdiscoveryNoncustodialDataSource(data_source_container.DataSourceContainer):
+class EdiscoveryNoncustodialDataSource(DataSourceContainer):
     odata_type = "#microsoft.graph.security.ediscoveryNoncustodialDataSource"
     # User source or SharePoint site data source as non-custodial data source.
-    data_source: Optional[data_source.DataSource] = None
+    data_source: Optional[DataSource] = None
     # Operation entity that represents the latest indexing for the non-custodial data source.
-    last_index_operation: Optional[ediscovery_index_operation.EdiscoveryIndexOperation] = None
+    last_index_operation: Optional[EdiscoveryIndexOperation] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryNoncustodialDataSource:
@@ -33,13 +35,17 @@ class EdiscoveryNoncustodialDataSource(data_source_container.DataSourceContainer
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import data_source, data_source_container, ediscovery_index_operation
+        from .data_source import DataSource
+        from .data_source_container import DataSourceContainer
+        from .ediscovery_index_operation import EdiscoveryIndexOperation
 
-        from . import data_source, data_source_container, ediscovery_index_operation
+        from .data_source import DataSource
+        from .data_source_container import DataSourceContainer
+        from .ediscovery_index_operation import EdiscoveryIndexOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "dataSource": lambda n : setattr(self, 'data_source', n.get_object_value(data_source.DataSource)),
-            "lastIndexOperation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(ediscovery_index_operation.EdiscoveryIndexOperation)),
+            "dataSource": lambda n : setattr(self, 'data_source', n.get_object_value(DataSource)),
+            "lastIndexOperation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(EdiscoveryIndexOperation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

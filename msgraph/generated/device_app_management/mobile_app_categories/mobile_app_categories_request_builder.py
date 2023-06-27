@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import mobile_app_category, mobile_app_category_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import mobile_app_category_item_request_builder
+    from ...models.mobile_app_category import MobileAppCategory
+    from ...models.mobile_app_category_collection_response import MobileAppCategoryCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.mobile_app_category_item_request_builder import MobileAppCategoryItemRequestBuilder
 
 class MobileAppCategoriesRequestBuilder():
     """
@@ -37,71 +38,71 @@ class MobileAppCategoriesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_mobile_app_category_id(self,mobile_app_category_id: str) -> mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder:
+    def by_mobile_app_category_id(self,mobile_app_category_id: str) -> MobileAppCategoryItemRequestBuilder:
         """
         Provides operations to manage the mobileAppCategories property of the microsoft.graph.deviceAppManagement entity.
         Args:
             mobile_app_category_id: Unique identifier of the item
-        Returns: mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder
+        Returns: MobileAppCategoryItemRequestBuilder
         """
         if not mobile_app_category_id:
             raise TypeError("mobile_app_category_id cannot be null.")
-        from .item import mobile_app_category_item_request_builder
+        from .item.mobile_app_category_item_request_builder import MobileAppCategoryItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["mobileAppCategory%2Did"] = mobile_app_category_id
-        return mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return MobileAppCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[MobileAppCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[mobile_app_category_collection_response.MobileAppCategoryCollectionResponse]:
+    async def get(self,request_configuration: Optional[MobileAppCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileAppCategoryCollectionResponse]:
         """
-        The mobile app categories.
+        List properties and relationships of the mobileAppCategory objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mobile_app_category_collection_response.MobileAppCategoryCollectionResponse]
+        Returns: Optional[MobileAppCategoryCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import mobile_app_category_collection_response
+        from ...models.mobile_app_category_collection_response import MobileAppCategoryCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, mobile_app_category_collection_response.MobileAppCategoryCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, MobileAppCategoryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[mobile_app_category.MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[mobile_app_category.MobileAppCategory]:
+    async def post(self,body: Optional[MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[MobileAppCategory]:
         """
-        Create new navigation property to mobileAppCategories for deviceAppManagement
+        Create a new mobileAppCategory object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mobile_app_category.MobileAppCategory]
+        Returns: Optional[MobileAppCategory]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import mobile_app_category
+        from ...models.mobile_app_category import MobileAppCategory
 
-        return await self.request_adapter.send_async(request_info, mobile_app_category.MobileAppCategory, error_mapping)
+        return await self.request_adapter.send_async(request_info, MobileAppCategory, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The mobile app categories.
+        List properties and relationships of the mobileAppCategory objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class MobileAppCategoriesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[mobile_app_category.MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to mobileAppCategories for deviceAppManagement
+        Create a new mobileAppCategory object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class MobileAppCategoriesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MobileAppCategoriesRequestBuilderGetQueryParameters():
         """
-        The mobile app categories.
+        List properties and relationships of the mobileAppCategory objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

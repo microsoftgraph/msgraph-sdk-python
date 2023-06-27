@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import api_authentication_configuration_base
+    from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
-from . import api_authentication_configuration_base
+from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
 @dataclass
-class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationConfigurationBase):
+class Pkcs12Certificate(ApiAuthenticationConfigurationBase):
     odata_type = "#microsoft.graph.pkcs12Certificate"
     # The password for the pfx file. Required. If no password is used, you must still provide a value of ''.
     password: Optional[str] = None
@@ -33,9 +33,9 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import api_authentication_configuration_base
+        from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
-        from . import api_authentication_configuration_base
+        from .api_authentication_configuration_base import ApiAuthenticationConfigurationBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "password": lambda n : setattr(self, 'password', n.get_str_value()),

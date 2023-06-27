@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import group_assignment_target
+    from .group_assignment_target import GroupAssignmentTarget
 
-from . import group_assignment_target
+from .group_assignment_target import GroupAssignmentTarget
 
 @dataclass
-class ExclusionGroupAssignmentTarget(group_assignment_target.GroupAssignmentTarget):
+class ExclusionGroupAssignmentTarget(GroupAssignmentTarget):
     odata_type = "#microsoft.graph.exclusionGroupAssignmentTarget"
     
     @staticmethod
@@ -29,9 +29,9 @@ class ExclusionGroupAssignmentTarget(group_assignment_target.GroupAssignmentTarg
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import group_assignment_target
+        from .group_assignment_target import GroupAssignmentTarget
 
-        from . import group_assignment_target
+        from .group_assignment_target import GroupAssignmentTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

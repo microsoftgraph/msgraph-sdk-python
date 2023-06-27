@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ip_range
+    from .ip_range import IpRange
 
 @dataclass
 class WindowsInformationProtectionIPRangeCollection(AdditionalDataHolder, Parsable):
@@ -19,7 +19,7 @@ class WindowsInformationProtectionIPRangeCollection(AdditionalDataHolder, Parsab
     # The OdataType property
     odata_type: Optional[str] = None
     # Collection of ip ranges
-    ranges: Optional[List[ip_range.IpRange]] = None
+    ranges: Optional[List[IpRange]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionIPRangeCollection:
@@ -38,14 +38,14 @@ class WindowsInformationProtectionIPRangeCollection(AdditionalDataHolder, Parsab
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ip_range
+        from .ip_range import IpRange
 
-        from . import ip_range
+        from .ip_range import IpRange
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "ranges": lambda n : setattr(self, 'ranges', n.get_collection_of_object_values(ip_range.IpRange)),
+            "ranges": lambda n : setattr(self, 'ranges', n.get_collection_of_object_values(IpRange)),
         }
         return fields
     

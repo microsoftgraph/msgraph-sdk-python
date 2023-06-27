@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import participant
-    from ......models.o_data_errors import o_data_error
-    from .mute import mute_request_builder
-    from .start_hold_music import start_hold_music_request_builder
-    from .stop_hold_music import stop_hold_music_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.participant import Participant
+    from .mute.mute_request_builder import MuteRequestBuilder
+    from .start_hold_music.start_hold_music_request_builder import StartHoldMusicRequestBuilder
+    from .stop_hold_music.stop_hold_music_request_builder import StopHoldMusicRequestBuilder
 
 class ParticipantItemRequestBuilder():
     """
@@ -47,62 +47,62 @@ class ParticipantItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ParticipantItemRequestBuilderGetRequestConfiguration] = None) -> Optional[participant.Participant]:
+    async def get(self,request_configuration: Optional[ParticipantItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Participant]:
         """
         Retrieve the properties and relationships of a **participant** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[participant.Participant]
+        Returns: Optional[Participant]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import participant
+        from ......models.participant import Participant
 
-        return await self.request_adapter.send_async(request_info, participant.Participant, error_mapping)
+        return await self.request_adapter.send_async(request_info, Participant, error_mapping)
     
-    async def patch(self,body: Optional[participant.Participant] = None, request_configuration: Optional[ParticipantItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[participant.Participant]:
+    async def patch(self,body: Optional[Participant] = None, request_configuration: Optional[ParticipantItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Participant]:
         """
         Update the navigation property participants in communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[participant.Participant]
+        Returns: Optional[Participant]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import participant
+        from ......models.participant import Participant
 
-        return await self.request_adapter.send_async(request_info, participant.Participant, error_mapping)
+        return await self.request_adapter.send_async(request_info, Participant, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ParticipantItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class ParticipantItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[participant.Participant] = None, request_configuration: Optional[ParticipantItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Participant] = None, request_configuration: Optional[ParticipantItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property participants in communications
         Args:
@@ -160,31 +160,31 @@ class ParticipantItemRequestBuilder():
         return request_info
     
     @property
-    def mute(self) -> mute_request_builder.MuteRequestBuilder:
+    def mute(self) -> MuteRequestBuilder:
         """
         Provides operations to call the mute method.
         """
-        from .mute import mute_request_builder
+        from .mute.mute_request_builder import MuteRequestBuilder
 
-        return mute_request_builder.MuteRequestBuilder(self.request_adapter, self.path_parameters)
+        return MuteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def start_hold_music(self) -> start_hold_music_request_builder.StartHoldMusicRequestBuilder:
+    def start_hold_music(self) -> StartHoldMusicRequestBuilder:
         """
         Provides operations to call the startHoldMusic method.
         """
-        from .start_hold_music import start_hold_music_request_builder
+        from .start_hold_music.start_hold_music_request_builder import StartHoldMusicRequestBuilder
 
-        return start_hold_music_request_builder.StartHoldMusicRequestBuilder(self.request_adapter, self.path_parameters)
+        return StartHoldMusicRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def stop_hold_music(self) -> stop_hold_music_request_builder.StopHoldMusicRequestBuilder:
+    def stop_hold_music(self) -> StopHoldMusicRequestBuilder:
         """
         Provides operations to call the stopHoldMusic method.
         """
-        from .stop_hold_music import stop_hold_music_request_builder
+        from .stop_hold_music.stop_hold_music_request_builder import StopHoldMusicRequestBuilder
 
-        return stop_hold_music_request_builder.StopHoldMusicRequestBuilder(self.request_adapter, self.path_parameters)
+        return StopHoldMusicRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ParticipantItemRequestBuilderDeleteRequestConfiguration():

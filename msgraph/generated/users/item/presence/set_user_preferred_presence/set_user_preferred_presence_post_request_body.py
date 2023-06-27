@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -14,7 +14,7 @@ class SetUserPreferredPresencePostRequestBody(AdditionalDataHolder, Parsable):
     # The availability property
     availability: Optional[str] = None
     # The expirationDuration property
-    expiration_duration: Optional[timedelta] = None
+    expiration_duration: Optional[datetime.timedelta] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SetUserPreferredPresencePostRequestBody:
@@ -50,7 +50,7 @@ class SetUserPreferredPresencePostRequestBody(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("activity", self.activity)
         writer.write_str_value("availability", self.availability)
-        writer.write_timedelta_value("expirationDuration", self.expiration_duration)
+        writer.write_timedelta_value()("expirationDuration", self.expiration_duration)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ............models import workbook_icon
+    from ............models.workbook_icon import WorkbookIcon
 
 @dataclass
 class ApplyIconFilterPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ApplyIconFilterPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The icon property
-    icon: Optional[workbook_icon.WorkbookIcon] = None
+    icon: Optional[WorkbookIcon] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplyIconFilterPostRequestBody:
@@ -31,12 +31,12 @@ class ApplyIconFilterPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ............models import workbook_icon
+        from ............models.workbook_icon import WorkbookIcon
 
-        from ............models import workbook_icon
+        from ............models.workbook_icon import WorkbookIcon
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "icon": lambda n : setattr(self, 'icon', n.get_object_value(workbook_icon.WorkbookIcon)),
+            "icon": lambda n : setattr(self, 'icon', n.get_object_value(WorkbookIcon)),
         }
         return fields
     

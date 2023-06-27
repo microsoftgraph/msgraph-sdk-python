@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import device_compliance_policy_setting_state_summary
-    from ....models.o_data_errors import o_data_error
-    from .device_compliance_setting_states import device_compliance_setting_states_request_builder
+    from ....models.device_compliance_policy_setting_state_summary import DeviceCompliancePolicySettingStateSummary
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .device_compliance_setting_states.device_compliance_setting_states_request_builder import DeviceComplianceSettingStatesRequestBuilder
 
 class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
     """
@@ -38,73 +38,73 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceCompliancePolicySettingStateSummaries for deviceManagement
+        Deletes a deviceCompliancePolicySettingStateSummary.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]:
+    async def get(self,request_configuration: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicySettingStateSummary]:
         """
-        The summary states of compliance policy settings for this account.
+        Read properties and relationships of the deviceCompliancePolicySettingStateSummary object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]
+        Returns: Optional[DeviceCompliancePolicySettingStateSummary]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import device_compliance_policy_setting_state_summary
+        from ....models.device_compliance_policy_setting_state_summary import DeviceCompliancePolicySettingStateSummary
 
-        return await self.request_adapter.send_async(request_info, device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceCompliancePolicySettingStateSummary, error_mapping)
     
-    async def patch(self,body: Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary] = None, request_configuration: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]:
+    async def patch(self,body: Optional[DeviceCompliancePolicySettingStateSummary] = None, request_configuration: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceCompliancePolicySettingStateSummary]:
         """
-        Update the navigation property deviceCompliancePolicySettingStateSummaries in deviceManagement
+        Update the properties of a deviceCompliancePolicySettingStateSummary object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]
+        Returns: Optional[DeviceCompliancePolicySettingStateSummary]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import device_compliance_policy_setting_state_summary
+        from ....models.device_compliance_policy_setting_state_summary import DeviceCompliancePolicySettingStateSummary
 
-        return await self.request_adapter.send_async(request_info, device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceCompliancePolicySettingStateSummary, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceCompliancePolicySettingStateSummaries for deviceManagement
+        Deletes a deviceCompliancePolicySettingStateSummary.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The summary states of compliance policy settings for this account.
+        Read properties and relationships of the deviceCompliancePolicySettingStateSummary object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -136,9 +136,9 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary] = None, request_configuration: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceCompliancePolicySettingStateSummary] = None, request_configuration: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceCompliancePolicySettingStateSummaries in deviceManagement
+        Update the properties of a deviceCompliancePolicySettingStateSummary object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -158,13 +158,13 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
         return request_info
     
     @property
-    def device_compliance_setting_states(self) -> device_compliance_setting_states_request_builder.DeviceComplianceSettingStatesRequestBuilder:
+    def device_compliance_setting_states(self) -> DeviceComplianceSettingStatesRequestBuilder:
         """
         Provides operations to manage the deviceComplianceSettingStates property of the microsoft.graph.deviceCompliancePolicySettingStateSummary entity.
         """
-        from .device_compliance_setting_states import device_compliance_setting_states_request_builder
+        from .device_compliance_setting_states.device_compliance_setting_states_request_builder import DeviceComplianceSettingStatesRequestBuilder
 
-        return device_compliance_setting_states_request_builder.DeviceComplianceSettingStatesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceComplianceSettingStatesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceCompliancePolicySettingStateSummaryItemRequestBuilderDeleteRequestConfiguration():
@@ -181,7 +181,7 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
     @dataclass
     class DeviceCompliancePolicySettingStateSummaryItemRequestBuilderGetQueryParameters():
         """
-        The summary states of compliance policy settings for this account.
+        Read properties and relationships of the deviceCompliancePolicySettingStateSummary object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

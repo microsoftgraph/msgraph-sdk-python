@@ -4,17 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_message_detail, identity_set, teamwork_user_identity
+    from .event_message_detail import EventMessageDetail
+    from .identity_set import IdentitySet
+    from .teamwork_user_identity import TeamworkUserIdentity
 
-from . import event_message_detail
+from .event_message_detail import EventMessageDetail
 
 @dataclass
-class MembersJoinedEventMessageDetail(event_message_detail.EventMessageDetail):
+class MembersJoinedEventMessageDetail(EventMessageDetail):
     odata_type = "#microsoft.graph.membersJoinedEventMessageDetail"
     # Initiator of the event.
-    initiator: Optional[identity_set.IdentitySet] = None
+    initiator: Optional[IdentitySet] = None
     # List of members who joined the chat.
-    members: Optional[List[teamwork_user_identity.TeamworkUserIdentity]] = None
+    members: Optional[List[TeamworkUserIdentity]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MembersJoinedEventMessageDetail:
@@ -33,13 +35,17 @@ class MembersJoinedEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message_detail, identity_set, teamwork_user_identity
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+        from .teamwork_user_identity import TeamworkUserIdentity
 
-        from . import event_message_detail, identity_set, teamwork_user_identity
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
+        from .teamwork_user_identity import TeamworkUserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
-            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(teamwork_user_identity.TeamworkUserIdentity)),
+            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
+            "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(TeamworkUserIdentity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

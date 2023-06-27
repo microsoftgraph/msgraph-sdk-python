@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import booking_staff_member_base, booking_staff_member_base_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import booking_staff_member_base_item_request_builder
+    from .....models.booking_staff_member_base import BookingStaffMemberBase
+    from .....models.booking_staff_member_base_collection_response import BookingStaffMemberBaseCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.booking_staff_member_base_item_request_builder import BookingStaffMemberBaseItemRequestBuilder
 
 class StaffMembersRequestBuilder():
     """
@@ -37,67 +38,67 @@ class StaffMembersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_booking_staff_member_base_id(self,booking_staff_member_base_id: str) -> booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder:
+    def by_booking_staff_member_base_id(self,booking_staff_member_base_id: str) -> BookingStaffMemberBaseItemRequestBuilder:
         """
         Provides operations to manage the staffMembers property of the microsoft.graph.bookingBusiness entity.
         Args:
             booking_staff_member_base_id: Unique identifier of the item
-        Returns: booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder
+        Returns: BookingStaffMemberBaseItemRequestBuilder
         """
         if not booking_staff_member_base_id:
             raise TypeError("booking_staff_member_base_id cannot be null.")
-        from .item import booking_staff_member_base_item_request_builder
+        from .item.booking_staff_member_base_item_request_builder import BookingStaffMemberBaseItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["bookingStaffMemberBase%2Did"] = booking_staff_member_base_id
-        return booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return BookingStaffMemberBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[StaffMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_staff_member_base_collection_response.BookingStaffMemberBaseCollectionResponse]:
+    async def get(self,request_configuration: Optional[StaffMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingStaffMemberBaseCollectionResponse]:
         """
         Get a list of bookingStaffMember objects in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[booking_staff_member_base_collection_response.BookingStaffMemberBaseCollectionResponse]
+        Returns: Optional[BookingStaffMemberBaseCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import booking_staff_member_base_collection_response
+        from .....models.booking_staff_member_base_collection_response import BookingStaffMemberBaseCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, booking_staff_member_base_collection_response.BookingStaffMemberBaseCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, BookingStaffMemberBaseCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[booking_staff_member_base.BookingStaffMemberBase] = None, request_configuration: Optional[StaffMembersRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_staff_member_base.BookingStaffMemberBase]:
+    async def post(self,body: Optional[BookingStaffMemberBase] = None, request_configuration: Optional[StaffMembersRequestBuilderPostRequestConfiguration] = None) -> Optional[BookingStaffMemberBase]:
         """
         Create a new bookingStaffMember in the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[booking_staff_member_base.BookingStaffMemberBase]
+        Returns: Optional[BookingStaffMemberBase]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import booking_staff_member_base
+        from .....models.booking_staff_member_base import BookingStaffMemberBase
 
-        return await self.request_adapter.send_async(request_info, booking_staff_member_base.BookingStaffMemberBase, error_mapping)
+        return await self.request_adapter.send_async(request_info, BookingStaffMemberBase, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[StaffMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class StaffMembersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[booking_staff_member_base.BookingStaffMemberBase] = None, request_configuration: Optional[StaffMembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[BookingStaffMemberBase] = None, request_configuration: Optional[StaffMembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new bookingStaffMember in the specified bookingBusiness.
         Args:
@@ -139,13 +140,13 @@ class StaffMembersRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class StaffMembersRequestBuilderGetQueryParameters():

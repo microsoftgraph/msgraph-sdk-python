@@ -10,49 +10,49 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import group
-    from ...models.o_data_errors import o_data_error
-    from .accepted_senders import accepted_senders_request_builder
-    from .add_favorite import add_favorite_request_builder
-    from .app_role_assignments import app_role_assignments_request_builder
-    from .assign_license import assign_license_request_builder
-    from .calendar import calendar_request_builder
-    from .calendar_view import calendar_view_request_builder
-    from .check_granted_permissions_for_app import check_granted_permissions_for_app_request_builder
-    from .check_member_groups import check_member_groups_request_builder
-    from .check_member_objects import check_member_objects_request_builder
-    from .conversations import conversations_request_builder
-    from .created_on_behalf_of import created_on_behalf_of_request_builder
-    from .drive import drive_request_builder
-    from .drives import drives_request_builder
-    from .events import events_request_builder
-    from .extensions import extensions_request_builder
-    from .get_member_groups import get_member_groups_request_builder
-    from .get_member_objects import get_member_objects_request_builder
-    from .group_lifecycle_policies import group_lifecycle_policies_request_builder
-    from .member_of import member_of_request_builder
-    from .members import members_request_builder
-    from .members_with_license_errors import members_with_license_errors_request_builder
-    from .onenote import onenote_request_builder
-    from .owners import owners_request_builder
-    from .permission_grants import permission_grants_request_builder
-    from .photo import photo_request_builder
-    from .photos import photos_request_builder
-    from .planner import planner_request_builder
-    from .rejected_senders import rejected_senders_request_builder
-    from .remove_favorite import remove_favorite_request_builder
-    from .renew import renew_request_builder
-    from .reset_unseen_count import reset_unseen_count_request_builder
-    from .restore import restore_request_builder
-    from .settings import settings_request_builder
-    from .sites import sites_request_builder
-    from .subscribe_by_mail import subscribe_by_mail_request_builder
-    from .team import team_request_builder
-    from .threads import threads_request_builder
-    from .transitive_member_of import transitive_member_of_request_builder
-    from .transitive_members import transitive_members_request_builder
-    from .unsubscribe_by_mail import unsubscribe_by_mail_request_builder
-    from .validate_properties import validate_properties_request_builder
+    from ...models.group import Group
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .accepted_senders.accepted_senders_request_builder import AcceptedSendersRequestBuilder
+    from .add_favorite.add_favorite_request_builder import AddFavoriteRequestBuilder
+    from .app_role_assignments.app_role_assignments_request_builder import AppRoleAssignmentsRequestBuilder
+    from .assign_license.assign_license_request_builder import AssignLicenseRequestBuilder
+    from .calendar.calendar_request_builder import CalendarRequestBuilder
+    from .calendar_view.calendar_view_request_builder import CalendarViewRequestBuilder
+    from .check_granted_permissions_for_app.check_granted_permissions_for_app_request_builder import CheckGrantedPermissionsForAppRequestBuilder
+    from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
+    from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
+    from .conversations.conversations_request_builder import ConversationsRequestBuilder
+    from .created_on_behalf_of.created_on_behalf_of_request_builder import CreatedOnBehalfOfRequestBuilder
+    from .drive.drive_request_builder import DriveRequestBuilder
+    from .drives.drives_request_builder import DrivesRequestBuilder
+    from .events.events_request_builder import EventsRequestBuilder
+    from .extensions.extensions_request_builder import ExtensionsRequestBuilder
+    from .get_member_groups.get_member_groups_request_builder import GetMemberGroupsRequestBuilder
+    from .get_member_objects.get_member_objects_request_builder import GetMemberObjectsRequestBuilder
+    from .group_lifecycle_policies.group_lifecycle_policies_request_builder import GroupLifecyclePoliciesRequestBuilder
+    from .member_of.member_of_request_builder import MemberOfRequestBuilder
+    from .members.members_request_builder import MembersRequestBuilder
+    from .members_with_license_errors.members_with_license_errors_request_builder import MembersWithLicenseErrorsRequestBuilder
+    from .onenote.onenote_request_builder import OnenoteRequestBuilder
+    from .owners.owners_request_builder import OwnersRequestBuilder
+    from .permission_grants.permission_grants_request_builder import PermissionGrantsRequestBuilder
+    from .photo.photo_request_builder import PhotoRequestBuilder
+    from .photos.photos_request_builder import PhotosRequestBuilder
+    from .planner.planner_request_builder import PlannerRequestBuilder
+    from .rejected_senders.rejected_senders_request_builder import RejectedSendersRequestBuilder
+    from .remove_favorite.remove_favorite_request_builder import RemoveFavoriteRequestBuilder
+    from .renew.renew_request_builder import RenewRequestBuilder
+    from .reset_unseen_count.reset_unseen_count_request_builder import ResetUnseenCountRequestBuilder
+    from .restore.restore_request_builder import RestoreRequestBuilder
+    from .settings.settings_request_builder import SettingsRequestBuilder
+    from .sites.sites_request_builder import SitesRequestBuilder
+    from .subscribe_by_mail.subscribe_by_mail_request_builder import SubscribeByMailRequestBuilder
+    from .team.team_request_builder import TeamRequestBuilder
+    from .threads.threads_request_builder import ThreadsRequestBuilder
+    from .transitive_member_of.transitive_member_of_request_builder import TransitiveMemberOfRequestBuilder
+    from .transitive_members.transitive_members_request_builder import TransitiveMembersRequestBuilder
+    from .unsubscribe_by_mail.unsubscribe_by_mail_request_builder import UnsubscribeByMailRequestBuilder
+    from .validate_properties.validate_properties_request_builder import ValidatePropertiesRequestBuilder
 
 class GroupItemRequestBuilder():
     """
@@ -85,62 +85,62 @@ class GroupItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[GroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[group.Group]:
+    async def get(self,request_configuration: Optional[GroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Group]:
         """
         Get the properties and relationships of a group object. This operation returns by default only a subset of all the available properties, as noted in the Properties section. To get properties that are _not_ returned by default, specify them in a `$select` OData query option. The **hasMembersWithLicenseErrors** and **isArchived** properties are an exception and are not returned in the `$select` query.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[group.Group]
+        Returns: Optional[Group]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import group
+        from ...models.group import Group
 
-        return await self.request_adapter.send_async(request_info, group.Group, error_mapping)
+        return await self.request_adapter.send_async(request_info, Group, error_mapping)
     
-    async def patch(self,body: Optional[group.Group] = None, request_configuration: Optional[GroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[group.Group]:
+    async def patch(self,body: Optional[Group] = None, request_configuration: Optional[GroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Group]:
         """
         Update the properties of a group object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[group.Group]
+        Returns: Optional[Group]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import group
+        from ...models.group import Group
 
-        return await self.request_adapter.send_async(request_info, group.Group, error_mapping)
+        return await self.request_adapter.send_async(request_info, Group, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[GroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -176,7 +176,7 @@ class GroupItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[group.Group] = None, request_configuration: Optional[GroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Group] = None, request_configuration: Optional[GroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a group object.
         Args:
@@ -198,373 +198,373 @@ class GroupItemRequestBuilder():
         return request_info
     
     @property
-    def accepted_senders(self) -> accepted_senders_request_builder.AcceptedSendersRequestBuilder:
+    def accepted_senders(self) -> AcceptedSendersRequestBuilder:
         """
         Provides operations to manage the acceptedSenders property of the microsoft.graph.group entity.
         """
-        from .accepted_senders import accepted_senders_request_builder
+        from .accepted_senders.accepted_senders_request_builder import AcceptedSendersRequestBuilder
 
-        return accepted_senders_request_builder.AcceptedSendersRequestBuilder(self.request_adapter, self.path_parameters)
+        return AcceptedSendersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def add_favorite(self) -> add_favorite_request_builder.AddFavoriteRequestBuilder:
+    def add_favorite(self) -> AddFavoriteRequestBuilder:
         """
         Provides operations to call the addFavorite method.
         """
-        from .add_favorite import add_favorite_request_builder
+        from .add_favorite.add_favorite_request_builder import AddFavoriteRequestBuilder
 
-        return add_favorite_request_builder.AddFavoriteRequestBuilder(self.request_adapter, self.path_parameters)
+        return AddFavoriteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def app_role_assignments(self) -> app_role_assignments_request_builder.AppRoleAssignmentsRequestBuilder:
+    def app_role_assignments(self) -> AppRoleAssignmentsRequestBuilder:
         """
         Provides operations to manage the appRoleAssignments property of the microsoft.graph.group entity.
         """
-        from .app_role_assignments import app_role_assignments_request_builder
+        from .app_role_assignments.app_role_assignments_request_builder import AppRoleAssignmentsRequestBuilder
 
-        return app_role_assignments_request_builder.AppRoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AppRoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assign_license(self) -> assign_license_request_builder.AssignLicenseRequestBuilder:
+    def assign_license(self) -> AssignLicenseRequestBuilder:
         """
         Provides operations to call the assignLicense method.
         """
-        from .assign_license import assign_license_request_builder
+        from .assign_license.assign_license_request_builder import AssignLicenseRequestBuilder
 
-        return assign_license_request_builder.AssignLicenseRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignLicenseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def calendar(self) -> calendar_request_builder.CalendarRequestBuilder:
+    def calendar(self) -> CalendarRequestBuilder:
         """
         Provides operations to manage the calendar property of the microsoft.graph.group entity.
         """
-        from .calendar import calendar_request_builder
+        from .calendar.calendar_request_builder import CalendarRequestBuilder
 
-        return calendar_request_builder.CalendarRequestBuilder(self.request_adapter, self.path_parameters)
+        return CalendarRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def calendar_view(self) -> calendar_view_request_builder.CalendarViewRequestBuilder:
+    def calendar_view(self) -> CalendarViewRequestBuilder:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.group entity.
         """
-        from .calendar_view import calendar_view_request_builder
+        from .calendar_view.calendar_view_request_builder import CalendarViewRequestBuilder
 
-        return calendar_view_request_builder.CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
+        return CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_granted_permissions_for_app(self) -> check_granted_permissions_for_app_request_builder.CheckGrantedPermissionsForAppRequestBuilder:
+    def check_granted_permissions_for_app(self) -> CheckGrantedPermissionsForAppRequestBuilder:
         """
         Provides operations to call the checkGrantedPermissionsForApp method.
         """
-        from .check_granted_permissions_for_app import check_granted_permissions_for_app_request_builder
+        from .check_granted_permissions_for_app.check_granted_permissions_for_app_request_builder import CheckGrantedPermissionsForAppRequestBuilder
 
-        return check_granted_permissions_for_app_request_builder.CheckGrantedPermissionsForAppRequestBuilder(self.request_adapter, self.path_parameters)
+        return CheckGrantedPermissionsForAppRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+    def check_member_groups(self) -> CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
-        from .check_member_groups import check_member_groups_request_builder
+        from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
 
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+    def check_member_objects(self) -> CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
-        from .check_member_objects import check_member_objects_request_builder
+        from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
 
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def conversations(self) -> conversations_request_builder.ConversationsRequestBuilder:
+    def conversations(self) -> ConversationsRequestBuilder:
         """
         Provides operations to manage the conversations property of the microsoft.graph.group entity.
         """
-        from .conversations import conversations_request_builder
+        from .conversations.conversations_request_builder import ConversationsRequestBuilder
 
-        return conversations_request_builder.ConversationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ConversationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def created_on_behalf_of(self) -> created_on_behalf_of_request_builder.CreatedOnBehalfOfRequestBuilder:
+    def created_on_behalf_of(self) -> CreatedOnBehalfOfRequestBuilder:
         """
         Provides operations to manage the createdOnBehalfOf property of the microsoft.graph.group entity.
         """
-        from .created_on_behalf_of import created_on_behalf_of_request_builder
+        from .created_on_behalf_of.created_on_behalf_of_request_builder import CreatedOnBehalfOfRequestBuilder
 
-        return created_on_behalf_of_request_builder.CreatedOnBehalfOfRequestBuilder(self.request_adapter, self.path_parameters)
+        return CreatedOnBehalfOfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def drive(self) -> drive_request_builder.DriveRequestBuilder:
+    def drive(self) -> DriveRequestBuilder:
         """
         Provides operations to manage the drive property of the microsoft.graph.group entity.
         """
-        from .drive import drive_request_builder
+        from .drive.drive_request_builder import DriveRequestBuilder
 
-        return drive_request_builder.DriveRequestBuilder(self.request_adapter, self.path_parameters)
+        return DriveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def drives(self) -> drives_request_builder.DrivesRequestBuilder:
+    def drives(self) -> DrivesRequestBuilder:
         """
         Provides operations to manage the drives property of the microsoft.graph.group entity.
         """
-        from .drives import drives_request_builder
+        from .drives.drives_request_builder import DrivesRequestBuilder
 
-        return drives_request_builder.DrivesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DrivesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def events(self) -> events_request_builder.EventsRequestBuilder:
+    def events(self) -> EventsRequestBuilder:
         """
         Provides operations to manage the events property of the microsoft.graph.group entity.
         """
-        from .events import events_request_builder
+        from .events.events_request_builder import EventsRequestBuilder
 
-        return events_request_builder.EventsRequestBuilder(self.request_adapter, self.path_parameters)
+        return EventsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+    def extensions(self) -> ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.group entity.
         """
-        from .extensions import extensions_request_builder
+        from .extensions.extensions_request_builder import ExtensionsRequestBuilder
 
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+    def get_member_groups(self) -> GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
-        from .get_member_groups import get_member_groups_request_builder
+        from .get_member_groups.get_member_groups_request_builder import GetMemberGroupsRequestBuilder
 
-        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+    def get_member_objects(self) -> GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
-        from .get_member_objects import get_member_objects_request_builder
+        from .get_member_objects.get_member_objects_request_builder import GetMemberObjectsRequestBuilder
 
-        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def group_lifecycle_policies(self) -> group_lifecycle_policies_request_builder.GroupLifecyclePoliciesRequestBuilder:
+    def group_lifecycle_policies(self) -> GroupLifecyclePoliciesRequestBuilder:
         """
         Provides operations to manage the groupLifecyclePolicies property of the microsoft.graph.group entity.
         """
-        from .group_lifecycle_policies import group_lifecycle_policies_request_builder
+        from .group_lifecycle_policies.group_lifecycle_policies_request_builder import GroupLifecyclePoliciesRequestBuilder
 
-        return group_lifecycle_policies_request_builder.GroupLifecyclePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+        return GroupLifecyclePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def member_of(self) -> member_of_request_builder.MemberOfRequestBuilder:
+    def member_of(self) -> MemberOfRequestBuilder:
         """
         Provides operations to manage the memberOf property of the microsoft.graph.group entity.
         """
-        from .member_of import member_of_request_builder
+        from .member_of.member_of_request_builder import MemberOfRequestBuilder
 
-        return member_of_request_builder.MemberOfRequestBuilder(self.request_adapter, self.path_parameters)
+        return MemberOfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def members(self) -> members_request_builder.MembersRequestBuilder:
+    def members(self) -> MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.group entity.
         """
-        from .members import members_request_builder
+        from .members.members_request_builder import MembersRequestBuilder
 
-        return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
+        return MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def members_with_license_errors(self) -> members_with_license_errors_request_builder.MembersWithLicenseErrorsRequestBuilder:
+    def members_with_license_errors(self) -> MembersWithLicenseErrorsRequestBuilder:
         """
         Provides operations to manage the membersWithLicenseErrors property of the microsoft.graph.group entity.
         """
-        from .members_with_license_errors import members_with_license_errors_request_builder
+        from .members_with_license_errors.members_with_license_errors_request_builder import MembersWithLicenseErrorsRequestBuilder
 
-        return members_with_license_errors_request_builder.MembersWithLicenseErrorsRequestBuilder(self.request_adapter, self.path_parameters)
+        return MembersWithLicenseErrorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def onenote(self) -> onenote_request_builder.OnenoteRequestBuilder:
+    def onenote(self) -> OnenoteRequestBuilder:
         """
         Provides operations to manage the onenote property of the microsoft.graph.group entity.
         """
-        from .onenote import onenote_request_builder
+        from .onenote.onenote_request_builder import OnenoteRequestBuilder
 
-        return onenote_request_builder.OnenoteRequestBuilder(self.request_adapter, self.path_parameters)
+        return OnenoteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def owners(self) -> owners_request_builder.OwnersRequestBuilder:
+    def owners(self) -> OwnersRequestBuilder:
         """
         Provides operations to manage the owners property of the microsoft.graph.group entity.
         """
-        from .owners import owners_request_builder
+        from .owners.owners_request_builder import OwnersRequestBuilder
 
-        return owners_request_builder.OwnersRequestBuilder(self.request_adapter, self.path_parameters)
+        return OwnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def permission_grants(self) -> permission_grants_request_builder.PermissionGrantsRequestBuilder:
+    def permission_grants(self) -> PermissionGrantsRequestBuilder:
         """
         Provides operations to manage the permissionGrants property of the microsoft.graph.group entity.
         """
-        from .permission_grants import permission_grants_request_builder
+        from .permission_grants.permission_grants_request_builder import PermissionGrantsRequestBuilder
 
-        return permission_grants_request_builder.PermissionGrantsRequestBuilder(self.request_adapter, self.path_parameters)
+        return PermissionGrantsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def photo(self) -> photo_request_builder.PhotoRequestBuilder:
+    def photo(self) -> PhotoRequestBuilder:
         """
         Provides operations to manage the photo property of the microsoft.graph.group entity.
         """
-        from .photo import photo_request_builder
+        from .photo.photo_request_builder import PhotoRequestBuilder
 
-        return photo_request_builder.PhotoRequestBuilder(self.request_adapter, self.path_parameters)
+        return PhotoRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def photos(self) -> photos_request_builder.PhotosRequestBuilder:
+    def photos(self) -> PhotosRequestBuilder:
         """
         Provides operations to manage the photos property of the microsoft.graph.group entity.
         """
-        from .photos import photos_request_builder
+        from .photos.photos_request_builder import PhotosRequestBuilder
 
-        return photos_request_builder.PhotosRequestBuilder(self.request_adapter, self.path_parameters)
+        return PhotosRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def planner(self) -> planner_request_builder.PlannerRequestBuilder:
+    def planner(self) -> PlannerRequestBuilder:
         """
         Provides operations to manage the planner property of the microsoft.graph.group entity.
         """
-        from .planner import planner_request_builder
+        from .planner.planner_request_builder import PlannerRequestBuilder
 
-        return planner_request_builder.PlannerRequestBuilder(self.request_adapter, self.path_parameters)
+        return PlannerRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def rejected_senders(self) -> rejected_senders_request_builder.RejectedSendersRequestBuilder:
+    def rejected_senders(self) -> RejectedSendersRequestBuilder:
         """
         Provides operations to manage the rejectedSenders property of the microsoft.graph.group entity.
         """
-        from .rejected_senders import rejected_senders_request_builder
+        from .rejected_senders.rejected_senders_request_builder import RejectedSendersRequestBuilder
 
-        return rejected_senders_request_builder.RejectedSendersRequestBuilder(self.request_adapter, self.path_parameters)
+        return RejectedSendersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def remove_favorite(self) -> remove_favorite_request_builder.RemoveFavoriteRequestBuilder:
+    def remove_favorite(self) -> RemoveFavoriteRequestBuilder:
         """
         Provides operations to call the removeFavorite method.
         """
-        from .remove_favorite import remove_favorite_request_builder
+        from .remove_favorite.remove_favorite_request_builder import RemoveFavoriteRequestBuilder
 
-        return remove_favorite_request_builder.RemoveFavoriteRequestBuilder(self.request_adapter, self.path_parameters)
+        return RemoveFavoriteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def renew(self) -> renew_request_builder.RenewRequestBuilder:
+    def renew(self) -> RenewRequestBuilder:
         """
         Provides operations to call the renew method.
         """
-        from .renew import renew_request_builder
+        from .renew.renew_request_builder import RenewRequestBuilder
 
-        return renew_request_builder.RenewRequestBuilder(self.request_adapter, self.path_parameters)
+        return RenewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def reset_unseen_count(self) -> reset_unseen_count_request_builder.ResetUnseenCountRequestBuilder:
+    def reset_unseen_count(self) -> ResetUnseenCountRequestBuilder:
         """
         Provides operations to call the resetUnseenCount method.
         """
-        from .reset_unseen_count import reset_unseen_count_request_builder
+        from .reset_unseen_count.reset_unseen_count_request_builder import ResetUnseenCountRequestBuilder
 
-        return reset_unseen_count_request_builder.ResetUnseenCountRequestBuilder(self.request_adapter, self.path_parameters)
+        return ResetUnseenCountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def restore(self) -> RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
-        from .restore import restore_request_builder
+        from .restore.restore_request_builder import RestoreRequestBuilder
 
-        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+        return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def settings(self) -> settings_request_builder.SettingsRequestBuilder:
+    def settings(self) -> SettingsRequestBuilder:
         """
         Provides operations to manage the settings property of the microsoft.graph.group entity.
         """
-        from .settings import settings_request_builder
+        from .settings.settings_request_builder import SettingsRequestBuilder
 
-        return settings_request_builder.SettingsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def sites(self) -> sites_request_builder.SitesRequestBuilder:
+    def sites(self) -> SitesRequestBuilder:
         """
         Provides operations to manage the sites property of the microsoft.graph.group entity.
         """
-        from .sites import sites_request_builder
+        from .sites.sites_request_builder import SitesRequestBuilder
 
-        return sites_request_builder.SitesRequestBuilder(self.request_adapter, self.path_parameters)
+        return SitesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def subscribe_by_mail(self) -> subscribe_by_mail_request_builder.SubscribeByMailRequestBuilder:
+    def subscribe_by_mail(self) -> SubscribeByMailRequestBuilder:
         """
         Provides operations to call the subscribeByMail method.
         """
-        from .subscribe_by_mail import subscribe_by_mail_request_builder
+        from .subscribe_by_mail.subscribe_by_mail_request_builder import SubscribeByMailRequestBuilder
 
-        return subscribe_by_mail_request_builder.SubscribeByMailRequestBuilder(self.request_adapter, self.path_parameters)
+        return SubscribeByMailRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def team(self) -> team_request_builder.TeamRequestBuilder:
+    def team(self) -> TeamRequestBuilder:
         """
         Provides operations to manage the team property of the microsoft.graph.group entity.
         """
-        from .team import team_request_builder
+        from .team.team_request_builder import TeamRequestBuilder
 
-        return team_request_builder.TeamRequestBuilder(self.request_adapter, self.path_parameters)
+        return TeamRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def threads(self) -> threads_request_builder.ThreadsRequestBuilder:
+    def threads(self) -> ThreadsRequestBuilder:
         """
         Provides operations to manage the threads property of the microsoft.graph.group entity.
         """
-        from .threads import threads_request_builder
+        from .threads.threads_request_builder import ThreadsRequestBuilder
 
-        return threads_request_builder.ThreadsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ThreadsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def transitive_member_of(self) -> transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder:
+    def transitive_member_of(self) -> TransitiveMemberOfRequestBuilder:
         """
         Provides operations to manage the transitiveMemberOf property of the microsoft.graph.group entity.
         """
-        from .transitive_member_of import transitive_member_of_request_builder
+        from .transitive_member_of.transitive_member_of_request_builder import TransitiveMemberOfRequestBuilder
 
-        return transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder(self.request_adapter, self.path_parameters)
+        return TransitiveMemberOfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def transitive_members(self) -> transitive_members_request_builder.TransitiveMembersRequestBuilder:
+    def transitive_members(self) -> TransitiveMembersRequestBuilder:
         """
         Provides operations to manage the transitiveMembers property of the microsoft.graph.group entity.
         """
-        from .transitive_members import transitive_members_request_builder
+        from .transitive_members.transitive_members_request_builder import TransitiveMembersRequestBuilder
 
-        return transitive_members_request_builder.TransitiveMembersRequestBuilder(self.request_adapter, self.path_parameters)
+        return TransitiveMembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def unsubscribe_by_mail(self) -> unsubscribe_by_mail_request_builder.UnsubscribeByMailRequestBuilder:
+    def unsubscribe_by_mail(self) -> UnsubscribeByMailRequestBuilder:
         """
         Provides operations to call the unsubscribeByMail method.
         """
-        from .unsubscribe_by_mail import unsubscribe_by_mail_request_builder
+        from .unsubscribe_by_mail.unsubscribe_by_mail_request_builder import UnsubscribeByMailRequestBuilder
 
-        return unsubscribe_by_mail_request_builder.UnsubscribeByMailRequestBuilder(self.request_adapter, self.path_parameters)
+        return UnsubscribeByMailRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+    def validate_properties(self) -> ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
-        from .validate_properties import validate_properties_request_builder
+        from .validate_properties.validate_properties_request_builder import ValidatePropertiesRequestBuilder
 
-        return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GroupItemRequestBuilderDeleteRequestConfiguration():

@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import application, service_principal
+    from .application import Application
+    from .service_principal import ServicePrincipal
 
 @dataclass
 class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The application property
-    application: Optional[application.Application] = None
+    application: Optional[Application] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The servicePrincipal property
-    service_principal: Optional[service_principal.ServicePrincipal] = None
+    service_principal: Optional[ServicePrincipal] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplicationServicePrincipal:
@@ -35,14 +36,16 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import application, service_principal
+        from .application import Application
+        from .service_principal import ServicePrincipal
 
-        from . import application, service_principal
+        from .application import Application
+        from .service_principal import ServicePrincipal
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "application": lambda n : setattr(self, 'application', n.get_object_value(application.Application)),
+            "application": lambda n : setattr(self, 'application', n.get_object_value(Application)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "servicePrincipal": lambda n : setattr(self, 'service_principal', n.get_object_value(service_principal.ServicePrincipal)),
+            "servicePrincipal": lambda n : setattr(self, 'service_principal', n.get_object_value(ServicePrincipal)),
         }
         return fields
     

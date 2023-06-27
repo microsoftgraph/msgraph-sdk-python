@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import approval_settings, unified_role_management_policy_rule
+    from .approval_settings import ApprovalSettings
+    from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-from . import unified_role_management_policy_rule
+from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
 @dataclass
-class UnifiedRoleManagementPolicyApprovalRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
+class UnifiedRoleManagementPolicyApprovalRule(UnifiedRoleManagementPolicyRule):
     odata_type = "#microsoft.graph.unifiedRoleManagementPolicyApprovalRule"
     # The settings for approval of the role assignment.
-    setting: Optional[approval_settings.ApprovalSettings] = None
+    setting: Optional[ApprovalSettings] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyApprovalRule:
@@ -31,12 +32,14 @@ class UnifiedRoleManagementPolicyApprovalRule(unified_role_management_policy_rul
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import approval_settings, unified_role_management_policy_rule
+        from .approval_settings import ApprovalSettings
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
-        from . import approval_settings, unified_role_management_policy_rule
+        from .approval_settings import ApprovalSettings
+        from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "setting": lambda n : setattr(self, 'setting', n.get_object_value(approval_settings.ApprovalSettings)),
+            "setting": lambda n : setattr(self, 'setting', n.get_object_value(ApprovalSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,7 +4,10 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import container_filter, group_filter, object_mapping, string_key_string_value_pair
+    from .container_filter import ContainerFilter
+    from .group_filter import GroupFilter
+    from .object_mapping import ObjectMapping
+    from .string_key_string_value_pair import StringKeyStringValuePair
 
 @dataclass
 class SynchronizationRule(AdditionalDataHolder, Parsable):
@@ -12,19 +15,19 @@ class SynchronizationRule(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The containerFilter property
-    container_filter: Optional[container_filter.ContainerFilter] = None
+    container_filter: Optional[ContainerFilter] = None
     # The editable property
     editable: Optional[bool] = None
     # The groupFilter property
-    group_filter: Optional[group_filter.GroupFilter] = None
+    group_filter: Optional[GroupFilter] = None
     # The id property
     id: Optional[str] = None
     # The metadata property
-    metadata: Optional[List[string_key_string_value_pair.StringKeyStringValuePair]] = None
+    metadata: Optional[List[StringKeyStringValuePair]] = None
     # The name property
     name: Optional[str] = None
     # The objectMappings property
-    object_mappings: Optional[List[object_mapping.ObjectMapping]] = None
+    object_mappings: Optional[List[ObjectMapping]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The priority property
@@ -51,18 +54,24 @@ class SynchronizationRule(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import container_filter, group_filter, object_mapping, string_key_string_value_pair
+        from .container_filter import ContainerFilter
+        from .group_filter import GroupFilter
+        from .object_mapping import ObjectMapping
+        from .string_key_string_value_pair import StringKeyStringValuePair
 
-        from . import container_filter, group_filter, object_mapping, string_key_string_value_pair
+        from .container_filter import ContainerFilter
+        from .group_filter import GroupFilter
+        from .object_mapping import ObjectMapping
+        from .string_key_string_value_pair import StringKeyStringValuePair
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "containerFilter": lambda n : setattr(self, 'container_filter', n.get_object_value(container_filter.ContainerFilter)),
+            "containerFilter": lambda n : setattr(self, 'container_filter', n.get_object_value(ContainerFilter)),
             "editable": lambda n : setattr(self, 'editable', n.get_bool_value()),
-            "groupFilter": lambda n : setattr(self, 'group_filter', n.get_object_value(group_filter.GroupFilter)),
+            "groupFilter": lambda n : setattr(self, 'group_filter', n.get_object_value(GroupFilter)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(string_key_string_value_pair.StringKeyStringValuePair)),
+            "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(StringKeyStringValuePair)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "objectMappings": lambda n : setattr(self, 'object_mappings', n.get_collection_of_object_values(object_mapping.ObjectMapping)),
+            "objectMappings": lambda n : setattr(self, 'object_mappings', n.get_collection_of_object_values(ObjectMapping)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
             "sourceDirectoryName": lambda n : setattr(self, 'source_directory_name', n.get_str_value()),

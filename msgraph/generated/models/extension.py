@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, open_type_extension
+    from .entity import Entity
+    from .open_type_extension import OpenTypeExtension
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Extension(entity.Entity):
+class Extension(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -28,9 +29,9 @@ class Extension(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.openTypeExtension".casefold():
-            from . import open_type_extension
+            from .open_type_extension import OpenTypeExtension
 
-            return open_type_extension.OpenTypeExtension()
+            return OpenTypeExtension()
         return Extension()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -38,9 +39,11 @@ class Extension(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, open_type_extension
+        from .entity import Entity
+        from .open_type_extension import OpenTypeExtension
 
-        from . import entity, open_type_extension
+        from .entity import Entity
+        from .open_type_extension import OpenTypeExtension
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

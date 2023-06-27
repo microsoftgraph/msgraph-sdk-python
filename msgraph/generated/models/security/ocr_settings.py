@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -16,7 +16,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The timeout duration for the OCR engine. A longer timeout might increase success of OCR, but might add to the total processing time.
-    timeout: Optional[timedelta] = None
+    timeout: Optional[datetime.timedelta] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OcrSettings:
@@ -54,7 +54,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_int_value("maxImageSize", self.max_image_size)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_timedelta_value("timeout", self.timeout)
+        writer.write_timedelta_value()("timeout", self.timeout)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import cross_tenant_access_policy_target_configuration
+    from .cross_tenant_access_policy_target_configuration import CrossTenantAccessPolicyTargetConfiguration
 
 @dataclass
 class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The list of applications targeted with your cross-tenant access policy.
-    applications: Optional[cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration] = None
+    applications: Optional[CrossTenantAccessPolicyTargetConfiguration] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The list of users and groups targeted with your cross-tenant access policy.
-    users_and_groups: Optional[cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration] = None
+    users_and_groups: Optional[CrossTenantAccessPolicyTargetConfiguration] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyB2BSetting:
@@ -35,14 +35,14 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import cross_tenant_access_policy_target_configuration
+        from .cross_tenant_access_policy_target_configuration import CrossTenantAccessPolicyTargetConfiguration
 
-        from . import cross_tenant_access_policy_target_configuration
+        from .cross_tenant_access_policy_target_configuration import CrossTenantAccessPolicyTargetConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applications": lambda n : setattr(self, 'applications', n.get_object_value(cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration)),
+            "applications": lambda n : setattr(self, 'applications', n.get_object_value(CrossTenantAccessPolicyTargetConfiguration)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "usersAndGroups": lambda n : setattr(self, 'users_and_groups', n.get_object_value(cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration)),
+            "usersAndGroups": lambda n : setattr(self, 'users_and_groups', n.get_object_value(CrossTenantAccessPolicyTargetConfiguration)),
         }
         return fields
     

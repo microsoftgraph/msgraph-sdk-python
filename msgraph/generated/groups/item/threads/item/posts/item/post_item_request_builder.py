@@ -10,13 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import post
-    from .......models.o_data_errors import o_data_error
-    from .attachments import attachments_request_builder
-    from .extensions import extensions_request_builder
-    from .forward import forward_request_builder
-    from .in_reply_to import in_reply_to_request_builder
-    from .reply import reply_request_builder
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.post import Post
+    from .attachments.attachments_request_builder import AttachmentsRequestBuilder
+    from .extensions.extensions_request_builder import ExtensionsRequestBuilder
+    from .forward.forward_request_builder import ForwardRequestBuilder
+    from .in_reply_to.in_reply_to_request_builder import InReplyToRequestBuilder
+    from .reply.reply_request_builder import ReplyRequestBuilder
 
 class PostItemRequestBuilder():
     """
@@ -40,27 +40,27 @@ class PostItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[PostItemRequestBuilderGetRequestConfiguration] = None) -> Optional[post.Post]:
+    async def get(self,request_configuration: Optional[PostItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Post]:
         """
         Get posts from groups
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[post.Post]
+        Returns: Optional[Post]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import post
+        from .......models.post import Post
 
-        return await self.request_adapter.send_async(request_info, post.Post, error_mapping)
+        return await self.request_adapter.send_async(request_info, Post, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PostItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -81,49 +81,49 @@ class PostItemRequestBuilder():
         return request_info
     
     @property
-    def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
+    def attachments(self) -> AttachmentsRequestBuilder:
         """
         Provides operations to manage the attachments property of the microsoft.graph.post entity.
         """
-        from .attachments import attachments_request_builder
+        from .attachments.attachments_request_builder import AttachmentsRequestBuilder
 
-        return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+    def extensions(self) -> ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.post entity.
         """
-        from .extensions import extensions_request_builder
+        from .extensions.extensions_request_builder import ExtensionsRequestBuilder
 
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def forward(self) -> forward_request_builder.ForwardRequestBuilder:
+    def forward(self) -> ForwardRequestBuilder:
         """
         Provides operations to call the forward method.
         """
-        from .forward import forward_request_builder
+        from .forward.forward_request_builder import ForwardRequestBuilder
 
-        return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
+        return ForwardRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def in_reply_to(self) -> in_reply_to_request_builder.InReplyToRequestBuilder:
+    def in_reply_to(self) -> InReplyToRequestBuilder:
         """
         Provides operations to manage the inReplyTo property of the microsoft.graph.post entity.
         """
-        from .in_reply_to import in_reply_to_request_builder
+        from .in_reply_to.in_reply_to_request_builder import InReplyToRequestBuilder
 
-        return in_reply_to_request_builder.InReplyToRequestBuilder(self.request_adapter, self.path_parameters)
+        return InReplyToRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def reply(self) -> reply_request_builder.ReplyRequestBuilder:
+    def reply(self) -> ReplyRequestBuilder:
         """
         Provides operations to call the reply method.
         """
-        from .reply import reply_request_builder
+        from .reply.reply_request_builder import ReplyRequestBuilder
 
-        return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PostItemRequestBuilderGetQueryParameters():

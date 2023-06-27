@@ -4,21 +4,26 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import administrative_unit, education_class, education_organization, education_user, identity_set, physical_address
+    from .administrative_unit import AdministrativeUnit
+    from .education_class import EducationClass
+    from .education_organization import EducationOrganization
+    from .education_user import EducationUser
+    from .identity_set import IdentitySet
+    from .physical_address import PhysicalAddress
 
-from . import education_organization
+from .education_organization import EducationOrganization
 
 @dataclass
-class EducationSchool(education_organization.EducationOrganization):
+class EducationSchool(EducationOrganization):
     odata_type = "#microsoft.graph.educationSchool"
     # Address of the school.
-    address: Optional[physical_address.PhysicalAddress] = None
+    address: Optional[PhysicalAddress] = None
     # The underlying administrativeUnit for this school.
-    administrative_unit: Optional[administrative_unit.AdministrativeUnit] = None
+    administrative_unit: Optional[AdministrativeUnit] = None
     # Classes taught at the school. Nullable.
-    classes: Optional[List[education_class.EducationClass]] = None
+    classes: Optional[List[EducationClass]] = None
     # Entity who created the school.
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # ID of school in syncing system.
     external_id: Optional[str] = None
     # ID of principal in syncing system.
@@ -38,7 +43,7 @@ class EducationSchool(education_organization.EducationOrganization):
     # School Number.
     school_number: Optional[str] = None
     # Users in the school. Nullable.
-    users: Optional[List[education_user.EducationUser]] = None
+    users: Optional[List[EducationUser]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationSchool:
@@ -57,15 +62,25 @@ class EducationSchool(education_organization.EducationOrganization):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import administrative_unit, education_class, education_organization, education_user, identity_set, physical_address
+        from .administrative_unit import AdministrativeUnit
+        from .education_class import EducationClass
+        from .education_organization import EducationOrganization
+        from .education_user import EducationUser
+        from .identity_set import IdentitySet
+        from .physical_address import PhysicalAddress
 
-        from . import administrative_unit, education_class, education_organization, education_user, identity_set, physical_address
+        from .administrative_unit import AdministrativeUnit
+        from .education_class import EducationClass
+        from .education_organization import EducationOrganization
+        from .education_user import EducationUser
+        from .identity_set import IdentitySet
+        from .physical_address import PhysicalAddress
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
-            "administrativeUnit": lambda n : setattr(self, 'administrative_unit', n.get_object_value(administrative_unit.AdministrativeUnit)),
-            "classes": lambda n : setattr(self, 'classes', n.get_collection_of_object_values(education_class.EducationClass)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "address": lambda n : setattr(self, 'address', n.get_object_value(PhysicalAddress)),
+            "administrativeUnit": lambda n : setattr(self, 'administrative_unit', n.get_object_value(AdministrativeUnit)),
+            "classes": lambda n : setattr(self, 'classes', n.get_collection_of_object_values(EducationClass)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "externalPrincipalId": lambda n : setattr(self, 'external_principal_id', n.get_str_value()),
             "fax": lambda n : setattr(self, 'fax', n.get_str_value()),
@@ -75,7 +90,7 @@ class EducationSchool(education_organization.EducationOrganization):
             "principalEmail": lambda n : setattr(self, 'principal_email', n.get_str_value()),
             "principalName": lambda n : setattr(self, 'principal_name', n.get_str_value()),
             "schoolNumber": lambda n : setattr(self, 'school_number', n.get_str_value()),
-            "users": lambda n : setattr(self, 'users', n.get_collection_of_object_values(education_user.EducationUser)),
+            "users": lambda n : setattr(self, 'users', n.get_collection_of_object_values(EducationUser)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

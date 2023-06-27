@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import domain_dns_record
+    from .domain_dns_record import DomainDnsRecord
 
-from . import domain_dns_record
+from .domain_dns_record import DomainDnsRecord
 
 @dataclass
-class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
+class DomainDnsSrvRecord(DomainDnsRecord):
     # Value to use when configuring the Target property of the SRV record at the DNS host.
     name_target: Optional[str] = None
     # The OdataType property
@@ -42,9 +42,9 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import domain_dns_record
+        from .domain_dns_record import DomainDnsRecord
 
-        from . import domain_dns_record
+        from .domain_dns_record import DomainDnsRecord
 
         fields: Dict[str, Callable[[Any], None]] = {
             "nameTarget": lambda n : setattr(self, 'name_target', n.get_str_value()),

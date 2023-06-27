@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import details_info, identity
+    from .details_info import DetailsInfo
+    from .identity import Identity
 
-from . import identity
+from .identity import Identity
 
 @dataclass
-class ProvisionedIdentity(identity.Identity):
+class ProvisionedIdentity(Identity):
     odata_type = "#microsoft.graph.provisionedIdentity"
     # Details of the identity.
-    details: Optional[details_info.DetailsInfo] = None
+    details: Optional[DetailsInfo] = None
     # Type of identity that has been provisioned, such as 'user' or 'group'.
     identity_type: Optional[str] = None
     
@@ -33,12 +34,14 @@ class ProvisionedIdentity(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import details_info, identity
+        from .details_info import DetailsInfo
+        from .identity import Identity
 
-        from . import details_info, identity
+        from .details_info import DetailsInfo
+        from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "details": lambda n : setattr(self, 'details', n.get_object_value(details_info.DetailsInfo)),
+            "details": lambda n : setattr(self, 'details', n.get_object_value(DetailsInfo)),
             "identityType": lambda n : setattr(self, 'identity_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

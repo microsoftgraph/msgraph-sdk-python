@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import device_enrollment_configuration
-    from ....models.o_data_errors import o_data_error
-    from .assign import assign_request_builder
-    from .assignments import assignments_request_builder
-    from .set_priority import set_priority_request_builder
+    from ....models.device_enrollment_configuration import DeviceEnrollmentConfiguration
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .assign.assign_request_builder import AssignRequestBuilder
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .set_priority.set_priority_request_builder import SetPriorityRequestBuilder
 
 class DeviceEnrollmentConfigurationItemRequestBuilder():
     """
@@ -40,73 +40,73 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceEnrollmentConfigurations for deviceManagement
+        Deletes a deviceEnrollmentPlatformRestrictionsConfiguration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[device_enrollment_configuration.DeviceEnrollmentConfiguration]:
+    async def get(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        The list of device enrollment configurations
+        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_enrollment_configuration.DeviceEnrollmentConfiguration]
+        Returns: Optional[DeviceEnrollmentConfiguration]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import device_enrollment_configuration
+        from ....models.device_enrollment_configuration import DeviceEnrollmentConfiguration
 
-        return await self.request_adapter.send_async(request_info, device_enrollment_configuration.DeviceEnrollmentConfiguration, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceEnrollmentConfiguration, error_mapping)
     
-    async def patch(self,body: Optional[device_enrollment_configuration.DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_enrollment_configuration.DeviceEnrollmentConfiguration]:
+    async def patch(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        Update the navigation property deviceEnrollmentConfigurations in deviceManagement
+        Update the properties of a deviceEnrollmentPlatformRestrictionsConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_enrollment_configuration.DeviceEnrollmentConfiguration]
+        Returns: Optional[DeviceEnrollmentConfiguration]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import device_enrollment_configuration
+        from ....models.device_enrollment_configuration import DeviceEnrollmentConfiguration
 
-        return await self.request_adapter.send_async(request_info, device_enrollment_configuration.DeviceEnrollmentConfiguration, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceEnrollmentConfiguration, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceEnrollmentConfigurations for deviceManagement
+        Deletes a deviceEnrollmentPlatformRestrictionsConfiguration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of device enrollment configurations
+        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,9 +138,9 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device_enrollment_configuration.DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceEnrollmentConfigurations in deviceManagement
+        Update the properties of a deviceEnrollmentPlatformRestrictionsConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,31 +160,31 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         return request_info
     
     @property
-    def assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def assign(self) -> AssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        from .assign import assign_request_builder
+        from .assign.assign_request_builder import AssignRequestBuilder
 
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+    def assignments(self) -> AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.deviceEnrollmentConfiguration entity.
         """
-        from .assignments import assignments_request_builder
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def set_priority(self) -> set_priority_request_builder.SetPriorityRequestBuilder:
+    def set_priority(self) -> SetPriorityRequestBuilder:
         """
         Provides operations to call the setPriority method.
         """
-        from .set_priority import set_priority_request_builder
+        from .set_priority.set_priority_request_builder import SetPriorityRequestBuilder
 
-        return set_priority_request_builder.SetPriorityRequestBuilder(self.request_adapter, self.path_parameters)
+        return SetPriorityRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceEnrollmentConfigurationItemRequestBuilderDeleteRequestConfiguration():
@@ -201,7 +201,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
     @dataclass
     class DeviceEnrollmentConfigurationItemRequestBuilderGetQueryParameters():
         """
-        The list of device enrollment configurations
+        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

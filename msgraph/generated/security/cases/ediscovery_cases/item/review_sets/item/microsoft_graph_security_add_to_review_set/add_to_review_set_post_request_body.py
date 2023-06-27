@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.security import additional_data_options, ediscovery_search
+    from ........models.security.additional_data_options import AdditionalDataOptions
+    from ........models.security.ediscovery_search import EdiscoverySearch
 
 @dataclass
 class AddToReviewSetPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +13,9 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The additionalDataOptions property
-    additional_data_options: Optional[additional_data_options.AdditionalDataOptions] = None
+    additional_data_options: Optional[AdditionalDataOptions] = None
     # The search property
-    search: Optional[ediscovery_search.EdiscoverySearch] = None
+    search: Optional[EdiscoverySearch] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddToReviewSetPostRequestBody:
@@ -33,13 +34,15 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.security import additional_data_options, ediscovery_search
+        from ........models.security.additional_data_options import AdditionalDataOptions
+        from ........models.security.ediscovery_search import EdiscoverySearch
 
-        from ........models.security import additional_data_options, ediscovery_search
+        from ........models.security.additional_data_options import AdditionalDataOptions
+        from ........models.security.ediscovery_search import EdiscoverySearch
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "additionalDataOptions": lambda n : setattr(self, 'additional_data_options', n.get_enum_value(additional_data_options.AdditionalDataOptions)),
-            "search": lambda n : setattr(self, 'search', n.get_object_value(ediscovery_search.EdiscoverySearch)),
+            "additionalDataOptions": lambda n : setattr(self, 'additional_data_options', n.get_enum_value(AdditionalDataOptions)),
+            "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
         }
         return fields
     

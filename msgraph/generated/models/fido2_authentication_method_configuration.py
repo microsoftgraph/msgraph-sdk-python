@@ -4,21 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_configuration, authentication_method_target, fido2_key_restrictions
+    from .authentication_method_configuration import AuthenticationMethodConfiguration
+    from .authentication_method_target import AuthenticationMethodTarget
+    from .fido2_key_restrictions import Fido2KeyRestrictions
 
-from . import authentication_method_configuration
+from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class Fido2AuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
+class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     odata_type = "#microsoft.graph.fido2AuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method.
-    include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
+    include_targets: Optional[List[AuthenticationMethodTarget]] = None
     # Determines whether attestation must be enforced for FIDO2 security key registration.
     is_attestation_enforced: Optional[bool] = None
     # Determines if users can register new FIDO2 security keys.
     is_self_service_registration_allowed: Optional[bool] = None
     # Controls whether key restrictions are enforced on FIDO2 security keys, either allowing or disallowing certain key types as defined by Authenticator Attestation GUID (AAGUID), an identifier that indicates the type (e.g. make and model) of the authenticator.
-    key_restrictions: Optional[fido2_key_restrictions.Fido2KeyRestrictions] = None
+    key_restrictions: Optional[Fido2KeyRestrictions] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Fido2AuthenticationMethodConfiguration:
@@ -37,15 +39,19 @@ class Fido2AuthenticationMethodConfiguration(authentication_method_configuration
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_configuration, authentication_method_target, fido2_key_restrictions
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
+        from .fido2_key_restrictions import Fido2KeyRestrictions
 
-        from . import authentication_method_configuration, authentication_method_target, fido2_key_restrictions
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .authentication_method_target import AuthenticationMethodTarget
+        from .fido2_key_restrictions import Fido2KeyRestrictions
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
             "isAttestationEnforced": lambda n : setattr(self, 'is_attestation_enforced', n.get_bool_value()),
             "isSelfServiceRegistrationAllowed": lambda n : setattr(self, 'is_self_service_registration_allowed', n.get_bool_value()),
-            "keyRestrictions": lambda n : setattr(self, 'key_restrictions', n.get_object_value(fido2_key_restrictions.Fido2KeyRestrictions)),
+            "keyRestrictions": lambda n : setattr(self, 'key_restrictions', n.get_object_value(Fido2KeyRestrictions)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

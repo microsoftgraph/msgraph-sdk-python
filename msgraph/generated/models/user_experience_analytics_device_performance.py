@@ -4,12 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import disk_type, entity, user_experience_analytics_health_state
+    from .disk_type import DiskType
+    from .entity import Entity
+    from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class UserExperienceAnalyticsDevicePerformance(entity.Entity):
+class UserExperienceAnalyticsDevicePerformance(Entity):
     # Average (mean) number of Blue Screens per device in the last 30 days. Valid values 0 to 9999999
     average_blue_screens: Optional[float] = None
     # Average (mean) number of Restarts per device in the last 30 days. Valid values 0 to 9999999
@@ -27,13 +29,13 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
     # The user experience analytics device name.
     device_name: Optional[str] = None
     # The diskType property
-    disk_type: Optional[disk_type.DiskType] = None
+    disk_type: Optional[DiskType] = None
     # The user experience analytics device group policy boot time in milliseconds.
     group_policy_boot_time_in_ms: Optional[int] = None
     # The user experience analytics device group policy login time in milliseconds.
     group_policy_login_time_in_ms: Optional[int] = None
     # The healthStatus property
-    health_status: Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState] = None
+    health_status: Optional[UserExperienceAnalyticsHealthState] = None
     # The user experience analytics device login score.
     login_score: Optional[int] = None
     # The user experience analytics device manufacturer.
@@ -70,9 +72,13 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import disk_type, entity, user_experience_analytics_health_state
+        from .disk_type import DiskType
+        from .entity import Entity
+        from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
-        from . import disk_type, entity, user_experience_analytics_health_state
+        from .disk_type import DiskType
+        from .entity import Entity
+        from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
         fields: Dict[str, Callable[[Any], None]] = {
             "averageBlueScreens": lambda n : setattr(self, 'average_blue_screens', n.get_float_value()),
@@ -83,10 +89,10 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
             "coreLoginTimeInMs": lambda n : setattr(self, 'core_login_time_in_ms', n.get_int_value()),
             "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
             "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "diskType": lambda n : setattr(self, 'disk_type', n.get_enum_value(disk_type.DiskType)),
+            "diskType": lambda n : setattr(self, 'disk_type', n.get_enum_value(DiskType)),
             "groupPolicyBootTimeInMs": lambda n : setattr(self, 'group_policy_boot_time_in_ms', n.get_int_value()),
             "groupPolicyLoginTimeInMs": lambda n : setattr(self, 'group_policy_login_time_in_ms', n.get_int_value()),
-            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(user_experience_analytics_health_state.UserExperienceAnalyticsHealthState)),
+            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
             "loginScore": lambda n : setattr(self, 'login_score', n.get_int_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),

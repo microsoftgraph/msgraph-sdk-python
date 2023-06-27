@@ -4,18 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, json, workbook_chart_point_format
+    from .entity import Entity
+    from .json import Json
+    from .workbook_chart_point_format import WorkbookChartPointFormat
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartPoint(entity.Entity):
+class WorkbookChartPoint(Entity):
     # Encapsulates the format properties chart point. Read-only.
-    format: Optional[workbook_chart_point_format.WorkbookChartPointFormat] = None
+    format: Optional[WorkbookChartPointFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Returns the value of a chart point. Read-only.
-    value: Optional[json.Json] = None
+    value: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartPoint:
@@ -34,13 +36,17 @@ class WorkbookChartPoint(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, json, workbook_chart_point_format
+        from .entity import Entity
+        from .json import Json
+        from .workbook_chart_point_format import WorkbookChartPointFormat
 
-        from . import entity, json, workbook_chart_point_format
+        from .entity import Entity
+        from .json import Json
+        from .workbook_chart_point_format import WorkbookChartPointFormat
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_point_format.WorkbookChartPointFormat)),
-            "value": lambda n : setattr(self, 'value', n.get_object_value(json.Json)),
+            "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartPointFormat)),
+            "value": lambda n : setattr(self, 'value', n.get_object_value(Json)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

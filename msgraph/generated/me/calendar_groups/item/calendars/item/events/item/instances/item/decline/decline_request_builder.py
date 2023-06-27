@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import decline_post_request_body
-    from ...........models.o_data_errors import o_data_error
+    from ...........models.o_data_errors.o_data_error import ODataError
+    from .decline_post_request_body import DeclinePostRequestBody
 
 class DeclineRequestBuilder():
     """
@@ -35,7 +35,7 @@ class DeclineRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[decline_post_request_body.DeclinePostRequestBody] = None, request_configuration: Optional[DeclineRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[DeclinePostRequestBody] = None, request_configuration: Optional[DeclineRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Decline invitation to the specified event in a user calendar. If the event allows proposals for new times, on declining the event, an invitee can choose to suggest an alternative time by including the **proposedNewTime** parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
         Args:
@@ -47,17 +47,17 @@ class DeclineRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
+        from ...........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[decline_post_request_body.DeclinePostRequestBody] = None, request_configuration: Optional[DeclineRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeclinePostRequestBody] = None, request_configuration: Optional[DeclineRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Decline invitation to the specified event in a user calendar. If the event allows proposals for new times, on declining the event, an invitee can choose to suggest an alternative time by including the **proposedNewTime** parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
         Args:

@@ -4,16 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import browser_site_list, entity
+    from .browser_site_list import BrowserSiteList
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class InternetExplorerMode(entity.Entity):
+class InternetExplorerMode(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of site lists to support Internet Explorer mode.
-    site_lists: Optional[List[browser_site_list.BrowserSiteList]] = None
+    site_lists: Optional[List[BrowserSiteList]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InternetExplorerMode:
@@ -32,12 +33,14 @@ class InternetExplorerMode(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import browser_site_list, entity
+        from .browser_site_list import BrowserSiteList
+        from .entity import Entity
 
-        from . import browser_site_list, entity
+        from .browser_site_list import BrowserSiteList
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "siteLists": lambda n : setattr(self, 'site_lists', n.get_collection_of_object_values(browser_site_list.BrowserSiteList)),
+            "siteLists": lambda n : setattr(self, 'site_lists', n.get_collection_of_object_values(BrowserSiteList)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

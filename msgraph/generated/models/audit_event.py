@@ -1,24 +1,26 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import audit_actor, audit_resource, entity
+    from .audit_actor import AuditActor
+    from .audit_resource import AuditResource
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AuditEvent(entity.Entity):
+class AuditEvent(Entity):
     """
     A class containing the properties for Audit Event.
     """
     # Friendly name of the activity.
     activity: Optional[str] = None
     # The date time in UTC when the activity was performed.
-    activity_date_time: Optional[datetime] = None
+    activity_date_time: Optional[datetime.datetime] = None
     # The HTTP operation type of the activity.
     activity_operation_type: Optional[str] = None
     # The result of the activity.
@@ -26,7 +28,7 @@ class AuditEvent(entity.Entity):
     # The type of activity that was being performed.
     activity_type: Optional[str] = None
     # AAD user and application that are associated with the audit event.
-    actor: Optional[audit_actor.AuditActor] = None
+    actor: Optional[AuditActor] = None
     # Audit category.
     category: Optional[str] = None
     # Component name.
@@ -38,7 +40,7 @@ class AuditEvent(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Resources being modified.
-    resources: Optional[List[audit_resource.AuditResource]] = None
+    resources: Optional[List[AuditResource]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuditEvent:
@@ -57,9 +59,13 @@ class AuditEvent(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import audit_actor, audit_resource, entity
+        from .audit_actor import AuditActor
+        from .audit_resource import AuditResource
+        from .entity import Entity
 
-        from . import audit_actor, audit_resource, entity
+        from .audit_actor import AuditActor
+        from .audit_resource import AuditResource
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
@@ -67,12 +73,12 @@ class AuditEvent(entity.Entity):
             "activityOperationType": lambda n : setattr(self, 'activity_operation_type', n.get_str_value()),
             "activityResult": lambda n : setattr(self, 'activity_result', n.get_str_value()),
             "activityType": lambda n : setattr(self, 'activity_type', n.get_str_value()),
-            "actor": lambda n : setattr(self, 'actor', n.get_object_value(audit_actor.AuditActor)),
+            "actor": lambda n : setattr(self, 'actor', n.get_object_value(AuditActor)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
             "componentName": lambda n : setattr(self, 'component_name', n.get_str_value()),
             "correlationId": lambda n : setattr(self, 'correlation_id', n.get_uuid_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(audit_resource.AuditResource)),
+            "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(AuditResource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -88,7 +94,7 @@ class AuditEvent(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("activity", self.activity)
-        writer.write_datetime_value("activityDateTime", self.activity_date_time)
+        writer.write_datetime_value()("activityDateTime", self.activity_date_time)
         writer.write_str_value("activityOperationType", self.activity_operation_type)
         writer.write_str_value("activityResult", self.activity_result)
         writer.write_str_value("activityType", self.activity_type)

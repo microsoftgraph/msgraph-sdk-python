@@ -4,15 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_item_version, document_set_version, field_value_set
+    from .base_item_version import BaseItemVersion
+    from .document_set_version import DocumentSetVersion
+    from .field_value_set import FieldValueSet
 
-from . import base_item_version
+from .base_item_version import BaseItemVersion
 
 @dataclass
-class ListItemVersion(base_item_version.BaseItemVersion):
+class ListItemVersion(BaseItemVersion):
     odata_type = "#microsoft.graph.listItemVersion"
     # A collection of the fields and values for this version of the list item.
-    fields: Optional[field_value_set.FieldValueSet] = None
+    fields: Optional[FieldValueSet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ListItemVersion:
@@ -29,9 +31,9 @@ class ListItemVersion(base_item_version.BaseItemVersion):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.documentSetVersion".casefold():
-            from . import document_set_version
+            from .document_set_version import DocumentSetVersion
 
-            return document_set_version.DocumentSetVersion()
+            return DocumentSetVersion()
         return ListItemVersion()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -39,12 +41,16 @@ class ListItemVersion(base_item_version.BaseItemVersion):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_item_version, document_set_version, field_value_set
+        from .base_item_version import BaseItemVersion
+        from .document_set_version import DocumentSetVersion
+        from .field_value_set import FieldValueSet
 
-        from . import base_item_version, document_set_version, field_value_set
+        from .base_item_version import BaseItemVersion
+        from .document_set_version import DocumentSetVersion
+        from .field_value_set import FieldValueSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fields": lambda n : setattr(self, 'fields', n.get_object_value(field_value_set.FieldValueSet)),
+            "fields": lambda n : setattr(self, 'fields', n.get_object_value(FieldValueSet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

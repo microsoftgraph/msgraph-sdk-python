@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class F_Dist_RTPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class F_Dist_RTPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The degFreedom1 property
-    deg_freedom1: Optional[json.Json] = None
+    deg_freedom1: Optional[Json] = None
     # The degFreedom2 property
-    deg_freedom2: Optional[json.Json] = None
+    deg_freedom2: Optional[Json] = None
     # The x property
-    x: Optional[json.Json] = None
+    x: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> F_Dist_RTPostRequestBody:
@@ -35,14 +35,14 @@ class F_Dist_RTPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "degFreedom1": lambda n : setattr(self, 'deg_freedom1', n.get_object_value(json.Json)),
-            "degFreedom2": lambda n : setattr(self, 'deg_freedom2', n.get_object_value(json.Json)),
-            "x": lambda n : setattr(self, 'x', n.get_object_value(json.Json)),
+            "degFreedom1": lambda n : setattr(self, 'deg_freedom1', n.get_object_value(Json)),
+            "degFreedom2": lambda n : setattr(self, 'deg_freedom2', n.get_object_value(Json)),
+            "x": lambda n : setattr(self, 'x', n.get_object_value(Json)),
         }
         return fields
     

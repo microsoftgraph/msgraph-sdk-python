@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import invite_post_request_body
-    from ......models import invite_participants_operation
-    from ......models.o_data_errors import o_data_error
+    from ......models.invite_participants_operation import InviteParticipantsOperation
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .invite_post_request_body import InvitePostRequestBody
 
 class InviteRequestBuilder():
     """
@@ -36,34 +36,34 @@ class InviteRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[invite_post_request_body.InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> Optional[invite_participants_operation.InviteParticipantsOperation]:
+    async def post(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> Optional[InviteParticipantsOperation]:
         """
-        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled. 
+        Invite participants to the active call. For more information about how to handle operations, see commsOperation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[invite_participants_operation.InviteParticipantsOperation]
+        Returns: Optional[InviteParticipantsOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import invite_participants_operation
+        from ......models.invite_participants_operation import InviteParticipantsOperation
 
-        return await self.request_adapter.send_async(request_info, invite_participants_operation.InviteParticipantsOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, InviteParticipantsOperation, error_mapping)
     
-    def to_post_request_information(self,body: Optional[invite_post_request_body.InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled. 
+        Invite participants to the active call. For more information about how to handle operations, see commsOperation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

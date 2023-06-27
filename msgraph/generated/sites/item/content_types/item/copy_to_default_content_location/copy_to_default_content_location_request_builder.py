@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import copy_to_default_content_location_post_request_body
-    from ......models.o_data_errors import o_data_error
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .copy_to_default_content_location_post_request_body import CopyToDefaultContentLocationPostRequestBody
 
 class CopyToDefaultContentLocationRequestBuilder():
     """
@@ -35,7 +35,7 @@ class CopyToDefaultContentLocationRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[copy_to_default_content_location_post_request_body.CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[CopyToDefaultContentLocationRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[CopyToDefaultContentLocationRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Copy a file to a default content location in a [content type][contentType]. The file can then be added as a default file or template via a POST operation.
         Args:
@@ -47,17 +47,17 @@ class CopyToDefaultContentLocationRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[copy_to_default_content_location_post_request_body.CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[CopyToDefaultContentLocationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[CopyToDefaultContentLocationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Copy a file to a default content location in a [content type][contentType]. The file can then be added as a default file or template via a POST operation.
         Args:

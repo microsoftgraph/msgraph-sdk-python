@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import shift
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.shift import Shift
 
 class ShiftItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class ShiftItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ShiftItemRequestBuilderGetRequestConfiguration] = None) -> Optional[shift.Shift]:
+    async def get(self,request_configuration: Optional[ShiftItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Shift]:
         """
         Retrieve the properties and relationships of a shift object by ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[shift.Shift]
+        Returns: Optional[Shift]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import shift
+        from .......models.shift import Shift
 
-        return await self.request_adapter.send_async(request_info, shift.Shift, error_mapping)
+        return await self.request_adapter.send_async(request_info, Shift, error_mapping)
     
-    async def patch(self,body: Optional[shift.Shift] = None, request_configuration: Optional[ShiftItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[shift.Shift]:
+    async def patch(self,body: Optional[Shift] = None, request_configuration: Optional[ShiftItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Shift]:
         """
         Replace an existing shift. If the specified shift doesn't exist, this method returns `404 Not found`. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[shift.Shift]
+        Returns: Optional[Shift]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import shift
+        from .......models.shift import Shift
 
-        return await self.request_adapter.send_async(request_info, shift.Shift, error_mapping)
+        return await self.request_adapter.send_async(request_info, Shift, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ShiftItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class ShiftItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[shift.Shift] = None, request_configuration: Optional[ShiftItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Shift] = None, request_configuration: Optional[ShiftItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Replace an existing shift. If the specified shift doesn't exist, this method returns `404 Not found`. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
         Args:

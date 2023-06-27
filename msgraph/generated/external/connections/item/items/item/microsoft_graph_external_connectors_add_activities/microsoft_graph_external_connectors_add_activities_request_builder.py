@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import add_activities_post_request_body, add_activities_response
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .add_activities_post_request_body import AddActivitiesPostRequestBody
+    from .add_activities_response import AddActivitiesResponse
 
 class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder():
     """
@@ -35,32 +36,32 @@ class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[add_activities_post_request_body.AddActivitiesPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilderPostRequestConfiguration] = None) -> Optional[add_activities_response.AddActivitiesResponse]:
+    async def post(self,body: Optional[AddActivitiesPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilderPostRequestConfiguration] = None) -> Optional[AddActivitiesResponse]:
         """
         Invoke action addActivities
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[add_activities_response.AddActivitiesResponse]
+        Returns: Optional[AddActivitiesResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import add_activities_response
+        from .add_activities_response import AddActivitiesResponse
 
-        return await self.request_adapter.send_async(request_info, add_activities_response.AddActivitiesResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AddActivitiesResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[add_activities_post_request_body.AddActivitiesPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AddActivitiesPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action addActivities
         Args:

@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import invitation_participant_info, participant_info
+    from .....models.invitation_participant_info import InvitationParticipantInfo
+    from .....models.participant_info import ParticipantInfo
 
 @dataclass
 class TransferPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +13,9 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The transferTarget property
-    transfer_target: Optional[invitation_participant_info.InvitationParticipantInfo] = None
+    transfer_target: Optional[InvitationParticipantInfo] = None
     # The transferee property
-    transferee: Optional[participant_info.ParticipantInfo] = None
+    transferee: Optional[ParticipantInfo] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TransferPostRequestBody:
@@ -33,13 +34,15 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import invitation_participant_info, participant_info
+        from .....models.invitation_participant_info import InvitationParticipantInfo
+        from .....models.participant_info import ParticipantInfo
 
-        from .....models import invitation_participant_info, participant_info
+        from .....models.invitation_participant_info import InvitationParticipantInfo
+        from .....models.participant_info import ParticipantInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "transferTarget": lambda n : setattr(self, 'transfer_target', n.get_object_value(invitation_participant_info.InvitationParticipantInfo)),
-            "transferee": lambda n : setattr(self, 'transferee', n.get_object_value(participant_info.ParticipantInfo)),
+            "transferTarget": lambda n : setattr(self, 'transfer_target', n.get_object_value(InvitationParticipantInfo)),
+            "transferee": lambda n : setattr(self, 'transferee', n.get_object_value(ParticipantInfo)),
         }
         return fields
     

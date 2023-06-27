@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import patterned_recurrence
+    from .patterned_recurrence import PatternedRecurrence
 
 @dataclass
 class AccessReviewHistoryScheduleSettings(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class AccessReviewHistoryScheduleSettings(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The recurrence property
-    recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
+    recurrence: Optional[PatternedRecurrence] = None
     # A duration string in ISO 8601 duration format specifying the lookback period of the generated review history data. For example, if a history definition is scheduled to run on the 1st of every month, the reportRange is P1M. In this case, on the first of every month, access review history data will be collected containing only the previous month's review data. Note: Only years, months, and days ISO 8601 properties are supported. Required.
     report_range: Optional[str] = None
     
@@ -35,13 +35,13 @@ class AccessReviewHistoryScheduleSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import patterned_recurrence
+        from .patterned_recurrence import PatternedRecurrence
 
-        from . import patterned_recurrence
+        from .patterned_recurrence import PatternedRecurrence
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
+            "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(PatternedRecurrence)),
             "reportRange": lambda n : setattr(self, 'report_range', n.get_str_value()),
         }
         return fields

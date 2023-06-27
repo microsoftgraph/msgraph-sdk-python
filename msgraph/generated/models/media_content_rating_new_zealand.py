@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import rating_new_zealand_movies_type, rating_new_zealand_television_type
+    from .rating_new_zealand_movies_type import RatingNewZealandMoviesType
+    from .rating_new_zealand_television_type import RatingNewZealandTelevisionType
 
 @dataclass
 class MediaContentRatingNewZealand(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class MediaContentRatingNewZealand(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Movies rating labels in New Zealand
-    movie_rating: Optional[rating_new_zealand_movies_type.RatingNewZealandMoviesType] = None
+    movie_rating: Optional[RatingNewZealandMoviesType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # TV content rating labels in New Zealand
-    tv_rating: Optional[rating_new_zealand_television_type.RatingNewZealandTelevisionType] = None
+    tv_rating: Optional[RatingNewZealandTelevisionType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MediaContentRatingNewZealand:
@@ -35,14 +36,16 @@ class MediaContentRatingNewZealand(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import rating_new_zealand_movies_type, rating_new_zealand_television_type
+        from .rating_new_zealand_movies_type import RatingNewZealandMoviesType
+        from .rating_new_zealand_television_type import RatingNewZealandTelevisionType
 
-        from . import rating_new_zealand_movies_type, rating_new_zealand_television_type
+        from .rating_new_zealand_movies_type import RatingNewZealandMoviesType
+        from .rating_new_zealand_television_type import RatingNewZealandTelevisionType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(rating_new_zealand_movies_type.RatingNewZealandMoviesType)),
+            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(RatingNewZealandMoviesType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(rating_new_zealand_television_type.RatingNewZealandTelevisionType)),
+            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(RatingNewZealandTelevisionType)),
         }
         return fields
     

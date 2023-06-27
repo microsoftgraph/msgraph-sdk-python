@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import folder_view
+    from .folder_view import FolderView
 
 @dataclass
 class Folder(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class Folder(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # A collection of properties defining the recommended view for the folder.
-    view: Optional[folder_view.FolderView] = None
+    view: Optional[FolderView] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Folder:
@@ -35,14 +35,14 @@ class Folder(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import folder_view
+        from .folder_view import FolderView
 
-        from . import folder_view
+        from .folder_view import FolderView
 
         fields: Dict[str, Callable[[Any], None]] = {
             "childCount": lambda n : setattr(self, 'child_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "view": lambda n : setattr(self, 'view', n.get_object_value(folder_view.FolderView)),
+            "view": lambda n : setattr(self, 'view', n.get_object_value(FolderView)),
         }
         return fields
     

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import purge_data_post_request_body
-    from ........models.o_data_errors import o_data_error
+    from ........models.o_data_errors.o_data_error import ODataError
+    from .purge_data_post_request_body import PurgeDataPostRequestBody
 
 class MicrosoftGraphSecurityPurgeDataRequestBuilder():
     """
@@ -35,7 +35,7 @@ class MicrosoftGraphSecurityPurgeDataRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[purge_data_post_request_body.PurgeDataPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityPurgeDataRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[PurgeDataPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityPurgeDataRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Delete Microsoft Teams messages contained in an eDiscovery search. You can collect and purge the following categories of Teams content:- **Teams 1:1 chats** - Chat messages, posts, and attachments shared in a Teams conversation between two people. Teams 1:1 chats are also called *conversations*.- **Teams group chats** - Chat messages, posts, and attachments shared in a Teams conversation between three or more people. Also called *1:N* chats or *group conversations*.- **Teams channels** - Chat messages, posts, replies, and attachments shared in a standard Teams channel.- **Private channels** - Message posts, replies, and attachments shared in a private Teams channel.- **Shared channels** - Message posts, replies, and attachments shared in a shared Teams channel. For more information about purging Teams messages, see:- eDiscovery solution series: Data spillage scenario - Search and purge- eDiscovery (Premium) workflow for content in Microsoft Teams 
         Args:
@@ -47,17 +47,17 @@ class MicrosoftGraphSecurityPurgeDataRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[purge_data_post_request_body.PurgeDataPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityPurgeDataRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PurgeDataPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityPurgeDataRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Delete Microsoft Teams messages contained in an eDiscovery search. You can collect and purge the following categories of Teams content:- **Teams 1:1 chats** - Chat messages, posts, and attachments shared in a Teams conversation between two people. Teams 1:1 chats are also called *conversations*.- **Teams group chats** - Chat messages, posts, and attachments shared in a Teams conversation between three or more people. Also called *1:N* chats or *group conversations*.- **Teams channels** - Chat messages, posts, replies, and attachments shared in a standard Teams channel.- **Private channels** - Message posts, replies, and attachments shared in a private Teams channel.- **Shared channels** - Message posts, replies, and attachments shared in a shared Teams channel. For more information about purging Teams messages, see:- eDiscovery solution series: Data spillage scenario - Search and purge- eDiscovery (Premium) workflow for content in Microsoft Teams 
         Args:

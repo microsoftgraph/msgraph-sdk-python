@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import group_collection_response
-    from ......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import group_item_request_builder
-    from .ref import ref_request_builder
+    from ......models.group_collection_response import GroupCollectionResponse
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.group_item_request_builder import GroupItemRequestBuilder
+    from .ref.ref_request_builder import RefRequestBuilder
 
 class IncompatibleGroupsRequestBuilder():
     """
@@ -38,42 +38,42 @@ class IncompatibleGroupsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_group_id(self,group_id: str) -> group_item_request_builder.GroupItemRequestBuilder:
+    def by_group_id(self,group_id: str) -> GroupItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.identityGovernance.entitlementManagement.accessPackages.item.incompatibleGroups.item collection
         Args:
             group_id: Unique identifier of the item
-        Returns: group_item_request_builder.GroupItemRequestBuilder
+        Returns: GroupItemRequestBuilder
         """
         if not group_id:
             raise TypeError("group_id cannot be null.")
-        from .item import group_item_request_builder
+        from .item.group_item_request_builder import GroupItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["group%2Did"] = group_id
-        return group_item_request_builder.GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[IncompatibleGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[group_collection_response.GroupCollectionResponse]:
+    async def get(self,request_configuration: Optional[IncompatibleGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[GroupCollectionResponse]:
         """
         Retrieve a list of the group objects that have been marked as incompatible on an accessPackage.  
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[group_collection_response.GroupCollectionResponse]
+        Returns: Optional[GroupCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import group_collection_response
+        from ......models.group_collection_response import GroupCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, group_collection_response.GroupCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GroupCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[IncompatibleGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -94,22 +94,22 @@ class IncompatibleGroupsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def ref(self) -> ref_request_builder.RefRequestBuilder:
+    def ref(self) -> RefRequestBuilder:
         """
         Provides operations to manage the collection of identityGovernance entities.
         """
-        from .ref import ref_request_builder
+        from .ref.ref_request_builder import RefRequestBuilder
 
-        return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
+        return RefRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class IncompatibleGroupsRequestBuilderGetQueryParameters():

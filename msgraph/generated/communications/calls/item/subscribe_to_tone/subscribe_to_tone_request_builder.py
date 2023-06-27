@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import subscribe_to_tone_post_request_body
-    from .....models import subscribe_to_tone_operation
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.subscribe_to_tone_operation import SubscribeToToneOperation
+    from .subscribe_to_tone_post_request_body import SubscribeToTonePostRequestBody
 
 class SubscribeToToneRequestBuilder():
     """
@@ -36,32 +36,32 @@ class SubscribeToToneRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[subscribe_to_tone_post_request_body.SubscribeToTonePostRequestBody] = None, request_configuration: Optional[SubscribeToToneRequestBuilderPostRequestConfiguration] = None) -> Optional[subscribe_to_tone_operation.SubscribeToToneOperation]:
+    async def post(self,body: Optional[SubscribeToTonePostRequestBody] = None, request_configuration: Optional[SubscribeToToneRequestBuilderPostRequestConfiguration] = None) -> Optional[SubscribeToToneOperation]:
         """
         Subscribe to DTMF (dual-tone multi-frequency signaling). This allows you to be notified when the user presses keys on a 'dialpad'.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[subscribe_to_tone_operation.SubscribeToToneOperation]
+        Returns: Optional[SubscribeToToneOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import subscribe_to_tone_operation
+        from .....models.subscribe_to_tone_operation import SubscribeToToneOperation
 
-        return await self.request_adapter.send_async(request_info, subscribe_to_tone_operation.SubscribeToToneOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, SubscribeToToneOperation, error_mapping)
     
-    def to_post_request_information(self,body: Optional[subscribe_to_tone_post_request_body.SubscribeToTonePostRequestBody] = None, request_configuration: Optional[SubscribeToToneRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SubscribeToTonePostRequestBody] = None, request_configuration: Optional[SubscribeToToneRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Subscribe to DTMF (dual-tone multi-frequency signaling). This allows you to be notified when the user presses keys on a 'dialpad'.
         Args:

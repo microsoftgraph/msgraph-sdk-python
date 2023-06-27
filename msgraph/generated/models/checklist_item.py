@@ -1,20 +1,20 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ChecklistItem(entity.Entity):
+class ChecklistItem(Entity):
     # The date and time when the checklistItem was finished.
-    checked_date_time: Optional[datetime] = None
+    checked_date_time: Optional[datetime.datetime] = None
     # The date and time when the checklistItem was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Field indicating the title of checklistItem.
     display_name: Optional[str] = None
     # State indicating whether the item is checked off or not.
@@ -39,9 +39,9 @@ class ChecklistItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "checkedDateTime": lambda n : setattr(self, 'checked_date_time', n.get_datetime_value()),
@@ -62,8 +62,8 @@ class ChecklistItem(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("checkedDateTime", self.checked_date_time)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("checkedDateTime", self.checked_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isChecked", self.is_checked)
     

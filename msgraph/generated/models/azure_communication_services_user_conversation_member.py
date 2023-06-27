@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conversation_member
+    from .conversation_member import ConversationMember
 
-from . import conversation_member
+from .conversation_member import ConversationMember
 
 @dataclass
-class AzureCommunicationServicesUserConversationMember(conversation_member.ConversationMember):
+class AzureCommunicationServicesUserConversationMember(ConversationMember):
     odata_type = "#microsoft.graph.azureCommunicationServicesUserConversationMember"
     # Azure Communication Services ID of the user.
     azure_communication_services_id: Optional[str] = None
@@ -31,9 +31,9 @@ class AzureCommunicationServicesUserConversationMember(conversation_member.Conve
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conversation_member
+        from .conversation_member import ConversationMember
 
-        from . import conversation_member
+        from .conversation_member import ConversationMember
 
         fields: Dict[str, Callable[[Any], None]] = {
             "azureCommunicationServicesId": lambda n : setattr(self, 'azure_communication_services_id', n.get_str_value()),

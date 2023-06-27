@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import attribute_definition, expression_input_object
+    from ........models.attribute_definition import AttributeDefinition
+    from ........models.expression_input_object import ExpressionInputObject
 
 @dataclass
 class ParseExpressionPostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,9 +15,9 @@ class ParseExpressionPostRequestBody(AdditionalDataHolder, Parsable):
     # The expression property
     expression: Optional[str] = None
     # The targetAttributeDefinition property
-    target_attribute_definition: Optional[attribute_definition.AttributeDefinition] = None
+    target_attribute_definition: Optional[AttributeDefinition] = None
     # The testInputObject property
-    test_input_object: Optional[expression_input_object.ExpressionInputObject] = None
+    test_input_object: Optional[ExpressionInputObject] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ParseExpressionPostRequestBody:
@@ -35,14 +36,16 @@ class ParseExpressionPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import attribute_definition, expression_input_object
+        from ........models.attribute_definition import AttributeDefinition
+        from ........models.expression_input_object import ExpressionInputObject
 
-        from ........models import attribute_definition, expression_input_object
+        from ........models.attribute_definition import AttributeDefinition
+        from ........models.expression_input_object import ExpressionInputObject
 
         fields: Dict[str, Callable[[Any], None]] = {
             "expression": lambda n : setattr(self, 'expression', n.get_str_value()),
-            "targetAttributeDefinition": lambda n : setattr(self, 'target_attribute_definition', n.get_object_value(attribute_definition.AttributeDefinition)),
-            "testInputObject": lambda n : setattr(self, 'test_input_object', n.get_object_value(expression_input_object.ExpressionInputObject)),
+            "targetAttributeDefinition": lambda n : setattr(self, 'target_attribute_definition', n.get_object_value(AttributeDefinition)),
+            "testInputObject": lambda n : setattr(self, 'test_input_object', n.get_object_value(ExpressionInputObject)),
         }
         return fields
     

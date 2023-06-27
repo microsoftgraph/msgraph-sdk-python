@@ -10,17 +10,17 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models.o_data_errors import o_data_error
-    from .....models.security import ediscovery_case
-    from .custodians import custodians_request_builder
-    from .microsoft_graph_security_close import microsoft_graph_security_close_request_builder
-    from .microsoft_graph_security_reopen import microsoft_graph_security_reopen_request_builder
-    from .noncustodial_data_sources import noncustodial_data_sources_request_builder
-    from .operations import operations_request_builder
-    from .review_sets import review_sets_request_builder
-    from .searches import searches_request_builder
-    from .settings import settings_request_builder
-    from .tags import tags_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.security.ediscovery_case import EdiscoveryCase
+    from .custodians.custodians_request_builder import CustodiansRequestBuilder
+    from .microsoft_graph_security_close.microsoft_graph_security_close_request_builder import MicrosoftGraphSecurityCloseRequestBuilder
+    from .microsoft_graph_security_reopen.microsoft_graph_security_reopen_request_builder import MicrosoftGraphSecurityReopenRequestBuilder
+    from .noncustodial_data_sources.noncustodial_data_sources_request_builder import NoncustodialDataSourcesRequestBuilder
+    from .operations.operations_request_builder import OperationsRequestBuilder
+    from .review_sets.review_sets_request_builder import ReviewSetsRequestBuilder
+    from .searches.searches_request_builder import SearchesRequestBuilder
+    from .settings.settings_request_builder import SettingsRequestBuilder
+    from .tags.tags_request_builder import TagsRequestBuilder
 
 class EdiscoveryCaseItemRequestBuilder():
     """
@@ -53,62 +53,62 @@ class EdiscoveryCaseItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_case.EdiscoveryCase]:
+    async def get(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryCase]:
         """
         Read the properties and relationships of an ediscoveryCase object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_case.EdiscoveryCase]
+        Returns: Optional[EdiscoveryCase]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.security import ediscovery_case
+        from .....models.security.ediscovery_case import EdiscoveryCase
 
-        return await self.request_adapter.send_async(request_info, ediscovery_case.EdiscoveryCase, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoveryCase, error_mapping)
     
-    async def patch(self,body: Optional[ediscovery_case.EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_case.EdiscoveryCase]:
+    async def patch(self,body: Optional[EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EdiscoveryCase]:
         """
         Update the properties of an ediscoveryCase object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_case.EdiscoveryCase]
+        Returns: Optional[EdiscoveryCase]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.security import ediscovery_case
+        from .....models.security.ediscovery_case import EdiscoveryCase
 
-        return await self.request_adapter.send_async(request_info, ediscovery_case.EdiscoveryCase, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoveryCase, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -144,7 +144,7 @@ class EdiscoveryCaseItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ediscovery_case.EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCaseItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCaseItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an ediscoveryCase object.
         Args:
@@ -166,85 +166,85 @@ class EdiscoveryCaseItemRequestBuilder():
         return request_info
     
     @property
-    def custodians(self) -> custodians_request_builder.CustodiansRequestBuilder:
+    def custodians(self) -> CustodiansRequestBuilder:
         """
         Provides operations to manage the custodians property of the microsoft.graph.security.ediscoveryCase entity.
         """
-        from .custodians import custodians_request_builder
+        from .custodians.custodians_request_builder import CustodiansRequestBuilder
 
-        return custodians_request_builder.CustodiansRequestBuilder(self.request_adapter, self.path_parameters)
+        return CustodiansRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_close(self) -> microsoft_graph_security_close_request_builder.MicrosoftGraphSecurityCloseRequestBuilder:
+    def microsoft_graph_security_close(self) -> MicrosoftGraphSecurityCloseRequestBuilder:
         """
         Provides operations to call the close method.
         """
-        from .microsoft_graph_security_close import microsoft_graph_security_close_request_builder
+        from .microsoft_graph_security_close.microsoft_graph_security_close_request_builder import MicrosoftGraphSecurityCloseRequestBuilder
 
-        return microsoft_graph_security_close_request_builder.MicrosoftGraphSecurityCloseRequestBuilder(self.request_adapter, self.path_parameters)
+        return MicrosoftGraphSecurityCloseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_reopen(self) -> microsoft_graph_security_reopen_request_builder.MicrosoftGraphSecurityReopenRequestBuilder:
+    def microsoft_graph_security_reopen(self) -> MicrosoftGraphSecurityReopenRequestBuilder:
         """
         Provides operations to call the reopen method.
         """
-        from .microsoft_graph_security_reopen import microsoft_graph_security_reopen_request_builder
+        from .microsoft_graph_security_reopen.microsoft_graph_security_reopen_request_builder import MicrosoftGraphSecurityReopenRequestBuilder
 
-        return microsoft_graph_security_reopen_request_builder.MicrosoftGraphSecurityReopenRequestBuilder(self.request_adapter, self.path_parameters)
+        return MicrosoftGraphSecurityReopenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def noncustodial_data_sources(self) -> noncustodial_data_sources_request_builder.NoncustodialDataSourcesRequestBuilder:
+    def noncustodial_data_sources(self) -> NoncustodialDataSourcesRequestBuilder:
         """
         Provides operations to manage the noncustodialDataSources property of the microsoft.graph.security.ediscoveryCase entity.
         """
-        from .noncustodial_data_sources import noncustodial_data_sources_request_builder
+        from .noncustodial_data_sources.noncustodial_data_sources_request_builder import NoncustodialDataSourcesRequestBuilder
 
-        return noncustodial_data_sources_request_builder.NoncustodialDataSourcesRequestBuilder(self.request_adapter, self.path_parameters)
+        return NoncustodialDataSourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+    def operations(self) -> OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.security.ediscoveryCase entity.
         """
-        from .operations import operations_request_builder
+        from .operations.operations_request_builder import OperationsRequestBuilder
 
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def review_sets(self) -> review_sets_request_builder.ReviewSetsRequestBuilder:
+    def review_sets(self) -> ReviewSetsRequestBuilder:
         """
         Provides operations to manage the reviewSets property of the microsoft.graph.security.ediscoveryCase entity.
         """
-        from .review_sets import review_sets_request_builder
+        from .review_sets.review_sets_request_builder import ReviewSetsRequestBuilder
 
-        return review_sets_request_builder.ReviewSetsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ReviewSetsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def searches(self) -> searches_request_builder.SearchesRequestBuilder:
+    def searches(self) -> SearchesRequestBuilder:
         """
         Provides operations to manage the searches property of the microsoft.graph.security.ediscoveryCase entity.
         """
-        from .searches import searches_request_builder
+        from .searches.searches_request_builder import SearchesRequestBuilder
 
-        return searches_request_builder.SearchesRequestBuilder(self.request_adapter, self.path_parameters)
+        return SearchesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def settings(self) -> settings_request_builder.SettingsRequestBuilder:
+    def settings(self) -> SettingsRequestBuilder:
         """
         Provides operations to manage the settings property of the microsoft.graph.security.ediscoveryCase entity.
         """
-        from .settings import settings_request_builder
+        from .settings.settings_request_builder import SettingsRequestBuilder
 
-        return settings_request_builder.SettingsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def tags(self) -> tags_request_builder.TagsRequestBuilder:
+    def tags(self) -> TagsRequestBuilder:
         """
         Provides operations to manage the tags property of the microsoft.graph.security.ediscoveryCase entity.
         """
-        from .tags import tags_request_builder
+        from .tags.tags_request_builder import TagsRequestBuilder
 
-        return tags_request_builder.TagsRequestBuilder(self.request_adapter, self.path_parameters)
+        return TagsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EdiscoveryCaseItemRequestBuilderDeleteRequestConfiguration():

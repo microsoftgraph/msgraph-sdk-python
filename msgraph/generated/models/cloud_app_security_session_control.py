@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import cloud_app_security_session_control_type, conditional_access_session_control
+    from .cloud_app_security_session_control_type import CloudAppSecuritySessionControlType
+    from .conditional_access_session_control import ConditionalAccessSessionControl
 
-from . import conditional_access_session_control
+from .conditional_access_session_control import ConditionalAccessSessionControl
 
 @dataclass
-class CloudAppSecuritySessionControl(conditional_access_session_control.ConditionalAccessSessionControl):
+class CloudAppSecuritySessionControl(ConditionalAccessSessionControl):
     odata_type = "#microsoft.graph.cloudAppSecuritySessionControl"
     # Possible values are: mcasConfigured, monitorOnly, blockDownloads, unknownFutureValue. For more information, see Deploy Conditional Access App Control for featured apps.
-    cloud_app_security_type: Optional[cloud_app_security_session_control_type.CloudAppSecuritySessionControlType] = None
+    cloud_app_security_type: Optional[CloudAppSecuritySessionControlType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CloudAppSecuritySessionControl:
@@ -31,12 +32,14 @@ class CloudAppSecuritySessionControl(conditional_access_session_control.Conditio
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import cloud_app_security_session_control_type, conditional_access_session_control
+        from .cloud_app_security_session_control_type import CloudAppSecuritySessionControlType
+        from .conditional_access_session_control import ConditionalAccessSessionControl
 
-        from . import cloud_app_security_session_control_type, conditional_access_session_control
+        from .cloud_app_security_session_control_type import CloudAppSecuritySessionControlType
+        from .conditional_access_session_control import ConditionalAccessSessionControl
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cloudAppSecurityType": lambda n : setattr(self, 'cloud_app_security_type', n.get_enum_value(cloud_app_security_session_control_type.CloudAppSecuritySessionControlType)),
+            "cloudAppSecurityType": lambda n : setattr(self, 'cloud_app_security_type', n.get_enum_value(CloudAppSecuritySessionControlType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

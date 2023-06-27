@@ -10,16 +10,16 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import entitlement_management
-    from ...models.o_data_errors import o_data_error
-    from .access_package_assignment_approvals import access_package_assignment_approvals_request_builder
-    from .access_packages import access_packages_request_builder
-    from .assignment_policies import assignment_policies_request_builder
-    from .assignment_requests import assignment_requests_request_builder
-    from .assignments import assignments_request_builder
-    from .catalogs import catalogs_request_builder
-    from .connected_organizations import connected_organizations_request_builder
-    from .settings import settings_request_builder
+    from ...models.entitlement_management import EntitlementManagement
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .access_package_assignment_approvals.access_package_assignment_approvals_request_builder import AccessPackageAssignmentApprovalsRequestBuilder
+    from .access_packages.access_packages_request_builder import AccessPackagesRequestBuilder
+    from .assignment_policies.assignment_policies_request_builder import AssignmentPoliciesRequestBuilder
+    from .assignment_requests.assignment_requests_request_builder import AssignmentRequestsRequestBuilder
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .catalogs.catalogs_request_builder import CatalogsRequestBuilder
+    from .connected_organizations.connected_organizations_request_builder import ConnectedOrganizationsRequestBuilder
+    from .settings.settings_request_builder import SettingsRequestBuilder
 
 class EntitlementManagementRequestBuilder():
     """
@@ -52,62 +52,62 @@ class EntitlementManagementRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EntitlementManagementRequestBuilderGetRequestConfiguration] = None) -> Optional[entitlement_management.EntitlementManagement]:
+    async def get(self,request_configuration: Optional[EntitlementManagementRequestBuilderGetRequestConfiguration] = None) -> Optional[EntitlementManagement]:
         """
         Get entitlementManagement from identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[entitlement_management.EntitlementManagement]
+        Returns: Optional[EntitlementManagement]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import entitlement_management
+        from ...models.entitlement_management import EntitlementManagement
 
-        return await self.request_adapter.send_async(request_info, entitlement_management.EntitlementManagement, error_mapping)
+        return await self.request_adapter.send_async(request_info, EntitlementManagement, error_mapping)
     
-    async def patch(self,body: Optional[entitlement_management.EntitlementManagement] = None, request_configuration: Optional[EntitlementManagementRequestBuilderPatchRequestConfiguration] = None) -> Optional[entitlement_management.EntitlementManagement]:
+    async def patch(self,body: Optional[EntitlementManagement] = None, request_configuration: Optional[EntitlementManagementRequestBuilderPatchRequestConfiguration] = None) -> Optional[EntitlementManagement]:
         """
         Update the navigation property entitlementManagement in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[entitlement_management.EntitlementManagement]
+        Returns: Optional[EntitlementManagement]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import entitlement_management
+        from ...models.entitlement_management import EntitlementManagement
 
-        return await self.request_adapter.send_async(request_info, entitlement_management.EntitlementManagement, error_mapping)
+        return await self.request_adapter.send_async(request_info, EntitlementManagement, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EntitlementManagementRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -143,7 +143,7 @@ class EntitlementManagementRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[entitlement_management.EntitlementManagement] = None, request_configuration: Optional[EntitlementManagementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EntitlementManagement] = None, request_configuration: Optional[EntitlementManagementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property entitlementManagement in identityGovernance
         Args:
@@ -165,76 +165,76 @@ class EntitlementManagementRequestBuilder():
         return request_info
     
     @property
-    def access_package_assignment_approvals(self) -> access_package_assignment_approvals_request_builder.AccessPackageAssignmentApprovalsRequestBuilder:
+    def access_package_assignment_approvals(self) -> AccessPackageAssignmentApprovalsRequestBuilder:
         """
         Provides operations to manage the accessPackageAssignmentApprovals property of the microsoft.graph.entitlementManagement entity.
         """
-        from .access_package_assignment_approvals import access_package_assignment_approvals_request_builder
+        from .access_package_assignment_approvals.access_package_assignment_approvals_request_builder import AccessPackageAssignmentApprovalsRequestBuilder
 
-        return access_package_assignment_approvals_request_builder.AccessPackageAssignmentApprovalsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AccessPackageAssignmentApprovalsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def access_packages(self) -> access_packages_request_builder.AccessPackagesRequestBuilder:
+    def access_packages(self) -> AccessPackagesRequestBuilder:
         """
         Provides operations to manage the accessPackages property of the microsoft.graph.entitlementManagement entity.
         """
-        from .access_packages import access_packages_request_builder
+        from .access_packages.access_packages_request_builder import AccessPackagesRequestBuilder
 
-        return access_packages_request_builder.AccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
+        return AccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignment_policies(self) -> assignment_policies_request_builder.AssignmentPoliciesRequestBuilder:
+    def assignment_policies(self) -> AssignmentPoliciesRequestBuilder:
         """
         Provides operations to manage the assignmentPolicies property of the microsoft.graph.entitlementManagement entity.
         """
-        from .assignment_policies import assignment_policies_request_builder
+        from .assignment_policies.assignment_policies_request_builder import AssignmentPoliciesRequestBuilder
 
-        return assignment_policies_request_builder.AssignmentPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignment_requests(self) -> assignment_requests_request_builder.AssignmentRequestsRequestBuilder:
+    def assignment_requests(self) -> AssignmentRequestsRequestBuilder:
         """
         Provides operations to manage the assignmentRequests property of the microsoft.graph.entitlementManagement entity.
         """
-        from .assignment_requests import assignment_requests_request_builder
+        from .assignment_requests.assignment_requests_request_builder import AssignmentRequestsRequestBuilder
 
-        return assignment_requests_request_builder.AssignmentRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+    def assignments(self) -> AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
         """
-        from .assignments import assignments_request_builder
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def catalogs(self) -> catalogs_request_builder.CatalogsRequestBuilder:
+    def catalogs(self) -> CatalogsRequestBuilder:
         """
         Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
         """
-        from .catalogs import catalogs_request_builder
+        from .catalogs.catalogs_request_builder import CatalogsRequestBuilder
 
-        return catalogs_request_builder.CatalogsRequestBuilder(self.request_adapter, self.path_parameters)
+        return CatalogsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def connected_organizations(self) -> connected_organizations_request_builder.ConnectedOrganizationsRequestBuilder:
+    def connected_organizations(self) -> ConnectedOrganizationsRequestBuilder:
         """
         Provides operations to manage the connectedOrganizations property of the microsoft.graph.entitlementManagement entity.
         """
-        from .connected_organizations import connected_organizations_request_builder
+        from .connected_organizations.connected_organizations_request_builder import ConnectedOrganizationsRequestBuilder
 
-        return connected_organizations_request_builder.ConnectedOrganizationsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ConnectedOrganizationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def settings(self) -> settings_request_builder.SettingsRequestBuilder:
+    def settings(self) -> SettingsRequestBuilder:
         """
         Provides operations to manage the settings property of the microsoft.graph.entitlementManagement entity.
         """
-        from .settings import settings_request_builder
+        from .settings.settings_request_builder import SettingsRequestBuilder
 
-        return settings_request_builder.SettingsRequestBuilder(self.request_adapter, self.path_parameters)
+        return SettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EntitlementManagementRequestBuilderDeleteRequestConfiguration():

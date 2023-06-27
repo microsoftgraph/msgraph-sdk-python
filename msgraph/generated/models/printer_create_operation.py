@@ -4,17 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import printer, print_operation
+    from .printer import Printer
+    from .print_operation import PrintOperation
 
-from . import print_operation
+from .print_operation import PrintOperation
 
 @dataclass
-class PrinterCreateOperation(print_operation.PrintOperation):
+class PrinterCreateOperation(PrintOperation):
     odata_type = "#microsoft.graph.printerCreateOperation"
     # The signed certificate created during the registration process. Read-only.
     certificate: Optional[str] = None
     # The created printer entity. Read-only.
-    printer: Optional[printer.Printer] = None
+    printer: Optional[Printer] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterCreateOperation:
@@ -33,13 +34,15 @@ class PrinterCreateOperation(print_operation.PrintOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import printer, print_operation
+        from .printer import Printer
+        from .print_operation import PrintOperation
 
-        from . import printer, print_operation
+        from .printer import Printer
+        from .print_operation import PrintOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "certificate": lambda n : setattr(self, 'certificate', n.get_str_value()),
-            "printer": lambda n : setattr(self, 'printer', n.get_object_value(printer.Printer)),
+            "printer": lambda n : setattr(self, 'printer', n.get_object_value(Printer)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

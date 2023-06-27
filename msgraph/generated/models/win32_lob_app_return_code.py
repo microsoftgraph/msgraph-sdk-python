@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import win32_lob_app_return_code_type
+    from .win32_lob_app_return_code_type import Win32LobAppReturnCodeType
 
 @dataclass
 class Win32LobAppReturnCode(AdditionalDataHolder, Parsable):
@@ -19,7 +19,7 @@ class Win32LobAppReturnCode(AdditionalDataHolder, Parsable):
     # Return code.
     return_code: Optional[int] = None
     # Indicates the type of return code.
-    type: Optional[win32_lob_app_return_code_type.Win32LobAppReturnCodeType] = None
+    type: Optional[Win32LobAppReturnCodeType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppReturnCode:
@@ -38,14 +38,14 @@ class Win32LobAppReturnCode(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import win32_lob_app_return_code_type
+        from .win32_lob_app_return_code_type import Win32LobAppReturnCodeType
 
-        from . import win32_lob_app_return_code_type
+        from .win32_lob_app_return_code_type import Win32LobAppReturnCodeType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "returnCode": lambda n : setattr(self, 'return_code', n.get_int_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(win32_lob_app_return_code_type.Win32LobAppReturnCodeType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(Win32LobAppReturnCodeType)),
         }
         return fields
     

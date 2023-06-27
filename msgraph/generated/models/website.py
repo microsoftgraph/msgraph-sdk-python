@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import website_type
+    from .website_type import WebsiteType
 
 @dataclass
 class Website(AdditionalDataHolder, Parsable):
@@ -18,7 +18,7 @@ class Website(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The possible values are: other, home, work, blog, profile.
-    type: Optional[website_type.WebsiteType] = None
+    type: Optional[WebsiteType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Website:
@@ -37,15 +37,15 @@ class Website(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import website_type
+        from .website_type import WebsiteType
 
-        from . import website_type
+        from .website_type import WebsiteType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(website_type.WebsiteType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(WebsiteType)),
         }
         return fields
     

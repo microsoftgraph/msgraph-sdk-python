@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import apple_device_features_configuration_base
+    from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
 
-from . import apple_device_features_configuration_base
+from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
 
 @dataclass
-class MacOSDeviceFeaturesConfiguration(apple_device_features_configuration_base.AppleDeviceFeaturesConfigurationBase):
+class MacOSDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
     odata_type = "#microsoft.graph.macOSDeviceFeaturesConfiguration"
     
     @staticmethod
@@ -29,9 +29,9 @@ class MacOSDeviceFeaturesConfiguration(apple_device_features_configuration_base.
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import apple_device_features_configuration_base
+        from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
 
-        from . import apple_device_features_configuration_base
+        from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigurationBase
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

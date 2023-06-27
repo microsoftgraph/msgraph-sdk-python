@@ -4,21 +4,24 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import managed_app_configuration, managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_policy_assignment
+    from .managed_app_configuration import ManagedAppConfiguration
+    from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+    from .managed_mobile_app import ManagedMobileApp
+    from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
-from . import managed_app_configuration
+from .managed_app_configuration import ManagedAppConfiguration
 
 @dataclass
-class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfiguration):
+class TargetedManagedAppConfiguration(ManagedAppConfiguration):
     odata_type = "#microsoft.graph.targetedManagedAppConfiguration"
     # List of apps to which the policy is deployed.
-    apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
+    apps: Optional[List[ManagedMobileApp]] = None
     # Navigation property to list of inclusion and exclusion groups to which the policy is deployed.
-    assignments: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None
+    assignments: Optional[List[TargetedManagedAppPolicyAssignment]] = None
     # Count of apps to which the current policy is deployed.
     deployed_app_count: Optional[int] = None
     # Navigation property to deployment summary of the configuration.
-    deployment_summary: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None
+    deployment_summary: Optional[ManagedAppPolicyDeploymentSummary] = None
     # Indicates if the policy is deployed to any inclusion groups or not.
     is_assigned: Optional[bool] = None
     
@@ -39,15 +42,21 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_app_configuration, managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_policy_assignment
+        from .managed_app_configuration import ManagedAppConfiguration
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_mobile_app import ManagedMobileApp
+        from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
-        from . import managed_app_configuration, managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_policy_assignment
+        from .managed_app_configuration import ManagedAppConfiguration
+        from .managed_app_policy_deployment_summary import ManagedAppPolicyDeploymentSummary
+        from .managed_mobile_app import ManagedMobileApp
+        from .targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
-            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment)),
+            "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(ManagedMobileApp)),
+            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(TargetedManagedAppPolicyAssignment)),
             "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
+            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(ManagedAppPolicyDeploymentSummary)),
             "isAssigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

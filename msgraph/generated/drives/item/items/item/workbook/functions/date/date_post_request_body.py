@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class DatePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class DatePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The day property
-    day: Optional[json.Json] = None
+    day: Optional[Json] = None
     # The month property
-    month: Optional[json.Json] = None
+    month: Optional[Json] = None
     # The year property
-    year: Optional[json.Json] = None
+    year: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DatePostRequestBody:
@@ -35,14 +35,14 @@ class DatePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "day": lambda n : setattr(self, 'day', n.get_object_value(json.Json)),
-            "month": lambda n : setattr(self, 'month', n.get_object_value(json.Json)),
-            "year": lambda n : setattr(self, 'year', n.get_object_value(json.Json)),
+            "day": lambda n : setattr(self, 'day', n.get_object_value(Json)),
+            "month": lambda n : setattr(self, 'month', n.get_object_value(Json)),
+            "year": lambda n : setattr(self, 'year', n.get_object_value(Json)),
         }
         return fields
     

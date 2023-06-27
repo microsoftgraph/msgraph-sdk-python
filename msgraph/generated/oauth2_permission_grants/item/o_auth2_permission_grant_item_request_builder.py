@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import o_auth2_permission_grant
-    from ...models.o_data_errors import o_data_error
+    from ...models.o_auth2_permission_grant import OAuth2PermissionGrant
+    from ...models.o_data_errors.o_data_error import ODataError
 
 class OAuth2PermissionGrantItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class OAuth2PermissionGrantItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[OAuth2PermissionGrantItemRequestBuilderGetRequestConfiguration] = None) -> Optional[o_auth2_permission_grant.OAuth2PermissionGrant]:
+    async def get(self,request_configuration: Optional[OAuth2PermissionGrantItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OAuth2PermissionGrant]:
         """
         Retrieve the properties of a single delegated permission grant represented by an oAuth2PermissionGrant object. An **oAuth2PermissionGrant** represents delegated permissions which have been granted for a client application to access an API on behalf of a signed-in user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[o_auth2_permission_grant.OAuth2PermissionGrant]
+        Returns: Optional[OAuth2PermissionGrant]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import o_auth2_permission_grant
+        from ...models.o_auth2_permission_grant import OAuth2PermissionGrant
 
-        return await self.request_adapter.send_async(request_info, o_auth2_permission_grant.OAuth2PermissionGrant, error_mapping)
+        return await self.request_adapter.send_async(request_info, OAuth2PermissionGrant, error_mapping)
     
-    async def patch(self,body: Optional[o_auth2_permission_grant.OAuth2PermissionGrant] = None, request_configuration: Optional[OAuth2PermissionGrantItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[o_auth2_permission_grant.OAuth2PermissionGrant]:
+    async def patch(self,body: Optional[OAuth2PermissionGrant] = None, request_configuration: Optional[OAuth2PermissionGrantItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[OAuth2PermissionGrant]:
         """
         Update the properties of oAuth2PermissionGrant object, representing a delegated permission grant. An **oAuth2PermissionGrant** can be updated to change which delegated permissions are granted, by adding or removing items from the list in **scopes**.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[o_auth2_permission_grant.OAuth2PermissionGrant]
+        Returns: Optional[OAuth2PermissionGrant]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import o_auth2_permission_grant
+        from ...models.o_auth2_permission_grant import OAuth2PermissionGrant
 
-        return await self.request_adapter.send_async(request_info, o_auth2_permission_grant.OAuth2PermissionGrant, error_mapping)
+        return await self.request_adapter.send_async(request_info, OAuth2PermissionGrant, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[OAuth2PermissionGrantItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class OAuth2PermissionGrantItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[o_auth2_permission_grant.OAuth2PermissionGrant] = None, request_configuration: Optional[OAuth2PermissionGrantItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[OAuth2PermissionGrant] = None, request_configuration: Optional[OAuth2PermissionGrantItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of oAuth2PermissionGrant object, representing a delegated permission grant. An **oAuth2PermissionGrant** can be updated to change which delegated permissions are granted, by adding or removing items from the list in **scopes**.
         Args:

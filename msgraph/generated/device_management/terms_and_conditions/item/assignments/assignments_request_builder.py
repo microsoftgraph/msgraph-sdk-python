@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import terms_and_conditions_assignment, terms_and_conditions_assignment_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import terms_and_conditions_assignment_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.terms_and_conditions_assignment import TermsAndConditionsAssignment
+    from .....models.terms_and_conditions_assignment_collection_response import TermsAndConditionsAssignmentCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.terms_and_conditions_assignment_item_request_builder import TermsAndConditionsAssignmentItemRequestBuilder
 
 class AssignmentsRequestBuilder():
     """
@@ -37,71 +38,71 @@ class AssignmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_terms_and_conditions_assignment_id(self,terms_and_conditions_assignment_id: str) -> terms_and_conditions_assignment_item_request_builder.TermsAndConditionsAssignmentItemRequestBuilder:
+    def by_terms_and_conditions_assignment_id(self,terms_and_conditions_assignment_id: str) -> TermsAndConditionsAssignmentItemRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.termsAndConditions entity.
         Args:
             terms_and_conditions_assignment_id: Unique identifier of the item
-        Returns: terms_and_conditions_assignment_item_request_builder.TermsAndConditionsAssignmentItemRequestBuilder
+        Returns: TermsAndConditionsAssignmentItemRequestBuilder
         """
         if not terms_and_conditions_assignment_id:
             raise TypeError("terms_and_conditions_assignment_id cannot be null.")
-        from .item import terms_and_conditions_assignment_item_request_builder
+        from .item.terms_and_conditions_assignment_item_request_builder import TermsAndConditionsAssignmentItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["termsAndConditionsAssignment%2Did"] = terms_and_conditions_assignment_id
-        return terms_and_conditions_assignment_item_request_builder.TermsAndConditionsAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return TermsAndConditionsAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[terms_and_conditions_assignment_collection_response.TermsAndConditionsAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[TermsAndConditionsAssignmentCollectionResponse]:
         """
-        The list of assignments for this T&C policy.
+        List properties and relationships of the termsAndConditionsAssignment objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[terms_and_conditions_assignment_collection_response.TermsAndConditionsAssignmentCollectionResponse]
+        Returns: Optional[TermsAndConditionsAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import terms_and_conditions_assignment_collection_response
+        from .....models.terms_and_conditions_assignment_collection_response import TermsAndConditionsAssignmentCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions_assignment_collection_response.TermsAndConditionsAssignmentCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TermsAndConditionsAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment]:
+    async def post(self,body: Optional[TermsAndConditionsAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[TermsAndConditionsAssignment]:
         """
-        Create new navigation property to assignments for deviceManagement
+        Create a new termsAndConditionsAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment]
+        Returns: Optional[TermsAndConditionsAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import terms_and_conditions_assignment
+        from .....models.terms_and_conditions_assignment import TermsAndConditionsAssignment
 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions_assignment.TermsAndConditionsAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, TermsAndConditionsAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of assignments for this T&C policy.
+        List properties and relationships of the termsAndConditionsAssignment objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class AssignmentsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TermsAndConditionsAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to assignments for deviceManagement
+        Create a new termsAndConditionsAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class AssignmentsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AssignmentsRequestBuilderGetQueryParameters():
         """
-        The list of assignments for this T&C policy.
+        List properties and relationships of the termsAndConditionsAssignment objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

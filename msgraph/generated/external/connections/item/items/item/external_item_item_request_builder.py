@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models.external_connectors import external_item
-    from ......models.o_data_errors import o_data_error
-    from .activities import activities_request_builder
-    from .microsoft_graph_external_connectors_add_activities import microsoft_graph_external_connectors_add_activities_request_builder
+    from ......models.external_connectors.external_item import ExternalItem
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .activities.activities_request_builder import ActivitiesRequestBuilder
+    from .microsoft_graph_external_connectors_add_activities.microsoft_graph_external_connectors_add_activities_request_builder import MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder
 
 class ExternalItemItemRequestBuilder():
     """
@@ -46,62 +46,62 @@ class ExternalItemItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ExternalItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[external_item.ExternalItem]:
+    async def get(self,request_configuration: Optional[ExternalItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ExternalItem]:
         """
         Read the properties and relationships of an externalItem object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external_item.ExternalItem]
+        Returns: Optional[ExternalItem]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.external_connectors import external_item
+        from ......models.external_connectors.external_item import ExternalItem
 
-        return await self.request_adapter.send_async(request_info, external_item.ExternalItem, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExternalItem, error_mapping)
     
-    async def put(self,body: Optional[external_item.ExternalItem] = None, request_configuration: Optional[ExternalItemItemRequestBuilderPutRequestConfiguration] = None) -> Optional[external_item.ExternalItem]:
+    async def put(self,body: Optional[ExternalItem] = None, request_configuration: Optional[ExternalItemItemRequestBuilderPutRequestConfiguration] = None) -> Optional[ExternalItem]:
         """
         Update the navigation property items in external
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[external_item.ExternalItem]
+        Returns: Optional[ExternalItem]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_put_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.external_connectors import external_item
+        from ......models.external_connectors.external_item import ExternalItem
 
-        return await self.request_adapter.send_async(request_info, external_item.ExternalItem, error_mapping)
+        return await self.request_adapter.send_async(request_info, ExternalItem, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ExternalItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class ExternalItemItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_put_request_information(self,body: Optional[external_item.ExternalItem] = None, request_configuration: Optional[ExternalItemItemRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: Optional[ExternalItem] = None, request_configuration: Optional[ExternalItemItemRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property items in external
         Args:
@@ -159,22 +159,22 @@ class ExternalItemItemRequestBuilder():
         return request_info
     
     @property
-    def activities(self) -> activities_request_builder.ActivitiesRequestBuilder:
+    def activities(self) -> ActivitiesRequestBuilder:
         """
         Provides operations to manage the activities property of the microsoft.graph.externalConnectors.externalItem entity.
         """
-        from .activities import activities_request_builder
+        from .activities.activities_request_builder import ActivitiesRequestBuilder
 
-        return activities_request_builder.ActivitiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return ActivitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_external_connectors_add_activities(self) -> microsoft_graph_external_connectors_add_activities_request_builder.MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder:
+    def microsoft_graph_external_connectors_add_activities(self) -> MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder:
         """
         Provides operations to call the addActivities method.
         """
-        from .microsoft_graph_external_connectors_add_activities import microsoft_graph_external_connectors_add_activities_request_builder
+        from .microsoft_graph_external_connectors_add_activities.microsoft_graph_external_connectors_add_activities_request_builder import MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder
 
-        return microsoft_graph_external_connectors_add_activities_request_builder.MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ExternalItemItemRequestBuilderDeleteRequestConfiguration():

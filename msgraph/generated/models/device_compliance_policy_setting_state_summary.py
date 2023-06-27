@@ -4,12 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_compliance_setting_state, entity, policy_platform_type
+    from .device_compliance_setting_state import DeviceComplianceSettingState
+    from .entity import Entity
+    from .policy_platform_type import PolicyPlatformType
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceCompliancePolicySettingStateSummary(entity.Entity):
+class DeviceCompliancePolicySettingStateSummary(Entity):
     """
     Device Compilance Policy Setting State summary across the account.
     """
@@ -18,7 +20,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
     # Number of conflict devices
     conflict_device_count: Optional[int] = None
     # Not yet documented
-    device_compliance_setting_states: Optional[List[device_compliance_setting_state.DeviceComplianceSettingState]] = None
+    device_compliance_setting_states: Optional[List[DeviceComplianceSettingState]] = None
     # Number of error devices
     error_device_count: Optional[int] = None
     # Number of NonCompliant devices
@@ -28,7 +30,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Supported platform types for policies.
-    platform_type: Optional[policy_platform_type.PolicyPlatformType] = None
+    platform_type: Optional[PolicyPlatformType] = None
     # Number of remediated devices
     remediated_device_count: Optional[int] = None
     # The setting class name and property name.
@@ -55,18 +57,22 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_compliance_setting_state, entity, policy_platform_type
+        from .device_compliance_setting_state import DeviceComplianceSettingState
+        from .entity import Entity
+        from .policy_platform_type import PolicyPlatformType
 
-        from . import device_compliance_setting_state, entity, policy_platform_type
+        from .device_compliance_setting_state import DeviceComplianceSettingState
+        from .entity import Entity
+        from .policy_platform_type import PolicyPlatformType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "compliantDeviceCount": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
             "conflictDeviceCount": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
-            "deviceComplianceSettingStates": lambda n : setattr(self, 'device_compliance_setting_states', n.get_collection_of_object_values(device_compliance_setting_state.DeviceComplianceSettingState)),
+            "deviceComplianceSettingStates": lambda n : setattr(self, 'device_compliance_setting_states', n.get_collection_of_object_values(DeviceComplianceSettingState)),
             "errorDeviceCount": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
             "nonCompliantDeviceCount": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
             "notApplicableDeviceCount": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
-            "platformType": lambda n : setattr(self, 'platform_type', n.get_enum_value(policy_platform_type.PolicyPlatformType)),
+            "platformType": lambda n : setattr(self, 'platform_type', n.get_enum_value(PolicyPlatformType)),
             "remediatedDeviceCount": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
             "setting": lambda n : setattr(self, 'setting', n.get_str_value()),
             "settingName": lambda n : setattr(self, 'setting_name', n.get_str_value()),

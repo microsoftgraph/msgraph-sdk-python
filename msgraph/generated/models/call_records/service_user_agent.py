@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import service_role, user_agent
+    from .service_role import ServiceRole
+    from .user_agent import UserAgent
 
-from . import user_agent
+from .user_agent import UserAgent
 
 @dataclass
-class ServiceUserAgent(user_agent.UserAgent):
+class ServiceUserAgent(UserAgent):
     odata_type = "#microsoft.graph.callRecords.serviceUserAgent"
     # The role property
-    role: Optional[service_role.ServiceRole] = None
+    role: Optional[ServiceRole] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceUserAgent:
@@ -31,12 +32,14 @@ class ServiceUserAgent(user_agent.UserAgent):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import service_role, user_agent
+        from .service_role import ServiceRole
+        from .user_agent import UserAgent
 
-        from . import service_role, user_agent
+        from .service_role import ServiceRole
+        from .user_agent import UserAgent
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "role": lambda n : setattr(self, 'role', n.get_enum_value(service_role.ServiceRole)),
+            "role": lambda n : setattr(self, 'role', n.get_enum_value(ServiceRole)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

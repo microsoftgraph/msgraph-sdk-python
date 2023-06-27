@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import permission
-    from .......models.o_data_errors import o_data_error
-    from .grant import grant_request_builder
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.permission import Permission
+    from .grant.grant_request_builder import GrantRequestBuilder
 
 class PermissionItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class PermissionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PermissionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[permission.Permission]:
+    async def get(self,request_configuration: Optional[PermissionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Permission]:
         """
         Return the effective sharing permission for a particular permission resource. Effective permissions of an item can come from two sources: permissions set directly on the item itself or permissions that are inherited from the item's ancestors. Callers can differentiate if the permission is inherited or not by checking the `inheritedFrom` property.This property is an ItemReference resource referencing the ancestor that the permission is inherited from.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[permission.Permission]
+        Returns: Optional[Permission]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import permission
+        from .......models.permission import Permission
 
-        return await self.request_adapter.send_async(request_info, permission.Permission, error_mapping)
+        return await self.request_adapter.send_async(request_info, Permission, error_mapping)
     
-    async def patch(self,body: Optional[permission.Permission] = None, request_configuration: Optional[PermissionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[permission.Permission]:
+    async def patch(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Permission]:
         """
         Update the properties of a sharing permission by patching the permission resource. Only the **roles** property can be modified this way.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[permission.Permission]
+        Returns: Optional[Permission]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import permission
+        from .......models.permission import Permission
 
-        return await self.request_adapter.send_async(request_info, permission.Permission, error_mapping)
+        return await self.request_adapter.send_async(request_info, Permission, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PermissionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class PermissionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[permission.Permission] = None, request_configuration: Optional[PermissionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a sharing permission by patching the permission resource. Only the **roles** property can be modified this way.
         Args:
@@ -158,13 +158,13 @@ class PermissionItemRequestBuilder():
         return request_info
     
     @property
-    def grant(self) -> grant_request_builder.GrantRequestBuilder:
+    def grant(self) -> GrantRequestBuilder:
         """
         Provides operations to call the grant method.
         """
-        from .grant import grant_request_builder
+        from .grant.grant_request_builder import GrantRequestBuilder
 
-        return grant_request_builder.GrantRequestBuilder(self.request_adapter, self.path_parameters)
+        return GrantRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PermissionItemRequestBuilderDeleteRequestConfiguration():

@@ -4,20 +4,33 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import add_large_gallery_view_operation, cancel_media_processing_operation, entity, invite_participants_operation, mute_participant_operation, operation_status, play_prompt_operation, record_operation, result_info, start_hold_music_operation, stop_hold_music_operation, subscribe_to_tone_operation, unmute_participant_operation, update_recording_status_operation
+    from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
+    from .cancel_media_processing_operation import CancelMediaProcessingOperation
+    from .entity import Entity
+    from .invite_participants_operation import InviteParticipantsOperation
+    from .mute_participant_operation import MuteParticipantOperation
+    from .operation_status import OperationStatus
+    from .play_prompt_operation import PlayPromptOperation
+    from .record_operation import RecordOperation
+    from .result_info import ResultInfo
+    from .start_hold_music_operation import StartHoldMusicOperation
+    from .stop_hold_music_operation import StopHoldMusicOperation
+    from .subscribe_to_tone_operation import SubscribeToToneOperation
+    from .unmute_participant_operation import UnmuteParticipantOperation
+    from .update_recording_status_operation import UpdateRecordingStatusOperation
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class CommsOperation(entity.Entity):
+class CommsOperation(Entity):
     # Unique Client Context string. Max limit is 256 chars.
     client_context: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The result information. Read-only.
-    result_info: Optional[result_info.ResultInfo] = None
+    result_info: Optional[ResultInfo] = None
     # The status property
-    status: Optional[operation_status.OperationStatus] = None
+    status: Optional[OperationStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CommsOperation:
@@ -34,49 +47,49 @@ class CommsOperation(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.addLargeGalleryViewOperation".casefold():
-            from . import add_large_gallery_view_operation
+            from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
 
-            return add_large_gallery_view_operation.AddLargeGalleryViewOperation()
+            return AddLargeGalleryViewOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.cancelMediaProcessingOperation".casefold():
-            from . import cancel_media_processing_operation
+            from .cancel_media_processing_operation import CancelMediaProcessingOperation
 
-            return cancel_media_processing_operation.CancelMediaProcessingOperation()
+            return CancelMediaProcessingOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.inviteParticipantsOperation".casefold():
-            from . import invite_participants_operation
+            from .invite_participants_operation import InviteParticipantsOperation
 
-            return invite_participants_operation.InviteParticipantsOperation()
+            return InviteParticipantsOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.muteParticipantOperation".casefold():
-            from . import mute_participant_operation
+            from .mute_participant_operation import MuteParticipantOperation
 
-            return mute_participant_operation.MuteParticipantOperation()
+            return MuteParticipantOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.playPromptOperation".casefold():
-            from . import play_prompt_operation
+            from .play_prompt_operation import PlayPromptOperation
 
-            return play_prompt_operation.PlayPromptOperation()
+            return PlayPromptOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.recordOperation".casefold():
-            from . import record_operation
+            from .record_operation import RecordOperation
 
-            return record_operation.RecordOperation()
+            return RecordOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.startHoldMusicOperation".casefold():
-            from . import start_hold_music_operation
+            from .start_hold_music_operation import StartHoldMusicOperation
 
-            return start_hold_music_operation.StartHoldMusicOperation()
+            return StartHoldMusicOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.stopHoldMusicOperation".casefold():
-            from . import stop_hold_music_operation
+            from .stop_hold_music_operation import StopHoldMusicOperation
 
-            return stop_hold_music_operation.StopHoldMusicOperation()
+            return StopHoldMusicOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.subscribeToToneOperation".casefold():
-            from . import subscribe_to_tone_operation
+            from .subscribe_to_tone_operation import SubscribeToToneOperation
 
-            return subscribe_to_tone_operation.SubscribeToToneOperation()
+            return SubscribeToToneOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unmuteParticipantOperation".casefold():
-            from . import unmute_participant_operation
+            from .unmute_participant_operation import UnmuteParticipantOperation
 
-            return unmute_participant_operation.UnmuteParticipantOperation()
+            return UnmuteParticipantOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.updateRecordingStatusOperation".casefold():
-            from . import update_recording_status_operation
+            from .update_recording_status_operation import UpdateRecordingStatusOperation
 
-            return update_recording_status_operation.UpdateRecordingStatusOperation()
+            return UpdateRecordingStatusOperation()
         return CommsOperation()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -84,14 +97,40 @@ class CommsOperation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import add_large_gallery_view_operation, cancel_media_processing_operation, entity, invite_participants_operation, mute_participant_operation, operation_status, play_prompt_operation, record_operation, result_info, start_hold_music_operation, stop_hold_music_operation, subscribe_to_tone_operation, unmute_participant_operation, update_recording_status_operation
+        from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
+        from .cancel_media_processing_operation import CancelMediaProcessingOperation
+        from .entity import Entity
+        from .invite_participants_operation import InviteParticipantsOperation
+        from .mute_participant_operation import MuteParticipantOperation
+        from .operation_status import OperationStatus
+        from .play_prompt_operation import PlayPromptOperation
+        from .record_operation import RecordOperation
+        from .result_info import ResultInfo
+        from .start_hold_music_operation import StartHoldMusicOperation
+        from .stop_hold_music_operation import StopHoldMusicOperation
+        from .subscribe_to_tone_operation import SubscribeToToneOperation
+        from .unmute_participant_operation import UnmuteParticipantOperation
+        from .update_recording_status_operation import UpdateRecordingStatusOperation
 
-        from . import add_large_gallery_view_operation, cancel_media_processing_operation, entity, invite_participants_operation, mute_participant_operation, operation_status, play_prompt_operation, record_operation, result_info, start_hold_music_operation, stop_hold_music_operation, subscribe_to_tone_operation, unmute_participant_operation, update_recording_status_operation
+        from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
+        from .cancel_media_processing_operation import CancelMediaProcessingOperation
+        from .entity import Entity
+        from .invite_participants_operation import InviteParticipantsOperation
+        from .mute_participant_operation import MuteParticipantOperation
+        from .operation_status import OperationStatus
+        from .play_prompt_operation import PlayPromptOperation
+        from .record_operation import RecordOperation
+        from .result_info import ResultInfo
+        from .start_hold_music_operation import StartHoldMusicOperation
+        from .stop_hold_music_operation import StopHoldMusicOperation
+        from .subscribe_to_tone_operation import SubscribeToToneOperation
+        from .unmute_participant_operation import UnmuteParticipantOperation
+        from .update_recording_status_operation import UpdateRecordingStatusOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
-            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(operation_status.OperationStatus)),
+            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(ResultInfo)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(OperationStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import conversation
-    from .....models.o_data_errors import o_data_error
-    from .threads import threads_request_builder
+    from .....models.conversation import Conversation
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .threads.threads_request_builder import ThreadsRequestBuilder
 
 class ConversationItemRequestBuilder():
     """
@@ -45,37 +45,37 @@ class ConversationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ConversationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation.Conversation]:
+    async def get(self,request_configuration: Optional[ConversationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Conversation]:
         """
         The group's conversations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[conversation.Conversation]
+        Returns: Optional[Conversation]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import conversation
+        from .....models.conversation import Conversation
 
-        return await self.request_adapter.send_async(request_info, conversation.Conversation, error_mapping)
+        return await self.request_adapter.send_async(request_info, Conversation, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -112,13 +112,13 @@ class ConversationItemRequestBuilder():
         return request_info
     
     @property
-    def threads(self) -> threads_request_builder.ThreadsRequestBuilder:
+    def threads(self) -> ThreadsRequestBuilder:
         """
         Provides operations to manage the threads property of the microsoft.graph.conversation entity.
         """
-        from .threads import threads_request_builder
+        from .threads.threads_request_builder import ThreadsRequestBuilder
 
-        return threads_request_builder.ThreadsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ThreadsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ConversationItemRequestBuilderDeleteRequestConfiguration():

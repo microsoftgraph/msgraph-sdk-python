@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import microsoft_store_for_business_license_type, mobile_app
+    from .microsoft_store_for_business_license_type import MicrosoftStoreForBusinessLicenseType
+    from .mobile_app import MobileApp
 
-from . import mobile_app
+from .mobile_app import MobileApp
 
 @dataclass
-class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
+class MicrosoftStoreForBusinessApp(MobileApp):
     odata_type = "#microsoft.graph.microsoftStoreForBusinessApp"
     # The licenseType property
-    license_type: Optional[microsoft_store_for_business_license_type.MicrosoftStoreForBusinessLicenseType] = None
+    license_type: Optional[MicrosoftStoreForBusinessLicenseType] = None
     # The app package identifier
     package_identity_name: Optional[str] = None
     # The app product key
@@ -39,12 +40,14 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import microsoft_store_for_business_license_type, mobile_app
+        from .microsoft_store_for_business_license_type import MicrosoftStoreForBusinessLicenseType
+        from .mobile_app import MobileApp
 
-        from . import microsoft_store_for_business_license_type, mobile_app
+        from .microsoft_store_for_business_license_type import MicrosoftStoreForBusinessLicenseType
+        from .mobile_app import MobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "licenseType": lambda n : setattr(self, 'license_type', n.get_enum_value(microsoft_store_for_business_license_type.MicrosoftStoreForBusinessLicenseType)),
+            "licenseType": lambda n : setattr(self, 'license_type', n.get_enum_value(MicrosoftStoreForBusinessLicenseType)),
             "packageIdentityName": lambda n : setattr(self, 'package_identity_name', n.get_str_value()),
             "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),
             "totalLicenseCount": lambda n : setattr(self, 'total_license_count', n.get_int_value()),

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import localized_notification_message, localized_notification_message_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import localized_notification_message_item_request_builder
+    from .....models.localized_notification_message import LocalizedNotificationMessage
+    from .....models.localized_notification_message_collection_response import LocalizedNotificationMessageCollectionResponse
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.localized_notification_message_item_request_builder import LocalizedNotificationMessageItemRequestBuilder
 
 class LocalizedNotificationMessagesRequestBuilder():
     """
@@ -37,71 +38,71 @@ class LocalizedNotificationMessagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_localized_notification_message_id(self,localized_notification_message_id: str) -> localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder:
+    def by_localized_notification_message_id(self,localized_notification_message_id: str) -> LocalizedNotificationMessageItemRequestBuilder:
         """
         Provides operations to manage the localizedNotificationMessages property of the microsoft.graph.notificationMessageTemplate entity.
         Args:
             localized_notification_message_id: Unique identifier of the item
-        Returns: localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder
+        Returns: LocalizedNotificationMessageItemRequestBuilder
         """
         if not localized_notification_message_id:
             raise TypeError("localized_notification_message_id cannot be null.")
-        from .item import localized_notification_message_item_request_builder
+        from .item.localized_notification_message_item_request_builder import LocalizedNotificationMessageItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["localizedNotificationMessage%2Did"] = localized_notification_message_id
-        return localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return LocalizedNotificationMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[LocalizedNotificationMessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[localized_notification_message_collection_response.LocalizedNotificationMessageCollectionResponse]:
+    async def get(self,request_configuration: Optional[LocalizedNotificationMessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[LocalizedNotificationMessageCollectionResponse]:
         """
-        The list of localized messages for this Notification Message Template.
+        List properties and relationships of the localizedNotificationMessage objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[localized_notification_message_collection_response.LocalizedNotificationMessageCollectionResponse]
+        Returns: Optional[LocalizedNotificationMessageCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import localized_notification_message_collection_response
+        from .....models.localized_notification_message_collection_response import LocalizedNotificationMessageCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, localized_notification_message_collection_response.LocalizedNotificationMessageCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, LocalizedNotificationMessageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[localized_notification_message.LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[localized_notification_message.LocalizedNotificationMessage]:
+    async def post(self,body: Optional[LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[LocalizedNotificationMessage]:
         """
-        Create new navigation property to localizedNotificationMessages for deviceManagement
+        Create a new localizedNotificationMessage object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[localized_notification_message.LocalizedNotificationMessage]
+        Returns: Optional[LocalizedNotificationMessage]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import localized_notification_message
+        from .....models.localized_notification_message import LocalizedNotificationMessage
 
-        return await self.request_adapter.send_async(request_info, localized_notification_message.LocalizedNotificationMessage, error_mapping)
+        return await self.request_adapter.send_async(request_info, LocalizedNotificationMessage, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LocalizedNotificationMessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of localized messages for this Notification Message Template.
+        List properties and relationships of the localizedNotificationMessage objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class LocalizedNotificationMessagesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[localized_notification_message.LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to localizedNotificationMessages for deviceManagement
+        Create a new localizedNotificationMessage object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class LocalizedNotificationMessagesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class LocalizedNotificationMessagesRequestBuilderGetQueryParameters():
         """
-        The list of localized messages for this Notification Message Template.
+        List properties and relationships of the localizedNotificationMessage objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

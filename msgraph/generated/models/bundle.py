@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import album
+    from .album import Album
 
 @dataclass
 class Bundle(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class Bundle(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # If the bundle is an [album][], then the album property is included
-    album: Optional[album.Album] = None
+    album: Optional[Album] = None
     # Number of children contained immediately within this container.
     child_count: Optional[int] = None
     # The OdataType property
@@ -35,12 +35,12 @@ class Bundle(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import album
+        from .album import Album
 
-        from . import album
+        from .album import Album
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "album": lambda n : setattr(self, 'album', n.get_object_value(album.Album)),
+            "album": lambda n : setattr(self, 'album', n.get_object_value(Album)),
             "childCount": lambda n : setattr(self, 'child_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

@@ -4,13 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import endpoint, user_feedback
-    from .. import identity_set
+    from ..identity_set import IdentitySet
+    from .endpoint import Endpoint
+    from .user_feedback import UserFeedback
 
-from . import endpoint
+from .endpoint import Endpoint
 
 @dataclass
-class ParticipantEndpoint(endpoint.Endpoint):
+class ParticipantEndpoint(Endpoint):
     odata_type = "#microsoft.graph.callRecords.participantEndpoint"
     # CPU number of cores used by the media endpoint.
     cpu_cores_count: Optional[int] = None
@@ -19,9 +20,9 @@ class ParticipantEndpoint(endpoint.Endpoint):
     # CPU processor speed used by the media endpoint.
     cpu_processor_speed_in_mhz: Optional[int] = None
     # The feedback provided by the user of this endpoint about the quality of the session.
-    feedback: Optional[user_feedback.UserFeedback] = None
+    feedback: Optional[UserFeedback] = None
     # Identity associated with the endpoint.
-    identity: Optional[identity_set.IdentitySet] = None
+    identity: Optional[IdentitySet] = None
     # Name of the device used by the media endpoint.
     name: Optional[str] = None
     
@@ -42,18 +43,20 @@ class ParticipantEndpoint(endpoint.Endpoint):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import endpoint, user_feedback
-        from .. import identity_set
+        from ..identity_set import IdentitySet
+        from .endpoint import Endpoint
+        from .user_feedback import UserFeedback
 
-        from . import endpoint, user_feedback
-        from .. import identity_set
+        from ..identity_set import IdentitySet
+        from .endpoint import Endpoint
+        from .user_feedback import UserFeedback
 
         fields: Dict[str, Callable[[Any], None]] = {
             "cpuCoresCount": lambda n : setattr(self, 'cpu_cores_count', n.get_int_value()),
             "cpuName": lambda n : setattr(self, 'cpu_name', n.get_str_value()),
             "cpuProcessorSpeedInMhz": lambda n : setattr(self, 'cpu_processor_speed_in_mhz', n.get_int_value()),
-            "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(user_feedback.UserFeedback)),
-            "identity": lambda n : setattr(self, 'identity', n.get_object_value(identity_set.IdentitySet)),
+            "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(UserFeedback)),
+            "identity": lambda n : setattr(self, 'identity', n.get_object_value(IdentitySet)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

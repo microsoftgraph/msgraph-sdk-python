@@ -10,12 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import audit_event, audit_event_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .get_audit_activity_types_with_category import get_audit_activity_types_with_category_request_builder
-    from .get_audit_categories import get_audit_categories_request_builder
-    from .item import audit_event_item_request_builder
+    from ...models.audit_event import AuditEvent
+    from ...models.audit_event_collection_response import AuditEventCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .get_audit_activity_types_with_category.get_audit_activity_types_with_category_request_builder import GetAuditActivityTypesWithCategoryRequestBuilder
+    from .get_audit_categories.get_audit_categories_request_builder import GetAuditCategoriesRequestBuilder
+    from .item.audit_event_item_request_builder import AuditEventItemRequestBuilder
 
 class AuditEventsRequestBuilder():
     """
@@ -39,84 +40,84 @@ class AuditEventsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_audit_event_id(self,audit_event_id: str) -> audit_event_item_request_builder.AuditEventItemRequestBuilder:
+    def by_audit_event_id(self,audit_event_id: str) -> AuditEventItemRequestBuilder:
         """
         Provides operations to manage the auditEvents property of the microsoft.graph.deviceManagement entity.
         Args:
             audit_event_id: Unique identifier of the item
-        Returns: audit_event_item_request_builder.AuditEventItemRequestBuilder
+        Returns: AuditEventItemRequestBuilder
         """
         if not audit_event_id:
             raise TypeError("audit_event_id cannot be null.")
-        from .item import audit_event_item_request_builder
+        from .item.audit_event_item_request_builder import AuditEventItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["auditEvent%2Did"] = audit_event_id
-        return audit_event_item_request_builder.AuditEventItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return AuditEventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AuditEventsRequestBuilderGetRequestConfiguration] = None) -> Optional[audit_event_collection_response.AuditEventCollectionResponse]:
+    async def get(self,request_configuration: Optional[AuditEventsRequestBuilderGetRequestConfiguration] = None) -> Optional[AuditEventCollectionResponse]:
         """
-        The Audit Events
+        List properties and relationships of the auditEvent objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[audit_event_collection_response.AuditEventCollectionResponse]
+        Returns: Optional[AuditEventCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import audit_event_collection_response
+        from ...models.audit_event_collection_response import AuditEventCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, audit_event_collection_response.AuditEventCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuditEventCollectionResponse, error_mapping)
     
-    def get_audit_activity_types_with_category(self,category: Optional[str] = None) -> get_audit_activity_types_with_category_request_builder.GetAuditActivityTypesWithCategoryRequestBuilder:
+    def get_audit_activity_types_with_category(self,category: Optional[str] = None) -> GetAuditActivityTypesWithCategoryRequestBuilder:
         """
         Provides operations to call the getAuditActivityTypes method.
         Args:
             category: Usage: category='{category}'
-        Returns: get_audit_activity_types_with_category_request_builder.GetAuditActivityTypesWithCategoryRequestBuilder
+        Returns: GetAuditActivityTypesWithCategoryRequestBuilder
         """
         if not category:
             raise TypeError("category cannot be null.")
-        from .get_audit_activity_types_with_category import get_audit_activity_types_with_category_request_builder
+        from .get_audit_activity_types_with_category.get_audit_activity_types_with_category_request_builder import GetAuditActivityTypesWithCategoryRequestBuilder
 
-        return get_audit_activity_types_with_category_request_builder.GetAuditActivityTypesWithCategoryRequestBuilder(self.request_adapter, self.path_parameters, category)
+        return GetAuditActivityTypesWithCategoryRequestBuilder(self.request_adapter, self.path_parameters, category)
     
-    async def post(self,body: Optional[audit_event.AuditEvent] = None, request_configuration: Optional[AuditEventsRequestBuilderPostRequestConfiguration] = None) -> Optional[audit_event.AuditEvent]:
+    async def post(self,body: Optional[AuditEvent] = None, request_configuration: Optional[AuditEventsRequestBuilderPostRequestConfiguration] = None) -> Optional[AuditEvent]:
         """
-        Create new navigation property to auditEvents for deviceManagement
+        Create a new auditEvent object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[audit_event.AuditEvent]
+        Returns: Optional[AuditEvent]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import audit_event
+        from ...models.audit_event import AuditEvent
 
-        return await self.request_adapter.send_async(request_info, audit_event.AuditEvent, error_mapping)
+        return await self.request_adapter.send_async(request_info, AuditEvent, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AuditEventsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Audit Events
+        List properties and relationships of the auditEvent objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -132,9 +133,9 @@ class AuditEventsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[audit_event.AuditEvent] = None, request_configuration: Optional[AuditEventsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AuditEvent] = None, request_configuration: Optional[AuditEventsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to auditEvents for deviceManagement
+        Create a new auditEvent object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -154,27 +155,27 @@ class AuditEventsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_audit_categories(self) -> get_audit_categories_request_builder.GetAuditCategoriesRequestBuilder:
+    def get_audit_categories(self) -> GetAuditCategoriesRequestBuilder:
         """
         Provides operations to call the getAuditCategories method.
         """
-        from .get_audit_categories import get_audit_categories_request_builder
+        from .get_audit_categories.get_audit_categories_request_builder import GetAuditCategoriesRequestBuilder
 
-        return get_audit_categories_request_builder.GetAuditCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAuditCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AuditEventsRequestBuilderGetQueryParameters():
         """
-        The Audit Events
+        List properties and relationships of the auditEvent objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import item_activity_stat
-    from .....models.o_data_errors import o_data_error
+    from .....models.item_activity_stat import ItemActivityStat
+    from .....models.o_data_errors.o_data_error import ODataError
 
 class LastSevenDaysRequestBuilder():
     """
@@ -35,27 +35,27 @@ class LastSevenDaysRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[LastSevenDaysRequestBuilderGetRequestConfiguration] = None) -> Optional[item_activity_stat.ItemActivityStat]:
+    async def get(self,request_configuration: Optional[LastSevenDaysRequestBuilderGetRequestConfiguration] = None) -> Optional[ItemActivityStat]:
         """
         Get lastSevenDays from sites
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[item_activity_stat.ItemActivityStat]
+        Returns: Optional[ItemActivityStat]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import item_activity_stat
+        from .....models.item_activity_stat import ItemActivityStat
 
-        return await self.request_adapter.send_async(request_info, item_activity_stat.ItemActivityStat, error_mapping)
+        return await self.request_adapter.send_async(request_info, ItemActivityStat, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LastSevenDaysRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

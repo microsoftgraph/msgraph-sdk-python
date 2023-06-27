@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import external_link
+    from .external_link import ExternalLink
 
 @dataclass
 class OnenotePagePreviewLinks(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class OnenotePagePreviewLinks(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The previewImageUrl property
-    preview_image_url: Optional[external_link.ExternalLink] = None
+    preview_image_url: Optional[ExternalLink] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenotePagePreviewLinks:
@@ -33,13 +33,13 @@ class OnenotePagePreviewLinks(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import external_link
+        from .external_link import ExternalLink
 
-        from . import external_link
+        from .external_link import ExternalLink
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "previewImageUrl": lambda n : setattr(self, 'preview_image_url', n.get_object_value(external_link.ExternalLink)),
+            "previewImageUrl": lambda n : setattr(self, 'preview_image_url', n.get_object_value(ExternalLink)),
         }
         return fields
     

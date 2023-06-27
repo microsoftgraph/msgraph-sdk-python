@@ -10,27 +10,27 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import device_management_reports
-    from ...models.o_data_errors import o_data_error
-    from .export_jobs import export_jobs_request_builder
-    from .get_cached_report import get_cached_report_request_builder
-    from .get_compliance_policy_non_compliance_report import get_compliance_policy_non_compliance_report_request_builder
-    from .get_compliance_policy_non_compliance_summary_report import get_compliance_policy_non_compliance_summary_report_request_builder
-    from .get_compliance_setting_non_compliance_report import get_compliance_setting_non_compliance_report_request_builder
-    from .get_configuration_policy_non_compliance_report import get_configuration_policy_non_compliance_report_request_builder
-    from .get_configuration_policy_non_compliance_summary_report import get_configuration_policy_non_compliance_summary_report_request_builder
-    from .get_configuration_setting_non_compliance_report import get_configuration_setting_non_compliance_report_request_builder
-    from .get_device_management_intent_per_setting_contributing_profiles import get_device_management_intent_per_setting_contributing_profiles_request_builder
-    from .get_device_management_intent_settings_report import get_device_management_intent_settings_report_request_builder
-    from .get_device_non_compliance_report import get_device_non_compliance_report_request_builder
-    from .get_devices_without_compliance_policy_report import get_devices_without_compliance_policy_report_request_builder
-    from .get_historical_report import get_historical_report_request_builder
-    from .get_noncompliant_devices_and_settings_report import get_noncompliant_devices_and_settings_report_request_builder
-    from .get_policy_non_compliance_metadata import get_policy_non_compliance_metadata_request_builder
-    from .get_policy_non_compliance_report import get_policy_non_compliance_report_request_builder
-    from .get_policy_non_compliance_summary_report import get_policy_non_compliance_summary_report_request_builder
-    from .get_report_filters import get_report_filters_request_builder
-    from .get_setting_non_compliance_report import get_setting_non_compliance_report_request_builder
+    from ...models.device_management_reports import DeviceManagementReports
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .export_jobs.export_jobs_request_builder import ExportJobsRequestBuilder
+    from .get_cached_report.get_cached_report_request_builder import GetCachedReportRequestBuilder
+    from .get_compliance_policy_non_compliance_report.get_compliance_policy_non_compliance_report_request_builder import GetCompliancePolicyNonComplianceReportRequestBuilder
+    from .get_compliance_policy_non_compliance_summary_report.get_compliance_policy_non_compliance_summary_report_request_builder import GetCompliancePolicyNonComplianceSummaryReportRequestBuilder
+    from .get_compliance_setting_non_compliance_report.get_compliance_setting_non_compliance_report_request_builder import GetComplianceSettingNonComplianceReportRequestBuilder
+    from .get_configuration_policy_non_compliance_report.get_configuration_policy_non_compliance_report_request_builder import GetConfigurationPolicyNonComplianceReportRequestBuilder
+    from .get_configuration_policy_non_compliance_summary_report.get_configuration_policy_non_compliance_summary_report_request_builder import GetConfigurationPolicyNonComplianceSummaryReportRequestBuilder
+    from .get_configuration_setting_non_compliance_report.get_configuration_setting_non_compliance_report_request_builder import GetConfigurationSettingNonComplianceReportRequestBuilder
+    from .get_device_management_intent_per_setting_contributing_profiles.get_device_management_intent_per_setting_contributing_profiles_request_builder import GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder
+    from .get_device_management_intent_settings_report.get_device_management_intent_settings_report_request_builder import GetDeviceManagementIntentSettingsReportRequestBuilder
+    from .get_device_non_compliance_report.get_device_non_compliance_report_request_builder import GetDeviceNonComplianceReportRequestBuilder
+    from .get_devices_without_compliance_policy_report.get_devices_without_compliance_policy_report_request_builder import GetDevicesWithoutCompliancePolicyReportRequestBuilder
+    from .get_historical_report.get_historical_report_request_builder import GetHistoricalReportRequestBuilder
+    from .get_noncompliant_devices_and_settings_report.get_noncompliant_devices_and_settings_report_request_builder import GetNoncompliantDevicesAndSettingsReportRequestBuilder
+    from .get_policy_non_compliance_metadata.get_policy_non_compliance_metadata_request_builder import GetPolicyNonComplianceMetadataRequestBuilder
+    from .get_policy_non_compliance_report.get_policy_non_compliance_report_request_builder import GetPolicyNonComplianceReportRequestBuilder
+    from .get_policy_non_compliance_summary_report.get_policy_non_compliance_summary_report_request_builder import GetPolicyNonComplianceSummaryReportRequestBuilder
+    from .get_report_filters.get_report_filters_request_builder import GetReportFiltersRequestBuilder
+    from .get_setting_non_compliance_report.get_setting_non_compliance_report_request_builder import GetSettingNonComplianceReportRequestBuilder
 
 class ReportsRequestBuilder():
     """
@@ -63,62 +63,62 @@ class ReportsRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ReportsRequestBuilderGetRequestConfiguration] = None) -> Optional[device_management_reports.DeviceManagementReports]:
+    async def get(self,request_configuration: Optional[ReportsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementReports]:
         """
-        Reports singleton
+        Read properties and relationships of the deviceManagementReports object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_management_reports.DeviceManagementReports]
+        Returns: Optional[DeviceManagementReports]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device_management_reports
+        from ...models.device_management_reports import DeviceManagementReports
 
-        return await self.request_adapter.send_async(request_info, device_management_reports.DeviceManagementReports, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceManagementReports, error_mapping)
     
-    async def patch(self,body: Optional[device_management_reports.DeviceManagementReports] = None, request_configuration: Optional[ReportsRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_management_reports.DeviceManagementReports]:
+    async def patch(self,body: Optional[DeviceManagementReports] = None, request_configuration: Optional[ReportsRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceManagementReports]:
         """
-        Update the navigation property reports in deviceManagement
+        Update the properties of a deviceManagementReports object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_management_reports.DeviceManagementReports]
+        Returns: Optional[DeviceManagementReports]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device_management_reports
+        from ...models.device_management_reports import DeviceManagementReports
 
-        return await self.request_adapter.send_async(request_info, device_management_reports.DeviceManagementReports, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceManagementReports, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ReportsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class ReportsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ReportsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Reports singleton
+        Read properties and relationships of the deviceManagementReports object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -154,9 +154,9 @@ class ReportsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device_management_reports.DeviceManagementReports] = None, request_configuration: Optional[ReportsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceManagementReports] = None, request_configuration: Optional[ReportsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property reports in deviceManagement
+        Update the properties of a deviceManagementReports object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -176,175 +176,175 @@ class ReportsRequestBuilder():
         return request_info
     
     @property
-    def export_jobs(self) -> export_jobs_request_builder.ExportJobsRequestBuilder:
+    def export_jobs(self) -> ExportJobsRequestBuilder:
         """
         Provides operations to manage the exportJobs property of the microsoft.graph.deviceManagementReports entity.
         """
-        from .export_jobs import export_jobs_request_builder
+        from .export_jobs.export_jobs_request_builder import ExportJobsRequestBuilder
 
-        return export_jobs_request_builder.ExportJobsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExportJobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_cached_report(self) -> get_cached_report_request_builder.GetCachedReportRequestBuilder:
+    def get_cached_report(self) -> GetCachedReportRequestBuilder:
         """
         Provides operations to call the getCachedReport method.
         """
-        from .get_cached_report import get_cached_report_request_builder
+        from .get_cached_report.get_cached_report_request_builder import GetCachedReportRequestBuilder
 
-        return get_cached_report_request_builder.GetCachedReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetCachedReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_compliance_policy_non_compliance_report(self) -> get_compliance_policy_non_compliance_report_request_builder.GetCompliancePolicyNonComplianceReportRequestBuilder:
+    def get_compliance_policy_non_compliance_report(self) -> GetCompliancePolicyNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getCompliancePolicyNonComplianceReport method.
         """
-        from .get_compliance_policy_non_compliance_report import get_compliance_policy_non_compliance_report_request_builder
+        from .get_compliance_policy_non_compliance_report.get_compliance_policy_non_compliance_report_request_builder import GetCompliancePolicyNonComplianceReportRequestBuilder
 
-        return get_compliance_policy_non_compliance_report_request_builder.GetCompliancePolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetCompliancePolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_compliance_policy_non_compliance_summary_report(self) -> get_compliance_policy_non_compliance_summary_report_request_builder.GetCompliancePolicyNonComplianceSummaryReportRequestBuilder:
+    def get_compliance_policy_non_compliance_summary_report(self) -> GetCompliancePolicyNonComplianceSummaryReportRequestBuilder:
         """
         Provides operations to call the getCompliancePolicyNonComplianceSummaryReport method.
         """
-        from .get_compliance_policy_non_compliance_summary_report import get_compliance_policy_non_compliance_summary_report_request_builder
+        from .get_compliance_policy_non_compliance_summary_report.get_compliance_policy_non_compliance_summary_report_request_builder import GetCompliancePolicyNonComplianceSummaryReportRequestBuilder
 
-        return get_compliance_policy_non_compliance_summary_report_request_builder.GetCompliancePolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetCompliancePolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_compliance_setting_non_compliance_report(self) -> get_compliance_setting_non_compliance_report_request_builder.GetComplianceSettingNonComplianceReportRequestBuilder:
+    def get_compliance_setting_non_compliance_report(self) -> GetComplianceSettingNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getComplianceSettingNonComplianceReport method.
         """
-        from .get_compliance_setting_non_compliance_report import get_compliance_setting_non_compliance_report_request_builder
+        from .get_compliance_setting_non_compliance_report.get_compliance_setting_non_compliance_report_request_builder import GetComplianceSettingNonComplianceReportRequestBuilder
 
-        return get_compliance_setting_non_compliance_report_request_builder.GetComplianceSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetComplianceSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_configuration_policy_non_compliance_report(self) -> get_configuration_policy_non_compliance_report_request_builder.GetConfigurationPolicyNonComplianceReportRequestBuilder:
+    def get_configuration_policy_non_compliance_report(self) -> GetConfigurationPolicyNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getConfigurationPolicyNonComplianceReport method.
         """
-        from .get_configuration_policy_non_compliance_report import get_configuration_policy_non_compliance_report_request_builder
+        from .get_configuration_policy_non_compliance_report.get_configuration_policy_non_compliance_report_request_builder import GetConfigurationPolicyNonComplianceReportRequestBuilder
 
-        return get_configuration_policy_non_compliance_report_request_builder.GetConfigurationPolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetConfigurationPolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_configuration_policy_non_compliance_summary_report(self) -> get_configuration_policy_non_compliance_summary_report_request_builder.GetConfigurationPolicyNonComplianceSummaryReportRequestBuilder:
+    def get_configuration_policy_non_compliance_summary_report(self) -> GetConfigurationPolicyNonComplianceSummaryReportRequestBuilder:
         """
         Provides operations to call the getConfigurationPolicyNonComplianceSummaryReport method.
         """
-        from .get_configuration_policy_non_compliance_summary_report import get_configuration_policy_non_compliance_summary_report_request_builder
+        from .get_configuration_policy_non_compliance_summary_report.get_configuration_policy_non_compliance_summary_report_request_builder import GetConfigurationPolicyNonComplianceSummaryReportRequestBuilder
 
-        return get_configuration_policy_non_compliance_summary_report_request_builder.GetConfigurationPolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetConfigurationPolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_configuration_setting_non_compliance_report(self) -> get_configuration_setting_non_compliance_report_request_builder.GetConfigurationSettingNonComplianceReportRequestBuilder:
+    def get_configuration_setting_non_compliance_report(self) -> GetConfigurationSettingNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getConfigurationSettingNonComplianceReport method.
         """
-        from .get_configuration_setting_non_compliance_report import get_configuration_setting_non_compliance_report_request_builder
+        from .get_configuration_setting_non_compliance_report.get_configuration_setting_non_compliance_report_request_builder import GetConfigurationSettingNonComplianceReportRequestBuilder
 
-        return get_configuration_setting_non_compliance_report_request_builder.GetConfigurationSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetConfigurationSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_device_management_intent_per_setting_contributing_profiles(self) -> get_device_management_intent_per_setting_contributing_profiles_request_builder.GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder:
+    def get_device_management_intent_per_setting_contributing_profiles(self) -> GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder:
         """
         Provides operations to call the getDeviceManagementIntentPerSettingContributingProfiles method.
         """
-        from .get_device_management_intent_per_setting_contributing_profiles import get_device_management_intent_per_setting_contributing_profiles_request_builder
+        from .get_device_management_intent_per_setting_contributing_profiles.get_device_management_intent_per_setting_contributing_profiles_request_builder import GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder
 
-        return get_device_management_intent_per_setting_contributing_profiles_request_builder.GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_device_management_intent_settings_report(self) -> get_device_management_intent_settings_report_request_builder.GetDeviceManagementIntentSettingsReportRequestBuilder:
+    def get_device_management_intent_settings_report(self) -> GetDeviceManagementIntentSettingsReportRequestBuilder:
         """
         Provides operations to call the getDeviceManagementIntentSettingsReport method.
         """
-        from .get_device_management_intent_settings_report import get_device_management_intent_settings_report_request_builder
+        from .get_device_management_intent_settings_report.get_device_management_intent_settings_report_request_builder import GetDeviceManagementIntentSettingsReportRequestBuilder
 
-        return get_device_management_intent_settings_report_request_builder.GetDeviceManagementIntentSettingsReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetDeviceManagementIntentSettingsReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_device_non_compliance_report(self) -> get_device_non_compliance_report_request_builder.GetDeviceNonComplianceReportRequestBuilder:
+    def get_device_non_compliance_report(self) -> GetDeviceNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getDeviceNonComplianceReport method.
         """
-        from .get_device_non_compliance_report import get_device_non_compliance_report_request_builder
+        from .get_device_non_compliance_report.get_device_non_compliance_report_request_builder import GetDeviceNonComplianceReportRequestBuilder
 
-        return get_device_non_compliance_report_request_builder.GetDeviceNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetDeviceNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_devices_without_compliance_policy_report(self) -> get_devices_without_compliance_policy_report_request_builder.GetDevicesWithoutCompliancePolicyReportRequestBuilder:
+    def get_devices_without_compliance_policy_report(self) -> GetDevicesWithoutCompliancePolicyReportRequestBuilder:
         """
         Provides operations to call the getDevicesWithoutCompliancePolicyReport method.
         """
-        from .get_devices_without_compliance_policy_report import get_devices_without_compliance_policy_report_request_builder
+        from .get_devices_without_compliance_policy_report.get_devices_without_compliance_policy_report_request_builder import GetDevicesWithoutCompliancePolicyReportRequestBuilder
 
-        return get_devices_without_compliance_policy_report_request_builder.GetDevicesWithoutCompliancePolicyReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetDevicesWithoutCompliancePolicyReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_historical_report(self) -> get_historical_report_request_builder.GetHistoricalReportRequestBuilder:
+    def get_historical_report(self) -> GetHistoricalReportRequestBuilder:
         """
         Provides operations to call the getHistoricalReport method.
         """
-        from .get_historical_report import get_historical_report_request_builder
+        from .get_historical_report.get_historical_report_request_builder import GetHistoricalReportRequestBuilder
 
-        return get_historical_report_request_builder.GetHistoricalReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetHistoricalReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_noncompliant_devices_and_settings_report(self) -> get_noncompliant_devices_and_settings_report_request_builder.GetNoncompliantDevicesAndSettingsReportRequestBuilder:
+    def get_noncompliant_devices_and_settings_report(self) -> GetNoncompliantDevicesAndSettingsReportRequestBuilder:
         """
         Provides operations to call the getNoncompliantDevicesAndSettingsReport method.
         """
-        from .get_noncompliant_devices_and_settings_report import get_noncompliant_devices_and_settings_report_request_builder
+        from .get_noncompliant_devices_and_settings_report.get_noncompliant_devices_and_settings_report_request_builder import GetNoncompliantDevicesAndSettingsReportRequestBuilder
 
-        return get_noncompliant_devices_and_settings_report_request_builder.GetNoncompliantDevicesAndSettingsReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetNoncompliantDevicesAndSettingsReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_policy_non_compliance_metadata(self) -> get_policy_non_compliance_metadata_request_builder.GetPolicyNonComplianceMetadataRequestBuilder:
+    def get_policy_non_compliance_metadata(self) -> GetPolicyNonComplianceMetadataRequestBuilder:
         """
         Provides operations to call the getPolicyNonComplianceMetadata method.
         """
-        from .get_policy_non_compliance_metadata import get_policy_non_compliance_metadata_request_builder
+        from .get_policy_non_compliance_metadata.get_policy_non_compliance_metadata_request_builder import GetPolicyNonComplianceMetadataRequestBuilder
 
-        return get_policy_non_compliance_metadata_request_builder.GetPolicyNonComplianceMetadataRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetPolicyNonComplianceMetadataRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_policy_non_compliance_report(self) -> get_policy_non_compliance_report_request_builder.GetPolicyNonComplianceReportRequestBuilder:
+    def get_policy_non_compliance_report(self) -> GetPolicyNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getPolicyNonComplianceReport method.
         """
-        from .get_policy_non_compliance_report import get_policy_non_compliance_report_request_builder
+        from .get_policy_non_compliance_report.get_policy_non_compliance_report_request_builder import GetPolicyNonComplianceReportRequestBuilder
 
-        return get_policy_non_compliance_report_request_builder.GetPolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetPolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_policy_non_compliance_summary_report(self) -> get_policy_non_compliance_summary_report_request_builder.GetPolicyNonComplianceSummaryReportRequestBuilder:
+    def get_policy_non_compliance_summary_report(self) -> GetPolicyNonComplianceSummaryReportRequestBuilder:
         """
         Provides operations to call the getPolicyNonComplianceSummaryReport method.
         """
-        from .get_policy_non_compliance_summary_report import get_policy_non_compliance_summary_report_request_builder
+        from .get_policy_non_compliance_summary_report.get_policy_non_compliance_summary_report_request_builder import GetPolicyNonComplianceSummaryReportRequestBuilder
 
-        return get_policy_non_compliance_summary_report_request_builder.GetPolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetPolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_report_filters(self) -> get_report_filters_request_builder.GetReportFiltersRequestBuilder:
+    def get_report_filters(self) -> GetReportFiltersRequestBuilder:
         """
         Provides operations to call the getReportFilters method.
         """
-        from .get_report_filters import get_report_filters_request_builder
+        from .get_report_filters.get_report_filters_request_builder import GetReportFiltersRequestBuilder
 
-        return get_report_filters_request_builder.GetReportFiltersRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetReportFiltersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_setting_non_compliance_report(self) -> get_setting_non_compliance_report_request_builder.GetSettingNonComplianceReportRequestBuilder:
+    def get_setting_non_compliance_report(self) -> GetSettingNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getSettingNonComplianceReport method.
         """
-        from .get_setting_non_compliance_report import get_setting_non_compliance_report_request_builder
+        from .get_setting_non_compliance_report.get_setting_non_compliance_report_request_builder import GetSettingNonComplianceReportRequestBuilder
 
-        return get_setting_non_compliance_report_request_builder.GetSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ReportsRequestBuilderDeleteRequestConfiguration():
@@ -361,7 +361,7 @@ class ReportsRequestBuilder():
     @dataclass
     class ReportsRequestBuilderGetQueryParameters():
         """
-        Reports singleton
+        Read properties and relationships of the deviceManagementReports object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import teams_template, teams_template_collection_response
-    from ..models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import teams_template_item_request_builder
+    from ..models.o_data_errors.o_data_error import ODataError
+    from ..models.teams_template import TeamsTemplate
+    from ..models.teams_template_collection_response import TeamsTemplateCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.teams_template_item_request_builder import TeamsTemplateItemRequestBuilder
 
 class TeamsTemplatesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class TeamsTemplatesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_teams_template_id(self,teams_template_id: str) -> teams_template_item_request_builder.TeamsTemplateItemRequestBuilder:
+    def by_teams_template_id(self,teams_template_id: str) -> TeamsTemplateItemRequestBuilder:
         """
         Provides operations to manage the collection of teamsTemplate entities.
         Args:
             teams_template_id: Unique identifier of the item
-        Returns: teams_template_item_request_builder.TeamsTemplateItemRequestBuilder
+        Returns: TeamsTemplateItemRequestBuilder
         """
         if not teams_template_id:
             raise TypeError("teams_template_id cannot be null.")
-        from .item import teams_template_item_request_builder
+        from .item.teams_template_item_request_builder import TeamsTemplateItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["teamsTemplate%2Did"] = teams_template_id
-        return teams_template_item_request_builder.TeamsTemplateItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return TeamsTemplateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TeamsTemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_template_collection_response.TeamsTemplateCollectionResponse]:
+    async def get(self,request_configuration: Optional[TeamsTemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsTemplateCollectionResponse]:
         """
         Get entities from teamsTemplates
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teams_template_collection_response.TeamsTemplateCollectionResponse]
+        Returns: Optional[TeamsTemplateCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import teams_template_collection_response
+        from ..models.teams_template_collection_response import TeamsTemplateCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, teams_template_collection_response.TeamsTemplateCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamsTemplateCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[teams_template.TeamsTemplate] = None, request_configuration: Optional[TeamsTemplatesRequestBuilderPostRequestConfiguration] = None) -> Optional[teams_template.TeamsTemplate]:
+    async def post(self,body: Optional[TeamsTemplate] = None, request_configuration: Optional[TeamsTemplatesRequestBuilderPostRequestConfiguration] = None) -> Optional[TeamsTemplate]:
         """
         Add new entity to teamsTemplates
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[teams_template.TeamsTemplate]
+        Returns: Optional[TeamsTemplate]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import teams_template
+        from ..models.teams_template import TeamsTemplate
 
-        return await self.request_adapter.send_async(request_info, teams_template.TeamsTemplate, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamsTemplate, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TeamsTemplatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class TeamsTemplatesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[teams_template.TeamsTemplate] = None, request_configuration: Optional[TeamsTemplatesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TeamsTemplate] = None, request_configuration: Optional[TeamsTemplatesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add new entity to teamsTemplates
         Args:
@@ -139,13 +140,13 @@ class TeamsTemplatesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TeamsTemplatesRequestBuilderGetQueryParameters():

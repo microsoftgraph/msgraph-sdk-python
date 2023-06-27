@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_propagation_status
+    from .event_propagation_status import EventPropagationStatus
 
 @dataclass
 class EventPropagationResult(AdditionalDataHolder, Parsable):
@@ -18,7 +18,7 @@ class EventPropagationResult(AdditionalDataHolder, Parsable):
     # The name of the workload associated with the event.
     service_name: Optional[str] = None
     # Indicates the status of the event creation request. The possible values are: none, inProcessing, failed, success, unknownFutureValue.
-    status: Optional[event_propagation_status.EventPropagationStatus] = None
+    status: Optional[EventPropagationStatus] = None
     # Additional information about the status of the event creation request.
     status_information: Optional[str] = None
     
@@ -39,15 +39,15 @@ class EventPropagationResult(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_propagation_status
+        from .event_propagation_status import EventPropagationStatus
 
-        from . import event_propagation_status
+        from .event_propagation_status import EventPropagationStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "location": lambda n : setattr(self, 'location', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "serviceName": lambda n : setattr(self, 'service_name', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(event_propagation_status.EventPropagationStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(EventPropagationStatus)),
             "statusInformation": lambda n : setattr(self, 'status_information', n.get_str_value()),
         }
         return fields

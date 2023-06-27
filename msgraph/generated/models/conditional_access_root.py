@@ -4,24 +4,29 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_context_class_reference, authentication_strength_root, conditional_access_policy, conditional_access_template, entity, named_location
+    from .authentication_context_class_reference import AuthenticationContextClassReference
+    from .authentication_strength_root import AuthenticationStrengthRoot
+    from .conditional_access_policy import ConditionalAccessPolicy
+    from .conditional_access_template import ConditionalAccessTemplate
+    from .entity import Entity
+    from .named_location import NamedLocation
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ConditionalAccessRoot(entity.Entity):
+class ConditionalAccessRoot(Entity):
     # Read-only. Nullable. Returns a collection of the specified authentication context class references.
-    authentication_context_class_references: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]] = None
+    authentication_context_class_references: Optional[List[AuthenticationContextClassReference]] = None
     # The authenticationStrength property
-    authentication_strength: Optional[authentication_strength_root.AuthenticationStrengthRoot] = None
+    authentication_strength: Optional[AuthenticationStrengthRoot] = None
     # Read-only. Nullable. Returns a collection of the specified named locations.
-    named_locations: Optional[List[named_location.NamedLocation]] = None
+    named_locations: Optional[List[NamedLocation]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
-    policies: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
+    policies: Optional[List[ConditionalAccessPolicy]] = None
     # Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
-    templates: Optional[List[conditional_access_template.ConditionalAccessTemplate]] = None
+    templates: Optional[List[ConditionalAccessTemplate]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessRoot:
@@ -40,16 +45,26 @@ class ConditionalAccessRoot(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_context_class_reference, authentication_strength_root, conditional_access_policy, conditional_access_template, entity, named_location
+        from .authentication_context_class_reference import AuthenticationContextClassReference
+        from .authentication_strength_root import AuthenticationStrengthRoot
+        from .conditional_access_policy import ConditionalAccessPolicy
+        from .conditional_access_template import ConditionalAccessTemplate
+        from .entity import Entity
+        from .named_location import NamedLocation
 
-        from . import authentication_context_class_reference, authentication_strength_root, conditional_access_policy, conditional_access_template, entity, named_location
+        from .authentication_context_class_reference import AuthenticationContextClassReference
+        from .authentication_strength_root import AuthenticationStrengthRoot
+        from .conditional_access_policy import ConditionalAccessPolicy
+        from .conditional_access_template import ConditionalAccessTemplate
+        from .entity import Entity
+        from .named_location import NamedLocation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationContextClassReferences": lambda n : setattr(self, 'authentication_context_class_references', n.get_collection_of_object_values(authentication_context_class_reference.AuthenticationContextClassReference)),
-            "authenticationStrength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(authentication_strength_root.AuthenticationStrengthRoot)),
-            "namedLocations": lambda n : setattr(self, 'named_locations', n.get_collection_of_object_values(named_location.NamedLocation)),
-            "policies": lambda n : setattr(self, 'policies', n.get_collection_of_object_values(conditional_access_policy.ConditionalAccessPolicy)),
-            "templates": lambda n : setattr(self, 'templates', n.get_collection_of_object_values(conditional_access_template.ConditionalAccessTemplate)),
+            "authenticationContextClassReferences": lambda n : setattr(self, 'authentication_context_class_references', n.get_collection_of_object_values(AuthenticationContextClassReference)),
+            "authenticationStrength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(AuthenticationStrengthRoot)),
+            "namedLocations": lambda n : setattr(self, 'named_locations', n.get_collection_of_object_values(NamedLocation)),
+            "policies": lambda n : setattr(self, 'policies', n.get_collection_of_object_values(ConditionalAccessPolicy)),
+            "templates": lambda n : setattr(self, 'templates', n.get_collection_of_object_values(ConditionalAccessTemplate)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

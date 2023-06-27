@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_feature_configuration
+    from .authentication_method_feature_configuration import AuthenticationMethodFeatureConfiguration
 
 @dataclass
 class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Determines whether the user's Authenticator app will show them the client app they are signing into.
-    display_app_information_required_state: Optional[authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration] = None
+    display_app_information_required_state: Optional[AuthenticationMethodFeatureConfiguration] = None
     # Determines whether the user's Authenticator app will show them the geographic location of where the authentication request originated from.
-    display_location_information_required_state: Optional[authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration] = None
+    display_location_information_required_state: Optional[AuthenticationMethodFeatureConfiguration] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,13 +35,13 @@ class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_feature_configuration
+        from .authentication_method_feature_configuration import AuthenticationMethodFeatureConfiguration
 
-        from . import authentication_method_feature_configuration
+        from .authentication_method_feature_configuration import AuthenticationMethodFeatureConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayAppInformationRequiredState": lambda n : setattr(self, 'display_app_information_required_state', n.get_object_value(authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration)),
-            "displayLocationInformationRequiredState": lambda n : setattr(self, 'display_location_information_required_state', n.get_object_value(authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration)),
+            "displayAppInformationRequiredState": lambda n : setattr(self, 'display_app_information_required_state', n.get_object_value(AuthenticationMethodFeatureConfiguration)),
+            "displayLocationInformationRequiredState": lambda n : setattr(self, 'display_location_information_required_state', n.get_object_value(AuthenticationMethodFeatureConfiguration)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

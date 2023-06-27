@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set, meeting_info
+    from .identity_set import IdentitySet
+    from .meeting_info import MeetingInfo
 
-from . import meeting_info
+from .meeting_info import MeetingInfo
 
 @dataclass
-class OrganizerMeetingInfo(meeting_info.MeetingInfo):
+class OrganizerMeetingInfo(MeetingInfo):
     odata_type = "#microsoft.graph.organizerMeetingInfo"
     # The organizer property
-    organizer: Optional[identity_set.IdentitySet] = None
+    organizer: Optional[IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrganizerMeetingInfo:
@@ -31,12 +32,14 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set, meeting_info
+        from .identity_set import IdentitySet
+        from .meeting_info import MeetingInfo
 
-        from . import identity_set, meeting_info
+        from .identity_set import IdentitySet
+        from .meeting_info import MeetingInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(identity_set.IdentitySet)),
+            "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

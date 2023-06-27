@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import domain_dns_record
+    from .domain_dns_record import DomainDnsRecord
 
-from . import domain_dns_record
+from .domain_dns_record import DomainDnsRecord
 
 @dataclass
-class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
+class DomainDnsMxRecord(DomainDnsRecord):
     # Value used when configuring the answer/destination/value of the MX record at the DNS host.
     mail_exchange: Optional[str] = None
     # The OdataType property
@@ -34,9 +34,9 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import domain_dns_record
+        from .domain_dns_record import DomainDnsRecord
 
-        from . import domain_dns_record
+        from .domain_dns_record import DomainDnsRecord
 
         fields: Dict[str, Callable[[Any], None]] = {
             "mailExchange": lambda n : setattr(self, 'mail_exchange', n.get_str_value()),

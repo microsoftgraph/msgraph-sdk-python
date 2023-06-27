@@ -4,7 +4,13 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import oma_setting_base64, oma_setting_boolean, oma_setting_date_time, oma_setting_floating_point, oma_setting_integer, oma_setting_string, oma_setting_string_xml
+    from .oma_setting_base64 import OmaSettingBase64
+    from .oma_setting_boolean import OmaSettingBoolean
+    from .oma_setting_date_time import OmaSettingDateTime
+    from .oma_setting_floating_point import OmaSettingFloatingPoint
+    from .oma_setting_integer import OmaSettingInteger
+    from .oma_setting_string import OmaSettingString
+    from .oma_setting_string_xml import OmaSettingStringXml
 
 @dataclass
 class OmaSetting(AdditionalDataHolder, Parsable):
@@ -38,33 +44,33 @@ class OmaSetting(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingBase64".casefold():
-            from . import oma_setting_base64
+            from .oma_setting_base64 import OmaSettingBase64
 
-            return oma_setting_base64.OmaSettingBase64()
+            return OmaSettingBase64()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingBoolean".casefold():
-            from . import oma_setting_boolean
+            from .oma_setting_boolean import OmaSettingBoolean
 
-            return oma_setting_boolean.OmaSettingBoolean()
+            return OmaSettingBoolean()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingDateTime".casefold():
-            from . import oma_setting_date_time
+            from .oma_setting_date_time import OmaSettingDateTime
 
-            return oma_setting_date_time.OmaSettingDateTime()
+            return OmaSettingDateTime()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingFloatingPoint".casefold():
-            from . import oma_setting_floating_point
+            from .oma_setting_floating_point import OmaSettingFloatingPoint
 
-            return oma_setting_floating_point.OmaSettingFloatingPoint()
+            return OmaSettingFloatingPoint()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingInteger".casefold():
-            from . import oma_setting_integer
+            from .oma_setting_integer import OmaSettingInteger
 
-            return oma_setting_integer.OmaSettingInteger()
+            return OmaSettingInteger()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingString".casefold():
-            from . import oma_setting_string
+            from .oma_setting_string import OmaSettingString
 
-            return oma_setting_string.OmaSettingString()
+            return OmaSettingString()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.omaSettingStringXml".casefold():
-            from . import oma_setting_string_xml
+            from .oma_setting_string_xml import OmaSettingStringXml
 
-            return oma_setting_string_xml.OmaSettingStringXml()
+            return OmaSettingStringXml()
         return OmaSetting()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -72,9 +78,21 @@ class OmaSetting(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import oma_setting_base64, oma_setting_boolean, oma_setting_date_time, oma_setting_floating_point, oma_setting_integer, oma_setting_string, oma_setting_string_xml
+        from .oma_setting_base64 import OmaSettingBase64
+        from .oma_setting_boolean import OmaSettingBoolean
+        from .oma_setting_date_time import OmaSettingDateTime
+        from .oma_setting_floating_point import OmaSettingFloatingPoint
+        from .oma_setting_integer import OmaSettingInteger
+        from .oma_setting_string import OmaSettingString
+        from .oma_setting_string_xml import OmaSettingStringXml
 
-        from . import oma_setting_base64, oma_setting_boolean, oma_setting_date_time, oma_setting_floating_point, oma_setting_integer, oma_setting_string, oma_setting_string_xml
+        from .oma_setting_base64 import OmaSettingBase64
+        from .oma_setting_boolean import OmaSettingBoolean
+        from .oma_setting_date_time import OmaSettingDateTime
+        from .oma_setting_floating_point import OmaSettingFloatingPoint
+        from .oma_setting_integer import OmaSettingInteger
+        from .oma_setting_string import OmaSettingString
+        from .oma_setting_string_xml import OmaSettingStringXml
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),

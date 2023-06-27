@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import teamwork_hosted_content
+    from .teamwork_hosted_content import TeamworkHostedContent
 
-from . import teamwork_hosted_content
+from .teamwork_hosted_content import TeamworkHostedContent
 
 @dataclass
-class ChatMessageHostedContent(teamwork_hosted_content.TeamworkHostedContent):
+class ChatMessageHostedContent(TeamworkHostedContent):
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -30,9 +30,9 @@ class ChatMessageHostedContent(teamwork_hosted_content.TeamworkHostedContent):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teamwork_hosted_content
+        from .teamwork_hosted_content import TeamworkHostedContent
 
-        from . import teamwork_hosted_content
+        from .teamwork_hosted_content import TeamworkHostedContent
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import device_and_app_management_role_assignment, device_and_app_management_role_assignment_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import device_and_app_management_role_assignment_item_request_builder
+    from ...models.device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
+    from ...models.device_and_app_management_role_assignment_collection_response import DeviceAndAppManagementRoleAssignmentCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.device_and_app_management_role_assignment_item_request_builder import DeviceAndAppManagementRoleAssignmentItemRequestBuilder
 
 class RoleAssignmentsRequestBuilder():
     """
@@ -37,71 +38,71 @@ class RoleAssignmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_device_and_app_management_role_assignment_id(self,device_and_app_management_role_assignment_id: str) -> device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder:
+    def by_device_and_app_management_role_assignment_id(self,device_and_app_management_role_assignment_id: str) -> DeviceAndAppManagementRoleAssignmentItemRequestBuilder:
         """
         Provides operations to manage the roleAssignments property of the microsoft.graph.deviceManagement entity.
         Args:
             device_and_app_management_role_assignment_id: Unique identifier of the item
-        Returns: device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder
+        Returns: DeviceAndAppManagementRoleAssignmentItemRequestBuilder
         """
         if not device_and_app_management_role_assignment_id:
             raise TypeError("device_and_app_management_role_assignment_id cannot be null.")
-        from .item import device_and_app_management_role_assignment_item_request_builder
+        from .item.device_and_app_management_role_assignment_item_request_builder import DeviceAndAppManagementRoleAssignmentItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceAndAppManagementRoleAssignment%2Did"] = device_and_app_management_role_assignment_id
-        return device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DeviceAndAppManagementRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[device_and_app_management_role_assignment_collection_response.DeviceAndAppManagementRoleAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceAndAppManagementRoleAssignmentCollectionResponse]:
         """
-        The Role Assignments.
+        List properties and relationships of the deviceAndAppManagementRoleAssignment objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_and_app_management_role_assignment_collection_response.DeviceAndAppManagementRoleAssignmentCollectionResponse]
+        Returns: Optional[DeviceAndAppManagementRoleAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device_and_app_management_role_assignment_collection_response
+        from ...models.device_and_app_management_role_assignment_collection_response import DeviceAndAppManagementRoleAssignmentCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, device_and_app_management_role_assignment_collection_response.DeviceAndAppManagementRoleAssignmentCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceAndAppManagementRoleAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment]:
+    async def post(self,body: Optional[DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceAndAppManagementRoleAssignment]:
         """
-        Create new navigation property to roleAssignments for deviceManagement
+        Create a new deviceAndAppManagementRoleAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment]
+        Returns: Optional[DeviceAndAppManagementRoleAssignment]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device_and_app_management_role_assignment
+        from ...models.device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
 
-        return await self.request_adapter.send_async(request_info, device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceAndAppManagementRoleAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Role Assignments.
+        List properties and relationships of the deviceAndAppManagementRoleAssignment objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class RoleAssignmentsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to roleAssignments for deviceManagement
+        Create a new deviceAndAppManagementRoleAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class RoleAssignmentsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RoleAssignmentsRequestBuilderGetQueryParameters():
         """
-        The Role Assignments.
+        List properties and relationships of the deviceAndAppManagementRoleAssignment objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

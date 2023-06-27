@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_app
+    from .mobile_app import MobileApp
 
-from . import mobile_app
+from .mobile_app import MobileApp
 
 @dataclass
-class MacOSOfficeSuiteApp(mobile_app.MobileApp):
+class MacOSOfficeSuiteApp(MobileApp):
     odata_type = "#microsoft.graph.macOSOfficeSuiteApp"
     
     @staticmethod
@@ -29,9 +29,9 @@ class MacOSOfficeSuiteApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app
+        from .mobile_app import MobileApp
 
-        from . import mobile_app
+        from .mobile_app import MobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

@@ -4,12 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, location, person_type, phone, scored_email_address, website
+    from .entity import Entity
+    from .location import Location
+    from .person_type import PersonType
+    from .phone import Phone
+    from .scored_email_address import ScoredEmailAddress
+    from .website import Website
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Person(entity.Entity):
+class Person(Entity):
     # The person's birthday.
     birthday: Optional[str] = None
     # The name of the person's company.
@@ -33,21 +38,21 @@ class Person(entity.Entity):
     # Free-form notes that the user has taken about this person.
     person_notes: Optional[str] = None
     # The type of person.
-    person_type: Optional[person_type.PersonType] = None
+    person_type: Optional[PersonType] = None
     # The person's phone numbers.
-    phones: Optional[List[phone.Phone]] = None
+    phones: Optional[List[Phone]] = None
     # The person's addresses.
-    postal_addresses: Optional[List[location.Location]] = None
+    postal_addresses: Optional[List[Location]] = None
     # The person's profession.
     profession: Optional[str] = None
     # The person's email addresses.
-    scored_email_addresses: Optional[List[scored_email_address.ScoredEmailAddress]] = None
+    scored_email_addresses: Optional[List[ScoredEmailAddress]] = None
     # The person's surname.
     surname: Optional[str] = None
     # The user principal name (UPN) of the person. The UPN is an Internet-style login name for the person based on the Internet standard RFC 822. By convention, this should map to the person's email name. The general format is alias@domain.
     user_principal_name: Optional[str] = None
     # The person's websites.
-    websites: Optional[List[website.Website]] = None
+    websites: Optional[List[Website]] = None
     # The phonetic Japanese name of the person's company.
     yomi_company: Optional[str] = None
     
@@ -68,9 +73,19 @@ class Person(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, location, person_type, phone, scored_email_address, website
+        from .entity import Entity
+        from .location import Location
+        from .person_type import PersonType
+        from .phone import Phone
+        from .scored_email_address import ScoredEmailAddress
+        from .website import Website
 
-        from . import entity, location, person_type, phone, scored_email_address, website
+        from .entity import Entity
+        from .location import Location
+        from .person_type import PersonType
+        from .phone import Phone
+        from .scored_email_address import ScoredEmailAddress
+        from .website import Website
 
         fields: Dict[str, Callable[[Any], None]] = {
             "birthday": lambda n : setattr(self, 'birthday', n.get_str_value()),
@@ -83,14 +98,14 @@ class Person(entity.Entity):
             "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
             "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
             "personNotes": lambda n : setattr(self, 'person_notes', n.get_str_value()),
-            "personType": lambda n : setattr(self, 'person_type', n.get_object_value(person_type.PersonType)),
-            "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(phone.Phone)),
-            "postalAddresses": lambda n : setattr(self, 'postal_addresses', n.get_collection_of_object_values(location.Location)),
+            "personType": lambda n : setattr(self, 'person_type', n.get_object_value(PersonType)),
+            "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(Phone)),
+            "postalAddresses": lambda n : setattr(self, 'postal_addresses', n.get_collection_of_object_values(Location)),
             "profession": lambda n : setattr(self, 'profession', n.get_str_value()),
-            "scoredEmailAddresses": lambda n : setattr(self, 'scored_email_addresses', n.get_collection_of_object_values(scored_email_address.ScoredEmailAddress)),
+            "scoredEmailAddresses": lambda n : setattr(self, 'scored_email_addresses', n.get_collection_of_object_values(ScoredEmailAddress)),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
-            "websites": lambda n : setattr(self, 'websites', n.get_collection_of_object_values(website.Website)),
+            "websites": lambda n : setattr(self, 'websites', n.get_collection_of_object_values(Website)),
             "yomiCompany": lambda n : setattr(self, 'yomi_company', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

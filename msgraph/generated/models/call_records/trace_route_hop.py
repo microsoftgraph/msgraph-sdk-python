@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -16,7 +16,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The time from when the trace route packet was sent from the client to this hop and back to the client, denoted in [ISO 8601][] format. For example, 1 second is denoted as PT1S, where P is the duration designator, T is the time designator, and S is the second designator.
-    round_trip_time: Optional[timedelta] = None
+    round_trip_time: Optional[datetime.timedelta] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TraceRouteHop:
@@ -54,7 +54,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         writer.write_int_value("hopCount", self.hop_count)
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_timedelta_value("roundTripTime", self.round_trip_time)
+        writer.write_timedelta_value()("roundTripTime", self.round_trip_time)
         writer.write_additional_data_value(self.additional_data)
     
 

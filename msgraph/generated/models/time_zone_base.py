@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import custom_time_zone
+    from .custom_time_zone import CustomTimeZone
 
 @dataclass
 class TimeZoneBase(AdditionalDataHolder, Parsable):
@@ -31,9 +31,9 @@ class TimeZoneBase(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.customTimeZone".casefold():
-            from . import custom_time_zone
+            from .custom_time_zone import CustomTimeZone
 
-            return custom_time_zone.CustomTimeZone()
+            return CustomTimeZone()
         return TimeZoneBase()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -41,9 +41,9 @@ class TimeZoneBase(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import custom_time_zone
+        from .custom_time_zone import CustomTimeZone
 
-        from . import custom_time_zone
+        from .custom_time_zone import CustomTimeZone
 
         fields: Dict[str, Callable[[Any], None]] = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.external_connectors import identity
-    from ........models.o_data_errors import o_data_error
+    from ........models.external_connectors.identity import Identity
+    from ........models.o_data_errors.o_data_error import ODataError
 
 class IdentityItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class IdentityItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[IdentityItemRequestBuilderGetRequestConfiguration] = None) -> Optional[identity.Identity]:
+    async def get(self,request_configuration: Optional[IdentityItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Identity]:
         """
         A member added to an externalGroup. You can add Azure Active Directory users, Azure Active Directory groups, or an externalGroup as members.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity.Identity]
+        Returns: Optional[Identity]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.external_connectors import identity
+        from ........models.external_connectors.identity import Identity
 
-        return await self.request_adapter.send_async(request_info, identity.Identity, error_mapping)
+        return await self.request_adapter.send_async(request_info, Identity, error_mapping)
     
-    async def patch(self,body: Optional[identity.Identity] = None, request_configuration: Optional[IdentityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[identity.Identity]:
+    async def patch(self,body: Optional[Identity] = None, request_configuration: Optional[IdentityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Identity]:
         """
         Update the navigation property members in external
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity.Identity]
+        Returns: Optional[Identity]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.external_connectors import identity
+        from ........models.external_connectors.identity import Identity
 
-        return await self.request_adapter.send_async(request_info, identity.Identity, error_mapping)
+        return await self.request_adapter.send_async(request_info, Identity, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class IdentityItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[identity.Identity] = None, request_configuration: Optional[IdentityItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Identity] = None, request_configuration: Optional[IdentityItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property members in external
         Args:

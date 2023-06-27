@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import enrollment_configuration_assignment
+    from .....models.enrollment_configuration_assignment import EnrollmentConfigurationAssignment
 
 @dataclass
 class AssignPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The enrollmentConfigurationAssignments property
-    enrollment_configuration_assignments: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]] = None
+    enrollment_configuration_assignments: Optional[List[EnrollmentConfigurationAssignment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignPostRequestBody:
@@ -31,12 +31,12 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import enrollment_configuration_assignment
+        from .....models.enrollment_configuration_assignment import EnrollmentConfigurationAssignment
 
-        from .....models import enrollment_configuration_assignment
+        from .....models.enrollment_configuration_assignment import EnrollmentConfigurationAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "enrollmentConfigurationAssignments": lambda n : setattr(self, 'enrollment_configuration_assignments', n.get_collection_of_object_values(enrollment_configuration_assignment.EnrollmentConfigurationAssignment)),
+            "enrollmentConfigurationAssignments": lambda n : setattr(self, 'enrollment_configuration_assignments', n.get_collection_of_object_values(EnrollmentConfigurationAssignment)),
         }
         return fields
     

@@ -1,22 +1,26 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, risky_service_principal_history_item, risk_detail, risk_level, risk_state
+    from .entity import Entity
+    from .risk_detail import RiskDetail
+    from .risk_level import RiskLevel
+    from .risk_state import RiskState
+    from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class RiskyServicePrincipal(entity.Entity):
+class RiskyServicePrincipal(Entity):
     # The globally unique identifier for the associated application (its appId property), if any.
     app_id: Optional[str] = None
     # The display name for the service principal.
     display_name: Optional[str] = None
     # Represents the risk history of Azure AD service principals.
-    history: Optional[List[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]] = None
+    history: Optional[List[RiskyServicePrincipalHistoryItem]] = None
     # true if the service principal account is enabled; otherwise, false.
     is_enabled: Optional[bool] = None
     # Indicates whether Azure AD is currently processing the service principal's risky state.
@@ -24,13 +28,13 @@ class RiskyServicePrincipal(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden,  unknownFutureValue, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
-    risk_detail: Optional[risk_detail.RiskDetail] = None
+    risk_detail: Optional[RiskDetail] = None
     # The date and time that the risk state was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2021 is 2021-01-01T00:00:00Z. Supports $filter (eq).
-    risk_last_updated_date_time: Optional[datetime] = None
+    risk_last_updated_date_time: Optional[datetime.datetime] = None
     # Level of the detected risky workload identity. The possible values are: low, medium, high, hidden, none, unknownFutureValue. Supports $filter (eq).
-    risk_level: Optional[risk_level.RiskLevel] = None
+    risk_level: Optional[RiskLevel] = None
     # State of the service principal's risk. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
-    risk_state: Optional[risk_state.RiskState] = None
+    risk_state: Optional[RiskState] = None
     # Identifies whether the service principal represents an Application, a ManagedIdentity, or a legacy application (socialIdp). This is set by Azure AD internally and is inherited from servicePrincipal.
     service_principal_type: Optional[str] = None
     
@@ -49,9 +53,9 @@ class RiskyServicePrincipal(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.riskyServicePrincipalHistoryItem".casefold():
-            from . import risky_service_principal_history_item
+            from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
 
-            return risky_service_principal_history_item.RiskyServicePrincipalHistoryItem()
+            return RiskyServicePrincipalHistoryItem()
         return RiskyServicePrincipal()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -59,20 +63,28 @@ class RiskyServicePrincipal(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, risky_service_principal_history_item, risk_detail, risk_level, risk_state
+        from .entity import Entity
+        from .risk_detail import RiskDetail
+        from .risk_level import RiskLevel
+        from .risk_state import RiskState
+        from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
 
-        from . import entity, risky_service_principal_history_item, risk_detail, risk_level, risk_state
+        from .entity import Entity
+        from .risk_detail import RiskDetail
+        from .risk_level import RiskLevel
+        from .risk_state import RiskState
+        from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(risky_service_principal_history_item.RiskyServicePrincipalHistoryItem)),
+            "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(RiskyServicePrincipalHistoryItem)),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "isProcessing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
-            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
             "riskLastUpdatedDateTime": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
-            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
-            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
+            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(RiskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
             "servicePrincipalType": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -94,7 +106,7 @@ class RiskyServicePrincipal(entity.Entity):
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_bool_value("isProcessing", self.is_processing)
         writer.write_enum_value("riskDetail", self.risk_detail)
-        writer.write_datetime_value("riskLastUpdatedDateTime", self.risk_last_updated_date_time)
+        writer.write_datetime_value()("riskLastUpdatedDateTime", self.risk_last_updated_date_time)
         writer.write_enum_value("riskLevel", self.risk_level)
         writer.write_enum_value("riskState", self.risk_state)
         writer.write_str_value("servicePrincipalType", self.service_principal_type)

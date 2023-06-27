@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import device_category
-    from ......models.o_data_errors import o_data_error
+    from ......models.device_category import DeviceCategory
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class DeviceCategoryRequestBuilder():
     """
@@ -44,62 +44,62 @@ class DeviceCategoryRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeviceCategoryRequestBuilderGetRequestConfiguration] = None) -> Optional[device_category.DeviceCategory]:
+    async def get(self,request_configuration: Optional[DeviceCategoryRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Device category
+        Read properties and relationships of the deviceCategory object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_category.DeviceCategory]
+        Returns: Optional[DeviceCategory]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import device_category
+        from ......models.device_category import DeviceCategory
 
-        return await self.request_adapter.send_async(request_info, device_category.DeviceCategory, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceCategory, error_mapping)
     
-    async def patch(self,body: Optional[device_category.DeviceCategory] = None, request_configuration: Optional[DeviceCategoryRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_category.DeviceCategory]:
+    async def patch(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[DeviceCategoryRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Update the navigation property deviceCategory in users
+        Update the properties of a deviceCategory object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_category.DeviceCategory]
+        Returns: Optional[DeviceCategory]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import device_category
+        from ......models.device_category import DeviceCategory
 
-        return await self.request_adapter.send_async(request_info, device_category.DeviceCategory, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceCategory, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceCategoryRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -119,7 +119,7 @@ class DeviceCategoryRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCategoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Device category
+        Read properties and relationships of the deviceCategory object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,9 +135,9 @@ class DeviceCategoryRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[device_category.DeviceCategory] = None, request_configuration: Optional[DeviceCategoryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[DeviceCategoryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceCategory in users
+        Update the properties of a deviceCategory object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class DeviceCategoryRequestBuilder():
     @dataclass
     class DeviceCategoryRequestBuilderGetQueryParameters():
         """
-        Device category
+        Read properties and relationships of the deviceCategory object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

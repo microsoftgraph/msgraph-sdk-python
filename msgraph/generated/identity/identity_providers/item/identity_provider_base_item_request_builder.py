@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import identity_provider_base
-    from ....models.o_data_errors import o_data_error
+    from ....models.identity_provider_base import IdentityProviderBase
+    from ....models.o_data_errors.o_data_error import ODataError
 
 class IdentityProviderBaseItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class IdentityProviderBaseItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_provider_base.IdentityProviderBase]:
+    async def get(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProviderBase]:
         """
         Get the properties and relationships of the specified identity provider configured in the tenant. Among the types of providers derived from identityProviderBase, you can currently get a socialIdentityProvider or a builtinIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently get a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity_provider_base.IdentityProviderBase]
+        Returns: Optional[IdentityProviderBase]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import identity_provider_base
+        from ....models.identity_provider_base import IdentityProviderBase
 
-        return await self.request_adapter.send_async(request_info, identity_provider_base.IdentityProviderBase, error_mapping)
+        return await self.request_adapter.send_async(request_info, IdentityProviderBase, error_mapping)
     
-    async def patch(self,body: Optional[identity_provider_base.IdentityProviderBase] = None, request_configuration: Optional[IdentityProviderBaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[identity_provider_base.IdentityProviderBase]:
+    async def patch(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[IdentityProviderBaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[IdentityProviderBase]:
         """
         Update the properties of the specified identity provider configured in the tenant. Among the types of providers derived from identityProviderBase, you can currently update a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently update a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[identity_provider_base.IdentityProviderBase]
+        Returns: Optional[IdentityProviderBase]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import identity_provider_base
+        from ....models.identity_provider_base import IdentityProviderBase
 
-        return await self.request_adapter.send_async(request_info, identity_provider_base.IdentityProviderBase, error_mapping)
+        return await self.request_adapter.send_async(request_info, IdentityProviderBase, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class IdentityProviderBaseItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[identity_provider_base.IdentityProviderBase] = None, request_configuration: Optional[IdentityProviderBaseItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[IdentityProviderBaseItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of the specified identity provider configured in the tenant. Among the types of providers derived from identityProviderBase, you can currently update a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently update a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:

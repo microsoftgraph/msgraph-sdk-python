@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import policy_base
+    from .policy_base import PolicyBase
 
-from . import policy_base
+from .policy_base import PolicyBase
 
 @dataclass
-class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
+class IdentitySecurityDefaultsEnforcementPolicy(PolicyBase):
     odata_type = "#microsoft.graph.identitySecurityDefaultsEnforcementPolicy"
     # If set to true, Azure Active Directory security defaults is enabled for the tenant.
     is_enabled: Optional[bool] = None
@@ -31,9 +31,9 @@ class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import policy_base
+        from .policy_base import PolicyBase
 
-        from . import policy_base
+        from .policy_base import PolicyBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),

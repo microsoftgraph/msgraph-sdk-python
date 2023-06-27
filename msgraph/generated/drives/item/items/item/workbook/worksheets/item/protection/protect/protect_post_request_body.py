@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import workbook_worksheet_protection_options
+    from ..........models.workbook_worksheet_protection_options import WorkbookWorksheetProtectionOptions
 
 @dataclass
 class ProtectPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class ProtectPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The options property
-    options: Optional[workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions] = None
+    options: Optional[WorkbookWorksheetProtectionOptions] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProtectPostRequestBody:
@@ -31,12 +31,12 @@ class ProtectPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ..........models import workbook_worksheet_protection_options
+        from ..........models.workbook_worksheet_protection_options import WorkbookWorksheetProtectionOptions
 
-        from ..........models import workbook_worksheet_protection_options
+        from ..........models.workbook_worksheet_protection_options import WorkbookWorksheetProtectionOptions
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "options": lambda n : setattr(self, 'options', n.get_object_value(workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions)),
+            "options": lambda n : setattr(self, 'options', n.get_object_value(WorkbookWorksheetProtectionOptions)),
         }
         return fields
     

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import verify_windows_enrollment_auto_discovery_with_domain_name_response
-    from ...models.o_data_errors import o_data_error
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .verify_windows_enrollment_auto_discovery_with_domain_name_response import VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse
 
 class VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder():
     """
@@ -37,27 +37,27 @@ class VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilderGetRequestConfiguration] = None) -> Optional[verify_windows_enrollment_auto_discovery_with_domain_name_response.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse]:
+    async def get(self,request_configuration: Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilderGetRequestConfiguration] = None) -> Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse]:
         """
         Invoke function verifyWindowsEnrollmentAutoDiscovery
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[verify_windows_enrollment_auto_discovery_with_domain_name_response.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse]
+        Returns: Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import verify_windows_enrollment_auto_discovery_with_domain_name_response
+        from .verify_windows_enrollment_auto_discovery_with_domain_name_response import VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse
 
-        return await self.request_adapter.send_async(request_info, verify_windows_enrollment_auto_discovery_with_domain_name_response.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

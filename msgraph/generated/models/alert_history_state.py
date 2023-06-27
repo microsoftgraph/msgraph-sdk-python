@@ -1,11 +1,12 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert_feedback, alert_status
+    from .alert_feedback import AlertFeedback
+    from .alert_status import AlertStatus
 
 @dataclass
 class AlertHistoryState(AdditionalDataHolder, Parsable):
@@ -19,13 +20,13 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     # The comments property
     comments: Optional[List[str]] = None
     # The feedback property
-    feedback: Optional[alert_feedback.AlertFeedback] = None
+    feedback: Optional[AlertFeedback] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status property
-    status: Optional[alert_status.AlertStatus] = None
+    status: Optional[AlertStatus] = None
     # The updatedDateTime property
-    updated_date_time: Optional[datetime] = None
+    updated_date_time: Optional[datetime.datetime] = None
     # The user property
     user: Optional[str] = None
     
@@ -46,17 +47,19 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_feedback, alert_status
+        from .alert_feedback import AlertFeedback
+        from .alert_status import AlertStatus
 
-        from . import alert_feedback, alert_status
+        from .alert_feedback import AlertFeedback
+        from .alert_status import AlertStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_primitive_values(str)),
-            "feedback": lambda n : setattr(self, 'feedback', n.get_enum_value(alert_feedback.AlertFeedback)),
+            "feedback": lambda n : setattr(self, 'feedback', n.get_enum_value(AlertFeedback)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(alert_status.AlertStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(AlertStatus)),
             "updatedDateTime": lambda n : setattr(self, 'updated_date_time', n.get_datetime_value()),
             "user": lambda n : setattr(self, 'user', n.get_str_value()),
         }
@@ -76,7 +79,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         writer.write_enum_value("feedback", self.feedback)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("status", self.status)
-        writer.write_datetime_value("updatedDateTime", self.updated_date_time)
+        writer.write_datetime_value()("updatedDateTime", self.updated_date_time)
         writer.write_str_value("user", self.user)
         writer.write_additional_data_value(self.additional_data)
     

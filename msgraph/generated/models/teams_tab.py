@@ -4,20 +4,22 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, teams_app, teams_tab_configuration
+    from .entity import Entity
+    from .teams_app import TeamsApp
+    from .teams_tab_configuration import TeamsTabConfiguration
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class TeamsTab(entity.Entity):
+class TeamsTab(Entity):
     # Container for custom settings applied to a tab. The tab is considered configured only once this property is set.
-    configuration: Optional[teams_tab_configuration.TeamsTabConfiguration] = None
+    configuration: Optional[TeamsTabConfiguration] = None
     # Name of the tab.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The application that is linked to the tab. This cannot be changed after tab creation.
-    teams_app: Optional[teams_app.TeamsApp] = None
+    teams_app: Optional[TeamsApp] = None
     # Deep link URL of the tab instance. Read only.
     web_url: Optional[str] = None
     
@@ -38,14 +40,18 @@ class TeamsTab(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, teams_app, teams_tab_configuration
+        from .entity import Entity
+        from .teams_app import TeamsApp
+        from .teams_tab_configuration import TeamsTabConfiguration
 
-        from . import entity, teams_app, teams_tab_configuration
+        from .entity import Entity
+        from .teams_app import TeamsApp
+        from .teams_tab_configuration import TeamsTabConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(teams_tab_configuration.TeamsTabConfiguration)),
+            "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(TeamsTabConfiguration)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(teams_app.TeamsApp)),
+            "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(TeamsApp)),
             "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

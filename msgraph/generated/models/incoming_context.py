@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set
+    from .identity_set import IdentitySet
 
 @dataclass
 class IncomingContext(AdditionalDataHolder, Parsable):
@@ -16,11 +16,11 @@ class IncomingContext(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The identity that the call is happening on behalf of.
-    on_behalf_of: Optional[identity_set.IdentitySet] = None
+    on_behalf_of: Optional[IdentitySet] = None
     # The ID of the participant that triggered the incoming call. Read-only.
     source_participant_id: Optional[str] = None
     # The identity that transferred the call.
-    transferor: Optional[identity_set.IdentitySet] = None
+    transferor: Optional[IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IncomingContext:
@@ -39,16 +39,16 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set
+        from .identity_set import IdentitySet
 
-        from . import identity_set
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "observedParticipantId": lambda n : setattr(self, 'observed_participant_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "onBehalfOf": lambda n : setattr(self, 'on_behalf_of', n.get_object_value(identity_set.IdentitySet)),
+            "onBehalfOf": lambda n : setattr(self, 'on_behalf_of', n.get_object_value(IdentitySet)),
             "sourceParticipantId": lambda n : setattr(self, 'source_participant_id', n.get_str_value()),
-            "transferor": lambda n : setattr(self, 'transferor', n.get_object_value(identity_set.IdentitySet)),
+            "transferor": lambda n : setattr(self, 'transferor', n.get_object_value(IdentitySet)),
         }
         return fields
     

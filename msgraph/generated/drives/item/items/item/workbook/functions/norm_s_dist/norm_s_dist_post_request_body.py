@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class Norm_S_DistPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class Norm_S_DistPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The cumulative property
-    cumulative: Optional[json.Json] = None
+    cumulative: Optional[Json] = None
     # The z property
-    z: Optional[json.Json] = None
+    z: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Norm_S_DistPostRequestBody:
@@ -33,13 +33,13 @@ class Norm_S_DistPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cumulative": lambda n : setattr(self, 'cumulative', n.get_object_value(json.Json)),
-            "z": lambda n : setattr(self, 'z', n.get_object_value(json.Json)),
+            "cumulative": lambda n : setattr(self, 'cumulative', n.get_object_value(Json)),
+            "z": lambda n : setattr(self, 'z', n.get_object_value(Json)),
         }
         return fields
     

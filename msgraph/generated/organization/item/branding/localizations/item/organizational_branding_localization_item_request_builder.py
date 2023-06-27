@@ -10,15 +10,15 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import organizational_branding_localization
-    from ......models.o_data_errors import o_data_error
-    from .background_image import background_image_request_builder
-    from .banner_logo import banner_logo_request_builder
-    from .custom_c_s_s import custom_c_s_s_request_builder
-    from .favicon import favicon_request_builder
-    from .header_logo import header_logo_request_builder
-    from .square_logo import square_logo_request_builder
-    from .square_logo_dark import square_logo_dark_request_builder
+    from ......models.o_data_errors.o_data_error import ODataError
+    from ......models.organizational_branding_localization import OrganizationalBrandingLocalization
+    from .background_image.background_image_request_builder import BackgroundImageRequestBuilder
+    from .banner_logo.banner_logo_request_builder import BannerLogoRequestBuilder
+    from .custom_c_s_s.custom_c_s_s_request_builder import CustomCSSRequestBuilder
+    from .favicon.favicon_request_builder import FaviconRequestBuilder
+    from .header_logo.header_logo_request_builder import HeaderLogoRequestBuilder
+    from .square_logo.square_logo_request_builder import SquareLogoRequestBuilder
+    from .square_logo_dark.square_logo_dark_request_builder import SquareLogoDarkRequestBuilder
 
 class OrganizationalBrandingLocalizationItemRequestBuilder():
     """
@@ -51,62 +51,62 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[organizational_branding_localization.OrganizationalBrandingLocalization]:
+    async def get(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalization]:
         """
         Read the properties and relationships of an organizationalBrandingLocalization object. To retrieve a localization branding object, specify the value of **id** in the URL.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[organizational_branding_localization.OrganizationalBrandingLocalization]
+        Returns: Optional[OrganizationalBrandingLocalization]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import organizational_branding_localization
+        from ......models.organizational_branding_localization import OrganizationalBrandingLocalization
 
-        return await self.request_adapter.send_async(request_info, organizational_branding_localization.OrganizationalBrandingLocalization, error_mapping)
+        return await self.request_adapter.send_async(request_info, OrganizationalBrandingLocalization, error_mapping)
     
-    async def patch(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[organizational_branding_localization.OrganizationalBrandingLocalization]:
+    async def patch(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalization]:
         """
         Update the properties of an organizationalBrandingLocalization object for a specific localization.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[organizational_branding_localization.OrganizationalBrandingLocalization]
+        Returns: Optional[OrganizationalBrandingLocalization]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import organizational_branding_localization
+        from ......models.organizational_branding_localization import OrganizationalBrandingLocalization
 
-        return await self.request_adapter.send_async(request_info, organizational_branding_localization.OrganizationalBrandingLocalization, error_mapping)
+        return await self.request_adapter.send_async(request_info, OrganizationalBrandingLocalization, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -142,7 +142,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an organizationalBrandingLocalization object for a specific localization.
         Args:
@@ -164,67 +164,67 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         return request_info
     
     @property
-    def background_image(self) -> background_image_request_builder.BackgroundImageRequestBuilder:
+    def background_image(self) -> BackgroundImageRequestBuilder:
         """
         Provides operations to manage the media for the organization entity.
         """
-        from .background_image import background_image_request_builder
+        from .background_image.background_image_request_builder import BackgroundImageRequestBuilder
 
-        return background_image_request_builder.BackgroundImageRequestBuilder(self.request_adapter, self.path_parameters)
+        return BackgroundImageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def banner_logo(self) -> banner_logo_request_builder.BannerLogoRequestBuilder:
+    def banner_logo(self) -> BannerLogoRequestBuilder:
         """
         Provides operations to manage the media for the organization entity.
         """
-        from .banner_logo import banner_logo_request_builder
+        from .banner_logo.banner_logo_request_builder import BannerLogoRequestBuilder
 
-        return banner_logo_request_builder.BannerLogoRequestBuilder(self.request_adapter, self.path_parameters)
+        return BannerLogoRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def custom_c_s_s(self) -> custom_c_s_s_request_builder.CustomCSSRequestBuilder:
+    def custom_c_s_s(self) -> CustomCSSRequestBuilder:
         """
         Provides operations to manage the media for the organization entity.
         """
-        from .custom_c_s_s import custom_c_s_s_request_builder
+        from .custom_c_s_s.custom_c_s_s_request_builder import CustomCSSRequestBuilder
 
-        return custom_c_s_s_request_builder.CustomCSSRequestBuilder(self.request_adapter, self.path_parameters)
+        return CustomCSSRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def favicon(self) -> favicon_request_builder.FaviconRequestBuilder:
+    def favicon(self) -> FaviconRequestBuilder:
         """
         Provides operations to manage the media for the organization entity.
         """
-        from .favicon import favicon_request_builder
+        from .favicon.favicon_request_builder import FaviconRequestBuilder
 
-        return favicon_request_builder.FaviconRequestBuilder(self.request_adapter, self.path_parameters)
+        return FaviconRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def header_logo(self) -> header_logo_request_builder.HeaderLogoRequestBuilder:
+    def header_logo(self) -> HeaderLogoRequestBuilder:
         """
         Provides operations to manage the media for the organization entity.
         """
-        from .header_logo import header_logo_request_builder
+        from .header_logo.header_logo_request_builder import HeaderLogoRequestBuilder
 
-        return header_logo_request_builder.HeaderLogoRequestBuilder(self.request_adapter, self.path_parameters)
+        return HeaderLogoRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def square_logo(self) -> square_logo_request_builder.SquareLogoRequestBuilder:
+    def square_logo(self) -> SquareLogoRequestBuilder:
         """
         Provides operations to manage the media for the organization entity.
         """
-        from .square_logo import square_logo_request_builder
+        from .square_logo.square_logo_request_builder import SquareLogoRequestBuilder
 
-        return square_logo_request_builder.SquareLogoRequestBuilder(self.request_adapter, self.path_parameters)
+        return SquareLogoRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def square_logo_dark(self) -> square_logo_dark_request_builder.SquareLogoDarkRequestBuilder:
+    def square_logo_dark(self) -> SquareLogoDarkRequestBuilder:
         """
         Provides operations to manage the media for the organization entity.
         """
-        from .square_logo_dark import square_logo_dark_request_builder
+        from .square_logo_dark.square_logo_dark_request_builder import SquareLogoDarkRequestBuilder
 
-        return square_logo_dark_request_builder.SquareLogoDarkRequestBuilder(self.request_adapter, self.path_parameters)
+        return SquareLogoDarkRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration():

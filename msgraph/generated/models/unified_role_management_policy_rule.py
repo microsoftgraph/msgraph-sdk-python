@@ -4,16 +4,22 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, unified_role_management_policy_approval_rule, unified_role_management_policy_authentication_context_rule, unified_role_management_policy_enablement_rule, unified_role_management_policy_expiration_rule, unified_role_management_policy_notification_rule, unified_role_management_policy_rule_target
+    from .entity import Entity
+    from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
+    from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+    from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
+    from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
+    from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
+    from .unified_role_management_policy_rule_target import UnifiedRoleManagementPolicyRuleTarget
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class UnifiedRoleManagementPolicyRule(entity.Entity):
+class UnifiedRoleManagementPolicyRule(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Defines details of scope that's targeted by role management policy rule. The details can include the principal type, the role assignment type, and actions affecting a role. Supports $filter (eq, ne).
-    target: Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget] = None
+    target: Optional[UnifiedRoleManagementPolicyRuleTarget] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyRule:
@@ -30,25 +36,25 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyApprovalRule".casefold():
-            from . import unified_role_management_policy_approval_rule
+            from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
 
-            return unified_role_management_policy_approval_rule.UnifiedRoleManagementPolicyApprovalRule()
+            return UnifiedRoleManagementPolicyApprovalRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyAuthenticationContextRule".casefold():
-            from . import unified_role_management_policy_authentication_context_rule
+            from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
 
-            return unified_role_management_policy_authentication_context_rule.UnifiedRoleManagementPolicyAuthenticationContextRule()
+            return UnifiedRoleManagementPolicyAuthenticationContextRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyEnablementRule".casefold():
-            from . import unified_role_management_policy_enablement_rule
+            from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
 
-            return unified_role_management_policy_enablement_rule.UnifiedRoleManagementPolicyEnablementRule()
+            return UnifiedRoleManagementPolicyEnablementRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyExpirationRule".casefold():
-            from . import unified_role_management_policy_expiration_rule
+            from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
 
-            return unified_role_management_policy_expiration_rule.UnifiedRoleManagementPolicyExpirationRule()
+            return UnifiedRoleManagementPolicyExpirationRule()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleManagementPolicyNotificationRule".casefold():
-            from . import unified_role_management_policy_notification_rule
+            from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
 
-            return unified_role_management_policy_notification_rule.UnifiedRoleManagementPolicyNotificationRule()
+            return UnifiedRoleManagementPolicyNotificationRule()
         return UnifiedRoleManagementPolicyRule()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -56,12 +62,24 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, unified_role_management_policy_approval_rule, unified_role_management_policy_authentication_context_rule, unified_role_management_policy_enablement_rule, unified_role_management_policy_expiration_rule, unified_role_management_policy_notification_rule, unified_role_management_policy_rule_target
+        from .entity import Entity
+        from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
+        from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+        from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
+        from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
+        from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
+        from .unified_role_management_policy_rule_target import UnifiedRoleManagementPolicyRuleTarget
 
-        from . import entity, unified_role_management_policy_approval_rule, unified_role_management_policy_authentication_context_rule, unified_role_management_policy_enablement_rule, unified_role_management_policy_expiration_rule, unified_role_management_policy_notification_rule, unified_role_management_policy_rule_target
+        from .entity import Entity
+        from .unified_role_management_policy_approval_rule import UnifiedRoleManagementPolicyApprovalRule
+        from .unified_role_management_policy_authentication_context_rule import UnifiedRoleManagementPolicyAuthenticationContextRule
+        from .unified_role_management_policy_enablement_rule import UnifiedRoleManagementPolicyEnablementRule
+        from .unified_role_management_policy_expiration_rule import UnifiedRoleManagementPolicyExpirationRule
+        from .unified_role_management_policy_notification_rule import UnifiedRoleManagementPolicyNotificationRule
+        from .unified_role_management_policy_rule_target import UnifiedRoleManagementPolicyRuleTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "target": lambda n : setattr(self, 'target', n.get_object_value(unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget)),
+            "target": lambda n : setattr(self, 'target', n.get_object_value(UnifiedRoleManagementPolicyRuleTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

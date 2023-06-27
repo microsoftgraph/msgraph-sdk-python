@@ -4,17 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_review_scope
+    from .access_review_scope import AccessReviewScope
 
-from . import access_review_scope
+from .access_review_scope import AccessReviewScope
 
 @dataclass
-class PrincipalResourceMembershipsScope(access_review_scope.AccessReviewScope):
+class PrincipalResourceMembershipsScope(AccessReviewScope):
     odata_type = "#microsoft.graph.principalResourceMembershipsScope"
     # Defines the scopes of the principals whose access to resources are reviewed in the access review.
-    principal_scopes: Optional[List[access_review_scope.AccessReviewScope]] = None
+    principal_scopes: Optional[List[AccessReviewScope]] = None
     # Defines the scopes of the resources for which access is reviewed.
-    resource_scopes: Optional[List[access_review_scope.AccessReviewScope]] = None
+    resource_scopes: Optional[List[AccessReviewScope]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrincipalResourceMembershipsScope:
@@ -33,13 +33,13 @@ class PrincipalResourceMembershipsScope(access_review_scope.AccessReviewScope):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_scope
+        from .access_review_scope import AccessReviewScope
 
-        from . import access_review_scope
+        from .access_review_scope import AccessReviewScope
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "principalScopes": lambda n : setattr(self, 'principal_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
-            "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
+            "principalScopes": lambda n : setattr(self, 'principal_scopes', n.get_collection_of_object_values(AccessReviewScope)),
+            "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(AccessReviewScope)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

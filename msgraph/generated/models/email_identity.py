@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity
+    from .identity import Identity
 
-from . import identity
+from .identity import Identity
 
 @dataclass
-class EmailIdentity(identity.Identity):
+class EmailIdentity(Identity):
     odata_type = "#microsoft.graph.emailIdentity"
     # Email address of the user.
     email: Optional[str] = None
@@ -31,9 +31,9 @@ class EmailIdentity(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity
+        from .identity import Identity
 
-        from . import identity
+        from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),

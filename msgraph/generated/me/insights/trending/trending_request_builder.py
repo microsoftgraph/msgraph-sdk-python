@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import trending, trending_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import trending_item_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.trending import Trending
+    from ....models.trending_collection_response import TrendingCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.trending_item_request_builder import TrendingItemRequestBuilder
 
 class TrendingRequestBuilder():
     """
@@ -37,67 +38,67 @@ class TrendingRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_trending_id(self,trending_id: str) -> trending_item_request_builder.TrendingItemRequestBuilder:
+    def by_trending_id(self,trending_id: str) -> TrendingItemRequestBuilder:
         """
         Provides operations to manage the trending property of the microsoft.graph.officeGraphInsights entity.
         Args:
             trending_id: Unique identifier of the item
-        Returns: trending_item_request_builder.TrendingItemRequestBuilder
+        Returns: TrendingItemRequestBuilder
         """
         if not trending_id:
             raise TypeError("trending_id cannot be null.")
-        from .item import trending_item_request_builder
+        from .item.trending_item_request_builder import TrendingItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["trending%2Did"] = trending_id
-        return trending_item_request_builder.TrendingItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return TrendingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TrendingRequestBuilderGetRequestConfiguration] = None) -> Optional[trending_collection_response.TrendingCollectionResponse]:
+    async def get(self,request_configuration: Optional[TrendingRequestBuilderGetRequestConfiguration] = None) -> Optional[TrendingCollectionResponse]:
         """
         Calculated insight that includes a list of documents trending around the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[trending_collection_response.TrendingCollectionResponse]
+        Returns: Optional[TrendingCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import trending_collection_response
+        from ....models.trending_collection_response import TrendingCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, trending_collection_response.TrendingCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TrendingCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[trending.Trending] = None, request_configuration: Optional[TrendingRequestBuilderPostRequestConfiguration] = None) -> Optional[trending.Trending]:
+    async def post(self,body: Optional[Trending] = None, request_configuration: Optional[TrendingRequestBuilderPostRequestConfiguration] = None) -> Optional[Trending]:
         """
         Create new navigation property to trending for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[trending.Trending]
+        Returns: Optional[Trending]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import trending
+        from ....models.trending import Trending
 
-        return await self.request_adapter.send_async(request_info, trending.Trending, error_mapping)
+        return await self.request_adapter.send_async(request_info, Trending, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TrendingRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class TrendingRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[trending.Trending] = None, request_configuration: Optional[TrendingRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Trending] = None, request_configuration: Optional[TrendingRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to trending for me
         Args:
@@ -139,13 +140,13 @@ class TrendingRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TrendingRequestBuilderGetQueryParameters():

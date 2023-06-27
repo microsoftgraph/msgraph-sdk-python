@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import password_authentication_method, password_authentication_method_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import password_authentication_method_item_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.password_authentication_method import PasswordAuthenticationMethod
+    from ....models.password_authentication_method_collection_response import PasswordAuthenticationMethodCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.password_authentication_method_item_request_builder import PasswordAuthenticationMethodItemRequestBuilder
 
 class PasswordMethodsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class PasswordMethodsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_password_authentication_method_id(self,password_authentication_method_id: str) -> password_authentication_method_item_request_builder.PasswordAuthenticationMethodItemRequestBuilder:
+    def by_password_authentication_method_id(self,password_authentication_method_id: str) -> PasswordAuthenticationMethodItemRequestBuilder:
         """
         Provides operations to manage the passwordMethods property of the microsoft.graph.authentication entity.
         Args:
             password_authentication_method_id: Unique identifier of the item
-        Returns: password_authentication_method_item_request_builder.PasswordAuthenticationMethodItemRequestBuilder
+        Returns: PasswordAuthenticationMethodItemRequestBuilder
         """
         if not password_authentication_method_id:
             raise TypeError("password_authentication_method_id cannot be null.")
-        from .item import password_authentication_method_item_request_builder
+        from .item.password_authentication_method_item_request_builder import PasswordAuthenticationMethodItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["passwordAuthenticationMethod%2Did"] = password_authentication_method_id
-        return password_authentication_method_item_request_builder.PasswordAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return PasswordAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[PasswordMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[password_authentication_method_collection_response.PasswordAuthenticationMethodCollectionResponse]:
+    async def get(self,request_configuration: Optional[PasswordMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[PasswordAuthenticationMethodCollectionResponse]:
         """
         Retrieve a list of the passwords registered to a user, represented by a passwordAuthenticationMethod object. This will return exactly one object, as a user can have exactly one password. For security, the password itself will never be returned in the object and the **password** property is always `null`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[password_authentication_method_collection_response.PasswordAuthenticationMethodCollectionResponse]
+        Returns: Optional[PasswordAuthenticationMethodCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import password_authentication_method_collection_response
+        from ....models.password_authentication_method_collection_response import PasswordAuthenticationMethodCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, password_authentication_method_collection_response.PasswordAuthenticationMethodCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PasswordAuthenticationMethodCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[password_authentication_method.PasswordAuthenticationMethod] = None, request_configuration: Optional[PasswordMethodsRequestBuilderPostRequestConfiguration] = None) -> Optional[password_authentication_method.PasswordAuthenticationMethod]:
+    async def post(self,body: Optional[PasswordAuthenticationMethod] = None, request_configuration: Optional[PasswordMethodsRequestBuilderPostRequestConfiguration] = None) -> Optional[PasswordAuthenticationMethod]:
         """
         Create new navigation property to passwordMethods for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[password_authentication_method.PasswordAuthenticationMethod]
+        Returns: Optional[PasswordAuthenticationMethod]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import password_authentication_method
+        from ....models.password_authentication_method import PasswordAuthenticationMethod
 
-        return await self.request_adapter.send_async(request_info, password_authentication_method.PasswordAuthenticationMethod, error_mapping)
+        return await self.request_adapter.send_async(request_info, PasswordAuthenticationMethod, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PasswordMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class PasswordMethodsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[password_authentication_method.PasswordAuthenticationMethod] = None, request_configuration: Optional[PasswordMethodsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PasswordAuthenticationMethod] = None, request_configuration: Optional[PasswordMethodsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to passwordMethods for me
         Args:
@@ -139,13 +140,13 @@ class PasswordMethodsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PasswordMethodsRequestBuilderGetQueryParameters():

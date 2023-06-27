@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import domain_dns_record
+    from .domain_dns_record import DomainDnsRecord
 
-from . import domain_dns_record
+from .domain_dns_record import DomainDnsRecord
 
 @dataclass
-class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
+class DomainDnsTxtRecord(DomainDnsRecord):
     # The OdataType property
     odata_type: Optional[str] = None
     # Value used when configuring the text property at the DNS host.
@@ -32,9 +32,9 @@ class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import domain_dns_record
+        from .domain_dns_record import DomainDnsRecord
 
-        from . import domain_dns_record
+        from .domain_dns_record import DomainDnsRecord
 
         fields: Dict[str, Callable[[Any], None]] = {
             "text": lambda n : setattr(self, 'text', n.get_str_value()),

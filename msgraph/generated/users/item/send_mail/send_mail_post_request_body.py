@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import message
+    from ....models.message import Message
 
 @dataclass
 class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The Message property
-    message: Optional[message.Message] = None
+    message: Optional[Message] = None
     # The SaveToSentItems property
     save_to_sent_items: Optional[bool] = None
     
@@ -33,12 +33,12 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import message
+        from ....models.message import Message
 
-        from ....models import message
+        from ....models.message import Message
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "Message": lambda n : setattr(self, 'message', n.get_object_value(message.Message)),
+            "Message": lambda n : setattr(self, 'message', n.get_object_value(Message)),
             "SaveToSentItems": lambda n : setattr(self, 'save_to_sent_items', n.get_bool_value()),
         }
         return fields

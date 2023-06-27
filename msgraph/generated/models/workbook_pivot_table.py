@@ -4,18 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_worksheet
+    from .entity import Entity
+    from .workbook_worksheet import WorkbookWorksheet
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookPivotTable(entity.Entity):
+class WorkbookPivotTable(Entity):
     # Name of the PivotTable.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The worksheet containing the current PivotTable. Read-only.
-    worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
+    worksheet: Optional[WorkbookWorksheet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookPivotTable:
@@ -34,13 +35,15 @@ class WorkbookPivotTable(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_worksheet
+        from .entity import Entity
+        from .workbook_worksheet import WorkbookWorksheet
 
-        from . import entity, workbook_worksheet
+        from .entity import Entity
+        from .workbook_worksheet import WorkbookWorksheet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(workbook_worksheet.WorkbookWorksheet)),
+            "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(WorkbookWorksheet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

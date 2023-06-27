@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
 @dataclass
 class SearchHit(AdditionalDataHolder, Parsable):
@@ -15,14 +15,14 @@ class SearchHit(AdditionalDataHolder, Parsable):
     content_source: Optional[str] = None
     # The internal identifier for the item. The format of the identifier varies based on the entity type. For details, see hitId format.
     hit_id: Optional[str] = None
-    # Indicates whether the current result is collapsed when the collapseProperties property is used.
+    # Indicates whether the current result is collapsed when the collapseProperties property in the searchRequest is used.
     is_collapsed: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The rank or the order of the result.
     rank: Optional[int] = None
     # The resource property
-    resource: Optional[entity.Entity] = None
+    resource: Optional[Entity] = None
     # ID of the result template used to render the search result. This ID must map to a display layout in the resultTemplates dictionary that is also included in the searchResponse.
     result_template_id: Optional[str] = None
     # A summary of the result, if a summary is available.
@@ -45,9 +45,9 @@ class SearchHit(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "contentSource": lambda n : setattr(self, 'content_source', n.get_str_value()),
@@ -55,7 +55,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
             "isCollapsed": lambda n : setattr(self, 'is_collapsed', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rank": lambda n : setattr(self, 'rank', n.get_int_value()),
-            "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
+            "resource": lambda n : setattr(self, 'resource', n.get_object_value(Entity)),
             "resultTemplateId": lambda n : setattr(self, 'result_template_id', n.get_str_value()),
             "summary": lambda n : setattr(self, 'summary', n.get_str_value()),
         }

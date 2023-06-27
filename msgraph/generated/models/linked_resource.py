@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class LinkedResource(entity.Entity):
+class LinkedResource(Entity):
     # The app name of the source that sends the linkedResource.
     application_name: Optional[str] = None
     # The title of the linkedResource.
@@ -38,9 +38,9 @@ class LinkedResource(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),

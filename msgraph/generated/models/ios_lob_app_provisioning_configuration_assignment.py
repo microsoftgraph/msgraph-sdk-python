@@ -4,16 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_and_app_management_assignment_target, entity
+    from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class IosLobAppProvisioningConfigurationAssignment(entity.Entity):
+class IosLobAppProvisioningConfigurationAssignment(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The target group assignment defined by the admin.
-    target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None
+    target: Optional[DeviceAndAppManagementAssignmentTarget] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosLobAppProvisioningConfigurationAssignment:
@@ -32,12 +33,14 @@ class IosLobAppProvisioningConfigurationAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_assignment_target, entity
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+        from .entity import Entity
 
-        from . import device_and_app_management_assignment_target, entity
+        from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "target": lambda n : setattr(self, 'target', n.get_object_value(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget)),
+            "target": lambda n : setattr(self, 'target', n.get_object_value(DeviceAndAppManagementAssignmentTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import site_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import site_item_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.site_collection_response import SiteCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.site_item_request_builder import SiteItemRequestBuilder
 
 class FollowedSitesRequestBuilder():
     """
@@ -37,42 +37,42 @@ class FollowedSitesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_site_id(self,site_id: str) -> site_item_request_builder.SiteItemRequestBuilder:
+    def by_site_id(self,site_id: str) -> SiteItemRequestBuilder:
         """
         Provides operations to manage the followedSites property of the microsoft.graph.user entity.
         Args:
             site_id: Unique identifier of the item
-        Returns: site_item_request_builder.SiteItemRequestBuilder
+        Returns: SiteItemRequestBuilder
         """
         if not site_id:
             raise TypeError("site_id cannot be null.")
-        from .item import site_item_request_builder
+        from .item.site_item_request_builder import SiteItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["site%2Did"] = site_id
-        return site_item_request_builder.SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[FollowedSitesRequestBuilderGetRequestConfiguration] = None) -> Optional[site_collection_response.SiteCollectionResponse]:
+    async def get(self,request_configuration: Optional[FollowedSitesRequestBuilderGetRequestConfiguration] = None) -> Optional[SiteCollectionResponse]:
         """
         List the sites that have been followed by the signed in user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[site_collection_response.SiteCollectionResponse]
+        Returns: Optional[SiteCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import site_collection_response
+        from ....models.site_collection_response import SiteCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, site_collection_response.SiteCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SiteCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[FollowedSitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class FollowedSitesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class FollowedSitesRequestBuilderGetQueryParameters():

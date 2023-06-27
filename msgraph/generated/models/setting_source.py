@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import setting_source_type
+    from .setting_source_type import SettingSourceType
 
 @dataclass
 class SettingSource(AdditionalDataHolder, Parsable):
@@ -18,7 +18,7 @@ class SettingSource(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The sourceType property
-    source_type: Optional[setting_source_type.SettingSourceType] = None
+    source_type: Optional[SettingSourceType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SettingSource:
@@ -37,15 +37,15 @@ class SettingSource(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import setting_source_type
+        from .setting_source_type import SettingSourceType
 
-        from . import setting_source_type
+        from .setting_source_type import SettingSourceType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sourceType": lambda n : setattr(self, 'source_type', n.get_enum_value(setting_source_type.SettingSourceType)),
+            "sourceType": lambda n : setattr(self, 'source_type', n.get_enum_value(SettingSourceType)),
         }
         return fields
     

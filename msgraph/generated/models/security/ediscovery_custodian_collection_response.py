@@ -4,15 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ediscovery_custodian
-    from .. import base_collection_pagination_count_response
+    from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .ediscovery_custodian import EdiscoveryCustodian
 
-from .. import base_collection_pagination_count_response
+from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class EdiscoveryCustodianCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class EdiscoveryCustodianCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[ediscovery_custodian.EdiscoveryCustodian]] = None
+    value: Optional[List[EdiscoveryCustodian]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryCustodianCollectionResponse:
@@ -31,14 +31,14 @@ class EdiscoveryCustodianCollectionResponse(base_collection_pagination_count_res
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ediscovery_custodian
-        from .. import base_collection_pagination_count_response
+        from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .ediscovery_custodian import EdiscoveryCustodian
 
-        from . import ediscovery_custodian
-        from .. import base_collection_pagination_count_response
+        from ..base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .ediscovery_custodian import EdiscoveryCustodian
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(ediscovery_custodian.EdiscoveryCustodian)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(EdiscoveryCustodian)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

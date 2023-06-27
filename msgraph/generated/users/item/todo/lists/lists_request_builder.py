@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import todo_task_list, todo_task_list_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .delta import delta_request_builder
-    from .item import todo_task_list_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.todo_task_list import TodoTaskList
+    from .....models.todo_task_list_collection_response import TodoTaskListCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
+    from .item.todo_task_list_item_request_builder import TodoTaskListItemRequestBuilder
 
 class ListsRequestBuilder():
     """
@@ -38,67 +39,67 @@ class ListsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_todo_task_list_id(self,todo_task_list_id: str) -> todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder:
+    def by_todo_task_list_id(self,todo_task_list_id: str) -> TodoTaskListItemRequestBuilder:
         """
         Provides operations to manage the lists property of the microsoft.graph.todo entity.
         Args:
             todo_task_list_id: Unique identifier of the item
-        Returns: todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder
+        Returns: TodoTaskListItemRequestBuilder
         """
         if not todo_task_list_id:
             raise TypeError("todo_task_list_id cannot be null.")
-        from .item import todo_task_list_item_request_builder
+        from .item.todo_task_list_item_request_builder import TodoTaskListItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["todoTaskList%2Did"] = todo_task_list_id
-        return todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return TodoTaskListItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> Optional[todo_task_list_collection_response.TodoTaskListCollectionResponse]:
+    async def get(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> Optional[TodoTaskListCollectionResponse]:
         """
         Get a list of the todoTaskList objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[todo_task_list_collection_response.TodoTaskListCollectionResponse]
+        Returns: Optional[TodoTaskListCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import todo_task_list_collection_response
+        from .....models.todo_task_list_collection_response import TodoTaskListCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, todo_task_list_collection_response.TodoTaskListCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TodoTaskListCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[todo_task_list.TodoTaskList] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> Optional[todo_task_list.TodoTaskList]:
+    async def post(self,body: Optional[TodoTaskList] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> Optional[TodoTaskList]:
         """
         Create a new lists object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[todo_task_list.TodoTaskList]
+        Returns: Optional[TodoTaskList]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import todo_task_list
+        from .....models.todo_task_list import TodoTaskList
 
-        return await self.request_adapter.send_async(request_info, todo_task_list.TodoTaskList, error_mapping)
+        return await self.request_adapter.send_async(request_info, TodoTaskList, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -118,7 +119,7 @@ class ListsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[todo_task_list.TodoTaskList] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TodoTaskList] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new lists object.
         Args:
@@ -140,22 +141,22 @@ class ListsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def delta(self) -> DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        from .delta import delta_request_builder
+        from .delta.delta_request_builder import DeltaRequestBuilder
 
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ListsRequestBuilderGetQueryParameters():

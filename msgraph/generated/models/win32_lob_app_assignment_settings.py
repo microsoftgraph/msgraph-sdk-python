@@ -4,21 +4,25 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_app_assignment_settings, mobile_app_install_time_settings, win32_lob_app_delivery_optimization_priority, win32_lob_app_notification, win32_lob_app_restart_settings
+    from .mobile_app_assignment_settings import MobileAppAssignmentSettings
+    from .mobile_app_install_time_settings import MobileAppInstallTimeSettings
+    from .win32_lob_app_delivery_optimization_priority import Win32LobAppDeliveryOptimizationPriority
+    from .win32_lob_app_notification import Win32LobAppNotification
+    from .win32_lob_app_restart_settings import Win32LobAppRestartSettings
 
-from . import mobile_app_assignment_settings
+from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
+class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings):
     odata_type = "#microsoft.graph.win32LobAppAssignmentSettings"
     # Contains value for delivery optimization priority.
-    delivery_optimization_priority: Optional[win32_lob_app_delivery_optimization_priority.Win32LobAppDeliveryOptimizationPriority] = None
+    delivery_optimization_priority: Optional[Win32LobAppDeliveryOptimizationPriority] = None
     # The install time settings to apply for this app assignment.
-    install_time_settings: Optional[mobile_app_install_time_settings.MobileAppInstallTimeSettings] = None
+    install_time_settings: Optional[MobileAppInstallTimeSettings] = None
     # Contains value for notification status.
-    notifications: Optional[win32_lob_app_notification.Win32LobAppNotification] = None
+    notifications: Optional[Win32LobAppNotification] = None
     # The reboot settings to apply for this app assignment.
-    restart_settings: Optional[win32_lob_app_restart_settings.Win32LobAppRestartSettings] = None
+    restart_settings: Optional[Win32LobAppRestartSettings] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppAssignmentSettings:
@@ -37,15 +41,23 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_assignment_settings, mobile_app_install_time_settings, win32_lob_app_delivery_optimization_priority, win32_lob_app_notification, win32_lob_app_restart_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
+        from .mobile_app_install_time_settings import MobileAppInstallTimeSettings
+        from .win32_lob_app_delivery_optimization_priority import Win32LobAppDeliveryOptimizationPriority
+        from .win32_lob_app_notification import Win32LobAppNotification
+        from .win32_lob_app_restart_settings import Win32LobAppRestartSettings
 
-        from . import mobile_app_assignment_settings, mobile_app_install_time_settings, win32_lob_app_delivery_optimization_priority, win32_lob_app_notification, win32_lob_app_restart_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
+        from .mobile_app_install_time_settings import MobileAppInstallTimeSettings
+        from .win32_lob_app_delivery_optimization_priority import Win32LobAppDeliveryOptimizationPriority
+        from .win32_lob_app_notification import Win32LobAppNotification
+        from .win32_lob_app_restart_settings import Win32LobAppRestartSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deliveryOptimizationPriority": lambda n : setattr(self, 'delivery_optimization_priority', n.get_enum_value(win32_lob_app_delivery_optimization_priority.Win32LobAppDeliveryOptimizationPriority)),
-            "installTimeSettings": lambda n : setattr(self, 'install_time_settings', n.get_object_value(mobile_app_install_time_settings.MobileAppInstallTimeSettings)),
-            "notifications": lambda n : setattr(self, 'notifications', n.get_enum_value(win32_lob_app_notification.Win32LobAppNotification)),
-            "restartSettings": lambda n : setattr(self, 'restart_settings', n.get_object_value(win32_lob_app_restart_settings.Win32LobAppRestartSettings)),
+            "deliveryOptimizationPriority": lambda n : setattr(self, 'delivery_optimization_priority', n.get_enum_value(Win32LobAppDeliveryOptimizationPriority)),
+            "installTimeSettings": lambda n : setattr(self, 'install_time_settings', n.get_object_value(MobileAppInstallTimeSettings)),
+            "notifications": lambda n : setattr(self, 'notifications', n.get_enum_value(Win32LobAppNotification)),
+            "restartSettings": lambda n : setattr(self, 'restart_settings', n.get_object_value(Win32LobAppRestartSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

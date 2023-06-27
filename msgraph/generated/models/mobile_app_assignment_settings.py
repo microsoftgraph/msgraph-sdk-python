@@ -4,7 +4,14 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ios_lob_app_assignment_settings, ios_store_app_assignment_settings, ios_vpp_app_assignment_settings, mac_os_lob_app_assignment_settings, microsoft_store_for_business_app_assignment_settings, win32_lob_app_assignment_settings, windows_app_x_app_assignment_settings, windows_universal_app_x_app_assignment_settings
+    from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
+    from .ios_store_app_assignment_settings import IosStoreAppAssignmentSettings
+    from .ios_vpp_app_assignment_settings import IosVppAppAssignmentSettings
+    from .mac_os_lob_app_assignment_settings import MacOsLobAppAssignmentSettings
+    from .microsoft_store_for_business_app_assignment_settings import MicrosoftStoreForBusinessAppAssignmentSettings
+    from .win32_lob_app_assignment_settings import Win32LobAppAssignmentSettings
+    from .windows_app_x_app_assignment_settings import WindowsAppXAppAssignmentSettings
+    from .windows_universal_app_x_app_assignment_settings import WindowsUniversalAppXAppAssignmentSettings
 
 @dataclass
 class MobileAppAssignmentSettings(AdditionalDataHolder, Parsable):
@@ -32,37 +39,37 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosLobAppAssignmentSettings".casefold():
-            from . import ios_lob_app_assignment_settings
+            from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
 
-            return ios_lob_app_assignment_settings.IosLobAppAssignmentSettings()
+            return IosLobAppAssignmentSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosStoreAppAssignmentSettings".casefold():
-            from . import ios_store_app_assignment_settings
+            from .ios_store_app_assignment_settings import IosStoreAppAssignmentSettings
 
-            return ios_store_app_assignment_settings.IosStoreAppAssignmentSettings()
+            return IosStoreAppAssignmentSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosVppAppAssignmentSettings".casefold():
-            from . import ios_vpp_app_assignment_settings
+            from .ios_vpp_app_assignment_settings import IosVppAppAssignmentSettings
 
-            return ios_vpp_app_assignment_settings.IosVppAppAssignmentSettings()
+            return IosVppAppAssignmentSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOsLobAppAssignmentSettings".casefold():
-            from . import mac_os_lob_app_assignment_settings
+            from .mac_os_lob_app_assignment_settings import MacOsLobAppAssignmentSettings
 
-            return mac_os_lob_app_assignment_settings.MacOsLobAppAssignmentSettings()
+            return MacOsLobAppAssignmentSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftStoreForBusinessAppAssignmentSettings".casefold():
-            from . import microsoft_store_for_business_app_assignment_settings
+            from .microsoft_store_for_business_app_assignment_settings import MicrosoftStoreForBusinessAppAssignmentSettings
 
-            return microsoft_store_for_business_app_assignment_settings.MicrosoftStoreForBusinessAppAssignmentSettings()
+            return MicrosoftStoreForBusinessAppAssignmentSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobAppAssignmentSettings".casefold():
-            from . import win32_lob_app_assignment_settings
+            from .win32_lob_app_assignment_settings import Win32LobAppAssignmentSettings
 
-            return win32_lob_app_assignment_settings.Win32LobAppAssignmentSettings()
+            return Win32LobAppAssignmentSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsAppXAppAssignmentSettings".casefold():
-            from . import windows_app_x_app_assignment_settings
+            from .windows_app_x_app_assignment_settings import WindowsAppXAppAssignmentSettings
 
-            return windows_app_x_app_assignment_settings.WindowsAppXAppAssignmentSettings()
+            return WindowsAppXAppAssignmentSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppXAppAssignmentSettings".casefold():
-            from . import windows_universal_app_x_app_assignment_settings
+            from .windows_universal_app_x_app_assignment_settings import WindowsUniversalAppXAppAssignmentSettings
 
-            return windows_universal_app_x_app_assignment_settings.WindowsUniversalAppXAppAssignmentSettings()
+            return WindowsUniversalAppXAppAssignmentSettings()
         return MobileAppAssignmentSettings()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -70,9 +77,23 @@ class MobileAppAssignmentSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ios_lob_app_assignment_settings, ios_store_app_assignment_settings, ios_vpp_app_assignment_settings, mac_os_lob_app_assignment_settings, microsoft_store_for_business_app_assignment_settings, win32_lob_app_assignment_settings, windows_app_x_app_assignment_settings, windows_universal_app_x_app_assignment_settings
+        from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
+        from .ios_store_app_assignment_settings import IosStoreAppAssignmentSettings
+        from .ios_vpp_app_assignment_settings import IosVppAppAssignmentSettings
+        from .mac_os_lob_app_assignment_settings import MacOsLobAppAssignmentSettings
+        from .microsoft_store_for_business_app_assignment_settings import MicrosoftStoreForBusinessAppAssignmentSettings
+        from .win32_lob_app_assignment_settings import Win32LobAppAssignmentSettings
+        from .windows_app_x_app_assignment_settings import WindowsAppXAppAssignmentSettings
+        from .windows_universal_app_x_app_assignment_settings import WindowsUniversalAppXAppAssignmentSettings
 
-        from . import ios_lob_app_assignment_settings, ios_store_app_assignment_settings, ios_vpp_app_assignment_settings, mac_os_lob_app_assignment_settings, microsoft_store_for_business_app_assignment_settings, win32_lob_app_assignment_settings, windows_app_x_app_assignment_settings, windows_universal_app_x_app_assignment_settings
+        from .ios_lob_app_assignment_settings import IosLobAppAssignmentSettings
+        from .ios_store_app_assignment_settings import IosStoreAppAssignmentSettings
+        from .ios_vpp_app_assignment_settings import IosVppAppAssignmentSettings
+        from .mac_os_lob_app_assignment_settings import MacOsLobAppAssignmentSettings
+        from .microsoft_store_for_business_app_assignment_settings import MicrosoftStoreForBusinessAppAssignmentSettings
+        from .win32_lob_app_assignment_settings import Win32LobAppAssignmentSettings
+        from .windows_app_x_app_assignment_settings import WindowsAppXAppAssignmentSettings
+        from .windows_universal_app_x_app_assignment_settings import WindowsUniversalAppXAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

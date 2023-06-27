@@ -1,20 +1,24 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import enrollment_troubleshooting_event, entity
+    from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DeviceManagementTroubleshootingEvent(entity.Entity):
+class DeviceManagementTroubleshootingEvent(Entity):
+    """
+    Event representing an general failure.
+    """
     # Id used for tracing the failure in the service.
     correlation_id: Optional[str] = None
     # Time when the event occurred .
-    event_date_time: Optional[datetime] = None
+    event_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -33,9 +37,9 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.enrollmentTroubleshootingEvent".casefold():
-            from . import enrollment_troubleshooting_event
+            from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
 
-            return enrollment_troubleshooting_event.EnrollmentTroubleshootingEvent()
+            return EnrollmentTroubleshootingEvent()
         return DeviceManagementTroubleshootingEvent()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -43,9 +47,11 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import enrollment_troubleshooting_event, entity
+        from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
+        from .entity import Entity
 
-        from . import enrollment_troubleshooting_event, entity
+        from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
@@ -65,6 +71,6 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("correlationId", self.correlation_id)
-        writer.write_datetime_value("eventDateTime", self.event_date_time)
+        writer.write_datetime_value()("eventDateTime", self.event_date_time)
     
 

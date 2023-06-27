@@ -1,18 +1,18 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import unified_role_schedule_instance_base
+    from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
 
-from . import unified_role_schedule_instance_base
+from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
 
 @dataclass
-class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base.UnifiedRoleScheduleInstanceBase):
+class UnifiedRoleEligibilityScheduleInstance(UnifiedRoleScheduleInstanceBase):
     # The end date of the schedule instance.
-    end_date_time: Optional[datetime] = None
+    end_date_time: Optional[datetime.datetime] = None
     # How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
     member_type: Optional[str] = None
     # The OdataType property
@@ -20,7 +20,7 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
     # The identifier of the unifiedRoleEligibilitySchedule object from which this instance was created. Supports $filter (eq, ne).
     role_eligibility_schedule_id: Optional[str] = None
     # When this instance starts.
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleEligibilityScheduleInstance:
@@ -39,9 +39,9 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import unified_role_schedule_instance_base
+        from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
 
-        from . import unified_role_schedule_instance_base
+        from .unified_role_schedule_instance_base import UnifiedRoleScheduleInstanceBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
@@ -62,9 +62,9 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
+        writer.write_datetime_value()("endDateTime", self.end_date_time)
         writer.write_str_value("memberType", self.member_type)
         writer.write_str_value("roleEligibilityScheduleId", self.role_eligibility_schedule_id)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
     
 

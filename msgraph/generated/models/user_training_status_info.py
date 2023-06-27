@@ -1,11 +1,11 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import training_status
+    from .training_status import TrainingStatus
 
 @dataclass
 class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
@@ -13,15 +13,15 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Date and time of assignment of the training to the user.
-    assigned_date_time: Optional[datetime] = None
+    assigned_date_time: Optional[datetime.datetime] = None
     # Date and time of completion of the training by the user.
-    completion_date_time: Optional[datetime] = None
+    completion_date_time: Optional[datetime.datetime] = None
     # Display name of the assigned training.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
-    training_status: Optional[training_status.TrainingStatus] = None
+    training_status: Optional[TrainingStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTrainingStatusInfo:
@@ -40,16 +40,16 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import training_status
+        from .training_status import TrainingStatus
 
-        from . import training_status
+        from .training_status import TrainingStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignedDateTime": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
             "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "trainingStatus": lambda n : setattr(self, 'training_status', n.get_enum_value(training_status.TrainingStatus)),
+            "trainingStatus": lambda n : setattr(self, 'training_status', n.get_enum_value(TrainingStatus)),
         }
         return fields
     
@@ -61,8 +61,8 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("assignedDateTime", self.assigned_date_time)
-        writer.write_datetime_value("completionDateTime", self.completion_date_time)
+        writer.write_datetime_value()("assignedDateTime", self.assigned_date_time)
+        writer.write_datetime_value()("completionDateTime", self.completion_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("trainingStatus", self.training_status)

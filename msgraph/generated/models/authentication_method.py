@@ -4,12 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import email_authentication_method, entity, fido2_authentication_method, microsoft_authenticator_authentication_method, password_authentication_method, phone_authentication_method, software_oath_authentication_method, temporary_access_pass_authentication_method, windows_hello_for_business_authentication_method
+    from .email_authentication_method import EmailAuthenticationMethod
+    from .entity import Entity
+    from .fido2_authentication_method import Fido2AuthenticationMethod
+    from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
+    from .password_authentication_method import PasswordAuthenticationMethod
+    from .phone_authentication_method import PhoneAuthenticationMethod
+    from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
+    from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
+    from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AuthenticationMethod(entity.Entity):
+class AuthenticationMethod(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -28,37 +36,37 @@ class AuthenticationMethod(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailAuthenticationMethod".casefold():
-            from . import email_authentication_method
+            from .email_authentication_method import EmailAuthenticationMethod
 
-            return email_authentication_method.EmailAuthenticationMethod()
+            return EmailAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2AuthenticationMethod".casefold():
-            from . import fido2_authentication_method
+            from .fido2_authentication_method import Fido2AuthenticationMethod
 
-            return fido2_authentication_method.Fido2AuthenticationMethod()
+            return Fido2AuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethod".casefold():
-            from . import microsoft_authenticator_authentication_method
+            from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
 
-            return microsoft_authenticator_authentication_method.MicrosoftAuthenticatorAuthenticationMethod()
+            return MicrosoftAuthenticatorAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.passwordAuthenticationMethod".casefold():
-            from . import password_authentication_method
+            from .password_authentication_method import PasswordAuthenticationMethod
 
-            return password_authentication_method.PasswordAuthenticationMethod()
+            return PasswordAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.phoneAuthenticationMethod".casefold():
-            from . import phone_authentication_method
+            from .phone_authentication_method import PhoneAuthenticationMethod
 
-            return phone_authentication_method.PhoneAuthenticationMethod()
+            return PhoneAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.softwareOathAuthenticationMethod".casefold():
-            from . import software_oath_authentication_method
+            from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
 
-            return software_oath_authentication_method.SoftwareOathAuthenticationMethod()
+            return SoftwareOathAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.temporaryAccessPassAuthenticationMethod".casefold():
-            from . import temporary_access_pass_authentication_method
+            from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
 
-            return temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod()
+            return TemporaryAccessPassAuthenticationMethod()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsHelloForBusinessAuthenticationMethod".casefold():
-            from . import windows_hello_for_business_authentication_method
+            from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
 
-            return windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod()
+            return WindowsHelloForBusinessAuthenticationMethod()
         return AuthenticationMethod()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -66,9 +74,25 @@ class AuthenticationMethod(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import email_authentication_method, entity, fido2_authentication_method, microsoft_authenticator_authentication_method, password_authentication_method, phone_authentication_method, software_oath_authentication_method, temporary_access_pass_authentication_method, windows_hello_for_business_authentication_method
+        from .email_authentication_method import EmailAuthenticationMethod
+        from .entity import Entity
+        from .fido2_authentication_method import Fido2AuthenticationMethod
+        from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
+        from .password_authentication_method import PasswordAuthenticationMethod
+        from .phone_authentication_method import PhoneAuthenticationMethod
+        from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
+        from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
+        from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
 
-        from . import email_authentication_method, entity, fido2_authentication_method, microsoft_authenticator_authentication_method, password_authentication_method, phone_authentication_method, software_oath_authentication_method, temporary_access_pass_authentication_method, windows_hello_for_business_authentication_method
+        from .email_authentication_method import EmailAuthenticationMethod
+        from .entity import Entity
+        from .fido2_authentication_method import Fido2AuthenticationMethod
+        from .microsoft_authenticator_authentication_method import MicrosoftAuthenticatorAuthenticationMethod
+        from .password_authentication_method import PasswordAuthenticationMethod
+        from .phone_authentication_method import PhoneAuthenticationMethod
+        from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
+        from .temporary_access_pass_authentication_method import TemporaryAccessPassAuthenticationMethod
+        from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

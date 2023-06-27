@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_package_question, entitlement_management_schedule
+    from .access_package_question import AccessPackageQuestion
+    from .entitlement_management_schedule import EntitlementManagementSchedule
 
 @dataclass
 class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable):
@@ -26,9 +27,9 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
     # The identifier of the policy that these requirements are associated with. This identifier can be used when creating a new assignment request.
     policy_id: Optional[str] = None
     # The questions property
-    questions: Optional[List[access_package_question.AccessPackageQuestion]] = None
+    questions: Optional[List[AccessPackageQuestion]] = None
     # Schedule restrictions enforced, if any.
-    schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
+    schedule: Optional[EntitlementManagementSchedule] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentRequestRequirements:
@@ -47,9 +48,11 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_question, entitlement_management_schedule
+        from .access_package_question import AccessPackageQuestion
+        from .entitlement_management_schedule import EntitlementManagementSchedule
 
-        from . import access_package_question, entitlement_management_schedule
+        from .access_package_question import AccessPackageQuestion
+        from .entitlement_management_schedule import EntitlementManagementSchedule
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowCustomAssignmentSchedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
@@ -59,8 +62,8 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             "policyDescription": lambda n : setattr(self, 'policy_description', n.get_str_value()),
             "policyDisplayName": lambda n : setattr(self, 'policy_display_name', n.get_str_value()),
             "policyId": lambda n : setattr(self, 'policy_id', n.get_str_value()),
-            "questions": lambda n : setattr(self, 'questions', n.get_collection_of_object_values(access_package_question.AccessPackageQuestion)),
-            "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
+            "questions": lambda n : setattr(self, 'questions', n.get_collection_of_object_values(AccessPackageQuestion)),
+            "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(EntitlementManagementSchedule)),
         }
         return fields
     

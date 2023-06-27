@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import workbook_operation, workbook_operation_collection_response
-    from .......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import workbook_operation_item_request_builder
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.workbook_operation import WorkbookOperation
+    from .......models.workbook_operation_collection_response import WorkbookOperationCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.workbook_operation_item_request_builder import WorkbookOperationItemRequestBuilder
 
 class OperationsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class OperationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_workbook_operation_id(self,workbook_operation_id: str) -> workbook_operation_item_request_builder.WorkbookOperationItemRequestBuilder:
+    def by_workbook_operation_id(self,workbook_operation_id: str) -> WorkbookOperationItemRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.workbook entity.
         Args:
             workbook_operation_id: Unique identifier of the item
-        Returns: workbook_operation_item_request_builder.WorkbookOperationItemRequestBuilder
+        Returns: WorkbookOperationItemRequestBuilder
         """
         if not workbook_operation_id:
             raise TypeError("workbook_operation_id cannot be null.")
-        from .item import workbook_operation_item_request_builder
+        from .item.workbook_operation_item_request_builder import WorkbookOperationItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookOperation%2Did"] = workbook_operation_id
-        return workbook_operation_item_request_builder.WorkbookOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return WorkbookOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_operation_collection_response.WorkbookOperationCollectionResponse]:
+    async def get(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookOperationCollectionResponse]:
         """
         Meaningless if this url is called independently. This request is part of all async requests for excel. This is used to retrieve the status of a workbookOperation object. Currently not all requests support async. Take Create session request as an example. Issue an async Create session request, follow the documentation and you may get status code `202 Accepted`, async operation starts from here and you can find the url this document required from the response header, from the **location** part.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_operation_collection_response.WorkbookOperationCollectionResponse]
+        Returns: Optional[WorkbookOperationCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import workbook_operation_collection_response
+        from .......models.workbook_operation_collection_response import WorkbookOperationCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, workbook_operation_collection_response.WorkbookOperationCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookOperationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[workbook_operation.WorkbookOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_operation.WorkbookOperation]:
+    async def post(self,body: Optional[WorkbookOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookOperation]:
         """
         Create new navigation property to operations for drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_operation.WorkbookOperation]
+        Returns: Optional[WorkbookOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import workbook_operation
+        from .......models.workbook_operation import WorkbookOperation
 
-        return await self.request_adapter.send_async(request_info, workbook_operation.WorkbookOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookOperation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class OperationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[workbook_operation.WorkbookOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WorkbookOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to operations for drives
         Args:
@@ -139,13 +140,13 @@ class OperationsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OperationsRequestBuilderGetQueryParameters():

@@ -1,11 +1,16 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import action_state, delete_user_from_shared_apple_device_action_result, locate_device_action_result, remote_lock_action_result, reset_passcode_action_result, windows_defender_scan_action_result
+    from .action_state import ActionState
+    from .delete_user_from_shared_apple_device_action_result import DeleteUserFromSharedAppleDeviceActionResult
+    from .locate_device_action_result import LocateDeviceActionResult
+    from .remote_lock_action_result import RemoteLockActionResult
+    from .reset_passcode_action_result import ResetPasscodeActionResult
+    from .windows_defender_scan_action_result import WindowsDefenderScanActionResult
 
 @dataclass
 class DeviceActionResult(AdditionalDataHolder, Parsable):
@@ -18,13 +23,13 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
     # Action name
     action_name: Optional[str] = None
     # State of the action on the device
-    action_state: Optional[action_state.ActionState] = None
+    action_state: Optional[ActionState] = None
     # Time the action state was last updated
-    last_updated_date_time: Optional[datetime] = None
+    last_updated_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Time the action was initiated
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceActionResult:
@@ -41,25 +46,25 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deleteUserFromSharedAppleDeviceActionResult".casefold():
-            from . import delete_user_from_shared_apple_device_action_result
+            from .delete_user_from_shared_apple_device_action_result import DeleteUserFromSharedAppleDeviceActionResult
 
-            return delete_user_from_shared_apple_device_action_result.DeleteUserFromSharedAppleDeviceActionResult()
+            return DeleteUserFromSharedAppleDeviceActionResult()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.locateDeviceActionResult".casefold():
-            from . import locate_device_action_result
+            from .locate_device_action_result import LocateDeviceActionResult
 
-            return locate_device_action_result.LocateDeviceActionResult()
+            return LocateDeviceActionResult()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.remoteLockActionResult".casefold():
-            from . import remote_lock_action_result
+            from .remote_lock_action_result import RemoteLockActionResult
 
-            return remote_lock_action_result.RemoteLockActionResult()
+            return RemoteLockActionResult()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.resetPasscodeActionResult".casefold():
-            from . import reset_passcode_action_result
+            from .reset_passcode_action_result import ResetPasscodeActionResult
 
-            return reset_passcode_action_result.ResetPasscodeActionResult()
+            return ResetPasscodeActionResult()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsDefenderScanActionResult".casefold():
-            from . import windows_defender_scan_action_result
+            from .windows_defender_scan_action_result import WindowsDefenderScanActionResult
 
-            return windows_defender_scan_action_result.WindowsDefenderScanActionResult()
+            return WindowsDefenderScanActionResult()
         return DeviceActionResult()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -67,13 +72,23 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import action_state, delete_user_from_shared_apple_device_action_result, locate_device_action_result, remote_lock_action_result, reset_passcode_action_result, windows_defender_scan_action_result
+        from .action_state import ActionState
+        from .delete_user_from_shared_apple_device_action_result import DeleteUserFromSharedAppleDeviceActionResult
+        from .locate_device_action_result import LocateDeviceActionResult
+        from .remote_lock_action_result import RemoteLockActionResult
+        from .reset_passcode_action_result import ResetPasscodeActionResult
+        from .windows_defender_scan_action_result import WindowsDefenderScanActionResult
 
-        from . import action_state, delete_user_from_shared_apple_device_action_result, locate_device_action_result, remote_lock_action_result, reset_passcode_action_result, windows_defender_scan_action_result
+        from .action_state import ActionState
+        from .delete_user_from_shared_apple_device_action_result import DeleteUserFromSharedAppleDeviceActionResult
+        from .locate_device_action_result import LocateDeviceActionResult
+        from .remote_lock_action_result import RemoteLockActionResult
+        from .reset_passcode_action_result import ResetPasscodeActionResult
+        from .windows_defender_scan_action_result import WindowsDefenderScanActionResult
 
         fields: Dict[str, Callable[[Any], None]] = {
             "actionName": lambda n : setattr(self, 'action_name', n.get_str_value()),
-            "actionState": lambda n : setattr(self, 'action_state', n.get_enum_value(action_state.ActionState)),
+            "actionState": lambda n : setattr(self, 'action_state', n.get_enum_value(ActionState)),
             "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
@@ -90,9 +105,9 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("actionName", self.action_name)
         writer.write_enum_value("actionState", self.action_state)
-        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
+        writer.write_datetime_value()("lastUpdatedDateTime", self.last_updated_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

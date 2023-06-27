@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.security import purge_areas, purge_type
+    from ........models.security.purge_areas import PurgeAreas
+    from ........models.security.purge_type import PurgeType
 
 @dataclass
 class PurgeDataPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +13,9 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The purgeAreas property
-    purge_areas: Optional[purge_areas.PurgeAreas] = None
+    purge_areas: Optional[PurgeAreas] = None
     # The purgeType property
-    purge_type: Optional[purge_type.PurgeType] = None
+    purge_type: Optional[PurgeType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PurgeDataPostRequestBody:
@@ -33,13 +34,15 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.security import purge_areas, purge_type
+        from ........models.security.purge_areas import PurgeAreas
+        from ........models.security.purge_type import PurgeType
 
-        from ........models.security import purge_areas, purge_type
+        from ........models.security.purge_areas import PurgeAreas
+        from ........models.security.purge_type import PurgeType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "purgeAreas": lambda n : setattr(self, 'purge_areas', n.get_enum_value(purge_areas.PurgeAreas)),
-            "purgeType": lambda n : setattr(self, 'purge_type', n.get_enum_value(purge_type.PurgeType)),
+            "purgeAreas": lambda n : setattr(self, 'purge_areas', n.get_enum_value(PurgeAreas)),
+            "purgeType": lambda n : setattr(self, 'purge_type', n.get_enum_value(PurgeType)),
         }
         return fields
     

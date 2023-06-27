@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class CountIfPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class CountIfPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The criteria property
-    criteria: Optional[json.Json] = None
+    criteria: Optional[Json] = None
     # The range property
-    range: Optional[json.Json] = None
+    range: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CountIfPostRequestBody:
@@ -33,13 +33,13 @@ class CountIfPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(json.Json)),
-            "range": lambda n : setattr(self, 'range', n.get_object_value(json.Json)),
+            "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(Json)),
+            "range": lambda n : setattr(self, 'range', n.get_object_value(Json)),
         }
         return fields
     

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class IdentityProvider(entity.Entity):
+class IdentityProvider(Entity):
     # The client ID for the application. This is the client ID obtained when registering the application with the identity provider. Required. Not nullable.
     client_id: Optional[str] = None
     # The client secret for the application. This is the client secret obtained when registering the application with the identity provider. This is write-only. A read operation will return ****.  Required. Not nullable.
@@ -38,9 +38,9 @@ class IdentityProvider(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),

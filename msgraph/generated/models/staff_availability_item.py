@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import availability_item
+    from .availability_item import AvailabilityItem
 
 @dataclass
 class StaffAvailabilityItem(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class StaffAvailabilityItem(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Each item in this collection indicates a slot and the status of the staff member.
-    availability_items: Optional[List[availability_item.AvailabilityItem]] = None
+    availability_items: Optional[List[AvailabilityItem]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The ID of the staff member.
@@ -35,12 +35,12 @@ class StaffAvailabilityItem(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import availability_item
+        from .availability_item import AvailabilityItem
 
-        from . import availability_item
+        from .availability_item import AvailabilityItem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "availabilityItems": lambda n : setattr(self, 'availability_items', n.get_collection_of_object_values(availability_item.AvailabilityItem)),
+            "availabilityItems": lambda n : setattr(self, 'availability_items', n.get_collection_of_object_values(AvailabilityItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "staffId": lambda n : setattr(self, 'staff_id', n.get_str_value()),
         }

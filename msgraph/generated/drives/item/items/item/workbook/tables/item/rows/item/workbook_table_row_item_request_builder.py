@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import workbook_table_row
-    from ..........models.o_data_errors import o_data_error
-    from .range import range_request_builder
+    from ..........models.o_data_errors.o_data_error import ODataError
+    from ..........models.workbook_table_row import WorkbookTableRow
+    from .range.range_request_builder import RangeRequestBuilder
 
 class WorkbookTableRowItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class WorkbookTableRowItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WorkbookTableRowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table_row.WorkbookTableRow]:
+    async def get(self,request_configuration: Optional[WorkbookTableRowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookTableRow]:
         """
         Retrieve the properties and relationships of tablerow object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_table_row.WorkbookTableRow]
+        Returns: Optional[WorkbookTableRow]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import workbook_table_row
+        from ..........models.workbook_table_row import WorkbookTableRow
 
-        return await self.request_adapter.send_async(request_info, workbook_table_row.WorkbookTableRow, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookTableRow, error_mapping)
     
-    async def patch(self,body: Optional[workbook_table_row.WorkbookTableRow] = None, request_configuration: Optional[WorkbookTableRowItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_table_row.WorkbookTableRow]:
+    async def patch(self,body: Optional[WorkbookTableRow] = None, request_configuration: Optional[WorkbookTableRowItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookTableRow]:
         """
         Update the properties of tablerow object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_table_row.WorkbookTableRow]
+        Returns: Optional[WorkbookTableRow]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
+        from ..........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import workbook_table_row
+        from ..........models.workbook_table_row import WorkbookTableRow
 
-        return await self.request_adapter.send_async(request_info, workbook_table_row.WorkbookTableRow, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookTableRow, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookTableRowItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class WorkbookTableRowItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_table_row.WorkbookTableRow] = None, request_configuration: Optional[WorkbookTableRowItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookTableRow] = None, request_configuration: Optional[WorkbookTableRowItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of tablerow object.
         Args:
@@ -158,13 +158,13 @@ class WorkbookTableRowItemRequestBuilder():
         return request_info
     
     @property
-    def range(self) -> range_request_builder.RangeRequestBuilder:
+    def range(self) -> RangeRequestBuilder:
         """
         Provides operations to call the range method.
         """
-        from .range import range_request_builder
+        from .range.range_request_builder import RangeRequestBuilder
 
-        return range_request_builder.RangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return RangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class WorkbookTableRowItemRequestBuilderDeleteRequestConfiguration():

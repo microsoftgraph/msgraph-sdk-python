@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class OddFPricePostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,23 +12,23 @@ class OddFPricePostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The basis property
-    basis: Optional[json.Json] = None
+    basis: Optional[Json] = None
     # The firstCoupon property
-    first_coupon: Optional[json.Json] = None
+    first_coupon: Optional[Json] = None
     # The frequency property
-    frequency: Optional[json.Json] = None
+    frequency: Optional[Json] = None
     # The issue property
-    issue: Optional[json.Json] = None
+    issue: Optional[Json] = None
     # The maturity property
-    maturity: Optional[json.Json] = None
+    maturity: Optional[Json] = None
     # The rate property
-    rate: Optional[json.Json] = None
+    rate: Optional[Json] = None
     # The redemption property
-    redemption: Optional[json.Json] = None
+    redemption: Optional[Json] = None
     # The settlement property
-    settlement: Optional[json.Json] = None
+    settlement: Optional[Json] = None
     # The yld property
-    yld: Optional[json.Json] = None
+    yld: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OddFPricePostRequestBody:
@@ -47,20 +47,20 @@ class OddFPricePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "basis": lambda n : setattr(self, 'basis', n.get_object_value(json.Json)),
-            "firstCoupon": lambda n : setattr(self, 'first_coupon', n.get_object_value(json.Json)),
-            "frequency": lambda n : setattr(self, 'frequency', n.get_object_value(json.Json)),
-            "issue": lambda n : setattr(self, 'issue', n.get_object_value(json.Json)),
-            "maturity": lambda n : setattr(self, 'maturity', n.get_object_value(json.Json)),
-            "rate": lambda n : setattr(self, 'rate', n.get_object_value(json.Json)),
-            "redemption": lambda n : setattr(self, 'redemption', n.get_object_value(json.Json)),
-            "settlement": lambda n : setattr(self, 'settlement', n.get_object_value(json.Json)),
-            "yld": lambda n : setattr(self, 'yld', n.get_object_value(json.Json)),
+            "basis": lambda n : setattr(self, 'basis', n.get_object_value(Json)),
+            "firstCoupon": lambda n : setattr(self, 'first_coupon', n.get_object_value(Json)),
+            "frequency": lambda n : setattr(self, 'frequency', n.get_object_value(Json)),
+            "issue": lambda n : setattr(self, 'issue', n.get_object_value(Json)),
+            "maturity": lambda n : setattr(self, 'maturity', n.get_object_value(Json)),
+            "rate": lambda n : setattr(self, 'rate', n.get_object_value(Json)),
+            "redemption": lambda n : setattr(self, 'redemption', n.get_object_value(Json)),
+            "settlement": lambda n : setattr(self, 'settlement', n.get_object_value(Json)),
+            "yld": lambda n : setattr(self, 'yld', n.get_object_value(Json)),
         }
         return fields
     

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import provision_on_demand_post_request_body
-    from .......models import string_key_string_value_pair
-    from .......models.o_data_errors import o_data_error
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.string_key_string_value_pair import StringKeyStringValuePair
+    from .provision_on_demand_post_request_body import ProvisionOnDemandPostRequestBody
 
 class ProvisionOnDemandRequestBuilder():
     """
@@ -36,32 +36,32 @@ class ProvisionOnDemandRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[provision_on_demand_post_request_body.ProvisionOnDemandPostRequestBody] = None, request_configuration: Optional[ProvisionOnDemandRequestBuilderPostRequestConfiguration] = None) -> Optional[string_key_string_value_pair.StringKeyStringValuePair]:
+    async def post(self,body: Optional[ProvisionOnDemandPostRequestBody] = None, request_configuration: Optional[ProvisionOnDemandRequestBuilderPostRequestConfiguration] = None) -> Optional[StringKeyStringValuePair]:
         """
         Invoke action provisionOnDemand
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[string_key_string_value_pair.StringKeyStringValuePair]
+        Returns: Optional[StringKeyStringValuePair]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import string_key_string_value_pair
+        from .......models.string_key_string_value_pair import StringKeyStringValuePair
 
-        return await self.request_adapter.send_async(request_info, string_key_string_value_pair.StringKeyStringValuePair, error_mapping)
+        return await self.request_adapter.send_async(request_info, StringKeyStringValuePair, error_mapping)
     
-    def to_post_request_information(self,body: Optional[provision_on_demand_post_request_body.ProvisionOnDemandPostRequestBody] = None, request_configuration: Optional[ProvisionOnDemandRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ProvisionOnDemandPostRequestBody] = None, request_configuration: Optional[ProvisionOnDemandRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action provisionOnDemand
         Args:

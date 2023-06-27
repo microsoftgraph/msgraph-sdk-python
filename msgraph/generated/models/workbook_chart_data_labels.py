@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_data_label_format
+    from .entity import Entity
+    from .workbook_chart_data_label_format import WorkbookChartDataLabelFormat
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartDataLabels(entity.Entity):
+class WorkbookChartDataLabels(Entity):
     # Represents the format of chart data labels, which includes fill and font formatting. Read-only.
-    format: Optional[workbook_chart_data_label_format.WorkbookChartDataLabelFormat] = None
+    format: Optional[WorkbookChartDataLabelFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # DataLabelPosition value that represents the position of the data label. The possible values are: None, Center, InsideEnd, InsideBase, OutsideEnd, Left, Right, Top, Bottom, BestFit, Callout.
@@ -48,12 +49,14 @@ class WorkbookChartDataLabels(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_data_label_format
+        from .entity import Entity
+        from .workbook_chart_data_label_format import WorkbookChartDataLabelFormat
 
-        from . import entity, workbook_chart_data_label_format
+        from .entity import Entity
+        from .workbook_chart_data_label_format import WorkbookChartDataLabelFormat
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_data_label_format.WorkbookChartDataLabelFormat)),
+            "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartDataLabelFormat)),
             "position": lambda n : setattr(self, 'position', n.get_str_value()),
             "separator": lambda n : setattr(self, 'separator', n.get_str_value()),
             "showBubbleSize": lambda n : setattr(self, 'show_bubble_size', n.get_bool_value()),

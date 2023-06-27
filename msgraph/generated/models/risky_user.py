@@ -1,18 +1,22 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, risky_user_history_item, risk_detail, risk_level, risk_state
+    from .entity import Entity
+    from .risk_detail import RiskDetail
+    from .risk_level import RiskLevel
+    from .risk_state import RiskState
+    from .risky_user_history_item import RiskyUserHistoryItem
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class RiskyUser(entity.Entity):
+class RiskyUser(Entity):
     # The activity related to user risk level change
-    history: Optional[List[risky_user_history_item.RiskyUserHistoryItem]] = None
+    history: Optional[List[RiskyUserHistoryItem]] = None
     # Indicates whether the user is deleted. Possible values are: true, false.
     is_deleted: Optional[bool] = None
     # Indicates whether a user's risky state is being processed by the backend.
@@ -20,13 +24,13 @@ class RiskyUser(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
-    risk_detail: Optional[risk_detail.RiskDetail] = None
+    risk_detail: Optional[RiskDetail] = None
     # The date and time that the risky user was last updated.  The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    risk_last_updated_date_time: Optional[datetime] = None
+    risk_last_updated_date_time: Optional[datetime.datetime] = None
     # Level of the detected risky user. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
-    risk_level: Optional[risk_level.RiskLevel] = None
+    risk_level: Optional[RiskLevel] = None
     # State of the user's risk. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
-    risk_state: Optional[risk_state.RiskState] = None
+    risk_state: Optional[RiskState] = None
     # Risky user display name.
     user_display_name: Optional[str] = None
     # Risky user principal name.
@@ -47,9 +51,9 @@ class RiskyUser(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.riskyUserHistoryItem".casefold():
-            from . import risky_user_history_item
+            from .risky_user_history_item import RiskyUserHistoryItem
 
-            return risky_user_history_item.RiskyUserHistoryItem()
+            return RiskyUserHistoryItem()
         return RiskyUser()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -57,18 +61,26 @@ class RiskyUser(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, risky_user_history_item, risk_detail, risk_level, risk_state
+        from .entity import Entity
+        from .risk_detail import RiskDetail
+        from .risk_level import RiskLevel
+        from .risk_state import RiskState
+        from .risky_user_history_item import RiskyUserHistoryItem
 
-        from . import entity, risky_user_history_item, risk_detail, risk_level, risk_state
+        from .entity import Entity
+        from .risk_detail import RiskDetail
+        from .risk_level import RiskLevel
+        from .risk_state import RiskState
+        from .risky_user_history_item import RiskyUserHistoryItem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(risky_user_history_item.RiskyUserHistoryItem)),
+            "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(RiskyUserHistoryItem)),
             "isDeleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
             "isProcessing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
-            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
             "riskLastUpdatedDateTime": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
-            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
-            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
+            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(RiskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
             "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
@@ -89,7 +101,7 @@ class RiskyUser(entity.Entity):
         writer.write_bool_value("isDeleted", self.is_deleted)
         writer.write_bool_value("isProcessing", self.is_processing)
         writer.write_enum_value("riskDetail", self.risk_detail)
-        writer.write_datetime_value("riskLastUpdatedDateTime", self.risk_last_updated_date_time)
+        writer.write_datetime_value()("riskLastUpdatedDateTime", self.risk_last_updated_date_time)
         writer.write_enum_value("riskLevel", self.risk_level)
         writer.write_enum_value("riskState", self.risk_state)
         writer.write_str_value("userDisplayName", self.user_display_name)

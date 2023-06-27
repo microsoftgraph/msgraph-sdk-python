@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import state_management_setting
+    from .state_management_setting import StateManagementSetting
 
 @dataclass
 class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
@@ -19,7 +19,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
     # Configures the firewall to merge connection security rules from group policy with those from local store instead of ignoring the local store rules. When ConnectionSecurityRulesFromGroupPolicyNotMerged and ConnectionSecurityRulesFromGroupPolicyMerged are both true, ConnectionSecurityRulesFromGroupPolicyMerged takes priority.
     connection_security_rules_from_group_policy_merged: Optional[bool] = None
     # State Management Setting.
-    firewall_enabled: Optional[state_management_setting.StateManagementSetting] = None
+    firewall_enabled: Optional[StateManagementSetting] = None
     # Configures the firewall to merge global port rules from group policy with those from local store instead of ignoring the local store rules. When GlobalPortRulesFromGroupPolicyNotMerged and GlobalPortRulesFromGroupPolicyMerged are both true, GlobalPortRulesFromGroupPolicyMerged takes priority.
     global_port_rules_from_group_policy_merged: Optional[bool] = None
     # Configures the firewall to block all incoming connections by default. When InboundConnectionsRequired and InboundConnectionsBlocked are both true, InboundConnectionsBlocked takes priority.
@@ -58,14 +58,14 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import state_management_setting
+        from .state_management_setting import StateManagementSetting
 
-        from . import state_management_setting
+        from .state_management_setting import StateManagementSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
             "authorizedApplicationRulesFromGroupPolicyMerged": lambda n : setattr(self, 'authorized_application_rules_from_group_policy_merged', n.get_bool_value()),
             "connectionSecurityRulesFromGroupPolicyMerged": lambda n : setattr(self, 'connection_security_rules_from_group_policy_merged', n.get_bool_value()),
-            "firewallEnabled": lambda n : setattr(self, 'firewall_enabled', n.get_enum_value(state_management_setting.StateManagementSetting)),
+            "firewallEnabled": lambda n : setattr(self, 'firewall_enabled', n.get_enum_value(StateManagementSetting)),
             "globalPortRulesFromGroupPolicyMerged": lambda n : setattr(self, 'global_port_rules_from_group_policy_merged', n.get_bool_value()),
             "inboundConnectionsBlocked": lambda n : setattr(self, 'inbound_connections_blocked', n.get_bool_value()),
             "inboundNotificationsBlocked": lambda n : setattr(self, 'inbound_notifications_blocked', n.get_bool_value()),

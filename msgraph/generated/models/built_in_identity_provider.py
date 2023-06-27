@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_provider_base
+    from .identity_provider_base import IdentityProviderBase
 
-from . import identity_provider_base
+from .identity_provider_base import IdentityProviderBase
 
 @dataclass
-class BuiltInIdentityProvider(identity_provider_base.IdentityProviderBase):
+class BuiltInIdentityProvider(IdentityProviderBase):
     odata_type = "#microsoft.graph.builtInIdentityProvider"
     # The identity provider type. For a B2B scenario, possible values: AADSignup, MicrosoftAccount, EmailOTP. Required.
     identity_provider_type: Optional[str] = None
@@ -31,9 +31,9 @@ class BuiltInIdentityProvider(identity_provider_base.IdentityProviderBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_provider_base
+        from .identity_provider_base import IdentityProviderBase
 
-        from . import identity_provider_base
+        from .identity_provider_base import IdentityProviderBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "identityProviderType": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),

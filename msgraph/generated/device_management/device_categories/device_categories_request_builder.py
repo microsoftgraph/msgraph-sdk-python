@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import device_category, device_category_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import device_category_item_request_builder
+    from ...models.device_category import DeviceCategory
+    from ...models.device_category_collection_response import DeviceCategoryCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.device_category_item_request_builder import DeviceCategoryItemRequestBuilder
 
 class DeviceCategoriesRequestBuilder():
     """
@@ -37,71 +38,71 @@ class DeviceCategoriesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_device_category_id(self,device_category_id: str) -> device_category_item_request_builder.DeviceCategoryItemRequestBuilder:
+    def by_device_category_id(self,device_category_id: str) -> DeviceCategoryItemRequestBuilder:
         """
         Provides operations to manage the deviceCategories property of the microsoft.graph.deviceManagement entity.
         Args:
             device_category_id: Unique identifier of the item
-        Returns: device_category_item_request_builder.DeviceCategoryItemRequestBuilder
+        Returns: DeviceCategoryItemRequestBuilder
         """
         if not device_category_id:
             raise TypeError("device_category_id cannot be null.")
-        from .item import device_category_item_request_builder
+        from .item.device_category_item_request_builder import DeviceCategoryItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceCategory%2Did"] = device_category_id
-        return device_category_item_request_builder.DeviceCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return DeviceCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DeviceCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[device_category_collection_response.DeviceCategoryCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeviceCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCategoryCollectionResponse]:
         """
-        The list of device categories with the tenant.
+        List properties and relationships of the deviceCategory objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_category_collection_response.DeviceCategoryCollectionResponse]
+        Returns: Optional[DeviceCategoryCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device_category_collection_response
+        from ...models.device_category_collection_response import DeviceCategoryCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, device_category_collection_response.DeviceCategoryCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceCategoryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[device_category.DeviceCategory] = None, request_configuration: Optional[DeviceCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[device_category.DeviceCategory]:
+    async def post(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[DeviceCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Create new navigation property to deviceCategories for deviceManagement
+        Create a new deviceCategory object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[device_category.DeviceCategory]
+        Returns: Optional[DeviceCategory]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device_category
+        from ...models.device_category import DeviceCategory
 
-        return await self.request_adapter.send_async(request_info, device_category.DeviceCategory, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeviceCategory, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of device categories with the tenant.
+        List properties and relationships of the deviceCategory objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class DeviceCategoriesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[device_category.DeviceCategory] = None, request_configuration: Optional[DeviceCategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[DeviceCategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to deviceCategories for deviceManagement
+        Create a new deviceCategory object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class DeviceCategoriesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceCategoriesRequestBuilderGetQueryParameters():
         """
-        The list of device categories with the tenant.
+        List properties and relationships of the deviceCategory objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

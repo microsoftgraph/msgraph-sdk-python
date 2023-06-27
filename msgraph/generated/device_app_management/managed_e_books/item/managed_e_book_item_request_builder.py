@@ -10,13 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import managed_e_book
-    from ....models.o_data_errors import o_data_error
-    from .assign import assign_request_builder
-    from .assignments import assignments_request_builder
-    from .device_states import device_states_request_builder
-    from .install_summary import install_summary_request_builder
-    from .user_state_summary import user_state_summary_request_builder
+    from ....models.managed_e_book import ManagedEBook
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .assign.assign_request_builder import AssignRequestBuilder
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .device_states.device_states_request_builder import DeviceStatesRequestBuilder
+    from .install_summary.install_summary_request_builder import InstallSummaryRequestBuilder
+    from .user_state_summary.user_state_summary_request_builder import UserStateSummaryRequestBuilder
 
 class ManagedEBookItemRequestBuilder():
     """
@@ -42,73 +42,73 @@ class ManagedEBookItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ManagedEBookItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property managedEBooks for deviceAppManagement
+        Deletes a iosVppEBook.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ManagedEBookItemRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_e_book.ManagedEBook]:
+    async def get(self,request_configuration: Optional[ManagedEBookItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedEBook]:
         """
-        The Managed eBook.
+        Read properties and relationships of the iosVppEBook object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_e_book.ManagedEBook]
+        Returns: Optional[ManagedEBook]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import managed_e_book
+        from ....models.managed_e_book import ManagedEBook
 
-        return await self.request_adapter.send_async(request_info, managed_e_book.ManagedEBook, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedEBook, error_mapping)
     
-    async def patch(self,body: Optional[managed_e_book.ManagedEBook] = None, request_configuration: Optional[ManagedEBookItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[managed_e_book.ManagedEBook]:
+    async def patch(self,body: Optional[ManagedEBook] = None, request_configuration: Optional[ManagedEBookItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedEBook]:
         """
-        Update the navigation property managedEBooks in deviceAppManagement
+        Update the properties of a iosVppEBook object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_e_book.ManagedEBook]
+        Returns: Optional[ManagedEBook]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import managed_e_book
+        from ....models.managed_e_book import ManagedEBook
 
-        return await self.request_adapter.send_async(request_info, managed_e_book.ManagedEBook, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedEBook, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedEBookItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property managedEBooks for deviceAppManagement
+        Deletes a iosVppEBook.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -124,7 +124,7 @@ class ManagedEBookItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ManagedEBookItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Managed eBook.
+        Read properties and relationships of the iosVppEBook object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,9 +140,9 @@ class ManagedEBookItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[managed_e_book.ManagedEBook] = None, request_configuration: Optional[ManagedEBookItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ManagedEBook] = None, request_configuration: Optional[ManagedEBookItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property managedEBooks in deviceAppManagement
+        Update the properties of a iosVppEBook object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -162,49 +162,49 @@ class ManagedEBookItemRequestBuilder():
         return request_info
     
     @property
-    def assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def assign(self) -> AssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        from .assign import assign_request_builder
+        from .assign.assign_request_builder import AssignRequestBuilder
 
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+    def assignments(self) -> AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.managedEBook entity.
         """
-        from .assignments import assignments_request_builder
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_states(self) -> device_states_request_builder.DeviceStatesRequestBuilder:
+    def device_states(self) -> DeviceStatesRequestBuilder:
         """
         Provides operations to manage the deviceStates property of the microsoft.graph.managedEBook entity.
         """
-        from .device_states import device_states_request_builder
+        from .device_states.device_states_request_builder import DeviceStatesRequestBuilder
 
-        return device_states_request_builder.DeviceStatesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceStatesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def install_summary(self) -> install_summary_request_builder.InstallSummaryRequestBuilder:
+    def install_summary(self) -> InstallSummaryRequestBuilder:
         """
         Provides operations to manage the installSummary property of the microsoft.graph.managedEBook entity.
         """
-        from .install_summary import install_summary_request_builder
+        from .install_summary.install_summary_request_builder import InstallSummaryRequestBuilder
 
-        return install_summary_request_builder.InstallSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+        return InstallSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_state_summary(self) -> user_state_summary_request_builder.UserStateSummaryRequestBuilder:
+    def user_state_summary(self) -> UserStateSummaryRequestBuilder:
         """
         Provides operations to manage the userStateSummary property of the microsoft.graph.managedEBook entity.
         """
-        from .user_state_summary import user_state_summary_request_builder
+        from .user_state_summary.user_state_summary_request_builder import UserStateSummaryRequestBuilder
 
-        return user_state_summary_request_builder.UserStateSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+        return UserStateSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ManagedEBookItemRequestBuilderDeleteRequestConfiguration():
@@ -221,7 +221,7 @@ class ManagedEBookItemRequestBuilder():
     @dataclass
     class ManagedEBookItemRequestBuilderGetQueryParameters():
         """
-        The Managed eBook.
+        Read properties and relationships of the iosVppEBook object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

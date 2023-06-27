@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import mobile_app_assignment
+    from .....models.mobile_app_assignment import MobileAppAssignment
 
 @dataclass
 class AssignPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The mobileAppAssignments property
-    mobile_app_assignments: Optional[List[mobile_app_assignment.MobileAppAssignment]] = None
+    mobile_app_assignments: Optional[List[MobileAppAssignment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignPostRequestBody:
@@ -31,12 +31,12 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import mobile_app_assignment
+        from .....models.mobile_app_assignment import MobileAppAssignment
 
-        from .....models import mobile_app_assignment
+        from .....models.mobile_app_assignment import MobileAppAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "mobileAppAssignments": lambda n : setattr(self, 'mobile_app_assignments', n.get_collection_of_object_values(mobile_app_assignment.MobileAppAssignment)),
+            "mobileAppAssignments": lambda n : setattr(self, 'mobile_app_assignments', n.get_collection_of_object_values(MobileAppAssignment)),
         }
         return fields
     

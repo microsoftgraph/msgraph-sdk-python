@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import education_class, education_class_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .delta import delta_request_builder
-    from .item import education_class_item_request_builder
+    from ...models.education_class import EducationClass
+    from ...models.education_class_collection_response import EducationClassCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
+    from .item.education_class_item_request_builder import EducationClassItemRequestBuilder
 
 class ClassesRequestBuilder():
     """
@@ -38,67 +39,67 @@ class ClassesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_education_class_id(self,education_class_id: str) -> education_class_item_request_builder.EducationClassItemRequestBuilder:
+    def by_education_class_id(self,education_class_id: str) -> EducationClassItemRequestBuilder:
         """
         Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
         Args:
             education_class_id: Unique identifier of the item
-        Returns: education_class_item_request_builder.EducationClassItemRequestBuilder
+        Returns: EducationClassItemRequestBuilder
         """
         if not education_class_id:
             raise TypeError("education_class_id cannot be null.")
-        from .item import education_class_item_request_builder
+        from .item.education_class_item_request_builder import EducationClassItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationClass%2Did"] = education_class_id
-        return education_class_item_request_builder.EducationClassItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return EducationClassItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_class_collection_response.EducationClassCollectionResponse]:
+    async def get(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationClassCollectionResponse]:
         """
         Get a list of the educationClass objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_class_collection_response.EducationClassCollectionResponse]
+        Returns: Optional[EducationClassCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import education_class_collection_response
+        from ...models.education_class_collection_response import EducationClassCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, education_class_collection_response.EducationClassCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationClassCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[education_class.EducationClass] = None, request_configuration: Optional[ClassesRequestBuilderPostRequestConfiguration] = None) -> Optional[education_class.EducationClass]:
+    async def post(self,body: Optional[EducationClass] = None, request_configuration: Optional[ClassesRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationClass]:
         """
         Create a new educationClass object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_class.EducationClass]
+        Returns: Optional[EducationClass]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import education_class
+        from ...models.education_class import EducationClass
 
-        return await self.request_adapter.send_async(request_info, education_class.EducationClass, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationClass, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -118,7 +119,7 @@ class ClassesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[education_class.EducationClass] = None, request_configuration: Optional[ClassesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EducationClass] = None, request_configuration: Optional[ClassesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new educationClass object.
         Args:
@@ -140,22 +141,22 @@ class ClassesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def delta(self) -> DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        from .delta import delta_request_builder
+        from .delta.delta_request_builder import DeltaRequestBuilder
 
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ClassesRequestBuilderGetQueryParameters():

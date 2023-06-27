@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import managed_mobile_lob_app_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
+    from ....models.managed_mobile_lob_app_collection_response import ManagedMobileLobAppCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
 
 class GraphManagedMobileLobAppRequestBuilder():
     """
@@ -36,27 +36,27 @@ class GraphManagedMobileLobAppRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[GraphManagedMobileLobAppRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_mobile_lob_app_collection_response.ManagedMobileLobAppCollectionResponse]:
+    async def get(self,request_configuration: Optional[GraphManagedMobileLobAppRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedMobileLobAppCollectionResponse]:
         """
         Get the items of type microsoft.graph.managedMobileLobApp in the microsoft.graph.mobileApp collection
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_mobile_lob_app_collection_response.ManagedMobileLobAppCollectionResponse]
+        Returns: Optional[ManagedMobileLobAppCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import managed_mobile_lob_app_collection_response
+        from ....models.managed_mobile_lob_app_collection_response import ManagedMobileLobAppCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, managed_mobile_lob_app_collection_response.ManagedMobileLobAppCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedMobileLobAppCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GraphManagedMobileLobAppRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -77,13 +77,13 @@ class GraphManagedMobileLobAppRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GraphManagedMobileLobAppRequestBuilderGetQueryParameters():

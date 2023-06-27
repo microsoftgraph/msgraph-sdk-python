@@ -1,25 +1,29 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_set, notebook, onenote_entity_schema_object_model, onenote_section, section_group
+    from .identity_set import IdentitySet
+    from .notebook import Notebook
+    from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
+    from .onenote_section import OnenoteSection
+    from .section_group import SectionGroup
 
-from . import onenote_entity_schema_object_model
+from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
 
 @dataclass
-class OnenoteEntityHierarchyModel(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectModel):
+class OnenoteEntityHierarchyModel(OnenoteEntitySchemaObjectModel):
     odata_type = "#microsoft.graph.onenoteEntityHierarchyModel"
     # Identity of the user, device, and application which created the item. Read-only.
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # The name of the notebook.
     display_name: Optional[str] = None
     # Identity of the user, device, and application which created the item. Read-only.
-    last_modified_by: Optional[identity_set.IdentitySet] = None
+    last_modified_by: Optional[IdentitySet] = None
     # The date and time when the notebook was last modified. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenoteEntityHierarchyModel:
@@ -36,17 +40,17 @@ class OnenoteEntityHierarchyModel(onenote_entity_schema_object_model.OnenoteEnti
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.notebook".casefold():
-            from . import notebook
+            from .notebook import Notebook
 
-            return notebook.Notebook()
+            return Notebook()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onenoteSection".casefold():
-            from . import onenote_section
+            from .onenote_section import OnenoteSection
 
-            return onenote_section.OnenoteSection()
+            return OnenoteSection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sectionGroup".casefold():
-            from . import section_group
+            from .section_group import SectionGroup
 
-            return section_group.SectionGroup()
+            return SectionGroup()
         return OnenoteEntityHierarchyModel()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -54,14 +58,22 @@ class OnenoteEntityHierarchyModel(onenote_entity_schema_object_model.OnenoteEnti
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set, notebook, onenote_entity_schema_object_model, onenote_section, section_group
+        from .identity_set import IdentitySet
+        from .notebook import Notebook
+        from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
+        from .onenote_section import OnenoteSection
+        from .section_group import SectionGroup
 
-        from . import identity_set, notebook, onenote_entity_schema_object_model, onenote_section, section_group
+        from .identity_set import IdentitySet
+        from .notebook import Notebook
+        from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
+        from .onenote_section import OnenoteSection
+        from .section_group import SectionGroup
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -80,6 +92,6 @@ class OnenoteEntityHierarchyModel(onenote_entity_schema_object_model.OnenoteEnti
         writer.write_object_value("createdBy", self.created_by)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
     
 

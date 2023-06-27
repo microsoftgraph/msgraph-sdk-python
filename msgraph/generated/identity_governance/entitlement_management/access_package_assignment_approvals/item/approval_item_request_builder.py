@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import approval
-    from .....models.o_data_errors import o_data_error
-    from .stages import stages_request_builder
+    from .....models.approval import Approval
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .stages.stages_request_builder import StagesRequestBuilder
 
 class ApprovalItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class ApprovalItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ApprovalItemRequestBuilderGetRequestConfiguration] = None) -> Optional[approval.Approval]:
+    async def get(self,request_configuration: Optional[ApprovalItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Approval]:
         """
         In Azure AD entitlement management, retrieve the properties of an approval object.  This call can be made by an approver, providing the identifier of the access package assignment request.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[approval.Approval]
+        Returns: Optional[Approval]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import approval
+        from .....models.approval import Approval
 
-        return await self.request_adapter.send_async(request_info, approval.Approval, error_mapping)
+        return await self.request_adapter.send_async(request_info, Approval, error_mapping)
     
-    async def patch(self,body: Optional[approval.Approval] = None, request_configuration: Optional[ApprovalItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[approval.Approval]:
+    async def patch(self,body: Optional[Approval] = None, request_configuration: Optional[ApprovalItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Approval]:
         """
         Update the navigation property accessPackageAssignmentApprovals in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[approval.Approval]
+        Returns: Optional[Approval]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import approval
+        from .....models.approval import Approval
 
-        return await self.request_adapter.send_async(request_info, approval.Approval, error_mapping)
+        return await self.request_adapter.send_async(request_info, Approval, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ApprovalItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class ApprovalItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[approval.Approval] = None, request_configuration: Optional[ApprovalItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Approval] = None, request_configuration: Optional[ApprovalItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property accessPackageAssignmentApprovals in identityGovernance
         Args:
@@ -158,13 +158,13 @@ class ApprovalItemRequestBuilder():
         return request_info
     
     @property
-    def stages(self) -> stages_request_builder.StagesRequestBuilder:
+    def stages(self) -> StagesRequestBuilder:
         """
         Provides operations to manage the stages property of the microsoft.graph.approval entity.
         """
-        from .stages import stages_request_builder
+        from .stages.stages_request_builder import StagesRequestBuilder
 
-        return stages_request_builder.StagesRequestBuilder(self.request_adapter, self.path_parameters)
+        return StagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ApprovalItemRequestBuilderDeleteRequestConfiguration():

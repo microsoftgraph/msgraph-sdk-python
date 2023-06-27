@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import onenote_section, onenote_section_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import onenote_section_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.onenote_section import OnenoteSection
+    from .....models.onenote_section_collection_response import OnenoteSectionCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.onenote_section_item_request_builder import OnenoteSectionItemRequestBuilder
 
 class SectionsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class SectionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_onenote_section_id(self,onenote_section_id: str) -> onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder:
+    def by_onenote_section_id(self,onenote_section_id: str) -> OnenoteSectionItemRequestBuilder:
         """
         Provides operations to manage the sections property of the microsoft.graph.onenote entity.
         Args:
             onenote_section_id: Unique identifier of the item
-        Returns: onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder
+        Returns: OnenoteSectionItemRequestBuilder
         """
         if not onenote_section_id:
             raise TypeError("onenote_section_id cannot be null.")
-        from .item import onenote_section_item_request_builder
+        from .item.onenote_section_item_request_builder import OnenoteSectionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onenoteSection%2Did"] = onenote_section_id
-        return onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return OnenoteSectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[onenote_section_collection_response.OnenoteSectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[SectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[OnenoteSectionCollectionResponse]:
         """
         Retrieve a list of onenoteSection objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[onenote_section_collection_response.OnenoteSectionCollectionResponse]
+        Returns: Optional[OnenoteSectionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import onenote_section_collection_response
+        from .....models.onenote_section_collection_response import OnenoteSectionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, onenote_section_collection_response.OnenoteSectionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, OnenoteSectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[onenote_section.OnenoteSection] = None, request_configuration: Optional[SectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[onenote_section.OnenoteSection]:
+    async def post(self,body: Optional[OnenoteSection] = None, request_configuration: Optional[SectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[OnenoteSection]:
         """
         Create new navigation property to sections for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[onenote_section.OnenoteSection]
+        Returns: Optional[OnenoteSection]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import onenote_section
+        from .....models.onenote_section import OnenoteSection
 
-        return await self.request_adapter.send_async(request_info, onenote_section.OnenoteSection, error_mapping)
+        return await self.request_adapter.send_async(request_info, OnenoteSection, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class SectionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[onenote_section.OnenoteSection] = None, request_configuration: Optional[SectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[OnenoteSection] = None, request_configuration: Optional[SectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to sections for users
         Args:
@@ -139,13 +140,13 @@ class SectionsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SectionsRequestBuilderGetQueryParameters():

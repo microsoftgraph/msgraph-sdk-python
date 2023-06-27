@@ -4,14 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import open_shift_item, schedule_entity, shift_activity
+    from .open_shift_item import OpenShiftItem
+    from .schedule_entity import ScheduleEntity
+    from .shift_activity import ShiftActivity
 
-from . import schedule_entity
+from .schedule_entity import ScheduleEntity
 
 @dataclass
-class ShiftItem(schedule_entity.ScheduleEntity):
+class ShiftItem(ScheduleEntity):
     # An incremental part of a shift which can cover details of when and where an employee is during their shift. For example, an assignment or a scheduled break or lunch. Required.
-    activities: Optional[List[shift_activity.ShiftActivity]] = None
+    activities: Optional[List[ShiftActivity]] = None
     # The shift label of the shiftItem.
     display_name: Optional[str] = None
     # The shift notes for the shiftItem.
@@ -34,9 +36,9 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.openShiftItem".casefold():
-            from . import open_shift_item
+            from .open_shift_item import OpenShiftItem
 
-            return open_shift_item.OpenShiftItem()
+            return OpenShiftItem()
         return ShiftItem()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -44,12 +46,16 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import open_shift_item, schedule_entity, shift_activity
+        from .open_shift_item import OpenShiftItem
+        from .schedule_entity import ScheduleEntity
+        from .shift_activity import ShiftActivity
 
-        from . import open_shift_item, schedule_entity, shift_activity
+        from .open_shift_item import OpenShiftItem
+        from .schedule_entity import ScheduleEntity
+        from .shift_activity import ShiftActivity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(shift_activity.ShiftActivity)),
+            "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(ShiftActivity)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
         }

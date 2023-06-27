@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import provisioning_status_error_category
+    from .provisioning_status_error_category import ProvisioningStatusErrorCategory
 
 @dataclass
 class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
     # Additional details in case of error.
     additional_details: Optional[str] = None
     # Categorizes the error code. Possible values are failure, nonServiceFailure, success, unknownFutureValue
-    error_category: Optional[provisioning_status_error_category.ProvisioningStatusErrorCategory] = None
+    error_category: Optional[ProvisioningStatusErrorCategory] = None
     # Unique error code if any occurred. Learn more
     error_code: Optional[str] = None
     # The OdataType property
@@ -41,13 +41,13 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import provisioning_status_error_category
+        from .provisioning_status_error_category import ProvisioningStatusErrorCategory
 
-        from . import provisioning_status_error_category
+        from .provisioning_status_error_category import ProvisioningStatusErrorCategory
 
         fields: Dict[str, Callable[[Any], None]] = {
             "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_str_value()),
-            "errorCategory": lambda n : setattr(self, 'error_category', n.get_enum_value(provisioning_status_error_category.ProvisioningStatusErrorCategory)),
+            "errorCategory": lambda n : setattr(self, 'error_category', n.get_enum_value(ProvisioningStatusErrorCategory)),
             "errorCode": lambda n : setattr(self, 'error_code', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reason": lambda n : setattr(self, 'reason', n.get_str_value()),

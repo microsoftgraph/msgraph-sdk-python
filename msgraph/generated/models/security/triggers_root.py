@@ -4,17 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import retention_event
-    from .. import entity
+    from ..entity import Entity
+    from .retention_event import RetentionEvent
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class TriggersRoot(entity.Entity):
+class TriggersRoot(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The retentionEvents property
-    retention_events: Optional[List[retention_event.RetentionEvent]] = None
+    retention_events: Optional[List[RetentionEvent]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TriggersRoot:
@@ -33,14 +33,14 @@ class TriggersRoot(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import retention_event
-        from .. import entity
+        from ..entity import Entity
+        from .retention_event import RetentionEvent
 
-        from . import retention_event
-        from .. import entity
+        from ..entity import Entity
+        from .retention_event import RetentionEvent
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "retentionEvents": lambda n : setattr(self, 'retention_events', n.get_collection_of_object_values(retention_event.RetentionEvent)),
+            "retentionEvents": lambda n : setattr(self, 'retention_events', n.get_collection_of_object_values(RetentionEvent)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, list_item_version
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .list_item_version import ListItemVersion
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class ListItemVersionCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class ListItemVersionCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[list_item_version.ListItemVersion]] = None
+    value: Optional[List[ListItemVersion]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ListItemVersionCollectionResponse:
@@ -30,12 +31,14 @@ class ListItemVersionCollectionResponse(base_collection_pagination_count_respons
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, list_item_version
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .list_item_version import ListItemVersion
 
-        from . import base_collection_pagination_count_response, list_item_version
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .list_item_version import ListItemVersion
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(list_item_version.ListItemVersion)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(ListItemVersion)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

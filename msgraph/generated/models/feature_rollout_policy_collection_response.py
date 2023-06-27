@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, feature_rollout_policy
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .feature_rollout_policy import FeatureRolloutPolicy
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class FeatureRolloutPolicyCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class FeatureRolloutPolicyCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[feature_rollout_policy.FeatureRolloutPolicy]] = None
+    value: Optional[List[FeatureRolloutPolicy]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FeatureRolloutPolicyCollectionResponse:
@@ -30,12 +31,14 @@ class FeatureRolloutPolicyCollectionResponse(base_collection_pagination_count_re
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, feature_rollout_policy
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .feature_rollout_policy import FeatureRolloutPolicy
 
-        from . import base_collection_pagination_count_response, feature_rollout_policy
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .feature_rollout_policy import FeatureRolloutPolicy
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(feature_rollout_policy.FeatureRolloutPolicy)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(FeatureRolloutPolicy)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

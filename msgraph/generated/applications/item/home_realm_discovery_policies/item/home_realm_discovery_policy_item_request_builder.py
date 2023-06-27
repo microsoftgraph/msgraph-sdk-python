@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import home_realm_discovery_policy
-    from .....models.o_data_errors import o_data_error
+    from .....models.home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+    from .....models.o_data_errors.o_data_error import ODataError
 
 class HomeRealmDiscoveryPolicyItemRequestBuilder():
     """
@@ -35,27 +35,27 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]:
+    async def get(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicy]:
         """
         Get homeRealmDiscoveryPolicies from applications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]
+        Returns: Optional[HomeRealmDiscoveryPolicy]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import home_realm_discovery_policy
+        from .....models.home_realm_discovery_policy import HomeRealmDiscoveryPolicy
 
-        return await self.request_adapter.send_async(request_info, home_realm_discovery_policy.HomeRealmDiscoveryPolicy, error_mapping)
+        return await self.request_adapter.send_async(request_info, HomeRealmDiscoveryPolicy, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

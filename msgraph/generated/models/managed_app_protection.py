@@ -1,25 +1,34 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_managed_app_protection, default_managed_app_protection, ios_managed_app_protection, managed_app_clipboard_sharing_level, managed_app_data_storage_location, managed_app_data_transfer_level, managed_app_pin_character_set, managed_app_policy, managed_browser_type, targeted_managed_app_protection
+    from .android_managed_app_protection import AndroidManagedAppProtection
+    from .default_managed_app_protection import DefaultManagedAppProtection
+    from .ios_managed_app_protection import IosManagedAppProtection
+    from .managed_app_clipboard_sharing_level import ManagedAppClipboardSharingLevel
+    from .managed_app_data_storage_location import ManagedAppDataStorageLocation
+    from .managed_app_data_transfer_level import ManagedAppDataTransferLevel
+    from .managed_app_pin_character_set import ManagedAppPinCharacterSet
+    from .managed_app_policy import ManagedAppPolicy
+    from .managed_browser_type import ManagedBrowserType
+    from .targeted_managed_app_protection import TargetedManagedAppProtection
 
-from . import managed_app_policy
+from .managed_app_policy import ManagedAppPolicy
 
 @dataclass
-class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
+class ManagedAppProtection(ManagedAppPolicy):
     odata_type = "#microsoft.graph.managedAppProtection"
     # Data storage locations where a user may store managed data.
-    allowed_data_storage_locations: Optional[List[managed_app_data_storage_location.ManagedAppDataStorageLocation]] = None
+    allowed_data_storage_locations: Optional[List[ManagedAppDataStorageLocation]] = None
     # Data can be transferred from/to these classes of apps
-    allowed_inbound_data_transfer_sources: Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel] = None
+    allowed_inbound_data_transfer_sources: Optional[ManagedAppDataTransferLevel] = None
     # Represents the level to which the device's clipboard may be shared between apps
-    allowed_outbound_clipboard_sharing_level: Optional[managed_app_clipboard_sharing_level.ManagedAppClipboardSharingLevel] = None
+    allowed_outbound_clipboard_sharing_level: Optional[ManagedAppClipboardSharingLevel] = None
     # Data can be transferred from/to these classes of apps
-    allowed_outbound_data_transfer_destinations: Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel] = None
+    allowed_outbound_data_transfer_destinations: Optional[ManagedAppDataTransferLevel] = None
     # Indicates whether contacts can be synced to the user's device.
     contact_sync_blocked: Optional[bool] = None
     # Indicates whether the backup of a managed app's data is blocked.
@@ -31,7 +40,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
     # Indicates whether use of the fingerprint reader is allowed in place of a pin if PinRequired is set to True.
     fingerprint_blocked: Optional[bool] = None
     # Type of managed browser
-    managed_browser: Optional[managed_browser_type.ManagedBrowserType] = None
+    managed_browser: Optional[ManagedBrowserType] = None
     # Indicates whether internet links should be opened in the managed browser app, or any custom browser specified by CustomBrowserProtocol (for iOS) or CustomBrowserPackageId/CustomBrowserDisplayName (for Android)
     managed_browser_to_open_links_required: Optional[bool] = None
     # Maximum number of incorrect pin retry attempts before the managed app is either blocked or wiped.
@@ -49,15 +58,15 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
     # Indicates whether organizational credentials are required for app use.
     organizational_credentials_required: Optional[bool] = None
     # TimePeriod before the all-level pin must be reset if PinRequired is set to True.
-    period_before_pin_reset: Optional[timedelta] = None
+    period_before_pin_reset: Optional[datetime.timedelta] = None
     # The period after which access is checked when the device is not connected to the internet.
-    period_offline_before_access_check: Optional[timedelta] = None
+    period_offline_before_access_check: Optional[datetime.timedelta] = None
     # The amount of time an app is allowed to remain disconnected from the internet before all managed data it is wiped.
-    period_offline_before_wipe_is_enforced: Optional[timedelta] = None
+    period_offline_before_wipe_is_enforced: Optional[datetime.timedelta] = None
     # The period after which access is checked when the device is connected to the internet.
-    period_online_before_access_check: Optional[timedelta] = None
+    period_online_before_access_check: Optional[datetime.timedelta] = None
     # Character set which is to be used for a user's app PIN
-    pin_character_set: Optional[managed_app_pin_character_set.ManagedAppPinCharacterSet] = None
+    pin_character_set: Optional[ManagedAppPinCharacterSet] = None
     # Indicates whether an app-level pin is required.
     pin_required: Optional[bool] = None
     # Indicates whether printing is allowed from managed apps.
@@ -82,21 +91,21 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.androidManagedAppProtection".casefold():
-            from . import android_managed_app_protection
+            from .android_managed_app_protection import AndroidManagedAppProtection
 
-            return android_managed_app_protection.AndroidManagedAppProtection()
+            return AndroidManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.defaultManagedAppProtection".casefold():
-            from . import default_managed_app_protection
+            from .default_managed_app_protection import DefaultManagedAppProtection
 
-            return default_managed_app_protection.DefaultManagedAppProtection()
+            return DefaultManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.iosManagedAppProtection".casefold():
-            from . import ios_managed_app_protection
+            from .ios_managed_app_protection import IosManagedAppProtection
 
-            return ios_managed_app_protection.IosManagedAppProtection()
+            return IosManagedAppProtection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppProtection".casefold():
-            from . import targeted_managed_app_protection
+            from .targeted_managed_app_protection import TargetedManagedAppProtection
 
-            return targeted_managed_app_protection.TargetedManagedAppProtection()
+            return TargetedManagedAppProtection()
         return ManagedAppProtection()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -104,21 +113,39 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_managed_app_protection, default_managed_app_protection, ios_managed_app_protection, managed_app_clipboard_sharing_level, managed_app_data_storage_location, managed_app_data_transfer_level, managed_app_pin_character_set, managed_app_policy, managed_browser_type, targeted_managed_app_protection
+        from .android_managed_app_protection import AndroidManagedAppProtection
+        from .default_managed_app_protection import DefaultManagedAppProtection
+        from .ios_managed_app_protection import IosManagedAppProtection
+        from .managed_app_clipboard_sharing_level import ManagedAppClipboardSharingLevel
+        from .managed_app_data_storage_location import ManagedAppDataStorageLocation
+        from .managed_app_data_transfer_level import ManagedAppDataTransferLevel
+        from .managed_app_pin_character_set import ManagedAppPinCharacterSet
+        from .managed_app_policy import ManagedAppPolicy
+        from .managed_browser_type import ManagedBrowserType
+        from .targeted_managed_app_protection import TargetedManagedAppProtection
 
-        from . import android_managed_app_protection, default_managed_app_protection, ios_managed_app_protection, managed_app_clipboard_sharing_level, managed_app_data_storage_location, managed_app_data_transfer_level, managed_app_pin_character_set, managed_app_policy, managed_browser_type, targeted_managed_app_protection
+        from .android_managed_app_protection import AndroidManagedAppProtection
+        from .default_managed_app_protection import DefaultManagedAppProtection
+        from .ios_managed_app_protection import IosManagedAppProtection
+        from .managed_app_clipboard_sharing_level import ManagedAppClipboardSharingLevel
+        from .managed_app_data_storage_location import ManagedAppDataStorageLocation
+        from .managed_app_data_transfer_level import ManagedAppDataTransferLevel
+        from .managed_app_pin_character_set import ManagedAppPinCharacterSet
+        from .managed_app_policy import ManagedAppPolicy
+        from .managed_browser_type import ManagedBrowserType
+        from .targeted_managed_app_protection import TargetedManagedAppProtection
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedDataStorageLocations": lambda n : setattr(self, 'allowed_data_storage_locations', n.get_collection_of_enum_values(managed_app_data_storage_location.ManagedAppDataStorageLocation)),
-            "allowedInboundDataTransferSources": lambda n : setattr(self, 'allowed_inbound_data_transfer_sources', n.get_enum_value(managed_app_data_transfer_level.ManagedAppDataTransferLevel)),
-            "allowedOutboundClipboardSharingLevel": lambda n : setattr(self, 'allowed_outbound_clipboard_sharing_level', n.get_enum_value(managed_app_clipboard_sharing_level.ManagedAppClipboardSharingLevel)),
-            "allowedOutboundDataTransferDestinations": lambda n : setattr(self, 'allowed_outbound_data_transfer_destinations', n.get_enum_value(managed_app_data_transfer_level.ManagedAppDataTransferLevel)),
+            "allowedDataStorageLocations": lambda n : setattr(self, 'allowed_data_storage_locations', n.get_collection_of_enum_values(ManagedAppDataStorageLocation)),
+            "allowedInboundDataTransferSources": lambda n : setattr(self, 'allowed_inbound_data_transfer_sources', n.get_enum_value(ManagedAppDataTransferLevel)),
+            "allowedOutboundClipboardSharingLevel": lambda n : setattr(self, 'allowed_outbound_clipboard_sharing_level', n.get_enum_value(ManagedAppClipboardSharingLevel)),
+            "allowedOutboundDataTransferDestinations": lambda n : setattr(self, 'allowed_outbound_data_transfer_destinations', n.get_enum_value(ManagedAppDataTransferLevel)),
             "contactSyncBlocked": lambda n : setattr(self, 'contact_sync_blocked', n.get_bool_value()),
             "dataBackupBlocked": lambda n : setattr(self, 'data_backup_blocked', n.get_bool_value()),
             "deviceComplianceRequired": lambda n : setattr(self, 'device_compliance_required', n.get_bool_value()),
             "disableAppPinIfDevicePinIsSet": lambda n : setattr(self, 'disable_app_pin_if_device_pin_is_set', n.get_bool_value()),
             "fingerprintBlocked": lambda n : setattr(self, 'fingerprint_blocked', n.get_bool_value()),
-            "managedBrowser": lambda n : setattr(self, 'managed_browser', n.get_enum_value(managed_browser_type.ManagedBrowserType)),
+            "managedBrowser": lambda n : setattr(self, 'managed_browser', n.get_enum_value(ManagedBrowserType)),
             "managedBrowserToOpenLinksRequired": lambda n : setattr(self, 'managed_browser_to_open_links_required', n.get_bool_value()),
             "maximumPinRetries": lambda n : setattr(self, 'maximum_pin_retries', n.get_int_value()),
             "minimumPinLength": lambda n : setattr(self, 'minimum_pin_length', n.get_int_value()),
@@ -131,7 +158,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             "periodOfflineBeforeAccessCheck": lambda n : setattr(self, 'period_offline_before_access_check', n.get_timedelta_value()),
             "periodOfflineBeforeWipeIsEnforced": lambda n : setattr(self, 'period_offline_before_wipe_is_enforced', n.get_timedelta_value()),
             "periodOnlineBeforeAccessCheck": lambda n : setattr(self, 'period_online_before_access_check', n.get_timedelta_value()),
-            "pinCharacterSet": lambda n : setattr(self, 'pin_character_set', n.get_enum_value(managed_app_pin_character_set.ManagedAppPinCharacterSet)),
+            "pinCharacterSet": lambda n : setattr(self, 'pin_character_set', n.get_enum_value(ManagedAppPinCharacterSet)),
             "pinRequired": lambda n : setattr(self, 'pin_required', n.get_bool_value()),
             "printBlocked": lambda n : setattr(self, 'print_blocked', n.get_bool_value()),
             "saveAsBlocked": lambda n : setattr(self, 'save_as_blocked', n.get_bool_value()),
@@ -168,10 +195,10 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         writer.write_str_value("minimumWarningAppVersion", self.minimum_warning_app_version)
         writer.write_str_value("minimumWarningOsVersion", self.minimum_warning_os_version)
         writer.write_bool_value("organizationalCredentialsRequired", self.organizational_credentials_required)
-        writer.write_timedelta_value("periodBeforePinReset", self.period_before_pin_reset)
-        writer.write_timedelta_value("periodOfflineBeforeAccessCheck", self.period_offline_before_access_check)
-        writer.write_timedelta_value("periodOfflineBeforeWipeIsEnforced", self.period_offline_before_wipe_is_enforced)
-        writer.write_timedelta_value("periodOnlineBeforeAccessCheck", self.period_online_before_access_check)
+        writer.write_timedelta_value()("periodBeforePinReset", self.period_before_pin_reset)
+        writer.write_timedelta_value()("periodOfflineBeforeAccessCheck", self.period_offline_before_access_check)
+        writer.write_timedelta_value()("periodOfflineBeforeWipeIsEnforced", self.period_offline_before_wipe_is_enforced)
+        writer.write_timedelta_value()("periodOnlineBeforeAccessCheck", self.period_online_before_access_check)
         writer.write_enum_value("pinCharacterSet", self.pin_character_set)
         writer.write_bool_value("pinRequired", self.pin_required)
         writer.write_bool_value("printBlocked", self.print_blocked)

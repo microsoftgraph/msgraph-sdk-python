@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models import print_document_upload_properties
+    from .........models.print_document_upload_properties import PrintDocumentUploadProperties
 
 @dataclass
 class CreateUploadSessionPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The properties property
-    properties: Optional[print_document_upload_properties.PrintDocumentUploadProperties] = None
+    properties: Optional[PrintDocumentUploadProperties] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CreateUploadSessionPostRequestBody:
@@ -31,12 +31,12 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .........models import print_document_upload_properties
+        from .........models.print_document_upload_properties import PrintDocumentUploadProperties
 
-        from .........models import print_document_upload_properties
+        from .........models.print_document_upload_properties import PrintDocumentUploadProperties
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "properties": lambda n : setattr(self, 'properties', n.get_object_value(print_document_upload_properties.PrintDocumentUploadProperties)),
+            "properties": lambda n : setattr(self, 'properties', n.get_object_value(PrintDocumentUploadProperties)),
         }
         return fields
     

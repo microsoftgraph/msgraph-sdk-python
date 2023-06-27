@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import unified_role_eligibility_schedule_instance, unified_role_eligibility_schedule_instance_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
-    from .item import unified_role_eligibility_schedule_instance_item_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
+    from ....models.unified_role_eligibility_schedule_instance_collection_response import UnifiedRoleEligibilityScheduleInstanceCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
+    from .item.unified_role_eligibility_schedule_instance_item_request_builder import UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder
 
 class RoleEligibilityScheduleInstancesRequestBuilder():
     """
@@ -38,80 +39,80 @@ class RoleEligibilityScheduleInstancesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_unified_role_eligibility_schedule_instance_id(self,unified_role_eligibility_schedule_instance_id: str) -> unified_role_eligibility_schedule_instance_item_request_builder.UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder:
+    def by_unified_role_eligibility_schedule_instance_id(self,unified_role_eligibility_schedule_instance_id: str) -> UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder:
         """
         Provides operations to manage the roleEligibilityScheduleInstances property of the microsoft.graph.rbacApplication entity.
         Args:
             unified_role_eligibility_schedule_instance_id: Unique identifier of the item
-        Returns: unified_role_eligibility_schedule_instance_item_request_builder.UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder
+        Returns: UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder
         """
         if not unified_role_eligibility_schedule_instance_id:
             raise TypeError("unified_role_eligibility_schedule_instance_id cannot be null.")
-        from .item import unified_role_eligibility_schedule_instance_item_request_builder
+        from .item.unified_role_eligibility_schedule_instance_item_request_builder import UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleEligibilityScheduleInstance%2Did"] = unified_role_eligibility_schedule_instance_id
-        return unified_role_eligibility_schedule_instance_item_request_builder.UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
         Args:
             on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        Returns: FilterByCurrentUserWithOnRequestBuilder
         """
         if not on:
             raise TypeError("on cannot be null.")
-        from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+        from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
 
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+        return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule_instance_collection_response.UnifiedRoleEligibilityScheduleInstanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleEligibilityScheduleInstanceCollectionResponse]:
         """
         Get the instances of role eligibilities.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_eligibility_schedule_instance_collection_response.UnifiedRoleEligibilityScheduleInstanceCollectionResponse]
+        Returns: Optional[UnifiedRoleEligibilityScheduleInstanceCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import unified_role_eligibility_schedule_instance_collection_response
+        from ....models.unified_role_eligibility_schedule_instance_collection_response import UnifiedRoleEligibilityScheduleInstanceCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule_instance_collection_response.UnifiedRoleEligibilityScheduleInstanceCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleEligibilityScheduleInstanceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance] = None, request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]:
+    async def post(self,body: Optional[UnifiedRoleEligibilityScheduleInstance] = None, request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> Optional[UnifiedRoleEligibilityScheduleInstance]:
         """
         Create new navigation property to roleEligibilityScheduleInstances for roleManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]
+        Returns: Optional[UnifiedRoleEligibilityScheduleInstance]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import unified_role_eligibility_schedule_instance
+        from ....models.unified_role_eligibility_schedule_instance import UnifiedRoleEligibilityScheduleInstance
 
-        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleEligibilityScheduleInstance, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -131,7 +132,7 @@ class RoleEligibilityScheduleInstancesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance] = None, request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UnifiedRoleEligibilityScheduleInstance] = None, request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to roleEligibilityScheduleInstances for roleManagement
         Args:
@@ -153,13 +154,13 @@ class RoleEligibilityScheduleInstancesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RoleEligibilityScheduleInstancesRequestBuilderGetQueryParameters():

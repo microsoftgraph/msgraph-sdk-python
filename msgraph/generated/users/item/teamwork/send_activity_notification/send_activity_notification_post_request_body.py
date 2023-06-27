@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import item_body, key_value_pair, teamwork_activity_topic
+    from .....models.item_body import ItemBody
+    from .....models.key_value_pair import KeyValuePair
+    from .....models.teamwork_activity_topic import TeamworkActivityTopic
 
 @dataclass
 class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
@@ -16,11 +18,11 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
     # The chainId property
     chain_id: Optional[int] = None
     # The previewText property
-    preview_text: Optional[item_body.ItemBody] = None
+    preview_text: Optional[ItemBody] = None
     # The templateParameters property
-    template_parameters: Optional[List[key_value_pair.KeyValuePair]] = None
+    template_parameters: Optional[List[KeyValuePair]] = None
     # The topic property
-    topic: Optional[teamwork_activity_topic.TeamworkActivityTopic] = None
+    topic: Optional[TeamworkActivityTopic] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SendActivityNotificationPostRequestBody:
@@ -39,16 +41,20 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import item_body, key_value_pair, teamwork_activity_topic
+        from .....models.item_body import ItemBody
+        from .....models.key_value_pair import KeyValuePair
+        from .....models.teamwork_activity_topic import TeamworkActivityTopic
 
-        from .....models import item_body, key_value_pair, teamwork_activity_topic
+        from .....models.item_body import ItemBody
+        from .....models.key_value_pair import KeyValuePair
+        from .....models.teamwork_activity_topic import TeamworkActivityTopic
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activityType": lambda n : setattr(self, 'activity_type', n.get_str_value()),
             "chainId": lambda n : setattr(self, 'chain_id', n.get_int_value()),
-            "previewText": lambda n : setattr(self, 'preview_text', n.get_object_value(item_body.ItemBody)),
-            "templateParameters": lambda n : setattr(self, 'template_parameters', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
-            "topic": lambda n : setattr(self, 'topic', n.get_object_value(teamwork_activity_topic.TeamworkActivityTopic)),
+            "previewText": lambda n : setattr(self, 'preview_text', n.get_object_value(ItemBody)),
+            "templateParameters": lambda n : setattr(self, 'template_parameters', n.get_collection_of_object_values(KeyValuePair)),
+            "topic": lambda n : setattr(self, 'topic', n.get_object_value(TeamworkActivityTopic)),
         }
         return fields
     

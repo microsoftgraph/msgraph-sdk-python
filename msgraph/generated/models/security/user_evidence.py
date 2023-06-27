@@ -4,16 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert_evidence, user_account
+    from .alert_evidence import AlertEvidence
+    from .user_account import UserAccount
 
-from . import alert_evidence
+from .alert_evidence import AlertEvidence
 
 @dataclass
-class UserEvidence(alert_evidence.AlertEvidence):
+class UserEvidence(AlertEvidence):
     # The OdataType property
     odata_type: Optional[str] = None
     # The user account details.
-    user_account: Optional[user_account.UserAccount] = None
+    user_account: Optional[UserAccount] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserEvidence:
@@ -32,12 +33,14 @@ class UserEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_evidence, user_account
+        from .alert_evidence import AlertEvidence
+        from .user_account import UserAccount
 
-        from . import alert_evidence, user_account
+        from .alert_evidence import AlertEvidence
+        from .user_account import UserAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
+            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(UserAccount)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

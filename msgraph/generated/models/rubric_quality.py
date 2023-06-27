@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import education_item_body, rubric_criterion
+    from .education_item_body import EducationItemBody
+    from .rubric_criterion import RubricCriterion
 
 @dataclass
 class RubricQuality(AdditionalDataHolder, Parsable):
@@ -12,9 +13,9 @@ class RubricQuality(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The collection of criteria for this rubric quality.
-    criteria: Optional[List[rubric_criterion.RubricCriterion]] = None
+    criteria: Optional[List[RubricCriterion]] = None
     # The description of this rubric quality.
-    description: Optional[education_item_body.EducationItemBody] = None
+    description: Optional[EducationItemBody] = None
     # The name of this rubric quality.
     display_name: Optional[str] = None
     # The OdataType property
@@ -41,13 +42,15 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_item_body, rubric_criterion
+        from .education_item_body import EducationItemBody
+        from .rubric_criterion import RubricCriterion
 
-        from . import education_item_body, rubric_criterion
+        from .education_item_body import EducationItemBody
+        from .rubric_criterion import RubricCriterion
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "criteria": lambda n : setattr(self, 'criteria', n.get_collection_of_object_values(rubric_criterion.RubricCriterion)),
-            "description": lambda n : setattr(self, 'description', n.get_object_value(education_item_body.EducationItemBody)),
+            "criteria": lambda n : setattr(self, 'criteria', n.get_collection_of_object_values(RubricCriterion)),
+            "description": lambda n : setattr(self, 'description', n.get_object_value(EducationItemBody)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "qualityId": lambda n : setattr(self, 'quality_id', n.get_str_value()),

@@ -4,19 +4,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import connection_operation_status
-    from .. import entity, public_error
+    from ..entity import Entity
+    from ..public_error import PublicError
+    from .connection_operation_status import ConnectionOperationStatus
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class ConnectionOperation(entity.Entity):
+class ConnectionOperation(Entity):
     # If status is failed, provides more information about the error that caused the failure.
-    error: Optional[public_error.PublicError] = None
+    error: Optional[PublicError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.
-    status: Optional[connection_operation_status.ConnectionOperationStatus] = None
+    status: Optional[ConnectionOperationStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConnectionOperation:
@@ -35,15 +36,17 @@ class ConnectionOperation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import connection_operation_status
-        from .. import entity, public_error
+        from ..entity import Entity
+        from ..public_error import PublicError
+        from .connection_operation_status import ConnectionOperationStatus
 
-        from . import connection_operation_status
-        from .. import entity, public_error
+        from ..entity import Entity
+        from ..public_error import PublicError
+        from .connection_operation_status import ConnectionOperationStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(connection_operation_status.ConnectionOperationStatus)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ConnectionOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

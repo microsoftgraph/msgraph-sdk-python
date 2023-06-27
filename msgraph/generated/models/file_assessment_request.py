@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import threat_assessment_request
+    from .threat_assessment_request import ThreatAssessmentRequest
 
-from . import threat_assessment_request
+from .threat_assessment_request import ThreatAssessmentRequest
 
 @dataclass
-class FileAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
+class FileAssessmentRequest(ThreatAssessmentRequest):
     odata_type = "#microsoft.graph.fileAssessmentRequest"
     # Base64 encoded file content. The file content cannot fetch back because it isn't stored.
     content_data: Optional[str] = None
@@ -33,9 +33,9 @@ class FileAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import threat_assessment_request
+        from .threat_assessment_request import ThreatAssessmentRequest
 
-        from . import threat_assessment_request
+        from .threat_assessment_request import ThreatAssessmentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
             "contentData": lambda n : setattr(self, 'content_data', n.get_str_value()),

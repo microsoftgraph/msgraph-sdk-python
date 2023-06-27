@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import unified_role_assignment_schedule_request, unified_role_assignment_schedule_request_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
-    from .item import unified_role_assignment_schedule_request_item_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
+    from ....models.unified_role_assignment_schedule_request_collection_response import UnifiedRoleAssignmentScheduleRequestCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
+    from .item.unified_role_assignment_schedule_request_item_request_builder import UnifiedRoleAssignmentScheduleRequestItemRequestBuilder
 
 class RoleAssignmentScheduleRequestsRequestBuilder():
     """
@@ -38,80 +39,80 @@ class RoleAssignmentScheduleRequestsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_unified_role_assignment_schedule_request_id(self,unified_role_assignment_schedule_request_id: str) -> unified_role_assignment_schedule_request_item_request_builder.UnifiedRoleAssignmentScheduleRequestItemRequestBuilder:
+    def by_unified_role_assignment_schedule_request_id(self,unified_role_assignment_schedule_request_id: str) -> UnifiedRoleAssignmentScheduleRequestItemRequestBuilder:
         """
         Provides operations to manage the roleAssignmentScheduleRequests property of the microsoft.graph.rbacApplication entity.
         Args:
             unified_role_assignment_schedule_request_id: Unique identifier of the item
-        Returns: unified_role_assignment_schedule_request_item_request_builder.UnifiedRoleAssignmentScheduleRequestItemRequestBuilder
+        Returns: UnifiedRoleAssignmentScheduleRequestItemRequestBuilder
         """
         if not unified_role_assignment_schedule_request_id:
             raise TypeError("unified_role_assignment_schedule_request_id cannot be null.")
-        from .item import unified_role_assignment_schedule_request_item_request_builder
+        from .item.unified_role_assignment_schedule_request_item_request_builder import UnifiedRoleAssignmentScheduleRequestItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleAssignmentScheduleRequest%2Did"] = unified_role_assignment_schedule_request_id
-        return unified_role_assignment_schedule_request_item_request_builder.UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
         Args:
             on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        Returns: FilterByCurrentUserWithOnRequestBuilder
         """
         if not on:
             raise TypeError("on cannot be null.")
-        from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+        from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
 
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+        return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RoleAssignmentScheduleRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule_request_collection_response.UnifiedRoleAssignmentScheduleRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleAssignmentScheduleRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleRequestCollectionResponse]:
         """
         Retrieve the requests for active role assignments to principals. The active assignments include those made through assignments and activation requests, and directly through the role assignments API. The role assignments can be permanently active with or without an expiry date, or temporarily active after user activation of eligible assignments.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_assignment_schedule_request_collection_response.UnifiedRoleAssignmentScheduleRequestCollectionResponse]
+        Returns: Optional[UnifiedRoleAssignmentScheduleRequestCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import unified_role_assignment_schedule_request_collection_response
+        from ....models.unified_role_assignment_schedule_request_collection_response import UnifiedRoleAssignmentScheduleRequestCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, unified_role_assignment_schedule_request_collection_response.UnifiedRoleAssignmentScheduleRequestCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleAssignmentScheduleRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest] = None, request_configuration: Optional[RoleAssignmentScheduleRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]:
+    async def post(self,body: Optional[UnifiedRoleAssignmentScheduleRequest] = None, request_configuration: Optional[RoleAssignmentScheduleRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleRequest]:
         """
         In PIM, carry out the following operations through the unifiedRoleAssignmentScheduleRequest object:+ Request active and persistent role assignments for a principal, with or without expiry dates.+ Activate, deactivate, extend, or renew an eligible role assignment for a principal. To call this API to update, renew, and extend assignments for yourself, you must have multi-factor authentication (MFA) enforced, and running the query in a session in which they were challenged for MFA. See Enable per-user Azure AD Multi-Factor Authentication to secure sign-in events.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]
+        Returns: Optional[UnifiedRoleAssignmentScheduleRequest]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import unified_role_assignment_schedule_request
+        from ....models.unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
 
-        return await self.request_adapter.send_async(request_info, unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleAssignmentScheduleRequest, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentScheduleRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -131,7 +132,7 @@ class RoleAssignmentScheduleRequestsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest] = None, request_configuration: Optional[RoleAssignmentScheduleRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UnifiedRoleAssignmentScheduleRequest] = None, request_configuration: Optional[RoleAssignmentScheduleRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         In PIM, carry out the following operations through the unifiedRoleAssignmentScheduleRequest object:+ Request active and persistent role assignments for a principal, with or without expiry dates.+ Activate, deactivate, extend, or renew an eligible role assignment for a principal. To call this API to update, renew, and extend assignments for yourself, you must have multi-factor authentication (MFA) enforced, and running the query in a session in which they were challenged for MFA. See Enable per-user Azure AD Multi-Factor Authentication to secure sign-in events.
         Args:
@@ -153,13 +154,13 @@ class RoleAssignmentScheduleRequestsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RoleAssignmentScheduleRequestsRequestBuilderGetQueryParameters():

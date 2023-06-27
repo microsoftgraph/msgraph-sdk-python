@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import bucket_aggregation_range, bucket_aggregation_sort_property
+    from .bucket_aggregation_range import BucketAggregationRange
+    from .bucket_aggregation_sort_property import BucketAggregationSortProperty
 
 @dataclass
 class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
@@ -20,9 +21,9 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
     # A filter to define a matching criteria. The key should start with the specified prefix to be returned in the response. Optional.
     prefix_filter: Optional[str] = None
     # Specifies the manual ranges to compute the aggregations. This is only valid for non-string refiners of date or numeric type. Optional.
-    ranges: Optional[List[bucket_aggregation_range.BucketAggregationRange]] = None
+    ranges: Optional[List[BucketAggregationRange]] = None
     # The sortBy property
-    sort_by: Optional[bucket_aggregation_sort_property.BucketAggregationSortProperty] = None
+    sort_by: Optional[BucketAggregationSortProperty] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BucketAggregationDefinition:
@@ -41,17 +42,19 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import bucket_aggregation_range, bucket_aggregation_sort_property
+        from .bucket_aggregation_range import BucketAggregationRange
+        from .bucket_aggregation_sort_property import BucketAggregationSortProperty
 
-        from . import bucket_aggregation_range, bucket_aggregation_sort_property
+        from .bucket_aggregation_range import BucketAggregationRange
+        from .bucket_aggregation_sort_property import BucketAggregationSortProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isDescending": lambda n : setattr(self, 'is_descending', n.get_bool_value()),
             "minimumCount": lambda n : setattr(self, 'minimum_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "prefixFilter": lambda n : setattr(self, 'prefix_filter', n.get_str_value()),
-            "ranges": lambda n : setattr(self, 'ranges', n.get_collection_of_object_values(bucket_aggregation_range.BucketAggregationRange)),
-            "sortBy": lambda n : setattr(self, 'sort_by', n.get_enum_value(bucket_aggregation_sort_property.BucketAggregationSortProperty)),
+            "ranges": lambda n : setattr(self, 'ranges', n.get_collection_of_object_values(BucketAggregationRange)),
+            "sortBy": lambda n : setattr(self, 'sort_by', n.get_enum_value(BucketAggregationSortProperty)),
         }
         return fields
     

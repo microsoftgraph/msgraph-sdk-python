@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_policy
+    from .conditional_access_policy import ConditionalAccessPolicy
 
 @dataclass
 class AuthenticationStrengthUsage(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class AuthenticationStrengthUsage(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The mfa property
-    mfa: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
+    mfa: Optional[List[ConditionalAccessPolicy]] = None
     # The none property
-    none_: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
+    none_: Optional[List[ConditionalAccessPolicy]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,13 +35,13 @@ class AuthenticationStrengthUsage(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_policy
+        from .conditional_access_policy import ConditionalAccessPolicy
 
-        from . import conditional_access_policy
+        from .conditional_access_policy import ConditionalAccessPolicy
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "mfa": lambda n : setattr(self, 'mfa', n.get_collection_of_object_values(conditional_access_policy.ConditionalAccessPolicy)),
-            "none": lambda n : setattr(self, 'none_', n.get_collection_of_object_values(conditional_access_policy.ConditionalAccessPolicy)),
+            "mfa": lambda n : setattr(self, 'mfa', n.get_collection_of_object_values(ConditionalAccessPolicy)),
+            "none": lambda n : setattr(self, 'none_', n.get_collection_of_object_values(ConditionalAccessPolicy)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

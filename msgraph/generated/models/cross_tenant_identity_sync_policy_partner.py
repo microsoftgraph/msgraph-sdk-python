@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import cross_tenant_user_sync_inbound
+    from .cross_tenant_user_sync_inbound import CrossTenantUserSyncInbound
 
 @dataclass
 class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, Parsable):
@@ -18,7 +18,7 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, Parsable):
     # Tenant identifier for the partner Azure AD organization. Read-only.
     tenant_id: Optional[str] = None
     # Defines whether users can be synchronized from the partner tenant. Key.
-    user_sync_inbound: Optional[cross_tenant_user_sync_inbound.CrossTenantUserSyncInbound] = None
+    user_sync_inbound: Optional[CrossTenantUserSyncInbound] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantIdentitySyncPolicyPartner:
@@ -37,15 +37,15 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import cross_tenant_user_sync_inbound
+        from .cross_tenant_user_sync_inbound import CrossTenantUserSyncInbound
 
-        from . import cross_tenant_user_sync_inbound
+        from .cross_tenant_user_sync_inbound import CrossTenantUserSyncInbound
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "userSyncInbound": lambda n : setattr(self, 'user_sync_inbound', n.get_object_value(cross_tenant_user_sync_inbound.CrossTenantUserSyncInbound)),
+            "userSyncInbound": lambda n : setattr(self, 'user_sync_inbound', n.get_object_value(CrossTenantUserSyncInbound)),
         }
         return fields
     

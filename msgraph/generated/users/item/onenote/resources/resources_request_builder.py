@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import onenote_resource, onenote_resource_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import onenote_resource_item_request_builder
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.onenote_resource import OnenoteResource
+    from .....models.onenote_resource_collection_response import OnenoteResourceCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.onenote_resource_item_request_builder import OnenoteResourceItemRequestBuilder
 
 class ResourcesRequestBuilder():
     """
@@ -37,67 +38,67 @@ class ResourcesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_onenote_resource_id(self,onenote_resource_id: str) -> onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder:
+    def by_onenote_resource_id(self,onenote_resource_id: str) -> OnenoteResourceItemRequestBuilder:
         """
         Provides operations to manage the resources property of the microsoft.graph.onenote entity.
         Args:
             onenote_resource_id: Unique identifier of the item
-        Returns: onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder
+        Returns: OnenoteResourceItemRequestBuilder
         """
         if not onenote_resource_id:
             raise TypeError("onenote_resource_id cannot be null.")
-        from .item import onenote_resource_item_request_builder
+        from .item.onenote_resource_item_request_builder import OnenoteResourceItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onenoteResource%2Did"] = onenote_resource_id
-        return onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return OnenoteResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[onenote_resource_collection_response.OnenoteResourceCollectionResponse]:
+    async def get(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[OnenoteResourceCollectionResponse]:
         """
         The image and other file resources in OneNote pages. Getting a resources collection is not supported, but you can get the binary content of a specific resource. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[onenote_resource_collection_response.OnenoteResourceCollectionResponse]
+        Returns: Optional[OnenoteResourceCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import onenote_resource_collection_response
+        from .....models.onenote_resource_collection_response import OnenoteResourceCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, onenote_resource_collection_response.OnenoteResourceCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, OnenoteResourceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[onenote_resource.OnenoteResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[onenote_resource.OnenoteResource]:
+    async def post(self,body: Optional[OnenoteResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[OnenoteResource]:
         """
         Create new navigation property to resources for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[onenote_resource.OnenoteResource]
+        Returns: Optional[OnenoteResource]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import onenote_resource
+        from .....models.onenote_resource import OnenoteResource
 
-        return await self.request_adapter.send_async(request_info, onenote_resource.OnenoteResource, error_mapping)
+        return await self.request_adapter.send_async(request_info, OnenoteResource, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class ResourcesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[onenote_resource.OnenoteResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[OnenoteResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to resources for users
         Args:
@@ -139,13 +140,13 @@ class ResourcesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ResourcesRequestBuilderGetQueryParameters():

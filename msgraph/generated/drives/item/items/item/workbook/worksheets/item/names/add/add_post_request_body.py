@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models import json
+    from ..........models.json import Json
 
 @dataclass
 class AddPostRequestBody(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class AddPostRequestBody(AdditionalDataHolder, Parsable):
     # The name property
     name: Optional[str] = None
     # The reference property
-    reference: Optional[json.Json] = None
+    reference: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddPostRequestBody:
@@ -35,14 +35,14 @@ class AddPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ..........models import json
+        from ..........models.json import Json
 
-        from ..........models import json
+        from ..........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "reference": lambda n : setattr(self, 'reference', n.get_object_value(json.Json)),
+            "reference": lambda n : setattr(self, 'reference', n.get_object_value(Json)),
         }
         return fields
     

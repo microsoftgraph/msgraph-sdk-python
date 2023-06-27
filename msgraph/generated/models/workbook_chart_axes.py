@@ -4,20 +4,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_axis
+    from .entity import Entity
+    from .workbook_chart_axis import WorkbookChartAxis
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartAxes(entity.Entity):
+class WorkbookChartAxes(Entity):
     # Represents the category axis in a chart. Read-only.
-    category_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
+    category_axis: Optional[WorkbookChartAxis] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents the series axis of a 3-dimensional chart. Read-only.
-    series_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
+    series_axis: Optional[WorkbookChartAxis] = None
     # Represents the value axis in an axis. Read-only.
-    value_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
+    value_axis: Optional[WorkbookChartAxis] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartAxes:
@@ -36,14 +37,16 @@ class WorkbookChartAxes(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_axis
+        from .entity import Entity
+        from .workbook_chart_axis import WorkbookChartAxis
 
-        from . import entity, workbook_chart_axis
+        from .entity import Entity
+        from .workbook_chart_axis import WorkbookChartAxis
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "categoryAxis": lambda n : setattr(self, 'category_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
-            "seriesAxis": lambda n : setattr(self, 'series_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
-            "valueAxis": lambda n : setattr(self, 'value_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
+            "categoryAxis": lambda n : setattr(self, 'category_axis', n.get_object_value(WorkbookChartAxis)),
+            "seriesAxis": lambda n : setattr(self, 'series_axis', n.get_object_value(WorkbookChartAxis)),
+            "valueAxis": lambda n : setattr(self, 'value_axis', n.get_object_value(WorkbookChartAxis)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import external_link
+    from .external_link import ExternalLink
 
 @dataclass
 class SectionLinks(AdditionalDataHolder, Parsable):
@@ -14,9 +14,9 @@ class SectionLinks(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Opens the section in the OneNote native client if it's installed.
-    one_note_client_url: Optional[external_link.ExternalLink] = None
+    one_note_client_url: Optional[ExternalLink] = None
     # Opens the section in OneNote on the web.
-    one_note_web_url: Optional[external_link.ExternalLink] = None
+    one_note_web_url: Optional[ExternalLink] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SectionLinks:
@@ -35,14 +35,14 @@ class SectionLinks(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import external_link
+        from .external_link import ExternalLink
 
-        from . import external_link
+        from .external_link import ExternalLink
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "oneNoteClientUrl": lambda n : setattr(self, 'one_note_client_url', n.get_object_value(external_link.ExternalLink)),
-            "oneNoteWebUrl": lambda n : setattr(self, 'one_note_web_url', n.get_object_value(external_link.ExternalLink)),
+            "oneNoteClientUrl": lambda n : setattr(self, 'one_note_client_url', n.get_object_value(ExternalLink)),
+            "oneNoteWebUrl": lambda n : setattr(self, 'one_note_web_url', n.get_object_value(ExternalLink)),
         }
         return fields
     

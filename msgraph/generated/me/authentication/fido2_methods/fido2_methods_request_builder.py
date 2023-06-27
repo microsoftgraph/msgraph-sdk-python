@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import fido2_authentication_method_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import fido2_authentication_method_item_request_builder
+    from ....models.fido2_authentication_method_collection_response import Fido2AuthenticationMethodCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.fido2_authentication_method_item_request_builder import Fido2AuthenticationMethodItemRequestBuilder
 
 class Fido2MethodsRequestBuilder():
     """
@@ -37,42 +37,42 @@ class Fido2MethodsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_fido2_authentication_method_id(self,fido2_authentication_method_id: str) -> fido2_authentication_method_item_request_builder.Fido2AuthenticationMethodItemRequestBuilder:
+    def by_fido2_authentication_method_id(self,fido2_authentication_method_id: str) -> Fido2AuthenticationMethodItemRequestBuilder:
         """
         Provides operations to manage the fido2Methods property of the microsoft.graph.authentication entity.
         Args:
             fido2_authentication_method_id: Unique identifier of the item
-        Returns: fido2_authentication_method_item_request_builder.Fido2AuthenticationMethodItemRequestBuilder
+        Returns: Fido2AuthenticationMethodItemRequestBuilder
         """
         if not fido2_authentication_method_id:
             raise TypeError("fido2_authentication_method_id cannot be null.")
-        from .item import fido2_authentication_method_item_request_builder
+        from .item.fido2_authentication_method_item_request_builder import Fido2AuthenticationMethodItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["fido2AuthenticationMethod%2Did"] = fido2_authentication_method_id
-        return fido2_authentication_method_item_request_builder.Fido2AuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return Fido2AuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[Fido2MethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[fido2_authentication_method_collection_response.Fido2AuthenticationMethodCollectionResponse]:
+    async def get(self,request_configuration: Optional[Fido2MethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[Fido2AuthenticationMethodCollectionResponse]:
         """
         Retrieve a list of a user's FIDO2 Security Key Authentication Method objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[fido2_authentication_method_collection_response.Fido2AuthenticationMethodCollectionResponse]
+        Returns: Optional[Fido2AuthenticationMethodCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import fido2_authentication_method_collection_response
+        from ....models.fido2_authentication_method_collection_response import Fido2AuthenticationMethodCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, fido2_authentication_method_collection_response.Fido2AuthenticationMethodCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, Fido2AuthenticationMethodCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[Fido2MethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -93,13 +93,13 @@ class Fido2MethodsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class Fido2MethodsRequestBuilderGetQueryParameters():

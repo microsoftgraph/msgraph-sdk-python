@@ -1,23 +1,23 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class LocalizedNotificationMessage(entity.Entity):
+class LocalizedNotificationMessage(Entity):
     """
     The text content of a Notification Message Template for the specified locale.
     """
     # Flag to indicate whether or not this is the default locale for language fallback. This flag can only be set. To unset, set this property to true on another Localized Notification Message.
     is_default: Optional[bool] = None
     # DateTime the object was last modified.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The Locale for which this message is destined.
     locale: Optional[str] = None
     # The Message Template content.
@@ -44,9 +44,9 @@ class LocalizedNotificationMessage(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
@@ -69,7 +69,7 @@ class LocalizedNotificationMessage(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("isDefault", self.is_default)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("locale", self.locale)
         writer.write_str_value("messageTemplate", self.message_template)
         writer.write_str_value("subject", self.subject)

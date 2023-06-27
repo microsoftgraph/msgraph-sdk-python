@@ -4,14 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_modes, entity, fido2_combination_configuration
+    from .authentication_method_modes import AuthenticationMethodModes
+    from .entity import Entity
+    from .fido2_combination_configuration import Fido2CombinationConfiguration
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AuthenticationCombinationConfiguration(entity.Entity):
+class AuthenticationCombinationConfiguration(Entity):
     # Which authentication method combinations this configuration applies to. Must be an allowedCombinations object that's defined for the authenticationStrengthPolicy. The only possible value for fido2combinationConfigurations is 'fido2'.
-    applies_to_combinations: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None
+    applies_to_combinations: Optional[List[AuthenticationMethodModes]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -30,9 +32,9 @@ class AuthenticationCombinationConfiguration(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.fido2CombinationConfiguration".casefold():
-            from . import fido2_combination_configuration
+            from .fido2_combination_configuration import Fido2CombinationConfiguration
 
-            return fido2_combination_configuration.Fido2CombinationConfiguration()
+            return Fido2CombinationConfiguration()
         return AuthenticationCombinationConfiguration()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -40,12 +42,16 @@ class AuthenticationCombinationConfiguration(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_modes, entity, fido2_combination_configuration
+        from .authentication_method_modes import AuthenticationMethodModes
+        from .entity import Entity
+        from .fido2_combination_configuration import Fido2CombinationConfiguration
 
-        from . import authentication_method_modes, entity, fido2_combination_configuration
+        from .authentication_method_modes import AuthenticationMethodModes
+        from .entity import Entity
+        from .fido2_combination_configuration import Fido2CombinationConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appliesToCombinations": lambda n : setattr(self, 'applies_to_combinations', n.get_collection_of_enum_values(authentication_method_modes.AuthenticationMethodModes)),
+            "appliesToCombinations": lambda n : setattr(self, 'applies_to_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

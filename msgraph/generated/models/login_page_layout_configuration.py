@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import layout_template_type
+    from .layout_template_type import LayoutTemplateType
 
 @dataclass
 class LoginPageLayoutConfiguration(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class LoginPageLayoutConfiguration(AdditionalDataHolder, Parsable):
     # The isHeaderShown property
     is_header_shown: Optional[bool] = None
     # The layoutTemplateType property
-    layout_template_type: Optional[layout_template_type.LayoutTemplateType] = None
+    layout_template_type: Optional[LayoutTemplateType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -37,14 +37,14 @@ class LoginPageLayoutConfiguration(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import layout_template_type
+        from .layout_template_type import LayoutTemplateType
 
-        from . import layout_template_type
+        from .layout_template_type import LayoutTemplateType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isFooterShown": lambda n : setattr(self, 'is_footer_shown', n.get_bool_value()),
             "isHeaderShown": lambda n : setattr(self, 'is_header_shown', n.get_bool_value()),
-            "layoutTemplateType": lambda n : setattr(self, 'layout_template_type', n.get_enum_value(layout_template_type.LayoutTemplateType)),
+            "layoutTemplateType": lambda n : setattr(self, 'layout_template_type', n.get_enum_value(LayoutTemplateType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

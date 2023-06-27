@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import join_meeting_id_meeting_info, organizer_meeting_info, token_meeting_info
+    from .join_meeting_id_meeting_info import JoinMeetingIdMeetingInfo
+    from .organizer_meeting_info import OrganizerMeetingInfo
+    from .token_meeting_info import TokenMeetingInfo
 
 @dataclass
 class MeetingInfo(AdditionalDataHolder, Parsable):
@@ -29,17 +31,17 @@ class MeetingInfo(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.joinMeetingIdMeetingInfo".casefold():
-            from . import join_meeting_id_meeting_info
+            from .join_meeting_id_meeting_info import JoinMeetingIdMeetingInfo
 
-            return join_meeting_id_meeting_info.JoinMeetingIdMeetingInfo()
+            return JoinMeetingIdMeetingInfo()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.organizerMeetingInfo".casefold():
-            from . import organizer_meeting_info
+            from .organizer_meeting_info import OrganizerMeetingInfo
 
-            return organizer_meeting_info.OrganizerMeetingInfo()
+            return OrganizerMeetingInfo()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.tokenMeetingInfo".casefold():
-            from . import token_meeting_info
+            from .token_meeting_info import TokenMeetingInfo
 
-            return token_meeting_info.TokenMeetingInfo()
+            return TokenMeetingInfo()
         return MeetingInfo()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -47,9 +49,13 @@ class MeetingInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import join_meeting_id_meeting_info, organizer_meeting_info, token_meeting_info
+        from .join_meeting_id_meeting_info import JoinMeetingIdMeetingInfo
+        from .organizer_meeting_info import OrganizerMeetingInfo
+        from .token_meeting_info import TokenMeetingInfo
 
-        from . import join_meeting_id_meeting_info, organizer_meeting_info, token_meeting_info
+        from .join_meeting_id_meeting_info import JoinMeetingIdMeetingInfo
+        from .organizer_meeting_info import OrganizerMeetingInfo
+        from .token_meeting_info import TokenMeetingInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -4,20 +4,22 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_operation_error, workbook_operation_status
+    from .entity import Entity
+    from .workbook_operation_error import WorkbookOperationError
+    from .workbook_operation_status import WorkbookOperationStatus
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookOperation(entity.Entity):
+class WorkbookOperation(Entity):
     # The error returned by the operation.
-    error: Optional[workbook_operation_error.WorkbookOperationError] = None
+    error: Optional[WorkbookOperationError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The resource URI for the result.
     resource_location: Optional[str] = None
     # The status property
-    status: Optional[workbook_operation_status.WorkbookOperationStatus] = None
+    status: Optional[WorkbookOperationStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookOperation:
@@ -36,14 +38,18 @@ class WorkbookOperation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_operation_error, workbook_operation_status
+        from .entity import Entity
+        from .workbook_operation_error import WorkbookOperationError
+        from .workbook_operation_status import WorkbookOperationStatus
 
-        from . import entity, workbook_operation_error, workbook_operation_status
+        from .entity import Entity
+        from .workbook_operation_error import WorkbookOperationError
+        from .workbook_operation_status import WorkbookOperationStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "error": lambda n : setattr(self, 'error', n.get_object_value(workbook_operation_error.WorkbookOperationError)),
+            "error": lambda n : setattr(self, 'error', n.get_object_value(WorkbookOperationError)),
             "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(workbook_operation_status.WorkbookOperationStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(WorkbookOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

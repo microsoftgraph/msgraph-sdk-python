@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import imported_windows_autopilot_device_identity, imported_windows_autopilot_device_identity_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .import_ import import_request_builder
-    from .item import imported_windows_autopilot_device_identity_item_request_builder
+    from ...models.imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
+    from ...models.imported_windows_autopilot_device_identity_collection_response import ImportedWindowsAutopilotDeviceIdentityCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .import_.import_request_builder import ImportRequestBuilder
+    from .item.imported_windows_autopilot_device_identity_item_request_builder import ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder
 
 class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder():
     """
@@ -38,71 +39,71 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_imported_windows_autopilot_device_identity_id(self,imported_windows_autopilot_device_identity_id: str) -> imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder:
+    def by_imported_windows_autopilot_device_identity_id(self,imported_windows_autopilot_device_identity_id: str) -> ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder:
         """
         Provides operations to manage the importedWindowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
         Args:
             imported_windows_autopilot_device_identity_id: Unique identifier of the item
-        Returns: imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder
+        Returns: ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder
         """
         if not imported_windows_autopilot_device_identity_id:
             raise TypeError("imported_windows_autopilot_device_identity_id cannot be null.")
-        from .item import imported_windows_autopilot_device_identity_item_request_builder
+        from .item.imported_windows_autopilot_device_identity_item_request_builder import ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["importedWindowsAutopilotDeviceIdentity%2Did"] = imported_windows_autopilot_device_identity_id
-        return imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderGetRequestConfiguration] = None) -> Optional[imported_windows_autopilot_device_identity_collection_response.ImportedWindowsAutopilotDeviceIdentityCollectionResponse]:
+    async def get(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderGetRequestConfiguration] = None) -> Optional[ImportedWindowsAutopilotDeviceIdentityCollectionResponse]:
         """
-        Collection of imported Windows autopilot devices.
+        List properties and relationships of the importedWindowsAutopilotDeviceIdentity objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[imported_windows_autopilot_device_identity_collection_response.ImportedWindowsAutopilotDeviceIdentityCollectionResponse]
+        Returns: Optional[ImportedWindowsAutopilotDeviceIdentityCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import imported_windows_autopilot_device_identity_collection_response
+        from ...models.imported_windows_autopilot_device_identity_collection_response import ImportedWindowsAutopilotDeviceIdentityCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, imported_windows_autopilot_device_identity_collection_response.ImportedWindowsAutopilotDeviceIdentityCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ImportedWindowsAutopilotDeviceIdentityCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderPostRequestConfiguration] = None) -> Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]:
+    async def post(self,body: Optional[ImportedWindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderPostRequestConfiguration] = None) -> Optional[ImportedWindowsAutopilotDeviceIdentity]:
         """
-        Create new navigation property to importedWindowsAutopilotDeviceIdentities for deviceManagement
+        Create a new importedWindowsAutopilotDeviceIdentity object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]
+        Returns: Optional[ImportedWindowsAutopilotDeviceIdentity]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import imported_windows_autopilot_device_identity
+        from ...models.imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
 
-        return await self.request_adapter.send_async(request_info, imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity, error_mapping)
+        return await self.request_adapter.send_async(request_info, ImportedWindowsAutopilotDeviceIdentity, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Collection of imported Windows autopilot devices.
+        List properties and relationships of the importedWindowsAutopilotDeviceIdentity objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -118,9 +119,9 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ImportedWindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to importedWindowsAutopilotDeviceIdentities for deviceManagement
+        Create a new importedWindowsAutopilotDeviceIdentity object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -140,27 +141,27 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def import_(self) -> import_request_builder.ImportRequestBuilder:
+    def import_(self) -> ImportRequestBuilder:
         """
         Provides operations to call the import method.
         """
-        from .import_ import import_request_builder
+        from .import_.import_request_builder import ImportRequestBuilder
 
-        return import_request_builder.ImportRequestBuilder(self.request_adapter, self.path_parameters)
+        return ImportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderGetQueryParameters():
         """
-        Collection of imported Windows autopilot devices.
+        List properties and relationships of the importedWindowsAutopilotDeviceIdentity objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

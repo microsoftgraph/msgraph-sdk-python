@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import get_mail_tips_post_request_body, get_mail_tips_response
-    from ...models.o_data_errors import o_data_error
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .get_mail_tips_post_request_body import GetMailTipsPostRequestBody
+    from .get_mail_tips_response import GetMailTipsResponse
 
 class GetMailTipsRequestBuilder():
     """
@@ -35,32 +36,32 @@ class GetMailTipsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[get_mail_tips_post_request_body.GetMailTipsPostRequestBody] = None, request_configuration: Optional[GetMailTipsRequestBuilderPostRequestConfiguration] = None) -> Optional[get_mail_tips_response.GetMailTipsResponse]:
+    async def post(self,body: Optional[GetMailTipsPostRequestBody] = None, request_configuration: Optional[GetMailTipsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetMailTipsResponse]:
         """
         Get the MailTips of one or more recipients as available to the signed-in user. Note that by making a `POST` call to the `getMailTips` action, you can request specific types of MailTips to be returned for more than one recipient at one time. The requested MailTips are returned in a mailTips collection.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[get_mail_tips_response.GetMailTipsResponse]
+        Returns: Optional[GetMailTipsResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import get_mail_tips_response
+        from .get_mail_tips_response import GetMailTipsResponse
 
-        return await self.request_adapter.send_async(request_info, get_mail_tips_response.GetMailTipsResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetMailTipsResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[get_mail_tips_post_request_body.GetMailTipsPostRequestBody] = None, request_configuration: Optional[GetMailTipsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GetMailTipsPostRequestBody] = None, request_configuration: Optional[GetMailTipsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Get the MailTips of one or more recipients as available to the signed-in user. Note that by making a `POST` call to the `getMailTips` action, you can request specific types of MailTips to be returned for more than one recipient at one time. The requested MailTips are returned in a mailTips collection.
         Args:

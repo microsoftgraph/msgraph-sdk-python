@@ -10,9 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import list_item, list_item_collection_response
-    from ......models.o_data_errors import o_data_error
-    from .item import list_item_item_request_builder
+    from ......models.list_item import ListItem
+    from ......models.list_item_collection_response import ListItemCollectionResponse
+    from ......models.o_data_errors.o_data_error import ODataError
+    from .item.list_item_item_request_builder import ListItemItemRequestBuilder
 
 class ItemsRequestBuilder():
     """
@@ -36,67 +37,67 @@ class ItemsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_list_item_id(self,list_item_id: str) -> list_item_item_request_builder.ListItemItemRequestBuilder:
+    def by_list_item_id(self,list_item_id: str) -> ListItemItemRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.list entity.
         Args:
             list_item_id: Unique identifier of the item
-        Returns: list_item_item_request_builder.ListItemItemRequestBuilder
+        Returns: ListItemItemRequestBuilder
         """
         if not list_item_id:
             raise TypeError("list_item_id cannot be null.")
-        from .item import list_item_item_request_builder
+        from .item.list_item_item_request_builder import ListItemItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["listItem%2Did"] = list_item_id
-        return list_item_item_request_builder.ListItemItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ListItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[list_item_collection_response.ListItemCollectionResponse]:
+    async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[ListItemCollectionResponse]:
         """
         Get the collection of [items][item] in a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[list_item_collection_response.ListItemCollectionResponse]
+        Returns: Optional[ListItemCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import list_item_collection_response
+        from ......models.list_item_collection_response import ListItemCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, list_item_collection_response.ListItemCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ListItemCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[list_item.ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[list_item.ListItem]:
+    async def post(self,body: Optional[ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[ListItem]:
         """
         Create a new [listItem][] in a [list][].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[list_item.ListItem]
+        Returns: Optional[ListItem]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
+        from ......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import list_item
+        from ......models.list_item import ListItem
 
-        return await self.request_adapter.send_async(request_info, list_item.ListItem, error_mapping)
+        return await self.request_adapter.send_async(request_info, ListItem, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -116,7 +117,7 @@ class ItemsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[list_item.ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new [listItem][] in a [list][].
         Args:

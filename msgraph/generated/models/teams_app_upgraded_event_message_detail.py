@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_message_detail, identity_set
+    from .event_message_detail import EventMessageDetail
+    from .identity_set import IdentitySet
 
-from . import event_message_detail
+from .event_message_detail import EventMessageDetail
 
 @dataclass
-class TeamsAppUpgradedEventMessageDetail(event_message_detail.EventMessageDetail):
+class TeamsAppUpgradedEventMessageDetail(EventMessageDetail):
     odata_type = "#microsoft.graph.teamsAppUpgradedEventMessageDetail"
     # Initiator of the event.
-    initiator: Optional[identity_set.IdentitySet] = None
+    initiator: Optional[IdentitySet] = None
     # Display name of the teamsApp.
     teams_app_display_name: Optional[str] = None
     # Unique identifier of the teamsApp.
@@ -35,12 +36,14 @@ class TeamsAppUpgradedEventMessageDetail(event_message_detail.EventMessageDetail
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
-        from . import event_message_detail, identity_set
+        from .event_message_detail import EventMessageDetail
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
+            "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
             "teamsAppDisplayName": lambda n : setattr(self, 'teams_app_display_name', n.get_str_value()),
             "teamsAppId": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
         }

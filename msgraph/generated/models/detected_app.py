@@ -4,12 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import detected_app_platform_type, entity, managed_device
+    from .detected_app_platform_type import DetectedAppPlatformType
+    from .entity import Entity
+    from .managed_device import ManagedDevice
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class DetectedApp(entity.Entity):
+class DetectedApp(Entity):
     """
     A managed or unmanaged app that is installed on a managed device. Unmanaged apps will only appear for devices marked as corporate owned.
     """
@@ -18,11 +20,11 @@ class DetectedApp(entity.Entity):
     # Name of the discovered application. Read-only
     display_name: Optional[str] = None
     # The devices that have the discovered application installed
-    managed_devices: Optional[List[managed_device.ManagedDevice]] = None
+    managed_devices: Optional[List[ManagedDevice]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the operating system / platform of the discovered application.  Some possible values are Windows, iOS, macOS. The default value is unknown (0).
-    platform: Optional[detected_app_platform_type.DetectedAppPlatformType] = None
+    platform: Optional[DetectedAppPlatformType] = None
     # Indicates the publisher of the discovered application. For example: 'Microsoft'.  The default value is an empty string.
     publisher: Optional[str] = None
     # Discovered application size in bytes. Read-only
@@ -47,15 +49,19 @@ class DetectedApp(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import detected_app_platform_type, entity, managed_device
+        from .detected_app_platform_type import DetectedAppPlatformType
+        from .entity import Entity
+        from .managed_device import ManagedDevice
 
-        from . import detected_app_platform_type, entity, managed_device
+        from .detected_app_platform_type import DetectedAppPlatformType
+        from .entity import Entity
+        from .managed_device import ManagedDevice
 
         fields: Dict[str, Callable[[Any], None]] = {
             "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
-            "platform": lambda n : setattr(self, 'platform', n.get_enum_value(detected_app_platform_type.DetectedAppPlatformType)),
+            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(ManagedDevice)),
+            "platform": lambda n : setattr(self, 'platform', n.get_enum_value(DetectedAppPlatformType)),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
             "sizeInByte": lambda n : setattr(self, 'size_in_byte', n.get_int_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),

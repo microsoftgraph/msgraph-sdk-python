@@ -4,19 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_contained_app, mobile_lob_app, windows_architecture, windows_device_type, windows_minimum_operating_system
+    from .mobile_contained_app import MobileContainedApp
+    from .mobile_lob_app import MobileLobApp
+    from .windows_architecture import WindowsArchitecture
+    from .windows_device_type import WindowsDeviceType
+    from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
 
-from . import mobile_lob_app
+from .mobile_lob_app import MobileLobApp
 
 @dataclass
-class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
+class WindowsUniversalAppX(MobileLobApp):
     odata_type = "#microsoft.graph.windowsUniversalAppX"
     # Contains properties for Windows architecture.
-    applicable_architectures: Optional[windows_architecture.WindowsArchitecture] = None
+    applicable_architectures: Optional[WindowsArchitecture] = None
     # Contains properties for Windows device type.
-    applicable_device_types: Optional[windows_device_type.WindowsDeviceType] = None
+    applicable_device_types: Optional[WindowsDeviceType] = None
     # The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
-    committed_contained_apps: Optional[List[mobile_contained_app.MobileContainedApp]] = None
+    committed_contained_apps: Optional[List[MobileContainedApp]] = None
     # The Identity Name.
     identity_name: Optional[str] = None
     # The Identity Publisher Hash.
@@ -28,7 +32,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
     # Whether or not the app is a bundle.
     is_bundle: Optional[bool] = None
     # The minimum operating system required for a Windows mobile app.
-    minimum_supported_operating_system: Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem] = None
+    minimum_supported_operating_system: Optional[WindowsMinimumOperatingSystem] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUniversalAppX:
@@ -47,20 +51,28 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_contained_app, mobile_lob_app, windows_architecture, windows_device_type, windows_minimum_operating_system
+        from .mobile_contained_app import MobileContainedApp
+        from .mobile_lob_app import MobileLobApp
+        from .windows_architecture import WindowsArchitecture
+        from .windows_device_type import WindowsDeviceType
+        from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
 
-        from . import mobile_contained_app, mobile_lob_app, windows_architecture, windows_device_type, windows_minimum_operating_system
+        from .mobile_contained_app import MobileContainedApp
+        from .mobile_lob_app import MobileLobApp
+        from .windows_architecture import WindowsArchitecture
+        from .windows_device_type import WindowsDeviceType
+        from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
-            "applicableDeviceTypes": lambda n : setattr(self, 'applicable_device_types', n.get_enum_value(windows_device_type.WindowsDeviceType)),
-            "committedContainedApps": lambda n : setattr(self, 'committed_contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
+            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(WindowsArchitecture)),
+            "applicableDeviceTypes": lambda n : setattr(self, 'applicable_device_types', n.get_enum_value(WindowsDeviceType)),
+            "committedContainedApps": lambda n : setattr(self, 'committed_contained_apps', n.get_collection_of_object_values(MobileContainedApp)),
             "identityName": lambda n : setattr(self, 'identity_name', n.get_str_value()),
             "identityPublisherHash": lambda n : setattr(self, 'identity_publisher_hash', n.get_str_value()),
             "identityResourceIdentifier": lambda n : setattr(self, 'identity_resource_identifier', n.get_str_value()),
             "identityVersion": lambda n : setattr(self, 'identity_version', n.get_str_value()),
             "isBundle": lambda n : setattr(self, 'is_bundle', n.get_bool_value()),
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(windows_minimum_operating_system.WindowsMinimumOperatingSystem)),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(WindowsMinimumOperatingSystem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

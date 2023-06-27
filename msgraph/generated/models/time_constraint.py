@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import activity_domain, time_slot
+    from .activity_domain import ActivityDomain
+    from .time_slot import TimeSlot
 
 @dataclass
 class TimeConstraint(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class TimeConstraint(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The nature of the activity, optional. The possible values are: work, personal, unrestricted, or unknown.
-    activity_domain: Optional[activity_domain.ActivityDomain] = None
+    activity_domain: Optional[ActivityDomain] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The timeSlots property
-    time_slots: Optional[List[time_slot.TimeSlot]] = None
+    time_slots: Optional[List[TimeSlot]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimeConstraint:
@@ -35,14 +36,16 @@ class TimeConstraint(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import activity_domain, time_slot
+        from .activity_domain import ActivityDomain
+        from .time_slot import TimeSlot
 
-        from . import activity_domain, time_slot
+        from .activity_domain import ActivityDomain
+        from .time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activityDomain": lambda n : setattr(self, 'activity_domain', n.get_enum_value(activity_domain.ActivityDomain)),
+            "activityDomain": lambda n : setattr(self, 'activity_domain', n.get_enum_value(ActivityDomain)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(time_slot.TimeSlot)),
+            "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(TimeSlot)),
         }
         return fields
     

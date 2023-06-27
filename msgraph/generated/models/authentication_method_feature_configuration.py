@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import advanced_config_state, feature_target
+    from .advanced_config_state import AdvancedConfigState
+    from .feature_target import FeatureTarget
 
 @dataclass
 class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
@@ -12,13 +13,13 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # A single entity that is excluded from this feature.
-    exclude_target: Optional[feature_target.FeatureTarget] = None
+    exclude_target: Optional[FeatureTarget] = None
     # A single entity that is included in this feature.
-    include_target: Optional[feature_target.FeatureTarget] = None
+    include_target: Optional[FeatureTarget] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Enable or disable the feature. Possible values are: default, enabled, disabled, unknownFutureValue. The default value is used when the configuration hasn't been explicitly set and uses the default behavior of Azure AD for the setting. The default value is disabled.
-    state: Optional[advanced_config_state.AdvancedConfigState] = None
+    state: Optional[AdvancedConfigState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodFeatureConfiguration:
@@ -37,15 +38,17 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import advanced_config_state, feature_target
+        from .advanced_config_state import AdvancedConfigState
+        from .feature_target import FeatureTarget
 
-        from . import advanced_config_state, feature_target
+        from .advanced_config_state import AdvancedConfigState
+        from .feature_target import FeatureTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "excludeTarget": lambda n : setattr(self, 'exclude_target', n.get_object_value(feature_target.FeatureTarget)),
-            "includeTarget": lambda n : setattr(self, 'include_target', n.get_object_value(feature_target.FeatureTarget)),
+            "excludeTarget": lambda n : setattr(self, 'exclude_target', n.get_object_value(FeatureTarget)),
+            "includeTarget": lambda n : setattr(self, 'include_target', n.get_object_value(FeatureTarget)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(advanced_config_state.AdvancedConfigState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(AdvancedConfigState)),
         }
         return fields
     

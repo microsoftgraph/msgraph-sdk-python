@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import unified_role_assignment_schedule_instance, unified_role_assignment_schedule_instance_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
-    from .item import unified_role_assignment_schedule_instance_item_request_builder
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.unified_role_assignment_schedule_instance import UnifiedRoleAssignmentScheduleInstance
+    from ....models.unified_role_assignment_schedule_instance_collection_response import UnifiedRoleAssignmentScheduleInstanceCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
+    from .item.unified_role_assignment_schedule_instance_item_request_builder import UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder
 
 class RoleAssignmentScheduleInstancesRequestBuilder():
     """
@@ -38,80 +39,80 @@ class RoleAssignmentScheduleInstancesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_unified_role_assignment_schedule_instance_id(self,unified_role_assignment_schedule_instance_id: str) -> unified_role_assignment_schedule_instance_item_request_builder.UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder:
+    def by_unified_role_assignment_schedule_instance_id(self,unified_role_assignment_schedule_instance_id: str) -> UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder:
         """
         Provides operations to manage the roleAssignmentScheduleInstances property of the microsoft.graph.rbacApplication entity.
         Args:
             unified_role_assignment_schedule_instance_id: Unique identifier of the item
-        Returns: unified_role_assignment_schedule_instance_item_request_builder.UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder
+        Returns: UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder
         """
         if not unified_role_assignment_schedule_instance_id:
             raise TypeError("unified_role_assignment_schedule_instance_id cannot be null.")
-        from .item import unified_role_assignment_schedule_instance_item_request_builder
+        from .item.unified_role_assignment_schedule_instance_item_request_builder import UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleAssignmentScheduleInstance%2Did"] = unified_role_assignment_schedule_instance_id
-        return unified_role_assignment_schedule_instance_item_request_builder.UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
         Args:
             on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        Returns: FilterByCurrentUserWithOnRequestBuilder
         """
         if not on:
             raise TypeError("on cannot be null.")
-        from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+        from .filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder import FilterByCurrentUserWithOnRequestBuilder
 
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+        return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RoleAssignmentScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule_instance_collection_response.UnifiedRoleAssignmentScheduleInstanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleAssignmentScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleInstanceCollectionResponse]:
         """
         Get the instances of active role assignments in your tenant. The active assignments include those made through assignments and activation requests, and directly through the role assignments API.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_assignment_schedule_instance_collection_response.UnifiedRoleAssignmentScheduleInstanceCollectionResponse]
+        Returns: Optional[UnifiedRoleAssignmentScheduleInstanceCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import unified_role_assignment_schedule_instance_collection_response
+        from ....models.unified_role_assignment_schedule_instance_collection_response import UnifiedRoleAssignmentScheduleInstanceCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, unified_role_assignment_schedule_instance_collection_response.UnifiedRoleAssignmentScheduleInstanceCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleAssignmentScheduleInstanceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance] = None, request_configuration: Optional[RoleAssignmentScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]:
+    async def post(self,body: Optional[UnifiedRoleAssignmentScheduleInstance] = None, request_configuration: Optional[RoleAssignmentScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleInstance]:
         """
         Create new navigation property to roleAssignmentScheduleInstances for roleManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]
+        Returns: Optional[UnifiedRoleAssignmentScheduleInstance]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import unified_role_assignment_schedule_instance
+        from ....models.unified_role_assignment_schedule_instance import UnifiedRoleAssignmentScheduleInstance
 
-        return await self.request_adapter.send_async(request_info, unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnifiedRoleAssignmentScheduleInstance, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -131,7 +132,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance] = None, request_configuration: Optional[RoleAssignmentScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UnifiedRoleAssignmentScheduleInstance] = None, request_configuration: Optional[RoleAssignmentScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to roleAssignmentScheduleInstances for roleManagement
         Args:
@@ -153,13 +154,13 @@ class RoleAssignmentScheduleInstancesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class RoleAssignmentScheduleInstancesRequestBuilderGetQueryParameters():

@@ -5,12 +5,14 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import entity, license_units_detail, service_plan_info
+    from .entity import Entity
+    from .license_units_detail import LicenseUnitsDetail
+    from .service_plan_info import ServicePlanInfo
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class SubscribedSku(entity.Entity):
+class SubscribedSku(Entity):
     # The accountId property
     account_id: Optional[str] = None
     # The accountName property
@@ -24,9 +26,9 @@ class SubscribedSku(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Information about the number and status of prepaid licenses.
-    prepaid_units: Optional[license_units_detail.LicenseUnitsDetail] = None
+    prepaid_units: Optional[LicenseUnitsDetail] = None
     # Information about the service plans that are available with the SKU. Not nullable
-    service_plans: Optional[List[service_plan_info.ServicePlanInfo]] = None
+    service_plans: Optional[List[ServicePlanInfo]] = None
     # The unique identifier (GUID) for the service SKU.
     sku_id: Optional[UUID] = None
     # The SKU part number; for example: 'AAD_PREMIUM' or 'RMSBASIC'. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.
@@ -51,9 +53,13 @@ class SubscribedSku(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, license_units_detail, service_plan_info
+        from .entity import Entity
+        from .license_units_detail import LicenseUnitsDetail
+        from .service_plan_info import ServicePlanInfo
 
-        from . import entity, license_units_detail, service_plan_info
+        from .entity import Entity
+        from .license_units_detail import LicenseUnitsDetail
+        from .service_plan_info import ServicePlanInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accountId": lambda n : setattr(self, 'account_id', n.get_str_value()),
@@ -61,8 +67,8 @@ class SubscribedSku(entity.Entity):
             "appliesTo": lambda n : setattr(self, 'applies_to', n.get_str_value()),
             "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
             "consumedUnits": lambda n : setattr(self, 'consumed_units', n.get_int_value()),
-            "prepaidUnits": lambda n : setattr(self, 'prepaid_units', n.get_object_value(license_units_detail.LicenseUnitsDetail)),
-            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
+            "prepaidUnits": lambda n : setattr(self, 'prepaid_units', n.get_object_value(LicenseUnitsDetail)),
+            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(ServicePlanInfo)),
             "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
             "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
             "subscriptionIds": lambda n : setattr(self, 'subscription_ids', n.get_collection_of_primitive_values(str)),

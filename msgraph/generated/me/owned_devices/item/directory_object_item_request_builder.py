@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import directory_object
-    from ....models.o_data_errors import o_data_error
-    from .graph_app_role_assignment import graph_app_role_assignment_request_builder
-    from .graph_device import graph_device_request_builder
-    from .graph_endpoint import graph_endpoint_request_builder
+    from ....models.directory_object import DirectoryObject
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .graph_app_role_assignment.graph_app_role_assignment_request_builder import GraphAppRoleAssignmentRequestBuilder
+    from .graph_device.graph_device_request_builder import GraphDeviceRequestBuilder
+    from .graph_endpoint.graph_endpoint_request_builder import GraphEndpointRequestBuilder
 
 class DirectoryObjectItemRequestBuilder():
     """
@@ -38,27 +38,27 @@ class DirectoryObjectItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object.DirectoryObject]:
+    async def get(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
         Devices that are owned by the user. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[directory_object.DirectoryObject]
+        Returns: Optional[DirectoryObject]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import directory_object
+        from ....models.directory_object import DirectoryObject
 
-        return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, error_mapping)
+        return await self.request_adapter.send_async(request_info, DirectoryObject, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -79,31 +79,31 @@ class DirectoryObjectItemRequestBuilder():
         return request_info
     
     @property
-    def graph_app_role_assignment(self) -> graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder:
+    def graph_app_role_assignment(self) -> GraphAppRoleAssignmentRequestBuilder:
         """
         Casts the previous resource to appRoleAssignment.
         """
-        from .graph_app_role_assignment import graph_app_role_assignment_request_builder
+        from .graph_app_role_assignment.graph_app_role_assignment_request_builder import GraphAppRoleAssignmentRequestBuilder
 
-        return graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphAppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def graph_device(self) -> graph_device_request_builder.GraphDeviceRequestBuilder:
+    def graph_device(self) -> GraphDeviceRequestBuilder:
         """
         Casts the previous resource to device.
         """
-        from .graph_device import graph_device_request_builder
+        from .graph_device.graph_device_request_builder import GraphDeviceRequestBuilder
 
-        return graph_device_request_builder.GraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def graph_endpoint(self) -> graph_endpoint_request_builder.GraphEndpointRequestBuilder:
+    def graph_endpoint(self) -> GraphEndpointRequestBuilder:
         """
         Casts the previous resource to endpoint.
         """
-        from .graph_endpoint import graph_endpoint_request_builder
+        from .graph_endpoint.graph_endpoint_request_builder import GraphEndpointRequestBuilder
 
-        return graph_endpoint_request_builder.GraphEndpointRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphEndpointRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DirectoryObjectItemRequestBuilderGetQueryParameters():

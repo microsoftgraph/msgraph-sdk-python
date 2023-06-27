@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class Confidence_TPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,11 +12,11 @@ class Confidence_TPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The alpha property
-    alpha: Optional[json.Json] = None
+    alpha: Optional[Json] = None
     # The size property
-    size: Optional[json.Json] = None
+    size: Optional[Json] = None
     # The standardDev property
-    standard_dev: Optional[json.Json] = None
+    standard_dev: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Confidence_TPostRequestBody:
@@ -35,14 +35,14 @@ class Confidence_TPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "alpha": lambda n : setattr(self, 'alpha', n.get_object_value(json.Json)),
-            "size": lambda n : setattr(self, 'size', n.get_object_value(json.Json)),
-            "standardDev": lambda n : setattr(self, 'standard_dev', n.get_object_value(json.Json)),
+            "alpha": lambda n : setattr(self, 'alpha', n.get_object_value(Json)),
+            "size": lambda n : setattr(self, 'size', n.get_object_value(Json)),
+            "standardDev": lambda n : setattr(self, 'standard_dev', n.get_object_value(Json)),
         }
         return fields
     

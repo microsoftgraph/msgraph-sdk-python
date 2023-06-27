@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import education_rubric
-    from .....models.o_data_errors import o_data_error
+    from .....models.education_rubric import EducationRubric
+    from .....models.o_data_errors.o_data_error import ODataError
 
 class EducationRubricItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class EducationRubricItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EducationRubricItemRequestBuilderGetRequestConfiguration] = None) -> Optional[education_rubric.EducationRubric]:
+    async def get(self,request_configuration: Optional[EducationRubricItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationRubric]:
         """
         Retrieve the properties and relationships of an educationRubric object. Only teachers and students can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_rubric.EducationRubric]
+        Returns: Optional[EducationRubric]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import education_rubric
+        from .....models.education_rubric import EducationRubric
 
-        return await self.request_adapter.send_async(request_info, education_rubric.EducationRubric, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationRubric, error_mapping)
     
-    async def patch(self,body: Optional[education_rubric.EducationRubric] = None, request_configuration: Optional[EducationRubricItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_rubric.EducationRubric]:
+    async def patch(self,body: Optional[EducationRubric] = None, request_configuration: Optional[EducationRubricItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationRubric]:
         """
         Update the properties of an educationRubric object. Only teachers can perform this operation. Updating a rubric attached to an assignment (`PATCH /education/classes/acdefc6b-2dc6-4e71-b1e9-6d9810ab1793/assignments/cf6005fc-9e13-44a2-a6ac-a53322006454/rubric`) is only possible before the assignment is published, and what is updated is actually the original rubric that exists under `/education/users/{id}/rubrics`. After the assignment is published, an immutable copy of the rubric is made that is attached to that specific assignment. That rubric can be retrieved using GET /education/classes/acdefc6b-2dc6-4e71-b1e9-6d9810ab1793/assignments/cf6005fc-9e13-44a2-a6ac-a53322006454/rubric, but it cannot be updated.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[education_rubric.EducationRubric]
+        Returns: Optional[EducationRubric]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import education_rubric
+        from .....models.education_rubric import EducationRubric
 
-        return await self.request_adapter.send_async(request_info, education_rubric.EducationRubric, error_mapping)
+        return await self.request_adapter.send_async(request_info, EducationRubric, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EducationRubricItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class EducationRubricItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[education_rubric.EducationRubric] = None, request_configuration: Optional[EducationRubricItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EducationRubric] = None, request_configuration: Optional[EducationRubricItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an educationRubric object. Only teachers can perform this operation. Updating a rubric attached to an assignment (`PATCH /education/classes/acdefc6b-2dc6-4e71-b1e9-6d9810ab1793/assignments/cf6005fc-9e13-44a2-a6ac-a53322006454/rubric`) is only possible before the assignment is published, and what is updated is actually the original rubric that exists under `/education/users/{id}/rubrics`. After the assignment is published, an immutable copy of the rubric is made that is attached to that specific assignment. That rubric can be retrieved using GET /education/classes/acdefc6b-2dc6-4e71-b1e9-6d9810ab1793/assignments/cf6005fc-9e13-44a2-a6ac-a53322006454/rubric, but it cannot be updated.
         Args:

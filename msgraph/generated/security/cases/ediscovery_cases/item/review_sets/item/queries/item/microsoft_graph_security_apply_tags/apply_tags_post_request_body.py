@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models.security import ediscovery_review_tag
+    from ..........models.security.ediscovery_review_tag import EdiscoveryReviewTag
 
 @dataclass
 class ApplyTagsPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,9 +12,9 @@ class ApplyTagsPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The tagsToAdd property
-    tags_to_add: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
+    tags_to_add: Optional[List[EdiscoveryReviewTag]] = None
     # The tagsToRemove property
-    tags_to_remove: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
+    tags_to_remove: Optional[List[EdiscoveryReviewTag]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplyTagsPostRequestBody:
@@ -33,13 +33,13 @@ class ApplyTagsPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ..........models.security import ediscovery_review_tag
+        from ..........models.security.ediscovery_review_tag import EdiscoveryReviewTag
 
-        from ..........models.security import ediscovery_review_tag
+        from ..........models.security.ediscovery_review_tag import EdiscoveryReviewTag
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "tagsToAdd": lambda n : setattr(self, 'tags_to_add', n.get_collection_of_object_values(ediscovery_review_tag.EdiscoveryReviewTag)),
-            "tagsToRemove": lambda n : setattr(self, 'tags_to_remove', n.get_collection_of_object_values(ediscovery_review_tag.EdiscoveryReviewTag)),
+            "tagsToAdd": lambda n : setattr(self, 'tags_to_add', n.get_collection_of_object_values(EdiscoveryReviewTag)),
+            "tagsToRemove": lambda n : setattr(self, 'tags_to_remove', n.get_collection_of_object_values(EdiscoveryReviewTag)),
         }
         return fields
     

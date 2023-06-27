@@ -1,24 +1,27 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_action, drive_item, entity, identity_set
+    from .access_action import AccessAction
+    from .drive_item import DriveItem
+    from .entity import Entity
+    from .identity_set import IdentitySet
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ItemActivity(entity.Entity):
+class ItemActivity(Entity):
     # An item was accessed.
-    access: Optional[access_action.AccessAction] = None
+    access: Optional[AccessAction] = None
     # Details about when the activity took place. Read-only.
-    activity_date_time: Optional[datetime] = None
+    activity_date_time: Optional[datetime.datetime] = None
     # Identity of who performed the action. Read-only.
-    actor: Optional[identity_set.IdentitySet] = None
+    actor: Optional[IdentitySet] = None
     # Exposes the driveItem that was the target of this activity.
-    drive_item: Optional[drive_item.DriveItem] = None
+    drive_item: Optional[DriveItem] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -39,15 +42,21 @@ class ItemActivity(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_action, drive_item, entity, identity_set
+        from .access_action import AccessAction
+        from .drive_item import DriveItem
+        from .entity import Entity
+        from .identity_set import IdentitySet
 
-        from . import access_action, drive_item, entity, identity_set
+        from .access_action import AccessAction
+        from .drive_item import DriveItem
+        from .entity import Entity
+        from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "access": lambda n : setattr(self, 'access', n.get_object_value(access_action.AccessAction)),
+            "access": lambda n : setattr(self, 'access', n.get_object_value(AccessAction)),
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "actor": lambda n : setattr(self, 'actor', n.get_object_value(identity_set.IdentitySet)),
-            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
+            "actor": lambda n : setattr(self, 'actor', n.get_object_value(IdentitySet)),
+            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,7 +72,7 @@ class ItemActivity(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("access", self.access)
-        writer.write_datetime_value("activityDateTime", self.activity_date_time)
+        writer.write_datetime_value()("activityDateTime", self.activity_date_time)
         writer.write_object_value("actor", self.actor)
         writer.write_object_value("driveItem", self.drive_item)
     

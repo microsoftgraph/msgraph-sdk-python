@@ -4,15 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import service_announcement_base, service_health_classification_type, service_health_issue_post, service_health_origin, service_health_status
+    from .service_announcement_base import ServiceAnnouncementBase
+    from .service_health_classification_type import ServiceHealthClassificationType
+    from .service_health_issue_post import ServiceHealthIssuePost
+    from .service_health_origin import ServiceHealthOrigin
+    from .service_health_status import ServiceHealthStatus
 
-from . import service_announcement_base
+from .service_announcement_base import ServiceAnnouncementBase
 
 @dataclass
-class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
+class ServiceHealthIssue(ServiceAnnouncementBase):
     odata_type = "#microsoft.graph.serviceHealthIssue"
     # The classification property
-    classification: Optional[service_health_classification_type.ServiceHealthClassificationType] = None
+    classification: Optional[ServiceHealthClassificationType] = None
     # The feature name of the service issue.
     feature: Optional[str] = None
     # The feature group name of the service issue.
@@ -22,13 +26,13 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
     # Indicates whether the issue is resolved.
     is_resolved: Optional[bool] = None
     # The origin property
-    origin: Optional[service_health_origin.ServiceHealthOrigin] = None
+    origin: Optional[ServiceHealthOrigin] = None
     # Collection of historical posts for the service issue.
-    posts: Optional[List[service_health_issue_post.ServiceHealthIssuePost]] = None
+    posts: Optional[List[ServiceHealthIssuePost]] = None
     # Indicates the service affected by the issue.
     service: Optional[str] = None
     # The status property
-    status: Optional[service_health_status.ServiceHealthStatus] = None
+    status: Optional[ServiceHealthStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceHealthIssue:
@@ -47,20 +51,28 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import service_announcement_base, service_health_classification_type, service_health_issue_post, service_health_origin, service_health_status
+        from .service_announcement_base import ServiceAnnouncementBase
+        from .service_health_classification_type import ServiceHealthClassificationType
+        from .service_health_issue_post import ServiceHealthIssuePost
+        from .service_health_origin import ServiceHealthOrigin
+        from .service_health_status import ServiceHealthStatus
 
-        from . import service_announcement_base, service_health_classification_type, service_health_issue_post, service_health_origin, service_health_status
+        from .service_announcement_base import ServiceAnnouncementBase
+        from .service_health_classification_type import ServiceHealthClassificationType
+        from .service_health_issue_post import ServiceHealthIssuePost
+        from .service_health_origin import ServiceHealthOrigin
+        from .service_health_status import ServiceHealthStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "classification": lambda n : setattr(self, 'classification', n.get_enum_value(service_health_classification_type.ServiceHealthClassificationType)),
+            "classification": lambda n : setattr(self, 'classification', n.get_enum_value(ServiceHealthClassificationType)),
             "feature": lambda n : setattr(self, 'feature', n.get_str_value()),
             "featureGroup": lambda n : setattr(self, 'feature_group', n.get_str_value()),
             "impactDescription": lambda n : setattr(self, 'impact_description', n.get_str_value()),
             "isResolved": lambda n : setattr(self, 'is_resolved', n.get_bool_value()),
-            "origin": lambda n : setattr(self, 'origin', n.get_enum_value(service_health_origin.ServiceHealthOrigin)),
-            "posts": lambda n : setattr(self, 'posts', n.get_collection_of_object_values(service_health_issue_post.ServiceHealthIssuePost)),
+            "origin": lambda n : setattr(self, 'origin', n.get_enum_value(ServiceHealthOrigin)),
+            "posts": lambda n : setattr(self, 'posts', n.get_collection_of_object_values(ServiceHealthIssuePost)),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(service_health_status.ServiceHealthStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ServiceHealthStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

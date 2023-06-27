@@ -4,15 +4,17 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import key_value_pair, managed_app_policy, targeted_managed_app_configuration
+    from .key_value_pair import KeyValuePair
+    from .managed_app_policy import ManagedAppPolicy
+    from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
-from . import managed_app_policy
+from .managed_app_policy import ManagedAppPolicy
 
 @dataclass
-class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
+class ManagedAppConfiguration(ManagedAppPolicy):
     odata_type = "#microsoft.graph.managedAppConfiguration"
     # A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
-    custom_settings: Optional[List[key_value_pair.KeyValuePair]] = None
+    custom_settings: Optional[List[KeyValuePair]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppConfiguration:
@@ -29,9 +31,9 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppConfiguration".casefold():
-            from . import targeted_managed_app_configuration
+            from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
-            return targeted_managed_app_configuration.TargetedManagedAppConfiguration()
+            return TargetedManagedAppConfiguration()
         return ManagedAppConfiguration()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -39,12 +41,16 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import key_value_pair, managed_app_policy, targeted_managed_app_configuration
+        from .key_value_pair import KeyValuePair
+        from .managed_app_policy import ManagedAppPolicy
+        from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
-        from . import key_value_pair, managed_app_policy, targeted_managed_app_configuration
+        from .key_value_pair import KeyValuePair
+        from .managed_app_policy import ManagedAppPolicy
+        from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "customSettings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
+            "customSettings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(KeyValuePair)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -1,16 +1,18 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import device_configuration, miracast_channel, welcome_screen_meeting_information
+    from .device_configuration import DeviceConfiguration
+    from .miracast_channel import MiracastChannel
+    from .welcome_screen_meeting_information import WelcomeScreenMeetingInformation
 
-from . import device_configuration
+from .device_configuration import DeviceConfiguration
 
 @dataclass
-class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration):
+class Windows10TeamGeneralConfiguration(DeviceConfiguration):
     odata_type = "#microsoft.graph.windows10TeamGeneralConfiguration"
     # Indicates whether or not to Block Azure Operational Insights.
     azure_operational_insights_block_telemetry: Optional[bool] = None
@@ -25,11 +27,11 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
     # Maintenance window duration for device updates. Valid values 0 to 5
     maintenance_window_duration_in_hours: Optional[int] = None
     # Maintenance window start time for device updates.
-    maintenance_window_start_time: Optional[time] = None
+    maintenance_window_start_time: Optional[datetime.time] = None
     # Indicates whether or not to Block wireless projection.
     miracast_blocked: Optional[bool] = None
     # Possible values for Miracast channel.
-    miracast_channel: Optional[miracast_channel.MiracastChannel] = None
+    miracast_channel: Optional[MiracastChannel] = None
     # Indicates whether or not to require a pin for wireless projection.
     miracast_require_pin: Optional[bool] = None
     # Specifies whether to disable the 'My meetings and files' feature in the Start menu, which shows the signed-in user's meetings and files from Office 365.
@@ -51,7 +53,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
     # Indicates whether or not to Block the welcome screen from waking up automatically when someone enters the room.
     welcome_screen_block_automatic_wake_up: Optional[bool] = None
     # Possible values for welcome screen meeting information.
-    welcome_screen_meeting_information: Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation] = None
+    welcome_screen_meeting_information: Optional[WelcomeScreenMeetingInformation] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10TeamGeneralConfiguration:
@@ -70,9 +72,13 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration, miracast_channel, welcome_screen_meeting_information
+        from .device_configuration import DeviceConfiguration
+        from .miracast_channel import MiracastChannel
+        from .welcome_screen_meeting_information import WelcomeScreenMeetingInformation
 
-        from . import device_configuration, miracast_channel, welcome_screen_meeting_information
+        from .device_configuration import DeviceConfiguration
+        from .miracast_channel import MiracastChannel
+        from .welcome_screen_meeting_information import WelcomeScreenMeetingInformation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "azureOperationalInsightsBlockTelemetry": lambda n : setattr(self, 'azure_operational_insights_block_telemetry', n.get_bool_value()),
@@ -83,7 +89,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             "maintenanceWindowDurationInHours": lambda n : setattr(self, 'maintenance_window_duration_in_hours', n.get_int_value()),
             "maintenanceWindowStartTime": lambda n : setattr(self, 'maintenance_window_start_time', n.get_time_value()),
             "miracastBlocked": lambda n : setattr(self, 'miracast_blocked', n.get_bool_value()),
-            "miracastChannel": lambda n : setattr(self, 'miracast_channel', n.get_enum_value(miracast_channel.MiracastChannel)),
+            "miracastChannel": lambda n : setattr(self, 'miracast_channel', n.get_enum_value(MiracastChannel)),
             "miracastRequirePin": lambda n : setattr(self, 'miracast_require_pin', n.get_bool_value()),
             "settingsBlockMyMeetingsAndFiles": lambda n : setattr(self, 'settings_block_my_meetings_and_files', n.get_bool_value()),
             "settingsBlockSessionResume": lambda n : setattr(self, 'settings_block_session_resume', n.get_bool_value()),
@@ -94,7 +100,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             "settingsSleepTimeoutInMinutes": lambda n : setattr(self, 'settings_sleep_timeout_in_minutes', n.get_int_value()),
             "welcomeScreenBackgroundImageUrl": lambda n : setattr(self, 'welcome_screen_background_image_url', n.get_str_value()),
             "welcomeScreenBlockAutomaticWakeUp": lambda n : setattr(self, 'welcome_screen_block_automatic_wake_up', n.get_bool_value()),
-            "welcomeScreenMeetingInformation": lambda n : setattr(self, 'welcome_screen_meeting_information', n.get_enum_value(welcome_screen_meeting_information.WelcomeScreenMeetingInformation)),
+            "welcomeScreenMeetingInformation": lambda n : setattr(self, 'welcome_screen_meeting_information', n.get_enum_value(WelcomeScreenMeetingInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -115,7 +121,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         writer.write_bool_value("connectAppBlockAutoLaunch", self.connect_app_block_auto_launch)
         writer.write_bool_value("maintenanceWindowBlocked", self.maintenance_window_blocked)
         writer.write_int_value("maintenanceWindowDurationInHours", self.maintenance_window_duration_in_hours)
-        writer.write_time_value("maintenanceWindowStartTime", self.maintenance_window_start_time)
+        writer.write_time_value()("maintenanceWindowStartTime", self.maintenance_window_start_time)
         writer.write_bool_value("miracastBlocked", self.miracast_blocked)
         writer.write_enum_value("miracastChannel", self.miracast_channel)
         writer.write_bool_value("miracastRequirePin", self.miracast_require_pin)

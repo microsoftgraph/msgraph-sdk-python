@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import win32_lob_app_msi_package_type
+    from .win32_lob_app_msi_package_type import Win32LobAppMsiPackageType
 
 @dataclass
 class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
@@ -17,7 +17,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the package type of an MSI Win32LobApp.
-    package_type: Optional[win32_lob_app_msi_package_type.Win32LobAppMsiPackageType] = None
+    package_type: Optional[Win32LobAppMsiPackageType] = None
     # The MSI product code.
     product_code: Optional[str] = None
     # The MSI product name.
@@ -48,13 +48,13 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import win32_lob_app_msi_package_type
+        from .win32_lob_app_msi_package_type import Win32LobAppMsiPackageType
 
-        from . import win32_lob_app_msi_package_type
+        from .win32_lob_app_msi_package_type import Win32LobAppMsiPackageType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "packageType": lambda n : setattr(self, 'package_type', n.get_enum_value(win32_lob_app_msi_package_type.Win32LobAppMsiPackageType)),
+            "packageType": lambda n : setattr(self, 'package_type', n.get_enum_value(Win32LobAppMsiPackageType)),
             "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
             "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
             "productVersion": lambda n : setattr(self, 'product_version', n.get_str_value()),

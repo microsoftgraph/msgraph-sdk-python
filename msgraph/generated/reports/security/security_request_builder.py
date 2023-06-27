@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import security_reports_root
-    from ...models.o_data_errors import o_data_error
-    from .get_attack_simulation_repeat_offenders import get_attack_simulation_repeat_offenders_request_builder
-    from .get_attack_simulation_simulation_user_coverage import get_attack_simulation_simulation_user_coverage_request_builder
-    from .get_attack_simulation_training_user_coverage import get_attack_simulation_training_user_coverage_request_builder
+    from ...models.o_data_errors.o_data_error import ODataError
+    from ...models.security_reports_root import SecurityReportsRoot
+    from .get_attack_simulation_repeat_offenders.get_attack_simulation_repeat_offenders_request_builder import GetAttackSimulationRepeatOffendersRequestBuilder
+    from .get_attack_simulation_simulation_user_coverage.get_attack_simulation_simulation_user_coverage_request_builder import GetAttackSimulationSimulationUserCoverageRequestBuilder
+    from .get_attack_simulation_training_user_coverage.get_attack_simulation_training_user_coverage_request_builder import GetAttackSimulationTrainingUserCoverageRequestBuilder
 
 class SecurityRequestBuilder():
     """
@@ -47,62 +47,62 @@ class SecurityRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None) -> Optional[security_reports_root.SecurityReportsRoot]:
+    async def get(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None) -> Optional[SecurityReportsRoot]:
         """
         Get security from reports
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[security_reports_root.SecurityReportsRoot]
+        Returns: Optional[SecurityReportsRoot]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import security_reports_root
+        from ...models.security_reports_root import SecurityReportsRoot
 
-        return await self.request_adapter.send_async(request_info, security_reports_root.SecurityReportsRoot, error_mapping)
+        return await self.request_adapter.send_async(request_info, SecurityReportsRoot, error_mapping)
     
-    async def patch(self,body: Optional[security_reports_root.SecurityReportsRoot] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> Optional[security_reports_root.SecurityReportsRoot]:
+    async def patch(self,body: Optional[SecurityReportsRoot] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> Optional[SecurityReportsRoot]:
         """
         Update the navigation property security in reports
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[security_reports_root.SecurityReportsRoot]
+        Returns: Optional[SecurityReportsRoot]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import security_reports_root
+        from ...models.security_reports_root import SecurityReportsRoot
 
-        return await self.request_adapter.send_async(request_info, security_reports_root.SecurityReportsRoot, error_mapping)
+        return await self.request_adapter.send_async(request_info, SecurityReportsRoot, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SecurityRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -138,7 +138,7 @@ class SecurityRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[security_reports_root.SecurityReportsRoot] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SecurityReportsRoot] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property security in reports
         Args:
@@ -160,31 +160,31 @@ class SecurityRequestBuilder():
         return request_info
     
     @property
-    def get_attack_simulation_repeat_offenders(self) -> get_attack_simulation_repeat_offenders_request_builder.GetAttackSimulationRepeatOffendersRequestBuilder:
+    def get_attack_simulation_repeat_offenders(self) -> GetAttackSimulationRepeatOffendersRequestBuilder:
         """
         Provides operations to call the getAttackSimulationRepeatOffenders method.
         """
-        from .get_attack_simulation_repeat_offenders import get_attack_simulation_repeat_offenders_request_builder
+        from .get_attack_simulation_repeat_offenders.get_attack_simulation_repeat_offenders_request_builder import GetAttackSimulationRepeatOffendersRequestBuilder
 
-        return get_attack_simulation_repeat_offenders_request_builder.GetAttackSimulationRepeatOffendersRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAttackSimulationRepeatOffendersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_attack_simulation_simulation_user_coverage(self) -> get_attack_simulation_simulation_user_coverage_request_builder.GetAttackSimulationSimulationUserCoverageRequestBuilder:
+    def get_attack_simulation_simulation_user_coverage(self) -> GetAttackSimulationSimulationUserCoverageRequestBuilder:
         """
         Provides operations to call the getAttackSimulationSimulationUserCoverage method.
         """
-        from .get_attack_simulation_simulation_user_coverage import get_attack_simulation_simulation_user_coverage_request_builder
+        from .get_attack_simulation_simulation_user_coverage.get_attack_simulation_simulation_user_coverage_request_builder import GetAttackSimulationSimulationUserCoverageRequestBuilder
 
-        return get_attack_simulation_simulation_user_coverage_request_builder.GetAttackSimulationSimulationUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAttackSimulationSimulationUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_attack_simulation_training_user_coverage(self) -> get_attack_simulation_training_user_coverage_request_builder.GetAttackSimulationTrainingUserCoverageRequestBuilder:
+    def get_attack_simulation_training_user_coverage(self) -> GetAttackSimulationTrainingUserCoverageRequestBuilder:
         """
         Provides operations to call the getAttackSimulationTrainingUserCoverage method.
         """
-        from .get_attack_simulation_training_user_coverage import get_attack_simulation_training_user_coverage_request_builder
+        from .get_attack_simulation_training_user_coverage.get_attack_simulation_training_user_coverage_request_builder import GetAttackSimulationTrainingUserCoverageRequestBuilder
 
-        return get_attack_simulation_training_user_coverage_request_builder.GetAttackSimulationTrainingUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
+        return GetAttackSimulationTrainingUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SecurityRequestBuilderDeleteRequestConfiguration():

@@ -1,24 +1,29 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, print_document, print_job_configuration, print_job_status, print_task, user_identity
+    from .entity import Entity
+    from .print_document import PrintDocument
+    from .print_job_configuration import PrintJobConfiguration
+    from .print_job_status import PrintJobStatus
+    from .print_task import PrintTask
+    from .user_identity import UserIdentity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PrintJob(entity.Entity):
+class PrintJob(Entity):
     # The configuration property
-    configuration: Optional[print_job_configuration.PrintJobConfiguration] = None
+    configuration: Optional[PrintJobConfiguration] = None
     # The createdBy property
-    created_by: Optional[user_identity.UserIdentity] = None
+    created_by: Optional[UserIdentity] = None
     # The DateTimeOffset when the job was created. Read-only.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # The documents property
-    documents: Optional[List[print_document.PrintDocument]] = None
+    documents: Optional[List[PrintDocument]] = None
     # If true, document can be fetched by printer.
     is_fetchable: Optional[bool] = None
     # The OdataType property
@@ -28,9 +33,9 @@ class PrintJob(entity.Entity):
     # Contains the destination job URL, if the job has been redirected to another printer.
     redirected_to: Optional[str] = None
     # The status property
-    status: Optional[print_job_status.PrintJobStatus] = None
+    status: Optional[PrintJobStatus] = None
     # A list of printTasks that were triggered by this print job.
-    tasks: Optional[List[print_task.PrintTask]] = None
+    tasks: Optional[List[PrintTask]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintJob:
@@ -49,20 +54,30 @@ class PrintJob(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, print_document, print_job_configuration, print_job_status, print_task, user_identity
+        from .entity import Entity
+        from .print_document import PrintDocument
+        from .print_job_configuration import PrintJobConfiguration
+        from .print_job_status import PrintJobStatus
+        from .print_task import PrintTask
+        from .user_identity import UserIdentity
 
-        from . import entity, print_document, print_job_configuration, print_job_status, print_task, user_identity
+        from .entity import Entity
+        from .print_document import PrintDocument
+        from .print_job_configuration import PrintJobConfiguration
+        from .print_job_status import PrintJobStatus
+        from .print_task import PrintTask
+        from .user_identity import UserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(print_job_configuration.PrintJobConfiguration)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
+            "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(PrintJobConfiguration)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "documents": lambda n : setattr(self, 'documents', n.get_collection_of_object_values(print_document.PrintDocument)),
+            "documents": lambda n : setattr(self, 'documents', n.get_collection_of_object_values(PrintDocument)),
             "isFetchable": lambda n : setattr(self, 'is_fetchable', n.get_bool_value()),
             "redirectedFrom": lambda n : setattr(self, 'redirected_from', n.get_str_value()),
             "redirectedTo": lambda n : setattr(self, 'redirected_to', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_object_value(print_job_status.PrintJobStatus)),
-            "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(print_task.PrintTask)),
+            "status": lambda n : setattr(self, 'status', n.get_object_value(PrintJobStatus)),
+            "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(PrintTask)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -79,7 +94,7 @@ class PrintJob(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("configuration", self.configuration)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("documents", self.documents)
         writer.write_bool_value("isFetchable", self.is_fetchable)
         writer.write_str_value("redirectedFrom", self.redirected_from)

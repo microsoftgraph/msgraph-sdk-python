@@ -4,20 +4,24 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import directory_object, domain_dns_record, domain_state, entity, internal_domain_federation
+    from .directory_object import DirectoryObject
+    from .domain_dns_record import DomainDnsRecord
+    from .domain_state import DomainState
+    from .entity import Entity
+    from .internal_domain_federation import InternalDomainFederation
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class Domain(entity.Entity):
+class Domain(Entity):
     # Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Azure AD performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. This property is read-only and is not nullable.
     authentication_type: Optional[str] = None
     # This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.
     availability_status: Optional[str] = None
     # The objects such as users and groups that reference the domain ID. Read-only, Nullable. Supports $expand and $filter by the OData type of objects returned. For example /domains/{domainId}/domainNameReferences/microsoft.graph.user and /domains/{domainId}/domainNameReferences/microsoft.graph.group.
-    domain_name_references: Optional[List[directory_object.DirectoryObject]] = None
+    domain_name_references: Optional[List[DirectoryObject]] = None
     # Domain settings configured by a customer when federated with Azure AD. Supports $expand.
-    federation_configuration: Optional[List[internal_domain_federation.InternalDomainFederation]] = None
+    federation_configuration: Optional[List[InternalDomainFederation]] = None
     # The value of the property is false if the DNS record management of the domain has been delegated to Microsoft 365. Otherwise, the value is true. Not nullable
     is_admin_managed: Optional[bool] = None
     # true if this is the default domain that is used for user creation. There is only one default domain per company. Not nullable
@@ -39,13 +43,13 @@ class Domain(entity.Entity):
     # Specifies the length of time that a password is valid before it must be changed. If the property is not set, a default value of 90 days will be used.
     password_validity_period_in_days: Optional[int] = None
     # DNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Supports $expand.
-    service_configuration_records: Optional[List[domain_dns_record.DomainDnsRecord]] = None
+    service_configuration_records: Optional[List[DomainDnsRecord]] = None
     # Status of asynchronous operations scheduled for the domain.
-    state: Optional[domain_state.DomainState] = None
+    state: Optional[DomainState] = None
     # The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values which you can add/remove using Graph API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable.
     supported_services: Optional[List[str]] = None
     # DNS records that the customer adds to the DNS zone file of the domain before the customer can complete domain ownership verification with Azure AD. Read-only, Nullable. Supports $expand.
-    verification_dns_records: Optional[List[domain_dns_record.DomainDnsRecord]] = None
+    verification_dns_records: Optional[List[DomainDnsRecord]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Domain:
@@ -64,15 +68,23 @@ class Domain(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object, domain_dns_record, domain_state, entity, internal_domain_federation
+        from .directory_object import DirectoryObject
+        from .domain_dns_record import DomainDnsRecord
+        from .domain_state import DomainState
+        from .entity import Entity
+        from .internal_domain_federation import InternalDomainFederation
 
-        from . import directory_object, domain_dns_record, domain_state, entity, internal_domain_federation
+        from .directory_object import DirectoryObject
+        from .domain_dns_record import DomainDnsRecord
+        from .domain_state import DomainState
+        from .entity import Entity
+        from .internal_domain_federation import InternalDomainFederation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_str_value()),
             "availabilityStatus": lambda n : setattr(self, 'availability_status', n.get_str_value()),
-            "domainNameReferences": lambda n : setattr(self, 'domain_name_references', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "federationConfiguration": lambda n : setattr(self, 'federation_configuration', n.get_collection_of_object_values(internal_domain_federation.InternalDomainFederation)),
+            "domainNameReferences": lambda n : setattr(self, 'domain_name_references', n.get_collection_of_object_values(DirectoryObject)),
+            "federationConfiguration": lambda n : setattr(self, 'federation_configuration', n.get_collection_of_object_values(InternalDomainFederation)),
             "isAdminManaged": lambda n : setattr(self, 'is_admin_managed', n.get_bool_value()),
             "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "isInitial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),
@@ -82,10 +94,10 @@ class Domain(entity.Entity):
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
             "passwordNotificationWindowInDays": lambda n : setattr(self, 'password_notification_window_in_days', n.get_int_value()),
             "passwordValidityPeriodInDays": lambda n : setattr(self, 'password_validity_period_in_days', n.get_int_value()),
-            "serviceConfigurationRecords": lambda n : setattr(self, 'service_configuration_records', n.get_collection_of_object_values(domain_dns_record.DomainDnsRecord)),
-            "state": lambda n : setattr(self, 'state', n.get_object_value(domain_state.DomainState)),
+            "serviceConfigurationRecords": lambda n : setattr(self, 'service_configuration_records', n.get_collection_of_object_values(DomainDnsRecord)),
+            "state": lambda n : setattr(self, 'state', n.get_object_value(DomainState)),
             "supportedServices": lambda n : setattr(self, 'supported_services', n.get_collection_of_primitive_values(str)),
-            "verificationDnsRecords": lambda n : setattr(self, 'verification_dns_records', n.get_collection_of_object_values(domain_dns_record.DomainDnsRecord)),
+            "verificationDnsRecords": lambda n : setattr(self, 'verification_dns_records', n.get_collection_of_object_values(DomainDnsRecord)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

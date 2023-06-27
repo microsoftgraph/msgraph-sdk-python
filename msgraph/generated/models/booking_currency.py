@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class BookingCurrency(entity.Entity):
+class BookingCurrency(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The currency symbol. For example, the currency symbol for the US dollar and for the Australian dollar is $.
@@ -32,9 +32,9 @@ class BookingCurrency(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "symbol": lambda n : setattr(self, 'symbol', n.get_str_value()),

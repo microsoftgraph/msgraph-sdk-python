@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ip_range
+    from .ip_range import IpRange
 
-from . import ip_range
+from .ip_range import IpRange
 
 @dataclass
-class IPv4CidrRange(ip_range.IpRange):
+class IPv4CidrRange(IpRange):
     odata_type = "#microsoft.graph.iPv4CidrRange"
     # IPv4 address in CIDR notation. Not nullable.
     cidr_address: Optional[str] = None
@@ -31,9 +31,9 @@ class IPv4CidrRange(ip_range.IpRange):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ip_range
+        from .ip_range import IpRange
 
-        from . import ip_range
+        from .ip_range import IpRange
 
         fields: Dict[str, Callable[[Any], None]] = {
             "cidrAddress": lambda n : setattr(self, 'cidr_address', n.get_str_value()),

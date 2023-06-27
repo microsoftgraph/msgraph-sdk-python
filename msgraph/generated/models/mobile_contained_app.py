@@ -4,12 +4,13 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, windows_universal_app_x_contained_app
+    from .entity import Entity
+    from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class MobileContainedApp(entity.Entity):
+class MobileContainedApp(Entity):
     """
     An abstract class that represents a contained app in a mobileApp acting as a package.
     """
@@ -31,9 +32,9 @@ class MobileContainedApp(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppXContainedApp".casefold():
-            from . import windows_universal_app_x_contained_app
+            from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
 
-            return windows_universal_app_x_contained_app.WindowsUniversalAppXContainedApp()
+            return WindowsUniversalAppXContainedApp()
         return MobileContainedApp()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -41,9 +42,11 @@ class MobileContainedApp(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, windows_universal_app_x_contained_app
+        from .entity import Entity
+        from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
 
-        from . import entity, windows_universal_app_x_contained_app
+        from .entity import Entity
+        from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

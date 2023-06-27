@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import display_template
+    from .display_template import DisplayTemplate
 
 @dataclass
 class SearchSettings(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class SearchSettings(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Enables the developer to define the appearance of the content and configure conditions that dictate when the template should be displayed. Maximum of 2 search result templates per connection.
-    search_result_templates: Optional[List[display_template.DisplayTemplate]] = None
+    search_result_templates: Optional[List[DisplayTemplate]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SearchSettings:
@@ -33,13 +33,13 @@ class SearchSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import display_template
+        from .display_template import DisplayTemplate
 
-        from . import display_template
+        from .display_template import DisplayTemplate
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "searchResultTemplates": lambda n : setattr(self, 'search_result_templates', n.get_collection_of_object_values(display_template.DisplayTemplate)),
+            "searchResultTemplates": lambda n : setattr(self, 'search_result_templates', n.get_collection_of_object_values(DisplayTemplate)),
         }
         return fields
     

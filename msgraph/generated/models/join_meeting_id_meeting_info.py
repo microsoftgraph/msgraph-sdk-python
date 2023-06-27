@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import meeting_info
+    from .meeting_info import MeetingInfo
 
-from . import meeting_info
+from .meeting_info import MeetingInfo
 
 @dataclass
-class JoinMeetingIdMeetingInfo(meeting_info.MeetingInfo):
+class JoinMeetingIdMeetingInfo(MeetingInfo):
     odata_type = "#microsoft.graph.joinMeetingIdMeetingInfo"
     # The ID used to join the meeting.
     join_meeting_id: Optional[str] = None
@@ -33,9 +33,9 @@ class JoinMeetingIdMeetingInfo(meeting_info.MeetingInfo):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import meeting_info
+        from .meeting_info import MeetingInfo
 
-        from . import meeting_info
+        from .meeting_info import MeetingInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
             "joinMeetingId": lambda n : setattr(self, 'join_meeting_id', n.get_str_value()),

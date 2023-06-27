@@ -4,17 +4,19 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_method_configuration, microsoft_authenticator_authentication_method_target, microsoft_authenticator_feature_settings
+    from .authentication_method_configuration import AuthenticationMethodConfiguration
+    from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+    from .microsoft_authenticator_feature_settings import MicrosoftAuthenticatorFeatureSettings
 
-from . import authentication_method_configuration
+from .authentication_method_configuration import AuthenticationMethodConfiguration
 
 @dataclass
-class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
+class MicrosoftAuthenticatorAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     odata_type = "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration"
     # A collection of Microsoft Authenticator settings such as application context and location context, and whether they are enabled for all users or specific users only.
-    feature_settings: Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings] = None
+    feature_settings: Optional[MicrosoftAuthenticatorFeatureSettings] = None
     # A collection of groups that are enabled to use the authentication method. Expanded by default.
-    include_targets: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]] = None
+    include_targets: Optional[List[MicrosoftAuthenticatorAuthenticationMethodTarget]] = None
     # The isSoftwareOathEnabled property
     is_software_oath_enabled: Optional[bool] = None
     
@@ -35,13 +37,17 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_configuration, microsoft_authenticator_authentication_method_target, microsoft_authenticator_feature_settings
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+        from .microsoft_authenticator_feature_settings import MicrosoftAuthenticatorFeatureSettings
 
-        from . import authentication_method_configuration, microsoft_authenticator_authentication_method_target, microsoft_authenticator_feature_settings
+        from .authentication_method_configuration import AuthenticationMethodConfiguration
+        from .microsoft_authenticator_authentication_method_target import MicrosoftAuthenticatorAuthenticationMethodTarget
+        from .microsoft_authenticator_feature_settings import MicrosoftAuthenticatorFeatureSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "featureSettings": lambda n : setattr(self, 'feature_settings', n.get_object_value(microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings)),
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget)),
+            "featureSettings": lambda n : setattr(self, 'feature_settings', n.get_object_value(MicrosoftAuthenticatorFeatureSettings)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(MicrosoftAuthenticatorAuthenticationMethodTarget)),
             "isSoftwareOathEnabled": lambda n : setattr(self, 'is_software_oath_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

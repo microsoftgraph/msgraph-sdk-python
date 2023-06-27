@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import item_id_resolver
+    from .item_id_resolver import ItemIdResolver
 
 @dataclass
 class UrlToItemResolverBase(AdditionalDataHolder, Parsable):
@@ -31,9 +31,9 @@ class UrlToItemResolverBase(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.externalConnectors.itemIdResolver".casefold():
-            from . import item_id_resolver
+            from .item_id_resolver import ItemIdResolver
 
-            return item_id_resolver.ItemIdResolver()
+            return ItemIdResolver()
         return UrlToItemResolverBase()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -41,9 +41,9 @@ class UrlToItemResolverBase(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import item_id_resolver
+        from .item_id_resolver import ItemIdResolver
 
-        from . import item_id_resolver
+        from .item_id_resolver import ItemIdResolver
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

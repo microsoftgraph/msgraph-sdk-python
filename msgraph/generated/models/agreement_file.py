@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import agreement_file_localization, agreement_file_properties
+    from .agreement_file_localization import AgreementFileLocalization
+    from .agreement_file_properties import AgreementFileProperties
 
-from . import agreement_file_properties
+from .agreement_file_properties import AgreementFileProperties
 
 @dataclass
-class AgreementFile(agreement_file_properties.AgreementFileProperties):
+class AgreementFile(AgreementFileProperties):
     # The localized version of the terms of use agreement files attached to the agreement.
-    localizations: Optional[List[agreement_file_localization.AgreementFileLocalization]] = None
+    localizations: Optional[List[AgreementFileLocalization]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -32,12 +33,14 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import agreement_file_localization, agreement_file_properties
+        from .agreement_file_localization import AgreementFileLocalization
+        from .agreement_file_properties import AgreementFileProperties
 
-        from . import agreement_file_localization, agreement_file_properties
+        from .agreement_file_localization import AgreementFileLocalization
+        from .agreement_file_properties import AgreementFileProperties
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(agreement_file_localization.AgreementFileLocalization)),
+            "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(AgreementFileLocalization)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

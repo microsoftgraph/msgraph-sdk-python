@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import employee_experience
-    from ..models.o_data_errors import o_data_error
-    from .learning_providers import learning_providers_request_builder
+    from ..models.employee_experience import EmployeeExperience
+    from ..models.o_data_errors.o_data_error import ODataError
+    from .learning_providers.learning_providers_request_builder import LearningProvidersRequestBuilder
 
 class EmployeeExperienceRequestBuilder():
     """
@@ -36,52 +36,52 @@ class EmployeeExperienceRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[EmployeeExperienceRequestBuilderGetRequestConfiguration] = None) -> Optional[employee_experience.EmployeeExperience]:
+    async def get(self,request_configuration: Optional[EmployeeExperienceRequestBuilderGetRequestConfiguration] = None) -> Optional[EmployeeExperience]:
         """
         Get employeeExperience
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[employee_experience.EmployeeExperience]
+        Returns: Optional[EmployeeExperience]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import employee_experience
+        from ..models.employee_experience import EmployeeExperience
 
-        return await self.request_adapter.send_async(request_info, employee_experience.EmployeeExperience, error_mapping)
+        return await self.request_adapter.send_async(request_info, EmployeeExperience, error_mapping)
     
-    async def patch(self,body: Optional[employee_experience.EmployeeExperience] = None, request_configuration: Optional[EmployeeExperienceRequestBuilderPatchRequestConfiguration] = None) -> Optional[employee_experience.EmployeeExperience]:
+    async def patch(self,body: Optional[EmployeeExperience] = None, request_configuration: Optional[EmployeeExperienceRequestBuilderPatchRequestConfiguration] = None) -> Optional[EmployeeExperience]:
         """
         Update employeeExperience
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[employee_experience.EmployeeExperience]
+        Returns: Optional[EmployeeExperience]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import employee_experience
+        from ..models.employee_experience import EmployeeExperience
 
-        return await self.request_adapter.send_async(request_info, employee_experience.EmployeeExperience, error_mapping)
+        return await self.request_adapter.send_async(request_info, EmployeeExperience, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[EmployeeExperienceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -101,7 +101,7 @@ class EmployeeExperienceRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[employee_experience.EmployeeExperience] = None, request_configuration: Optional[EmployeeExperienceRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EmployeeExperience] = None, request_configuration: Optional[EmployeeExperienceRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update employeeExperience
         Args:
@@ -123,13 +123,13 @@ class EmployeeExperienceRequestBuilder():
         return request_info
     
     @property
-    def learning_providers(self) -> learning_providers_request_builder.LearningProvidersRequestBuilder:
+    def learning_providers(self) -> LearningProvidersRequestBuilder:
         """
         Provides operations to manage the learningProviders property of the microsoft.graph.employeeExperience entity.
         """
-        from .learning_providers import learning_providers_request_builder
+        from .learning_providers.learning_providers_request_builder import LearningProvidersRequestBuilder
 
-        return learning_providers_request_builder.LearningProvidersRequestBuilder(self.request_adapter, self.path_parameters)
+        return LearningProvidersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EmployeeExperienceRequestBuilderGetQueryParameters():

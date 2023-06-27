@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import json
+    from ........models.json import Json
 
 @dataclass
 class IntPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class IntPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The number property
-    number: Optional[json.Json] = None
+    number: Optional[Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IntPostRequestBody:
@@ -31,12 +31,12 @@ class IntPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
+        from ........models.json import Json
 
-        from ........models import json
+        from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "number": lambda n : setattr(self, 'number', n.get_object_value(json.Json)),
+            "number": lambda n : setattr(self, 'number', n.get_object_value(Json)),
         }
         return fields
     

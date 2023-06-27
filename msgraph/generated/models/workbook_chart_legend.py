@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, workbook_chart_legend_format
+    from .entity import Entity
+    from .workbook_chart_legend_format import WorkbookChartLegendFormat
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class WorkbookChartLegend(entity.Entity):
+class WorkbookChartLegend(Entity):
     # Represents the formatting of a chart legend, which includes fill and font formatting. Read-only.
-    format: Optional[workbook_chart_legend_format.WorkbookChartLegendFormat] = None
+    format: Optional[WorkbookChartLegendFormat] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Boolean value for whether the chart legend should overlap with the main body of the chart.
@@ -38,12 +39,14 @@ class WorkbookChartLegend(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_legend_format
+        from .entity import Entity
+        from .workbook_chart_legend_format import WorkbookChartLegendFormat
 
-        from . import entity, workbook_chart_legend_format
+        from .entity import Entity
+        from .workbook_chart_legend_format import WorkbookChartLegendFormat
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_legend_format.WorkbookChartLegendFormat)),
+            "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartLegendFormat)),
             "overlay": lambda n : setattr(self, 'overlay', n.get_bool_value()),
             "position": lambda n : setattr(self, 'position', n.get_str_value()),
             "visible": lambda n : setattr(self, 'visible', n.get_bool_value()),

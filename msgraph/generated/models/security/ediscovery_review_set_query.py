@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import search
+    from .search import Search
 
-from . import search
+from .search import Search
 
 @dataclass
-class EdiscoveryReviewSetQuery(search.Search):
+class EdiscoveryReviewSetQuery(Search):
     odata_type = "#microsoft.graph.security.ediscoveryReviewSetQuery"
     
     @staticmethod
@@ -29,9 +29,9 @@ class EdiscoveryReviewSetQuery(search.Search):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import search
+        from .search import Search
 
-        from . import search
+        from .search import Search
 
         fields: Dict[str, Callable[[Any], None]] = {
         }

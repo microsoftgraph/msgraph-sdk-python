@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import ios_managed_app_protection, ios_managed_app_protection_collection_response
-    from ...models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import ios_managed_app_protection_item_request_builder
+    from ...models.ios_managed_app_protection import IosManagedAppProtection
+    from ...models.ios_managed_app_protection_collection_response import IosManagedAppProtectionCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.ios_managed_app_protection_item_request_builder import IosManagedAppProtectionItemRequestBuilder
 
 class IosManagedAppProtectionsRequestBuilder():
     """
@@ -37,71 +38,71 @@ class IosManagedAppProtectionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_ios_managed_app_protection_id(self,ios_managed_app_protection_id: str) -> ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder:
+    def by_ios_managed_app_protection_id(self,ios_managed_app_protection_id: str) -> IosManagedAppProtectionItemRequestBuilder:
         """
         Provides operations to manage the iosManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
         Args:
             ios_managed_app_protection_id: Unique identifier of the item
-        Returns: ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder
+        Returns: IosManagedAppProtectionItemRequestBuilder
         """
         if not ios_managed_app_protection_id:
             raise TypeError("ios_managed_app_protection_id cannot be null.")
-        from .item import ios_managed_app_protection_item_request_builder
+        from .item.ios_managed_app_protection_item_request_builder import IosManagedAppProtectionItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["iosManagedAppProtection%2Did"] = ios_managed_app_protection_id
-        return ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return IosManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[IosManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ios_managed_app_protection_collection_response.IosManagedAppProtectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[IosManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[IosManagedAppProtectionCollectionResponse]:
         """
-        iOS managed app policies.
+        List properties and relationships of the iosManagedAppProtection objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ios_managed_app_protection_collection_response.IosManagedAppProtectionCollectionResponse]
+        Returns: Optional[IosManagedAppProtectionCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import ios_managed_app_protection_collection_response
+        from ...models.ios_managed_app_protection_collection_response import IosManagedAppProtectionCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, ios_managed_app_protection_collection_response.IosManagedAppProtectionCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, IosManagedAppProtectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ios_managed_app_protection.IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[ios_managed_app_protection.IosManagedAppProtection]:
+    async def post(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[IosManagedAppProtection]:
         """
-        Create new navigation property to iosManagedAppProtections for deviceAppManagement
+        Create a new iosManagedAppProtection object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ios_managed_app_protection.IosManagedAppProtection]
+        Returns: Optional[IosManagedAppProtection]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import ios_managed_app_protection
+        from ...models.ios_managed_app_protection import IosManagedAppProtection
 
-        return await self.request_adapter.send_async(request_info, ios_managed_app_protection.IosManagedAppProtection, error_mapping)
+        return await self.request_adapter.send_async(request_info, IosManagedAppProtection, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[IosManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        iOS managed app policies.
+        List properties and relationships of the iosManagedAppProtection objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,9 +118,9 @@ class IosManagedAppProtectionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[ios_managed_app_protection.IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to iosManagedAppProtections for deviceAppManagement
+        Create a new iosManagedAppProtection object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,18 +140,18 @@ class IosManagedAppProtectionsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class IosManagedAppProtectionsRequestBuilderGetQueryParameters():
         """
-        iOS managed app policies.
+        List properties and relationships of the iosManagedAppProtection objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

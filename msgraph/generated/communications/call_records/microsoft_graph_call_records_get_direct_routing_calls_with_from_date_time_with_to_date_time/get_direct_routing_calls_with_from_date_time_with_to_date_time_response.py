@@ -4,15 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import base_collection_pagination_count_response
-    from ....models.call_records import direct_routing_log_row
+    from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from ....models.call_records.direct_routing_log_row import DirectRoutingLogRow
 
-from ....models import base_collection_pagination_count_response
+from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class GetDirectRoutingCallsWithFromDateTimeWithToDateTimeResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class GetDirectRoutingCallsWithFromDateTimeWithToDateTimeResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[direct_routing_log_row.DirectRoutingLogRow]] = None
+    value: Optional[List[DirectRoutingLogRow]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetDirectRoutingCallsWithFromDateTimeWithToDateTimeResponse:
@@ -31,14 +31,14 @@ class GetDirectRoutingCallsWithFromDateTimeWithToDateTimeResponse(base_collectio
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import base_collection_pagination_count_response
-        from ....models.call_records import direct_routing_log_row
+        from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from ....models.call_records.direct_routing_log_row import DirectRoutingLogRow
 
-        from ....models import base_collection_pagination_count_response
-        from ....models.call_records import direct_routing_log_row
+        from ....models.base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from ....models.call_records.direct_routing_log_row import DirectRoutingLogRow
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(direct_routing_log_row.DirectRoutingLogRow)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(DirectRoutingLogRow)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models.o_data_errors import o_data_error
-    from .........models.security import ediscovery_review_set_query
-    from .microsoft_graph_security_apply_tags import microsoft_graph_security_apply_tags_request_builder
+    from .........models.o_data_errors.o_data_error import ODataError
+    from .........models.security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
+    from .microsoft_graph_security_apply_tags.microsoft_graph_security_apply_tags_request_builder import MicrosoftGraphSecurityApplyTagsRequestBuilder
 
 class EdiscoveryReviewSetQueryItemRequestBuilder():
     """
@@ -45,62 +45,62 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]:
+    async def get(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewSetQuery]:
         """
         Read the properties and relationships of an ediscoveryReviewSetQuery object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]
+        Returns: Optional[EdiscoveryReviewSetQuery]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models.security import ediscovery_review_set_query
+        from .........models.security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
 
-        return await self.request_adapter.send_async(request_info, ediscovery_review_set_query.EdiscoveryReviewSetQuery, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoveryReviewSetQuery, error_mapping)
     
-    async def patch(self,body: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery] = None, request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]:
+    async def patch(self,body: Optional[EdiscoveryReviewSetQuery] = None, request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EdiscoveryReviewSetQuery]:
         """
         Update the properties of an ediscoveryReviewSetQuery object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]
+        Returns: Optional[EdiscoveryReviewSetQuery]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from .........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models.security import ediscovery_review_set_query
+        from .........models.security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
 
-        return await self.request_adapter.send_async(request_info, ediscovery_review_set_query.EdiscoveryReviewSetQuery, error_mapping)
+        return await self.request_adapter.send_async(request_info, EdiscoveryReviewSetQuery, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery] = None, request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EdiscoveryReviewSetQuery] = None, request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an ediscoveryReviewSetQuery object.
         Args:
@@ -158,13 +158,13 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         return request_info
     
     @property
-    def microsoft_graph_security_apply_tags(self) -> microsoft_graph_security_apply_tags_request_builder.MicrosoftGraphSecurityApplyTagsRequestBuilder:
+    def microsoft_graph_security_apply_tags(self) -> MicrosoftGraphSecurityApplyTagsRequestBuilder:
         """
         Provides operations to call the applyTags method.
         """
-        from .microsoft_graph_security_apply_tags import microsoft_graph_security_apply_tags_request_builder
+        from .microsoft_graph_security_apply_tags.microsoft_graph_security_apply_tags_request_builder import MicrosoftGraphSecurityApplyTagsRequestBuilder
 
-        return microsoft_graph_security_apply_tags_request_builder.MicrosoftGraphSecurityApplyTagsRequestBuilder(self.request_adapter, self.path_parameters)
+        return MicrosoftGraphSecurityApplyTagsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EdiscoveryReviewSetQueryItemRequestBuilderDeleteRequestConfiguration():

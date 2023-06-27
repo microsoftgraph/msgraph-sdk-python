@@ -10,13 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import mobile_app
-    from ....models.o_data_errors import o_data_error
-    from .assign import assign_request_builder
-    from .assignments import assignments_request_builder
-    from .categories import categories_request_builder
-    from .graph_managed_mobile_lob_app import graph_managed_mobile_lob_app_request_builder
-    from .graph_mobile_lob_app import graph_mobile_lob_app_request_builder
+    from ....models.mobile_app import MobileApp
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .assign.assign_request_builder import AssignRequestBuilder
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .categories.categories_request_builder import CategoriesRequestBuilder
+    from .graph_managed_mobile_lob_app.graph_managed_mobile_lob_app_request_builder import GraphManagedMobileLobAppRequestBuilder
+    from .graph_mobile_lob_app.graph_mobile_lob_app_request_builder import GraphMobileLobAppRequestBuilder
 
 class MobileAppItemRequestBuilder():
     """
@@ -42,73 +42,73 @@ class MobileAppItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[MobileAppItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property mobileApps for deviceAppManagement
+        Deletes a iosStoreApp.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[MobileAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[mobile_app.MobileApp]:
+    async def get(self,request_configuration: Optional[MobileAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileApp]:
         """
-        The mobile apps.
+        Read properties and relationships of the windowsWebApp object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mobile_app.MobileApp]
+        Returns: Optional[MobileApp]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import mobile_app
+        from ....models.mobile_app import MobileApp
 
-        return await self.request_adapter.send_async(request_info, mobile_app.MobileApp, error_mapping)
+        return await self.request_adapter.send_async(request_info, MobileApp, error_mapping)
     
-    async def patch(self,body: Optional[mobile_app.MobileApp] = None, request_configuration: Optional[MobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[mobile_app.MobileApp]:
+    async def patch(self,body: Optional[MobileApp] = None, request_configuration: Optional[MobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MobileApp]:
         """
-        Update the navigation property mobileApps in deviceAppManagement
+        Update the properties of a windowsMicrosoftEdgeApp object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mobile_app.MobileApp]
+        Returns: Optional[MobileApp]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import mobile_app
+        from ....models.mobile_app import MobileApp
 
-        return await self.request_adapter.send_async(request_info, mobile_app.MobileApp, error_mapping)
+        return await self.request_adapter.send_async(request_info, MobileApp, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[MobileAppItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property mobileApps for deviceAppManagement
+        Deletes a iosStoreApp.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -124,7 +124,7 @@ class MobileAppItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The mobile apps.
+        Read properties and relationships of the windowsWebApp object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,9 +140,9 @@ class MobileAppItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[mobile_app.MobileApp] = None, request_configuration: Optional[MobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[MobileApp] = None, request_configuration: Optional[MobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property mobileApps in deviceAppManagement
+        Update the properties of a windowsMicrosoftEdgeApp object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -162,49 +162,49 @@ class MobileAppItemRequestBuilder():
         return request_info
     
     @property
-    def assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def assign(self) -> AssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        from .assign import assign_request_builder
+        from .assign.assign_request_builder import AssignRequestBuilder
 
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+    def assignments(self) -> AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.mobileApp entity.
         """
-        from .assignments import assignments_request_builder
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def categories(self) -> categories_request_builder.CategoriesRequestBuilder:
+    def categories(self) -> CategoriesRequestBuilder:
         """
         Provides operations to manage the categories property of the microsoft.graph.mobileApp entity.
         """
-        from .categories import categories_request_builder
+        from .categories.categories_request_builder import CategoriesRequestBuilder
 
-        return categories_request_builder.CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+        return CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def graph_managed_mobile_lob_app(self) -> graph_managed_mobile_lob_app_request_builder.GraphManagedMobileLobAppRequestBuilder:
+    def graph_managed_mobile_lob_app(self) -> GraphManagedMobileLobAppRequestBuilder:
         """
         Casts the previous resource to managedMobileLobApp.
         """
-        from .graph_managed_mobile_lob_app import graph_managed_mobile_lob_app_request_builder
+        from .graph_managed_mobile_lob_app.graph_managed_mobile_lob_app_request_builder import GraphManagedMobileLobAppRequestBuilder
 
-        return graph_managed_mobile_lob_app_request_builder.GraphManagedMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphManagedMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def graph_mobile_lob_app(self) -> graph_mobile_lob_app_request_builder.GraphMobileLobAppRequestBuilder:
+    def graph_mobile_lob_app(self) -> GraphMobileLobAppRequestBuilder:
         """
         Casts the previous resource to mobileLobApp.
         """
-        from .graph_mobile_lob_app import graph_mobile_lob_app_request_builder
+        from .graph_mobile_lob_app.graph_mobile_lob_app_request_builder import GraphMobileLobAppRequestBuilder
 
-        return graph_mobile_lob_app_request_builder.GraphMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MobileAppItemRequestBuilderDeleteRequestConfiguration():
@@ -221,7 +221,7 @@ class MobileAppItemRequestBuilder():
     @dataclass
     class MobileAppItemRequestBuilderGetQueryParameters():
         """
-        The mobile apps.
+        Read properties and relationships of the windowsWebApp object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

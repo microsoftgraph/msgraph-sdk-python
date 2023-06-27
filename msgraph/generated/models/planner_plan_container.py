@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import planner_container_type
+    from .planner_container_type import PlannerContainerType
 
 @dataclass
 class PlannerPlanContainer(AdditionalDataHolder, Parsable):
@@ -16,7 +16,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster. Optional.
-    type: Optional[planner_container_type.PlannerContainerType] = None
+    type: Optional[PlannerContainerType] = None
     # The full canonical URL of the container. Optional.
     url: Optional[str] = None
     
@@ -37,14 +37,14 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import planner_container_type
+        from .planner_container_type import PlannerContainerType
 
-        from . import planner_container_type
+        from .planner_container_type import PlannerContainerType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "containerId": lambda n : setattr(self, 'container_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(planner_container_type.PlannerContainerType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(PlannerContainerType)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         return fields

@@ -4,21 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import ios_device_type, ios_minimum_operating_system, mobile_app
+    from .ios_device_type import IosDeviceType
+    from .ios_minimum_operating_system import IosMinimumOperatingSystem
+    from .mobile_app import MobileApp
 
-from . import mobile_app
+from .mobile_app import MobileApp
 
 @dataclass
-class IosStoreApp(mobile_app.MobileApp):
+class IosStoreApp(MobileApp):
     odata_type = "#microsoft.graph.iosStoreApp"
     # The Apple App Store URL
     app_store_url: Optional[str] = None
     # Contains properties of the possible iOS device types the mobile app can run on.
-    applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
+    applicable_device_type: Optional[IosDeviceType] = None
     # The Identity Name.
     bundle_id: Optional[str] = None
     # The value for the minimum applicable operating system.
-    minimum_supported_operating_system: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None
+    minimum_supported_operating_system: Optional[IosMinimumOperatingSystem] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosStoreApp:
@@ -37,15 +39,19 @@ class IosStoreApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ios_device_type, ios_minimum_operating_system, mobile_app
+        from .ios_device_type import IosDeviceType
+        from .ios_minimum_operating_system import IosMinimumOperatingSystem
+        from .mobile_app import MobileApp
 
-        from . import ios_device_type, ios_minimum_operating_system, mobile_app
+        from .ios_device_type import IosDeviceType
+        from .ios_minimum_operating_system import IosMinimumOperatingSystem
+        from .mobile_app import MobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
-            "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
+            "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(IosDeviceType)),
             "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(ios_minimum_operating_system.IosMinimumOperatingSystem)),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(IosMinimumOperatingSystem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

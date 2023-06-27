@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_guests_or_external_users
+    from .conditional_access_guests_or_external_users import ConditionalAccessGuestsOrExternalUsers
 
 @dataclass
 class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     # Group IDs excluded from scope of policy.
     exclude_groups: Optional[List[str]] = None
     # Internal guests or external users excluded from the policy scope. Optionally populated.
-    exclude_guests_or_external_users: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers] = None
+    exclude_guests_or_external_users: Optional[ConditionalAccessGuestsOrExternalUsers] = None
     # Role IDs excluded from scope of policy.
     exclude_roles: Optional[List[str]] = None
     # User IDs excluded from scope of policy and/or GuestsOrExternalUsers.
@@ -22,7 +22,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     # Group IDs in scope of policy unless explicitly excluded.
     include_groups: Optional[List[str]] = None
     # Internal guests or external users included in the policy scope. Optionally populated.
-    include_guests_or_external_users: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers] = None
+    include_guests_or_external_users: Optional[ConditionalAccessGuestsOrExternalUsers] = None
     # Role IDs in scope of policy unless explicitly excluded.
     include_roles: Optional[List[str]] = None
     # User IDs in scope of policy unless explicitly excluded, None, All, or GuestsOrExternalUsers.
@@ -47,17 +47,17 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_guests_or_external_users
+        from .conditional_access_guests_or_external_users import ConditionalAccessGuestsOrExternalUsers
 
-        from . import conditional_access_guests_or_external_users
+        from .conditional_access_guests_or_external_users import ConditionalAccessGuestsOrExternalUsers
 
         fields: Dict[str, Callable[[Any], None]] = {
             "excludeGroups": lambda n : setattr(self, 'exclude_groups', n.get_collection_of_primitive_values(str)),
-            "excludeGuestsOrExternalUsers": lambda n : setattr(self, 'exclude_guests_or_external_users', n.get_object_value(conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers)),
+            "excludeGuestsOrExternalUsers": lambda n : setattr(self, 'exclude_guests_or_external_users', n.get_object_value(ConditionalAccessGuestsOrExternalUsers)),
             "excludeRoles": lambda n : setattr(self, 'exclude_roles', n.get_collection_of_primitive_values(str)),
             "excludeUsers": lambda n : setattr(self, 'exclude_users', n.get_collection_of_primitive_values(str)),
             "includeGroups": lambda n : setattr(self, 'include_groups', n.get_collection_of_primitive_values(str)),
-            "includeGuestsOrExternalUsers": lambda n : setattr(self, 'include_guests_or_external_users', n.get_object_value(conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers)),
+            "includeGuestsOrExternalUsers": lambda n : setattr(self, 'include_guests_or_external_users', n.get_object_value(ConditionalAccessGuestsOrExternalUsers)),
             "includeRoles": lambda n : setattr(self, 'include_roles', n.get_collection_of_primitive_values(str)),
             "includeUsers": lambda n : setattr(self, 'include_users', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

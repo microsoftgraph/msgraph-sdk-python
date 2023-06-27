@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import access_package_question
+    from .access_package_question import AccessPackageQuestion
 
-from . import access_package_question
+from .access_package_question import AccessPackageQuestion
 
 @dataclass
-class AccessPackageTextInputQuestion(access_package_question.AccessPackageQuestion):
+class AccessPackageTextInputQuestion(AccessPackageQuestion):
     odata_type = "#microsoft.graph.accessPackageTextInputQuestion"
     # Indicates whether the answer will be in single or multiple line format.
     is_single_line_question: Optional[bool] = None
@@ -33,9 +33,9 @@ class AccessPackageTextInputQuestion(access_package_question.AccessPackageQuesti
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_question
+        from .access_package_question import AccessPackageQuestion
 
-        from . import access_package_question
+        from .access_package_question import AccessPackageQuestion
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isSingleLineQuestion": lambda n : setattr(self, 'is_single_line_question', n.get_bool_value()),

@@ -1,11 +1,12 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import expiration_pattern, patterned_recurrence
+    from .expiration_pattern import ExpirationPattern
+    from .patterned_recurrence import PatternedRecurrence
 
 @dataclass
 class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
@@ -13,13 +14,13 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # When the access should expire.
-    expiration: Optional[expiration_pattern.ExpirationPattern] = None
+    expiration: Optional[ExpirationPattern] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # For recurring access reviews.  Not used in access requests.
-    recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
+    recurrence: Optional[PatternedRecurrence] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-    start_date_time: Optional[datetime] = None
+    start_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EntitlementManagementSchedule:
@@ -38,14 +39,16 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import expiration_pattern, patterned_recurrence
+        from .expiration_pattern import ExpirationPattern
+        from .patterned_recurrence import PatternedRecurrence
 
-        from . import expiration_pattern, patterned_recurrence
+        from .expiration_pattern import ExpirationPattern
+        from .patterned_recurrence import PatternedRecurrence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(expiration_pattern.ExpirationPattern)),
+            "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(ExpirationPattern)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
+            "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(PatternedRecurrence)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         return fields
@@ -61,7 +64,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
         writer.write_object_value("expiration", self.expiration)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("recurrence", self.recurrence)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value()("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

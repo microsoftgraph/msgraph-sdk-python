@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models import app_consent_approval_route
-    from ...models.o_data_errors import o_data_error
-    from .app_consent_requests import app_consent_requests_request_builder
+    from ...models.app_consent_approval_route import AppConsentApprovalRoute
+    from ...models.o_data_errors.o_data_error import ODataError
+    from .app_consent_requests.app_consent_requests_request_builder import AppConsentRequestsRequestBuilder
 
 class AppConsentRequestBuilder():
     """
@@ -45,62 +45,62 @@ class AppConsentRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AppConsentRequestBuilderGetRequestConfiguration] = None) -> Optional[app_consent_approval_route.AppConsentApprovalRoute]:
+    async def get(self,request_configuration: Optional[AppConsentRequestBuilderGetRequestConfiguration] = None) -> Optional[AppConsentApprovalRoute]:
         """
         Get appConsent from identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[app_consent_approval_route.AppConsentApprovalRoute]
+        Returns: Optional[AppConsentApprovalRoute]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import app_consent_approval_route
+        from ...models.app_consent_approval_route import AppConsentApprovalRoute
 
-        return await self.request_adapter.send_async(request_info, app_consent_approval_route.AppConsentApprovalRoute, error_mapping)
+        return await self.request_adapter.send_async(request_info, AppConsentApprovalRoute, error_mapping)
     
-    async def patch(self,body: Optional[app_consent_approval_route.AppConsentApprovalRoute] = None, request_configuration: Optional[AppConsentRequestBuilderPatchRequestConfiguration] = None) -> Optional[app_consent_approval_route.AppConsentApprovalRoute]:
+    async def patch(self,body: Optional[AppConsentApprovalRoute] = None, request_configuration: Optional[AppConsentRequestBuilderPatchRequestConfiguration] = None) -> Optional[AppConsentApprovalRoute]:
         """
         Update the navigation property appConsent in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[app_consent_approval_route.AppConsentApprovalRoute]
+        Returns: Optional[AppConsentApprovalRoute]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
+        from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import app_consent_approval_route
+        from ...models.app_consent_approval_route import AppConsentApprovalRoute
 
-        return await self.request_adapter.send_async(request_info, app_consent_approval_route.AppConsentApprovalRoute, error_mapping)
+        return await self.request_adapter.send_async(request_info, AppConsentApprovalRoute, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AppConsentRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -136,7 +136,7 @@ class AppConsentRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[app_consent_approval_route.AppConsentApprovalRoute] = None, request_configuration: Optional[AppConsentRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AppConsentApprovalRoute] = None, request_configuration: Optional[AppConsentRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property appConsent in identityGovernance
         Args:
@@ -158,13 +158,13 @@ class AppConsentRequestBuilder():
         return request_info
     
     @property
-    def app_consent_requests(self) -> app_consent_requests_request_builder.AppConsentRequestsRequestBuilder:
+    def app_consent_requests(self) -> AppConsentRequestsRequestBuilder:
         """
         Provides operations to manage the appConsentRequests property of the microsoft.graph.appConsentApprovalRoute entity.
         """
-        from .app_consent_requests import app_consent_requests_request_builder
+        from .app_consent_requests.app_consent_requests_request_builder import AppConsentRequestsRequestBuilder
 
-        return app_consent_requests_request_builder.AppConsentRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AppConsentRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AppConsentRequestBuilderDeleteRequestConfiguration():

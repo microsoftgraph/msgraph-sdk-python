@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...........models import workbook_chart_series, workbook_chart_series_collection_response
-    from ...........models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import workbook_chart_series_item_request_builder
-    from .item_at_with_index import item_at_with_index_request_builder
+    from ...........models.o_data_errors.o_data_error import ODataError
+    from ...........models.workbook_chart_series import WorkbookChartSeries
+    from ...........models.workbook_chart_series_collection_response import WorkbookChartSeriesCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.workbook_chart_series_item_request_builder import WorkbookChartSeriesItemRequestBuilder
+    from .item_at_with_index.item_at_with_index_request_builder import ItemAtWithIndexRequestBuilder
 
 class SeriesRequestBuilder():
     """
@@ -38,80 +39,80 @@ class SeriesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_workbook_chart_series_id(self,workbook_chart_series_id: str) -> workbook_chart_series_item_request_builder.WorkbookChartSeriesItemRequestBuilder:
+    def by_workbook_chart_series_id(self,workbook_chart_series_id: str) -> WorkbookChartSeriesItemRequestBuilder:
         """
         Provides operations to manage the series property of the microsoft.graph.workbookChart entity.
         Args:
             workbook_chart_series_id: Unique identifier of the item
-        Returns: workbook_chart_series_item_request_builder.WorkbookChartSeriesItemRequestBuilder
+        Returns: WorkbookChartSeriesItemRequestBuilder
         """
         if not workbook_chart_series_id:
             raise TypeError("workbook_chart_series_id cannot be null.")
-        from .item import workbook_chart_series_item_request_builder
+        from .item.workbook_chart_series_item_request_builder import WorkbookChartSeriesItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookChartSeries%2Did"] = workbook_chart_series_id
-        return workbook_chart_series_item_request_builder.WorkbookChartSeriesItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return WorkbookChartSeriesItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SeriesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_series_collection_response.WorkbookChartSeriesCollectionResponse]:
+    async def get(self,request_configuration: Optional[SeriesRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartSeriesCollectionResponse]:
         """
         Retrieve a list of chartseries objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart_series_collection_response.WorkbookChartSeriesCollectionResponse]
+        Returns: Optional[WorkbookChartSeriesCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
+        from ...........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...........models import workbook_chart_series_collection_response
+        from ...........models.workbook_chart_series_collection_response import WorkbookChartSeriesCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, workbook_chart_series_collection_response.WorkbookChartSeriesCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChartSeriesCollectionResponse, error_mapping)
     
-    def item_at_with_index(self,index: Optional[int] = None) -> item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder:
+    def item_at_with_index(self,index: Optional[int] = None) -> ItemAtWithIndexRequestBuilder:
         """
         Provides operations to call the itemAt method.
         Args:
             index: Usage: index={index}
-        Returns: item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder
+        Returns: ItemAtWithIndexRequestBuilder
         """
         if not index:
             raise TypeError("index cannot be null.")
-        from .item_at_with_index import item_at_with_index_request_builder
+        from .item_at_with_index.item_at_with_index_request_builder import ItemAtWithIndexRequestBuilder
 
-        return item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder(self.request_adapter, self.path_parameters, index)
+        return ItemAtWithIndexRequestBuilder(self.request_adapter, self.path_parameters, index)
     
-    async def post(self,body: Optional[workbook_chart_series.WorkbookChartSeries] = None, request_configuration: Optional[SeriesRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_chart_series.WorkbookChartSeries]:
+    async def post(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[SeriesRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookChartSeries]:
         """
         Use this API to create a new ChartSeries.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart_series.WorkbookChartSeries]
+        Returns: Optional[WorkbookChartSeries]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
+        from ...........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...........models import workbook_chart_series
+        from ...........models.workbook_chart_series import WorkbookChartSeries
 
-        return await self.request_adapter.send_async(request_info, workbook_chart_series.WorkbookChartSeries, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChartSeries, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SeriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -131,7 +132,7 @@ class SeriesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[workbook_chart_series.WorkbookChartSeries] = None, request_configuration: Optional[SeriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[SeriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Use this API to create a new ChartSeries.
         Args:
@@ -153,13 +154,13 @@ class SeriesRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to call the count method.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SeriesRequestBuilderGetQueryParameters():

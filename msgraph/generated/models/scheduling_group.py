@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import change_tracked_entity
+    from .change_tracked_entity import ChangeTrackedEntity
 
-from . import change_tracked_entity
+from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
-class SchedulingGroup(change_tracked_entity.ChangeTrackedEntity):
+class SchedulingGroup(ChangeTrackedEntity):
     odata_type = "#microsoft.graph.schedulingGroup"
     # The display name for the schedulingGroup. Required.
     display_name: Optional[str] = None
@@ -35,9 +35,9 @@ class SchedulingGroup(change_tracked_entity.ChangeTrackedEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import change_tracked_entity
+        from .change_tracked_entity import ChangeTrackedEntity
 
-        from . import change_tracked_entity
+        from .change_tracked_entity import ChangeTrackedEntity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

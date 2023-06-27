@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import targeted_managed_app_policy_assignment
+    from .....models.targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
 @dataclass
 class AssignPostRequestBody(AdditionalDataHolder, Parsable):
@@ -12,7 +12,7 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The assignments property
-    assignments: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None
+    assignments: Optional[List[TargetedManagedAppPolicyAssignment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignPostRequestBody:
@@ -31,12 +31,12 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import targeted_managed_app_policy_assignment
+        from .....models.targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
-        from .....models import targeted_managed_app_policy_assignment
+        from .....models.targeted_managed_app_policy_assignment import TargetedManagedAppPolicyAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment)),
+            "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(TargetedManagedAppPolicyAssignment)),
         }
         return fields
     

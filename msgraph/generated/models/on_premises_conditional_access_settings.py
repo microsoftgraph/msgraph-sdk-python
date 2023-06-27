@@ -5,12 +5,12 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class OnPremisesConditionalAccessSettings(entity.Entity):
+class OnPremisesConditionalAccessSettings(Entity):
     # Indicates if on premises conditional access is enabled for this organization
     enabled: Optional[bool] = None
     # User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.
@@ -39,9 +39,9 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),

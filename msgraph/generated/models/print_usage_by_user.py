@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import print_usage
+    from .print_usage import PrintUsage
 
-from . import print_usage
+from .print_usage import PrintUsage
 
 @dataclass
-class PrintUsageByUser(print_usage.PrintUsage):
+class PrintUsageByUser(PrintUsage):
     odata_type = "#microsoft.graph.printUsageByUser"
     # The UPN of the user represented by these statistics.
     user_principal_name: Optional[str] = None
@@ -31,9 +31,9 @@ class PrintUsageByUser(print_usage.PrintUsage):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import print_usage
+        from .print_usage import PrintUsage
 
-        from . import print_usage
+        from .print_usage import PrintUsage
 
         fields: Dict[str, Callable[[Any], None]] = {
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),

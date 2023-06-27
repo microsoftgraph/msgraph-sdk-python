@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ................models import workbook_chart_fill
-    from ................models.o_data_errors import o_data_error
-    from .clear import clear_request_builder
-    from .set_solid_color import set_solid_color_request_builder
+    from ................models.o_data_errors.o_data_error import ODataError
+    from ................models.workbook_chart_fill import WorkbookChartFill
+    from .clear.clear_request_builder import ClearRequestBuilder
+    from .set_solid_color.set_solid_color_request_builder import SetSolidColorRequestBuilder
 
 class FillRequestBuilder():
     """
@@ -46,62 +46,62 @@ class FillRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ................models.o_data_errors import o_data_error
+        from ................models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[FillRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_fill.WorkbookChartFill]:
+    async def get(self,request_configuration: Optional[FillRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartFill]:
         """
         Represents the fill format of a chart, which includes background formating information. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart_fill.WorkbookChartFill]
+        Returns: Optional[WorkbookChartFill]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ................models.o_data_errors import o_data_error
+        from ................models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ................models import workbook_chart_fill
+        from ................models.workbook_chart_fill import WorkbookChartFill
 
-        return await self.request_adapter.send_async(request_info, workbook_chart_fill.WorkbookChartFill, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChartFill, error_mapping)
     
-    async def patch(self,body: Optional[workbook_chart_fill.WorkbookChartFill] = None, request_configuration: Optional[FillRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_fill.WorkbookChartFill]:
+    async def patch(self,body: Optional[WorkbookChartFill] = None, request_configuration: Optional[FillRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChartFill]:
         """
         Update the navigation property fill in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[workbook_chart_fill.WorkbookChartFill]
+        Returns: Optional[WorkbookChartFill]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ................models.o_data_errors import o_data_error
+        from ................models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ................models import workbook_chart_fill
+        from ................models.workbook_chart_fill import WorkbookChartFill
 
-        return await self.request_adapter.send_async(request_info, workbook_chart_fill.WorkbookChartFill, error_mapping)
+        return await self.request_adapter.send_async(request_info, WorkbookChartFill, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[FillRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -137,7 +137,7 @@ class FillRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[workbook_chart_fill.WorkbookChartFill] = None, request_configuration: Optional[FillRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookChartFill] = None, request_configuration: Optional[FillRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property fill in drives
         Args:
@@ -159,22 +159,22 @@ class FillRequestBuilder():
         return request_info
     
     @property
-    def clear(self) -> clear_request_builder.ClearRequestBuilder:
+    def clear(self) -> ClearRequestBuilder:
         """
         Provides operations to call the clear method.
         """
-        from .clear import clear_request_builder
+        from .clear.clear_request_builder import ClearRequestBuilder
 
-        return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
+        return ClearRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def set_solid_color(self) -> set_solid_color_request_builder.SetSolidColorRequestBuilder:
+    def set_solid_color(self) -> SetSolidColorRequestBuilder:
         """
         Provides operations to call the setSolidColor method.
         """
-        from .set_solid_color import set_solid_color_request_builder
+        from .set_solid_color.set_solid_color_request_builder import SetSolidColorRequestBuilder
 
-        return set_solid_color_request_builder.SetSolidColorRequestBuilder(self.request_adapter, self.path_parameters)
+        return SetSolidColorRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class FillRequestBuilderDeleteRequestConfiguration():

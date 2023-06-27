@@ -1,27 +1,28 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, terms_and_conditions
+    from .entity import Entity
+    from .terms_and_conditions import TermsAndConditions
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class TermsAndConditionsAcceptanceStatus(entity.Entity):
+class TermsAndConditionsAcceptanceStatus(Entity):
     """
     A termsAndConditionsAcceptanceStatus entity represents the acceptance status of a given Terms and Conditions (T&C) policy by a given user. Users must accept the most up-to-date version of the terms in order to retain access to the Company Portal.
     """
     # DateTime when the terms were last accepted by the user.
-    accepted_date_time: Optional[datetime] = None
+    accepted_date_time: Optional[datetime.datetime] = None
     # Most recent version number of the T&C accepted by the user.
     accepted_version: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Navigation link to the terms and conditions that are assigned.
-    terms_and_conditions: Optional[terms_and_conditions.TermsAndConditions] = None
+    terms_and_conditions: Optional[TermsAndConditions] = None
     # Display name of the user whose acceptance the entity represents.
     user_display_name: Optional[str] = None
     # The userPrincipalName of the User that accepted the term.
@@ -44,14 +45,16 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, terms_and_conditions
+        from .entity import Entity
+        from .terms_and_conditions import TermsAndConditions
 
-        from . import entity, terms_and_conditions
+        from .entity import Entity
+        from .terms_and_conditions import TermsAndConditions
 
         fields: Dict[str, Callable[[Any], None]] = {
             "acceptedDateTime": lambda n : setattr(self, 'accepted_date_time', n.get_datetime_value()),
             "acceptedVersion": lambda n : setattr(self, 'accepted_version', n.get_int_value()),
-            "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_object_value(terms_and_conditions.TermsAndConditions)),
+            "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_object_value(TermsAndConditions)),
             "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
@@ -68,7 +71,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("acceptedDateTime", self.accepted_date_time)
+        writer.write_datetime_value()("acceptedDateTime", self.accepted_date_time)
         writer.write_int_value("acceptedVersion", self.accepted_version)
         writer.write_object_value("termsAndConditions", self.terms_and_conditions)
         writer.write_str_value("userDisplayName", self.user_display_name)

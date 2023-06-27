@@ -10,14 +10,14 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import managed_device_mobile_app_configuration
-    from ....models.o_data_errors import o_data_error
-    from .assign import assign_request_builder
-    from .assignments import assignments_request_builder
-    from .device_statuses import device_statuses_request_builder
-    from .device_status_summary import device_status_summary_request_builder
-    from .user_statuses import user_statuses_request_builder
-    from .user_status_summary import user_status_summary_request_builder
+    from ....models.managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .assign.assign_request_builder import AssignRequestBuilder
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
+    from .device_status_summary.device_status_summary_request_builder import DeviceStatusSummaryRequestBuilder
+    from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
+    from .user_status_summary.user_status_summary_request_builder import UserStatusSummaryRequestBuilder
 
 class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
     """
@@ -43,73 +43,73 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property mobileAppConfigurations for deviceAppManagement
+        Deletes a iosMobileAppConfiguration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]:
+    async def get(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfiguration]:
         """
-        The Managed Device Mobile Application Configurations.
+        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]
+        Returns: Optional[ManagedDeviceMobileAppConfiguration]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import managed_device_mobile_app_configuration
+        from ....models.managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
 
-        return await self.request_adapter.send_async(request_info, managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedDeviceMobileAppConfiguration, error_mapping)
     
-    async def patch(self,body: Optional[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]:
+    async def patch(self,body: Optional[ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfiguration]:
         """
-        Update the navigation property mobileAppConfigurations in deviceAppManagement
+        Update the properties of a iosMobileAppConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]
+        Returns: Optional[ManagedDeviceMobileAppConfiguration]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import managed_device_mobile_app_configuration
+        from ....models.managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
 
-        return await self.request_adapter.send_async(request_info, managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration, error_mapping)
+        return await self.request_adapter.send_async(request_info, ManagedDeviceMobileAppConfiguration, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property mobileAppConfigurations for deviceAppManagement
+        Deletes a iosMobileAppConfiguration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -125,7 +125,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Managed Device Mobile Application Configurations.
+        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,9 +141,9 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property mobileAppConfigurations in deviceAppManagement
+        Update the properties of a iosMobileAppConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -163,58 +163,58 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         return request_info
     
     @property
-    def assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def assign(self) -> AssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        from .assign import assign_request_builder
+        from .assign.assign_request_builder import AssignRequestBuilder
 
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+    def assignments(self) -> AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         """
-        from .assignments import assignments_request_builder
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
 
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_statuses(self) -> device_statuses_request_builder.DeviceStatusesRequestBuilder:
+    def device_statuses(self) -> DeviceStatusesRequestBuilder:
         """
         Provides operations to manage the deviceStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         """
-        from .device_statuses import device_statuses_request_builder
+        from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
 
-        return device_statuses_request_builder.DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_status_summary(self) -> device_status_summary_request_builder.DeviceStatusSummaryRequestBuilder:
+    def device_status_summary(self) -> DeviceStatusSummaryRequestBuilder:
         """
         Provides operations to manage the deviceStatusSummary property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         """
-        from .device_status_summary import device_status_summary_request_builder
+        from .device_status_summary.device_status_summary_request_builder import DeviceStatusSummaryRequestBuilder
 
-        return device_status_summary_request_builder.DeviceStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_statuses(self) -> user_statuses_request_builder.UserStatusesRequestBuilder:
+    def user_statuses(self) -> UserStatusesRequestBuilder:
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         """
-        from .user_statuses import user_statuses_request_builder
+        from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
 
-        return user_statuses_request_builder.UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+        return UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_status_summary(self) -> user_status_summary_request_builder.UserStatusSummaryRequestBuilder:
+    def user_status_summary(self) -> UserStatusSummaryRequestBuilder:
         """
         Provides operations to manage the userStatusSummary property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         """
-        from .user_status_summary import user_status_summary_request_builder
+        from .user_status_summary.user_status_summary_request_builder import UserStatusSummaryRequestBuilder
 
-        return user_status_summary_request_builder.UserStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+        return UserStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ManagedDeviceMobileAppConfigurationItemRequestBuilderDeleteRequestConfiguration():
@@ -231,7 +231,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
     @dataclass
     class ManagedDeviceMobileAppConfigurationItemRequestBuilderGetQueryParameters():
         """
-        The Managed Device Mobile Application Configurations.
+        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

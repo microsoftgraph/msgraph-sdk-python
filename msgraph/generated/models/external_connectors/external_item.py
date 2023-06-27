@@ -4,23 +4,26 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import acl, external_activity, external_item_content, properties
-    from .. import entity
+    from ..entity import Entity
+    from .acl import Acl
+    from .external_activity import ExternalActivity
+    from .external_item_content import ExternalItemContent
+    from .properties import Properties
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class ExternalItem(entity.Entity):
+class ExternalItem(Entity):
     # An array of access control entries. Each entry specifies the access granted to a user or group. Required.
-    acl: Optional[List[acl.Acl]] = None
+    acl: Optional[List[Acl]] = None
     # Returns a list of activities performed on the item. Write-only.
-    activities: Optional[List[external_activity.ExternalActivity]] = None
+    activities: Optional[List[ExternalActivity]] = None
     # A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.
-    content: Optional[external_item_content.ExternalItemContent] = None
+    content: Optional[ExternalItemContent] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.
-    properties: Optional[properties.Properties] = None
+    properties: Optional[Properties] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExternalItem:
@@ -39,17 +42,23 @@ class ExternalItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import acl, external_activity, external_item_content, properties
-        from .. import entity
+        from ..entity import Entity
+        from .acl import Acl
+        from .external_activity import ExternalActivity
+        from .external_item_content import ExternalItemContent
+        from .properties import Properties
 
-        from . import acl, external_activity, external_item_content, properties
-        from .. import entity
+        from ..entity import Entity
+        from .acl import Acl
+        from .external_activity import ExternalActivity
+        from .external_item_content import ExternalItemContent
+        from .properties import Properties
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "acl": lambda n : setattr(self, 'acl', n.get_collection_of_object_values(acl.Acl)),
-            "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(external_activity.ExternalActivity)),
-            "content": lambda n : setattr(self, 'content', n.get_object_value(external_item_content.ExternalItemContent)),
-            "properties": lambda n : setattr(self, 'properties', n.get_object_value(properties.Properties)),
+            "acl": lambda n : setattr(self, 'acl', n.get_collection_of_object_values(Acl)),
+            "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(ExternalActivity)),
+            "content": lambda n : setattr(self, 'content', n.get_object_value(ExternalItemContent)),
+            "properties": lambda n : setattr(self, 'properties', n.get_object_value(Properties)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

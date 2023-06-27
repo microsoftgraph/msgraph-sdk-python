@@ -1,32 +1,34 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, post, recipient
+    from .entity import Entity
+    from .post import Post
+    from .recipient import Recipient
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ConversationThread(entity.Entity):
+class ConversationThread(Entity):
     # The Cc: recipients for the thread. Returned only on $select.
-    cc_recipients: Optional[List[recipient.Recipient]] = None
+    cc_recipients: Optional[List[Recipient]] = None
     # Indicates whether any of the posts within this thread has at least one attachment. Returned by default.
     has_attachments: Optional[bool] = None
     # Indicates if the thread is locked. Returned by default.
     is_locked: Optional[bool] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.Returned by default.
-    last_delivered_date_time: Optional[datetime] = None
+    last_delivered_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The posts property
-    posts: Optional[List[post.Post]] = None
+    posts: Optional[List[Post]] = None
     # A short summary from the body of the latest post in this conversation. Returned by default.
     preview: Optional[str] = None
     # The To: recipients for the thread. Returned only on $select.
-    to_recipients: Optional[List[recipient.Recipient]] = None
+    to_recipients: Optional[List[Recipient]] = None
     # The topic of the conversation. This property can be set when the conversation is created, but it cannot be updated. Returned by default.
     topic: Optional[str] = None
     # All the users that sent a message to this thread. Returned by default.
@@ -49,18 +51,22 @@ class ConversationThread(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, post, recipient
+        from .entity import Entity
+        from .post import Post
+        from .recipient import Recipient
 
-        from . import entity, post, recipient
+        from .entity import Entity
+        from .post import Post
+        from .recipient import Recipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(recipient.Recipient)),
+            "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(Recipient)),
             "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "isLocked": lambda n : setattr(self, 'is_locked', n.get_bool_value()),
             "lastDeliveredDateTime": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
-            "posts": lambda n : setattr(self, 'posts', n.get_collection_of_object_values(post.Post)),
+            "posts": lambda n : setattr(self, 'posts', n.get_collection_of_object_values(Post)),
             "preview": lambda n : setattr(self, 'preview', n.get_str_value()),
-            "toRecipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(recipient.Recipient)),
+            "toRecipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(Recipient)),
             "topic": lambda n : setattr(self, 'topic', n.get_str_value()),
             "uniqueSenders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
         }
@@ -80,7 +86,7 @@ class ConversationThread(entity.Entity):
         writer.write_collection_of_object_values("ccRecipients", self.cc_recipients)
         writer.write_bool_value("hasAttachments", self.has_attachments)
         writer.write_bool_value("isLocked", self.is_locked)
-        writer.write_datetime_value("lastDeliveredDateTime", self.last_delivered_date_time)
+        writer.write_datetime_value()("lastDeliveredDateTime", self.last_delivered_date_time)
         writer.write_collection_of_object_values("posts", self.posts)
         writer.write_str_value("preview", self.preview)
         writer.write_collection_of_object_values("toRecipients", self.to_recipients)

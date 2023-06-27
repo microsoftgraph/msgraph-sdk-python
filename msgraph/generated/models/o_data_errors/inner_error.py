@@ -1,6 +1,6 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -12,7 +12,7 @@ class InnerError(AdditionalDataHolder, Parsable):
     # Client request Id as sent by the client application.
     client_request_id: Optional[str] = None
     # Date when the error occured.
-    date: Optional[datetime] = None
+    date: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Request Id as tracked internally by the service
@@ -52,7 +52,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("client-request-id", self.client_request_id)
-        writer.write_datetime_value("Date", self.date)
+        writer.write_datetime_value()("Date", self.date)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("request-id", self.request_id)
         writer.write_additional_data_value(self.additional_data)

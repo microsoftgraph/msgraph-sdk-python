@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, organizational_branding_localization
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .organizational_branding_localization import OrganizationalBrandingLocalization
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class OrganizationalBrandingLocalizationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class OrganizationalBrandingLocalizationCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[organizational_branding_localization.OrganizationalBrandingLocalization]] = None
+    value: Optional[List[OrganizationalBrandingLocalization]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrganizationalBrandingLocalizationCollectionResponse:
@@ -30,12 +31,14 @@ class OrganizationalBrandingLocalizationCollectionResponse(base_collection_pagin
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, organizational_branding_localization
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .organizational_branding_localization import OrganizationalBrandingLocalization
 
-        from . import base_collection_pagination_count_response, organizational_branding_localization
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .organizational_branding_localization import OrganizationalBrandingLocalization
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(organizational_branding_localization.OrganizationalBrandingLocalization)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(OrganizationalBrandingLocalization)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

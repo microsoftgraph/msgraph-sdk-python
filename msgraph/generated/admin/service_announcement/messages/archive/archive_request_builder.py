@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import archive_post_request_body, archive_response
-    from .....models.o_data_errors import o_data_error
+    from .....models.o_data_errors.o_data_error import ODataError
+    from .archive_post_request_body import ArchivePostRequestBody
+    from .archive_response import ArchiveResponse
 
 class ArchiveRequestBuilder():
     """
@@ -35,32 +36,32 @@ class ArchiveRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[archive_post_request_body.ArchivePostRequestBody] = None, request_configuration: Optional[ArchiveRequestBuilderPostRequestConfiguration] = None) -> Optional[archive_response.ArchiveResponse]:
+    async def post(self,body: Optional[ArchivePostRequestBody] = None, request_configuration: Optional[ArchiveRequestBuilderPostRequestConfiguration] = None) -> Optional[ArchiveResponse]:
         """
         Archive a list of serviceUpdateMessages for the signed in user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[archive_response.ArchiveResponse]
+        Returns: Optional[ArchiveResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
+        from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import archive_response
+        from .archive_response import ArchiveResponse
 
-        return await self.request_adapter.send_async(request_info, archive_response.ArchiveResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ArchiveResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[archive_post_request_body.ArchivePostRequestBody] = None, request_configuration: Optional[ArchiveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ArchivePostRequestBody] = None, request_configuration: Optional[ArchiveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Archive a list of serviceUpdateMessages for the signed in user.
         Args:

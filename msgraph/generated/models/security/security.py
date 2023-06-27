@@ -4,33 +4,41 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert, cases_root, incident, triggers_root, trigger_types_root
-    from .. import alert, attack_simulation_root, entity, secure_score, secure_score_control_profile
+    from ..alert import Alert
+    from ..attack_simulation_root import AttackSimulationRoot
+    from ..entity import Entity
+    from ..secure_score import SecureScore
+    from ..secure_score_control_profile import SecureScoreControlProfile
+    from .alert import Alert
+    from .cases_root import CasesRoot
+    from .incident import Incident
+    from .triggers_root import TriggersRoot
+    from .trigger_types_root import TriggerTypesRoot
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class Security(entity.Entity):
+class Security(Entity):
     # The alerts property
-    alerts: Optional[List[alert.Alert]] = None
+    alerts: Optional[List[Alert]] = None
     # A collection of alerts in Microsoft 365 Defender.
-    alerts_v2: Optional[List[alert.Alert]] = None
+    alerts_v2: Optional[List[Alert]] = None
     # The attackSimulation property
-    attack_simulation: Optional[attack_simulation_root.AttackSimulationRoot] = None
+    attack_simulation: Optional[AttackSimulationRoot] = None
     # The cases property
-    cases: Optional[cases_root.CasesRoot] = None
+    cases: Optional[CasesRoot] = None
     # A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
-    incidents: Optional[List[incident.Incident]] = None
+    incidents: Optional[List[Incident]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The secureScoreControlProfiles property
-    secure_score_control_profiles: Optional[List[secure_score_control_profile.SecureScoreControlProfile]] = None
+    secure_score_control_profiles: Optional[List[SecureScoreControlProfile]] = None
     # The secureScores property
-    secure_scores: Optional[List[secure_score.SecureScore]] = None
+    secure_scores: Optional[List[SecureScore]] = None
     # The triggerTypes property
-    trigger_types: Optional[trigger_types_root.TriggerTypesRoot] = None
+    trigger_types: Optional[TriggerTypesRoot] = None
     # The triggers property
-    triggers: Optional[triggers_root.TriggersRoot] = None
+    triggers: Optional[TriggersRoot] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Security:
@@ -49,22 +57,38 @@ class Security(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert, cases_root, incident, triggers_root, trigger_types_root
-        from .. import alert, attack_simulation_root, entity, secure_score, secure_score_control_profile
+        from ..alert import Alert
+        from ..attack_simulation_root import AttackSimulationRoot
+        from ..entity import Entity
+        from ..secure_score import SecureScore
+        from ..secure_score_control_profile import SecureScoreControlProfile
+        from .alert import Alert
+        from .cases_root import CasesRoot
+        from .incident import Incident
+        from .triggers_root import TriggersRoot
+        from .trigger_types_root import TriggerTypesRoot
 
-        from . import alert, cases_root, incident, triggers_root, trigger_types_root
-        from .. import alert, attack_simulation_root, entity, secure_score, secure_score_control_profile
+        from ..alert import Alert
+        from ..attack_simulation_root import AttackSimulationRoot
+        from ..entity import Entity
+        from ..secure_score import SecureScore
+        from ..secure_score_control_profile import SecureScoreControlProfile
+        from .alert import Alert
+        from .cases_root import CasesRoot
+        from .incident import Incident
+        from .triggers_root import TriggersRoot
+        from .trigger_types_root import TriggerTypesRoot
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(alert.Alert)),
-            "alerts_v2": lambda n : setattr(self, 'alerts_v2', n.get_collection_of_object_values(alert.Alert)),
-            "attackSimulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(attack_simulation_root.AttackSimulationRoot)),
-            "cases": lambda n : setattr(self, 'cases', n.get_object_value(cases_root.CasesRoot)),
-            "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(incident.Incident)),
-            "secureScoreControlProfiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(secure_score_control_profile.SecureScoreControlProfile)),
-            "secureScores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(secure_score.SecureScore)),
-            "triggerTypes": lambda n : setattr(self, 'trigger_types', n.get_object_value(trigger_types_root.TriggerTypesRoot)),
-            "triggers": lambda n : setattr(self, 'triggers', n.get_object_value(triggers_root.TriggersRoot)),
+            "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(Alert)),
+            "alerts_v2": lambda n : setattr(self, 'alerts_v2', n.get_collection_of_object_values(Alert)),
+            "attackSimulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(AttackSimulationRoot)),
+            "cases": lambda n : setattr(self, 'cases', n.get_object_value(CasesRoot)),
+            "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(Incident)),
+            "secureScoreControlProfiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(SecureScoreControlProfile)),
+            "secureScores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(SecureScore)),
+            "triggerTypes": lambda n : setattr(self, 'trigger_types', n.get_object_value(TriggerTypesRoot)),
+            "triggers": lambda n : setattr(self, 'triggers', n.get_object_value(TriggersRoot)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

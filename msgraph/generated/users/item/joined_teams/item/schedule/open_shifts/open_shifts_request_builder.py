@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import open_shift, open_shift_collection_response
-    from .......models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import open_shift_item_request_builder
+    from .......models.o_data_errors.o_data_error import ODataError
+    from .......models.open_shift import OpenShift
+    from .......models.open_shift_collection_response import OpenShiftCollectionResponse
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.open_shift_item_request_builder import OpenShiftItemRequestBuilder
 
 class OpenShiftsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class OpenShiftsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_open_shift_id(self,open_shift_id: str) -> open_shift_item_request_builder.OpenShiftItemRequestBuilder:
+    def by_open_shift_id(self,open_shift_id: str) -> OpenShiftItemRequestBuilder:
         """
         Provides operations to manage the openShifts property of the microsoft.graph.schedule entity.
         Args:
             open_shift_id: Unique identifier of the item
-        Returns: open_shift_item_request_builder.OpenShiftItemRequestBuilder
+        Returns: OpenShiftItemRequestBuilder
         """
         if not open_shift_id:
             raise TypeError("open_shift_id cannot be null.")
-        from .item import open_shift_item_request_builder
+        from .item.open_shift_item_request_builder import OpenShiftItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["openShift%2Did"] = open_shift_id
-        return open_shift_item_request_builder.OpenShiftItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return OpenShiftItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[OpenShiftsRequestBuilderGetRequestConfiguration] = None) -> Optional[open_shift_collection_response.OpenShiftCollectionResponse]:
+    async def get(self,request_configuration: Optional[OpenShiftsRequestBuilderGetRequestConfiguration] = None) -> Optional[OpenShiftCollectionResponse]:
         """
         List openShift objects in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[open_shift_collection_response.OpenShiftCollectionResponse]
+        Returns: Optional[OpenShiftCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import open_shift_collection_response
+        from .......models.open_shift_collection_response import OpenShiftCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, open_shift_collection_response.OpenShiftCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, OpenShiftCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[open_shift.OpenShift] = None, request_configuration: Optional[OpenShiftsRequestBuilderPostRequestConfiguration] = None) -> Optional[open_shift.OpenShift]:
+    async def post(self,body: Optional[OpenShift] = None, request_configuration: Optional[OpenShiftsRequestBuilderPostRequestConfiguration] = None) -> Optional[OpenShift]:
         """
         Create an instance of an openShift object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[open_shift.OpenShift]
+        Returns: Optional[OpenShift]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import open_shift
+        from .......models.open_shift import OpenShift
 
-        return await self.request_adapter.send_async(request_info, open_shift.OpenShift, error_mapping)
+        return await self.request_adapter.send_async(request_info, OpenShift, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OpenShiftsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class OpenShiftsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[open_shift.OpenShift] = None, request_configuration: Optional[OpenShiftsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[OpenShift] = None, request_configuration: Optional[OpenShiftsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create an instance of an openShift object.
         Args:
@@ -139,13 +140,13 @@ class OpenShiftsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OpenShiftsRequestBuilderGetQueryParameters():

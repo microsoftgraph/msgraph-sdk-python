@@ -1,16 +1,16 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class ApplePushNotificationCertificate(entity.Entity):
+class ApplePushNotificationCertificate(Entity):
     # Apple Id of the account used to create the MDM push certificate.
     apple_identifier: Optional[str] = None
     # Not yet documented
@@ -22,9 +22,9 @@ class ApplePushNotificationCertificate(entity.Entity):
     # The certificate upload status.
     certificate_upload_status: Optional[str] = None
     # The expiration date and time for Apple push notification certificate.
-    expiration_date_time: Optional[datetime] = None
+    expiration_date_time: Optional[datetime.datetime] = None
     # Last modified date and time for Apple push notification certificate.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Topic Id.
@@ -47,9 +47,9 @@ class ApplePushNotificationCertificate(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appleIdentifier": lambda n : setattr(self, 'apple_identifier', n.get_str_value()),
@@ -78,8 +78,8 @@ class ApplePushNotificationCertificate(entity.Entity):
         writer.write_str_value("certificate", self.certificate)
         writer.write_str_value("certificateUploadFailureReason", self.certificate_upload_failure_reason)
         writer.write_str_value("certificateUploadStatus", self.certificate_upload_status)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("topicIdentifier", self.topic_identifier)
     
 

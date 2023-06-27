@@ -4,15 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity, initiator_type
+    from .identity import Identity
+    from .initiator_type import InitiatorType
 
-from . import identity
+from .identity import Identity
 
 @dataclass
-class Initiator(identity.Identity):
+class Initiator(Identity):
     odata_type = "#microsoft.graph.initiator"
     # Type of initiator. Possible values are: user, application, system, unknownFutureValue.
-    initiator_type: Optional[initiator_type.InitiatorType] = None
+    initiator_type: Optional[InitiatorType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Initiator:
@@ -31,12 +32,14 @@ class Initiator(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity, initiator_type
+        from .identity import Identity
+        from .initiator_type import InitiatorType
 
-        from . import identity, initiator_type
+        from .identity import Identity
+        from .initiator_type import InitiatorType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "initiatorType": lambda n : setattr(self, 'initiator_type', n.get_enum_value(initiator_type.InitiatorType)),
+            "initiatorType": lambda n : setattr(self, 'initiator_type', n.get_enum_value(InitiatorType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_app
+    from .mobile_app import MobileApp
 
-from . import mobile_app
+from .mobile_app import MobileApp
 
 @dataclass
-class IosiPadOSWebClip(mobile_app.MobileApp):
+class IosiPadOSWebClip(MobileApp):
     odata_type = "#microsoft.graph.iosiPadOSWebClip"
     # Indicates iOS/iPadOS web clip app URL. Example: 'https://www.contoso.com'
     app_url: Optional[str] = None
@@ -33,9 +33,9 @@ class IosiPadOSWebClip(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app
+        from .mobile_app import MobileApp
 
-        from . import mobile_app
+        from .mobile_app import MobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appUrl": lambda n : setattr(self, 'app_url', n.get_str_value()),

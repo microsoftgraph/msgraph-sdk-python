@@ -1,20 +1,20 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AttachmentSession(entity.Entity):
+class AttachmentSession(Entity):
     # The content streams that are uploaded.
     content: Optional[bytes] = None
     # The date and time in UTC when the upload session will expire. The complete file must be uploaded before this expiration time is reached.
-    expiration_date_time: Optional[datetime] = None
+    expiration_date_time: Optional[datetime.datetime] = None
     # Indicates a single value {start} that represents the location in the file where the next upload should begin.
     next_expected_ranges: Optional[List[str]] = None
     # The OdataType property
@@ -37,9 +37,9 @@ class AttachmentSession(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
 
-        from . import entity
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
@@ -59,8 +59,8 @@ class AttachmentSession(entity.Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("content", self.content)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_bytes_value("content", self.content)
+        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
         writer.write_collection_of_primitive_values("nextExpectedRanges", self.next_expected_ranges)
     
 

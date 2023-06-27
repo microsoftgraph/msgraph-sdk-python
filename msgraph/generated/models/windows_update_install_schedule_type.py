@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import windows_update_active_hours_install, windows_update_scheduled_install
+    from .windows_update_active_hours_install import WindowsUpdateActiveHoursInstall
+    from .windows_update_scheduled_install import WindowsUpdateScheduledInstall
 
 @dataclass
 class WindowsUpdateInstallScheduleType(AdditionalDataHolder, Parsable):
@@ -29,13 +30,13 @@ class WindowsUpdateInstallScheduleType(AdditionalDataHolder, Parsable):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUpdateActiveHoursInstall".casefold():
-            from . import windows_update_active_hours_install
+            from .windows_update_active_hours_install import WindowsUpdateActiveHoursInstall
 
-            return windows_update_active_hours_install.WindowsUpdateActiveHoursInstall()
+            return WindowsUpdateActiveHoursInstall()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUpdateScheduledInstall".casefold():
-            from . import windows_update_scheduled_install
+            from .windows_update_scheduled_install import WindowsUpdateScheduledInstall
 
-            return windows_update_scheduled_install.WindowsUpdateScheduledInstall()
+            return WindowsUpdateScheduledInstall()
         return WindowsUpdateInstallScheduleType()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -43,9 +44,11 @@ class WindowsUpdateInstallScheduleType(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_update_active_hours_install, windows_update_scheduled_install
+        from .windows_update_active_hours_install import WindowsUpdateActiveHoursInstall
+        from .windows_update_scheduled_install import WindowsUpdateScheduledInstall
 
-        from . import windows_update_active_hours_install, windows_update_scheduled_install
+        from .windows_update_active_hours_install import WindowsUpdateActiveHoursInstall
+        from .windows_update_scheduled_install import WindowsUpdateScheduledInstall
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import group_setting, group_setting_collection_response
-    from ..models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import group_setting_item_request_builder
+    from ..models.group_setting import GroupSetting
+    from ..models.group_setting_collection_response import GroupSettingCollectionResponse
+    from ..models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.group_setting_item_request_builder import GroupSettingItemRequestBuilder
 
 class GroupSettingsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class GroupSettingsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_group_setting_id(self,group_setting_id: str) -> group_setting_item_request_builder.GroupSettingItemRequestBuilder:
+    def by_group_setting_id(self,group_setting_id: str) -> GroupSettingItemRequestBuilder:
         """
         Provides operations to manage the collection of groupSetting entities.
         Args:
             group_setting_id: Unique identifier of the item
-        Returns: group_setting_item_request_builder.GroupSettingItemRequestBuilder
+        Returns: GroupSettingItemRequestBuilder
         """
         if not group_setting_id:
             raise TypeError("group_setting_id cannot be null.")
-        from .item import group_setting_item_request_builder
+        from .item.group_setting_item_request_builder import GroupSettingItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["groupSetting%2Did"] = group_setting_id
-        return group_setting_item_request_builder.GroupSettingItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return GroupSettingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[GroupSettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[group_setting_collection_response.GroupSettingCollectionResponse]:
+    async def get(self,request_configuration: Optional[GroupSettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[GroupSettingCollectionResponse]:
         """
         Retrieve a list of tenant-level or group-specific group settings objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[group_setting_collection_response.GroupSettingCollectionResponse]
+        Returns: Optional[GroupSettingCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import group_setting_collection_response
+        from ..models.group_setting_collection_response import GroupSettingCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, group_setting_collection_response.GroupSettingCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GroupSettingCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[group_setting.GroupSetting] = None, request_configuration: Optional[GroupSettingsRequestBuilderPostRequestConfiguration] = None) -> Optional[group_setting.GroupSetting]:
+    async def post(self,body: Optional[GroupSetting] = None, request_configuration: Optional[GroupSettingsRequestBuilderPostRequestConfiguration] = None) -> Optional[GroupSetting]:
         """
         Create a new setting based on the templates available in groupSettingTemplates. These settings can be at the tenant-level or at the group level. Group settings apply to only Microsoft 365 groups. The template named `Group.Unified` can be used to configure tenant-wide Microsoft 365 group settings, while the template named `Group.Unified.Guest` can be used to configure group-specific settings.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[group_setting.GroupSetting]
+        Returns: Optional[GroupSetting]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ..models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import group_setting
+        from ..models.group_setting import GroupSetting
 
-        return await self.request_adapter.send_async(request_info, group_setting.GroupSetting, error_mapping)
+        return await self.request_adapter.send_async(request_info, GroupSetting, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GroupSettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class GroupSettingsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[group_setting.GroupSetting] = None, request_configuration: Optional[GroupSettingsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GroupSetting] = None, request_configuration: Optional[GroupSettingsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new setting based on the templates available in groupSettingTemplates. These settings can be at the tenant-level or at the group level. Group settings apply to only Microsoft 365 groups. The template named `Group.Unified` can be used to configure tenant-wide Microsoft 365 group settings, while the template named `Group.Unified.Guest` can be used to configure group-specific settings.
         Args:
@@ -139,13 +140,13 @@ class GroupSettingsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GroupSettingsRequestBuilderGetQueryParameters():

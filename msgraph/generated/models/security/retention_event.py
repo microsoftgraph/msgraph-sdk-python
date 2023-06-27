@@ -1,43 +1,47 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import event_propagation_result, event_query, retention_event_status, retention_event_type
-    from .. import entity, identity_set
+    from ..entity import Entity
+    from ..identity_set import IdentitySet
+    from .event_propagation_result import EventPropagationResult
+    from .event_query import EventQuery
+    from .retention_event_status import RetentionEventStatus
+    from .retention_event_type import RetentionEventType
 
-from .. import entity
+from ..entity import Entity
 
 @dataclass
-class RetentionEvent(entity.Entity):
+class RetentionEvent(Entity):
     # The user who created the retentionEvent.
-    created_by: Optional[identity_set.IdentitySet] = None
+    created_by: Optional[IdentitySet] = None
     # The date time when the retentionEvent was created.
-    created_date_time: Optional[datetime] = None
+    created_date_time: Optional[datetime.datetime] = None
     # Optional information about the event.
     description: Optional[str] = None
     # Name of the event.
     display_name: Optional[str] = None
     # The eventPropagationResults property
-    event_propagation_results: Optional[List[event_propagation_result.EventPropagationResult]] = None
+    event_propagation_results: Optional[List[EventPropagationResult]] = None
     # Represents the workload (SharePoint Online, OneDrive for Business, Exchange Online) and identification information associated with a retention event.
-    event_queries: Optional[List[event_query.EventQuery]] = None
+    event_queries: Optional[List[EventQuery]] = None
     # The eventStatus property
-    event_status: Optional[retention_event_status.RetentionEventStatus] = None
+    event_status: Optional[RetentionEventStatus] = None
     # Optional time when the event should be triggered.
-    event_trigger_date_time: Optional[datetime] = None
+    event_trigger_date_time: Optional[datetime.datetime] = None
     # The user who last modified the retentionEvent.
-    last_modified_by: Optional[identity_set.IdentitySet] = None
+    last_modified_by: Optional[IdentitySet] = None
     # The latest date time when the retentionEvent was modified.
-    last_modified_date_time: Optional[datetime] = None
+    last_modified_date_time: Optional[datetime.datetime] = None
     # Last time the status of the event was updated.
-    last_status_update_date_time: Optional[datetime] = None
+    last_status_update_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies the event that will start the retention period for labels that use this event type when an event is created.
-    retention_event_type: Optional[retention_event_type.RetentionEventType] = None
+    retention_event_type: Optional[RetentionEventType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RetentionEvent:
@@ -56,25 +60,33 @@ class RetentionEvent(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_propagation_result, event_query, retention_event_status, retention_event_type
-        from .. import entity, identity_set
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from .event_propagation_result import EventPropagationResult
+        from .event_query import EventQuery
+        from .retention_event_status import RetentionEventStatus
+        from .retention_event_type import RetentionEventType
 
-        from . import event_propagation_result, event_query, retention_event_status, retention_event_type
-        from .. import entity, identity_set
+        from ..entity import Entity
+        from ..identity_set import IdentitySet
+        from .event_propagation_result import EventPropagationResult
+        from .event_query import EventQuery
+        from .retention_event_status import RetentionEventStatus
+        from .retention_event_type import RetentionEventType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "eventPropagationResults": lambda n : setattr(self, 'event_propagation_results', n.get_collection_of_object_values(event_propagation_result.EventPropagationResult)),
-            "eventQueries": lambda n : setattr(self, 'event_queries', n.get_collection_of_object_values(event_query.EventQuery)),
-            "eventStatus": lambda n : setattr(self, 'event_status', n.get_object_value(retention_event_status.RetentionEventStatus)),
+            "eventPropagationResults": lambda n : setattr(self, 'event_propagation_results', n.get_collection_of_object_values(EventPropagationResult)),
+            "eventQueries": lambda n : setattr(self, 'event_queries', n.get_collection_of_object_values(EventQuery)),
+            "eventStatus": lambda n : setattr(self, 'event_status', n.get_object_value(RetentionEventStatus)),
             "eventTriggerDateTime": lambda n : setattr(self, 'event_trigger_date_time', n.get_datetime_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "lastStatusUpdateDateTime": lambda n : setattr(self, 'last_status_update_date_time', n.get_datetime_value()),
-            "retentionEventType": lambda n : setattr(self, 'retention_event_type', n.get_object_value(retention_event_type.RetentionEventType)),
+            "retentionEventType": lambda n : setattr(self, 'retention_event_type', n.get_object_value(RetentionEventType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -90,16 +102,16 @@ class RetentionEvent(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value()("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("eventPropagationResults", self.event_propagation_results)
         writer.write_collection_of_object_values("eventQueries", self.event_queries)
         writer.write_object_value("eventStatus", self.event_status)
-        writer.write_datetime_value("eventTriggerDateTime", self.event_trigger_date_time)
+        writer.write_datetime_value()("eventTriggerDateTime", self.event_trigger_date_time)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_datetime_value("lastStatusUpdateDateTime", self.last_status_update_date_time)
+        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value()("lastStatusUpdateDateTime", self.last_status_update_date_time)
         writer.write_object_value("retentionEventType", self.retention_event_type)
     
 

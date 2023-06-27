@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import identity_api_connector
+    from .identity_api_connector import IdentityApiConnector
 
 @dataclass
 class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
@@ -14,9 +14,9 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The postAttributeCollection property
-    post_attribute_collection: Optional[identity_api_connector.IdentityApiConnector] = None
+    post_attribute_collection: Optional[IdentityApiConnector] = None
     # The postFederationSignup property
-    post_federation_signup: Optional[identity_api_connector.IdentityApiConnector] = None
+    post_federation_signup: Optional[IdentityApiConnector] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserFlowApiConnectorConfiguration:
@@ -35,14 +35,14 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_api_connector
+        from .identity_api_connector import IdentityApiConnector
 
-        from . import identity_api_connector
+        from .identity_api_connector import IdentityApiConnector
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "postAttributeCollection": lambda n : setattr(self, 'post_attribute_collection', n.get_object_value(identity_api_connector.IdentityApiConnector)),
-            "postFederationSignup": lambda n : setattr(self, 'post_federation_signup', n.get_object_value(identity_api_connector.IdentityApiConnector)),
+            "postAttributeCollection": lambda n : setattr(self, 'post_attribute_collection', n.get_object_value(IdentityApiConnector)),
+            "postFederationSignup": lambda n : setattr(self, 'post_federation_signup', n.get_object_value(IdentityApiConnector)),
         }
         return fields
     

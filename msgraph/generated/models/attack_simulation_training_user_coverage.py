@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import attack_simulation_user, user_training_status_info
+    from .attack_simulation_user import AttackSimulationUser
+    from .user_training_status_info import UserTrainingStatusInfo
 
 @dataclass
 class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
@@ -12,11 +13,11 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # User in an attack simulation and training campaign.
-    attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
+    attack_simulation_user: Optional[AttackSimulationUser] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # List of assigned trainings and their statuses for the user.
-    user_trainings: Optional[List[user_training_status_info.UserTrainingStatusInfo]] = None
+    user_trainings: Optional[List[UserTrainingStatusInfo]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttackSimulationTrainingUserCoverage:
@@ -35,14 +36,16 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attack_simulation_user, user_training_status_info
+        from .attack_simulation_user import AttackSimulationUser
+        from .user_training_status_info import UserTrainingStatusInfo
 
-        from . import attack_simulation_user, user_training_status_info
+        from .attack_simulation_user import AttackSimulationUser
+        from .user_training_status_info import UserTrainingStatusInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
+            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(AttackSimulationUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "userTrainings": lambda n : setattr(self, 'user_trainings', n.get_collection_of_object_values(user_training_status_info.UserTrainingStatusInfo)),
+            "userTrainings": lambda n : setattr(self, 'user_trainings', n.get_collection_of_object_values(UserTrainingStatusInfo)),
         }
         return fields
     

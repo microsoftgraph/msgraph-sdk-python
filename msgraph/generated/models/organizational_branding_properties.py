@@ -4,12 +4,16 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, login_page_layout_configuration, login_page_text_visibility_settings, organizational_branding, organizational_branding_localization
+    from .entity import Entity
+    from .login_page_layout_configuration import LoginPageLayoutConfiguration
+    from .login_page_text_visibility_settings import LoginPageTextVisibilitySettings
+    from .organizational_branding import OrganizationalBranding
+    from .organizational_branding_localization import OrganizationalBrandingLocalization
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class OrganizationalBrandingProperties(entity.Entity):
+class OrganizationalBrandingProperties(Entity):
     # Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
     background_color: Optional[str] = None
     # Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
@@ -55,9 +59,9 @@ class OrganizationalBrandingProperties(entity.Entity):
     # The headerLogoRelativeUrl property
     header_logo_relative_url: Optional[str] = None
     # The loginPageLayoutConfiguration property
-    login_page_layout_configuration: Optional[login_page_layout_configuration.LoginPageLayoutConfiguration] = None
+    login_page_layout_configuration: Optional[LoginPageLayoutConfiguration] = None
     # The loginPageTextVisibilitySettings property
-    login_page_text_visibility_settings: Optional[login_page_text_visibility_settings.LoginPageTextVisibilitySettings] = None
+    login_page_text_visibility_settings: Optional[LoginPageTextVisibilitySettings] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
@@ -88,13 +92,13 @@ class OrganizationalBrandingProperties(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.organizationalBranding".casefold():
-            from . import organizational_branding
+            from .organizational_branding import OrganizationalBranding
 
-            return organizational_branding.OrganizationalBranding()
+            return OrganizationalBranding()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.organizationalBrandingLocalization".casefold():
-            from . import organizational_branding_localization
+            from .organizational_branding_localization import OrganizationalBrandingLocalization
 
-            return organizational_branding_localization.OrganizationalBrandingLocalization()
+            return OrganizationalBrandingLocalization()
         return OrganizationalBrandingProperties()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -102,9 +106,17 @@ class OrganizationalBrandingProperties(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, login_page_layout_configuration, login_page_text_visibility_settings, organizational_branding, organizational_branding_localization
+        from .entity import Entity
+        from .login_page_layout_configuration import LoginPageLayoutConfiguration
+        from .login_page_text_visibility_settings import LoginPageTextVisibilitySettings
+        from .organizational_branding import OrganizationalBranding
+        from .organizational_branding_localization import OrganizationalBrandingLocalization
 
-        from . import entity, login_page_layout_configuration, login_page_text_visibility_settings, organizational_branding, organizational_branding_localization
+        from .entity import Entity
+        from .login_page_layout_configuration import LoginPageLayoutConfiguration
+        from .login_page_text_visibility_settings import LoginPageTextVisibilitySettings
+        from .organizational_branding import OrganizationalBranding
+        from .organizational_branding_localization import OrganizationalBrandingLocalization
 
         fields: Dict[str, Callable[[Any], None]] = {
             "backgroundColor": lambda n : setattr(self, 'background_color', n.get_str_value()),
@@ -129,8 +141,8 @@ class OrganizationalBrandingProperties(entity.Entity):
             "headerBackgroundColor": lambda n : setattr(self, 'header_background_color', n.get_str_value()),
             "headerLogo": lambda n : setattr(self, 'header_logo', n.get_bytes_value()),
             "headerLogoRelativeUrl": lambda n : setattr(self, 'header_logo_relative_url', n.get_str_value()),
-            "loginPageLayoutConfiguration": lambda n : setattr(self, 'login_page_layout_configuration', n.get_object_value(login_page_layout_configuration.LoginPageLayoutConfiguration)),
-            "loginPageTextVisibilitySettings": lambda n : setattr(self, 'login_page_text_visibility_settings', n.get_object_value(login_page_text_visibility_settings.LoginPageTextVisibilitySettings)),
+            "loginPageLayoutConfiguration": lambda n : setattr(self, 'login_page_layout_configuration', n.get_object_value(LoginPageLayoutConfiguration)),
+            "loginPageTextVisibilitySettings": lambda n : setattr(self, 'login_page_text_visibility_settings', n.get_object_value(LoginPageTextVisibilitySettings)),
             "signInPageText": lambda n : setattr(self, 'sign_in_page_text', n.get_str_value()),
             "squareLogo": lambda n : setattr(self, 'square_logo', n.get_bytes_value()),
             "squareLogoDark": lambda n : setattr(self, 'square_logo_dark', n.get_bytes_value()),
@@ -152,13 +164,13 @@ class OrganizationalBrandingProperties(entity.Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("backgroundColor", self.background_color)
-        writer.write_object_value("backgroundImage", self.background_image)
+        writer.write_bytes_value("backgroundImage", self.background_image)
         writer.write_str_value("backgroundImageRelativeUrl", self.background_image_relative_url)
-        writer.write_object_value("bannerLogo", self.banner_logo)
+        writer.write_bytes_value("bannerLogo", self.banner_logo)
         writer.write_str_value("bannerLogoRelativeUrl", self.banner_logo_relative_url)
         writer.write_collection_of_primitive_values("cdnList", self.cdn_list)
         writer.write_str_value("customAccountResetCredentialsUrl", self.custom_account_reset_credentials_url)
-        writer.write_object_value("customCSS", self.custom_c_s_s)
+        writer.write_bytes_value("customCSS", self.custom_c_s_s)
         writer.write_str_value("customCSSRelativeUrl", self.custom_c_s_s_relative_url)
         writer.write_str_value("customCannotAccessYourAccountText", self.custom_cannot_access_your_account_text)
         writer.write_str_value("customCannotAccessYourAccountUrl", self.custom_cannot_access_your_account_url)
@@ -168,16 +180,16 @@ class OrganizationalBrandingProperties(entity.Entity):
         writer.write_str_value("customResetItNowText", self.custom_reset_it_now_text)
         writer.write_str_value("customTermsOfUseText", self.custom_terms_of_use_text)
         writer.write_str_value("customTermsOfUseUrl", self.custom_terms_of_use_url)
-        writer.write_object_value("favicon", self.favicon)
+        writer.write_bytes_value("favicon", self.favicon)
         writer.write_str_value("faviconRelativeUrl", self.favicon_relative_url)
         writer.write_str_value("headerBackgroundColor", self.header_background_color)
-        writer.write_object_value("headerLogo", self.header_logo)
+        writer.write_bytes_value("headerLogo", self.header_logo)
         writer.write_str_value("headerLogoRelativeUrl", self.header_logo_relative_url)
         writer.write_object_value("loginPageLayoutConfiguration", self.login_page_layout_configuration)
         writer.write_object_value("loginPageTextVisibilitySettings", self.login_page_text_visibility_settings)
         writer.write_str_value("signInPageText", self.sign_in_page_text)
-        writer.write_object_value("squareLogo", self.square_logo)
-        writer.write_object_value("squareLogoDark", self.square_logo_dark)
+        writer.write_bytes_value("squareLogo", self.square_logo)
+        writer.write_bytes_value("squareLogoDark", self.square_logo_dark)
         writer.write_str_value("squareLogoDarkRelativeUrl", self.square_logo_dark_relative_url)
         writer.write_str_value("squareLogoRelativeUrl", self.square_logo_relative_url)
         writer.write_str_value("usernameHintText", self.username_hint_text)

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import print_operation
-    from ....models.o_data_errors import o_data_error
+    from ....models.o_data_errors.o_data_error import ODataError
+    from ....models.print_operation import PrintOperation
 
 class PrintOperationItemRequestBuilder():
     """
@@ -44,62 +44,62 @@ class PrintOperationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PrintOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[print_operation.PrintOperation]:
+    async def get(self,request_configuration: Optional[PrintOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintOperation]:
         """
         Retrieve the properties and relationships of a printOperation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_operation.PrintOperation]
+        Returns: Optional[PrintOperation]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import print_operation
+        from ....models.print_operation import PrintOperation
 
-        return await self.request_adapter.send_async(request_info, print_operation.PrintOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintOperation, error_mapping)
     
-    async def patch(self,body: Optional[print_operation.PrintOperation] = None, request_configuration: Optional[PrintOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[print_operation.PrintOperation]:
+    async def patch(self,body: Optional[PrintOperation] = None, request_configuration: Optional[PrintOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrintOperation]:
         """
         Update the navigation property operations in print
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[print_operation.PrintOperation]
+        Returns: Optional[PrintOperation]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import print_operation
+        from ....models.print_operation import PrintOperation
 
-        return await self.request_adapter.send_async(request_info, print_operation.PrintOperation, error_mapping)
+        return await self.request_adapter.send_async(request_info, PrintOperation, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PrintOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -135,7 +135,7 @@ class PrintOperationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[print_operation.PrintOperation] = None, request_configuration: Optional[PrintOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PrintOperation] = None, request_configuration: Optional[PrintOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property operations in print
         Args:

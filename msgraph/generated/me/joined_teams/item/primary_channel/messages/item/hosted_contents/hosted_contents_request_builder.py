@@ -10,10 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models import chat_message_hosted_content, chat_message_hosted_content_collection_response
-    from ........models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .item import chat_message_hosted_content_item_request_builder
+    from ........models.chat_message_hosted_content import ChatMessageHostedContent
+    from ........models.chat_message_hosted_content_collection_response import ChatMessageHostedContentCollectionResponse
+    from ........models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
+    from .item.chat_message_hosted_content_item_request_builder import ChatMessageHostedContentItemRequestBuilder
 
 class HostedContentsRequestBuilder():
     """
@@ -37,67 +38,67 @@ class HostedContentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_chat_message_hosted_content_id(self,chat_message_hosted_content_id: str) -> chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder:
+    def by_chat_message_hosted_content_id(self,chat_message_hosted_content_id: str) -> ChatMessageHostedContentItemRequestBuilder:
         """
         Provides operations to manage the hostedContents property of the microsoft.graph.chatMessage entity.
         Args:
             chat_message_hosted_content_id: Unique identifier of the item
-        Returns: chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder
+        Returns: ChatMessageHostedContentItemRequestBuilder
         """
         if not chat_message_hosted_content_id:
             raise TypeError("chat_message_hosted_content_id cannot be null.")
-        from .item import chat_message_hosted_content_item_request_builder
+        from .item.chat_message_hosted_content_item_request_builder import ChatMessageHostedContentItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["chatMessageHostedContent%2Did"] = chat_message_hosted_content_id
-        return chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return ChatMessageHostedContentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[HostedContentsRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message_hosted_content_collection_response.ChatMessageHostedContentCollectionResponse]:
+    async def get(self,request_configuration: Optional[HostedContentsRequestBuilderGetRequestConfiguration] = None) -> Optional[ChatMessageHostedContentCollectionResponse]:
         """
         Retrieve the list of chatMessageHostedContent objects from a message. This API only lists the hosted content objects. To get the content bytes, see get chatmessage hosted content
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[chat_message_hosted_content_collection_response.ChatMessageHostedContentCollectionResponse]
+        Returns: Optional[ChatMessageHostedContentCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import chat_message_hosted_content_collection_response
+        from ........models.chat_message_hosted_content_collection_response import ChatMessageHostedContentCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, chat_message_hosted_content_collection_response.ChatMessageHostedContentCollectionResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ChatMessageHostedContentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[chat_message_hosted_content.ChatMessageHostedContent] = None, request_configuration: Optional[HostedContentsRequestBuilderPostRequestConfiguration] = None) -> Optional[chat_message_hosted_content.ChatMessageHostedContent]:
+    async def post(self,body: Optional[ChatMessageHostedContent] = None, request_configuration: Optional[HostedContentsRequestBuilderPostRequestConfiguration] = None) -> Optional[ChatMessageHostedContent]:
         """
         Create new navigation property to hostedContents for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[chat_message_hosted_content.ChatMessageHostedContent]
+        Returns: Optional[ChatMessageHostedContent]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
+        from ........models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
+            "4XX": ODataError,
+            "5XX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models import chat_message_hosted_content
+        from ........models.chat_message_hosted_content import ChatMessageHostedContent
 
-        return await self.request_adapter.send_async(request_info, chat_message_hosted_content.ChatMessageHostedContent, error_mapping)
+        return await self.request_adapter.send_async(request_info, ChatMessageHostedContent, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[HostedContentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -117,7 +118,7 @@ class HostedContentsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[chat_message_hosted_content.ChatMessageHostedContent] = None, request_configuration: Optional[HostedContentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ChatMessageHostedContent] = None, request_configuration: Optional[HostedContentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to hostedContents for me
         Args:
@@ -139,13 +140,13 @@ class HostedContentsRequestBuilder():
         return request_info
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
-        from .count import count_request_builder
+        from .count.count_request_builder import CountRequestBuilder
 
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class HostedContentsRequestBuilderGetQueryParameters():

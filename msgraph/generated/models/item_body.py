@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import body_type
+    from .body_type import BodyType
 
 @dataclass
 class ItemBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class ItemBody(AdditionalDataHolder, Parsable):
     # The content of the item.
     content: Optional[str] = None
     # The type of the content. Possible values are text and html.
-    content_type: Optional[body_type.BodyType] = None
+    content_type: Optional[BodyType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,13 +35,13 @@ class ItemBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import body_type
+        from .body_type import BodyType
 
-        from . import body_type
+        from .body_type import BodyType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(body_type.BodyType)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(BodyType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

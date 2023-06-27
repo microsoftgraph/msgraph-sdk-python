@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import mobile_app_assignment_settings
+    from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-from . import mobile_app_assignment_settings
+from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
-class WindowsAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
+class WindowsAppXAppAssignmentSettings(MobileAppAssignmentSettings):
     odata_type = "#microsoft.graph.windowsAppXAppAssignmentSettings"
     # When TRUE, indicates that device execution context will be used for the AppX mobile app. When FALSE, indicates that user context will be used for the AppX mobile app. By default, this property is set to FALSE. Once this property has been set to TRUE it cannot be changed.
     use_device_context: Optional[bool] = None
@@ -31,9 +31,9 @@ class WindowsAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppA
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
-        from . import mobile_app_assignment_settings
+        from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
             "useDeviceContext": lambda n : setattr(self, 'use_device_context', n.get_bool_value()),

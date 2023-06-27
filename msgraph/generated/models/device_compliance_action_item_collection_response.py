@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, device_compliance_action_item
+    from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+    from .device_compliance_action_item import DeviceComplianceActionItem
 
-from . import base_collection_pagination_count_response
+from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
-class DeviceComplianceActionItemCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+class DeviceComplianceActionItemCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[device_compliance_action_item.DeviceComplianceActionItem]] = None
+    value: Optional[List[DeviceComplianceActionItem]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceComplianceActionItemCollectionResponse:
@@ -30,12 +31,14 @@ class DeviceComplianceActionItemCollectionResponse(base_collection_pagination_co
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, device_compliance_action_item
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .device_compliance_action_item import DeviceComplianceActionItem
 
-        from . import base_collection_pagination_count_response, device_compliance_action_item
+        from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
+        from .device_compliance_action_item import DeviceComplianceActionItem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(device_compliance_action_item.DeviceComplianceActionItem)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(DeviceComplianceActionItem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

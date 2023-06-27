@@ -1,16 +1,18 @@
 from __future__ import annotations
+import datetime
 from dataclasses import dataclass, field
-from datetime import date
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, print_usage_by_printer, print_usage_by_user
+    from .entity import Entity
+    from .print_usage_by_printer import PrintUsageByPrinter
+    from .print_usage_by_user import PrintUsageByUser
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class PrintUsage(entity.Entity):
+class PrintUsage(Entity):
     # The completedBlackAndWhiteJobCount property
     completed_black_and_white_job_count: Optional[int] = None
     # The completedColorJobCount property
@@ -20,7 +22,7 @@ class PrintUsage(entity.Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The usageDate property
-    usage_date: Optional[date] = None
+    usage_date: Optional[datetime.date] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintUsage:
@@ -37,13 +39,13 @@ class PrintUsage(entity.Entity):
         except AttributeError:
             mapping_value = None
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printUsageByPrinter".casefold():
-            from . import print_usage_by_printer
+            from .print_usage_by_printer import PrintUsageByPrinter
 
-            return print_usage_by_printer.PrintUsageByPrinter()
+            return PrintUsageByPrinter()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.printUsageByUser".casefold():
-            from . import print_usage_by_user
+            from .print_usage_by_user import PrintUsageByUser
 
-            return print_usage_by_user.PrintUsageByUser()
+            return PrintUsageByUser()
         return PrintUsage()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -51,9 +53,13 @@ class PrintUsage(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, print_usage_by_printer, print_usage_by_user
+        from .entity import Entity
+        from .print_usage_by_printer import PrintUsageByPrinter
+        from .print_usage_by_user import PrintUsageByUser
 
-        from . import entity, print_usage_by_printer, print_usage_by_user
+        from .entity import Entity
+        from .print_usage_by_printer import PrintUsageByPrinter
+        from .print_usage_by_user import PrintUsageByUser
 
         fields: Dict[str, Callable[[Any], None]] = {
             "completedBlackAndWhiteJobCount": lambda n : setattr(self, 'completed_black_and_white_job_count', n.get_int_value()),
@@ -77,6 +83,6 @@ class PrintUsage(entity.Entity):
         writer.write_int_value("completedBlackAndWhiteJobCount", self.completed_black_and_white_job_count)
         writer.write_int_value("completedColorJobCount", self.completed_color_job_count)
         writer.write_int_value("incompleteJobCount", self.incomplete_job_count)
-        writer.write_date_value("usageDate", self.usage_date)
+        writer.write_date_value()("usageDate", self.usage_date)
     
 

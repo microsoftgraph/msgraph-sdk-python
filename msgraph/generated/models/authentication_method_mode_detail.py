@@ -4,14 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import base_authentication_method, entity
+    from .base_authentication_method import BaseAuthenticationMethod
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class AuthenticationMethodModeDetail(entity.Entity):
+class AuthenticationMethodModeDetail(Entity):
     # The authenticationMethod property
-    authentication_method: Optional[base_authentication_method.BaseAuthenticationMethod] = None
+    authentication_method: Optional[BaseAuthenticationMethod] = None
     # The display name of this mode
     display_name: Optional[str] = None
     # The OdataType property
@@ -34,12 +35,14 @@ class AuthenticationMethodModeDetail(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_authentication_method, entity
+        from .base_authentication_method import BaseAuthenticationMethod
+        from .entity import Entity
 
-        from . import base_authentication_method, entity
+        from .base_authentication_method import BaseAuthenticationMethod
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationMethod": lambda n : setattr(self, 'authentication_method', n.get_enum_value(base_authentication_method.BaseAuthenticationMethod)),
+            "authenticationMethod": lambda n : setattr(self, 'authentication_method', n.get_enum_value(BaseAuthenticationMethod)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

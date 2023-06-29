@@ -75,11 +75,11 @@ credential = ClientSecretCredential(
 scopes = ['https://graph.microsoft.com/.default']
 client = GraphServiceClient(credentials=credential, scopes=scopes)
 
+# GET /users/{id | userPrincipalName}
 async def get_user():
     user = await client.users.by_user_id('userPrincipalName').get()
     if user:
-      print(user.display_name)
-
+        print(user.display_name)
 asyncio.run(get_user())
 ```
 
@@ -94,11 +94,11 @@ credential = InteractiveBrowserCredential()
 scopes=['User.Read']
 client = GraphServiceClient(credentials=credential, scopes=scopes,)
 
+# GET /me
 async def me():
     me = await client.me.get()
     if me:
         print(me.display_name)
-
 asyncio.run(me())
 ```
 
@@ -113,7 +113,6 @@ async def get_user():
         print(user.user_principal_name, user.display_name, user.id)
     except APIError as e:
         print(f'Error: {e.error.message}')
-
 asyncio.run(get_user())
 ```
 
@@ -124,7 +123,7 @@ asyncio.run(get_user())
 
 * [Microsoft Graph website](https://aka.ms/graph)
 
-* [Samples](samples)
+* [Samples](docs)
 
 ## Upgrading
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -21,7 +22,7 @@ if TYPE_CHECKING:
     from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
     from .user_status_overview.user_status_overview_request_builder import UserStatusOverviewRequestBuilder
 
-class DeviceConfigurationItemRequestBuilder():
+class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the deviceConfigurations property of the microsoft.graph.deviceManagement entity.
     """
@@ -29,25 +30,16 @@ class DeviceConfigurationItemRequestBuilder():
         """
         Instantiates a new DeviceConfigurationItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}{?%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a androidWorkProfileGeneralDeviceConfiguration.
+        Deletes a windows10SecureAssessmentConfiguration.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -64,9 +56,9 @@ class DeviceConfigurationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Read properties and relationships of the sharedPCConfiguration object.
+        Read properties and relationships of the windows10SecureAssessmentConfiguration object.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
         """
         request_info = self.to_get_request_information(
@@ -88,7 +80,7 @@ class DeviceConfigurationItemRequestBuilder():
         """
         Provides operations to call the getOmaSettingPlainTextValue method.
         Args:
-            secretReferenceValueId: Usage: secretReferenceValueId='{secretReferenceValueId}'
+            secret_reference_value_id: Usage: secretReferenceValueId='{secretReferenceValueId}'
         Returns: GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder
         """
         if not secret_reference_value_id:
@@ -99,10 +91,10 @@ class DeviceConfigurationItemRequestBuilder():
     
     async def patch(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Update the properties of a androidCustomConfiguration object.
+        Update the properties of a windows10CustomConfiguration object.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
         """
         if not body:
@@ -124,9 +116,9 @@ class DeviceConfigurationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a androidWorkProfileGeneralDeviceConfiguration.
+        Deletes a windows10SecureAssessmentConfiguration.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -140,9 +132,9 @@ class DeviceConfigurationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the sharedPCConfiguration object.
+        Read properties and relationships of the windows10SecureAssessmentConfiguration object.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -158,10 +150,10 @@ class DeviceConfigurationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a androidCustomConfiguration object.
+        Update the properties of a windows10CustomConfiguration object.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -240,28 +232,26 @@ class DeviceConfigurationItemRequestBuilder():
 
         return UserStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration():
+    class DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
     @dataclass
     class DeviceConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the sharedPCConfiguration object.
+        Read properties and relationships of the windows10SecureAssessmentConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -279,31 +269,27 @@ class DeviceConfigurationItemRequestBuilder():
         select: Optional[List[str]] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class DeviceConfigurationItemRequestBuilderGetRequestConfiguration():
+    class DeviceConfigurationItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[DeviceConfigurationItemRequestBuilder.DeviceConfigurationItemRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class DeviceConfigurationItemRequestBuilderPatchRequestConfiguration():
+    class DeviceConfigurationItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

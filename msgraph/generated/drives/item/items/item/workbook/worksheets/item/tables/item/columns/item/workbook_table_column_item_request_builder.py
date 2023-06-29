@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -18,7 +19,7 @@ if TYPE_CHECKING:
     from .range.range_request_builder import RangeRequestBuilder
     from .total_row_range.total_row_range_request_builder import TotalRowRangeRequestBuilder
 
-class WorkbookTableColumnItemRequestBuilder():
+class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the columns property of the microsoft.graph.workbookTable entity.
     """
@@ -26,25 +27,16 @@ class WorkbookTableColumnItemRequestBuilder():
         """
         Instantiates a new WorkbookTableColumnItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/tables/{workbookTable%2Did}/columns/{workbookTableColumn%2Did}{?%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/tables/{workbookTable%2Did}/columns/{workbookTableColumn%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[WorkbookTableColumnItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Deletes the column from the table.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -63,7 +55,7 @@ class WorkbookTableColumnItemRequestBuilder():
         """
         Retrieve the properties and relationships of tablecolumn object.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
         """
         request_info = self.to_get_request_information(
@@ -86,7 +78,7 @@ class WorkbookTableColumnItemRequestBuilder():
         Update the properties of tablecolumn object.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
         """
         if not body:
@@ -110,7 +102,7 @@ class WorkbookTableColumnItemRequestBuilder():
         """
         Deletes the column from the table.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -126,7 +118,7 @@ class WorkbookTableColumnItemRequestBuilder():
         """
         Retrieve the properties and relationships of tablecolumn object.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -145,7 +137,7 @@ class WorkbookTableColumnItemRequestBuilder():
         Update the properties of tablecolumn object.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -206,17 +198,15 @@ class WorkbookTableColumnItemRequestBuilder():
 
         return TotalRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class WorkbookTableColumnItemRequestBuilderDeleteRequestConfiguration():
+    class WorkbookTableColumnItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
     @dataclass
     class WorkbookTableColumnItemRequestBuilderGetQueryParameters():
@@ -227,7 +217,7 @@ class WorkbookTableColumnItemRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -245,31 +235,27 @@ class WorkbookTableColumnItemRequestBuilder():
         select: Optional[List[str]] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class WorkbookTableColumnItemRequestBuilderGetRequestConfiguration():
+    class WorkbookTableColumnItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[WorkbookTableColumnItemRequestBuilder.WorkbookTableColumnItemRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class WorkbookTableColumnItemRequestBuilderPatchRequestConfiguration():
+    class WorkbookTableColumnItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

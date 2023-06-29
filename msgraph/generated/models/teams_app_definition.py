@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .identity_set import IdentitySet
+    from .teams_app_authorization import TeamsAppAuthorization
     from .teams_app_publishing_state import TeamsAppPublishingState
     from .teamwork_bot import TeamworkBot
 
@@ -14,6 +15,8 @@ from .entity import Entity
 
 @dataclass
 class TeamsAppDefinition(Entity):
+    # The authorization property
+    authorization: Optional[TeamsAppAuthorization] = None
     # The details of the bot specified in the Teams app manifest.
     bot: Optional[TeamworkBot] = None
     # The createdBy property
@@ -40,7 +43,7 @@ class TeamsAppDefinition(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TeamsAppDefinition
         """
         if not parse_node:
@@ -54,15 +57,18 @@ class TeamsAppDefinition(Entity):
         """
         from .entity import Entity
         from .identity_set import IdentitySet
+        from .teams_app_authorization import TeamsAppAuthorization
         from .teams_app_publishing_state import TeamsAppPublishingState
         from .teamwork_bot import TeamworkBot
 
         from .entity import Entity
         from .identity_set import IdentitySet
+        from .teams_app_authorization import TeamsAppAuthorization
         from .teams_app_publishing_state import TeamsAppPublishingState
         from .teamwork_bot import TeamworkBot
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "authorization": lambda n : setattr(self, 'authorization', n.get_object_value(TeamsAppAuthorization)),
             "bot": lambda n : setattr(self, 'bot', n.get_object_value(TeamworkBot)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -86,6 +92,7 @@ class TeamsAppDefinition(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("authorization", self.authorization)
         writer.write_object_value("bot", self.bot)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_str_value("description", self.description)

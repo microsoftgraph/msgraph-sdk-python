@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -13,7 +14,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
     from .get_all_messages_response import GetAllMessagesResponse
 
-class GetAllMessagesRequestBuilder():
+class GetAllMessagesRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the getAllMessages method.
     """
@@ -21,25 +22,16 @@ class GetAllMessagesRequestBuilder():
         """
         Instantiates a new GetAllMessagesRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/teamwork/deletedTeams/{deletedTeam%2Did}/channels/getAllMessages(){?model*,%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/teamwork/deletedTeams/{deletedTeam%2Did}/channels/getAllMessages(){?model*,%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[GetAllMessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[GetAllMessagesResponse]:
         """
         Invoke function getAllMessages
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetAllMessagesResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,7 +53,7 @@ class GetAllMessagesRequestBuilder():
         """
         Invoke function getAllMessages
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -84,7 +76,7 @@ class GetAllMessagesRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -93,6 +85,8 @@ class GetAllMessagesRequestBuilder():
                 return "%24count"
             if original_name == "filter":
                 return "%24filter"
+            if original_name == "model":
+                return "model"
             if original_name == "orderby":
                 return "%24orderby"
             if original_name == "search":
@@ -103,8 +97,6 @@ class GetAllMessagesRequestBuilder():
                 return "%24skip"
             if original_name == "top":
                 return "%24top"
-            if original_name == "model":
-                return "model"
             return original_name
         
         # Include count of items
@@ -132,17 +124,15 @@ class GetAllMessagesRequestBuilder():
         top: Optional[int] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class GetAllMessagesRequestBuilderGetRequestConfiguration():
+    class GetAllMessagesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[GetAllMessagesRequestBuilder.GetAllMessagesRequestBuilderGetQueryParameters] = None
 

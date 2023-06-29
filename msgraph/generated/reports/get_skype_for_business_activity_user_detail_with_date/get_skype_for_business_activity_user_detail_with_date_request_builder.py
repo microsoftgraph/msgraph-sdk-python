@@ -1,6 +1,7 @@
 from __future__ import annotations
 import datetime
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -13,7 +14,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
 
-class GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder():
+class GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the getSkypeForBusinessActivityUserDetail method.
     """
@@ -22,26 +23,16 @@ class GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder():
         Instantiates a new GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder and sets the default values.
         Args:
             date: Usage: date={date}
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/reports/getSkypeForBusinessActivityUserDetail(date={date})"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params[""] = date
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/reports/getSkypeForBusinessActivityUserDetail(date={date})", path_parameters)
     
     async def get(self,request_configuration: Optional[GetSkypeForBusinessActivityUserDetailWithDateRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
         Invoke function getSkypeForBusinessActivityUserDetail
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
         request_info = self.to_get_request_information(
@@ -61,7 +52,7 @@ class GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder():
         """
         Invoke function getSkypeForBusinessActivityUserDetail
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -73,16 +64,14 @@ class GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class GetSkypeForBusinessActivityUserDetailWithDateRequestBuilderGetRequestConfiguration():
+    class GetSkypeForBusinessActivityUserDetailWithDateRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

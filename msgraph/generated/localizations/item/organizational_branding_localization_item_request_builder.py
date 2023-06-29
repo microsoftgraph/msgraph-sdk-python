@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -20,7 +21,7 @@ if TYPE_CHECKING:
     from .square_logo.square_logo_request_builder import SquareLogoRequestBuilder
     from .square_logo_dark.square_logo_dark_request_builder import SquareLogoDarkRequestBuilder
 
-class OrganizationalBrandingLocalizationItemRequestBuilder():
+class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the collection of organizationalBrandingLocalization entities.
     """
@@ -28,25 +29,16 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         """
         Instantiates a new OrganizationalBrandingLocalizationItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/localizations/{organizationalBrandingLocalization%2Did}{?%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/localizations/{organizationalBrandingLocalization%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete entity from localizations
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -65,7 +57,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         """
         Get entity from localizations by key
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrganizationalBrandingLocalization]
         """
         request_info = self.to_get_request_information(
@@ -88,7 +80,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         Update entity in localizations
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrganizationalBrandingLocalization]
         """
         if not body:
@@ -112,7 +104,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         """
         Delete entity from localizations
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -128,7 +120,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         """
         Get entity from localizations by key
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -147,7 +139,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         Update entity in localizations
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -226,17 +218,15 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
 
         return SquareLogoDarkRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration():
+    class OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
     @dataclass
     class OrganizationalBrandingLocalizationItemRequestBuilderGetQueryParameters():
@@ -247,7 +237,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -265,31 +255,27 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         select: Optional[List[str]] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration():
+    class OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[OrganizationalBrandingLocalizationItemRequestBuilder.OrganizationalBrandingLocalizationItemRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration():
+    class OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

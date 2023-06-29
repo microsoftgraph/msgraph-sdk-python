@@ -12,7 +12,7 @@ from .governance_insight import GovernanceInsight
 @dataclass
 class UserSignInInsight(GovernanceInsight):
     odata_type = "#microsoft.graph.userSignInInsight"
-    # The lastSignInDateTime property
+    # Indicates when the user last signed in.
     last_sign_in_date_time: Optional[datetime.datetime] = None
     
     @staticmethod
@@ -20,7 +20,7 @@ class UserSignInInsight(GovernanceInsight):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UserSignInInsight
         """
         if not parse_node:

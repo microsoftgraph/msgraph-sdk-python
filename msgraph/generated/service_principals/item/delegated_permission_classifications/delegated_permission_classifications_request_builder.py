@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -16,7 +17,7 @@ if TYPE_CHECKING:
     from .count.count_request_builder import CountRequestBuilder
     from .item.delegated_permission_classification_item_request_builder import DelegatedPermissionClassificationItemRequestBuilder
 
-class DelegatedPermissionClassificationsRequestBuilder():
+class DelegatedPermissionClassificationsRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the delegatedPermissionClassifications property of the microsoft.graph.servicePrincipal entity.
     """
@@ -24,19 +25,10 @@ class DelegatedPermissionClassificationsRequestBuilder():
         """
         Instantiates a new DelegatedPermissionClassificationsRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/delegatedPermissionClassifications{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/delegatedPermissionClassifications{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_delegated_permission_classification_id(self,delegated_permission_classification_id: str) -> DelegatedPermissionClassificationItemRequestBuilder:
         """
@@ -57,7 +49,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
         """
         Retrieve the list of delegatedPermissionClassification currently configured for the delegated permissions exposed by an API.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedPermissionClassificationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -80,7 +72,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
         Classify a delegated permission by adding a delegatedPermissionClassification to the servicePrincipal representing the API.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedPermissionClassification]
         """
         if not body:
@@ -104,7 +96,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
         """
         Retrieve the list of delegatedPermissionClassification currently configured for the delegated permissions exposed by an API.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -123,7 +115,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
         Classify a delegated permission by adding a delegatedPermissionClassification to the servicePrincipal representing the API.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -157,7 +149,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -205,31 +197,27 @@ class DelegatedPermissionClassificationsRequestBuilder():
         top: Optional[int] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class DelegatedPermissionClassificationsRequestBuilderGetRequestConfiguration():
+    class DelegatedPermissionClassificationsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[DelegatedPermissionClassificationsRequestBuilder.DelegatedPermissionClassificationsRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class DelegatedPermissionClassificationsRequestBuilderPostRequestConfiguration():
+    class DelegatedPermissionClassificationsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

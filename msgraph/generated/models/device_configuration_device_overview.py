@@ -33,7 +33,7 @@ class DeviceConfigurationDeviceOverview(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceConfigurationDeviceOverview
         """
         if not parse_node:

@@ -12,7 +12,7 @@ from .entity import Entity
 
 @dataclass
 class GovernanceInsight(Entity):
-    # The insightCreatedDateTime property
+    # Indicates when the insight was created.
     insight_created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -22,7 +22,7 @@ class GovernanceInsight(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: GovernanceInsight
         """
         if not parse_node:

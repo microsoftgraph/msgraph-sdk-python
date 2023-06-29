@@ -32,9 +32,9 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
     mail_notifications_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The recommendationInsightSettings property
+    # Optional. Describes the types of insights that aid reviewers to make access review decisions. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationInsightSettings setting will be used instead of the value of this property.
     recommendation_insight_settings: Optional[List[AccessReviewRecommendationInsightSetting]] = None
-    # The recommendationLookBackDuration property
+    # Optional field. Indicates the period of inactivity (with respect to the start date of the review instance) that recommendations will be configured from. The recommendation will be to deny if the user is inactive during the look-back duration. For reviews of groups and Azure AD roles, any duration is accepted. For reviews of applications, 30 days is the maximum duration. If not specified, the duration is 30 days. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationLookBackDuration setting will be used instead of the value of this property.
     recommendation_look_back_duration: Optional[datetime.timedelta] = None
     # Indicates whether decision recommendations are enabled or disabled. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationsEnabled setting will be used instead of the value of this property.
     recommendations_enabled: Optional[bool] = None
@@ -48,7 +48,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewScheduleSettings
         """
         if not parse_node:

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -18,7 +19,7 @@ if TYPE_CHECKING:
     from .events.events_request_builder import EventsRequestBuilder
     from .get_schedule.get_schedule_request_builder import GetScheduleRequestBuilder
 
-class CalendarRequestBuilder():
+class CalendarRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the calendar property of the microsoft.graph.user entity.
     """
@@ -26,25 +27,16 @@ class CalendarRequestBuilder():
         """
         Instantiates a new CalendarRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/me/calendar{?%24select}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/me/calendar{?%24select}", path_parameters)
     
     def allowed_calendar_sharing_roles_with_user(self,user: Optional[str] = None) -> AllowedCalendarSharingRolesWithUserRequestBuilder:
         """
         Provides operations to call the allowedCalendarSharingRoles method.
         Args:
-            User: Usage: User='{User}'
+            user: Usage: User='{User}'
         Returns: AllowedCalendarSharingRolesWithUserRequestBuilder
         """
         if not user:
@@ -57,7 +49,7 @@ class CalendarRequestBuilder():
         """
         Get the properties and relationships of a calendar object. The calendar can be one for a user, or the default calendar of a Microsoft 365 group. There are two scenarios where an app can get another user's calendar:
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Calendar]
         """
         request_info = self.to_get_request_information(
@@ -80,7 +72,7 @@ class CalendarRequestBuilder():
         Update the properties of a calendar object. The calendar can be one for a user, or the default calendar of a Microsoft 365 group.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Calendar]
         """
         if not body:
@@ -104,7 +96,7 @@ class CalendarRequestBuilder():
         """
         Get the properties and relationships of a calendar object. The calendar can be one for a user, or the default calendar of a Microsoft 365 group. There are two scenarios where an app can get another user's calendar:
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -123,7 +115,7 @@ class CalendarRequestBuilder():
         Update the properties of a calendar object. The calendar can be one for a user, or the default calendar of a Microsoft 365 group.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -184,7 +176,7 @@ class CalendarRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -197,31 +189,27 @@ class CalendarRequestBuilder():
         select: Optional[List[str]] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class CalendarRequestBuilderGetRequestConfiguration():
+    class CalendarRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[CalendarRequestBuilder.CalendarRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class CalendarRequestBuilderPatchRequestConfiguration():
+    class CalendarRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

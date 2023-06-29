@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -17,7 +18,7 @@ if TYPE_CHECKING:
     from .delta.delta_request_builder import DeltaRequestBuilder
     from .item.mail_folder_item_request_builder import MailFolderItemRequestBuilder
 
-class MailFoldersRequestBuilder():
+class MailFoldersRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the mailFolders property of the microsoft.graph.user entity.
     """
@@ -25,19 +26,10 @@ class MailFoldersRequestBuilder():
         """
         Instantiates a new MailFoldersRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/users/{user%2Did}/mailFolders{?includeHiddenFolders*,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders{?includeHiddenFolders*,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_mail_folder_id(self,mail_folder_id: str) -> MailFolderItemRequestBuilder:
         """
@@ -58,7 +50,7 @@ class MailFoldersRequestBuilder():
         """
         The user's mail folders. Read-only. Nullable.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolderCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -81,7 +73,7 @@ class MailFoldersRequestBuilder():
         Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolder]
         """
         if not body:
@@ -105,7 +97,7 @@ class MailFoldersRequestBuilder():
         """
         The user's mail folders. Read-only. Nullable.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -124,7 +116,7 @@ class MailFoldersRequestBuilder():
         Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -167,7 +159,7 @@ class MailFoldersRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -178,6 +170,8 @@ class MailFoldersRequestBuilder():
                 return "%24expand"
             if original_name == "filter":
                 return "%24filter"
+            if original_name == "include_hidden_folders":
+                return "includeHiddenFolders"
             if original_name == "orderby":
                 return "%24orderby"
             if original_name == "select":
@@ -186,8 +180,6 @@ class MailFoldersRequestBuilder():
                 return "%24skip"
             if original_name == "top":
                 return "%24top"
-            if original_name == "include_hidden_folders":
-                return "includeHiddenFolders"
             return original_name
         
         # Include count of items
@@ -215,31 +207,27 @@ class MailFoldersRequestBuilder():
         top: Optional[int] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class MailFoldersRequestBuilderGetRequestConfiguration():
+    class MailFoldersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[MailFoldersRequestBuilder.MailFoldersRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class MailFoldersRequestBuilderPostRequestConfiguration():
+    class MailFoldersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

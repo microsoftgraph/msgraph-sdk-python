@@ -66,7 +66,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: PstnCallLogRow
         """
         if not parse_node:
@@ -130,13 +130,13 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         writer.write_str_value("destinationContext", self.destination_context)
         writer.write_str_value("destinationName", self.destination_name)
         writer.write_int_value("duration", self.duration)
-        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_str_value("id", self.id)
         writer.write_str_value("inventoryType", self.inventory_type)
         writer.write_str_value("licenseCapability", self.license_capability)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("operator", self.operator)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("tenantCountryCode", self.tenant_country_code)
         writer.write_str_value("usageCountryCode", self.usage_country_code)
         writer.write_str_value("userDisplayName", self.user_display_name)

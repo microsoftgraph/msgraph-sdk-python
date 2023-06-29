@@ -24,7 +24,7 @@ class TimeOffRequest(ScheduleChangeRequest):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TimeOffRequest
         """
         if not parse_node:
@@ -58,8 +58,8 @@ class TimeOffRequest(ScheduleChangeRequest):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("endDateTime", self.end_date_time)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("endDateTime", self.end_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("timeOffReasonId", self.time_off_reason_id)
     
 

@@ -82,7 +82,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MediaStream
         """
         if not parse_node:
@@ -147,31 +147,31 @@ class MediaStream(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("audioCodec", self.audio_codec)
         writer.write_float_value("averageAudioDegradation", self.average_audio_degradation)
-        writer.write_timedelta_value()("averageAudioNetworkJitter", self.average_audio_network_jitter)
+        writer.write_timedelta_value("averageAudioNetworkJitter", self.average_audio_network_jitter)
         writer.write_int_value("averageBandwidthEstimate", self.average_bandwidth_estimate)
-        writer.write_timedelta_value()("averageFreezeDuration", self.average_freeze_duration)
-        writer.write_timedelta_value()("averageJitter", self.average_jitter)
+        writer.write_timedelta_value("averageFreezeDuration", self.average_freeze_duration)
+        writer.write_timedelta_value("averageJitter", self.average_jitter)
         writer.write_float_value("averagePacketLossRate", self.average_packet_loss_rate)
         writer.write_float_value("averageRatioOfConcealedSamples", self.average_ratio_of_concealed_samples)
         writer.write_float_value("averageReceivedFrameRate", self.average_received_frame_rate)
-        writer.write_timedelta_value()("averageRoundTripTime", self.average_round_trip_time)
+        writer.write_timedelta_value("averageRoundTripTime", self.average_round_trip_time)
         writer.write_float_value("averageVideoFrameLossPercentage", self.average_video_frame_loss_percentage)
         writer.write_float_value("averageVideoFrameRate", self.average_video_frame_rate)
         writer.write_float_value("averageVideoPacketLossRate", self.average_video_packet_loss_rate)
-        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_bool_value("isAudioForwardErrorCorrectionUsed", self.is_audio_forward_error_correction_used)
         writer.write_float_value("lowFrameRateRatio", self.low_frame_rate_ratio)
         writer.write_float_value("lowVideoProcessingCapabilityRatio", self.low_video_processing_capability_ratio)
-        writer.write_timedelta_value()("maxAudioNetworkJitter", self.max_audio_network_jitter)
-        writer.write_timedelta_value()("maxJitter", self.max_jitter)
+        writer.write_timedelta_value("maxAudioNetworkJitter", self.max_audio_network_jitter)
+        writer.write_timedelta_value("maxJitter", self.max_jitter)
         writer.write_float_value("maxPacketLossRate", self.max_packet_loss_rate)
         writer.write_float_value("maxRatioOfConcealedSamples", self.max_ratio_of_concealed_samples)
-        writer.write_timedelta_value()("maxRoundTripTime", self.max_round_trip_time)
+        writer.write_timedelta_value("maxRoundTripTime", self.max_round_trip_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("packetUtilization", self.packet_utilization)
         writer.write_float_value("postForwardErrorCorrectionPacketLossRate", self.post_forward_error_correction_packet_loss_rate)
-        writer.write_timedelta_value()("rmsFreezeDuration", self.rms_freeze_duration)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_timedelta_value("rmsFreezeDuration", self.rms_freeze_duration)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_enum_value("streamDirection", self.stream_direction)
         writer.write_str_value("streamId", self.stream_id)
         writer.write_enum_value("videoCodec", self.video_codec)

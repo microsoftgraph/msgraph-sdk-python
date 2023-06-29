@@ -62,7 +62,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: NetworkConnection
         """
         if not parse_node:
@@ -122,7 +122,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         writer.write_str_value("destinationPort", self.destination_port)
         writer.write_str_value("destinationUrl", self.destination_url)
         writer.write_enum_value("direction", self.direction)
-        writer.write_datetime_value()("domainRegisteredDateTime", self.domain_registered_date_time)
+        writer.write_datetime_value("domainRegisteredDateTime", self.domain_registered_date_time)
         writer.write_str_value("localDnsName", self.local_dns_name)
         writer.write_str_value("natDestinationAddress", self.nat_destination_address)
         writer.write_str_value("natDestinationPort", self.nat_destination_port)

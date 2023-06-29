@@ -54,7 +54,7 @@ class ManagedEBook(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ManagedEBook
         """
         if not parse_node:
@@ -119,16 +119,16 @@ class ManagedEBook(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_collection_of_object_values("deviceStates", self.device_states)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("informationUrl", self.information_url)
         writer.write_object_value("installSummary", self.install_summary)
         writer.write_object_value("largeCover", self.large_cover)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("privacyInformationUrl", self.privacy_information_url)
-        writer.write_datetime_value()("publishedDateTime", self.published_date_time)
+        writer.write_datetime_value("publishedDateTime", self.published_date_time)
         writer.write_str_value("publisher", self.publisher)
         writer.write_collection_of_object_values("userStateSummary", self.user_state_summary)
     

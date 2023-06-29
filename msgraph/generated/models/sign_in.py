@@ -74,7 +74,7 @@ class SignIn(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SignIn
         """
         if not parse_node:
@@ -152,7 +152,7 @@ class SignIn(Entity):
         writer.write_str_value("clientAppUsed", self.client_app_used)
         writer.write_enum_value("conditionalAccessStatus", self.conditional_access_status)
         writer.write_str_value("correlationId", self.correlation_id)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("deviceDetail", self.device_detail)
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_bool_value("isInteractive", self.is_interactive)

@@ -78,6 +78,7 @@ if TYPE_CHECKING:
     from .authentication_method_configuration import AuthenticationMethodConfiguration
     from .authentication_method_mode_detail import AuthenticationMethodModeDetail
     from .authentication_methods_policy import AuthenticationMethodsPolicy
+    from .authentication_methods_root import AuthenticationMethodsRoot
     from .authentication_method_target import AuthenticationMethodTarget
     from .authentication_strength_policy import AuthenticationStrengthPolicy
     from .authentication_strength_root import AuthenticationStrengthRoot
@@ -482,6 +483,9 @@ if TYPE_CHECKING:
     from .secure_score import SecureScore
     from .secure_score_control_profile import SecureScoreControlProfile
     from .security.alert import Alert
+    from .security.article import Article
+    from .security.article_indicator import ArticleIndicator
+    from .security.artifact import Artifact
     from .security.case import Case
     from .security.case_operation import CaseOperation
     from .security.cases_root import CasesRoot
@@ -502,17 +506,32 @@ if TYPE_CHECKING:
     from .security.ediscovery_review_tag import EdiscoveryReviewTag
     from .security.ediscovery_search import EdiscoverySearch
     from .security.ediscovery_tag_operation import EdiscoveryTagOperation
+    from .security.host import Host
+    from .security.host_component import HostComponent
+    from .security.host_cookie import HostCookie
+    from .security.hostname import Hostname
+    from .security.host_reputation import HostReputation
+    from .security.host_tracker import HostTracker
     from .security.incident import Incident
+    from .security.indicator import Indicator
+    from .security.intelligence_profile import IntelligenceProfile
+    from .security.intelligence_profile_indicator import IntelligenceProfileIndicator
+    from .security.ip_address import IpAddress
+    from .security.passive_dns_record import PassiveDnsRecord
     from .security.retention_event import RetentionEvent
     from .security.retention_event_type import RetentionEventType
     from .security.search import Search
     from .security.security import Security
     from .security.site_source import SiteSource
     from .security.tag import Tag
+    from .security.threat_intelligence import ThreatIntelligence
     from .security.triggers_root import TriggersRoot
     from .security.trigger_types_root import TriggerTypesRoot
+    from .security.unclassified_artifact import UnclassifiedArtifact
     from .security.unified_group_source import UnifiedGroupSource
     from .security.user_source import UserSource
+    from .security.vulnerability import Vulnerability
+    from .security.vulnerability_component import VulnerabilityComponent
     from .security_reports_root import SecurityReportsRoot
     from .service_announcement import ServiceAnnouncement
     from .service_announcement_attachment import ServiceAnnouncementAttachment
@@ -630,6 +649,7 @@ if TYPE_CHECKING:
     from .user_flow_language_configuration import UserFlowLanguageConfiguration
     from .user_flow_language_page import UserFlowLanguagePage
     from .user_install_state_summary import UserInstallStateSummary
+    from .user_registration_details import UserRegistrationDetails
     from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
     from .user_settings import UserSettings
     from .user_sign_in_insight import UserSignInInsight
@@ -730,7 +750,7 @@ class Entity(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Entity
         """
         if not parse_node:
@@ -1036,6 +1056,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .authentication_methods_policy import AuthenticationMethodsPolicy
 
             return AuthenticationMethodsPolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationMethodsRoot".casefold():
+            from .authentication_methods_root import AuthenticationMethodsRoot
+
+            return AuthenticationMethodsRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationMethodTarget".casefold():
             from .authentication_method_target import AuthenticationMethodTarget
 
@@ -2658,6 +2682,18 @@ class Entity(AdditionalDataHolder, Parsable):
             from .security.alert import Alert
 
             return Alert()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.article".casefold():
+            from .security.article import Article
+
+            return Article()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.articleIndicator".casefold():
+            from .security.article_indicator import ArticleIndicator
+
+            return ArticleIndicator()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.artifact".casefold():
+            from .security.artifact import Artifact
+
+            return Artifact()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.case".casefold():
             from .security.case import Case
 
@@ -2738,10 +2774,54 @@ class Entity(AdditionalDataHolder, Parsable):
             from .security.ediscovery_tag_operation import EdiscoveryTagOperation
 
             return EdiscoveryTagOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.host".casefold():
+            from .security.host import Host
+
+            return Host()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostComponent".casefold():
+            from .security.host_component import HostComponent
+
+            return HostComponent()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostCookie".casefold():
+            from .security.host_cookie import HostCookie
+
+            return HostCookie()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostname".casefold():
+            from .security.hostname import Hostname
+
+            return Hostname()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostReputation".casefold():
+            from .security.host_reputation import HostReputation
+
+            return HostReputation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostTracker".casefold():
+            from .security.host_tracker import HostTracker
+
+            return HostTracker()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.incident".casefold():
             from .security.incident import Incident
 
             return Incident()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.indicator".casefold():
+            from .security.indicator import Indicator
+
+            return Indicator()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.intelligenceProfile".casefold():
+            from .security.intelligence_profile import IntelligenceProfile
+
+            return IntelligenceProfile()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.intelligenceProfileIndicator".casefold():
+            from .security.intelligence_profile_indicator import IntelligenceProfileIndicator
+
+            return IntelligenceProfileIndicator()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ipAddress".casefold():
+            from .security.ip_address import IpAddress
+
+            return IpAddress()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.passiveDnsRecord".casefold():
+            from .security.passive_dns_record import PassiveDnsRecord
+
+            return PassiveDnsRecord()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.retentionEvent".casefold():
             from .security.retention_event import RetentionEvent
 
@@ -2762,6 +2842,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .security.tag import Tag
 
             return Tag()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.threatIntelligence".casefold():
+            from .security.threat_intelligence import ThreatIntelligence
+
+            return ThreatIntelligence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.triggersRoot".casefold():
             from .security.triggers_root import TriggersRoot
 
@@ -2770,6 +2854,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .security.trigger_types_root import TriggerTypesRoot
 
             return TriggerTypesRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.unclassifiedArtifact".casefold():
+            from .security.unclassified_artifact import UnclassifiedArtifact
+
+            return UnclassifiedArtifact()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.unifiedGroupSource".casefold():
             from .security.unified_group_source import UnifiedGroupSource
 
@@ -2778,6 +2866,14 @@ class Entity(AdditionalDataHolder, Parsable):
             from .security.user_source import UserSource
 
             return UserSource()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.vulnerability".casefold():
+            from .security.vulnerability import Vulnerability
+
+            return Vulnerability()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.vulnerabilityComponent".casefold():
+            from .security.vulnerability_component import VulnerabilityComponent
+
+            return VulnerabilityComponent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.securityReportsRoot".casefold():
             from .security_reports_root import SecurityReportsRoot
 
@@ -3247,6 +3343,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .user_install_state_summary import UserInstallStateSummary
 
             return UserInstallStateSummary()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userRegistrationDetails".casefold():
+            from .user_registration_details import UserRegistrationDetails
+
+            return UserRegistrationDetails()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userScopeTeamsAppInstallation".casefold():
             from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
@@ -3664,6 +3764,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_mode_detail import AuthenticationMethodModeDetail
         from .authentication_methods_policy import AuthenticationMethodsPolicy
+        from .authentication_methods_root import AuthenticationMethodsRoot
         from .authentication_method_target import AuthenticationMethodTarget
         from .authentication_strength_policy import AuthenticationStrengthPolicy
         from .authentication_strength_root import AuthenticationStrengthRoot
@@ -4068,6 +4169,9 @@ class Entity(AdditionalDataHolder, Parsable):
         from .secure_score import SecureScore
         from .secure_score_control_profile import SecureScoreControlProfile
         from .security.alert import Alert
+        from .security.article import Article
+        from .security.article_indicator import ArticleIndicator
+        from .security.artifact import Artifact
         from .security.case import Case
         from .security.case_operation import CaseOperation
         from .security.cases_root import CasesRoot
@@ -4088,17 +4192,32 @@ class Entity(AdditionalDataHolder, Parsable):
         from .security.ediscovery_review_tag import EdiscoveryReviewTag
         from .security.ediscovery_search import EdiscoverySearch
         from .security.ediscovery_tag_operation import EdiscoveryTagOperation
+        from .security.host import Host
+        from .security.host_component import HostComponent
+        from .security.host_cookie import HostCookie
+        from .security.hostname import Hostname
+        from .security.host_reputation import HostReputation
+        from .security.host_tracker import HostTracker
         from .security.incident import Incident
+        from .security.indicator import Indicator
+        from .security.intelligence_profile import IntelligenceProfile
+        from .security.intelligence_profile_indicator import IntelligenceProfileIndicator
+        from .security.ip_address import IpAddress
+        from .security.passive_dns_record import PassiveDnsRecord
         from .security.retention_event import RetentionEvent
         from .security.retention_event_type import RetentionEventType
         from .security.search import Search
         from .security.security import Security
         from .security.site_source import SiteSource
         from .security.tag import Tag
+        from .security.threat_intelligence import ThreatIntelligence
         from .security.triggers_root import TriggersRoot
         from .security.trigger_types_root import TriggerTypesRoot
+        from .security.unclassified_artifact import UnclassifiedArtifact
         from .security.unified_group_source import UnifiedGroupSource
         from .security.user_source import UserSource
+        from .security.vulnerability import Vulnerability
+        from .security.vulnerability_component import VulnerabilityComponent
         from .security_reports_root import SecurityReportsRoot
         from .service_announcement import ServiceAnnouncement
         from .service_announcement_attachment import ServiceAnnouncementAttachment
@@ -4216,6 +4335,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .user_flow_language_configuration import UserFlowLanguageConfiguration
         from .user_flow_language_page import UserFlowLanguagePage
         from .user_install_state_summary import UserInstallStateSummary
+        from .user_registration_details import UserRegistrationDetails
         from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
         from .user_settings import UserSettings
         from .user_sign_in_insight import UserSignInInsight
@@ -4375,6 +4495,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_mode_detail import AuthenticationMethodModeDetail
         from .authentication_methods_policy import AuthenticationMethodsPolicy
+        from .authentication_methods_root import AuthenticationMethodsRoot
         from .authentication_method_target import AuthenticationMethodTarget
         from .authentication_strength_policy import AuthenticationStrengthPolicy
         from .authentication_strength_root import AuthenticationStrengthRoot
@@ -4779,6 +4900,9 @@ class Entity(AdditionalDataHolder, Parsable):
         from .secure_score import SecureScore
         from .secure_score_control_profile import SecureScoreControlProfile
         from .security.alert import Alert
+        from .security.article import Article
+        from .security.article_indicator import ArticleIndicator
+        from .security.artifact import Artifact
         from .security.case import Case
         from .security.case_operation import CaseOperation
         from .security.cases_root import CasesRoot
@@ -4799,17 +4923,32 @@ class Entity(AdditionalDataHolder, Parsable):
         from .security.ediscovery_review_tag import EdiscoveryReviewTag
         from .security.ediscovery_search import EdiscoverySearch
         from .security.ediscovery_tag_operation import EdiscoveryTagOperation
+        from .security.host import Host
+        from .security.host_component import HostComponent
+        from .security.host_cookie import HostCookie
+        from .security.hostname import Hostname
+        from .security.host_reputation import HostReputation
+        from .security.host_tracker import HostTracker
         from .security.incident import Incident
+        from .security.indicator import Indicator
+        from .security.intelligence_profile import IntelligenceProfile
+        from .security.intelligence_profile_indicator import IntelligenceProfileIndicator
+        from .security.ip_address import IpAddress
+        from .security.passive_dns_record import PassiveDnsRecord
         from .security.retention_event import RetentionEvent
         from .security.retention_event_type import RetentionEventType
         from .security.search import Search
         from .security.security import Security
         from .security.site_source import SiteSource
         from .security.tag import Tag
+        from .security.threat_intelligence import ThreatIntelligence
         from .security.triggers_root import TriggersRoot
         from .security.trigger_types_root import TriggerTypesRoot
+        from .security.unclassified_artifact import UnclassifiedArtifact
         from .security.unified_group_source import UnifiedGroupSource
         from .security.user_source import UserSource
+        from .security.vulnerability import Vulnerability
+        from .security.vulnerability_component import VulnerabilityComponent
         from .security_reports_root import SecurityReportsRoot
         from .service_announcement import ServiceAnnouncement
         from .service_announcement_attachment import ServiceAnnouncementAttachment
@@ -4927,6 +5066,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .user_flow_language_configuration import UserFlowLanguageConfiguration
         from .user_flow_language_page import UserFlowLanguagePage
         from .user_install_state_summary import UserInstallStateSummary
+        from .user_registration_details import UserRegistrationDetails
         from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
         from .user_settings import UserSettings
         from .user_sign_in_insight import UserSignInInsight

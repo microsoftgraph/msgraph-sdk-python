@@ -57,7 +57,7 @@ class DeviceEvidence(AlertEvidence):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceEvidence
         """
         if not parse_node:
@@ -119,7 +119,7 @@ class DeviceEvidence(AlertEvidence):
         writer.write_str_value("azureAdDeviceId", self.azure_ad_device_id)
         writer.write_enum_value("defenderAvStatus", self.defender_av_status)
         writer.write_str_value("deviceDnsName", self.device_dns_name)
-        writer.write_datetime_value()("firstSeenDateTime", self.first_seen_date_time)
+        writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
         writer.write_enum_value("healthStatus", self.health_status)
         writer.write_collection_of_primitive_values("ipInterfaces", self.ip_interfaces)
         writer.write_collection_of_object_values("loggedOnUsers", self.logged_on_users)

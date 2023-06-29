@@ -48,7 +48,7 @@ class AccessReviewInstanceDecisionItem(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewInstanceDecisionItem
         """
         if not parse_node:
@@ -100,7 +100,7 @@ class AccessReviewInstanceDecisionItem(Entity):
         super().serialize(writer)
         writer.write_str_value("accessReviewId", self.access_review_id)
         writer.write_object_value("appliedBy", self.applied_by)
-        writer.write_datetime_value()("appliedDateTime", self.applied_date_time)
+        writer.write_datetime_value("appliedDateTime", self.applied_date_time)
         writer.write_str_value("applyResult", self.apply_result)
         writer.write_str_value("decision", self.decision)
         writer.write_str_value("justification", self.justification)
@@ -110,6 +110,6 @@ class AccessReviewInstanceDecisionItem(Entity):
         writer.write_object_value("resource", self.resource)
         writer.write_str_value("resourceLink", self.resource_link)
         writer.write_object_value("reviewedBy", self.reviewed_by)
-        writer.write_datetime_value()("reviewedDateTime", self.reviewed_date_time)
+        writer.write_datetime_value("reviewedDateTime", self.reviewed_date_time)
     
 

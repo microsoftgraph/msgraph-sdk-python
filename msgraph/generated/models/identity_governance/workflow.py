@@ -40,7 +40,7 @@ class Workflow(WorkflowBase):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Workflow
         """
         if not parse_node:
@@ -88,10 +88,10 @@ class Workflow(WorkflowBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("deletedDateTime", self.deleted_date_time)
+        writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
         writer.write_collection_of_object_values("executionScope", self.execution_scope)
         writer.write_str_value("id", self.id)
-        writer.write_datetime_value()("nextScheduleRunDateTime", self.next_schedule_run_date_time)
+        writer.write_datetime_value("nextScheduleRunDateTime", self.next_schedule_run_date_time)
         writer.write_collection_of_object_values("runs", self.runs)
         writer.write_collection_of_object_values("taskReports", self.task_reports)
         writer.write_collection_of_object_values("userProcessingResults", self.user_processing_results)

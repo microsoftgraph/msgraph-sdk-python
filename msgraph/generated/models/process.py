@@ -45,7 +45,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Process
         """
         if not parse_node:
@@ -90,13 +90,13 @@ class Process(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("accountName", self.account_name)
         writer.write_str_value("commandLine", self.command_line)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("fileHash", self.file_hash)
         writer.write_enum_value("integrityLevel", self.integrity_level)
         writer.write_bool_value("isElevated", self.is_elevated)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_datetime_value()("parentProcessCreatedDateTime", self.parent_process_created_date_time)
+        writer.write_datetime_value("parentProcessCreatedDateTime", self.parent_process_created_date_time)
         writer.write_int_value("parentProcessId", self.parent_process_id)
         writer.write_str_value("parentProcessName", self.parent_process_name)
         writer.write_str_value("path", self.path)

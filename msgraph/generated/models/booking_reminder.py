@@ -29,7 +29,7 @@ class BookingReminder(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: BookingReminder
         """
         if not parse_node:
@@ -63,7 +63,7 @@ class BookingReminder(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("message", self.message)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_timedelta_value()("offset", self.offset)
+        writer.write_timedelta_value("offset", self.offset)
         writer.write_enum_value("recipients", self.recipients)
         writer.write_additional_data_value(self.additional_data)
     

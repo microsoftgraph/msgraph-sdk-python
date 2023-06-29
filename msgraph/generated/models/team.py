@@ -89,7 +89,7 @@ class Team(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Team
         """
         if not parse_node:
@@ -182,7 +182,7 @@ class Team(Entity):
         writer.write_collection_of_object_values("allChannels", self.all_channels)
         writer.write_collection_of_object_values("channels", self.channels)
         writer.write_str_value("classification", self.classification)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("funSettings", self.fun_settings)

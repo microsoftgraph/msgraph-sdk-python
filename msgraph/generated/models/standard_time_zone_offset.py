@@ -31,7 +31,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: StandardTimeZoneOffset
         """
         if not parse_node:
@@ -79,7 +79,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         writer.write_enum_value("dayOfWeek", self.day_of_week)
         writer.write_int_value("month", self.month)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_time_value()("time", self.time)
+        writer.write_time_value("time", self.time)
         writer.write_int_value("year", self.year)
         writer.write_additional_data_value(self.additional_data)
     

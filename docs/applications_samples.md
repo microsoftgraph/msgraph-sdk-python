@@ -3,31 +3,28 @@
 ```py
 import asyncio
 
-from azure.identity import EnvironmentCredential
-from kiota_abstractions.api_error import APIError
+from azure.identity import ClientSecretCredential
 from msgraph import GraphServiceClient
 
-# Set the event loop policy for Windows
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-
 # Create a credential object. Used to authenticate requests
-credentials = EnvironmentCredential()
+credential = ClientSecretCredential(
+    tenant_id='TENANT_ID',
+    client_id='CLIENT_ID',
+    client_secret='CLIENT_SECRET',
+)
 scopes = ['https://graph.microsoft.com/.default']
 
 # Create an API client with the credentials and scopes
-client = GraphServiceClient(credentials=credentials, scopes=scopes)
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 ```
 
 ## 1. LIST ALL APPLICATIONS IN THE TENANT (GET /applications)
 
 ```py
 async def get_applications():
-    try:
-        apps = await client.applications.get()
-        if apps and apps.value:
-            for app in apps.value:
-                print(app.id)
-    except APIError as e:
-        print(e.error.message)
+    apps = await client.applications.get()
+    if apps and apps.value:
+        for app in apps.value:
+            print(app.id)
 asyncio.run(get_applications())
 ```

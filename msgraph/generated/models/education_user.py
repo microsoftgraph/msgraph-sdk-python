@@ -112,7 +112,7 @@ class EducationUser(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: EducationUser
         """
         if not parse_node:
@@ -239,7 +239,7 @@ class EducationUser(Entity):
         writer.write_str_value("preferredLanguage", self.preferred_language)
         writer.write_enum_value("primaryRole", self.primary_role)
         writer.write_collection_of_object_values("provisionedPlans", self.provisioned_plans)
-        writer.write_datetime_value()("refreshTokensValidFromDateTime", self.refresh_tokens_valid_from_date_time)
+        writer.write_datetime_value("refreshTokensValidFromDateTime", self.refresh_tokens_valid_from_date_time)
         writer.write_collection_of_object_values("relatedContacts", self.related_contacts)
         writer.write_object_value("residenceAddress", self.residence_address)
         writer.write_collection_of_object_values("rubrics", self.rubrics)

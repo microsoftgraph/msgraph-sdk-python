@@ -14,9 +14,6 @@ from .entity import Entity
 
 @dataclass
 class AuditEvent(Entity):
-    """
-    A class containing the properties for Audit Event.
-    """
     # Friendly name of the activity.
     activity: Optional[str] = None
     # The date time in UTC when the activity was performed.
@@ -47,7 +44,7 @@ class AuditEvent(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AuditEvent
         """
         if not parse_node:
@@ -94,7 +91,7 @@ class AuditEvent(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("activity", self.activity)
-        writer.write_datetime_value()("activityDateTime", self.activity_date_time)
+        writer.write_datetime_value("activityDateTime", self.activity_date_time)
         writer.write_str_value("activityOperationType", self.activity_operation_type)
         writer.write_str_value("activityResult", self.activity_result)
         writer.write_str_value("activityType", self.activity_type)

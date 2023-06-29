@@ -27,7 +27,7 @@ class IosUpdateConfiguration(DeviceConfiguration):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: IosUpdateConfiguration
         """
         if not parse_node:
@@ -64,8 +64,8 @@ class IosUpdateConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_time_value()("activeHoursEnd", self.active_hours_end)
-        writer.write_time_value()("activeHoursStart", self.active_hours_start)
+        writer.write_time_value("activeHoursEnd", self.active_hours_end)
+        writer.write_time_value("activeHoursStart", self.active_hours_start)
         writer.write_collection_of_enum_values("scheduledInstallDays", self.scheduled_install_days)
         writer.write_int_value("utcTimeOffsetInMinutes", self.utc_time_offset_in_minutes)
     

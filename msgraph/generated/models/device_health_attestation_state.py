@@ -81,7 +81,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceHealthAttestationState
         """
         if not parse_node:
@@ -155,7 +155,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         writer.write_str_value("earlyLaunchAntiMalwareDriverProtection", self.early_launch_anti_malware_driver_protection)
         writer.write_str_value("healthAttestationSupportedStatus", self.health_attestation_supported_status)
         writer.write_str_value("healthStatusMismatchInfo", self.health_status_mismatch_info)
-        writer.write_datetime_value()("issuedDateTime", self.issued_date_time)
+        writer.write_datetime_value("issuedDateTime", self.issued_date_time)
         writer.write_str_value("lastUpdateDateTime", self.last_update_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("operatingSystemKernelDebugging", self.operating_system_kernel_debugging)

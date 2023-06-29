@@ -68,7 +68,7 @@ class SubjectRightsRequest(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SubjectRightsRequest
         """
         if not parse_node:
@@ -141,18 +141,18 @@ class SubjectRightsRequest(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("assignedTo", self.assigned_to)
-        writer.write_datetime_value()("closedDateTime", self.closed_date_time)
+        writer.write_datetime_value("closedDateTime", self.closed_date_time)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("dataSubject", self.data_subject)
         writer.write_enum_value("dataSubjectType", self.data_subject_type)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("history", self.history)
         writer.write_object_value("insight", self.insight)
-        writer.write_datetime_value()("internalDueDateTime", self.internal_due_date_time)
+        writer.write_datetime_value("internalDueDateTime", self.internal_due_date_time)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("notes", self.notes)
         writer.write_collection_of_primitive_values("regulations", self.regulations)
         writer.write_collection_of_object_values("stages", self.stages)

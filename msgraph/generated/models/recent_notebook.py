@@ -29,7 +29,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: RecentNotebook
         """
         if not parse_node:
@@ -65,7 +65,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value()("lastAccessedTime", self.last_accessed_time)
+        writer.write_datetime_value("lastAccessedTime", self.last_accessed_time)
         writer.write_object_value("links", self.links)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("sourceService", self.source_service)

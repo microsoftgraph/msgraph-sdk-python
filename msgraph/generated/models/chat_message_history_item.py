@@ -27,7 +27,7 @@ class ChatMessageHistoryItem(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ChatMessageHistoryItem
         """
         if not parse_node:
@@ -62,7 +62,7 @@ class ChatMessageHistoryItem(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("actions", self.actions)
-        writer.write_datetime_value()("modifiedDateTime", self.modified_date_time)
+        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("reaction", self.reaction)
         writer.write_additional_data_value(self.additional_data)

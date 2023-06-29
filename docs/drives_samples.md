@@ -4,11 +4,7 @@
 import asyncio
 
 from azure.identity import ClientSecretCredential
-from kiota_abstractions.api_error import APIError
-from msgraph import GraphServiceClient
-
-# (Optional) Set the event loop policy for Windows
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy()) 
+from msgraph import GraphServiceClient 
 
 # Create a credential object. Used to authenticate requests
 credential = ClientSecretCredential(
@@ -26,13 +22,10 @@ client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 ```py
 async def get_drives():
-    try:
-        drives = await client.drives.get()
-        if drives and drives.value:
-            for drive in drives.value:
-                print(drive.id, drive.drive_type, drive.name, drive.description, drive.web_url)
-    except APIError as e:
-        print(e.error.message)
+    drives = await client.drives.get()
+    if drives and drives.value:
+        for drive in drives.value:
+            print(drive.id, drive.drive_type, drive.name, drive.description, drive.web_url)
 asyncio.run(get_drives())
 ```
 
@@ -40,12 +33,9 @@ asyncio.run(get_drives())
 
 ```py
 async def get_drive():
-    try:
-        drive = await client.drives.by_drive_id('DRIVE_ID').get()
-        if drive:
-            print(drive.id, drive.drive_type, drive.name, drive.description, drive.web_url)
-    except APIError as e:
-        print(e.error.message)
+    drive = await client.drives.by_drive_id('DRIVE_ID').get()
+    if drive:
+        print(drive.id, drive.drive_type, drive.name, drive.description, drive.web_url)
 asyncio.run(get_drive())
 ```
 
@@ -53,13 +43,10 @@ asyncio.run(get_drive())
 
 ```py
 async def get_drive_items():
-    try:
-        items = await client.drives.by_drive_id('DRIVE_ID').items.get()
-        if items and items.value:
-            for item in items.value:
-                print(item.id, item.name, item.size, item.folder, item.file)
-    except APIError as e:
-        print(e.error.message)
+    items = await client.drives.by_drive_id('DRIVE_ID').items.get()
+    if items and items.value:
+        for item in items.value:
+            print(item.id, item.name, item.size, item.folder, item.file)
 asyncio.run(get_drive_items())
 ```
 
@@ -67,12 +54,9 @@ asyncio.run(get_drive_items())
 
 ```py
 async def get_drive_item():
-    try:
-        item = await client.drives.by_drive_id('DRIVE_ID').items.by_drive_item_id('ITEM_ID').get()
-        if item:
-            print(item.id, item.name, item.size, item.folder, item.file)
-    except APIError as e:
-        print(e.error.message)
+    item = await client.drives.by_drive_id('DRIVE_ID').items.by_drive_item_id('ITEM_ID').get()
+    if item:
+        print(item.id, item.name, item.size, item.folder, item.file)
 asyncio.run(get_drive_item())
 ```
 
@@ -80,12 +64,9 @@ asyncio.run(get_drive_item())
 
 ```py
 async def get_drive_root():
-    try:
-        root = await client.drives.by_drive_id('DRIVE_ID').root.get()
-        if root:
-            print(root.id, root.name, root.folder.child_count, root.root, root.size)
-    except APIError as e:
-        print(e.error.message)
+    root = await client.drives.by_drive_id('DRIVE_ID').root.get()
+    if root:
+        print(root.id, root.name, root.folder.child_count, root.root, root.size)
 asyncio.run(get_drive_root())
 ```
 
@@ -93,12 +74,9 @@ asyncio.run(get_drive_root())
 
 ```py
 async def get_drive():
-    try:
-        items = await client.drives.by_drive_id('DRIVE_ID').items.by_drive_item_id('root').children.get()
-        if items and items.value:
-            for item in items.value:
-                print(item.id, item.name, item.size, item.folder, item.file)
-    except APIError as e:
-        print(e.error.code)
+    items = await client.drives.by_drive_id('DRIVE_ID').items.by_drive_item_id('root').children.get()
+    if items and items.value:
+        for item in items.value:
+            print(item.id, item.name, item.size, item.folder, item.file)
 asyncio.run(get_drive())
 ```

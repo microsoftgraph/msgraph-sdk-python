@@ -35,7 +35,7 @@ class ChatMessageInfo(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ChatMessageInfo
         """
         if not parse_node:
@@ -81,7 +81,7 @@ class ChatMessageInfo(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("body", self.body)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("eventDetail", self.event_detail)
         writer.write_object_value("from", self.from_)
         writer.write_bool_value("isDeleted", self.is_deleted)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -14,7 +15,7 @@ if TYPE_CHECKING:
     from ....models.threat_assessment_request import ThreatAssessmentRequest
     from .results.results_request_builder import ResultsRequestBuilder
 
-class ThreatAssessmentRequestItemRequestBuilder():
+class ThreatAssessmentRequestItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the threatAssessmentRequests property of the microsoft.graph.informationProtection entity.
     """
@@ -22,25 +23,16 @@ class ThreatAssessmentRequestItemRequestBuilder():
         """
         Instantiates a new ThreatAssessmentRequestItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/informationProtection/threatAssessmentRequests/{threatAssessmentRequest%2Did}{?%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/informationProtection/threatAssessmentRequests/{threatAssessmentRequest%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ThreatAssessmentRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property threatAssessmentRequests for informationProtection
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,7 +51,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
         """
         Retrieve the properties and relationships of a specified threatAssessmentRequest object. A threat assessment request can be one of the following types:
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ThreatAssessmentRequest]
         """
         request_info = self.to_get_request_information(
@@ -82,7 +74,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
         Update the navigation property threatAssessmentRequests in informationProtection
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ThreatAssessmentRequest]
         """
         if not body:
@@ -106,7 +98,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
         """
         Delete navigation property threatAssessmentRequests for informationProtection
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -122,7 +114,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
         """
         Retrieve the properties and relationships of a specified threatAssessmentRequest object. A threat assessment request can be one of the following types:
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -141,7 +133,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
         Update the navigation property threatAssessmentRequests in informationProtection
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -166,17 +158,15 @@ class ThreatAssessmentRequestItemRequestBuilder():
 
         return ResultsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ThreatAssessmentRequestItemRequestBuilderDeleteRequestConfiguration():
+    class ThreatAssessmentRequestItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
     @dataclass
     class ThreatAssessmentRequestItemRequestBuilderGetQueryParameters():
@@ -187,7 +177,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -205,31 +195,27 @@ class ThreatAssessmentRequestItemRequestBuilder():
         select: Optional[List[str]] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ThreatAssessmentRequestItemRequestBuilderGetRequestConfiguration():
+    class ThreatAssessmentRequestItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[ThreatAssessmentRequestItemRequestBuilder.ThreatAssessmentRequestItemRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ThreatAssessmentRequestItemRequestBuilderPatchRequestConfiguration():
+    class ThreatAssessmentRequestItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

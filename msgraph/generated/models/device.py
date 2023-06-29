@@ -76,7 +76,7 @@ class Device(DirectoryObject):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Device
         """
         if not parse_node:
@@ -141,8 +141,8 @@ class Device(DirectoryObject):
         super().serialize(writer)
         writer.write_bool_value("accountEnabled", self.account_enabled)
         writer.write_collection_of_object_values("alternativeSecurityIds", self.alternative_security_ids)
-        writer.write_datetime_value()("approximateLastSignInDateTime", self.approximate_last_sign_in_date_time)
-        writer.write_datetime_value()("complianceExpirationDateTime", self.compliance_expiration_date_time)
+        writer.write_datetime_value("approximateLastSignInDateTime", self.approximate_last_sign_in_date_time)
+        writer.write_datetime_value("complianceExpirationDateTime", self.compliance_expiration_date_time)
         writer.write_str_value("deviceCategory", self.device_category)
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("deviceMetadata", self.device_metadata)
@@ -155,7 +155,7 @@ class Device(DirectoryObject):
         writer.write_bool_value("isManaged", self.is_managed)
         writer.write_str_value("mdmAppId", self.mdm_app_id)
         writer.write_collection_of_object_values("memberOf", self.member_of)
-        writer.write_datetime_value()("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
+        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
         writer.write_str_value("operatingSystem", self.operating_system)
         writer.write_str_value("operatingSystemVersion", self.operating_system_version)
@@ -163,7 +163,7 @@ class Device(DirectoryObject):
         writer.write_str_value("profileType", self.profile_type)
         writer.write_collection_of_object_values("registeredOwners", self.registered_owners)
         writer.write_collection_of_object_values("registeredUsers", self.registered_users)
-        writer.write_datetime_value()("registrationDateTime", self.registration_date_time)
+        writer.write_datetime_value("registrationDateTime", self.registration_date_time)
         writer.write_collection_of_primitive_values("systemLabels", self.system_labels)
         writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
         writer.write_str_value("trustType", self.trust_type)

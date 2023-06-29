@@ -53,7 +53,7 @@ class MobileThreatDefenseConnector(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MobileThreatDefenseConnector
         """
         if not parse_node:
@@ -109,7 +109,7 @@ class MobileThreatDefenseConnector(Entity):
         writer.write_bool_value("iosDeviceBlockedOnMissingPartnerData", self.ios_device_blocked_on_missing_partner_data)
         writer.write_bool_value("iosEnabled", self.ios_enabled)
         writer.write_bool_value("iosMobileApplicationManagementEnabled", self.ios_mobile_application_management_enabled)
-        writer.write_datetime_value()("lastHeartbeatDateTime", self.last_heartbeat_date_time)
+        writer.write_datetime_value("lastHeartbeatDateTime", self.last_heartbeat_date_time)
         writer.write_bool_value("microsoftDefenderForEndpointAttachEnabled", self.microsoft_defender_for_endpoint_attach_enabled)
         writer.write_enum_value("partnerState", self.partner_state)
         writer.write_int_value("partnerUnresponsivenessThresholdInDays", self.partner_unresponsiveness_threshold_in_days)

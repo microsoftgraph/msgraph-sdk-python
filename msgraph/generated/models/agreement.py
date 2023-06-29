@@ -39,7 +39,7 @@ class Agreement(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Agreement
         """
         if not parse_node:
@@ -93,6 +93,6 @@ class Agreement(Entity):
         writer.write_bool_value("isPerDeviceAcceptanceRequired", self.is_per_device_acceptance_required)
         writer.write_bool_value("isViewingBeforeAcceptanceRequired", self.is_viewing_before_acceptance_required)
         writer.write_object_value("termsExpiration", self.terms_expiration)
-        writer.write_timedelta_value()("userReacceptRequiredFrequency", self.user_reaccept_required_frequency)
+        writer.write_timedelta_value("userReacceptRequiredFrequency", self.user_reaccept_required_frequency)
     
 

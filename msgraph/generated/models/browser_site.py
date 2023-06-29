@@ -52,7 +52,7 @@ class BrowserSite(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: BrowserSite
         """
         if not parse_node:
@@ -110,11 +110,11 @@ class BrowserSite(Entity):
         writer.write_bool_value("allowRedirect", self.allow_redirect)
         writer.write_str_value("comment", self.comment)
         writer.write_enum_value("compatibilityMode", self.compatibility_mode)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
-        writer.write_datetime_value()("deletedDateTime", self.deleted_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
         writer.write_collection_of_object_values("history", self.history)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_enum_value("mergeType", self.merge_type)
         writer.write_enum_value("status", self.status)
         writer.write_enum_value("targetEnvironment", self.target_environment)

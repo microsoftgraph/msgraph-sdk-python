@@ -47,7 +47,7 @@ class Subscription(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Subscription
         """
         if not parse_node:
@@ -98,7 +98,7 @@ class Subscription(Entity):
         writer.write_str_value("creatorId", self.creator_id)
         writer.write_str_value("encryptionCertificate", self.encryption_certificate)
         writer.write_str_value("encryptionCertificateId", self.encryption_certificate_id)
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_bool_value("includeResourceData", self.include_resource_data)
         writer.write_str_value("latestSupportedTlsVersion", self.latest_supported_tls_version)
         writer.write_str_value("lifecycleNotificationUrl", self.lifecycle_notification_url)

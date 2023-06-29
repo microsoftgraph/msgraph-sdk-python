@@ -36,7 +36,7 @@ class NotificationMessageTemplate(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: NotificationMessageTemplate
         """
         if not parse_node:
@@ -80,7 +80,7 @@ class NotificationMessageTemplate(Entity):
         writer.write_enum_value("brandingOptions", self.branding_options)
         writer.write_str_value("defaultLocale", self.default_locale)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("localizedNotificationMessages", self.localized_notification_messages)
         writer.write_collection_of_primitive_values("roleScopeTagIds", self.role_scope_tag_ids)
     

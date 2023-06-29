@@ -36,7 +36,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceGeoLocation
         """
         if not parse_node:
@@ -72,7 +72,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         writer.write_float_value("altitude", self.altitude)
         writer.write_float_value("heading", self.heading)
         writer.write_float_value("horizontalAccuracy", self.horizontal_accuracy)
-        writer.write_datetime_value()("lastCollectedDateTime", self.last_collected_date_time)
+        writer.write_datetime_value("lastCollectedDateTime", self.last_collected_date_time)
         writer.write_float_value("latitude", self.latitude)
         writer.write_float_value("longitude", self.longitude)
         writer.write_str_value("@odata.type", self.odata_type)

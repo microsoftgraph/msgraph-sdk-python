@@ -26,7 +26,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AssignedPlan
         """
         if not parse_node:
@@ -55,7 +55,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value()("assignedDateTime", self.assigned_date_time)
+        writer.write_datetime_value("assignedDateTime", self.assigned_date_time)
         writer.write_str_value("capabilityStatus", self.capability_status)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("service", self.service)

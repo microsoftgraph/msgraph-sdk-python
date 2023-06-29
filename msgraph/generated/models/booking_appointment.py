@@ -16,9 +16,6 @@ from .entity import Entity
 
 @dataclass
 class BookingAppointment(Entity):
-    """
-    Represents a booked appointment of a service by a customer in a business.
-    """
     # Additional information that is sent to the customer when an appointment is confirmed.
     additional_information: Optional[str] = None
     # The URL of the meeting to join anonymously.
@@ -75,7 +72,7 @@ class BookingAppointment(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: BookingAppointment
         """
         if not parse_node:
@@ -149,8 +146,8 @@ class BookingAppointment(Entity):
         writer.write_str_value("joinWebUrl", self.join_web_url)
         writer.write_int_value("maximumAttendeesCount", self.maximum_attendees_count)
         writer.write_bool_value("optOutOfCustomerEmail", self.opt_out_of_customer_email)
-        writer.write_timedelta_value()("postBuffer", self.post_buffer)
-        writer.write_timedelta_value()("preBuffer", self.pre_buffer)
+        writer.write_timedelta_value("postBuffer", self.post_buffer)
+        writer.write_timedelta_value("preBuffer", self.pre_buffer)
         writer.write_float_value("price", self.price)
         writer.write_enum_value("priceType", self.price_type)
         writer.write_collection_of_object_values("reminders", self.reminders)

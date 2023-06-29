@@ -7,12 +7,15 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .teams_app import TeamsApp
     from .teams_app_definition import TeamsAppDefinition
+    from .teams_app_permission_set import TeamsAppPermissionSet
     from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
 from .entity import Entity
 
 @dataclass
 class TeamsAppInstallation(Entity):
+    # The consentedPermissionSet property
+    consented_permission_set: Optional[TeamsAppPermissionSet] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The app that is installed.
@@ -25,7 +28,7 @@ class TeamsAppInstallation(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TeamsAppInstallation
         """
         if not parse_node:
@@ -48,14 +51,17 @@ class TeamsAppInstallation(Entity):
         from .entity import Entity
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition
+        from .teams_app_permission_set import TeamsAppPermissionSet
         from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
         from .entity import Entity
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition
+        from .teams_app_permission_set import TeamsAppPermissionSet
         from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "consentedPermissionSet": lambda n : setattr(self, 'consented_permission_set', n.get_object_value(TeamsAppPermissionSet)),
             "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(TeamsApp)),
             "teamsAppDefinition": lambda n : setattr(self, 'teams_app_definition', n.get_object_value(TeamsAppDefinition)),
         }
@@ -72,6 +78,7 @@ class TeamsAppInstallation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("consentedPermissionSet", self.consented_permission_set)
         writer.write_object_value("teamsApp", self.teams_app)
         writer.write_object_value("teamsAppDefinition", self.teams_app_definition)
     

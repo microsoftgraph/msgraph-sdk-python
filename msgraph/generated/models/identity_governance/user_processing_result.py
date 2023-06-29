@@ -45,7 +45,7 @@ class UserProcessingResult(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UserProcessingResult
         """
         if not parse_node:
@@ -95,11 +95,11 @@ class UserProcessingResult(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("completedDateTime", self.completed_date_time)
+        writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_int_value("failedTasksCount", self.failed_tasks_count)
         writer.write_enum_value("processingStatus", self.processing_status)
-        writer.write_datetime_value()("scheduledDateTime", self.scheduled_date_time)
-        writer.write_datetime_value()("startedDateTime", self.started_date_time)
+        writer.write_datetime_value("scheduledDateTime", self.scheduled_date_time)
+        writer.write_datetime_value("startedDateTime", self.started_date_time)
         writer.write_object_value("subject", self.subject)
         writer.write_collection_of_object_values("taskProcessingResults", self.task_processing_results)
         writer.write_int_value("totalTasksCount", self.total_tasks_count)

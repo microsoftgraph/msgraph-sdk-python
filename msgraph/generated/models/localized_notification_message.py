@@ -32,7 +32,7 @@ class LocalizedNotificationMessage(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: LocalizedNotificationMessage
         """
         if not parse_node:
@@ -69,7 +69,7 @@ class LocalizedNotificationMessage(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("isDefault", self.is_default)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("locale", self.locale)
         writer.write_str_value("messageTemplate", self.message_template)
         writer.write_str_value("subject", self.subject)

@@ -29,7 +29,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UriClickSecurityState
         """
         if not parse_node:
@@ -61,7 +61,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("clickAction", self.click_action)
-        writer.write_datetime_value()("clickDateTime", self.click_date_time)
+        writer.write_datetime_value("clickDateTime", self.click_date_time)
         writer.write_str_value("id", self.id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("sourceId", self.source_id)

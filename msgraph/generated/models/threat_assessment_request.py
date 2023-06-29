@@ -46,7 +46,7 @@ class ThreatAssessmentRequest(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ThreatAssessmentRequest
         """
         if not parse_node:
@@ -130,7 +130,7 @@ class ThreatAssessmentRequest(Entity):
         writer.write_enum_value("category", self.category)
         writer.write_enum_value("contentType", self.content_type)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_enum_value("expectedAssessment", self.expected_assessment)
         writer.write_enum_value("requestSource", self.request_source)
         writer.write_collection_of_object_values("results", self.results)

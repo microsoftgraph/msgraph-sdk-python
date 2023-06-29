@@ -32,7 +32,7 @@ class ManagedIOSLobApp(ManagedMobileLobApp):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ManagedIOSLobApp
         """
         if not parse_node:
@@ -76,7 +76,7 @@ class ManagedIOSLobApp(ManagedMobileLobApp):
         writer.write_object_value("applicableDeviceType", self.applicable_device_type)
         writer.write_str_value("buildNumber", self.build_number)
         writer.write_str_value("bundleId", self.bundle_id)
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
         writer.write_str_value("versionNumber", self.version_number)
     

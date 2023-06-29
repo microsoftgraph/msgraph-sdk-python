@@ -32,7 +32,7 @@ class PrintConnector(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: PrintConnector
         """
         if not parse_node:
@@ -76,6 +76,6 @@ class PrintConnector(Entity):
         writer.write_str_value("fullyQualifiedDomainName", self.fully_qualified_domain_name)
         writer.write_object_value("location", self.location)
         writer.write_str_value("operatingSystem", self.operating_system)
-        writer.write_datetime_value()("registeredDateTime", self.registered_date_time)
+        writer.write_datetime_value("registeredDateTime", self.registered_date_time)
     
 

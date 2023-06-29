@@ -25,7 +25,7 @@ class SignInActivity(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SignInActivity
         """
         if not parse_node:
@@ -54,9 +54,9 @@ class SignInActivity(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value()("lastNonInteractiveSignInDateTime", self.last_non_interactive_sign_in_date_time)
+        writer.write_datetime_value("lastNonInteractiveSignInDateTime", self.last_non_interactive_sign_in_date_time)
         writer.write_str_value("lastNonInteractiveSignInRequestId", self.last_non_interactive_sign_in_request_id)
-        writer.write_datetime_value()("lastSignInDateTime", self.last_sign_in_date_time)
+        writer.write_datetime_value("lastSignInDateTime", self.last_sign_in_date_time)
         writer.write_str_value("lastSignInRequestId", self.last_sign_in_request_id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

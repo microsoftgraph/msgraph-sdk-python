@@ -22,7 +22,7 @@ class PasswordAuthenticationMethod(AuthenticationMethod):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: PasswordAuthenticationMethod
         """
         if not parse_node:
@@ -55,7 +55,7 @@ class PasswordAuthenticationMethod(AuthenticationMethod):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("password", self.password)
     
 

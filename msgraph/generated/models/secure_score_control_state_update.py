@@ -27,7 +27,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SecureScoreControlStateUpdate
         """
         if not parse_node:
@@ -62,7 +62,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("state", self.state)
         writer.write_str_value("updatedBy", self.updated_by)
-        writer.write_datetime_value()("updatedDateTime", self.updated_date_time)
+        writer.write_datetime_value("updatedDateTime", self.updated_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

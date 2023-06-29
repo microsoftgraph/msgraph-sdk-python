@@ -36,7 +36,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: FindMeetingTimesPostRequestBody
         """
         if not parse_node:
@@ -80,7 +80,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_bool_value("isOrganizerOptional", self.is_organizer_optional)
         writer.write_object_value("locationConstraint", self.location_constraint)
         writer.write_int_value("maxCandidates", self.max_candidates)
-        writer.write_timedelta_value()("meetingDuration", self.meeting_duration)
+        writer.write_timedelta_value("meetingDuration", self.meeting_duration)
         writer.write_float_value("minimumAttendeePercentage", self.minimum_attendee_percentage)
         writer.write_bool_value("returnSuggestionReasons", self.return_suggestion_reasons)
         writer.write_object_value("timeConstraint", self.time_constraint)

@@ -33,7 +33,7 @@ class DeviceConfigurationDeviceOverview(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceConfigurationDeviceOverview
         """
         if not parse_node:
@@ -74,7 +74,7 @@ class DeviceConfigurationDeviceOverview(Entity):
         writer.write_int_value("configurationVersion", self.configuration_version)
         writer.write_int_value("errorCount", self.error_count)
         writer.write_int_value("failedCount", self.failed_count)
-        writer.write_datetime_value()("lastUpdateDateTime", self.last_update_date_time)
+        writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
         writer.write_int_value("notApplicableCount", self.not_applicable_count)
         writer.write_int_value("pendingCount", self.pending_count)
         writer.write_int_value("successCount", self.success_count)

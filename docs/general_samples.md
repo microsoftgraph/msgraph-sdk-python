@@ -5,11 +5,7 @@ This creates a default Graph client that uses `https://graph.microsoft.com` as t
 
 ```py
 from azure.identity import AuthorizationCodeCredential
-from kiota_abstactions.api_error import APIError
 from msgraph import GraphServiceClient
-
-# Set the event loop policy for Windows
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 credentials = AuthorizationCodeCredential(
     tenant_id: str,
@@ -40,13 +36,9 @@ a delegated permission. Alternatively, using application permissions, you can re
 
 ```py
 async def get_me():
-    try:
-        me = await client.me.get()
-        if me:
-            print(me.user_principal_name, me.display_name, me.id)
-    except APIError as e:
-        print(e.error.message)
-
+    me = await client.me.get()
+    if me:
+        print(me.user_principal_name, me.display_name, me.id)
 asyncio.run(get_me())
 ```
 
@@ -56,13 +48,10 @@ The Graph API response is deserialized into a collection of `Message` - a model 
 
 ```py
 async def get_user_messages():
-    try:
-        messages = await (client.users.by_user_id('USER_ID').messages.get())
-        if messages and messages.value:
-            for msg in messages.value:
-                print(msg.subject, msg.id, msg.from_)
-    except APIError as e:
-        print(e.error.message)
+    messages = await (client.users.by_user_id('USER_ID').messages.get())
+    if messages and messages.value:
+        for msg in messages.value:
+            print(msg.subject, msg.id, msg.from_)
 asyncio.run(get_user_messages())
 ```
 
@@ -73,19 +62,16 @@ Each execution method i.e. `get()`, `post()`, `put()`, `patch()`, `delete()` acc
 from msgraph.generated.users.item.messages.messages_request_builder import MessagesRequestBuilder
 
 async def get_user_messages():
-    try:
-        request_config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfiguration(
-            headers={"prefer": "outlook.body-content-type=text"}
-        )
+    request_config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfiguration(
+        headers={"prefer": "outlook.body-content-type=text"}
+    )
 
-        messages = await (client.users.by_user_id('USER_ID')
-                        .messages
-                        .get(request_configuration=request_config))
-        if messages and messages.value:
-            for msg in messages.value:
-                print(msg.subject, msg.id, msg.from_)
-    except Exception as e:
-        print(e.error.message)
+    messages = await (client.users.by_user_id('USER_ID')
+                    .messages
+                    .get(request_configuration=request_config))
+    if messages and messages.value:
+        for msg in messages.value:
+            print(msg.subject, msg.id, msg.from_)
 asyncio.run(get_user_messages())
 ```
 
@@ -95,22 +81,19 @@ asyncio.run(get_user_messages())
 from msgraph.generated.users.item.messages.messages_request_builder import MessagesRequestBuilder
 
 async def get_5_user_messages():
-    try:
-        query_params = MessagesRequestBuilder.MessagesRequestBuilderGetQueryParameters(
-            select=['subject', 'from'], skip = 2, top=5
-        )
-        request_config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfiguration(
-            query_parameters=query_params
-        )
+    query_params = MessagesRequestBuilder.MessagesRequestBuilderGetQueryParameters(
+        select=['subject', 'from'], skip = 2, top=5
+    )
+    request_config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfiguration(
+        query_parameters=query_params
+    )
 
-        messages = await (client.users.by_user_id('USER_ID')
-                        .messages
-                        .get(request_configuration=request_config))
-        if messages and messages.value:
-            for msg in messages.value:
-                print(msg.subject)
-    except Exception as e:
-        print(e.error.message)
+    messages = await (client.users.by_user_id('USER_ID')
+                    .messages
+                    .get(request_configuration=request_config))
+    if messages and messages.value:
+        for msg in messages.value:
+            print(msg.subject)
 asyncio.run(get_5_user_messages())
 ```
 
@@ -124,23 +107,19 @@ from kiota_http.middleware.options import ResponseHandlerOption
 from msgraph.generated.users.item.messages.messages_request_builder import MessagesRequestBuilder
 
 async def get_user_messages():
-    try:
-        request_config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfiguration(
-            options=[ResponseHandlerOption(NativeResponseHandler())], )
-        messages = await client.users.by_user_id('USER_ID').messages.get(request_configuration=request_config)
-        print(messages.json())
-    except APIError as e:
-        print(e.error.message)
+    request_config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfiguration(
+        options=[ResponseHandlerOption(NativeResponseHandler())], )
+    messages = await client.users.by_user_id('USER_ID').messages.get(request_configuration=request_config)
+    print(messages.json())
 asyncio.run(get_user())
 ```
 
-## 8. Send an email
+## 8. Post Request
 
 This sample sends an email. The request body is constructed using the provided models.
 Ensure you have the [right permissions](https://docs.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0&tabs=http#permissions).
 
 ```py
-from kiota_abstractions.api_error import APIError
 from msgraph import GraphServiceClient
 
 from msgraph.generated.me.send_mail.send_mail_post_request_body import SendMailPostRequestBody
@@ -193,9 +172,5 @@ async def send_mail():
         request_body = SendMailPostRequestBody()
         request_body.message = message
         response = await client.me.send_mail.post(request_body)
-
-    except Exception as e:
-        print(e.error.message)
 asyncio.run(send_mail())
-
 ```

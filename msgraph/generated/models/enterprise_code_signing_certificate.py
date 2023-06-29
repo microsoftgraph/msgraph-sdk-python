@@ -36,7 +36,7 @@ class EnterpriseCodeSigningCertificate(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: EnterpriseCodeSigningCertificate
         """
         if not parse_node:
@@ -78,12 +78,12 @@ class EnterpriseCodeSigningCertificate(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bytes_value("content", self.content)
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("issuer", self.issuer)
         writer.write_str_value("issuerName", self.issuer_name)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("subject", self.subject)
         writer.write_str_value("subjectName", self.subject_name)
-        writer.write_datetime_value()("uploadDateTime", self.upload_date_time)
+        writer.write_datetime_value("uploadDateTime", self.upload_date_time)
     
 

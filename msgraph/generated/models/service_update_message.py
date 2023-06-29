@@ -45,7 +45,7 @@ class ServiceUpdateMessage(ServiceAnnouncementBase):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ServiceUpdateMessage
         """
         if not parse_node:
@@ -97,7 +97,7 @@ class ServiceUpdateMessage(ServiceAnnouncementBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("actionRequiredByDateTime", self.action_required_by_date_time)
+        writer.write_datetime_value("actionRequiredByDateTime", self.action_required_by_date_time)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_bytes_value("attachmentsArchive", self.attachments_archive)
         writer.write_object_value("body", self.body)

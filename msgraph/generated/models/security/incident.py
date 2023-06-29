@@ -53,7 +53,7 @@ class Incident(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Incident
         """
         if not parse_node:
@@ -114,12 +114,12 @@ class Incident(Entity):
         writer.write_str_value("assignedTo", self.assigned_to)
         writer.write_enum_value("classification", self.classification)
         writer.write_collection_of_object_values("comments", self.comments)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_primitive_values("customTags", self.custom_tags)
         writer.write_enum_value("determination", self.determination)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("incidentWebUrl", self.incident_web_url)
-        writer.write_datetime_value()("lastUpdateDateTime", self.last_update_date_time)
+        writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
         writer.write_str_value("redirectIncidentId", self.redirect_incident_id)
         writer.write_enum_value("severity", self.severity)
         writer.write_enum_value("status", self.status)

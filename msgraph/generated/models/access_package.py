@@ -42,7 +42,7 @@ class AccessPackage(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackage
         """
         if not parse_node:
@@ -92,12 +92,12 @@ class AccessPackage(Entity):
         writer.write_collection_of_object_values("accessPackagesIncompatibleWith", self.access_packages_incompatible_with)
         writer.write_collection_of_object_values("assignmentPolicies", self.assignment_policies)
         writer.write_object_value("catalog", self.catalog)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("incompatibleAccessPackages", self.incompatible_access_packages)
         writer.write_collection_of_object_values("incompatibleGroups", self.incompatible_groups)
         writer.write_bool_value("isHidden", self.is_hidden)
-        writer.write_datetime_value()("modifiedDateTime", self.modified_date_time)
+        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
     
 

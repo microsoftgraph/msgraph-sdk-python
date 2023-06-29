@@ -82,7 +82,7 @@ class EducationAssignment(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: EducationAssignment
         """
         if not parse_node:
@@ -168,9 +168,9 @@ class EducationAssignment(Entity):
         writer.write_object_value("assignTo", self.assign_to)
         writer.write_collection_of_object_values("categories", self.categories)
         writer.write_str_value("classId", self.class_id)
-        writer.write_datetime_value()("closeDateTime", self.close_date_time)
+        writer.write_datetime_value("closeDateTime", self.close_date_time)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value()("dueDateTime", self.due_date_time)
+        writer.write_datetime_value("dueDateTime", self.due_date_time)
         writer.write_object_value("grading", self.grading)
         writer.write_object_value("instructions", self.instructions)
         writer.write_str_value("notificationChannelUrl", self.notification_channel_url)

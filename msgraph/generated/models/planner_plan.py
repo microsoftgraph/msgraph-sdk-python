@@ -40,7 +40,7 @@ class PlannerPlan(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: PlannerPlan
         """
         if not parse_node:
@@ -92,7 +92,7 @@ class PlannerPlan(Entity):
         writer.write_collection_of_object_values("buckets", self.buckets)
         writer.write_object_value("container", self.container)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("details", self.details)
         writer.write_str_value("owner", self.owner)
         writer.write_collection_of_object_values("tasks", self.tasks)

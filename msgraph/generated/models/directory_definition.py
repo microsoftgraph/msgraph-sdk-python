@@ -33,7 +33,7 @@ class DirectoryDefinition(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DirectoryDefinition
         """
         if not parse_node:
@@ -75,7 +75,7 @@ class DirectoryDefinition(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("discoverabilities", self.discoverabilities)
-        writer.write_datetime_value()("discoveryDateTime", self.discovery_date_time)
+        writer.write_datetime_value("discoveryDateTime", self.discovery_date_time)
         writer.write_str_value("name", self.name)
         writer.write_collection_of_object_values("objects", self.objects)
         writer.write_bool_value("readOnly", self.read_only)

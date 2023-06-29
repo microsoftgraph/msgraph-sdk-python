@@ -23,7 +23,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: InnerError
         """
         if not parse_node:
@@ -52,7 +52,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("client-request-id", self.client_request_id)
-        writer.write_datetime_value()("Date", self.date)
+        writer.write_datetime_value("Date", self.date)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("request-id", self.request_id)
         writer.write_additional_data_value(self.additional_data)

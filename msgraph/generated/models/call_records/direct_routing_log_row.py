@@ -59,7 +59,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DirectRoutingLogRow
         """
         if not parse_node:
@@ -111,17 +111,17 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         writer.write_str_value("callerNumber", self.caller_number)
         writer.write_str_value("correlationId", self.correlation_id)
         writer.write_int_value("duration", self.duration)
-        writer.write_datetime_value()("endDateTime", self.end_date_time)
-        writer.write_datetime_value()("failureDateTime", self.failure_date_time)
+        writer.write_datetime_value("endDateTime", self.end_date_time)
+        writer.write_datetime_value("failureDateTime", self.failure_date_time)
         writer.write_int_value("finalSipCode", self.final_sip_code)
         writer.write_str_value("finalSipCodePhrase", self.final_sip_code_phrase)
         writer.write_str_value("id", self.id)
-        writer.write_datetime_value()("inviteDateTime", self.invite_date_time)
+        writer.write_datetime_value("inviteDateTime", self.invite_date_time)
         writer.write_bool_value("mediaBypassEnabled", self.media_bypass_enabled)
         writer.write_str_value("mediaPathLocation", self.media_path_location)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("signalingLocation", self.signaling_location)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_bool_value("successfulCall", self.successful_call)
         writer.write_str_value("trunkFullyQualifiedDomainName", self.trunk_fully_qualified_domain_name)
         writer.write_str_value("userDisplayName", self.user_display_name)

@@ -29,7 +29,7 @@ class EducationAssignmentDefaults(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: EducationAssignmentDefaults
         """
         if not parse_node:
@@ -70,7 +70,7 @@ class EducationAssignmentDefaults(Entity):
         super().serialize(writer)
         writer.write_enum_value("addToCalendarAction", self.add_to_calendar_action)
         writer.write_enum_value("addedStudentAction", self.added_student_action)
-        writer.write_time_value()("dueTime", self.due_time)
+        writer.write_time_value("dueTime", self.due_time)
         writer.write_str_value("notificationChannelUrl", self.notification_channel_url)
     
 

@@ -39,7 +39,7 @@ class UnifiedRoleManagementPolicy(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleManagementPolicy
         """
         if not parse_node:
@@ -88,7 +88,7 @@ class UnifiedRoleManagementPolicy(Entity):
         writer.write_collection_of_object_values("effectiveRules", self.effective_rules)
         writer.write_bool_value("isOrganizationDefault", self.is_organization_default)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("rules", self.rules)
         writer.write_str_value("scopeId", self.scope_id)
         writer.write_str_value("scopeType", self.scope_type)

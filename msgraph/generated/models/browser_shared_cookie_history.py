@@ -37,7 +37,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: BrowserSharedCookieHistory
         """
         if not parse_node:
@@ -83,7 +83,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("path", self.path)
-        writer.write_datetime_value()("publishedDateTime", self.published_date_time)
+        writer.write_datetime_value("publishedDateTime", self.published_date_time)
         writer.write_enum_value("sourceEnvironment", self.source_environment)
         writer.write_additional_data_value(self.additional_data)
     

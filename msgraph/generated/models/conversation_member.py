@@ -31,7 +31,7 @@ class ConversationMember(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ConversationMember
         """
         if not parse_node:
@@ -107,6 +107,6 @@ class ConversationMember(Entity):
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_primitive_values("roles", self.roles)
-        writer.write_datetime_value()("visibleHistoryStartDateTime", self.visible_history_start_date_time)
+        writer.write_datetime_value("visibleHistoryStartDateTime", self.visible_history_start_date_time)
     
 

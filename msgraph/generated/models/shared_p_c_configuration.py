@@ -44,7 +44,7 @@ class SharedPCConfiguration(DeviceConfiguration):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SharedPCConfiguration
         """
         if not parse_node:
@@ -102,6 +102,6 @@ class SharedPCConfiguration(DeviceConfiguration):
         writer.write_int_value("idleTimeBeforeSleepInSeconds", self.idle_time_before_sleep_in_seconds)
         writer.write_str_value("kioskAppDisplayName", self.kiosk_app_display_name)
         writer.write_str_value("kioskAppUserModelId", self.kiosk_app_user_model_id)
-        writer.write_time_value()("maintenanceStartTime", self.maintenance_start_time)
+        writer.write_time_value("maintenanceStartTime", self.maintenance_start_time)
     
 

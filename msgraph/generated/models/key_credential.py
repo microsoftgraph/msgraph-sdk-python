@@ -34,7 +34,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: KeyCredential
         """
         if not parse_node:
@@ -69,11 +69,11 @@ class KeyCredential(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bytes_value("customKeyIdentifier", self.custom_key_identifier)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_bytes_value("key", self.key)
         writer.write_uuid_value("keyId", self.key_id)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("type", self.type)
         writer.write_str_value("usage", self.usage)
         writer.write_additional_data_value(self.additional_data)

@@ -43,7 +43,7 @@ class DeviceManagementPartner(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceManagementPartner
         """
         if not parse_node:
@@ -92,11 +92,11 @@ class DeviceManagementPartner(Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("groupsRequiringPartnerEnrollment", self.groups_requiring_partner_enrollment)
         writer.write_bool_value("isConfigured", self.is_configured)
-        writer.write_datetime_value()("lastHeartbeatDateTime", self.last_heartbeat_date_time)
+        writer.write_datetime_value("lastHeartbeatDateTime", self.last_heartbeat_date_time)
         writer.write_enum_value("partnerAppType", self.partner_app_type)
         writer.write_enum_value("partnerState", self.partner_state)
         writer.write_str_value("singleTenantAppId", self.single_tenant_app_id)
-        writer.write_datetime_value()("whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime", self.when_partner_devices_will_be_marked_as_non_compliant_date_time)
-        writer.write_datetime_value()("whenPartnerDevicesWillBeRemovedDateTime", self.when_partner_devices_will_be_removed_date_time)
+        writer.write_datetime_value("whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime", self.when_partner_devices_will_be_marked_as_non_compliant_date_time)
+        writer.write_datetime_value("whenPartnerDevicesWillBeRemovedDateTime", self.when_partner_devices_will_be_removed_date_time)
     
 

@@ -39,7 +39,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ArchivedPrintJob
         """
         if not parse_node:
@@ -80,11 +80,11 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("acquiredByPrinter", self.acquired_by_printer)
-        writer.write_datetime_value()("acquiredDateTime", self.acquired_date_time)
-        writer.write_datetime_value()("completionDateTime", self.completion_date_time)
+        writer.write_datetime_value("acquiredDateTime", self.acquired_date_time)
+        writer.write_datetime_value("completionDateTime", self.completion_date_time)
         writer.write_int_value("copiesPrinted", self.copies_printed)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("id", self.id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("printerId", self.printer_id)

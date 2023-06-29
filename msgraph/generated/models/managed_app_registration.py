@@ -58,7 +58,7 @@ class ManagedAppRegistration(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAppRegistration
         """
         if not parse_node:
@@ -131,13 +131,13 @@ class ManagedAppRegistration(Entity):
         writer.write_object_value("appIdentifier", self.app_identifier)
         writer.write_str_value("applicationVersion", self.application_version)
         writer.write_collection_of_object_values("appliedPolicies", self.applied_policies)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("deviceName", self.device_name)
         writer.write_str_value("deviceTag", self.device_tag)
         writer.write_str_value("deviceType", self.device_type)
         writer.write_collection_of_enum_values("flaggedReasons", self.flagged_reasons)
         writer.write_collection_of_object_values("intendedPolicies", self.intended_policies)
-        writer.write_datetime_value()("lastSyncDateTime", self.last_sync_date_time)
+        writer.write_datetime_value("lastSyncDateTime", self.last_sync_date_time)
         writer.write_str_value("managementSdkVersion", self.management_sdk_version)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_str_value("platformVersion", self.platform_version)

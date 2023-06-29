@@ -69,7 +69,7 @@ class BookingService(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: BookingService
         """
         if not parse_node:
@@ -133,7 +133,7 @@ class BookingService(Entity):
         super().serialize(writer)
         writer.write_str_value("additionalInformation", self.additional_information)
         writer.write_collection_of_object_values("customQuestions", self.custom_questions)
-        writer.write_timedelta_value()("defaultDuration", self.default_duration)
+        writer.write_timedelta_value("defaultDuration", self.default_duration)
         writer.write_object_value("defaultLocation", self.default_location)
         writer.write_float_value("defaultPrice", self.default_price)
         writer.write_enum_value("defaultPriceType", self.default_price_type)
@@ -146,8 +146,8 @@ class BookingService(Entity):
         writer.write_str_value("languageTag", self.language_tag)
         writer.write_int_value("maximumAttendeesCount", self.maximum_attendees_count)
         writer.write_str_value("notes", self.notes)
-        writer.write_timedelta_value()("postBuffer", self.post_buffer)
-        writer.write_timedelta_value()("preBuffer", self.pre_buffer)
+        writer.write_timedelta_value("postBuffer", self.post_buffer)
+        writer.write_timedelta_value("preBuffer", self.pre_buffer)
         writer.write_object_value("schedulingPolicy", self.scheduling_policy)
         writer.write_bool_value("smsNotificationsEnabled", self.sms_notifications_enabled)
         writer.write_collection_of_primitive_values("staffMemberIds", self.staff_member_ids)

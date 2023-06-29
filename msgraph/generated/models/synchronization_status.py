@@ -48,7 +48,7 @@ class SynchronizationStatus(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SynchronizationStatus
         """
         if not parse_node:
@@ -106,8 +106,8 @@ class SynchronizationStatus(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("progress", self.progress)
         writer.write_object_value("quarantine", self.quarantine)
-        writer.write_datetime_value()("steadyStateFirstAchievedTime", self.steady_state_first_achieved_time)
-        writer.write_datetime_value()("steadyStateLastAchievedTime", self.steady_state_last_achieved_time)
+        writer.write_datetime_value("steadyStateFirstAchievedTime", self.steady_state_first_achieved_time)
+        writer.write_datetime_value("steadyStateLastAchievedTime", self.steady_state_last_achieved_time)
         writer.write_collection_of_object_values("synchronizedEntryCountByType", self.synchronized_entry_count_by_type)
         writer.write_str_value("troubleshootingUrl", self.troubleshooting_url)
         writer.write_additional_data_value(self.additional_data)

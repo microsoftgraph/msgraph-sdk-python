@@ -69,7 +69,7 @@ class DeviceAppManagement(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceAppManagement
         """
         if not parse_node:
@@ -156,8 +156,8 @@ class DeviceAppManagement(Entity):
         writer.write_collection_of_object_values("managedEBooks", self.managed_e_books)
         writer.write_collection_of_object_values("mdmWindowsInformationProtectionPolicies", self.mdm_windows_information_protection_policies)
         writer.write_str_value("microsoftStoreForBusinessLanguage", self.microsoft_store_for_business_language)
-        writer.write_datetime_value()("microsoftStoreForBusinessLastCompletedApplicationSyncTime", self.microsoft_store_for_business_last_completed_application_sync_time)
-        writer.write_datetime_value()("microsoftStoreForBusinessLastSuccessfulSyncDateTime", self.microsoft_store_for_business_last_successful_sync_date_time)
+        writer.write_datetime_value("microsoftStoreForBusinessLastCompletedApplicationSyncTime", self.microsoft_store_for_business_last_completed_application_sync_time)
+        writer.write_datetime_value("microsoftStoreForBusinessLastSuccessfulSyncDateTime", self.microsoft_store_for_business_last_successful_sync_date_time)
         writer.write_collection_of_object_values("mobileAppCategories", self.mobile_app_categories)
         writer.write_collection_of_object_values("mobileAppConfigurations", self.mobile_app_configurations)
         writer.write_collection_of_object_values("mobileApps", self.mobile_apps)

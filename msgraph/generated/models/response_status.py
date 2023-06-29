@@ -24,7 +24,7 @@ class ResponseStatus(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ResponseStatus
         """
         if not parse_node:
@@ -57,7 +57,7 @@ class ResponseStatus(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("response", self.response)
-        writer.write_datetime_value()("time", self.time)
+        writer.write_datetime_value("time", self.time)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 import datetime
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -19,7 +20,7 @@ if TYPE_CHECKING:
     from .microsoft_graph_call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time.microsoft_graph_call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder import MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder
     from .microsoft_graph_call_records_get_pstn_calls_with_from_date_time_with_to_date_time.microsoft_graph_call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder import MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder
 
-class CallRecordsRequestBuilder():
+class CallRecordsRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the callRecords property of the microsoft.graph.cloudCommunications entity.
     """
@@ -27,19 +28,10 @@ class CallRecordsRequestBuilder():
         """
         Instantiates a new CallRecordsRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/communications/callRecords{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/communications/callRecords{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_call_record_id(self,call_record_id: str) -> CallRecordItemRequestBuilder:
         """
@@ -60,7 +52,7 @@ class CallRecordsRequestBuilder():
         """
         Retrieve the properties and relationships of a callRecord object. There are two ways to get the **id** of a **callRecord**:
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CallRecordCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -82,8 +74,8 @@ class CallRecordsRequestBuilder():
         """
         Provides operations to call the getDirectRoutingCalls method.
         Args:
-            fromDateTime: Usage: fromDateTime={fromDateTime}
-            toDateTime: Usage: toDateTime={toDateTime}
+            from_date_time: Usage: fromDateTime={fromDateTime}
+            to_date_time: Usage: toDateTime={toDateTime}
         Returns: MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder
         """
         if not from_date_time:
@@ -98,8 +90,8 @@ class CallRecordsRequestBuilder():
         """
         Provides operations to call the getPstnCalls method.
         Args:
-            fromDateTime: Usage: fromDateTime={fromDateTime}
-            toDateTime: Usage: toDateTime={toDateTime}
+            from_date_time: Usage: fromDateTime={fromDateTime}
+            to_date_time: Usage: toDateTime={toDateTime}
         Returns: MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder
         """
         if not from_date_time:
@@ -115,7 +107,7 @@ class CallRecordsRequestBuilder():
         Create new navigation property to callRecords for communications
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CallRecord]
         """
         if not body:
@@ -139,7 +131,7 @@ class CallRecordsRequestBuilder():
         """
         Retrieve the properties and relationships of a callRecord object. There are two ways to get the **id** of a **callRecord**:
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -158,7 +150,7 @@ class CallRecordsRequestBuilder():
         Create new navigation property to callRecords for communications
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -192,7 +184,7 @@ class CallRecordsRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -240,31 +232,27 @@ class CallRecordsRequestBuilder():
         top: Optional[int] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class CallRecordsRequestBuilderGetRequestConfiguration():
+    class CallRecordsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[CallRecordsRequestBuilder.CallRecordsRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class CallRecordsRequestBuilderPostRequestConfiguration():
+    class CallRecordsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

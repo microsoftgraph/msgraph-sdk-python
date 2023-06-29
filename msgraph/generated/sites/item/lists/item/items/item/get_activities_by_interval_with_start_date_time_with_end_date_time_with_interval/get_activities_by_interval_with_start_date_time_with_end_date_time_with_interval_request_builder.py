@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -13,7 +14,7 @@ if TYPE_CHECKING:
     from ........models.o_data_errors.o_data_error import ODataError
     from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_response import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalResponse
 
-class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder():
+class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the getActivitiesByInterval method.
     """
@@ -21,31 +22,19 @@ class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequest
         """
         Instantiates a new GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder and sets the default values.
         Args:
-            endDateTime: Usage: endDateTime='{endDateTime}'
+            end_date_time: Usage: endDateTime='{endDateTime}'
             interval: Usage: interval='{interval}'
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
-            startDateTime: Usage: startDateTime='{startDateTime}'
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
+            start_date_time: Usage: startDateTime='{startDateTime}'
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/items/{listItem%2Did}/getActivitiesByInterval(startDateTime='{startDateTime}',endDateTime='{endDateTime}',interval='{interval}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params[""] = endDateTime
-        url_tpl_params[""] = interval
-        url_tpl_params[""] = startDateTime
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/items/{listItem%2Did}/getActivitiesByInterval(startDateTime='{startDateTime}',endDateTime='{endDateTime}',interval='{interval}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilderGetRequestConfiguration] = None) -> Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalResponse]:
         """
         Invoke function getActivitiesByInterval
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalResponse]
         """
         request_info = self.to_get_request_information(
@@ -67,7 +56,7 @@ class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequest
         """
         Invoke function getActivitiesByInterval
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -90,7 +79,7 @@ class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequest
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -133,17 +122,15 @@ class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequest
         top: Optional[int] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilderGetRequestConfiguration():
+    class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilderGetQueryParameters] = None
 

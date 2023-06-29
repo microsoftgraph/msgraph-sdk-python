@@ -34,7 +34,7 @@ class ApprovalStage(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ApprovalStage
         """
         if not parse_node:
@@ -79,7 +79,7 @@ class ApprovalStage(Entity):
         writer.write_str_value("justification", self.justification)
         writer.write_str_value("reviewResult", self.review_result)
         writer.write_object_value("reviewedBy", self.reviewed_by)
-        writer.write_datetime_value()("reviewedDateTime", self.reviewed_date_time)
+        writer.write_datetime_value("reviewedDateTime", self.reviewed_date_time)
         writer.write_str_value("status", self.status)
     
 

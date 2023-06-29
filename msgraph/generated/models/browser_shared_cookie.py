@@ -47,7 +47,7 @@ class BrowserSharedCookie(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: BrowserSharedCookie
         """
         if not parse_node:
@@ -99,14 +99,14 @@ class BrowserSharedCookie(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("comment", self.comment)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
-        writer.write_datetime_value()("deletedDateTime", self.deleted_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("history", self.history)
         writer.write_bool_value("hostOnly", self.host_only)
         writer.write_str_value("hostOrDomain", self.host_or_domain)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("path", self.path)
         writer.write_enum_value("sourceEnvironment", self.source_environment)
         writer.write_enum_value("status", self.status)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -14,7 +15,7 @@ if TYPE_CHECKING:
     from .....models.subscribe_to_tone_operation import SubscribeToToneOperation
     from .subscribe_to_tone_post_request_body import SubscribeToTonePostRequestBody
 
-class SubscribeToToneRequestBuilder():
+class SubscribeToToneRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the subscribeToTone method.
     """
@@ -22,26 +23,17 @@ class SubscribeToToneRequestBuilder():
         """
         Instantiates a new SubscribeToToneRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/communications/calls/{call%2Did}/subscribeToTone"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/communications/calls/{call%2Did}/subscribeToTone", path_parameters)
     
     async def post(self,body: Optional[SubscribeToTonePostRequestBody] = None, request_configuration: Optional[SubscribeToToneRequestBuilderPostRequestConfiguration] = None) -> Optional[SubscribeToToneOperation]:
         """
         Subscribe to DTMF (dual-tone multi-frequency signaling). This allows you to be notified when the user presses keys on a 'dialpad'.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SubscribeToToneOperation]
         """
         if not body:
@@ -66,7 +58,7 @@ class SubscribeToToneRequestBuilder():
         Subscribe to DTMF (dual-tone multi-frequency signaling). This allows you to be notified when the user presses keys on a 'dialpad'.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -82,16 +74,14 @@ class SubscribeToToneRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class SubscribeToToneRequestBuilderPostRequestConfiguration():
+    class SubscribeToToneRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

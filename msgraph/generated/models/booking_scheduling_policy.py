@@ -30,7 +30,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: BookingSchedulingPolicy
         """
         if not parse_node:
@@ -61,11 +61,11 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("allowStaffSelection", self.allow_staff_selection)
-        writer.write_timedelta_value()("maximumAdvance", self.maximum_advance)
-        writer.write_timedelta_value()("minimumLeadTime", self.minimum_lead_time)
+        writer.write_timedelta_value("maximumAdvance", self.maximum_advance)
+        writer.write_timedelta_value("minimumLeadTime", self.minimum_lead_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("sendConfirmationsToOwner", self.send_confirmations_to_owner)
-        writer.write_timedelta_value()("timeSlotInterval", self.time_slot_interval)
+        writer.write_timedelta_value("timeSlotInterval", self.time_slot_interval)
         writer.write_additional_data_value(self.additional_data)
     
 

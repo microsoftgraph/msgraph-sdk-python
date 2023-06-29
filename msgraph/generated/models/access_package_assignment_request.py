@@ -46,7 +46,7 @@ class AccessPackageAssignmentRequest(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageAssignmentRequest
         """
         if not parse_node:
@@ -104,8 +104,8 @@ class AccessPackageAssignmentRequest(Entity):
         writer.write_object_value("accessPackage", self.access_package)
         writer.write_collection_of_object_values("answers", self.answers)
         writer.write_object_value("assignment", self.assignment)
-        writer.write_datetime_value()("completedDateTime", self.completed_date_time)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("completedDateTime", self.completed_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_enum_value("requestType", self.request_type)
         writer.write_object_value("requestor", self.requestor)
         writer.write_object_value("schedule", self.schedule)

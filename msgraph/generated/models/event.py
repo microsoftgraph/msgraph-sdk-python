@@ -120,7 +120,7 @@ class Event(OutlookItem):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Event
         """
         if not parse_node:
@@ -256,7 +256,7 @@ class Event(OutlookItem):
         writer.write_str_value("onlineMeetingUrl", self.online_meeting_url)
         writer.write_object_value("organizer", self.organizer)
         writer.write_str_value("originalEndTimeZone", self.original_end_time_zone)
-        writer.write_datetime_value()("originalStart", self.original_start)
+        writer.write_datetime_value("originalStart", self.original_start)
         writer.write_str_value("originalStartTimeZone", self.original_start_time_zone)
         writer.write_object_value("recurrence", self.recurrence)
         writer.write_int_value("reminderMinutesBeforeStart", self.reminder_minutes_before_start)

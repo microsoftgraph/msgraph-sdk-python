@@ -437,7 +437,7 @@ class Windows10GeneralConfiguration(DeviceConfiguration):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Windows10GeneralConfiguration
         """
         if not parse_node:
@@ -742,8 +742,8 @@ class Windows10GeneralConfiguration(DeviceConfiguration):
         writer.write_bool_value("defenderScanRemovableDrivesDuringFullScan", self.defender_scan_removable_drives_during_full_scan)
         writer.write_bool_value("defenderScanScriptsLoadedInInternetExplorer", self.defender_scan_scripts_loaded_in_internet_explorer)
         writer.write_enum_value("defenderScanType", self.defender_scan_type)
-        writer.write_time_value()("defenderScheduledQuickScanTime", self.defender_scheduled_quick_scan_time)
-        writer.write_time_value()("defenderScheduledScanTime", self.defender_scheduled_scan_time)
+        writer.write_time_value("defenderScheduledQuickScanTime", self.defender_scheduled_quick_scan_time)
+        writer.write_time_value("defenderScheduledScanTime", self.defender_scheduled_scan_time)
         writer.write_int_value("defenderSignatureUpdateIntervalInHours", self.defender_signature_update_interval_in_hours)
         writer.write_enum_value("defenderSystemScanSchedule", self.defender_system_scan_schedule)
         writer.write_enum_value("developerUnlockSetting", self.developer_unlock_setting)

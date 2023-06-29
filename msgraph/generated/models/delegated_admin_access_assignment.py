@@ -32,7 +32,7 @@ class DelegatedAdminAccessAssignment(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DelegatedAdminAccessAssignment
         """
         if not parse_node:
@@ -76,8 +76,8 @@ class DelegatedAdminAccessAssignment(Entity):
         super().serialize(writer)
         writer.write_object_value("accessContainer", self.access_container)
         writer.write_object_value("accessDetails", self.access_details)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_enum_value("status", self.status)
     
 

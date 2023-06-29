@@ -30,7 +30,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AttackSimulationSimulationUserCoverage
         """
         if not parse_node:
@@ -67,7 +67,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         writer.write_object_value("attackSimulationUser", self.attack_simulation_user)
         writer.write_int_value("clickCount", self.click_count)
         writer.write_int_value("compromisedCount", self.compromised_count)
-        writer.write_datetime_value()("latestSimulationDateTime", self.latest_simulation_date_time)
+        writer.write_datetime_value("latestSimulationDateTime", self.latest_simulation_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("simulationCount", self.simulation_count)
         writer.write_additional_data_value(self.additional_data)

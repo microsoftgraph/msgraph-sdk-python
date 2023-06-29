@@ -99,7 +99,7 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WindowsUpdateForBusinessConfiguration
         """
         if not parse_node:
@@ -197,9 +197,9 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
         writer.write_int_value("engagedRestartSnoozeScheduleInDays", self.engaged_restart_snooze_schedule_in_days)
         writer.write_int_value("engagedRestartTransitionScheduleInDays", self.engaged_restart_transition_schedule_in_days)
         writer.write_int_value("featureUpdatesDeferralPeriodInDays", self.feature_updates_deferral_period_in_days)
-        writer.write_datetime_value()("featureUpdatesPauseExpiryDateTime", self.feature_updates_pause_expiry_date_time)
+        writer.write_datetime_value("featureUpdatesPauseExpiryDateTime", self.feature_updates_pause_expiry_date_time)
         writer.write_bool_value("featureUpdatesPaused", self.feature_updates_paused)
-        writer.write_datetime_value()("featureUpdatesRollbackStartDateTime", self.feature_updates_rollback_start_date_time)
+        writer.write_datetime_value("featureUpdatesRollbackStartDateTime", self.feature_updates_rollback_start_date_time)
         writer.write_int_value("featureUpdatesRollbackWindowInDays", self.feature_updates_rollback_window_in_days)
         writer.write_bool_value("featureUpdatesWillBeRolledBack", self.feature_updates_will_be_rolled_back)
         writer.write_object_value("installationSchedule", self.installation_schedule)
@@ -207,9 +207,9 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
         writer.write_bool_value("postponeRebootUntilAfterDeadline", self.postpone_reboot_until_after_deadline)
         writer.write_enum_value("prereleaseFeatures", self.prerelease_features)
         writer.write_int_value("qualityUpdatesDeferralPeriodInDays", self.quality_updates_deferral_period_in_days)
-        writer.write_datetime_value()("qualityUpdatesPauseExpiryDateTime", self.quality_updates_pause_expiry_date_time)
+        writer.write_datetime_value("qualityUpdatesPauseExpiryDateTime", self.quality_updates_pause_expiry_date_time)
         writer.write_bool_value("qualityUpdatesPaused", self.quality_updates_paused)
-        writer.write_datetime_value()("qualityUpdatesRollbackStartDateTime", self.quality_updates_rollback_start_date_time)
+        writer.write_datetime_value("qualityUpdatesRollbackStartDateTime", self.quality_updates_rollback_start_date_time)
         writer.write_bool_value("qualityUpdatesWillBeRolledBack", self.quality_updates_will_be_rolled_back)
         writer.write_int_value("scheduleImminentRestartWarningInMinutes", self.schedule_imminent_restart_warning_in_minutes)
         writer.write_int_value("scheduleRestartWarningInHours", self.schedule_restart_warning_in_hours)

@@ -26,7 +26,7 @@ class SynchronizationSchedule(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SynchronizationSchedule
         """
         if not parse_node:
@@ -58,8 +58,8 @@ class SynchronizationSchedule(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value()("expiration", self.expiration)
-        writer.write_timedelta_value()("interval", self.interval)
+        writer.write_datetime_value("expiration", self.expiration)
+        writer.write_timedelta_value("interval", self.interval)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)

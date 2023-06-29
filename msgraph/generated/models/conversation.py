@@ -32,7 +32,7 @@ class Conversation(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Conversation
         """
         if not parse_node:
@@ -72,7 +72,7 @@ class Conversation(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("hasAttachments", self.has_attachments)
-        writer.write_datetime_value()("lastDeliveredDateTime", self.last_delivered_date_time)
+        writer.write_datetime_value("lastDeliveredDateTime", self.last_delivered_date_time)
         writer.write_str_value("preview", self.preview)
         writer.write_collection_of_object_values("threads", self.threads)
         writer.write_str_value("topic", self.topic)

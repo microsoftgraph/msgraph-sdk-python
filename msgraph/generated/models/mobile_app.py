@@ -80,7 +80,7 @@ class MobileApp(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MobileApp
         """
         if not parse_node:
@@ -284,14 +284,14 @@ class MobileApp(Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_collection_of_object_values("categories", self.categories)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("developer", self.developer)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("informationUrl", self.information_url)
         writer.write_bool_value("isFeatured", self.is_featured)
         writer.write_object_value("largeIcon", self.large_icon)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("notes", self.notes)
         writer.write_str_value("owner", self.owner)
         writer.write_str_value("privacyInformationUrl", self.privacy_information_url)

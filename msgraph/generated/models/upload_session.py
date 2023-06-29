@@ -23,7 +23,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UploadSession
         """
         if not parse_node:
@@ -51,7 +51,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_collection_of_primitive_values("nextExpectedRanges", self.next_expected_ranges)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("uploadUrl", self.upload_url)

@@ -64,7 +64,7 @@ class RiskDetection(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: RiskDetection
         """
         if not parse_node:
@@ -129,13 +129,13 @@ class RiskDetection(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("activity", self.activity)
-        writer.write_datetime_value()("activityDateTime", self.activity_date_time)
+        writer.write_datetime_value("activityDateTime", self.activity_date_time)
         writer.write_str_value("additionalInfo", self.additional_info)
         writer.write_str_value("correlationId", self.correlation_id)
-        writer.write_datetime_value()("detectedDateTime", self.detected_date_time)
+        writer.write_datetime_value("detectedDateTime", self.detected_date_time)
         writer.write_enum_value("detectionTimingType", self.detection_timing_type)
         writer.write_str_value("ipAddress", self.ip_address)
-        writer.write_datetime_value()("lastUpdatedDateTime", self.last_updated_date_time)
+        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
         writer.write_object_value("location", self.location)
         writer.write_str_value("requestId", self.request_id)
         writer.write_enum_value("riskDetail", self.risk_detail)

@@ -28,7 +28,7 @@ class MeetingAttendanceReport(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MeetingAttendanceReport
         """
         if not parse_node:
@@ -66,8 +66,8 @@ class MeetingAttendanceReport(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("attendanceRecords", self.attendance_records)
-        writer.write_datetime_value()("meetingEndDateTime", self.meeting_end_date_time)
-        writer.write_datetime_value()("meetingStartDateTime", self.meeting_start_date_time)
+        writer.write_datetime_value("meetingEndDateTime", self.meeting_end_date_time)
+        writer.write_datetime_value("meetingStartDateTime", self.meeting_start_date_time)
         writer.write_int_value("totalParticipantCount", self.total_participant_count)
     
 

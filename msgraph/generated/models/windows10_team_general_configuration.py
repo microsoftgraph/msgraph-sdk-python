@@ -60,7 +60,7 @@ class Windows10TeamGeneralConfiguration(DeviceConfiguration):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Windows10TeamGeneralConfiguration
         """
         if not parse_node:
@@ -121,7 +121,7 @@ class Windows10TeamGeneralConfiguration(DeviceConfiguration):
         writer.write_bool_value("connectAppBlockAutoLaunch", self.connect_app_block_auto_launch)
         writer.write_bool_value("maintenanceWindowBlocked", self.maintenance_window_blocked)
         writer.write_int_value("maintenanceWindowDurationInHours", self.maintenance_window_duration_in_hours)
-        writer.write_time_value()("maintenanceWindowStartTime", self.maintenance_window_start_time)
+        writer.write_time_value("maintenanceWindowStartTime", self.maintenance_window_start_time)
         writer.write_bool_value("miracastBlocked", self.miracast_blocked)
         writer.write_enum_value("miracastChannel", self.miracast_channel)
         writer.write_bool_value("miracastRequirePin", self.miracast_require_pin)

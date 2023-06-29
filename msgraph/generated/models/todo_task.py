@@ -69,7 +69,7 @@ class TodoTask(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TodoTask
         """
         if not parse_node:
@@ -143,17 +143,17 @@ class TodoTask(Entity):
         writer.write_collection_of_object_values("attachmentSessions", self.attachment_sessions)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_object_value("body", self.body)
-        writer.write_datetime_value()("bodyLastModifiedDateTime", self.body_last_modified_date_time)
+        writer.write_datetime_value("bodyLastModifiedDateTime", self.body_last_modified_date_time)
         writer.write_collection_of_primitive_values("categories", self.categories)
         writer.write_collection_of_object_values("checklistItems", self.checklist_items)
         writer.write_object_value("completedDateTime", self.completed_date_time)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("dueDateTime", self.due_date_time)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_bool_value("hasAttachments", self.has_attachments)
         writer.write_enum_value("importance", self.importance)
         writer.write_bool_value("isReminderOn", self.is_reminder_on)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("linkedResources", self.linked_resources)
         writer.write_object_value("recurrence", self.recurrence)
         writer.write_object_value("reminderDateTime", self.reminder_date_time)

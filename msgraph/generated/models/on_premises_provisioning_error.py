@@ -25,7 +25,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: OnPremisesProvisioningError
         """
         if not parse_node:
@@ -55,7 +55,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("category", self.category)
-        writer.write_datetime_value()("occurredDateTime", self.occurred_date_time)
+        writer.write_datetime_value("occurredDateTime", self.occurred_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("propertyCausingError", self.property_causing_error)
         writer.write_str_value("value", self.value)

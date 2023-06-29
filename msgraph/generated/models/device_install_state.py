@@ -39,7 +39,7 @@ class DeviceInstallState(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceInstallState
         """
         if not parse_node:
@@ -84,7 +84,7 @@ class DeviceInstallState(Entity):
         writer.write_str_value("deviceName", self.device_name)
         writer.write_str_value("errorCode", self.error_code)
         writer.write_enum_value("installState", self.install_state)
-        writer.write_datetime_value()("lastSyncDateTime", self.last_sync_date_time)
+        writer.write_datetime_value("lastSyncDateTime", self.last_sync_date_time)
         writer.write_str_value("osDescription", self.os_description)
         writer.write_str_value("osVersion", self.os_version)
         writer.write_str_value("userName", self.user_name)

@@ -30,7 +30,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: LicenseAssignmentState
         """
         if not parse_node:
@@ -64,7 +64,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         writer.write_str_value("assignedByGroup", self.assigned_by_group)
         writer.write_collection_of_primitive_values("disabledPlans", self.disabled_plans)
         writer.write_str_value("error", self.error)
-        writer.write_datetime_value()("lastUpdatedDateTime", self.last_updated_date_time)
+        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("state", self.state)

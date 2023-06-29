@@ -29,7 +29,7 @@ class PrintUsage(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: PrintUsage
         """
         if not parse_node:
@@ -83,6 +83,6 @@ class PrintUsage(Entity):
         writer.write_int_value("completedBlackAndWhiteJobCount", self.completed_black_and_white_job_count)
         writer.write_int_value("completedColorJobCount", self.completed_color_job_count)
         writer.write_int_value("incompleteJobCount", self.incomplete_job_count)
-        writer.write_date_value()("usageDate", self.usage_date)
+        writer.write_date_value("usageDate", self.usage_date)
     
 

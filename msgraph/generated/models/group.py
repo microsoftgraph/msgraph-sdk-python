@@ -167,7 +167,7 @@ class Group(DirectoryObject):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Group
         """
         if not parse_node:
@@ -311,14 +311,14 @@ class Group(DirectoryObject):
         writer.write_collection_of_object_values("calendarView", self.calendar_view)
         writer.write_str_value("classification", self.classification)
         writer.write_collection_of_object_values("conversations", self.conversations)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("createdOnBehalfOf", self.created_on_behalf_of)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("drive", self.drive)
         writer.write_collection_of_object_values("drives", self.drives)
         writer.write_collection_of_object_values("events", self.events)
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_collection_of_object_values("groupLifecyclePolicies", self.group_lifecycle_policies)
         writer.write_collection_of_primitive_values("groupTypes", self.group_types)
@@ -338,7 +338,7 @@ class Group(DirectoryObject):
         writer.write_str_value("membershipRule", self.membership_rule)
         writer.write_str_value("membershipRuleProcessingState", self.membership_rule_processing_state)
         writer.write_str_value("onPremisesDomainName", self.on_premises_domain_name)
-        writer.write_datetime_value()("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
+        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_str_value("onPremisesNetBiosName", self.on_premises_net_bios_name)
         writer.write_collection_of_object_values("onPremisesProvisioningErrors", self.on_premises_provisioning_errors)
         writer.write_str_value("onPremisesSamAccountName", self.on_premises_sam_account_name)
@@ -354,7 +354,7 @@ class Group(DirectoryObject):
         writer.write_str_value("preferredLanguage", self.preferred_language)
         writer.write_collection_of_primitive_values("proxyAddresses", self.proxy_addresses)
         writer.write_collection_of_object_values("rejectedSenders", self.rejected_senders)
-        writer.write_datetime_value()("renewedDateTime", self.renewed_date_time)
+        writer.write_datetime_value("renewedDateTime", self.renewed_date_time)
         writer.write_bool_value("securityEnabled", self.security_enabled)
         writer.write_str_value("securityIdentifier", self.security_identifier)
         writer.write_collection_of_object_values("settings", self.settings)

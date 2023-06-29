@@ -27,7 +27,7 @@ class RequestSchedule(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: RequestSchedule
         """
         if not parse_node:
@@ -64,7 +64,7 @@ class RequestSchedule(AdditionalDataHolder, Parsable):
         writer.write_object_value("expiration", self.expiration)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("recurrence", self.recurrence)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

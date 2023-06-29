@@ -129,7 +129,7 @@ class Application(DirectoryObject):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Application
         """
         if not parse_node:
@@ -255,7 +255,7 @@ class Application(DirectoryObject):
         writer.write_collection_of_object_values("appRoles", self.app_roles)
         writer.write_str_value("applicationTemplateId", self.application_template_id)
         writer.write_object_value("certification", self.certification)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("createdOnBehalfOf", self.created_on_behalf_of)
         writer.write_str_value("defaultRedirectUri", self.default_redirect_uri)
         writer.write_str_value("description", self.description)

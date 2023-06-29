@@ -47,7 +47,7 @@ class TaskReport(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TaskReport
         """
         if not parse_node:
@@ -98,12 +98,12 @@ class TaskReport(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("completedDateTime", self.completed_date_time)
+        writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_int_value("failedUsersCount", self.failed_users_count)
-        writer.write_datetime_value()("lastUpdatedDateTime", self.last_updated_date_time)
+        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
         writer.write_enum_value("processingStatus", self.processing_status)
         writer.write_str_value("runId", self.run_id)
-        writer.write_datetime_value()("startedDateTime", self.started_date_time)
+        writer.write_datetime_value("startedDateTime", self.started_date_time)
         writer.write_int_value("successfulUsersCount", self.successful_users_count)
         writer.write_object_value("task", self.task)
         writer.write_object_value("taskDefinition", self.task_definition)

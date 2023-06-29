@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -16,7 +17,7 @@ if TYPE_CHECKING:
     from .count.count_request_builder import CountRequestBuilder
     from .item.managed_app_policy_item_request_builder import ManagedAppPolicyItemRequestBuilder
 
-class ManagedAppPoliciesRequestBuilder():
+class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
     """
@@ -24,19 +25,10 @@ class ManagedAppPoliciesRequestBuilder():
         """
         Instantiates a new ManagedAppPoliciesRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/deviceAppManagement/managedAppPolicies{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedAppPolicies{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_managed_app_policy_id(self,managed_app_policy_id: str) -> ManagedAppPolicyItemRequestBuilder:
         """
@@ -55,9 +47,9 @@ class ManagedAppPoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppPolicyCollectionResponse]:
         """
-        List properties and relationships of the targetedManagedAppProtection objects.
+        List properties and relationships of the windowsInformationProtection objects.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicyCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -80,7 +72,7 @@ class ManagedAppPoliciesRequestBuilder():
         Create new navigation property to managedAppPolicies for deviceAppManagement
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicy]
         """
         if not body:
@@ -102,9 +94,9 @@ class ManagedAppPoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the targetedManagedAppProtection objects.
+        List properties and relationships of the windowsInformationProtection objects.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -123,7 +115,7 @@ class ManagedAppPoliciesRequestBuilder():
         Create new navigation property to managedAppPolicies for deviceAppManagement
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -151,13 +143,13 @@ class ManagedAppPoliciesRequestBuilder():
     @dataclass
     class ManagedAppPoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the targetedManagedAppProtection objects.
+        List properties and relationships of the windowsInformationProtection objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -205,31 +197,27 @@ class ManagedAppPoliciesRequestBuilder():
         top: Optional[int] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ManagedAppPoliciesRequestBuilderGetRequestConfiguration():
+    class ManagedAppPoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[ManagedAppPoliciesRequestBuilder.ManagedAppPoliciesRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ManagedAppPoliciesRequestBuilderPostRequestConfiguration():
+    class ManagedAppPoliciesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

@@ -31,7 +31,7 @@ class LongRunningOperation(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: LongRunningOperation
         """
         if not parse_node:
@@ -79,8 +79,8 @@ class LongRunningOperation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
-        writer.write_datetime_value()("lastActionDateTime", self.last_action_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("lastActionDateTime", self.last_action_date_time)
         writer.write_str_value("resourceLocation", self.resource_location)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("statusDetail", self.status_detail)

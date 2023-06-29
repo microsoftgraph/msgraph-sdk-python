@@ -47,7 +47,7 @@ class VppToken(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: VppToken
         """
         if not parse_node:
@@ -98,9 +98,9 @@ class VppToken(Entity):
         writer.write_str_value("appleId", self.apple_id)
         writer.write_bool_value("automaticallyUpdateApps", self.automatically_update_apps)
         writer.write_str_value("countryOrRegion", self.country_or_region)
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_datetime_value()("lastSyncDateTime", self.last_sync_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastSyncDateTime", self.last_sync_date_time)
         writer.write_enum_value("lastSyncStatus", self.last_sync_status)
         writer.write_str_value("organizationName", self.organization_name)
         writer.write_enum_value("state", self.state)

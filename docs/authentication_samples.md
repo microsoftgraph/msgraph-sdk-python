@@ -6,11 +6,7 @@
 import asyncio
 
 from azure.identity import DeviceCodeCredential
-from kiota_abstractions.api_error import APIError
 from msgraph import GraphServiceClient
-
-# Set the event loop policy for Windows
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 # Create a credential object. Used to authenticate requests
 credential = DeviceCodeCredential(
@@ -25,13 +21,9 @@ client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
-    try:
-        user = await client.users_by_id('USER_ID').get()
-        if user:
-            print(user.user_principal_name, user.display_name, user.id)
-    except APIError as e:
-        print(f'Error: {e.error.message}')
-
+    user = await client.users_by_id('USER_ID').get()
+    if user:
+        print(user.user_principal_name, user.display_name, user.id)
 asyncio.run(get_user())
 ```
 
@@ -40,11 +32,7 @@ asyncio.run(get_user())
 ```py
 import asyncio
 from azure.identity import InteractiveBrowserCredential
-from kiota_abstractions.api_error import APIError
 from msgraph import GraphServiceClient
-
-# Set the event loop policy for Windows
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 # Create a credential object. Used to authenticate requests 
 credential = InteractiveBrowserCredential()
@@ -55,12 +43,9 @@ client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
-    try:
-        user = await client.users_by_id('USER_ID').get()
-        if user:
-            print(user.user_principal_name, user.display_name, user.id)
-    except APIError as e:
-        print(f'Error: {e.error.message}')
+    user = await client.users_by_id('USER_ID').get()
+    if user:
+        print(user.user_principal_name, user.display_name, user.id)
 asyncio.run(get_user())
 ```
 
@@ -72,11 +57,7 @@ asyncio.run(get_user())
 import asyncio
 
 from azure.identity import ClientSecretCredential
-from kiota_abstractions.api_error import APIError
 from msgraph import GraphServiceClient
-
-# Set the event loop policy for Windows
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy()) 
 
 # Create a credential object. Used to authenticate requests
 credential = ClientSecretCredential(
@@ -91,12 +72,9 @@ client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
-    try:
-        user = await client.users.by_user_id('USER_ID').get()
-        if user:
-            print(user.user_principal_name, user.display_name, user.id)
-    except APIError as e:
-        print(f'Error: {e.error.message}')
+    user = await client.users.by_user_id('USER_ID').get()
+    if user:
+        print(user.user_principal_name, user.display_name, user.id)
 asyncio.run(get_user())
 ```
 
@@ -106,11 +84,7 @@ asyncio.run(get_user())
 import asyncio
 
 from azure.identity.aio import EnvironmentCredential
-from kiota_abstractions.api_error import APIError
 from msgraph import GraphServiceClient
-
-# Set the event loop policy for Windows
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 # Create a credential object. Used to authenticate requests
 credential = EnvironmentCredential()
@@ -121,11 +95,7 @@ client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
-    try:
-        user = await client.users.by_user_id('USER_ID').get()
-        if user:
-            print(user.user_principal_name, user.display_name, user.id)
-    except APIError as e:
-        print(f'Error: {e.error.message}')
-
+    user = await client.users.by_user_id('USER_ID').get()
+    if user:
+        print(user.user_principal_name, user.display_name, user.id)
 asyncio.run(get_user())

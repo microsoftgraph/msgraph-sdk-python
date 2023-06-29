@@ -55,7 +55,7 @@ class WindowsAutopilotDeviceIdentity(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WindowsAutopilotDeviceIdentity
         """
         if not parse_node:
@@ -109,7 +109,7 @@ class WindowsAutopilotDeviceIdentity(Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("enrollmentState", self.enrollment_state)
         writer.write_str_value("groupTag", self.group_tag)
-        writer.write_datetime_value()("lastContactedDateTime", self.last_contacted_date_time)
+        writer.write_datetime_value("lastContactedDateTime", self.last_contacted_date_time)
         writer.write_str_value("managedDeviceId", self.managed_device_id)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)

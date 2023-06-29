@@ -52,7 +52,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: CopyNotebookModel
         """
         if not parse_node:
@@ -102,13 +102,13 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("createdBy", self.created_by)
         writer.write_object_value("createdByIdentity", self.created_by_identity)
-        writer.write_datetime_value()("createdTime", self.created_time)
+        writer.write_datetime_value("createdTime", self.created_time)
         writer.write_str_value("id", self.id)
         writer.write_bool_value("isDefault", self.is_default)
         writer.write_bool_value("isShared", self.is_shared)
         writer.write_str_value("lastModifiedBy", self.last_modified_by)
         writer.write_object_value("lastModifiedByIdentity", self.last_modified_by_identity)
-        writer.write_datetime_value()("lastModifiedTime", self.last_modified_time)
+        writer.write_datetime_value("lastModifiedTime", self.last_modified_time)
         writer.write_object_value("links", self.links)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -14,7 +15,7 @@ if TYPE_CHECKING:
     from ........models.user_flow_language_page import UserFlowLanguagePage
     from .value.content_request_builder import ContentRequestBuilder
 
-class UserFlowLanguagePageItemRequestBuilder():
+class UserFlowLanguagePageItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the defaultPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
     """
@@ -22,25 +23,16 @@ class UserFlowLanguagePageItemRequestBuilder():
         """
         Instantiates a new UserFlowLanguagePageItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/identity/b2xUserFlows/{b2xIdentityUserFlow%2Did}/languages/{userFlowLanguageConfiguration%2Did}/defaultPages/{userFlowLanguagePage%2Did}{?%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/identity/b2xUserFlows/{b2xIdentityUserFlow%2Did}/languages/{userFlowLanguageConfiguration%2Did}/defaultPages/{userFlowLanguagePage%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[UserFlowLanguagePageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property defaultPages for identity
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,7 +51,7 @@ class UserFlowLanguagePageItemRequestBuilder():
         """
         Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserFlowLanguagePage]
         """
         request_info = self.to_get_request_information(
@@ -82,7 +74,7 @@ class UserFlowLanguagePageItemRequestBuilder():
         Update the navigation property defaultPages in identity
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserFlowLanguagePage]
         """
         if not body:
@@ -106,7 +98,7 @@ class UserFlowLanguagePageItemRequestBuilder():
         """
         Delete navigation property defaultPages for identity
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -122,7 +114,7 @@ class UserFlowLanguagePageItemRequestBuilder():
         """
         Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -141,7 +133,7 @@ class UserFlowLanguagePageItemRequestBuilder():
         Update the navigation property defaultPages in identity
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -166,17 +158,15 @@ class UserFlowLanguagePageItemRequestBuilder():
 
         return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class UserFlowLanguagePageItemRequestBuilderDeleteRequestConfiguration():
+    class UserFlowLanguagePageItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
     @dataclass
     class UserFlowLanguagePageItemRequestBuilderGetQueryParameters():
@@ -187,7 +177,7 @@ class UserFlowLanguagePageItemRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -205,31 +195,27 @@ class UserFlowLanguagePageItemRequestBuilder():
         select: Optional[List[str]] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class UserFlowLanguagePageItemRequestBuilderGetRequestConfiguration():
+    class UserFlowLanguagePageItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[UserFlowLanguagePageItemRequestBuilder.UserFlowLanguagePageItemRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class UserFlowLanguagePageItemRequestBuilderPatchRequestConfiguration():
+    class UserFlowLanguagePageItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

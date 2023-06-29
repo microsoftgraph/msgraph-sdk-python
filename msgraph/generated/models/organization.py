@@ -81,7 +81,7 @@ class Organization(DirectoryObject):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Organization
         """
         if not parse_node:
@@ -164,13 +164,13 @@ class Organization(DirectoryObject):
         writer.write_str_value("city", self.city)
         writer.write_str_value("country", self.country)
         writer.write_str_value("countryLetterCode", self.country_letter_code)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("defaultUsageLocation", self.default_usage_location)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_collection_of_primitive_values("marketingNotificationEmails", self.marketing_notification_emails)
         writer.write_enum_value("mobileDeviceManagementAuthority", self.mobile_device_management_authority)
-        writer.write_datetime_value()("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
+        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
         writer.write_enum_value("partnerTenantType", self.partner_tenant_type)
         writer.write_str_value("postalCode", self.postal_code)

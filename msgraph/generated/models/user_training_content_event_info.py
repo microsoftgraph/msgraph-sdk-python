@@ -27,7 +27,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UserTrainingContentEventInfo
         """
         if not parse_node:
@@ -58,7 +58,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("browser", self.browser)
-        writer.write_datetime_value()("contentDateTime", self.content_date_time)
+        writer.write_datetime_value("contentDateTime", self.content_date_time)
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("osPlatformDeviceDetails", self.os_platform_device_details)

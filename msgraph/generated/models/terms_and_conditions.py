@@ -44,7 +44,7 @@ class TermsAndConditions(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TermsAndConditions
         """
         if not parse_node:
@@ -93,10 +93,10 @@ class TermsAndConditions(Entity):
         writer.write_collection_of_object_values("acceptanceStatuses", self.acceptance_statuses)
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_str_value("bodyText", self.body_text)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("title", self.title)
         writer.write_int_value("version", self.version)
     

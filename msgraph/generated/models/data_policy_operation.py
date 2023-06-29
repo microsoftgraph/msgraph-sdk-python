@@ -32,7 +32,7 @@ class DataPolicyOperation(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DataPolicyOperation
         """
         if not parse_node:
@@ -71,11 +71,11 @@ class DataPolicyOperation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("completedDateTime", self.completed_date_time)
+        writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_float_value("progress", self.progress)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("storageLocation", self.storage_location)
-        writer.write_datetime_value()("submittedDateTime", self.submitted_date_time)
+        writer.write_datetime_value("submittedDateTime", self.submitted_date_time)
         writer.write_str_value("userId", self.user_id)
     
 

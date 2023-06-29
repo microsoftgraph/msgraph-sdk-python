@@ -30,7 +30,7 @@ class DeviceComplianceUserStatus(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceComplianceUserStatus
         """
         if not parse_node:
@@ -69,7 +69,7 @@ class DeviceComplianceUserStatus(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_int_value("devicesCount", self.devices_count)
-        writer.write_datetime_value()("lastReportedDateTime", self.last_reported_date_time)
+        writer.write_datetime_value("lastReportedDateTime", self.last_reported_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("userDisplayName", self.user_display_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)

@@ -30,7 +30,7 @@ class DocumentSetVersion(ListItemVersion):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DocumentSetVersion
         """
         if not parse_node:
@@ -72,7 +72,7 @@ class DocumentSetVersion(ListItemVersion):
         super().serialize(writer)
         writer.write_str_value("comment", self.comment)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_bool_value("shouldCaptureMinorVersion", self.should_capture_minor_version)
     

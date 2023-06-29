@@ -30,7 +30,7 @@ class ManagedAppOperation(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAppOperation
         """
         if not parse_node:
@@ -66,7 +66,7 @@ class ManagedAppOperation(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("state", self.state)
         writer.write_str_value("version", self.version)
     

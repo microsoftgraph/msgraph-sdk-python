@@ -41,7 +41,7 @@ class MobileAppContentFile(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MobileAppContentFile
         """
         if not parse_node:
@@ -84,8 +84,8 @@ class MobileAppContentFile(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("azureStorageUri", self.azure_storage_uri)
-        writer.write_datetime_value()("azureStorageUriExpirationDateTime", self.azure_storage_uri_expiration_date_time)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("azureStorageUriExpirationDateTime", self.azure_storage_uri_expiration_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_bool_value("isCommitted", self.is_committed)
         writer.write_bytes_value("manifest", self.manifest)
         writer.write_str_value("name", self.name)

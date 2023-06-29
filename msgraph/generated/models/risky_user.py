@@ -41,7 +41,7 @@ class RiskyUser(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: RiskyUser
         """
         if not parse_node:
@@ -101,7 +101,7 @@ class RiskyUser(Entity):
         writer.write_bool_value("isDeleted", self.is_deleted)
         writer.write_bool_value("isProcessing", self.is_processing)
         writer.write_enum_value("riskDetail", self.risk_detail)
-        writer.write_datetime_value()("riskLastUpdatedDateTime", self.risk_last_updated_date_time)
+        writer.write_datetime_value("riskLastUpdatedDateTime", self.risk_last_updated_date_time)
         writer.write_enum_value("riskLevel", self.risk_level)
         writer.write_enum_value("riskState", self.risk_state)
         writer.write_str_value("userDisplayName", self.user_display_name)

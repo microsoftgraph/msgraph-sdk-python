@@ -32,7 +32,7 @@ class TelecomExpenseManagementPartner(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TelecomExpenseManagementPartner
         """
         if not parse_node:
@@ -71,7 +71,7 @@ class TelecomExpenseManagementPartner(Entity):
         writer.write_bool_value("appAuthorized", self.app_authorized)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("enabled", self.enabled)
-        writer.write_datetime_value()("lastConnectionDateTime", self.last_connection_date_time)
+        writer.write_datetime_value("lastConnectionDateTime", self.last_connection_date_time)
         writer.write_str_value("url", self.url)
     
 

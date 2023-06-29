@@ -33,7 +33,7 @@ class SynchronizationQuarantine(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SynchronizationQuarantine
         """
         if not parse_node:
@@ -70,12 +70,12 @@ class SynchronizationQuarantine(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value()("currentBegan", self.current_began)
+        writer.write_datetime_value("currentBegan", self.current_began)
         writer.write_object_value("error", self.error)
-        writer.write_datetime_value()("nextAttempt", self.next_attempt)
+        writer.write_datetime_value("nextAttempt", self.next_attempt)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("reason", self.reason)
-        writer.write_datetime_value()("seriesBegan", self.series_began)
+        writer.write_datetime_value("seriesBegan", self.series_began)
         writer.write_int_value("seriesCount", self.series_count)
         writer.write_additional_data_value(self.additional_data)
     

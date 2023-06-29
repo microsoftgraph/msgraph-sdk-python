@@ -41,7 +41,7 @@ class IosVppApp(MobileApp):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: IosVppApp
         """
         if not parse_node:
@@ -92,7 +92,7 @@ class IosVppApp(MobileApp):
         writer.write_object_value("applicableDeviceType", self.applicable_device_type)
         writer.write_str_value("bundleId", self.bundle_id)
         writer.write_object_value("licensingType", self.licensing_type)
-        writer.write_datetime_value()("releaseDateTime", self.release_date_time)
+        writer.write_datetime_value("releaseDateTime", self.release_date_time)
         writer.write_int_value("totalLicenseCount", self.total_license_count)
         writer.write_int_value("usedLicenseCount", self.used_license_count)
         writer.write_enum_value("vppTokenAccountType", self.vpp_token_account_type)

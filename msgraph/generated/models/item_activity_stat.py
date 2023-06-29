@@ -42,7 +42,7 @@ class ItemActivityStat(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ItemActivityStat
         """
         if not parse_node:
@@ -94,10 +94,10 @@ class ItemActivityStat(Entity):
         writer.write_object_value("create", self.create)
         writer.write_object_value("delete", self.delete)
         writer.write_object_value("edit", self.edit)
-        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_object_value("incompleteData", self.incomplete_data)
         writer.write_bool_value("isTrending", self.is_trending)
         writer.write_object_value("move", self.move)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
     
 

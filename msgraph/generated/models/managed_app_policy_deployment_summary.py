@@ -30,7 +30,7 @@ class ManagedAppPolicyDeploymentSummary(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAppPolicyDeploymentSummary
         """
         if not parse_node:
@@ -71,7 +71,7 @@ class ManagedAppPolicyDeploymentSummary(Entity):
         writer.write_int_value("configurationDeployedUserCount", self.configuration_deployed_user_count)
         writer.write_collection_of_object_values("configurationDeploymentSummaryPerApp", self.configuration_deployment_summary_per_app)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value()("lastRefreshTime", self.last_refresh_time)
+        writer.write_datetime_value("lastRefreshTime", self.last_refresh_time)
         writer.write_str_value("version", self.version)
     
 

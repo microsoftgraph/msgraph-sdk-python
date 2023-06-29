@@ -57,7 +57,7 @@ class AccessPackageAssignmentPolicy(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageAssignmentPolicy
         """
         if not parse_node:
@@ -126,11 +126,11 @@ class AccessPackageAssignmentPolicy(Entity):
         writer.write_enum_value("allowedTargetScope", self.allowed_target_scope)
         writer.write_object_value("automaticRequestSettings", self.automatic_request_settings)
         writer.write_object_value("catalog", self.catalog)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("expiration", self.expiration)
-        writer.write_datetime_value()("modifiedDateTime", self.modified_date_time)
+        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
         writer.write_collection_of_object_values("questions", self.questions)
         writer.write_object_value("requestApprovalSettings", self.request_approval_settings)
         writer.write_object_value("requestorSettings", self.requestor_settings)

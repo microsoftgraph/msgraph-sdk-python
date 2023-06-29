@@ -30,7 +30,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: RecurrenceRange
         """
         if not parse_node:
@@ -64,11 +64,11 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_date_value()("endDate", self.end_date)
+        writer.write_date_value("endDate", self.end_date)
         writer.write_int_value("numberOfOccurrences", self.number_of_occurrences)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("recurrenceTimeZone", self.recurrence_time_zone)
-        writer.write_date_value()("startDate", self.start_date)
+        writer.write_date_value("startDate", self.start_date)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
     

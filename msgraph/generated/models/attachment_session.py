@@ -25,7 +25,7 @@ class AttachmentSession(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AttachmentSession
         """
         if not parse_node:
@@ -60,7 +60,7 @@ class AttachmentSession(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bytes_value("content", self.content)
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_collection_of_primitive_values("nextExpectedRanges", self.next_expected_ranges)
     
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -13,7 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .archive_post_request_body import ArchivePostRequestBody
 
-class ArchiveRequestBuilder():
+class ArchiveRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the archive method.
     """
@@ -21,26 +22,17 @@ class ArchiveRequestBuilder():
         """
         Instantiates a new ArchiveRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/teams/{team%2Did}/archive"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/teams/{team%2Did}/archive", path_parameters)
     
     async def post(self,body: Optional[ArchivePostRequestBody] = None, request_configuration: Optional[ArchiveRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Archive the specified team. When a team is archived, users can no longer send or like messages on any channel in the team, edit the team's name, description, or other settings, or in general make most changes to the team.Membership changes to the team continue to be allowed. Archiving is an async operation. A team is archived once the async operation completes successfully, which may occur subsequent to a response from this API. To archive a team, the team and group must have an owner. To restore a team from its archived state, use the API to unarchive.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -62,7 +54,7 @@ class ArchiveRequestBuilder():
         Archive the specified team. When a team is archived, users can no longer send or like messages on any channel in the team, edit the team's name, description, or other settings, or in general make most changes to the team.Membership changes to the team continue to be allowed. Archiving is an async operation. A team is archived once the async operation completes successfully, which may occur subsequent to a response from this API. To archive a team, the team and group must have an owner. To restore a team from its archived state, use the API to unarchive.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -77,16 +69,14 @@ class ArchiveRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ArchiveRequestBuilderPostRequestConfiguration():
+    class ArchiveRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

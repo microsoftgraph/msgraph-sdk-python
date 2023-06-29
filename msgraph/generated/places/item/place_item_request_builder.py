@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -13,8 +14,9 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.place import Place
     from .graph_room.graph_room_request_builder import GraphRoomRequestBuilder
+    from .graph_room_list.graph_room_list_request_builder import GraphRoomListRequestBuilder
 
-class PlaceItemRequestBuilder():
+class PlaceItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the collection of place entities.
     """
@@ -22,25 +24,16 @@ class PlaceItemRequestBuilder():
         """
         Instantiates a new PlaceItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/places/{place%2Did}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/places/{place%2Did}", path_parameters)
     
     async def delete(self,request_configuration: Optional[PlaceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete entity from places
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -60,7 +53,7 @@ class PlaceItemRequestBuilder():
         Update the properties of place object, which can be a room or roomList. You can identify the **room** or **roomList** by specifying the **id** or **emailAddress** property.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Place]
         """
         if not body:
@@ -84,7 +77,7 @@ class PlaceItemRequestBuilder():
         """
         Delete entity from places
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -101,7 +94,7 @@ class PlaceItemRequestBuilder():
         Update the properties of place object, which can be a room or roomList. You can identify the **room** or **roomList** by specifying the **id** or **emailAddress** property.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -126,28 +119,33 @@ class PlaceItemRequestBuilder():
 
         return GraphRoomRequestBuilder(self.request_adapter, self.path_parameters)
     
-    @dataclass
-    class PlaceItemRequestBuilderDeleteRequestConfiguration():
+    @property
+    def graph_room_list(self) -> GraphRoomListRequestBuilder:
         """
-        Configuration for the request such as headers, query parameters, and middleware options.
+        Casts the previous resource to roomList.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
+        from .graph_room_list.graph_room_list_request_builder import GraphRoomListRequestBuilder
 
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
+        return GraphRoomListRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class PlaceItemRequestBuilderPatchRequestConfiguration():
+    class PlaceItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
-        # Request options
-        options: Optional[List[RequestOption]] = None
+    @dataclass
+    class PlaceItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

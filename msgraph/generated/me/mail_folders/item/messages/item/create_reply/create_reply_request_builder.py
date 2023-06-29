@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -14,7 +15,7 @@ if TYPE_CHECKING:
     from .......models.o_data_errors.o_data_error import ODataError
     from .create_reply_post_request_body import CreateReplyPostRequestBody
 
-class CreateReplyRequestBuilder():
+class CreateReplyRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the createReply method.
     """
@@ -22,26 +23,17 @@ class CreateReplyRequestBuilder():
         """
         Instantiates a new CreateReplyRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/me/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/createReply"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/me/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/createReply", path_parameters)
     
     async def post(self,body: Optional[CreateReplyPostRequestBody] = None, request_configuration: Optional[CreateReplyRequestBuilderPostRequestConfiguration] = None) -> Optional[Message]:
         """
         Create a draft to reply to the sender of a message in either JSON or MIME format. When using JSON format:- Specify either a comment or the **body** property of the `message` parameter. Specifying both will return an HTTP 400 Bad Request error.- If **replyTo** is specified in the original message, per Internet Message Format (RFC 2822), you should send the reply to the recipients in **replyTo**, and not the recipients in **from**.- You can update the draft later to add reply content to the **body** or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- Add any attachments and S/MIME properties to the MIME content. Send the draft message in a subsequent operation. Alternatively, reply to a message in a single operation.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Message]
         """
         if not body:
@@ -66,7 +58,7 @@ class CreateReplyRequestBuilder():
         Create a draft to reply to the sender of a message in either JSON or MIME format. When using JSON format:- Specify either a comment or the **body** property of the `message` parameter. Specifying both will return an HTTP 400 Bad Request error.- If **replyTo** is specified in the original message, per Internet Message Format (RFC 2822), you should send the reply to the recipients in **replyTo**, and not the recipients in **from**.- You can update the draft later to add reply content to the **body** or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- Add any attachments and S/MIME properties to the MIME content. Send the draft message in a subsequent operation. Alternatively, reply to a message in a single operation.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -82,16 +74,14 @@ class CreateReplyRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class CreateReplyRequestBuilderPostRequestConfiguration():
+    class CreateReplyRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

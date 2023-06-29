@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -13,7 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.sign_in import SignIn
 
-class SignInItemRequestBuilder():
+class SignInItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the signIns property of the microsoft.graph.auditLogRoot entity.
     """
@@ -21,25 +22,16 @@ class SignInItemRequestBuilder():
         """
         Instantiates a new SignInItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/auditLogs/signIns/{signIn%2Did}{?%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/auditLogs/signIns/{signIn%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[SignInItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property signIns for auditLogs
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -58,7 +50,7 @@ class SignInItemRequestBuilder():
         """
         Retrieve a specific Azure AD user sign-in event for your tenant. Sign-ins that are interactive in nature (where a username/password is passed as part of auth token) and successful federated sign-ins are currently included in the sign-in logs.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SignIn]
         """
         request_info = self.to_get_request_information(
@@ -81,7 +73,7 @@ class SignInItemRequestBuilder():
         Update the navigation property signIns in auditLogs
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SignIn]
         """
         if not body:
@@ -105,7 +97,7 @@ class SignInItemRequestBuilder():
         """
         Delete navigation property signIns for auditLogs
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -121,7 +113,7 @@ class SignInItemRequestBuilder():
         """
         Retrieve a specific Azure AD user sign-in event for your tenant. Sign-ins that are interactive in nature (where a username/password is passed as part of auth token) and successful federated sign-ins are currently included in the sign-in logs.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -140,7 +132,7 @@ class SignInItemRequestBuilder():
         Update the navigation property signIns in auditLogs
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -156,17 +148,15 @@ class SignInItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class SignInItemRequestBuilderDeleteRequestConfiguration():
+    class SignInItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
     @dataclass
     class SignInItemRequestBuilderGetQueryParameters():
@@ -177,7 +167,7 @@ class SignInItemRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -195,31 +185,27 @@ class SignInItemRequestBuilder():
         select: Optional[List[str]] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class SignInItemRequestBuilderGetRequestConfiguration():
+    class SignInItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[SignInItemRequestBuilder.SignInItemRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class SignInItemRequestBuilderPatchRequestConfiguration():
+    class SignInItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

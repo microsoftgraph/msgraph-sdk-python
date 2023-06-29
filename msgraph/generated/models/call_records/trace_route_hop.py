@@ -23,7 +23,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TraceRouteHop
         """
         if not parse_node:
@@ -54,7 +54,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         writer.write_int_value("hopCount", self.hop_count)
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_timedelta_value()("roundTripTime", self.round_trip_time)
+        writer.write_timedelta_value("roundTripTime", self.round_trip_time)
         writer.write_additional_data_value(self.additional_data)
     
 

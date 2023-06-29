@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -17,7 +18,7 @@ if TYPE_CHECKING:
     from .soft_delete.soft_delete_request_builder import SoftDeleteRequestBuilder
     from .undo_soft_delete.undo_soft_delete_request_builder import UndoSoftDeleteRequestBuilder
 
-class ChatMessageItemRequestBuilder():
+class ChatMessageItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the messages property of the microsoft.graph.channel entity.
     """
@@ -25,25 +26,16 @@ class ChatMessageItemRequestBuilder():
         """
         Instantiates a new ChatMessageItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/me/joinedTeams/{team%2Did}/primaryChannel/messages/{chatMessage%2Did}{?%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/me/joinedTeams/{team%2Did}/primaryChannel/messages/{chatMessage%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ChatMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property messages for me
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -62,7 +54,7 @@ class ChatMessageItemRequestBuilder():
         """
         Retrieve a single message or a message reply in a channel or a chat.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatMessage]
         """
         request_info = self.to_get_request_information(
@@ -85,7 +77,7 @@ class ChatMessageItemRequestBuilder():
         Update a chatMessage object. With the exception of the **policyViolation** property, all properties of a **chatMessage** can be updated in delegated permissions scenarios.Only the **policyViolation** property of a **chatMessage** can be updated in application permissions scenarios. The update only works for chats where members are Microsoft Teams users. If one of the participants is using Skype, the operation will fail. This method does not support federation. Only the user in the tenant who sent the message can perform data loss prevention (DLP) updates on the specified chat message.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatMessage]
         """
         if not body:
@@ -109,7 +101,7 @@ class ChatMessageItemRequestBuilder():
         """
         Delete navigation property messages for me
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -125,7 +117,7 @@ class ChatMessageItemRequestBuilder():
         """
         Retrieve a single message or a message reply in a channel or a chat.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -144,7 +136,7 @@ class ChatMessageItemRequestBuilder():
         Update a chatMessage object. With the exception of the **policyViolation** property, all properties of a **chatMessage** can be updated in delegated permissions scenarios.Only the **policyViolation** property of a **chatMessage** can be updated in application permissions scenarios. The update only works for chats where members are Microsoft Teams users. If one of the participants is using Skype, the operation will fail. This method does not support federation. Only the user in the tenant who sent the message can perform data loss prevention (DLP) updates on the specified chat message.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -196,17 +188,15 @@ class ChatMessageItemRequestBuilder():
 
         return UndoSoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ChatMessageItemRequestBuilderDeleteRequestConfiguration():
+    class ChatMessageItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
     @dataclass
     class ChatMessageItemRequestBuilderGetQueryParameters():
@@ -217,7 +207,7 @@ class ChatMessageItemRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -235,31 +225,27 @@ class ChatMessageItemRequestBuilder():
         select: Optional[List[str]] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ChatMessageItemRequestBuilderGetRequestConfiguration():
+    class ChatMessageItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[ChatMessageItemRequestBuilder.ChatMessageItemRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ChatMessageItemRequestBuilderPatchRequestConfiguration():
+    class ChatMessageItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

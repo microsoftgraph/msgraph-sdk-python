@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -14,7 +15,7 @@ if TYPE_CHECKING:
     from .check_member_groups_post_request_body import CheckMemberGroupsPostRequestBody
     from .check_member_groups_response import CheckMemberGroupsResponse
 
-class CheckMemberGroupsRequestBuilder():
+class CheckMemberGroupsRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the checkMemberGroups method.
     """
@@ -22,26 +23,17 @@ class CheckMemberGroupsRequestBuilder():
         """
         Instantiates a new CheckMemberGroupsRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/checkMemberGroups"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/checkMemberGroups", path_parameters)
     
     async def post(self,body: Optional[CheckMemberGroupsPostRequestBody] = None, request_configuration: Optional[CheckMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[CheckMemberGroupsResponse]:
         """
         Check for membership in a specified list of group IDs, and return from that list those groups (identified by IDs) of which the specified user, group, service principal, organizational contact, device, or directory object is a member. This function is transitive. You can check up to a maximum of 20 groups per request. This function supports all groups provisioned in Azure AD. Because Microsoft 365 groups cannot contain other groups, membership in a Microsoft 365 group is always direct.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CheckMemberGroupsResponse]
         """
         if not body:
@@ -66,7 +58,7 @@ class CheckMemberGroupsRequestBuilder():
         Check for membership in a specified list of group IDs, and return from that list those groups (identified by IDs) of which the specified user, group, service principal, organizational contact, device, or directory object is a member. This function is transitive. You can check up to a maximum of 20 groups per request. This function supports all groups provisioned in Azure AD. Because Microsoft 365 groups cannot contain other groups, membership in a Microsoft 365 group is always direct.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -82,16 +74,14 @@ class CheckMemberGroupsRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class CheckMemberGroupsRequestBuilderPostRequestConfiguration():
+    class CheckMemberGroupsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

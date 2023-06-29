@@ -1,6 +1,7 @@
 from __future__ import annotations
 import datetime
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -13,6 +14,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..models.o_data_errors.o_data_error import ODataError
     from ..models.report_root import ReportRoot
+    from .authentication_methods.authentication_methods_request_builder import AuthenticationMethodsRequestBuilder
     from .daily_print_usage_by_printer.daily_print_usage_by_printer_request_builder import DailyPrintUsageByPrinterRequestBuilder
     from .daily_print_usage_by_user.daily_print_usage_by_user_request_builder import DailyPrintUsageByUserRequestBuilder
     from .device_configuration_device_activity.device_configuration_device_activity_request_builder import DeviceConfigurationDeviceActivityRequestBuilder
@@ -120,7 +122,7 @@ if TYPE_CHECKING:
     from .monthly_print_usage_by_user.monthly_print_usage_by_user_request_builder import MonthlyPrintUsageByUserRequestBuilder
     from .security.security_request_builder import SecurityRequestBuilder
 
-class ReportsRequestBuilder():
+class ReportsRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the reportRoot singleton.
     """
@@ -128,25 +130,16 @@ class ReportsRequestBuilder():
         """
         Instantiates a new ReportsRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/reports{?%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/reports{?%24select,%24expand}", path_parameters)
     
     async def get(self,request_configuration: Optional[ReportsRequestBuilderGetRequestConfiguration] = None) -> Optional[ReportRoot]:
         """
         Read properties and relationships of the reportRoot object.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ReportRoot]
         """
         request_info = self.to_get_request_information(
@@ -285,9 +278,9 @@ class ReportsRequestBuilder():
         """
         Provides operations to call the getGroupArchivedPrintJobs method.
         Args:
-            endDateTime: Usage: endDateTime={endDateTime}
-            groupId: Usage: groupId='{groupId}'
-            startDateTime: Usage: startDateTime={startDateTime}
+            end_date_time: Usage: endDateTime={endDateTime}
+            group_id: Usage: groupId='{groupId}'
+            start_date_time: Usage: startDateTime={startDateTime}
         Returns: GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
         if not end_date_time:
@@ -655,9 +648,9 @@ class ReportsRequestBuilder():
         """
         Provides operations to call the getPrinterArchivedPrintJobs method.
         Args:
-            endDateTime: Usage: endDateTime={endDateTime}
-            printerId: Usage: printerId='{printerId}'
-            startDateTime: Usage: startDateTime={startDateTime}
+            end_date_time: Usage: endDateTime={endDateTime}
+            printer_id: Usage: printerId='{printerId}'
+            start_date_time: Usage: startDateTime={startDateTime}
         Returns: GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
         if not end_date_time:
@@ -1207,9 +1200,9 @@ class ReportsRequestBuilder():
         """
         Provides operations to call the getUserArchivedPrintJobs method.
         Args:
-            endDateTime: Usage: endDateTime={endDateTime}
-            startDateTime: Usage: startDateTime={startDateTime}
-            userId: Usage: userId='{userId}'
+            end_date_time: Usage: endDateTime={endDateTime}
+            start_date_time: Usage: startDateTime={startDateTime}
+            user_id: Usage: userId='{userId}'
         Returns: GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
         if not end_date_time:
@@ -1384,7 +1377,7 @@ class ReportsRequestBuilder():
         Args:
             filter: Usage: filter='{filter}'
             skip: Usage: skip={skip}
-            skipToken: Usage: skipToken='{skipToken}'
+            skip_token: Usage: skipToken='{skipToken}'
             top: Usage: top={top}
         Returns: ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder
         """
@@ -1418,7 +1411,7 @@ class ReportsRequestBuilder():
         Update the properties of a reportRoot object.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ReportRoot]
         """
         if not body:
@@ -1442,7 +1435,7 @@ class ReportsRequestBuilder():
         """
         Read properties and relationships of the reportRoot object.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -1461,7 +1454,7 @@ class ReportsRequestBuilder():
         Update the properties of a reportRoot object.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -1476,6 +1469,15 @@ class ReportsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def authentication_methods(self) -> AuthenticationMethodsRequestBuilder:
+        """
+        Provides operations to manage the authenticationMethods property of the microsoft.graph.reportRoot entity.
+        """
+        from .authentication_methods.authentication_methods_request_builder import AuthenticationMethodsRequestBuilder
+
+        return AuthenticationMethodsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def daily_print_usage_by_printer(self) -> DailyPrintUsageByPrinterRequestBuilder:
@@ -1594,7 +1596,7 @@ class ReportsRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -1612,31 +1614,27 @@ class ReportsRequestBuilder():
         select: Optional[List[str]] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ReportsRequestBuilderGetRequestConfiguration():
+    class ReportsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[ReportsRequestBuilder.ReportsRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ReportsRequestBuilderPatchRequestConfiguration():
+    class ReportsRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

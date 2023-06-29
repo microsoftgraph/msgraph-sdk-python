@@ -39,7 +39,7 @@ class ConditionalAccessPolicy(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessPolicy
         """
         if not parse_node:
@@ -87,11 +87,11 @@ class ConditionalAccessPolicy(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("conditions", self.conditions)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("grantControls", self.grant_controls)
-        writer.write_datetime_value()("modifiedDateTime", self.modified_date_time)
+        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
         writer.write_object_value("sessionControls", self.session_controls)
         writer.write_enum_value("state", self.state)
     

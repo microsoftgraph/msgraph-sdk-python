@@ -26,7 +26,7 @@ class MembersAddedEventMessageDetail(EventMessageDetail):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MembersAddedEventMessageDetail
         """
         if not parse_node:
@@ -66,6 +66,6 @@ class MembersAddedEventMessageDetail(EventMessageDetail):
         super().serialize(writer)
         writer.write_object_value("initiator", self.initiator)
         writer.write_collection_of_object_values("members", self.members)
-        writer.write_datetime_value()("visibleHistoryStartDateTime", self.visible_history_start_date_time)
+        writer.write_datetime_value("visibleHistoryStartDateTime", self.visible_history_start_date_time)
     
 

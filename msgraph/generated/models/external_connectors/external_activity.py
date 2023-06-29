@@ -28,7 +28,7 @@ class ExternalActivity(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ExternalActivity
         """
         if not parse_node:
@@ -77,7 +77,7 @@ class ExternalActivity(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("performedBy", self.performed_by)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_enum_value("type", self.type)
     
 

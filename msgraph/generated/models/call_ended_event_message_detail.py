@@ -31,7 +31,7 @@ class CallEndedEventMessageDetail(EventMessageDetail):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: CallEndedEventMessageDetail
         """
         if not parse_node:
@@ -73,7 +73,7 @@ class CallEndedEventMessageDetail(EventMessageDetail):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_timedelta_value()("callDuration", self.call_duration)
+        writer.write_timedelta_value("callDuration", self.call_duration)
         writer.write_enum_value("callEventType", self.call_event_type)
         writer.write_str_value("callId", self.call_id)
         writer.write_collection_of_object_values("callParticipants", self.call_participants)

@@ -56,7 +56,7 @@ class Chat(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Chat
         """
         if not parse_node:
@@ -120,10 +120,10 @@ class Chat(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("chatType", self.chat_type)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("installedApps", self.installed_apps)
         writer.write_object_value("lastMessagePreview", self.last_message_preview)
-        writer.write_datetime_value()("lastUpdatedDateTime", self.last_updated_date_time)
+        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
         writer.write_collection_of_object_values("members", self.members)
         writer.write_collection_of_object_values("messages", self.messages)
         writer.write_object_value("onlineMeetingInfo", self.online_meeting_info)

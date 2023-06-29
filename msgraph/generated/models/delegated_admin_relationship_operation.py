@@ -31,7 +31,7 @@ class DelegatedAdminRelationshipOperation(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DelegatedAdminRelationshipOperation
         """
         if not parse_node:
@@ -71,9 +71,9 @@ class DelegatedAdminRelationshipOperation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("data", self.data)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_enum_value("operationType", self.operation_type)
         writer.write_enum_value("status", self.status)
     

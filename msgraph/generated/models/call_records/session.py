@@ -39,7 +39,7 @@ class Session(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Session
         """
         if not parse_node:
@@ -88,11 +88,11 @@ class Session(Entity):
         super().serialize(writer)
         writer.write_object_value("callee", self.callee)
         writer.write_object_value("caller", self.caller)
-        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_object_value("failureInfo", self.failure_info)
         writer.write_bool_value("isTest", self.is_test)
         writer.write_collection_of_enum_values("modalities", self.modalities)
         writer.write_collection_of_object_values("segments", self.segments)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
     
 

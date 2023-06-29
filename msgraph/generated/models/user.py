@@ -307,7 +307,7 @@ class User(DirectoryObject):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: User
         """
         if not parse_node:
@@ -563,7 +563,7 @@ class User(DirectoryObject):
         writer.write_collection_of_object_values("assignedPlans", self.assigned_plans)
         writer.write_object_value("authentication", self.authentication)
         writer.write_object_value("authorizationInfo", self.authorization_info)
-        writer.write_datetime_value()("birthday", self.birthday)
+        writer.write_datetime_value("birthday", self.birthday)
         writer.write_collection_of_primitive_values("businessPhones", self.business_phones)
         writer.write_object_value("calendar", self.calendar)
         writer.write_collection_of_object_values("calendarGroups", self.calendar_groups)
@@ -576,7 +576,7 @@ class User(DirectoryObject):
         writer.write_collection_of_object_values("contactFolders", self.contact_folders)
         writer.write_collection_of_object_values("contacts", self.contacts)
         writer.write_str_value("country", self.country)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("createdObjects", self.created_objects)
         writer.write_str_value("creationType", self.creation_type)
         writer.write_str_value("department", self.department)
@@ -586,19 +586,19 @@ class User(DirectoryObject):
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("drive", self.drive)
         writer.write_collection_of_object_values("drives", self.drives)
-        writer.write_datetime_value()("employeeHireDate", self.employee_hire_date)
+        writer.write_datetime_value("employeeHireDate", self.employee_hire_date)
         writer.write_str_value("employeeId", self.employee_id)
-        writer.write_datetime_value()("employeeLeaveDateTime", self.employee_leave_date_time)
+        writer.write_datetime_value("employeeLeaveDateTime", self.employee_leave_date_time)
         writer.write_object_value("employeeOrgData", self.employee_org_data)
         writer.write_str_value("employeeType", self.employee_type)
         writer.write_collection_of_object_values("events", self.events)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_str_value("externalUserState", self.external_user_state)
-        writer.write_datetime_value()("externalUserStateChangeDateTime", self.external_user_state_change_date_time)
+        writer.write_datetime_value("externalUserStateChangeDateTime", self.external_user_state_change_date_time)
         writer.write_str_value("faxNumber", self.fax_number)
         writer.write_collection_of_object_values("followedSites", self.followed_sites)
         writer.write_str_value("givenName", self.given_name)
-        writer.write_datetime_value()("hireDate", self.hire_date)
+        writer.write_datetime_value("hireDate", self.hire_date)
         writer.write_collection_of_object_values("identities", self.identities)
         writer.write_collection_of_primitive_values("imAddresses", self.im_addresses)
         writer.write_object_value("inferenceClassification", self.inference_classification)
@@ -607,7 +607,7 @@ class User(DirectoryObject):
         writer.write_bool_value("isResourceAccount", self.is_resource_account)
         writer.write_str_value("jobTitle", self.job_title)
         writer.write_collection_of_object_values("joinedTeams", self.joined_teams)
-        writer.write_datetime_value()("lastPasswordChangeDateTime", self.last_password_change_date_time)
+        writer.write_datetime_value("lastPasswordChangeDateTime", self.last_password_change_date_time)
         writer.write_str_value("legalAgeGroupClassification", self.legal_age_group_classification)
         writer.write_collection_of_object_values("licenseAssignmentStates", self.license_assignment_states)
         writer.write_collection_of_object_values("licenseDetails", self.license_details)
@@ -628,7 +628,7 @@ class User(DirectoryObject):
         writer.write_str_value("onPremisesDomainName", self.on_premises_domain_name)
         writer.write_object_value("onPremisesExtensionAttributes", self.on_premises_extension_attributes)
         writer.write_str_value("onPremisesImmutableId", self.on_premises_immutable_id)
-        writer.write_datetime_value()("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
+        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_collection_of_object_values("onPremisesProvisioningErrors", self.on_premises_provisioning_errors)
         writer.write_str_value("onPremisesSamAccountName", self.on_premises_sam_account_name)
         writer.write_str_value("onPremisesSecurityIdentifier", self.on_premises_security_identifier)
@@ -663,7 +663,7 @@ class User(DirectoryObject):
         writer.write_object_value("settings", self.settings)
         writer.write_bool_value("showInAddressList", self.show_in_address_list)
         writer.write_object_value("signInActivity", self.sign_in_activity)
-        writer.write_datetime_value()("signInSessionsValidFromDateTime", self.sign_in_sessions_valid_from_date_time)
+        writer.write_datetime_value("signInSessionsValidFromDateTime", self.sign_in_sessions_valid_from_date_time)
         writer.write_collection_of_primitive_values("skills", self.skills)
         writer.write_str_value("state", self.state)
         writer.write_str_value("streetAddress", self.street_address)

@@ -39,7 +39,7 @@ class ConversationThread(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ConversationThread
         """
         if not parse_node:
@@ -86,7 +86,7 @@ class ConversationThread(Entity):
         writer.write_collection_of_object_values("ccRecipients", self.cc_recipients)
         writer.write_bool_value("hasAttachments", self.has_attachments)
         writer.write_bool_value("isLocked", self.is_locked)
-        writer.write_datetime_value()("lastDeliveredDateTime", self.last_delivered_date_time)
+        writer.write_datetime_value("lastDeliveredDateTime", self.last_delivered_date_time)
         writer.write_collection_of_object_values("posts", self.posts)
         writer.write_str_value("preview", self.preview)
         writer.write_collection_of_object_values("toRecipients", self.to_recipients)

@@ -38,7 +38,7 @@ class AccessPackageAssignment(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageAssignment
         """
         if not parse_node:
@@ -88,7 +88,7 @@ class AccessPackageAssignment(Entity):
         super().serialize(writer)
         writer.write_object_value("accessPackage", self.access_package)
         writer.write_object_value("assignmentPolicy", self.assignment_policy)
-        writer.write_datetime_value()("expiredDateTime", self.expired_date_time)
+        writer.write_datetime_value("expiredDateTime", self.expired_date_time)
         writer.write_object_value("schedule", self.schedule)
         writer.write_enum_value("state", self.state)
         writer.write_str_value("status", self.status)

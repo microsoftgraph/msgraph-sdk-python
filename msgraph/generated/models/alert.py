@@ -117,7 +117,7 @@ class Alert(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Alert
         """
         if not parse_node:
@@ -233,22 +233,22 @@ class Alert(Entity):
         writer.write_str_value("azureSubscriptionId", self.azure_subscription_id)
         writer.write_str_value("azureTenantId", self.azure_tenant_id)
         writer.write_str_value("category", self.category)
-        writer.write_datetime_value()("closedDateTime", self.closed_date_time)
+        writer.write_datetime_value("closedDateTime", self.closed_date_time)
         writer.write_collection_of_object_values("cloudAppStates", self.cloud_app_states)
         writer.write_collection_of_primitive_values("comments", self.comments)
         writer.write_int_value("confidence", self.confidence)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_collection_of_primitive_values("detectionIds", self.detection_ids)
-        writer.write_datetime_value()("eventDateTime", self.event_date_time)
+        writer.write_datetime_value("eventDateTime", self.event_date_time)
         writer.write_enum_value("feedback", self.feedback)
         writer.write_collection_of_object_values("fileStates", self.file_states)
         writer.write_collection_of_object_values("historyStates", self.history_states)
         writer.write_collection_of_object_values("hostStates", self.host_states)
         writer.write_collection_of_primitive_values("incidentIds", self.incident_ids)
         writer.write_collection_of_object_values("investigationSecurityStates", self.investigation_security_states)
-        writer.write_datetime_value()("lastEventDateTime", self.last_event_date_time)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastEventDateTime", self.last_event_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("malwareStates", self.malware_states)
         writer.write_collection_of_object_values("messageSecurityStates", self.message_security_states)
         writer.write_collection_of_object_values("networkConnections", self.network_connections)

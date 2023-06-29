@@ -45,7 +45,7 @@ class DeviceManagementExportJob(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceManagementExportJob
         """
         if not parse_node:
@@ -92,12 +92,12 @@ class DeviceManagementExportJob(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("filter", self.filter)
         writer.write_enum_value("format", self.format)
         writer.write_enum_value("localizationType", self.localization_type)
         writer.write_str_value("reportName", self.report_name)
-        writer.write_datetime_value()("requestDateTime", self.request_date_time)
+        writer.write_datetime_value("requestDateTime", self.request_date_time)
         writer.write_collection_of_primitive_values("select", self.select)
         writer.write_str_value("snapshotId", self.snapshot_id)
         writer.write_enum_value("status", self.status)

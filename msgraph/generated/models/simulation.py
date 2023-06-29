@@ -55,7 +55,7 @@ class Simulation(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Simulation
         """
         if not parse_node:
@@ -116,15 +116,15 @@ class Simulation(Entity):
         writer.write_enum_value("attackTechnique", self.attack_technique)
         writer.write_enum_value("attackType", self.attack_type)
         writer.write_str_value("automationId", self.automation_id)
-        writer.write_datetime_value()("completionDateTime", self.completion_date_time)
+        writer.write_datetime_value("completionDateTime", self.completion_date_time)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isAutomated", self.is_automated)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_datetime_value()("launchDateTime", self.launch_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("launchDateTime", self.launch_date_time)
         writer.write_enum_value("payloadDeliveryPlatform", self.payload_delivery_platform)
         writer.write_object_value("report", self.report)
         writer.write_enum_value("status", self.status)

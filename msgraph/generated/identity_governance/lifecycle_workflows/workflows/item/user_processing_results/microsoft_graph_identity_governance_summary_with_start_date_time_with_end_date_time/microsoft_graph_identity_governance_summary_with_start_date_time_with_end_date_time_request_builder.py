@@ -1,6 +1,7 @@
 from __future__ import annotations
 import datetime
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -14,7 +15,7 @@ if TYPE_CHECKING:
     from .......models.identity_governance.user_summary import UserSummary
     from .......models.o_data_errors.o_data_error import ODataError
 
-class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder():
+class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the summary method.
     """
@@ -22,29 +23,18 @@ class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeReq
         """
         Instantiates a new MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder and sets the default values.
         Args:
-            endDateTime: Usage: endDateTime={endDateTime}
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
-            startDateTime: Usage: startDateTime={startDateTime}
+            end_date_time: Usage: endDateTime={endDateTime}
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
+            start_date_time: Usage: startDateTime={startDateTime}
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/identityGovernance/lifecycleWorkflows/workflows/{workflow%2Did}/userProcessingResults/microsoft.graph.identityGovernance.summary(startDateTime={startDateTime},endDateTime={endDateTime})"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params[""] = endDateTime
-        url_tpl_params[""] = startDateTime
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/workflows/{workflow%2Did}/userProcessingResults/microsoft.graph.identityGovernance.summary(startDateTime={startDateTime},endDateTime={endDateTime})", path_parameters)
     
     async def get(self,request_configuration: Optional[MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None) -> Optional[UserSummary]:
         """
         Invoke function summary
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserSummary]
         """
         request_info = self.to_get_request_information(
@@ -66,7 +56,7 @@ class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeReq
         """
         Invoke function summary
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -79,16 +69,14 @@ class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeReq
             request_info.add_request_options(request_configuration.options)
         return request_info
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration():
+    class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

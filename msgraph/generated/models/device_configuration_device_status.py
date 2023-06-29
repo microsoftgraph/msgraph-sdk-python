@@ -34,7 +34,7 @@ class DeviceConfigurationDeviceStatus(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceConfigurationDeviceStatus
         """
         if not parse_node:
@@ -74,10 +74,10 @@ class DeviceConfigurationDeviceStatus(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("complianceGracePeriodExpirationDateTime", self.compliance_grace_period_expiration_date_time)
+        writer.write_datetime_value("complianceGracePeriodExpirationDateTime", self.compliance_grace_period_expiration_date_time)
         writer.write_str_value("deviceDisplayName", self.device_display_name)
         writer.write_str_value("deviceModel", self.device_model)
-        writer.write_datetime_value()("lastReportedDateTime", self.last_reported_date_time)
+        writer.write_datetime_value("lastReportedDateTime", self.last_reported_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("userName", self.user_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)

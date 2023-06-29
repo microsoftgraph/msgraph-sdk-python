@@ -42,7 +42,7 @@ class DeviceManagementExchangeConnector(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceManagementExchangeConnector
         """
         if not parse_node:
@@ -90,7 +90,7 @@ class DeviceManagementExchangeConnector(Entity):
         writer.write_str_value("exchangeAlias", self.exchange_alias)
         writer.write_enum_value("exchangeConnectorType", self.exchange_connector_type)
         writer.write_str_value("exchangeOrganization", self.exchange_organization)
-        writer.write_datetime_value()("lastSyncDateTime", self.last_sync_date_time)
+        writer.write_datetime_value("lastSyncDateTime", self.last_sync_date_time)
         writer.write_str_value("primarySmtpAddress", self.primary_smtp_address)
         writer.write_str_value("serverName", self.server_name)
         writer.write_enum_value("status", self.status)

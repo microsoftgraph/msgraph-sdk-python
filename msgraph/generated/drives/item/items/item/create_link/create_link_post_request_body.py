@@ -27,7 +27,7 @@ class CreateLinkPostRequestBody(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: CreateLinkPostRequestBody
         """
         if not parse_node:
@@ -57,7 +57,7 @@ class CreateLinkPostRequestBody(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("message", self.message)
         writer.write_str_value("password", self.password)
         writer.write_bool_value("retainInheritedPermissions", self.retain_inherited_permissions)

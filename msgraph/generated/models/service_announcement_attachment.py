@@ -29,7 +29,7 @@ class ServiceAnnouncementAttachment(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ServiceAnnouncementAttachment
         """
         if not parse_node:
@@ -67,7 +67,7 @@ class ServiceAnnouncementAttachment(Entity):
         super().serialize(writer)
         writer.write_bytes_value("content", self.content)
         writer.write_str_value("contentType", self.content_type)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("name", self.name)
         writer.write_int_value("size", self.size)
     

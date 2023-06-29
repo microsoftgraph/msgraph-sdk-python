@@ -20,7 +20,7 @@ class AccessReviewInactiveUsersQueryScope(AccessReviewQueryScope):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewInactiveUsersQueryScope
         """
         if not parse_node:
@@ -52,6 +52,6 @@ class AccessReviewInactiveUsersQueryScope(AccessReviewQueryScope):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_timedelta_value()("inactiveDuration", self.inactive_duration)
+        writer.write_timedelta_value("inactiveDuration", self.inactive_duration)
     
 

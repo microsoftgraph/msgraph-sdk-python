@@ -34,7 +34,7 @@ class AccessReviewHistoryInstance(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewHistoryInstance
         """
         if not parse_node:
@@ -75,11 +75,11 @@ class AccessReviewHistoryInstance(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("downloadUri", self.download_uri)
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value()("fulfilledDateTime", self.fulfilled_date_time)
-        writer.write_datetime_value()("reviewHistoryPeriodEndDateTime", self.review_history_period_end_date_time)
-        writer.write_datetime_value()("reviewHistoryPeriodStartDateTime", self.review_history_period_start_date_time)
-        writer.write_datetime_value()("runDateTime", self.run_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("fulfilledDateTime", self.fulfilled_date_time)
+        writer.write_datetime_value("reviewHistoryPeriodEndDateTime", self.review_history_period_end_date_time)
+        writer.write_datetime_value("reviewHistoryPeriodStartDateTime", self.review_history_period_start_date_time)
+        writer.write_datetime_value("runDateTime", self.run_date_time)
         writer.write_enum_value("status", self.status)
     
 

@@ -23,7 +23,7 @@ class SetPresencePostRequestBody(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SetPresencePostRequestBody
         """
         if not parse_node:
@@ -53,7 +53,7 @@ class SetPresencePostRequestBody(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("activity", self.activity)
         writer.write_str_value("availability", self.availability)
-        writer.write_timedelta_value()("expirationDuration", self.expiration_duration)
+        writer.write_timedelta_value("expirationDuration", self.expiration_duration)
         writer.write_str_value("sessionId", self.session_id)
         writer.write_additional_data_value(self.additional_data)
     

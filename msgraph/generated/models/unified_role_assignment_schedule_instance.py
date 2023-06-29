@@ -34,7 +34,7 @@ class UnifiedRoleAssignmentScheduleInstance(UnifiedRoleScheduleInstanceBase):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleAssignmentScheduleInstance
         """
         if not parse_node:
@@ -76,10 +76,10 @@ class UnifiedRoleAssignmentScheduleInstance(UnifiedRoleScheduleInstanceBase):
         super().serialize(writer)
         writer.write_object_value("activatedUsing", self.activated_using)
         writer.write_str_value("assignmentType", self.assignment_type)
-        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_str_value("memberType", self.member_type)
         writer.write_str_value("roleAssignmentOriginId", self.role_assignment_origin_id)
         writer.write_str_value("roleAssignmentScheduleId", self.role_assignment_schedule_id)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
     
 

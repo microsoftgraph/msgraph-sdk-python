@@ -42,7 +42,7 @@ class PrintJob(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: PrintJob
         """
         if not parse_node:
@@ -94,7 +94,7 @@ class PrintJob(Entity):
         super().serialize(writer)
         writer.write_object_value("configuration", self.configuration)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("documents", self.documents)
         writer.write_bool_value("isFetchable", self.is_fetchable)
         writer.write_str_value("redirectedFrom", self.redirected_from)

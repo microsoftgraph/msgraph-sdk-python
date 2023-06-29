@@ -56,7 +56,7 @@ class AccessReviewScheduleDefinition(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewScheduleDefinition
         """
         if not parse_node:
@@ -118,14 +118,14 @@ class AccessReviewScheduleDefinition(Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("additionalNotificationRecipients", self.additional_notification_recipients)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("descriptionForAdmins", self.description_for_admins)
         writer.write_str_value("descriptionForReviewers", self.description_for_reviewers)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)
         writer.write_object_value("instanceEnumerationScope", self.instance_enumeration_scope)
         writer.write_collection_of_object_values("instances", self.instances)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("reviewers", self.reviewers)
         writer.write_object_value("scope", self.scope)
         writer.write_object_value("settings", self.settings)

@@ -46,7 +46,7 @@ class AgreementAcceptance(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AgreementAcceptance
         """
         if not parse_node:
@@ -98,8 +98,8 @@ class AgreementAcceptance(Entity):
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("deviceOSType", self.device_o_s_type)
         writer.write_str_value("deviceOSVersion", self.device_o_s_version)
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value()("recordedDateTime", self.recorded_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("recordedDateTime", self.recorded_date_time)
         writer.write_enum_value("state", self.state)
         writer.write_str_value("userDisplayName", self.user_display_name)
         writer.write_str_value("userEmail", self.user_email)

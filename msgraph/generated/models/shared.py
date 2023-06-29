@@ -28,7 +28,7 @@ class Shared(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Shared
         """
         if not parse_node:
@@ -65,7 +65,7 @@ class Shared(AdditionalDataHolder, Parsable):
         writer.write_object_value("owner", self.owner)
         writer.write_str_value("scope", self.scope)
         writer.write_object_value("sharedBy", self.shared_by)
-        writer.write_datetime_value()("sharedDateTime", self.shared_date_time)
+        writer.write_datetime_value("sharedDateTime", self.shared_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

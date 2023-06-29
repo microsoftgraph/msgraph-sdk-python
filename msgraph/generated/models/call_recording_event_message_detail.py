@@ -34,7 +34,7 @@ class CallRecordingEventMessageDetail(EventMessageDetail):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: CallRecordingEventMessageDetail
         """
         if not parse_node:
@@ -78,7 +78,7 @@ class CallRecordingEventMessageDetail(EventMessageDetail):
         super().serialize(writer)
         writer.write_str_value("callId", self.call_id)
         writer.write_str_value("callRecordingDisplayName", self.call_recording_display_name)
-        writer.write_timedelta_value()("callRecordingDuration", self.call_recording_duration)
+        writer.write_timedelta_value("callRecordingDuration", self.call_recording_duration)
         writer.write_enum_value("callRecordingStatus", self.call_recording_status)
         writer.write_str_value("callRecordingUrl", self.call_recording_url)
         writer.write_object_value("initiator", self.initiator)

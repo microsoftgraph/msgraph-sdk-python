@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -16,7 +17,7 @@ if TYPE_CHECKING:
     from .delta.delta_request_builder import DeltaRequestBuilder
     from .item.event_item_request_builder import EventItemRequestBuilder
 
-class InstancesRequestBuilder():
+class InstancesRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the instances property of the microsoft.graph.event entity.
     """
@@ -24,19 +25,10 @@ class InstancesRequestBuilder():
         """
         Instantiates a new InstancesRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/groups/{group%2Did}/calendar/events/{event%2Did}/instances{?startDateTime*,endDateTime*,%24top,%24skip,%24filter,%24count,%24orderby,%24select}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/calendar/events/{event%2Did}/instances{?startDateTime*,endDateTime*,%24top,%24skip,%24filter,%24count,%24orderby,%24select}", path_parameters)
     
     def by_event_id1(self,event_id1: str) -> EventItemRequestBuilder:
         """
@@ -57,7 +49,7 @@ class InstancesRequestBuilder():
         """
         The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EventCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -79,7 +71,7 @@ class InstancesRequestBuilder():
         """
         The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -120,13 +112,15 @@ class InstancesRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
+            if original_name == "end_date_time":
+                return "endDateTime"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
@@ -135,12 +129,10 @@ class InstancesRequestBuilder():
                 return "%24select"
             if original_name == "skip":
                 return "%24skip"
-            if original_name == "top":
-                return "%24top"
-            if original_name == "end_date_time":
-                return "endDateTime"
             if original_name == "start_date_time":
                 return "startDateTime"
+            if original_name == "top":
+                return "%24top"
             return original_name
         
         # Include count of items
@@ -168,17 +160,15 @@ class InstancesRequestBuilder():
         top: Optional[int] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class InstancesRequestBuilderGetRequestConfiguration():
+    class InstancesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[InstancesRequestBuilder.InstancesRequestBuilderGetQueryParameters] = None
 

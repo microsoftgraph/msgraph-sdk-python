@@ -61,7 +61,7 @@ class DeviceCompliancePolicy(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceCompliancePolicy
         """
         if not parse_node:
@@ -171,13 +171,13 @@ class DeviceCompliancePolicy(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_collection_of_object_values("deviceSettingStateSummaries", self.device_setting_state_summaries)
         writer.write_object_value("deviceStatusOverview", self.device_status_overview)
         writer.write_collection_of_object_values("deviceStatuses", self.device_statuses)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("scheduledActionsForRule", self.scheduled_actions_for_rule)
         writer.write_object_value("userStatusOverview", self.user_status_overview)
         writer.write_collection_of_object_values("userStatuses", self.user_statuses)

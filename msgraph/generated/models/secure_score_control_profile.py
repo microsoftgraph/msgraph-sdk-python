@@ -60,7 +60,7 @@ class SecureScoreControlProfile(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SecureScoreControlProfile
         """
         if not parse_node:
@@ -124,7 +124,7 @@ class SecureScoreControlProfile(Entity):
         writer.write_collection_of_object_values("controlStateUpdates", self.control_state_updates)
         writer.write_bool_value("deprecated", self.deprecated)
         writer.write_str_value("implementationCost", self.implementation_cost)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_float_value("maxScore", self.max_score)
         writer.write_int_value("rank", self.rank)
         writer.write_str_value("remediation", self.remediation)

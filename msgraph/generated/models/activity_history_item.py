@@ -39,7 +39,7 @@ class ActivityHistoryItem(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ActivityHistoryItem
         """
         if not parse_node:
@@ -85,11 +85,11 @@ class ActivityHistoryItem(Entity):
         super().serialize(writer)
         writer.write_int_value("activeDurationSeconds", self.active_duration_seconds)
         writer.write_object_value("activity", self.activity)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value()("lastActiveDateTime", self.last_active_date_time)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_datetime_value()("startedDateTime", self.started_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("lastActiveDateTime", self.last_active_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("startedDateTime", self.started_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("userTimezone", self.user_timezone)
     

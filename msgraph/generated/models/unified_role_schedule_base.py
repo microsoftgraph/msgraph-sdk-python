@@ -48,7 +48,7 @@ class UnifiedRoleScheduleBase(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleScheduleBase
         """
         if not parse_node:
@@ -115,11 +115,11 @@ class UnifiedRoleScheduleBase(Entity):
         super().serialize(writer)
         writer.write_object_value("appScope", self.app_scope)
         writer.write_str_value("appScopeId", self.app_scope_id)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("createdUsing", self.created_using)
         writer.write_object_value("directoryScope", self.directory_scope)
         writer.write_str_value("directoryScopeId", self.directory_scope_id)
-        writer.write_datetime_value()("modifiedDateTime", self.modified_date_time)
+        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
         writer.write_object_value("principal", self.principal)
         writer.write_str_value("principalId", self.principal_id)
         writer.write_object_value("roleDefinition", self.role_definition)

@@ -64,7 +64,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TeleconferenceDeviceMediaQuality
         """
         if not parse_node:
@@ -134,23 +134,23 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_timedelta_value()("averageInboundJitter", self.average_inbound_jitter)
+        writer.write_timedelta_value("averageInboundJitter", self.average_inbound_jitter)
         writer.write_float_value("averageInboundPacketLossRateInPercentage", self.average_inbound_packet_loss_rate_in_percentage)
-        writer.write_timedelta_value()("averageInboundRoundTripDelay", self.average_inbound_round_trip_delay)
-        writer.write_timedelta_value()("averageOutboundJitter", self.average_outbound_jitter)
+        writer.write_timedelta_value("averageInboundRoundTripDelay", self.average_inbound_round_trip_delay)
+        writer.write_timedelta_value("averageOutboundJitter", self.average_outbound_jitter)
         writer.write_float_value("averageOutboundPacketLossRateInPercentage", self.average_outbound_packet_loss_rate_in_percentage)
-        writer.write_timedelta_value()("averageOutboundRoundTripDelay", self.average_outbound_round_trip_delay)
+        writer.write_timedelta_value("averageOutboundRoundTripDelay", self.average_outbound_round_trip_delay)
         writer.write_int_value("channelIndex", self.channel_index)
         writer.write_int_value("inboundPackets", self.inbound_packets)
         writer.write_str_value("localIPAddress", self.local_i_p_address)
         writer.write_int_value("localPort", self.local_port)
-        writer.write_timedelta_value()("maximumInboundJitter", self.maximum_inbound_jitter)
+        writer.write_timedelta_value("maximumInboundJitter", self.maximum_inbound_jitter)
         writer.write_float_value("maximumInboundPacketLossRateInPercentage", self.maximum_inbound_packet_loss_rate_in_percentage)
-        writer.write_timedelta_value()("maximumInboundRoundTripDelay", self.maximum_inbound_round_trip_delay)
-        writer.write_timedelta_value()("maximumOutboundJitter", self.maximum_outbound_jitter)
+        writer.write_timedelta_value("maximumInboundRoundTripDelay", self.maximum_inbound_round_trip_delay)
+        writer.write_timedelta_value("maximumOutboundJitter", self.maximum_outbound_jitter)
         writer.write_float_value("maximumOutboundPacketLossRateInPercentage", self.maximum_outbound_packet_loss_rate_in_percentage)
-        writer.write_timedelta_value()("maximumOutboundRoundTripDelay", self.maximum_outbound_round_trip_delay)
-        writer.write_timedelta_value()("mediaDuration", self.media_duration)
+        writer.write_timedelta_value("maximumOutboundRoundTripDelay", self.maximum_outbound_round_trip_delay)
+        writer.write_timedelta_value("mediaDuration", self.media_duration)
         writer.write_int_value("networkLinkSpeedInBytes", self.network_link_speed_in_bytes)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("outboundPackets", self.outbound_packets)

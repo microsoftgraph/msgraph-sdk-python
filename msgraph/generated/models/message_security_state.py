@@ -35,7 +35,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MessageSecurityState
         """
         if not parse_node:
@@ -75,7 +75,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         writer.write_str_value("directionality", self.directionality)
         writer.write_str_value("internetMessageId", self.internet_message_id)
         writer.write_str_value("messageFingerprint", self.message_fingerprint)
-        writer.write_datetime_value()("messageReceivedDateTime", self.message_received_date_time)
+        writer.write_datetime_value("messageReceivedDateTime", self.message_received_date_time)
         writer.write_str_value("messageSubject", self.message_subject)
         writer.write_str_value("networkMessageId", self.network_message_id)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -27,7 +27,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UserSimulationEventInfo
         """
         if not parse_node:
@@ -58,7 +58,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("browser", self.browser)
-        writer.write_datetime_value()("eventDateTime", self.event_date_time)
+        writer.write_datetime_value("eventDateTime", self.event_date_time)
         writer.write_str_value("eventName", self.event_name)
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_str_value("@odata.type", self.odata_type)

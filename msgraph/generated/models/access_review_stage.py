@@ -33,7 +33,7 @@ class AccessReviewStage(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewStage
         """
         if not parse_node:
@@ -75,10 +75,10 @@ class AccessReviewStage(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("decisions", self.decisions)
-        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)
         writer.write_collection_of_object_values("reviewers", self.reviewers)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("status", self.status)
     
 

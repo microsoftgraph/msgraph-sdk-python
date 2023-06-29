@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .alert import Alert
     from .cases_root import CasesRoot
     from .incident import Incident
+    from .threat_intelligence import ThreatIntelligence
     from .triggers_root import TriggersRoot
     from .trigger_types_root import TriggerTypesRoot
 
@@ -35,6 +36,8 @@ class Security(Entity):
     secure_score_control_profiles: Optional[List[SecureScoreControlProfile]] = None
     # The secureScores property
     secure_scores: Optional[List[SecureScore]] = None
+    # The threatIntelligence property
+    threat_intelligence: Optional[ThreatIntelligence] = None
     # The triggerTypes property
     trigger_types: Optional[TriggerTypesRoot] = None
     # The triggers property
@@ -45,7 +48,7 @@ class Security(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Security
         """
         if not parse_node:
@@ -65,6 +68,7 @@ class Security(Entity):
         from .alert import Alert
         from .cases_root import CasesRoot
         from .incident import Incident
+        from .threat_intelligence import ThreatIntelligence
         from .triggers_root import TriggersRoot
         from .trigger_types_root import TriggerTypesRoot
 
@@ -76,6 +80,7 @@ class Security(Entity):
         from .alert import Alert
         from .cases_root import CasesRoot
         from .incident import Incident
+        from .threat_intelligence import ThreatIntelligence
         from .triggers_root import TriggersRoot
         from .trigger_types_root import TriggerTypesRoot
 
@@ -87,6 +92,7 @@ class Security(Entity):
             "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(Incident)),
             "secureScoreControlProfiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(SecureScoreControlProfile)),
             "secureScores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(SecureScore)),
+            "threatIntelligence": lambda n : setattr(self, 'threat_intelligence', n.get_object_value(ThreatIntelligence)),
             "triggerTypes": lambda n : setattr(self, 'trigger_types', n.get_object_value(TriggerTypesRoot)),
             "triggers": lambda n : setattr(self, 'triggers', n.get_object_value(TriggersRoot)),
         }
@@ -110,6 +116,7 @@ class Security(Entity):
         writer.write_collection_of_object_values("incidents", self.incidents)
         writer.write_collection_of_object_values("secureScoreControlProfiles", self.secure_score_control_profiles)
         writer.write_collection_of_object_values("secureScores", self.secure_scores)
+        writer.write_object_value("threatIntelligence", self.threat_intelligence)
         writer.write_object_value("triggerTypes", self.trigger_types)
         writer.write_object_value("triggers", self.triggers)
     

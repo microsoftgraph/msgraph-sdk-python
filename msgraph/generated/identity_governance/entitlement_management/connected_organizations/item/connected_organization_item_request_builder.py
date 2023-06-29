@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -15,7 +16,7 @@ if TYPE_CHECKING:
     from .external_sponsors.external_sponsors_request_builder import ExternalSponsorsRequestBuilder
     from .internal_sponsors.internal_sponsors_request_builder import InternalSponsorsRequestBuilder
 
-class ConnectedOrganizationItemRequestBuilder():
+class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the connectedOrganizations property of the microsoft.graph.entitlementManagement entity.
     """
@@ -23,25 +24,16 @@ class ConnectedOrganizationItemRequestBuilder():
         """
         Instantiates a new ConnectedOrganizationItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/identityGovernance/entitlementManagement/connectedOrganizations/{connectedOrganization%2Did}{?%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/connectedOrganizations/{connectedOrganization%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete a connectedOrganization object.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -60,7 +52,7 @@ class ConnectedOrganizationItemRequestBuilder():
         """
         Retrieve the properties and relationships of a connectedOrganization object.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectedOrganization]
         """
         request_info = self.to_get_request_information(
@@ -83,7 +75,7 @@ class ConnectedOrganizationItemRequestBuilder():
         Update a connectedOrganization object to change one or more of its properties.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectedOrganization]
         """
         if not body:
@@ -107,7 +99,7 @@ class ConnectedOrganizationItemRequestBuilder():
         """
         Delete a connectedOrganization object.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -123,7 +115,7 @@ class ConnectedOrganizationItemRequestBuilder():
         """
         Retrieve the properties and relationships of a connectedOrganization object.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -142,7 +134,7 @@ class ConnectedOrganizationItemRequestBuilder():
         Update a connectedOrganization object to change one or more of its properties.
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -176,17 +168,15 @@ class ConnectedOrganizationItemRequestBuilder():
 
         return InternalSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ConnectedOrganizationItemRequestBuilderDeleteRequestConfiguration():
+    class ConnectedOrganizationItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
     @dataclass
     class ConnectedOrganizationItemRequestBuilderGetQueryParameters():
@@ -197,7 +187,7 @@ class ConnectedOrganizationItemRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -215,31 +205,27 @@ class ConnectedOrganizationItemRequestBuilder():
         select: Optional[List[str]] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ConnectedOrganizationItemRequestBuilderGetRequestConfiguration():
+    class ConnectedOrganizationItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[ConnectedOrganizationItemRequestBuilder.ConnectedOrganizationItemRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class ConnectedOrganizationItemRequestBuilderPatchRequestConfiguration():
+    class ConnectedOrganizationItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

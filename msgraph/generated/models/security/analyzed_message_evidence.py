@@ -56,7 +56,7 @@ class AnalyzedMessageEvidence(AlertEvidence):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AnalyzedMessageEvidence
         """
         if not parse_node:
@@ -116,7 +116,7 @@ class AnalyzedMessageEvidence(AlertEvidence):
         writer.write_str_value("networkMessageId", self.network_message_id)
         writer.write_object_value("p1Sender", self.p1_sender)
         writer.write_object_value("p2Sender", self.p2_sender)
-        writer.write_datetime_value()("receivedDateTime", self.received_date_time)
+        writer.write_datetime_value("receivedDateTime", self.received_date_time)
         writer.write_str_value("recipientEmailAddress", self.recipient_email_address)
         writer.write_str_value("senderIp", self.sender_ip)
         writer.write_str_value("subject", self.subject)

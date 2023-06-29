@@ -55,7 +55,7 @@ class LearningContent(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: LearningContent
         """
         if not parse_node:
@@ -107,16 +107,16 @@ class LearningContent(Entity):
         writer.write_collection_of_primitive_values("additionalTags", self.additional_tags)
         writer.write_str_value("contentWebUrl", self.content_web_url)
         writer.write_collection_of_primitive_values("contributors", self.contributors)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_timedelta_value()("duration", self.duration)
+        writer.write_timedelta_value("duration", self.duration)
         writer.write_str_value("externalId", self.external_id)
         writer.write_str_value("format", self.format)
         writer.write_bool_value("isActive", self.is_active)
         writer.write_bool_value("isPremium", self.is_premium)
         writer.write_bool_value("isSearchable", self.is_searchable)
         writer.write_str_value("languageTag", self.language_tag)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_int_value("numberOfPages", self.number_of_pages)
         writer.write_collection_of_primitive_values("skillTags", self.skill_tags)
         writer.write_str_value("sourceName", self.source_name)

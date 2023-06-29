@@ -80,7 +80,7 @@ class OnlineMeeting(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: OnlineMeeting
         """
         if not parse_node:
@@ -168,8 +168,8 @@ class OnlineMeeting(Entity):
         writer.write_object_value("audioConferencing", self.audio_conferencing)
         writer.write_object_value("broadcastSettings", self.broadcast_settings)
         writer.write_object_value("chatInfo", self.chat_info)
-        writer.write_datetime_value()("creationDateTime", self.creation_date_time)
-        writer.write_datetime_value()("endDateTime", self.end_date_time)
+        writer.write_datetime_value("creationDateTime", self.creation_date_time)
+        writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_str_value("externalId", self.external_id)
         writer.write_bool_value("isBroadcast", self.is_broadcast)
         writer.write_bool_value("isEntryExitAnnounced", self.is_entry_exit_announced)
@@ -179,7 +179,7 @@ class OnlineMeeting(Entity):
         writer.write_object_value("lobbyBypassSettings", self.lobby_bypass_settings)
         writer.write_object_value("participants", self.participants)
         writer.write_bool_value("recordAutomatically", self.record_automatically)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("subject", self.subject)
         writer.write_str_value("videoTeleconferenceId", self.video_teleconference_id)
         writer.write_object_value("watermarkProtection", self.watermark_protection)

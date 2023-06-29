@@ -49,7 +49,7 @@ class SynchronizationTaskExecution(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SynchronizationTaskExecution
         """
         if not parse_node:
@@ -107,8 +107,8 @@ class SynchronizationTaskExecution(AdditionalDataHolder, Parsable):
         writer.write_object_value("error", self.error)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("state", self.state)
-        writer.write_datetime_value()("timeBegan", self.time_began)
-        writer.write_datetime_value()("timeEnded", self.time_ended)
+        writer.write_datetime_value("timeBegan", self.time_began)
+        writer.write_datetime_value("timeEnded", self.time_ended)
         writer.write_additional_data_value(self.additional_data)
     
 

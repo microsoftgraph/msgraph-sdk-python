@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -13,7 +14,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .get_oma_setting_plain_text_value_with_secret_reference_value_id_response import GetOmaSettingPlainTextValueWithSecretReferenceValueIdResponse
 
-class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder():
+class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the getOmaSettingPlainTextValue method.
     """
@@ -21,27 +22,17 @@ class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder():
         """
         Instantiates a new GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
-            secretReferenceValueId: Usage: secretReferenceValueId='{secretReferenceValueId}'
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
+            secret_reference_value_id: Usage: secretReferenceValueId='{secretReferenceValueId}'
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}/getOmaSettingPlainTextValue(secretReferenceValueId='{secretReferenceValueId}')"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params[""] = secretReferenceValueId
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}/getOmaSettingPlainTextValue(secretReferenceValueId='{secretReferenceValueId}')", path_parameters)
     
     async def get(self,request_configuration: Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilderGetRequestConfiguration] = None) -> Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdResponse]:
         """
         Invoke function getOmaSettingPlainTextValue
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdResponse]
         """
         request_info = self.to_get_request_information(
@@ -63,7 +54,7 @@ class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder():
         """
         Invoke function getOmaSettingPlainTextValue
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -76,16 +67,14 @@ class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilderGetRequestConfiguration():
+    class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -14,7 +15,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
     from .cancel.cancel_request_builder import CancelRequestBuilder
 
-class BookingAppointmentItemRequestBuilder():
+class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the calendarView property of the microsoft.graph.bookingBusiness entity.
     """
@@ -22,25 +23,16 @@ class BookingAppointmentItemRequestBuilder():
         """
         Instantiates a new BookingAppointmentItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
-            raise TypeError("path_parameters cannot be null.")
-        if not request_adapter:
-            raise TypeError("request_adapter cannot be null.")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/calendarView/{bookingAppointment%2Did}{?start*,end*,%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/calendarView/{bookingAppointment%2Did}{?start*,end*,%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[BookingAppointmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property calendarView for solutions
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,7 +51,7 @@ class BookingAppointmentItemRequestBuilder():
         """
         The set of appointments of this business in a specified date range. Read-only. Nullable.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingAppointment]
         """
         request_info = self.to_get_request_information(
@@ -82,7 +74,7 @@ class BookingAppointmentItemRequestBuilder():
         Update the navigation property calendarView in solutions
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingAppointment]
         """
         if not body:
@@ -106,7 +98,7 @@ class BookingAppointmentItemRequestBuilder():
         """
         Delete navigation property calendarView for solutions
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -122,7 +114,7 @@ class BookingAppointmentItemRequestBuilder():
         """
         The set of appointments of this business in a specified date range. Read-only. Nullable.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -141,7 +133,7 @@ class BookingAppointmentItemRequestBuilder():
         Update the navigation property calendarView in solutions
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -166,17 +158,15 @@ class BookingAppointmentItemRequestBuilder():
 
         return CancelRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class BookingAppointmentItemRequestBuilderDeleteRequestConfiguration():
+    class BookingAppointmentItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
     @dataclass
     class BookingAppointmentItemRequestBuilderGetQueryParameters():
@@ -187,17 +177,17 @@ class BookingAppointmentItemRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
                 raise TypeError("original_name cannot be null.")
+            if original_name == "end":
+                return "end"
             if original_name == "expand":
                 return "%24expand"
             if original_name == "select":
                 return "%24select"
-            if original_name == "end":
-                return "end"
             if original_name == "start":
                 return "start"
             return original_name
@@ -215,31 +205,27 @@ class BookingAppointmentItemRequestBuilder():
         start: Optional[str] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class BookingAppointmentItemRequestBuilderGetRequestConfiguration():
+    class BookingAppointmentItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[BookingAppointmentItemRequestBuilder.BookingAppointmentItemRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
-    class BookingAppointmentItemRequestBuilderPatchRequestConfiguration():
+    class BookingAppointmentItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

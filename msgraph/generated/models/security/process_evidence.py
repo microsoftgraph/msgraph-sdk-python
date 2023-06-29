@@ -42,7 +42,7 @@ class ProcessEvidence(AlertEvidence):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ProcessEvidence
         """
         if not parse_node:
@@ -92,11 +92,11 @@ class ProcessEvidence(AlertEvidence):
         writer.write_enum_value("detectionStatus", self.detection_status)
         writer.write_object_value("imageFile", self.image_file)
         writer.write_str_value("mdeDeviceId", self.mde_device_id)
-        writer.write_datetime_value()("parentProcessCreationDateTime", self.parent_process_creation_date_time)
+        writer.write_datetime_value("parentProcessCreationDateTime", self.parent_process_creation_date_time)
         writer.write_int_value("parentProcessId", self.parent_process_id)
         writer.write_object_value("parentProcessImageFile", self.parent_process_image_file)
         writer.write_str_value("processCommandLine", self.process_command_line)
-        writer.write_datetime_value()("processCreationDateTime", self.process_creation_date_time)
+        writer.write_datetime_value("processCreationDateTime", self.process_creation_date_time)
         writer.write_int_value("processId", self.process_id)
         writer.write_object_value("userAccount", self.user_account)
     

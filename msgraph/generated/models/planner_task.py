@@ -77,7 +77,7 @@ class PlannerTask(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: PlannerTask
         """
         if not parse_node:
@@ -158,12 +158,12 @@ class PlannerTask(Entity):
         writer.write_object_value("bucketTaskBoardFormat", self.bucket_task_board_format)
         writer.write_int_value("checklistItemCount", self.checklist_item_count)
         writer.write_object_value("completedBy", self.completed_by)
-        writer.write_datetime_value()("completedDateTime", self.completed_date_time)
+        writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_str_value("conversationThreadId", self.conversation_thread_id)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("details", self.details)
-        writer.write_datetime_value()("dueDateTime", self.due_date_time)
+        writer.write_datetime_value("dueDateTime", self.due_date_time)
         writer.write_bool_value("hasDescription", self.has_description)
         writer.write_str_value("orderHint", self.order_hint)
         writer.write_int_value("percentComplete", self.percent_complete)
@@ -172,7 +172,7 @@ class PlannerTask(Entity):
         writer.write_int_value("priority", self.priority)
         writer.write_object_value("progressTaskBoardFormat", self.progress_task_board_format)
         writer.write_int_value("referenceCount", self.reference_count)
-        writer.write_datetime_value()("startDateTime", self.start_date_time)
+        writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("title", self.title)
     
 

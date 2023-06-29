@@ -22,7 +22,7 @@ class UnifiedRoleManagementPolicyExpirationRule(UnifiedRoleManagementPolicyRule)
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleManagementPolicyExpirationRule
         """
         if not parse_node:
@@ -56,6 +56,6 @@ class UnifiedRoleManagementPolicyExpirationRule(UnifiedRoleManagementPolicyRule)
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("isExpirationRequired", self.is_expiration_required)
-        writer.write_timedelta_value()("maximumDuration", self.maximum_duration)
+        writer.write_timedelta_value("maximumDuration", self.maximum_duration)
     
 

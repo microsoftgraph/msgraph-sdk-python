@@ -20,7 +20,7 @@ class OmaSettingDateTime(OmaSetting):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: OmaSettingDateTime
         """
         if not parse_node:
@@ -52,6 +52,6 @@ class OmaSettingDateTime(OmaSetting):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("value", self.value)
+        writer.write_datetime_value("value", self.value)
     
 

@@ -35,7 +35,7 @@ class Photo(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Photo
         """
         if not parse_node:
@@ -78,7 +78,7 @@ class Photo(AdditionalDataHolder, Parsable):
         writer.write_int_value("iso", self.iso)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("orientation", self.orientation)
-        writer.write_datetime_value()("takenDateTime", self.taken_date_time)
+        writer.write_datetime_value("takenDateTime", self.taken_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

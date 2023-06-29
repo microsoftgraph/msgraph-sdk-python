@@ -35,7 +35,7 @@ class Printer(PrinterBase):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Printer
         """
         if not parse_node:
@@ -82,8 +82,8 @@ class Printer(PrinterBase):
         writer.write_collection_of_object_values("connectors", self.connectors)
         writer.write_bool_value("hasPhysicalDevice", self.has_physical_device)
         writer.write_bool_value("isShared", self.is_shared)
-        writer.write_datetime_value()("lastSeenDateTime", self.last_seen_date_time)
-        writer.write_datetime_value()("registeredDateTime", self.registered_date_time)
+        writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)
+        writer.write_datetime_value("registeredDateTime", self.registered_date_time)
         writer.write_collection_of_object_values("shares", self.shares)
         writer.write_collection_of_object_values("taskTriggers", self.task_triggers)
     

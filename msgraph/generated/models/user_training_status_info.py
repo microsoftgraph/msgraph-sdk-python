@@ -28,7 +28,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UserTrainingStatusInfo
         """
         if not parse_node:
@@ -61,8 +61,8 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value()("assignedDateTime", self.assigned_date_time)
-        writer.write_datetime_value()("completionDateTime", self.completion_date_time)
+        writer.write_datetime_value("assignedDateTime", self.assigned_date_time)
+        writer.write_datetime_value("completionDateTime", self.completion_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("trainingStatus", self.training_status)

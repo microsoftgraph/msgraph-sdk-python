@@ -33,7 +33,7 @@ class TermsAndConditionsAcceptanceStatus(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TermsAndConditionsAcceptanceStatus
         """
         if not parse_node:
@@ -71,7 +71,7 @@ class TermsAndConditionsAcceptanceStatus(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("acceptedDateTime", self.accepted_date_time)
+        writer.write_datetime_value("acceptedDateTime", self.accepted_date_time)
         writer.write_int_value("acceptedVersion", self.accepted_version)
         writer.write_object_value("termsAndConditions", self.terms_and_conditions)
         writer.write_str_value("userDisplayName", self.user_display_name)

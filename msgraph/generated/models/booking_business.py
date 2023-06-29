@@ -18,9 +18,6 @@ from .entity import Entity
 
 @dataclass
 class BookingBusiness(Entity):
-    """
-    Represents a Microsot Bookings Business.
-    """
     # The street address of the business. The address property, together with phone and webSiteUrl, appear in the footer of a business scheduling page. The attribute type of physicalAddress is not supported in v1.0. Internally we map the addresses to the type others.
     address: Optional[PhysicalAddress] = None
     # All the appointments of this business. Read-only. Nullable.
@@ -65,7 +62,7 @@ class BookingBusiness(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: BookingBusiness
         """
         if not parse_node:

@@ -42,7 +42,7 @@ class SecureScore(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SecureScore
         """
         if not parse_node:
@@ -93,7 +93,7 @@ class SecureScore(Entity):
         writer.write_collection_of_object_values("averageComparativeScores", self.average_comparative_scores)
         writer.write_str_value("azureTenantId", self.azure_tenant_id)
         writer.write_collection_of_object_values("controlScores", self.control_scores)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_float_value("currentScore", self.current_score)
         writer.write_collection_of_primitive_values("enabledServices", self.enabled_services)
         writer.write_int_value("licensedUserCount", self.licensed_user_count)

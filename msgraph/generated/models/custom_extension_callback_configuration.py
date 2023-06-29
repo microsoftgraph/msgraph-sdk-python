@@ -22,7 +22,7 @@ class CustomExtensionCallbackConfiguration(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: CustomExtensionCallbackConfiguration
         """
         if not parse_node:
@@ -61,7 +61,7 @@ class CustomExtensionCallbackConfiguration(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_timedelta_value()("timeoutDuration", self.timeout_duration)
+        writer.write_timedelta_value("timeoutDuration", self.timeout_duration)
         writer.write_additional_data_value(self.additional_data)
     
 

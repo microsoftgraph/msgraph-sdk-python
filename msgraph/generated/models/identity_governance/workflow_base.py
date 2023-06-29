@@ -47,7 +47,7 @@ class WorkflowBase(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkflowBase
         """
         if not parse_node:
@@ -111,14 +111,14 @@ class WorkflowBase(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("category", self.category)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("executionConditions", self.execution_conditions)
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_bool_value("isSchedulingEnabled", self.is_scheduling_enabled)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("tasks", self.tasks)
         writer.write_additional_data_value(self.additional_data)

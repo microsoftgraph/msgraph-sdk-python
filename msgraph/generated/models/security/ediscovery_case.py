@@ -46,7 +46,7 @@ class EdiscoveryCase(Case):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: EdiscoveryCase
         """
         if not parse_node:
@@ -104,7 +104,7 @@ class EdiscoveryCase(Case):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("closedBy", self.closed_by)
-        writer.write_datetime_value()("closedDateTime", self.closed_date_time)
+        writer.write_datetime_value("closedDateTime", self.closed_date_time)
         writer.write_collection_of_object_values("custodians", self.custodians)
         writer.write_str_value("externalId", self.external_id)
         writer.write_collection_of_object_values("noncustodialDataSources", self.noncustodial_data_sources)

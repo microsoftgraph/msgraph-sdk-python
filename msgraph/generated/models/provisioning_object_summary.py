@@ -59,7 +59,7 @@ class ProvisioningObjectSummary(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ProvisioningObjectSummary
         """
         if not parse_node:
@@ -122,7 +122,7 @@ class ProvisioningObjectSummary(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("activityDateTime", self.activity_date_time)
+        writer.write_datetime_value("activityDateTime", self.activity_date_time)
         writer.write_str_value("changeId", self.change_id)
         writer.write_str_value("cycleId", self.cycle_id)
         writer.write_int_value("durationInMilliseconds", self.duration_in_milliseconds)

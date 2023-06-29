@@ -35,7 +35,7 @@ class ApplePushNotificationCertificate(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ApplePushNotificationCertificate
         """
         if not parse_node:
@@ -78,8 +78,8 @@ class ApplePushNotificationCertificate(Entity):
         writer.write_str_value("certificate", self.certificate)
         writer.write_str_value("certificateUploadFailureReason", self.certificate_upload_failure_reason)
         writer.write_str_value("certificateUploadStatus", self.certificate_upload_status)
-        writer.write_datetime_value()("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("topicIdentifier", self.topic_identifier)
     
 

@@ -50,7 +50,7 @@ class Windows10MobileCompliancePolicy(DeviceCompliancePolicy):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Windows10MobileCompliancePolicy
         """
         if not parse_node:

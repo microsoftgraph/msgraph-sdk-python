@@ -45,7 +45,7 @@ class AccessReviewHistoryDefinition(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewHistoryDefinition
         """
         if not parse_node:
@@ -99,12 +99,12 @@ class AccessReviewHistoryDefinition(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_enum_values("decisions", self.decisions)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("instances", self.instances)
-        writer.write_datetime_value()("reviewHistoryPeriodEndDateTime", self.review_history_period_end_date_time)
-        writer.write_datetime_value()("reviewHistoryPeriodStartDateTime", self.review_history_period_start_date_time)
+        writer.write_datetime_value("reviewHistoryPeriodEndDateTime", self.review_history_period_end_date_time)
+        writer.write_datetime_value("reviewHistoryPeriodStartDateTime", self.review_history_period_start_date_time)
         writer.write_object_value("scheduleSettings", self.schedule_settings)
         writer.write_collection_of_object_values("scopes", self.scopes)
         writer.write_enum_value("status", self.status)

@@ -32,7 +32,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SubjectRightsRequestHistory
         """
         if not parse_node:
@@ -71,7 +71,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("changedBy", self.changed_by)
-        writer.write_datetime_value()("eventDateTime", self.event_date_time)
+        writer.write_datetime_value("eventDateTime", self.event_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("stage", self.stage)
         writer.write_enum_value("stageStatus", self.stage_status)

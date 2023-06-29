@@ -25,7 +25,7 @@ class SynchronizationProgress(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SynchronizationProgress
         """
         if not parse_node:
@@ -56,7 +56,7 @@ class SynchronizationProgress(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_int_value("completedUnits", self.completed_units)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_datetime_value()("progressObservationDateTime", self.progress_observation_date_time)
+        writer.write_datetime_value("progressObservationDateTime", self.progress_observation_date_time)
         writer.write_int_value("totalUnits", self.total_units)
         writer.write_str_value("units", self.units)
         writer.write_additional_data_value(self.additional_data)

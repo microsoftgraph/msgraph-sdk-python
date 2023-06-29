@@ -57,7 +57,7 @@ class OrgContact(DirectoryObject):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: OrgContact
         """
         if not parse_node:
@@ -123,7 +123,7 @@ class OrgContact(DirectoryObject):
         writer.write_str_value("mailNickname", self.mail_nickname)
         writer.write_object_value("manager", self.manager)
         writer.write_collection_of_object_values("memberOf", self.member_of)
-        writer.write_datetime_value()("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
+        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_collection_of_object_values("onPremisesProvisioningErrors", self.on_premises_provisioning_errors)
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
         writer.write_collection_of_object_values("phones", self.phones)

@@ -23,7 +23,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: OcrSettings
         """
         if not parse_node:
@@ -54,7 +54,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_int_value("maxImageSize", self.max_image_size)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_timedelta_value()("timeout", self.timeout)
+        writer.write_timedelta_value("timeout", self.timeout)
         writer.write_additional_data_value(self.additional_data)
     
 

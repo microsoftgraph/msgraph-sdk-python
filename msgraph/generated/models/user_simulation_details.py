@@ -40,7 +40,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UserSimulationDetails
         """
         if not parse_node:
@@ -84,11 +84,11 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_int_value("assignedTrainingsCount", self.assigned_trainings_count)
         writer.write_int_value("completedTrainingsCount", self.completed_trainings_count)
-        writer.write_datetime_value()("compromisedDateTime", self.compromised_date_time)
+        writer.write_datetime_value("compromisedDateTime", self.compromised_date_time)
         writer.write_int_value("inProgressTrainingsCount", self.in_progress_trainings_count)
         writer.write_bool_value("isCompromised", self.is_compromised)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_datetime_value()("reportedPhishDateTime", self.reported_phish_date_time)
+        writer.write_datetime_value("reportedPhishDateTime", self.reported_phish_date_time)
         writer.write_collection_of_object_values("simulationEvents", self.simulation_events)
         writer.write_object_value("simulationUser", self.simulation_user)
         writer.write_collection_of_object_values("trainingEvents", self.training_events)

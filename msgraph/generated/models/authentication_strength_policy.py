@@ -39,7 +39,7 @@ class AuthenticationStrengthPolicy(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AuthenticationStrengthPolicy
         """
         if not parse_node:
@@ -88,10 +88,10 @@ class AuthenticationStrengthPolicy(Entity):
         super().serialize(writer)
         writer.write_collection_of_enum_values("allowedCombinations", self.allowed_combinations)
         writer.write_collection_of_object_values("combinationConfigurations", self.combination_configurations)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value()("modifiedDateTime", self.modified_date_time)
+        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
         writer.write_enum_value("policyType", self.policy_type)
         writer.write_enum_value("requirementsSatisfied", self.requirements_satisfied)
     

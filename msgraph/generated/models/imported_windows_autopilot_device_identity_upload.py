@@ -27,7 +27,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ImportedWindowsAutopilotDeviceIdentityUpload
         """
         if not parse_node:
@@ -65,7 +65,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value()("createdDateTimeUtc", self.created_date_time_utc)
+        writer.write_datetime_value("createdDateTimeUtc", self.created_date_time_utc)
         writer.write_collection_of_object_values("deviceIdentities", self.device_identities)
         writer.write_enum_value("status", self.status)
     

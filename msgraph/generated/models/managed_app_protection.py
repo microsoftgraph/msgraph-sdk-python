@@ -81,7 +81,7 @@ class ManagedAppProtection(ManagedAppPolicy):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAppProtection
         """
         if not parse_node:
@@ -195,10 +195,10 @@ class ManagedAppProtection(ManagedAppPolicy):
         writer.write_str_value("minimumWarningAppVersion", self.minimum_warning_app_version)
         writer.write_str_value("minimumWarningOsVersion", self.minimum_warning_os_version)
         writer.write_bool_value("organizationalCredentialsRequired", self.organizational_credentials_required)
-        writer.write_timedelta_value()("periodBeforePinReset", self.period_before_pin_reset)
-        writer.write_timedelta_value()("periodOfflineBeforeAccessCheck", self.period_offline_before_access_check)
-        writer.write_timedelta_value()("periodOfflineBeforeWipeIsEnforced", self.period_offline_before_wipe_is_enforced)
-        writer.write_timedelta_value()("periodOnlineBeforeAccessCheck", self.period_online_before_access_check)
+        writer.write_timedelta_value("periodBeforePinReset", self.period_before_pin_reset)
+        writer.write_timedelta_value("periodOfflineBeforeAccessCheck", self.period_offline_before_access_check)
+        writer.write_timedelta_value("periodOfflineBeforeWipeIsEnforced", self.period_offline_before_wipe_is_enforced)
+        writer.write_timedelta_value("periodOnlineBeforeAccessCheck", self.period_online_before_access_check)
         writer.write_enum_value("pinCharacterSet", self.pin_character_set)
         writer.write_bool_value("pinRequired", self.pin_required)
         writer.write_bool_value("printBlocked", self.print_blocked)

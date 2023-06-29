@@ -36,7 +36,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageApprovalStage
         """
         if not parse_node:
@@ -73,8 +73,8 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_timedelta_value()("durationBeforeAutomaticDenial", self.duration_before_automatic_denial)
-        writer.write_timedelta_value()("durationBeforeEscalation", self.duration_before_escalation)
+        writer.write_timedelta_value("durationBeforeAutomaticDenial", self.duration_before_automatic_denial)
+        writer.write_timedelta_value("durationBeforeEscalation", self.duration_before_escalation)
         writer.write_collection_of_object_values("escalationApprovers", self.escalation_approvers)
         writer.write_collection_of_object_values("fallbackEscalationApprovers", self.fallback_escalation_approvers)
         writer.write_collection_of_object_values("fallbackPrimaryApprovers", self.fallback_primary_approvers)

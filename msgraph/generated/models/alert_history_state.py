@@ -35,7 +35,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AlertHistoryState
         """
         if not parse_node:
@@ -79,7 +79,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         writer.write_enum_value("feedback", self.feedback)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("status", self.status)
-        writer.write_datetime_value()("updatedDateTime", self.updated_date_time)
+        writer.write_datetime_value("updatedDateTime", self.updated_date_time)
         writer.write_str_value("user", self.user)
         writer.write_additional_data_value(self.additional_data)
     

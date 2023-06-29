@@ -83,7 +83,7 @@ class Alert(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Alert
         """
         if not parse_node:
@@ -164,21 +164,21 @@ class Alert(Entity):
         writer.write_str_value("category", self.category)
         writer.write_enum_value("classification", self.classification)
         writer.write_collection_of_object_values("comments", self.comments)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_enum_value("detectionSource", self.detection_source)
         writer.write_str_value("detectorId", self.detector_id)
         writer.write_enum_value("determination", self.determination)
         writer.write_collection_of_object_values("evidence", self.evidence)
-        writer.write_datetime_value()("firstActivityDateTime", self.first_activity_date_time)
+        writer.write_datetime_value("firstActivityDateTime", self.first_activity_date_time)
         writer.write_str_value("incidentId", self.incident_id)
         writer.write_str_value("incidentWebUrl", self.incident_web_url)
-        writer.write_datetime_value()("lastActivityDateTime", self.last_activity_date_time)
-        writer.write_datetime_value()("lastUpdateDateTime", self.last_update_date_time)
+        writer.write_datetime_value("lastActivityDateTime", self.last_activity_date_time)
+        writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
         writer.write_collection_of_primitive_values("mitreTechniques", self.mitre_techniques)
         writer.write_str_value("providerAlertId", self.provider_alert_id)
         writer.write_str_value("recommendedActions", self.recommended_actions)
-        writer.write_datetime_value()("resolvedDateTime", self.resolved_date_time)
+        writer.write_datetime_value("resolvedDateTime", self.resolved_date_time)
         writer.write_enum_value("serviceSource", self.service_source)
         writer.write_enum_value("severity", self.severity)
         writer.write_enum_value("status", self.status)

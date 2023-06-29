@@ -34,7 +34,7 @@ class PrinterShare(PrinterBase):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: PrinterShare
         """
         if not parse_node:
@@ -82,7 +82,7 @@ class PrinterShare(PrinterBase):
         writer.write_bool_value("allowAllUsers", self.allow_all_users)
         writer.write_collection_of_object_values("allowedGroups", self.allowed_groups)
         writer.write_collection_of_object_values("allowedUsers", self.allowed_users)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("printer", self.printer)
         writer.write_object_value("viewPoint", self.view_point)
     

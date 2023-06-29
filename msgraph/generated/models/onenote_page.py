@@ -43,7 +43,7 @@ class OnenotePage(OnenoteEntitySchemaObjectModel):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: OnenotePage
         """
         if not parse_node:
@@ -94,7 +94,7 @@ class OnenotePage(OnenoteEntitySchemaObjectModel):
         writer.write_bytes_value("content", self.content)
         writer.write_str_value("contentUrl", self.content_url)
         writer.write_str_value("createdByAppId", self.created_by_app_id)
-        writer.write_datetime_value()("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_int_value("level", self.level)
         writer.write_object_value("links", self.links)
         writer.write_int_value("order", self.order)

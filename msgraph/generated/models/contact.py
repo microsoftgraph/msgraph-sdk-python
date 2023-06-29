@@ -98,7 +98,7 @@ class Contact(OutlookItem):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Contact
         """
         if not parse_node:
@@ -179,7 +179,7 @@ class Contact(OutlookItem):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("assistantName", self.assistant_name)
-        writer.write_datetime_value()("birthday", self.birthday)
+        writer.write_datetime_value("birthday", self.birthday)
         writer.write_object_value("businessAddress", self.business_address)
         writer.write_str_value("businessHomePage", self.business_home_page)
         writer.write_collection_of_primitive_values("businessPhones", self.business_phones)

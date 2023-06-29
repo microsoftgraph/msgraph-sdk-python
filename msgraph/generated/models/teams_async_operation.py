@@ -38,7 +38,7 @@ class TeamsAsyncOperation(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: TeamsAsyncOperation
         """
         if not parse_node:
@@ -84,9 +84,9 @@ class TeamsAsyncOperation(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_int_value("attemptsCount", self.attempts_count)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("error", self.error)
-        writer.write_datetime_value()("lastActionDateTime", self.last_action_date_time)
+        writer.write_datetime_value("lastActionDateTime", self.last_action_date_time)
         writer.write_enum_value("operationType", self.operation_type)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("targetResourceId", self.target_resource_id)

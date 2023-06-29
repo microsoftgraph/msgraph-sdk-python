@@ -33,7 +33,7 @@ class AppRoleAssignment(DirectoryObject):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AppRoleAssignment
         """
         if not parse_node:
@@ -72,7 +72,7 @@ class AppRoleAssignment(DirectoryObject):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_uuid_value("appRoleId", self.app_role_id)
-        writer.write_datetime_value()("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("principalDisplayName", self.principal_display_name)
         writer.write_uuid_value("principalId", self.principal_id)
         writer.write_str_value("principalType", self.principal_type)

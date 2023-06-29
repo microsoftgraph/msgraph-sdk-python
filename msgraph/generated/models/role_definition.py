@@ -13,9 +13,6 @@ from .entity import Entity
 
 @dataclass
 class RoleDefinition(Entity):
-    """
-    The Role Definition resource. The role definition is the foundation of role based access in Intune. The role combines an Intune resource such as a Mobile App and associated role permissions such as Create or Read for the resource. There are two types of roles, built-in and custom. Built-in roles cannot be modified. Both built-in roles and custom roles must have assignments to be enforced. Create custom roles if you want to define a role that allows any of the available resources and role permissions to be combined into a single role.
-    """
     # Description of the Role definition.
     description: Optional[str] = None
     # Display Name of the Role definition.
@@ -34,7 +31,7 @@ class RoleDefinition(Entity):
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: RoleDefinition
         """
         if not parse_node:

@@ -23,4 +23,6 @@ class DetectedAppPlatformType(str, Enum):
     AndroidWorkProfile = "androidWorkProfile",
     # Indicates that the platform of the detected application is Android dedicated and fully managed.
     AndroidDedicatedAndFullyManaged = "androidDedicatedAndFullyManaged",
+    # Evolvable enumeration sentinel value. Do not use.
+    UnknownFutureValue = "unknownFutureValue",
 

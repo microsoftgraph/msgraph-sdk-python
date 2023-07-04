@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
     from .entity import Entity
+    from .governance_insight import GovernanceInsight
     from .identity import Identity
     from .user_identity import UserIdentity
 
@@ -24,6 +25,8 @@ class AccessReviewInstanceDecisionItem(Entity):
     apply_result: Optional[str] = None
     # Result of the review. Possible values: Approve, Deny, NotReviewed, or DontKnow. Supports $select, $orderby, and $filter (eq only).
     decision: Optional[str] = None
+    # Insights are recommendations to reviewers on whether to approve or deny a decision. There can be multiple insights associated with an accessReviewInstanceDecisionItem.
+    insights: Optional[List[GovernanceInsight]] = None
     # Justification left by the reviewer when they made the decision.
     justification: Optional[str] = None
     # The OdataType property
@@ -62,11 +65,13 @@ class AccessReviewInstanceDecisionItem(Entity):
         """
         from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
         from .entity import Entity
+        from .governance_insight import GovernanceInsight
         from .identity import Identity
         from .user_identity import UserIdentity
 
         from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
         from .entity import Entity
+        from .governance_insight import GovernanceInsight
         from .identity import Identity
         from .user_identity import UserIdentity
 
@@ -76,6 +81,7 @@ class AccessReviewInstanceDecisionItem(Entity):
             "appliedDateTime": lambda n : setattr(self, 'applied_date_time', n.get_datetime_value()),
             "applyResult": lambda n : setattr(self, 'apply_result', n.get_str_value()),
             "decision": lambda n : setattr(self, 'decision', n.get_str_value()),
+            "insights": lambda n : setattr(self, 'insights', n.get_collection_of_object_values(GovernanceInsight)),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(Identity)),
             "principalLink": lambda n : setattr(self, 'principal_link', n.get_str_value()),
@@ -103,6 +109,7 @@ class AccessReviewInstanceDecisionItem(Entity):
         writer.write_datetime_value("appliedDateTime", self.applied_date_time)
         writer.write_str_value("applyResult", self.apply_result)
         writer.write_str_value("decision", self.decision)
+        writer.write_collection_of_object_values("insights", self.insights)
         writer.write_str_value("justification", self.justification)
         writer.write_object_value("principal", self.principal)
         writer.write_str_value("principalLink", self.principal_link)

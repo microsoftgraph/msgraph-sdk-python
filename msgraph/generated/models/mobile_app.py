@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .ios_store_app import IosStoreApp
     from .ios_vpp_app import IosVppApp
     from .mac_o_s_lob_app import MacOSLobApp
+    from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
     from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
     from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
     from .managed_android_lob_app import ManagedAndroidLobApp
@@ -40,7 +41,7 @@ from .entity import Entity
 @dataclass
 class MobileApp(Entity):
     """
-    An abstract class containing the base properties for Intune mobile apps.
+    An abstract class containing the base properties for Intune mobile apps. Note: Listing mobile apps with `$expand=assignments` has been deprecated. Instead get the list of apps without the `$expand` query on `assignments`. Then, perform the expansion on individual applications.
     """
     # The list of group assignments for this mobile app.
     assignments: Optional[List[MobileAppAssignment]] = None
@@ -117,6 +118,10 @@ class MobileApp(Entity):
             from .mac_o_s_lob_app import MacOSLobApp
 
             return MacOSLobApp()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSMicrosoftDefenderApp".casefold():
+            from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
+
+            return MacOSMicrosoftDefenderApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSMicrosoftEdgeApp".casefold():
             from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
 
@@ -200,6 +205,7 @@ class MobileApp(Entity):
         from .ios_store_app import IosStoreApp
         from .ios_vpp_app import IosVppApp
         from .mac_o_s_lob_app import MacOSLobApp
+        from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
         from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
         from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
         from .managed_android_lob_app import ManagedAndroidLobApp
@@ -230,6 +236,7 @@ class MobileApp(Entity):
         from .ios_store_app import IosStoreApp
         from .ios_vpp_app import IosVppApp
         from .mac_o_s_lob_app import MacOSLobApp
+        from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
         from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
         from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
         from .managed_android_lob_app import ManagedAndroidLobApp

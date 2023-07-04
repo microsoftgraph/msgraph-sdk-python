@@ -13,6 +13,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .........models.access_review_instance_decision_item import AccessReviewInstanceDecisionItem
     from .........models.o_data_errors.o_data_error import ODataError
+    from .insights.insights_request_builder import InsightsRequestBuilder
 
 class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
     """
@@ -147,6 +148,15 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def insights(self) -> InsightsRequestBuilder:
+        """
+        Provides operations to manage the insights property of the microsoft.graph.accessReviewInstanceDecisionItem entity.
+        """
+        from .insights.insights_request_builder import InsightsRequestBuilder
+
+        return InsightsRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

@@ -22,7 +22,7 @@ class ProcessEvidence(AlertEvidence):
     mde_device_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Date and time when the parent of the process was created.
+    # Date and time when the parent of the process was created. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     parent_process_creation_date_time: Optional[datetime.datetime] = None
     # Process ID (PID) of the parent process that spawned the process.
     parent_process_id: Optional[int] = None
@@ -30,7 +30,7 @@ class ProcessEvidence(AlertEvidence):
     parent_process_image_file: Optional[FileDetails] = None
     # Command line used to create the new process.
     process_command_line: Optional[str] = None
-    # Date and time the process was created.
+    # Date and time when the process was created. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     process_creation_date_time: Optional[datetime.datetime] = None
     # Process ID (PID) of the newly created process.
     process_id: Optional[int] = None

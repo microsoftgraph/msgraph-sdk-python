@@ -30,7 +30,7 @@ class InviteRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> Optional[InviteParticipantsOperation]:
         """
-        Invite participants to the active call. For more information about how to handle operations, see commsOperation.
+        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled. 
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -55,7 +55,7 @@ class InviteRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invite participants to the active call. For more information about how to handle operations, see commsOperation.
+        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled. 
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

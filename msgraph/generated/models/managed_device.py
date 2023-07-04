@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .device_configuration_state import DeviceConfigurationState
     from .device_enrollment_type import DeviceEnrollmentType
     from .device_health_attestation_state import DeviceHealthAttestationState
+    from .device_log_collection_response import DeviceLogCollectionResponse
     from .device_management_exchange_access_state import DeviceManagementExchangeAccessState
     from .device_management_exchange_access_state_reason import DeviceManagementExchangeAccessStateReason
     from .device_registration_state import DeviceRegistrationState
@@ -21,6 +22,7 @@ if TYPE_CHECKING:
     from .managed_device_partner_reported_health_state import ManagedDevicePartnerReportedHealthState
     from .management_agent_type import ManagementAgentType
     from .user import User
+    from .windows_protection_state import WindowsProtectionState
 
 from .entity import Entity
 
@@ -93,6 +95,8 @@ class ManagedDevice(Entity):
     jail_broken: Optional[str] = None
     # The date and time that the device last completed a successful sync with Intune. This property is read-only.
     last_sync_date_time: Optional[datetime.datetime] = None
+    # List of log collection requests
+    log_collection_requests: Optional[List[DeviceLogCollectionResponse]] = None
     # Automatically generated name to identify a device. Can be overwritten to a user friendly name.
     managed_device_name: Optional[str] = None
     # Owner type of device.
@@ -145,6 +149,8 @@ class ManagedDevice(Entity):
     users: Optional[List[User]] = None
     # Wi-Fi MAC. This property is read-only.
     wi_fi_mac_address: Optional[str] = None
+    # The device protection status. This property is read-only.
+    windows_protection_state: Optional[WindowsProtectionState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedDevice:
@@ -171,6 +177,7 @@ class ManagedDevice(Entity):
         from .device_configuration_state import DeviceConfigurationState
         from .device_enrollment_type import DeviceEnrollmentType
         from .device_health_attestation_state import DeviceHealthAttestationState
+        from .device_log_collection_response import DeviceLogCollectionResponse
         from .device_management_exchange_access_state import DeviceManagementExchangeAccessState
         from .device_management_exchange_access_state_reason import DeviceManagementExchangeAccessStateReason
         from .device_registration_state import DeviceRegistrationState
@@ -179,6 +186,7 @@ class ManagedDevice(Entity):
         from .managed_device_partner_reported_health_state import ManagedDevicePartnerReportedHealthState
         from .management_agent_type import ManagementAgentType
         from .user import User
+        from .windows_protection_state import WindowsProtectionState
 
         from .compliance_state import ComplianceState
         from .configuration_manager_client_enabled_features import ConfigurationManagerClientEnabledFeatures
@@ -188,6 +196,7 @@ class ManagedDevice(Entity):
         from .device_configuration_state import DeviceConfigurationState
         from .device_enrollment_type import DeviceEnrollmentType
         from .device_health_attestation_state import DeviceHealthAttestationState
+        from .device_log_collection_response import DeviceLogCollectionResponse
         from .device_management_exchange_access_state import DeviceManagementExchangeAccessState
         from .device_management_exchange_access_state_reason import DeviceManagementExchangeAccessStateReason
         from .device_registration_state import DeviceRegistrationState
@@ -196,6 +205,7 @@ class ManagedDevice(Entity):
         from .managed_device_partner_reported_health_state import ManagedDevicePartnerReportedHealthState
         from .management_agent_type import ManagementAgentType
         from .user import User
+        from .windows_protection_state import WindowsProtectionState
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activationLockBypassCode": lambda n : setattr(self, 'activation_lock_bypass_code', n.get_str_value()),
@@ -230,6 +240,7 @@ class ManagedDevice(Entity):
             "isSupervised": lambda n : setattr(self, 'is_supervised', n.get_bool_value()),
             "jailBroken": lambda n : setattr(self, 'jail_broken', n.get_str_value()),
             "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
+            "logCollectionRequests": lambda n : setattr(self, 'log_collection_requests', n.get_collection_of_object_values(DeviceLogCollectionResponse)),
             "managedDeviceName": lambda n : setattr(self, 'managed_device_name', n.get_str_value()),
             "managedDeviceOwnerType": lambda n : setattr(self, 'managed_device_owner_type', n.get_enum_value(ManagedDeviceOwnerType)),
             "managementAgent": lambda n : setattr(self, 'management_agent', n.get_enum_value(ManagementAgentType)),
@@ -255,6 +266,7 @@ class ManagedDevice(Entity):
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
             "users": lambda n : setattr(self, 'users', n.get_collection_of_object_values(User)),
             "wiFiMacAddress": lambda n : setattr(self, 'wi_fi_mac_address', n.get_str_value()),
+            "windowsProtectionState": lambda n : setattr(self, 'windows_protection_state', n.get_object_value(WindowsProtectionState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -277,11 +289,13 @@ class ManagedDevice(Entity):
         writer.write_enum_value("deviceRegistrationState", self.device_registration_state)
         writer.write_enum_value("exchangeAccessState", self.exchange_access_state)
         writer.write_enum_value("exchangeAccessStateReason", self.exchange_access_state_reason)
+        writer.write_collection_of_object_values("logCollectionRequests", self.log_collection_requests)
         writer.write_str_value("managedDeviceName", self.managed_device_name)
         writer.write_enum_value("managedDeviceOwnerType", self.managed_device_owner_type)
         writer.write_enum_value("managementAgent", self.management_agent)
         writer.write_str_value("notes", self.notes)
         writer.write_enum_value("partnerReportedThreatState", self.partner_reported_threat_state)
         writer.write_collection_of_object_values("users", self.users)
+        writer.write_object_value("windowsProtectionState", self.windows_protection_state)
     
 

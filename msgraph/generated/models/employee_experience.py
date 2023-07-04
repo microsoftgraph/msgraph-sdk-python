@@ -4,6 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .learning_course_activity import LearningCourseActivity
     from .learning_provider import LearningProvider
 
 @dataclass
@@ -11,6 +12,8 @@ class EmployeeExperience(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
+    # The learningCourseActivities property
+    learning_course_activities: Optional[List[LearningCourseActivity]] = None
     # A collection of learning providers.
     learning_providers: Optional[List[LearningProvider]] = None
     # The OdataType property
@@ -33,11 +36,14 @@ class EmployeeExperience(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .learning_course_activity import LearningCourseActivity
         from .learning_provider import LearningProvider
 
+        from .learning_course_activity import LearningCourseActivity
         from .learning_provider import LearningProvider
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "learningCourseActivities": lambda n : setattr(self, 'learning_course_activities', n.get_collection_of_object_values(LearningCourseActivity)),
             "learningProviders": lambda n : setattr(self, 'learning_providers', n.get_collection_of_object_values(LearningProvider)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -51,6 +57,7 @@ class EmployeeExperience(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
+        writer.write_collection_of_object_values("learningCourseActivities", self.learning_course_activities)
         writer.write_collection_of_object_values("learningProviders", self.learning_providers)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)

@@ -13,6 +13,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..models.employee_experience import EmployeeExperience
     from ..models.o_data_errors.o_data_error import ODataError
+    from .learning_course_activities.learning_course_activities_request_builder import LearningCourseActivitiesRequestBuilder
     from .learning_providers.learning_providers_request_builder import LearningProvidersRequestBuilder
 
 class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
@@ -113,6 +114,15 @@ class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def learning_course_activities(self) -> LearningCourseActivitiesRequestBuilder:
+        """
+        Provides operations to manage the learningCourseActivities property of the microsoft.graph.employeeExperience entity.
+        """
+        from .learning_course_activities.learning_course_activities_request_builder import LearningCourseActivitiesRequestBuilder
+
+        return LearningCourseActivitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def learning_providers(self) -> LearningProvidersRequestBuilder:

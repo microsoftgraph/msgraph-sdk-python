@@ -12,6 +12,9 @@ from .entity import Entity
 
 @dataclass
 class UserExperienceAnalyticsDevicePerformance(Entity):
+    """
+    The user experience analytics device performance entity contains device boot performance details.
+    """
     # Average (mean) number of Blue Screens per device in the last 30 days. Valid values 0 to 9999999
     average_blue_screens: Optional[float] = None
     # Average (mean) number of Restarts per device in the last 30 days. Valid values 0 to 9999999

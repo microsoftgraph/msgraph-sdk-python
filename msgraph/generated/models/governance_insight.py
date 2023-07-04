@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .membership_outlier_insight import MembershipOutlierInsight
     from .user_sign_in_insight import UserSignInInsight
 
 from .entity import Entity
@@ -31,6 +32,10 @@ class GovernanceInsight(Entity):
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.membershipOutlierInsight".casefold():
+            from .membership_outlier_insight import MembershipOutlierInsight
+
+            return MembershipOutlierInsight()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userSignInInsight".casefold():
             from .user_sign_in_insight import UserSignInInsight
 
@@ -43,9 +48,11 @@ class GovernanceInsight(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .membership_outlier_insight import MembershipOutlierInsight
         from .user_sign_in_insight import UserSignInInsight
 
         from .entity import Entity
+        from .membership_outlier_insight import MembershipOutlierInsight
         from .user_sign_in_insight import UserSignInInsight
 
         fields: Dict[str, Callable[[Any], None]] = {

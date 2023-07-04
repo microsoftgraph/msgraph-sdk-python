@@ -41,7 +41,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a message in the specified user's mailbox, or delete a relationship of the message.
+        Delete eventMessage.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -82,7 +82,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Message]:
         """
-        Update the properties of a message object.
+        Update the properties of an eventMessage object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -107,7 +107,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a message in the specified user's mailbox, or delete a relationship of the message.
+        Delete eventMessage.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +141,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a message object.
+        Update the properties of an eventMessage object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

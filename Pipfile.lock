@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0e081c47e958d7c95f2153568e39ea7548880c5d61c9b8c63000da51350510d1"
+            "sha256": "bb898180a744a5f3f1bd5a948df117de9079a6b408c5fd180a70b682709711ce"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -502,11 +502,11 @@
         },
         "microsoft-kiota-serialization-json": {
             "hashes": [
-                "sha256:1d91cda4e343b5e2fc11f27fa2ba643841a94843ae6a9e2a92a3bfb3638735e3",
-                "sha256:7fec6437caf0d31027ec9047f4f3a70f8e82bf0c8b5a95830367ea6dcc8fd031"
+                "sha256:613c68c2d87026801697f2a428d955e8b93da90e54b8704f469b8fb9346e9542",
+                "sha256:7c18d1153e55d35718e31146fececb0ac6e819e0666db0f05510bbe4d287205e"
             ],
             "index": "pypi",
-            "version": "==0.3.6"
+            "version": "==0.3.7"
         },
         "microsoft-kiota-serialization-text": {
             "hashes": [
@@ -678,11 +678,11 @@
         },
         "typing-extensions": {
             "hashes": [
-                "sha256:5d8c9dac95c27d20df12fb1d97b9793ab8b2af8a3a525e68c80e21060c161771",
-                "sha256:935ccf31549830cda708b42289d44b6f74084d616a00be651601a4f968e77c82"
+                "sha256:440d5dd3af93b060174bf433bccd69b0babc3b15b1a8dca43789fd7f61514b36",
+                "sha256:b75ddc264f0ba5615db7ba217daeb99701ad295353c45f9e95963337ceeeffb2"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==4.7.0"
+            "version": "==4.7.1"
         },
         "uritemplate": {
             "hashes": [
@@ -1033,11 +1033,11 @@
         },
         "typing-extensions": {
             "hashes": [
-                "sha256:5d8c9dac95c27d20df12fb1d97b9793ab8b2af8a3a525e68c80e21060c161771",
-                "sha256:935ccf31549830cda708b42289d44b6f74084d616a00be651601a4f968e77c82"
+                "sha256:440d5dd3af93b060174bf433bccd69b0babc3b15b1a8dca43789fd7f61514b36",
+                "sha256:b75ddc264f0ba5615db7ba217daeb99701ad295353c45f9e95963337ceeeffb2"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==4.7.0"
+            "version": "==4.7.1"
         },
         "wrapt": {
             "hashes": [

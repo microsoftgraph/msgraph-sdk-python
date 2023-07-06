@@ -13,14 +13,28 @@ from .entity import Entity
 
 @dataclass
 class PrintUsage(Entity):
+    # The blackAndWhitePageCount property
+    black_and_white_page_count: Optional[int] = None
+    # The colorPageCount property
+    color_page_count: Optional[int] = None
     # The completedBlackAndWhiteJobCount property
     completed_black_and_white_job_count: Optional[int] = None
     # The completedColorJobCount property
     completed_color_job_count: Optional[int] = None
+    # The completedJobCount property
+    completed_job_count: Optional[int] = None
+    # The doubleSidedSheetCount property
+    double_sided_sheet_count: Optional[int] = None
     # The incompleteJobCount property
     incomplete_job_count: Optional[int] = None
+    # The mediaSheetCount property
+    media_sheet_count: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The pageCount property
+    page_count: Optional[int] = None
+    # The singleSidedSheetCount property
+    single_sided_sheet_count: Optional[int] = None
     # The usageDate property
     usage_date: Optional[datetime.date] = None
     
@@ -62,9 +76,16 @@ class PrintUsage(Entity):
         from .print_usage_by_user import PrintUsageByUser
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "blackAndWhitePageCount": lambda n : setattr(self, 'black_and_white_page_count', n.get_int_value()),
+            "colorPageCount": lambda n : setattr(self, 'color_page_count', n.get_int_value()),
             "completedBlackAndWhiteJobCount": lambda n : setattr(self, 'completed_black_and_white_job_count', n.get_int_value()),
             "completedColorJobCount": lambda n : setattr(self, 'completed_color_job_count', n.get_int_value()),
+            "completedJobCount": lambda n : setattr(self, 'completed_job_count', n.get_int_value()),
+            "doubleSidedSheetCount": lambda n : setattr(self, 'double_sided_sheet_count', n.get_int_value()),
             "incompleteJobCount": lambda n : setattr(self, 'incomplete_job_count', n.get_int_value()),
+            "mediaSheetCount": lambda n : setattr(self, 'media_sheet_count', n.get_int_value()),
+            "pageCount": lambda n : setattr(self, 'page_count', n.get_int_value()),
+            "singleSidedSheetCount": lambda n : setattr(self, 'single_sided_sheet_count', n.get_int_value()),
             "usageDate": lambda n : setattr(self, 'usage_date', n.get_date_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -80,9 +101,16 @@ class PrintUsage(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_int_value("blackAndWhitePageCount", self.black_and_white_page_count)
+        writer.write_int_value("colorPageCount", self.color_page_count)
         writer.write_int_value("completedBlackAndWhiteJobCount", self.completed_black_and_white_job_count)
         writer.write_int_value("completedColorJobCount", self.completed_color_job_count)
+        writer.write_int_value("completedJobCount", self.completed_job_count)
+        writer.write_int_value("doubleSidedSheetCount", self.double_sided_sheet_count)
         writer.write_int_value("incompleteJobCount", self.incomplete_job_count)
+        writer.write_int_value("mediaSheetCount", self.media_sheet_count)
+        writer.write_int_value("pageCount", self.page_count)
+        writer.write_int_value("singleSidedSheetCount", self.single_sided_sheet_count)
         writer.write_date_value("usageDate", self.usage_date)
     
 

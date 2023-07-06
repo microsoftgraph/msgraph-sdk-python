@@ -111,7 +111,7 @@ class GroupItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Group] = None, request_configuration: Optional[GroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Group]:
         """
-        Add a member to a security or Microsoft 365 group through the **members** navigation property. The following table shows the types of members that can be added to either security groups or Microsoft 365 groups.
+        Update the properties of a group object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -170,7 +170,7 @@ class GroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Group] = None, request_configuration: Optional[GroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Add a member to a security or Microsoft 365 group through the **members** navigation property. The following table shows the types of members that can be added to either security groups or Microsoft 365 groups.
+        Update the properties of a group object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

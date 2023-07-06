@@ -54,6 +54,7 @@ if TYPE_CHECKING:
     from .apple_push_notification_certificate import ApplePushNotificationCertificate
     from .application import Application
     from .application_template import ApplicationTemplate
+    from .app_log_collection_request import AppLogCollectionRequest
     from .app_management_policy import AppManagementPolicy
     from .app_role_assignment import AppRoleAssignment
     from .approval import Approval
@@ -184,6 +185,7 @@ if TYPE_CHECKING:
     from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
     from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
     from .device_install_state import DeviceInstallState
+    from .device_log_collection_response import DeviceLogCollectionResponse
     from .device_management import DeviceManagement
     from .device_management_exchange_connector import DeviceManagementExchangeConnector
     from .device_management_export_job import DeviceManagementExportJob
@@ -231,6 +233,7 @@ if TYPE_CHECKING:
     from .email_authentication_method import EmailAuthenticationMethod
     from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
     from .email_file_assessment_request import EmailFileAssessmentRequest
+    from .employee_experience_user import EmployeeExperienceUser
     from .endpoint import Endpoint
     from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
     from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
@@ -317,8 +320,11 @@ if TYPE_CHECKING:
     from .item_activity_stat import ItemActivityStat
     from .item_analytics import ItemAnalytics
     from .item_attachment import ItemAttachment
+    from .learning_assignment import LearningAssignment
     from .learning_content import LearningContent
+    from .learning_course_activity import LearningCourseActivity
     from .learning_provider import LearningProvider
+    from .learning_self_initiated_course import LearningSelfInitiatedCourse
     from .license_details import LicenseDetails
     from .linked_resource import LinkedResource
     from .list_item import ListItem
@@ -331,11 +337,13 @@ if TYPE_CHECKING:
     from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
     from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
     from .mac_o_s_lob_app import MacOSLobApp
+    from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
     from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
     from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
     from .mail_assessment_request import MailAssessmentRequest
     from .mail_folder import MailFolder
     from .mail_search_folder import MailSearchFolder
+    from .malware_state_for_windows_device import MalwareStateForWindowsDevice
     from .managed_android_lob_app import ManagedAndroidLobApp
     from .managed_android_store_app import ManagedAndroidStoreApp
     from .managed_app import ManagedApp
@@ -363,6 +371,7 @@ if TYPE_CHECKING:
     from .managed_mobile_lob_app import ManagedMobileLobApp
     from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
     from .meeting_attendance_report import MeetingAttendanceReport
+    from .membership_outlier_insight import MembershipOutlierInsight
     from .message import Message
     from .message_rule import MessageRule
     from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
@@ -375,6 +384,7 @@ if TYPE_CHECKING:
     from .mobile_app_category import MobileAppCategory
     from .mobile_app_content import MobileAppContent
     from .mobile_app_content_file import MobileAppContentFile
+    from .mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
     from .mobile_contained_app import MobileContainedApp
     from .mobile_lob_app import MobileLobApp
     from .mobile_threat_defense_connector import MobileThreatDefenseConnector
@@ -645,7 +655,29 @@ if TYPE_CHECKING:
     from .user import User
     from .user_activity import UserActivity
     from .user_consent_request import UserConsentRequest
+    from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
+    from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
+    from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+    from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
+    from .user_experience_analytics_app_health_device_model_performance import UserExperienceAnalyticsAppHealthDeviceModelPerformance
+    from .user_experience_analytics_app_health_device_performance import UserExperienceAnalyticsAppHealthDevicePerformance
+    from .user_experience_analytics_app_health_device_performance_details import UserExperienceAnalyticsAppHealthDevicePerformanceDetails
+    from .user_experience_analytics_app_health_o_s_version_performance import UserExperienceAnalyticsAppHealthOSVersionPerformance
+    from .user_experience_analytics_baseline import UserExperienceAnalyticsBaseline
+    from .user_experience_analytics_category import UserExperienceAnalyticsCategory
     from .user_experience_analytics_device_performance import UserExperienceAnalyticsDevicePerformance
+    from .user_experience_analytics_device_scores import UserExperienceAnalyticsDeviceScores
+    from .user_experience_analytics_device_startup_history import UserExperienceAnalyticsDeviceStartupHistory
+    from .user_experience_analytics_device_startup_process import UserExperienceAnalyticsDeviceStartupProcess
+    from .user_experience_analytics_metric import UserExperienceAnalyticsMetric
+    from .user_experience_analytics_metric_history import UserExperienceAnalyticsMetricHistory
+    from .user_experience_analytics_model_scores import UserExperienceAnalyticsModelScores
+    from .user_experience_analytics_overview import UserExperienceAnalyticsOverview
+    from .user_experience_analytics_score_history import UserExperienceAnalyticsScoreHistory
+    from .user_experience_analytics_work_from_anywhere_device import UserExperienceAnalyticsWorkFromAnywhereDevice
+    from .user_experience_analytics_work_from_anywhere_hardware_readiness_metric import UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric
+    from .user_experience_analytics_work_from_anywhere_metric import UserExperienceAnalyticsWorkFromAnywhereMetric
+    from .user_experience_analytics_work_from_anywhere_model_performance import UserExperienceAnalyticsWorkFromAnywhereModelPerformance
     from .user_flow_language_configuration import UserFlowLanguageConfiguration
     from .user_flow_language_page import UserFlowLanguagePage
     from .user_install_state_summary import UserInstallStateSummary
@@ -671,17 +703,20 @@ if TYPE_CHECKING:
     from .windows_app_x import WindowsAppX
     from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
     from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
+    from .windows_device_malware_state import WindowsDeviceMalwareState
     from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
     from .windows_information_protection import WindowsInformationProtection
     from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
     from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
     from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
     from .windows_information_protection_policy import WindowsInformationProtectionPolicy
+    from .windows_malware_information import WindowsMalwareInformation
     from .windows_microsoft_edge_app import WindowsMicrosoftEdgeApp
     from .windows_mobile_m_s_i import WindowsMobileMSI
     from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
     from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
     from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
+    from .windows_protection_state import WindowsProtectionState
     from .windows_universal_app_x import WindowsUniversalAppX
     from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
     from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
@@ -960,6 +995,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .application_template import ApplicationTemplate
 
             return ApplicationTemplate()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.appLogCollectionRequest".casefold():
+            from .app_log_collection_request import AppLogCollectionRequest
+
+            return AppLogCollectionRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.appManagementPolicy".casefold():
             from .app_management_policy import AppManagementPolicy
 
@@ -1480,6 +1519,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .device_install_state import DeviceInstallState
 
             return DeviceInstallState()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceLogCollectionResponse".casefold():
+            from .device_log_collection_response import DeviceLogCollectionResponse
+
+            return DeviceLogCollectionResponse()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceManagement".casefold():
             from .device_management import DeviceManagement
 
@@ -1668,6 +1711,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .email_file_assessment_request import EmailFileAssessmentRequest
 
             return EmailFileAssessmentRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.employeeExperienceUser".casefold():
+            from .employee_experience_user import EmployeeExperienceUser
+
+            return EmployeeExperienceUser()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.endpoint".casefold():
             from .endpoint import Endpoint
 
@@ -2013,14 +2060,26 @@ class Entity(AdditionalDataHolder, Parsable):
             from .item_attachment import ItemAttachment
 
             return ItemAttachment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.learningAssignment".casefold():
+            from .learning_assignment import LearningAssignment
+
+            return LearningAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.learningContent".casefold():
             from .learning_content import LearningContent
 
             return LearningContent()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.learningCourseActivity".casefold():
+            from .learning_course_activity import LearningCourseActivity
+
+            return LearningCourseActivity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.learningProvider".casefold():
             from .learning_provider import LearningProvider
 
             return LearningProvider()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.learningSelfInitiatedCourse".casefold():
+            from .learning_self_initiated_course import LearningSelfInitiatedCourse
+
+            return LearningSelfInitiatedCourse()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.licenseDetails".casefold():
             from .license_details import LicenseDetails
 
@@ -2069,6 +2128,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .mac_o_s_lob_app import MacOSLobApp
 
             return MacOSLobApp()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSMicrosoftDefenderApp".casefold():
+            from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
+
+            return MacOSMicrosoftDefenderApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSMicrosoftEdgeApp".casefold():
             from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
 
@@ -2089,6 +2152,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .mail_search_folder import MailSearchFolder
 
             return MailSearchFolder()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.malwareStateForWindowsDevice".casefold():
+            from .malware_state_for_windows_device import MalwareStateForWindowsDevice
+
+            return MalwareStateForWindowsDevice()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.managedAndroidLobApp".casefold():
             from .managed_android_lob_app import ManagedAndroidLobApp
 
@@ -2197,6 +2264,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .meeting_attendance_report import MeetingAttendanceReport
 
             return MeetingAttendanceReport()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.membershipOutlierInsight".casefold():
+            from .membership_outlier_insight import MembershipOutlierInsight
+
+            return MembershipOutlierInsight()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.message".casefold():
             from .message import Message
 
@@ -2245,6 +2316,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .mobile_app_content_file import MobileAppContentFile
 
             return MobileAppContentFile()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileAppTroubleshootingEvent".casefold():
+            from .mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
+
+            return MobileAppTroubleshootingEvent()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.mobileContainedApp".casefold():
             from .mobile_contained_app import MobileContainedApp
 
@@ -3327,10 +3402,98 @@ class Entity(AdditionalDataHolder, Parsable):
             from .user_consent_request import UserConsentRequest
 
             return UserConsentRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthApplicationPerformance".casefold():
+            from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
+
+            return UserExperienceAnalyticsAppHealthApplicationPerformance()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails".casefold():
+            from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
+
+            return UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId".casefold():
+            from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+
+            return UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthAppPerformanceByOSVersion".casefold():
+            from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
+
+            return UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthDeviceModelPerformance".casefold():
+            from .user_experience_analytics_app_health_device_model_performance import UserExperienceAnalyticsAppHealthDeviceModelPerformance
+
+            return UserExperienceAnalyticsAppHealthDeviceModelPerformance()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthDevicePerformance".casefold():
+            from .user_experience_analytics_app_health_device_performance import UserExperienceAnalyticsAppHealthDevicePerformance
+
+            return UserExperienceAnalyticsAppHealthDevicePerformance()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthDevicePerformanceDetails".casefold():
+            from .user_experience_analytics_app_health_device_performance_details import UserExperienceAnalyticsAppHealthDevicePerformanceDetails
+
+            return UserExperienceAnalyticsAppHealthDevicePerformanceDetails()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsAppHealthOSVersionPerformance".casefold():
+            from .user_experience_analytics_app_health_o_s_version_performance import UserExperienceAnalyticsAppHealthOSVersionPerformance
+
+            return UserExperienceAnalyticsAppHealthOSVersionPerformance()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsBaseline".casefold():
+            from .user_experience_analytics_baseline import UserExperienceAnalyticsBaseline
+
+            return UserExperienceAnalyticsBaseline()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsCategory".casefold():
+            from .user_experience_analytics_category import UserExperienceAnalyticsCategory
+
+            return UserExperienceAnalyticsCategory()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsDevicePerformance".casefold():
             from .user_experience_analytics_device_performance import UserExperienceAnalyticsDevicePerformance
 
             return UserExperienceAnalyticsDevicePerformance()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsDeviceScores".casefold():
+            from .user_experience_analytics_device_scores import UserExperienceAnalyticsDeviceScores
+
+            return UserExperienceAnalyticsDeviceScores()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsDeviceStartupHistory".casefold():
+            from .user_experience_analytics_device_startup_history import UserExperienceAnalyticsDeviceStartupHistory
+
+            return UserExperienceAnalyticsDeviceStartupHistory()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsDeviceStartupProcess".casefold():
+            from .user_experience_analytics_device_startup_process import UserExperienceAnalyticsDeviceStartupProcess
+
+            return UserExperienceAnalyticsDeviceStartupProcess()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsMetric".casefold():
+            from .user_experience_analytics_metric import UserExperienceAnalyticsMetric
+
+            return UserExperienceAnalyticsMetric()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsMetricHistory".casefold():
+            from .user_experience_analytics_metric_history import UserExperienceAnalyticsMetricHistory
+
+            return UserExperienceAnalyticsMetricHistory()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsModelScores".casefold():
+            from .user_experience_analytics_model_scores import UserExperienceAnalyticsModelScores
+
+            return UserExperienceAnalyticsModelScores()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsOverview".casefold():
+            from .user_experience_analytics_overview import UserExperienceAnalyticsOverview
+
+            return UserExperienceAnalyticsOverview()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsScoreHistory".casefold():
+            from .user_experience_analytics_score_history import UserExperienceAnalyticsScoreHistory
+
+            return UserExperienceAnalyticsScoreHistory()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsWorkFromAnywhereDevice".casefold():
+            from .user_experience_analytics_work_from_anywhere_device import UserExperienceAnalyticsWorkFromAnywhereDevice
+
+            return UserExperienceAnalyticsWorkFromAnywhereDevice()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric".casefold():
+            from .user_experience_analytics_work_from_anywhere_hardware_readiness_metric import UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric
+
+            return UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsWorkFromAnywhereMetric".casefold():
+            from .user_experience_analytics_work_from_anywhere_metric import UserExperienceAnalyticsWorkFromAnywhereMetric
+
+            return UserExperienceAnalyticsWorkFromAnywhereMetric()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsWorkFromAnywhereModelPerformance".casefold():
+            from .user_experience_analytics_work_from_anywhere_model_performance import UserExperienceAnalyticsWorkFromAnywhereModelPerformance
+
+            return UserExperienceAnalyticsWorkFromAnywhereModelPerformance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userFlowLanguageConfiguration".casefold():
             from .user_flow_language_configuration import UserFlowLanguageConfiguration
 
@@ -3431,6 +3594,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
 
             return WindowsDefenderAdvancedThreatProtectionConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsDeviceMalwareState".casefold():
+            from .windows_device_malware_state import WindowsDeviceMalwareState
+
+            return WindowsDeviceMalwareState()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsHelloForBusinessAuthenticationMethod".casefold():
             from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
 
@@ -3455,6 +3622,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .windows_information_protection_policy import WindowsInformationProtectionPolicy
 
             return WindowsInformationProtectionPolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsMalwareInformation".casefold():
+            from .windows_malware_information import WindowsMalwareInformation
+
+            return WindowsMalwareInformation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsMicrosoftEdgeApp".casefold():
             from .windows_microsoft_edge_app import WindowsMicrosoftEdgeApp
 
@@ -3475,6 +3646,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
 
             return WindowsPhone81GeneralConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsProtectionState".casefold():
+            from .windows_protection_state import WindowsProtectionState
+
+            return WindowsProtectionState()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppX".casefold():
             from .windows_universal_app_x import WindowsUniversalAppX
 
@@ -3740,6 +3915,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .apple_push_notification_certificate import ApplePushNotificationCertificate
         from .application import Application
         from .application_template import ApplicationTemplate
+        from .app_log_collection_request import AppLogCollectionRequest
         from .app_management_policy import AppManagementPolicy
         from .app_role_assignment import AppRoleAssignment
         from .approval import Approval
@@ -3870,6 +4046,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
         from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
         from .device_install_state import DeviceInstallState
+        from .device_log_collection_response import DeviceLogCollectionResponse
         from .device_management import DeviceManagement
         from .device_management_exchange_connector import DeviceManagementExchangeConnector
         from .device_management_export_job import DeviceManagementExportJob
@@ -3917,6 +4094,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .email_authentication_method import EmailAuthenticationMethod
         from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
         from .email_file_assessment_request import EmailFileAssessmentRequest
+        from .employee_experience_user import EmployeeExperienceUser
         from .endpoint import Endpoint
         from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
         from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
@@ -4003,8 +4181,11 @@ class Entity(AdditionalDataHolder, Parsable):
         from .item_activity_stat import ItemActivityStat
         from .item_analytics import ItemAnalytics
         from .item_attachment import ItemAttachment
+        from .learning_assignment import LearningAssignment
         from .learning_content import LearningContent
+        from .learning_course_activity import LearningCourseActivity
         from .learning_provider import LearningProvider
+        from .learning_self_initiated_course import LearningSelfInitiatedCourse
         from .license_details import LicenseDetails
         from .linked_resource import LinkedResource
         from .list_item import ListItem
@@ -4017,11 +4198,13 @@ class Entity(AdditionalDataHolder, Parsable):
         from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
         from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
         from .mac_o_s_lob_app import MacOSLobApp
+        from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
         from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
         from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
         from .mail_assessment_request import MailAssessmentRequest
         from .mail_folder import MailFolder
         from .mail_search_folder import MailSearchFolder
+        from .malware_state_for_windows_device import MalwareStateForWindowsDevice
         from .managed_android_lob_app import ManagedAndroidLobApp
         from .managed_android_store_app import ManagedAndroidStoreApp
         from .managed_app import ManagedApp
@@ -4049,6 +4232,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .managed_mobile_lob_app import ManagedMobileLobApp
         from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
         from .meeting_attendance_report import MeetingAttendanceReport
+        from .membership_outlier_insight import MembershipOutlierInsight
         from .message import Message
         from .message_rule import MessageRule
         from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
@@ -4061,6 +4245,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .mobile_app_category import MobileAppCategory
         from .mobile_app_content import MobileAppContent
         from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
         from .mobile_contained_app import MobileContainedApp
         from .mobile_lob_app import MobileLobApp
         from .mobile_threat_defense_connector import MobileThreatDefenseConnector
@@ -4331,7 +4516,29 @@ class Entity(AdditionalDataHolder, Parsable):
         from .user import User
         from .user_activity import UserActivity
         from .user_consent_request import UserConsentRequest
+        from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
+        from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
+        from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+        from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
+        from .user_experience_analytics_app_health_device_model_performance import UserExperienceAnalyticsAppHealthDeviceModelPerformance
+        from .user_experience_analytics_app_health_device_performance import UserExperienceAnalyticsAppHealthDevicePerformance
+        from .user_experience_analytics_app_health_device_performance_details import UserExperienceAnalyticsAppHealthDevicePerformanceDetails
+        from .user_experience_analytics_app_health_o_s_version_performance import UserExperienceAnalyticsAppHealthOSVersionPerformance
+        from .user_experience_analytics_baseline import UserExperienceAnalyticsBaseline
+        from .user_experience_analytics_category import UserExperienceAnalyticsCategory
         from .user_experience_analytics_device_performance import UserExperienceAnalyticsDevicePerformance
+        from .user_experience_analytics_device_scores import UserExperienceAnalyticsDeviceScores
+        from .user_experience_analytics_device_startup_history import UserExperienceAnalyticsDeviceStartupHistory
+        from .user_experience_analytics_device_startup_process import UserExperienceAnalyticsDeviceStartupProcess
+        from .user_experience_analytics_metric import UserExperienceAnalyticsMetric
+        from .user_experience_analytics_metric_history import UserExperienceAnalyticsMetricHistory
+        from .user_experience_analytics_model_scores import UserExperienceAnalyticsModelScores
+        from .user_experience_analytics_overview import UserExperienceAnalyticsOverview
+        from .user_experience_analytics_score_history import UserExperienceAnalyticsScoreHistory
+        from .user_experience_analytics_work_from_anywhere_device import UserExperienceAnalyticsWorkFromAnywhereDevice
+        from .user_experience_analytics_work_from_anywhere_hardware_readiness_metric import UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric
+        from .user_experience_analytics_work_from_anywhere_metric import UserExperienceAnalyticsWorkFromAnywhereMetric
+        from .user_experience_analytics_work_from_anywhere_model_performance import UserExperienceAnalyticsWorkFromAnywhereModelPerformance
         from .user_flow_language_configuration import UserFlowLanguageConfiguration
         from .user_flow_language_page import UserFlowLanguagePage
         from .user_install_state_summary import UserInstallStateSummary
@@ -4357,17 +4564,20 @@ class Entity(AdditionalDataHolder, Parsable):
         from .windows_app_x import WindowsAppX
         from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
         from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
+        from .windows_device_malware_state import WindowsDeviceMalwareState
         from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
         from .windows_information_protection import WindowsInformationProtection
         from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
         from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
         from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
         from .windows_information_protection_policy import WindowsInformationProtectionPolicy
+        from .windows_malware_information import WindowsMalwareInformation
         from .windows_microsoft_edge_app import WindowsMicrosoftEdgeApp
         from .windows_mobile_m_s_i import WindowsMobileMSI
         from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
         from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
         from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
+        from .windows_protection_state import WindowsProtectionState
         from .windows_universal_app_x import WindowsUniversalAppX
         from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
         from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
@@ -4471,6 +4681,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .apple_push_notification_certificate import ApplePushNotificationCertificate
         from .application import Application
         from .application_template import ApplicationTemplate
+        from .app_log_collection_request import AppLogCollectionRequest
         from .app_management_policy import AppManagementPolicy
         from .app_role_assignment import AppRoleAssignment
         from .approval import Approval
@@ -4601,6 +4812,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
         from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
         from .device_install_state import DeviceInstallState
+        from .device_log_collection_response import DeviceLogCollectionResponse
         from .device_management import DeviceManagement
         from .device_management_exchange_connector import DeviceManagementExchangeConnector
         from .device_management_export_job import DeviceManagementExportJob
@@ -4648,6 +4860,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .email_authentication_method import EmailAuthenticationMethod
         from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
         from .email_file_assessment_request import EmailFileAssessmentRequest
+        from .employee_experience_user import EmployeeExperienceUser
         from .endpoint import Endpoint
         from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
         from .enrollment_troubleshooting_event import EnrollmentTroubleshootingEvent
@@ -4734,8 +4947,11 @@ class Entity(AdditionalDataHolder, Parsable):
         from .item_activity_stat import ItemActivityStat
         from .item_analytics import ItemAnalytics
         from .item_attachment import ItemAttachment
+        from .learning_assignment import LearningAssignment
         from .learning_content import LearningContent
+        from .learning_course_activity import LearningCourseActivity
         from .learning_provider import LearningProvider
+        from .learning_self_initiated_course import LearningSelfInitiatedCourse
         from .license_details import LicenseDetails
         from .linked_resource import LinkedResource
         from .list_item import ListItem
@@ -4748,11 +4964,13 @@ class Entity(AdditionalDataHolder, Parsable):
         from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
         from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
         from .mac_o_s_lob_app import MacOSLobApp
+        from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
         from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
         from .mac_o_s_office_suite_app import MacOSOfficeSuiteApp
         from .mail_assessment_request import MailAssessmentRequest
         from .mail_folder import MailFolder
         from .mail_search_folder import MailSearchFolder
+        from .malware_state_for_windows_device import MalwareStateForWindowsDevice
         from .managed_android_lob_app import ManagedAndroidLobApp
         from .managed_android_store_app import ManagedAndroidStoreApp
         from .managed_app import ManagedApp
@@ -4780,6 +4998,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .managed_mobile_lob_app import ManagedMobileLobApp
         from .mdm_windows_information_protection_policy import MdmWindowsInformationProtectionPolicy
         from .meeting_attendance_report import MeetingAttendanceReport
+        from .membership_outlier_insight import MembershipOutlierInsight
         from .message import Message
         from .message_rule import MessageRule
         from .microsoft_account_user_conversation_member import MicrosoftAccountUserConversationMember
@@ -4792,6 +5011,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .mobile_app_category import MobileAppCategory
         from .mobile_app_content import MobileAppContent
         from .mobile_app_content_file import MobileAppContentFile
+        from .mobile_app_troubleshooting_event import MobileAppTroubleshootingEvent
         from .mobile_contained_app import MobileContainedApp
         from .mobile_lob_app import MobileLobApp
         from .mobile_threat_defense_connector import MobileThreatDefenseConnector
@@ -5062,7 +5282,29 @@ class Entity(AdditionalDataHolder, Parsable):
         from .user import User
         from .user_activity import UserActivity
         from .user_consent_request import UserConsentRequest
+        from .user_experience_analytics_app_health_application_performance import UserExperienceAnalyticsAppHealthApplicationPerformance
+        from .user_experience_analytics_app_health_app_performance_by_app_version_details import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
+        from .user_experience_analytics_app_health_app_performance_by_app_version_device_id import UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId
+        from .user_experience_analytics_app_health_app_performance_by_o_s_version import UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion
+        from .user_experience_analytics_app_health_device_model_performance import UserExperienceAnalyticsAppHealthDeviceModelPerformance
+        from .user_experience_analytics_app_health_device_performance import UserExperienceAnalyticsAppHealthDevicePerformance
+        from .user_experience_analytics_app_health_device_performance_details import UserExperienceAnalyticsAppHealthDevicePerformanceDetails
+        from .user_experience_analytics_app_health_o_s_version_performance import UserExperienceAnalyticsAppHealthOSVersionPerformance
+        from .user_experience_analytics_baseline import UserExperienceAnalyticsBaseline
+        from .user_experience_analytics_category import UserExperienceAnalyticsCategory
         from .user_experience_analytics_device_performance import UserExperienceAnalyticsDevicePerformance
+        from .user_experience_analytics_device_scores import UserExperienceAnalyticsDeviceScores
+        from .user_experience_analytics_device_startup_history import UserExperienceAnalyticsDeviceStartupHistory
+        from .user_experience_analytics_device_startup_process import UserExperienceAnalyticsDeviceStartupProcess
+        from .user_experience_analytics_metric import UserExperienceAnalyticsMetric
+        from .user_experience_analytics_metric_history import UserExperienceAnalyticsMetricHistory
+        from .user_experience_analytics_model_scores import UserExperienceAnalyticsModelScores
+        from .user_experience_analytics_overview import UserExperienceAnalyticsOverview
+        from .user_experience_analytics_score_history import UserExperienceAnalyticsScoreHistory
+        from .user_experience_analytics_work_from_anywhere_device import UserExperienceAnalyticsWorkFromAnywhereDevice
+        from .user_experience_analytics_work_from_anywhere_hardware_readiness_metric import UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric
+        from .user_experience_analytics_work_from_anywhere_metric import UserExperienceAnalyticsWorkFromAnywhereMetric
+        from .user_experience_analytics_work_from_anywhere_model_performance import UserExperienceAnalyticsWorkFromAnywhereModelPerformance
         from .user_flow_language_configuration import UserFlowLanguageConfiguration
         from .user_flow_language_page import UserFlowLanguagePage
         from .user_install_state_summary import UserInstallStateSummary
@@ -5088,17 +5330,20 @@ class Entity(AdditionalDataHolder, Parsable):
         from .windows_app_x import WindowsAppX
         from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
         from .windows_defender_advanced_threat_protection_configuration import WindowsDefenderAdvancedThreatProtectionConfiguration
+        from .windows_device_malware_state import WindowsDeviceMalwareState
         from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
         from .windows_information_protection import WindowsInformationProtection
         from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
         from .windows_information_protection_app_locker_file import WindowsInformationProtectionAppLockerFile
         from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
         from .windows_information_protection_policy import WindowsInformationProtectionPolicy
+        from .windows_malware_information import WindowsMalwareInformation
         from .windows_microsoft_edge_app import WindowsMicrosoftEdgeApp
         from .windows_mobile_m_s_i import WindowsMobileMSI
         from .windows_phone81_compliance_policy import WindowsPhone81CompliancePolicy
         from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
         from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
+        from .windows_protection_state import WindowsProtectionState
         from .windows_universal_app_x import WindowsUniversalAppX
         from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
         from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration

@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from .device_configuration_states.device_configuration_states_request_builder import DeviceConfigurationStatesRequestBuilder
     from .disable_lost_mode.disable_lost_mode_request_builder import DisableLostModeRequestBuilder
     from .locate_device.locate_device_request_builder import LocateDeviceRequestBuilder
+    from .log_collection_requests.log_collection_requests_request_builder import LogCollectionRequestsRequestBuilder
     from .logout_shared_apple_device_active_user.logout_shared_apple_device_active_user_request_builder import LogoutSharedAppleDeviceActiveUserRequestBuilder
     from .reboot_now.reboot_now_request_builder import RebootNowRequestBuilder
     from .recover_passcode.recover_passcode_request_builder import RecoverPasscodeRequestBuilder
@@ -34,6 +35,7 @@ if TYPE_CHECKING:
     from .users.users_request_builder import UsersRequestBuilder
     from .windows_defender_scan.windows_defender_scan_request_builder import WindowsDefenderScanRequestBuilder
     from .windows_defender_update_signatures.windows_defender_update_signatures_request_builder import WindowsDefenderUpdateSignaturesRequestBuilder
+    from .windows_protection_state.windows_protection_state_request_builder import WindowsProtectionStateRequestBuilder
     from .wipe.wipe_request_builder import WipeRequestBuilder
 
 class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
@@ -243,6 +245,15 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
         return LocateDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def log_collection_requests(self) -> LogCollectionRequestsRequestBuilder:
+        """
+        Provides operations to manage the logCollectionRequests property of the microsoft.graph.managedDevice entity.
+        """
+        from .log_collection_requests.log_collection_requests_request_builder import LogCollectionRequestsRequestBuilder
+
+        return LogCollectionRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def logout_shared_apple_device_active_user(self) -> LogoutSharedAppleDeviceActiveUserRequestBuilder:
         """
         Provides operations to call the logoutSharedAppleDeviceActiveUser method.
@@ -358,6 +369,15 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
         from .windows_defender_update_signatures.windows_defender_update_signatures_request_builder import WindowsDefenderUpdateSignaturesRequestBuilder
 
         return WindowsDefenderUpdateSignaturesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def windows_protection_state(self) -> WindowsProtectionStateRequestBuilder:
+        """
+        Provides operations to manage the windowsProtectionState property of the microsoft.graph.managedDevice entity.
+        """
+        from .windows_protection_state.windows_protection_state_request_builder import WindowsProtectionStateRequestBuilder
+
+        return WindowsProtectionStateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def wipe(self) -> WipeRequestBuilder:

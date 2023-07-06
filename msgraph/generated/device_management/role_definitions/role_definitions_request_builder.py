@@ -47,7 +47,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RoleDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[RoleDefinitionCollectionResponse]:
         """
-        List properties and relationships of the deviceAndAppManagementRoleDefinition objects.
+        List properties and relationships of the roleDefinition objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleDefinitionCollectionResponse]
@@ -94,7 +94,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RoleDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceAndAppManagementRoleDefinition objects.
+        List properties and relationships of the roleDefinition objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleDefinitionsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceAndAppManagementRoleDefinition objects.
+        List properties and relationships of the roleDefinition objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -33,6 +33,7 @@ if TYPE_CHECKING:
     from .direct_reports.direct_reports_request_builder import DirectReportsRequestBuilder
     from .drive.drive_request_builder import DriveRequestBuilder
     from .drives.drives_request_builder import DrivesRequestBuilder
+    from .employee_experience.employee_experience_request_builder import EmployeeExperienceRequestBuilder
     from .events.events_request_builder import EventsRequestBuilder
     from .export_device_and_app_management_data.export_device_and_app_management_data_request_builder import ExportDeviceAndAppManagementDataRequestBuilder
     from .export_device_and_app_management_data_with_skip_with_top.export_device_and_app_management_data_with_skip_with_top_request_builder import ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder
@@ -393,6 +394,15 @@ class MeRequestBuilder(BaseRequestBuilder):
         from .drives.drives_request_builder import DrivesRequestBuilder
 
         return DrivesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def employee_experience(self) -> EmployeeExperienceRequestBuilder:
+        """
+        Provides operations to manage the employeeExperience property of the microsoft.graph.user entity.
+        """
+        from .employee_experience.employee_experience_request_builder import EmployeeExperienceRequestBuilder
+
+        return EmployeeExperienceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def events(self) -> EventsRequestBuilder:

@@ -30,7 +30,7 @@ class QueryRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> Optional[QueryResponse]:
         """
-        Invoke action query
+        Runs the query specified in the request body. Search results are provided in the response.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -55,7 +55,7 @@ class QueryRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action query
+        Runs the query specified in the request body. Search results are provided in the response.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

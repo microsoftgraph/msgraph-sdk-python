@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.learning_provider import LearningProvider
     from ....models.o_data_errors.o_data_error import ODataError
     from .learning_contents.learning_contents_request_builder import LearningContentsRequestBuilder
+    from .learning_course_activities.learning_course_activities_request_builder import LearningCourseActivitiesRequestBuilder
 
 class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     """
@@ -157,6 +158,15 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
         from .learning_contents.learning_contents_request_builder import LearningContentsRequestBuilder
 
         return LearningContentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def learning_course_activities(self) -> LearningCourseActivitiesRequestBuilder:
+        """
+        Provides operations to manage the learningCourseActivities property of the microsoft.graph.learningProvider entity.
+        """
+        from .learning_course_activities.learning_course_activities_request_builder import LearningCourseActivitiesRequestBuilder
+
+        return LearningCourseActivitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

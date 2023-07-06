@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .learning_content import LearningContent
+    from .learning_course_activity import LearningCourseActivity
 
 from .entity import Entity
 
@@ -17,6 +18,8 @@ class LearningProvider(Entity):
     is_course_activity_sync_enabled: Optional[bool] = None
     # Learning catalog items for the provider.
     learning_contents: Optional[List[LearningContent]] = None
+    # The learningCourseActivities property
+    learning_course_activities: Optional[List[LearningCourseActivity]] = None
     # Authentication URL to access the courses for the provider. Optional.
     login_web_url: Optional[str] = None
     # The long logo URL for the dark mode that needs to be a publicly accessible image. This image would be saved to the blob storage of Viva Learning for rendering within the Viva Learning app. Required.
@@ -49,14 +52,17 @@ class LearningProvider(Entity):
         """
         from .entity import Entity
         from .learning_content import LearningContent
+        from .learning_course_activity import LearningCourseActivity
 
         from .entity import Entity
         from .learning_content import LearningContent
+        from .learning_course_activity import LearningCourseActivity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isCourseActivitySyncEnabled": lambda n : setattr(self, 'is_course_activity_sync_enabled', n.get_bool_value()),
             "learningContents": lambda n : setattr(self, 'learning_contents', n.get_collection_of_object_values(LearningContent)),
+            "learningCourseActivities": lambda n : setattr(self, 'learning_course_activities', n.get_collection_of_object_values(LearningCourseActivity)),
             "loginWebUrl": lambda n : setattr(self, 'login_web_url', n.get_str_value()),
             "longLogoWebUrlForDarkTheme": lambda n : setattr(self, 'long_logo_web_url_for_dark_theme', n.get_str_value()),
             "longLogoWebUrlForLightTheme": lambda n : setattr(self, 'long_logo_web_url_for_light_theme', n.get_str_value()),
@@ -79,6 +85,7 @@ class LearningProvider(Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isCourseActivitySyncEnabled", self.is_course_activity_sync_enabled)
         writer.write_collection_of_object_values("learningContents", self.learning_contents)
+        writer.write_collection_of_object_values("learningCourseActivities", self.learning_course_activities)
         writer.write_str_value("loginWebUrl", self.login_web_url)
         writer.write_str_value("longLogoWebUrlForDarkTheme", self.long_logo_web_url_for_dark_theme)
         writer.write_str_value("longLogoWebUrlForLightTheme", self.long_logo_web_url_for_light_theme)

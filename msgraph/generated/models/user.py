@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
     from .directory_object import DirectoryObject
     from .drive import Drive
+    from .employee_experience_user import EmployeeExperienceUser
     from .employee_org_data import EmployeeOrgData
     from .event import Event
     from .extension import Extension
@@ -125,6 +126,8 @@ class User(DirectoryObject):
     drive: Optional[Drive] = None
     # A collection of drives available for this user. Read-only.
     drives: Optional[List[Drive]] = None
+    # The employeeExperience property
+    employee_experience: Optional[EmployeeExperienceUser] = None
     # The date and time when the user was hired or will start work in case of a future hire. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
     employee_hire_date: Optional[datetime.datetime] = None
     # The employee identifier assigned to the user by the organization. The maximum length is 16 characters. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
@@ -333,6 +336,7 @@ class User(DirectoryObject):
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
         from .directory_object import DirectoryObject
         from .drive import Drive
+        from .employee_experience_user import EmployeeExperienceUser
         from .employee_org_data import EmployeeOrgData
         from .event import Event
         from .extension import Extension
@@ -382,6 +386,7 @@ class User(DirectoryObject):
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
         from .directory_object import DirectoryObject
         from .drive import Drive
+        from .employee_experience_user import EmployeeExperienceUser
         from .employee_org_data import EmployeeOrgData
         from .event import Event
         from .extension import Extension
@@ -451,6 +456,7 @@ class User(DirectoryObject):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(Drive)),
             "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(Drive)),
+            "employeeExperience": lambda n : setattr(self, 'employee_experience', n.get_object_value(EmployeeExperienceUser)),
             "employeeHireDate": lambda n : setattr(self, 'employee_hire_date', n.get_datetime_value()),
             "employeeId": lambda n : setattr(self, 'employee_id', n.get_str_value()),
             "employeeLeaveDateTime": lambda n : setattr(self, 'employee_leave_date_time', n.get_datetime_value()),
@@ -586,6 +592,7 @@ class User(DirectoryObject):
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("drive", self.drive)
         writer.write_collection_of_object_values("drives", self.drives)
+        writer.write_object_value("employeeExperience", self.employee_experience)
         writer.write_datetime_value("employeeHireDate", self.employee_hire_date)
         writer.write_str_value("employeeId", self.employee_id)
         writer.write_datetime_value("employeeLeaveDateTime", self.employee_leave_date_time)

@@ -19,7 +19,15 @@ pip install msgraph-sdk
 
 Register your application by following the steps at [Register your app with the Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2).
 
-### 2.2 Initialize a GraphServiceClient object
+### 2.2 Select an authentication method
+
+To start writing code and making requests to the Microsoft Graph service, you need to set up an authentication method. The Microsoft Graph PHP SDK supports different MSAL authentication libraries that you can choose depending on the type of application you are building. 
+
+Microsoft Graph supports 2 different types of permissions: delegated permissions to make calls with a signed in user and delegated permissions to make calls without a signed in user.
+
+
+
+### 2.3 Initialize a GraphServiceClient object
 
 You must create **GraphServiceClient** object to make requests against the service. To create a new instance of this class, you need to provide credentials and scopes, which can authenticate requests to Microsoft Graph.
 

@@ -19,13 +19,15 @@ pip install msgraph-sdk
 
 Register your application by following the steps at [Register your app with the Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2).
 
-### 2.2 Select an authentication method
+### 2.2 Select an authentication provider
 
-To start writing code and making requests to the Microsoft Graph service, you need to set up an authentication method. The Microsoft Graph PHP SDK supports different MSAL authentication libraries that you can choose depending on the type of application you are building. 
+To start writing code and making requests to the Microsoft Graph service, you need to set up an authentication provider. This object will authenticate your requests to Microsoft Graph. For authentication, the Microsoft Graph Python SDK supports both sync and async credential classes from Azure Identity. Which library to choose depends on the type of application you are building. 
 
-Microsoft Graph supports 2 different types of permissions: delegated permissions to make calls with a signed in user and delegated permissions to make calls without a signed in user.
+The easiest way to filter this decision is by looking at the permissions set you'd use. Microsoft Graph supports 2 different types of permissions: delegated and application permissions:
+- Application permissions are used when you don’t need a user to login to your app, but the app will perform tasks on its own and run in the background. 
+- Delegated permissions, also called scopes, are used when your app requires a user to login and interact with data related to this user in a session.
 
-
+In this demo we'll use the 2 most common scenarios: client secret credentials for application permissions and device code credentials for delegated permissions. You can also use environment credentials, interactive browser credentials, default azure credentials, on-behalf-of credentials, or any other Azure Identity library.
 
 ### 2.3 Initialize a GraphServiceClient object
 

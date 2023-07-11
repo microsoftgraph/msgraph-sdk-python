@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .......models.o_data_errors.o_data_error import ODataError
     from .access_package.access_package_request_builder import AccessPackageRequestBuilder
     from .catalog.catalog_request_builder import CatalogRequestBuilder
+    from .custom_extension_stage_settings.custom_extension_stage_settings_request_builder import CustomExtensionStageSettingsRequestBuilder
     from .questions.questions_request_builder import QuestionsRequestBuilder
 
 class AccessPackageAssignmentPolicyItemRequestBuilder(BaseRequestBuilder):
@@ -168,6 +169,15 @@ class AccessPackageAssignmentPolicyItemRequestBuilder(BaseRequestBuilder):
         from .catalog.catalog_request_builder import CatalogRequestBuilder
 
         return CatalogRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def custom_extension_stage_settings(self) -> CustomExtensionStageSettingsRequestBuilder:
+        """
+        Provides operations to manage the customExtensionStageSettings property of the microsoft.graph.accessPackageAssignmentPolicy entity.
+        """
+        from .custom_extension_stage_settings.custom_extension_stage_settings_request_builder import CustomExtensionStageSettingsRequestBuilder
+
+        return CustomExtensionStageSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def questions(self) -> QuestionsRequestBuilder:

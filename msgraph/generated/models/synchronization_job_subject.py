@@ -11,11 +11,11 @@ class SynchronizationJobSubject(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The links property
+    # Principals that you would like to provision.
     links: Optional[SynchronizationLinkedObjects] = None
-    # The objectId property
+    # The identifier of an object to which a synchronizationJob is to be applied. Can be one of the following: An onPremisesDistinguishedName for synchronization from Active Directory to Azure AD.The user ID for synchronization from Azure AD to a third-party.The Worker ID of the Workday worker for synchronization from Workday to either Active Directory or Azure AD.
     object_id: Optional[str] = None
-    # The objectTypeName property
+    # The type of the object to which a synchronizationJob is to be applied. Can be one of the following: user for synchronizing between Active Directory and Azure AD.User for synchronizing a user between Azure AD and a third-party application. Worker for synchronization a user between Workday and either Active Directory or Azure AD.Group for synchronizing a group between Azure AD and a third-party application.
     object_type_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

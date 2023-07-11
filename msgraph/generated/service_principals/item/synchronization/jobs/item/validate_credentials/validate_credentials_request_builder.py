@@ -29,7 +29,7 @@ class ValidateCredentialsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ValidateCredentialsPostRequestBody] = None, request_configuration: Optional[ValidateCredentialsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action validateCredentials
+        Validate that the credentials are valid in the tenant.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -51,7 +51,7 @@ class ValidateCredentialsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ValidateCredentialsPostRequestBody] = None, request_configuration: Optional[ValidateCredentialsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action validateCredentials
+        Validate that the credentials are valid in the tenant.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

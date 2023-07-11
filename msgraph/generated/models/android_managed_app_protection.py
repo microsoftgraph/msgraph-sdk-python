@@ -12,6 +12,9 @@ from .targeted_managed_app_protection import TargetedManagedAppProtection
 
 @dataclass
 class AndroidManagedAppProtection(TargetedManagedAppProtection):
+    """
+    Policy used to configure detailed management settings targeted to specific security groups and for a specified set of apps on an Android device
+    """
     odata_type = "#microsoft.graph.androidManagedAppProtection"
     # List of apps to which the policy is deployed.
     apps: Optional[List[ManagedMobileApp]] = None

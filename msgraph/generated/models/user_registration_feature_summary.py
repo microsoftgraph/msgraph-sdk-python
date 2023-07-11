@@ -15,13 +15,13 @@ class UserRegistrationFeatureSummary(AdditionalDataHolder, Parsable):
 
     # The OdataType property
     odata_type: Optional[str] = None
-    # The totalUserCount property
+    # Total number of users accounts, excluding those that are blocked.
     total_user_count: Optional[int] = None
-    # The userRegistrationFeatureCounts property
+    # Number of users registered or capable for multi-factor authentication, self-service password reset, and passwordless authentication.
     user_registration_feature_counts: Optional[List[UserRegistrationFeatureCount]] = None
-    # The userRoles property
+    # The role type of the user. Possible values are: all, privilegedAdmin, admin, user, unknownFutureValue.
     user_roles: Optional[IncludedUserRoles] = None
-    # The userTypes property
+    # User type. Possible values are: all, member, guest, unknownFutureValue.
     user_types: Optional[IncludedUserTypes] = None
     
     @staticmethod

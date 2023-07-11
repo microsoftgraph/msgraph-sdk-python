@@ -14,19 +14,22 @@ from .entity import Entity
 
 @dataclass
 class WindowsProtectionState(Entity):
+    """
+    Device protection status entity.
+    """
     # Current anti malware version
     anti_malware_version: Optional[str] = None
     # Device malware list
     detected_malware_state: Optional[List[WindowsDeviceMalwareState]] = None
-    # Computer's state (like clean or pending full scan or pending reboot etc). Possible values are: clean, fullScanPending, rebootPending, manualStepsPending, offlineScanPending, critical.
+    # Indicates device's health state. Possible values are: clean, fullScanPending, rebootPending, manualStepsPending, offlineScanPending, critical. Possible values are: clean, fullScanPending, rebootPending, manualStepsPending, offlineScanPending, critical.
     device_state: Optional[WindowsDeviceHealthState] = None
     # Current endpoint protection engine's version
     engine_version: Optional[str] = None
-    # Full scan overdue or not?
+    # When TRUE indicates full scan is overdue, when FALSE indicates full scan is not overdue. Defaults to setting on client device.
     full_scan_overdue: Optional[bool] = None
-    # Full scan required or not?
+    # When TRUE indicates full scan is required, when FALSE indicates full scan is not required. Defaults to setting on client device.
     full_scan_required: Optional[bool] = None
-    # Indicates whether the device is a virtual machine.
+    # When TRUE indicates the device is a virtual machine, when FALSE indicates the device is not a virtual machine. Defaults to setting on client device.
     is_virtual_machine: Optional[bool] = None
     # Last quick scan datetime
     last_full_scan_date_time: Optional[datetime.datetime] = None
@@ -38,25 +41,25 @@ class WindowsProtectionState(Entity):
     last_quick_scan_signature_version: Optional[str] = None
     # Last device health status reported time
     last_reported_date_time: Optional[datetime.datetime] = None
-    # Anti malware is enabled or not
+    # When TRUE indicates anti malware is enabled when FALSE indicates anti malware is not enabled.
     malware_protection_enabled: Optional[bool] = None
-    # Network inspection system enabled or not?
+    # When TRUE indicates network inspection system enabled, when FALSE indicates network inspection system is not enabled. Defaults to setting on client device.
     network_inspection_system_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Product Status of Windows Defender Antivirus. Possible values are: noStatus, serviceNotRunning, serviceStartedWithoutMalwareProtection, pendingFullScanDueToThreatAction, pendingRebootDueToThreatAction, pendingManualStepsDueToThreatAction, avSignaturesOutOfDate, asSignaturesOutOfDate, noQuickScanHappenedForSpecifiedPeriod, noFullScanHappenedForSpecifiedPeriod, systemInitiatedScanInProgress, systemInitiatedCleanInProgress, samplesPendingSubmission, productRunningInEvaluationMode, productRunningInNonGenuineMode, productExpired, offlineScanRequired, serviceShutdownAsPartOfSystemShutdown, threatRemediationFailedCritically, threatRemediationFailedNonCritically, noStatusFlagsSet, platformOutOfDate, platformUpdateInProgress, platformAboutToBeOutdated, signatureOrPlatformEndOfLifeIsPastOrIsImpending, windowsSModeSignaturesInUseOnNonWin10SInstall.
+    # Product Status of Windows Defender Antivirus. Possible values are: noStatus, serviceNotRunning, serviceStartedWithoutMalwareProtection, pendingFullScanDueToThreatAction, pendingRebootDueToThreatAction, pendingManualStepsDueToThreatAction, avSignaturesOutOfDate, asSignaturesOutOfDate, noQuickScanHappenedForSpecifiedPeriod, noFullScanHappenedForSpecifiedPeriod, systemInitiatedScanInProgress, systemInitiatedCleanInProgress, samplesPendingSubmission, productRunningInEvaluationMode, productRunningInNonGenuineMode, productExpired, offlineScanRequired, serviceShutdownAsPartOfSystemShutdown, threatRemediationFailedCritically, threatRemediationFailedNonCritically, noStatusFlagsSet, platformOutOfDate, platformUpdateInProgress, platformAboutToBeOutdated, signatureOrPlatformEndOfLifeIsPastOrIsImpending, windowsSModeSignaturesInUseOnNonWin10SInstall. Possible values are: noStatus, serviceNotRunning, serviceStartedWithoutMalwareProtection, pendingFullScanDueToThreatAction, pendingRebootDueToThreatAction, pendingManualStepsDueToThreatAction, avSignaturesOutOfDate, asSignaturesOutOfDate, noQuickScanHappenedForSpecifiedPeriod, noFullScanHappenedForSpecifiedPeriod, systemInitiatedScanInProgress, systemInitiatedCleanInProgress, samplesPendingSubmission, productRunningInEvaluationMode, productRunningInNonGenuineMode, productExpired, offlineScanRequired, serviceShutdownAsPartOfSystemShutdown, threatRemediationFailedCritically, threatRemediationFailedNonCritically, noStatusFlagsSet, platformOutOfDate, platformUpdateInProgress, platformAboutToBeOutdated, signatureOrPlatformEndOfLifeIsPastOrIsImpending, windowsSModeSignaturesInUseOnNonWin10SInstall.
     product_status: Optional[WindowsDefenderProductStatus] = None
-    # Quick scan overdue or not?
+    # When TRUE indicates quick scan is overdue, when FALSE indicates quick scan is not overdue. Defaults to setting on client device.
     quick_scan_overdue: Optional[bool] = None
-    # Real time protection is enabled or not?
+    # When TRUE indicates real time protection is enabled, when FALSE indicates real time protection is not enabled. Defaults to setting on client device.
     real_time_protection_enabled: Optional[bool] = None
-    # Reboot required or not?
+    # When TRUE indicates reboot is required, when FALSE indicates when TRUE indicates reboot is not required. Defaults to setting on client device.
     reboot_required: Optional[bool] = None
-    # Signature out of date or not?
+    # When TRUE indicates signature is out of date, when FALSE indicates signature is not out of date. Defaults to setting on client device.
     signature_update_overdue: Optional[bool] = None
     # Current malware definitions version
     signature_version: Optional[str] = None
-    # Indicates whether the Windows Defender tamper protection feature is enabled.
+    # When TRUE indicates the Windows Defender tamper protection feature is enabled, when FALSE indicates the Windows Defender tamper protection feature is not enabled. Defaults to setting on client device.
     tamper_protection_enabled: Optional[bool] = None
     
     @staticmethod

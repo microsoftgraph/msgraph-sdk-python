@@ -47,7 +47,7 @@ class DeviceSettingStateSummariesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceSettingStateSummariesRequestBuilderGetRequestConfiguration] = None) -> Optional[SettingStateDeviceSummaryCollectionResponse]:
         """
-        List properties and relationships of the settingStateDeviceSummary objects.
+        Device Configuration Setting State Device Summary
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SettingStateDeviceSummaryCollectionResponse]
@@ -69,7 +69,7 @@ class DeviceSettingStateSummariesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SettingStateDeviceSummary] = None, request_configuration: Optional[DeviceSettingStateSummariesRequestBuilderPostRequestConfiguration] = None) -> Optional[SettingStateDeviceSummary]:
         """
-        Create a new settingStateDeviceSummary object.
+        Create new navigation property to deviceSettingStateSummaries for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class DeviceSettingStateSummariesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceSettingStateSummariesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the settingStateDeviceSummary objects.
+        Device Configuration Setting State Device Summary
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DeviceSettingStateSummariesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SettingStateDeviceSummary] = None, request_configuration: Optional[DeviceSettingStateSummariesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new settingStateDeviceSummary object.
+        Create new navigation property to deviceSettingStateSummaries for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class DeviceSettingStateSummariesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceSettingStateSummariesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the settingStateDeviceSummary objects.
+        Device Configuration Setting State Device Summary
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -15,7 +15,7 @@ from .entity import Entity
 
 @dataclass
 class TeamsAppDefinition(Entity):
-    # The authorization property
+    # Authorization requirements specified in the Teams app manifest.
     authorization: Optional[TeamsAppAuthorization] = None
     # The details of the bot specified in the Teams app manifest.
     bot: Optional[TeamworkBot] = None

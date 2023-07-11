@@ -49,7 +49,7 @@ class WindowsProtectionStateRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[WindowsProtectionStateRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsProtectionState]:
         """
-        Read properties and relationships of the windowsProtectionState object.
+        The device protection status. This property is read-only.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsProtectionState]
@@ -71,7 +71,7 @@ class WindowsProtectionStateRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WindowsProtectionState] = None, request_configuration: Optional[WindowsProtectionStateRequestBuilderPatchRequestConfiguration] = None) -> Optional[WindowsProtectionState]:
         """
-        Update the properties of a windowsProtectionState object.
+        Update the navigation property windowsProtectionState in users
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +112,7 @@ class WindowsProtectionStateRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[WindowsProtectionStateRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the windowsProtectionState object.
+        The device protection status. This property is read-only.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class WindowsProtectionStateRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WindowsProtectionState] = None, request_configuration: Optional[WindowsProtectionStateRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a windowsProtectionState object.
+        Update the navigation property windowsProtectionState in users
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class WindowsProtectionStateRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WindowsProtectionStateRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the windowsProtectionState object.
+        The device protection status. This property is read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

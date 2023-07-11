@@ -47,7 +47,7 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceDeviceStatusCollectionResponse]:
         """
-        List properties and relationships of the deviceComplianceDeviceStatus objects.
+        List of DeviceComplianceDeviceStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceDeviceStatusCollectionResponse]
@@ -69,7 +69,7 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceComplianceDeviceStatus] = None, request_configuration: Optional[DeviceStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceComplianceDeviceStatus]:
         """
-        Create a new deviceComplianceDeviceStatus object.
+        Create new navigation property to deviceStatuses for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceComplianceDeviceStatus objects.
+        List of DeviceComplianceDeviceStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceComplianceDeviceStatus] = None, request_configuration: Optional[DeviceStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceComplianceDeviceStatus object.
+        Create new navigation property to deviceStatuses for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceStatusesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceComplianceDeviceStatus objects.
+        List of DeviceComplianceDeviceStatus.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

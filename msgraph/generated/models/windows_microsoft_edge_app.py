@@ -11,6 +11,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class WindowsMicrosoftEdgeApp(MobileApp):
+    """
+    Contains properties and inherited properties for the Microsoft Edge app on Windows.
+    """
     odata_type = "#microsoft.graph.windowsMicrosoftEdgeApp"
     # The enum to specify the channels for Microsoft Edge apps.
     channel: Optional[MicrosoftEdgeChannel] = None

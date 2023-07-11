@@ -10,6 +10,9 @@ from .windows_information_protection import WindowsInformationProtection
 
 @dataclass
 class MdmWindowsInformationProtectionPolicy(WindowsInformationProtection):
+    """
+    Policy for Windows information protection with MDM
+    """
     odata_type = "#microsoft.graph.mdmWindowsInformationProtectionPolicy"
     
     @staticmethod

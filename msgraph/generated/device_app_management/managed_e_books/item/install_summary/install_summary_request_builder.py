@@ -48,7 +48,7 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[InstallSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[EBookInstallSummary]:
         """
-        Read properties and relationships of the eBookInstallSummary object.
+        Mobile App Install Summary.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EBookInstallSummary]
@@ -70,7 +70,7 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EBookInstallSummary] = None, request_configuration: Optional[InstallSummaryRequestBuilderPatchRequestConfiguration] = None) -> Optional[EBookInstallSummary]:
         """
-        Update the properties of a eBookInstallSummary object.
+        Update the navigation property installSummary in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +111,7 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[InstallSummaryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the eBookInstallSummary object.
+        Mobile App Install Summary.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EBookInstallSummary] = None, request_configuration: Optional[InstallSummaryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a eBookInstallSummary object.
+        Update the navigation property installSummary in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class InstallSummaryRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the eBookInstallSummary object.
+        Mobile App Install Summary.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

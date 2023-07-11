@@ -29,7 +29,7 @@ class DiscoverRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[DiscoverRequestBuilderPostRequestConfiguration] = None) -> Optional[DirectoryDefinition]:
         """
-        Invoke action discover
+        Discover the latest schema definition for provisioning to an application. 
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryDefinition]
@@ -51,7 +51,7 @@ class DiscoverRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[DiscoverRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action discover
+        Discover the latest schema definition for provisioning to an application. 
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

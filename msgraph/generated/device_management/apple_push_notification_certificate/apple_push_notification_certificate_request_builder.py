@@ -49,7 +49,7 @@ class ApplePushNotificationCertificateRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderGetRequestConfiguration] = None) -> Optional[ApplePushNotificationCertificate]:
         """
-        Read properties and relationships of the applePushNotificationCertificate object.
+        Apple push notification certificate.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApplePushNotificationCertificate]
@@ -71,7 +71,7 @@ class ApplePushNotificationCertificateRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ApplePushNotificationCertificate] = None, request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderPatchRequestConfiguration] = None) -> Optional[ApplePushNotificationCertificate]:
         """
-        Update the properties of a applePushNotificationCertificate object.
+        Update the navigation property applePushNotificationCertificate in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +112,7 @@ class ApplePushNotificationCertificateRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the applePushNotificationCertificate object.
+        Apple push notification certificate.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class ApplePushNotificationCertificateRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ApplePushNotificationCertificate] = None, request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a applePushNotificationCertificate object.
+        Update the navigation property applePushNotificationCertificate in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class ApplePushNotificationCertificateRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ApplePushNotificationCertificateRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the applePushNotificationCertificate object.
+        Apple push notification certificate.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

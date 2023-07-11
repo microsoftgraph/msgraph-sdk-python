@@ -20,6 +20,10 @@ if TYPE_CHECKING:
     from .assignments.assignments_request_builder import AssignmentsRequestBuilder
     from .catalogs.catalogs_request_builder import CatalogsRequestBuilder
     from .connected_organizations.connected_organizations_request_builder import ConnectedOrganizationsRequestBuilder
+    from .resource_environments.resource_environments_request_builder import ResourceEnvironmentsRequestBuilder
+    from .resource_requests.resource_requests_request_builder import ResourceRequestsRequestBuilder
+    from .resource_role_scopes.resource_role_scopes_request_builder import ResourceRoleScopesRequestBuilder
+    from .resources.resources_request_builder import ResourcesRequestBuilder
     from .settings.settings_request_builder import SettingsRequestBuilder
 
 class EntitlementManagementRequestBuilder(BaseRequestBuilder):
@@ -218,6 +222,42 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         from .connected_organizations.connected_organizations_request_builder import ConnectedOrganizationsRequestBuilder
 
         return ConnectedOrganizationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resource_environments(self) -> ResourceEnvironmentsRequestBuilder:
+        """
+        Provides operations to manage the resourceEnvironments property of the microsoft.graph.entitlementManagement entity.
+        """
+        from .resource_environments.resource_environments_request_builder import ResourceEnvironmentsRequestBuilder
+
+        return ResourceEnvironmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resource_requests(self) -> ResourceRequestsRequestBuilder:
+        """
+        Provides operations to manage the resourceRequests property of the microsoft.graph.entitlementManagement entity.
+        """
+        from .resource_requests.resource_requests_request_builder import ResourceRequestsRequestBuilder
+
+        return ResourceRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resource_role_scopes(self) -> ResourceRoleScopesRequestBuilder:
+        """
+        Provides operations to manage the resourceRoleScopes property of the microsoft.graph.entitlementManagement entity.
+        """
+        from .resource_role_scopes.resource_role_scopes_request_builder import ResourceRoleScopesRequestBuilder
+
+        return ResourceRoleScopesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resources(self) -> ResourcesRequestBuilder:
+        """
+        Provides operations to manage the resources property of the microsoft.graph.entitlementManagement entity.
+        """
+        from .resources.resources_request_builder import ResourcesRequestBuilder
+
+        return ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def settings(self) -> SettingsRequestBuilder:

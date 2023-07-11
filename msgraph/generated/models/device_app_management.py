@@ -25,6 +25,9 @@ from .entity import Entity
 
 @dataclass
 class DeviceAppManagement(Entity):
+    """
+    Singleton entity that acts as a container for all device app management functionality.
+    """
     # Android managed app policies.
     android_managed_app_protections: Optional[List[AndroidManagedAppProtection]] = None
     # Default managed app policies.

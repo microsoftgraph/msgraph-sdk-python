@@ -15,7 +15,7 @@ class SynchronizationSecretKeyStringValuePair(AdditionalDataHolder, Parsable):
     key: Optional[SynchronizationSecret] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The value property
+    # The value of the secret.
     value: Optional[str] = None
     
     @staticmethod

@@ -30,7 +30,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a deviceManagementPartner.
+        Delete navigation property deviceManagementPartners for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +49,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
         """
-        Read properties and relationships of the deviceManagementPartner object.
+        The list of Device Management Partners configured by the tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementPartner]
@@ -71,7 +71,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
         """
-        Update the properties of a deviceManagementPartner object.
+        Update the navigation property deviceManagementPartners in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +96,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceManagementPartner.
+        Delete navigation property deviceManagementPartners for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceManagementPartner object.
+        The list of Device Management Partners configured by the tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceManagementPartner object.
+        Update the navigation property deviceManagementPartners in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceManagementPartnerItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceManagementPartner object.
+        The list of Device Management Partners configured by the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

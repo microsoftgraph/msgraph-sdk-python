@@ -10,6 +10,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class WindowsWebApp(MobileApp):
+    """
+    Contains properties and inherited properties for Windows web apps.
+    """
     odata_type = "#microsoft.graph.windowsWebApp"
     # Indicates the Windows web app URL. Example: 'https://www.contoso.com'
     app_url: Optional[str] = None

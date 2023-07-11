@@ -29,7 +29,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ResourceOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a resourceOperation.
+        Delete navigation property resourceOperations for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ResourceOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ResourceOperation]:
         """
-        Read properties and relationships of the resourceOperation object.
+        The Resource Operations.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ResourceOperation]
@@ -70,7 +70,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[ResourceOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ResourceOperation]:
         """
-        Update the properties of a resourceOperation object.
+        Update the navigation property resourceOperations in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ResourceOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a resourceOperation.
+        Delete navigation property resourceOperations for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ResourceOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the resourceOperation object.
+        The Resource Operations.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[ResourceOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a resourceOperation object.
+        Update the navigation property resourceOperations in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ResourceOperationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the resourceOperation object.
+        The Resource Operations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

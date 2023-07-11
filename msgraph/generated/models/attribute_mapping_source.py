@@ -12,13 +12,13 @@ class AttributeMappingSource(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The expression property
+    # Equivalent expression representation of this attributeMappingSource object.
     expression: Optional[str] = None
-    # The name property
+    # Name parameter of the mapping source. Depending on the type property value, this can be the name of the function, the name of the source attribute, or a constant value to be used.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The parameters property
+    # If this object represents a function, lists function parameters. Parameters consist of attributeMappingSource objects themselves, allowing for complex expressions. If type is not Function, this property will be null/empty array.
     parameters: Optional[List[StringKeyAttributeMappingSourceValuePair]] = None
     # The type property
     type: Optional[AttributeMappingSourceType] = None

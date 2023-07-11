@@ -13,9 +13,9 @@ class TeamsAppResourceSpecificPermission(AdditionalDataHolder, Parsable):
 
     # The OdataType property
     odata_type: Optional[str] = None
-    # The permissionType property
+    # The type of resource-specific permission.
     permission_type: Optional[TeamsAppResourceSpecificPermissionType] = None
-    # The permissionValue property
+    # The name of the resource-specific permission.
     permission_value: Optional[str] = None
     
     @staticmethod

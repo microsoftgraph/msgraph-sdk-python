@@ -11,6 +11,9 @@ from .oma_setting import OmaSetting
 
 @dataclass
 class OmaSettingDateTime(OmaSetting):
+    """
+    OMA Settings DateTime definition.
+    """
     odata_type = "#microsoft.graph.omaSettingDateTime"
     # Value.
     value: Optional[datetime.datetime] = None

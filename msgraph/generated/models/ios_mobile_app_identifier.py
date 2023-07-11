@@ -10,6 +10,9 @@ from .mobile_app_identifier import MobileAppIdentifier
 
 @dataclass
 class IosMobileAppIdentifier(MobileAppIdentifier):
+    """
+    The identifier for an iOS app.
+    """
     odata_type = "#microsoft.graph.iosMobileAppIdentifier"
     # The identifier for an app, as specified in the app store.
     bundle_id: Optional[str] = None

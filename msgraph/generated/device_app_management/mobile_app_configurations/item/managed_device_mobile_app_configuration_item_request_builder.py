@@ -35,7 +35,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a iosMobileAppConfiguration.
+        Delete navigation property mobileAppConfigurations for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -54,7 +54,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfiguration]:
         """
-        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
+        The Managed Device Mobile Application Configurations.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfiguration]
@@ -76,7 +76,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfiguration]:
         """
-        Update the properties of a iosMobileAppConfiguration object.
+        Update the navigation property mobileAppConfigurations in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a iosMobileAppConfiguration.
+        Delete navigation property mobileAppConfigurations for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,7 +117,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
+        The Managed Device Mobile Application Configurations.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,7 +135,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a iosMobileAppConfiguration object.
+        Update the navigation property mobileAppConfigurations in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -221,7 +221,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedDeviceMobileAppConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
+        The Managed Device Mobile Application Configurations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

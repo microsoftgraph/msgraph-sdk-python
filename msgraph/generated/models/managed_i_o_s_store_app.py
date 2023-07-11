@@ -12,6 +12,9 @@ from .managed_app import ManagedApp
 
 @dataclass
 class ManagedIOSStoreApp(ManagedApp):
+    """
+    Contains properties and inherited properties for an iOS store app that you can manage with an Intune app protection policy.
+    """
     odata_type = "#microsoft.graph.managedIOSStoreApp"
     # The Apple AppStoreUrl.
     app_store_url: Optional[str] = None

@@ -30,7 +30,7 @@ class AppLogCollectionRequestItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AppLogCollectionRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a appLogCollectionRequest.
+        Delete navigation property appLogCollectionRequests for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +49,7 @@ class AppLogCollectionRequestItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AppLogCollectionRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AppLogCollectionRequest]:
         """
-        Read properties and relationships of the appLogCollectionRequest object.
+        Indicates collection of App Log Upload Request.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppLogCollectionRequest]
@@ -71,7 +71,7 @@ class AppLogCollectionRequestItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AppLogCollectionRequest] = None, request_configuration: Optional[AppLogCollectionRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AppLogCollectionRequest]:
         """
-        Update the properties of a appLogCollectionRequest object.
+        Update the navigation property appLogCollectionRequests in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +96,7 @@ class AppLogCollectionRequestItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AppLogCollectionRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a appLogCollectionRequest.
+        Delete navigation property appLogCollectionRequests for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class AppLogCollectionRequestItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AppLogCollectionRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the appLogCollectionRequest object.
+        Indicates collection of App Log Upload Request.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class AppLogCollectionRequestItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AppLogCollectionRequest] = None, request_configuration: Optional[AppLogCollectionRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a appLogCollectionRequest object.
+        Update the navigation property appLogCollectionRequests in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class AppLogCollectionRequestItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppLogCollectionRequestItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the appLogCollectionRequest object.
+        Indicates collection of App Log Upload Request.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

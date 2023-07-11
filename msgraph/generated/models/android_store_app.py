@@ -11,6 +11,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class AndroidStoreApp(MobileApp):
+    """
+    Contains properties and inherited properties for Android store apps.
+    """
     odata_type = "#microsoft.graph.androidStoreApp"
     # The Android app store URL.
     app_store_url: Optional[str] = None

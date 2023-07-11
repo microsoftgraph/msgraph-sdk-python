@@ -47,7 +47,7 @@ class ExchangeConnectorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ExchangeConnectorsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementExchangeConnectorCollectionResponse]:
         """
-        List properties and relationships of the deviceManagementExchangeConnector objects.
+        The list of Exchange Connectors configured by the tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementExchangeConnectorCollectionResponse]
@@ -69,7 +69,7 @@ class ExchangeConnectorsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceManagementExchangeConnector] = None, request_configuration: Optional[ExchangeConnectorsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceManagementExchangeConnector]:
         """
-        Create a new deviceManagementExchangeConnector object.
+        Create new navigation property to exchangeConnectors for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class ExchangeConnectorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ExchangeConnectorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceManagementExchangeConnector objects.
+        The list of Exchange Connectors configured by the tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class ExchangeConnectorsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceManagementExchangeConnector] = None, request_configuration: Optional[ExchangeConnectorsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceManagementExchangeConnector object.
+        Create new navigation property to exchangeConnectors for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class ExchangeConnectorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExchangeConnectorsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceManagementExchangeConnector objects.
+        The list of Exchange Connectors configured by the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

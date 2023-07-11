@@ -11,6 +11,9 @@ from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
 class Windows10CompliancePolicy(DeviceCompliancePolicy):
+    """
+    This class contains compliance settings for Windows 10.
+    """
     odata_type = "#microsoft.graph.windows10CompliancePolicy"
     # Require devices to be reported healthy by Windows Device Health Attestation - bit locker is enabled
     bit_locker_enabled: Optional[bool] = None

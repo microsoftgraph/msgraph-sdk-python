@@ -10,6 +10,9 @@ from .oma_setting import OmaSetting
 
 @dataclass
 class OmaSettingBoolean(OmaSetting):
+    """
+    OMA Settings Boolean definition.
+    """
     odata_type = "#microsoft.graph.omaSettingBoolean"
     # Value.
     value: Optional[bool] = None

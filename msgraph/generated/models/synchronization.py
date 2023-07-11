@@ -13,13 +13,13 @@ from .entity import Entity
 
 @dataclass
 class Synchronization(Entity):
-    # The jobs property
+    # Performs synchronization by periodically running in the background, polling for changes in one directory, and pushing them to another directory.
     jobs: Optional[List[SynchronizationJob]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The secrets property
+    # Represents a collection of credentials to access provisioned cloud applications.
     secrets: Optional[List[SynchronizationSecretKeyStringValuePair]] = None
-    # The templates property
+    # Pre-configured synchronization settings for a particular application.
     templates: Optional[List[SynchronizationTemplate]] = None
     
     @staticmethod

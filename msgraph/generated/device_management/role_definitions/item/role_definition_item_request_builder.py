@@ -30,7 +30,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RoleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a roleDefinition.
+        Delete navigation property roleDefinitions for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +49,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RoleDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[RoleDefinition]:
         """
-        Read properties and relationships of the deviceAndAppManagementRoleDefinition object.
+        The Role Definitions.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleDefinition]
@@ -71,7 +71,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RoleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[RoleDefinition]:
         """
-        Update the properties of a deviceAndAppManagementRoleDefinition object.
+        Update the navigation property roleDefinitions in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +96,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RoleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a roleDefinition.
+        Delete navigation property roleDefinitions for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RoleDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceAndAppManagementRoleDefinition object.
+        The Role Definitions.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RoleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceAndAppManagementRoleDefinition object.
+        Update the navigation property roleDefinitions in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceAndAppManagementRoleDefinition object.
+        The Role Definitions.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

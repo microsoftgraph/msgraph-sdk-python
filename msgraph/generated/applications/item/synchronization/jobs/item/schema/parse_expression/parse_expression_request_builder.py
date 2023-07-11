@@ -30,7 +30,7 @@ class ParseExpressionRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ParseExpressionPostRequestBody] = None, request_configuration: Optional[ParseExpressionRequestBuilderPostRequestConfiguration] = None) -> Optional[ParseExpressionResponse]:
         """
-        Invoke action parseExpression
+        Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Azure Active Directory.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -55,7 +55,7 @@ class ParseExpressionRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ParseExpressionPostRequestBody] = None, request_configuration: Optional[ParseExpressionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action parseExpression
+        Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Azure Active Directory.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

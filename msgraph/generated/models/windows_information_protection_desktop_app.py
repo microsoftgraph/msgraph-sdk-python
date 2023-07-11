@@ -10,6 +10,9 @@ from .windows_information_protection_app import WindowsInformationProtectionApp
 
 @dataclass
 class WindowsInformationProtectionDesktopApp(WindowsInformationProtectionApp):
+    """
+    Desktop App for Windows information protection
+    """
     odata_type = "#microsoft.graph.windowsInformationProtectionDesktopApp"
     # The binary name.
     binary_name: Optional[str] = None

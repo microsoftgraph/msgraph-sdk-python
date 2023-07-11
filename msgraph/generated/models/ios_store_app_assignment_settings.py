@@ -10,12 +10,15 @@ from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
 class IosStoreAppAssignmentSettings(MobileAppAssignmentSettings):
+    """
+    Contains properties used to assign an iOS Store mobile app to a group.
+    """
     odata_type = "#microsoft.graph.iosStoreAppAssignmentSettings"
     # When TRUE, indicates that the app can be uninstalled by the user. When FALSE, indicates that the app cannot be uninstalled by the user. By default, this property is set to null which internally is treated as TRUE.
     is_removable: Optional[bool] = None
     # When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune. By default, property is set to null which internally is treated as TRUE.
     uninstall_on_device_removal: Optional[bool] = None
-    # The VPN Configuration Id to apply for this app.
+    # This is the unique identifier (Id) of the VPN Configuration to apply to the app.
     vpn_configuration_id: Optional[str] = None
     
     @staticmethod

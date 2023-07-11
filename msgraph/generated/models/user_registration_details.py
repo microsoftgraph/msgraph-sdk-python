@@ -13,37 +13,37 @@ from .entity import Entity
 
 @dataclass
 class UserRegistrationDetails(Entity):
-    # The isAdmin property
+    # Indicates whether the user has an admin role in the tenant. This value can be used to check the authentication methods that privileged accounts are registered for and capable of.
     is_admin: Optional[bool] = None
-    # The isMfaCapable property
+    # Indicates whether the user has registered a strong authentication method for multi-factor authentication. The method must be allowed by the authentication methods policy. Supports $filter (eq).
     is_mfa_capable: Optional[bool] = None
-    # The isMfaRegistered property
+    # Indicates whether the user has registered a strong authentication method for multi-factor authentication. The method may not necessarily be allowed by the authentication methods policy. Supports $filter (eq).
     is_mfa_registered: Optional[bool] = None
-    # The isPasswordlessCapable property
+    # Indicates whether the user has registered a passwordless strong authentication method (including FIDO2, Windows Hello for Business, and Microsoft Authenticator (Passwordless)) that is allowed by the authentication methods policy. Supports $filter (eq).
     is_passwordless_capable: Optional[bool] = None
-    # The isSsprCapable property
+    # Indicates whether the user has registered the required number of authentication methods for self-service password reset and the user is allowed to perform self-service password reset by policy. Supports $filter (eq).
     is_sspr_capable: Optional[bool] = None
-    # The isSsprEnabled property
+    # Indicates whether the user is allowed to perform self-service password reset by policy. The user may not necessarily have registered the required number of authentication methods for self-service password reset. Supports $filter (eq).
     is_sspr_enabled: Optional[bool] = None
-    # The isSsprRegistered property
+    # Indicates whether the user has registered the required number of authentication methods for self-service password reset. The user may not necessarily be allowed to perform self-service password reset by policy. Supports $filter (eq).
     is_sspr_registered: Optional[bool] = None
-    # The isSystemPreferredAuthenticationMethodEnabled property
+    # Indicates whether system preferred authentication method is enabled. If enabled, the system dynamically determines the most secure authentication method among the methods registered by the user. Supports $filter (eq).
     is_system_preferred_authentication_method_enabled: Optional[bool] = None
-    # The lastUpdatedDateTime property
+    # The date and time (UTC) when the record was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_updated_date_time: Optional[datetime.datetime] = None
-    # The methodsRegistered property
+    # Collection of authentication methods registered, such as mobilePhone, email, fido2. Supports $filter (any with eq).
     methods_registered: Optional[List[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The systemPreferredAuthenticationMethods property
+    # Collection of authentication methods that the system determined to be the most secure authentication methods among the registered methods for second factor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. Supports $filter (any with eq).
     system_preferred_authentication_methods: Optional[List[str]] = None
-    # The userDisplayName property
+    # The user display name, such as Adele Vance. Supports $filter (eq, startsWith) and $orderBy.
     user_display_name: Optional[str] = None
-    # The userPreferredMethodForSecondaryAuthentication property
+    # The method the user selected as the default second-factor for performing multi-factor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. This property is used as preferred MFA method when isSystemPreferredAuthenticationMethodEnabled is false. Supports $filter (any with eq).
     user_preferred_method_for_secondary_authentication: Optional[UserDefaultAuthenticationMethod] = None
-    # The userPrincipalName property
+    # The user principal name, such as AdeleV@contoso.com. Supports $filter (eq, startsWith) and $orderBy.
     user_principal_name: Optional[str] = None
-    # The userType property
+    # Identifies whether the user is a member or guest in the tenant. The possible values are: member, guest, unknownFutureValue.
     user_type: Optional[SignInUserType] = None
     
     @staticmethod

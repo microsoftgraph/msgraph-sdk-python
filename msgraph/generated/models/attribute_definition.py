@@ -15,29 +15,29 @@ class AttributeDefinition(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The anchor property
+    # true if the attribute should be used as the anchor for the object. Anchor attributes must have a unique value identifying an object, and must be immutable. Default is false. One, and only one, of the object's attributes must be designated as the anchor to support synchronization.
     anchor: Optional[bool] = None
     # The apiExpressions property
     api_expressions: Optional[List[StringKeyStringValuePair]] = None
-    # The caseExact property
+    # true if value of this attribute should be treated as case-sensitive. This setting affects how the synchronization engine detects changes for the attribute.
     case_exact: Optional[bool] = None
     # The defaultValue property
     default_value: Optional[str] = None
-    # The flowNullValues property
+    # 'true' to allow null values for attributes.
     flow_null_values: Optional[bool] = None
-    # The metadata property
+    # Metadata for the given object.
     metadata: Optional[List[AttributeDefinitionMetadataEntry]] = None
-    # The multivalued property
+    # true if an attribute can have multiple values. Default is false.
     multivalued: Optional[bool] = None
     # The mutability property
     mutability: Optional[Mutability] = None
-    # The name property
+    # Name of the attribute. Must be unique within the object definition. Not nullable.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The referencedObjects property
+    # For attributes with reference type, lists referenced objects (for example, the manager attribute would list User as the referenced object).
     referenced_objects: Optional[List[ReferencedObject]] = None
-    # The required property
+    # true if attribute is required. Object can not be created if any of the required attributes are missing. If during synchronization, the required attribute has no value, the default value will be used. If default the value was not set, synchronization will record an error.
     required: Optional[bool] = None
     # The type property
     type: Optional[AttributeType] = None

@@ -48,7 +48,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeploymentSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppPolicyDeploymentSummary]:
         """
-        Read properties and relationships of the managedAppPolicyDeploymentSummary object.
+        Navigation property to deployment summary of the configuration.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicyDeploymentSummary]
@@ -70,7 +70,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ManagedAppPolicyDeploymentSummary] = None, request_configuration: Optional[DeploymentSummaryRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedAppPolicyDeploymentSummary]:
         """
-        Update the properties of a managedAppPolicyDeploymentSummary object.
+        Update the navigation property deploymentSummary in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +111,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeploymentSummaryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedAppPolicyDeploymentSummary object.
+        Navigation property to deployment summary of the configuration.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ManagedAppPolicyDeploymentSummary] = None, request_configuration: Optional[DeploymentSummaryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a managedAppPolicyDeploymentSummary object.
+        Update the navigation property deploymentSummary in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeploymentSummaryRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedAppPolicyDeploymentSummary object.
+        Navigation property to deployment summary of the configuration.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

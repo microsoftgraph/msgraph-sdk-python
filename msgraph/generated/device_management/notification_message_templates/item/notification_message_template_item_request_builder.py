@@ -31,7 +31,7 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[NotificationMessageTemplateItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a notificationMessageTemplate.
+        Delete navigation property notificationMessageTemplates for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -50,7 +50,7 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[NotificationMessageTemplateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[NotificationMessageTemplate]:
         """
-        Read properties and relationships of the notificationMessageTemplate object.
+        The Notification Message Templates.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[NotificationMessageTemplate]
@@ -72,7 +72,7 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[NotificationMessageTemplate] = None, request_configuration: Optional[NotificationMessageTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[NotificationMessageTemplate]:
         """
-        Update the properties of a notificationMessageTemplate object.
+        Update the navigation property notificationMessageTemplates in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +97,7 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[NotificationMessageTemplateItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a notificationMessageTemplate.
+        Delete navigation property notificationMessageTemplates for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -113,7 +113,7 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[NotificationMessageTemplateItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the notificationMessageTemplate object.
+        The Notification Message Templates.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -131,7 +131,7 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[NotificationMessageTemplate] = None, request_configuration: Optional[NotificationMessageTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a notificationMessageTemplate object.
+        Update the navigation property notificationMessageTemplates in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class NotificationMessageTemplateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class NotificationMessageTemplateItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the notificationMessageTemplate object.
+        The Notification Message Templates.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

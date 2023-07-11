@@ -11,6 +11,9 @@ from .managed_e_book import ManagedEBook
 
 @dataclass
 class IosVppEBook(ManagedEBook):
+    """
+    A class containing the properties for iOS Vpp eBook.
+    """
     odata_type = "#microsoft.graph.iosVppEBook"
     # The Apple ID associated with Vpp token.
     apple_id: Optional[str] = None

@@ -30,7 +30,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DetectedAppItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a detectedApp.
+        Delete navigation property detectedApps for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +49,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DetectedAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DetectedApp]:
         """
-        Read properties and relationships of the detectedApp object.
+        The list of detected apps associated with a device.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DetectedApp]
@@ -71,7 +71,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DetectedApp] = None, request_configuration: Optional[DetectedAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DetectedApp]:
         """
-        Update the properties of a detectedApp object.
+        Update the navigation property detectedApps in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +96,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DetectedAppItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a detectedApp.
+        Delete navigation property detectedApps for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DetectedAppItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the detectedApp object.
+        The list of detected apps associated with a device.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DetectedApp] = None, request_configuration: Optional[DetectedAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a detectedApp object.
+        Update the navigation property detectedApps in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DetectedAppItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the detectedApp object.
+        The list of detected apps associated with a device.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

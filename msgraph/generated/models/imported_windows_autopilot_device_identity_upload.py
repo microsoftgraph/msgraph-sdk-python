@@ -13,6 +13,9 @@ from .entity import Entity
 
 @dataclass
 class ImportedWindowsAutopilotDeviceIdentityUpload(Entity):
+    """
+    Import windows autopilot devices using upload.
+    """
     # DateTime when the entity is created.
     created_date_time_utc: Optional[datetime.datetime] = None
     # Collection of all Autopilot devices as a part of this upload.

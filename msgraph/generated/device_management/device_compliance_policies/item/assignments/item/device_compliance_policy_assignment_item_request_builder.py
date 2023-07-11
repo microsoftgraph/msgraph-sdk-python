@@ -29,7 +29,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a deviceCompliancePolicyAssignment.
+        Delete navigation property assignments for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyAssignment]:
         """
-        Read properties and relationships of the deviceCompliancePolicyAssignment object.
+        The collection of assignments for this compliance policy.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicyAssignment]
@@ -70,7 +70,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceCompliancePolicyAssignment] = None, request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyAssignment]:
         """
-        Update the properties of a deviceCompliancePolicyAssignment object.
+        Update the navigation property assignments in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceCompliancePolicyAssignment.
+        Delete navigation property assignments for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceCompliancePolicyAssignment object.
+        The collection of assignments for this compliance policy.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceCompliancePolicyAssignment] = None, request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceCompliancePolicyAssignment object.
+        Update the navigation property assignments in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCompliancePolicyAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceCompliancePolicyAssignment object.
+        The collection of assignments for this compliance policy.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

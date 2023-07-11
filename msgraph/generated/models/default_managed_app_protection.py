@@ -14,6 +14,9 @@ from .managed_app_protection import ManagedAppProtection
 
 @dataclass
 class DefaultManagedAppProtection(ManagedAppProtection):
+    """
+    Policy used to configure detailed management settings for a specified set of apps for all users not targeted by a TargetedManagedAppProtection Policy
+    """
     odata_type = "#microsoft.graph.defaultManagedAppProtection"
     # Represents the level to which app data is encrypted for managed apps
     app_data_encryption_type: Optional[ManagedAppDataEncryptionType] = None

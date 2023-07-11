@@ -12,6 +12,9 @@ from .device_configuration import DeviceConfiguration
 
 @dataclass
 class IosUpdateConfiguration(DeviceConfiguration):
+    """
+    IOS Update Configuration, allows you to configure time window within week to install iOS updates
+    """
     odata_type = "#microsoft.graph.iosUpdateConfiguration"
     # Active Hours End (active hours mean the time window when updates install should not happen)
     active_hours_end: Optional[datetime.time] = None

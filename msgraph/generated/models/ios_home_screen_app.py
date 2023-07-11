@@ -10,6 +10,9 @@ from .ios_home_screen_item import IosHomeScreenItem
 
 @dataclass
 class IosHomeScreenApp(IosHomeScreenItem):
+    """
+    Represents an icon for an app on the Home Screen
+    """
     odata_type = "#microsoft.graph.iosHomeScreenApp"
     # BundleID of the app if isWebClip is false or the URL of a web clip if isWebClip is true.
     bundle_i_d: Optional[str] = None

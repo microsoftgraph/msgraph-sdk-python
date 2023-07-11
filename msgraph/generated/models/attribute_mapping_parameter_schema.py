@@ -11,13 +11,13 @@ class AttributeMappingParameterSchema(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The allowMultipleOccurrences property
+    # The given parameter can be provided multiple times (for example, multiple input strings in the Concatenate(string,string,...) function).
     allow_multiple_occurrences: Optional[bool] = None
-    # The name property
+    # Parameter name.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The required property
+    # true if the parameter is required; otherwise false.
     required: Optional[bool] = None
     # The type property
     type: Optional[AttributeType] = None

@@ -29,7 +29,7 @@ class WindowsDefenderScanRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[WindowsDefenderScanPostRequestBody] = None, request_configuration: Optional[WindowsDefenderScanRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Not yet documented
+        Invoke action windowsDefenderScan
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -51,7 +51,7 @@ class WindowsDefenderScanRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[WindowsDefenderScanPostRequestBody] = None, request_configuration: Optional[WindowsDefenderScanRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Not yet documented
+        Invoke action windowsDefenderScan
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

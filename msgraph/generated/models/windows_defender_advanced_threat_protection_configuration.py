@@ -10,6 +10,9 @@ from .device_configuration import DeviceConfiguration
 
 @dataclass
 class WindowsDefenderAdvancedThreatProtectionConfiguration(DeviceConfiguration):
+    """
+    Windows Defender AdvancedThreatProtection Configuration.
+    """
     odata_type = "#microsoft.graph.windowsDefenderAdvancedThreatProtectionConfiguration"
     # Windows Defender AdvancedThreatProtection 'Allow Sample Sharing' Rule
     allow_sample_sharing: Optional[bool] = None

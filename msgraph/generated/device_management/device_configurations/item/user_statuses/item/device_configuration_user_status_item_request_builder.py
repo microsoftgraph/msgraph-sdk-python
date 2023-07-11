@@ -29,7 +29,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a deviceConfigurationUserStatus.
+        Delete navigation property userStatuses for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatus]:
         """
-        Read properties and relationships of the deviceConfigurationUserStatus object.
+        Device configuration installation status by user.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationUserStatus]
@@ -70,7 +70,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatus]:
         """
-        Update the properties of a deviceConfigurationUserStatus object.
+        Update the navigation property userStatuses in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceConfigurationUserStatus.
+        Delete navigation property userStatuses for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceConfigurationUserStatus object.
+        Device configuration installation status by user.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[DeviceConfigurationUserStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceConfigurationUserStatus object.
+        Update the navigation property userStatuses in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationUserStatusItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceConfigurationUserStatus object.
+        Device configuration installation status by user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

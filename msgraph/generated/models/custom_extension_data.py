@@ -4,7 +4,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .access_package_assignment_request_callback_data import AccessPackageAssignmentRequestCallbackData
     from .identity_governance.custom_task_extension_callback_data import CustomTaskExtensionCallbackData
+    from .identity_governance.custom_task_extension_callout_data import CustomTaskExtensionCalloutData
 
 @dataclass
 class CustomExtensionData(AdditionalDataHolder, Parsable):
@@ -28,10 +30,18 @@ class CustomExtensionData(AdditionalDataHolder, Parsable):
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentRequestCallbackData".casefold():
+            from .access_package_assignment_request_callback_data import AccessPackageAssignmentRequestCallbackData
+
+            return AccessPackageAssignmentRequestCallbackData()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionCallbackData".casefold():
             from .identity_governance.custom_task_extension_callback_data import CustomTaskExtensionCallbackData
 
             return CustomTaskExtensionCallbackData()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtensionCalloutData".casefold():
+            from .identity_governance.custom_task_extension_callout_data import CustomTaskExtensionCalloutData
+
+            return CustomTaskExtensionCalloutData()
         return CustomExtensionData()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -39,9 +49,13 @@ class CustomExtensionData(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .access_package_assignment_request_callback_data import AccessPackageAssignmentRequestCallbackData
         from .identity_governance.custom_task_extension_callback_data import CustomTaskExtensionCallbackData
+        from .identity_governance.custom_task_extension_callout_data import CustomTaskExtensionCalloutData
 
+        from .access_package_assignment_request_callback_data import AccessPackageAssignmentRequestCallbackData
         from .identity_governance.custom_task_extension_callback_data import CustomTaskExtensionCallbackData
+        from .identity_governance.custom_task_extension_callout_data import CustomTaskExtensionCalloutData
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

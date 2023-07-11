@@ -48,7 +48,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppRegistrationCollectionResponse]:
         """
-        List properties and relationships of the managedAppRegistration objects.
+        The managed app registrations.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppRegistrationCollectionResponse]
@@ -70,7 +70,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ManagedAppRegistration] = None, request_configuration: Optional[ManagedAppRegistrationsRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedAppRegistration]:
         """
-        Create a new androidManagedAppRegistration object.
+        Create new navigation property to managedAppRegistrations for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedAppRegistration objects.
+        The managed app registrations.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -113,7 +113,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ManagedAppRegistration] = None, request_configuration: Optional[ManagedAppRegistrationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new androidManagedAppRegistration object.
+        Create new navigation property to managedAppRegistrations for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -153,7 +153,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppRegistrationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedAppRegistration objects.
+        The managed app registrations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

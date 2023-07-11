@@ -13,6 +13,9 @@ from .managed_app_protection import ManagedAppProtection
 
 @dataclass
 class TargetedManagedAppProtection(ManagedAppProtection):
+    """
+    Policy used to configure detailed management settings targeted to specific security groups
+    """
     odata_type = "#microsoft.graph.targetedManagedAppProtection"
     # Navigation property to list of inclusion and exclusion groups to which the policy is deployed.
     assignments: Optional[List[TargetedManagedAppPolicyAssignment]] = None

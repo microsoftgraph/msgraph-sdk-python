@@ -47,7 +47,7 @@ class MobileAppCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MobileAppCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileAppCategoryCollectionResponse]:
         """
-        List properties and relationships of the mobileAppCategory objects.
+        The mobile app categories.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppCategoryCollectionResponse]
@@ -69,7 +69,7 @@ class MobileAppCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[MobileAppCategory]:
         """
-        Create a new mobileAppCategory object.
+        Create new navigation property to mobileAppCategories for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class MobileAppCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the mobileAppCategory objects.
+        The mobile app categories.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class MobileAppCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new mobileAppCategory object.
+        Create new navigation property to mobileAppCategories for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class MobileAppCategoriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppCategoriesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the mobileAppCategory objects.
+        The mobile app categories.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

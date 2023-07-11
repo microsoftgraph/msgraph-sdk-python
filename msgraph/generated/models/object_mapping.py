@@ -14,23 +14,23 @@ class ObjectMapping(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The attributeMappings property
+    # Attribute mappings define which attributes to map from the source object into the target object and how they should flow. A number of functions are available to support the transformation of the original source values.
     attribute_mappings: Optional[List[AttributeMapping]] = None
-    # The enabled property
+    # When true, this object mapping will be processed during synchronization. When false, this object mapping will be skipped.
     enabled: Optional[bool] = None
     # The flowTypes property
     flow_types: Optional[ObjectFlowTypes] = None
-    # The metadata property
+    # Additional extension properties. Unless mentioned explicitly, metadata values should not be changed.
     metadata: Optional[List[ObjectMappingMetadataEntry]] = None
-    # The name property
+    # Human-friendly name of the object mapping.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The scope property
+    # Defines a filter to be used when deciding whether a given object should be provisioned. For example, you might want to only provision users that are located in the US.
     scope: Optional[Filter] = None
-    # The sourceObjectName property
+    # Name of the object in the source directory. Must match the object name from the source directory definition.
     source_object_name: Optional[str] = None
-    # The targetObjectName property
+    # Name of the object in target directory. Must match the object name from the target directory definition.
     target_object_name: Optional[str] = None
     
     @staticmethod

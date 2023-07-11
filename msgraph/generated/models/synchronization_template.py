@@ -13,21 +13,21 @@ from .entity import Entity
 
 @dataclass
 class SynchronizationTemplate(Entity):
-    # The applicationId property
+    # Identifier of the application this template belongs to.
     application_id: Optional[UUID] = None
-    # The default property
+    # true if this template is recommended to be the default for the application.
     default: Optional[bool] = None
-    # The description property
+    # Description of the template.
     description: Optional[str] = None
-    # The discoverable property
+    # true if this template should appear in the collection of templates available for the application instance (service principal).
     discoverable: Optional[bool] = None
-    # The factoryTag property
+    # One of the well-known factory tags supported by the synchronization engine. The factoryTag tells the synchronization engine which implementation to use when processing jobs based on this template.
     factory_tag: Optional[str] = None
-    # The metadata property
+    # Additional extension properties. Unless mentioned explicitly, metadata values should not be changed.
     metadata: Optional[List[SynchronizationMetadataEntry]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The schema property
+    # Default synchronization schema for the jobs based on this template.
     schema: Optional[SynchronizationSchema] = None
     
     @staticmethod

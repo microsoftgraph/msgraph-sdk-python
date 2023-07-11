@@ -15,13 +15,13 @@ class UserRegistrationMethodSummary(AdditionalDataHolder, Parsable):
 
     # The OdataType property
     odata_type: Optional[str] = None
-    # The totalUserCount property
+    # Total number of users in the tenant.
     total_user_count: Optional[int] = None
-    # The userRegistrationMethodCounts property
+    # Number of users registered for each authentication method.
     user_registration_method_counts: Optional[List[UserRegistrationMethodCount]] = None
-    # The userRoles property
+    # The role type of the user. Possible values are: all, privilegedAdmin, admin, user, unknownFutureValue.
     user_roles: Optional[IncludedUserRoles] = None
-    # The userTypes property
+    # User type. Possible values are: all, member, guest, unknownFutureValue.
     user_types: Optional[IncludedUserTypes] = None
     
     @staticmethod

@@ -48,7 +48,7 @@ class TeamsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamCollectionResponse]:
         """
-        Retrieve the properties and relationships of the specified team.
+        List all teams in an organization.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamCollectionResponse]
@@ -95,7 +95,7 @@ class TeamsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of the specified team.
+        List all teams in an organization.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -153,7 +153,7 @@ class TeamsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeamsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of the specified team.
+        List all teams in an organization.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

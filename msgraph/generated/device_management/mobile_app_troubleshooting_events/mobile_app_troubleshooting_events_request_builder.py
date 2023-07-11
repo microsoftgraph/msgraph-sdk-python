@@ -47,7 +47,7 @@ class MobileAppTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MobileAppTroubleshootingEventsRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileAppTroubleshootingEventCollectionResponse]:
         """
-        List properties and relationships of the mobileAppTroubleshootingEvent objects.
+        The collection property of MobileAppTroubleshootingEvent.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppTroubleshootingEventCollectionResponse]
@@ -69,7 +69,7 @@ class MobileAppTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MobileAppTroubleshootingEvent] = None, request_configuration: Optional[MobileAppTroubleshootingEventsRequestBuilderPostRequestConfiguration] = None) -> Optional[MobileAppTroubleshootingEvent]:
         """
-        Create a new mobileAppTroubleshootingEvent object.
+        Create new navigation property to mobileAppTroubleshootingEvents for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class MobileAppTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppTroubleshootingEventsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the mobileAppTroubleshootingEvent objects.
+        The collection property of MobileAppTroubleshootingEvent.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class MobileAppTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MobileAppTroubleshootingEvent] = None, request_configuration: Optional[MobileAppTroubleshootingEventsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new mobileAppTroubleshootingEvent object.
+        Create new navigation property to mobileAppTroubleshootingEvents for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class MobileAppTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppTroubleshootingEventsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the mobileAppTroubleshootingEvent objects.
+        The collection property of MobileAppTroubleshootingEvent.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

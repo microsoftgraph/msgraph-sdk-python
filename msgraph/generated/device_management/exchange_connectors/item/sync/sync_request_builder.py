@@ -29,7 +29,7 @@ class SyncRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SyncPostRequestBody] = None, request_configuration: Optional[SyncRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Not yet documented
+        Invoke action sync
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -51,7 +51,7 @@ class SyncRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SyncPostRequestBody] = None, request_configuration: Optional[SyncRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Not yet documented
+        Invoke action sync
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

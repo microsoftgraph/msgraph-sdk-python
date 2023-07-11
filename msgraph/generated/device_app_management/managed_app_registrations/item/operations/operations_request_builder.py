@@ -47,7 +47,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppOperationCollectionResponse]:
         """
-        List properties and relationships of the managedAppOperation objects.
+        Zero or more long running operations triggered on the app registration.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppOperationCollectionResponse]
@@ -69,7 +69,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ManagedAppOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedAppOperation]:
         """
-        Create a new managedAppOperation object.
+        Create new navigation property to operations for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedAppOperation objects.
+        Zero or more long running operations triggered on the app registration.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ManagedAppOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new managedAppOperation object.
+        Create new navigation property to operations for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OperationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedAppOperation objects.
+        Zero or more long running operations triggered on the app registration.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

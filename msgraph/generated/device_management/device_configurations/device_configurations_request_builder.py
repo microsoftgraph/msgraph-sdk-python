@@ -47,7 +47,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationCollectionResponse]:
         """
-        List properties and relationships of the sharedPCConfiguration objects.
+        The device configurations.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationCollectionResponse]
@@ -69,7 +69,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Create a new iosDeviceFeaturesConfiguration object.
+        Create new navigation property to deviceConfigurations for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the sharedPCConfiguration objects.
+        The device configurations.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new iosDeviceFeaturesConfiguration object.
+        Create new navigation property to deviceConfigurations for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the sharedPCConfiguration objects.
+        The device configurations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

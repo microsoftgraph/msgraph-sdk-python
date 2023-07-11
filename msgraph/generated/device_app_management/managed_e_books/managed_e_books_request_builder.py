@@ -47,7 +47,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedEBooksRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedEBookCollectionResponse]:
         """
-        List properties and relationships of the iosVppEBook objects.
+        The Managed eBook.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookCollectionResponse]
@@ -69,7 +69,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ManagedEBook] = None, request_configuration: Optional[ManagedEBooksRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedEBook]:
         """
-        Create a new iosVppEBook object.
+        Create new navigation property to managedEBooks for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedEBooksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the iosVppEBook objects.
+        The Managed eBook.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ManagedEBook] = None, request_configuration: Optional[ManagedEBooksRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new iosVppEBook object.
+        Create new navigation property to managedEBooks for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedEBooksRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the iosVppEBook objects.
+        The Managed eBook.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

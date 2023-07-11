@@ -13,6 +13,9 @@ from .managed_app_configuration import ManagedAppConfiguration
 
 @dataclass
 class TargetedManagedAppConfiguration(ManagedAppConfiguration):
+    """
+    Configuration used to deliver a set of custom settings as-is to all users in the targeted security group
+    """
     odata_type = "#microsoft.graph.targetedManagedAppConfiguration"
     # List of apps to which the policy is deployed.
     apps: Optional[List[ManagedMobileApp]] = None

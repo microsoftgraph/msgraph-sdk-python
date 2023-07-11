@@ -16,15 +16,15 @@ from .entity import Entity
 class SynchronizationJob(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The schedule property
+    # Schedule used to run the job. Read-only.
     schedule: Optional[SynchronizationSchedule] = None
-    # The schema property
+    # The synchronization schema configured for the job.
     schema: Optional[SynchronizationSchema] = None
-    # The status property
+    # Status of the job, which includes when the job was last run, current job state, and errors.
     status: Optional[SynchronizationStatus] = None
-    # The synchronizationJobSettings property
+    # Settings associated with the job. Some settings are inherited from the template.
     synchronization_job_settings: Optional[List[KeyValuePair]] = None
-    # The templateId property
+    # Identifier of the synchronization template this job is based on.
     template_id: Optional[str] = None
     
     @staticmethod

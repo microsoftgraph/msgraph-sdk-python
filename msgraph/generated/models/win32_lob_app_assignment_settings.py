@@ -14,6 +14,9 @@ from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
 class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings):
+    """
+    Contains properties used to assign an Win32 LOB mobile app to a group.
+    """
     odata_type = "#microsoft.graph.win32LobAppAssignmentSettings"
     # Contains value for delivery optimization priority.
     delivery_optimization_priority: Optional[Win32LobAppDeliveryOptimizationPriority] = None

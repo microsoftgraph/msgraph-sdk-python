@@ -15,17 +15,17 @@ from .entity import Entity
 class DirectoryDefinition(Entity):
     # The discoverabilities property
     discoverabilities: Optional[DirectoryDefinitionDiscoverabilities] = None
-    # The discoveryDateTime property
+    # Represents the discovery date and time using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     discovery_date_time: Optional[datetime.datetime] = None
-    # The name property
+    # Name of the directory. Must be unique within the synchronization schema. Not nullable.
     name: Optional[str] = None
-    # The objects property
+    # Collection of objects supported by the directory.
     objects: Optional[List[ObjectDefinition]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The readOnly property
+    # Whether this object is read-only.
     read_only: Optional[bool] = None
-    # The version property
+    # Read only value that indicates version discovered. null if discovery has not yet occurred.
     version: Optional[str] = None
     
     @staticmethod

@@ -16,6 +16,9 @@ from .entity import Entity
 
 @dataclass
 class BookingAppointment(Entity):
+    """
+    Represents a booked appointment of a service by a customer in a business.
+    """
     # Additional information that is sent to the customer when an appointment is confirmed.
     additional_information: Optional[str] = None
     # The URL of the meeting to join anonymously.

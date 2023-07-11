@@ -12,15 +12,15 @@ class ObjectDefinition(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The attributes property
+    # Defines attributes of the object.
     attributes: Optional[List[AttributeDefinition]] = None
-    # The metadata property
+    # Metadata for the given object.
     metadata: Optional[List[ObjectDefinitionMetadataEntry]] = None
-    # The name property
+    # Name of the object. Must be unique within a directory definition. Not nullable.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The supportedApis property
+    # The API that the provisioning service queries to retrieve data for synchronization.
     supported_apis: Optional[List[str]] = None
     
     @staticmethod

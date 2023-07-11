@@ -12,6 +12,9 @@ from .win32_lob_app_rule import Win32LobAppRule
 
 @dataclass
 class Win32LobAppFileSystemRule(Win32LobAppRule):
+    """
+    A base complex type to store the detection or requirement rule data for a Win32 LOB app.
+    """
     odata_type = "#microsoft.graph.win32LobAppFileSystemRule"
     # A value indicating whether to expand environment variables in the 32-bit context on 64-bit systems.
     check32_bit_on64_system: Optional[bool] = None

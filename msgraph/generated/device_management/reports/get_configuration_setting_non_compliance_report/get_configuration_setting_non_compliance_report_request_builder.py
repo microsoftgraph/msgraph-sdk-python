@@ -29,7 +29,7 @@ class GetConfigurationSettingNonComplianceReportRequestBuilder(BaseRequestBuilde
     
     async def post(self,body: Optional[GetConfigurationSettingNonComplianceReportPostRequestBody] = None, request_configuration: Optional[GetConfigurationSettingNonComplianceReportRequestBuilderPostRequestConfiguration] = None) -> bytes:
         """
-        Not yet documented
+        Invoke action getConfigurationSettingNonComplianceReport
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -52,7 +52,7 @@ class GetConfigurationSettingNonComplianceReportRequestBuilder(BaseRequestBuilde
     
     def to_post_request_information(self,body: Optional[GetConfigurationSettingNonComplianceReportPostRequestBody] = None, request_configuration: Optional[GetConfigurationSettingNonComplianceReportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Not yet documented
+        Invoke action getConfigurationSettingNonComplianceReport
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

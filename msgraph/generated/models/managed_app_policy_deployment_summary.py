@@ -12,6 +12,9 @@ from .entity import Entity
 
 @dataclass
 class ManagedAppPolicyDeploymentSummary(Entity):
+    """
+    The ManagedAppEntity is the base entity type for all other entity types under app management workflow.
+    """
     # Not yet documented
     configuration_deployed_user_count: Optional[int] = None
     # Not yet documented

@@ -10,6 +10,9 @@ from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
 class WindowsAppXAppAssignmentSettings(MobileAppAssignmentSettings):
+    """
+    Abstract class to contain properties used to assign a mobile app to a group.
+    """
     odata_type = "#microsoft.graph.windowsAppXAppAssignmentSettings"
     # When TRUE, indicates that device execution context will be used for the AppX mobile app. When FALSE, indicates that user context will be used for the AppX mobile app. By default, this property is set to FALSE. Once this property has been set to TRUE it cannot be changed.
     use_device_context: Optional[bool] = None

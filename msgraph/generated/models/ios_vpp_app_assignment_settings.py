@@ -10,6 +10,9 @@ from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
 class IosVppAppAssignmentSettings(MobileAppAssignmentSettings):
+    """
+    Abstract class to contain properties used to assign a mobile app to a group.
+    """
     odata_type = "#microsoft.graph.iosVppAppAssignmentSettings"
     # Whether or not to use device licensing.
     use_device_licensing: Optional[bool] = None

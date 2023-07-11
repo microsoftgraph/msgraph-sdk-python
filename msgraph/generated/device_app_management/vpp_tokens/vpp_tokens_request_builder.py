@@ -47,7 +47,7 @@ class VppTokensRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[VppTokensRequestBuilderGetRequestConfiguration] = None) -> Optional[VppTokenCollectionResponse]:
         """
-        List properties and relationships of the vppToken objects.
+        List of Vpp tokens for this organization.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VppTokenCollectionResponse]
@@ -69,7 +69,7 @@ class VppTokensRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[VppToken] = None, request_configuration: Optional[VppTokensRequestBuilderPostRequestConfiguration] = None) -> Optional[VppToken]:
         """
-        Create a new vppToken object.
+        Create new navigation property to vppTokens for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class VppTokensRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[VppTokensRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the vppToken objects.
+        List of Vpp tokens for this organization.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class VppTokensRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[VppToken] = None, request_configuration: Optional[VppTokensRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new vppToken object.
+        Create new navigation property to vppTokens for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class VppTokensRequestBuilder(BaseRequestBuilder):
     @dataclass
     class VppTokensRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the vppToken objects.
+        List of Vpp tokens for this organization.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

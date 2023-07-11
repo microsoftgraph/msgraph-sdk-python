@@ -10,6 +10,9 @@ from .role_assignment import RoleAssignment
 
 @dataclass
 class DeviceAndAppManagementRoleAssignment(RoleAssignment):
+    """
+    The Role Assignment resource. Role assignments tie together a role definition with members and scopes. There can be one or more role assignments per role. This applies to custom and built-in roles.
+    """
     # The list of ids of role member security groups. These are IDs from Azure Active Directory.
     members: Optional[List[str]] = None
     # The OdataType property

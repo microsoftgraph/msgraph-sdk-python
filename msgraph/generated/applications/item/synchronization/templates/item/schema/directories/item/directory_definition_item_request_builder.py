@@ -49,7 +49,7 @@ class DirectoryDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DirectoryDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryDefinition]:
         """
-        Get directories from applications
+        Contains the collection of directories and all of their objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryDefinition]
@@ -112,7 +112,7 @@ class DirectoryDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DirectoryDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get directories from applications
+        Contains the collection of directories and all of their objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class DirectoryDefinitionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DirectoryDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Get directories from applications
+        Contains the collection of directories and all of their objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

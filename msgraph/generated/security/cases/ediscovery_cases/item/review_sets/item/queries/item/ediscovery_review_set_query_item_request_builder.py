@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .........models.o_data_errors.o_data_error import ODataError
     from .........models.security.ediscovery_review_set_query import EdiscoveryReviewSetQuery
     from .microsoft_graph_security_apply_tags.microsoft_graph_security_apply_tags_request_builder import MicrosoftGraphSecurityApplyTagsRequestBuilder
+    from .microsoft_graph_security_export.microsoft_graph_security_export_request_builder import MicrosoftGraphSecurityExportRequestBuilder
 
 class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
     """
@@ -157,6 +158,15 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
         from .microsoft_graph_security_apply_tags.microsoft_graph_security_apply_tags_request_builder import MicrosoftGraphSecurityApplyTagsRequestBuilder
 
         return MicrosoftGraphSecurityApplyTagsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_security_export(self) -> MicrosoftGraphSecurityExportRequestBuilder:
+        """
+        Provides operations to call the export method.
+        """
+        from .microsoft_graph_security_export.microsoft_graph_security_export_request_builder import MicrosoftGraphSecurityExportRequestBuilder
+
+        return MicrosoftGraphSecurityExportRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

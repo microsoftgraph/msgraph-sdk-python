@@ -13,6 +13,9 @@ from .managed_mobile_lob_app import ManagedMobileLobApp
 
 @dataclass
 class ManagedIOSLobApp(ManagedMobileLobApp):
+    """
+    Contains properties and inherited properties for Managed iOS Line Of Business apps.
+    """
     odata_type = "#microsoft.graph.managedIOSLobApp"
     # Contains properties of the possible iOS device types the mobile app can run on.
     applicable_device_type: Optional[IosDeviceType] = None

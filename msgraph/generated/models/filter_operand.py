@@ -10,7 +10,7 @@ class FilterOperand(AdditionalDataHolder, Parsable):
 
     # The OdataType property
     odata_type: Optional[str] = None
-    # The values property
+    # Collection of values.
     values: Optional[List[str]] = None
     
     @staticmethod

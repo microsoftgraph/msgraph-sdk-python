@@ -11,6 +11,9 @@ from .device_action_result import DeviceActionResult
 
 @dataclass
 class LocateDeviceActionResult(DeviceActionResult):
+    """
+    Device action result
+    """
     # device location
     device_location: Optional[DeviceGeoLocation] = None
     # The OdataType property

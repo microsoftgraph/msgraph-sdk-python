@@ -11,6 +11,9 @@ from .edge_search_engine_base import EdgeSearchEngineBase
 
 @dataclass
 class EdgeSearchEngine(EdgeSearchEngineBase):
+    """
+    Allows IT admins to set a default search engine for MDM-Controlled devices. Users can override this and change their default search engine provided the AllowSearchEngineCustomization policy is not set.
+    """
     odata_type = "#microsoft.graph.edgeSearchEngine"
     # Allows IT admind to set a predefined default search engine for MDM-Controlled devices
     edge_search_engine_type: Optional[EdgeSearchEngineType] = None

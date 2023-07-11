@@ -12,6 +12,9 @@ from .device_enrollment_configuration import DeviceEnrollmentConfiguration
 
 @dataclass
 class DeviceEnrollmentWindowsHelloForBusinessConfiguration(DeviceEnrollmentConfiguration):
+    """
+    Windows Hello for Business settings lets users access their devices using a gesture, such as biometric authentication, or a PIN. Configure settings for enrolled Windows 10, Windows 10 Mobile and later.
+    """
     odata_type = "#microsoft.graph.deviceEnrollmentWindowsHelloForBusinessConfiguration"
     # Possible values of a property
     enhanced_biometrics_state: Optional[Enablement] = None

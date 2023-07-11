@@ -10,6 +10,9 @@ from .device_action_result import DeviceActionResult
 
 @dataclass
 class RemoteLockActionResult(DeviceActionResult):
+    """
+    Device action result
+    """
     # The OdataType property
     odata_type: Optional[str] = None
     # Pin to unlock the client

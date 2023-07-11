@@ -13,6 +13,9 @@ from .device_configuration import DeviceConfiguration
 
 @dataclass
 class SharedPCConfiguration(DeviceConfiguration):
+    """
+    This topic provides descriptions of the declared methods, properties and relationships exposed by the sharedPCConfiguration resource.
+    """
     odata_type = "#microsoft.graph.sharedPCConfiguration"
     # Specifies how accounts are managed on a shared PC. Only applies when disableAccountManager is false.
     account_manager_policy: Optional[SharedPCAccountManagerPolicy] = None

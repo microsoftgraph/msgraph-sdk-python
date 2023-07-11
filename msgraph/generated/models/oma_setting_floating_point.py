@@ -10,6 +10,9 @@ from .oma_setting import OmaSetting
 
 @dataclass
 class OmaSettingFloatingPoint(OmaSetting):
+    """
+    OMA Settings definition.
+    """
     odata_type = "#microsoft.graph.omaSettingFloatingPoint"
     # Value.
     value: Optional[float] = None

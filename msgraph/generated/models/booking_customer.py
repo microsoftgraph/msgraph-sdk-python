@@ -12,6 +12,9 @@ from .booking_customer_base import BookingCustomerBase
 
 @dataclass
 class BookingCustomer(BookingCustomerBase):
+    """
+    Represents a customer of the business.
+    """
     odata_type = "#microsoft.graph.bookingCustomer"
     # Addresses associated with the customer. The attribute type of physicalAddress is not supported in v1.0. Internally we map the addresses to the type others.
     addresses: Optional[List[PhysicalAddress]] = None

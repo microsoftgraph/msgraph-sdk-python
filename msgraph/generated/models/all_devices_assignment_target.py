@@ -10,6 +10,9 @@ from .device_and_app_management_assignment_target import DeviceAndAppManagementA
 
 @dataclass
 class AllDevicesAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
+    """
+    Base type for assignment targets.
+    """
     odata_type = "#microsoft.graph.allDevicesAssignmentTarget"
     
     @staticmethod

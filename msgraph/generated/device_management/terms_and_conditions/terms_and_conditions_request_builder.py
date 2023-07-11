@@ -47,7 +47,7 @@ class TermsAndConditionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TermsAndConditionsRequestBuilderGetRequestConfiguration] = None) -> Optional[TermsAndConditionsCollectionResponse]:
         """
-        List properties and relationships of the termsAndConditions objects.
+        The terms and conditions associated with device management of the company.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditionsCollectionResponse]
@@ -69,7 +69,7 @@ class TermsAndConditionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TermsAndConditions] = None, request_configuration: Optional[TermsAndConditionsRequestBuilderPostRequestConfiguration] = None) -> Optional[TermsAndConditions]:
         """
-        Create a new termsAndConditions object.
+        Create new navigation property to termsAndConditions for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class TermsAndConditionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TermsAndConditionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the termsAndConditions objects.
+        The terms and conditions associated with device management of the company.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class TermsAndConditionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TermsAndConditions] = None, request_configuration: Optional[TermsAndConditionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new termsAndConditions object.
+        Create new navigation property to termsAndConditions for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class TermsAndConditionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TermsAndConditionsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the termsAndConditions objects.
+        The terms and conditions associated with device management of the company.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

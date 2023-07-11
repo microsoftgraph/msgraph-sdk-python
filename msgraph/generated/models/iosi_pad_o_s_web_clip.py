@@ -10,6 +10,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class IosiPadOSWebClip(MobileApp):
+    """
+    Contains properties and inherited properties for iOS web apps.
+    """
     odata_type = "#microsoft.graph.iosiPadOSWebClip"
     # Indicates iOS/iPadOS web clip app URL. Example: 'https://www.contoso.com'
     app_url: Optional[str] = None

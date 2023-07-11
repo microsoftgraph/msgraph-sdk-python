@@ -10,6 +10,9 @@ from .device_configuration import DeviceConfiguration
 
 @dataclass
 class IosCertificateProfile(DeviceConfiguration):
+    """
+    Device Configuration.
+    """
     odata_type = "#microsoft.graph.iosCertificateProfile"
     
     @staticmethod

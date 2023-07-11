@@ -51,7 +51,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OrganizationRequestBuilderGetRequestConfiguration] = None) -> Optional[OrganizationCollectionResponse]:
         """
-        List properties and relationships of the organization objects.
+        Retrieve a list of organization objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrganizationCollectionResponse]
@@ -98,7 +98,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OrganizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the organization objects.
+        Retrieve a list of organization objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -183,7 +183,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OrganizationRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the organization objects.
+        Retrieve a list of organization objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

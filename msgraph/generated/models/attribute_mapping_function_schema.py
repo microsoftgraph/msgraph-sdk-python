@@ -13,7 +13,7 @@ from .entity import Entity
 class AttributeMappingFunctionSchema(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The parameters property
+    # Collection of function parameters.
     parameters: Optional[List[AttributeMappingParameterSchema]] = None
     
     @staticmethod

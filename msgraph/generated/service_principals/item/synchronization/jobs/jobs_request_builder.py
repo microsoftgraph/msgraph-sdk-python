@@ -48,7 +48,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[JobsRequestBuilderGetRequestConfiguration] = None) -> Optional[SynchronizationJobCollectionResponse]:
         """
-        Get jobs from servicePrincipals
+        List existing jobs for a given application instance (service principal).
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SynchronizationJobCollectionResponse]
@@ -70,7 +70,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SynchronizationJob] = None, request_configuration: Optional[JobsRequestBuilderPostRequestConfiguration] = None) -> Optional[SynchronizationJob]:
         """
-        Create new navigation property to jobs for servicePrincipals
+        Create new synchronization job with a default synchronization schema. The job is created in a disabled state. Call Start job to start synchronization.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[JobsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get jobs from servicePrincipals
+        List existing jobs for a given application instance (service principal).
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -113,7 +113,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SynchronizationJob] = None, request_configuration: Optional[JobsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to jobs for servicePrincipals
+        Create new synchronization job with a default synchronization schema. The job is created in a disabled state. Call Start job to start synchronization.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -153,7 +153,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class JobsRequestBuilderGetQueryParameters():
         """
-        Get jobs from servicePrincipals
+        List existing jobs for a given application instance (service principal).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

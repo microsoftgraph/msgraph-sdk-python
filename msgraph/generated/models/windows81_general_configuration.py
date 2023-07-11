@@ -14,6 +14,9 @@ from .device_configuration import DeviceConfiguration
 
 @dataclass
 class Windows81GeneralConfiguration(DeviceConfiguration):
+    """
+    This topic provides descriptions of the declared methods, properties and relationships exposed by the windows81GeneralConfiguration resource.
+    """
     odata_type = "#microsoft.graph.windows81GeneralConfiguration"
     # Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
     accounts_block_adding_non_microsoft_account_email: Optional[bool] = None

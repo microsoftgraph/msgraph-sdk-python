@@ -10,6 +10,9 @@ from .device_and_app_management_assignment_target import DeviceAndAppManagementA
 
 @dataclass
 class ConfigurationManagerCollectionAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
+    """
+    Base type for assignment targets.
+    """
     odata_type = "#microsoft.graph.configurationManagerCollectionAssignmentTarget"
     # The collection Id that is the target of the assignment.
     collection_id: Optional[str] = None

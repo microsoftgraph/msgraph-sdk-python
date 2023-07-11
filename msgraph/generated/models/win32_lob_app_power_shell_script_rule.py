@@ -13,6 +13,9 @@ from .win32_lob_app_rule import Win32LobAppRule
 
 @dataclass
 class Win32LobAppPowerShellScriptRule(Win32LobAppRule):
+    """
+    A base complex type to store the detection or requirement rule data for a Win32 LOB app.
+    """
     odata_type = "#microsoft.graph.win32LobAppPowerShellScriptRule"
     # The script output comparison value. Do not specify a value if the rule is used for detection.
     comparison_value: Optional[str] = None

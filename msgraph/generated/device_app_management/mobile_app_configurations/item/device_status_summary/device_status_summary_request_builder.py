@@ -48,7 +48,7 @@ class DeviceStatusSummaryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceStatusSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationDeviceSummary]:
         """
-        Read properties and relationships of the managedDeviceMobileAppConfigurationDeviceSummary object.
+        App configuration device status summary.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfigurationDeviceSummary]
@@ -70,7 +70,7 @@ class DeviceStatusSummaryRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ManagedDeviceMobileAppConfigurationDeviceSummary] = None, request_configuration: Optional[DeviceStatusSummaryRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationDeviceSummary]:
         """
-        Update the properties of a managedDeviceMobileAppConfigurationDeviceSummary object.
+        Update the navigation property deviceStatusSummary in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +111,7 @@ class DeviceStatusSummaryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceStatusSummaryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedDeviceMobileAppConfigurationDeviceSummary object.
+        App configuration device status summary.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeviceStatusSummaryRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ManagedDeviceMobileAppConfigurationDeviceSummary] = None, request_configuration: Optional[DeviceStatusSummaryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a managedDeviceMobileAppConfigurationDeviceSummary object.
+        Update the navigation property deviceStatusSummary in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeviceStatusSummaryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceStatusSummaryRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedDeviceMobileAppConfigurationDeviceSummary object.
+        App configuration device status summary.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

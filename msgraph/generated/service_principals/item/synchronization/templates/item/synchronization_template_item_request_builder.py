@@ -49,7 +49,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SynchronizationTemplateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SynchronizationTemplate]:
         """
-        Get templates from servicePrincipals
+        Pre-configured synchronization settings for a particular application.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SynchronizationTemplate]
@@ -71,7 +71,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[SynchronizationTemplate] = None, request_configuration: Optional[SynchronizationTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SynchronizationTemplate]:
         """
-        Update the navigation property templates in servicePrincipals
+        Update (override) the synchronization template associated with a given application.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +112,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SynchronizationTemplateItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get templates from servicePrincipals
+        Pre-configured synchronization settings for a particular application.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[SynchronizationTemplate] = None, request_configuration: Optional[SynchronizationTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property templates in servicePrincipals
+        Update (override) the synchronization template associated with a given application.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SynchronizationTemplateItemRequestBuilderGetQueryParameters():
         """
-        Get templates from servicePrincipals
+        Pre-configured synchronization settings for a particular application.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

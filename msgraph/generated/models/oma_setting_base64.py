@@ -10,6 +10,9 @@ from .oma_setting import OmaSetting
 
 @dataclass
 class OmaSettingBase64(OmaSetting):
+    """
+    OMA Settings definition.
+    """
     odata_type = "#microsoft.graph.omaSettingBase64"
     # File name associated with the Value property (.cer
     file_name: Optional[str] = None

@@ -18,6 +18,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class MobileLobApp(MobileApp):
+    """
+    An abstract base class containing properties for all mobile line of business apps.
+    """
     odata_type = "#microsoft.graph.mobileLobApp"
     # The internal committed content version.
     committed_content_version: Optional[str] = None

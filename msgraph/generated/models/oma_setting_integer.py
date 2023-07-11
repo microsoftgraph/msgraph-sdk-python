@@ -10,6 +10,9 @@ from .oma_setting import OmaSetting
 
 @dataclass
 class OmaSettingInteger(OmaSetting):
+    """
+    OMA Settings definition.
+    """
     odata_type = "#microsoft.graph.omaSettingInteger"
     # Value.
     value: Optional[int] = None

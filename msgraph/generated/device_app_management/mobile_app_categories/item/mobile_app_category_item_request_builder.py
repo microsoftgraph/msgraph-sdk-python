@@ -29,7 +29,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a mobileAppCategory.
+        Delete navigation property mobileAppCategories for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileAppCategory]:
         """
-        Read properties and relationships of the mobileAppCategory object.
+        The mobile app categories.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppCategory]
@@ -70,7 +70,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MobileAppCategory]:
         """
-        Update the properties of a mobileAppCategory object.
+        Update the navigation property mobileAppCategories in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a mobileAppCategory.
+        Delete navigation property mobileAppCategories for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the mobileAppCategory object.
+        The mobile app categories.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a mobileAppCategory object.
+        Update the navigation property mobileAppCategories in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppCategoryItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the mobileAppCategory object.
+        The mobile app categories.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

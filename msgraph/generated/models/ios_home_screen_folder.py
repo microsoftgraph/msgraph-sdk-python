@@ -11,6 +11,9 @@ from .ios_home_screen_item import IosHomeScreenItem
 
 @dataclass
 class IosHomeScreenFolder(IosHomeScreenItem):
+    """
+    Represents an item on the iOS Home Screen
+    """
     odata_type = "#microsoft.graph.iosHomeScreenFolder"
     # Pages of Home Screen Layout Icons which must be applications or web clips. This collection can contain a maximum of 500 elements.
     pages: Optional[List[IosHomeScreenFolderPage]] = None

@@ -29,7 +29,7 @@ class MobileThreatDefenseConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[MobileThreatDefenseConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a mobileThreatDefenseConnector.
+        Delete navigation property mobileThreatDefenseConnectors for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class MobileThreatDefenseConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MobileThreatDefenseConnectorItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileThreatDefenseConnector]:
         """
-        Read properties and relationships of the mobileThreatDefenseConnector object.
+        The list of Mobile threat Defense connectors configured by the tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileThreatDefenseConnector]
@@ -70,7 +70,7 @@ class MobileThreatDefenseConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[MobileThreatDefenseConnector] = None, request_configuration: Optional[MobileThreatDefenseConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MobileThreatDefenseConnector]:
         """
-        Update the properties of a mobileThreatDefenseConnector object.
+        Update the navigation property mobileThreatDefenseConnectors in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class MobileThreatDefenseConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[MobileThreatDefenseConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a mobileThreatDefenseConnector.
+        Delete navigation property mobileThreatDefenseConnectors for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class MobileThreatDefenseConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MobileThreatDefenseConnectorItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the mobileThreatDefenseConnector object.
+        The list of Mobile threat Defense connectors configured by the tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class MobileThreatDefenseConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[MobileThreatDefenseConnector] = None, request_configuration: Optional[MobileThreatDefenseConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a mobileThreatDefenseConnector object.
+        Update the navigation property mobileThreatDefenseConnectors in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class MobileThreatDefenseConnectorItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileThreatDefenseConnectorItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the mobileThreatDefenseConnector object.
+        The list of Mobile threat Defense connectors configured by the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

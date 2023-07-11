@@ -11,6 +11,9 @@ from .device_configuration import DeviceConfiguration
 
 @dataclass
 class AndroidWorkProfileCustomConfiguration(DeviceConfiguration):
+    """
+    Android Work Profile custom configuration
+    """
     odata_type = "#microsoft.graph.androidWorkProfileCustomConfiguration"
     # OMA settings. This collection can contain a maximum of 500 elements.
     oma_settings: Optional[List[OmaSetting]] = None

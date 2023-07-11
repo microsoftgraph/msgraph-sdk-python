@@ -12,6 +12,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class IosStoreApp(MobileApp):
+    """
+    Contains properties and inherited properties for iOS store apps.
+    """
     odata_type = "#microsoft.graph.iosStoreApp"
     # The Apple App Store URL
     app_store_url: Optional[str] = None

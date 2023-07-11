@@ -8,13 +8,13 @@ class SynchronizationError(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The code property
+    # The error code. For example, AzureDirectoryB2BManagementPolicyCheckFailure.
     code: Optional[str] = None
-    # The message property
+    # The error message. For example, Policy permitting auto-redemption of invitations not configured.
     message: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The tenantActionable property
+    # The action to take to resolve the error. For example, false.
     tenant_actionable: Optional[bool] = None
     
     @staticmethod

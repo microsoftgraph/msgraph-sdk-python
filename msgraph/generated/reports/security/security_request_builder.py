@@ -51,7 +51,7 @@ class SecurityRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None) -> Optional[SecurityReportsRoot]:
         """
-        Get security from reports
+        Represents an abstract type that contains resources for attack simulation and training reports.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SecurityReportsRoot]
@@ -114,7 +114,7 @@ class SecurityRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get security from reports
+        Represents an abstract type that contains resources for attack simulation and training reports.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class SecurityRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SecurityRequestBuilderGetQueryParameters():
         """
-        Get security from reports
+        Represents an abstract type that contains resources for attack simulation and training reports.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -13,7 +13,7 @@ class SynchronizationLinkedObjects(AdditionalDataHolder, Parsable):
 
     # The manager property
     manager: Optional[SynchronizationJobSubject] = None
-    # The members property
+    # All group members that you would like to provision.
     members: Optional[List[SynchronizationJobSubject]] = None
     # The OdataType property
     odata_type: Optional[str] = None

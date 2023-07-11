@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .....models.directory_object import DirectoryObject
     from .....models.o_data_errors.o_data_error import ODataError
     from .graph_administrative_unit.graph_administrative_unit_request_builder import GraphAdministrativeUnitRequestBuilder
+    from .graph_directory_role.graph_directory_role_request_builder import GraphDirectoryRoleRequestBuilder
     from .graph_group.graph_group_request_builder import GraphGroupRequestBuilder
 
 class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
@@ -77,6 +78,15 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
         from .graph_administrative_unit.graph_administrative_unit_request_builder import GraphAdministrativeUnitRequestBuilder
 
         return GraphAdministrativeUnitRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_directory_role(self) -> GraphDirectoryRoleRequestBuilder:
+        """
+        Casts the previous resource to directoryRole.
+        """
+        from .graph_directory_role.graph_directory_role_request_builder import GraphDirectoryRoleRequestBuilder
+
+        return GraphDirectoryRoleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def graph_group(self) -> GraphGroupRequestBuilder:

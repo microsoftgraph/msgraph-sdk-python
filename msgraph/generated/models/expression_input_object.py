@@ -12,11 +12,11 @@ class ExpressionInputObject(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The definition property
+    # Definition of the test object.
     definition: Optional[ObjectDefinition] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The properties property
+    # Property values of the test object.
     properties: Optional[List[StringKeyObjectValuePair]] = None
     
     @staticmethod

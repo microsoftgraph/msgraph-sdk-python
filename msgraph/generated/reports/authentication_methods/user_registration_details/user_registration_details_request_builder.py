@@ -47,7 +47,7 @@ class UserRegistrationDetailsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserRegistrationDetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[UserRegistrationDetailsCollectionResponse]:
         """
-        Get userRegistrationDetails from reports
+        Get a list of the authentication methods registered for a user as defined in the userRegistrationDetails object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserRegistrationDetailsCollectionResponse]
@@ -94,7 +94,7 @@ class UserRegistrationDetailsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserRegistrationDetailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get userRegistrationDetails from reports
+        Get a list of the authentication methods registered for a user as defined in the userRegistrationDetails object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class UserRegistrationDetailsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserRegistrationDetailsRequestBuilderGetQueryParameters():
         """
-        Get userRegistrationDetails from reports
+        Get a list of the authentication methods registered for a user as defined in the userRegistrationDetails object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

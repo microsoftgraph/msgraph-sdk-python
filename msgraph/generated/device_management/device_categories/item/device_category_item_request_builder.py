@@ -29,7 +29,7 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a deviceCategory.
+        Delete navigation property deviceCategories for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Read properties and relationships of the deviceCategory object.
+        The list of device categories with the tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCategory]
@@ -70,7 +70,7 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[DeviceCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Update the properties of a deviceCategory object.
+        Update the navigation property deviceCategories in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceCategory.
+        Delete navigation property deviceCategories for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCategoryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceCategory object.
+        The list of device categories with the tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[DeviceCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceCategory object.
+        Update the navigation property deviceCategories in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCategoryItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceCategory object.
+        The list of device categories with the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

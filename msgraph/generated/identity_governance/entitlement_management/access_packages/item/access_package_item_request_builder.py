@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from .get_applicable_policy_requirements.get_applicable_policy_requirements_request_builder import GetApplicablePolicyRequirementsRequestBuilder
     from .incompatible_access_packages.incompatible_access_packages_request_builder import IncompatibleAccessPackagesRequestBuilder
     from .incompatible_groups.incompatible_groups_request_builder import IncompatibleGroupsRequestBuilder
+    from .resource_role_scopes.resource_role_scopes_request_builder import ResourceRoleScopesRequestBuilder
 
 class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     """
@@ -207,6 +208,15 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
         from .incompatible_groups.incompatible_groups_request_builder import IncompatibleGroupsRequestBuilder
 
         return IncompatibleGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resource_role_scopes(self) -> ResourceRoleScopesRequestBuilder:
+        """
+        Provides operations to manage the resourceRoleScopes property of the microsoft.graph.accessPackage entity.
+        """
+        from .resource_role_scopes.resource_role_scopes_request_builder import ResourceRoleScopesRequestBuilder
+
+        return ResourceRoleScopesRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

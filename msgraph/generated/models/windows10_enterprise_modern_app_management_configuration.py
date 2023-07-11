@@ -10,6 +10,9 @@ from .device_configuration import DeviceConfiguration
 
 @dataclass
 class Windows10EnterpriseModernAppManagementConfiguration(DeviceConfiguration):
+    """
+    Windows10 Enterprise Modern App Management Configuration.
+    """
     odata_type = "#microsoft.graph.windows10EnterpriseModernAppManagementConfiguration"
     # Indicates whether or not to uninstall a fixed list of built-in Windows apps.
     uninstall_built_in_apps: Optional[bool] = None

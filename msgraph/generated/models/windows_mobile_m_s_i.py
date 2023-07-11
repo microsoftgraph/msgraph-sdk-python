@@ -10,6 +10,9 @@ from .mobile_lob_app import MobileLobApp
 
 @dataclass
 class WindowsMobileMSI(MobileLobApp):
+    """
+    Contains properties and inherited properties for Windows Mobile MSI Line Of Business apps.
+    """
     odata_type = "#microsoft.graph.windowsMobileMSI"
     # The command line.
     command_line: Optional[str] = None

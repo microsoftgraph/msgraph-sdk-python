@@ -10,6 +10,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class MacOSOfficeSuiteApp(MobileApp):
+    """
+    Contains properties and inherited properties for the MacOS Office Suite App.
+    """
     odata_type = "#microsoft.graph.macOSOfficeSuiteApp"
     
     @staticmethod

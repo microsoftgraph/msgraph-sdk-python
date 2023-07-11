@@ -13,6 +13,9 @@ from .device_configuration import DeviceConfiguration
 
 @dataclass
 class MacOSGeneralDeviceConfiguration(DeviceConfiguration):
+    """
+    This topic provides descriptions of the declared methods, properties and relationships exposed by the macOSGeneralDeviceConfiguration resource.
+    """
     odata_type = "#microsoft.graph.macOSGeneralDeviceConfiguration"
     # Possible values of the compliance app list.
     compliant_app_list_type: Optional[AppListType] = None

@@ -12,6 +12,9 @@ from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
 class IosCompliancePolicy(DeviceCompliancePolicy):
+    """
+    This class contains compliance settings for IOS.
+    """
     odata_type = "#microsoft.graph.iosCompliancePolicy"
     # Require that devices have enabled device threat protection .
     device_threat_protection_enabled: Optional[bool] = None

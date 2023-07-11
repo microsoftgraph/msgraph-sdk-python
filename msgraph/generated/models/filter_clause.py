@@ -13,11 +13,11 @@ class FilterClause(AdditionalDataHolder, Parsable):
 
     # The OdataType property
     odata_type: Optional[str] = None
-    # The operatorName property
+    # Name of the operator to be applied to the source and target operands. Must be one of the supported operators. Supported operators can be discovered.
     operator_name: Optional[str] = None
-    # The sourceOperandName property
+    # Name of source operand (the operand being tested). The source operand name must match one of the attribute names on the source object.
     source_operand_name: Optional[str] = None
-    # The targetOperand property
+    # Values that the source operand will be tested against.
     target_operand: Optional[FilterOperand] = None
     
     @staticmethod

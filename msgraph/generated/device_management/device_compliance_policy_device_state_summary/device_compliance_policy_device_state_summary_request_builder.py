@@ -48,7 +48,7 @@ class DeviceCompliancePolicyDeviceStateSummaryRequestBuilder(BaseRequestBuilder)
     
     async def get(self,request_configuration: Optional[DeviceCompliancePolicyDeviceStateSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyDeviceStateSummary]:
         """
-        Read properties and relationships of the deviceCompliancePolicyDeviceStateSummary object.
+        The device compliance state summary for this account.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicyDeviceStateSummary]
@@ -70,7 +70,7 @@ class DeviceCompliancePolicyDeviceStateSummaryRequestBuilder(BaseRequestBuilder)
     
     async def patch(self,body: Optional[DeviceCompliancePolicyDeviceStateSummary] = None, request_configuration: Optional[DeviceCompliancePolicyDeviceStateSummaryRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyDeviceStateSummary]:
         """
-        Update the properties of a deviceCompliancePolicyDeviceStateSummary object.
+        Update the navigation property deviceCompliancePolicyDeviceStateSummary in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +111,7 @@ class DeviceCompliancePolicyDeviceStateSummaryRequestBuilder(BaseRequestBuilder)
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicyDeviceStateSummaryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceCompliancePolicyDeviceStateSummary object.
+        The device compliance state summary for this account.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeviceCompliancePolicyDeviceStateSummaryRequestBuilder(BaseRequestBuilder)
     
     def to_patch_request_information(self,body: Optional[DeviceCompliancePolicyDeviceStateSummary] = None, request_configuration: Optional[DeviceCompliancePolicyDeviceStateSummaryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceCompliancePolicyDeviceStateSummary object.
+        Update the navigation property deviceCompliancePolicyDeviceStateSummary in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeviceCompliancePolicyDeviceStateSummaryRequestBuilder(BaseRequestBuilder)
     @dataclass
     class DeviceCompliancePolicyDeviceStateSummaryRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceCompliancePolicyDeviceStateSummary object.
+        The device compliance state summary for this account.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

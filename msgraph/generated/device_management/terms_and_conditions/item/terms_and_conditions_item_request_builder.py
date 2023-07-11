@@ -31,7 +31,7 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a termsAndConditions.
+        Delete navigation property termsAndConditions for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -50,7 +50,7 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TermsAndConditions]:
         """
-        Read properties and relationships of the termsAndConditions object.
+        The terms and conditions associated with device management of the company.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditions]
@@ -72,7 +72,7 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TermsAndConditions] = None, request_configuration: Optional[TermsAndConditionsItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TermsAndConditions]:
         """
-        Update the properties of a termsAndConditions object.
+        Update the navigation property termsAndConditions in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +97,7 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a termsAndConditions.
+        Delete navigation property termsAndConditions for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -113,7 +113,7 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the termsAndConditions object.
+        The terms and conditions associated with device management of the company.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -131,7 +131,7 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TermsAndConditions] = None, request_configuration: Optional[TermsAndConditionsItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a termsAndConditions object.
+        Update the navigation property termsAndConditions in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TermsAndConditionsItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the termsAndConditions object.
+        The terms and conditions associated with device management of the company.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

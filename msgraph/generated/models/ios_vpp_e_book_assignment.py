@@ -10,6 +10,9 @@ from .managed_e_book_assignment import ManagedEBookAssignment
 
 @dataclass
 class IosVppEBookAssignment(ManagedEBookAssignment):
+    """
+    Contains properties used to assign an iOS VPP EBook to a group.
+    """
     # The OdataType property
     odata_type: Optional[str] = None
     

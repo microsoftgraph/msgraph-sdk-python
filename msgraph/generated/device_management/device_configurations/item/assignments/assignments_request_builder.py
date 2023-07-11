@@ -47,7 +47,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationAssignmentCollectionResponse]:
         """
-        List properties and relationships of the deviceConfigurationAssignment objects.
+        The list of assignments for the device configuration profile.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationAssignmentCollectionResponse]
@@ -69,7 +69,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceConfigurationAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceConfigurationAssignment]:
         """
-        Create a new deviceConfigurationAssignment object.
+        Create new navigation property to assignments for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceConfigurationAssignment objects.
+        The list of assignments for the device configuration profile.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceConfigurationAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceConfigurationAssignment object.
+        Create new navigation property to assignments for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignmentsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceConfigurationAssignment objects.
+        The list of assignments for the device configuration profile.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

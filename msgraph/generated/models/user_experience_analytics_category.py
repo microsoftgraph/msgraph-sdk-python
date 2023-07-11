@@ -12,6 +12,9 @@ from .entity import Entity
 
 @dataclass
 class UserExperienceAnalyticsCategory(Entity):
+    """
+    The user experience analytics category entity contains the scores and insights for the various metrics of a category.
+    """
     # The insights for the category. Read-only.
     insights: Optional[List[UserExperienceAnalyticsInsight]] = None
     # The metric values for the user experience analytics category. Read-only.

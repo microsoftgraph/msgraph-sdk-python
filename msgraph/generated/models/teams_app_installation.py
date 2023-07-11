@@ -14,7 +14,7 @@ from .entity import Entity
 
 @dataclass
 class TeamsAppInstallation(Entity):
-    # The consentedPermissionSet property
+    # The set of resource-specific permissions consented to while installing or upgrading the teamsApp.
     consented_permission_set: Optional[TeamsAppPermissionSet] = None
     # The OdataType property
     odata_type: Optional[str] = None

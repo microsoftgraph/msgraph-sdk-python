@@ -29,7 +29,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a deviceConfigurationDeviceStatus.
+        Delete navigation property deviceStatuses for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationDeviceStatus]:
         """
-        Read properties and relationships of the deviceConfigurationDeviceStatus object.
+        Device configuration installation status by device.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationDeviceStatus]
@@ -70,7 +70,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceConfigurationDeviceStatus] = None, request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceConfigurationDeviceStatus]:
         """
-        Update the properties of a deviceConfigurationDeviceStatus object.
+        Update the navigation property deviceStatuses in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceConfigurationDeviceStatus.
+        Delete navigation property deviceStatuses for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceConfigurationDeviceStatus object.
+        Device configuration installation status by device.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceConfigurationDeviceStatus] = None, request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceConfigurationDeviceStatus object.
+        Update the navigation property deviceStatuses in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationDeviceStatusItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceConfigurationDeviceStatus object.
+        Device configuration installation status by device.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

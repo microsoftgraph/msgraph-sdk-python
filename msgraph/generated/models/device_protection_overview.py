@@ -11,29 +11,29 @@ class DeviceProtectionOverview(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # Clean device count.
+    # Indicates number of devices reporting as clean
     clean_device_count: Optional[int] = None
-    # Critical failures device count.
+    # Indicates number of devices with critical failures
     critical_failures_device_count: Optional[int] = None
-    # Device with inactive threat agent count
+    # Indicates number of devices with inactive threat agent
     inactive_threat_agent_device_count: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Pending full scan device count.
+    # Indicates number of devices pending full scan
     pending_full_scan_device_count: Optional[int] = None
-    # Pending manual steps device count.
+    # Indicates number of devices with pending manual steps
     pending_manual_steps_device_count: Optional[int] = None
-    # Pending offline scan device count.
+    # Indicates number of pending offline scan devices
     pending_offline_scan_device_count: Optional[int] = None
-    # Pending quick scan device count. Valid values -2147483648 to 2147483647
+    # Indicates the number of devices that have a pending full scan. Valid values -2147483648 to 2147483647
     pending_quick_scan_device_count: Optional[int] = None
-    # Pending restart device count.
+    # Indicates number of devices pending restart
     pending_restart_device_count: Optional[int] = None
-    # Device with old signature count.
+    # Indicates number of devices with an old signature
     pending_signature_update_device_count: Optional[int] = None
     # Total device count.
     total_reported_device_count: Optional[int] = None
-    # Device with threat agent state as unknown count.
+    # Indicates number of devices with threat agent state as unknown
     unknown_state_threat_agent_device_count: Optional[int] = None
     
     @staticmethod

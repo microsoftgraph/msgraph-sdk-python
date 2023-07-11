@@ -47,7 +47,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RoleDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[RoleDefinitionCollectionResponse]:
         """
-        List properties and relationships of the roleDefinition objects.
+        The Role Definitions.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleDefinitionCollectionResponse]
@@ -69,7 +69,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RoleDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[RoleDefinition]:
         """
-        Create a new deviceAndAppManagementRoleDefinition object.
+        Create new navigation property to roleDefinitions for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RoleDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the roleDefinition objects.
+        The Role Definitions.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RoleDefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceAndAppManagementRoleDefinition object.
+        Create new navigation property to roleDefinitions for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleDefinitionsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the roleDefinition objects.
+        The Role Definitions.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -56,7 +56,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ListItemRequestBuilderGetRequestConfiguration] = None) -> Optional[List_]:
         """
-        Get a list of rich long-running operations associated with a list.
+        Returns the metadata for a [list][].
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[List_]
@@ -119,7 +119,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ListItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of rich long-running operations associated with a list.
+        Returns the metadata for a [list][].
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -241,7 +241,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ListItemRequestBuilderGetQueryParameters():
         """
-        Get a list of rich long-running operations associated with a list.
+        Returns the metadata for a [list][].
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

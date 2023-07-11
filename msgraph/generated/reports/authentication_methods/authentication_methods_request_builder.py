@@ -53,7 +53,7 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AuthenticationMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationMethodsRoot]:
         """
-        Get authenticationMethods from reports
+        Container for navigation properties for Azure AD authentication methods resources.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodsRoot]
@@ -116,7 +116,7 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get authenticationMethods from reports
+        Container for navigation properties for Azure AD authentication methods resources.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -225,7 +225,7 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationMethodsRequestBuilderGetQueryParameters():
         """
-        Get authenticationMethods from reports
+        Container for navigation properties for Azure AD authentication methods resources.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

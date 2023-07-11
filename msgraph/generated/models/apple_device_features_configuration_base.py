@@ -12,6 +12,9 @@ from .device_configuration import DeviceConfiguration
 
 @dataclass
 class AppleDeviceFeaturesConfigurationBase(DeviceConfiguration):
+    """
+    Apple device features configuration profile.
+    """
     odata_type = "#microsoft.graph.appleDeviceFeaturesConfigurationBase"
     
     @staticmethod

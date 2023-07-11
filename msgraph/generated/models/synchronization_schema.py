@@ -12,13 +12,13 @@ from .entity import Entity
 
 @dataclass
 class SynchronizationSchema(Entity):
-    # The directories property
+    # Contains the collection of directories and all of their objects.
     directories: Optional[List[DirectoryDefinition]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The synchronizationRules property
+    # A collection of synchronization rules configured for the synchronizationJob or synchronizationTemplate.
     synchronization_rules: Optional[List[SynchronizationRule]] = None
-    # The version property
+    # The version of the schema, updated automatically with every schema change.
     version: Optional[str] = None
     
     @staticmethod

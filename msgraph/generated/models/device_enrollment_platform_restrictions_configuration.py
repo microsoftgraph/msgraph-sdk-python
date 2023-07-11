@@ -11,6 +11,9 @@ from .device_enrollment_configuration import DeviceEnrollmentConfiguration
 
 @dataclass
 class DeviceEnrollmentPlatformRestrictionsConfiguration(DeviceEnrollmentConfiguration):
+    """
+    Device Enrollment Configuration that restricts the types of devices a user can enroll
+    """
     odata_type = "#microsoft.graph.deviceEnrollmentPlatformRestrictionsConfiguration"
     # Android restrictions based on platform, platform operating system version, and device ownership
     android_restriction: Optional[DeviceEnrollmentPlatformRestriction] = None

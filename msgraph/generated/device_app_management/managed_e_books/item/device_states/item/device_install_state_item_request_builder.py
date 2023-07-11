@@ -29,7 +29,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceInstallStateItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a deviceInstallState.
+        Delete navigation property deviceStates for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceInstallStateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceInstallState]:
         """
-        Read properties and relationships of the deviceInstallState object.
+        The list of installation states for this eBook.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceInstallState]
@@ -70,7 +70,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceInstallState] = None, request_configuration: Optional[DeviceInstallStateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceInstallState]:
         """
-        Update the properties of a deviceInstallState object.
+        Update the navigation property deviceStates in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceInstallStateItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceInstallState.
+        Delete navigation property deviceStates for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceInstallStateItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceInstallState object.
+        The list of installation states for this eBook.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceInstallState] = None, request_configuration: Optional[DeviceInstallStateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceInstallState object.
+        Update the navigation property deviceStates in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceInstallStateItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceInstallState object.
+        The list of installation states for this eBook.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

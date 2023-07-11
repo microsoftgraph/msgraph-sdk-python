@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .access_package_catalog import AccessPackageCatalog
     from .access_package_question import AccessPackageQuestion
     from .allowed_target_scope import AllowedTargetScope
+    from .custom_extension_stage_setting import CustomExtensionStageSetting
     from .entity import Entity
     from .expiration_pattern import ExpirationPattern
     from .subject_set import SubjectSet
@@ -31,6 +32,8 @@ class AccessPackageAssignmentPolicy(Entity):
     catalog: Optional[AccessPackageCatalog] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
+    # The customExtensionStageSettings property
+    custom_extension_stage_settings: Optional[List[CustomExtensionStageSetting]] = None
     # The description of the policy.
     description: Optional[str] = None
     # The display name of the policy.
@@ -77,6 +80,7 @@ class AccessPackageAssignmentPolicy(Entity):
         from .access_package_catalog import AccessPackageCatalog
         from .access_package_question import AccessPackageQuestion
         from .allowed_target_scope import AllowedTargetScope
+        from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .entity import Entity
         from .expiration_pattern import ExpirationPattern
         from .subject_set import SubjectSet
@@ -89,6 +93,7 @@ class AccessPackageAssignmentPolicy(Entity):
         from .access_package_catalog import AccessPackageCatalog
         from .access_package_question import AccessPackageQuestion
         from .allowed_target_scope import AllowedTargetScope
+        from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .entity import Entity
         from .expiration_pattern import ExpirationPattern
         from .subject_set import SubjectSet
@@ -99,6 +104,7 @@ class AccessPackageAssignmentPolicy(Entity):
             "automaticRequestSettings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(AccessPackageAutomaticRequestSettings)),
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(AccessPackageCatalog)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "customExtensionStageSettings": lambda n : setattr(self, 'custom_extension_stage_settings', n.get_collection_of_object_values(CustomExtensionStageSetting)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(ExpirationPattern)),
@@ -127,6 +133,7 @@ class AccessPackageAssignmentPolicy(Entity):
         writer.write_object_value("automaticRequestSettings", self.automatic_request_settings)
         writer.write_object_value("catalog", self.catalog)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_collection_of_object_values("customExtensionStageSettings", self.custom_extension_stage_settings)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("expiration", self.expiration)

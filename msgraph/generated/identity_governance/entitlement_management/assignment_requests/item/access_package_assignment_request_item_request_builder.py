@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .cancel.cancel_request_builder import CancelRequestBuilder
     from .reprocess.reprocess_request_builder import ReprocessRequestBuilder
     from .requestor.requestor_request_builder import RequestorRequestBuilder
+    from .resume.resume_request_builder import ResumeRequestBuilder
 
 class AccessPackageAssignmentRequestItemRequestBuilder(BaseRequestBuilder):
     """
@@ -197,6 +198,15 @@ class AccessPackageAssignmentRequestItemRequestBuilder(BaseRequestBuilder):
         from .requestor.requestor_request_builder import RequestorRequestBuilder
 
         return RequestorRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resume(self) -> ResumeRequestBuilder:
+        """
+        Provides operations to call the resume method.
+        """
+        from .resume.resume_request_builder import ResumeRequestBuilder
+
+        return ResumeRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

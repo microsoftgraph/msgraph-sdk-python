@@ -13,6 +13,9 @@ from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigu
 
 @dataclass
 class IosDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
+    """
+    iOS Device Features Configuration Profile.
+    """
     odata_type = "#microsoft.graph.iosDeviceFeaturesConfiguration"
     # Asset tag information for the device, displayed on the login window and lock screen.
     asset_tag_template: Optional[str] = None

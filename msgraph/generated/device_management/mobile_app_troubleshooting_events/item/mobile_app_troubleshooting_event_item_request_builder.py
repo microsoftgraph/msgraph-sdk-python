@@ -30,7 +30,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[MobileAppTroubleshootingEventItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a mobileAppTroubleshootingEvent.
+        Delete navigation property mobileAppTroubleshootingEvents for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +49,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MobileAppTroubleshootingEventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileAppTroubleshootingEvent]:
         """
-        Read properties and relationships of the mobileAppTroubleshootingEvent object.
+        The collection property of MobileAppTroubleshootingEvent.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppTroubleshootingEvent]
@@ -71,7 +71,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[MobileAppTroubleshootingEvent] = None, request_configuration: Optional[MobileAppTroubleshootingEventItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MobileAppTroubleshootingEvent]:
         """
-        Update the properties of a mobileAppTroubleshootingEvent object.
+        Update the navigation property mobileAppTroubleshootingEvents in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +96,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[MobileAppTroubleshootingEventItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a mobileAppTroubleshootingEvent.
+        Delete navigation property mobileAppTroubleshootingEvents for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppTroubleshootingEventItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the mobileAppTroubleshootingEvent object.
+        The collection property of MobileAppTroubleshootingEvent.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[MobileAppTroubleshootingEvent] = None, request_configuration: Optional[MobileAppTroubleshootingEventItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a mobileAppTroubleshootingEvent object.
+        Update the navigation property mobileAppTroubleshootingEvents in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppTroubleshootingEventItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the mobileAppTroubleshootingEvent object.
+        The collection property of MobileAppTroubleshootingEvent.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

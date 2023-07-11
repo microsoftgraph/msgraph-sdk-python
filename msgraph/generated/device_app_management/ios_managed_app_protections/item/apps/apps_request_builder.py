@@ -47,7 +47,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AppsRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedMobileAppCollectionResponse]:
         """
-        List properties and relationships of the managedMobileApp objects.
+        List of apps to which the policy is deployed.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedMobileAppCollectionResponse]
@@ -69,7 +69,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ManagedMobileApp] = None, request_configuration: Optional[AppsRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedMobileApp]:
         """
-        Create a new managedMobileApp object.
+        Create new navigation property to apps for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedMobileApp objects.
+        List of apps to which the policy is deployed.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ManagedMobileApp] = None, request_configuration: Optional[AppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new managedMobileApp object.
+        Create new navigation property to apps for deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedMobileApp objects.
+        List of apps to which the policy is deployed.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -10,9 +10,9 @@ class ReferencedObject(AdditionalDataHolder, Parsable):
 
     # The OdataType property
     odata_type: Optional[str] = None
-    # The referencedObjectName property
+    # Name of the referenced object. Must match one of the objects in the directory definition.
     referenced_object_name: Optional[str] = None
-    # The referencedProperty property
+    # Currently not supported. Name of the property in the referenced object, the value for which is used as the reference.
     referenced_property: Optional[str] = None
     
     @staticmethod

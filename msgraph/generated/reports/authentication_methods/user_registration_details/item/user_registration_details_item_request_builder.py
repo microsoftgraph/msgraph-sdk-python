@@ -48,7 +48,7 @@ class UserRegistrationDetailsItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserRegistrationDetailsItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserRegistrationDetails]:
         """
-        Get userRegistrationDetails from reports
+        Read the properties and relationships of a userRegistrationDetails object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserRegistrationDetails]
@@ -111,7 +111,7 @@ class UserRegistrationDetailsItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserRegistrationDetailsItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get userRegistrationDetails from reports
+        Read the properties and relationships of a userRegistrationDetails object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +161,7 @@ class UserRegistrationDetailsItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserRegistrationDetailsItemRequestBuilderGetQueryParameters():
         """
-        Get userRegistrationDetails from reports
+        Read the properties and relationships of a userRegistrationDetails object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

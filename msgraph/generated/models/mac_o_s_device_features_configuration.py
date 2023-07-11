@@ -10,6 +10,9 @@ from .apple_device_features_configuration_base import AppleDeviceFeaturesConfigu
 
 @dataclass
 class MacOSDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
+    """
+    MacOS device features configuration profile.
+    """
     odata_type = "#microsoft.graph.macOSDeviceFeaturesConfiguration"
     
     @staticmethod

@@ -12,6 +12,9 @@ from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
 class AndroidWorkProfileCompliancePolicy(DeviceCompliancePolicy):
+    """
+    This class contains compliance settings for Android Work Profile.
+    """
     odata_type = "#microsoft.graph.androidWorkProfileCompliancePolicy"
     # Require that devices have enabled device threat protection.
     device_threat_protection_enabled: Optional[bool] = None

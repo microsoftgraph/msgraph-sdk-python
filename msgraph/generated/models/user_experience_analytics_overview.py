@@ -11,6 +11,9 @@ from .entity import Entity
 
 @dataclass
 class UserExperienceAnalyticsOverview(Entity):
+    """
+    The user experience analytics overview entity contains the overall score and the scores and insights of every metric of all categories.
+    """
     # The user experience analytics insights. Read-only.
     insights: Optional[List[UserExperienceAnalyticsInsight]] = None
     # The OdataType property

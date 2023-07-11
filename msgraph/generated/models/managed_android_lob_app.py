@@ -11,6 +11,9 @@ from .managed_mobile_lob_app import ManagedMobileLobApp
 
 @dataclass
 class ManagedAndroidLobApp(ManagedMobileLobApp):
+    """
+    Contains properties and inherited properties for Managed Android Line Of Business apps.
+    """
     odata_type = "#microsoft.graph.managedAndroidLobApp"
     # The value for the minimum applicable operating system.
     minimum_supported_operating_system: Optional[AndroidMinimumOperatingSystem] = None

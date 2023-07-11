@@ -16,25 +16,25 @@ class SynchronizationRule(AdditionalDataHolder, Parsable):
 
     # The containerFilter property
     container_filter: Optional[ContainerFilter] = None
-    # The editable property
+    # true if the synchronization rule can be customized; false if this rule is read-only and should not be changed.
     editable: Optional[bool] = None
     # The groupFilter property
     group_filter: Optional[GroupFilter] = None
-    # The id property
+    # Synchronization rule identifier. Must be one of the identifiers recognized by the synchronization engine. Supported rule identifiers can be found in the synchronization template returned by the API.
     id: Optional[str] = None
-    # The metadata property
+    # Additional extension properties. Unless instructed explicitly by the support team, metadata values should not be changed.
     metadata: Optional[List[StringKeyStringValuePair]] = None
-    # The name property
+    # Human-readable name of the synchronization rule. Not nullable.
     name: Optional[str] = None
-    # The objectMappings property
+    # Collection of object mappings supported by the rule. Tells the synchronization engine which objects should be synchronized.
     object_mappings: Optional[List[ObjectMapping]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The priority property
+    # Priority relative to other rules in the synchronizationSchema. Rules with the lowest priority number will be processed first.
     priority: Optional[int] = None
-    # The sourceDirectoryName property
+    # Name of the source directory. Must match one of the directory definitions in synchronizationSchema.
     source_directory_name: Optional[str] = None
-    # The targetDirectoryName property
+    # Name of the target directory. Must match one of the directory definitions in synchronizationSchema.
     target_directory_name: Optional[str] = None
     
     @staticmethod

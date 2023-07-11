@@ -10,6 +10,9 @@ from .device_action_result import DeviceActionResult
 
 @dataclass
 class WindowsDefenderScanActionResult(DeviceActionResult):
+    """
+    Device action result
+    """
     # The OdataType property
     odata_type: Optional[str] = None
     # Scan type either full scan or quick scan

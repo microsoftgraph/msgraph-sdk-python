@@ -19,9 +19,11 @@ pip install msgraph-sdk
 
 Register your application by following the steps at [Register your app with the Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2).
 
-### 2.2 Select an authentication provider
+### 2.2 Select and create an authentication provider
 
-To start writing code and making requests to the Microsoft Graph service, you need to set up an authentication provider. This object will authenticate your requests to Microsoft Graph. For authentication, the Microsoft Graph Python SDK supports both sync and async credential classes from Azure Identity. Which library to choose depends on the type of application you are building. 
+To start writing code and making requests to the Microsoft Graph service, you need to set up an authentication provider. This object will authenticate your requests to Microsoft Graph. For authentication, the Microsoft Graph Python SDK supports both sync and async credential classes from Azure Identity. Which library to choose depends on the type of application you are building.
+
+> **Note**: For authentication we support both `sync` and `async` credential classes from `azure.identity`. Please see the azure identity [docs](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity?view=azure-python) for more information.
 
 The easiest way to filter this decision is by looking at the permissions set you'd use. Microsoft Graph supports 2 different types of permissions: delegated and application permissions:
 - Application permissions are used when you don’t need a user to login to your app, but the app will perform tasks on its own and run in the background. 
@@ -42,13 +44,11 @@ Once you've picked an authentication library, we can initiate the authentication
 import asyncio
 
 from azure.identity.aio import ClientSecretCredential
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
 
 credential = ClientSecretCredential("tenantID",
                                     "clientID",
                                     "clientSecret")
 scopes = ['https://graph.microsoft.com/.default']
-auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
 ```
 
 The following example uses DeviceCodeCredentials with delegated permissions.
@@ -56,18 +56,14 @@ The following example uses DeviceCodeCredentials with delegated permissions.
 import asyncio
 
 from azure.identity import DeviceCodeCredential
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
 
 credential = DeviceCodeCredential(client_id, tenant_id)
 graph_scopes = ['User.Read', 'Calendars.ReadWrite.Shared']
-auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=graph_scopes)
 ```
 
 ### 2.3 Initialize a GraphServiceClient object
 
 You must create **GraphServiceClient** object to make requests against the service. To create a new instance of this class, you need to provide credentials and scopes, which can authenticate requests to Microsoft Graph.
-
-> **Note**: For authentication we support both `sync` and `async` credential classes from `azure.identity`. Please see the azure identity [docs](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity?view=azure-python) for more information.
 
 ```py
 # Example using async credentials and application access.
@@ -75,9 +71,9 @@ from azure.identity.aio import ClientSecretCredential
 from msgraph import GraphServiceClient
 
 credential = ClientSecretCredential(
-    tenant_id='TENANT_ID',
-    client_id='CLIENT_ID',
-    client_secret='CLIENT_SECRET',
+    'TENANT_ID',
+    'CLIENT_ID',
+    'CLIENT_SECRET',
 )
 scopes = ['https://graph.microsoft.com/.default']
 client = GraphServiceClient(credentials=credential, scopes=scopes)
@@ -91,8 +87,8 @@ from azure.identity import DeviceCodeCredential
 from msgraph import GraphServiceClient
 
 credential=DeviceCodeCredential(
-    client_id='CLIENT_ID',
-    tenant_id='TENANT_ID',
+    'CLIENT_ID',
+    'TENANT_ID',
 )
 scopes = ['User.Read', 'Mail.Read']
 client = GraphServiceClient(credentials=credential, scopes=scopes)

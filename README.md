@@ -57,7 +57,8 @@ import asyncio
 
 from azure.identity import DeviceCodeCredential
 
-credential = DeviceCodeCredential(client_id, tenant_id)
+credential = DeviceCodeCredential("client_id",
+                                  "tenant_id")
 graph_scopes = ['User.Read', 'Calendars.ReadWrite.Shared']
 ```
 

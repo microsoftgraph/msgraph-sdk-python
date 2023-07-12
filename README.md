@@ -27,7 +27,41 @@ The easiest way to filter this decision is by looking at the permissions set you
 - Application permissions are used when you don’t need a user to login to your app, but the app will perform tasks on its own and run in the background. 
 - Delegated permissions, also called scopes, are used when your app requires a user to login and interact with data related to this user in a session.
 
-In this demo we'll use the 2 most common scenarios: client secret credentials for application permissions and device code credentials for delegated permissions. You can also use environment credentials, interactive browser credentials, default azure credentials, on-behalf-of credentials, or any other Azure Identity library.
+The following table lists common libraries by permissions set. 
+| MSAL library | Permissions set | Common use case |
+|---|---|---|
+| [ClientSecretCredential](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.aio.clientsecretcredential?view=azure-python&preserve-view=true) | Application permissions | Daemon apps or applications running in the background without a signed-in user. |
+| [DeviceCodeCredential](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.devicecodecredential?view=azure-python) | Delegated permissions | Enviroments where authentication is triggered in one machine and completed in another e.g in a cloud server. |
+| [InteractiveBrowserCredentials](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.interactivebrowsercredential?view=azure-python) | Delegated permissions | Environments where a browser is available and the user wants to key in their username/password. |
+| [AuthorizationCodeCredentials](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.authorizationcodecredential?view=azure-python) | Delegated permissions | Usually for custom customer applications where the frontend calls the backend and waits for the authorization code at a particular url. |
+
+You can also use [EnvironmentCredential](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python), [DefaultAzureCredential](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python), [OnBehalfOfCredential](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.onbehalfofcredential?view=azure-python), or any other [Azure Identity library](https://learn.microsoft.com/en-us/python/api/overview/azure/identity-readme?view=azure-python#credential-classes).
+
+Once you've picked an authentication library, we can initiate the authentication provider in your app. The following example uses ClientSecretCredential with application permissions.
+```python
+import asyncio
+
+from azure.identity.aio import ClientSecretCredential
+from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
+
+credential = ClientSecretCredential("tenantID",
+                                    "clientID",
+                                    "clientSecret")
+scopes = ['https://graph.microsoft.com/.default']
+auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
+```
+
+The following example uses DeviceCodeCredentials with delegated permissions.
+```python
+import asyncio
+
+from azure.identity import DeviceCodeCredential
+from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
+
+credential = DeviceCodeCredential(client_id, tenant_id)
+graph_scopes = ['User.Read', 'Calendars.ReadWrite.Shared']
+auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=graph_scopes)
+```
 
 ### 2.3 Initialize a GraphServiceClient object
 

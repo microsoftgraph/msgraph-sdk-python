@@ -30,7 +30,7 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a userInstallStateSummary.
+        Delete navigation property userStateSummary for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +49,7 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserInstallStateSummary]:
         """
-        Read properties and relationships of the userInstallStateSummary object.
+        The list of installation states for this eBook.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserInstallStateSummary]
@@ -71,7 +71,7 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UserInstallStateSummary]:
         """
-        Update the properties of a userInstallStateSummary object.
+        Update the navigation property userStateSummary in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +96,7 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a userInstallStateSummary.
+        Delete navigation property userStateSummary for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the userInstallStateSummary object.
+        The list of installation states for this eBook.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a userInstallStateSummary object.
+        Update the navigation property userStateSummary in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserInstallStateSummaryItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the userInstallStateSummary object.
+        The list of installation states for this eBook.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

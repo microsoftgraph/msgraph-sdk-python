@@ -9,9 +9,17 @@ if TYPE_CHECKING:
     from .access_package_assignment import AccessPackageAssignment
     from .access_package_assignment_policy import AccessPackageAssignmentPolicy
     from .access_package_assignment_request import AccessPackageAssignmentRequest
+    from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
+    from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
     from .access_package_catalog import AccessPackageCatalog
     from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
     from .access_package_question import AccessPackageQuestion
+    from .access_package_resource import AccessPackageResource
+    from .access_package_resource_environment import AccessPackageResourceEnvironment
+    from .access_package_resource_request import AccessPackageResourceRequest
+    from .access_package_resource_role import AccessPackageResourceRole
+    from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+    from .access_package_resource_scope import AccessPackageResourceScope
     from .access_package_subject import AccessPackageSubject
     from .access_package_text_input_question import AccessPackageTextInputQuestion
     from .access_review_history_definition import AccessReviewHistoryDefinition
@@ -142,6 +150,7 @@ if TYPE_CHECKING:
     from .cross_tenant_access_policy import CrossTenantAccessPolicy
     from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
     from .custom_callout_extension import CustomCalloutExtension
+    from .custom_extension_stage_setting import CustomExtensionStageSetting
     from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
     from .data_policy_operation import DataPolicyOperation
     from .default_managed_app_protection import DefaultManagedAppProtection
@@ -507,6 +516,7 @@ if TYPE_CHECKING:
     from .security.ediscovery_case_settings import EdiscoveryCaseSettings
     from .security.ediscovery_custodian import EdiscoveryCustodian
     from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
+    from .security.ediscovery_export_operation import EdiscoveryExportOperation
     from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
     from .security.ediscovery_index_operation import EdiscoveryIndexOperation
     from .security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
@@ -814,6 +824,14 @@ class Entity(AdditionalDataHolder, Parsable):
             from .access_package_assignment_request import AccessPackageAssignmentRequest
 
             return AccessPackageAssignmentRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentRequestWorkflowExtension".casefold():
+            from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
+
+            return AccessPackageAssignmentRequestWorkflowExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentWorkflowExtension".casefold():
+            from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
+
+            return AccessPackageAssignmentWorkflowExtension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageCatalog".casefold():
             from .access_package_catalog import AccessPackageCatalog
 
@@ -826,6 +844,30 @@ class Entity(AdditionalDataHolder, Parsable):
             from .access_package_question import AccessPackageQuestion
 
             return AccessPackageQuestion()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageResource".casefold():
+            from .access_package_resource import AccessPackageResource
+
+            return AccessPackageResource()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageResourceEnvironment".casefold():
+            from .access_package_resource_environment import AccessPackageResourceEnvironment
+
+            return AccessPackageResourceEnvironment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageResourceRequest".casefold():
+            from .access_package_resource_request import AccessPackageResourceRequest
+
+            return AccessPackageResourceRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageResourceRole".casefold():
+            from .access_package_resource_role import AccessPackageResourceRole
+
+            return AccessPackageResourceRole()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageResourceRoleScope".casefold():
+            from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+
+            return AccessPackageResourceRoleScope()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageResourceScope".casefold():
+            from .access_package_resource_scope import AccessPackageResourceScope
+
+            return AccessPackageResourceScope()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageSubject".casefold():
             from .access_package_subject import AccessPackageSubject
 
@@ -1347,6 +1389,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .custom_callout_extension import CustomCalloutExtension
 
             return CustomCalloutExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customExtensionStageSetting".casefold():
+            from .custom_extension_stage_setting import CustomExtensionStageSetting
+
+            return CustomExtensionStageSetting()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.customSecurityAttributeDefinition".casefold():
             from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
 
@@ -2813,6 +2859,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
 
             return EdiscoveryEstimateOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryExportOperation".casefold():
+            from .security.ediscovery_export_operation import EdiscoveryExportOperation
+
+            return EdiscoveryExportOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryHoldOperation".casefold():
             from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
 
@@ -3870,9 +3920,17 @@ class Entity(AdditionalDataHolder, Parsable):
         from .access_package_assignment import AccessPackageAssignment
         from .access_package_assignment_policy import AccessPackageAssignmentPolicy
         from .access_package_assignment_request import AccessPackageAssignmentRequest
+        from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
+        from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
         from .access_package_catalog import AccessPackageCatalog
         from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
         from .access_package_question import AccessPackageQuestion
+        from .access_package_resource import AccessPackageResource
+        from .access_package_resource_environment import AccessPackageResourceEnvironment
+        from .access_package_resource_request import AccessPackageResourceRequest
+        from .access_package_resource_role import AccessPackageResourceRole
+        from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+        from .access_package_resource_scope import AccessPackageResourceScope
         from .access_package_subject import AccessPackageSubject
         from .access_package_text_input_question import AccessPackageTextInputQuestion
         from .access_review_history_definition import AccessReviewHistoryDefinition
@@ -4003,6 +4061,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .cross_tenant_access_policy import CrossTenantAccessPolicy
         from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
         from .custom_callout_extension import CustomCalloutExtension
+        from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
         from .data_policy_operation import DataPolicyOperation
         from .default_managed_app_protection import DefaultManagedAppProtection
@@ -4368,6 +4427,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .security.ediscovery_case_settings import EdiscoveryCaseSettings
         from .security.ediscovery_custodian import EdiscoveryCustodian
         from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
+        from .security.ediscovery_export_operation import EdiscoveryExportOperation
         from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
         from .security.ediscovery_index_operation import EdiscoveryIndexOperation
         from .security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
@@ -4636,9 +4696,17 @@ class Entity(AdditionalDataHolder, Parsable):
         from .access_package_assignment import AccessPackageAssignment
         from .access_package_assignment_policy import AccessPackageAssignmentPolicy
         from .access_package_assignment_request import AccessPackageAssignmentRequest
+        from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
+        from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
         from .access_package_catalog import AccessPackageCatalog
         from .access_package_multiple_choice_question import AccessPackageMultipleChoiceQuestion
         from .access_package_question import AccessPackageQuestion
+        from .access_package_resource import AccessPackageResource
+        from .access_package_resource_environment import AccessPackageResourceEnvironment
+        from .access_package_resource_request import AccessPackageResourceRequest
+        from .access_package_resource_role import AccessPackageResourceRole
+        from .access_package_resource_role_scope import AccessPackageResourceRoleScope
+        from .access_package_resource_scope import AccessPackageResourceScope
         from .access_package_subject import AccessPackageSubject
         from .access_package_text_input_question import AccessPackageTextInputQuestion
         from .access_review_history_definition import AccessReviewHistoryDefinition
@@ -4769,6 +4837,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .cross_tenant_access_policy import CrossTenantAccessPolicy
         from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
         from .custom_callout_extension import CustomCalloutExtension
+        from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
         from .data_policy_operation import DataPolicyOperation
         from .default_managed_app_protection import DefaultManagedAppProtection
@@ -5134,6 +5203,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .security.ediscovery_case_settings import EdiscoveryCaseSettings
         from .security.ediscovery_custodian import EdiscoveryCustodian
         from .security.ediscovery_estimate_operation import EdiscoveryEstimateOperation
+        from .security.ediscovery_export_operation import EdiscoveryExportOperation
         from .security.ediscovery_hold_operation import EdiscoveryHoldOperation
         from .security.ediscovery_index_operation import EdiscoveryIndexOperation
         from .security.ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource

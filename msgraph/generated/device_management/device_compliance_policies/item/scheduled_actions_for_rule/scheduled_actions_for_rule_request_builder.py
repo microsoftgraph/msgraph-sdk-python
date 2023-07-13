@@ -47,7 +47,7 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ScheduledActionsForRuleRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceScheduledActionForRuleCollectionResponse]:
         """
-        List properties and relationships of the deviceComplianceScheduledActionForRule objects.
+        The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceScheduledActionForRuleCollectionResponse]
@@ -69,7 +69,7 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceComplianceScheduledActionForRule] = None, request_configuration: Optional[ScheduledActionsForRuleRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceComplianceScheduledActionForRule]:
         """
-        Create a new deviceComplianceScheduledActionForRule object.
+        Create new navigation property to scheduledActionsForRule for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ScheduledActionsForRuleRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceComplianceScheduledActionForRule objects.
+        The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceComplianceScheduledActionForRule] = None, request_configuration: Optional[ScheduledActionsForRuleRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceComplianceScheduledActionForRule object.
+        Create new navigation property to scheduledActionsForRule for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScheduledActionsForRuleRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceComplianceScheduledActionForRule objects.
+        The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

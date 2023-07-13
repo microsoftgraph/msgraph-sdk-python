@@ -53,7 +53,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a managedDevice.
+        Delete navigation property managedDevices for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -72,7 +72,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDevice]:
         """
-        Read properties and relationships of the managedDevice object.
+        The list of managed devices.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDevice]
@@ -94,7 +94,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ManagedDevice] = None, request_configuration: Optional[ManagedDeviceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedDevice]:
         """
-        Update the properties of a managedDevice object.
+        Update the navigation property managedDevices in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a managedDevice.
+        Delete navigation property managedDevices for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,7 +135,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedDevice object.
+        The list of managed devices.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -153,7 +153,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ManagedDevice] = None, request_configuration: Optional[ManagedDeviceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a managedDevice object.
+        Update the navigation property managedDevices in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -401,7 +401,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedDeviceItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedDevice object.
+        The list of managed devices.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

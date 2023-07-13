@@ -12,6 +12,9 @@ from .entity import Entity
 
 @dataclass
 class ManagedDeviceOverview(Entity):
+    """
+    Summary data for managed devices
+    """
     # Distribution of Exchange Access State in Intune
     device_exchange_access_state_summary: Optional[DeviceExchangeAccessStateSummary] = None
     # Device operating system summary.

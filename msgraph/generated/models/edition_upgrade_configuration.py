@@ -12,6 +12,9 @@ from .device_configuration import DeviceConfiguration
 
 @dataclass
 class EditionUpgradeConfiguration(DeviceConfiguration):
+    """
+    Windows 10 Edition Upgrade configuration.
+    """
     odata_type = "#microsoft.graph.editionUpgradeConfiguration"
     # Edition Upgrade License File Content.
     license: Optional[str] = None

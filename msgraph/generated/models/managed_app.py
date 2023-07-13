@@ -16,6 +16,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class ManagedApp(MobileApp):
+    """
+    Abstract class that contains properties and inherited properties for apps that you can manage with an Intune app protection policy.
+    """
     odata_type = "#microsoft.graph.managedApp"
     # A managed (MAM) application's availability.
     app_availability: Optional[ManagedAppAvailability] = None

@@ -11,6 +11,9 @@ from .entity import Entity
 
 @dataclass
 class ManagedDeviceMobileAppConfigurationDeviceSummary(Entity):
+    """
+    Contains properties, inherited properties and actions for an MDM mobile app configuration device status summary.
+    """
     # Version of the policy for that overview
     configuration_version: Optional[int] = None
     # Number of error devices

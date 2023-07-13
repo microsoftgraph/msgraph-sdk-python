@@ -14,6 +14,9 @@ from .entity import Entity
 
 @dataclass
 class AuditEvent(Entity):
+    """
+    A class containing the properties for Audit Event.
+    """
     # Friendly name of the activity.
     activity: Optional[str] = None
     # The date time in UTC when the activity was performed.

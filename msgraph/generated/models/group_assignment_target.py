@@ -11,6 +11,9 @@ from .device_and_app_management_assignment_target import DeviceAndAppManagementA
 
 @dataclass
 class GroupAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
+    """
+    Represents an assignment to a group.
+    """
     odata_type = "#microsoft.graph.groupAssignmentTarget"
     # The group Id that is the target of the assignment.
     group_id: Optional[str] = None

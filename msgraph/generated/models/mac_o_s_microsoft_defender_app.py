@@ -10,6 +10,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class MacOSMicrosoftDefenderApp(MobileApp):
+    """
+    Contains properties and inherited properties for the macOS Microsoft Defender App.
+    """
     odata_type = "#microsoft.graph.macOSMicrosoftDefenderApp"
     
     @staticmethod

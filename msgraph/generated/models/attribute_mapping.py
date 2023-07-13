@@ -13,21 +13,21 @@ class AttributeMapping(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The defaultValue property
+    # Default value to be used in case the source property was evaluated to null. Optional.
     default_value: Optional[str] = None
-    # The exportMissingReferences property
+    # For internal use only.
     export_missing_references: Optional[bool] = None
     # The flowBehavior property
     flow_behavior: Optional[AttributeFlowBehavior] = None
     # The flowType property
     flow_type: Optional[AttributeFlowType] = None
-    # The matchingPriority property
+    # If higher than 0, this attribute will be used to perform an initial match of the objects between source and target directories. The synchronization engine will try to find the matching object using attribute with lowest value of matching priority first. If not found, the attribute with the next matching priority will be used, and so on a until match is found or no more matching attributes are left. Only attributes that are expected to have unique values, such as email, should be used as matching attributes.
     matching_priority: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The source property
+    # Defines how a value should be extracted (or transformed) from the source object.
     source: Optional[AttributeMappingSource] = None
-    # The targetAttributeName property
+    # Name of the attribute on the target object.
     target_attribute_name: Optional[str] = None
     
     @staticmethod

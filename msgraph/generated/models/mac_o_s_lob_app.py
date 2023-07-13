@@ -12,6 +12,9 @@ from .mobile_lob_app import MobileLobApp
 
 @dataclass
 class MacOSLobApp(MobileLobApp):
+    """
+    Contains properties and inherited properties for the macOS LOB App.
+    """
     odata_type = "#microsoft.graph.macOSLobApp"
     # The build number of the package. This should match the package CFBundleShortVersionString of the .pkg file.
     build_number: Optional[str] = None

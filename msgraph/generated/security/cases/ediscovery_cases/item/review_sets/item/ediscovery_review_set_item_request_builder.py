@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .......models.o_data_errors.o_data_error import ODataError
     from .......models.security.ediscovery_review_set import EdiscoveryReviewSet
     from .microsoft_graph_security_add_to_review_set.microsoft_graph_security_add_to_review_set_request_builder import MicrosoftGraphSecurityAddToReviewSetRequestBuilder
+    from .microsoft_graph_security_export.microsoft_graph_security_export_request_builder import MicrosoftGraphSecurityExportRequestBuilder
     from .queries.queries_request_builder import QueriesRequestBuilder
 
 class EdiscoveryReviewSetItemRequestBuilder(BaseRequestBuilder):
@@ -158,6 +159,15 @@ class EdiscoveryReviewSetItemRequestBuilder(BaseRequestBuilder):
         from .microsoft_graph_security_add_to_review_set.microsoft_graph_security_add_to_review_set_request_builder import MicrosoftGraphSecurityAddToReviewSetRequestBuilder
 
         return MicrosoftGraphSecurityAddToReviewSetRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_security_export(self) -> MicrosoftGraphSecurityExportRequestBuilder:
+        """
+        Provides operations to call the export method.
+        """
+        from .microsoft_graph_security_export.microsoft_graph_security_export_request_builder import MicrosoftGraphSecurityExportRequestBuilder
+
+        return MicrosoftGraphSecurityExportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def queries(self) -> QueriesRequestBuilder:

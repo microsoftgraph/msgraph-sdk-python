@@ -15,6 +15,9 @@ from .mobile_lob_app import MobileLobApp
 
 @dataclass
 class Win32LobApp(MobileLobApp):
+    """
+    Contains properties and inherited properties for Win32 apps.
+    """
     odata_type = "#microsoft.graph.win32LobApp"
     # Contains properties for Windows architecture.
     applicable_architectures: Optional[WindowsArchitecture] = None

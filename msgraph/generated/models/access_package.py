@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .access_package_assignment_policy import AccessPackageAssignmentPolicy
     from .access_package_catalog import AccessPackageCatalog
+    from .access_package_resource_role_scope import AccessPackageResourceRoleScope
     from .entity import Entity
     from .group import Group
 
@@ -36,6 +37,8 @@ class AccessPackage(Entity):
     modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The resourceRoleScopes property
+    resource_role_scopes: Optional[List[AccessPackageResourceRoleScope]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackage:
@@ -56,11 +59,13 @@ class AccessPackage(Entity):
         """
         from .access_package_assignment_policy import AccessPackageAssignmentPolicy
         from .access_package_catalog import AccessPackageCatalog
+        from .access_package_resource_role_scope import AccessPackageResourceRoleScope
         from .entity import Entity
         from .group import Group
 
         from .access_package_assignment_policy import AccessPackageAssignmentPolicy
         from .access_package_catalog import AccessPackageCatalog
+        from .access_package_resource_role_scope import AccessPackageResourceRoleScope
         from .entity import Entity
         from .group import Group
 
@@ -75,6 +80,7 @@ class AccessPackage(Entity):
             "incompatibleGroups": lambda n : setattr(self, 'incompatible_groups', n.get_collection_of_object_values(Group)),
             "isHidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
             "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "resourceRoleScopes": lambda n : setattr(self, 'resource_role_scopes', n.get_collection_of_object_values(AccessPackageResourceRoleScope)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -99,5 +105,6 @@ class AccessPackage(Entity):
         writer.write_collection_of_object_values("incompatibleGroups", self.incompatible_groups)
         writer.write_bool_value("isHidden", self.is_hidden)
         writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
+        writer.write_collection_of_object_values("resourceRoleScopes", self.resource_role_scopes)
     
 

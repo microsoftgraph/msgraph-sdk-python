@@ -137,7 +137,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ReportsRequestBuilderGetRequestConfiguration] = None) -> Optional[ReportRoot]:
         """
-        Read properties and relationships of the reportRoot object.
+        Get reports
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ReportRoot]
@@ -1408,7 +1408,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ReportRoot] = None, request_configuration: Optional[ReportsRequestBuilderPatchRequestConfiguration] = None) -> Optional[ReportRoot]:
         """
-        Update the properties of a reportRoot object.
+        Update reports
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -1433,7 +1433,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ReportsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the reportRoot object.
+        Get reports
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -1451,7 +1451,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ReportRoot] = None, request_configuration: Optional[ReportsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a reportRoot object.
+        Update reports
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -1590,7 +1590,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ReportsRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the reportRoot object.
+        Get reports
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

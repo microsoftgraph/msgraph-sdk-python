@@ -14,6 +14,10 @@ if TYPE_CHECKING:
     from .....models.access_package_catalog import AccessPackageCatalog
     from .....models.o_data_errors.o_data_error import ODataError
     from .access_packages.access_packages_request_builder import AccessPackagesRequestBuilder
+    from .custom_workflow_extensions.custom_workflow_extensions_request_builder import CustomWorkflowExtensionsRequestBuilder
+    from .resource_roles.resource_roles_request_builder import ResourceRolesRequestBuilder
+    from .resources.resources_request_builder import ResourcesRequestBuilder
+    from .resource_scopes.resource_scopes_request_builder import ResourceScopesRequestBuilder
 
 class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
     """
@@ -157,6 +161,42 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
         from .access_packages.access_packages_request_builder import AccessPackagesRequestBuilder
 
         return AccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def custom_workflow_extensions(self) -> CustomWorkflowExtensionsRequestBuilder:
+        """
+        Provides operations to manage the customWorkflowExtensions property of the microsoft.graph.accessPackageCatalog entity.
+        """
+        from .custom_workflow_extensions.custom_workflow_extensions_request_builder import CustomWorkflowExtensionsRequestBuilder
+
+        return CustomWorkflowExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resource_roles(self) -> ResourceRolesRequestBuilder:
+        """
+        Provides operations to manage the resourceRoles property of the microsoft.graph.accessPackageCatalog entity.
+        """
+        from .resource_roles.resource_roles_request_builder import ResourceRolesRequestBuilder
+
+        return ResourceRolesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resources(self) -> ResourcesRequestBuilder:
+        """
+        Provides operations to manage the resources property of the microsoft.graph.accessPackageCatalog entity.
+        """
+        from .resources.resources_request_builder import ResourcesRequestBuilder
+
+        return ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resource_scopes(self) -> ResourceScopesRequestBuilder:
+        """
+        Provides operations to manage the resourceScopes property of the microsoft.graph.accessPackageCatalog entity.
+        """
+        from .resource_scopes.resource_scopes_request_builder import ResourceScopesRequestBuilder
+
+        return ResourceScopesRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

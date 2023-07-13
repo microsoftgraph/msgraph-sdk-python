@@ -10,6 +10,9 @@ from .device_and_app_management_assignment_target import DeviceAndAppManagementA
 
 @dataclass
 class AllLicensedUsersAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
+    """
+    Represents an assignment to all licensed users in the tenant.
+    """
     odata_type = "#microsoft.graph.allLicensedUsersAssignmentTarget"
     
     @staticmethod

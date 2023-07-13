@@ -10,6 +10,9 @@ from .user_experience_analytics_insight_value import UserExperienceAnalyticsInsi
 
 @dataclass
 class InsightValueInt(UserExperienceAnalyticsInsightValue):
+    """
+    The value in an user experience analytics insight.
+    """
     odata_type = "#microsoft.graph.insightValueInt"
     # The int value of the user experience analytics insight.
     value: Optional[int] = None

@@ -10,6 +10,9 @@ from .device_configuration import DeviceConfiguration
 
 @dataclass
 class MacOSCustomConfiguration(DeviceConfiguration):
+    """
+    This topic provides descriptions of the declared methods, properties and relationships exposed by the macOSCustomConfiguration resource.
+    """
     odata_type = "#microsoft.graph.macOSCustomConfiguration"
     # Payload. (UTF8 encoded byte array)
     payload: Optional[bytes] = None

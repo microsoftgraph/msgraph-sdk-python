@@ -11,6 +11,9 @@ from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
 class Windows81CompliancePolicy(DeviceCompliancePolicy):
+    """
+    This class contains compliance settings for Windows 8.1.
+    """
     odata_type = "#microsoft.graph.windows81CompliancePolicy"
     # Maximum Windows 8.1 version.
     os_maximum_version: Optional[str] = None

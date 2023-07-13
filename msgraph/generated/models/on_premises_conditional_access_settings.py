@@ -11,6 +11,9 @@ from .entity import Entity
 
 @dataclass
 class OnPremisesConditionalAccessSettings(Entity):
+    """
+    Singleton entity which represents the Exchange OnPremises Conditional Access Settings for a tenant.
+    """
     # Indicates if on premises conditional access is enabled for this organization
     enabled: Optional[bool] = None
     # User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.

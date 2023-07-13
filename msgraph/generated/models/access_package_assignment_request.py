@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from .access_package_request_state import AccessPackageRequestState
     from .access_package_request_type import AccessPackageRequestType
     from .access_package_subject import AccessPackageSubject
+    from .custom_extension_callout_instance import CustomExtensionCalloutInstance
     from .entitlement_management_schedule import EntitlementManagementSchedule
     from .entity import Entity
 
@@ -28,6 +29,8 @@ class AccessPackageAssignmentRequest(Entity):
     completed_date_time: Optional[datetime.datetime] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter.
     created_date_time: Optional[datetime.datetime] = None
+    # The customExtensionCalloutInstances property
+    custom_extension_callout_instances: Optional[List[CustomExtensionCalloutInstance]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
@@ -64,6 +67,7 @@ class AccessPackageAssignmentRequest(Entity):
         from .access_package_request_state import AccessPackageRequestState
         from .access_package_request_type import AccessPackageRequestType
         from .access_package_subject import AccessPackageSubject
+        from .custom_extension_callout_instance import CustomExtensionCalloutInstance
         from .entitlement_management_schedule import EntitlementManagementSchedule
         from .entity import Entity
 
@@ -73,6 +77,7 @@ class AccessPackageAssignmentRequest(Entity):
         from .access_package_request_state import AccessPackageRequestState
         from .access_package_request_type import AccessPackageRequestType
         from .access_package_subject import AccessPackageSubject
+        from .custom_extension_callout_instance import CustomExtensionCalloutInstance
         from .entitlement_management_schedule import EntitlementManagementSchedule
         from .entity import Entity
 
@@ -82,6 +87,7 @@ class AccessPackageAssignmentRequest(Entity):
             "assignment": lambda n : setattr(self, 'assignment', n.get_object_value(AccessPackageAssignment)),
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "customExtensionCalloutInstances": lambda n : setattr(self, 'custom_extension_callout_instances', n.get_collection_of_object_values(CustomExtensionCalloutInstance)),
             "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageRequestType)),
             "requestor": lambda n : setattr(self, 'requestor', n.get_object_value(AccessPackageSubject)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(EntitlementManagementSchedule)),
@@ -106,6 +112,7 @@ class AccessPackageAssignmentRequest(Entity):
         writer.write_object_value("assignment", self.assignment)
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_collection_of_object_values("customExtensionCalloutInstances", self.custom_extension_callout_instances)
         writer.write_enum_value("requestType", self.request_type)
         writer.write_object_value("requestor", self.requestor)
         writer.write_object_value("schedule", self.schedule)

@@ -10,6 +10,9 @@ from .mobile_contained_app import MobileContainedApp
 
 @dataclass
 class WindowsUniversalAppXContainedApp(MobileContainedApp):
+    """
+    A class that represents a contained app of a WindowsUniversalAppX app.
+    """
     odata_type = "#microsoft.graph.windowsUniversalAppXContainedApp"
     # The app user model ID of the contained app of a WindowsUniversalAppX app.
     app_user_model_id: Optional[str] = None

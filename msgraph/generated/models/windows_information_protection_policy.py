@@ -11,6 +11,9 @@ from .windows_information_protection import WindowsInformationProtection
 
 @dataclass
 class WindowsInformationProtectionPolicy(WindowsInformationProtection):
+    """
+    Policy for Windows information protection without MDM
+    """
     odata_type = "#microsoft.graph.windowsInformationProtectionPolicy"
     # Offline interval before app data is wiped (days)
     days_without_contact_before_unenroll: Optional[int] = None

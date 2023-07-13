@@ -32,7 +32,7 @@ class WindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[WindowsInformationProtectionPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a windowsInformationProtectionPolicy.
+        Delete navigation property windowsInformationProtectionPolicies for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -51,7 +51,7 @@ class WindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[WindowsInformationProtectionPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsInformationProtectionPolicy]:
         """
-        Read properties and relationships of the windowsInformationProtectionPolicy object.
+        Windows information protection for apps running on devices which are not MDM enrolled.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionPolicy]
@@ -73,7 +73,7 @@ class WindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WindowsInformationProtectionPolicy] = None, request_configuration: Optional[WindowsInformationProtectionPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WindowsInformationProtectionPolicy]:
         """
-        Update the properties of a windowsInformationProtectionPolicy object.
+        Update the navigation property windowsInformationProtectionPolicies in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +98,7 @@ class WindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[WindowsInformationProtectionPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a windowsInformationProtectionPolicy.
+        Delete navigation property windowsInformationProtectionPolicies for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class WindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[WindowsInformationProtectionPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the windowsInformationProtectionPolicy object.
+        Windows information protection for apps running on devices which are not MDM enrolled.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -132,7 +132,7 @@ class WindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WindowsInformationProtectionPolicy] = None, request_configuration: Optional[WindowsInformationProtectionPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a windowsInformationProtectionPolicy object.
+        Update the navigation property windowsInformationProtectionPolicies in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +191,7 @@ class WindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WindowsInformationProtectionPolicyItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the windowsInformationProtectionPolicy object.
+        Windows information protection for apps running on devices which are not MDM enrolled.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

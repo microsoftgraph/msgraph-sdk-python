@@ -11,6 +11,9 @@ from .entity import Entity
 
 @dataclass
 class ApplePushNotificationCertificate(Entity):
+    """
+    Apple push notification certificate.
+    """
     # Apple Id of the account used to create the MDM push certificate.
     apple_identifier: Optional[str] = None
     # Not yet documented

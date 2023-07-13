@@ -10,6 +10,9 @@ from .windows_information_protection_app import WindowsInformationProtectionApp
 
 @dataclass
 class WindowsInformationProtectionStoreApp(WindowsInformationProtectionApp):
+    """
+    Store App for Windows information protection
+    """
     odata_type = "#microsoft.graph.windowsInformationProtectionStoreApp"
     
     @staticmethod

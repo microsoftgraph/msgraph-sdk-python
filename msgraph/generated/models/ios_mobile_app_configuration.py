@@ -11,6 +11,9 @@ from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfi
 
 @dataclass
 class IosMobileAppConfiguration(ManagedDeviceMobileAppConfiguration):
+    """
+    Contains properties, inherited properties and actions for iOS mobile app configurations.
+    """
     odata_type = "#microsoft.graph.iosMobileAppConfiguration"
     # mdm app configuration Base64 binary.
     encoded_setting_xml: Optional[bytes] = None

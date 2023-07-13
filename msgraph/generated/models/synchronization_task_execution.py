@@ -13,35 +13,35 @@ class SynchronizationTaskExecution(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The activityIdentifier property
+    # Identifier of the job run.
     activity_identifier: Optional[str] = None
-    # The countEntitled property
+    # Count of processed entries that were assigned for this application.
     count_entitled: Optional[int] = None
-    # The countEntitledForProvisioning property
+    # Count of processed entries that were assigned for provisioning.
     count_entitled_for_provisioning: Optional[int] = None
-    # The countEscrowed property
+    # Count of entries that were escrowed (errors).
     count_escrowed: Optional[int] = None
-    # The countEscrowedRaw property
+    # Count of entries that were escrowed, including system-generated escrows.
     count_escrowed_raw: Optional[int] = None
-    # The countExported property
+    # Count of exported entries.
     count_exported: Optional[int] = None
-    # The countExports property
+    # Count of entries that were expected to be exported.
     count_exports: Optional[int] = None
-    # The countImported property
+    # Count of imported entries.
     count_imported: Optional[int] = None
-    # The countImportedDeltas property
+    # Count of imported delta-changes.
     count_imported_deltas: Optional[int] = None
-    # The countImportedReferenceDeltas property
+    # Count of imported delta-changes pertaining to reference changes.
     count_imported_reference_deltas: Optional[int] = None
-    # The error property
+    # If an error was encountered, contains a synchronizationError object with details.
     error: Optional[SynchronizationError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The state property
     state: Optional[SynchronizationTaskExecutionResult] = None
-    # The timeBegan property
+    # Time when this job run began. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     time_began: Optional[datetime.datetime] = None
-    # The timeEnded property
+    # Time when this job run ended. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     time_ended: Optional[datetime.datetime] = None
     
     @staticmethod

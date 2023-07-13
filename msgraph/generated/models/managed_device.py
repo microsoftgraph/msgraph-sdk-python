@@ -31,7 +31,7 @@ class ManagedDevice(Entity):
     """
     Devices that are managed or pre-enrolled through Intune
     """
-    # The code that allows the Activation Lock on managed device to be bypassed. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity in LIST call. Individual GET call with select query options is needed to retrieve actual values. Supports: $select. $Search is not supported. Read-only. This property is read-only.
+    # The code that allows the Activation Lock on managed device to be bypassed. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity in LIST call. To retrieve actual values GET call needs to be made, with device id and included in select parameter. Supports: $select. $Search is not supported. Read-only. This property is read-only.
     activation_lock_bypass_code: Optional[str] = None
     # Android security patch level. This property is read-only.
     android_security_patch_level: Optional[str] = None
@@ -49,7 +49,7 @@ class ManagedDevice(Entity):
     device_action_results: Optional[List[DeviceActionResult]] = None
     # Device category
     device_category: Optional[DeviceCategory] = None
-    # Device category display name. This property is read-only.
+    # Device category display name. Default is an empty string. Supports $filter operator 'eq' and 'or'. This property is read-only.
     device_category_display_name: Optional[str] = None
     # Device compliance policy states for this device.
     device_compliance_policy_states: Optional[List[DeviceCompliancePolicyState]] = None
@@ -71,7 +71,7 @@ class ManagedDevice(Entity):
     eas_device_id: Optional[str] = None
     # Email(s) for the user associated with the device. This property is read-only.
     email_address: Optional[str] = None
-    # Enrollment time of the device. This property is read-only.
+    # Enrollment time of the device. Supports $filter operator 'lt' and 'gt'. This property is read-only.
     enrolled_date_time: Optional[datetime.datetime] = None
     # Indicates Ethernet MAC Address of the device. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity. Individual get call with select query options is needed to retrieve actual values. Example: deviceManagement/managedDevices({managedDeviceId})?$select=ethernetMacAddress Supports: $select. $Search is not supported. Read-only. This property is read-only.
     ethernet_mac_address: Optional[str] = None
@@ -83,7 +83,7 @@ class ManagedDevice(Entity):
     exchange_last_successful_sync_date_time: Optional[datetime.datetime] = None
     # Free Storage in Bytes. Default value is 0. Read-only. This property is read-only.
     free_storage_space_in_bytes: Optional[int] = None
-    # Integrated Circuit Card Identifier, it is A SIM card's unique identification number. Return default value null in LIST managedDevices. Real value only returned in singel device GET call with device id and included in select parameter. Supports: $select. $Search is not supported. Read-only. This property is read-only.
+    # Integrated Circuit Card Identifier, it is A SIM card's unique identification number. Default is an empty string. To retrieve actual values GET call needs to be made, with device id and included in select parameter. Supports: $select. $Search is not supported. Read-only. This property is read-only.
     iccid: Optional[str] = None
     # IMEI. This property is read-only.
     imei: Optional[str] = None
@@ -91,9 +91,9 @@ class ManagedDevice(Entity):
     is_encrypted: Optional[bool] = None
     # Device supervised status. This property is read-only.
     is_supervised: Optional[bool] = None
-    # whether the device is jail broken or rooted. This property is read-only.
+    # Whether the device is jail broken or rooted. Default is an empty string. Supports $filter operator 'eq' and 'or'. This property is read-only.
     jail_broken: Optional[str] = None
-    # The date and time that the device last completed a successful sync with Intune. This property is read-only.
+    # The date and time that the device last completed a successful sync with Intune. Supports $filter operator 'lt' and 'gt'. This property is read-only.
     last_sync_date_time: Optional[datetime.datetime] = None
     # List of log collection requests
     log_collection_requests: Optional[List[DeviceLogCollectionResponse]] = None
@@ -111,7 +111,7 @@ class ManagedDevice(Entity):
     meid: Optional[str] = None
     # Model of the device. This property is read-only.
     model: Optional[str] = None
-    # Notes on the device created by IT Admin. Return default value null in LIST managedDevices. Real value only returned in singel device GET call with device id and included in select parameter. Supports: $select.  $Search is not supported.
+    # Notes on the device created by IT Admin. Default is null. To retrieve actual values GET call needs to be made, with device id and included in select parameter. Supports: $select. $Search is not supported.
     notes: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -123,11 +123,11 @@ class ManagedDevice(Entity):
     partner_reported_threat_state: Optional[ManagedDevicePartnerReportedHealthState] = None
     # Phone number of the device. This property is read-only.
     phone_number: Optional[str] = None
-    # Total Memory in Bytes. Return default value 0 in LIST managedDevices. Real value only returned in singel device GET call with device id and included in select parameter. Supports: $select. Default value is 0. Read-only. This property is read-only.
+    # Total Memory in Bytes. Default is 0. To retrieve actual values GET call needs to be made, with device id and included in select parameter. Supports: $select. Read-only. This property is read-only.
     physical_memory_in_bytes: Optional[int] = None
     # An error string that identifies issues when creating Remote Assistance session objects. This property is read-only.
     remote_assistance_session_error_details: Optional[str] = None
-    # Url that allows a Remote Assistance session to be established with the device. This property is read-only.
+    # Url that allows a Remote Assistance session to be established with the device. Default is an empty string. To retrieve actual values GET call needs to be made, with device id and included in select parameter. This property is read-only.
     remote_assistance_session_url: Optional[str] = None
     # Reports if the managed iOS device is user approval enrollment. This property is read-only.
     require_user_enrollment_approval: Optional[bool] = None
@@ -137,7 +137,7 @@ class ManagedDevice(Entity):
     subscriber_carrier: Optional[str] = None
     # Total Storage in Bytes. This property is read-only.
     total_storage_space_in_bytes: Optional[int] = None
-    # Unique Device Identifier for iOS and macOS devices. Return default value null in LIST managedDevices. Real value only returned in singel device GET call with device id and included in select parameter. Supports: $select. $Search is not supported. Read-only. This property is read-only.
+    # Unique Device Identifier for iOS and macOS devices. Default is an empty string. To retrieve actual values GET call needs to be made, with device id and included in select parameter. Supports: $select. $Search is not supported. Read-only. This property is read-only.
     udid: Optional[str] = None
     # User display name. This property is read-only.
     user_display_name: Optional[str] = None

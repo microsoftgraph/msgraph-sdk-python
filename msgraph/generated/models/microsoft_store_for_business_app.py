@@ -11,6 +11,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class MicrosoftStoreForBusinessApp(MobileApp):
+    """
+    Microsoft Store for Business Apps. This class does not support Create, Delete, or Update.
+    """
     odata_type = "#microsoft.graph.microsoftStoreForBusinessApp"
     # The licenseType property
     license_type: Optional[MicrosoftStoreForBusinessLicenseType] = None

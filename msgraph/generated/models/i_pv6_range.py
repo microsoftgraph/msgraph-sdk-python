@@ -10,6 +10,9 @@ from .ip_range import IpRange
 
 @dataclass
 class IPv6Range(IpRange):
+    """
+    IPv6 Range definition.
+    """
     odata_type = "#microsoft.graph.iPv6Range"
     # Lower address.
     lower_address: Optional[str] = None

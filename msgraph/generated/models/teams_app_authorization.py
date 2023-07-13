@@ -13,7 +13,7 @@ class TeamsAppAuthorization(AdditionalDataHolder, Parsable):
 
     # The OdataType property
     odata_type: Optional[str] = None
-    # The requiredPermissionSet property
+    # Set of permissions required by the teamsApp.
     required_permission_set: Optional[TeamsAppPermissionSet] = None
     
     @staticmethod

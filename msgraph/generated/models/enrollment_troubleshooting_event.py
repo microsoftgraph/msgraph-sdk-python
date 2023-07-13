@@ -12,6 +12,9 @@ from .device_management_troubleshooting_event import DeviceManagementTroubleshoo
 
 @dataclass
 class EnrollmentTroubleshootingEvent(DeviceManagementTroubleshootingEvent):
+    """
+    Event representing an enrollment failure.
+    """
     # Azure AD device identifier.
     device_id: Optional[str] = None
     # Possible ways of adding a mobile device to management.

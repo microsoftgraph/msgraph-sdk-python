@@ -12,17 +12,17 @@ class ParseExpressionResponse(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The error property
+    # Error details, if expression evaluation resulted in an error.
     error: Optional[PublicError] = None
-    # The evaluationResult property
+    # A collection of values produced by the evaluation of the expression.
     evaluation_result: Optional[List[str]] = None
-    # The evaluationSucceeded property
+    # true if the evaluation was successful.
     evaluation_succeeded: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The parsedExpression property
+    # An attributeMappingSource object representing the parsed expression.
     parsed_expression: Optional[AttributeMappingSource] = None
-    # The parsingSucceeded property
+    # true if the expression was parsed successfully.
     parsing_succeeded: Optional[bool] = None
     
     @staticmethod

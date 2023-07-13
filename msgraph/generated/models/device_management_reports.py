@@ -11,6 +11,9 @@ from .entity import Entity
 
 @dataclass
 class DeviceManagementReports(Entity):
+    """
+    Singleton entity that acts as a container for all reports functionality.
+    """
     # Entity representing a job to export a report
     export_jobs: Optional[List[DeviceManagementExportJob]] = None
     # The OdataType property

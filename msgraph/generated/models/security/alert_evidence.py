@@ -6,7 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .amazon_resource_evidence import AmazonResourceEvidence
-    from .analyzed_message_evidence import AnalyzedMessageEvidence
     from .azure_resource_evidence import AzureResourceEvidence
     from .cloud_application_evidence import CloudApplicationEvidence
     from .device_evidence import DeviceEvidence
@@ -66,10 +65,6 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
             from .amazon_resource_evidence import AmazonResourceEvidence
 
             return AmazonResourceEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.analyzedMessageEvidence".casefold():
-            from .analyzed_message_evidence import AnalyzedMessageEvidence
-
-            return AnalyzedMessageEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.azureResourceEvidence".casefold():
             from .azure_resource_evidence import AzureResourceEvidence
 
@@ -138,7 +133,6 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .amazon_resource_evidence import AmazonResourceEvidence
-        from .analyzed_message_evidence import AnalyzedMessageEvidence
         from .azure_resource_evidence import AzureResourceEvidence
         from .cloud_application_evidence import CloudApplicationEvidence
         from .device_evidence import DeviceEvidence
@@ -159,7 +153,6 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         from .user_evidence import UserEvidence
 
         from .amazon_resource_evidence import AmazonResourceEvidence
-        from .analyzed_message_evidence import AnalyzedMessageEvidence
         from .azure_resource_evidence import AzureResourceEvidence
         from .cloud_application_evidence import CloudApplicationEvidence
         from .device_evidence import DeviceEvidence

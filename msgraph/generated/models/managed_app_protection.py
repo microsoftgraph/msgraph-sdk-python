@@ -20,6 +20,9 @@ from .managed_app_policy import ManagedAppPolicy
 
 @dataclass
 class ManagedAppProtection(ManagedAppPolicy):
+    """
+    Policy used to configure detailed management settings for a specified set of apps
+    """
     odata_type = "#microsoft.graph.managedAppProtection"
     # Data storage locations where a user may store managed data.
     allowed_data_storage_locations: Optional[List[ManagedAppDataStorageLocation]] = None

@@ -29,7 +29,7 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(BaseRequestBuilde
     
     async def delete(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a importedWindowsAutopilotDeviceIdentity.
+        Delete navigation property importedWindowsAutopilotDeviceIdentities for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(BaseRequestBuilde
     
     async def get(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ImportedWindowsAutopilotDeviceIdentity]:
         """
-        Read properties and relationships of the importedWindowsAutopilotDeviceIdentity object.
+        Collection of imported Windows autopilot devices.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ImportedWindowsAutopilotDeviceIdentity]
@@ -95,7 +95,7 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(BaseRequestBuilde
     
     def to_delete_request_information(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a importedWindowsAutopilotDeviceIdentity.
+        Delete navigation property importedWindowsAutopilotDeviceIdentities for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(BaseRequestBuilde
     
     def to_get_request_information(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the importedWindowsAutopilotDeviceIdentity object.
+        Collection of imported Windows autopilot devices.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +161,7 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(BaseRequestBuilde
     @dataclass
     class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the importedWindowsAutopilotDeviceIdentity object.
+        Collection of imported Windows autopilot devices.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

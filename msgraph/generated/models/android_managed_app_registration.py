@@ -10,6 +10,9 @@ from .managed_app_registration import ManagedAppRegistration
 
 @dataclass
 class AndroidManagedAppRegistration(ManagedAppRegistration):
+    """
+    Represents the synchronization details of an android app, with management capabilities, for a specific user.
+    """
     odata_type = "#microsoft.graph.androidManagedAppRegistration"
     
     @staticmethod

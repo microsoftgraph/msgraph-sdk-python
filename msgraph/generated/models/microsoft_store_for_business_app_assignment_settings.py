@@ -10,6 +10,9 @@ from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
 @dataclass
 class MicrosoftStoreForBusinessAppAssignmentSettings(MobileAppAssignmentSettings):
+    """
+    Contains properties used to assign an Microsoft Store for Business mobile app to a group.
+    """
     odata_type = "#microsoft.graph.microsoftStoreForBusinessAppAssignmentSettings"
     # Whether or not to use device execution context for Microsoft Store for Business mobile app.
     use_device_context: Optional[bool] = None

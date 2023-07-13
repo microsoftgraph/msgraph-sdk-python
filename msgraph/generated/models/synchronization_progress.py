@@ -9,15 +9,15 @@ class SynchronizationProgress(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The completedUnits property
+    # The numerator of a progress ratio; the number of units of changes already processed.
     completed_units: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The progressObservationDateTime property
+    # The time of a progress observation as an offset in minutes from UTC.
     progress_observation_date_time: Optional[datetime.datetime] = None
-    # The totalUnits property
+    # The denominator of a progress ratio; a number of units of changes to be processed to accomplish synchronization.
     total_units: Optional[int] = None
-    # The units property
+    # An optional description of the units.
     units: Optional[str] = None
     
     @staticmethod

@@ -31,7 +31,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a defaultManagedAppProtection.
+        Delete navigation property defaultManagedAppProtections for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -50,7 +50,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DefaultManagedAppProtection]:
         """
-        Read properties and relationships of the defaultManagedAppProtection object.
+        Default managed app policies.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DefaultManagedAppProtection]
@@ -72,7 +72,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DefaultManagedAppProtection]:
         """
-        Update the properties of a defaultManagedAppProtection object.
+        Update the navigation property defaultManagedAppProtections in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +97,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a defaultManagedAppProtection.
+        Delete navigation property defaultManagedAppProtections for deviceAppManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -113,7 +113,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the defaultManagedAppProtection object.
+        Default managed app policies.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -131,7 +131,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a defaultManagedAppProtection object.
+        Update the navigation property defaultManagedAppProtections in deviceAppManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DefaultManagedAppProtectionItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the defaultManagedAppProtection object.
+        Default managed app policies.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

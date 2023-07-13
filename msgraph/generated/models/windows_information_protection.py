@@ -21,6 +21,9 @@ from .managed_app_policy import ManagedAppPolicy
 
 @dataclass
 class WindowsInformationProtection(ManagedAppPolicy):
+    """
+    Policy for Windows information protection to configure detailed management settings
+    """
     odata_type = "#microsoft.graph.windowsInformationProtection"
     # Navigation property to list of security groups targeted for policy.
     assignments: Optional[List[TargetedManagedAppPolicyAssignment]] = None

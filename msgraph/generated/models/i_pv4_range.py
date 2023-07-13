@@ -10,6 +10,9 @@ from .ip_range import IpRange
 
 @dataclass
 class IPv4Range(IpRange):
+    """
+    IPv4 Range definition.
+    """
     odata_type = "#microsoft.graph.iPv4Range"
     # Lower address.
     lower_address: Optional[str] = None

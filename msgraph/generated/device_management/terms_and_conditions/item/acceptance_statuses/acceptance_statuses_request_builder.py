@@ -47,7 +47,7 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AcceptanceStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatusCollectionResponse]:
         """
-        List properties and relationships of the termsAndConditionsAcceptanceStatus objects.
+        The list of acceptance statuses for this T&C policy.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditionsAcceptanceStatusCollectionResponse]
@@ -69,7 +69,7 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[AcceptanceStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatus]:
         """
-        Create a new termsAndConditionsAcceptanceStatus object.
+        Create new navigation property to acceptanceStatuses for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AcceptanceStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the termsAndConditionsAcceptanceStatus objects.
+        The list of acceptance statuses for this T&C policy.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[AcceptanceStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new termsAndConditionsAcceptanceStatus object.
+        Create new navigation property to acceptanceStatuses for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AcceptanceStatusesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the termsAndConditionsAcceptanceStatus objects.
+        The list of acceptance statuses for this T&C policy.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

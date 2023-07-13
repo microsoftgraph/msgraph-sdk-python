@@ -47,7 +47,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
     
     async def get(self,request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsInformationProtectionNetworkLearningSummaryCollectionResponse]:
         """
-        List properties and relationships of the windowsInformationProtectionNetworkLearningSummary objects.
+        The windows information protection network learning summaries.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionNetworkLearningSummaryCollectionResponse]
@@ -69,7 +69,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
     
     async def post(self,body: Optional[WindowsInformationProtectionNetworkLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilderPostRequestConfiguration] = None) -> Optional[WindowsInformationProtectionNetworkLearningSummary]:
         """
-        Create a new windowsInformationProtectionNetworkLearningSummary object.
+        Create new navigation property to windowsInformationProtectionNetworkLearningSummaries for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
     
     def to_get_request_information(self,request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the windowsInformationProtectionNetworkLearningSummary objects.
+        The windows information protection network learning summaries.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
     
     def to_post_request_information(self,body: Optional[WindowsInformationProtectionNetworkLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new windowsInformationProtectionNetworkLearningSummary object.
+        Create new navigation property to windowsInformationProtectionNetworkLearningSummaries for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
     @dataclass
     class WindowsInformationProtectionNetworkLearningSummariesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windowsInformationProtectionNetworkLearningSummary objects.
+        The windows information protection network learning summaries.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

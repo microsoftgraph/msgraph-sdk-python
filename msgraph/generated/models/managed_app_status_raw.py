@@ -11,6 +11,9 @@ from .managed_app_status import ManagedAppStatus
 
 @dataclass
 class ManagedAppStatusRaw(ManagedAppStatus):
+    """
+    Represents an un-typed status report about organizations app protection and configuration.
+    """
     odata_type = "#microsoft.graph.managedAppStatusRaw"
     # Status report content.
     content: Optional[Json] = None

@@ -11,6 +11,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class MacOSMicrosoftEdgeApp(MobileApp):
+    """
+    Contains properties and inherited properties for the macOS Microsoft Edge App.
+    """
     odata_type = "#microsoft.graph.macOSMicrosoftEdgeApp"
     # The enum to specify the channels for Microsoft Edge apps.
     channel: Optional[MicrosoftEdgeChannel] = None

@@ -29,7 +29,7 @@ class CreateDownloadUrlRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[CreateDownloadUrlRequestBuilderPostRequestConfiguration] = None) -> Optional[AppLogCollectionDownloadDetails]:
         """
-        Not yet documented
+        Invoke action createDownloadUrl
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppLogCollectionDownloadDetails]
@@ -51,7 +51,7 @@ class CreateDownloadUrlRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[CreateDownloadUrlRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Not yet documented
+        Invoke action createDownloadUrl
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

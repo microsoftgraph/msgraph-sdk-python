@@ -13,9 +13,9 @@ class SynchronizationJobApplicationParameters(AdditionalDataHolder, Parsable):
 
     # The OdataType property
     odata_type: Optional[str] = None
-    # The ruleId property
+    # The identifier of the synchronizationRule to be applied. This rule ID is defined in the schema for a given synchronization job or template.
     rule_id: Optional[str] = None
-    # The subjects property
+    # The identifiers of one or more objects to which a synchronizationJob is to be applied.
     subjects: Optional[List[SynchronizationJobSubject]] = None
     
     @staticmethod

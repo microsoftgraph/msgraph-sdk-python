@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .case_operation_status import CaseOperationStatus
     from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
     from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
+    from .ediscovery_export_operation import EdiscoveryExportOperation
     from .ediscovery_hold_operation import EdiscoveryHoldOperation
     from .ediscovery_index_operation import EdiscoveryIndexOperation
     from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
@@ -60,6 +61,10 @@ class CaseOperation(Entity):
             from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
 
             return EdiscoveryEstimateOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryExportOperation".casefold():
+            from .ediscovery_export_operation import EdiscoveryExportOperation
+
+            return EdiscoveryExportOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryHoldOperation".casefold():
             from .ediscovery_hold_operation import EdiscoveryHoldOperation
 
@@ -90,6 +95,7 @@ class CaseOperation(Entity):
         from .case_operation_status import CaseOperationStatus
         from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
         from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
+        from .ediscovery_export_operation import EdiscoveryExportOperation
         from .ediscovery_hold_operation import EdiscoveryHoldOperation
         from .ediscovery_index_operation import EdiscoveryIndexOperation
         from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation
@@ -102,6 +108,7 @@ class CaseOperation(Entity):
         from .case_operation_status import CaseOperationStatus
         from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
         from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
+        from .ediscovery_export_operation import EdiscoveryExportOperation
         from .ediscovery_hold_operation import EdiscoveryHoldOperation
         from .ediscovery_index_operation import EdiscoveryIndexOperation
         from .ediscovery_purge_data_operation import EdiscoveryPurgeDataOperation

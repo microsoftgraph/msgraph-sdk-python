@@ -14,6 +14,9 @@ from .mobile_lob_app import MobileLobApp
 
 @dataclass
 class WindowsUniversalAppX(MobileLobApp):
+    """
+    Contains properties and inherited properties for Windows Universal AppX Line Of Business apps.
+    """
     odata_type = "#microsoft.graph.windowsUniversalAppX"
     # Contains properties for Windows architecture.
     applicable_architectures: Optional[WindowsArchitecture] = None

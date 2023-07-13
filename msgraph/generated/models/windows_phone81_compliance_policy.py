@@ -11,6 +11,9 @@ from .device_compliance_policy import DeviceCompliancePolicy
 
 @dataclass
 class WindowsPhone81CompliancePolicy(DeviceCompliancePolicy):
+    """
+    This class contains compliance settings for Windows 8.1 Mobile.
+    """
     odata_type = "#microsoft.graph.windowsPhone81CompliancePolicy"
     # Maximum Windows Phone version.
     os_maximum_version: Optional[str] = None

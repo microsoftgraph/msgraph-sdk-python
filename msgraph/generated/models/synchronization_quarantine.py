@@ -13,19 +13,19 @@ class SynchronizationQuarantine(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The currentBegan property
+    # Date and time when the quarantine was last evaluated and imposed. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     current_began: Optional[datetime.datetime] = None
-    # The error property
+    # Describes the error(s) that occurred when putting the synchronization job into quarantine.
     error: Optional[SynchronizationError] = None
-    # The nextAttempt property
+    # Date and time when the next attempt to re-evaluate the quarantine will be made. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     next_attempt: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The reason property
     reason: Optional[QuarantineReason] = None
-    # The seriesBegan property
+    # Date and time when the quarantine was first imposed in this series (a series starts when a quarantine is first imposed, and is reset as soon as the quarantine is lifted). The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     series_began: Optional[datetime.datetime] = None
-    # The seriesCount property
+    # Number of times in this series the quarantine was re-evaluated and left in effect (a series starts when quarantine is first imposed, and is reset as soon as quarantine is lifted).
     series_count: Optional[int] = None
     
     @staticmethod

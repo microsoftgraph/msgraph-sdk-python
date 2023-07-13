@@ -47,7 +47,7 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IosUpdateStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[IosUpdateDeviceStatusCollectionResponse]:
         """
-        List properties and relationships of the iosUpdateDeviceStatus objects.
+        The IOS software update installation statuses for this account.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IosUpdateDeviceStatusCollectionResponse]
@@ -69,7 +69,7 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[IosUpdateDeviceStatus] = None, request_configuration: Optional[IosUpdateStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[IosUpdateDeviceStatus]:
         """
-        Create a new iosUpdateDeviceStatus object.
+        Create new navigation property to iosUpdateStatuses for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IosUpdateStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the iosUpdateDeviceStatus objects.
+        The IOS software update installation statuses for this account.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[IosUpdateDeviceStatus] = None, request_configuration: Optional[IosUpdateStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new iosUpdateDeviceStatus object.
+        Create new navigation property to iosUpdateStatuses for deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IosUpdateStatusesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the iosUpdateDeviceStatus objects.
+        The IOS software update installation statuses for this account.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -4,6 +4,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
+    from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
     from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
     from .custom_extension_client_configuration import CustomExtensionClientConfiguration
     from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
@@ -41,6 +43,14 @@ class CustomCalloutExtension(Entity):
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentRequestWorkflowExtension".casefold():
+            from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
+
+            return AccessPackageAssignmentRequestWorkflowExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.accessPackageAssignmentWorkflowExtension".casefold():
+            from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
+
+            return AccessPackageAssignmentWorkflowExtension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityGovernance.customTaskExtension".casefold():
             from .identity_governance.custom_task_extension import CustomTaskExtension
 
@@ -52,12 +62,16 @@ class CustomCalloutExtension(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
+        from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
         from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
         from .custom_extension_client_configuration import CustomExtensionClientConfiguration
         from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration
         from .entity import Entity
         from .identity_governance.custom_task_extension import CustomTaskExtension
 
+        from .access_package_assignment_request_workflow_extension import AccessPackageAssignmentRequestWorkflowExtension
+        from .access_package_assignment_workflow_extension import AccessPackageAssignmentWorkflowExtension
         from .custom_extension_authentication_configuration import CustomExtensionAuthenticationConfiguration
         from .custom_extension_client_configuration import CustomExtensionClientConfiguration
         from .custom_extension_endpoint_configuration import CustomExtensionEndpointConfiguration

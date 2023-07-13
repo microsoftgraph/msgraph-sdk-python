@@ -11,6 +11,9 @@ from .win32_lob_app_rule import Win32LobAppRule
 
 @dataclass
 class Win32LobAppProductCodeRule(Win32LobAppRule):
+    """
+    A complex type to store the product code and version rule data for a Win32 LOB app. This rule is not supported as a requirement rule.
+    """
     odata_type = "#microsoft.graph.win32LobAppProductCodeRule"
     # The product code of the app.
     product_code: Optional[str] = None

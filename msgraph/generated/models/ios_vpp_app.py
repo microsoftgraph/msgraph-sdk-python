@@ -14,6 +14,9 @@ from .mobile_app import MobileApp
 
 @dataclass
 class IosVppApp(MobileApp):
+    """
+    Contains properties and inherited properties for iOS Volume-Purchased Program (VPP) Apps.
+    """
     odata_type = "#microsoft.graph.iosVppApp"
     # The store URL.
     app_store_url: Optional[str] = None

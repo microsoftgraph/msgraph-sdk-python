@@ -29,7 +29,7 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceManagementExportJobItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a deviceManagementExportJob.
+        Delete navigation property exportJobs for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceManagementExportJobItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementExportJob]:
         """
-        Read properties and relationships of the deviceManagementExportJob object.
+        Entity representing a job to export a report
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementExportJob]
@@ -70,7 +70,7 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceManagementExportJob] = None, request_configuration: Optional[DeviceManagementExportJobItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceManagementExportJob]:
         """
-        Update the properties of a deviceManagementExportJob object.
+        Update the navigation property exportJobs in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceManagementExportJobItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceManagementExportJob.
+        Delete navigation property exportJobs for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceManagementExportJobItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceManagementExportJob object.
+        Entity representing a job to export a report
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceManagementExportJob] = None, request_configuration: Optional[DeviceManagementExportJobItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceManagementExportJob object.
+        Update the navigation property exportJobs in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeviceManagementExportJobItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceManagementExportJobItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceManagementExportJob object.
+        Entity representing a job to export a report
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -10,6 +10,9 @@ from .entity import Entity
 
 @dataclass
 class EBookInstallSummary(Entity):
+    """
+    Contains properties for the installation summary of a book for a device.
+    """
     # Number of Devices that have failed to install this book.
     failed_device_count: Optional[int] = None
     # Number of Users that have 1 or more device that failed to install this book.

@@ -47,7 +47,7 @@ class DirectoriesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DirectoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryDefinitionCollectionResponse]:
         """
-        Get directories from servicePrincipals
+        Contains the collection of directories and all of their objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryDefinitionCollectionResponse]
@@ -94,7 +94,7 @@ class DirectoriesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DirectoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get directories from servicePrincipals
+        Contains the collection of directories and all of their objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class DirectoriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DirectoriesRequestBuilderGetQueryParameters():
         """
-        Get directories from servicePrincipals
+        Contains the collection of directories and all of their objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .access_package_assignment_policy import AccessPackageAssignmentPolicy
     from .access_package_assignment_state import AccessPackageAssignmentState
     from .access_package_subject import AccessPackageSubject
+    from .custom_extension_callout_instance import CustomExtensionCalloutInstance
     from .entitlement_management_schedule import EntitlementManagementSchedule
     from .entity import Entity
 
@@ -20,6 +21,8 @@ class AccessPackageAssignment(Entity):
     access_package: Optional[AccessPackage] = None
     # Read-only. Supports $filter (eq) on the id property and $expand query parameters.
     assignment_policy: Optional[AccessPackageAssignmentPolicy] = None
+    # The customExtensionCalloutInstances property
+    custom_extension_callout_instances: Optional[List[CustomExtensionCalloutInstance]] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     expired_date_time: Optional[datetime.datetime] = None
     # The OdataType property
@@ -54,6 +57,7 @@ class AccessPackageAssignment(Entity):
         from .access_package_assignment_policy import AccessPackageAssignmentPolicy
         from .access_package_assignment_state import AccessPackageAssignmentState
         from .access_package_subject import AccessPackageSubject
+        from .custom_extension_callout_instance import CustomExtensionCalloutInstance
         from .entitlement_management_schedule import EntitlementManagementSchedule
         from .entity import Entity
 
@@ -61,12 +65,14 @@ class AccessPackageAssignment(Entity):
         from .access_package_assignment_policy import AccessPackageAssignmentPolicy
         from .access_package_assignment_state import AccessPackageAssignmentState
         from .access_package_subject import AccessPackageSubject
+        from .custom_extension_callout_instance import CustomExtensionCalloutInstance
         from .entitlement_management_schedule import EntitlementManagementSchedule
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(AccessPackage)),
             "assignmentPolicy": lambda n : setattr(self, 'assignment_policy', n.get_object_value(AccessPackageAssignmentPolicy)),
+            "customExtensionCalloutInstances": lambda n : setattr(self, 'custom_extension_callout_instances', n.get_collection_of_object_values(CustomExtensionCalloutInstance)),
             "expiredDateTime": lambda n : setattr(self, 'expired_date_time', n.get_datetime_value()),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(EntitlementManagementSchedule)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageAssignmentState)),
@@ -88,6 +94,7 @@ class AccessPackageAssignment(Entity):
         super().serialize(writer)
         writer.write_object_value("accessPackage", self.access_package)
         writer.write_object_value("assignmentPolicy", self.assignment_policy)
+        writer.write_collection_of_object_values("customExtensionCalloutInstances", self.custom_extension_callout_instances)
         writer.write_datetime_value("expiredDateTime", self.expired_date_time)
         writer.write_object_value("schedule", self.schedule)
         writer.write_enum_value("state", self.state)

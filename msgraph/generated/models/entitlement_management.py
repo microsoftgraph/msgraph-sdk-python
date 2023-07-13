@@ -9,6 +9,10 @@ if TYPE_CHECKING:
     from .access_package_assignment_policy import AccessPackageAssignmentPolicy
     from .access_package_assignment_request import AccessPackageAssignmentRequest
     from .access_package_catalog import AccessPackageCatalog
+    from .access_package_resource import AccessPackageResource
+    from .access_package_resource_environment import AccessPackageResourceEnvironment
+    from .access_package_resource_request import AccessPackageResourceRequest
+    from .access_package_resource_role_scope import AccessPackageResourceRoleScope
     from .approval import Approval
     from .connected_organization import ConnectedOrganization
     from .entitlement_management_settings import EntitlementManagementSettings
@@ -34,6 +38,14 @@ class EntitlementManagement(Entity):
     connected_organizations: Optional[List[ConnectedOrganization]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The resourceEnvironments property
+    resource_environments: Optional[List[AccessPackageResourceEnvironment]] = None
+    # The resourceRequests property
+    resource_requests: Optional[List[AccessPackageResourceRequest]] = None
+    # The resourceRoleScopes property
+    resource_role_scopes: Optional[List[AccessPackageResourceRoleScope]] = None
+    # The resources property
+    resources: Optional[List[AccessPackageResource]] = None
     # The settings that control the behavior of Azure AD entitlement management.
     settings: Optional[EntitlementManagementSettings] = None
     
@@ -59,6 +71,10 @@ class EntitlementManagement(Entity):
         from .access_package_assignment_policy import AccessPackageAssignmentPolicy
         from .access_package_assignment_request import AccessPackageAssignmentRequest
         from .access_package_catalog import AccessPackageCatalog
+        from .access_package_resource import AccessPackageResource
+        from .access_package_resource_environment import AccessPackageResourceEnvironment
+        from .access_package_resource_request import AccessPackageResourceRequest
+        from .access_package_resource_role_scope import AccessPackageResourceRoleScope
         from .approval import Approval
         from .connected_organization import ConnectedOrganization
         from .entitlement_management_settings import EntitlementManagementSettings
@@ -69,6 +85,10 @@ class EntitlementManagement(Entity):
         from .access_package_assignment_policy import AccessPackageAssignmentPolicy
         from .access_package_assignment_request import AccessPackageAssignmentRequest
         from .access_package_catalog import AccessPackageCatalog
+        from .access_package_resource import AccessPackageResource
+        from .access_package_resource_environment import AccessPackageResourceEnvironment
+        from .access_package_resource_request import AccessPackageResourceRequest
+        from .access_package_resource_role_scope import AccessPackageResourceRoleScope
         from .approval import Approval
         from .connected_organization import ConnectedOrganization
         from .entitlement_management_settings import EntitlementManagementSettings
@@ -82,6 +102,10 @@ class EntitlementManagement(Entity):
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(AccessPackageAssignment)),
             "catalogs": lambda n : setattr(self, 'catalogs', n.get_collection_of_object_values(AccessPackageCatalog)),
             "connectedOrganizations": lambda n : setattr(self, 'connected_organizations', n.get_collection_of_object_values(ConnectedOrganization)),
+            "resourceEnvironments": lambda n : setattr(self, 'resource_environments', n.get_collection_of_object_values(AccessPackageResourceEnvironment)),
+            "resourceRequests": lambda n : setattr(self, 'resource_requests', n.get_collection_of_object_values(AccessPackageResourceRequest)),
+            "resourceRoleScopes": lambda n : setattr(self, 'resource_role_scopes', n.get_collection_of_object_values(AccessPackageResourceRoleScope)),
+            "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(AccessPackageResource)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(EntitlementManagementSettings)),
         }
         super_fields = super().get_field_deserializers()
@@ -104,6 +128,10 @@ class EntitlementManagement(Entity):
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_collection_of_object_values("catalogs", self.catalogs)
         writer.write_collection_of_object_values("connectedOrganizations", self.connected_organizations)
+        writer.write_collection_of_object_values("resourceEnvironments", self.resource_environments)
+        writer.write_collection_of_object_values("resourceRequests", self.resource_requests)
+        writer.write_collection_of_object_values("resourceRoleScopes", self.resource_role_scopes)
+        writer.write_collection_of_object_values("resources", self.resources)
         writer.write_object_value("settings", self.settings)
     
 

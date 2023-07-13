@@ -15,7 +15,7 @@ class UserRegistrationFeatureCount(AdditionalDataHolder, Parsable):
     feature: Optional[AuthenticationMethodFeature] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The userCount property
+    # Number of users.
     user_count: Optional[int] = None
     
     @staticmethod

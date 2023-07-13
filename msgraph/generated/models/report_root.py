@@ -14,19 +14,19 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The authenticationMethods property
+    # Container for navigation properties for Azure AD authentication methods resources.
     authentication_methods: Optional[AuthenticationMethodsRoot] = None
-    # The dailyPrintUsageByPrinter property
+    # Retrieve a list of daily print usage summaries, grouped by printer.
     daily_print_usage_by_printer: Optional[List[PrintUsageByPrinter]] = None
-    # The dailyPrintUsageByUser property
+    # Retrieve a list of daily print usage summaries, grouped by user.
     daily_print_usage_by_user: Optional[List[PrintUsageByUser]] = None
-    # The monthlyPrintUsageByPrinter property
+    # Retrieve a list of monthly print usage summaries, grouped by printer.
     monthly_print_usage_by_printer: Optional[List[PrintUsageByPrinter]] = None
-    # The monthlyPrintUsageByUser property
+    # Retrieve a list of monthly print usage summaries, grouped by user.
     monthly_print_usage_by_user: Optional[List[PrintUsageByUser]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The security property
+    # Represents an abstract type that contains resources for attack simulation and training reports.
     security: Optional[SecurityReportsRoot] = None
     
     @staticmethod

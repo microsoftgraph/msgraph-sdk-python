@@ -29,7 +29,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a localizedNotificationMessage.
+        Delete navigation property localizedNotificationMessages for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[LocalizedNotificationMessage]:
         """
-        Read properties and relationships of the localizedNotificationMessage object.
+        The list of localized messages for this Notification Message Template.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LocalizedNotificationMessage]
@@ -70,7 +70,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[LocalizedNotificationMessage]:
         """
-        Update the properties of a localizedNotificationMessage object.
+        Update the navigation property localizedNotificationMessages in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a localizedNotificationMessage.
+        Delete navigation property localizedNotificationMessages for deviceManagement
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the localizedNotificationMessage object.
+        The list of localized messages for this Notification Message Template.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a localizedNotificationMessage object.
+        Update the navigation property localizedNotificationMessages in deviceManagement
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LocalizedNotificationMessageItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the localizedNotificationMessage object.
+        The list of localized messages for this Notification Message Template.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

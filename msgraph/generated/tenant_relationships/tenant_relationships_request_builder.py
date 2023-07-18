@@ -15,6 +15,8 @@ if TYPE_CHECKING:
     from ..models.tenant_relationship import TenantRelationship
     from .delegated_admin_customers.delegated_admin_customers_request_builder import DelegatedAdminCustomersRequestBuilder
     from .delegated_admin_relationships.delegated_admin_relationships_request_builder import DelegatedAdminRelationshipsRequestBuilder
+    from .find_tenant_information_by_domain_name_with_domain_name.find_tenant_information_by_domain_name_with_domain_name_request_builder import FindTenantInformationByDomainNameWithDomainNameRequestBuilder
+    from .find_tenant_information_by_tenant_id_with_tenant_id.find_tenant_information_by_tenant_id_with_tenant_id_request_builder import FindTenantInformationByTenantIdWithTenantIdRequestBuilder
 
 class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
     """
@@ -28,6 +30,32 @@ class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
             request_adapter: The request adapter to use to execute the requests.
         """
         super().__init__(request_adapter, "{+baseurl}/tenantRelationships{?%24select,%24expand}", path_parameters)
+    
+    def find_tenant_information_by_domain_name_with_domain_name(self,domain_name: Optional[str] = None) -> FindTenantInformationByDomainNameWithDomainNameRequestBuilder:
+        """
+        Provides operations to call the findTenantInformationByDomainName method.
+        Args:
+            domain_name: Usage: domainName='{domainName}'
+        Returns: FindTenantInformationByDomainNameWithDomainNameRequestBuilder
+        """
+        if not domain_name:
+            raise TypeError("domain_name cannot be null.")
+        from .find_tenant_information_by_domain_name_with_domain_name.find_tenant_information_by_domain_name_with_domain_name_request_builder import FindTenantInformationByDomainNameWithDomainNameRequestBuilder
+
+        return FindTenantInformationByDomainNameWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domain_name)
+    
+    def find_tenant_information_by_tenant_id_with_tenant_id(self,tenant_id: Optional[str] = None) -> FindTenantInformationByTenantIdWithTenantIdRequestBuilder:
+        """
+        Provides operations to call the findTenantInformationByTenantId method.
+        Args:
+            tenant_id: Usage: tenantId='{tenantId}'
+        Returns: FindTenantInformationByTenantIdWithTenantIdRequestBuilder
+        """
+        if not tenant_id:
+            raise TypeError("tenant_id cannot be null.")
+        from .find_tenant_information_by_tenant_id_with_tenant_id.find_tenant_information_by_tenant_id_with_tenant_id_request_builder import FindTenantInformationByTenantIdWithTenantIdRequestBuilder
+
+        return FindTenantInformationByTenantIdWithTenantIdRequestBuilder(self.request_adapter, self.path_parameters, tenant_id)
     
     async def get(self,request_configuration: Optional[TenantRelationshipsRequestBuilderGetRequestConfiguration] = None) -> Optional[TenantRelationship]:
         """

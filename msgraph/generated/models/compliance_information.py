@@ -11,9 +11,9 @@ class ComplianceInformation(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # Collection of the certification controls associated with certification
+    # Collection of the certification controls associated with the certification.
     certification_controls: Optional[List[CertificationControl]] = None
-    # Compliance certification name (for example, ISO 27018:2014, GDPR, FedRAMP, NIST 800-171)
+    # The name of the compliance certification, for example, ISO 27018:2014, GDPR, FedRAMP, and NIST 800-171.
     certification_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

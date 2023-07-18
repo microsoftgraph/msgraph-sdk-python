@@ -49,7 +49,7 @@ class FileRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[FileRequestBuilderGetRequestConfiguration] = None) -> Optional[AgreementFile]:
         """
-        Retrieve the details of the default file for an agreement, including the language and version information. The file information is specified through the agreementFile object.
+        Retrieve the details of an agreement file, including the language and version information. The default file can have multiple versions, each with its own language, that can be retrieved by specifying the **Accept-Language** header.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AgreementFile]
@@ -112,7 +112,7 @@ class FileRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[FileRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the details of the default file for an agreement, including the language and version information. The file information is specified through the agreementFile object.
+        Retrieve the details of an agreement file, including the language and version information. The default file can have multiple versions, each with its own language, that can be retrieved by specifying the **Accept-Language** header.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class FileRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FileRequestBuilderGetQueryParameters():
         """
-        Retrieve the details of the default file for an agreement, including the language and version information. The file information is specified through the agreementFile object.
+        Retrieve the details of an agreement file, including the language and version information. The default file can have multiple versions, each with its own language, that can be retrieved by specifying the **Accept-Language** header.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

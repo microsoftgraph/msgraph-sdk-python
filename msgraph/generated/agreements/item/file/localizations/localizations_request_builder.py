@@ -47,7 +47,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None) -> Optional[AgreementFileLocalizationCollectionResponse]:
         """
-        The localized version of the terms of use agreement files attached to the agreement.
+        Get a list of the default and localized agreement files.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AgreementFileLocalizationCollectionResponse]
@@ -94,7 +94,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The localized version of the terms of use agreement files attached to the agreement.
+        Get a list of the default and localized agreement files.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LocalizationsRequestBuilderGetQueryParameters():
         """
-        The localized version of the terms of use agreement files attached to the agreement.
+        Get a list of the default and localized agreement files.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .agreements.agreements_request_builder import AgreementsRequestBuilder
     from .app_catalogs.app_catalogs_request_builder import AppCatalogsRequestBuilder
     from .applications.applications_request_builder import ApplicationsRequestBuilder
+    from .applications_with_app_id.applications_with_app_id_request_builder import ApplicationsWithAppIdRequestBuilder
     from .application_templates.application_templates_request_builder import ApplicationTemplatesRequestBuilder
     from .audit_logs.audit_logs_request_builder import AuditLogsRequestBuilder
     from .authentication_method_configurations.authentication_method_configurations_request_builder import AuthenticationMethodConfigurationsRequestBuilder
@@ -31,9 +32,11 @@ if TYPE_CHECKING:
     from .device_app_management.device_app_management_request_builder import DeviceAppManagementRequestBuilder
     from .device_management.device_management_request_builder import DeviceManagementRequestBuilder
     from .devices.devices_request_builder import DevicesRequestBuilder
+    from .devices_with_device_id.devices_with_device_id_request_builder import DevicesWithDeviceIdRequestBuilder
     from .directory.directory_request_builder import DirectoryRequestBuilder
     from .directory_objects.directory_objects_request_builder import DirectoryObjectsRequestBuilder
     from .directory_roles.directory_roles_request_builder import DirectoryRolesRequestBuilder
+    from .directory_roles_with_role_template_id.directory_roles_with_role_template_id_request_builder import DirectoryRolesWithRoleTemplateIdRequestBuilder
     from .directory_role_templates.directory_role_templates_request_builder import DirectoryRoleTemplatesRequestBuilder
     from .domain_dns_records.domain_dns_records_request_builder import DomainDnsRecordsRequestBuilder
     from .domains.domains_request_builder import DomainsRequestBuilder
@@ -70,6 +73,7 @@ if TYPE_CHECKING:
     from .search.search_request_builder import SearchRequestBuilder
     from .security.security_request_builder import SecurityRequestBuilder
     from .service_principals.service_principals_request_builder import ServicePrincipalsRequestBuilder
+    from .service_principals_with_app_id.service_principals_with_app_id_request_builder import ServicePrincipalsWithAppIdRequestBuilder
     from .shares.shares_request_builder import SharesRequestBuilder
     from .sites.sites_request_builder import SitesRequestBuilder
     from .solutions.solutions_request_builder import SolutionsRequestBuilder
@@ -101,6 +105,58 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         if not self.request_adapter.base_url:
             self.request_adapter.base_url = "https://graph.microsoft.com/v1.0"
         self.path_parameters["base_url"] = self.request_adapter.base_url
+    
+    def applications_with_app_id(self,app_id: Optional[str] = None) -> ApplicationsWithAppIdRequestBuilder:
+        """
+        Provides operations to manage the collection of application entities.
+        Args:
+            app_id: Alternate key of application
+        Returns: ApplicationsWithAppIdRequestBuilder
+        """
+        if not app_id:
+            raise TypeError("app_id cannot be null.")
+        from .applications_with_app_id.applications_with_app_id_request_builder import ApplicationsWithAppIdRequestBuilder
+
+        return ApplicationsWithAppIdRequestBuilder(self.request_adapter, self.path_parameters, app_id)
+    
+    def devices_with_device_id(self,device_id: Optional[str] = None) -> DevicesWithDeviceIdRequestBuilder:
+        """
+        Provides operations to manage the collection of device entities.
+        Args:
+            device_id: Alternate key of device
+        Returns: DevicesWithDeviceIdRequestBuilder
+        """
+        if not device_id:
+            raise TypeError("device_id cannot be null.")
+        from .devices_with_device_id.devices_with_device_id_request_builder import DevicesWithDeviceIdRequestBuilder
+
+        return DevicesWithDeviceIdRequestBuilder(self.request_adapter, self.path_parameters, device_id)
+    
+    def directory_roles_with_role_template_id(self,role_template_id: Optional[str] = None) -> DirectoryRolesWithRoleTemplateIdRequestBuilder:
+        """
+        Provides operations to manage the collection of directoryRole entities.
+        Args:
+            role_template_id: Alternate key of directoryRole
+        Returns: DirectoryRolesWithRoleTemplateIdRequestBuilder
+        """
+        if not role_template_id:
+            raise TypeError("role_template_id cannot be null.")
+        from .directory_roles_with_role_template_id.directory_roles_with_role_template_id_request_builder import DirectoryRolesWithRoleTemplateIdRequestBuilder
+
+        return DirectoryRolesWithRoleTemplateIdRequestBuilder(self.request_adapter, self.path_parameters, role_template_id)
+    
+    def service_principals_with_app_id(self,app_id: Optional[str] = None) -> ServicePrincipalsWithAppIdRequestBuilder:
+        """
+        Provides operations to manage the collection of servicePrincipal entities.
+        Args:
+            app_id: Alternate key of servicePrincipal
+        Returns: ServicePrincipalsWithAppIdRequestBuilder
+        """
+        if not app_id:
+            raise TypeError("app_id cannot be null.")
+        from .service_principals_with_app_id.service_principals_with_app_id_request_builder import ServicePrincipalsWithAppIdRequestBuilder
+
+        return ServicePrincipalsWithAppIdRequestBuilder(self.request_adapter, self.path_parameters, app_id)
     
     @property
     def admin(self) -> AdminRequestBuilder:

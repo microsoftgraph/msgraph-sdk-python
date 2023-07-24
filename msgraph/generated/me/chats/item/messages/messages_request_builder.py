@@ -70,7 +70,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[ChatMessage]:
         """
-        Send a new chatMessage in the specified chat. This API can't create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can create a chat message.
+        Send a new chatMessage in the specified channel or a chat.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +113,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Send a new chatMessage in the specified chat. This API can't create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can create a chat message.
+        Send a new chatMessage in the specified channel or a chat.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

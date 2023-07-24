@@ -17,11 +17,11 @@ from .entity import Entity
 class DirectoryAudit(Entity):
     # Indicates the date and time the activity was performed. The Timestamp type is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     activity_date_time: Optional[datetime.datetime] = None
-    # Indicates the activity name or the operation name (examples: 'Create User' and 'Add member to group'). For full list, see Azure AD activity list.
+    # Indicates the activity name or the operation name (examples: 'Create User' and 'Add member to group'). For a list of activities logged, refer to Azure AD audit log categories and activities.
     activity_display_name: Optional[str] = None
     # Indicates additional details on the activity.
     additional_details: Optional[List[KeyValue]] = None
-    # Indicates which resource category that's targeted by the activity. For example: UserManagement, GroupManagement, ApplicationManagement, RoleManagement.
+    # Indicates which resource category that's targeted by the activity. For example: UserManagement, GroupManagement, ApplicationManagement, RoleManagement. For a list of categories for activities logged, refer to Azure AD audit log categories and activities.
     category: Optional[str] = None
     # Indicates a unique ID that helps correlate activities that span across various services. Can be used to trace logs across services.
     correlation_id: Optional[str] = None

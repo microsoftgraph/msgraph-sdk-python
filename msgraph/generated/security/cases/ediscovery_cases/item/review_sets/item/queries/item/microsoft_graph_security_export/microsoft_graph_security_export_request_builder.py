@@ -29,7 +29,7 @@ class MicrosoftGraphSecurityExportRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ExportPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityExportRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action export
+        Initiate an export from a microsoft.graph.security.ediscoveryReviewSetQuery. For details, see Export documents from a review set in eDiscovery (Premium).
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -51,7 +51,7 @@ class MicrosoftGraphSecurityExportRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ExportPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityExportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action export
+        Initiate an export from a microsoft.graph.security.ediscoveryReviewSetQuery. For details, see Export documents from a review set in eDiscovery (Premium).
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

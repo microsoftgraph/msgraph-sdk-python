@@ -49,7 +49,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MobileAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileAppCollectionResponse]:
         """
-        The mobile apps.
+        List properties and relationships of the managedMobileLobApp objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppCollectionResponse]
@@ -71,7 +71,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MobileApp] = None, request_configuration: Optional[MobileAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[MobileApp]:
         """
-        Create new navigation property to mobileApps for deviceAppManagement
+        Create a new iosLobApp object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +96,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The mobile apps.
+        List properties and relationships of the managedMobileLobApp objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MobileApp] = None, request_configuration: Optional[MobileAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to mobileApps for deviceAppManagement
+        Create a new iosLobApp object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -163,7 +163,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppsRequestBuilderGetQueryParameters():
         """
-        The mobile apps.
+        List properties and relationships of the managedMobileLobApp objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

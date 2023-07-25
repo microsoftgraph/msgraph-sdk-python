@@ -47,7 +47,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[RoleAssignmentCollectionResponse]:
         """
-        List of Role assignments for this role definition.
+        List properties and relationships of the roleAssignment objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleAssignmentCollectionResponse]
@@ -69,7 +69,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[RoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[RoleAssignment]:
         """
-        Create new navigation property to roleAssignments for deviceManagement
+        Create a new roleAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of Role assignments for this role definition.
+        List properties and relationships of the roleAssignment objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[RoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to roleAssignments for deviceManagement
+        Create a new roleAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleAssignmentsRequestBuilderGetQueryParameters():
         """
-        List of Role assignments for this role definition.
+        List properties and relationships of the roleAssignment objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

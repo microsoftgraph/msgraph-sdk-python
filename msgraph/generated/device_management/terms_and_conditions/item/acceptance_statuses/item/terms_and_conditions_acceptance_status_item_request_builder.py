@@ -30,7 +30,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property acceptanceStatuses for deviceManagement
+        Deletes a termsAndConditionsAcceptanceStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +49,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatus]:
         """
-        The list of acceptance statuses for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAcceptanceStatus object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditionsAcceptanceStatus]
@@ -71,7 +71,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatus]:
         """
-        Update the navigation property acceptanceStatuses in deviceManagement
+        Update the properties of a termsAndConditionsAcceptanceStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +96,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property acceptanceStatuses for deviceManagement
+        Deletes a termsAndConditionsAcceptanceStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of acceptance statuses for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAcceptanceStatus object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property acceptanceStatuses in deviceManagement
+        Update the properties of a termsAndConditionsAcceptanceStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TermsAndConditionsAcceptanceStatusItemRequestBuilderGetQueryParameters():
         """
-        The list of acceptance statuses for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAcceptanceStatus object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

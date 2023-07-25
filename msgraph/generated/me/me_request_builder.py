@@ -115,7 +115,7 @@ class MeRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MeRequestBuilderGetRequestConfiguration] = None) -> Optional[User]:
         """
-        Retrieve the properties and relationships of user object.
+        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
@@ -178,7 +178,7 @@ class MeRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of user object.
+        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -830,7 +830,7 @@ class MeRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MeRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of user object.
+        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

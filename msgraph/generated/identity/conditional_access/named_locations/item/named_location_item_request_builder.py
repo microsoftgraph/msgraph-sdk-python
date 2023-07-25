@@ -29,7 +29,7 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[NamedLocationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a countryNamedLocation object.
+        Delete an ipNamedLocation object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -70,7 +70,7 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[NamedLocation] = None, request_configuration: Optional[NamedLocationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[NamedLocation]:
         """
-        Update the properties of a countryNamedLocation object.
+        Update the properties of an ipNamedLocation object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[NamedLocationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a countryNamedLocation object.
+        Delete an ipNamedLocation object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[NamedLocation] = None, request_configuration: Optional[NamedLocationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a countryNamedLocation object.
+        Update the properties of an ipNamedLocation object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

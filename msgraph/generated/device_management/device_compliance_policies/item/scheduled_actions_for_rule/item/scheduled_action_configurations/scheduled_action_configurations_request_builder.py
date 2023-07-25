@@ -47,7 +47,7 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceActionItemCollectionResponse]:
         """
-        The list of scheduled action configurations for this compliance policy. Compliance policy must have one and only one block scheduled action.
+        List properties and relationships of the deviceComplianceActionItem objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceActionItemCollectionResponse]
@@ -69,7 +69,7 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceComplianceActionItem] = None, request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceComplianceActionItem]:
         """
-        Create new navigation property to scheduledActionConfigurations for deviceManagement
+        Create a new deviceComplianceActionItem object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of scheduled action configurations for this compliance policy. Compliance policy must have one and only one block scheduled action.
+        List properties and relationships of the deviceComplianceActionItem objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceComplianceActionItem] = None, request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to scheduledActionConfigurations for deviceManagement
+        Create a new deviceComplianceActionItem object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScheduledActionConfigurationsRequestBuilderGetQueryParameters():
         """
-        The list of scheduled action configurations for this compliance policy. Compliance policy must have one and only one block scheduled action.
+        List properties and relationships of the deviceComplianceActionItem objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

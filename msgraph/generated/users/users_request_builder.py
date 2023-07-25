@@ -73,7 +73,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> Optional[User]:
         """
-        Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
+        Create a new user object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -116,7 +116,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
+        Create a new user object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

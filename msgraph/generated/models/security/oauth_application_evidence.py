@@ -10,14 +10,13 @@ from .alert_evidence import AlertEvidence
 
 @dataclass
 class OauthApplicationEvidence(AlertEvidence):
+    odata_type = "#microsoft.graph.security.oauthApplicationEvidence"
     # Unique identifier of the application.
     app_id: Optional[str] = None
     # Name of the application.
     display_name: Optional[str] = None
     # The unique identifier of the application object in Azure AD.
     object_id: Optional[str] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     # The name of the application publisher.
     publisher: Optional[str] = None
     

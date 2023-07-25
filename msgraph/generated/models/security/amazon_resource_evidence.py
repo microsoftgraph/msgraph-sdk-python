@@ -10,12 +10,11 @@ from .alert_evidence import AlertEvidence
 
 @dataclass
 class AmazonResourceEvidence(AlertEvidence):
+    odata_type = "#microsoft.graph.security.amazonResourceEvidence"
     # The unique identifier for the Amazon account.
     amazon_account_id: Optional[str] = None
     # The Amazon resource identifier (ARN) for the cloud resource.
     amazon_resource_id: Optional[str] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     # The name of the resource.
     resource_name: Optional[str] = None
     # The type of the resource.

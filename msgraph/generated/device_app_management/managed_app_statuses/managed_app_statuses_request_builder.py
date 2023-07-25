@@ -47,7 +47,7 @@ class ManagedAppStatusesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppStatusCollectionResponse]:
         """
-        The managed app statuses.
+        List properties and relationships of the managedAppStatus objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppStatusCollectionResponse]
@@ -94,7 +94,7 @@ class ManagedAppStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The managed app statuses.
+        List properties and relationships of the managedAppStatus objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class ManagedAppStatusesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppStatusesRequestBuilderGetQueryParameters():
         """
-        The managed app statuses.
+        List properties and relationships of the managedAppStatus objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

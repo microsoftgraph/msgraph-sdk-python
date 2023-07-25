@@ -29,7 +29,7 @@ class DeviceComplianceUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceComplianceUserStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property userStatuses for deviceManagement
+        Deletes a deviceComplianceUserStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class DeviceComplianceUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceComplianceUserStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceUserStatus]:
         """
-        List of DeviceComplianceUserStatus.
+        Read properties and relationships of the deviceComplianceUserStatus object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceUserStatus]
@@ -70,7 +70,7 @@ class DeviceComplianceUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceComplianceUserStatus] = None, request_configuration: Optional[DeviceComplianceUserStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceComplianceUserStatus]:
         """
-        Update the navigation property userStatuses in deviceManagement
+        Update the properties of a deviceComplianceUserStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class DeviceComplianceUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceComplianceUserStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property userStatuses for deviceManagement
+        Deletes a deviceComplianceUserStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class DeviceComplianceUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceComplianceUserStatusItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of DeviceComplianceUserStatus.
+        Read properties and relationships of the deviceComplianceUserStatus object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeviceComplianceUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceComplianceUserStatus] = None, request_configuration: Optional[DeviceComplianceUserStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property userStatuses in deviceManagement
+        Update the properties of a deviceComplianceUserStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeviceComplianceUserStatusItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceComplianceUserStatusItemRequestBuilderGetQueryParameters():
         """
-        List of DeviceComplianceUserStatus.
+        Read properties and relationships of the deviceComplianceUserStatus object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -12,31 +12,24 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
-    from ...models.organizational_branding_localization import OrganizationalBrandingLocalization
-    from .background_image.background_image_request_builder import BackgroundImageRequestBuilder
-    from .banner_logo.banner_logo_request_builder import BannerLogoRequestBuilder
-    from .custom_c_s_s.custom_c_s_s_request_builder import CustomCSSRequestBuilder
-    from .favicon.favicon_request_builder import FaviconRequestBuilder
-    from .header_logo.header_logo_request_builder import HeaderLogoRequestBuilder
-    from .square_logo.square_logo_request_builder import SquareLogoRequestBuilder
-    from .square_logo_dark.square_logo_dark_request_builder import SquareLogoDarkRequestBuilder
+    from ...models.teams_app_settings import TeamsAppSettings
 
-class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
+class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
     """
-    Provides operations to manage the collection of organizationalBrandingLocalization entities.
+    Provides operations to manage the teamsAppSettings property of the microsoft.graph.teamwork entity.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
-        Instantiates a new OrganizationalBrandingLocalizationItemRequestBuilder and sets the default values.
+        Instantiates a new TeamsAppSettingsRequestBuilder and sets the default values.
         Args:
             path_parameters: The raw url or the Url template parameters for the request.
             request_adapter: The request adapter to use to execute the requests.
         """
-        super().__init__(request_adapter, "{+baseurl}/localizations/{organizationalBrandingLocalization%2Did}{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/teamwork/teamsAppSettings{?%24select,%24expand}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[TeamsAppSettingsRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from localizations
+        Delete navigation property teamsAppSettings for teamwork
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -53,12 +46,12 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalization]:
+    async def get(self,request_configuration: Optional[TeamsAppSettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsAppSettings]:
         """
-        Get entity from localizations by key
+        Get teamsAppSettings from teamwork
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[OrganizationalBrandingLocalization]
+        Returns: Optional[TeamsAppSettings]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,17 +64,17 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.organizational_branding_localization import OrganizationalBrandingLocalization
+        from ...models.teams_app_settings import TeamsAppSettings
 
-        return await self.request_adapter.send_async(request_info, OrganizationalBrandingLocalization, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamsAppSettings, error_mapping)
     
-    async def patch(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalization]:
+    async def patch(self,body: Optional[TeamsAppSettings] = None, request_configuration: Optional[TeamsAppSettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[TeamsAppSettings]:
         """
-        Update entity in localizations
+        Update the navigation property teamsAppSettings in teamwork
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[OrganizationalBrandingLocalization]
+        Returns: Optional[TeamsAppSettings]
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,13 +89,13 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models.organizational_branding_localization import OrganizationalBrandingLocalization
+        from ...models.teams_app_settings import TeamsAppSettings
 
-        return await self.request_adapter.send_async(request_info, OrganizationalBrandingLocalization, error_mapping)
+        return await self.request_adapter.send_async(request_info, TeamsAppSettings, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[TeamsAppSettingsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from localizations
+        Delete navigation property teamsAppSettings for teamwork
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -116,9 +109,9 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[TeamsAppSettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get entity from localizations by key
+        Get teamsAppSettings from teamwork
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -134,9 +127,9 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TeamsAppSettings] = None, request_configuration: Optional[TeamsAppSettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in localizations
+        Update the navigation property teamsAppSettings in teamwork
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -155,73 +148,10 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def background_image(self) -> BackgroundImageRequestBuilder:
-        """
-        Provides operations to manage the media for the organizationalBrandingLocalization entity.
-        """
-        from .background_image.background_image_request_builder import BackgroundImageRequestBuilder
-
-        return BackgroundImageRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def banner_logo(self) -> BannerLogoRequestBuilder:
-        """
-        Provides operations to manage the media for the organizationalBrandingLocalization entity.
-        """
-        from .banner_logo.banner_logo_request_builder import BannerLogoRequestBuilder
-
-        return BannerLogoRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def custom_c_s_s(self) -> CustomCSSRequestBuilder:
-        """
-        Provides operations to manage the media for the organizationalBrandingLocalization entity.
-        """
-        from .custom_c_s_s.custom_c_s_s_request_builder import CustomCSSRequestBuilder
-
-        return CustomCSSRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def favicon(self) -> FaviconRequestBuilder:
-        """
-        Provides operations to manage the media for the organizationalBrandingLocalization entity.
-        """
-        from .favicon.favicon_request_builder import FaviconRequestBuilder
-
-        return FaviconRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def header_logo(self) -> HeaderLogoRequestBuilder:
-        """
-        Provides operations to manage the media for the organizationalBrandingLocalization entity.
-        """
-        from .header_logo.header_logo_request_builder import HeaderLogoRequestBuilder
-
-        return HeaderLogoRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def square_logo(self) -> SquareLogoRequestBuilder:
-        """
-        Provides operations to manage the media for the organizationalBrandingLocalization entity.
-        """
-        from .square_logo.square_logo_request_builder import SquareLogoRequestBuilder
-
-        return SquareLogoRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def square_logo_dark(self) -> SquareLogoDarkRequestBuilder:
-        """
-        Provides operations to manage the media for the organizationalBrandingLocalization entity.
-        """
-        from .square_logo_dark.square_logo_dark_request_builder import SquareLogoDarkRequestBuilder
-
-        return SquareLogoDarkRequestBuilder(self.request_adapter, self.path_parameters)
-    
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
-    class OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+    class TeamsAppSettingsRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
         """
@@ -229,9 +159,9 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
         """
     
     @dataclass
-    class OrganizationalBrandingLocalizationItemRequestBuilderGetQueryParameters():
+    class TeamsAppSettingsRequestBuilderGetQueryParameters():
         """
-        Get entity from localizations by key
+        Get teamsAppSettings from teamwork
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -258,20 +188,20 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
-    class OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+    class TeamsAppSettingsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OrganizationalBrandingLocalizationItemRequestBuilder.OrganizationalBrandingLocalizationItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TeamsAppSettingsRequestBuilder.TeamsAppSettingsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
-    class OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+    class TeamsAppSettingsRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
         """

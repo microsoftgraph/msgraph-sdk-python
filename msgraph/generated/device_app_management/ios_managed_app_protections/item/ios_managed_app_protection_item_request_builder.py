@@ -32,7 +32,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property iosManagedAppProtections for deviceAppManagement
+        Deletes a iosManagedAppProtection.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -51,7 +51,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[IosManagedAppProtection]:
         """
-        iOS managed app policies.
+        Read properties and relationships of the iosManagedAppProtection object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IosManagedAppProtection]
@@ -73,7 +73,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[IosManagedAppProtection]:
         """
-        Update the navigation property iosManagedAppProtections in deviceAppManagement
+        Update the properties of a iosManagedAppProtection object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +98,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property iosManagedAppProtections for deviceAppManagement
+        Deletes a iosManagedAppProtection.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        iOS managed app policies.
+        Read properties and relationships of the iosManagedAppProtection object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -132,7 +132,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property iosManagedAppProtections in deviceAppManagement
+        Update the properties of a iosManagedAppProtection object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +191,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IosManagedAppProtectionItemRequestBuilderGetQueryParameters():
         """
-        iOS managed app policies.
+        Read properties and relationships of the iosManagedAppProtection object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

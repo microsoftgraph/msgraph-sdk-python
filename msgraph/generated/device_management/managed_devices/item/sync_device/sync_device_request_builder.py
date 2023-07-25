@@ -28,7 +28,7 @@ class SyncDeviceRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[SyncDeviceRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action syncDevice
+        Not yet documented
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -47,7 +47,7 @@ class SyncDeviceRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[SyncDeviceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action syncDevice
+        Not yet documented
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

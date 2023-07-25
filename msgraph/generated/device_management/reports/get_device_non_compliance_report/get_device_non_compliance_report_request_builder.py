@@ -29,7 +29,7 @@ class GetDeviceNonComplianceReportRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[GetDeviceNonComplianceReportPostRequestBody] = None, request_configuration: Optional[GetDeviceNonComplianceReportRequestBuilderPostRequestConfiguration] = None) -> bytes:
         """
-        Invoke action getDeviceNonComplianceReport
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -52,7 +52,7 @@ class GetDeviceNonComplianceReportRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[GetDeviceNonComplianceReportPostRequestBody] = None, request_configuration: Optional[GetDeviceNonComplianceReportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action getDeviceNonComplianceReport
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

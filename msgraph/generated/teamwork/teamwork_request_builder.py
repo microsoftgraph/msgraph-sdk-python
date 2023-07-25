@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from ..models.teamwork import Teamwork
     from .deleted_teams.deleted_teams_request_builder import DeletedTeamsRequestBuilder
     from .send_activity_notification_to_recipients.send_activity_notification_to_recipients_request_builder import SendActivityNotificationToRecipientsRequestBuilder
+    from .teams_app_settings.teams_app_settings_request_builder import TeamsAppSettingsRequestBuilder
     from .workforce_integrations.workforce_integrations_request_builder import WorkforceIntegrationsRequestBuilder
 
 class TeamworkRequestBuilder(BaseRequestBuilder):
@@ -133,6 +134,15 @@ class TeamworkRequestBuilder(BaseRequestBuilder):
         from .send_activity_notification_to_recipients.send_activity_notification_to_recipients_request_builder import SendActivityNotificationToRecipientsRequestBuilder
 
         return SendActivityNotificationToRecipientsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def teams_app_settings(self) -> TeamsAppSettingsRequestBuilder:
+        """
+        Provides operations to manage the teamsAppSettings property of the microsoft.graph.teamwork entity.
+        """
+        from .teams_app_settings.teams_app_settings_request_builder import TeamsAppSettingsRequestBuilder
+
+        return TeamsAppSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def workforce_integrations(self) -> WorkforceIntegrationsRequestBuilder:

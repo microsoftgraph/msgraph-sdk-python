@@ -56,7 +56,6 @@ if TYPE_CHECKING:
     from .identity_providers.identity_providers_request_builder import IdentityProvidersRequestBuilder
     from .information_protection.information_protection_request_builder import InformationProtectionRequestBuilder
     from .invitations.invitations_request_builder import InvitationsRequestBuilder
-    from .localizations.localizations_request_builder import LocalizationsRequestBuilder
     from .me.me_request_builder import MeRequestBuilder
     from .oauth2_permission_grants.oauth2_permission_grants_request_builder import Oauth2PermissionGrantsRequestBuilder
     from .organization.organization_request_builder import OrganizationRequestBuilder
@@ -535,15 +534,6 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         from .invitations.invitations_request_builder import InvitationsRequestBuilder
 
         return InvitationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def localizations(self) -> LocalizationsRequestBuilder:
-        """
-        Provides operations to manage the collection of organizationalBrandingLocalization entities.
-        """
-        from .localizations.localizations_request_builder import LocalizationsRequestBuilder
-
-        return LocalizationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def me(self) -> MeRequestBuilder:

@@ -29,7 +29,7 @@ class DeviceConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceConfigurationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property assignments for deviceManagement
+        Deletes a deviceConfigurationAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class DeviceConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceConfigurationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationAssignment]:
         """
-        The list of assignments for the device configuration profile.
+        Read properties and relationships of the deviceConfigurationAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationAssignment]
@@ -70,7 +70,7 @@ class DeviceConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceConfigurationAssignment] = None, request_configuration: Optional[DeviceConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceConfigurationAssignment]:
         """
-        Update the navigation property assignments in deviceManagement
+        Update the properties of a deviceConfigurationAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class DeviceConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property assignments for deviceManagement
+        Deletes a deviceConfigurationAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class DeviceConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of assignments for the device configuration profile.
+        Read properties and relationships of the deviceConfigurationAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeviceConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceConfigurationAssignment] = None, request_configuration: Optional[DeviceConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property assignments in deviceManagement
+        Update the properties of a deviceConfigurationAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeviceConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The list of assignments for the device configuration profile.
+        Read properties and relationships of the deviceConfigurationAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

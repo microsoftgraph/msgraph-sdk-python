@@ -32,7 +32,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceEnrollmentConfigurations for deviceManagement
+        Deletes a deviceEnrollmentLimitConfiguration.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -51,7 +51,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        The list of device enrollment configurations
+        Read properties and relationships of the deviceEnrollmentConfiguration object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfiguration]
@@ -73,7 +73,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        Update the navigation property deviceEnrollmentConfigurations in deviceManagement
+        Update the properties of a deviceEnrollmentPlatformRestrictionsConfiguration object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +98,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceEnrollmentConfigurations for deviceManagement
+        Deletes a deviceEnrollmentLimitConfiguration.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of device enrollment configurations
+        Read properties and relationships of the deviceEnrollmentConfiguration object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -132,7 +132,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceEnrollmentConfigurations in deviceManagement
+        Update the properties of a deviceEnrollmentPlatformRestrictionsConfiguration object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +191,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceEnrollmentConfigurationItemRequestBuilderGetQueryParameters():
         """
-        The list of device enrollment configurations
+        Read properties and relationships of the deviceEnrollmentConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -10,6 +10,7 @@ from .alert_evidence import AlertEvidence
 
 @dataclass
 class CloudApplicationEvidence(AlertEvidence):
+    odata_type = "#microsoft.graph.security.cloudApplicationEvidence"
     # Unique identifier of the application.
     app_id: Optional[int] = None
     # Name of the application.
@@ -18,8 +19,6 @@ class CloudApplicationEvidence(AlertEvidence):
     instance_id: Optional[int] = None
     # Name of the instance of the SaaS application.
     instance_name: Optional[str] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     # The identifier of the SaaS application.
     saas_app_id: Optional[int] = None
     

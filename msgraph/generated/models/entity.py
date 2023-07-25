@@ -605,6 +605,7 @@ if TYPE_CHECKING:
     from .teams_app import TeamsApp
     from .teams_app_definition import TeamsAppDefinition
     from .teams_app_installation import TeamsAppInstallation
+    from .teams_app_settings import TeamsAppSettings
     from .teams_async_operation import TeamsAsyncOperation
     from .teams_tab import TeamsTab
     from .teams_template import TeamsTemplate
@@ -3211,6 +3212,10 @@ class Entity(AdditionalDataHolder, Parsable):
             from .teams_app_installation import TeamsAppInstallation
 
             return TeamsAppInstallation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAppSettings".casefold():
+            from .teams_app_settings import TeamsAppSettings
+
+            return TeamsAppSettings()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.teamsAsyncOperation".casefold():
             from .teams_async_operation import TeamsAsyncOperation
 
@@ -4516,6 +4521,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition
         from .teams_app_installation import TeamsAppInstallation
+        from .teams_app_settings import TeamsAppSettings
         from .teams_async_operation import TeamsAsyncOperation
         from .teams_tab import TeamsTab
         from .teams_template import TeamsTemplate
@@ -5292,6 +5298,7 @@ class Entity(AdditionalDataHolder, Parsable):
         from .teams_app import TeamsApp
         from .teams_app_definition import TeamsAppDefinition
         from .teams_app_installation import TeamsAppInstallation
+        from .teams_app_settings import TeamsAppSettings
         from .teams_async_operation import TeamsAsyncOperation
         from .teams_tab import TeamsTab
         from .teams_template import TeamsTemplate

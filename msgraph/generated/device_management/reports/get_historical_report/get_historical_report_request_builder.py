@@ -29,7 +29,7 @@ class GetHistoricalReportRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[GetHistoricalReportPostRequestBody] = None, request_configuration: Optional[GetHistoricalReportRequestBuilderPostRequestConfiguration] = None) -> bytes:
         """
-        Invoke action getHistoricalReport
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -52,7 +52,7 @@ class GetHistoricalReportRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[GetHistoricalReportPostRequestBody] = None, request_configuration: Optional[GetHistoricalReportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action getHistoricalReport
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

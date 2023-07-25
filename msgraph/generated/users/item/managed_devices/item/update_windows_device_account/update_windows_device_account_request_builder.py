@@ -29,7 +29,7 @@ class UpdateWindowsDeviceAccountRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[UpdateWindowsDeviceAccountPostRequestBody] = None, request_configuration: Optional[UpdateWindowsDeviceAccountRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action updateWindowsDeviceAccount
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -51,7 +51,7 @@ class UpdateWindowsDeviceAccountRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[UpdateWindowsDeviceAccountPostRequestBody] = None, request_configuration: Optional[UpdateWindowsDeviceAccountRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action updateWindowsDeviceAccount
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

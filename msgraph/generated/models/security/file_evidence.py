@@ -12,14 +12,13 @@ from .alert_evidence import AlertEvidence
 
 @dataclass
 class FileEvidence(AlertEvidence):
+    odata_type = "#microsoft.graph.security.fileEvidence"
     # The status of the detection.The possible values are: detected, blocked, prevented, unknownFutureValue.
     detection_status: Optional[DetectionStatus] = None
     # The file details.
     file_details: Optional[FileDetails] = None
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
     mde_device_id: Optional[str] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FileEvidence:

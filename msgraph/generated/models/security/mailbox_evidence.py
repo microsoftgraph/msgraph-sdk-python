@@ -11,10 +11,9 @@ from .alert_evidence import AlertEvidence
 
 @dataclass
 class MailboxEvidence(AlertEvidence):
+    odata_type = "#microsoft.graph.security.mailboxEvidence"
     # The name associated with the mailbox.
     display_name: Optional[str] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     # The primary email address of the mailbox.
     primary_address: Optional[str] = None
     # The user account of the mailbox.

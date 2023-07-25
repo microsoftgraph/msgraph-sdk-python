@@ -29,7 +29,7 @@ class SetPriorityRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SetPriorityPostRequestBody] = None, request_configuration: Optional[SetPriorityRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action setPriority
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -51,7 +51,7 @@ class SetPriorityRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SetPriorityPostRequestBody] = None, request_configuration: Optional[SetPriorityRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action setPriority
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

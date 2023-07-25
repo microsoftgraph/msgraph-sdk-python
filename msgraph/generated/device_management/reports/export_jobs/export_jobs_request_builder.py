@@ -47,7 +47,7 @@ class ExportJobsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ExportJobsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementExportJobCollectionResponse]:
         """
-        Entity representing a job to export a report
+        List properties and relationships of the deviceManagementExportJob objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementExportJobCollectionResponse]
@@ -69,7 +69,7 @@ class ExportJobsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceManagementExportJob] = None, request_configuration: Optional[ExportJobsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceManagementExportJob]:
         """
-        Create new navigation property to exportJobs for deviceManagement
+        Create a new deviceManagementExportJob object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class ExportJobsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ExportJobsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Entity representing a job to export a report
+        List properties and relationships of the deviceManagementExportJob objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class ExportJobsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceManagementExportJob] = None, request_configuration: Optional[ExportJobsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to exportJobs for deviceManagement
+        Create a new deviceManagementExportJob object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class ExportJobsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExportJobsRequestBuilderGetQueryParameters():
         """
-        Entity representing a job to export a report
+        List properties and relationships of the deviceManagementExportJob objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -47,7 +47,7 @@ class DeviceComplianceSettingStatesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceComplianceSettingStatesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceSettingStateCollectionResponse]:
         """
-        Not yet documented
+        List properties and relationships of the deviceComplianceSettingState objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceSettingStateCollectionResponse]
@@ -69,7 +69,7 @@ class DeviceComplianceSettingStatesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceComplianceSettingState] = None, request_configuration: Optional[DeviceComplianceSettingStatesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceComplianceSettingState]:
         """
-        Create new navigation property to deviceComplianceSettingStates for deviceManagement
+        Create a new deviceComplianceSettingState object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class DeviceComplianceSettingStatesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceComplianceSettingStatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Not yet documented
+        List properties and relationships of the deviceComplianceSettingState objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DeviceComplianceSettingStatesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceComplianceSettingState] = None, request_configuration: Optional[DeviceComplianceSettingStatesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to deviceComplianceSettingStates for deviceManagement
+        Create a new deviceComplianceSettingState object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class DeviceComplianceSettingStatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceComplianceSettingStatesRequestBuilderGetQueryParameters():
         """
-        Not yet documented
+        List properties and relationships of the deviceComplianceSettingState objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

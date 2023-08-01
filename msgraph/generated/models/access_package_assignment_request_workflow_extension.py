@@ -13,15 +13,15 @@ from .custom_callout_extension import CustomCalloutExtension
 @dataclass
 class AccessPackageAssignmentRequestWorkflowExtension(CustomCalloutExtension):
     odata_type = "#microsoft.graph.accessPackageAssignmentRequestWorkflowExtension"
-    # The callbackConfiguration property
+    # The callback configuration for a custom extension.
     callback_configuration: Optional[CustomExtensionCallbackConfiguration] = None
-    # The createdBy property
+    # The userPrincipalName of the user or identity of the subject that created this resource. Read-only.
     created_by: Optional[str] = None
-    # The createdDateTime property
+    # When the object was created.
     created_date_time: Optional[datetime.datetime] = None
-    # The lastModifiedBy property
+    # The userPrincipalName of the identity that last modified the object.
     last_modified_by: Optional[str] = None
-    # The lastModifiedDateTime property
+    # When the object was last modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

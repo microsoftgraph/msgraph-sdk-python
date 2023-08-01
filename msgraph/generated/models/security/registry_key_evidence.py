@@ -10,8 +10,7 @@ from .alert_evidence import AlertEvidence
 
 @dataclass
 class RegistryKeyEvidence(AlertEvidence):
-    # The OdataType property
-    odata_type: Optional[str] = None
+    odata_type = "#microsoft.graph.security.registryKeyEvidence"
     # Registry hive of the key that the recorded action was applied to.
     registry_hive: Optional[str] = None
     # Registry key that the recorded action was applied to.

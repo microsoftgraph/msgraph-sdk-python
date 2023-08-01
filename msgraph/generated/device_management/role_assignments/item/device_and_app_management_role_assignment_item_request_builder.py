@@ -30,7 +30,7 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder(BaseRequestBuilder)
     
     async def delete(self,request_configuration: Optional[DeviceAndAppManagementRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property roleAssignments for deviceManagement
+        Deletes a deviceAndAppManagementRoleAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +49,7 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder(BaseRequestBuilder)
     
     async def get(self,request_configuration: Optional[DeviceAndAppManagementRoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceAndAppManagementRoleAssignment]:
         """
-        The Role Assignments.
+        Read properties and relationships of the deviceAndAppManagementRoleAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceAndAppManagementRoleAssignment]
@@ -71,7 +71,7 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder(BaseRequestBuilder)
     
     async def patch(self,body: Optional[DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[DeviceAndAppManagementRoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceAndAppManagementRoleAssignment]:
         """
-        Update the navigation property roleAssignments in deviceManagement
+        Update the properties of a deviceAndAppManagementRoleAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +96,7 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder(BaseRequestBuilder)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceAndAppManagementRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property roleAssignments for deviceManagement
+        Deletes a deviceAndAppManagementRoleAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder(BaseRequestBuilder)
     
     def to_get_request_information(self,request_configuration: Optional[DeviceAndAppManagementRoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Role Assignments.
+        Read properties and relationships of the deviceAndAppManagementRoleAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder(BaseRequestBuilder)
     
     def to_patch_request_information(self,body: Optional[DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[DeviceAndAppManagementRoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property roleAssignments in deviceManagement
+        Update the properties of a deviceAndAppManagementRoleAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder(BaseRequestBuilder)
     @dataclass
     class DeviceAndAppManagementRoleAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The Role Assignments.
+        Read properties and relationships of the deviceAndAppManagementRoleAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -11,11 +11,11 @@ class LoginPageLayoutConfiguration(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The isFooterShown property
+    # Option to show the footer on the sign-in page.
     is_footer_shown: Optional[bool] = None
-    # The isHeaderShown property
+    # Option to show the header on the sign-in page.
     is_header_shown: Optional[bool] = None
-    # The layoutTemplateType property
+    # Represents the layout template to be displayed on the login page for a tenant. The possible values are  default - Represents the default Microsoft layout with a centered lightbox.  verticalSplit - Represents a layout with a backgound on the left side and a full-height lightbox to the right.  unknownFutureValue - Evolvable enumeration sentinel value. Do not use.
     layout_template_type: Optional[LayoutTemplateType] = None
     # The OdataType property
     odata_type: Optional[str] = None

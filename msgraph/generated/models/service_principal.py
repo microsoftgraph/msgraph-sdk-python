@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .app_role import AppRole
     from .app_role_assignment import AppRoleAssignment
     from .claims_mapping_policy import ClaimsMappingPolicy
+    from .custom_security_attribute_value import CustomSecurityAttributeValue
     from .delegated_permission_classification import DelegatedPermissionClassification
     from .directory_object import DirectoryObject
     from .endpoint import Endpoint
@@ -62,6 +63,8 @@ class ServicePrincipal(DirectoryObject):
     claims_mapping_policies: Optional[List[ClaimsMappingPolicy]] = None
     # Directory objects created by this service principal. Read-only. Nullable.
     created_objects: Optional[List[DirectoryObject]] = None
+    # The customSecurityAttributes property
+    custom_security_attributes: Optional[CustomSecurityAttributeValue] = None
     # The delegatedPermissionClassifications property
     delegated_permission_classifications: Optional[List[DelegatedPermissionClassification]] = None
     # Free text field to provide an internal end-user facing description of the service principal. End-user portals such MyApps will display the application description in this field. The maximum allowed size is 1024 characters. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
@@ -114,7 +117,7 @@ class ServicePrincipal(DirectoryObject):
     saml_single_sign_on_settings: Optional[SamlSingleSignOnSettings] = None
     # Contains the list of identifiersUris, copied over from the associated application. Additional values can be added to hybrid applications. These values can be used to identify the permissions exposed by this app within Azure AD. For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties. Not nullable.  Supports $filter (eq, not, ge, le, startsWith).
     service_principal_names: Optional[List[str]] = None
-    # Identifies whether the service principal represents an application, a managed identity, or a legacy application. This is set by Azure AD internally. The servicePrincipalType property can be set to three different values: __Application - A service principal that represents an application or service. The appId property identifies the associated app registration, and matches the appId of an application, possibly from a different tenant. If the associated app registration is missing, tokens are not issued for the service principal.__ManagedIdentity - A service principal that represents a managed identity. Service principals representing managed identities can be granted access and permissions, but cannot be updated or modified directly.__Legacy - A service principal that represents an app created before app registrations, or through legacy experiences. Legacy service principal can have credentials, service principal names, reply URLs, and other properties which are editable by an authorized user, but does not have an associated app registration. The appId value does not associate the service principal with an app registration. The service principal can only be used in the tenant where it was created.__SocialIdp - For internal use.
+    # Identifies whether the service principal represents an application, a managed identity, or a legacy application. This is set by Azure AD internally. The servicePrincipalType property can be set to three different values: Application - A service principal that represents an application or service. The appId property identifies the associated app registration, and matches the appId of an application, possibly from a different tenant. If the associated app registration is missing, tokens are not issued for the service principal.ManagedIdentity - A service principal that represents a managed identity. Service principals representing managed identities can be granted access and permissions, but cannot be updated or modified directly.Legacy - A service principal that represents an app created before app registrations, or through legacy experiences. Legacy service principal can have credentials, service principal names, reply URLs, and other properties which are editable by an authorized user, but does not have an associated app registration. The appId value does not associate the service principal with an app registration. The service principal can only be used in the tenant where it was created.SocialIdp - For internal use.
     service_principal_type: Optional[str] = None
     # Specifies the Microsoft accounts that are supported for the current application. Read-only. Supported values are:AzureADMyOrg: Users with a Microsoft work or school account in my organization's Azure AD tenant (single-tenant).AzureADMultipleOrgs: Users with a Microsoft work or school account in any organization's Azure AD tenant (multi-tenant).AzureADandPersonalMicrosoftAccount: Users with a personal Microsoft account, or a work or school account in any organization's Azure AD tenant.PersonalMicrosoftAccount: Users with a personal Microsoft account only.
     sign_in_audience: Optional[str] = None
@@ -155,6 +158,7 @@ class ServicePrincipal(DirectoryObject):
         from .app_role import AppRole
         from .app_role_assignment import AppRoleAssignment
         from .claims_mapping_policy import ClaimsMappingPolicy
+        from .custom_security_attribute_value import CustomSecurityAttributeValue
         from .delegated_permission_classification import DelegatedPermissionClassification
         from .directory_object import DirectoryObject
         from .endpoint import Endpoint
@@ -177,6 +181,7 @@ class ServicePrincipal(DirectoryObject):
         from .app_role import AppRole
         from .app_role_assignment import AppRoleAssignment
         from .claims_mapping_policy import ClaimsMappingPolicy
+        from .custom_security_attribute_value import CustomSecurityAttributeValue
         from .delegated_permission_classification import DelegatedPermissionClassification
         from .directory_object import DirectoryObject
         from .endpoint import Endpoint
@@ -210,6 +215,7 @@ class ServicePrincipal(DirectoryObject):
             "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
             "claimsMappingPolicies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(ClaimsMappingPolicy)),
             "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(DirectoryObject)),
+            "customSecurityAttributes": lambda n : setattr(self, 'custom_security_attributes', n.get_object_value(CustomSecurityAttributeValue)),
             "delegatedPermissionClassifications": lambda n : setattr(self, 'delegated_permission_classifications', n.get_collection_of_object_values(DelegatedPermissionClassification)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "disabledByMicrosoftStatus": lambda n : setattr(self, 'disabled_by_microsoft_status', n.get_str_value()),
@@ -274,6 +280,7 @@ class ServicePrincipal(DirectoryObject):
         writer.write_str_value("applicationTemplateId", self.application_template_id)
         writer.write_collection_of_object_values("claimsMappingPolicies", self.claims_mapping_policies)
         writer.write_collection_of_object_values("createdObjects", self.created_objects)
+        writer.write_object_value("customSecurityAttributes", self.custom_security_attributes)
         writer.write_collection_of_object_values("delegatedPermissionClassifications", self.delegated_permission_classifications)
         writer.write_str_value("description", self.description)
         writer.write_str_value("disabledByMicrosoftStatus", self.disabled_by_microsoft_status)

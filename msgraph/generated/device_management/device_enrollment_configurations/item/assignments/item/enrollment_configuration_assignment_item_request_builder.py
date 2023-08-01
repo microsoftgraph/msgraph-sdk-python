@@ -29,7 +29,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property assignments for deviceManagement
+        Deletes a enrollmentConfigurationAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EnrollmentConfigurationAssignment]:
         """
-        The list of group assignments for the device configuration profile
+        Read properties and relationships of the enrollmentConfigurationAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EnrollmentConfigurationAssignment]
@@ -70,7 +70,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EnrollmentConfigurationAssignment] = None, request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EnrollmentConfigurationAssignment]:
         """
-        Update the navigation property assignments in deviceManagement
+        Update the properties of a enrollmentConfigurationAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property assignments for deviceManagement
+        Deletes a enrollmentConfigurationAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of group assignments for the device configuration profile
+        Read properties and relationships of the enrollmentConfigurationAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EnrollmentConfigurationAssignment] = None, request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property assignments in deviceManagement
+        Update the properties of a enrollmentConfigurationAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EnrollmentConfigurationAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The list of group assignments for the device configuration profile
+        Read properties and relationships of the enrollmentConfigurationAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

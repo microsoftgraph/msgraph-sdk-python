@@ -19,39 +19,39 @@ from .entity import Entity
 
 @dataclass
 class ProvisioningObjectSummary(Entity):
-    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    # Represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  SUpports $filter (eq, gt, lt) and orderby.
     activity_date_time: Optional[datetime.datetime] = None
-    # Unique ID of this change in this cycle.
+    # Unique ID of this change in this cycle. Supports $filter (eq, contains).
     change_id: Optional[str] = None
-    # Unique ID per job iteration.
+    # Unique ID per job iteration. Supports $filter (eq, contains).
     cycle_id: Optional[str] = None
     # Indicates how long this provisioning action took to finish. Measured in milliseconds.
     duration_in_milliseconds: Optional[int] = None
-    # Details of who initiated this provisioning.
+    # Details of who initiated this provisioning. Supports $filter (eq, contains).
     initiated_by: Optional[Initiator] = None
-    # The unique ID for the whole provisioning job.
+    # The unique ID for the whole provisioning job. Supports $filter (eq, contains).
     job_id: Optional[str] = None
     # Details of each property that was modified in this provisioning action on this object.
     modified_properties: Optional[List[ModifiedProperty]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Indicates the activity name or the operation name. Possible values are: create, update, delete, stageddelete, disable, other and unknownFutureValue. For a list of activities logged, refer to Azure AD activity list.
+    # Indicates the activity name or the operation name. Possible values are: create, update, delete, stageddelete, disable, other and unknownFutureValue. For a list of activities logged, refer to Azure AD activity list. Supports $filter (eq, contains).
     provisioning_action: Optional[ProvisioningAction] = None
     # Details of provisioning status.
     provisioning_status_info: Optional[ProvisioningStatusInfo] = None
     # Details of each step in provisioning.
     provisioning_steps: Optional[List[ProvisioningStep]] = None
-    # Represents the service principal used for provisioning.
+    # Represents the service principal used for provisioning. Supports $filter (eq) for id and name.
     service_principal: Optional[ProvisioningServicePrincipal] = None
-    # Details of source object being provisioned.
+    # Details of source object being provisioned. Supports $filter (eq, contains) for identityType, id, and displayName.
     source_identity: Optional[ProvisionedIdentity] = None
-    # Details of source system of the object being provisioned.
+    # Details of source system of the object being provisioned. Supports $filter (eq, contains) for displayName.
     source_system: Optional[ProvisioningSystem] = None
-    # Details of target object being provisioned.
+    # Details of target object being provisioned. Supports $filter (eq, contains) for identityType, id, and displayName.
     target_identity: Optional[ProvisionedIdentity] = None
-    # Details of target system of the object being provisioned.
+    # Details of target system of the object being provisioned. Supports $filter (eq, contains) for displayName.
     target_system: Optional[ProvisioningSystem] = None
-    # Unique Azure AD tenant ID.
+    # Unique Azure AD tenant ID. Supports $filter (eq, contains).
     tenant_id: Optional[str] = None
     
     @staticmethod

@@ -73,7 +73,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
-        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the `created` **status**.
+        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the created status.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -132,7 +132,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the `created` **status**.
+        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the created status.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

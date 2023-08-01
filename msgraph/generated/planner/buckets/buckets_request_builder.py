@@ -47,7 +47,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BucketsRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerBucketCollectionResponse]:
         """
-        Retrieve a list of **plannerbucket** objects.
+        Retrieve a list of plannerbucket objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerBucketCollectionResponse]
@@ -94,7 +94,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[BucketsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of **plannerbucket** objects.
+        Retrieve a list of plannerbucket objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BucketsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of **plannerbucket** objects.
+        Retrieve a list of plannerbucket objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

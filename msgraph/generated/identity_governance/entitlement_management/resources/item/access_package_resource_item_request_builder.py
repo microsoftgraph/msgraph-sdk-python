@@ -51,7 +51,7 @@ class AccessPackageResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AccessPackageResourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageResource]:
         """
-        Get resources from identityGovernance
+        The resources associated with the catalogs.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageResource]
@@ -114,7 +114,7 @@ class AccessPackageResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackageResourceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get resources from identityGovernance
+        The resources associated with the catalogs.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class AccessPackageResourceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessPackageResourceItemRequestBuilderGetQueryParameters():
         """
-        Get resources from identityGovernance
+        The resources associated with the catalogs.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

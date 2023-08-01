@@ -30,7 +30,7 @@ class ImportRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ImportPostRequestBody] = None, request_configuration: Optional[ImportRequestBuilderPostRequestConfiguration] = None) -> Optional[ImportResponse]:
         """
-        Invoke action import
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -55,7 +55,7 @@ class ImportRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ImportPostRequestBody] = None, request_configuration: Optional[ImportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action import
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

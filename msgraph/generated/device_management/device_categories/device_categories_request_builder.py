@@ -47,7 +47,7 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCategoryCollectionResponse]:
         """
-        The list of device categories with the tenant.
+        List properties and relationships of the deviceCategory objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCategoryCollectionResponse]
@@ -69,7 +69,7 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[DeviceCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Create new navigation property to deviceCategories for deviceManagement
+        Create a new deviceCategory object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of device categories with the tenant.
+        List properties and relationships of the deviceCategory objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[DeviceCategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to deviceCategories for deviceManagement
+        Create a new deviceCategory object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCategoriesRequestBuilderGetQueryParameters():
         """
-        The list of device categories with the tenant.
+        List properties and relationships of the deviceCategory objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

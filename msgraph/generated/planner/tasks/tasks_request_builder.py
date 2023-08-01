@@ -47,7 +47,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerTaskCollectionResponse]:
         """
-        Retrieve a list of **plannertask** objects.
+        Retrieve a list of plannertask objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerTaskCollectionResponse]
@@ -69,7 +69,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[PlannerTask] = None, request_configuration: Optional[TasksRequestBuilderPostRequestConfiguration] = None) -> Optional[PlannerTask]:
         """
-        Create a new **plannerTask**.
+        Create a new plannerTask.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of **plannertask** objects.
+        Retrieve a list of plannertask objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[PlannerTask] = None, request_configuration: Optional[TasksRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new **plannerTask**.
+        Create a new plannerTask.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TasksRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of **plannertask** objects.
+        Retrieve a list of plannertask objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

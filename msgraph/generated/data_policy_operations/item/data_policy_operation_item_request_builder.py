@@ -48,7 +48,7 @@ class DataPolicyOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DataPolicyOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DataPolicyOperation]:
         """
-        Retrieve the properties of a **dataPolicyOperation** object.
+        Retrieve the properties of a dataPolicyOperation object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DataPolicyOperation]
@@ -111,7 +111,7 @@ class DataPolicyOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DataPolicyOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of a **dataPolicyOperation** object.
+        Retrieve the properties of a dataPolicyOperation object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +161,7 @@ class DataPolicyOperationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DataPolicyOperationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of a **dataPolicyOperation** object.
+        Retrieve the properties of a dataPolicyOperation object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,7 +29,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AdministrativeUnitRequestBuilderGetRequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
-        Get a list of **administrativeUnits** associated with an educationSchool object.
+        Get a list of administrativeUnits associated with an educationSchool object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdministrativeUnit]
@@ -76,7 +76,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AdministrativeUnitRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of **administrativeUnits** associated with an educationSchool object.
+        Get a list of administrativeUnits associated with an educationSchool object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -116,7 +116,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AdministrativeUnitRequestBuilderGetQueryParameters():
         """
-        Get a list of **administrativeUnits** associated with an educationSchool object.
+        Get a list of administrativeUnits associated with an educationSchool object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

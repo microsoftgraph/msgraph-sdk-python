@@ -29,7 +29,7 @@ class GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder(Base
     
     async def post(self,body: Optional[GetDeviceManagementIntentPerSettingContributingProfilesPostRequestBody] = None, request_configuration: Optional[GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilderPostRequestConfiguration] = None) -> bytes:
         """
-        Invoke action getDeviceManagementIntentPerSettingContributingProfiles
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -52,7 +52,7 @@ class GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder(Base
     
     def to_post_request_information(self,body: Optional[GetDeviceManagementIntentPerSettingContributingProfilesPostRequestBody] = None, request_configuration: Optional[GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action getDeviceManagementIntentPerSettingContributingProfiles
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -47,7 +47,7 @@ class SharedWithTeamsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SharedWithTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[SharedWithChannelTeamInfoCollectionResponse]:
         """
-        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
+        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharedWithChannelTeamInfoCollectionResponse]
@@ -94,7 +94,7 @@ class SharedWithTeamsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SharedWithTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
+        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class SharedWithTeamsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SharedWithTeamsRequestBuilderGetQueryParameters():
         """
-        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
+        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

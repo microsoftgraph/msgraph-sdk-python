@@ -29,7 +29,7 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceSettingStateSummaries for deviceManagement
+        Deletes a settingStateDeviceSummary.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SettingStateDeviceSummary]:
         """
-        Device Configuration Setting State Device Summary
+        Read properties and relationships of the settingStateDeviceSummary object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SettingStateDeviceSummary]
@@ -70,7 +70,7 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[SettingStateDeviceSummary] = None, request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SettingStateDeviceSummary]:
         """
-        Update the navigation property deviceSettingStateSummaries in deviceManagement
+        Update the properties of a settingStateDeviceSummary object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceSettingStateSummaries for deviceManagement
+        Deletes a settingStateDeviceSummary.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Device Configuration Setting State Device Summary
+        Read properties and relationships of the settingStateDeviceSummary object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[SettingStateDeviceSummary] = None, request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceSettingStateSummaries in deviceManagement
+        Update the properties of a settingStateDeviceSummary object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SettingStateDeviceSummaryItemRequestBuilderGetQueryParameters():
         """
-        Device Configuration Setting State Device Summary
+        Read properties and relationships of the settingStateDeviceSummary object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

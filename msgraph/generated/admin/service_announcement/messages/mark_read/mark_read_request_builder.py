@@ -30,7 +30,7 @@ class MarkReadRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MarkReadPostRequestBody] = None, request_configuration: Optional[MarkReadRequestBuilderPostRequestConfiguration] = None) -> Optional[MarkReadResponse]:
         """
-        Mark a list of serviceUpdateMessages as **read** for the signed in user.
+        Mark a list of serviceUpdateMessages as read for the signed in user.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -55,7 +55,7 @@ class MarkReadRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MarkReadPostRequestBody] = None, request_configuration: Optional[MarkReadRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Mark a list of serviceUpdateMessages as **read** for the signed in user.
+        Mark a list of serviceUpdateMessages as read for the signed in user.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

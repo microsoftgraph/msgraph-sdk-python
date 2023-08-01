@@ -34,7 +34,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ManagedEBookItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property managedEBooks for deviceAppManagement
+        Deletes a iosVppEBook.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -53,7 +53,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedEBookItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedEBook]:
         """
-        The Managed eBook.
+        Read properties and relationships of the managedEBook object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBook]
@@ -75,7 +75,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ManagedEBook] = None, request_configuration: Optional[ManagedEBookItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedEBook]:
         """
-        Update the navigation property managedEBooks in deviceAppManagement
+        Update the properties of a iosVppEBook object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +100,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedEBookItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property managedEBooks for deviceAppManagement
+        Deletes a iosVppEBook.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -116,7 +116,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedEBookItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Managed eBook.
+        Read properties and relationships of the managedEBook object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -134,7 +134,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ManagedEBook] = None, request_configuration: Optional[ManagedEBookItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property managedEBooks in deviceAppManagement
+        Update the properties of a iosVppEBook object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -211,7 +211,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedEBookItemRequestBuilderGetQueryParameters():
         """
-        The Managed eBook.
+        Read properties and relationships of the managedEBook object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

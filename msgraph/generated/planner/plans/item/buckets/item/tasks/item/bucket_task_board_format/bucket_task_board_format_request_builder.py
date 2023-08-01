@@ -48,7 +48,7 @@ class BucketTaskBoardFormatRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BucketTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerBucketTaskBoardTaskFormat]:
         """
-        Retrieve the properties and relationships of **plannerBucketTaskBoardTaskFormat** object.
+        Retrieve the properties and relationships of plannerBucketTaskBoardTaskFormat object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerBucketTaskBoardTaskFormat]
@@ -111,7 +111,7 @@ class BucketTaskBoardFormatRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[BucketTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of **plannerBucketTaskBoardTaskFormat** object.
+        Retrieve the properties and relationships of plannerBucketTaskBoardTaskFormat object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +161,7 @@ class BucketTaskBoardFormatRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BucketTaskBoardFormatRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of **plannerBucketTaskBoardTaskFormat** object.
+        Retrieve the properties and relationships of plannerBucketTaskBoardTaskFormat object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -47,7 +47,7 @@ class AssignmentPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AssignmentPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageAssignmentPolicyCollectionResponse]:
         """
-        Get assignmentPolicies from identityGovernance
+        Read-only. Nullable. Supports $expand.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageAssignmentPolicyCollectionResponse]
@@ -94,7 +94,7 @@ class AssignmentPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get assignmentPolicies from identityGovernance
+        Read-only. Nullable. Supports $expand.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class AssignmentPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignmentPoliciesRequestBuilderGetQueryParameters():
         """
-        Get assignmentPolicies from identityGovernance
+        Read-only. Nullable. Supports $expand.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

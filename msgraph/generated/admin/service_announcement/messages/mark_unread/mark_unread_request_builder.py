@@ -30,7 +30,7 @@ class MarkUnreadRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MarkUnreadPostRequestBody] = None, request_configuration: Optional[MarkUnreadRequestBuilderPostRequestConfiguration] = None) -> Optional[MarkUnreadResponse]:
         """
-        Mark a list of serviceUpdateMessages as **unread** for the signed in user.
+        Mark a list of serviceUpdateMessages as unread for the signed in user.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -55,7 +55,7 @@ class MarkUnreadRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MarkUnreadPostRequestBody] = None, request_configuration: Optional[MarkUnreadRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Mark a list of serviceUpdateMessages as **unread** for the signed in user.
+        Mark a list of serviceUpdateMessages as unread for the signed in user.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

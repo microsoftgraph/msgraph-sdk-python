@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .conversation_member import ConversationMember
     from .entity import Entity
     from .pinned_chat_message_info import PinnedChatMessageInfo
+    from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
     from .teams_app_installation import TeamsAppInstallation
     from .teams_tab import TeamsTab
     from .teamwork_online_meeting_info import TeamworkOnlineMeetingInfo
@@ -38,6 +39,8 @@ class Chat(Entity):
     odata_type: Optional[str] = None
     # Represents details about an online meeting. If the chat isn't associated with an online meeting, the property is empty. Read-only.
     online_meeting_info: Optional[TeamworkOnlineMeetingInfo] = None
+    # The permissionGrants property
+    permission_grants: Optional[List[ResourceSpecificPermissionGrant]] = None
     # A collection of all the pinned messages in the chat. Nullable.
     pinned_messages: Optional[List[PinnedChatMessageInfo]] = None
     # A collection of all the tabs in the chat. Nullable.
@@ -75,6 +78,7 @@ class Chat(Entity):
         from .conversation_member import ConversationMember
         from .entity import Entity
         from .pinned_chat_message_info import PinnedChatMessageInfo
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .teams_app_installation import TeamsAppInstallation
         from .teams_tab import TeamsTab
         from .teamwork_online_meeting_info import TeamworkOnlineMeetingInfo
@@ -86,6 +90,7 @@ class Chat(Entity):
         from .conversation_member import ConversationMember
         from .entity import Entity
         from .pinned_chat_message_info import PinnedChatMessageInfo
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .teams_app_installation import TeamsAppInstallation
         from .teams_tab import TeamsTab
         from .teamwork_online_meeting_info import TeamworkOnlineMeetingInfo
@@ -99,6 +104,7 @@ class Chat(Entity):
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(ConversationMember)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(ChatMessage)),
             "onlineMeetingInfo": lambda n : setattr(self, 'online_meeting_info', n.get_object_value(TeamworkOnlineMeetingInfo)),
+            "permissionGrants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(ResourceSpecificPermissionGrant)),
             "pinnedMessages": lambda n : setattr(self, 'pinned_messages', n.get_collection_of_object_values(PinnedChatMessageInfo)),
             "tabs": lambda n : setattr(self, 'tabs', n.get_collection_of_object_values(TeamsTab)),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
@@ -127,6 +133,7 @@ class Chat(Entity):
         writer.write_collection_of_object_values("members", self.members)
         writer.write_collection_of_object_values("messages", self.messages)
         writer.write_object_value("onlineMeetingInfo", self.online_meeting_info)
+        writer.write_collection_of_object_values("permissionGrants", self.permission_grants)
         writer.write_collection_of_object_values("pinnedMessages", self.pinned_messages)
         writer.write_collection_of_object_values("tabs", self.tabs)
         writer.write_str_value("tenantId", self.tenant_id)

@@ -28,7 +28,7 @@ class FaviconRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[FaviconRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        Get favicon for the navigation property branding from organization
+        A custom icon (favicon) to replace a default Microsoft product favicon on an Azure AD tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
@@ -48,7 +48,7 @@ class FaviconRequestBuilder(BaseRequestBuilder):
     
     async def put(self,body: bytes, request_configuration: Optional[FaviconRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
-        Update favicon for the navigation property branding in organization
+        A custom icon (favicon) to replace a default Microsoft product favicon on an Azure AD tenant.
         Args:
             body: Binary request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +71,7 @@ class FaviconRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[FaviconRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get favicon for the navigation property branding from organization
+        A custom icon (favicon) to replace a default Microsoft product favicon on an Azure AD tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -87,7 +87,7 @@ class FaviconRequestBuilder(BaseRequestBuilder):
     
     def to_put_request_information(self,body: bytes, request_configuration: Optional[FaviconRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        Update favicon for the navigation property branding in organization
+        A custom icon (favicon) to replace a default Microsoft product favicon on an Azure AD tenant.
         Args:
             body: Binary request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

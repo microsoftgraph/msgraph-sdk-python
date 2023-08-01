@@ -48,7 +48,7 @@ class BookingCurrencyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BookingCurrencyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingCurrency]:
         """
-        Get the properties of a bookingCurrency object that is available to a Microsoft Bookings business. Use the **id** property, which is the currency code, to specify the currency.
+        Get the properties of a bookingCurrency object that is available to a Microsoft Bookings business. Use the id property, which is the currency code, to specify the currency.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCurrency]
@@ -111,7 +111,7 @@ class BookingCurrencyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[BookingCurrencyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties of a bookingCurrency object that is available to a Microsoft Bookings business. Use the **id** property, which is the currency code, to specify the currency.
+        Get the properties of a bookingCurrency object that is available to a Microsoft Bookings business. Use the id property, which is the currency code, to specify the currency.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +161,7 @@ class BookingCurrencyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingCurrencyItemRequestBuilderGetQueryParameters():
         """
-        Get the properties of a bookingCurrency object that is available to a Microsoft Bookings business. Use the **id** property, which is the currency code, to specify the currency.
+        Get the properties of a bookingCurrency object that is available to a Microsoft Bookings business. Use the id property, which is the currency code, to specify the currency.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

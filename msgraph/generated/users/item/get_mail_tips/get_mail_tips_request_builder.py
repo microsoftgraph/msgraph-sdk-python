@@ -30,7 +30,7 @@ class GetMailTipsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[GetMailTipsPostRequestBody] = None, request_configuration: Optional[GetMailTipsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetMailTipsResponse]:
         """
-        Get the MailTips of one or more recipients as available to the signed-in user. Note that by making a `POST` call to the `getMailTips` action, you can request specific types of MailTips to be returned for more than one recipient at one time. The requested MailTips are returned in a mailTips collection.
+        Get the MailTips of one or more recipients as available to the signed-in user. Note that by making a POST call to the getMailTips action, you can request specific types of MailTips to be returned for more than one recipient at one time. The requested MailTips are returned in a mailTips collection.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -55,7 +55,7 @@ class GetMailTipsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[GetMailTipsPostRequestBody] = None, request_configuration: Optional[GetMailTipsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the MailTips of one or more recipients as available to the signed-in user. Note that by making a `POST` call to the `getMailTips` action, you can request specific types of MailTips to be returned for more than one recipient at one time. The requested MailTips are returned in a mailTips collection.
+        Get the MailTips of one or more recipients as available to the signed-in user. Note that by making a POST call to the getMailTips action, you can request specific types of MailTips to be returned for more than one recipient at one time. The requested MailTips are returned in a mailTips collection.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

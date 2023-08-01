@@ -49,7 +49,7 @@ class CallRecordItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CallRecordItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CallRecord]:
         """
-        Retrieve the properties and relationships of a callRecord object. There are two ways to get the **id** of a **callRecord**:
+        Retrieve the properties and relationships of a callRecord object. There are two ways to get the id of a callRecord:
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CallRecord]
@@ -112,7 +112,7 @@ class CallRecordItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CallRecordItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a callRecord object. There are two ways to get the **id** of a **callRecord**:
+        Retrieve the properties and relationships of a callRecord object. There are two ways to get the id of a callRecord:
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class CallRecordItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CallRecordItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a callRecord object. There are two ways to get the **id** of a **callRecord**:
+        Retrieve the properties and relationships of a callRecord object. There are two ways to get the id of a callRecord:
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

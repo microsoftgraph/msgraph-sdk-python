@@ -11,17 +11,17 @@ from .entity import Entity
 
 @dataclass
 class AccessPackageResourceScope(Entity):
-    # The description property
+    # The description of the scope.
     description: Optional[str] = None
-    # The displayName property
+    # The display name of the scope.
     display_name: Optional[str] = None
-    # The isRootScope property
+    # True if the scopes are arranged in a hierarchy and this is the top or root scope of the resource.
     is_root_scope: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The originId property
+    # The unique identifier for the scope in the resource as defined in the origin system.
     origin_id: Optional[str] = None
-    # The originSystem property
+    # The origin system for the scope.
     origin_system: Optional[str] = None
     # The resource property
     resource: Optional[AccessPackageResource] = None

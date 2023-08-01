@@ -29,7 +29,7 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ManagedAppOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property operations for deviceAppManagement
+        Deletes a managedAppOperation.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppOperation]:
         """
-        Zero or more long running operations triggered on the app registration.
+        Read properties and relationships of the managedAppOperation object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppOperation]
@@ -70,7 +70,7 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ManagedAppOperation] = None, request_configuration: Optional[ManagedAppOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedAppOperation]:
         """
-        Update the navigation property operations in deviceAppManagement
+        Update the properties of a managedAppOperation object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedAppOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property operations for deviceAppManagement
+        Deletes a managedAppOperation.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Zero or more long running operations triggered on the app registration.
+        Read properties and relationships of the managedAppOperation object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ManagedAppOperation] = None, request_configuration: Optional[ManagedAppOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property operations in deviceAppManagement
+        Update the properties of a managedAppOperation object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class ManagedAppOperationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppOperationItemRequestBuilderGetQueryParameters():
         """
-        Zero or more long running operations triggered on the app registration.
+        Read properties and relationships of the managedAppOperation object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

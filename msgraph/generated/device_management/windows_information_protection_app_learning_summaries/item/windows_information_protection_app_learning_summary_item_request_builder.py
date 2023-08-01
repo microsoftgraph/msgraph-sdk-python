@@ -29,7 +29,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder(BaseReque
     
     async def delete(self,request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property windowsInformationProtectionAppLearningSummaries for deviceManagement
+        Deletes a windowsInformationProtectionAppLearningSummary.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder(BaseReque
     
     async def get(self,request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLearningSummary]:
         """
-        The windows information protection app learning summaries.
+        Read properties and relationships of the windowsInformationProtectionAppLearningSummary object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionAppLearningSummary]
@@ -70,7 +70,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder(BaseReque
     
     async def patch(self,body: Optional[WindowsInformationProtectionAppLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLearningSummary]:
         """
-        Update the navigation property windowsInformationProtectionAppLearningSummaries in deviceManagement
+        Update the properties of a windowsInformationProtectionAppLearningSummary object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder(BaseReque
     
     def to_delete_request_information(self,request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property windowsInformationProtectionAppLearningSummaries for deviceManagement
+        Deletes a windowsInformationProtectionAppLearningSummary.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder(BaseReque
     
     def to_get_request_information(self,request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The windows information protection app learning summaries.
+        Read properties and relationships of the windowsInformationProtectionAppLearningSummary object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder(BaseReque
     
     def to_patch_request_information(self,body: Optional[WindowsInformationProtectionAppLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property windowsInformationProtectionAppLearningSummaries in deviceManagement
+        Update the properties of a windowsInformationProtectionAppLearningSummary object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder(BaseReque
     @dataclass
     class WindowsInformationProtectionAppLearningSummaryItemRequestBuilderGetQueryParameters():
         """
-        The windows information protection app learning summaries.
+        Read properties and relationships of the windowsInformationProtectionAppLearningSummary object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

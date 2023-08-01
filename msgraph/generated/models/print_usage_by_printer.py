@@ -13,6 +13,8 @@ class PrintUsageByPrinter(PrintUsage):
     odata_type = "#microsoft.graph.printUsageByPrinter"
     # The printerId property
     printer_id: Optional[str] = None
+    # The name of the printer represented by these statistics.
+    printer_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintUsageByPrinter:
@@ -37,6 +39,7 @@ class PrintUsageByPrinter(PrintUsage):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "printerId": lambda n : setattr(self, 'printer_id', n.get_str_value()),
+            "printerName": lambda n : setattr(self, 'printer_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,5 +55,6 @@ class PrintUsageByPrinter(PrintUsage):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("printerId", self.printer_id)
+        writer.write_str_value("printerName", self.printer_name)
     
 

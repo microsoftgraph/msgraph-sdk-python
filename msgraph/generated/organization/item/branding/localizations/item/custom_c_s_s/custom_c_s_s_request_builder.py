@@ -28,7 +28,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CustomCSSRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        Get customCSS for the navigation property localizations from organization
+        CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
@@ -48,7 +48,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     
     async def put(self,body: bytes, request_configuration: Optional[CustomCSSRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
-        Update customCSS for the navigation property localizations in organization
+        CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         Args:
             body: Binary request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +71,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CustomCSSRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get customCSS for the navigation property localizations from organization
+        CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -87,7 +87,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     
     def to_put_request_information(self,body: bytes, request_configuration: Optional[CustomCSSRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        Update customCSS for the navigation property localizations in organization
+        CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         Args:
             body: Binary request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

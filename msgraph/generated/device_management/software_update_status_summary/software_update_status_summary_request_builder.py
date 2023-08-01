@@ -29,7 +29,7 @@ class SoftwareUpdateStatusSummaryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SoftwareUpdateStatusSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[SoftwareUpdateStatusSummary]:
         """
-        The software update status summary.
+        Read properties and relationships of the softwareUpdateStatusSummary object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SoftwareUpdateStatusSummary]
@@ -51,7 +51,7 @@ class SoftwareUpdateStatusSummaryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SoftwareUpdateStatusSummaryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The software update status summary.
+        Read properties and relationships of the softwareUpdateStatusSummary object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -70,7 +70,7 @@ class SoftwareUpdateStatusSummaryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SoftwareUpdateStatusSummaryRequestBuilderGetQueryParameters():
         """
-        The software update status summary.
+        Read properties and relationships of the softwareUpdateStatusSummary object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

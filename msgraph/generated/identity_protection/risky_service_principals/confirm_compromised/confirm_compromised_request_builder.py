@@ -29,7 +29,7 @@ class ConfirmCompromisedRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ConfirmCompromisedPostRequestBody] = None, request_configuration: Optional[ConfirmCompromisedRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Confirm one or more riskyServicePrincipal objects as compromised. This action sets the targeted service principal account's risk level to `high`.
+        Confirm one or more riskyServicePrincipal objects as compromised. This action sets the targeted service principal account's risk level to high.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -51,7 +51,7 @@ class ConfirmCompromisedRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ConfirmCompromisedPostRequestBody] = None, request_configuration: Optional[ConfirmCompromisedRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Confirm one or more riskyServicePrincipal objects as compromised. This action sets the targeted service principal account's risk level to `high`.
+        Confirm one or more riskyServicePrincipal objects as compromised. This action sets the targeted service principal account's risk level to high.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

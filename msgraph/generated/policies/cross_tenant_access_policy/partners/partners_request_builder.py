@@ -47,7 +47,7 @@ class PartnersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[CrossTenantAccessPolicyConfigurationPartnerCollectionResponse]:
         """
-        Get a list of all partner configurations within a cross-tenant access policy. You can also use the `$expand` parameter to list the user synchronization policy for all partner configurations.
+        Get a list of all partner configurations within a cross-tenant access policy. You can also use the $expand parameter to list the user synchronization policy for all partner configurations.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicyConfigurationPartnerCollectionResponse]
@@ -94,7 +94,7 @@ class PartnersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PartnersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of all partner configurations within a cross-tenant access policy. You can also use the `$expand` parameter to list the user synchronization policy for all partner configurations.
+        Get a list of all partner configurations within a cross-tenant access policy. You can also use the $expand parameter to list the user synchronization policy for all partner configurations.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class PartnersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PartnersRequestBuilderGetQueryParameters():
         """
-        Get a list of all partner configurations within a cross-tenant access policy. You can also use the `$expand` parameter to list the user synchronization policy for all partner configurations.
+        Get a list of all partner configurations within a cross-tenant access policy. You can also use the $expand parameter to list the user synchronization policy for all partner configurations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

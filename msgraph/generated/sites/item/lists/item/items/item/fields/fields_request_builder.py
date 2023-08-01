@@ -70,7 +70,7 @@ class FieldsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[FieldValueSet] = None, request_configuration: Optional[FieldsRequestBuilderPatchRequestConfiguration] = None) -> Optional[FieldValueSet]:
         """
-        Update the properties on a **[listItem][]**.
+        Update the properties on a [listItem][].
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -129,7 +129,7 @@ class FieldsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[FieldValueSet] = None, request_configuration: Optional[FieldsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties on a **[listItem][]**.
+        Update the properties on a [listItem][].
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

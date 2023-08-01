@@ -29,7 +29,7 @@ class GetDeviceManagementIntentSettingsReportRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[GetDeviceManagementIntentSettingsReportPostRequestBody] = None, request_configuration: Optional[GetDeviceManagementIntentSettingsReportRequestBuilderPostRequestConfiguration] = None) -> bytes:
         """
-        Invoke action getDeviceManagementIntentSettingsReport
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -52,7 +52,7 @@ class GetDeviceManagementIntentSettingsReportRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[GetDeviceManagementIntentSettingsReportPostRequestBody] = None, request_configuration: Optional[GetDeviceManagementIntentSettingsReportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action getDeviceManagementIntentSettingsReport
+        Not yet documented
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

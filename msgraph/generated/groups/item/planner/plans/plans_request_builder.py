@@ -47,7 +47,7 @@ class PlansRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PlansRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerPlanCollectionResponse]:
         """
-        Retrieve a list of **plannerPlan** objects owned by a group object.
+        Retrieve a list of plannerPlan objects owned by a group object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerPlanCollectionResponse]
@@ -94,7 +94,7 @@ class PlansRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PlansRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of **plannerPlan** objects owned by a group object.
+        Retrieve a list of plannerPlan objects owned by a group object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class PlansRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PlansRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of **plannerPlan** objects owned by a group object.
+        Retrieve a list of plannerPlan objects owned by a group object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,7 +29,7 @@ class ManagedMobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ManagedMobileAppItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property apps for deviceAppManagement
+        Deletes a managedMobileApp.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class ManagedMobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedMobileAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedMobileApp]:
         """
-        List of apps to which the policy is deployed.
+        Read properties and relationships of the managedMobileApp object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedMobileApp]
@@ -70,7 +70,7 @@ class ManagedMobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ManagedMobileApp] = None, request_configuration: Optional[ManagedMobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedMobileApp]:
         """
-        Update the navigation property apps in deviceAppManagement
+        Update the properties of a managedMobileApp object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class ManagedMobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedMobileAppItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property apps for deviceAppManagement
+        Deletes a managedMobileApp.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class ManagedMobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedMobileAppItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of apps to which the policy is deployed.
+        Read properties and relationships of the managedMobileApp object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class ManagedMobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ManagedMobileApp] = None, request_configuration: Optional[ManagedMobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property apps in deviceAppManagement
+        Update the properties of a managedMobileApp object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class ManagedMobileAppItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedMobileAppItemRequestBuilderGetQueryParameters():
         """
-        List of apps to which the policy is deployed.
+        Read properties and relationships of the managedMobileApp object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

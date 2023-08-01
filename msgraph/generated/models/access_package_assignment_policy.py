@@ -22,7 +22,7 @@ from .entity import Entity
 
 @dataclass
 class AccessPackageAssignmentPolicy(Entity):
-    # Access package containing this policy. Read-only.
+    # Access package containing this policy. Read-only.  Supports $expand.
     access_package: Optional[AccessPackage] = None
     # Principals that can be assigned the access package through this policy. The possible values are: notSpecified, specificDirectoryUsers, specificConnectedOrganizationUsers, specificDirectoryServicePrincipals, allMemberUsers, allDirectoryUsers, allDirectoryServicePrincipals, allConfiguredConnectedOrganizationUsers, allExternalUsers, unknownFutureValue.
     allowed_target_scope: Optional[AllowedTargetScope] = None
@@ -32,7 +32,7 @@ class AccessPackageAssignmentPolicy(Entity):
     catalog: Optional[AccessPackageCatalog] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The customExtensionStageSettings property
+    # The collection of stages when to execute one or more custom access package workflow extensions. Supports $expand.
     custom_extension_stage_settings: Optional[List[CustomExtensionStageSetting]] = None
     # The description of the policy.
     description: Optional[str] = None

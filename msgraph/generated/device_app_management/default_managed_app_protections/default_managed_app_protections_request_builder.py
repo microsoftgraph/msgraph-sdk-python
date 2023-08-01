@@ -47,7 +47,7 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[DefaultManagedAppProtectionCollectionResponse]:
         """
-        Default managed app policies.
+        List properties and relationships of the defaultManagedAppProtection objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DefaultManagedAppProtectionCollectionResponse]
@@ -69,7 +69,7 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[DefaultManagedAppProtection]:
         """
-        Create new navigation property to defaultManagedAppProtections for deviceAppManagement
+        Create a new defaultManagedAppProtection object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Default managed app policies.
+        List properties and relationships of the defaultManagedAppProtection objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to defaultManagedAppProtections for deviceAppManagement
+        Create a new defaultManagedAppProtection object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DefaultManagedAppProtectionsRequestBuilderGetQueryParameters():
         """
-        Default managed app policies.
+        List properties and relationships of the defaultManagedAppProtection objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

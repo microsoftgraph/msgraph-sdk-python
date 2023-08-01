@@ -29,7 +29,7 @@ class IosUpdateDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[IosUpdateDeviceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property iosUpdateStatuses for deviceManagement
+        Deletes a iosUpdateDeviceStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class IosUpdateDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IosUpdateDeviceStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[IosUpdateDeviceStatus]:
         """
-        The IOS software update installation statuses for this account.
+        Read properties and relationships of the iosUpdateDeviceStatus object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IosUpdateDeviceStatus]
@@ -70,7 +70,7 @@ class IosUpdateDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[IosUpdateDeviceStatus] = None, request_configuration: Optional[IosUpdateDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[IosUpdateDeviceStatus]:
         """
-        Update the navigation property iosUpdateStatuses in deviceManagement
+        Update the properties of a iosUpdateDeviceStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class IosUpdateDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[IosUpdateDeviceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property iosUpdateStatuses for deviceManagement
+        Deletes a iosUpdateDeviceStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class IosUpdateDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IosUpdateDeviceStatusItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The IOS software update installation statuses for this account.
+        Read properties and relationships of the iosUpdateDeviceStatus object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class IosUpdateDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[IosUpdateDeviceStatus] = None, request_configuration: Optional[IosUpdateDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property iosUpdateStatuses in deviceManagement
+        Update the properties of a iosUpdateDeviceStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class IosUpdateDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IosUpdateDeviceStatusItemRequestBuilderGetQueryParameters():
         """
-        The IOS software update installation statuses for this account.
+        Read properties and relationships of the iosUpdateDeviceStatus object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

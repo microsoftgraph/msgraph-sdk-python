@@ -10,8 +10,7 @@ from .alert_evidence import AlertEvidence
 
 @dataclass
 class UrlEvidence(AlertEvidence):
-    # The OdataType property
-    odata_type: Optional[str] = None
+    odata_type = "#microsoft.graph.security.urlEvidence"
     # The Unique Resource Locator (URL).
     url: Optional[str] = None
     

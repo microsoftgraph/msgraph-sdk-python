@@ -47,7 +47,7 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementPartnerCollectionResponse]:
         """
-        The list of Device Management Partners configured by the tenant.
+        List properties and relationships of the deviceManagementPartner objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementPartnerCollectionResponse]
@@ -69,7 +69,7 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
         """
-        Create new navigation property to deviceManagementPartners for deviceManagement
+        Create a new deviceManagementPartner object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of Device Management Partners configured by the tenant.
+        List properties and relationships of the deviceManagementPartner objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to deviceManagementPartners for deviceManagement
+        Create a new deviceManagementPartner object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceManagementPartnersRequestBuilderGetQueryParameters():
         """
-        The list of Device Management Partners configured by the tenant.
+        List properties and relationships of the deviceManagementPartner objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

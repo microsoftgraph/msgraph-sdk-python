@@ -29,7 +29,7 @@ class ClearPresenceRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ClearPresencePostRequestBody] = None, request_configuration: Optional[ClearPresenceRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Clear the application's presence session for a user. If it is the user's only presence session, the user's presence will change to `Offline/Offline`. For details about presences sessions, see presence: setPresence.
+        Clear the application's presence session for a user. If it is the user's only presence session, the user's presence will change to Offline/Offline. For details about presences sessions, see presence: setPresence.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -51,7 +51,7 @@ class ClearPresenceRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ClearPresencePostRequestBody] = None, request_configuration: Optional[ClearPresenceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Clear the application's presence session for a user. If it is the user's only presence session, the user's presence will change to `Offline/Offline`. For details about presences sessions, see presence: setPresence.
+        Clear the application's presence session for a user. If it is the user's only presence session, the user's presence will change to Offline/Offline. For details about presences sessions, see presence: setPresence.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -30,7 +30,7 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[PlannerBucketItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete **plannerBucket**.
+        Delete plannerBucket.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -96,7 +96,7 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[PlannerBucketItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete **plannerBucket**.
+        Delete plannerBucket.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

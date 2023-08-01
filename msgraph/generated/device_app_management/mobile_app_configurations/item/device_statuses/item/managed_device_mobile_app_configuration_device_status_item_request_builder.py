@@ -29,7 +29,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder(BaseRequ
     
     async def delete(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceStatuses for deviceAppManagement
+        Deletes a managedDeviceMobileAppConfigurationDeviceStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder(BaseRequ
     
     async def get(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationDeviceStatus]:
         """
-        List of ManagedDeviceMobileAppConfigurationDeviceStatus.
+        Read properties and relationships of the managedDeviceMobileAppConfigurationDeviceStatus object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfigurationDeviceStatus]
@@ -70,7 +70,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder(BaseRequ
     
     async def patch(self,body: Optional[ManagedDeviceMobileAppConfigurationDeviceStatus] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationDeviceStatus]:
         """
-        Update the navigation property deviceStatuses in deviceAppManagement
+        Update the properties of a managedDeviceMobileAppConfigurationDeviceStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder(BaseRequ
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceStatuses for deviceAppManagement
+        Deletes a managedDeviceMobileAppConfigurationDeviceStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder(BaseRequ
     
     def to_get_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of ManagedDeviceMobileAppConfigurationDeviceStatus.
+        Read properties and relationships of the managedDeviceMobileAppConfigurationDeviceStatus object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder(BaseRequ
     
     def to_patch_request_information(self,body: Optional[ManagedDeviceMobileAppConfigurationDeviceStatus] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceStatuses in deviceAppManagement
+        Update the properties of a managedDeviceMobileAppConfigurationDeviceStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder(BaseRequ
     @dataclass
     class ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilderGetQueryParameters():
         """
-        List of ManagedDeviceMobileAppConfigurationDeviceStatus.
+        Read properties and relationships of the managedDeviceMobileAppConfigurationDeviceStatus object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

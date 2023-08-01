@@ -70,7 +70,7 @@ class AuthenticationFlowsPolicyRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[AuthenticationFlowsPolicy]:
         """
-        Update the **selfServiceSignUp** property of an authenticationFlowsPolicy object. The properties **id**, **type**, and **description** cannot be modified.
+        Update the selfServiceSignUp property of an authenticationFlowsPolicy object. The properties id, type, and description cannot be modified.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -129,7 +129,7 @@ class AuthenticationFlowsPolicyRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the **selfServiceSignUp** property of an authenticationFlowsPolicy object. The properties **id**, **type**, and **description** cannot be modified.
+        Update the selfServiceSignUp property of an authenticationFlowsPolicy object. The properties id, type, and description cannot be modified.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

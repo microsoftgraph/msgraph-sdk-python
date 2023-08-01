@@ -29,7 +29,7 @@ class CustomExtensionRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CustomExtensionRequestBuilderGetRequestConfiguration] = None) -> Optional[CustomCalloutExtension]:
         """
-        Get customExtension from identityGovernance
+        Indicates the custom workflow extension that will be executed at this stage. Nullable. Supports $expand.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomCalloutExtension]
@@ -51,7 +51,7 @@ class CustomExtensionRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CustomExtensionRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get customExtension from identityGovernance
+        Indicates the custom workflow extension that will be executed at this stage. Nullable. Supports $expand.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -70,7 +70,7 @@ class CustomExtensionRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustomExtensionRequestBuilderGetQueryParameters():
         """
-        Get customExtension from identityGovernance
+        Indicates the custom workflow extension that will be executed at this stage. Nullable. Supports $expand.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -47,7 +47,7 @@ class DeviceCompliancePolicySettingStateSummariesRequestBuilder(BaseRequestBuild
     
     async def get(self,request_configuration: Optional[DeviceCompliancePolicySettingStateSummariesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicySettingStateSummaryCollectionResponse]:
         """
-        The summary states of compliance policy settings for this account.
+        List properties and relationships of the deviceCompliancePolicySettingStateSummary objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicySettingStateSummaryCollectionResponse]
@@ -69,7 +69,7 @@ class DeviceCompliancePolicySettingStateSummariesRequestBuilder(BaseRequestBuild
     
     async def post(self,body: Optional[DeviceCompliancePolicySettingStateSummary] = None, request_configuration: Optional[DeviceCompliancePolicySettingStateSummariesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceCompliancePolicySettingStateSummary]:
         """
-        Create new navigation property to deviceCompliancePolicySettingStateSummaries for deviceManagement
+        Create a new deviceCompliancePolicySettingStateSummary object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class DeviceCompliancePolicySettingStateSummariesRequestBuilder(BaseRequestBuild
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicySettingStateSummariesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The summary states of compliance policy settings for this account.
+        List properties and relationships of the deviceCompliancePolicySettingStateSummary objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DeviceCompliancePolicySettingStateSummariesRequestBuilder(BaseRequestBuild
     
     def to_post_request_information(self,body: Optional[DeviceCompliancePolicySettingStateSummary] = None, request_configuration: Optional[DeviceCompliancePolicySettingStateSummariesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to deviceCompliancePolicySettingStateSummaries for deviceManagement
+        Create a new deviceCompliancePolicySettingStateSummary object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class DeviceCompliancePolicySettingStateSummariesRequestBuilder(BaseRequestBuild
     @dataclass
     class DeviceCompliancePolicySettingStateSummariesRequestBuilderGetQueryParameters():
         """
-        The summary states of compliance policy settings for this account.
+        List properties and relationships of the deviceCompliancePolicySettingStateSummary objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

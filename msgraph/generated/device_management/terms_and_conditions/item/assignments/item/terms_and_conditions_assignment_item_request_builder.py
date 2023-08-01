@@ -29,7 +29,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property assignments for deviceManagement
+        Deletes a termsAndConditionsAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TermsAndConditionsAssignment]:
         """
-        The list of assignments for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditionsAssignment]
@@ -70,7 +70,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TermsAndConditionsAssignment] = None, request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TermsAndConditionsAssignment]:
         """
-        Update the navigation property assignments in deviceManagement
+        Update the properties of a termsAndConditionsAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property assignments for deviceManagement
+        Deletes a termsAndConditionsAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of assignments for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TermsAndConditionsAssignment] = None, request_configuration: Optional[TermsAndConditionsAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property assignments in deviceManagement
+        Update the properties of a termsAndConditionsAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class TermsAndConditionsAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TermsAndConditionsAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The list of assignments for this T&C policy.
+        Read properties and relationships of the termsAndConditionsAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

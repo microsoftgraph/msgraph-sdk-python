@@ -69,7 +69,7 @@ class IncludesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[IncludesRequestBuilderPostRequestConfiguration] = None) -> Optional[PermissionGrantConditionSet]:
         """
-        Add conditions under which a permission grant event is *included* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the **includes** collection of a  permissionGrantPolicy.
+        Add conditions under which a permission grant event is *included* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the includes collection of a  permissionGrantPolicy.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +112,7 @@ class IncludesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[IncludesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add conditions under which a permission grant event is *included* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the **includes** collection of a  permissionGrantPolicy.
+        Add conditions under which a permission grant event is *included* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the includes collection of a  permissionGrantPolicy.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

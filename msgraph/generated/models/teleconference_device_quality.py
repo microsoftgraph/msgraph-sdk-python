@@ -18,7 +18,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
     cloud_service_deployment_environment: Optional[str] = None
     # A unique deployment identifier assigned by Azure.
     cloud_service_deployment_id: Optional[str] = None
-    # The Azure deployed cloud service instance name, such as FrontEnd_IN_3.
+    # The Azure deployed cloud service instance name, such as FrontEndIN3.
     cloud_service_instance_name: Optional[str] = None
     # The Azure deployed cloud service name, such as contoso.cloudapp.net.
     cloud_service_name: Optional[str] = None

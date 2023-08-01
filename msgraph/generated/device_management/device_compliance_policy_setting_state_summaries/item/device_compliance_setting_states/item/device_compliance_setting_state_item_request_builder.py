@@ -29,7 +29,7 @@ class DeviceComplianceSettingStateItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceComplianceSettingStateItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceComplianceSettingStates for deviceManagement
+        Deletes a deviceComplianceSettingState.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +48,7 @@ class DeviceComplianceSettingStateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceComplianceSettingStateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceSettingState]:
         """
-        Not yet documented
+        Read properties and relationships of the deviceComplianceSettingState object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceSettingState]
@@ -70,7 +70,7 @@ class DeviceComplianceSettingStateItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceComplianceSettingState] = None, request_configuration: Optional[DeviceComplianceSettingStateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceComplianceSettingState]:
         """
-        Update the navigation property deviceComplianceSettingStates in deviceManagement
+        Update the properties of a deviceComplianceSettingState object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class DeviceComplianceSettingStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceComplianceSettingStateItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceComplianceSettingStates for deviceManagement
+        Deletes a deviceComplianceSettingState.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class DeviceComplianceSettingStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceComplianceSettingStateItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Not yet documented
+        Read properties and relationships of the deviceComplianceSettingState object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class DeviceComplianceSettingStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceComplianceSettingState] = None, request_configuration: Optional[DeviceComplianceSettingStateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceComplianceSettingStates in deviceManagement
+        Update the properties of a deviceComplianceSettingState object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +161,7 @@ class DeviceComplianceSettingStateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceComplianceSettingStateItemRequestBuilderGetQueryParameters():
         """
-        Not yet documented
+        Read properties and relationships of the deviceComplianceSettingState object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

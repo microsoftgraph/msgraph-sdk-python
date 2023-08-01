@@ -32,7 +32,7 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property androidManagedAppProtections for deviceAppManagement
+        Deletes a androidManagedAppProtection.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -51,7 +51,7 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AndroidManagedAppProtection]:
         """
-        Android managed app policies.
+        Read properties and relationships of the androidManagedAppProtection object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AndroidManagedAppProtection]
@@ -73,7 +73,7 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AndroidManagedAppProtection]:
         """
-        Update the navigation property androidManagedAppProtections in deviceAppManagement
+        Update the properties of a androidManagedAppProtection object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +98,7 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property androidManagedAppProtections for deviceAppManagement
+        Deletes a androidManagedAppProtection.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Android managed app policies.
+        Read properties and relationships of the androidManagedAppProtection object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -132,7 +132,7 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property androidManagedAppProtections in deviceAppManagement
+        Update the properties of a androidManagedAppProtection object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +191,7 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AndroidManagedAppProtectionItemRequestBuilderGetQueryParameters():
         """
-        Android managed app policies.
+        Read properties and relationships of the androidManagedAppProtection object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

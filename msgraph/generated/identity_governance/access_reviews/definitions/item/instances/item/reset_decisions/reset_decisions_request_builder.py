@@ -28,7 +28,7 @@ class ResetDecisionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[ResetDecisionsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Resets all accessReviewInstanceDecisionItem objects on an accessReviewInstance to `notReviewed`.
+        Resets all accessReviewInstanceDecisionItem objects on an accessReviewInstance to notReviewed.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -47,7 +47,7 @@ class ResetDecisionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[ResetDecisionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Resets all accessReviewInstanceDecisionItem objects on an accessReviewInstance to `notReviewed`.
+        Resets all accessReviewInstanceDecisionItem objects on an accessReviewInstance to notReviewed.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

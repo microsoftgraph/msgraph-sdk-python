@@ -48,7 +48,7 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerAssignedToTaskBoardTaskFormat]:
         """
-        Retrieve the properties and relationships of a **plannerAssignedToTaskBoardTaskFormat** object.
+        Retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerAssignedToTaskBoardTaskFormat]
@@ -111,7 +111,7 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a **plannerAssignedToTaskBoardTaskFormat** object.
+        Retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +161,7 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignedToTaskBoardFormatRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a **plannerAssignedToTaskBoardTaskFormat** object.
+        Retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -28,7 +28,7 @@ class WindowsDefenderUpdateSignaturesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[WindowsDefenderUpdateSignaturesRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action windowsDefenderUpdateSignatures
+        Not yet documented
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -47,7 +47,7 @@ class WindowsDefenderUpdateSignaturesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[WindowsDefenderUpdateSignaturesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action windowsDefenderUpdateSignatures
+        Not yet documented
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

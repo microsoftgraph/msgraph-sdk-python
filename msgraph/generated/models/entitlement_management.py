@@ -38,13 +38,13 @@ class EntitlementManagement(Entity):
     connected_organizations: Optional[List[ConnectedOrganization]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The resourceEnvironments property
+    # A reference to the geolocation environments in which a resource is located.
     resource_environments: Optional[List[AccessPackageResourceEnvironment]] = None
-    # The resourceRequests property
+    # Represents a request to add or remove a resource to or from a catalog respectively.
     resource_requests: Optional[List[AccessPackageResourceRequest]] = None
     # The resourceRoleScopes property
     resource_role_scopes: Optional[List[AccessPackageResourceRoleScope]] = None
-    # The resources property
+    # The resources associated with the catalogs.
     resources: Optional[List[AccessPackageResource]] = None
     # The settings that control the behavior of Azure AD entitlement management.
     settings: Optional[EntitlementManagementSettings] = None

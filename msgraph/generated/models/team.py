@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .group import Group
     from .profile_photo import ProfilePhoto
+    from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
     from .schedule import Schedule
     from .team_fun_settings import TeamFunSettings
     from .team_guest_settings import TeamGuestSettings
@@ -63,6 +64,8 @@ class Team(Entity):
     odata_type: Optional[str] = None
     # The async operations that ran or are running on this team.
     operations: Optional[List[TeamsAsyncOperation]] = None
+    # The permissionGrants property
+    permission_grants: Optional[List[ResourceSpecificPermissionGrant]] = None
     # The profile photo for the team.
     photo: Optional[ProfilePhoto] = None
     # The general channel for the team.
@@ -106,6 +109,7 @@ class Team(Entity):
         from .entity import Entity
         from .group import Group
         from .profile_photo import ProfilePhoto
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .schedule import Schedule
         from .team_fun_settings import TeamFunSettings
         from .team_guest_settings import TeamGuestSettings
@@ -124,6 +128,7 @@ class Team(Entity):
         from .entity import Entity
         from .group import Group
         from .profile_photo import ProfilePhoto
+        from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .schedule import Schedule
         from .team_fun_settings import TeamFunSettings
         from .team_guest_settings import TeamGuestSettings
@@ -155,6 +160,7 @@ class Team(Entity):
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(ConversationMember)),
             "messagingSettings": lambda n : setattr(self, 'messaging_settings', n.get_object_value(TeamMessagingSettings)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(TeamsAsyncOperation)),
+            "permissionGrants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(ResourceSpecificPermissionGrant)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(ProfilePhoto)),
             "primaryChannel": lambda n : setattr(self, 'primary_channel', n.get_object_value(Channel)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(Schedule)),
@@ -196,6 +202,7 @@ class Team(Entity):
         writer.write_collection_of_object_values("members", self.members)
         writer.write_object_value("messagingSettings", self.messaging_settings)
         writer.write_collection_of_object_values("operations", self.operations)
+        writer.write_collection_of_object_values("permissionGrants", self.permission_grants)
         writer.write_object_value("photo", self.photo)
         writer.write_object_value("primaryChannel", self.primary_channel)
         writer.write_object_value("schedule", self.schedule)

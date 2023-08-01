@@ -28,6 +28,8 @@ class OnlineMeeting(Entity):
     allow_attendee_to_enable_mic: Optional[bool] = None
     # Specifies the mode of meeting chat.
     allow_meeting_chat: Optional[MeetingChatMode] = None
+    # The allowParticipantsToChangeName property
+    allow_participants_to_change_name: Optional[bool] = None
     # Indicates whether Teams reactions are enabled for the meeting.
     allow_teamwork_reactions: Optional[bool] = None
     # Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
@@ -122,6 +124,7 @@ class OnlineMeeting(Entity):
             "allowAttendeeToEnableCamera": lambda n : setattr(self, 'allow_attendee_to_enable_camera', n.get_bool_value()),
             "allowAttendeeToEnableMic": lambda n : setattr(self, 'allow_attendee_to_enable_mic', n.get_bool_value()),
             "allowMeetingChat": lambda n : setattr(self, 'allow_meeting_chat', n.get_enum_value(MeetingChatMode)),
+            "allowParticipantsToChangeName": lambda n : setattr(self, 'allow_participants_to_change_name', n.get_bool_value()),
             "allowTeamworkReactions": lambda n : setattr(self, 'allow_teamwork_reactions', n.get_bool_value()),
             "allowedPresenters": lambda n : setattr(self, 'allowed_presenters', n.get_enum_value(OnlineMeetingPresenters)),
             "attendanceReports": lambda n : setattr(self, 'attendance_reports', n.get_collection_of_object_values(MeetingAttendanceReport)),
@@ -161,6 +164,7 @@ class OnlineMeeting(Entity):
         writer.write_bool_value("allowAttendeeToEnableCamera", self.allow_attendee_to_enable_camera)
         writer.write_bool_value("allowAttendeeToEnableMic", self.allow_attendee_to_enable_mic)
         writer.write_enum_value("allowMeetingChat", self.allow_meeting_chat)
+        writer.write_bool_value("allowParticipantsToChangeName", self.allow_participants_to_change_name)
         writer.write_bool_value("allowTeamworkReactions", self.allow_teamwork_reactions)
         writer.write_enum_value("allowedPresenters", self.allowed_presenters)
         writer.write_collection_of_object_values("attendanceReports", self.attendance_reports)

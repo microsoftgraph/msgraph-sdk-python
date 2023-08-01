@@ -29,7 +29,7 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
             path_parameters: The raw url or the Url template parameters for the request.
             request_adapter: The request adapter to use to execute the requests.
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}{?includeHiddenFolders*,%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[MailFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -214,12 +214,17 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
                 raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"
+            if original_name == "include_hidden_folders":
+                return "includeHiddenFolders"
             if original_name == "select":
                 return "%24select"
             return original_name
         
         # Expand related entities
         expand: Optional[List[str]] = None
+
+        # Include Hidden Folders
+        include_hidden_folders: Optional[str] = None
 
         # Select properties to be returned
         select: Optional[List[str]] = None

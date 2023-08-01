@@ -70,7 +70,7 @@ class TimeOffItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TimeOff] = None, request_configuration: Optional[TimeOffItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TimeOff]:
         """
-        Replace an existing timeOff object. If the specified timeOff object doesn't exist, this method returns `404 Not found`.
+        Replace an existing timeOff object. If the specified timeOff object doesn't exist, this method returns 404 Not found.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -129,7 +129,7 @@ class TimeOffItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TimeOff] = None, request_configuration: Optional[TimeOffItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Replace an existing timeOff object. If the specified timeOff object doesn't exist, this method returns `404 Not found`.
+        Replace an existing timeOff object. If the specified timeOff object doesn't exist, this method returns 404 Not found.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

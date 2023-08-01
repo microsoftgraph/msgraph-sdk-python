@@ -29,7 +29,7 @@ class PermissionGrantConditionSetItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a permissionGrantConditionSet from the **excludes** collection of a permissionGrantPolicy.
+        Deletes a permissionGrantConditionSet from the excludes collection of a permissionGrantPolicy.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -95,7 +95,7 @@ class PermissionGrantConditionSetItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a permissionGrantConditionSet from the **excludes** collection of a permissionGrantPolicy.
+        Deletes a permissionGrantConditionSet from the excludes collection of a permissionGrantPolicy.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

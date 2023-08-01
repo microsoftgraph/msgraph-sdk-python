@@ -47,7 +47,7 @@ class IssuesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IssuesRequestBuilderGetRequestConfiguration] = None) -> Optional[ServiceHealthIssueCollectionResponse]:
         """
-        Retrieve serviceHealthIssue resources from the **issues** navigation property. This operation retrieves information about all service health issues that exist for the tenant.
+        Retrieve serviceHealthIssue resources from the issues navigation property. This operation retrieves information about all service health issues that exist for the tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceHealthIssueCollectionResponse]
@@ -94,7 +94,7 @@ class IssuesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IssuesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve serviceHealthIssue resources from the **issues** navigation property. This operation retrieves information about all service health issues that exist for the tenant.
+        Retrieve serviceHealthIssue resources from the issues navigation property. This operation retrieves information about all service health issues that exist for the tenant.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class IssuesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IssuesRequestBuilderGetQueryParameters():
         """
-        Retrieve serviceHealthIssue resources from the **issues** navigation property. This operation retrieves information about all service health issues that exist for the tenant.
+        Retrieve serviceHealthIssue resources from the issues navigation property. This operation retrieves information about all service health issues that exist for the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

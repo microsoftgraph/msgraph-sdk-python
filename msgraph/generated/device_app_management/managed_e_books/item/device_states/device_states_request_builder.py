@@ -47,7 +47,7 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceStatesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceInstallStateCollectionResponse]:
         """
-        The list of installation states for this eBook.
+        List properties and relationships of the deviceInstallState objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceInstallStateCollectionResponse]
@@ -69,7 +69,7 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceInstallState] = None, request_configuration: Optional[DeviceStatesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceInstallState]:
         """
-        Create new navigation property to deviceStates for deviceAppManagement
+        Create a new deviceInstallState object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceStatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of installation states for this eBook.
+        List properties and relationships of the deviceInstallState objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceInstallState] = None, request_configuration: Optional[DeviceStatesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to deviceStates for deviceAppManagement
+        Create a new deviceInstallState object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceStatesRequestBuilderGetQueryParameters():
         """
-        The list of installation states for this eBook.
+        List properties and relationships of the deviceInstallState objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

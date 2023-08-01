@@ -12,7 +12,7 @@ from .entity import Entity
 
 @dataclass
 class CustomExtensionStageSetting(Entity):
-    # The customExtension property
+    # Indicates the custom workflow extension that will be executed at this stage. Nullable. Supports $expand.
     custom_extension: Optional[CustomCalloutExtension] = None
     # The OdataType property
     odata_type: Optional[str] = None

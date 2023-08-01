@@ -31,7 +31,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property resourceRoleScopes for identityGovernance
+        Remove a accessPackageResourceRoleScope from an accessPackage list of resource role scopes.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -50,7 +50,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageResourceRoleScope]:
         """
-        Get resourceRoleScopes from identityGovernance
+        The resource roles and scopes in this access package.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageResourceRoleScope]
@@ -97,7 +97,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property resourceRoleScopes for identityGovernance
+        Remove a accessPackageResourceRoleScope from an accessPackage list of resource role scopes.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -113,7 +113,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get resourceRoleScopes from identityGovernance
+        The resource roles and scopes in this access package.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessPackageResourceRoleScopeItemRequestBuilderGetQueryParameters():
         """
-        Get resourceRoleScopes from identityGovernance
+        The resource roles and scopes in this access package.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

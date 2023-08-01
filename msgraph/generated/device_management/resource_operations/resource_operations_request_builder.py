@@ -47,7 +47,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ResourceOperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ResourceOperationCollectionResponse]:
         """
-        The Resource Operations.
+        List properties and relationships of the resourceOperation objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ResourceOperationCollectionResponse]
@@ -69,7 +69,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[ResourceOperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[ResourceOperation]:
         """
-        Create new navigation property to resourceOperations for deviceManagement
+        Create a new resourceOperation object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ResourceOperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Resource Operations.
+        List properties and relationships of the resourceOperation objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[ResourceOperationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to resourceOperations for deviceManagement
+        Create a new resourceOperation object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ResourceOperationsRequestBuilderGetQueryParameters():
         """
-        The Resource Operations.
+        List properties and relationships of the resourceOperation objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

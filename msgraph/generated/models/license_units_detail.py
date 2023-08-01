@@ -10,7 +10,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
 
     # The number of units that are enabled for the active subscription of the service SKU.
     enabled: Optional[int] = None
-    # The lockedOut property
+    # The number of units that are locked out because the customer cancelled their subscription of the service SKU.
     locked_out: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None

@@ -28,7 +28,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove a member from a group via the **members** navigation property. You can't remove a member from groups with dynamic memberships.
+        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -47,7 +47,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a member from a group via the **members** navigation property. You can't remove a member from groups with dynamic memberships.
+        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -65,7 +65,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Remove a member from a group via the **members** navigation property. You can't remove a member from groups with dynamic memberships.
+        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

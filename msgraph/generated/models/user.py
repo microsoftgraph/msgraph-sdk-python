@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .chat import Chat
     from .contact import Contact
     from .contact_folder import ContactFolder
+    from .custom_security_attribute_value import CustomSecurityAttributeValue
     from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
     from .directory_object import DirectoryObject
     from .drive import Drive
@@ -112,6 +113,8 @@ class User(DirectoryObject):
     created_objects: Optional[List[DirectoryObject]] = None
     # Indicates whether the user account was created through one of the following methods:  As a regular school or work account (null). As an external account (Invitation). As a local account for an Azure Active Directory B2C tenant (LocalAccount). Through self-service sign-up by an internal user using email verification (EmailVerified). Through self-service sign-up by an external user signing up through a link that is part of a user flow (SelfServiceSignUp). Read-only.Returned only on $select. Supports $filter (eq, ne, not, in).
     creation_type: Optional[str] = None
+    # The customSecurityAttributes property
+    custom_security_attributes: Optional[CustomSecurityAttributeValue] = None
     # The name for the department in which the user works. Maximum length is 64 characters. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, and eq on null values).
     department: Optional[str] = None
     # The limit on the maximum number of devices that the user is permitted to enroll. Allowed values are 5 or 1000.
@@ -333,6 +336,7 @@ class User(DirectoryObject):
         from .chat import Chat
         from .contact import Contact
         from .contact_folder import ContactFolder
+        from .custom_security_attribute_value import CustomSecurityAttributeValue
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
         from .directory_object import DirectoryObject
         from .drive import Drive
@@ -383,6 +387,7 @@ class User(DirectoryObject):
         from .chat import Chat
         from .contact import Contact
         from .contact_folder import ContactFolder
+        from .custom_security_attribute_value import CustomSecurityAttributeValue
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
         from .directory_object import DirectoryObject
         from .drive import Drive
@@ -449,6 +454,7 @@ class User(DirectoryObject):
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(DirectoryObject)),
             "creationType": lambda n : setattr(self, 'creation_type', n.get_str_value()),
+            "customSecurityAttributes": lambda n : setattr(self, 'custom_security_attributes', n.get_object_value(CustomSecurityAttributeValue)),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
             "deviceEnrollmentLimit": lambda n : setattr(self, 'device_enrollment_limit', n.get_int_value()),
             "deviceManagementTroubleshootingEvents": lambda n : setattr(self, 'device_management_troubleshooting_events', n.get_collection_of_object_values(DeviceManagementTroubleshootingEvent)),
@@ -585,6 +591,7 @@ class User(DirectoryObject):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("createdObjects", self.created_objects)
         writer.write_str_value("creationType", self.creation_type)
+        writer.write_object_value("customSecurityAttributes", self.custom_security_attributes)
         writer.write_str_value("department", self.department)
         writer.write_int_value("deviceEnrollmentLimit", self.device_enrollment_limit)
         writer.write_collection_of_object_values("deviceManagementTroubleshootingEvents", self.device_management_troubleshooting_events)

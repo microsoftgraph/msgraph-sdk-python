@@ -47,7 +47,7 @@ class MobileAppConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MobileAppConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationCollectionResponse]:
         """
-        The Managed Device Mobile Application Configurations.
+        List properties and relationships of the iosMobileAppConfiguration objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfigurationCollectionResponse]
@@ -69,7 +69,7 @@ class MobileAppConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[MobileAppConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfiguration]:
         """
-        Create new navigation property to mobileAppConfigurations for deviceAppManagement
+        Create a new iosMobileAppConfiguration object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class MobileAppConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Managed Device Mobile Application Configurations.
+        List properties and relationships of the iosMobileAppConfiguration objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class MobileAppConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[MobileAppConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to mobileAppConfigurations for deviceAppManagement
+        Create a new iosMobileAppConfiguration object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class MobileAppConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppConfigurationsRequestBuilderGetQueryParameters():
         """
-        The Managed Device Mobile Application Configurations.
+        List properties and relationships of the iosMobileAppConfiguration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

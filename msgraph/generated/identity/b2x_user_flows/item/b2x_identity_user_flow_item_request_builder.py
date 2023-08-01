@@ -13,6 +13,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.b2x_identity_user_flow import B2xIdentityUserFlow
     from ....models.o_data_errors.o_data_error import ODataError
+    from .api_connector_configuration.api_connector_configuration_request_builder import ApiConnectorConfigurationRequestBuilder
     from .identity_providers.identity_providers_request_builder import IdentityProvidersRequestBuilder
     from .languages.languages_request_builder import LanguagesRequestBuilder
     from .user_attribute_assignments.user_attribute_assignments_request_builder import UserAttributeAssignmentsRequestBuilder
@@ -151,6 +152,15 @@ class B2xIdentityUserFlowItemRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def api_connector_configuration(self) -> ApiConnectorConfigurationRequestBuilder:
+        """
+        The apiConnectorConfiguration property
+        """
+        from .api_connector_configuration.api_connector_configuration_request_builder import ApiConnectorConfigurationRequestBuilder
+
+        return ApiConnectorConfigurationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def identity_providers(self) -> IdentityProvidersRequestBuilder:

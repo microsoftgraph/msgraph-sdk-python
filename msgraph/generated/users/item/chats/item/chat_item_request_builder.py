@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .mark_chat_unread_for_user.mark_chat_unread_for_user_request_builder import MarkChatUnreadForUserRequestBuilder
     from .members.members_request_builder import MembersRequestBuilder
     from .messages.messages_request_builder import MessagesRequestBuilder
+    from .permission_grants.permission_grants_request_builder import PermissionGrantsRequestBuilder
     from .pinned_messages.pinned_messages_request_builder import PinnedMessagesRequestBuilder
     from .send_activity_notification.send_activity_notification_request_builder import SendActivityNotificationRequestBuilder
     from .tabs.tabs_request_builder import TabsRequestBuilder
@@ -221,6 +222,15 @@ class ChatItemRequestBuilder(BaseRequestBuilder):
         from .messages.messages_request_builder import MessagesRequestBuilder
 
         return MessagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def permission_grants(self) -> PermissionGrantsRequestBuilder:
+        """
+        Provides operations to manage the permissionGrants property of the microsoft.graph.chat entity.
+        """
+        from .permission_grants.permission_grants_request_builder import PermissionGrantsRequestBuilder
+
+        return PermissionGrantsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def pinned_messages(self) -> PinnedMessagesRequestBuilder:

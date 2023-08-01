@@ -47,7 +47,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[AudioRoutingGroupCollectionResponse]:
         """
-        Get audioRoutingGroups from communications
+        Retrieve a list of audioRoutingGroup objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AudioRoutingGroupCollectionResponse]
@@ -69,7 +69,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
         """
-        Create new navigation property to audioRoutingGroups for communications
+        Create a new audioRoutingGroup.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get audioRoutingGroups from communications
+        Retrieve a list of audioRoutingGroup objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to audioRoutingGroups for communications
+        Create a new audioRoutingGroup.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AudioRoutingGroupsRequestBuilderGetQueryParameters():
         """
-        Get audioRoutingGroups from communications
+        Retrieve a list of audioRoutingGroup objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

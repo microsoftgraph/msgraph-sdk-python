@@ -28,7 +28,7 @@ class TerminateRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[TerminateRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action terminate
+        Not yet documented
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -47,7 +47,7 @@ class TerminateRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[TerminateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action terminate
+        Not yet documented
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

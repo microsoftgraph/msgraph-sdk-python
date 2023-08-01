@@ -1,5 +1,5 @@
 {
-  "descriptionHash": "F92B13BAE36EAAA79E949CB1D6A4FE8619AD8FF993741240693884E7112C18B41DE086A12CDEA1541478EECDC37258482B8FBCD30EEB50FC7EA19664BA0F8304",
+  "descriptionHash": "D789353F3C75209117D37E91A977B262D1194006D35AA14A6E331E322579CC4AE3BEA6F478AA519426EA8B75503789D50276E04B806140750978BF7250F527BD",
   "descriptionLocation": "/mnt/vss/_work/1/s/msgraph-metadata/clean_v10_openapi/openapi.yaml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.5.0",
@@ -24,6 +24,9 @@
     "application/x-www-form-urlencoded"
   ],
   "includePatterns": [],
-  "excludePatterns": [],
+  "excludePatterns": [
+    "/me",
+    "/me/**"
+  ],
   "disabledValidationRules": []
 }

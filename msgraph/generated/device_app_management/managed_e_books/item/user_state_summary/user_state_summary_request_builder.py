@@ -47,7 +47,7 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserStateSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[UserInstallStateSummaryCollectionResponse]:
         """
-        The list of installation states for this eBook.
+        List properties and relationships of the userInstallStateSummary objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserInstallStateSummaryCollectionResponse]
@@ -69,7 +69,7 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[UserStateSummaryRequestBuilderPostRequestConfiguration] = None) -> Optional[UserInstallStateSummary]:
         """
-        Create new navigation property to userStateSummary for deviceAppManagement
+        Create a new userInstallStateSummary object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserStateSummaryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of installation states for this eBook.
+        List properties and relationships of the userInstallStateSummary objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +112,7 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[UserStateSummaryRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to userStateSummary for deviceAppManagement
+        Create a new userInstallStateSummary object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +143,7 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserStateSummaryRequestBuilderGetQueryParameters():
         """
-        The list of installation states for this eBook.
+        List properties and relationships of the userInstallStateSummary objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

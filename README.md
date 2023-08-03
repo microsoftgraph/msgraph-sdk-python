@@ -12,6 +12,7 @@ Get started with the Microsoft Graph SDK for Python by integrating the [Microsof
 ```py
 pip install msgraph-sdk
 ```
+> Note: Enable long paths in your environment if you receive a `Could not install packages due to an OSError`. For details, see [Enable Long Paths in Windows 10, Version 1607, and Later](https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=powershell#enable-long-paths-in-windows-10-version-1607-and-later).
 
 ## 2. Getting started with Microsoft Graph
 

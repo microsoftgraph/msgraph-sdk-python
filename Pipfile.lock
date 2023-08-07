@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "47eab2d4e062dae769c319eee2306bc82d1fa9bec3cba8ad2780c2388b947dca"
+            "sha256": "04372fbd810af36555a0aba5b54fd1bbec91457f9276692366dcc3d96511d24e"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -339,7 +339,7 @@
                 "sha256:ce785cf81a7bdade534297ef9e490ddff800d956625020ab2ec2780a556c313e",
                 "sha256:d0d651aa754ef58d75cec6edfbd21259d93810b73f6ec246436a21b7841908de"
             ],
-            "index": "pypi",
+            "markers": "python_version >= '3.7'",
             "version": "==41.0.3"
         },
         "frozenlist": {
@@ -469,11 +469,11 @@
         },
         "microsoft-kiota-abstractions": {
             "hashes": [
-                "sha256:838ebd421e9eea5c1b4655b7722968b4e8c4540da004382c0cd5b5203db1b1d5",
-                "sha256:bfb047b14c554f1c1bd29e587b0e91bd80e433a4e82d4ceb5828c049edf89a47"
+                "sha256:1b002fee06cd81f2ad4c17801f5d6530cb373b6a2261daa5c8dc396ed8b1b984",
+                "sha256:7cab5f6e7493dc21f1f5e569d02fbc066be382aa20eab2a2b9b857aad0a3f2a1"
             ],
             "index": "pypi",
-            "version": "==0.6.0"
+            "version": "==0.7.0"
         },
         "microsoft-kiota-authentication-azure": {
             "hashes": [
@@ -826,7 +826,7 @@
                 "sha256:3ebb78df84a805d7698245025b975d9d67053cd94c79245ba4b3eb694abe68bb",
                 "sha256:dbace7892d8c0c4ac1ad096662232f831d4e64f4c4545bd53016a3e9d4654743"
             ],
-            "markers": "python_full_version >= '3.8.0'",
+            "markers": "python_version >= '3.8'",
             "version": "==6.8.0"
         },
         "isort": {
@@ -1124,7 +1124,7 @@
                 "sha256:679e51dd4403591b2d6838a48de3d283f3d188412a9782faadf845f298736ba0",
                 "sha256:ebc15946aa78bd63458992fc81ec3b6f7b1e92d51c35e6de1c3804e73b799147"
             ],
-            "markers": "python_full_version >= '3.8.0'",
+            "markers": "python_version >= '3.8'",
             "version": "==3.16.2"
         }
     }

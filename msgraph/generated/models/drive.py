@@ -16,7 +16,8 @@ from .base_item import BaseItem
 
 @dataclass
 class Drive(BaseItem):
-    odata_type = "#microsoft.graph.drive"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.drive"
     # Collection of [bundles][bundle] (albums and multi-select-shared sets of items). Only in personal OneDrive.
     bundles: Optional[List[DriveItem]] = None
     # Describes the type of drive represented by this resource. OneDrive personal drives will return personal. OneDrive for Business will return business. SharePoint document libraries will return documentLibrary. Read-only.

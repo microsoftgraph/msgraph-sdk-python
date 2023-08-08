@@ -15,7 +15,8 @@ from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
 
 @dataclass
 class OnenoteEntityHierarchyModel(OnenoteEntitySchemaObjectModel):
-    odata_type = "#microsoft.graph.onenoteEntityHierarchyModel"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.onenoteEntityHierarchyModel"
     # Identity of the user, device, and application which created the item. Read-only.
     created_by: Optional[IdentitySet] = None
     # The name of the notebook.

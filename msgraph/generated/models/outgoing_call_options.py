@@ -10,7 +10,8 @@ from .call_options import CallOptions
 
 @dataclass
 class OutgoingCallOptions(CallOptions):
-    odata_type = "#microsoft.graph.outgoingCallOptions"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.outgoingCallOptions"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OutgoingCallOptions:

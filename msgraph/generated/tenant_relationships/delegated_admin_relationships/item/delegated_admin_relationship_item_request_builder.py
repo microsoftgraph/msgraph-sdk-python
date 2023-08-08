@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -73,7 +72,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
-        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the `created` **status**.
+        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the created status.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -132,7 +131,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the `created` **status**.
+        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the created status.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

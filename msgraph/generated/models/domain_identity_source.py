@@ -10,7 +10,8 @@ from .identity_source import IdentitySource
 
 @dataclass
 class DomainIdentitySource(IdentitySource):
-    odata_type = "#microsoft.graph.domainIdentitySource"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.domainIdentitySource"
     # The name of the identity source, typically also the domain name. Read only.
     display_name: Optional[str] = None
     # The domain name. Read only.

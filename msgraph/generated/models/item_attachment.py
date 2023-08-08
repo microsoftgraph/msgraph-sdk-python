@@ -11,7 +11,8 @@ from .attachment import Attachment
 
 @dataclass
 class ItemAttachment(Attachment):
-    odata_type = "#microsoft.graph.itemAttachment"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.itemAttachment"
     # The attached message or event. Navigation property.
     item: Optional[OutlookItem] = None
     

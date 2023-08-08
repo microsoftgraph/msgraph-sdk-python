@@ -11,7 +11,8 @@ from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
 class TimeOff(ChangeTrackedEntity):
-    odata_type = "#microsoft.graph.timeOff"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.timeOff"
     # The draft version of this timeOff that is viewable by managers. Required.
     draft_time_off: Optional[TimeOffItem] = None
     # The shared version of this timeOff that is viewable by both employees and managers. Required.

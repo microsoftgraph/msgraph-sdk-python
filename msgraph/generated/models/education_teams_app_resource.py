@@ -10,7 +10,8 @@ from .education_resource import EducationResource
 
 @dataclass
 class EducationTeamsAppResource(EducationResource):
-    odata_type = "#microsoft.graph.educationTeamsAppResource"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.educationTeamsAppResource"
     # URL that points to the icon of the app.
     app_icon_web_url: Optional[str] = None
     # Teams app ID of the application.

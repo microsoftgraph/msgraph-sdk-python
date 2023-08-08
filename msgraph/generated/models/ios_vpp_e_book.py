@@ -14,7 +14,8 @@ class IosVppEBook(ManagedEBook):
     """
     A class containing the properties for iOS Vpp eBook.
     """
-    odata_type = "#microsoft.graph.iosVppEBook"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iosVppEBook"
     # The Apple ID associated with Vpp token.
     apple_id: Optional[str] = None
     # Genres.

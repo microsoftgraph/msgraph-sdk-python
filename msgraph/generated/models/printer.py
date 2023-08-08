@@ -14,7 +14,8 @@ from .printer_base import PrinterBase
 
 @dataclass
 class Printer(PrinterBase):
-    odata_type = "#microsoft.graph.printer"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.printer"
     # The connectors that are associated with the printer.
     connectors: Optional[List[PrintConnector]] = None
     # True if the printer has a physical device for printing. Read-only.

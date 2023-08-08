@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -70,7 +69,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPatchRequestConfiguration] = None) -> Optional[CrossTenantIdentitySyncPolicyPartner]:
         """
-        Update the user synchronization policy of a partner-specific configuration.
+        Create a cross-tenant user synchronization policy for a partner-specific configuration.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -129,7 +128,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the user synchronization policy of a partner-specific configuration.
+        Create a cross-tenant user synchronization policy for a partner-specific configuration.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -11,7 +11,8 @@ from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleTy
 
 @dataclass
 class WindowsUpdateActiveHoursInstall(WindowsUpdateInstallScheduleType):
-    odata_type = "#microsoft.graph.windowsUpdateActiveHoursInstall"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windowsUpdateActiveHoursInstall"
     # Active Hours End
     active_hours_end: Optional[datetime.time] = None
     # Active Hours Start

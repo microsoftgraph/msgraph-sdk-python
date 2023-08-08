@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class VersionsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow%2Did}/versions{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
-    def by_workflow_version_version_number(self,workflow_version_version_number: str) -> WorkflowVersionVersionNumberItemRequestBuilder:
+    def by_workflow_version_version_number(self,workflow_version_version_number: int) -> WorkflowVersionVersionNumberItemRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.identityGovernance.workflow entity.
         Args:

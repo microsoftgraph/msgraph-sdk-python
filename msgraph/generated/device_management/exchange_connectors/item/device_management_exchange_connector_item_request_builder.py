@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -30,7 +29,7 @@ class DeviceManagementExchangeConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceManagementExchangeConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property exchangeConnectors for deviceManagement
+        Deletes a deviceManagementExchangeConnector.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +48,7 @@ class DeviceManagementExchangeConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceManagementExchangeConnectorItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementExchangeConnector]:
         """
-        The list of Exchange Connectors configured by the tenant.
+        Read properties and relationships of the deviceManagementExchangeConnector object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementExchangeConnector]
@@ -71,7 +70,7 @@ class DeviceManagementExchangeConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceManagementExchangeConnector] = None, request_configuration: Optional[DeviceManagementExchangeConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceManagementExchangeConnector]:
         """
-        Update the navigation property exchangeConnectors in deviceManagement
+        Update the properties of a deviceManagementExchangeConnector object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +95,7 @@ class DeviceManagementExchangeConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceManagementExchangeConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property exchangeConnectors for deviceManagement
+        Deletes a deviceManagementExchangeConnector.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +111,7 @@ class DeviceManagementExchangeConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceManagementExchangeConnectorItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of Exchange Connectors configured by the tenant.
+        Read properties and relationships of the deviceManagementExchangeConnector object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +129,7 @@ class DeviceManagementExchangeConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceManagementExchangeConnector] = None, request_configuration: Optional[DeviceManagementExchangeConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property exchangeConnectors in deviceManagement
+        Update the properties of a deviceManagementExchangeConnector object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +170,7 @@ class DeviceManagementExchangeConnectorItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceManagementExchangeConnectorItemRequestBuilderGetQueryParameters():
         """
-        The list of Exchange Connectors configured by the tenant.
+        Read properties and relationships of the deviceManagementExchangeConnector object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

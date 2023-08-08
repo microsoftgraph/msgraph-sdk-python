@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property localizedNotificationMessages for deviceManagement
+        Deletes a localizedNotificationMessage.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +47,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[LocalizedNotificationMessage]:
         """
-        The list of localized messages for this Notification Message Template.
+        Read properties and relationships of the localizedNotificationMessage object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LocalizedNotificationMessage]
@@ -70,7 +69,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[LocalizedNotificationMessage]:
         """
-        Update the navigation property localizedNotificationMessages in deviceManagement
+        Update the properties of a localizedNotificationMessage object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +94,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property localizedNotificationMessages for deviceManagement
+        Deletes a localizedNotificationMessage.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +110,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of localized messages for this Notification Message Template.
+        Read properties and relationships of the localizedNotificationMessage object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property localizedNotificationMessages in deviceManagement
+        Update the properties of a localizedNotificationMessage object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +160,7 @@ class LocalizedNotificationMessageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LocalizedNotificationMessageItemRequestBuilderGetQueryParameters():
         """
-        The list of localized messages for this Notification Message Template.
+        Read properties and relationships of the localizedNotificationMessage object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -11,7 +11,8 @@ from .teams_app_installation import TeamsAppInstallation
 
 @dataclass
 class UserScopeTeamsAppInstallation(TeamsAppInstallation):
-    odata_type = "#microsoft.graph.userScopeTeamsAppInstallation"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.userScopeTeamsAppInstallation"
     # The chat between the user and Teams app.
     chat: Optional[Chat] = None
     

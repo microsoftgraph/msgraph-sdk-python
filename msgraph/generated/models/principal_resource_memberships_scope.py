@@ -10,7 +10,8 @@ from .access_review_scope import AccessReviewScope
 
 @dataclass
 class PrincipalResourceMembershipsScope(AccessReviewScope):
-    odata_type = "#microsoft.graph.principalResourceMembershipsScope"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.principalResourceMembershipsScope"
     # Defines the scopes of the principals whose access to resources are reviewed in the access review.
     principal_scopes: Optional[List[AccessReviewScope]] = None
     # Defines the scopes of the resources for which access is reviewed.

@@ -14,7 +14,8 @@ class WindowsPhone81CompliancePolicy(DeviceCompliancePolicy):
     """
     This class contains compliance settings for Windows 8.1 Mobile.
     """
-    odata_type = "#microsoft.graph.windowsPhone81CompliancePolicy"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windowsPhone81CompliancePolicy"
     # Maximum Windows Phone version.
     os_maximum_version: Optional[str] = None
     # Minimum Windows Phone version.

@@ -11,7 +11,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class AzureResourceEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = None
+    odata_type: Optional[str] = "#microsoft.graph.security.azureResourceEvidence"
     # The unique identifier for the Azure resource.
     resource_id: Optional[str] = None
     # The name of the resource.

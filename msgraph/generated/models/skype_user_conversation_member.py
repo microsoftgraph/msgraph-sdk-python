@@ -10,7 +10,8 @@ from .conversation_member import ConversationMember
 
 @dataclass
 class SkypeUserConversationMember(ConversationMember):
-    odata_type = "#microsoft.graph.skypeUserConversationMember"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.skypeUserConversationMember"
     # Skype ID of the user.
     skype_id: Optional[str] = None
     

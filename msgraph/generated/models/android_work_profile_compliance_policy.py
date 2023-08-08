@@ -15,7 +15,8 @@ class AndroidWorkProfileCompliancePolicy(DeviceCompliancePolicy):
     """
     This class contains compliance settings for Android Work Profile.
     """
-    odata_type = "#microsoft.graph.androidWorkProfileCompliancePolicy"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.androidWorkProfileCompliancePolicy"
     # Require that devices have enabled device threat protection.
     device_threat_protection_enabled: Optional[bool] = None
     # Device threat protection levels for the Device Threat Protection API.

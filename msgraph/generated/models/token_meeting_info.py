@@ -10,7 +10,8 @@ from .meeting_info import MeetingInfo
 
 @dataclass
 class TokenMeetingInfo(MeetingInfo):
-    odata_type = "#microsoft.graph.tokenMeetingInfo"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.tokenMeetingInfo"
     # The token used to join the call.
     token: Optional[str] = None
     

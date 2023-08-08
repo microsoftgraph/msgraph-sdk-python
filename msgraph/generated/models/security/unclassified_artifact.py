@@ -10,7 +10,8 @@ from .artifact import Artifact
 
 @dataclass
 class UnclassifiedArtifact(Artifact):
-    odata_type = "#microsoft.graph.security.unclassifiedArtifact"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.unclassifiedArtifact"
     # The kind for this unclassifiedArtifact resource, describing what this value means.
     kind: Optional[str] = None
     # The value for this unclassifiedArtifact.

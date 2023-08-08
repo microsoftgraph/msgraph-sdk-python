@@ -12,7 +12,8 @@ from .artifact import Artifact
 
 @dataclass
 class HostComponent(Artifact):
-    odata_type = "#microsoft.graph.security.hostComponent"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.hostComponent"
     # The type of component that was detected (for example, Operating System, Framework, Remote Access, or Server).
     category: Optional[str] = None
     # The first date and time when Microsoft Defender Threat Intelligence observed this web component. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014, is 2014-01-01T00:00:00Z.

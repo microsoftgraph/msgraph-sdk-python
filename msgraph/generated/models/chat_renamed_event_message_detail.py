@@ -11,7 +11,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class ChatRenamedEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.chatRenamedEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.chatRenamedEventMessageDetail"
     # The updated name of the chat.
     chat_display_name: Optional[str] = None
     # Unique identifier of the chat.

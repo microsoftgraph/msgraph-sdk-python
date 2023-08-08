@@ -14,7 +14,8 @@ from ..custom_extension_data import CustomExtensionData
 
 @dataclass
 class CustomTaskExtensionCalloutData(CustomExtensionData):
-    odata_type = "#microsoft.graph.identityGovernance.customTaskExtensionCalloutData"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.identityGovernance.customTaskExtensionCalloutData"
     # The subject property
     subject: Optional[User] = None
     # The task property

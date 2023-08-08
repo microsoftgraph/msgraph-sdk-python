@@ -10,7 +10,8 @@ from .conversation_member import ConversationMember
 
 @dataclass
 class MicrosoftAccountUserConversationMember(ConversationMember):
-    odata_type = "#microsoft.graph.microsoftAccountUserConversationMember"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.microsoftAccountUserConversationMember"
     # Microsoft Account ID of the user.
     user_id: Optional[str] = None
     

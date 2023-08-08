@@ -11,7 +11,8 @@ from .threat_assessment_request import ThreatAssessmentRequest
 
 @dataclass
 class EmailFileAssessmentRequest(ThreatAssessmentRequest):
-    odata_type = "#microsoft.graph.emailFileAssessmentRequest"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.emailFileAssessmentRequest"
     # Base64 encoded .eml email file content. The file content cannot fetch back because it isn't stored.
     content_data: Optional[str] = None
     # The reason for mail routed to its destination. Possible values are: none, mailFlowRule, safeSender, blockedSender, advancedSpamFiltering, domainAllowList, domainBlockList, notInAddressBook, firstTimeSender, autoPurgeToInbox, autoPurgeToJunk, autoPurgeToDeleted, outbound, notJunk, junk.

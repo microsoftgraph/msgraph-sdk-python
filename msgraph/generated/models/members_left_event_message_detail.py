@@ -12,7 +12,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class MembersLeftEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.membersLeftEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.membersLeftEventMessageDetail"
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # List of members who left the chat.

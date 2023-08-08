@@ -12,7 +12,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class ConversationMemberRoleUpdatedEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.conversationMemberRoleUpdatedEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.conversationMemberRoleUpdatedEventMessageDetail"
     # Roles for the coversation member user.
     conversation_member_roles: Optional[List[str]] = None
     # Identity of the conversation member user.

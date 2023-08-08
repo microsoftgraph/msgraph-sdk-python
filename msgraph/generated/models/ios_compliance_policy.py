@@ -15,7 +15,8 @@ class IosCompliancePolicy(DeviceCompliancePolicy):
     """
     This class contains compliance settings for IOS.
     """
-    odata_type = "#microsoft.graph.iosCompliancePolicy"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iosCompliancePolicy"
     # Require that devices have enabled device threat protection .
     device_threat_protection_enabled: Optional[bool] = None
     # Device threat protection levels for the Device Threat Protection API.

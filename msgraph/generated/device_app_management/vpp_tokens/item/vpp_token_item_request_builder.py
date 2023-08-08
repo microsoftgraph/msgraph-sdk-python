@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -30,7 +29,7 @@ class VppTokenItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[VppTokenItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property vppTokens for deviceAppManagement
+        Deletes a vppToken.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +48,7 @@ class VppTokenItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[VppTokenItemRequestBuilderGetRequestConfiguration] = None) -> Optional[VppToken]:
         """
-        List of Vpp tokens for this organization.
+        Read properties and relationships of the vppToken object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[VppToken]
@@ -71,7 +70,7 @@ class VppTokenItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[VppToken] = None, request_configuration: Optional[VppTokenItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[VppToken]:
         """
-        Update the navigation property vppTokens in deviceAppManagement
+        Update the properties of a vppToken object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +95,7 @@ class VppTokenItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[VppTokenItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property vppTokens for deviceAppManagement
+        Deletes a vppToken.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +111,7 @@ class VppTokenItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[VppTokenItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of Vpp tokens for this organization.
+        Read properties and relationships of the vppToken object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +129,7 @@ class VppTokenItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[VppToken] = None, request_configuration: Optional[VppTokenItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property vppTokens in deviceAppManagement
+        Update the properties of a vppToken object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +170,7 @@ class VppTokenItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class VppTokenItemRequestBuilderGetQueryParameters():
         """
-        List of Vpp tokens for this organization.
+        Read properties and relationships of the vppToken object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

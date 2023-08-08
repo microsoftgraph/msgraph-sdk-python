@@ -10,7 +10,8 @@ from .education_resource import EducationResource
 
 @dataclass
 class EducationExcelResource(EducationResource):
-    odata_type = "#microsoft.graph.educationExcelResource"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.educationExcelResource"
     # Pointer to the Excel file object.
     file_url: Optional[str] = None
     

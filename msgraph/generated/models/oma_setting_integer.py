@@ -13,7 +13,8 @@ class OmaSettingInteger(OmaSetting):
     """
     OMA Settings Integer definition.
     """
-    odata_type = "#microsoft.graph.omaSettingInteger"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.omaSettingInteger"
     # Value.
     value: Optional[int] = None
     

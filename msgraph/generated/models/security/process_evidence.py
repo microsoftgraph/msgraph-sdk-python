@@ -14,14 +14,14 @@ from .alert_evidence import AlertEvidence
 
 @dataclass
 class ProcessEvidence(AlertEvidence):
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.processEvidence"
     # The status of the detection.The possible values are: detected, blocked, prevented, unknownFutureValue.
     detection_status: Optional[DetectionStatus] = None
     # Image file details.
     image_file: Optional[FileDetails] = None
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
     mde_device_id: Optional[str] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     # Date and time when the parent of the process was created. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     parent_process_creation_date_time: Optional[datetime.datetime] = None
     # Process ID (PID) of the parent process that spawned the process.

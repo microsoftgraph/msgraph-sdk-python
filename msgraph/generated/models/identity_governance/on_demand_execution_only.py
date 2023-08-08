@@ -10,7 +10,8 @@ from .workflow_execution_conditions import WorkflowExecutionConditions
 
 @dataclass
 class OnDemandExecutionOnly(WorkflowExecutionConditions):
-    odata_type = "#microsoft.graph.identityGovernance.onDemandExecutionOnly"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.identityGovernance.onDemandExecutionOnly"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnDemandExecutionOnly:

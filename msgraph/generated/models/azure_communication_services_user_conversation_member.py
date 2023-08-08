@@ -10,7 +10,8 @@ from .conversation_member import ConversationMember
 
 @dataclass
 class AzureCommunicationServicesUserConversationMember(ConversationMember):
-    odata_type = "#microsoft.graph.azureCommunicationServicesUserConversationMember"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.azureCommunicationServicesUserConversationMember"
     # Azure Communication Services ID of the user.
     azure_communication_services_id: Optional[str] = None
     

@@ -14,7 +14,8 @@ class WindowsMicrosoftEdgeApp(MobileApp):
     """
     Contains properties and inherited properties for the Microsoft Edge app on Windows.
     """
-    odata_type = "#microsoft.graph.windowsMicrosoftEdgeApp"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windowsMicrosoftEdgeApp"
     # The enum to specify the channels for Microsoft Edge apps.
     channel: Optional[MicrosoftEdgeChannel] = None
     # The language locale to use when the Edge app displays text to the user.

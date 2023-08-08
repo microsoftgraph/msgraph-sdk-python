@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .chat import Chat
     from .contact import Contact
     from .contact_folder import ContactFolder
+    from .custom_security_attribute_value import CustomSecurityAttributeValue
     from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
     from .directory_object import DirectoryObject
     from .drive import Drive
@@ -59,7 +60,8 @@ from .directory_object import DirectoryObject
 
 @dataclass
 class User(DirectoryObject):
-    odata_type = "#microsoft.graph.user"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.user"
     # A freeform text entry field for the user to describe themselves. Returned only on $select.
     about_me: Optional[str] = None
     # true if the account is enabled; otherwise, false. This property is required when a user is created. Returned only on $select. Supports $filter (eq, ne, not, and in).
@@ -112,6 +114,8 @@ class User(DirectoryObject):
     created_objects: Optional[List[DirectoryObject]] = None
     # Indicates whether the user account was created through one of the following methods:  As a regular school or work account (null). As an external account (Invitation). As a local account for an Azure Active Directory B2C tenant (LocalAccount). Through self-service sign-up by an internal user using email verification (EmailVerified). Through self-service sign-up by an external user signing up through a link that is part of a user flow (SelfServiceSignUp). Read-only.Returned only on $select. Supports $filter (eq, ne, not, in).
     creation_type: Optional[str] = None
+    # The customSecurityAttributes property
+    custom_security_attributes: Optional[CustomSecurityAttributeValue] = None
     # The name for the department in which the user works. Maximum length is 64 characters. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, and eq on null values).
     department: Optional[str] = None
     # The limit on the maximum number of devices that the user is permitted to enroll. Allowed values are 5 or 1000.
@@ -238,7 +242,7 @@ class User(DirectoryObject):
     owned_objects: Optional[List[DirectoryObject]] = None
     # Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword. Returned only on $select. For more information on the default password policies, see Azure AD pasword policies. Supports $filter (ne, not, and eq on null values).
     password_policies: Optional[str] = None
-    # Specifies the password profile for the user. The profile contains the user’s password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
+    # Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
     password_profile: Optional[PasswordProfile] = None
     # A list for the user to enumerate their past projects. Returned only on $select.
     past_projects: Optional[List[str]] = None
@@ -333,6 +337,7 @@ class User(DirectoryObject):
         from .chat import Chat
         from .contact import Contact
         from .contact_folder import ContactFolder
+        from .custom_security_attribute_value import CustomSecurityAttributeValue
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
         from .directory_object import DirectoryObject
         from .drive import Drive
@@ -383,6 +388,7 @@ class User(DirectoryObject):
         from .chat import Chat
         from .contact import Contact
         from .contact_folder import ContactFolder
+        from .custom_security_attribute_value import CustomSecurityAttributeValue
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
         from .directory_object import DirectoryObject
         from .drive import Drive
@@ -449,6 +455,7 @@ class User(DirectoryObject):
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(DirectoryObject)),
             "creationType": lambda n : setattr(self, 'creation_type', n.get_str_value()),
+            "customSecurityAttributes": lambda n : setattr(self, 'custom_security_attributes', n.get_object_value(CustomSecurityAttributeValue)),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
             "deviceEnrollmentLimit": lambda n : setattr(self, 'device_enrollment_limit', n.get_int_value()),
             "deviceManagementTroubleshootingEvents": lambda n : setattr(self, 'device_management_troubleshooting_events', n.get_collection_of_object_values(DeviceManagementTroubleshootingEvent)),
@@ -585,6 +592,7 @@ class User(DirectoryObject):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("createdObjects", self.created_objects)
         writer.write_str_value("creationType", self.creation_type)
+        writer.write_object_value("customSecurityAttributes", self.custom_security_attributes)
         writer.write_str_value("department", self.department)
         writer.write_int_value("deviceEnrollmentLimit", self.device_enrollment_limit)
         writer.write_collection_of_object_values("deviceManagementTroubleshootingEvents", self.device_management_troubleshooting_events)

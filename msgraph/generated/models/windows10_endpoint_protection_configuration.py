@@ -21,7 +21,8 @@ class Windows10EndpointProtectionConfiguration(DeviceConfiguration):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the Windows10EndpointProtectionConfiguration resource.
     """
-    odata_type = "#microsoft.graph.windows10EndpointProtectionConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windows10EndpointProtectionConfiguration"
     # Possible values of AppLocker Application Control Types
     app_locker_application_control: Optional[AppLockerApplicationControlType] = None
     # Allow persisting user generated data inside the App Guard Containter (favorites, cookies, web passwords, etc.)

@@ -13,7 +13,8 @@ class AndroidManagedAppRegistration(ManagedAppRegistration):
     """
     Represents the synchronization details of an android app, with management capabilities, for a specific user.
     """
-    odata_type = "#microsoft.graph.androidManagedAppRegistration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.androidManagedAppRegistration"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidManagedAppRegistration:

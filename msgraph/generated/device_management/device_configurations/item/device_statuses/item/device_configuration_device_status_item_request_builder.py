@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceStatuses for deviceManagement
+        Deletes a deviceConfigurationDeviceStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +47,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationDeviceStatus]:
         """
-        Device configuration installation status by device.
+        Read properties and relationships of the deviceConfigurationDeviceStatus object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationDeviceStatus]
@@ -70,7 +69,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceConfigurationDeviceStatus] = None, request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceConfigurationDeviceStatus]:
         """
-        Update the navigation property deviceStatuses in deviceManagement
+        Update the properties of a deviceConfigurationDeviceStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +94,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceStatuses for deviceManagement
+        Deletes a deviceConfigurationDeviceStatus.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +110,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Device configuration installation status by device.
+        Read properties and relationships of the deviceConfigurationDeviceStatus object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceConfigurationDeviceStatus] = None, request_configuration: Optional[DeviceConfigurationDeviceStatusItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceStatuses in deviceManagement
+        Update the properties of a deviceConfigurationDeviceStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +160,7 @@ class DeviceConfigurationDeviceStatusItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationDeviceStatusItemRequestBuilderGetQueryParameters():
         """
-        Device configuration installation status by device.
+        Read properties and relationships of the deviceConfigurationDeviceStatus object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

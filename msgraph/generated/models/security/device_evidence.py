@@ -17,6 +17,8 @@ from .alert_evidence import AlertEvidence
 
 @dataclass
 class DeviceEvidence(AlertEvidence):
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.deviceEvidence"
     # A unique identifier assigned to a device by Azure Active Directory (Azure AD) when device is Azure AD-joined.
     azure_ad_device_id: Optional[str] = None
     # State of the Defender AntiMalware engine. The possible values are: notReporting, disabled, notUpdated, updated, unknown, notSupported, unknownFutureValue.
@@ -27,14 +29,12 @@ class DeviceEvidence(AlertEvidence):
     first_seen_date_time: Optional[datetime.datetime] = None
     # The health state of the device.The possible values are: active, inactive, impairedCommunication, noSensorData, noSensorDataImpairedCommunication, unknown, unknownFutureValue.
     health_status: Optional[DeviceHealthStatus] = None
-    # The ipInterfaces property
+    # Ip interfaces of the device during the time of the alert.
     ip_interfaces: Optional[List[str]] = None
     # Users that were logged on the machine during the time of the alert.
     logged_on_users: Optional[List[LoggedOnUser]] = None
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
     mde_device_id: Optional[str] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     # The status of the machine onboarding to Microsoft Defender for Endpoint.The possible values are: insufficientInfo, onboarded, canBeOnboarded, unsupported, unknownFutureValue.
     onboarding_status: Optional[OnboardingStatus] = None
     # The build version for the operating system the device is running.

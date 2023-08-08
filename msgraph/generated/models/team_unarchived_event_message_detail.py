@@ -11,7 +11,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class TeamUnarchivedEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.teamUnarchivedEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.teamUnarchivedEventMessageDetail"
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # Unique identifier of the team.

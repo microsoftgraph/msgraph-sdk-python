@@ -12,7 +12,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class MembersDeletedEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.membersDeletedEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.membersDeletedEventMessageDetail"
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # List of members deleted.

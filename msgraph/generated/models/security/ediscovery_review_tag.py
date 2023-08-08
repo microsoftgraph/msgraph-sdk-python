@@ -11,7 +11,8 @@ from .tag import Tag
 
 @dataclass
 class EdiscoveryReviewTag(Tag):
-    odata_type = "#microsoft.graph.security.ediscoveryReviewTag"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.ediscoveryReviewTag"
     # Indicates whether a single or multiple child tags can be associated with a document. Possible values are: One, Many.  This value controls whether the UX presents the tags as checkboxes or a radio button group.
     child_selectability: Optional[ChildSelectability] = None
     # Returns the tags that are a child of a tag.

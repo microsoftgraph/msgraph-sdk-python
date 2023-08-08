@@ -13,7 +13,8 @@ class MacOSMicrosoftDefenderApp(MobileApp):
     """
     Contains properties and inherited properties for the macOS Microsoft Defender App.
     """
-    odata_type = "#microsoft.graph.macOSMicrosoftDefenderApp"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.macOSMicrosoftDefenderApp"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOSMicrosoftDefenderApp:

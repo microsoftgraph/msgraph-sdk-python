@@ -21,7 +21,8 @@ class MobileLobApp(MobileApp):
     """
     An abstract base class containing properties for all mobile line of business apps.
     """
-    odata_type = "#microsoft.graph.mobileLobApp"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.mobileLobApp"
     # The internal committed content version.
     committed_content_version: Optional[str] = None
     # The list of content versions for this app.

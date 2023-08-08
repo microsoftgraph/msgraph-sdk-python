@@ -11,12 +11,12 @@ from .alert_evidence import AlertEvidence
 
 @dataclass
 class GoogleCloudResourceEvidence(AlertEvidence):
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.googleCloudResourceEvidence"
     # The zone or region where the resource is located.
     location: Optional[str] = None
     # The type of location. Possible values are: unknown, regional, zonal, global, unknownFutureValue.
     location_type: Optional[GoogleCloudLocationType] = None
-    # The OdataType property
-    odata_type: Optional[str] = None
     # The Google project ID as defined by the user.
     project_id: Optional[str] = None
     # The project number assigned by Google.

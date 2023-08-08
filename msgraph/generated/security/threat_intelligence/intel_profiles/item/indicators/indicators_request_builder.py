@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -46,7 +45,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IndicatorsRequestBuilderGetRequestConfiguration] = None) -> Optional[IntelligenceProfileIndicatorCollectionResponse]:
         """
-        Get the intelligenceProfileIndicator resources from the **indicators** navigation property of an intelligenceProfile.
+        Get the intelligenceProfileIndicator resources from the indicators navigation property of an intelligenceProfile.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IntelligenceProfileIndicatorCollectionResponse]
@@ -68,7 +67,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IndicatorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the intelligenceProfileIndicator resources from the **indicators** navigation property of an intelligenceProfile.
+        Get the intelligenceProfileIndicator resources from the indicators navigation property of an intelligenceProfile.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -96,7 +95,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IndicatorsRequestBuilderGetQueryParameters():
         """
-        Get the intelligenceProfileIndicator resources from the **indicators** navigation property of an intelligenceProfile.
+        Get the intelligenceProfileIndicator resources from the indicators navigation property of an intelligenceProfile.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

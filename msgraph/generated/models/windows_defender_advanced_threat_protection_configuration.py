@@ -13,7 +13,8 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(DeviceConfiguration):
     """
     Windows Defender AdvancedThreatProtection Configuration.
     """
-    odata_type = "#microsoft.graph.windowsDefenderAdvancedThreatProtectionConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windowsDefenderAdvancedThreatProtectionConfiguration"
     # Windows Defender AdvancedThreatProtection 'Allow Sample Sharing' Rule
     allow_sample_sharing: Optional[bool] = None
     # Expedite Windows Defender Advanced Threat Protection telemetry reporting frequency.

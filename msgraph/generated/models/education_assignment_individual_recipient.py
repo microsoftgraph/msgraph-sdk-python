@@ -10,7 +10,8 @@ from .education_assignment_recipient import EducationAssignmentRecipient
 
 @dataclass
 class EducationAssignmentIndividualRecipient(EducationAssignmentRecipient):
-    odata_type = "#microsoft.graph.educationAssignmentIndividualRecipient"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.educationAssignmentIndividualRecipient"
     # A collection of IDs of the recipients.
     recipients: Optional[List[str]] = None
     

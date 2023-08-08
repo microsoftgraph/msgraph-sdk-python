@@ -15,7 +15,8 @@ class BookingStaffMember(BookingStaffMemberBase):
     """
     Represents a staff member who provides services in a business.
     """
-    odata_type = "#microsoft.graph.bookingStaffMember"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.bookingStaffMember"
     # True means that if the staff member is a Microsoft 365 user, the Bookings API would verify the staff member's availability in their personal calendar in Microsoft 365, before making a booking.
     availability_is_affected_by_personal_calendar: Optional[bool] = None
     # The name of the staff member, as displayed to customers. Required.

@@ -15,7 +15,8 @@ class AndroidManagedAppProtection(TargetedManagedAppProtection):
     """
     Policy used to configure detailed management settings targeted to specific security groups and for a specified set of apps on an Android device
     """
-    odata_type = "#microsoft.graph.androidManagedAppProtection"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.androidManagedAppProtection"
     # List of apps to which the policy is deployed.
     apps: Optional[List[ManagedMobileApp]] = None
     # Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.

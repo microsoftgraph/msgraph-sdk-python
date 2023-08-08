@@ -12,7 +12,8 @@ from .booking_customer_information_base import BookingCustomerInformationBase
 
 @dataclass
 class BookingCustomerInformation(BookingCustomerInformationBase):
-    odata_type = "#microsoft.graph.bookingCustomerInformation"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.bookingCustomerInformation"
     # It consists of the list of custom questions and answers given by the customer as part of the appointment
     custom_question_answers: Optional[List[BookingQuestionAnswer]] = None
     # The ID of the bookingCustomer for this appointment. If no ID is specified when an appointment is created, then a new bookingCustomer object is created. Once set, you should consider the customerId immutable.

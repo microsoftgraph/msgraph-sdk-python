@@ -12,7 +12,8 @@ from .policy_base import PolicyBase
 
 @dataclass
 class AppManagementPolicy(PolicyBase):
-    odata_type = "#microsoft.graph.appManagementPolicy"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.appManagementPolicy"
     # Collection of applications and service principals to which the policy is applied.
     applies_to: Optional[List[DirectoryObject]] = None
     # Denotes whether the policy is enabled.

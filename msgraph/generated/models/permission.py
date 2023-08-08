@@ -38,7 +38,7 @@ class Permission(Entity):
     odata_type: Optional[str] = None
     # The type of permission, for example, read. See below for the full list of roles. Read-only.
     roles: Optional[List[str]] = None
-    # A unique token that can be used to access this shared item via the **shares** API. Read-only.
+    # A unique token that can be used to access this shared item via the shares API. Read-only.
     share_id: Optional[str] = None
     
     @staticmethod

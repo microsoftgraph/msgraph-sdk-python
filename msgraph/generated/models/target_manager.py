@@ -10,7 +10,8 @@ from .subject_set import SubjectSet
 
 @dataclass
 class TargetManager(SubjectSet):
-    odata_type = "#microsoft.graph.targetManager"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.targetManager"
     # Manager level, between 1 and 4. The direct manager is 1.
     manager_level: Optional[int] = None
     

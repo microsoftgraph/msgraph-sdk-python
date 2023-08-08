@@ -11,7 +11,8 @@ from .print_operation import PrintOperation
 
 @dataclass
 class PrinterCreateOperation(PrintOperation):
-    odata_type = "#microsoft.graph.printerCreateOperation"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.printerCreateOperation"
     # The signed certificate created during the registration process. Read-only.
     certificate: Optional[str] = None
     # The created printer entity. Read-only.

@@ -11,14 +11,15 @@ from .custom_extension_data import CustomExtensionData
 
 @dataclass
 class AccessPackageAssignmentRequestCallbackData(CustomExtensionData):
-    odata_type = "#microsoft.graph.accessPackageAssignmentRequestCallbackData"
-    # The customExtensionStageInstanceDetail property
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.accessPackageAssignmentRequestCallbackData"
+    # Details for the callback.
     custom_extension_stage_instance_detail: Optional[str] = None
-    # The customExtensionStageInstanceId property
+    # Unique identifier of the callout to the custom extension.
     custom_extension_stage_instance_id: Optional[str] = None
-    # The stage property
+    # Indicates the stage at which the custom callout extension will be executed. The possible values are: assignmentRequestCreated, assignmentRequestApproved, assignmentRequestGranted, assignmentRequestRemoved, assignmentFourteenDaysBeforeExpiration, assignmentOneDayBeforeExpiration, unknownFutureValue.
     stage: Optional[AccessPackageCustomExtensionStage] = None
-    # The state property
+    # Allow the extension to be able to deny or cancel the request submitted by the requestor. The supported values are Denied and Canceled. This property can only be set for an assignmentRequestCreated stage.
     state: Optional[str] = None
     
     @staticmethod

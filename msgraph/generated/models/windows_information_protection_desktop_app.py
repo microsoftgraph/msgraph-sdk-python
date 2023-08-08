@@ -13,7 +13,8 @@ class WindowsInformationProtectionDesktopApp(WindowsInformationProtectionApp):
     """
     Desktop App for Windows information protection
     """
-    odata_type = "#microsoft.graph.windowsInformationProtectionDesktopApp"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windowsInformationProtectionDesktopApp"
     # The binary name.
     binary_name: Optional[str] = None
     # The high binary version.

@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -30,7 +29,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceManagementPartners for deviceManagement
+        Deletes a deviceManagementPartner.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +48,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
         """
-        The list of Device Management Partners configured by the tenant.
+        Read properties and relationships of the deviceManagementPartner object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementPartner]
@@ -71,7 +70,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
         """
-        Update the navigation property deviceManagementPartners in deviceManagement
+        Update the properties of a deviceManagementPartner object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +95,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceManagementPartners for deviceManagement
+        Deletes a deviceManagementPartner.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +111,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of Device Management Partners configured by the tenant.
+        Read properties and relationships of the deviceManagementPartner object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +129,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceManagementPartners in deviceManagement
+        Update the properties of a deviceManagementPartner object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +170,7 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceManagementPartnerItemRequestBuilderGetQueryParameters():
         """
-        The list of Device Management Partners configured by the tenant.
+        Read properties and relationships of the deviceManagementPartner object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

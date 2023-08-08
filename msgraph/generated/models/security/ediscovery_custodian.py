@@ -15,7 +15,8 @@ from .data_source_container import DataSourceContainer
 
 @dataclass
 class EdiscoveryCustodian(DataSourceContainer):
-    odata_type = "#microsoft.graph.security.ediscoveryCustodian"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.ediscoveryCustodian"
     # Date and time the custodian acknowledged a hold notification.
     acknowledged_date_time: Optional[datetime.datetime] = None
     # Email address of the custodian.

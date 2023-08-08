@@ -17,7 +17,8 @@ class IosVppApp(MobileApp):
     """
     Contains properties and inherited properties for iOS Volume-Purchased Program (VPP) Apps.
     """
-    odata_type = "#microsoft.graph.iosVppApp"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iosVppApp"
     # The store URL.
     app_store_url: Optional[str] = None
     # The applicable iOS Device Type.

@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -14,8 +13,10 @@ if TYPE_CHECKING:
     from ...........models.chat_message import ChatMessage
     from ...........models.o_data_errors.o_data_error import ODataError
     from .hosted_contents.hosted_contents_request_builder import HostedContentsRequestBuilder
+    from .set_reaction.set_reaction_request_builder import SetReactionRequestBuilder
     from .soft_delete.soft_delete_request_builder import SoftDeleteRequestBuilder
     from .undo_soft_delete.undo_soft_delete_request_builder import UndoSoftDeleteRequestBuilder
+    from .unset_reaction.unset_reaction_request_builder import UnsetReactionRequestBuilder
 
 class ChatMessageItemRequestBuilder(BaseRequestBuilder):
     """
@@ -161,6 +162,15 @@ class ChatMessageItemRequestBuilder(BaseRequestBuilder):
         return HostedContentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def set_reaction(self) -> SetReactionRequestBuilder:
+        """
+        Provides operations to call the setReaction method.
+        """
+        from .set_reaction.set_reaction_request_builder import SetReactionRequestBuilder
+
+        return SetReactionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def soft_delete(self) -> SoftDeleteRequestBuilder:
         """
         Provides operations to call the softDelete method.
@@ -177,6 +187,15 @@ class ChatMessageItemRequestBuilder(BaseRequestBuilder):
         from .undo_soft_delete.undo_soft_delete_request_builder import UndoSoftDeleteRequestBuilder
 
         return UndoSoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def unset_reaction(self) -> UnsetReactionRequestBuilder:
+        """
+        Provides operations to call the unsetReaction method.
+        """
+        from .unset_reaction.unset_reaction_request_builder import UnsetReactionRequestBuilder
+
+        return UnsetReactionRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

@@ -11,7 +11,8 @@ from .data_source import DataSource
 
 @dataclass
 class SiteSource(DataSource):
-    odata_type = "#microsoft.graph.security.siteSource"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.siteSource"
     # The site property
     site: Optional[Site] = None
     

@@ -11,15 +11,15 @@ from .entity import Entity
 
 @dataclass
 class AccessPackageResourceRole(Entity):
-    # The description property
+    # A description for the resource role.
     description: Optional[str] = None
-    # The displayName property
+    # The display name of the resource role such as the role defined by the application.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The originId property
+    # The unique identifier of the resource role in the origin system. For a SharePoint Online site, the originId will be the sequence number of the role in the site.
     origin_id: Optional[str] = None
-    # The originSystem property
+    # The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup.
     origin_system: Optional[str] = None
     # The resource property
     resource: Optional[AccessPackageResource] = None

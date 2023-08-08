@@ -10,7 +10,8 @@ from .windows_device_account import WindowsDeviceAccount
 
 @dataclass
 class WindowsDeviceADAccount(WindowsDeviceAccount):
-    odata_type = "#microsoft.graph.windowsDeviceADAccount"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windowsDeviceADAccount"
     # Not yet documented
     domain_name: Optional[str] = None
     # Not yet documented

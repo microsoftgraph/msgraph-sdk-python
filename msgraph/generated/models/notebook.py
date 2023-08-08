@@ -14,7 +14,8 @@ from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
 
 @dataclass
 class Notebook(OnenoteEntityHierarchyModel):
-    odata_type = "#microsoft.graph.notebook"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.notebook"
     # Indicates whether this is the user's default notebook. Read-only.
     is_default: Optional[bool] = None
     # Indicates whether the notebook is shared. If true, the contents of the notebook can be seen by people other than the owner. Read-only.

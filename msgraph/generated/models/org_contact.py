@@ -14,7 +14,8 @@ from .directory_object import DirectoryObject
 
 @dataclass
 class OrgContact(DirectoryObject):
-    odata_type = "#microsoft.graph.orgContact"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.orgContact"
     # Postal addresses for this organizational contact. For now a contact can only have one physical address.
     addresses: Optional[List[PhysicalOfficeAddress]] = None
     # Name of the company that this organizational contact belongs to.  Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).

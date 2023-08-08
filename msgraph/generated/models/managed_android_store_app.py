@@ -14,7 +14,8 @@ class ManagedAndroidStoreApp(ManagedApp):
     """
     Contains properties and inherited properties for Android store apps that you can manage with an Intune app protection policy.
     """
-    odata_type = "#microsoft.graph.managedAndroidStoreApp"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.managedAndroidStoreApp"
     # The Android AppStoreUrl.
     app_store_url: Optional[str] = None
     # Contains properties for the minimum operating system required for an Android mobile app.

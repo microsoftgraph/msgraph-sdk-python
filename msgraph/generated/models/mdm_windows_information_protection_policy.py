@@ -13,7 +13,8 @@ class MdmWindowsInformationProtectionPolicy(WindowsInformationProtection):
     """
     Policy for Windows information protection with MDM
     """
-    odata_type = "#microsoft.graph.mdmWindowsInformationProtectionPolicy"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.mdmWindowsInformationProtectionPolicy"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MdmWindowsInformationProtectionPolicy:

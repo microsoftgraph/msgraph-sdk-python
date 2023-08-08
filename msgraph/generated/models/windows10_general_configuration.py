@@ -31,7 +31,8 @@ class Windows10GeneralConfiguration(DeviceConfiguration):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the windows10GeneralConfiguration resource.
     """
-    odata_type = "#microsoft.graph.windows10GeneralConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windows10GeneralConfiguration"
     # Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
     accounts_block_adding_non_microsoft_account_email: Optional[bool] = None
     # Indicates whether or not to block the user from selecting an AntiTheft mode preference (Windows 10 Mobile only).

@@ -12,7 +12,8 @@ from .base_item_version import BaseItemVersion
 
 @dataclass
 class ListItemVersion(BaseItemVersion):
-    odata_type = "#microsoft.graph.listItemVersion"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.listItemVersion"
     # A collection of the fields and values for this version of the list item.
     fields: Optional[FieldValueSet] = None
     

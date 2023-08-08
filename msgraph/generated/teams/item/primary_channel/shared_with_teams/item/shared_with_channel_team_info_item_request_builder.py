@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -31,7 +30,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Unshare a channel with a team by deleting the corresponding sharedWithChannelTeamInfo resource. This operation is allowed only for channels with a **membershipType** value of `shared`.
+        Unshare a channel with a team by deleting the corresponding sharedWithChannelTeamInfo resource. This operation is allowed only for channels with a membershipType value of shared.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -50,7 +49,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SharedWithChannelTeamInfo]:
         """
-        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
+        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a membershipType value of shared.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharedWithChannelTeamInfo]
@@ -97,7 +96,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Unshare a channel with a team by deleting the corresponding sharedWithChannelTeamInfo resource. This operation is allowed only for channels with a **membershipType** value of `shared`.
+        Unshare a channel with a team by deleting the corresponding sharedWithChannelTeamInfo resource. This operation is allowed only for channels with a membershipType value of shared.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -113,7 +112,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
+        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a membershipType value of shared.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +180,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SharedWithChannelTeamInfoItemRequestBuilderGetQueryParameters():
         """
-        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
+        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a membershipType value of shared.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

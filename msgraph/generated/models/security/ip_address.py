@@ -11,7 +11,8 @@ from .host import Host
 
 @dataclass
 class IpAddress(Host):
-    odata_type = "#microsoft.graph.security.ipAddress"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.ipAddress"
     # The details about the autonomous system to which this IP address belongs.
     autonomous_system: Optional[AutonomousSystem] = None
     # The country or region for this IP address.

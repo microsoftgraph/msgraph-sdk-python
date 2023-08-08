@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -28,7 +27,7 @@ class ReauthorizeRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[ReauthorizeRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Reauthorize a subscription when you receive a **reauthorizationRequired** challenge.
+        Reauthorize a subscription when you receive a reauthorizationRequired challenge.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -47,7 +46,7 @@ class ReauthorizeRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[ReauthorizeRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reauthorize a subscription when you receive a **reauthorizationRequired** challenge.
+        Reauthorize a subscription when you receive a reauthorizationRequired challenge.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

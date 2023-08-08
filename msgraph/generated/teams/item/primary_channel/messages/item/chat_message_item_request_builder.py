@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -15,8 +14,10 @@ if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
     from .hosted_contents.hosted_contents_request_builder import HostedContentsRequestBuilder
     from .replies.replies_request_builder import RepliesRequestBuilder
+    from .set_reaction.set_reaction_request_builder import SetReactionRequestBuilder
     from .soft_delete.soft_delete_request_builder import SoftDeleteRequestBuilder
     from .undo_soft_delete.undo_soft_delete_request_builder import UndoSoftDeleteRequestBuilder
+    from .unset_reaction.unset_reaction_request_builder import UnsetReactionRequestBuilder
 
 class ChatMessageItemRequestBuilder(BaseRequestBuilder):
     """
@@ -74,7 +75,7 @@ class ChatMessageItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ChatMessage] = None, request_configuration: Optional[ChatMessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ChatMessage]:
         """
-        Update a chatMessage object. With the exception of the **policyViolation** property, all properties of a **chatMessage** can be updated in delegated permissions scenarios.Only the **policyViolation** property of a **chatMessage** can be updated in application permissions scenarios. The update only works for chats where members are Microsoft Teams users. If one of the participants is using Skype, the operation will fail. This method does not support federation. Only the user in the tenant who sent the message can perform data loss prevention (DLP) updates on the specified chat message.
+        Update a chatMessage object. With the exception of the policyViolation property, all properties of a chatMessage can be updated in delegated permissions scenarios.Only the policyViolation property of a chatMessage can be updated in application permissions scenarios. The update only works for chats where members are Microsoft Teams users. If one of the participants is using Skype, the operation will fail. This method does not support federation. Only the user in the tenant who sent the message can perform data loss prevention (DLP) updates on the specified chat message.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -133,7 +134,7 @@ class ChatMessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ChatMessage] = None, request_configuration: Optional[ChatMessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update a chatMessage object. With the exception of the **policyViolation** property, all properties of a **chatMessage** can be updated in delegated permissions scenarios.Only the **policyViolation** property of a **chatMessage** can be updated in application permissions scenarios. The update only works for chats where members are Microsoft Teams users. If one of the participants is using Skype, the operation will fail. This method does not support federation. Only the user in the tenant who sent the message can perform data loss prevention (DLP) updates on the specified chat message.
+        Update a chatMessage object. With the exception of the policyViolation property, all properties of a chatMessage can be updated in delegated permissions scenarios.Only the policyViolation property of a chatMessage can be updated in application permissions scenarios. The update only works for chats where members are Microsoft Teams users. If one of the participants is using Skype, the operation will fail. This method does not support federation. Only the user in the tenant who sent the message can perform data loss prevention (DLP) updates on the specified chat message.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,6 +172,15 @@ class ChatMessageItemRequestBuilder(BaseRequestBuilder):
         return RepliesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def set_reaction(self) -> SetReactionRequestBuilder:
+        """
+        Provides operations to call the setReaction method.
+        """
+        from .set_reaction.set_reaction_request_builder import SetReactionRequestBuilder
+
+        return SetReactionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def soft_delete(self) -> SoftDeleteRequestBuilder:
         """
         Provides operations to call the softDelete method.
@@ -187,6 +197,15 @@ class ChatMessageItemRequestBuilder(BaseRequestBuilder):
         from .undo_soft_delete.undo_soft_delete_request_builder import UndoSoftDeleteRequestBuilder
 
         return UndoSoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def unset_reaction(self) -> UnsetReactionRequestBuilder:
+        """
+        Provides operations to call the unsetReaction method.
+        """
+        from .unset_reaction.unset_reaction_request_builder import UnsetReactionRequestBuilder
+
+        return UnsetReactionRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

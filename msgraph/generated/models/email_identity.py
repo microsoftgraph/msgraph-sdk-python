@@ -10,7 +10,8 @@ from .identity import Identity
 
 @dataclass
 class EmailIdentity(Identity):
-    odata_type = "#microsoft.graph.emailIdentity"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.emailIdentity"
     # Email address of the user.
     email: Optional[str] = None
     

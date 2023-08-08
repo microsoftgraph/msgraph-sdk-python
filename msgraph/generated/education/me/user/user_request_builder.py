@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -30,7 +29,7 @@ class UserRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserRequestBuilderGetRequestConfiguration] = None) -> Optional[User]:
         """
-        Retrieve the simple directory **user** that corresponds to this **educationUser**.
+        Retrieve the simple directory user that corresponds to this educationUser.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
@@ -52,7 +51,7 @@ class UserRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the simple directory **user** that corresponds to this **educationUser**.
+        Retrieve the simple directory user that corresponds to this educationUser.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -80,7 +79,7 @@ class UserRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserRequestBuilderGetQueryParameters():
         """
-        Retrieve the simple directory **user** that corresponds to this **educationUser**.
+        Retrieve the simple directory user that corresponds to this educationUser.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

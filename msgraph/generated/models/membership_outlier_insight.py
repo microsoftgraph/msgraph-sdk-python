@@ -14,7 +14,8 @@ from .governance_insight import GovernanceInsight
 
 @dataclass
 class MembershipOutlierInsight(GovernanceInsight):
-    odata_type = "#microsoft.graph.membershipOutlierInsight"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.membershipOutlierInsight"
     # Navigation link to the container directory object. For example, to a group.
     container: Optional[DirectoryObject] = None
     # Indicates the identifier of the container, for example, a group ID.

@@ -13,13 +13,13 @@ from .entity import Entity
 
 @dataclass
 class SubscribedSku(Entity):
-    # The accountId property
+    # The unique ID of the account this SKU belongs to.
     account_id: Optional[str] = None
-    # The accountName property
+    # The name of the account this SKU belongs to.
     account_name: Optional[str] = None
-    # For example, 'User' or 'Company'.
+    # The target class for this SKU. Only SKUs with target class User are assignable. Possible values are: 'User', 'Company'.
     applies_to: Optional[str] = None
-    # Possible values are: Enabled, Warning, Suspended, Deleted, LockedOut. The capabilityStatus is Enabled if the prepaidUnits property has at least 1 unit that is enabled, and LockedOut if the customer cancelled their subscription.
+    # Enabled indicates that the prepaidUnits property has at least one unit that is enabled. LockedOut indicates that the customer cancelled their subscription. Possible values are: Enabled, Warning, Suspended, Deleted, LockedOut.
     capability_status: Optional[str] = None
     # The number of licenses that have been assigned.
     consumed_units: Optional[int] = None
@@ -27,7 +27,7 @@ class SubscribedSku(Entity):
     odata_type: Optional[str] = None
     # Information about the number and status of prepaid licenses.
     prepaid_units: Optional[LicenseUnitsDetail] = None
-    # Information about the service plans that are available with the SKU. Not nullable
+    # Information about the service plans that are available with the SKU. Not nullable.
     service_plans: Optional[List[ServicePlanInfo]] = None
     # The unique identifier (GUID) for the service SKU.
     sku_id: Optional[UUID] = None

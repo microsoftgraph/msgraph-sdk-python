@@ -8,15 +8,15 @@ class TenantInformation(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The defaultDomainName property
+    # Primary domain name of an Azure AD tenant.
     default_domain_name: Optional[str] = None
-    # The displayName property
+    # Display name of an Azure AD tenant.
     display_name: Optional[str] = None
-    # The federationBrandName property
+    # Name shown to users that sign in to an Azure AD tenant.
     federation_brand_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The tenantId property
+    # Unique identifier of an Azure AD tenant.
     tenant_id: Optional[str] = None
     
     @staticmethod

@@ -13,7 +13,8 @@ class MacOSDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
     """
     MacOS device features configuration profile.
     """
-    odata_type = "#microsoft.graph.macOSDeviceFeaturesConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.macOSDeviceFeaturesConfiguration"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOSDeviceFeaturesConfiguration:

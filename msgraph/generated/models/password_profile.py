@@ -14,7 +14,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
     force_change_password_next_sign_in_with_mfa: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.
+    # The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user's passwordPolicies property. By default, a strong password is required.
     password: Optional[str] = None
     
     @staticmethod

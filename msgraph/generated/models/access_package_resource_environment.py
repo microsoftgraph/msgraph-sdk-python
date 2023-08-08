@@ -12,23 +12,23 @@ from .entity import Entity
 
 @dataclass
 class AccessPackageResourceEnvironment(Entity):
-    # The createdDateTime property
+    # The date and time that this object was created. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The description property
+    # The description of this object.
     description: Optional[str] = None
-    # The displayName property
+    # The display name of this object.
     display_name: Optional[str] = None
-    # The isDefaultEnvironment property
+    # Determines whether this is default environment or not. It is set to true for all static origin systems, such as Azure AD groups and Azure AD Applications.
     is_default_environment: Optional[bool] = None
-    # The modifiedDateTime property
+    # The date and time that this object was last modified. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The originId property
+    # The unique identifier of this environment in the origin system.
     origin_id: Optional[str] = None
-    # The originSystem property
+    # The type of the resource in the origin system, that is, SharePointOnline. Requires $filter (eq).
     origin_system: Optional[str] = None
-    # The resources property
+    # Read-only. Required.
     resources: Optional[List[AccessPackageResource]] = None
     
     @staticmethod

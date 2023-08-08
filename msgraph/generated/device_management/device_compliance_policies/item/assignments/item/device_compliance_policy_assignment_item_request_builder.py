@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property assignments for deviceManagement
+        Deletes a deviceCompliancePolicyAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +47,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyAssignment]:
         """
-        The collection of assignments for this compliance policy.
+        Read properties and relationships of the deviceCompliancePolicyAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicyAssignment]
@@ -70,7 +69,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceCompliancePolicyAssignment] = None, request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyAssignment]:
         """
-        Update the navigation property assignments in deviceManagement
+        Update the properties of a deviceCompliancePolicyAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +94,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property assignments for deviceManagement
+        Deletes a deviceCompliancePolicyAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +110,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of assignments for this compliance policy.
+        Read properties and relationships of the deviceCompliancePolicyAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceCompliancePolicyAssignment] = None, request_configuration: Optional[DeviceCompliancePolicyAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property assignments in deviceManagement
+        Update the properties of a deviceCompliancePolicyAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +160,7 @@ class DeviceCompliancePolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCompliancePolicyAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The collection of assignments for this compliance policy.
+        Read properties and relationships of the deviceCompliancePolicyAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

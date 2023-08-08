@@ -10,7 +10,8 @@ from .identity import Identity
 
 @dataclass
 class ServicePrincipalIdentity(Identity):
-    odata_type = "#microsoft.graph.servicePrincipalIdentity"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.servicePrincipalIdentity"
     # The application identifier of the service principal.
     app_id: Optional[str] = None
     

@@ -10,7 +10,8 @@ from .education_resource import EducationResource
 
 @dataclass
 class EducationWordResource(EducationResource):
-    odata_type = "#microsoft.graph.educationWordResource"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.educationWordResource"
     # Location of the file on disk.
     file_url: Optional[str] = None
     

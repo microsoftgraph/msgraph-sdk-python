@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder(BaseR
     
     async def delete(self,request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property windowsInformationProtectionNetworkLearningSummaries for deviceManagement
+        Deletes a windowsInformationProtectionNetworkLearningSummary.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +47,7 @@ class WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder(BaseR
     
     async def get(self,request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsInformationProtectionNetworkLearningSummary]:
         """
-        The windows information protection network learning summaries.
+        Read properties and relationships of the windowsInformationProtectionNetworkLearningSummary object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionNetworkLearningSummary]
@@ -70,7 +69,7 @@ class WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder(BaseR
     
     async def patch(self,body: Optional[WindowsInformationProtectionNetworkLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WindowsInformationProtectionNetworkLearningSummary]:
         """
-        Update the navigation property windowsInformationProtectionNetworkLearningSummaries in deviceManagement
+        Update the properties of a windowsInformationProtectionNetworkLearningSummary object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +94,7 @@ class WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder(BaseR
     
     def to_delete_request_information(self,request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property windowsInformationProtectionNetworkLearningSummaries for deviceManagement
+        Deletes a windowsInformationProtectionNetworkLearningSummary.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +110,7 @@ class WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder(BaseR
     
     def to_get_request_information(self,request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The windows information protection network learning summaries.
+        Read properties and relationships of the windowsInformationProtectionNetworkLearningSummary object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder(BaseR
     
     def to_patch_request_information(self,body: Optional[WindowsInformationProtectionNetworkLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property windowsInformationProtectionNetworkLearningSummaries in deviceManagement
+        Update the properties of a windowsInformationProtectionNetworkLearningSummary object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +160,7 @@ class WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder(BaseR
     @dataclass
     class WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilderGetQueryParameters():
         """
-        The windows information protection network learning summaries.
+        Read properties and relationships of the windowsInformationProtectionNetworkLearningSummary object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -69,7 +68,7 @@ class TaskTriggersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[PrintTaskTrigger] = None, request_configuration: Optional[TaskTriggersRequestBuilderPostRequestConfiguration] = None) -> Optional[PrintTaskTrigger]:
         """
-        Create a new task trigger on the specified printer. Currently, only **one** task trigger can be specified per printer, but this limit might be removed in the future. 
+        Create a new task trigger on the specified printer. Currently, only one task trigger can be specified per printer, but this limit might be removed in the future. 
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +111,7 @@ class TaskTriggersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[PrintTaskTrigger] = None, request_configuration: Optional[TaskTriggersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new task trigger on the specified printer. Currently, only **one** task trigger can be specified per printer, but this limit might be removed in the future. 
+        Create a new task trigger on the specified printer. Currently, only one task trigger can be specified per printer, but this limit might be removed in the future. 
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

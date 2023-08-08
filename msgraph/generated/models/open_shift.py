@@ -11,7 +11,8 @@ from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
 class OpenShift(ChangeTrackedEntity):
-    odata_type = "#microsoft.graph.openShift"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.openShift"
     # An unpublished open shift.
     draft_open_shift: Optional[OpenShiftItem] = None
     # ID for the scheduling group that the open shift belongs to.

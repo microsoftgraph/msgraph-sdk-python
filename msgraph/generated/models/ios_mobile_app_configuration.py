@@ -14,7 +14,8 @@ class IosMobileAppConfiguration(ManagedDeviceMobileAppConfiguration):
     """
     Contains properties, inherited properties and actions for iOS mobile app configurations.
     """
-    odata_type = "#microsoft.graph.iosMobileAppConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iosMobileAppConfiguration"
     # mdm app configuration Base64 binary.
     encoded_setting_xml: Optional[bytes] = None
     # app configuration setting items.

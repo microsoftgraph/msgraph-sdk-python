@@ -10,10 +10,11 @@ from .identity_provider_base import IdentityProviderBase
 
 @dataclass
 class SocialIdentityProvider(IdentityProviderBase):
-    odata_type = "#microsoft.graph.socialIdentityProvider"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.socialIdentityProvider"
     # The identifier for the client application obtained when registering the application with the identity provider. Required.
     client_id: Optional[str] = None
-    # The client secret for the application that is obtained when the application is registered with the identity provider. This is write-only. A read operation returns ****. Required.
+    # The client secret for the application that is obtained when the application is registered with the identity provider. This is write-only. A read operation returns . Required.
     client_secret: Optional[str] = None
     # For a B2B scenario, possible values: Google, Facebook. For a B2C scenario, possible values: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo, QQ, WeChat. Required.
     identity_provider_type: Optional[str] = None

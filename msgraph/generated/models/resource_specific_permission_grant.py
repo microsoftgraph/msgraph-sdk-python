@@ -10,7 +10,8 @@ from .directory_object import DirectoryObject
 
 @dataclass
 class ResourceSpecificPermissionGrant(DirectoryObject):
-    odata_type = "#microsoft.graph.resourceSpecificPermissionGrant"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.resourceSpecificPermissionGrant"
     # ID of the service principal of the Azure AD app that has been granted access. Read-only.
     client_app_id: Optional[str] = None
     # ID of the Azure AD app that has been granted access. Read-only.

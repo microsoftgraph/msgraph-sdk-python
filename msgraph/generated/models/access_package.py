@@ -17,15 +17,15 @@ from .entity import Entity
 class AccessPackage(Entity):
     # The access packages that are incompatible with this package. Read-only.
     access_packages_incompatible_with: Optional[List[AccessPackage]] = None
-    # The assignmentPolicies property
+    # Read-only. Nullable. Supports $expand.
     assignment_policies: Optional[List[AccessPackageAssignmentPolicy]] = None
-    # The catalog property
+    # Required when creating the access package. Read-only. Nullable.
     catalog: Optional[AccessPackageCatalog] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # The description of the access package.
     description: Optional[str] = None
-    # The display name of the access package. Supports $filter (eq, contains).
+    # Required. The display name of the access package. Supports $filter (eq, contains).
     display_name: Optional[str] = None
     # The access packages whose assigned users are ineligible to be assigned this access package.
     incompatible_access_packages: Optional[List[AccessPackage]] = None
@@ -37,7 +37,7 @@ class AccessPackage(Entity):
     modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The resourceRoleScopes property
+    # The resource roles and scopes in this access package.
     resource_role_scopes: Optional[List[AccessPackageResourceRoleScope]] = None
     
     @staticmethod

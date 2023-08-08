@@ -13,7 +13,8 @@ class IosLobAppAssignmentSettings(MobileAppAssignmentSettings):
     """
     Contains properties used to assign an iOS LOB mobile app to a group.
     """
-    odata_type = "#microsoft.graph.iosLobAppAssignmentSettings"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iosLobAppAssignmentSettings"
     # When TRUE, indicates that the app can be uninstalled by the user. When FALSE, indicates that the app cannot be uninstalled by the user. By default, this property is set to null which internally is treated as TRUE.
     is_removable: Optional[bool] = None
     # When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune. By default, property is set to null which internally is treated as TRUE.

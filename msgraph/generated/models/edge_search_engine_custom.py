@@ -13,7 +13,8 @@ class EdgeSearchEngineCustom(EdgeSearchEngineBase):
     """
     Allows IT admins to set a custom default search engine for MDM-Controlled devices.
     """
-    odata_type = "#microsoft.graph.edgeSearchEngineCustom"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.edgeSearchEngineCustom"
     # Points to a https link containing the OpenSearch xml file that contains, at minimum, the short name and the URL to the search Engine.
     edge_search_engine_open_search_xml_url: Optional[str] = None
     

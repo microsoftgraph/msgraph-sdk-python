@@ -13,7 +13,8 @@ class IosVppAppAssignmentSettings(MobileAppAssignmentSettings):
     """
     Contains properties used to assign an iOS VPP mobile app to a group.
     """
-    odata_type = "#microsoft.graph.iosVppAppAssignmentSettings"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iosVppAppAssignmentSettings"
     # Whether or not to use device licensing.
     use_device_licensing: Optional[bool] = None
     # The VPN Configuration Id to apply for this app.

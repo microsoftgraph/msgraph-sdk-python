@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -52,7 +51,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AccessPackageAssignmentPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageAssignmentPolicy]:
         """
-        Get assignmentPolicies from identityGovernance
+        Read-only. Nullable. Supports $expand.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageAssignmentPolicy]
@@ -115,7 +114,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackageAssignmentPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get assignmentPolicies from identityGovernance
+        Read-only. Nullable. Supports $expand.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -201,7 +200,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessPackageAssignmentPolicyItemRequestBuilderGetQueryParameters():
         """
-        Get assignmentPolicies from identityGovernance
+        Read-only. Nullable. Supports $expand.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

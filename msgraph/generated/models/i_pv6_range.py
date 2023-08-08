@@ -13,7 +13,8 @@ class IPv6Range(IpRange):
     """
     IPv6 Range definition.
     """
-    odata_type = "#microsoft.graph.iPv6Range"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iPv6Range"
     # Lower address.
     lower_address: Optional[str] = None
     # Upper address.

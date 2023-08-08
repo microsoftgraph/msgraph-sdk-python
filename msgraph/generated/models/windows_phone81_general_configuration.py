@@ -16,7 +16,8 @@ class WindowsPhone81GeneralConfiguration(DeviceConfiguration):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the windowsPhone81GeneralConfiguration resource.
     """
-    odata_type = "#microsoft.graph.windowsPhone81GeneralConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windowsPhone81GeneralConfiguration"
     # Value indicating whether this policy only applies to Windows Phone 8.1. This property is read-only.
     apply_only_to_windows_phone81: Optional[bool] = None
     # Indicates whether or not to block copy paste.

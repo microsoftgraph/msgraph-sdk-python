@@ -8,7 +8,12 @@ if TYPE_CHECKING:
     from .amazon_resource_evidence import AmazonResourceEvidence
     from .analyzed_message_evidence import AnalyzedMessageEvidence
     from .azure_resource_evidence import AzureResourceEvidence
+    from .blob_container_evidence import BlobContainerEvidence
+    from .blob_evidence import BlobEvidence
     from .cloud_application_evidence import CloudApplicationEvidence
+    from .container_evidence import ContainerEvidence
+    from .container_image_evidence import ContainerImageEvidence
+    from .container_registry_evidence import ContainerRegistryEvidence
     from .device_evidence import DeviceEvidence
     from .evidence_remediation_status import EvidenceRemediationStatus
     from .evidence_role import EvidenceRole
@@ -16,6 +21,13 @@ if TYPE_CHECKING:
     from .file_evidence import FileEvidence
     from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
     from .ip_evidence import IpEvidence
+    from .kubernetes_cluster_evidence import KubernetesClusterEvidence
+    from .kubernetes_controller_evidence import KubernetesControllerEvidence
+    from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
+    from .kubernetes_pod_evidence import KubernetesPodEvidence
+    from .kubernetes_secret_evidence import KubernetesSecretEvidence
+    from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
+    from .kubernetes_service_evidence import KubernetesServiceEvidence
     from .mailbox_evidence import MailboxEvidence
     from .mail_cluster_evidence import MailClusterEvidence
     from .oauth_application_evidence import OauthApplicationEvidence
@@ -33,7 +45,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
 
     # The date and time when the evidence was created and added to the alert. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The detailedRoles property
+    # Detailed description of the entity role/s in an alert. Values are free-form.
     detailed_roles: Optional[List[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -41,9 +53,9 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
     remediation_status: Optional[EvidenceRemediationStatus] = None
     # Details about the remediation status.
     remediation_status_details: Optional[str] = None
-    # One or more roles that an evidence entity represents in an alert. For example, an IP address that is associated with an attacker has the evidence role Attacker.
+    # The role/s that an evidence entity represents in an alert, e.g., an IP address that is associated with an attacker will have the evidence role Attacker.
     roles: Optional[List[EvidenceRole]] = None
-    # Array of custom tags associated with an evidence instance. For example, to denote a group of devices or high value assets.
+    # Array of custom tags associated with an evidence instance, for example, to denote a group of devices, high-value assets, etc.
     tags: Optional[List[str]] = None
     # The verdict property
     verdict: Optional[EvidenceVerdict] = None
@@ -74,10 +86,30 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
             from .azure_resource_evidence import AzureResourceEvidence
 
             return AzureResourceEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.blobContainerEvidence".casefold():
+            from .blob_container_evidence import BlobContainerEvidence
+
+            return BlobContainerEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.blobEvidence".casefold():
+            from .blob_evidence import BlobEvidence
+
+            return BlobEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.cloudApplicationEvidence".casefold():
             from .cloud_application_evidence import CloudApplicationEvidence
 
             return CloudApplicationEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.containerEvidence".casefold():
+            from .container_evidence import ContainerEvidence
+
+            return ContainerEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.containerImageEvidence".casefold():
+            from .container_image_evidence import ContainerImageEvidence
+
+            return ContainerImageEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.containerRegistryEvidence".casefold():
+            from .container_registry_evidence import ContainerRegistryEvidence
+
+            return ContainerRegistryEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.deviceEvidence".casefold():
             from .device_evidence import DeviceEvidence
 
@@ -94,6 +126,34 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
             from .ip_evidence import IpEvidence
 
             return IpEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesClusterEvidence".casefold():
+            from .kubernetes_cluster_evidence import KubernetesClusterEvidence
+
+            return KubernetesClusterEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesControllerEvidence".casefold():
+            from .kubernetes_controller_evidence import KubernetesControllerEvidence
+
+            return KubernetesControllerEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesNamespaceEvidence".casefold():
+            from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
+
+            return KubernetesNamespaceEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesPodEvidence".casefold():
+            from .kubernetes_pod_evidence import KubernetesPodEvidence
+
+            return KubernetesPodEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesSecretEvidence".casefold():
+            from .kubernetes_secret_evidence import KubernetesSecretEvidence
+
+            return KubernetesSecretEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesServiceAccountEvidence".casefold():
+            from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
+
+            return KubernetesServiceAccountEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.kubernetesServiceEvidence".casefold():
+            from .kubernetes_service_evidence import KubernetesServiceEvidence
+
+            return KubernetesServiceEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.mailboxEvidence".casefold():
             from .mailbox_evidence import MailboxEvidence
 
@@ -140,7 +200,12 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         from .amazon_resource_evidence import AmazonResourceEvidence
         from .analyzed_message_evidence import AnalyzedMessageEvidence
         from .azure_resource_evidence import AzureResourceEvidence
+        from .blob_container_evidence import BlobContainerEvidence
+        from .blob_evidence import BlobEvidence
         from .cloud_application_evidence import CloudApplicationEvidence
+        from .container_evidence import ContainerEvidence
+        from .container_image_evidence import ContainerImageEvidence
+        from .container_registry_evidence import ContainerRegistryEvidence
         from .device_evidence import DeviceEvidence
         from .evidence_remediation_status import EvidenceRemediationStatus
         from .evidence_role import EvidenceRole
@@ -148,6 +213,13 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         from .file_evidence import FileEvidence
         from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
         from .ip_evidence import IpEvidence
+        from .kubernetes_cluster_evidence import KubernetesClusterEvidence
+        from .kubernetes_controller_evidence import KubernetesControllerEvidence
+        from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
+        from .kubernetes_pod_evidence import KubernetesPodEvidence
+        from .kubernetes_secret_evidence import KubernetesSecretEvidence
+        from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
+        from .kubernetes_service_evidence import KubernetesServiceEvidence
         from .mailbox_evidence import MailboxEvidence
         from .mail_cluster_evidence import MailClusterEvidence
         from .oauth_application_evidence import OauthApplicationEvidence
@@ -161,7 +233,12 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         from .amazon_resource_evidence import AmazonResourceEvidence
         from .analyzed_message_evidence import AnalyzedMessageEvidence
         from .azure_resource_evidence import AzureResourceEvidence
+        from .blob_container_evidence import BlobContainerEvidence
+        from .blob_evidence import BlobEvidence
         from .cloud_application_evidence import CloudApplicationEvidence
+        from .container_evidence import ContainerEvidence
+        from .container_image_evidence import ContainerImageEvidence
+        from .container_registry_evidence import ContainerRegistryEvidence
         from .device_evidence import DeviceEvidence
         from .evidence_remediation_status import EvidenceRemediationStatus
         from .evidence_role import EvidenceRole
@@ -169,6 +246,13 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         from .file_evidence import FileEvidence
         from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
         from .ip_evidence import IpEvidence
+        from .kubernetes_cluster_evidence import KubernetesClusterEvidence
+        from .kubernetes_controller_evidence import KubernetesControllerEvidence
+        from .kubernetes_namespace_evidence import KubernetesNamespaceEvidence
+        from .kubernetes_pod_evidence import KubernetesPodEvidence
+        from .kubernetes_secret_evidence import KubernetesSecretEvidence
+        from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
+        from .kubernetes_service_evidence import KubernetesServiceEvidence
         from .mailbox_evidence import MailboxEvidence
         from .mail_cluster_evidence import MailClusterEvidence
         from .oauth_application_evidence import OauthApplicationEvidence

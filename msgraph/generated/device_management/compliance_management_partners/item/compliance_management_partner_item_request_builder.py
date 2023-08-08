@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class ComplianceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property complianceManagementPartners for deviceManagement
+        Deletes a complianceManagementPartner.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +47,7 @@ class ComplianceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ComplianceManagementPartner]:
         """
-        The list of Compliance Management Partners configured by the tenant.
+        Read properties and relationships of the complianceManagementPartner object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ComplianceManagementPartner]
@@ -70,7 +69,7 @@ class ComplianceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ComplianceManagementPartner]:
         """
-        Update the navigation property complianceManagementPartners in deviceManagement
+        Update the properties of a complianceManagementPartner object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +94,7 @@ class ComplianceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property complianceManagementPartners for deviceManagement
+        Deletes a complianceManagementPartner.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +110,7 @@ class ComplianceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of Compliance Management Partners configured by the tenant.
+        Read properties and relationships of the complianceManagementPartner object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class ComplianceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property complianceManagementPartners in deviceManagement
+        Update the properties of a complianceManagementPartner object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +160,7 @@ class ComplianceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ComplianceManagementPartnerItemRequestBuilderGetQueryParameters():
         """
-        The list of Compliance Management Partners configured by the tenant.
+        Read properties and relationships of the complianceManagementPartner object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -10,7 +10,8 @@ from .attachment import Attachment
 
 @dataclass
 class ReferenceAttachment(Attachment):
-    odata_type = "#microsoft.graph.referenceAttachment"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.referenceAttachment"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ReferenceAttachment:

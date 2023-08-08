@@ -13,7 +13,8 @@ class OmaSettingBoolean(OmaSetting):
     """
     OMA Settings Boolean definition.
     """
-    odata_type = "#microsoft.graph.omaSettingBoolean"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.omaSettingBoolean"
     # Value.
     value: Optional[bool] = None
     

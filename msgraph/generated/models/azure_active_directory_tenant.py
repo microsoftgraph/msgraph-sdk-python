@@ -10,7 +10,8 @@ from .identity_source import IdentitySource
 
 @dataclass
 class AzureActiveDirectoryTenant(IdentitySource):
-    odata_type = "#microsoft.graph.azureActiveDirectoryTenant"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.azureActiveDirectoryTenant"
     # The name of the Azure Active Directory tenant. Read only.
     display_name: Optional[str] = None
     # The ID of the Azure Active Directory tenant. Read only.

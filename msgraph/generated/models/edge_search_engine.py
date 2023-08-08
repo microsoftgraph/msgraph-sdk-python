@@ -14,7 +14,8 @@ class EdgeSearchEngine(EdgeSearchEngineBase):
     """
     Allows IT admins to set a predefined default search engine for MDM-Controlled devices.
     """
-    odata_type = "#microsoft.graph.edgeSearchEngine"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.edgeSearchEngine"
     # Allows IT admind to set a predefined default search engine for MDM-Controlled devices
     edge_search_engine_type: Optional[EdgeSearchEngineType] = None
     

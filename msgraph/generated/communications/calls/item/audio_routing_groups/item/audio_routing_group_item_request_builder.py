@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property audioRoutingGroups for communications
+        Delete the specified audioRoutingGroup.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +47,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
         """
-        Get audioRoutingGroups from communications
+        Retrieve the properties and relationships of an audioRoutingGroup object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AudioRoutingGroup]
@@ -70,7 +69,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
         """
-        Update the navigation property audioRoutingGroups in communications
+        Modify sources and receivers of an audioRoutingGroup.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +94,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property audioRoutingGroups for communications
+        Delete the specified audioRoutingGroup.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +110,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get audioRoutingGroups from communications
+        Retrieve the properties and relationships of an audioRoutingGroup object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property audioRoutingGroups in communications
+        Modify sources and receivers of an audioRoutingGroup.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +160,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AudioRoutingGroupItemRequestBuilderGetQueryParameters():
         """
-        Get audioRoutingGroups from communications
+        Retrieve the properties and relationships of an audioRoutingGroup object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

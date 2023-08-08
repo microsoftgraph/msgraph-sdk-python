@@ -16,7 +16,8 @@ class SharedPCConfiguration(DeviceConfiguration):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the sharedPCConfiguration resource.
     """
-    odata_type = "#microsoft.graph.sharedPCConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.sharedPCConfiguration"
     # Specifies how accounts are managed on a shared PC. Only applies when disableAccountManager is false.
     account_manager_policy: Optional[SharedPCAccountManagerPolicy] = None
     # Specifies whether local storage is allowed on a shared PC.

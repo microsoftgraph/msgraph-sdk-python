@@ -14,7 +14,8 @@ class Windows10CustomConfiguration(DeviceConfiguration):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the windows10CustomConfiguration resource.
     """
-    odata_type = "#microsoft.graph.windows10CustomConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windows10CustomConfiguration"
     # OMA settings. This collection can contain a maximum of 1000 elements.
     oma_settings: Optional[List[OmaSetting]] = None
     

@@ -10,7 +10,8 @@ from .identity_set import IdentitySet
 
 @dataclass
 class ChatMessageReactionIdentitySet(IdentitySet):
-    odata_type = "#microsoft.graph.chatMessageReactionIdentitySet"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.chatMessageReactionIdentitySet"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageReactionIdentitySet:

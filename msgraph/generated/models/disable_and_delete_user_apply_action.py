@@ -10,7 +10,8 @@ from .access_review_apply_action import AccessReviewApplyAction
 
 @dataclass
 class DisableAndDeleteUserApplyAction(AccessReviewApplyAction):
-    odata_type = "#microsoft.graph.disableAndDeleteUserApplyAction"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.disableAndDeleteUserApplyAction"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DisableAndDeleteUserApplyAction:

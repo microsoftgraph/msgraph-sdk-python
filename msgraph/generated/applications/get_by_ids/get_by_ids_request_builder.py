@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -30,7 +29,7 @@ class GetByIdsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[GetByIdsPostRequestBody] = None, request_configuration: Optional[GetByIdsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetByIdsResponse]:
         """
-        Return the directory objects specified in a list of IDs. Some common uses for this function are to:
+        Return the directory objects specified in a list of IDs. Only a subset of user properties are returned by default in v1.0. Some common uses for this function are to:
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -55,7 +54,7 @@ class GetByIdsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[GetByIdsPostRequestBody] = None, request_configuration: Optional[GetByIdsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Return the directory objects specified in a list of IDs. Some common uses for this function are to:
+        Return the directory objects specified in a list of IDs. Only a subset of user properties are returned by default in v1.0. Some common uses for this function are to:
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -10,7 +10,8 @@ from .threat_assessment_request import ThreatAssessmentRequest
 
 @dataclass
 class FileAssessmentRequest(ThreatAssessmentRequest):
-    odata_type = "#microsoft.graph.fileAssessmentRequest"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.fileAssessmentRequest"
     # Base64 encoded file content. The file content cannot fetch back because it isn't stored.
     content_data: Optional[str] = None
     # The file name.

@@ -11,7 +11,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class ChannelUnsetAsFavoriteByDefaultEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.channelUnsetAsFavoriteByDefaultEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.channelUnsetAsFavoriteByDefaultEventMessageDetail"
     # Unique identifier of the channel.
     channel_id: Optional[str] = None
     # Initiator of the event.

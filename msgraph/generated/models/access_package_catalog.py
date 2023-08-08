@@ -40,7 +40,7 @@ class AccessPackageCatalog(Entity):
     resource_roles: Optional[List[AccessPackageResourceRole]] = None
     # The resourceScopes property
     resource_scopes: Optional[List[AccessPackageResourceScope]] = None
-    # The resources property
+    # Access package resources in this catalog.
     resources: Optional[List[AccessPackageResource]] = None
     # Has the value published if the access packages are available for management. The possible values are: unpublished, published, unknownFutureValue.
     state: Optional[AccessPackageCatalogState] = None

@@ -14,7 +14,8 @@ class AndroidCustomConfiguration(DeviceConfiguration):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the androidCustomConfiguration resource.
     """
-    odata_type = "#microsoft.graph.androidCustomConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.androidCustomConfiguration"
     # OMA settings. This collection can contain a maximum of 1000 elements.
     oma_settings: Optional[List[OmaSetting]] = None
     

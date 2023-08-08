@@ -3,11 +3,16 @@ from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .conditional_access_filter import ConditionalAccessFilter
+
 @dataclass
 class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
+    # The applicationFilter property
+    application_filter: Optional[ConditionalAccessFilter] = None
     # Can be one of the following:  The list of client IDs (appId) explicitly excluded from the policy. Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
     exclude_applications: Optional[List[str]] = None
     # Can be one of the following:  The list of client IDs (appId) the policy applies to, unless explicitly excluded (in excludeApplications)  All  Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
@@ -36,7 +41,12 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .conditional_access_filter import ConditionalAccessFilter
+
+        from .conditional_access_filter import ConditionalAccessFilter
+
         fields: Dict[str, Callable[[Any], None]] = {
+            "applicationFilter": lambda n : setattr(self, 'application_filter', n.get_object_value(ConditionalAccessFilter)),
             "excludeApplications": lambda n : setattr(self, 'exclude_applications', n.get_collection_of_primitive_values(str)),
             "includeApplications": lambda n : setattr(self, 'include_applications', n.get_collection_of_primitive_values(str)),
             "includeAuthenticationContextClassReferences": lambda n : setattr(self, 'include_authentication_context_class_references', n.get_collection_of_primitive_values(str)),
@@ -53,6 +63,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
+        writer.write_object_value("applicationFilter", self.application_filter)
         writer.write_collection_of_primitive_values("excludeApplications", self.exclude_applications)
         writer.write_collection_of_primitive_values("includeApplications", self.include_applications)
         writer.write_collection_of_primitive_values("includeAuthenticationContextClassReferences", self.include_authentication_context_class_references)

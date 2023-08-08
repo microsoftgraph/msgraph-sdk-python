@@ -12,7 +12,8 @@ from .authentication_method_configuration import AuthenticationMethodConfigurati
 
 @dataclass
 class MicrosoftAuthenticatorAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
-    odata_type = "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration"
     # A collection of Microsoft Authenticator settings such as application context and location context, and whether they are enabled for all users or specific users only.
     feature_settings: Optional[MicrosoftAuthenticatorFeatureSettings] = None
     # A collection of groups that are enabled to use the authentication method. Expanded by default.

@@ -15,7 +15,8 @@ class MacOSCompliancePolicy(DeviceCompliancePolicy):
     """
     This class contains compliance settings for Mac OS.
     """
-    odata_type = "#microsoft.graph.macOSCompliancePolicy"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.macOSCompliancePolicy"
     # Require that devices have enabled device threat protection.
     device_threat_protection_enabled: Optional[bool] = None
     # Device threat protection levels for the Device Threat Protection API.

@@ -13,7 +13,8 @@ from .authentication_method import AuthenticationMethod
 
 @dataclass
 class WindowsHelloForBusinessAuthenticationMethod(AuthenticationMethod):
-    odata_type = "#microsoft.graph.windowsHelloForBusinessAuthenticationMethod"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windowsHelloForBusinessAuthenticationMethod"
     # The date and time that this Windows Hello for Business key was registered.
     created_date_time: Optional[datetime.datetime] = None
     # The registered device on which this Windows Hello for Business key resides. Supports $expand. When you get a user's Windows Hello for Business registration information, this property is returned only on a single GET and when you specify ?$expand. For example, GET /users/admin@contoso.com/authentication/windowsHelloForBusinessMethods/_jpuR-TGZtk6aQCLF3BQjA2?$expand=device.

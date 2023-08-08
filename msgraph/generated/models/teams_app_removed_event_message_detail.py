@@ -11,7 +11,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class TeamsAppRemovedEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.teamsAppRemovedEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.teamsAppRemovedEventMessageDetail"
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # Display name of the teamsApp.

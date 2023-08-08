@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .deleted_team import DeletedTeam
     from .entity import Entity
+    from .teams_app_settings import TeamsAppSettings
     from .workforce_integration import WorkforceIntegration
 
 from .entity import Entity
@@ -16,6 +17,8 @@ class Teamwork(Entity):
     deleted_teams: Optional[List[DeletedTeam]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The teamsAppSettings property
+    teams_app_settings: Optional[TeamsAppSettings] = None
     # The workforceIntegrations property
     workforce_integrations: Optional[List[WorkforceIntegration]] = None
     
@@ -38,14 +41,17 @@ class Teamwork(Entity):
         """
         from .deleted_team import DeletedTeam
         from .entity import Entity
+        from .teams_app_settings import TeamsAppSettings
         from .workforce_integration import WorkforceIntegration
 
         from .deleted_team import DeletedTeam
         from .entity import Entity
+        from .teams_app_settings import TeamsAppSettings
         from .workforce_integration import WorkforceIntegration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "deletedTeams": lambda n : setattr(self, 'deleted_teams', n.get_collection_of_object_values(DeletedTeam)),
+            "teamsAppSettings": lambda n : setattr(self, 'teams_app_settings', n.get_object_value(TeamsAppSettings)),
             "workforceIntegrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(WorkforceIntegration)),
         }
         super_fields = super().get_field_deserializers()
@@ -62,6 +68,7 @@ class Teamwork(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("deletedTeams", self.deleted_teams)
+        writer.write_object_value("teamsAppSettings", self.teams_app_settings)
         writer.write_collection_of_object_values("workforceIntegrations", self.workforce_integrations)
     
 

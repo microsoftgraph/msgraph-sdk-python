@@ -16,7 +16,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
     allowed_to_create_tenants: Optional[bool] = None
     # Indicates whether the registered owners of a device can read their own BitLocker recovery keys with default user role.
     allowed_to_read_bitlocker_keys_for_owned_device: Optional[bool] = None
-    # Indicates whether the default user role can read other users.
+    # Indicates whether the default user role can read other users. DO NOT SET THIS VALUE TO false.
     allowed_to_read_other_users: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

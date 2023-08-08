@@ -11,7 +11,8 @@ from .policy_base import PolicyBase
 
 @dataclass
 class TenantAppManagementPolicy(PolicyBase):
-    odata_type = "#microsoft.graph.tenantAppManagementPolicy"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.tenantAppManagementPolicy"
     # Restrictions that apply as default to all application objects in the tenant.
     application_restrictions: Optional[AppManagementConfiguration] = None
     # Denotes whether the policy is enabled. Default value is false.

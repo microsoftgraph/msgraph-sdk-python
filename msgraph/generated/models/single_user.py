@@ -10,7 +10,8 @@ from .subject_set import SubjectSet
 
 @dataclass
 class SingleUser(SubjectSet):
-    odata_type = "#microsoft.graph.singleUser"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.singleUser"
     # The name of the user in Azure AD. Read only.
     description: Optional[str] = None
     # The ID of the user in Azure AD.

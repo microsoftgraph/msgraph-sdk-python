@@ -10,7 +10,8 @@ from .policy_base import PolicyBase
 
 @dataclass
 class IdentitySecurityDefaultsEnforcementPolicy(PolicyBase):
-    odata_type = "#microsoft.graph.identitySecurityDefaultsEnforcementPolicy"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.identitySecurityDefaultsEnforcementPolicy"
     # If set to true, Azure Active Directory security defaults is enabled for the tenant.
     is_enabled: Optional[bool] = None
     

@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -51,7 +50,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Alert]:
         """
-        Update an editable **alert** property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID.
+        Update an editable alert property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +93,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update an editable **alert** property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID.
+        Update an editable alert property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

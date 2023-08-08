@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -23,6 +22,7 @@ if TYPE_CHECKING:
     from .installed_apps.installed_apps_request_builder import InstalledAppsRequestBuilder
     from .members.members_request_builder import MembersRequestBuilder
     from .operations.operations_request_builder import OperationsRequestBuilder
+    from .permission_grants.permission_grants_request_builder import PermissionGrantsRequestBuilder
     from .photo.photo_request_builder import PhotoRequestBuilder
     from .primary_channel.primary_channel_request_builder import PrimaryChannelRequestBuilder
     from .schedule.schedule_request_builder import ScheduleRequestBuilder
@@ -254,6 +254,15 @@ class TeamItemRequestBuilder(BaseRequestBuilder):
         from .operations.operations_request_builder import OperationsRequestBuilder
 
         return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def permission_grants(self) -> PermissionGrantsRequestBuilder:
+        """
+        Provides operations to manage the permissionGrants property of the microsoft.graph.team entity.
+        """
+        from .permission_grants.permission_grants_request_builder import PermissionGrantsRequestBuilder
+
+        return PermissionGrantsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def photo(self) -> PhotoRequestBuilder:

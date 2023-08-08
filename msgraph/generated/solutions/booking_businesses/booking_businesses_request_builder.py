@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -47,7 +46,7 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BookingBusinessesRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingBusinessCollectionResponse]:
         """
-        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the **id** and **displayName** of each Microsoft Bookings business in the collection. For performance considerations, it does not return other properties. You can get the other properties of a Bookings business by specifying its **id** in a GET operation.
+        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the id and displayName of each Microsoft Bookings business in the collection. For performance considerations, it does not return other properties. You can get the other properties of a Bookings business by specifying its id in a GET operation.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingBusinessCollectionResponse]
@@ -69,7 +68,7 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[BookingBusiness] = None, request_configuration: Optional[BookingBusinessesRequestBuilderPostRequestConfiguration] = None) -> Optional[BookingBusiness]:
         """
-        Create a new Microsoft Bookings business in a tenant. This is the first step in setting up a Bookings business where you must specify the business display name. You can include other information such as business address, web site address, and scheduling policy, or set that information later by updating the **bookingBusiness**.
+        Create a new Microsoft Bookings business in a tenant. This is the first step in setting up a Bookings business where you must specify the business display name. You can include other information such as business address, web site address, and scheduling policy, or set that information later by updating the bookingBusiness.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +93,7 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[BookingBusinessesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the **id** and **displayName** of each Microsoft Bookings business in the collection. For performance considerations, it does not return other properties. You can get the other properties of a Bookings business by specifying its **id** in a GET operation.
+        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the id and displayName of each Microsoft Bookings business in the collection. For performance considerations, it does not return other properties. You can get the other properties of a Bookings business by specifying its id in a GET operation.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +111,7 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[BookingBusiness] = None, request_configuration: Optional[BookingBusinessesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new Microsoft Bookings business in a tenant. This is the first step in setting up a Bookings business where you must specify the business display name. You can include other information such as business address, web site address, and scheduling policy, or set that information later by updating the **bookingBusiness**.
+        Create a new Microsoft Bookings business in a tenant. This is the first step in setting up a Bookings business where you must specify the business display name. You can include other information such as business address, web site address, and scheduling policy, or set that information later by updating the bookingBusiness.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +142,7 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingBusinessesRequestBuilderGetQueryParameters():
         """
-        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the **id** and **displayName** of each Microsoft Bookings business in the collection. For performance considerations, it does not return other properties. You can get the other properties of a Bookings business by specifying its **id** in a GET operation.
+        Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the id and displayName of each Microsoft Bookings business in the collection. For performance considerations, it does not return other properties. You can get the other properties of a Bookings business by specifying its id in a GET operation.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

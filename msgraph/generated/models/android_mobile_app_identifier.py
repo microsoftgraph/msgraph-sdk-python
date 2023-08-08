@@ -13,7 +13,8 @@ class AndroidMobileAppIdentifier(MobileAppIdentifier):
     """
     The identifier for an Android app.
     """
-    odata_type = "#microsoft.graph.androidMobileAppIdentifier"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.androidMobileAppIdentifier"
     # The identifier for an app, as specified in the play store.
     package_id: Optional[str] = None
     

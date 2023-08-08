@@ -11,7 +11,8 @@ from .identity import Identity
 
 @dataclass
 class TeamworkUserIdentity(Identity):
-    odata_type = "#microsoft.graph.teamworkUserIdentity"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.teamworkUserIdentity"
     # Type of user. Possible values are: aadUser, onPremiseAadUser, anonymousGuest, federatedUser, personalMicrosoftAccountUser, skypeUser, phoneUser, unknownFutureValue and emailUser.
     user_identity_type: Optional[TeamworkUserIdentityType] = None
     

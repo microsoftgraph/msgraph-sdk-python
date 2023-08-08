@@ -12,7 +12,8 @@ from .data_source import DataSource
 
 @dataclass
 class UnifiedGroupSource(DataSource):
-    odata_type = "#microsoft.graph.security.unifiedGroupSource"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.unifiedGroupSource"
     # The group property
     group: Optional[Group] = None
     # Specifies which sources are included in this group. Possible values are: mailbox, site.

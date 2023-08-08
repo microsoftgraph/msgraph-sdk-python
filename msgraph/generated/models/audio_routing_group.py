@@ -13,11 +13,11 @@ from .entity import Entity
 class AudioRoutingGroup(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The receivers property
+    # List of receiving participant ids.
     receivers: Optional[List[str]] = None
     # The routingMode property
     routing_mode: Optional[RoutingMode] = None
-    # The sources property
+    # List of source participant ids.
     sources: Optional[List[str]] = None
     
     @staticmethod

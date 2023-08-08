@@ -11,7 +11,8 @@ from .directory_object import DirectoryObject
 
 @dataclass
 class Contract(DirectoryObject):
-    odata_type = "#microsoft.graph.contract"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.contract"
     # Type of contract. Possible values are:  SyndicationPartner, BreadthPartner, ResellerPartner. See more in the table below.
     contract_type: Optional[str] = None
     # The unique identifier for the customer tenant referenced by this partnership. Corresponds to the id property of the customer tenant's organization resource.

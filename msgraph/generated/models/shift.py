@@ -11,7 +11,8 @@ from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
 class Shift(ChangeTrackedEntity):
-    odata_type = "#microsoft.graph.shift"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.shift"
     # The draft version of this shift that is viewable by managers. Required.
     draft_shift: Optional[ShiftItem] = None
     # ID of the scheduling group the shift is part of. Required.

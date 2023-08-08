@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -30,7 +29,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[PermissionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove access to a DriveItem. Only sharing permissions that are **not** inherited can be deleted.The **inheritedFrom** property must be `null`.
+        Remove access to a DriveItem. Only sharing permissions that are not inherited can be deleted.The inheritedFrom property must be null.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -49,7 +48,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PermissionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Permission]:
         """
-        Return the effective sharing permission for a particular permission resource. Effective permissions of an item can come from two sources: permissions set directly on the item itself or permissions that are inherited from the item's ancestors. Callers can differentiate if the permission is inherited or not by checking the `inheritedFrom` property.This property is an ItemReference resource referencing the ancestor that the permission is inherited from.
+        Return the effective sharing permission for a particular permission resource. Effective permissions of an item can come from two sources: permissions set directly on the item itself or permissions that are inherited from the item's ancestors. Callers can differentiate if the permission is inherited or not by checking the inheritedFrom property.This property is an ItemReference resource referencing the ancestor that the permission is inherited from.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Permission]
@@ -71,7 +70,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Permission]:
         """
-        Update the properties of a sharing permission by patching the permission resource. Only the **roles** property can be modified this way.
+        Update the properties of a sharing permission by patching the permission resource. Only the roles property can be modified this way.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -96,7 +95,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[PermissionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove access to a DriveItem. Only sharing permissions that are **not** inherited can be deleted.The **inheritedFrom** property must be `null`.
+        Remove access to a DriveItem. Only sharing permissions that are not inherited can be deleted.The inheritedFrom property must be null.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +111,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PermissionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Return the effective sharing permission for a particular permission resource. Effective permissions of an item can come from two sources: permissions set directly on the item itself or permissions that are inherited from the item's ancestors. Callers can differentiate if the permission is inherited or not by checking the `inheritedFrom` property.This property is an ItemReference resource referencing the ancestor that the permission is inherited from.
+        Return the effective sharing permission for a particular permission resource. Effective permissions of an item can come from two sources: permissions set directly on the item itself or permissions that are inherited from the item's ancestors. Callers can differentiate if the permission is inherited or not by checking the inheritedFrom property.This property is an ItemReference resource referencing the ancestor that the permission is inherited from.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +129,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a sharing permission by patching the permission resource. Only the **roles** property can be modified this way.
+        Update the properties of a sharing permission by patching the permission resource. Only the roles property can be modified this way.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +170,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PermissionItemRequestBuilderGetQueryParameters():
         """
-        Return the effective sharing permission for a particular permission resource. Effective permissions of an item can come from two sources: permissions set directly on the item itself or permissions that are inherited from the item's ancestors. Callers can differentiate if the permission is inherited or not by checking the `inheritedFrom` property.This property is an ItemReference resource referencing the ancestor that the permission is inherited from.
+        Return the effective sharing permission for a particular permission resource. Effective permissions of an item can come from two sources: permissions set directly on the item itself or permissions that are inherited from the item's ancestors. Callers can differentiate if the permission is inherited or not by checking the inheritedFrom property.This property is an ItemReference resource referencing the ancestor that the permission is inherited from.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

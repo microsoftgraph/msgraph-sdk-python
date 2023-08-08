@@ -12,7 +12,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class MessageUnpinnedEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.messageUnpinnedEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.messageUnpinnedEventMessageDetail"
     # Date and time when the event occurred.
     event_date_time: Optional[datetime.datetime] = None
     # Initiator of the event.

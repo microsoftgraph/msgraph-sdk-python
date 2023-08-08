@@ -17,7 +17,8 @@ from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
 class ScheduleChangeRequest(ChangeTrackedEntity):
-    odata_type = "#microsoft.graph.scheduleChangeRequest"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.scheduleChangeRequest"
     # The assignedTo property
     assigned_to: Optional[ScheduleChangeRequestActor] = None
     # The managerActionDateTime property

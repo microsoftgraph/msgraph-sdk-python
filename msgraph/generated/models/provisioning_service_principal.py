@@ -10,7 +10,8 @@ from .identity import Identity
 
 @dataclass
 class ProvisioningServicePrincipal(Identity):
-    odata_type = "#microsoft.graph.provisioningServicePrincipal"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.provisioningServicePrincipal"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisioningServicePrincipal:

@@ -10,7 +10,8 @@ from .subject_set import SubjectSet
 
 @dataclass
 class SingleServicePrincipal(SubjectSet):
-    odata_type = "#microsoft.graph.singleServicePrincipal"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.singleServicePrincipal"
     # Description of this service principal.
     description: Optional[str] = None
     # ID of the servicePrincipal.

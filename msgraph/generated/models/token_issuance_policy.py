@@ -10,7 +10,8 @@ from .sts_policy import StsPolicy
 
 @dataclass
 class TokenIssuancePolicy(StsPolicy):
-    odata_type = "#microsoft.graph.tokenIssuancePolicy"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.tokenIssuancePolicy"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TokenIssuancePolicy:

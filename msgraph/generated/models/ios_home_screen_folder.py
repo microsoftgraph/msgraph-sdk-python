@@ -14,7 +14,8 @@ class IosHomeScreenFolder(IosHomeScreenItem):
     """
     A folder containing pages of apps and web clips on the Home Screen.
     """
-    odata_type = "#microsoft.graph.iosHomeScreenFolder"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iosHomeScreenFolder"
     # Pages of Home Screen Layout Icons which must be applications or web clips. This collection can contain a maximum of 500 elements.
     pages: Optional[List[IosHomeScreenFolderPage]] = None
     

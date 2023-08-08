@@ -11,7 +11,8 @@ from .directory_object import DirectoryObject
 
 @dataclass
 class GroupSettingTemplate(DirectoryObject):
-    odata_type = "#microsoft.graph.groupSettingTemplate"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.groupSettingTemplate"
     # Description of the template.
     description: Optional[str] = None
     # Display name of the template. The template named Group.Unified can be used to configure tenant-wide Microsoft 365 group settings, while the template named Group.Unified.Guest can be used to configure group-specific settings.

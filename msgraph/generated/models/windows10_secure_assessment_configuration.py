@@ -13,7 +13,8 @@ class Windows10SecureAssessmentConfiguration(DeviceConfiguration):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the secureAssessment resource.
     """
-    odata_type = "#microsoft.graph.windows10SecureAssessmentConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windows10SecureAssessmentConfiguration"
     # Indicates whether or not to allow the app from printing during the test.
     allow_printing: Optional[bool] = None
     # Indicates whether or not to allow screen capture capability during a test.

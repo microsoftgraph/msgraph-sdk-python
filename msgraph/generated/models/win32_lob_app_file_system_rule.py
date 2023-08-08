@@ -15,7 +15,8 @@ class Win32LobAppFileSystemRule(Win32LobAppRule):
     """
     A complex type to store file or folder rule data for a Win32 LOB app.
     """
-    odata_type = "#microsoft.graph.win32LobAppFileSystemRule"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.win32LobAppFileSystemRule"
     # A value indicating whether to expand environment variables in the 32-bit context on 64-bit systems.
     check32_bit_on64_system: Optional[bool] = None
     # The file or folder comparison value.

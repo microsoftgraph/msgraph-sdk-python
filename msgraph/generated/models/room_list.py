@@ -11,7 +11,8 @@ from .place import Place
 
 @dataclass
 class RoomList(Place):
-    odata_type = "#microsoft.graph.roomList"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.roomList"
     # The email address of the room list.
     email_address: Optional[str] = None
     # The rooms property

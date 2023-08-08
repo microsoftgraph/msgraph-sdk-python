@@ -13,7 +13,8 @@ class IosiPadOSWebClip(MobileApp):
     """
     Contains properties and inherited properties for iOS web apps.
     """
-    odata_type = "#microsoft.graph.iosiPadOSWebClip"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iosiPadOSWebClip"
     # Indicates iOS/iPadOS web clip app URL. Example: 'https://www.contoso.com'
     app_url: Optional[str] = None
     # Whether or not to use managed browser. When TRUE, the app will be required to be opened in Microsoft Edge. When FALSE, the app will not be required to be opened in Microsoft Edge. By default, this property is set to FALSE.

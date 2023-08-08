@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -32,7 +31,7 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
     
     async def delete(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property mdmWindowsInformationProtectionPolicies for deviceAppManagement
+        Deletes a mdmWindowsInformationProtectionPolicy.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -51,7 +50,7 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
     
     async def get(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MdmWindowsInformationProtectionPolicy]:
         """
-        Windows information protection for apps running on devices which are MDM enrolled.
+        Read properties and relationships of the mdmWindowsInformationProtectionPolicy object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MdmWindowsInformationProtectionPolicy]
@@ -73,7 +72,7 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
     
     async def patch(self,body: Optional[MdmWindowsInformationProtectionPolicy] = None, request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MdmWindowsInformationProtectionPolicy]:
         """
-        Update the navigation property mdmWindowsInformationProtectionPolicies in deviceAppManagement
+        Update the properties of a mdmWindowsInformationProtectionPolicy object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +97,7 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
     
     def to_delete_request_information(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property mdmWindowsInformationProtectionPolicies for deviceAppManagement
+        Deletes a mdmWindowsInformationProtectionPolicy.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +113,7 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
     
     def to_get_request_information(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Windows information protection for apps running on devices which are MDM enrolled.
+        Read properties and relationships of the mdmWindowsInformationProtectionPolicy object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -132,7 +131,7 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
     
     def to_patch_request_information(self,body: Optional[MdmWindowsInformationProtectionPolicy] = None, request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property mdmWindowsInformationProtectionPolicies in deviceAppManagement
+        Update the properties of a mdmWindowsInformationProtectionPolicy object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +190,7 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
     @dataclass
     class MdmWindowsInformationProtectionPolicyItemRequestBuilderGetQueryParameters():
         """
-        Windows information protection for apps running on devices which are MDM enrolled.
+        Read properties and relationships of the mdmWindowsInformationProtectionPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

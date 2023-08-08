@@ -13,7 +13,8 @@ class WebApp(MobileApp):
     """
     Contains properties and inherited properties for web apps.
     """
-    odata_type = "#microsoft.graph.webApp"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.webApp"
     # The web app URL. This property cannot be PATCHed.
     app_url: Optional[str] = None
     # Whether or not to use managed browser. This property is only applicable for Android and IOS.

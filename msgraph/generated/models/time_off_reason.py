@@ -11,7 +11,8 @@ from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
 class TimeOffReason(ChangeTrackedEntity):
-    odata_type = "#microsoft.graph.timeOffReason"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.timeOffReason"
     # The name of the timeOffReason. Required.
     display_name: Optional[str] = None
     # Supported icon types are: none, car, calendar, running, plane, firstAid, doctor, notWorking, clock, juryDuty, globe, cup, phone, weather, umbrella, piggyBank, dog, cake, trafficCone, pin, sunny. Required.

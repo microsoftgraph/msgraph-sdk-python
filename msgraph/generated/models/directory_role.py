@@ -11,7 +11,8 @@ from .directory_object import DirectoryObject
 
 @dataclass
 class DirectoryRole(DirectoryObject):
-    odata_type = "#microsoft.graph.directoryRole"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.directoryRole"
     # The description for the directory role. Read-only. Supports $filter (eq), $search, $select.
     description: Optional[str] = None
     # The display name for the directory role. Read-only. Supports $filter (eq), $search, $select.

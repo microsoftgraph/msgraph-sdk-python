@@ -14,25 +14,25 @@ from .entity import Entity
 
 @dataclass
 class AccessPackageResource(Entity):
-    # The createdDateTime property
+    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     created_date_time: Optional[datetime.datetime] = None
-    # The description property
+    # A description for the resource.
     description: Optional[str] = None
-    # The displayName property
+    # The display name of the resource, such as the application name, group name or site name.
     display_name: Optional[str] = None
-    # The environment property
+    # Contains the environment information for the resource. This can be set using either the @odata.bind annotation or the environment's originId.Supports $expand.
     environment: Optional[AccessPackageResourceEnvironment] = None
-    # The modifiedDateTime property
+    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The originId property
+    # The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group.
     origin_id: Optional[str] = None
-    # The originSystem property
+    # The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup.
     origin_system: Optional[str] = None
-    # The roles property
+    # Read-only. Nullable. Supports $expand.
     roles: Optional[List[AccessPackageResourceRole]] = None
-    # The scopes property
+    # Read-only. Nullable. Supports $expand.
     scopes: Optional[List[AccessPackageResourceScope]] = None
     
     @staticmethod

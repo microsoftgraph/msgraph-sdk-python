@@ -10,7 +10,8 @@ from .endpoint import Endpoint
 
 @dataclass
 class ServiceEndpoint(Endpoint):
-    odata_type = "#microsoft.graph.callRecords.serviceEndpoint"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.callRecords.serviceEndpoint"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceEndpoint:

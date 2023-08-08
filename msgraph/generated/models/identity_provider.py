@@ -12,7 +12,7 @@ from .entity import Entity
 class IdentityProvider(Entity):
     # The client ID for the application. This is the client ID obtained when registering the application with the identity provider. Required. Not nullable.
     client_id: Optional[str] = None
-    # The client secret for the application. This is the client secret obtained when registering the application with the identity provider. This is write-only. A read operation will return ****.  Required. Not nullable.
+    # The client secret for the application. This is the client secret obtained when registering the application with the identity provider. This is write-only. A read operation will return .  Required. Not nullable.
     client_secret: Optional[str] = None
     # The display name of the identity provider. Not nullable.
     name: Optional[str] = None

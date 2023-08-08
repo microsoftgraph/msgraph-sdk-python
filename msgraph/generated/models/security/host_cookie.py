@@ -12,7 +12,8 @@ from .artifact import Artifact
 
 @dataclass
 class HostCookie(Artifact):
-    odata_type = "#microsoft.graph.security.hostCookie"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.hostCookie"
     # The URI for which the cookie is valid.
     domain: Optional[str] = None
     # The first date and time when this hostCookie was observed by Microsoft Defender Threat Intelligence. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014, is 2014-01-01T00:00:00Z.

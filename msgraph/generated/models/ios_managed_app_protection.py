@@ -16,7 +16,8 @@ class IosManagedAppProtection(TargetedManagedAppProtection):
     """
     Policy used to configure detailed management settings targeted to specific security groups and for a specified set of apps on an iOS device
     """
-    odata_type = "#microsoft.graph.iosManagedAppProtection"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iosManagedAppProtection"
     # Represents the level to which app data is encrypted for managed apps
     app_data_encryption_type: Optional[ManagedAppDataEncryptionType] = None
     # List of apps to which the policy is deployed.

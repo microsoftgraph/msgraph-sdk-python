@@ -12,7 +12,8 @@ from .authentication_method import AuthenticationMethod
 
 @dataclass
 class PhoneAuthenticationMethod(AuthenticationMethod):
-    odata_type = "#microsoft.graph.phoneAuthenticationMethod"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.phoneAuthenticationMethod"
     # The phone number to text or call for authentication. Phone numbers use the format +{country code} {number}x{extension}, with extension optional. For example, +1 5555551234 or +1 5555551234x123 are valid. Numbers are rejected when creating or updating if they do not match the required format.
     phone_number: Optional[str] = None
     # The type of this phone. Possible values are: mobile, alternateMobile, or office.

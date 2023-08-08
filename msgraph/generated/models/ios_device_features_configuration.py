@@ -16,7 +16,8 @@ class IosDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
     """
     iOS Device Features Configuration Profile.
     """
-    odata_type = "#microsoft.graph.iosDeviceFeaturesConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iosDeviceFeaturesConfiguration"
     # Asset tag information for the device, displayed on the login window and lock screen.
     asset_tag_template: Optional[str] = None
     # A list of app and folders to appear on the Home Screen Dock. This collection can contain a maximum of 500 elements.

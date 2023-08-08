@@ -8,17 +8,17 @@ class LoginPageTextVisibilitySettings(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
 
-    # The hideAccountResetCredentials property
+    # Option to hide the self-service password reset (SSPR) hyperlinks such as 'Can't access your account?', 'Forgot my password' and 'Reset it now' on the sign-in form.
     hide_account_reset_credentials: Optional[bool] = None
-    # The hideCannotAccessYourAccount property
+    # Option to hide the self-service password reset (SSPR) 'Can't access your account?' hyperlink on the sign-in form.
     hide_cannot_access_your_account: Optional[bool] = None
-    # The hideForgotMyPassword property
+    # Option to hide the self-service password reset (SSPR) 'Forgot my password' hyperlink on the sign-in form.
     hide_forgot_my_password: Optional[bool] = None
-    # The hidePrivacyAndCookies property
+    # Option to hide the 'Privacy & Cookies' hyperlink in the footer.
     hide_privacy_and_cookies: Optional[bool] = None
-    # The hideResetItNow property
+    # Option to hide the self-service password reset (SSPR) 'reset it now' hyperlink on the sign-in form.
     hide_reset_it_now: Optional[bool] = None
-    # The hideTermsOfUse property
+    # Option to hide the 'Terms of Use' hyperlink in the footer.
     hide_terms_of_use: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

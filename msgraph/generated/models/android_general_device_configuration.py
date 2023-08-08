@@ -17,7 +17,8 @@ class AndroidGeneralDeviceConfiguration(DeviceConfiguration):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the androidGeneralDeviceConfiguration resource.
     """
-    odata_type = "#microsoft.graph.androidGeneralDeviceConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.androidGeneralDeviceConfiguration"
     # Indicates whether or not to block clipboard sharing to copy and paste between applications.
     apps_block_clipboard_sharing: Optional[bool] = None
     # Indicates whether or not to block copy and paste within applications.

@@ -10,7 +10,8 @@ from .offer_shift_request import OfferShiftRequest
 
 @dataclass
 class SwapShiftsChangeRequest(OfferShiftRequest):
-    odata_type = "#microsoft.graph.swapShiftsChangeRequest"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.swapShiftsChangeRequest"
     # ShiftId for the recipient user with whom the request is to swap.
     recipient_shift_id: Optional[str] = None
     

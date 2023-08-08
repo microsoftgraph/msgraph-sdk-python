@@ -56,7 +56,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     usage_country_code: Optional[str] = None
     # Display name of the user.
     user_display_name: Optional[str] = None
-    # Calling user's ID in Graph. GUID. This and other user info will be null/empty for bot call types (ucap_in, ucap_out).
+    # Calling user's ID in Graph. GUID. This and other user info will be null/empty for bot call types (ucapin, ucapout).
     user_id: Optional[str] = None
     # The user principal name (sign-in name) in Azure Active Directory. This is usually the same as the user's SIP address, and can be same as the user's e-mail address.
     user_principal_name: Optional[str] = None

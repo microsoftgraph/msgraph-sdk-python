@@ -10,7 +10,8 @@ from .authentication_method import AuthenticationMethod
 
 @dataclass
 class EmailAuthenticationMethod(AuthenticationMethod):
-    odata_type = "#microsoft.graph.emailAuthenticationMethod"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.emailAuthenticationMethod"
     # The email address registered to this user.
     email_address: Optional[str] = None
     

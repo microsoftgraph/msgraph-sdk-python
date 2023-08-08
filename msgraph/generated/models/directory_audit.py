@@ -15,19 +15,19 @@ from .entity import Entity
 
 @dataclass
 class DirectoryAudit(Entity):
-    # Indicates the date and time the activity was performed. The Timestamp type is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    # Indicates the date and time the activity was performed. The Timestamp type is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and $orderby.
     activity_date_time: Optional[datetime.datetime] = None
-    # Indicates the activity name or the operation name (examples: 'Create User' and 'Add member to group'). For a list of activities logged, refer to Azure AD audit log categories and activities.
+    # Indicates the activity name or the operation name (examples: 'Create User' and 'Add member to group'). For a list of activities logged, refer to Azure AD audit log categories and activities. Supports $filter (eq, startswith).
     activity_display_name: Optional[str] = None
     # Indicates additional details on the activity.
     additional_details: Optional[List[KeyValue]] = None
     # Indicates which resource category that's targeted by the activity. For example: UserManagement, GroupManagement, ApplicationManagement, RoleManagement. For a list of categories for activities logged, refer to Azure AD audit log categories and activities.
     category: Optional[str] = None
-    # Indicates a unique ID that helps correlate activities that span across various services. Can be used to trace logs across services.
+    # Indicates a unique ID that helps correlate activities that span across various services. Can be used to trace logs across services. Supports $filter (eq).
     correlation_id: Optional[str] = None
     # The initiatedBy property
     initiated_by: Optional[AuditActivityInitiator] = None
-    # Indicates information on which service initiated the activity (For example: Self-service Password Management, Core Directory, B2C, Invited Users, Microsoft Identity Manager, Privileged Identity Management.
+    # Indicates information on which service initiated the activity (For example: Self-service Password Management, Core Directory, B2C, Invited Users, Microsoft Identity Manager, Privileged Identity Management. Supports $filter (eq).
     logged_by_service: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -37,7 +37,7 @@ class DirectoryAudit(Entity):
     result: Optional[OperationResult] = None
     # Indicates the reason for failure if the result is failure or timeout.
     result_reason: Optional[str] = None
-    # Indicates information on which resource was changed due to the activity. Target Resource Type can be User, Device, Directory, App, Role, Group, Policy or Other.
+    # Indicates information on which resource was changed due to the activity. Target Resource Type can be User, Device, Directory, App, Role, Group, Policy or Other. Supports $filter (eq) for id and displayName; and $filter (startswith) for displayName.
     target_resources: Optional[List[TargetResource]] = None
     
     @staticmethod

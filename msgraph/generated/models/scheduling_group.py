@@ -10,7 +10,8 @@ from .change_tracked_entity import ChangeTrackedEntity
 
 @dataclass
 class SchedulingGroup(ChangeTrackedEntity):
-    odata_type = "#microsoft.graph.schedulingGroup"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.schedulingGroup"
     # The display name for the schedulingGroup. Required.
     display_name: Optional[str] = None
     # Indicates whether the schedulingGroup can be used when creating new entities or updating existing ones. Required.

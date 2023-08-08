@@ -14,7 +14,8 @@ class AndroidStoreApp(MobileApp):
     """
     Contains properties and inherited properties for Android store apps.
     """
-    odata_type = "#microsoft.graph.androidStoreApp"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.androidStoreApp"
     # The Android app store URL.
     app_store_url: Optional[str] = None
     # The value for the minimum applicable operating system.

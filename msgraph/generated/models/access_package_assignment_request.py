@@ -29,7 +29,7 @@ class AccessPackageAssignmentRequest(Entity):
     completed_date_time: Optional[datetime.datetime] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter.
     created_date_time: Optional[datetime.datetime] = None
-    # The customExtensionCalloutInstances property
+    # Information about all the custom extension calls that were made during the access package assignment workflow.
     custom_extension_callout_instances: Optional[List[CustomExtensionCalloutInstance]] = None
     # The OdataType property
     odata_type: Optional[str] = None

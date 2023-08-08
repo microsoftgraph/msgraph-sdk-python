@@ -12,7 +12,8 @@ from .authentication_method import AuthenticationMethod
 
 @dataclass
 class Fido2AuthenticationMethod(AuthenticationMethod):
-    odata_type = "#microsoft.graph.fido2AuthenticationMethod"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.fido2AuthenticationMethod"
     # Authenticator Attestation GUID, an identifier that indicates the type (e.g. make and model) of the authenticator.
     aa_guid: Optional[str] = None
     # The attestation certificate(s) attached to this security key.

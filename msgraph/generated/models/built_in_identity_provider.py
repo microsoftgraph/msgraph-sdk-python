@@ -10,7 +10,8 @@ from .identity_provider_base import IdentityProviderBase
 
 @dataclass
 class BuiltInIdentityProvider(IdentityProviderBase):
-    odata_type = "#microsoft.graph.builtInIdentityProvider"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.builtInIdentityProvider"
     # The identity provider type. For a B2B scenario, possible values: AADSignup, MicrosoftAccount, EmailOTP. Required.
     identity_provider_type: Optional[str] = None
     

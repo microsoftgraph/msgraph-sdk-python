@@ -10,7 +10,8 @@ from .custom_extension_authentication_configuration import CustomExtensionAuthen
 
 @dataclass
 class AzureAdPopTokenAuthentication(CustomExtensionAuthenticationConfiguration):
-    odata_type = "#microsoft.graph.azureAdPopTokenAuthentication"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.azureAdPopTokenAuthentication"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AzureAdPopTokenAuthentication:

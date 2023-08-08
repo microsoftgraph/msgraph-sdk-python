@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class MicrosoftGraphIdentityGovernanceResumeRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ResumePostRequestBody] = None, request_configuration: Optional[MicrosoftGraphIdentityGovernanceResumeRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Resume a task processing result that's `inProgress`. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.
+        Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -51,7 +50,7 @@ class MicrosoftGraphIdentityGovernanceResumeRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ResumePostRequestBody] = None, request_configuration: Optional[MicrosoftGraphIdentityGovernanceResumeRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Resume a task processing result that's `inProgress`. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.
+        Resume a task processing result that's inProgress. In the default case an Azure Logic Apps system-assigned managed identity calls this API. For more information, see: Lifecycle Workflows extensibility approach.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

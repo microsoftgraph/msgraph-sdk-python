@@ -10,7 +10,8 @@ from .education_assignment_grade import EducationAssignmentGrade
 
 @dataclass
 class EducationAssignmentPointsGrade(EducationAssignmentGrade):
-    odata_type = "#microsoft.graph.educationAssignmentPointsGrade"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.educationAssignmentPointsGrade"
     # Number of points a teacher is giving this submission object.
     points: Optional[float] = None
     

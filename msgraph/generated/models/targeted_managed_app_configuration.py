@@ -16,7 +16,8 @@ class TargetedManagedAppConfiguration(ManagedAppConfiguration):
     """
     Configuration used to deliver a set of custom settings as-is to all users in the targeted security group
     """
-    odata_type = "#microsoft.graph.targetedManagedAppConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.targetedManagedAppConfiguration"
     # List of apps to which the policy is deployed.
     apps: Optional[List[ManagedMobileApp]] = None
     # Navigation property to list of inclusion and exclusion groups to which the policy is deployed.

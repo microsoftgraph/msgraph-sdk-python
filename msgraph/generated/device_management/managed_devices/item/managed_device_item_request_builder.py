@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -53,7 +52,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property managedDevices for deviceManagement
+        Deletes a managedDevice.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -72,7 +71,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDevice]:
         """
-        The list of managed devices.
+        Read properties and relationships of the managedDevice object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDevice]
@@ -94,7 +93,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ManagedDevice] = None, request_configuration: Optional[ManagedDeviceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedDevice]:
         """
-        Update the navigation property managedDevices in deviceManagement
+        Update the properties of a managedDevice object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +118,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property managedDevices for deviceManagement
+        Deletes a managedDevice.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,7 +134,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of managed devices.
+        Read properties and relationships of the managedDevice object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -153,7 +152,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ManagedDevice] = None, request_configuration: Optional[ManagedDeviceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property managedDevices in deviceManagement
+        Update the properties of a managedDevice object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -401,7 +400,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedDeviceItemRequestBuilderGetQueryParameters():
         """
-        The list of managed devices.
+        Read properties and relationships of the managedDevice object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

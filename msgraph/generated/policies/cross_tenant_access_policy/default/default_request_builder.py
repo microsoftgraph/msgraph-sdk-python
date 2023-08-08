@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -49,7 +48,7 @@ class DefaultRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DefaultRequestBuilderGetRequestConfiguration] = None) -> Optional[CrossTenantAccessPolicyConfigurationDefault]:
         """
-        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Azure AD (**isServiceDefault** is `true`) or may be customized in your tenant (**isServiceDefault** is `false`).
+        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Azure AD (isServiceDefault is true) or may be customized in your tenant (isServiceDefault is false).
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicyConfigurationDefault]
@@ -112,7 +111,7 @@ class DefaultRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DefaultRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Azure AD (**isServiceDefault** is `true`) or may be customized in your tenant (**isServiceDefault** is `false`).
+        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Azure AD (isServiceDefault is true) or may be customized in your tenant (isServiceDefault is false).
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +170,7 @@ class DefaultRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DefaultRequestBuilderGetQueryParameters():
         """
-        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Azure AD (**isServiceDefault** is `true`) or may be customized in your tenant (**isServiceDefault** is `false`).
+        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Azure AD (isServiceDefault is true) or may be customized in your tenant (isServiceDefault is false).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

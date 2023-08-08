@@ -19,7 +19,8 @@ class ManagedApp(MobileApp):
     """
     Abstract class that contains properties and inherited properties for apps that you can manage with an Intune app protection policy.
     """
-    odata_type = "#microsoft.graph.managedApp"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.managedApp"
     # A managed (MAM) application's availability.
     app_availability: Optional[ManagedAppAvailability] = None
     # The Application's version.

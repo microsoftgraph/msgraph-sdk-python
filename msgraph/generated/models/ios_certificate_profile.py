@@ -13,7 +13,8 @@ class IosCertificateProfile(DeviceConfiguration):
     """
     Device Configuration.
     """
-    odata_type = "#microsoft.graph.iosCertificateProfile"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iosCertificateProfile"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosCertificateProfile:

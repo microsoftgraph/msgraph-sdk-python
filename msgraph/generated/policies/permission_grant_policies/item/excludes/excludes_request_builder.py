@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -69,7 +68,7 @@ class ExcludesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[ExcludesRequestBuilderPostRequestConfiguration] = None) -> Optional[PermissionGrantConditionSet]:
         """
-        Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the **excludes** collection of a  permissionGrantPolicy.
+        Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the excludes collection of a  permissionGrantPolicy.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +111,7 @@ class ExcludesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[ExcludesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the **excludes** collection of a  permissionGrantPolicy.
+        Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the excludes collection of a  permissionGrantPolicy.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

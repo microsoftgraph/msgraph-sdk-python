@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Mark a timeOffReason as inactive by setting the **isActive** property. Every team must include at least one timeoff reason. This method does not remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason.
+        Mark a timeOffReason as inactive by setting the isActive property. Every team must include at least one timeoff reason. This method does not remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -70,7 +69,7 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TimeOffReason] = None, request_configuration: Optional[TimeOffReasonItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TimeOffReason]:
         """
-        Replace an existing timeOffReason. If the specified timeOffReason doesn't exist, this method returns `404 Not found`.
+        Replace an existing timeOffReason. If the specified timeOffReason doesn't exist, this method returns 404 Not found.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +94,7 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Mark a timeOffReason as inactive by setting the **isActive** property. Every team must include at least one timeoff reason. This method does not remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason.
+        Mark a timeOffReason as inactive by setting the isActive property. Every team must include at least one timeoff reason. This method does not remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TimeOffReason] = None, request_configuration: Optional[TimeOffReasonItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Replace an existing timeOffReason. If the specified timeOffReason doesn't exist, this method returns `404 Not found`.
+        Replace an existing timeOffReason. If the specified timeOffReason doesn't exist, this method returns 404 Not found.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

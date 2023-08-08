@@ -11,7 +11,8 @@ from .data_source import DataSource
 
 @dataclass
 class UserSource(DataSource):
-    odata_type = "#microsoft.graph.security.userSource"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.userSource"
     # Email address of the user's mailbox.
     email: Optional[str] = None
     # Specifies which sources are included in this group. Possible values are: mailbox, site.

@@ -11,7 +11,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class MeetingPolicyUpdatedEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.meetingPolicyUpdatedEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.meetingPolicyUpdatedEventMessageDetail"
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # Represents whether the meeting chat is enabled or not.

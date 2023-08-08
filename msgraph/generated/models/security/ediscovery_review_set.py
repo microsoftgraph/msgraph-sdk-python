@@ -11,7 +11,8 @@ from .data_set import DataSet
 
 @dataclass
 class EdiscoveryReviewSet(DataSet):
-    odata_type = "#microsoft.graph.security.ediscoveryReviewSet"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.ediscoveryReviewSet"
     # Represents queries within the review set.
     queries: Optional[List[EdiscoveryReviewSetQuery]] = None
     

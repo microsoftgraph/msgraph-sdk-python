@@ -11,7 +11,8 @@ from .identity import Identity
 
 @dataclass
 class Initiator(Identity):
-    odata_type = "#microsoft.graph.initiator"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.initiator"
     # Type of initiator. Possible values are: user, application, system, unknownFutureValue.
     initiator_type: Optional[InitiatorType] = None
     

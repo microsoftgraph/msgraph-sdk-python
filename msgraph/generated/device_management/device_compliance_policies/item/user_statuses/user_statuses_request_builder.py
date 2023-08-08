@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -47,7 +46,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceUserStatusCollectionResponse]:
         """
-        List of DeviceComplianceUserStatus.
+        List properties and relationships of the deviceComplianceUserStatus objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceUserStatusCollectionResponse]
@@ -69,7 +68,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceComplianceUserStatus] = None, request_configuration: Optional[UserStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceComplianceUserStatus]:
         """
-        Create new navigation property to userStatuses for deviceManagement
+        Create a new deviceComplianceUserStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +93,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of DeviceComplianceUserStatus.
+        List properties and relationships of the deviceComplianceUserStatus objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +111,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceComplianceUserStatus] = None, request_configuration: Optional[UserStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to userStatuses for deviceManagement
+        Create a new deviceComplianceUserStatus object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +142,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserStatusesRequestBuilderGetQueryParameters():
         """
-        List of DeviceComplianceUserStatus.
+        List properties and relationships of the deviceComplianceUserStatus objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

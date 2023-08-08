@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -47,7 +46,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceAndAppManagementRoleAssignmentCollectionResponse]:
         """
-        The Role Assignments.
+        List properties and relationships of the deviceAndAppManagementRoleAssignment objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceAndAppManagementRoleAssignmentCollectionResponse]
@@ -69,7 +68,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceAndAppManagementRoleAssignment]:
         """
-        Create new navigation property to roleAssignments for deviceManagement
+        Create a new deviceAndAppManagementRoleAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +93,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Role Assignments.
+        List properties and relationships of the deviceAndAppManagementRoleAssignment objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +111,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to roleAssignments for deviceManagement
+        Create a new deviceAndAppManagementRoleAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +142,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleAssignmentsRequestBuilderGetQueryParameters():
         """
-        The Role Assignments.
+        List properties and relationships of the deviceAndAppManagementRoleAssignment objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

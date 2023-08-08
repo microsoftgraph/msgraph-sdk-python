@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ResourceOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property resourceOperations for deviceManagement
+        Deletes a resourceOperation.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +47,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ResourceOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ResourceOperation]:
         """
-        The Resource Operations.
+        Read properties and relationships of the resourceOperation object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ResourceOperation]
@@ -70,7 +69,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[ResourceOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ResourceOperation]:
         """
-        Update the navigation property resourceOperations in deviceManagement
+        Update the properties of a resourceOperation object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +94,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ResourceOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property resourceOperations for deviceManagement
+        Deletes a resourceOperation.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +110,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ResourceOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The Resource Operations.
+        Read properties and relationships of the resourceOperation object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[ResourceOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property resourceOperations in deviceManagement
+        Update the properties of a resourceOperation object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +160,7 @@ class ResourceOperationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ResourceOperationItemRequestBuilderGetQueryParameters():
         """
-        The Resource Operations.
+        Read properties and relationships of the resourceOperation object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

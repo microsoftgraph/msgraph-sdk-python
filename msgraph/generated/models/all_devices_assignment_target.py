@@ -13,7 +13,8 @@ class AllDevicesAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
     """
     Represents an assignment to all managed devices in the tenant.
     """
-    odata_type = "#microsoft.graph.allDevicesAssignmentTarget"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.allDevicesAssignmentTarget"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AllDevicesAssignmentTarget:

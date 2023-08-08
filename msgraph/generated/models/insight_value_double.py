@@ -13,7 +13,8 @@ class InsightValueDouble(UserExperienceAnalyticsInsightValue):
     """
     The value in an user experience analytics insight.
     """
-    odata_type = "#microsoft.graph.insightValueDouble"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.insightValueDouble"
     # The double value of the user experience analytics insight.
     value: Optional[float] = None
     

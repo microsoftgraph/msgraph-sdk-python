@@ -18,7 +18,8 @@ from .artifact import Artifact
 
 @dataclass
 class Host(Artifact):
-    odata_type = "#microsoft.graph.security.host"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.security.host"
     # The hostComponents that are associated with this host.
     components: Optional[List[HostComponent]] = None
     # The hostCookies that are associated with this host.

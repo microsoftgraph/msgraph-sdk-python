@@ -12,7 +12,8 @@ from .education_outcome import EducationOutcome
 
 @dataclass
 class EducationRubricOutcome(EducationOutcome):
-    odata_type = "#microsoft.graph.educationRubricOutcome"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.educationRubricOutcome"
     # A copy of the rubricQualityFeedback property that is made when the grade is released to the student.
     published_rubric_quality_feedback: Optional[List[RubricQualityFeedbackModel]] = None
     # A copy of the rubricQualitySelectedLevels property that is made when the grade is released to the student.

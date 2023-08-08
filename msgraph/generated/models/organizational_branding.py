@@ -11,7 +11,8 @@ from .organizational_branding_properties import OrganizationalBrandingProperties
 
 @dataclass
 class OrganizationalBranding(OrganizationalBrandingProperties):
-    odata_type = "#microsoft.graph.organizationalBranding"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.organizationalBranding"
     # Add different branding based on a locale.
     localizations: Optional[List[OrganizationalBrandingLocalization]] = None
     

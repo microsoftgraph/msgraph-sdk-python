@@ -10,7 +10,8 @@ from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
 @dataclass
 class ChannelMembersNotificationRecipient(TeamworkNotificationRecipient):
-    odata_type = "#microsoft.graph.channelMembersNotificationRecipient"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.channelMembersNotificationRecipient"
     # The unique identifier for the channel whose members should receive the notification.
     channel_id: Optional[str] = None
     # The unique identifier for the team under which the channel resides.

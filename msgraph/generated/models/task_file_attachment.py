@@ -10,7 +10,8 @@ from .attachment_base import AttachmentBase
 
 @dataclass
 class TaskFileAttachment(AttachmentBase):
-    odata_type = "#microsoft.graph.taskFileAttachment"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.taskFileAttachment"
     # The base64-encoded contents of the file.
     content_bytes: Optional[bytes] = None
     

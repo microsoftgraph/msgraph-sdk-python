@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -47,7 +46,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AppsRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedMobileAppCollectionResponse]:
         """
-        List of apps to which the policy is deployed.
+        List properties and relationships of the managedMobileApp objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedMobileAppCollectionResponse]
@@ -69,7 +68,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ManagedMobileApp] = None, request_configuration: Optional[AppsRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedMobileApp]:
         """
-        Create new navigation property to apps for deviceAppManagement
+        Create a new managedMobileApp object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +93,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of apps to which the policy is deployed.
+        List properties and relationships of the managedMobileApp objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +111,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ManagedMobileApp] = None, request_configuration: Optional[AppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to apps for deviceAppManagement
+        Create a new managedMobileApp object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -143,7 +142,7 @@ class AppsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppsRequestBuilderGetQueryParameters():
         """
-        List of apps to which the policy is deployed.
+        List properties and relationships of the managedMobileApp objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

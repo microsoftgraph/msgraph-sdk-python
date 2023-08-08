@@ -13,7 +13,8 @@ class OmaSettingStringXml(OmaSetting):
     """
     OMA Settings StringXML definition.
     """
-    odata_type = "#microsoft.graph.omaSettingStringXml"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.omaSettingStringXml"
     # File name associated with the Value property (.xml).
     file_name: Optional[str] = None
     # Value. (UTF8 encoded byte array)

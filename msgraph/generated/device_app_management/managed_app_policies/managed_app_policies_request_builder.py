@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -47,7 +46,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppPolicyCollectionResponse]:
         """
-        Managed app policies.
+        List properties and relationships of the windowsInformationProtection objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicyCollectionResponse]
@@ -94,7 +93,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Managed app policies.
+        List properties and relationships of the windowsInformationProtection objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +142,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppPoliciesRequestBuilderGetQueryParameters():
         """
-        Managed app policies.
+        List properties and relationships of the windowsInformationProtection objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -12,7 +12,8 @@ from .workflow_execution_conditions import WorkflowExecutionConditions
 
 @dataclass
 class TriggerAndScopeBasedConditions(WorkflowExecutionConditions):
-    odata_type = "#microsoft.graph.identityGovernance.triggerAndScopeBasedConditions"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.identityGovernance.triggerAndScopeBasedConditions"
     # Defines who the workflow runs for.
     scope: Optional[SubjectSet] = None
     # What triggers a workflow to run.

@@ -16,7 +16,8 @@ class MacOSGeneralDeviceConfiguration(DeviceConfiguration):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the macOSGeneralDeviceConfiguration resource.
     """
-    odata_type = "#microsoft.graph.macOSGeneralDeviceConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.macOSGeneralDeviceConfiguration"
     # Possible values of the compliance app list.
     compliant_app_list_type: Optional[AppListType] = None
     # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.

@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -47,7 +46,7 @@ class ResourceRolesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ResourceRolesRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageResourceRoleCollectionResponse]:
         """
-        Get resourceRoles from identityGovernance
+        Retrieve a list of accessPackageResourceRole objects of an accessPackageResource in an accessPackageCatalog. The resource should have been added to the catalog by creating an accessPackageResourceRequest. This list of roles can then be used by the caller to select a role, which is needed when subsequently creating an accessPackageResourceRoleScope.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageResourceRoleCollectionResponse]
@@ -94,7 +93,7 @@ class ResourceRolesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ResourceRolesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get resourceRoles from identityGovernance
+        Retrieve a list of accessPackageResourceRole objects of an accessPackageResource in an accessPackageCatalog. The resource should have been added to the catalog by creating an accessPackageResourceRequest. This list of roles can then be used by the caller to select a role, which is needed when subsequently creating an accessPackageResourceRoleScope.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +142,7 @@ class ResourceRolesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ResourceRolesRequestBuilderGetQueryParameters():
         """
-        Get resourceRoles from identityGovernance
+        Retrieve a list of accessPackageResourceRole objects of an accessPackageResource in an accessPackageCatalog. The resource should have been added to the catalog by creating an accessPackageResourceRequest. This list of roles can then be used by the caller to select a role, which is needed when subsequently creating an accessPackageResourceRoleScope.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

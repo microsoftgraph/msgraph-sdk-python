@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -30,7 +29,7 @@ class GetMemberObjectsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[GetMemberObjectsPostRequestBody] = None, request_configuration: Optional[GetMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetMemberObjectsResponse]:
         """
-        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. **Note:** Only users and role-enabled groups can be members of directory roles.
+        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. Note: Only users and role-enabled groups can be members of directory roles.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -55,7 +54,7 @@ class GetMemberObjectsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[GetMemberObjectsPostRequestBody] = None, request_configuration: Optional[GetMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. **Note:** Only users and role-enabled groups can be members of directory roles.
+        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. Note: Only users and role-enabled groups can be members of directory roles.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

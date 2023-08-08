@@ -16,7 +16,8 @@ from .policy_base import PolicyBase
 
 @dataclass
 class StsPolicy(PolicyBase):
-    odata_type = "#microsoft.graph.stsPolicy"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.stsPolicy"
     # The appliesTo property
     applies_to: Optional[List[DirectoryObject]] = None
     # A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.

@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceInstallStateItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deviceStates for deviceAppManagement
+        Deletes a deviceInstallState.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +47,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceInstallStateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceInstallState]:
         """
-        The list of installation states for this eBook.
+        Read properties and relationships of the deviceInstallState object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceInstallState]
@@ -70,7 +69,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceInstallState] = None, request_configuration: Optional[DeviceInstallStateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceInstallState]:
         """
-        Update the navigation property deviceStates in deviceAppManagement
+        Update the properties of a deviceInstallState object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +94,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceInstallStateItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deviceStates for deviceAppManagement
+        Deletes a deviceInstallState.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +110,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceInstallStateItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of installation states for this eBook.
+        Read properties and relationships of the deviceInstallState object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceInstallState] = None, request_configuration: Optional[DeviceInstallStateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceStates in deviceAppManagement
+        Update the properties of a deviceInstallState object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +160,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceInstallStateItemRequestBuilderGetQueryParameters():
         """
-        The list of installation states for this eBook.
+        Read properties and relationships of the deviceInstallState object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -14,7 +14,8 @@ from .service_announcement_base import ServiceAnnouncementBase
 
 @dataclass
 class ServiceHealthIssue(ServiceAnnouncementBase):
-    odata_type = "#microsoft.graph.serviceHealthIssue"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.serviceHealthIssue"
     # The classification property
     classification: Optional[ServiceHealthClassificationType] = None
     # The feature name of the service issue.

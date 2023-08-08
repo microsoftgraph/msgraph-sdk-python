@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .join_meeting_id_settings import JoinMeetingIdSettings
     from .lobby_bypass_settings import LobbyBypassSettings
     from .meeting_attendance_report import MeetingAttendanceReport
+    from .meeting_chat_history_default_mode import MeetingChatHistoryDefaultMode
     from .meeting_chat_mode import MeetingChatMode
     from .meeting_participants import MeetingParticipants
     from .online_meeting_presenters import OnlineMeetingPresenters
@@ -28,6 +29,8 @@ class OnlineMeeting(Entity):
     allow_attendee_to_enable_mic: Optional[bool] = None
     # Specifies the mode of meeting chat.
     allow_meeting_chat: Optional[MeetingChatMode] = None
+    # Specifies if participants are allowed to rename themselves in an instance of the meeting.
+    allow_participants_to_change_name: Optional[bool] = None
     # Indicates whether Teams reactions are enabled for the meeting.
     allow_teamwork_reactions: Optional[bool] = None
     # Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
@@ -66,6 +69,8 @@ class OnlineMeeting(Entity):
     participants: Optional[MeetingParticipants] = None
     # Indicates whether to record the meeting automatically.
     record_automatically: Optional[bool] = None
+    # Specifies whether meeting chat history is shared with participants. Possible values are: all, none, unknownFutureValue.
+    share_meeting_chat_history_default: Optional[MeetingChatHistoryDefaultMode] = None
     # The meeting start time in UTC.
     start_date_time: Optional[datetime.datetime] = None
     # The subject of the online meeting.
@@ -100,6 +105,7 @@ class OnlineMeeting(Entity):
         from .join_meeting_id_settings import JoinMeetingIdSettings
         from .lobby_bypass_settings import LobbyBypassSettings
         from .meeting_attendance_report import MeetingAttendanceReport
+        from .meeting_chat_history_default_mode import MeetingChatHistoryDefaultMode
         from .meeting_chat_mode import MeetingChatMode
         from .meeting_participants import MeetingParticipants
         from .online_meeting_presenters import OnlineMeetingPresenters
@@ -113,6 +119,7 @@ class OnlineMeeting(Entity):
         from .join_meeting_id_settings import JoinMeetingIdSettings
         from .lobby_bypass_settings import LobbyBypassSettings
         from .meeting_attendance_report import MeetingAttendanceReport
+        from .meeting_chat_history_default_mode import MeetingChatHistoryDefaultMode
         from .meeting_chat_mode import MeetingChatMode
         from .meeting_participants import MeetingParticipants
         from .online_meeting_presenters import OnlineMeetingPresenters
@@ -122,6 +129,7 @@ class OnlineMeeting(Entity):
             "allowAttendeeToEnableCamera": lambda n : setattr(self, 'allow_attendee_to_enable_camera', n.get_bool_value()),
             "allowAttendeeToEnableMic": lambda n : setattr(self, 'allow_attendee_to_enable_mic', n.get_bool_value()),
             "allowMeetingChat": lambda n : setattr(self, 'allow_meeting_chat', n.get_enum_value(MeetingChatMode)),
+            "allowParticipantsToChangeName": lambda n : setattr(self, 'allow_participants_to_change_name', n.get_bool_value()),
             "allowTeamworkReactions": lambda n : setattr(self, 'allow_teamwork_reactions', n.get_bool_value()),
             "allowedPresenters": lambda n : setattr(self, 'allowed_presenters', n.get_enum_value(OnlineMeetingPresenters)),
             "attendanceReports": lambda n : setattr(self, 'attendance_reports', n.get_collection_of_object_values(MeetingAttendanceReport)),
@@ -140,6 +148,7 @@ class OnlineMeeting(Entity):
             "lobbyBypassSettings": lambda n : setattr(self, 'lobby_bypass_settings', n.get_object_value(LobbyBypassSettings)),
             "participants": lambda n : setattr(self, 'participants', n.get_object_value(MeetingParticipants)),
             "recordAutomatically": lambda n : setattr(self, 'record_automatically', n.get_bool_value()),
+            "shareMeetingChatHistoryDefault": lambda n : setattr(self, 'share_meeting_chat_history_default', n.get_enum_value(MeetingChatHistoryDefaultMode)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
             "videoTeleconferenceId": lambda n : setattr(self, 'video_teleconference_id', n.get_str_value()),
@@ -161,6 +170,7 @@ class OnlineMeeting(Entity):
         writer.write_bool_value("allowAttendeeToEnableCamera", self.allow_attendee_to_enable_camera)
         writer.write_bool_value("allowAttendeeToEnableMic", self.allow_attendee_to_enable_mic)
         writer.write_enum_value("allowMeetingChat", self.allow_meeting_chat)
+        writer.write_bool_value("allowParticipantsToChangeName", self.allow_participants_to_change_name)
         writer.write_bool_value("allowTeamworkReactions", self.allow_teamwork_reactions)
         writer.write_enum_value("allowedPresenters", self.allowed_presenters)
         writer.write_collection_of_object_values("attendanceReports", self.attendance_reports)
@@ -179,6 +189,7 @@ class OnlineMeeting(Entity):
         writer.write_object_value("lobbyBypassSettings", self.lobby_bypass_settings)
         writer.write_object_value("participants", self.participants)
         writer.write_bool_value("recordAutomatically", self.record_automatically)
+        writer.write_enum_value("shareMeetingChatHistoryDefault", self.share_meeting_chat_history_default)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("subject", self.subject)
         writer.write_str_value("videoTeleconferenceId", self.video_teleconference_id)

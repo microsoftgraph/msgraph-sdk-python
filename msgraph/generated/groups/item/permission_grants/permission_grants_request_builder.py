@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -51,7 +50,7 @@ class PermissionGrantsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> Optional[ResourceSpecificPermissionGrantCollectionResponse]:
         """
-        List all resource-specific permission grants on the group. This list specifies the Azure AD apps that have access to the **group**, along with the corresponding kind of resource-specific access that each app has.
+        List all resource-specific permission grants on the group. This list specifies the Azure AD apps that have access to the group, along with the corresponding kind of resource-specific access that each app has.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ResourceSpecificPermissionGrantCollectionResponse]
@@ -98,7 +97,7 @@ class PermissionGrantsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List all resource-specific permission grants on the group. This list specifies the Azure AD apps that have access to the **group**, along with the corresponding kind of resource-specific access that each app has.
+        List all resource-specific permission grants on the group. This list specifies the Azure AD apps that have access to the group, along with the corresponding kind of resource-specific access that each app has.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -183,7 +182,7 @@ class PermissionGrantsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PermissionGrantsRequestBuilderGetQueryParameters():
         """
-        List all resource-specific permission grants on the group. This list specifies the Azure AD apps that have access to the **group**, along with the corresponding kind of resource-specific access that each app has.
+        List all resource-specific permission grants on the group. This list specifies the Azure AD apps that have access to the group, along with the corresponding kind of resource-specific access that each app has.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

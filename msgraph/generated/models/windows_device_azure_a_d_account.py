@@ -10,7 +10,8 @@ from .windows_device_account import WindowsDeviceAccount
 
 @dataclass
 class WindowsDeviceAzureADAccount(WindowsDeviceAccount):
-    odata_type = "#microsoft.graph.windowsDeviceAzureADAccount"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windowsDeviceAzureADAccount"
     # Not yet documented
     user_principal_name: Optional[str] = None
     

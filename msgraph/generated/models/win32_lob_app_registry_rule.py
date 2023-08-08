@@ -15,7 +15,8 @@ class Win32LobAppRegistryRule(Win32LobAppRule):
     """
     A complex type to store registry rule data for a Win32 LOB app.
     """
-    odata_type = "#microsoft.graph.win32LobAppRegistryRule"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.win32LobAppRegistryRule"
     # A value indicating whether to search the 32-bit registry on 64-bit systems.
     check32_bit_on64_system: Optional[bool] = None
     # The registry comparison value.

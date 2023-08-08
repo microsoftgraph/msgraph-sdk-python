@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -28,7 +27,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CustomCSSRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        Get customCSS for the navigation property branding from organization
+        CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
@@ -48,7 +47,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     
     async def put(self,body: bytes, request_configuration: Optional[CustomCSSRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
-        Update customCSS for the navigation property branding in organization
+        CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         Args:
             body: Binary request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +70,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CustomCSSRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get customCSS for the navigation property branding from organization
+        CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -87,7 +86,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     
     def to_put_request_information(self,body: bytes, request_configuration: Optional[CustomCSSRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        Update customCSS for the navigation property branding in organization
+        CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         Args:
             body: Binary request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

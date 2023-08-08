@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -28,7 +27,7 @@ class HeaderLogoRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HeaderLogoRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        Get headerLogo for the navigation property branding from organization
+        A company logo that appears in the header of the sign-in page. The allowed types are PNG or JPEG not larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
@@ -48,7 +47,7 @@ class HeaderLogoRequestBuilder(BaseRequestBuilder):
     
     async def put(self,body: bytes, request_configuration: Optional[HeaderLogoRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
-        Update headerLogo for the navigation property branding in organization
+        A company logo that appears in the header of the sign-in page. The allowed types are PNG or JPEG not larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
         Args:
             body: Binary request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +70,7 @@ class HeaderLogoRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HeaderLogoRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get headerLogo for the navigation property branding from organization
+        A company logo that appears in the header of the sign-in page. The allowed types are PNG or JPEG not larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -87,7 +86,7 @@ class HeaderLogoRequestBuilder(BaseRequestBuilder):
     
     def to_put_request_information(self,body: bytes, request_configuration: Optional[HeaderLogoRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        Update headerLogo for the navigation property branding in organization
+        A company logo that appears in the header of the sign-in page. The allowed types are PNG or JPEG not larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
         Args:
             body: Binary request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

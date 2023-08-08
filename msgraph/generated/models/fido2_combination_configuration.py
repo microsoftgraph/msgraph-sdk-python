@@ -10,7 +10,8 @@ from .authentication_combination_configuration import AuthenticationCombinationC
 
 @dataclass
 class Fido2CombinationConfiguration(AuthenticationCombinationConfiguration):
-    odata_type = "#microsoft.graph.fido2CombinationConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.fido2CombinationConfiguration"
     # A list of AAGUIDs allowed to be used as part of the specified authentication method combinations.
     allowed_a_a_g_u_i_ds: Optional[List[str]] = None
     

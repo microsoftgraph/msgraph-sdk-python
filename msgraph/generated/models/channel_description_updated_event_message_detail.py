@@ -11,7 +11,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class ChannelDescriptionUpdatedEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.channelDescriptionUpdatedEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.channelDescriptionUpdatedEventMessageDetail"
     # The updated description of the channel.
     channel_description: Optional[str] = None
     # Unique identifier of the channel.

@@ -13,7 +13,8 @@ class AllLicensedUsersAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
     """
     Represents an assignment to all licensed users in the tenant.
     """
-    odata_type = "#microsoft.graph.allLicensedUsersAssignmentTarget"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.allLicensedUsersAssignmentTarget"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AllLicensedUsersAssignmentTarget:

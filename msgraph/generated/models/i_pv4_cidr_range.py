@@ -10,7 +10,8 @@ from .ip_range import IpRange
 
 @dataclass
 class IPv4CidrRange(IpRange):
-    odata_type = "#microsoft.graph.iPv4CidrRange"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.iPv4CidrRange"
     # IPv4 address in CIDR notation. Not nullable.
     cidr_address: Optional[str] = None
     

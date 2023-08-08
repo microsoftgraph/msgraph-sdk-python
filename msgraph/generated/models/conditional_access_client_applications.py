@@ -3,6 +3,9 @@ from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from .conditional_access_filter import ConditionalAccessFilter
+
 @dataclass
 class ConditionalAccessClientApplications(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -14,6 +17,8 @@ class ConditionalAccessClientApplications(AdditionalDataHolder, Parsable):
     include_service_principals: Optional[List[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The servicePrincipalFilter property
+    service_principal_filter: Optional[ConditionalAccessFilter] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessClientApplications:
@@ -32,10 +37,15 @@ class ConditionalAccessClientApplications(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .conditional_access_filter import ConditionalAccessFilter
+
+        from .conditional_access_filter import ConditionalAccessFilter
+
         fields: Dict[str, Callable[[Any], None]] = {
             "excludeServicePrincipals": lambda n : setattr(self, 'exclude_service_principals', n.get_collection_of_primitive_values(str)),
             "includeServicePrincipals": lambda n : setattr(self, 'include_service_principals', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "servicePrincipalFilter": lambda n : setattr(self, 'service_principal_filter', n.get_object_value(ConditionalAccessFilter)),
         }
         return fields
     
@@ -50,6 +60,7 @@ class ConditionalAccessClientApplications(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("excludeServicePrincipals", self.exclude_service_principals)
         writer.write_collection_of_primitive_values("includeServicePrincipals", self.include_service_principals)
         writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("servicePrincipalFilter", self.service_principal_filter)
         writer.write_additional_data_value(self.additional_data)
     
 

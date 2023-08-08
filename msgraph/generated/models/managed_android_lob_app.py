@@ -14,7 +14,8 @@ class ManagedAndroidLobApp(ManagedMobileLobApp):
     """
     Contains properties and inherited properties for Managed Android Line Of Business apps.
     """
-    odata_type = "#microsoft.graph.managedAndroidLobApp"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.managedAndroidLobApp"
     # The value for the minimum applicable operating system.
     minimum_supported_operating_system: Optional[AndroidMinimumOperatingSystem] = None
     # The package identifier.

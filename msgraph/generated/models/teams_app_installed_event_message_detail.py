@@ -11,7 +11,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class TeamsAppInstalledEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.teamsAppInstalledEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.teamsAppInstalledEventMessageDetail"
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # Display name of the teamsApp.

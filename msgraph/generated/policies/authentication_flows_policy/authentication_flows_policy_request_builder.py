@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -70,7 +69,7 @@ class AuthenticationFlowsPolicyRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[AuthenticationFlowsPolicy]:
         """
-        Update the **selfServiceSignUp** property of an authenticationFlowsPolicy object. The properties **id**, **type**, and **description** cannot be modified.
+        Update the selfServiceSignUp property of an authenticationFlowsPolicy object. The properties id, type, and description cannot be modified.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -129,7 +128,7 @@ class AuthenticationFlowsPolicyRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the **selfServiceSignUp** property of an authenticationFlowsPolicy object. The properties **id**, **type**, and **description** cannot be modified.
+        Update the selfServiceSignUp property of an authenticationFlowsPolicy object. The properties id, type, and description cannot be modified.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

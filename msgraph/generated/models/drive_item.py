@@ -37,7 +37,8 @@ from .base_item import BaseItem
 
 @dataclass
 class DriveItem(BaseItem):
-    odata_type = "#microsoft.graph.driveItem"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.driveItem"
     # Analytics about the view activities that took place on this item.
     analytics: Optional[ItemAnalytics] = None
     # Audio metadata, if the item is an audio file. Read-only. Read-only. Only on OneDrive Personal.

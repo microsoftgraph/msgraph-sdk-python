@@ -14,7 +14,8 @@ from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
 
 @dataclass
 class OnenoteSection(OnenoteEntityHierarchyModel):
-    odata_type = "#microsoft.graph.onenoteSection"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.onenoteSection"
     # Indicates whether this is the user's default section. Read-only.
     is_default: Optional[bool] = None
     # Links for opening the section. The oneNoteClientURL link opens the section in the OneNote native client if it's installed. The oneNoteWebURL link opens the section in OneNote on the web.

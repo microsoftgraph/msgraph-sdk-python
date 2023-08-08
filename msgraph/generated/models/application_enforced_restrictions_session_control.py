@@ -10,7 +10,8 @@ from .conditional_access_session_control import ConditionalAccessSessionControl
 
 @dataclass
 class ApplicationEnforcedRestrictionsSessionControl(ConditionalAccessSessionControl):
-    odata_type = "#microsoft.graph.applicationEnforcedRestrictionsSessionControl"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.applicationEnforcedRestrictionsSessionControl"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplicationEnforcedRestrictionsSessionControl:

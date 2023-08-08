@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -48,7 +47,7 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceCategoryRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Device category
+        Read properties and relationships of the deviceCategory object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCategory]
@@ -70,7 +69,7 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[DeviceCategoryRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Update the navigation property deviceCategory in users
+        Update the properties of a deviceCategory object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +110,7 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCategoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Device category
+        Read properties and relationships of the deviceCategory object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[DeviceCategoryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property deviceCategory in users
+        Update the properties of a deviceCategory object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +160,7 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCategoryRequestBuilderGetQueryParameters():
         """
-        Device category
+        Read properties and relationships of the deviceCategory object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

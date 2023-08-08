@@ -16,7 +16,8 @@ from .base_item import BaseItem
 
 @dataclass
 class SharedDriveItem(BaseItem):
-    odata_type = "#microsoft.graph.sharedDriveItem"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.sharedDriveItem"
     # Used to access the underlying driveItem
     drive_item: Optional[DriveItem] = None
     # All driveItems contained in the sharing root. This collection cannot be enumerated.

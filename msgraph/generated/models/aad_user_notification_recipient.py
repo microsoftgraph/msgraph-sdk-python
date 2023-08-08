@@ -10,7 +10,8 @@ from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
 @dataclass
 class AadUserNotificationRecipient(TeamworkNotificationRecipient):
-    odata_type = "#microsoft.graph.aadUserNotificationRecipient"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.aadUserNotificationRecipient"
     # Azure AD user identifier. Use the List users method to get this ID.
     user_id: Optional[str] = None
     

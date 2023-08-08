@@ -13,7 +13,8 @@ from .conditional_access_session_control import ConditionalAccessSessionControl
 
 @dataclass
 class SignInFrequencySessionControl(ConditionalAccessSessionControl):
-    odata_type = "#microsoft.graph.signInFrequencySessionControl"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.signInFrequencySessionControl"
     # The possible values are primaryAndSecondaryAuthentication, secondaryAuthentication, unknownFutureValue.
     authentication_type: Optional[SignInFrequencyAuthenticationType] = None
     # The possible values are timeBased, everyTime, unknownFutureValue.

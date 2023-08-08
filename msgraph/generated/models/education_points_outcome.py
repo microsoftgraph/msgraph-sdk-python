@@ -11,7 +11,8 @@ from .education_outcome import EducationOutcome
 
 @dataclass
 class EducationPointsOutcome(EducationOutcome):
-    odata_type = "#microsoft.graph.educationPointsOutcome"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.educationPointsOutcome"
     # The numeric grade the teacher has given the student for this assignment.
     points: Optional[EducationAssignmentPointsGrade] = None
     # A copy of the points property that is made when the grade is released to the student.

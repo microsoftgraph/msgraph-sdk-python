@@ -12,7 +12,8 @@ from .directory_object import DirectoryObject
 
 @dataclass
 class AdministrativeUnit(DirectoryObject):
-    odata_type = "#microsoft.graph.administrativeUnit"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.administrativeUnit"
     # An optional description for the administrative unit. Supports $filter (eq, ne, in, startsWith), $search.
     description: Optional[str] = None
     # Display name for the administrative unit. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.

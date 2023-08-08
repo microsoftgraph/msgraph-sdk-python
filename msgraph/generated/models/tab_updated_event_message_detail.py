@@ -11,7 +11,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class TabUpdatedEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.tabUpdatedEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.tabUpdatedEventMessageDetail"
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # Unique identifier of the tab.

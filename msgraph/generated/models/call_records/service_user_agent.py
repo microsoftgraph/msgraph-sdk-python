@@ -11,7 +11,8 @@ from .user_agent import UserAgent
 
 @dataclass
 class ServiceUserAgent(UserAgent):
-    odata_type = "#microsoft.graph.callRecords.serviceUserAgent"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.callRecords.serviceUserAgent"
     # The role property
     role: Optional[ServiceRole] = None
     

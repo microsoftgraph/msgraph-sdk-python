@@ -10,7 +10,8 @@ from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
 @dataclass
 class IdentityCustomUserFlowAttribute(IdentityUserFlowAttribute):
-    odata_type = "#microsoft.graph.identityCustomUserFlowAttribute"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.identityCustomUserFlowAttribute"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityCustomUserFlowAttribute:

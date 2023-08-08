@@ -16,7 +16,8 @@ class AndroidWorkProfileGeneralDeviceConfiguration(DeviceConfiguration):
     """
     Android Work Profile general device configuration.
     """
-    odata_type = "#microsoft.graph.androidWorkProfileGeneralDeviceConfiguration"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.androidWorkProfileGeneralDeviceConfiguration"
     # Indicates whether or not to block fingerprint unlock.
     password_block_fingerprint_unlock: Optional[bool] = None
     # Indicates whether or not to block Smart Lock and other trust agents.

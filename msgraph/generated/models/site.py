@@ -23,7 +23,8 @@ from .base_item import BaseItem
 
 @dataclass
 class Site(BaseItem):
-    odata_type = "#microsoft.graph.site"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.site"
     # Analytics about the view activities that took place in this site.
     analytics: Optional[ItemAnalytics] = None
     # The collection of column definitions reusable across lists under this site.

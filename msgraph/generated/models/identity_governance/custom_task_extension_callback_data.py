@@ -11,7 +11,8 @@ from ..custom_extension_data import CustomExtensionData
 
 @dataclass
 class CustomTaskExtensionCallbackData(CustomExtensionData):
-    odata_type = "#microsoft.graph.identityGovernance.customTaskExtensionCallbackData"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.identityGovernance.customTaskExtensionCallbackData"
     # Operation status that's provided by the Azure Logic App indicating whenever the Azure Logic App has run successfully or not. Supported values: completed, failed, unknownFutureValue.
     operation_status: Optional[CustomTaskExtensionOperationStatus] = None
     

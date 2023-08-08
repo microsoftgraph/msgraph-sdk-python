@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -29,7 +28,7 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder(BaseReques
     
     async def delete(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property assignments for deviceAppManagement
+        Deletes a managedDeviceMobileAppConfigurationAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -48,7 +47,7 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder(BaseReques
     
     async def get(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationAssignment]:
         """
-        The list of group assignemenets for app configration.
+        Read properties and relationships of the managedDeviceMobileAppConfigurationAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfigurationAssignment]
@@ -70,7 +69,7 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder(BaseReques
     
     async def patch(self,body: Optional[ManagedDeviceMobileAppConfigurationAssignment] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationAssignment]:
         """
-        Update the navigation property assignments in deviceAppManagement
+        Update the properties of a managedDeviceMobileAppConfigurationAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +94,7 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder(BaseReques
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property assignments for deviceAppManagement
+        Deletes a managedDeviceMobileAppConfigurationAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +110,7 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder(BaseReques
     
     def to_get_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of group assignemenets for app configration.
+        Read properties and relationships of the managedDeviceMobileAppConfigurationAssignment object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +128,7 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder(BaseReques
     
     def to_patch_request_information(self,body: Optional[ManagedDeviceMobileAppConfigurationAssignment] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property assignments in deviceAppManagement
+        Update the properties of a managedDeviceMobileAppConfigurationAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +160,7 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder(BaseReques
     @dataclass
     class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The list of group assignemenets for app configration.
+        Read properties and relationships of the managedDeviceMobileAppConfigurationAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

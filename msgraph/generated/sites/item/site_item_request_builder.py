@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -49,7 +48,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Site]:
         """
-        Retrieve properties and relationships for a [site][] resource.A **site** resource represents a team site in SharePoint.
+        Retrieve properties and relationships for a [site][] resource.A site resource represents a team site in SharePoint.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Site]
@@ -141,7 +140,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve properties and relationships for a [site][] resource.A **site** resource represents a team site in SharePoint.
+        Retrieve properties and relationships for a [site][] resource.A site resource represents a team site in SharePoint.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -334,7 +333,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SiteItemRequestBuilderGetQueryParameters():
         """
-        Retrieve properties and relationships for a [site][] resource.A **site** resource represents a team site in SharePoint.
+        Retrieve properties and relationships for a [site][] resource.A site resource represents a team site in SharePoint.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

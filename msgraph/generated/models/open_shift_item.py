@@ -10,7 +10,8 @@ from .shift_item import ShiftItem
 
 @dataclass
 class OpenShiftItem(ShiftItem):
-    odata_type = "#microsoft.graph.openShiftItem"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.openShiftItem"
     # Count of the number of slots for the given open shift.
     open_slot_count: Optional[int] = None
     

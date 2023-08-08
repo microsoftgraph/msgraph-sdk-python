@@ -20,7 +20,8 @@ from .directory_object import DirectoryObject
 
 @dataclass
 class Organization(DirectoryObject):
-    odata_type = "#microsoft.graph.organization"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.organization"
     # The collection of service plans associated with the tenant. Not nullable.
     assigned_plans: Optional[List[AssignedPlan]] = None
     # Branding for the organization. Nullable.

@@ -10,7 +10,8 @@ from ..subject_set import SubjectSet
 
 @dataclass
 class RuleBasedSubjectSet(SubjectSet):
-    odata_type = "#microsoft.graph.identityGovernance.ruleBasedSubjectSet"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.identityGovernance.ruleBasedSubjectSet"
     # The rule for the subject set. Lifecycle Workflows supports a rich set of user properties for configuring the rules using $filter query expressions. For more information, see supported user and query parameters.
     rule: Optional[str] = None
     

@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -50,7 +49,7 @@ class AccessPackageResourceRequestItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AccessPackageResourceRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageResourceRequest]:
         """
-        Get resourceRequests from identityGovernance
+        Represents a request to add or remove a resource to or from a catalog respectively.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageResourceRequest]
@@ -113,7 +112,7 @@ class AccessPackageResourceRequestItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackageResourceRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get resourceRequests from identityGovernance
+        Represents a request to add or remove a resource to or from a catalog respectively.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +180,7 @@ class AccessPackageResourceRequestItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessPackageResourceRequestItemRequestBuilderGetQueryParameters():
         """
-        Get resourceRequests from identityGovernance
+        Represents a request to add or remove a resource to or from a catalog respectively.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

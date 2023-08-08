@@ -11,7 +11,8 @@ from .api_authentication_configuration_base import ApiAuthenticationConfiguratio
 
 @dataclass
 class ClientCertificateAuthentication(ApiAuthenticationConfigurationBase):
-    odata_type = "#microsoft.graph.clientCertificateAuthentication"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.clientCertificateAuthentication"
     # The list of certificates uploaded for this API connector.
     certificate_list: Optional[List[Pkcs12CertificateInformation]] = None
     

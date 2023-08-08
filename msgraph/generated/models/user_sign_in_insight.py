@@ -11,7 +11,8 @@ from .governance_insight import GovernanceInsight
 
 @dataclass
 class UserSignInInsight(GovernanceInsight):
-    odata_type = "#microsoft.graph.userSignInInsight"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.userSignInInsight"
     # Indicates when the user last signed in.
     last_sign_in_date_time: Optional[datetime.datetime] = None
     

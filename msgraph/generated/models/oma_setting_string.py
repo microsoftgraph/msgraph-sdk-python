@@ -13,7 +13,8 @@ class OmaSettingString(OmaSetting):
     """
     OMA Settings String definition.
     """
-    odata_type = "#microsoft.graph.omaSettingString"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.omaSettingString"
     # Value.
     value: Optional[str] = None
     

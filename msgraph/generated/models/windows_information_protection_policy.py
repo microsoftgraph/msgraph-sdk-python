@@ -14,7 +14,8 @@ class WindowsInformationProtectionPolicy(WindowsInformationProtection):
     """
     Policy for Windows information protection without MDM
     """
-    odata_type = "#microsoft.graph.windowsInformationProtectionPolicy"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.windowsInformationProtectionPolicy"
     # Offline interval before app data is wiped (days)
     days_without_contact_before_unenroll: Optional[int] = None
     # Enrollment url for the MDM

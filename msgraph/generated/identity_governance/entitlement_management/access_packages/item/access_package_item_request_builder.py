@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -36,7 +35,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AccessPackageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an accessPackage object. You cannot delete an access package if it has any **accessPackageAssignment**.
+        Delete an accessPackage object. You cannot delete an access package if it has any accessPackageAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +54,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AccessPackageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackage]:
         """
-        Retrieve the properties and relationships of an accessPackage object.
+        Retrieve an access package with a list of accessPackageResourceRoleScope objects. These objects represent the resource roles that an access package assigns to each subject. Each object links to an accessPackageResourceRole and an accessPackageResourceScope.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackage]
@@ -102,7 +101,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an accessPackage object. You cannot delete an access package if it has any **accessPackageAssignment**.
+        Delete an accessPackage object. You cannot delete an access package if it has any accessPackageAssignment.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -118,7 +117,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an accessPackage object.
+        Retrieve an access package with a list of accessPackageResourceRoleScope objects. These objects represent the resource roles that an access package assigns to each subject. Each object links to an accessPackageResourceRole and an accessPackageResourceScope.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -231,7 +230,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessPackageItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an accessPackage object.
+        Retrieve an access package with a list of accessPackageResourceRoleScope objects. These objects represent the resource roles that an access package assigns to each subject. Each object links to an accessPackageResourceRole and an accessPackageResourceScope.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

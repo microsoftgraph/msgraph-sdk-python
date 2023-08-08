@@ -19,7 +19,8 @@ from .base_item import BaseItem
 
 @dataclass
 class List_(BaseItem):
-    odata_type = "#microsoft.graph.list"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.list"
     # The collection of field definitions for this list.
     columns: Optional[List[ColumnDefinition]] = None
     # The collection of content types present in this list.

@@ -10,7 +10,8 @@ from .access_review_instance_decision_item_resource import AccessReviewInstanceD
 
 @dataclass
 class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(AccessReviewInstanceDecisionItemResource):
-    odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource"
     # Display name of the access package to which access has been granted.
     access_package_display_name: Optional[str] = None
     # Identifier of the access package to which access has been granted.

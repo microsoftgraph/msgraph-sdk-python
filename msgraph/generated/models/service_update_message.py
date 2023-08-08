@@ -16,7 +16,8 @@ from .service_announcement_base import ServiceAnnouncementBase
 
 @dataclass
 class ServiceUpdateMessage(ServiceAnnouncementBase):
-    odata_type = "#microsoft.graph.serviceUpdateMessage"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.serviceUpdateMessage"
     # The expected deadline of the action for the message.
     action_required_by_date_time: Optional[datetime.datetime] = None
     # A collection of serviceAnnouncementAttachments.

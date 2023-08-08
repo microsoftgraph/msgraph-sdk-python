@@ -14,7 +14,8 @@ from .event_message_detail import EventMessageDetail
 
 @dataclass
 class CallEndedEventMessageDetail(EventMessageDetail):
-    odata_type = "#microsoft.graph.callEndedEventMessageDetail"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.callEndedEventMessageDetail"
     # Duration of the call.
     call_duration: Optional[datetime.timedelta] = None
     # Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.

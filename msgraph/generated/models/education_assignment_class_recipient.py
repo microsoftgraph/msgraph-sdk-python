@@ -10,7 +10,8 @@ from .education_assignment_recipient import EducationAssignmentRecipient
 
 @dataclass
 class EducationAssignmentClassRecipient(EducationAssignmentRecipient):
-    odata_type = "#microsoft.graph.educationAssignmentClassRecipient"
+    # The OdataType property
+    odata_type: Optional[str] = "#microsoft.graph.educationAssignmentClassRecipient"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentClassRecipient:

@@ -53,7 +53,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfiguration]:
         """
-        Read properties and relationships of the iosMobileAppConfiguration object.
+        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfiguration]
@@ -116,7 +116,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the iosMobileAppConfiguration object.
+        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -220,7 +220,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedDeviceMobileAppConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the iosMobileAppConfiguration object.
+        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

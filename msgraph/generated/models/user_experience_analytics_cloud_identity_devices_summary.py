@@ -1,16 +1,19 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 @dataclass
-class UserExperienceAnalyticsCloudIdentityDevicesSummary(AdditionalDataHolder, Parsable):
+class UserExperienceAnalyticsCloudIdentityDevicesSummary(AdditionalDataHolder, BackedModel, Parsable):
     """
     The user experience analytics work from anywhere cloud identity devices summary.
     """
+    # Stores model information.
+    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-
     # The count of devices that are not cloud identity. Read-only.
     device_without_cloud_identity_count: Optional[int] = None
     # The OdataType property

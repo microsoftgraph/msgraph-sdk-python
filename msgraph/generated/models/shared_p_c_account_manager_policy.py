@@ -1,19 +1,22 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .shared_p_c_account_deletion_policy_type import SharedPCAccountDeletionPolicyType
 
 @dataclass
-class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
+class SharedPCAccountManagerPolicy(AdditionalDataHolder, BackedModel, Parsable):
     """
     SharedPC Account Manager Policy. Only applies when the account manager is enabled.
     """
+    # Stores model information.
+    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-
     # Possible values for when accounts are deleted on a shared PC.
     account_deletion_policy: Optional[SharedPCAccountDeletionPolicyType] = None
     # Sets the percentage of available disk space a PC should have before it stops deleting cached shared PC accounts. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100

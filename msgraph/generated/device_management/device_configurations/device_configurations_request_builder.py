@@ -46,7 +46,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationCollectionResponse]:
         """
-        List properties and relationships of the sharedPCConfiguration objects.
+        List properties and relationships of the windows81GeneralConfiguration objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationCollectionResponse]
@@ -68,7 +68,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Create a new androidCustomConfiguration object.
+        Create a new iosCustomConfiguration object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -93,7 +93,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the sharedPCConfiguration objects.
+        List properties and relationships of the windows81GeneralConfiguration objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new androidCustomConfiguration object.
+        Create a new iosCustomConfiguration object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -142,7 +142,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the sharedPCConfiguration objects.
+        List properties and relationships of the windows81GeneralConfiguration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

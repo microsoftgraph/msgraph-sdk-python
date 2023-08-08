@@ -69,7 +69,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedEBookAssignment]:
         """
-        Update the properties of a iosVppEBookAssignment object.
+        Update the properties of a managedEBookAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -128,7 +128,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a iosVppEBookAssignment object.
+        Update the properties of a managedEBookAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

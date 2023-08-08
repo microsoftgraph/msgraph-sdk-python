@@ -70,7 +70,7 @@ class ActivityHistoryItemItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ActivityHistoryItem] = None, request_configuration: Optional[ActivityHistoryItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ActivityHistoryItem]:
         """
-        Delete an existing history item for an existing user activity.
+        Create a new or replace an existing history item for an existing user activity.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -129,7 +129,7 @@ class ActivityHistoryItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ActivityHistoryItem] = None, request_configuration: Optional[ActivityHistoryItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an existing history item for an existing user activity.
+        Create a new or replace an existing history item for an existing user activity.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

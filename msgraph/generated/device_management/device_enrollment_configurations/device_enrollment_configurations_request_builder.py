@@ -46,7 +46,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceEnrollmentConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceEnrollmentConfigurationCollectionResponse]:
         """
-        List properties and relationships of the deviceEnrollmentLimitConfiguration objects.
+        List properties and relationships of the deviceEnrollmentPlatformRestrictionsConfiguration objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfigurationCollectionResponse]
@@ -68,7 +68,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        Create a new deviceEnrollmentLimitConfiguration object.
+        Create a new deviceEnrollmentPlatformRestrictionsConfiguration object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -93,7 +93,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceEnrollmentConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceEnrollmentLimitConfiguration objects.
+        List properties and relationships of the deviceEnrollmentPlatformRestrictionsConfiguration objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceEnrollmentLimitConfiguration object.
+        Create a new deviceEnrollmentPlatformRestrictionsConfiguration object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -142,7 +142,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceEnrollmentConfigurationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceEnrollmentLimitConfiguration objects.
+        List properties and relationships of the deviceEnrollmentPlatformRestrictionsConfiguration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

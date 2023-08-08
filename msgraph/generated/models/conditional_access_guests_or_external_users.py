@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
@@ -8,10 +9,12 @@ if TYPE_CHECKING:
     from .conditional_access_guest_or_external_user_types import ConditionalAccessGuestOrExternalUserTypes
 
 @dataclass
-class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, Parsable):
+class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, BackedModel, Parsable):
+    # Stores model information.
+    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-
     # The tenant IDs of the selected types of external users. Either all B2B tenant or a collection of tenant IDs. External tenants can be specified only when the property guestOrExternalUserTypes is not null or an empty String.
     external_tenants: Optional[ConditionalAccessExternalTenants] = None
     # The guestOrExternalUserTypes property

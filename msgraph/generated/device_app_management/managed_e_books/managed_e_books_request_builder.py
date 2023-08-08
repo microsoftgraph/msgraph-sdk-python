@@ -46,7 +46,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedEBooksRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedEBookCollectionResponse]:
         """
-        List properties and relationships of the managedEBook objects.
+        List properties and relationships of the iosVppEBook objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookCollectionResponse]
@@ -93,7 +93,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedEBooksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedEBook objects.
+        List properties and relationships of the iosVppEBook objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -142,7 +142,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedEBooksRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedEBook objects.
+        List properties and relationships of the iosVppEBook objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

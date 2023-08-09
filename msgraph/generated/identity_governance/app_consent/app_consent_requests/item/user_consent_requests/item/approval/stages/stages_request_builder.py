@@ -33,7 +33,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the stages property of the microsoft.graph.approval entity.
         Args:
-            approval_stage_id: Unique identifier of the item
+            approval_stage_id: The unique identifier of approvalStage
         Returns: ApprovalStageItemRequestBuilder
         """
         if not approval_stage_id:
@@ -206,7 +206,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[StagesRequestBuilder.StagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[StagesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

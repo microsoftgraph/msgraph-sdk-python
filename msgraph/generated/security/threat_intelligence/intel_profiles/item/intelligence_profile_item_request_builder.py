@@ -204,7 +204,7 @@ class IntelligenceProfileItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IntelligenceProfileItemRequestBuilder.IntelligenceProfileItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IntelligenceProfileItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

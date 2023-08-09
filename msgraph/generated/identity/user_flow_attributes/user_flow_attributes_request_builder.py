@@ -33,7 +33,7 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the userFlowAttributes property of the microsoft.graph.identityContainer entity.
         Args:
-            identity_user_flow_attribute_id: Unique identifier of the item
+            identity_user_flow_attribute_id: The unique identifier of identityUserFlowAttribute
         Returns: IdentityUserFlowAttributeItemRequestBuilder
         """
         if not identity_user_flow_attribute_id:
@@ -206,7 +206,7 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserFlowAttributesRequestBuilder.UserFlowAttributesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserFlowAttributesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

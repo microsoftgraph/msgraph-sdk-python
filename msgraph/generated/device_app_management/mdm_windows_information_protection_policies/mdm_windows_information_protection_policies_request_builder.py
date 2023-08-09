@@ -33,7 +33,7 @@ class MdmWindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the mdmWindowsInformationProtectionPolicies property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            mdm_windows_information_protection_policy_id: Unique identifier of the item
+            mdm_windows_information_protection_policy_id: The unique identifier of mdmWindowsInformationProtectionPolicy
         Returns: MdmWindowsInformationProtectionPolicyItemRequestBuilder
         """
         if not mdm_windows_information_protection_policy_id:
@@ -206,7 +206,7 @@ class MdmWindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MdmWindowsInformationProtectionPoliciesRequestBuilder.MdmWindowsInformationProtectionPoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MdmWindowsInformationProtectionPoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

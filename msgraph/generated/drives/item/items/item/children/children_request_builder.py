@@ -33,7 +33,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the children property of the microsoft.graph.driveItem entity.
         Args:
-            drive_item_id1: Unique identifier of the item
+            drive_item_id1: The unique identifier of driveItem
         Returns: DriveItemItemRequestBuilder
         """
         if not drive_item_id1:
@@ -206,7 +206,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ChildrenRequestBuilder.ChildrenRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ChildrenRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

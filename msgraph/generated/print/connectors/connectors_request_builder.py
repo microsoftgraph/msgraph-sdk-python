@@ -33,7 +33,7 @@ class ConnectorsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the connectors property of the microsoft.graph.print entity.
         Args:
-            print_connector_id: Unique identifier of the item
+            print_connector_id: The unique identifier of printConnector
         Returns: PrintConnectorItemRequestBuilder
         """
         if not print_connector_id:
@@ -206,7 +206,7 @@ class ConnectorsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ConnectorsRequestBuilder.ConnectorsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ConnectorsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -35,7 +35,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the columns property of the microsoft.graph.workbookTable entity.
         Args:
-            workbook_table_column_id: Unique identifier of the item
+            workbook_table_column_id: The unique identifier of workbookTableColumn
         Returns: WorkbookTableColumnItemRequestBuilder
         """
         if not workbook_table_column_id:
@@ -230,7 +230,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ColumnsRequestBuilder.ColumnsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ColumnsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

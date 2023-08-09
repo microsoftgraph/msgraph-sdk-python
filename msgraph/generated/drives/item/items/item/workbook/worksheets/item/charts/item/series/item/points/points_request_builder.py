@@ -34,7 +34,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the points property of the microsoft.graph.workbookChartSeries entity.
         Args:
-            workbook_chart_point_id: Unique identifier of the item
+            workbook_chart_point_id: The unique identifier of workbookChartPoint
         Returns: WorkbookChartPointItemRequestBuilder
         """
         if not workbook_chart_point_id:
@@ -220,7 +220,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PointsRequestBuilder.PointsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PointsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

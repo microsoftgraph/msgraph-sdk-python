@@ -33,7 +33,7 @@ class RoleManagementPoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the roleManagementPolicies property of the microsoft.graph.policyRoot entity.
         Args:
-            unified_role_management_policy_id: Unique identifier of the item
+            unified_role_management_policy_id: The unique identifier of unifiedRoleManagementPolicy
         Returns: UnifiedRoleManagementPolicyItemRequestBuilder
         """
         if not unified_role_management_policy_id:
@@ -206,7 +206,7 @@ class RoleManagementPoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RoleManagementPoliciesRequestBuilder.RoleManagementPoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RoleManagementPoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

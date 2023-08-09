@@ -33,7 +33,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the timeOffReasons property of the microsoft.graph.schedule entity.
         Args:
-            time_off_reason_id: Unique identifier of the item
+            time_off_reason_id: The unique identifier of timeOffReason
         Returns: TimeOffReasonItemRequestBuilder
         """
         if not time_off_reason_id:
@@ -201,7 +201,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TimeOffReasonsRequestBuilder.TimeOffReasonsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TimeOffReasonsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

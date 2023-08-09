@@ -169,7 +169,7 @@ class ClassesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ClassesRequestBuilder.ClassesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ClassesRequestBuilderGetQueryParameters] = None
 
     
 

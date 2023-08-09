@@ -169,7 +169,7 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IncompatibleAccessPackagesRequestBuilder.IncompatibleAccessPackagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IncompatibleAccessPackagesRequestBuilderGetQueryParameters] = None
 
     
 

@@ -33,7 +33,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the items property of the microsoft.graph.list entity.
         Args:
-            list_item_id: Unique identifier of the item
+            list_item_id: The unique identifier of listItem
         Returns: ListItemItemRequestBuilder
         """
         if not list_item_id:
@@ -201,7 +201,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ItemsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -32,7 +32,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the tasks property of the microsoft.graph.identityGovernance.workflowTemplate entity.
         Args:
-            task_id: Unique identifier of the item
+            task_id: The unique identifier of task
         Returns: TaskItemRequestBuilder
         """
         if not task_id:
@@ -159,7 +159,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TasksRequestBuilder.TasksRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TasksRequestBuilderGetQueryParameters] = None
 
     
 

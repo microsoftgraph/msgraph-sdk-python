@@ -33,7 +33,7 @@ class DirectoriesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the directories property of the microsoft.graph.synchronizationSchema entity.
         Args:
-            directory_definition_id: Unique identifier of the item
+            directory_definition_id: The unique identifier of directoryDefinition
         Returns: DirectoryDefinitionItemRequestBuilder
         """
         if not directory_definition_id:
@@ -206,7 +206,7 @@ class DirectoriesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DirectoriesRequestBuilder.DirectoriesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DirectoriesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

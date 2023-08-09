@@ -204,7 +204,7 @@ class AssociatedTeamInfoItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AssociatedTeamInfoItemRequestBuilder.AssociatedTeamInfoItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AssociatedTeamInfoItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

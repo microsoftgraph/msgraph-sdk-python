@@ -33,7 +33,7 @@ class MasterCategoriesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the masterCategories property of the microsoft.graph.outlookUser entity.
         Args:
-            outlook_category_id: Unique identifier of the item
+            outlook_category_id: The unique identifier of outlookCategory
         Returns: OutlookCategoryItemRequestBuilder
         """
         if not outlook_category_id:
@@ -196,7 +196,7 @@ class MasterCategoriesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MasterCategoriesRequestBuilder.MasterCategoriesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MasterCategoriesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

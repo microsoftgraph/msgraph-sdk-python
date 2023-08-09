@@ -34,7 +34,7 @@ class WorksheetsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the worksheets property of the microsoft.graph.workbook entity.
         Args:
-            workbook_worksheet_id: Unique identifier of the item
+            workbook_worksheet_id: The unique identifier of workbookWorksheet
         Returns: WorkbookWorksheetItemRequestBuilder
         """
         if not workbook_worksheet_id:
@@ -216,7 +216,7 @@ class WorksheetsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WorksheetsRequestBuilder.WorksheetsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WorksheetsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

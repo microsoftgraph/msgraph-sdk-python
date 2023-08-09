@@ -194,7 +194,7 @@ class SwapShiftsChangeRequestItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SwapShiftsChangeRequestItemRequestBuilder.SwapShiftsChangeRequestItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SwapShiftsChangeRequestItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

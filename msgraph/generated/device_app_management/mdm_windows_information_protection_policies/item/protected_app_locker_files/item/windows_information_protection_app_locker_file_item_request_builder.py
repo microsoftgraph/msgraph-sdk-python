@@ -194,7 +194,7 @@ class WindowsInformationProtectionAppLockerFileItemRequestBuilder(BaseRequestBui
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WindowsInformationProtectionAppLockerFileItemRequestBuilder.WindowsInformationProtectionAppLockerFileItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WindowsInformationProtectionAppLockerFileItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

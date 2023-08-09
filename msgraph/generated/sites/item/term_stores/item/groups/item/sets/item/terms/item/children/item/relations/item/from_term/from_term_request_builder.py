@@ -103,7 +103,7 @@ class FromTermRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[FromTermRequestBuilder.FromTermRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[FromTermRequestBuilderGetQueryParameters] = None
 
     
 

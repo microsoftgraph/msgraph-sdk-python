@@ -198,7 +198,7 @@ class CalendarRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CalendarRequestBuilder.CalendarRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CalendarRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

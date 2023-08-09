@@ -34,7 +34,7 @@ class TaskReportsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the taskReports property of the microsoft.graph.identityGovernance.workflow entity.
         Args:
-            task_report_id: Unique identifier of the item
+            task_report_id: The unique identifier of taskReport
         Returns: TaskReportItemRequestBuilder
         """
         if not task_report_id:
@@ -177,7 +177,7 @@ class TaskReportsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TaskReportsRequestBuilder.TaskReportsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TaskReportsRequestBuilderGetQueryParameters] = None
 
     
 

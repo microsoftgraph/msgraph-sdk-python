@@ -32,7 +32,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the items property of the microsoft.graph.sharedDriveItem entity.
         Args:
-            drive_item_id: Unique identifier of the item
+            drive_item_id: The unique identifier of driveItem
         Returns: DriveItemItemRequestBuilder
         """
         if not drive_item_id:
@@ -159,7 +159,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ItemsRequestBuilderGetQueryParameters] = None
 
     
 

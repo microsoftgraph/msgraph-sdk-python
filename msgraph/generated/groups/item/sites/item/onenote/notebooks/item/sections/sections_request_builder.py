@@ -33,7 +33,7 @@ class SectionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the sections property of the microsoft.graph.notebook entity.
         Args:
-            onenote_section_id: Unique identifier of the item
+            onenote_section_id: The unique identifier of onenoteSection
         Returns: OnenoteSectionItemRequestBuilder
         """
         if not onenote_section_id:
@@ -206,7 +206,7 @@ class SectionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SectionsRequestBuilder.SectionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SectionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

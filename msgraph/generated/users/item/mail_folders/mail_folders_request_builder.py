@@ -34,7 +34,7 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the mailFolders property of the microsoft.graph.user entity.
         Args:
-            mail_folder_id: Unique identifier of the item
+            mail_folder_id: The unique identifier of mailFolder
         Returns: MailFolderItemRequestBuilder
         """
         if not mail_folder_id:
@@ -216,7 +216,7 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MailFoldersRequestBuilder.MailFoldersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MailFoldersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

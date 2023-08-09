@@ -214,7 +214,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LearningProviderItemRequestBuilder.LearningProviderItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LearningProviderItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -204,7 +204,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ManagedAppPolicyItemRequestBuilder.ManagedAppPolicyItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ManagedAppPolicyItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class BookingCurrenciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the bookingCurrencies property of the microsoft.graph.solutionsRoot entity.
         Args:
-            booking_currency_id: Unique identifier of the item
+            booking_currency_id: The unique identifier of bookingCurrency
         Returns: BookingCurrencyItemRequestBuilder
         """
         if not booking_currency_id:
@@ -206,7 +206,7 @@ class BookingCurrenciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[BookingCurrenciesRequestBuilder.BookingCurrenciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[BookingCurrenciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

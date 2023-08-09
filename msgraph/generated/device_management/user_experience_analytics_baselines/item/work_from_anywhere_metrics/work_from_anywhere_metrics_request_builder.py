@@ -103,7 +103,7 @@ class WorkFromAnywhereMetricsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WorkFromAnywhereMetricsRequestBuilder.WorkFromAnywhereMetricsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WorkFromAnywhereMetricsRequestBuilderGetQueryParameters] = None
 
     
 

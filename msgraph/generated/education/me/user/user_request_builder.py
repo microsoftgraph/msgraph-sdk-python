@@ -113,7 +113,7 @@ class UserRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserRequestBuilder.UserRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserRequestBuilderGetQueryParameters] = None
 
     
 

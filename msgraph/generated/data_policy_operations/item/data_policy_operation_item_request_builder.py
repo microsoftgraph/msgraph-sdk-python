@@ -194,7 +194,7 @@ class DataPolicyOperationItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DataPolicyOperationItemRequestBuilder.DataPolicyOperationItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DataPolicyOperationItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

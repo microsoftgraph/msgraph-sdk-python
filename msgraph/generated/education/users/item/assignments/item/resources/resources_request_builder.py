@@ -33,7 +33,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the resources property of the microsoft.graph.educationAssignment entity.
         Args:
-            education_assignment_resource_id: Unique identifier of the item
+            education_assignment_resource_id: The unique identifier of educationAssignmentResource
         Returns: EducationAssignmentResourceItemRequestBuilder
         """
         if not education_assignment_resource_id:
@@ -206,7 +206,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ResourcesRequestBuilder.ResourcesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ResourcesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

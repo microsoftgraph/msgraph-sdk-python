@@ -128,7 +128,7 @@ class GetAllSitesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GetAllSitesRequestBuilder.GetAllSitesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GetAllSitesRequestBuilderGetQueryParameters] = None
 
     
 

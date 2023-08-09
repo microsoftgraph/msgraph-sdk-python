@@ -33,7 +33,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the calendarView property of the microsoft.graph.bookingBusiness entity.
         Args:
-            booking_appointment_id: Unique identifier of the item
+            booking_appointment_id: The unique identifier of bookingAppointment
         Returns: BookingAppointmentItemRequestBuilder
         """
         if not booking_appointment_id:
@@ -216,7 +216,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CalendarViewRequestBuilder.CalendarViewRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CalendarViewRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

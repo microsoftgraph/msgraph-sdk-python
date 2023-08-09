@@ -33,7 +33,7 @@ class DomainsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of domain entities.
         Args:
-            domain_id: Unique identifier of the item
+            domain_id: The unique identifier of domain
         Returns: DomainItemRequestBuilder
         """
         if not domain_id:
@@ -206,7 +206,7 @@ class DomainsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DomainsRequestBuilder.DomainsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DomainsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

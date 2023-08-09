@@ -33,7 +33,7 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the contentSharingSessions property of the microsoft.graph.call entity.
         Args:
-            content_sharing_session_id: Unique identifier of the item
+            content_sharing_session_id: The unique identifier of contentSharingSession
         Returns: ContentSharingSessionItemRequestBuilder
         """
         if not content_sharing_session_id:
@@ -206,7 +206,7 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ContentSharingSessionsRequestBuilder.ContentSharingSessionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ContentSharingSessionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

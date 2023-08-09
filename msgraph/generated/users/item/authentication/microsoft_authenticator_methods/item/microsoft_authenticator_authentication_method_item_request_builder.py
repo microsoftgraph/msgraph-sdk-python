@@ -158,7 +158,7 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(BaseRequestBu
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder.MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetQueryParameters] = None
 
     
 

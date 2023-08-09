@@ -33,7 +33,7 @@ class UserExperienceAnalyticsDeviceStartupHistoryRequestBuilder(BaseRequestBuild
         """
         Provides operations to manage the userExperienceAnalyticsDeviceStartupHistory property of the microsoft.graph.deviceManagement entity.
         Args:
-            user_experience_analytics_device_startup_history_id: Unique identifier of the item
+            user_experience_analytics_device_startup_history_id: The unique identifier of userExperienceAnalyticsDeviceStartupHistory
         Returns: UserExperienceAnalyticsDeviceStartupHistoryItemRequestBuilder
         """
         if not user_experience_analytics_device_startup_history_id:
@@ -206,7 +206,7 @@ class UserExperienceAnalyticsDeviceStartupHistoryRequestBuilder(BaseRequestBuild
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsDeviceStartupHistoryRequestBuilder.UserExperienceAnalyticsDeviceStartupHistoryRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserExperienceAnalyticsDeviceStartupHistoryRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

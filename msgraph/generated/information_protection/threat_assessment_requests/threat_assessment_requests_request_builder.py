@@ -33,7 +33,7 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the threatAssessmentRequests property of the microsoft.graph.informationProtection entity.
         Args:
-            threat_assessment_request_id: Unique identifier of the item
+            threat_assessment_request_id: The unique identifier of threatAssessmentRequest
         Returns: ThreatAssessmentRequestItemRequestBuilder
         """
         if not threat_assessment_request_id:
@@ -206,7 +206,7 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ThreatAssessmentRequestsRequestBuilder.ThreatAssessmentRequestsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ThreatAssessmentRequestsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

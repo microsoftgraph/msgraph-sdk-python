@@ -143,7 +143,7 @@ class GraphManagedMobileLobAppRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GraphManagedMobileLobAppRequestBuilder.GraphManagedMobileLobAppRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GraphManagedMobileLobAppRequestBuilderGetQueryParameters] = None
 
     
 

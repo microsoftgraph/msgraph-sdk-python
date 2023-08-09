@@ -33,7 +33,7 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the tokenLifetimePolicies property of the microsoft.graph.policyRoot entity.
         Args:
-            token_lifetime_policy_id: Unique identifier of the item
+            token_lifetime_policy_id: The unique identifier of tokenLifetimePolicy
         Returns: TokenLifetimePolicyItemRequestBuilder
         """
         if not token_lifetime_policy_id:
@@ -206,7 +206,7 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TokenLifetimePoliciesRequestBuilder.TokenLifetimePoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TokenLifetimePoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class ServicesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the services property of the microsoft.graph.print entity.
         Args:
-            print_service_id: Unique identifier of the item
+            print_service_id: The unique identifier of printService
         Returns: PrintServiceItemRequestBuilder
         """
         if not print_service_id:
@@ -206,7 +206,7 @@ class ServicesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ServicesRequestBuilder.ServicesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ServicesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

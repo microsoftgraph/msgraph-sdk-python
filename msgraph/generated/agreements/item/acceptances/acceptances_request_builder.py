@@ -33,7 +33,7 @@ class AcceptancesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the acceptances property of the microsoft.graph.agreement entity.
         Args:
-            agreement_acceptance_id: Unique identifier of the item
+            agreement_acceptance_id: The unique identifier of agreementAcceptance
         Returns: AgreementAcceptanceItemRequestBuilder
         """
         if not agreement_acceptance_id:
@@ -206,7 +206,7 @@ class AcceptancesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AcceptancesRequestBuilder.AcceptancesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AcceptancesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -194,7 +194,7 @@ class UserExperienceAnalyticsOverviewRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsOverviewRequestBuilder.UserExperienceAnalyticsOverviewRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserExperienceAnalyticsOverviewRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

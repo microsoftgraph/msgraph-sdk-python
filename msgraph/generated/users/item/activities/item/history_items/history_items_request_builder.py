@@ -33,7 +33,7 @@ class HistoryItemsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the historyItems property of the microsoft.graph.userActivity entity.
         Args:
-            activity_history_item_id: Unique identifier of the item
+            activity_history_item_id: The unique identifier of activityHistoryItem
         Returns: ActivityHistoryItemItemRequestBuilder
         """
         if not activity_history_item_id:
@@ -206,7 +206,7 @@ class HistoryItemsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HistoryItemsRequestBuilder.HistoryItemsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HistoryItemsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

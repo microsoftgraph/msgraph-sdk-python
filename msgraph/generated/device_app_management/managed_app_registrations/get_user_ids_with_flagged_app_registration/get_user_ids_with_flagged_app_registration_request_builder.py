@@ -118,7 +118,7 @@ class GetUserIdsWithFlaggedAppRegistrationRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GetUserIdsWithFlaggedAppRegistrationRequestBuilder.GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetQueryParameters] = None
 
     
 

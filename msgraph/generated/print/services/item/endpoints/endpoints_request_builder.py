@@ -33,7 +33,7 @@ class EndpointsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the endpoints property of the microsoft.graph.printService entity.
         Args:
-            print_service_endpoint_id: Unique identifier of the item
+            print_service_endpoint_id: The unique identifier of printServiceEndpoint
         Returns: PrintServiceEndpointItemRequestBuilder
         """
         if not print_service_endpoint_id:
@@ -206,7 +206,7 @@ class EndpointsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[EndpointsRequestBuilder.EndpointsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[EndpointsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

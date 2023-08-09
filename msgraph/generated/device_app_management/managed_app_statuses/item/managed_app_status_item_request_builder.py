@@ -194,7 +194,7 @@ class ManagedAppStatusItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ManagedAppStatusItemRequestBuilder.ManagedAppStatusItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ManagedAppStatusItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

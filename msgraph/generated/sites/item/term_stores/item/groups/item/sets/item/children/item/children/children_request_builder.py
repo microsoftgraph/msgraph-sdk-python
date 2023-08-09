@@ -33,7 +33,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the children property of the microsoft.graph.termStore.term entity.
         Args:
-            term_id1: Unique identifier of the item
+            term_id1: The unique identifier of term
         Returns: TermItemRequestBuilder
         """
         if not term_id1:
@@ -206,7 +206,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ChildrenRequestBuilder.ChildrenRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ChildrenRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class ScopedRoleMembershipsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of scopedRoleMembership entities.
         Args:
-            scoped_role_membership_id: Unique identifier of the item
+            scoped_role_membership_id: The unique identifier of scopedRoleMembership
         Returns: ScopedRoleMembershipItemRequestBuilder
         """
         if not scoped_role_membership_id:
@@ -206,7 +206,7 @@ class ScopedRoleMembershipsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ScopedRoleMembershipsRequestBuilder.ScopedRoleMembershipsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ScopedRoleMembershipsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

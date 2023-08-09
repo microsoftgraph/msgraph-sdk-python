@@ -149,7 +149,7 @@ class ComplianceRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ComplianceRequestBuilder.ComplianceRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ComplianceRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

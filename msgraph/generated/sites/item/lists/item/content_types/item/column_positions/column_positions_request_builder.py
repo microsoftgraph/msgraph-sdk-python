@@ -32,7 +32,7 @@ class ColumnPositionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the columnPositions property of the microsoft.graph.contentType entity.
         Args:
-            column_definition_id: Unique identifier of the item
+            column_definition_id: The unique identifier of columnDefinition
         Returns: ColumnDefinitionItemRequestBuilder
         """
         if not column_definition_id:
@@ -159,7 +159,7 @@ class ColumnPositionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ColumnPositionsRequestBuilder.ColumnPositionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ColumnPositionsRequestBuilderGetQueryParameters] = None
 
     
 

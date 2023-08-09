@@ -194,7 +194,7 @@ class DeviceStatusSummaryRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceStatusSummaryRequestBuilder.DeviceStatusSummaryRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceStatusSummaryRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

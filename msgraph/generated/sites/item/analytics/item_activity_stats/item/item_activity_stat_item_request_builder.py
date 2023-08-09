@@ -204,7 +204,7 @@ class ItemActivityStatItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ItemActivityStatItemRequestBuilder.ItemActivityStatItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ItemActivityStatItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

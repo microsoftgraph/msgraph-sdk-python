@@ -35,7 +35,7 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the userAttributeAssignments property of the microsoft.graph.b2xIdentityUserFlow entity.
         Args:
-            identity_user_flow_attribute_assignment_id: Unique identifier of the item
+            identity_user_flow_attribute_assignment_id: The unique identifier of identityUserFlowAttributeAssignment
         Returns: IdentityUserFlowAttributeAssignmentItemRequestBuilder
         """
         if not identity_user_flow_attribute_assignment_id:
@@ -226,7 +226,7 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserAttributeAssignmentsRequestBuilder.UserAttributeAssignmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserAttributeAssignmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

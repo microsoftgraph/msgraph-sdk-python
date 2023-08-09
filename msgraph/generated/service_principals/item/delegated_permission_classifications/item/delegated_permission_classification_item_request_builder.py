@@ -194,7 +194,7 @@ class DelegatedPermissionClassificationItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DelegatedPermissionClassificationItemRequestBuilder.DelegatedPermissionClassificationItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DelegatedPermissionClassificationItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -169,7 +169,7 @@ class RoleManagementRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RoleManagementRequestBuilder.RoleManagementRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RoleManagementRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

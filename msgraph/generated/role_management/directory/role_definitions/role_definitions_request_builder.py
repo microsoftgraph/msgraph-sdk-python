@@ -33,7 +33,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the roleDefinitions property of the microsoft.graph.rbacApplication entity.
         Args:
-            unified_role_definition_id: Unique identifier of the item
+            unified_role_definition_id: The unique identifier of unifiedRoleDefinition
         Returns: UnifiedRoleDefinitionItemRequestBuilder
         """
         if not unified_role_definition_id:
@@ -206,7 +206,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RoleDefinitionsRequestBuilder.RoleDefinitionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RoleDefinitionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the hostCookies property of the microsoft.graph.security.threatIntelligence entity.
         Args:
-            host_cookie_id: Unique identifier of the item
+            host_cookie_id: The unique identifier of hostCookie
         Returns: HostCookieItemRequestBuilder
         """
         if not host_cookie_id:
@@ -206,7 +206,7 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HostCookiesRequestBuilder.HostCookiesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HostCookiesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

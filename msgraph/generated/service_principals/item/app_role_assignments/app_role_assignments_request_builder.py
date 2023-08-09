@@ -33,7 +33,7 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the appRoleAssignments property of the microsoft.graph.servicePrincipal entity.
         Args:
-            app_role_assignment_id: Unique identifier of the item
+            app_role_assignment_id: The unique identifier of appRoleAssignment
         Returns: AppRoleAssignmentItemRequestBuilder
         """
         if not app_role_assignment_id:
@@ -206,7 +206,7 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AppRoleAssignmentsRequestBuilder.AppRoleAssignmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AppRoleAssignmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

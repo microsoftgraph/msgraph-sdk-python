@@ -214,7 +214,7 @@ class GroupLifecyclePolicyItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GroupLifecyclePolicyItemRequestBuilder.GroupLifecyclePolicyItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GroupLifecyclePolicyItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

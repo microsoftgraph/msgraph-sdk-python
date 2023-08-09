@@ -204,7 +204,7 @@ class ExternalActivityItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ExternalActivityItemRequestBuilder.ExternalActivityItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ExternalActivityItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the homeRealmDiscoveryPolicies property of the microsoft.graph.policyRoot entity.
         Args:
-            home_realm_discovery_policy_id: Unique identifier of the item
+            home_realm_discovery_policy_id: The unique identifier of homeRealmDiscoveryPolicy
         Returns: HomeRealmDiscoveryPolicyItemRequestBuilder
         """
         if not home_realm_discovery_policy_id:
@@ -206,7 +206,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HomeRealmDiscoveryPoliciesRequestBuilder.HomeRealmDiscoveryPoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

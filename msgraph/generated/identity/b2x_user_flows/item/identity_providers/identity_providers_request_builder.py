@@ -32,7 +32,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the identityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
         Args:
-            identity_provider_id: Unique identifier of the item
+            identity_provider_id: The unique identifier of identityProvider
         Returns: IdentityProviderItemRequestBuilder
         """
         if not identity_provider_id:
@@ -159,7 +159,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IdentityProvidersRequestBuilder.IdentityProvidersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IdentityProvidersRequestBuilderGetQueryParameters] = None
 
     
 

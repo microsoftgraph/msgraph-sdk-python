@@ -33,7 +33,7 @@ class NotesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the notes property of the microsoft.graph.subjectRightsRequest entity.
         Args:
-            authored_note_id: Unique identifier of the item
+            authored_note_id: The unique identifier of authoredNote
         Returns: AuthoredNoteItemRequestBuilder
         """
         if not authored_note_id:
@@ -206,7 +206,7 @@ class NotesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[NotesRequestBuilder.NotesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[NotesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

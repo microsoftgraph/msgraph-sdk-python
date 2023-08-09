@@ -33,7 +33,7 @@ class TemporaryAccessPassMethodsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the temporaryAccessPassMethods property of the microsoft.graph.authentication entity.
         Args:
-            temporary_access_pass_authentication_method_id: Unique identifier of the item
+            temporary_access_pass_authentication_method_id: The unique identifier of temporaryAccessPassAuthenticationMethod
         Returns: TemporaryAccessPassAuthenticationMethodItemRequestBuilder
         """
         if not temporary_access_pass_authentication_method_id:
@@ -206,7 +206,7 @@ class TemporaryAccessPassMethodsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TemporaryAccessPassMethodsRequestBuilder.TemporaryAccessPassMethodsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TemporaryAccessPassMethodsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

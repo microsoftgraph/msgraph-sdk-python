@@ -33,7 +33,7 @@ class ResourceNamespacesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the resourceNamespaces property of the microsoft.graph.rbacApplication entity.
         Args:
-            unified_rbac_resource_namespace_id: Unique identifier of the item
+            unified_rbac_resource_namespace_id: The unique identifier of unifiedRbacResourceNamespace
         Returns: UnifiedRbacResourceNamespaceItemRequestBuilder
         """
         if not unified_rbac_resource_namespace_id:
@@ -206,7 +206,7 @@ class ResourceNamespacesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ResourceNamespacesRequestBuilder.ResourceNamespacesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ResourceNamespacesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

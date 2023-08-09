@@ -33,7 +33,7 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the activityBasedTimeoutPolicies property of the microsoft.graph.policyRoot entity.
         Args:
-            activity_based_timeout_policy_id: Unique identifier of the item
+            activity_based_timeout_policy_id: The unique identifier of activityBasedTimeoutPolicy
         Returns: ActivityBasedTimeoutPolicyItemRequestBuilder
         """
         if not activity_based_timeout_policy_id:
@@ -206,7 +206,7 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ActivityBasedTimeoutPoliciesRequestBuilder.ActivityBasedTimeoutPoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ActivityBasedTimeoutPoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

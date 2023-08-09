@@ -33,7 +33,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the roleAssignments property of the microsoft.graph.roleDefinition entity.
         Args:
-            role_assignment_id: Unique identifier of the item
+            role_assignment_id: The unique identifier of roleAssignment
         Returns: RoleAssignmentItemRequestBuilder
         """
         if not role_assignment_id:
@@ -206,7 +206,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RoleAssignmentsRequestBuilder.RoleAssignmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RoleAssignmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

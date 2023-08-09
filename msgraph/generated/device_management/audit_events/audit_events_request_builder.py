@@ -35,7 +35,7 @@ class AuditEventsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the auditEvents property of the microsoft.graph.deviceManagement entity.
         Args:
-            audit_event_id: Unique identifier of the item
+            audit_event_id: The unique identifier of auditEvent
         Returns: AuditEventItemRequestBuilder
         """
         if not audit_event_id:
@@ -230,7 +230,7 @@ class AuditEventsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AuditEventsRequestBuilder.AuditEventsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AuditEventsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

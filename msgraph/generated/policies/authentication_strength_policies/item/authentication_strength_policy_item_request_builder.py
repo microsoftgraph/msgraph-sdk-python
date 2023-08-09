@@ -224,7 +224,7 @@ class AuthenticationStrengthPolicyItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AuthenticationStrengthPolicyItemRequestBuilder.AuthenticationStrengthPolicyItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AuthenticationStrengthPolicyItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class Alerts_v2RequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the alerts_v2 property of the microsoft.graph.security entity.
         Args:
-            alert_id: Unique identifier of the item
+            alert_id: The unique identifier of alert
         Returns: AlertItemRequestBuilder
         """
         if not alert_id:
@@ -206,7 +206,7 @@ class Alerts_v2RequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[Alerts_v2RequestBuilder.Alerts_v2RequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[Alerts_v2RequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

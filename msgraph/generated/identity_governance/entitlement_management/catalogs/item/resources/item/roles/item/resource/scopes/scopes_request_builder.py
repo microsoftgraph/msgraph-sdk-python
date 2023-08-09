@@ -33,7 +33,7 @@ class ScopesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the scopes property of the microsoft.graph.accessPackageResource entity.
         Args:
-            access_package_resource_scope_id: Unique identifier of the item
+            access_package_resource_scope_id: The unique identifier of accessPackageResourceScope
         Returns: AccessPackageResourceScopeItemRequestBuilder
         """
         if not access_package_resource_scope_id:
@@ -206,7 +206,7 @@ class ScopesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ScopesRequestBuilder.ScopesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ScopesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

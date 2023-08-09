@@ -33,7 +33,7 @@ class TroubleshootingEventsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the troubleshootingEvents property of the microsoft.graph.deviceManagement entity.
         Args:
-            device_management_troubleshooting_event_id: Unique identifier of the item
+            device_management_troubleshooting_event_id: The unique identifier of deviceManagementTroubleshootingEvent
         Returns: DeviceManagementTroubleshootingEventItemRequestBuilder
         """
         if not device_management_troubleshooting_event_id:
@@ -206,7 +206,7 @@ class TroubleshootingEventsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TroubleshootingEventsRequestBuilder.TroubleshootingEventsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TroubleshootingEventsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

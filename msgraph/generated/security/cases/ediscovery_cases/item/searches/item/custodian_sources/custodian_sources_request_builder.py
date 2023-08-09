@@ -32,7 +32,7 @@ class CustodianSourcesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the custodianSources property of the microsoft.graph.security.ediscoverySearch entity.
         Args:
-            data_source_id: Unique identifier of the item
+            data_source_id: The unique identifier of dataSource
         Returns: DataSourceItemRequestBuilder
         """
         if not data_source_id:
@@ -159,7 +159,7 @@ class CustodianSourcesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CustodianSourcesRequestBuilder.CustodianSourcesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CustodianSourcesRequestBuilderGetQueryParameters] = None
 
     
 

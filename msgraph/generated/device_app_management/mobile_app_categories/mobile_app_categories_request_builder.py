@@ -33,7 +33,7 @@ class MobileAppCategoriesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the mobileAppCategories property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            mobile_app_category_id: Unique identifier of the item
+            mobile_app_category_id: The unique identifier of mobileAppCategory
         Returns: MobileAppCategoryItemRequestBuilder
         """
         if not mobile_app_category_id:
@@ -206,7 +206,7 @@ class MobileAppCategoriesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MobileAppCategoriesRequestBuilder.MobileAppCategoriesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MobileAppCategoriesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

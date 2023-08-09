@@ -103,7 +103,7 @@ class TriggerRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TriggerRequestBuilder.TriggerRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TriggerRequestBuilderGetQueryParameters] = None
 
     
 

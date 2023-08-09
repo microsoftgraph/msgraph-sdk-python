@@ -33,7 +33,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the jobs property of the microsoft.graph.printerBase entity.
         Args:
-            print_job_id: Unique identifier of the item
+            print_job_id: The unique identifier of printJob
         Returns: PrintJobItemRequestBuilder
         """
         if not print_job_id:
@@ -206,7 +206,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[JobsRequestBuilder.JobsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[JobsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

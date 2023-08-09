@@ -33,7 +33,7 @@ class InheritsPermissionsFromRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the inheritsPermissionsFrom property of the microsoft.graph.unifiedRoleDefinition entity.
         Args:
-            unified_role_definition_id1: Unique identifier of the item
+            unified_role_definition_id1: The unique identifier of unifiedRoleDefinition
         Returns: UnifiedRoleDefinitionItemRequestBuilder
         """
         if not unified_role_definition_id1:
@@ -206,7 +206,7 @@ class InheritsPermissionsFromRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[InheritsPermissionsFromRequestBuilder.InheritsPermissionsFromRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[InheritsPermissionsFromRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

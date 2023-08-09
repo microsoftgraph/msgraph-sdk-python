@@ -33,7 +33,7 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of invitation entities.
         Args:
-            invitation_id: Unique identifier of the item
+            invitation_id: The unique identifier of invitation
         Returns: InvitationItemRequestBuilder
         """
         if not invitation_id:
@@ -206,7 +206,7 @@ class InvitationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[InvitationsRequestBuilder.InvitationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[InvitationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

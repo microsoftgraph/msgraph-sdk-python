@@ -1,19 +1,16 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .applied_conditional_access_policy_result import AppliedConditionalAccessPolicyResult
 
 @dataclass
-class AppliedConditionalAccessPolicy(AdditionalDataHolder, BackedModel, Parsable):
-    # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
-
+class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
+
     # Refers to the Name of the conditional access policy (example: 'Require MFA for Salesforce').
     display_name: Optional[str] = None
     # Refers to the grant controls enforced by the conditional access policy (example: 'Require multi-factor authentication').

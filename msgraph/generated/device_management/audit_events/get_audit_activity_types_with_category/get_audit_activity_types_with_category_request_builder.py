@@ -119,7 +119,7 @@ class GetAuditActivityTypesWithCategoryRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GetAuditActivityTypesWithCategoryRequestBuilder.GetAuditActivityTypesWithCategoryRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GetAuditActivityTypesWithCategoryRequestBuilderGetQueryParameters] = None
 
     
 

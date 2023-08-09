@@ -128,7 +128,7 @@ class RecentRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RecentRequestBuilder.RecentRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RecentRequestBuilderGetQueryParameters] = None
 
     
 

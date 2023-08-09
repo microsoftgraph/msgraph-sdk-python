@@ -33,7 +33,7 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the federatedIdentityCredentials property of the microsoft.graph.servicePrincipal entity.
         Args:
-            federated_identity_credential_id: Unique identifier of the item
+            federated_identity_credential_id: The unique identifier of federatedIdentityCredential
         Returns: FederatedIdentityCredentialItemRequestBuilder
         """
         if not federated_identity_credential_id:
@@ -206,7 +206,7 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[FederatedIdentityCredentialsRequestBuilder.FederatedIdentityCredentialsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[FederatedIdentityCredentialsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

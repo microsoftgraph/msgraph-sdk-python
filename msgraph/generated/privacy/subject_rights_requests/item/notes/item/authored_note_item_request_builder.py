@@ -194,7 +194,7 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AuthoredNoteItemRequestBuilder.AuthoredNoteItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AuthoredNoteItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

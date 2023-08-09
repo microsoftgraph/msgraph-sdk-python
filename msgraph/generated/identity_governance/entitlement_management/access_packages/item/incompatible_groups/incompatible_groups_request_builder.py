@@ -169,7 +169,7 @@ class IncompatibleGroupsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IncompatibleGroupsRequestBuilder.IncompatibleGroupsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IncompatibleGroupsRequestBuilderGetQueryParameters] = None
 
     
 

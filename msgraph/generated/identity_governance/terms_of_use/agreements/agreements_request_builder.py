@@ -33,7 +33,7 @@ class AgreementsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the agreements property of the microsoft.graph.termsOfUseContainer entity.
         Args:
-            agreement_id: Unique identifier of the item
+            agreement_id: The unique identifier of agreement
         Returns: AgreementItemRequestBuilder
         """
         if not agreement_id:
@@ -206,7 +206,7 @@ class AgreementsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AgreementsRequestBuilder.AgreementsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AgreementsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

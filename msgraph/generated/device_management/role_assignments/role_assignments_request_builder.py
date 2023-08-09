@@ -33,7 +33,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the roleAssignments property of the microsoft.graph.deviceManagement entity.
         Args:
-            device_and_app_management_role_assignment_id: Unique identifier of the item
+            device_and_app_management_role_assignment_id: The unique identifier of deviceAndAppManagementRoleAssignment
         Returns: DeviceAndAppManagementRoleAssignmentItemRequestBuilder
         """
         if not device_and_app_management_role_assignment_id:
@@ -206,7 +206,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RoleAssignmentsRequestBuilder.RoleAssignmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RoleAssignmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

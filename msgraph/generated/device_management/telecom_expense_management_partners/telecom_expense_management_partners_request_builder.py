@@ -33,7 +33,7 @@ class TelecomExpenseManagementPartnersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the telecomExpenseManagementPartners property of the microsoft.graph.deviceManagement entity.
         Args:
-            telecom_expense_management_partner_id: Unique identifier of the item
+            telecom_expense_management_partner_id: The unique identifier of telecomExpenseManagementPartner
         Returns: TelecomExpenseManagementPartnerItemRequestBuilder
         """
         if not telecom_expense_management_partner_id:
@@ -206,7 +206,7 @@ class TelecomExpenseManagementPartnersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TelecomExpenseManagementPartnersRequestBuilder.TelecomExpenseManagementPartnersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TelecomExpenseManagementPartnersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -204,7 +204,7 @@ class WorkbookChartPointItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WorkbookChartPointItemRequestBuilder.WorkbookChartPointItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WorkbookChartPointItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class OutcomesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the outcomes property of the microsoft.graph.educationSubmission entity.
         Args:
-            education_outcome_id: Unique identifier of the item
+            education_outcome_id: The unique identifier of educationOutcome
         Returns: EducationOutcomeItemRequestBuilder
         """
         if not education_outcome_id:
@@ -206,7 +206,7 @@ class OutcomesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OutcomesRequestBuilder.OutcomesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OutcomesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

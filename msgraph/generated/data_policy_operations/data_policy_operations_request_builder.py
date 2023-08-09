@@ -33,7 +33,7 @@ class DataPolicyOperationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of dataPolicyOperation entities.
         Args:
-            data_policy_operation_id: Unique identifier of the item
+            data_policy_operation_id: The unique identifier of dataPolicyOperation
         Returns: DataPolicyOperationItemRequestBuilder
         """
         if not data_policy_operation_id:
@@ -206,7 +206,7 @@ class DataPolicyOperationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DataPolicyOperationsRequestBuilder.DataPolicyOperationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DataPolicyOperationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the attachments property of the microsoft.graph.serviceUpdateMessage entity.
         Args:
-            service_announcement_attachment_id: Unique identifier of the item
+            service_announcement_attachment_id: The unique identifier of serviceAnnouncementAttachment
         Returns: ServiceAnnouncementAttachmentItemRequestBuilder
         """
         if not service_announcement_attachment_id:
@@ -206,7 +206,7 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AttachmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

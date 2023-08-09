@@ -32,7 +32,7 @@ class ComponentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the components property of the microsoft.graph.security.host entity.
         Args:
-            host_component_id: Unique identifier of the item
+            host_component_id: The unique identifier of hostComponent
         Returns: HostComponentItemRequestBuilder
         """
         if not host_component_id:
@@ -159,7 +159,7 @@ class ComponentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ComponentsRequestBuilder.ComponentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ComponentsRequestBuilderGetQueryParameters] = None
 
     
 

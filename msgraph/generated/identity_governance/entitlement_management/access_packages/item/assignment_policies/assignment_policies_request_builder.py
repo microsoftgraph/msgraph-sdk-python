@@ -33,7 +33,7 @@ class AssignmentPoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the assignmentPolicies property of the microsoft.graph.accessPackage entity.
         Args:
-            access_package_assignment_policy_id: Unique identifier of the item
+            access_package_assignment_policy_id: The unique identifier of accessPackageAssignmentPolicy
         Returns: AccessPackageAssignmentPolicyItemRequestBuilder
         """
         if not access_package_assignment_policy_id:
@@ -206,7 +206,7 @@ class AssignmentPoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AssignmentPoliciesRequestBuilder.AssignmentPoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AssignmentPoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

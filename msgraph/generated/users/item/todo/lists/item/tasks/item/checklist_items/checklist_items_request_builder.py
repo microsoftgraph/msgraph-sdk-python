@@ -33,7 +33,7 @@ class ChecklistItemsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the checklistItems property of the microsoft.graph.todoTask entity.
         Args:
-            checklist_item_id: Unique identifier of the item
+            checklist_item_id: The unique identifier of checklistItem
         Returns: ChecklistItemItemRequestBuilder
         """
         if not checklist_item_id:
@@ -206,7 +206,7 @@ class ChecklistItemsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ChecklistItemsRequestBuilder.ChecklistItemsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ChecklistItemsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

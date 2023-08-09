@@ -33,7 +33,7 @@ class VersionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the versions property of the microsoft.graph.agreementFileLocalization entity.
         Args:
-            agreement_file_version_id: Unique identifier of the item
+            agreement_file_version_id: The unique identifier of agreementFileVersion
         Returns: AgreementFileVersionItemRequestBuilder
         """
         if not agreement_file_version_id:
@@ -206,7 +206,7 @@ class VersionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[VersionsRequestBuilder.VersionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[VersionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

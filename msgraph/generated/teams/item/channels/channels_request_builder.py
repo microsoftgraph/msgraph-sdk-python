@@ -34,7 +34,7 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the channels property of the microsoft.graph.team entity.
         Args:
-            channel_id: Unique identifier of the item
+            channel_id: The unique identifier of channel
         Returns: ChannelItemRequestBuilder
         """
         if not channel_id:
@@ -216,7 +216,7 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ChannelsRequestBuilder.ChannelsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ChannelsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

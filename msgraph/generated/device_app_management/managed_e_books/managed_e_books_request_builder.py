@@ -33,7 +33,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the managedEBooks property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            managed_e_book_id: Unique identifier of the item
+            managed_e_book_id: The unique identifier of managedEBook
         Returns: ManagedEBookItemRequestBuilder
         """
         if not managed_e_book_id:
@@ -206,7 +206,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ManagedEBooksRequestBuilder.ManagedEBooksRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ManagedEBooksRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

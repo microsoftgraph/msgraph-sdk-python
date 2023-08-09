@@ -103,7 +103,7 @@ class ChannelItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ChannelItemRequestBuilder.ChannelItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ChannelItemRequestBuilderGetQueryParameters] = None
 
     
 

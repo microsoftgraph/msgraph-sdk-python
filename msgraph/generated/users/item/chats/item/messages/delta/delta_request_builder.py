@@ -128,7 +128,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeltaRequestBuilder.DeltaRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeltaRequestBuilderGetQueryParameters] = None
 
     
 

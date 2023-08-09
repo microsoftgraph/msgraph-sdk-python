@@ -194,7 +194,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder(BaseReque
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilder.WindowsInformationProtectionAppLearningSummaryItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WindowsInformationProtectionAppLearningSummaryItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

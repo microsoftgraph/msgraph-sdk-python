@@ -52,7 +52,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedEBookItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedEBook]:
         """
-        Read properties and relationships of the iosVppEBook object.
+        Read properties and relationships of the managedEBook object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBook]
@@ -115,7 +115,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedEBookItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the iosVppEBook object.
+        Read properties and relationships of the managedEBook object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -210,7 +210,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedEBookItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the iosVppEBook object.
+        Read properties and relationships of the managedEBook object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -244,7 +244,7 @@ class ManagedEBookItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ManagedEBookItemRequestBuilder.ManagedEBookItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ManagedEBookItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class LocalizedNotificationMessagesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the localizedNotificationMessages property of the microsoft.graph.notificationMessageTemplate entity.
         Args:
-            localized_notification_message_id: Unique identifier of the item
+            localized_notification_message_id: The unique identifier of localizedNotificationMessage
         Returns: LocalizedNotificationMessageItemRequestBuilder
         """
         if not localized_notification_message_id:
@@ -206,7 +206,7 @@ class LocalizedNotificationMessagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LocalizedNotificationMessagesRequestBuilder.LocalizedNotificationMessagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LocalizedNotificationMessagesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

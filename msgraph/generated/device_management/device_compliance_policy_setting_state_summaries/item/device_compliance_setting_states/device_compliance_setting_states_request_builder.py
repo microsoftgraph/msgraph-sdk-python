@@ -33,7 +33,7 @@ class DeviceComplianceSettingStatesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the deviceComplianceSettingStates property of the microsoft.graph.deviceCompliancePolicySettingStateSummary entity.
         Args:
-            device_compliance_setting_state_id: Unique identifier of the item
+            device_compliance_setting_state_id: The unique identifier of deviceComplianceSettingState
         Returns: DeviceComplianceSettingStateItemRequestBuilder
         """
         if not device_compliance_setting_state_id:
@@ -206,7 +206,7 @@ class DeviceComplianceSettingStatesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceComplianceSettingStatesRequestBuilder.DeviceComplianceSettingStatesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceComplianceSettingStatesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

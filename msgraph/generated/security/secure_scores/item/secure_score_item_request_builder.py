@@ -194,7 +194,7 @@ class SecureScoreItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SecureScoreItemRequestBuilder.SecureScoreItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SecureScoreItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

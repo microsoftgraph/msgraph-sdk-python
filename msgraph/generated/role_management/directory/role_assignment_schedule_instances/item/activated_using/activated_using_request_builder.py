@@ -103,7 +103,7 @@ class ActivatedUsingRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ActivatedUsingRequestBuilder.ActivatedUsingRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ActivatedUsingRequestBuilderGetQueryParameters] = None
 
     
 

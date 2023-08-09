@@ -103,7 +103,7 @@ class ConditionalAccessTemplateItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ConditionalAccessTemplateItemRequestBuilder.ConditionalAccessTemplateItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ConditionalAccessTemplateItemRequestBuilderGetQueryParameters] = None
 
     
 

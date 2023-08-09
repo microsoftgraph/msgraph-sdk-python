@@ -224,7 +224,7 @@ class BrowserSiteListItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[BrowserSiteListItemRequestBuilder.BrowserSiteListItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[BrowserSiteListItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

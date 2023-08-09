@@ -33,7 +33,7 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the acceptanceStatuses property of the microsoft.graph.termsAndConditions entity.
         Args:
-            terms_and_conditions_acceptance_status_id: Unique identifier of the item
+            terms_and_conditions_acceptance_status_id: The unique identifier of termsAndConditionsAcceptanceStatus
         Returns: TermsAndConditionsAcceptanceStatusItemRequestBuilder
         """
         if not terms_and_conditions_acceptance_status_id:
@@ -206,7 +206,7 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AcceptanceStatusesRequestBuilder.AcceptanceStatusesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AcceptanceStatusesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

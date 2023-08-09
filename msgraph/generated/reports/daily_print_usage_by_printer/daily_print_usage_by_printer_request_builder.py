@@ -33,7 +33,7 @@ class DailyPrintUsageByPrinterRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the dailyPrintUsageByPrinter property of the microsoft.graph.reportRoot entity.
         Args:
-            print_usage_by_printer_id: Unique identifier of the item
+            print_usage_by_printer_id: The unique identifier of printUsageByPrinter
         Returns: PrintUsageByPrinterItemRequestBuilder
         """
         if not print_usage_by_printer_id:
@@ -206,7 +206,7 @@ class DailyPrintUsageByPrinterRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DailyPrintUsageByPrinterRequestBuilder.DailyPrintUsageByPrinterRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DailyPrintUsageByPrinterRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

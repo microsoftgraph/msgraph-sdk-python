@@ -32,7 +32,7 @@ class TaughtClassesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the taughtClasses property of the microsoft.graph.educationUser entity.
         Args:
-            education_class_id: Unique identifier of the item
+            education_class_id: The unique identifier of educationClass
         Returns: EducationClassItemRequestBuilder
         """
         if not education_class_id:
@@ -159,7 +159,7 @@ class TaughtClassesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TaughtClassesRequestBuilder.TaughtClassesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TaughtClassesRequestBuilderGetQueryParameters] = None
 
     
 

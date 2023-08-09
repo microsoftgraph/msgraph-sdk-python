@@ -33,7 +33,7 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the extensionProperties property of the microsoft.graph.application entity.
         Args:
-            extension_property_id: Unique identifier of the item
+            extension_property_id: The unique identifier of extensionProperty
         Returns: ExtensionPropertyItemRequestBuilder
         """
         if not extension_property_id:
@@ -206,7 +206,7 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ExtensionPropertiesRequestBuilder.ExtensionPropertiesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ExtensionPropertiesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -204,7 +204,7 @@ class DefaultRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DefaultRequestBuilder.DefaultRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DefaultRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

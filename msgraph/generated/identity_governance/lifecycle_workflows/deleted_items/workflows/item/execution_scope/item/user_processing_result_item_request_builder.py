@@ -103,7 +103,7 @@ class UserProcessingResultItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserProcessingResultItemRequestBuilder.UserProcessingResultItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserProcessingResultItemRequestBuilderGetQueryParameters] = None
 
     
 

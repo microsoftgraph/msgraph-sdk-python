@@ -32,7 +32,7 @@ class MicrosoftAuthenticatorMethodsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the microsoftAuthenticatorMethods property of the microsoft.graph.authentication entity.
         Args:
-            microsoft_authenticator_authentication_method_id: Unique identifier of the item
+            microsoft_authenticator_authentication_method_id: The unique identifier of microsoftAuthenticatorAuthenticationMethod
         Returns: MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder
         """
         if not microsoft_authenticator_authentication_method_id:
@@ -159,7 +159,7 @@ class MicrosoftAuthenticatorMethodsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MicrosoftAuthenticatorMethodsRequestBuilder.MicrosoftAuthenticatorMethodsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MicrosoftAuthenticatorMethodsRequestBuilderGetQueryParameters] = None
 
     
 

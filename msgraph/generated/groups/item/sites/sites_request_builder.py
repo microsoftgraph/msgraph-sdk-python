@@ -35,7 +35,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the sites property of the microsoft.graph.group entity.
         Args:
-            site_id: Unique identifier of the item
+            site_id: The unique identifier of site
         Returns: SiteItemRequestBuilder
         """
         if not site_id:
@@ -189,7 +189,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SitesRequestBuilder.SitesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SitesRequestBuilderGetQueryParameters] = None
 
     
 

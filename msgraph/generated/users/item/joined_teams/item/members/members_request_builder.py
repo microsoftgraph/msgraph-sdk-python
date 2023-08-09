@@ -34,7 +34,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the members property of the microsoft.graph.team entity.
         Args:
-            conversation_member_id: Unique identifier of the item
+            conversation_member_id: The unique identifier of conversationMember
         Returns: ConversationMemberItemRequestBuilder
         """
         if not conversation_member_id:
@@ -216,7 +216,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MembersRequestBuilder.MembersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MembersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

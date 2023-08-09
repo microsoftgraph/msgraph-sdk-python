@@ -194,7 +194,7 @@ class SchemaRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SchemaRequestBuilder.SchemaRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SchemaRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

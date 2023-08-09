@@ -224,7 +224,7 @@ class ManagedAppRegistrationItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ManagedAppRegistrationItemRequestBuilder.ManagedAppRegistrationItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ManagedAppRegistrationItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

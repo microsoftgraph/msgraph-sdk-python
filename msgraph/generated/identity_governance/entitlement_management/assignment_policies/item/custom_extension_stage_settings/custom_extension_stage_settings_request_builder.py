@@ -33,7 +33,7 @@ class CustomExtensionStageSettingsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the customExtensionStageSettings property of the microsoft.graph.accessPackageAssignmentPolicy entity.
         Args:
-            custom_extension_stage_setting_id: Unique identifier of the item
+            custom_extension_stage_setting_id: The unique identifier of customExtensionStageSetting
         Returns: CustomExtensionStageSettingItemRequestBuilder
         """
         if not custom_extension_stage_setting_id:
@@ -206,7 +206,7 @@ class CustomExtensionStageSettingsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CustomExtensionStageSettingsRequestBuilder.CustomExtensionStageSettingsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CustomExtensionStageSettingsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

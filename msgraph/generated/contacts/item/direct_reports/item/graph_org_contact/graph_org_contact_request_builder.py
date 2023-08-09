@@ -103,7 +103,7 @@ class GraphOrgContactRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GraphOrgContactRequestBuilder.GraphOrgContactRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GraphOrgContactRequestBuilderGetQueryParameters] = None
 
     
 

@@ -34,7 +34,7 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
         Args:
-            administrative_unit_id: Unique identifier of the item
+            administrative_unit_id: The unique identifier of administrativeUnit
         Returns: AdministrativeUnitItemRequestBuilder
         """
         if not administrative_unit_id:
@@ -216,7 +216,7 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AdministrativeUnitsRequestBuilder.AdministrativeUnitsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AdministrativeUnitsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

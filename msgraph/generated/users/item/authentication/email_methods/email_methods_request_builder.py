@@ -33,7 +33,7 @@ class EmailMethodsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the emailMethods property of the microsoft.graph.authentication entity.
         Args:
-            email_authentication_method_id: Unique identifier of the item
+            email_authentication_method_id: The unique identifier of emailAuthenticationMethod
         Returns: EmailAuthenticationMethodItemRequestBuilder
         """
         if not email_authentication_method_id:
@@ -206,7 +206,7 @@ class EmailMethodsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[EmailMethodsRequestBuilder.EmailMethodsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[EmailMethodsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

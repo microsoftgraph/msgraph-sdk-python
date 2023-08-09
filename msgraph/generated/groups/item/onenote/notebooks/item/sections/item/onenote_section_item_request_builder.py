@@ -244,7 +244,7 @@ class OnenoteSectionItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OnenoteSectionItemRequestBuilder.OnenoteSectionItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OnenoteSectionItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

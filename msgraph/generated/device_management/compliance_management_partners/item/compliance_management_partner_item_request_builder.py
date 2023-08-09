@@ -194,7 +194,7 @@ class ComplianceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ComplianceManagementPartnerItemRequestBuilder.ComplianceManagementPartnerItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ComplianceManagementPartnerItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

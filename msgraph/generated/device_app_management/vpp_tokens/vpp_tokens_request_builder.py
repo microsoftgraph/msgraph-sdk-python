@@ -33,7 +33,7 @@ class VppTokensRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the vppTokens property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            vpp_token_id: Unique identifier of the item
+            vpp_token_id: The unique identifier of vppToken
         Returns: VppTokenItemRequestBuilder
         """
         if not vpp_token_id:
@@ -206,7 +206,7 @@ class VppTokensRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[VppTokensRequestBuilder.VppTokensRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[VppTokensRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class OverridesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the overrides property of the microsoft.graph.inferenceClassification entity.
         Args:
-            inference_classification_override_id: Unique identifier of the item
+            inference_classification_override_id: The unique identifier of inferenceClassificationOverride
         Returns: InferenceClassificationOverrideItemRequestBuilder
         """
         if not inference_classification_override_id:
@@ -196,7 +196,7 @@ class OverridesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OverridesRequestBuilder.OverridesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OverridesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

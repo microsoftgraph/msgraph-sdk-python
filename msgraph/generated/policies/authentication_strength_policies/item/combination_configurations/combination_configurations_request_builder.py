@@ -33,7 +33,7 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the combinationConfigurations property of the microsoft.graph.authenticationStrengthPolicy entity.
         Args:
-            authentication_combination_configuration_id: Unique identifier of the item
+            authentication_combination_configuration_id: The unique identifier of authenticationCombinationConfiguration
         Returns: AuthenticationCombinationConfigurationItemRequestBuilder
         """
         if not authentication_combination_configuration_id:
@@ -206,7 +206,7 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CombinationConfigurationsRequestBuilder.CombinationConfigurationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CombinationConfigurationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -194,7 +194,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder(BaseRequestBuilde
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AuthenticationCombinationConfigurationItemRequestBuilder.AuthenticationCombinationConfigurationItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AuthenticationCombinationConfigurationItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

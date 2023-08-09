@@ -33,7 +33,7 @@ class PlansRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the plans property of the microsoft.graph.plannerGroup entity.
         Args:
-            planner_plan_id: Unique identifier of the item
+            planner_plan_id: The unique identifier of plannerPlan
         Returns: PlannerPlanItemRequestBuilder
         """
         if not planner_plan_id:
@@ -206,7 +206,7 @@ class PlansRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PlansRequestBuilder.PlansRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PlansRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

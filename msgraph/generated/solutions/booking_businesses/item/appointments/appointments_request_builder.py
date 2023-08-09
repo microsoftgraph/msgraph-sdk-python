@@ -33,7 +33,7 @@ class AppointmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the appointments property of the microsoft.graph.bookingBusiness entity.
         Args:
-            booking_appointment_id: Unique identifier of the item
+            booking_appointment_id: The unique identifier of bookingAppointment
         Returns: BookingAppointmentItemRequestBuilder
         """
         if not booking_appointment_id:
@@ -206,7 +206,7 @@ class AppointmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AppointmentsRequestBuilder.AppointmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AppointmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

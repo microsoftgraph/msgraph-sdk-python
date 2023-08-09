@@ -103,7 +103,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HomeRealmDiscoveryPolicyItemRequestBuilder.HomeRealmDiscoveryPolicyItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetQueryParameters] = None
 
     
 

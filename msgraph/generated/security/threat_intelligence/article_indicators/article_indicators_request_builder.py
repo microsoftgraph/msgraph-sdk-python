@@ -33,7 +33,7 @@ class ArticleIndicatorsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the articleIndicators property of the microsoft.graph.security.threatIntelligence entity.
         Args:
-            article_indicator_id: Unique identifier of the item
+            article_indicator_id: The unique identifier of articleIndicator
         Returns: ArticleIndicatorItemRequestBuilder
         """
         if not article_indicator_id:
@@ -206,7 +206,7 @@ class ArticleIndicatorsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ArticleIndicatorsRequestBuilder.ArticleIndicatorsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ArticleIndicatorsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

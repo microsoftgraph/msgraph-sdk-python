@@ -33,7 +33,7 @@ class SubmittedResourcesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the submittedResources property of the microsoft.graph.educationSubmission entity.
         Args:
-            education_submission_resource_id: Unique identifier of the item
+            education_submission_resource_id: The unique identifier of educationSubmissionResource
         Returns: EducationSubmissionResourceItemRequestBuilder
         """
         if not education_submission_resource_id:
@@ -206,7 +206,7 @@ class SubmittedResourcesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SubmittedResourcesRequestBuilder.SubmittedResourcesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SubmittedResourcesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

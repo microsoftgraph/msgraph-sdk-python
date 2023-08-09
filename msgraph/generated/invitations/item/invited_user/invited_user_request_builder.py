@@ -113,7 +113,7 @@ class InvitedUserRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[InvitedUserRequestBuilder.InvitedUserRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[InvitedUserRequestBuilderGetQueryParameters] = None
 
     
 

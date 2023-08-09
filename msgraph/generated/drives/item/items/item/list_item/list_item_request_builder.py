@@ -103,7 +103,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ListItemRequestBuilder.ListItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ListItemRequestBuilderGetQueryParameters] = None
 
     
 

@@ -35,7 +35,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the notebooks property of the microsoft.graph.onenote entity.
         Args:
-            notebook_id: Unique identifier of the item
+            notebook_id: The unique identifier of notebook
         Returns: NotebookItemRequestBuilder
         """
         if not notebook_id:
@@ -230,7 +230,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[NotebooksRequestBuilder.NotebooksRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[NotebooksRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

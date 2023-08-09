@@ -33,7 +33,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the columns property of the microsoft.graph.list entity.
         Args:
-            column_definition_id: Unique identifier of the item
+            column_definition_id: The unique identifier of columnDefinition
         Returns: ColumnDefinitionItemRequestBuilder
         """
         if not column_definition_id:
@@ -206,7 +206,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ColumnsRequestBuilder.ColumnsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ColumnsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

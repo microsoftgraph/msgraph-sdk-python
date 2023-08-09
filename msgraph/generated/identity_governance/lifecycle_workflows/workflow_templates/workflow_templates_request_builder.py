@@ -32,7 +32,7 @@ class WorkflowTemplatesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the workflowTemplates property of the microsoft.graph.identityGovernance.lifecycleWorkflowsContainer entity.
         Args:
-            workflow_template_id: Unique identifier of the item
+            workflow_template_id: The unique identifier of workflowTemplate
         Returns: WorkflowTemplateItemRequestBuilder
         """
         if not workflow_template_id:
@@ -159,7 +159,7 @@ class WorkflowTemplatesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WorkflowTemplatesRequestBuilder.WorkflowTemplatesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WorkflowTemplatesRequestBuilderGetQueryParameters] = None
 
     
 

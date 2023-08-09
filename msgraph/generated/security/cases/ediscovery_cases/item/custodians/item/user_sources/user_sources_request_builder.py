@@ -33,7 +33,7 @@ class UserSourcesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the userSources property of the microsoft.graph.security.ediscoveryCustodian entity.
         Args:
-            user_source_id: Unique identifier of the item
+            user_source_id: The unique identifier of userSource
         Returns: UserSourceItemRequestBuilder
         """
         if not user_source_id:
@@ -206,7 +206,7 @@ class UserSourcesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserSourcesRequestBuilder.UserSourcesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserSourcesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -32,7 +32,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the photos property of the microsoft.graph.user entity.
         Args:
-            profile_photo_id: Unique identifier of the item
+            profile_photo_id: The unique identifier of profilePhoto
         Returns: ProfilePhotoItemRequestBuilder
         """
         if not profile_photo_id:
@@ -149,7 +149,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PhotosRequestBuilder.PhotosRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PhotosRequestBuilderGetQueryParameters] = None
 
     
 

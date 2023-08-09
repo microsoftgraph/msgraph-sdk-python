@@ -204,7 +204,7 @@ class UnifiedRbacResourceNamespaceItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UnifiedRbacResourceNamespaceItemRequestBuilder.UnifiedRbacResourceNamespaceItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UnifiedRbacResourceNamespaceItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

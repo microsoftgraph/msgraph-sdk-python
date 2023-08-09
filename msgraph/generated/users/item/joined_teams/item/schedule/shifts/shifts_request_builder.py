@@ -33,7 +33,7 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the shifts property of the microsoft.graph.schedule entity.
         Args:
-            shift_id: Unique identifier of the item
+            shift_id: The unique identifier of shift
         Returns: ShiftItemRequestBuilder
         """
         if not shift_id:
@@ -201,7 +201,7 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ShiftsRequestBuilder.ShiftsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ShiftsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

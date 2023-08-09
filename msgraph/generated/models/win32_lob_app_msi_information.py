@@ -1,22 +1,19 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .win32_lob_app_msi_package_type import Win32LobAppMsiPackageType
 
 @dataclass
-class Win32LobAppMsiInformation(AdditionalDataHolder, BackedModel, Parsable):
+class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
     """
     Contains MSI app properties for a Win32 App.
     """
-    # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
-
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
+
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the package type of an MSI Win32LobApp.

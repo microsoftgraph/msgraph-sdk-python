@@ -33,7 +33,7 @@ class CatalogsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
         Args:
-            access_package_catalog_id: Unique identifier of the item
+            access_package_catalog_id: The unique identifier of accessPackageCatalog
         Returns: AccessPackageCatalogItemRequestBuilder
         """
         if not access_package_catalog_id:
@@ -206,7 +206,7 @@ class CatalogsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CatalogsRequestBuilder.CatalogsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CatalogsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

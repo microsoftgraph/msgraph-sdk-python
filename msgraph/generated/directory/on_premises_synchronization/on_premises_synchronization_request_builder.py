@@ -33,7 +33,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the onPremisesSynchronization property of the microsoft.graph.directory entity.
         Args:
-            on_premises_directory_synchronization_id: Unique identifier of the item
+            on_premises_directory_synchronization_id: The unique identifier of onPremisesDirectorySynchronization
         Returns: OnPremisesDirectorySynchronizationItemRequestBuilder
         """
         if not on_premises_directory_synchronization_id:
@@ -206,7 +206,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OnPremisesSynchronizationRequestBuilder.OnPremisesSynchronizationRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OnPremisesSynchronizationRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

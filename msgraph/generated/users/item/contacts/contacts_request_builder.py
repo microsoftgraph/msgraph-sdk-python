@@ -34,7 +34,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the contacts property of the microsoft.graph.user entity.
         Args:
-            contact_id: Unique identifier of the item
+            contact_id: The unique identifier of contact
         Returns: ContactItemRequestBuilder
         """
         if not contact_id:
@@ -216,7 +216,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ContactsRequestBuilder.ContactsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ContactsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

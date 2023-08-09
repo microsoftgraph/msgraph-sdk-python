@@ -33,7 +33,7 @@ class PasswordMethodsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the passwordMethods property of the microsoft.graph.authentication entity.
         Args:
-            password_authentication_method_id: Unique identifier of the item
+            password_authentication_method_id: The unique identifier of passwordAuthenticationMethod
         Returns: PasswordAuthenticationMethodItemRequestBuilder
         """
         if not password_authentication_method_id:
@@ -206,7 +206,7 @@ class PasswordMethodsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PasswordMethodsRequestBuilder.PasswordMethodsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PasswordMethodsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

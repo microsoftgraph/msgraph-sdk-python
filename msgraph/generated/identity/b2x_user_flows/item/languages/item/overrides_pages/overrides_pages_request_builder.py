@@ -33,7 +33,7 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the overridesPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
         Args:
-            user_flow_language_page_id: Unique identifier of the item
+            user_flow_language_page_id: The unique identifier of userFlowLanguagePage
         Returns: UserFlowLanguagePageItemRequestBuilder
         """
         if not user_flow_language_page_id:
@@ -206,7 +206,7 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OverridesPagesRequestBuilder.OverridesPagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OverridesPagesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

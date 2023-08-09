@@ -224,7 +224,7 @@ class NotebookItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[NotebookItemRequestBuilder.NotebookItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[NotebookItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class HealthOverviewsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the healthOverviews property of the microsoft.graph.serviceAnnouncement entity.
         Args:
-            service_health_id: Unique identifier of the item
+            service_health_id: The unique identifier of serviceHealth
         Returns: ServiceHealthItemRequestBuilder
         """
         if not service_health_id:
@@ -206,7 +206,7 @@ class HealthOverviewsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HealthOverviewsRequestBuilder.HealthOverviewsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HealthOverviewsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

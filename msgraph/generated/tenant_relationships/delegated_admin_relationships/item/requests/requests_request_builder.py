@@ -33,7 +33,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the requests property of the microsoft.graph.delegatedAdminRelationship entity.
         Args:
-            delegated_admin_relationship_request_id: Unique identifier of the item
+            delegated_admin_relationship_request_id: The unique identifier of delegatedAdminRelationshipRequest
         Returns: DelegatedAdminRelationshipRequestItemRequestBuilder
         """
         if not delegated_admin_relationship_request_id:
@@ -206,7 +206,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RequestsRequestBuilder.RequestsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RequestsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

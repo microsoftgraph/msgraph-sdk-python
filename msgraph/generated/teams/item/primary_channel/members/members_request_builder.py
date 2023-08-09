@@ -34,7 +34,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the members property of the microsoft.graph.channel entity.
         Args:
-            conversation_member_id: Unique identifier of the item
+            conversation_member_id: The unique identifier of conversationMember
         Returns: ConversationMemberItemRequestBuilder
         """
         if not conversation_member_id:
@@ -69,7 +69,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[ConversationMember]:
         """
-        Add a conversationMember to a channel. This operation is allowed only for channels with a membershipType value of private or shared.
+        Add a conversationMember to a channel.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +112,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add a conversationMember to a channel. This operation is allowed only for channels with a membershipType value of private or shared.
+        Add a conversationMember to a channel.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -216,7 +216,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MembersRequestBuilder.MembersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MembersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

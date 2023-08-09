@@ -33,7 +33,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the localizations property of the microsoft.graph.organizationalBranding entity.
         Args:
-            organizational_branding_localization_id: Unique identifier of the item
+            organizational_branding_localization_id: The unique identifier of organizationalBrandingLocalization
         Returns: OrganizationalBrandingLocalizationItemRequestBuilder
         """
         if not organizational_branding_localization_id:
@@ -206,7 +206,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LocalizationsRequestBuilder.LocalizationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LocalizationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

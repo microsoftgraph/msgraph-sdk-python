@@ -33,7 +33,7 @@ class ExchangeConnectorsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the exchangeConnectors property of the microsoft.graph.deviceManagement entity.
         Args:
-            device_management_exchange_connector_id: Unique identifier of the item
+            device_management_exchange_connector_id: The unique identifier of deviceManagementExchangeConnector
         Returns: DeviceManagementExchangeConnectorItemRequestBuilder
         """
         if not device_management_exchange_connector_id:
@@ -206,7 +206,7 @@ class ExchangeConnectorsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ExchangeConnectorsRequestBuilder.ExchangeConnectorsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ExchangeConnectorsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

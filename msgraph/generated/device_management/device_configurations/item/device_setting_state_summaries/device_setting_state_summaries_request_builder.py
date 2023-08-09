@@ -33,7 +33,7 @@ class DeviceSettingStateSummariesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the deviceSettingStateSummaries property of the microsoft.graph.deviceConfiguration entity.
         Args:
-            setting_state_device_summary_id: Unique identifier of the item
+            setting_state_device_summary_id: The unique identifier of settingStateDeviceSummary
         Returns: SettingStateDeviceSummaryItemRequestBuilder
         """
         if not setting_state_device_summary_id:
@@ -206,7 +206,7 @@ class DeviceSettingStateSummariesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceSettingStateSummariesRequestBuilder.DeviceSettingStateSummariesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceSettingStateSummariesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

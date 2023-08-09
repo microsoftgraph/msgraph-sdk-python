@@ -33,7 +33,7 @@ class PinnedMessagesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the pinnedMessages property of the microsoft.graph.chat entity.
         Args:
-            pinned_chat_message_info_id: Unique identifier of the item
+            pinned_chat_message_info_id: The unique identifier of pinnedChatMessageInfo
         Returns: PinnedChatMessageInfoItemRequestBuilder
         """
         if not pinned_chat_message_info_id:
@@ -206,7 +206,7 @@ class PinnedMessagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PinnedMessagesRequestBuilder.PinnedMessagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PinnedMessagesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

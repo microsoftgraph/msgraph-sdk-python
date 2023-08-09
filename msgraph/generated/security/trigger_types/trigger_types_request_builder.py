@@ -204,7 +204,7 @@ class TriggerTypesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TriggerTypesRequestBuilder.TriggerTypesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TriggerTypesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

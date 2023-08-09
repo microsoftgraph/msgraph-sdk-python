@@ -33,7 +33,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the assignments property of the microsoft.graph.managedEBook entity.
         Args:
-            managed_e_book_assignment_id: Unique identifier of the item
+            managed_e_book_assignment_id: The unique identifier of managedEBookAssignment
         Returns: ManagedEBookAssignmentItemRequestBuilder
         """
         if not managed_e_book_assignment_id:
@@ -46,7 +46,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedEBookAssignmentCollectionResponse]:
         """
-        List properties and relationships of the iosVppEBookAssignment objects.
+        List properties and relationships of the managedEBookAssignment objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookAssignmentCollectionResponse]
@@ -68,7 +68,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedEBookAssignment]:
         """
-        Create a new managedEBookAssignment object.
+        Create a new iosVppEBookAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -93,7 +93,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the iosVppEBookAssignment objects.
+        List properties and relationships of the managedEBookAssignment objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +111,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new managedEBookAssignment object.
+        Create a new iosVppEBookAssignment object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -142,7 +142,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignmentsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the iosVppEBookAssignment objects.
+        List properties and relationships of the managedEBookAssignment objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -206,7 +206,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AssignmentsRequestBuilder.AssignmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AssignmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

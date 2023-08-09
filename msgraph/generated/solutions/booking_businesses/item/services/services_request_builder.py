@@ -33,7 +33,7 @@ class ServicesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the services property of the microsoft.graph.bookingBusiness entity.
         Args:
-            booking_service_id: Unique identifier of the item
+            booking_service_id: The unique identifier of bookingService
         Returns: BookingServiceItemRequestBuilder
         """
         if not booking_service_id:
@@ -206,7 +206,7 @@ class ServicesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ServicesRequestBuilder.ServicesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ServicesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -204,7 +204,7 @@ class HostCookieItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HostCookieItemRequestBuilder.HostCookieItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HostCookieItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

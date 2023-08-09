@@ -32,7 +32,7 @@ class DomainNameReferencesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the domainNameReferences property of the microsoft.graph.domain entity.
         Args:
-            directory_object_id: Unique identifier of the item
+            directory_object_id: The unique identifier of directoryObject
         Returns: DirectoryObjectItemRequestBuilder
         """
         if not directory_object_id:
@@ -159,7 +159,7 @@ class DomainNameReferencesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DomainNameReferencesRequestBuilder.DomainNameReferencesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DomainNameReferencesRequestBuilderGetQueryParameters] = None
 
     
 

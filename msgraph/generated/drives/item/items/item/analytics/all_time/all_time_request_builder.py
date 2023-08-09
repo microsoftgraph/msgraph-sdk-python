@@ -103,7 +103,7 @@ class AllTimeRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AllTimeRequestBuilder.AllTimeRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AllTimeRequestBuilderGetQueryParameters] = None
 
     
 

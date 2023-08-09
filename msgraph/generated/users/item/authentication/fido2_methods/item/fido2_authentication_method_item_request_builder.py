@@ -148,7 +148,7 @@ class Fido2AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[Fido2AuthenticationMethodItemRequestBuilder.Fido2AuthenticationMethodItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[Fido2AuthenticationMethodItemRequestBuilderGetQueryParameters] = None
 
     
 

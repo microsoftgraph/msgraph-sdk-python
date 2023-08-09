@@ -194,7 +194,7 @@ class LongRunningOperationItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LongRunningOperationItemRequestBuilder.LongRunningOperationItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LongRunningOperationItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

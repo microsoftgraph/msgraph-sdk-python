@@ -143,7 +143,7 @@ class GraphGroupRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GraphGroupRequestBuilder.GraphGroupRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GraphGroupRequestBuilderGetQueryParameters] = None
 
     
 

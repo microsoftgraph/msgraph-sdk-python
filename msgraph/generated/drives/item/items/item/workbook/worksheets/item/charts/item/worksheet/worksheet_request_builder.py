@@ -103,7 +103,7 @@ class WorksheetRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WorksheetRequestBuilder.WorksheetRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WorksheetRequestBuilderGetQueryParameters] = None
 
     
 

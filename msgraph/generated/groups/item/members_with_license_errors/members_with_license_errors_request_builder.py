@@ -38,7 +38,7 @@ class MembersWithLicenseErrorsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the membersWithLicenseErrors property of the microsoft.graph.group entity.
         Args:
-            directory_object_id: Unique identifier of the item
+            directory_object_id: The unique identifier of directoryObject
         Returns: DirectoryObjectItemRequestBuilder
         """
         if not directory_object_id:
@@ -219,7 +219,7 @@ class MembersWithLicenseErrorsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MembersWithLicenseErrorsRequestBuilder.MembersWithLicenseErrorsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MembersWithLicenseErrorsRequestBuilderGetQueryParameters] = None
 
     
 

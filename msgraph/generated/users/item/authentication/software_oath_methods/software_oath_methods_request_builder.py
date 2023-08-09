@@ -32,7 +32,7 @@ class SoftwareOathMethodsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the softwareOathMethods property of the microsoft.graph.authentication entity.
         Args:
-            software_oath_authentication_method_id: Unique identifier of the item
+            software_oath_authentication_method_id: The unique identifier of softwareOathAuthenticationMethod
         Returns: SoftwareOathAuthenticationMethodItemRequestBuilder
         """
         if not software_oath_authentication_method_id:
@@ -159,7 +159,7 @@ class SoftwareOathMethodsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SoftwareOathMethodsRequestBuilder.SoftwareOathMethodsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SoftwareOathMethodsRequestBuilderGetQueryParameters] = None
 
     
 

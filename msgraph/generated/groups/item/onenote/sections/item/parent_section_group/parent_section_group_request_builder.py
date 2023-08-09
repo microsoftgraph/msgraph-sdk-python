@@ -103,7 +103,7 @@ class ParentSectionGroupRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ParentSectionGroupRequestBuilder.ParentSectionGroupRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ParentSectionGroupRequestBuilderGetQueryParameters] = None
 
     
 

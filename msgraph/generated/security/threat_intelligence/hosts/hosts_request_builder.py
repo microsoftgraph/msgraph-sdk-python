@@ -33,7 +33,7 @@ class HostsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the hosts property of the microsoft.graph.security.threatIntelligence entity.
         Args:
-            host_id: Unique identifier of the item
+            host_id: The unique identifier of host
         Returns: HostItemRequestBuilder
         """
         if not host_id:
@@ -206,7 +206,7 @@ class HostsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HostsRequestBuilder.HostsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HostsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

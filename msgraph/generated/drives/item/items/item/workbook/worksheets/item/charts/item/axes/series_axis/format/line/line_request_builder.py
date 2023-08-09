@@ -204,7 +204,7 @@ class LineRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LineRequestBuilder.LineRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LineRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

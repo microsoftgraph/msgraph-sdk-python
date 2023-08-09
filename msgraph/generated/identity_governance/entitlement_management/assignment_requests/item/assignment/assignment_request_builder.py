@@ -103,7 +103,7 @@ class AssignmentRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AssignmentRequestBuilder.AssignmentRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AssignmentRequestBuilderGetQueryParameters] = None
 
     
 

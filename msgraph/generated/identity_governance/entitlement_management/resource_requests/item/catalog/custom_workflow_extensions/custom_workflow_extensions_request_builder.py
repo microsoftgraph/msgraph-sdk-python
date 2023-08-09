@@ -33,7 +33,7 @@ class CustomWorkflowExtensionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the customWorkflowExtensions property of the microsoft.graph.accessPackageCatalog entity.
         Args:
-            custom_callout_extension_id: Unique identifier of the item
+            custom_callout_extension_id: The unique identifier of customCalloutExtension
         Returns: CustomCalloutExtensionItemRequestBuilder
         """
         if not custom_callout_extension_id:
@@ -206,7 +206,7 @@ class CustomWorkflowExtensionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CustomWorkflowExtensionsRequestBuilder.CustomWorkflowExtensionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CustomWorkflowExtensionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

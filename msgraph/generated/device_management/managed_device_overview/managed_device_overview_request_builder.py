@@ -103,7 +103,7 @@ class ManagedDeviceOverviewRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ManagedDeviceOverviewRequestBuilder.ManagedDeviceOverviewRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ManagedDeviceOverviewRequestBuilderGetQueryParameters] = None
 
     
 

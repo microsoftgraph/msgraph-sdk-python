@@ -133,7 +133,7 @@ class WorkflowVersionVersionNumberItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WorkflowVersionVersionNumberItemRequestBuilder.WorkflowVersionVersionNumberItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WorkflowVersionVersionNumberItemRequestBuilderGetQueryParameters] = None
 
     
 

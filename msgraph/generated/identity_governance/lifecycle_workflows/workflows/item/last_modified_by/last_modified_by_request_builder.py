@@ -113,7 +113,7 @@ class LastModifiedByRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LastModifiedByRequestBuilder.LastModifiedByRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LastModifiedByRequestBuilderGetQueryParameters] = None
 
     
 

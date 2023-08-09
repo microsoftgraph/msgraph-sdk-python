@@ -103,7 +103,7 @@ class LastEstimateStatisticsOperationRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LastEstimateStatisticsOperationRequestBuilder.LastEstimateStatisticsOperationRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LastEstimateStatisticsOperationRequestBuilderGetQueryParameters] = None
 
     
 

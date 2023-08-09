@@ -32,7 +32,7 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the agreementAcceptances property of the microsoft.graph.user entity.
         Args:
-            agreement_acceptance_id: Unique identifier of the item
+            agreement_acceptance_id: The unique identifier of agreementAcceptance
         Returns: AgreementAcceptanceItemRequestBuilder
         """
         if not agreement_acceptance_id:
@@ -159,7 +159,7 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AgreementAcceptancesRequestBuilder.AgreementAcceptancesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AgreementAcceptancesRequestBuilderGetQueryParameters] = None
 
     
 

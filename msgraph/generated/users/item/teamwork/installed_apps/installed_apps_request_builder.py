@@ -33,7 +33,7 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the installedApps property of the microsoft.graph.userTeamwork entity.
         Args:
-            user_scope_teams_app_installation_id: Unique identifier of the item
+            user_scope_teams_app_installation_id: The unique identifier of userScopeTeamsAppInstallation
         Returns: UserScopeTeamsAppInstallationItemRequestBuilder
         """
         if not user_scope_teams_app_installation_id:
@@ -206,7 +206,7 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[InstalledAppsRequestBuilder.InstalledAppsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[InstalledAppsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

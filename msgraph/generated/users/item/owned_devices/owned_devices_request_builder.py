@@ -35,7 +35,7 @@ class OwnedDevicesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the ownedDevices property of the microsoft.graph.user entity.
         Args:
-            directory_object_id: Unique identifier of the item
+            directory_object_id: The unique identifier of directoryObject
         Returns: DirectoryObjectItemRequestBuilder
         """
         if not directory_object_id:
@@ -189,7 +189,7 @@ class OwnedDevicesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OwnedDevicesRequestBuilder.OwnedDevicesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OwnedDevicesRequestBuilderGetQueryParameters] = None
 
     
 

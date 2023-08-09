@@ -204,7 +204,7 @@ class AppConsentRequestItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AppConsentRequestItemRequestBuilder.AppConsentRequestItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AppConsentRequestItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

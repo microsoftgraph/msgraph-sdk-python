@@ -103,7 +103,7 @@ class EnvironmentRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[EnvironmentRequestBuilder.EnvironmentRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[EnvironmentRequestBuilderGetQueryParameters] = None
 
     
 

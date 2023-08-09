@@ -33,7 +33,7 @@ class PartnersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the partners property of the microsoft.graph.crossTenantAccessPolicy entity.
         Args:
-            cross_tenant_access_policy_configuration_partner_tenant_id: Unique identifier of the item
+            cross_tenant_access_policy_configuration_partner_tenant_id: The unique identifier of crossTenantAccessPolicyConfigurationPartner
         Returns: CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder
         """
         if not cross_tenant_access_policy_configuration_partner_tenant_id:
@@ -206,7 +206,7 @@ class PartnersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PartnersRequestBuilder.PartnersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PartnersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

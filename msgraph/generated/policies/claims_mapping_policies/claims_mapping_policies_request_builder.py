@@ -33,7 +33,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the claimsMappingPolicies property of the microsoft.graph.policyRoot entity.
         Args:
-            claims_mapping_policy_id: Unique identifier of the item
+            claims_mapping_policy_id: The unique identifier of claimsMappingPolicy
         Returns: ClaimsMappingPolicyItemRequestBuilder
         """
         if not claims_mapping_policy_id:
@@ -206,7 +206,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ClaimsMappingPoliciesRequestBuilder.ClaimsMappingPoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ClaimsMappingPoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

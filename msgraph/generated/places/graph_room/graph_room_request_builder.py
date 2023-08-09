@@ -143,7 +143,7 @@ class GraphRoomRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GraphRoomRequestBuilder.GraphRoomRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GraphRoomRequestBuilderGetQueryParameters] = None
 
     
 

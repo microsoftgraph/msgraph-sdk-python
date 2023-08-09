@@ -37,7 +37,7 @@ class PermissionGrantsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the permissionGrants property of the microsoft.graph.group entity.
         Args:
-            resource_specific_permission_grant_id: Unique identifier of the item
+            resource_specific_permission_grant_id: The unique identifier of resourceSpecificPermissionGrant
         Returns: ResourceSpecificPermissionGrantItemRequestBuilder
         """
         if not resource_specific_permission_grant_id:
@@ -246,7 +246,7 @@ class PermissionGrantsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PermissionGrantsRequestBuilder.PermissionGrantsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PermissionGrantsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

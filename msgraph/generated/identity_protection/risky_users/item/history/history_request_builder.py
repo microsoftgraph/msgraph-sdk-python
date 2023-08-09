@@ -33,7 +33,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the history property of the microsoft.graph.riskyUser entity.
         Args:
-            risky_user_history_item_id: Unique identifier of the item
+            risky_user_history_item_id: The unique identifier of riskyUserHistoryItem
         Returns: RiskyUserHistoryItemItemRequestBuilder
         """
         if not risky_user_history_item_id:
@@ -46,7 +46,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> Optional[RiskyUserHistoryItemCollectionResponse]:
         """
-        Read the properties and relationships of a riskyUserHistoryItem object.
+        Get the riskyUserHistoryItems from the history navigation property.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RiskyUserHistoryItemCollectionResponse]
@@ -93,7 +93,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a riskyUserHistoryItem object.
+        Get the riskyUserHistoryItems from the history navigation property.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -142,7 +142,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HistoryRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a riskyUserHistoryItem object.
+        Get the riskyUserHistoryItems from the history navigation property.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -206,7 +206,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HistoryRequestBuilder.HistoryRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HistoryRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

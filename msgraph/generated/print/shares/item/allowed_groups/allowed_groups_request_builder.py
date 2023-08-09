@@ -169,7 +169,7 @@ class AllowedGroupsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AllowedGroupsRequestBuilder.AllowedGroupsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AllowedGroupsRequestBuilderGetQueryParameters] = None
 
     
 

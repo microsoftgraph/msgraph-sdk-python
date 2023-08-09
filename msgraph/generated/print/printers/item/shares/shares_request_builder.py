@@ -32,7 +32,7 @@ class SharesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the shares property of the microsoft.graph.printer entity.
         Args:
-            printer_share_id: Unique identifier of the item
+            printer_share_id: The unique identifier of printerShare
         Returns: PrinterShareItemRequestBuilder
         """
         if not printer_share_id:
@@ -159,7 +159,7 @@ class SharesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SharesRequestBuilder.SharesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SharesRequestBuilderGetQueryParameters] = None
 
     
 

@@ -4,7 +4,6 @@ from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.serialization import ParseNodeFactoryRegistry, SerializationWriterFactoryRegistry
-from kiota_abstractions.store import BackingStoreFactory, BackingStoreFactorySingleton
 from kiota_serialization_json.json_parse_node_factory import JsonParseNodeFactory
 from kiota_serialization_json.json_serialization_writer_factory import JsonSerializationWriterFactory
 from kiota_serialization_text.text_parse_node_factory import TextParseNodeFactory
@@ -88,11 +87,10 @@ class BaseGraphServiceClient(BaseRequestBuilder):
     """
     The main entry point of the SDK, exposes the configuration and the fluent API.
     """
-    def __init__(self,request_adapter: RequestAdapter, backing_store: Optional[BackingStoreFactory] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter) -> None:
         """
         Instantiates a new BaseGraphServiceClient and sets the default values.
         Args:
-            backing_store: The backing store to use for the models.
             request_adapter: The request adapter to use to execute the requests.
         """
         if not request_adapter:
@@ -105,7 +103,6 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         if not self.request_adapter.base_url:
             self.request_adapter.base_url = "https://graph.microsoft.com/v1.0"
         self.path_parameters["base_url"] = self.request_adapter.base_url
-        self.request_adapter.enable_backing_store(backing_store)
     
     def applications_with_app_id(self,app_id: Optional[str] = None) -> ApplicationsWithAppIdRequestBuilder:
         """

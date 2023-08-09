@@ -33,7 +33,7 @@ class ExportJobsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the exportJobs property of the microsoft.graph.deviceManagementReports entity.
         Args:
-            device_management_export_job_id: Unique identifier of the item
+            device_management_export_job_id: The unique identifier of deviceManagementExportJob
         Returns: DeviceManagementExportJobItemRequestBuilder
         """
         if not device_management_export_job_id:
@@ -206,7 +206,7 @@ class ExportJobsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ExportJobsRequestBuilder.ExportJobsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ExportJobsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class DirectoryAuditsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the directoryAudits property of the microsoft.graph.auditLogRoot entity.
         Args:
-            directory_audit_id: Unique identifier of the item
+            directory_audit_id: The unique identifier of directoryAudit
         Returns: DirectoryAuditItemRequestBuilder
         """
         if not directory_audit_id:
@@ -206,7 +206,7 @@ class DirectoryAuditsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DirectoryAuditsRequestBuilder.DirectoryAuditsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DirectoryAuditsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -103,7 +103,7 @@ class ToTermRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ToTermRequestBuilder.ToTermRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ToTermRequestBuilderGetQueryParameters] = None
 
     
 

@@ -103,7 +103,7 @@ class BatteryHealthMetricsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[BatteryHealthMetricsRequestBuilder.BatteryHealthMetricsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[BatteryHealthMetricsRequestBuilderGetQueryParameters] = None
 
     
 

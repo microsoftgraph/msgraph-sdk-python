@@ -33,7 +33,7 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the featureRolloutPolicies property of the microsoft.graph.policyRoot entity.
         Args:
-            feature_rollout_policy_id: Unique identifier of the item
+            feature_rollout_policy_id: The unique identifier of featureRolloutPolicy
         Returns: FeatureRolloutPolicyItemRequestBuilder
         """
         if not feature_rollout_policy_id:
@@ -206,7 +206,7 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[FeatureRolloutPoliciesRequestBuilder.FeatureRolloutPoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[FeatureRolloutPoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

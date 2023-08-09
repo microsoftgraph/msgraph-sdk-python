@@ -34,7 +34,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the users property of the microsoft.graph.educationRoot entity.
         Args:
-            education_user_id: Unique identifier of the item
+            education_user_id: The unique identifier of educationUser
         Returns: EducationUserItemRequestBuilder
         """
         if not education_user_id:
@@ -216,7 +216,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UsersRequestBuilder.UsersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UsersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -118,7 +118,7 @@ class SupportedTimeZonesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SupportedTimeZonesRequestBuilder.SupportedTimeZonesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SupportedTimeZonesRequestBuilderGetQueryParameters] = None
 
     
 

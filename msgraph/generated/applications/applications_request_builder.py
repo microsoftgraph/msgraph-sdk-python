@@ -37,7 +37,7 @@ class ApplicationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of application entities.
         Args:
-            application_id: Unique identifier of the item
+            application_id: The unique identifier of application
         Returns: ApplicationItemRequestBuilder
         """
         if not application_id:
@@ -246,7 +246,7 @@ class ApplicationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ApplicationsRequestBuilder.ApplicationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ApplicationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

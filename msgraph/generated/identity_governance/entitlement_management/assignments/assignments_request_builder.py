@@ -52,7 +52,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
         Args:
-            access_package_assignment_id: Unique identifier of the item
+            access_package_assignment_id: The unique identifier of accessPackageAssignment
         Returns: AccessPackageAssignmentItemRequestBuilder
         """
         if not access_package_assignment_id:
@@ -247,7 +247,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AssignmentsRequestBuilder.AssignmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AssignmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

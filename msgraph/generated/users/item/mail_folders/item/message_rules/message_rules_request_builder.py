@@ -33,7 +33,7 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the messageRules property of the microsoft.graph.mailFolder entity.
         Args:
-            message_rule_id: Unique identifier of the item
+            message_rule_id: The unique identifier of messageRule
         Returns: MessageRuleItemRequestBuilder
         """
         if not message_rule_id:
@@ -196,7 +196,7 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MessageRulesRequestBuilder.MessageRulesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MessageRulesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

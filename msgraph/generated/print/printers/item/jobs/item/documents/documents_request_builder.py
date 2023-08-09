@@ -33,7 +33,7 @@ class DocumentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the documents property of the microsoft.graph.printJob entity.
         Args:
-            print_document_id: Unique identifier of the item
+            print_document_id: The unique identifier of printDocument
         Returns: PrintDocumentItemRequestBuilder
         """
         if not print_document_id:
@@ -206,7 +206,7 @@ class DocumentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DocumentsRequestBuilder.DocumentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DocumentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

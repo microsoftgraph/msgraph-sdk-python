@@ -33,7 +33,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the attendanceReports property of the microsoft.graph.onlineMeeting entity.
         Args:
-            meeting_attendance_report_id: Unique identifier of the item
+            meeting_attendance_report_id: The unique identifier of meetingAttendanceReport
         Returns: MeetingAttendanceReportItemRequestBuilder
         """
         if not meeting_attendance_report_id:
@@ -206,7 +206,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AttendanceReportsRequestBuilder.AttendanceReportsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AttendanceReportsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -32,7 +32,7 @@ class AccessPackagesIncompatibleWithRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the accessPackagesIncompatibleWith property of the microsoft.graph.accessPackage entity.
         Args:
-            access_package_id1: Unique identifier of the item
+            access_package_id1: The unique identifier of accessPackage
         Returns: AccessPackageItemRequestBuilder
         """
         if not access_package_id1:
@@ -159,7 +159,7 @@ class AccessPackagesIncompatibleWithRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AccessPackagesIncompatibleWithRequestBuilder.AccessPackagesIncompatibleWithRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AccessPackagesIncompatibleWithRequestBuilderGetQueryParameters] = None
 
     
 

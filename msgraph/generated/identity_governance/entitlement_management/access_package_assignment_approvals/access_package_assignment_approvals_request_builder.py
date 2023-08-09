@@ -34,7 +34,7 @@ class AccessPackageAssignmentApprovalsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the accessPackageAssignmentApprovals property of the microsoft.graph.entitlementManagement entity.
         Args:
-            approval_id: Unique identifier of the item
+            approval_id: The unique identifier of approval
         Returns: ApprovalItemRequestBuilder
         """
         if not approval_id:
@@ -220,7 +220,7 @@ class AccessPackageAssignmentApprovalsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AccessPackageAssignmentApprovalsRequestBuilder.AccessPackageAssignmentApprovalsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AccessPackageAssignmentApprovalsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

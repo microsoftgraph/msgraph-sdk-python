@@ -33,7 +33,7 @@ class AppDefinitionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the appDefinitions property of the microsoft.graph.teamsApp entity.
         Args:
-            teams_app_definition_id: Unique identifier of the item
+            teams_app_definition_id: The unique identifier of teamsAppDefinition
         Returns: TeamsAppDefinitionItemRequestBuilder
         """
         if not teams_app_definition_id:
@@ -206,7 +206,7 @@ class AppDefinitionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AppDefinitionsRequestBuilder.AppDefinitionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AppDefinitionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

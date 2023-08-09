@@ -1,19 +1,16 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_method_feature_configuration import AuthenticationMethodFeatureConfiguration
 
 @dataclass
-class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, BackedModel, Parsable):
-    # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
-
+class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
+
     # Determines whether the user's Authenticator app will show them the client app they are signing into.
     display_app_information_required_state: Optional[AuthenticationMethodFeatureConfiguration] = None
     # Determines whether the user's Authenticator app will show them the geographic location of where the authentication request originated from.

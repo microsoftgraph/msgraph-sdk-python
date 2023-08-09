@@ -33,7 +33,7 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the scheduledActionConfigurations property of the microsoft.graph.deviceComplianceScheduledActionForRule entity.
         Args:
-            device_compliance_action_item_id: Unique identifier of the item
+            device_compliance_action_item_id: The unique identifier of deviceComplianceActionItem
         Returns: DeviceComplianceActionItemItemRequestBuilder
         """
         if not device_compliance_action_item_id:
@@ -206,7 +206,7 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ScheduledActionConfigurationsRequestBuilder.ScheduledActionConfigurationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ScheduledActionConfigurationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

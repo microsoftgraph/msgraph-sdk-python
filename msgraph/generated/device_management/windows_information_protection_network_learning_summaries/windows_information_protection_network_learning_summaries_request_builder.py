@@ -33,7 +33,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
         """
         Provides operations to manage the windowsInformationProtectionNetworkLearningSummaries property of the microsoft.graph.deviceManagement entity.
         Args:
-            windows_information_protection_network_learning_summary_id: Unique identifier of the item
+            windows_information_protection_network_learning_summary_id: The unique identifier of windowsInformationProtectionNetworkLearningSummary
         Returns: WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder
         """
         if not windows_information_protection_network_learning_summary_id:
@@ -206,7 +206,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilder.WindowsInformationProtectionNetworkLearningSummariesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

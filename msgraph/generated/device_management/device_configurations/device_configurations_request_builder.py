@@ -33,7 +33,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the deviceConfigurations property of the microsoft.graph.deviceManagement entity.
         Args:
-            device_configuration_id: Unique identifier of the item
+            device_configuration_id: The unique identifier of deviceConfiguration
         Returns: DeviceConfigurationItemRequestBuilder
         """
         if not device_configuration_id:
@@ -68,7 +68,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Create a new iosCustomConfiguration object.
+        Create a new androidGeneralDeviceConfiguration object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +111,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new iosCustomConfiguration object.
+        Create a new androidGeneralDeviceConfiguration object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -206,7 +206,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceConfigurationsRequestBuilder.DeviceConfigurationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceConfigurationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

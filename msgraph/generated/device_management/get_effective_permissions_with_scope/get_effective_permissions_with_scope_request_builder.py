@@ -119,7 +119,7 @@ class GetEffectivePermissionsWithScopeRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GetEffectivePermissionsWithScopeRequestBuilder.GetEffectivePermissionsWithScopeRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GetEffectivePermissionsWithScopeRequestBuilderGetQueryParameters] = None
 
     
 

@@ -34,7 +34,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the stages property of the microsoft.graph.accessReviewInstance entity.
         Args:
-            access_review_stage_id: Unique identifier of the item
+            access_review_stage_id: The unique identifier of accessReviewStage
         Returns: AccessReviewStageItemRequestBuilder
         """
         if not access_review_stage_id:
@@ -220,7 +220,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[StagesRequestBuilder.StagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[StagesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

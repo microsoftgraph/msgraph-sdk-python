@@ -34,7 +34,7 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the attachments property of the microsoft.graph.todoTask entity.
         Args:
-            attachment_base_id: Unique identifier of the item
+            attachment_base_id: The unique identifier of attachmentBase
         Returns: AttachmentBaseItemRequestBuilder
         """
         if not attachment_base_id:
@@ -206,7 +206,7 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AttachmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

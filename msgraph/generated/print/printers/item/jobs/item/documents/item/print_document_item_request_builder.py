@@ -214,7 +214,7 @@ class PrintDocumentItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PrintDocumentItemRequestBuilder.PrintDocumentItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PrintDocumentItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

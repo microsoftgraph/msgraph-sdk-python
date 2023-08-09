@@ -33,7 +33,7 @@ class GroupLifecyclePoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the groupLifecyclePolicies property of the microsoft.graph.group entity.
         Args:
-            group_lifecycle_policy_id: Unique identifier of the item
+            group_lifecycle_policy_id: The unique identifier of groupLifecyclePolicy
         Returns: GroupLifecyclePolicyItemRequestBuilder
         """
         if not group_lifecycle_policy_id:
@@ -206,7 +206,7 @@ class GroupLifecyclePoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GroupLifecyclePoliciesRequestBuilder.GroupLifecyclePoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GroupLifecyclePoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

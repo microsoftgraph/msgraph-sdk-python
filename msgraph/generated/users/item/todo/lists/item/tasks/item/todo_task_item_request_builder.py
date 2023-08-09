@@ -244,7 +244,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TodoTaskItemRequestBuilder.TodoTaskItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TodoTaskItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

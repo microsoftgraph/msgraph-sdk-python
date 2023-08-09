@@ -33,7 +33,7 @@ class IssuesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the issues property of the microsoft.graph.serviceAnnouncement entity.
         Args:
-            service_health_issue_id: Unique identifier of the item
+            service_health_issue_id: The unique identifier of serviceHealthIssue
         Returns: ServiceHealthIssueItemRequestBuilder
         """
         if not service_health_issue_id:
@@ -206,7 +206,7 @@ class IssuesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IssuesRequestBuilder.IssuesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IssuesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class ResourceActionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the resourceActions property of the microsoft.graph.unifiedRbacResourceNamespace entity.
         Args:
-            unified_rbac_resource_action_id: Unique identifier of the item
+            unified_rbac_resource_action_id: The unique identifier of unifiedRbacResourceAction
         Returns: UnifiedRbacResourceActionItemRequestBuilder
         """
         if not unified_rbac_resource_action_id:
@@ -206,7 +206,7 @@ class ResourceActionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ResourceActionsRequestBuilder.ResourceActionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ResourceActionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

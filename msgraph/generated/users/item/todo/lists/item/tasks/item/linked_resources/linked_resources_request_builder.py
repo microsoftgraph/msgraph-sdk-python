@@ -33,7 +33,7 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the linkedResources property of the microsoft.graph.todoTask entity.
         Args:
-            linked_resource_id: Unique identifier of the item
+            linked_resource_id: The unique identifier of linkedResource
         Returns: LinkedResourceItemRequestBuilder
         """
         if not linked_resource_id:
@@ -206,7 +206,7 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LinkedResourcesRequestBuilder.LinkedResourcesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LinkedResourcesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

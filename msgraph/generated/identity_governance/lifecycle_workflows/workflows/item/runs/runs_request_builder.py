@@ -34,7 +34,7 @@ class RunsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the runs property of the microsoft.graph.identityGovernance.workflow entity.
         Args:
-            run_id: Unique identifier of the item
+            run_id: The unique identifier of run
         Returns: RunItemRequestBuilder
         """
         if not run_id:
@@ -177,7 +177,7 @@ class RunsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RunsRequestBuilder.RunsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RunsRequestBuilderGetQueryParameters] = None
 
     
 

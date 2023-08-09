@@ -33,7 +33,7 @@ class AuthenticationMethodConfigurationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
         Args:
-            authentication_method_configuration_id: Unique identifier of the item
+            authentication_method_configuration_id: The unique identifier of authenticationMethodConfiguration
         Returns: AuthenticationMethodConfigurationItemRequestBuilder
         """
         if not authentication_method_configuration_id:
@@ -206,7 +206,7 @@ class AuthenticationMethodConfigurationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AuthenticationMethodConfigurationsRequestBuilder.AuthenticationMethodConfigurationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AuthenticationMethodConfigurationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

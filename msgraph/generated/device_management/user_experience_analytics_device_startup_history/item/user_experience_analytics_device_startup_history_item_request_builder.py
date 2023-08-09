@@ -194,7 +194,7 @@ class UserExperienceAnalyticsDeviceStartupHistoryItemRequestBuilder(BaseRequestB
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsDeviceStartupHistoryItemRequestBuilder.UserExperienceAnalyticsDeviceStartupHistoryItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserExperienceAnalyticsDeviceStartupHistoryItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the pages property of the microsoft.graph.onenote entity.
         Args:
-            onenote_page_id: Unique identifier of the item
+            onenote_page_id: The unique identifier of onenotePage
         Returns: OnenotePageItemRequestBuilder
         """
         if not onenote_page_id:
@@ -206,7 +206,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PagesRequestBuilder.PagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PagesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class VulnerabilitiesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the vulnerabilities property of the microsoft.graph.security.threatIntelligence entity.
         Args:
-            vulnerability_id: Unique identifier of the item
+            vulnerability_id: The unique identifier of vulnerability
         Returns: VulnerabilityItemRequestBuilder
         """
         if not vulnerability_id:
@@ -206,7 +206,7 @@ class VulnerabilitiesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[VulnerabilitiesRequestBuilder.VulnerabilitiesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[VulnerabilitiesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

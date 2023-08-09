@@ -33,7 +33,7 @@ class InsightsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the insights property of the microsoft.graph.accessReviewInstanceDecisionItem entity.
         Args:
-            governance_insight_id: Unique identifier of the item
+            governance_insight_id: The unique identifier of governanceInsight
         Returns: GovernanceInsightItemRequestBuilder
         """
         if not governance_insight_id:
@@ -206,7 +206,7 @@ class InsightsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[InsightsRequestBuilder.InsightsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[InsightsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

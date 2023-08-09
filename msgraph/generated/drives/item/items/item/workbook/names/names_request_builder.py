@@ -35,7 +35,7 @@ class NamesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the names property of the microsoft.graph.workbook entity.
         Args:
-            workbook_named_item_id: Unique identifier of the item
+            workbook_named_item_id: The unique identifier of workbookNamedItem
         Returns: WorkbookNamedItemItemRequestBuilder
         """
         if not workbook_named_item_id:
@@ -226,7 +226,7 @@ class NamesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[NamesRequestBuilder.NamesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[NamesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

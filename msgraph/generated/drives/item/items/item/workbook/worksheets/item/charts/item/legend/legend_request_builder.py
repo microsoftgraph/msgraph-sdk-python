@@ -204,7 +204,7 @@ class LegendRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LegendRequestBuilder.LegendRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LegendRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

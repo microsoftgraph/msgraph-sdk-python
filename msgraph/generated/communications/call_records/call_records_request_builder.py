@@ -36,7 +36,7 @@ class CallRecordsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the callRecords property of the microsoft.graph.cloudCommunications entity.
         Args:
-            call_record_id: Unique identifier of the item
+            call_record_id: The unique identifier of callRecord
         Returns: CallRecordItemRequestBuilder
         """
         if not call_record_id:
@@ -241,7 +241,7 @@ class CallRecordsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CallRecordsRequestBuilder.CallRecordsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CallRecordsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

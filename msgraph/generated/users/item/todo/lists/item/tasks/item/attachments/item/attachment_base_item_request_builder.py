@@ -153,7 +153,7 @@ class AttachmentBaseItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AttachmentBaseItemRequestBuilder.AttachmentBaseItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AttachmentBaseItemRequestBuilderGetQueryParameters] = None
 
     
 

@@ -33,7 +33,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the members property of the microsoft.graph.teamworkTag entity.
         Args:
-            teamwork_tag_member_id: Unique identifier of the item
+            teamwork_tag_member_id: The unique identifier of teamworkTagMember
         Returns: TeamworkTagMemberItemRequestBuilder
         """
         if not teamwork_tag_member_id:
@@ -206,7 +206,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MembersRequestBuilder.MembersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MembersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

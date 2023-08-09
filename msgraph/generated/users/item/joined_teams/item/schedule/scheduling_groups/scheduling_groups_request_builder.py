@@ -33,7 +33,7 @@ class SchedulingGroupsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the schedulingGroups property of the microsoft.graph.schedule entity.
         Args:
-            scheduling_group_id: Unique identifier of the item
+            scheduling_group_id: The unique identifier of schedulingGroup
         Returns: SchedulingGroupItemRequestBuilder
         """
         if not scheduling_group_id:
@@ -201,7 +201,7 @@ class SchedulingGroupsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SchedulingGroupsRequestBuilder.SchedulingGroupsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SchedulingGroupsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

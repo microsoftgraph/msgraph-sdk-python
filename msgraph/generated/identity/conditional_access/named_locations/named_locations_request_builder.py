@@ -33,7 +33,7 @@ class NamedLocationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the namedLocations property of the microsoft.graph.conditionalAccessRoot entity.
         Args:
-            named_location_id: Unique identifier of the item
+            named_location_id: The unique identifier of namedLocation
         Returns: NamedLocationItemRequestBuilder
         """
         if not named_location_id:
@@ -206,7 +206,7 @@ class NamedLocationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[NamedLocationsRequestBuilder.NamedLocationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[NamedLocationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

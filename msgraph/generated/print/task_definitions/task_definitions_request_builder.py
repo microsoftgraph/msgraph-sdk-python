@@ -33,7 +33,7 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the taskDefinitions property of the microsoft.graph.print entity.
         Args:
-            print_task_definition_id: Unique identifier of the item
+            print_task_definition_id: The unique identifier of printTaskDefinition
         Returns: PrintTaskDefinitionItemRequestBuilder
         """
         if not print_task_definition_id:
@@ -206,7 +206,7 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TaskDefinitionsRequestBuilder.TaskDefinitionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TaskDefinitionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

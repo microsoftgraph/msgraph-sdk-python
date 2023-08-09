@@ -33,7 +33,7 @@ class UsedRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the used property of the microsoft.graph.officeGraphInsights entity.
         Args:
-            used_insight_id: Unique identifier of the item
+            used_insight_id: The unique identifier of usedInsight
         Returns: UsedInsightItemRequestBuilder
         """
         if not used_insight_id:
@@ -206,7 +206,7 @@ class UsedRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UsedRequestBuilder.UsedRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UsedRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -32,7 +32,7 @@ class ManagedDevicesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the managedDevices property of the microsoft.graph.detectedApp entity.
         Args:
-            managed_device_id: Unique identifier of the item
+            managed_device_id: The unique identifier of managedDevice
         Returns: ManagedDeviceItemRequestBuilder
         """
         if not managed_device_id:
@@ -159,7 +159,7 @@ class ManagedDevicesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ManagedDevicesRequestBuilder.ManagedDevicesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ManagedDevicesRequestBuilderGetQueryParameters] = None
 
     
 

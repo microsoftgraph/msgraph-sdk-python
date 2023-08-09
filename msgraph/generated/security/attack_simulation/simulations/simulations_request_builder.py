@@ -33,7 +33,7 @@ class SimulationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the simulations property of the microsoft.graph.attackSimulationRoot entity.
         Args:
-            simulation_id: Unique identifier of the item
+            simulation_id: The unique identifier of simulation
         Returns: SimulationItemRequestBuilder
         """
         if not simulation_id:
@@ -206,7 +206,7 @@ class SimulationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SimulationsRequestBuilder.SimulationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SimulationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

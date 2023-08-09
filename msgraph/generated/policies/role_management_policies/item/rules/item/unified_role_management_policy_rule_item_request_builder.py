@@ -194,7 +194,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilder.UnifiedRoleManagementPolicyRuleItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -118,7 +118,7 @@ class GetManagedDevicesWithAppFailuresRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GetManagedDevicesWithAppFailuresRequestBuilder.GetManagedDevicesWithAppFailuresRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GetManagedDevicesWithAppFailuresRequestBuilderGetQueryParameters] = None
 
     
 

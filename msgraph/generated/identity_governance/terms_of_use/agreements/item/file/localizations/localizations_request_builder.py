@@ -33,7 +33,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the localizations property of the microsoft.graph.agreementFile entity.
         Args:
-            agreement_file_localization_id: Unique identifier of the item
+            agreement_file_localization_id: The unique identifier of agreementFileLocalization
         Returns: AgreementFileLocalizationItemRequestBuilder
         """
         if not agreement_file_localization_id:
@@ -206,7 +206,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LocalizationsRequestBuilder.LocalizationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LocalizationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

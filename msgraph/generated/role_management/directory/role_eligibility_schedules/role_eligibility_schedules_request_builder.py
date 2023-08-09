@@ -34,7 +34,7 @@ class RoleEligibilitySchedulesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the roleEligibilitySchedules property of the microsoft.graph.rbacApplication entity.
         Args:
-            unified_role_eligibility_schedule_id: Unique identifier of the item
+            unified_role_eligibility_schedule_id: The unique identifier of unifiedRoleEligibilitySchedule
         Returns: UnifiedRoleEligibilityScheduleItemRequestBuilder
         """
         if not unified_role_eligibility_schedule_id:
@@ -220,7 +220,7 @@ class RoleEligibilitySchedulesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RoleEligibilitySchedulesRequestBuilder.RoleEligibilitySchedulesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RoleEligibilitySchedulesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class ApiConnectorsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the apiConnectors property of the microsoft.graph.identityContainer entity.
         Args:
-            identity_api_connector_id: Unique identifier of the item
+            identity_api_connector_id: The unique identifier of identityApiConnector
         Returns: IdentityApiConnectorItemRequestBuilder
         """
         if not identity_api_connector_id:
@@ -206,7 +206,7 @@ class ApiConnectorsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ApiConnectorsRequestBuilder.ApiConnectorsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ApiConnectorsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

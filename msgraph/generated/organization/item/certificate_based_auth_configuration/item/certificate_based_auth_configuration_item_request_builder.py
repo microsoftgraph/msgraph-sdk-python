@@ -148,7 +148,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CertificateBasedAuthConfigurationItemRequestBuilder.CertificateBasedAuthConfigurationItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CertificateBasedAuthConfigurationItemRequestBuilderGetQueryParameters] = None
 
     
 

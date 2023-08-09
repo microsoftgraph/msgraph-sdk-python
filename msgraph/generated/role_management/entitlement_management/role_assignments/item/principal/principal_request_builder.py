@@ -103,7 +103,7 @@ class PrincipalRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PrincipalRequestBuilder.PrincipalRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PrincipalRequestBuilderGetQueryParameters] = None
 
     
 

@@ -35,7 +35,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the mobileApps property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            mobile_app_id: Unique identifier of the item
+            mobile_app_id: The unique identifier of mobileApp
         Returns: MobileAppItemRequestBuilder
         """
         if not mobile_app_id:
@@ -48,7 +48,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MobileAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileAppCollectionResponse]:
         """
-        List properties and relationships of the macOSLobApp objects.
+        List properties and relationships of the managedIOSStoreApp objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppCollectionResponse]
@@ -70,7 +70,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MobileApp] = None, request_configuration: Optional[MobileAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[MobileApp]:
         """
-        Create a new androidStoreApp object.
+        Create a new win32LobApp object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -95,7 +95,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the macOSLobApp objects.
+        List properties and relationships of the managedIOSStoreApp objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -113,7 +113,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MobileApp] = None, request_configuration: Optional[MobileAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new androidStoreApp object.
+        Create a new win32LobApp object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -162,7 +162,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the macOSLobApp objects.
+        List properties and relationships of the managedIOSStoreApp objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -226,7 +226,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MobileAppsRequestBuilder.MobileAppsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MobileAppsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -194,7 +194,7 @@ class TelecomExpenseManagementPartnerItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TelecomExpenseManagementPartnerItemRequestBuilder.TelecomExpenseManagementPartnerItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TelecomExpenseManagementPartnerItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

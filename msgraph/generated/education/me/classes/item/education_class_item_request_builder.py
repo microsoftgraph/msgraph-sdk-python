@@ -103,7 +103,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[EducationClassItemRequestBuilder.EducationClassItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[EducationClassItemRequestBuilderGetQueryParameters] = None
 
     
 

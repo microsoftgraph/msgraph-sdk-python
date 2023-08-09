@@ -128,7 +128,7 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GetActivitiesByIntervalRequestBuilder.GetActivitiesByIntervalRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GetActivitiesByIntervalRequestBuilderGetQueryParameters] = None
 
     
 

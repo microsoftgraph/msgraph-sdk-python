@@ -204,7 +204,7 @@ class InvitationItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[InvitationItemRequestBuilder.InvitationItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[InvitationItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

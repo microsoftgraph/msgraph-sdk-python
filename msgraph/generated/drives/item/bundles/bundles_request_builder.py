@@ -33,7 +33,7 @@ class BundlesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the bundles property of the microsoft.graph.drive entity.
         Args:
-            drive_item_id: Unique identifier of the item
+            drive_item_id: The unique identifier of driveItem
         Returns: DriveItemItemRequestBuilder
         """
         if not drive_item_id:
@@ -206,7 +206,7 @@ class BundlesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[BundlesRequestBuilder.BundlesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[BundlesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

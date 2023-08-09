@@ -100,7 +100,7 @@ class CountRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CountRequestBuilder.CountRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CountRequestBuilderGetQueryParameters] = None
 
     
 

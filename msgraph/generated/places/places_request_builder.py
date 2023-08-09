@@ -27,7 +27,7 @@ class PlacesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of place entities.
         Args:
-            place_id: Unique identifier of the item
+            place_id: The unique identifier of place
         Returns: PlaceItemRequestBuilder
         """
         if not place_id:

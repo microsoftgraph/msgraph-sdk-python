@@ -33,7 +33,7 @@ class UserRegistrationDetailsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the userRegistrationDetails property of the microsoft.graph.authenticationMethodsRoot entity.
         Args:
-            user_registration_details_id: Unique identifier of the item
+            user_registration_details_id: The unique identifier of userRegistrationDetails
         Returns: UserRegistrationDetailsItemRequestBuilder
         """
         if not user_registration_details_id:
@@ -206,7 +206,7 @@ class UserRegistrationDetailsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserRegistrationDetailsRequestBuilder.UserRegistrationDetailsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserRegistrationDetailsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

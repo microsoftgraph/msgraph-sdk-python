@@ -103,7 +103,7 @@ class PerformedByRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PerformedByRequestBuilder.PerformedByRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PerformedByRequestBuilderGetQueryParameters] = None
 
     
 

@@ -33,7 +33,7 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of filterOperatorSchema entities.
         Args:
-            filter_operator_schema_id: Unique identifier of the item
+            filter_operator_schema_id: The unique identifier of filterOperatorSchema
         Returns: FilterOperatorSchemaItemRequestBuilder
         """
         if not filter_operator_schema_id:
@@ -206,7 +206,7 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[FilterOperatorsRequestBuilder.FilterOperatorsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[FilterOperatorsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the userStateSummary property of the microsoft.graph.managedEBook entity.
         Args:
-            user_install_state_summary_id: Unique identifier of the item
+            user_install_state_summary_id: The unique identifier of userInstallStateSummary
         Returns: UserInstallStateSummaryItemRequestBuilder
         """
         if not user_install_state_summary_id:
@@ -206,7 +206,7 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserStateSummaryRequestBuilder.UserStateSummaryRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserStateSummaryRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

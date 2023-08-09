@@ -194,7 +194,7 @@ class DeviceComplianceDeviceStatusItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceComplianceDeviceStatusItemRequestBuilder.DeviceComplianceDeviceStatusItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceComplianceDeviceStatusItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

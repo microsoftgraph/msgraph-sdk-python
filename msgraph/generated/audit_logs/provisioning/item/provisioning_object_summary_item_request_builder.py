@@ -194,7 +194,7 @@ class ProvisioningObjectSummaryItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ProvisioningObjectSummaryItemRequestBuilder.ProvisioningObjectSummaryItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ProvisioningObjectSummaryItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

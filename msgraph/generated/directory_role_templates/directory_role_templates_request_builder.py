@@ -37,7 +37,7 @@ class DirectoryRoleTemplatesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of directoryRoleTemplate entities.
         Args:
-            directory_role_template_id: Unique identifier of the item
+            directory_role_template_id: The unique identifier of directoryRoleTemplate
         Returns: DirectoryRoleTemplateItemRequestBuilder
         """
         if not directory_role_template_id:
@@ -241,7 +241,7 @@ class DirectoryRoleTemplatesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DirectoryRoleTemplatesRequestBuilder.DirectoryRoleTemplatesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DirectoryRoleTemplatesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -34,7 +34,7 @@ class ContactFoldersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the contactFolders property of the microsoft.graph.user entity.
         Args:
-            contact_folder_id: Unique identifier of the item
+            contact_folder_id: The unique identifier of contactFolder
         Returns: ContactFolderItemRequestBuilder
         """
         if not contact_folder_id:
@@ -211,7 +211,7 @@ class ContactFoldersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ContactFoldersRequestBuilder.ContactFoldersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ContactFoldersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class OfferShiftRequestsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the offerShiftRequests property of the microsoft.graph.schedule entity.
         Args:
-            offer_shift_request_id: Unique identifier of the item
+            offer_shift_request_id: The unique identifier of offerShiftRequest
         Returns: OfferShiftRequestItemRequestBuilder
         """
         if not offer_shift_request_id:
@@ -206,7 +206,7 @@ class OfferShiftRequestsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OfferShiftRequestsRequestBuilder.OfferShiftRequestsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OfferShiftRequestsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

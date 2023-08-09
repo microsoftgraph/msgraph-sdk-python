@@ -103,7 +103,7 @@ class OAuth2PermissionGrantItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OAuth2PermissionGrantItemRequestBuilder.OAuth2PermissionGrantItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OAuth2PermissionGrantItemRequestBuilderGetQueryParameters] = None
 
     
 

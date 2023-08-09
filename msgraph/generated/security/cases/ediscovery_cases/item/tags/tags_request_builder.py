@@ -34,7 +34,7 @@ class TagsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the tags property of the microsoft.graph.security.ediscoveryCase entity.
         Args:
-            ediscovery_review_tag_id: Unique identifier of the item
+            ediscovery_review_tag_id: The unique identifier of ediscoveryReviewTag
         Returns: EdiscoveryReviewTagItemRequestBuilder
         """
         if not ediscovery_review_tag_id:
@@ -216,7 +216,7 @@ class TagsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TagsRequestBuilder.TagsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TagsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

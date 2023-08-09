@@ -33,7 +33,7 @@ class ColumnLinksRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the columnLinks property of the microsoft.graph.contentType entity.
         Args:
-            column_link_id: Unique identifier of the item
+            column_link_id: The unique identifier of columnLink
         Returns: ColumnLinkItemRequestBuilder
         """
         if not column_link_id:
@@ -206,7 +206,7 @@ class ColumnLinksRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ColumnLinksRequestBuilder.ColumnLinksRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ColumnLinksRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

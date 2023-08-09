@@ -32,7 +32,7 @@ class AlertsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the alerts property of the microsoft.graph.security.incident entity.
         Args:
-            alert_id: Unique identifier of the item
+            alert_id: The unique identifier of alert
         Returns: AlertItemRequestBuilder
         """
         if not alert_id:
@@ -159,7 +159,7 @@ class AlertsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AlertsRequestBuilder.AlertsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AlertsRequestBuilderGetQueryParameters] = None
 
     
 

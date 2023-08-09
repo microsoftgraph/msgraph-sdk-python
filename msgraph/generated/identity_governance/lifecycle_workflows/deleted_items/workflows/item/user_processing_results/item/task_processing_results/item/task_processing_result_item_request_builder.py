@@ -133,7 +133,7 @@ class TaskProcessingResultItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TaskProcessingResultItemRequestBuilder.TaskProcessingResultItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TaskProcessingResultItemRequestBuilderGetQueryParameters] = None
 
     
 

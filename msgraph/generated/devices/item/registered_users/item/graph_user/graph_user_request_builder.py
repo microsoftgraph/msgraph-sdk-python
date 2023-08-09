@@ -103,7 +103,7 @@ class GraphUserRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GraphUserRequestBuilder.GraphUserRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GraphUserRequestBuilderGetQueryParameters] = None
 
     
 

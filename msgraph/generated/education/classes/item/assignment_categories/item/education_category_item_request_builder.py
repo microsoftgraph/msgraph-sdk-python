@@ -194,7 +194,7 @@ class EducationCategoryItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[EducationCategoryItemRequestBuilder.EducationCategoryItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[EducationCategoryItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the deviceCategories property of the microsoft.graph.deviceManagement entity.
         Args:
-            device_category_id: Unique identifier of the item
+            device_category_id: The unique identifier of deviceCategory
         Returns: DeviceCategoryItemRequestBuilder
         """
         if not device_category_id:
@@ -206,7 +206,7 @@ class DeviceCategoriesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceCategoriesRequestBuilder.DeviceCategoriesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceCategoriesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

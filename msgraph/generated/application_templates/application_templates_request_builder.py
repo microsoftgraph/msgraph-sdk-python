@@ -32,7 +32,7 @@ class ApplicationTemplatesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of applicationTemplate entities.
         Args:
-            application_template_id: Unique identifier of the item
+            application_template_id: The unique identifier of applicationTemplate
         Returns: ApplicationTemplateItemRequestBuilder
         """
         if not application_template_id:
@@ -159,7 +159,7 @@ class ApplicationTemplatesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ApplicationTemplatesRequestBuilder.ApplicationTemplatesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ApplicationTemplatesRequestBuilderGetQueryParameters] = None
 
     
 

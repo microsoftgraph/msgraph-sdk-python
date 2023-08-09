@@ -244,7 +244,7 @@ class B2xIdentityUserFlowItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[B2xIdentityUserFlowItemRequestBuilder.B2xIdentityUserFlowItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[B2xIdentityUserFlowItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

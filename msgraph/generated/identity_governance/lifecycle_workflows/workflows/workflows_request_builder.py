@@ -33,7 +33,7 @@ class WorkflowsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the workflows property of the microsoft.graph.identityGovernance.lifecycleWorkflowsContainer entity.
         Args:
-            workflow_id: Unique identifier of the item
+            workflow_id: The unique identifier of workflow
         Returns: WorkflowItemRequestBuilder
         """
         if not workflow_id:
@@ -206,7 +206,7 @@ class WorkflowsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WorkflowsRequestBuilder.WorkflowsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WorkflowsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class CustomSecurityAttributeDefinitionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the customSecurityAttributeDefinitions property of the microsoft.graph.directory entity.
         Args:
-            custom_security_attribute_definition_id: Unique identifier of the item
+            custom_security_attribute_definition_id: The unique identifier of customSecurityAttributeDefinition
         Returns: CustomSecurityAttributeDefinitionItemRequestBuilder
         """
         if not custom_security_attribute_definition_id:
@@ -206,7 +206,7 @@ class CustomSecurityAttributeDefinitionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CustomSecurityAttributeDefinitionsRequestBuilder.CustomSecurityAttributeDefinitionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CustomSecurityAttributeDefinitionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class PermissionGrantPoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the permissionGrantPolicies property of the microsoft.graph.policyRoot entity.
         Args:
-            permission_grant_policy_id: Unique identifier of the item
+            permission_grant_policy_id: The unique identifier of permissionGrantPolicy
         Returns: PermissionGrantPolicyItemRequestBuilder
         """
         if not permission_grant_policy_id:
@@ -206,7 +206,7 @@ class PermissionGrantPoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PermissionGrantPoliciesRequestBuilder.PermissionGrantPoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PermissionGrantPoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

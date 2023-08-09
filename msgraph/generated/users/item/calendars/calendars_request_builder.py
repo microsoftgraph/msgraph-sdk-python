@@ -33,7 +33,7 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the calendars property of the microsoft.graph.user entity.
         Args:
-            calendar_id: Unique identifier of the item
+            calendar_id: The unique identifier of calendar
         Returns: CalendarItemRequestBuilder
         """
         if not calendar_id:
@@ -201,7 +201,7 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CalendarsRequestBuilder.CalendarsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CalendarsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

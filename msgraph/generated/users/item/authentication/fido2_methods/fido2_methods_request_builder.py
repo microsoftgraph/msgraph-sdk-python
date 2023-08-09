@@ -32,7 +32,7 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the fido2Methods property of the microsoft.graph.authentication entity.
         Args:
-            fido2_authentication_method_id: Unique identifier of the item
+            fido2_authentication_method_id: The unique identifier of fido2AuthenticationMethod
         Returns: Fido2AuthenticationMethodItemRequestBuilder
         """
         if not fido2_authentication_method_id:
@@ -159,7 +159,7 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[Fido2MethodsRequestBuilder.Fido2MethodsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[Fido2MethodsRequestBuilderGetQueryParameters] = None
 
     
 

@@ -34,7 +34,7 @@ class TeamsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of team entities.
         Args:
-            team_id: Unique identifier of the item
+            team_id: The unique identifier of team
         Returns: TeamItemRequestBuilder
         """
         if not team_id:
@@ -216,7 +216,7 @@ class TeamsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TeamsRequestBuilder.TeamsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TeamsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the items property of the microsoft.graph.externalConnectors.externalConnection entity.
         Args:
-            external_item_id: Unique identifier of the item
+            external_item_id: The unique identifier of externalItem
         Returns: ExternalItemItemRequestBuilder
         """
         if not external_item_id:
@@ -206,7 +206,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ItemsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

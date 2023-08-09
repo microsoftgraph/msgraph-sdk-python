@@ -204,7 +204,7 @@ class ApprovalItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ApprovalItemRequestBuilder.ApprovalItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ApprovalItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

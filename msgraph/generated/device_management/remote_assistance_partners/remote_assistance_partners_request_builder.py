@@ -33,7 +33,7 @@ class RemoteAssistancePartnersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the remoteAssistancePartners property of the microsoft.graph.deviceManagement entity.
         Args:
-            remote_assistance_partner_id: Unique identifier of the item
+            remote_assistance_partner_id: The unique identifier of remoteAssistancePartner
         Returns: RemoteAssistancePartnerItemRequestBuilder
         """
         if not remote_assistance_partner_id:
@@ -206,7 +206,7 @@ class RemoteAssistancePartnersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RemoteAssistancePartnersRequestBuilder.RemoteAssistancePartnersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RemoteAssistancePartnersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

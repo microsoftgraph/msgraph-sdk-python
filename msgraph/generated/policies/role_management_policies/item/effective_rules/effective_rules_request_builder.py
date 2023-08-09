@@ -33,7 +33,7 @@ class EffectiveRulesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the effectiveRules property of the microsoft.graph.unifiedRoleManagementPolicy entity.
         Args:
-            unified_role_management_policy_rule_id: Unique identifier of the item
+            unified_role_management_policy_rule_id: The unique identifier of unifiedRoleManagementPolicyRule
         Returns: UnifiedRoleManagementPolicyRuleItemRequestBuilder
         """
         if not unified_role_management_policy_rule_id:
@@ -206,7 +206,7 @@ class EffectiveRulesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[EffectiveRulesRequestBuilder.EffectiveRulesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[EffectiveRulesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

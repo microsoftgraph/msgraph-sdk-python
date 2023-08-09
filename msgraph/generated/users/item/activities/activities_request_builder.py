@@ -34,7 +34,7 @@ class ActivitiesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the activities property of the microsoft.graph.user entity.
         Args:
-            user_activity_id: Unique identifier of the item
+            user_activity_id: The unique identifier of userActivity
         Returns: UserActivityItemRequestBuilder
         """
         if not user_activity_id:
@@ -216,7 +216,7 @@ class ActivitiesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ActivitiesRequestBuilder.ActivitiesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ActivitiesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

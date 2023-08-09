@@ -34,7 +34,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the assignmentCategories property of the microsoft.graph.educationClass entity.
         Args:
-            education_category_id: Unique identifier of the item
+            education_category_id: The unique identifier of educationCategory
         Returns: EducationCategoryItemRequestBuilder
         """
         if not education_category_id:
@@ -216,7 +216,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AssignmentCategoriesRequestBuilder.AssignmentCategoriesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AssignmentCategoriesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

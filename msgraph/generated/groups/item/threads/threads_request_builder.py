@@ -33,7 +33,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the threads property of the microsoft.graph.group entity.
         Args:
-            conversation_thread_id: Unique identifier of the item
+            conversation_thread_id: The unique identifier of conversationThread
         Returns: ConversationThreadItemRequestBuilder
         """
         if not conversation_thread_id:
@@ -196,7 +196,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ThreadsRequestBuilder.ThreadsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ThreadsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

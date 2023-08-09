@@ -36,7 +36,7 @@ class ContentTypesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the contentTypes property of the microsoft.graph.list entity.
         Args:
-            content_type_id: Unique identifier of the item
+            content_type_id: The unique identifier of contentType
         Returns: ContentTypeItemRequestBuilder
         """
         if not content_type_id:
@@ -236,7 +236,7 @@ class ContentTypesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ContentTypesRequestBuilder.ContentTypesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ContentTypesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

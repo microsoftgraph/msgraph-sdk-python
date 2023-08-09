@@ -34,7 +34,7 @@ class ChatsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of chat entities.
         Args:
-            chat_id: Unique identifier of the item
+            chat_id: The unique identifier of chat
         Returns: ChatItemRequestBuilder
         """
         if not chat_id:
@@ -216,7 +216,7 @@ class ChatsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ChatsRequestBuilder.ChatsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ChatsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

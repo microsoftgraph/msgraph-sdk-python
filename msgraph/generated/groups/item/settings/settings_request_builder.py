@@ -33,7 +33,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the settings property of the microsoft.graph.group entity.
         Args:
-            group_setting_id: Unique identifier of the item
+            group_setting_id: The unique identifier of groupSetting
         Returns: GroupSettingItemRequestBuilder
         """
         if not group_setting_id:
@@ -206,7 +206,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SettingsRequestBuilder.SettingsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SettingsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

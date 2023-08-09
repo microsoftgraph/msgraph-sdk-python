@@ -120,7 +120,7 @@ class ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestBuil
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder.ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters] = None
 
     
 

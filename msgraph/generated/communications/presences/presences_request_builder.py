@@ -33,7 +33,7 @@ class PresencesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the presences property of the microsoft.graph.cloudCommunications entity.
         Args:
-            presence_id: Unique identifier of the item
+            presence_id: The unique identifier of presence
         Returns: PresenceItemRequestBuilder
         """
         if not presence_id:
@@ -206,7 +206,7 @@ class PresencesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PresencesRequestBuilder.PresencesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PresencesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

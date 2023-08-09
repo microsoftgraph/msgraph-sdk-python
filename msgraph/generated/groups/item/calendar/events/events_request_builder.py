@@ -34,7 +34,7 @@ class EventsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the events property of the microsoft.graph.calendar entity.
         Args:
-            event_id: Unique identifier of the item
+            event_id: The unique identifier of event
         Returns: EventItemRequestBuilder
         """
         if not event_id:
@@ -211,7 +211,7 @@ class EventsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[EventsRequestBuilder.EventsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[EventsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

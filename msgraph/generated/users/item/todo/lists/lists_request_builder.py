@@ -34,7 +34,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the lists property of the microsoft.graph.todo entity.
         Args:
-            todo_task_list_id: Unique identifier of the item
+            todo_task_list_id: The unique identifier of todoTaskList
         Returns: TodoTaskListItemRequestBuilder
         """
         if not todo_task_list_id:
@@ -216,7 +216,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ListsRequestBuilder.ListsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ListsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

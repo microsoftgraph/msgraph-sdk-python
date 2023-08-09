@@ -158,7 +158,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder(BaseRequestB
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder.WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetQueryParameters] = None
 
     
 

@@ -103,7 +103,7 @@ class ParentNotebookRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ParentNotebookRequestBuilder.ParentNotebookRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ParentNotebookRequestBuilderGetQueryParameters] = None
 
     
 

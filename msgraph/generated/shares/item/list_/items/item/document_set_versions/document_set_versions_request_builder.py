@@ -33,7 +33,7 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the documentSetVersions property of the microsoft.graph.listItem entity.
         Args:
-            document_set_version_id: Unique identifier of the item
+            document_set_version_id: The unique identifier of documentSetVersion
         Returns: DocumentSetVersionItemRequestBuilder
         """
         if not document_set_version_id:
@@ -206,7 +206,7 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DocumentSetVersionsRequestBuilder.DocumentSetVersionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DocumentSetVersionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

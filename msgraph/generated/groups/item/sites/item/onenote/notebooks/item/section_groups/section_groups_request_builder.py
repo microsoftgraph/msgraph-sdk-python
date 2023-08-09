@@ -33,7 +33,7 @@ class SectionGroupsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the sectionGroups property of the microsoft.graph.notebook entity.
         Args:
-            section_group_id: Unique identifier of the item
+            section_group_id: The unique identifier of sectionGroup
         Returns: SectionGroupItemRequestBuilder
         """
         if not section_group_id:
@@ -206,7 +206,7 @@ class SectionGroupsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SectionGroupsRequestBuilder.SectionGroupsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SectionGroupsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

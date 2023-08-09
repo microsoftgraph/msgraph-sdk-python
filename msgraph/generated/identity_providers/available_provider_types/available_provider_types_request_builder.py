@@ -118,7 +118,7 @@ class AvailableProviderTypesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AvailableProviderTypesRequestBuilder.AvailableProviderTypesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AvailableProviderTypesRequestBuilderGetQueryParameters] = None
 
     
 

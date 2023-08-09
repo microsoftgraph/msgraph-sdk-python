@@ -33,7 +33,7 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the defaultManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            default_managed_app_protection_id: Unique identifier of the item
+            default_managed_app_protection_id: The unique identifier of defaultManagedAppProtection
         Returns: DefaultManagedAppProtectionItemRequestBuilder
         """
         if not default_managed_app_protection_id:
@@ -206,7 +206,7 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DefaultManagedAppProtectionsRequestBuilder.DefaultManagedAppProtectionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DefaultManagedAppProtectionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

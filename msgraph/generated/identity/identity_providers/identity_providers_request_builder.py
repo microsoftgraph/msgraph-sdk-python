@@ -34,7 +34,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the identityProviders property of the microsoft.graph.identityContainer entity.
         Args:
-            identity_provider_base_id: Unique identifier of the item
+            identity_provider_base_id: The unique identifier of identityProviderBase
         Returns: IdentityProviderBaseItemRequestBuilder
         """
         if not identity_provider_base_id:
@@ -216,7 +216,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IdentityProvidersRequestBuilder.IdentityProvidersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IdentityProvidersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

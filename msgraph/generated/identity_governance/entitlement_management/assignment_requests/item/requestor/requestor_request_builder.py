@@ -103,7 +103,7 @@ class RequestorRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RequestorRequestBuilder.RequestorRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RequestorRequestBuilderGetQueryParameters] = None
 
     
 

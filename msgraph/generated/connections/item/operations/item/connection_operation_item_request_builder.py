@@ -194,7 +194,7 @@ class ConnectionOperationItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ConnectionOperationItemRequestBuilder.ConnectionOperationItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ConnectionOperationItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

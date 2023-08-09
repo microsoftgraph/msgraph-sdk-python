@@ -33,7 +33,7 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the customTaskExtensions property of the microsoft.graph.identityGovernance.lifecycleWorkflowsContainer entity.
         Args:
-            custom_task_extension_id: Unique identifier of the item
+            custom_task_extension_id: The unique identifier of customTaskExtension
         Returns: CustomTaskExtensionItemRequestBuilder
         """
         if not custom_task_extension_id:
@@ -206,7 +206,7 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CustomTaskExtensionsRequestBuilder.CustomTaskExtensionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CustomTaskExtensionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

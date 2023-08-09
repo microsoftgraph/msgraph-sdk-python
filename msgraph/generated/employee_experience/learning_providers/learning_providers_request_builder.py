@@ -33,7 +33,7 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the learningProviders property of the microsoft.graph.employeeExperience entity.
         Args:
-            learning_provider_id: Unique identifier of the item
+            learning_provider_id: The unique identifier of learningProvider
         Returns: LearningProviderItemRequestBuilder
         """
         if not learning_provider_id:
@@ -206,7 +206,7 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LearningProvidersRequestBuilder.LearningProvidersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LearningProvidersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

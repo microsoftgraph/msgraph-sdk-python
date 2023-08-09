@@ -33,7 +33,7 @@ class IntelProfilesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the intelProfiles property of the microsoft.graph.security.threatIntelligence entity.
         Args:
-            intelligence_profile_id: Unique identifier of the item
+            intelligence_profile_id: The unique identifier of intelligenceProfile
         Returns: IntelligenceProfileItemRequestBuilder
         """
         if not intelligence_profile_id:
@@ -206,7 +206,7 @@ class IntelProfilesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IntelProfilesRequestBuilder.IntelProfilesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IntelProfilesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

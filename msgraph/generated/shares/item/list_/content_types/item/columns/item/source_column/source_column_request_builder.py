@@ -103,7 +103,7 @@ class SourceColumnRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SourceColumnRequestBuilder.SourceColumnRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SourceColumnRequestBuilderGetQueryParameters] = None
 
     
 

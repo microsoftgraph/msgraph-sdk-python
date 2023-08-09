@@ -33,7 +33,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the operations property of the microsoft.graph.list entity.
         Args:
-            rich_long_running_operation_id: Unique identifier of the item
+            rich_long_running_operation_id: The unique identifier of richLongRunningOperation
         Returns: RichLongRunningOperationItemRequestBuilder
         """
         if not rich_long_running_operation_id:
@@ -206,7 +206,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OperationsRequestBuilder.OperationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OperationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

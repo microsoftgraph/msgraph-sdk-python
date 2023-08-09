@@ -33,7 +33,7 @@ class PhoneMethodsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the phoneMethods property of the microsoft.graph.authentication entity.
         Args:
-            phone_authentication_method_id: Unique identifier of the item
+            phone_authentication_method_id: The unique identifier of phoneAuthenticationMethod
         Returns: PhoneAuthenticationMethodItemRequestBuilder
         """
         if not phone_authentication_method_id:
@@ -206,7 +206,7 @@ class PhoneMethodsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PhoneMethodsRequestBuilder.PhoneMethodsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PhoneMethodsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

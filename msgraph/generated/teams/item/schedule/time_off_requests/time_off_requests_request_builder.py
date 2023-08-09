@@ -33,7 +33,7 @@ class TimeOffRequestsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the timeOffRequests property of the microsoft.graph.schedule entity.
         Args:
-            time_off_request_id: Unique identifier of the item
+            time_off_request_id: The unique identifier of timeOffRequest
         Returns: TimeOffRequestItemRequestBuilder
         """
         if not time_off_request_id:
@@ -201,7 +201,7 @@ class TimeOffRequestsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TimeOffRequestsRequestBuilder.TimeOffRequestsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TimeOffRequestsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class SchemaExtensionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of schemaExtension entities.
         Args:
-            schema_extension_id: Unique identifier of the item
+            schema_extension_id: The unique identifier of schemaExtension
         Returns: SchemaExtensionItemRequestBuilder
         """
         if not schema_extension_id:
@@ -206,7 +206,7 @@ class SchemaExtensionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SchemaExtensionsRequestBuilder.SchemaExtensionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SchemaExtensionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

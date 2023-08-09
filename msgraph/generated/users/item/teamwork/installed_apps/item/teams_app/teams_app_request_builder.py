@@ -103,7 +103,7 @@ class TeamsAppRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TeamsAppRequestBuilder.TeamsAppRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TeamsAppRequestBuilderGetQueryParameters] = None
 
     
 

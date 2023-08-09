@@ -33,7 +33,7 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the complianceManagementPartners property of the microsoft.graph.deviceManagement entity.
         Args:
-            compliance_management_partner_id: Unique identifier of the item
+            compliance_management_partner_id: The unique identifier of complianceManagementPartner
         Returns: ComplianceManagementPartnerItemRequestBuilder
         """
         if not compliance_management_partner_id:
@@ -206,7 +206,7 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ComplianceManagementPartnersRequestBuilder.ComplianceManagementPartnersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ComplianceManagementPartnersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

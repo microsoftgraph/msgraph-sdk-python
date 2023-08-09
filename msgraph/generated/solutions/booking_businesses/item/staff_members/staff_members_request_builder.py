@@ -33,7 +33,7 @@ class StaffMembersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the staffMembers property of the microsoft.graph.bookingBusiness entity.
         Args:
-            booking_staff_member_base_id: Unique identifier of the item
+            booking_staff_member_base_id: The unique identifier of bookingStaffMemberBase
         Returns: BookingStaffMemberBaseItemRequestBuilder
         """
         if not booking_staff_member_base_id:
@@ -206,7 +206,7 @@ class StaffMembersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[StaffMembersRequestBuilder.StaffMembersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[StaffMembersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -32,7 +32,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the appManagementPolicies property of the microsoft.graph.servicePrincipal entity.
         Args:
-            app_management_policy_id: Unique identifier of the item
+            app_management_policy_id: The unique identifier of appManagementPolicy
         Returns: AppManagementPolicyItemRequestBuilder
         """
         if not app_management_policy_id:
@@ -159,7 +159,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AppManagementPoliciesRequestBuilder.AppManagementPoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AppManagementPoliciesRequestBuilderGetQueryParameters] = None
 
     
 

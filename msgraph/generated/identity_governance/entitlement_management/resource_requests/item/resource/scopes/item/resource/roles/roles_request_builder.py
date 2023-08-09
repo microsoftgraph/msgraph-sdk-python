@@ -33,7 +33,7 @@ class RolesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the roles property of the microsoft.graph.accessPackageResource entity.
         Args:
-            access_package_resource_role_id: Unique identifier of the item
+            access_package_resource_role_id: The unique identifier of accessPackageResourceRole
         Returns: AccessPackageResourceRoleItemRequestBuilder
         """
         if not access_package_resource_role_id:
@@ -206,7 +206,7 @@ class RolesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RolesRequestBuilder.RolesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RolesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

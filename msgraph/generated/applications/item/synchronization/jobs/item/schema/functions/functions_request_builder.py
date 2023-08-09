@@ -128,7 +128,7 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[FunctionsRequestBuilder.FunctionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[FunctionsRequestBuilderGetQueryParameters] = None
 
     
 

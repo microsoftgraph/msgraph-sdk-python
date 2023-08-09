@@ -33,7 +33,7 @@ class DelegatedPermissionClassificationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the delegatedPermissionClassifications property of the microsoft.graph.servicePrincipal entity.
         Args:
-            delegated_permission_classification_id: Unique identifier of the item
+            delegated_permission_classification_id: The unique identifier of delegatedPermissionClassification
         Returns: DelegatedPermissionClassificationItemRequestBuilder
         """
         if not delegated_permission_classification_id:
@@ -206,7 +206,7 @@ class DelegatedPermissionClassificationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DelegatedPermissionClassificationsRequestBuilder.DelegatedPermissionClassificationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DelegatedPermissionClassificationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

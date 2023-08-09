@@ -103,7 +103,7 @@ class IntelligenceProfileIndicatorItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IntelligenceProfileIndicatorItemRequestBuilder.IntelligenceProfileIndicatorItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IntelligenceProfileIndicatorItemRequestBuilderGetQueryParameters] = None
 
     
 

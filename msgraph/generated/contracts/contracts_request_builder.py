@@ -37,7 +37,7 @@ class ContractsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of contract entities.
         Args:
-            contract_id: Unique identifier of the item
+            contract_id: The unique identifier of contract
         Returns: ContractItemRequestBuilder
         """
         if not contract_id:
@@ -246,7 +246,7 @@ class ContractsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ContractsRequestBuilder.ContractsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ContractsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

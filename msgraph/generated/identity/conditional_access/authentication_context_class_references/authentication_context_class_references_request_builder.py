@@ -33,7 +33,7 @@ class AuthenticationContextClassReferencesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the authenticationContextClassReferences property of the microsoft.graph.conditionalAccessRoot entity.
         Args:
-            authentication_context_class_reference_id: Unique identifier of the item
+            authentication_context_class_reference_id: The unique identifier of authenticationContextClassReference
         Returns: AuthenticationContextClassReferenceItemRequestBuilder
         """
         if not authentication_context_class_reference_id:
@@ -206,7 +206,7 @@ class AuthenticationContextClassReferencesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AuthenticationContextClassReferencesRequestBuilder.AuthenticationContextClassReferencesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AuthenticationContextClassReferencesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

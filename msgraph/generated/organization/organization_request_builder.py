@@ -37,7 +37,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of organization entities.
         Args:
-            organization_id: Unique identifier of the item
+            organization_id: The unique identifier of organization
         Returns: OrganizationItemRequestBuilder
         """
         if not organization_id:
@@ -246,7 +246,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OrganizationRequestBuilder.OrganizationRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OrganizationRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

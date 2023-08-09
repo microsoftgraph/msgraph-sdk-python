@@ -33,7 +33,7 @@ class TeamsTemplatesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of teamsTemplate entities.
         Args:
-            teams_template_id: Unique identifier of the item
+            teams_template_id: The unique identifier of teamsTemplate
         Returns: TeamsTemplateItemRequestBuilder
         """
         if not teams_template_id:
@@ -206,7 +206,7 @@ class TeamsTemplatesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TeamsTemplatesRequestBuilder.TeamsTemplatesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TeamsTemplatesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

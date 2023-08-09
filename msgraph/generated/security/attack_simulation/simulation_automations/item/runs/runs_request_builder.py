@@ -33,7 +33,7 @@ class RunsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the runs property of the microsoft.graph.simulationAutomation entity.
         Args:
-            simulation_automation_run_id: Unique identifier of the item
+            simulation_automation_run_id: The unique identifier of simulationAutomationRun
         Returns: SimulationAutomationRunItemRequestBuilder
         """
         if not simulation_automation_run_id:
@@ -206,7 +206,7 @@ class RunsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RunsRequestBuilder.RunsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RunsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

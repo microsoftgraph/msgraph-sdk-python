@@ -33,7 +33,7 @@ class CommentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the comments property of the microsoft.graph.workbook entity.
         Args:
-            workbook_comment_id: Unique identifier of the item
+            workbook_comment_id: The unique identifier of workbookComment
         Returns: WorkbookCommentItemRequestBuilder
         """
         if not workbook_comment_id:
@@ -206,7 +206,7 @@ class CommentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CommentsRequestBuilder.CommentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CommentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

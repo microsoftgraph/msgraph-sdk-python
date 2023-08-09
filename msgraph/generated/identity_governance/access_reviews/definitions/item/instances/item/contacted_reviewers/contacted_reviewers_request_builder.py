@@ -33,7 +33,7 @@ class ContactedReviewersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the contactedReviewers property of the microsoft.graph.accessReviewInstance entity.
         Args:
-            access_review_reviewer_id: Unique identifier of the item
+            access_review_reviewer_id: The unique identifier of accessReviewReviewer
         Returns: AccessReviewReviewerItemRequestBuilder
         """
         if not access_review_reviewer_id:
@@ -206,7 +206,7 @@ class ContactedReviewersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ContactedReviewersRequestBuilder.ContactedReviewersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ContactedReviewersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

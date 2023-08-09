@@ -33,7 +33,7 @@ class DefaultPagesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the defaultPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
         Args:
-            user_flow_language_page_id: Unique identifier of the item
+            user_flow_language_page_id: The unique identifier of userFlowLanguagePage
         Returns: UserFlowLanguagePageItemRequestBuilder
         """
         if not user_flow_language_page_id:
@@ -206,7 +206,7 @@ class DefaultPagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DefaultPagesRequestBuilder.DefaultPagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DefaultPagesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

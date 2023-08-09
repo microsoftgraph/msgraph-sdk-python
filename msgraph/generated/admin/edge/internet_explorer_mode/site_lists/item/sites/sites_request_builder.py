@@ -33,7 +33,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the sites property of the microsoft.graph.browserSiteList entity.
         Args:
-            browser_site_id: Unique identifier of the item
+            browser_site_id: The unique identifier of browserSite
         Returns: BrowserSiteItemRequestBuilder
         """
         if not browser_site_id:
@@ -206,7 +206,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SitesRequestBuilder.SitesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SitesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

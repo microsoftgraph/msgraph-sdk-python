@@ -32,7 +32,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the tokenIssuancePolicies property of the microsoft.graph.servicePrincipal entity.
         Args:
-            token_issuance_policy_id: Unique identifier of the item
+            token_issuance_policy_id: The unique identifier of tokenIssuancePolicy
         Returns: TokenIssuancePolicyItemRequestBuilder
         """
         if not token_issuance_policy_id:
@@ -159,7 +159,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TokenIssuancePoliciesRequestBuilder.TokenIssuancePoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TokenIssuancePoliciesRequestBuilderGetQueryParameters] = None
 
     
 

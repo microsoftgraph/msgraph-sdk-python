@@ -194,7 +194,7 @@ class DataSourceRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DataSourceRequestBuilder.DataSourceRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DataSourceRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

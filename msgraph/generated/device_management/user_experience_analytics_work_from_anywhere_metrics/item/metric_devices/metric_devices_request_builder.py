@@ -33,7 +33,7 @@ class MetricDevicesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the metricDevices property of the microsoft.graph.userExperienceAnalyticsWorkFromAnywhereMetric entity.
         Args:
-            user_experience_analytics_work_from_anywhere_device_id: Unique identifier of the item
+            user_experience_analytics_work_from_anywhere_device_id: The unique identifier of userExperienceAnalyticsWorkFromAnywhereDevice
         Returns: UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder
         """
         if not user_experience_analytics_work_from_anywhere_device_id:
@@ -206,7 +206,7 @@ class MetricDevicesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MetricDevicesRequestBuilder.MetricDevicesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MetricDevicesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

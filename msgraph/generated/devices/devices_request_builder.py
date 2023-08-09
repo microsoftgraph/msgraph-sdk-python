@@ -37,7 +37,7 @@ class DevicesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of device entities.
         Args:
-            device_id: Unique identifier of the item
+            device_id: The unique identifier of device
         Returns: DeviceItemRequestBuilder
         """
         if not device_id:
@@ -246,7 +246,7 @@ class DevicesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DevicesRequestBuilder.DevicesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DevicesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

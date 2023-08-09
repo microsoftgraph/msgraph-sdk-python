@@ -33,7 +33,7 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the learningCourseActivities property of the microsoft.graph.employeeExperience entity.
         Args:
-            learning_course_activity_id: Unique identifier of the item
+            learning_course_activity_id: The unique identifier of learningCourseActivity
         Returns: LearningCourseActivityItemRequestBuilder
         """
         if not learning_course_activity_id:
@@ -206,7 +206,7 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LearningCourseActivitiesRequestBuilder.LearningCourseActivitiesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LearningCourseActivitiesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

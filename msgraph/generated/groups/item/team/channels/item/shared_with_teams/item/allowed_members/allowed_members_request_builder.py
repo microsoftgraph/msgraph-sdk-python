@@ -32,7 +32,7 @@ class AllowedMembersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the allowedMembers property of the microsoft.graph.sharedWithChannelTeamInfo entity.
         Args:
-            conversation_member_id: Unique identifier of the item
+            conversation_member_id: The unique identifier of conversationMember
         Returns: ConversationMemberItemRequestBuilder
         """
         if not conversation_member_id:
@@ -159,7 +159,7 @@ class AllowedMembersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AllowedMembersRequestBuilder.AllowedMembersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AllowedMembersRequestBuilderGetQueryParameters] = None
 
     
 

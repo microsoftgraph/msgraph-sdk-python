@@ -33,7 +33,7 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the allowedValues property of the microsoft.graph.customSecurityAttributeDefinition entity.
         Args:
-            allowed_value_id: Unique identifier of the item
+            allowed_value_id: The unique identifier of allowedValue
         Returns: AllowedValueItemRequestBuilder
         """
         if not allowed_value_id:
@@ -206,7 +206,7 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AllowedValuesRequestBuilder.AllowedValuesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AllowedValuesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class SecureScoreControlProfilesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the secureScoreControlProfiles property of the microsoft.graph.security entity.
         Args:
-            secure_score_control_profile_id: Unique identifier of the item
+            secure_score_control_profile_id: The unique identifier of secureScoreControlProfile
         Returns: SecureScoreControlProfileItemRequestBuilder
         """
         if not secure_score_control_profile_id:
@@ -206,7 +206,7 @@ class SecureScoreControlProfilesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SecureScoreControlProfilesRequestBuilder.SecureScoreControlProfilesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SecureScoreControlProfilesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the swapShiftsChangeRequests property of the microsoft.graph.schedule entity.
         Args:
-            swap_shifts_change_request_id: Unique identifier of the item
+            swap_shifts_change_request_id: The unique identifier of swapShiftsChangeRequest
         Returns: SwapShiftsChangeRequestItemRequestBuilder
         """
         if not swap_shifts_change_request_id:
@@ -206,7 +206,7 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SwapShiftsChangeRequestsRequestBuilder.SwapShiftsChangeRequestsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SwapShiftsChangeRequestsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

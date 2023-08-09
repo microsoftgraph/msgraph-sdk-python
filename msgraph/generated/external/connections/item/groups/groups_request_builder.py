@@ -33,7 +33,7 @@ class GroupsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the groups property of the microsoft.graph.externalConnectors.externalConnection entity.
         Args:
-            external_group_id: Unique identifier of the item
+            external_group_id: The unique identifier of externalGroup
         Returns: ExternalGroupItemRequestBuilder
         """
         if not external_group_id:
@@ -206,7 +206,7 @@ class GroupsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GroupsRequestBuilder.GroupsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GroupsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -34,7 +34,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of oAuth2PermissionGrant entities.
         Args:
-            o_auth2_permission_grant_id: Unique identifier of the item
+            o_auth2_permission_grant_id: The unique identifier of oAuth2PermissionGrant
         Returns: OAuth2PermissionGrantItemRequestBuilder
         """
         if not o_auth2_permission_grant_id:
@@ -216,7 +216,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[Oauth2PermissionGrantsRequestBuilder.Oauth2PermissionGrantsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[Oauth2PermissionGrantsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

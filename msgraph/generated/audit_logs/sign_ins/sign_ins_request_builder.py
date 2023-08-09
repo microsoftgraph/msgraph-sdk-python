@@ -33,7 +33,7 @@ class SignInsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the signIns property of the microsoft.graph.auditLogRoot entity.
         Args:
-            sign_in_id: Unique identifier of the item
+            sign_in_id: The unique identifier of signIn
         Returns: SignInItemRequestBuilder
         """
         if not sign_in_id:
@@ -206,7 +206,7 @@ class SignInsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SignInsRequestBuilder.SignInsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SignInsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

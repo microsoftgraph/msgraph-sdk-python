@@ -33,7 +33,7 @@ class OpenShiftsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the openShifts property of the microsoft.graph.schedule entity.
         Args:
-            open_shift_id: Unique identifier of the item
+            open_shift_id: The unique identifier of openShift
         Returns: OpenShiftItemRequestBuilder
         """
         if not open_shift_id:
@@ -206,7 +206,7 @@ class OpenShiftsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OpenShiftsRequestBuilder.OpenShiftsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OpenShiftsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class PoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the policies property of the microsoft.graph.authenticationStrengthRoot entity.
         Args:
-            authentication_strength_policy_id: Unique identifier of the item
+            authentication_strength_policy_id: The unique identifier of authenticationStrengthPolicy
         Returns: AuthenticationStrengthPolicyItemRequestBuilder
         """
         if not authentication_strength_policy_id:
@@ -206,7 +206,7 @@ class PoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PoliciesRequestBuilder.PoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

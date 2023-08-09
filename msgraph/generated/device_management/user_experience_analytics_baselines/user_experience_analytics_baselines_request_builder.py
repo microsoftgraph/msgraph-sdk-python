@@ -33,7 +33,7 @@ class UserExperienceAnalyticsBaselinesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the userExperienceAnalyticsBaselines property of the microsoft.graph.deviceManagement entity.
         Args:
-            user_experience_analytics_baseline_id: Unique identifier of the item
+            user_experience_analytics_baseline_id: The unique identifier of userExperienceAnalyticsBaseline
         Returns: UserExperienceAnalyticsBaselineItemRequestBuilder
         """
         if not user_experience_analytics_baseline_id:
@@ -206,7 +206,7 @@ class UserExperienceAnalyticsBaselinesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsBaselinesRequestBuilder.UserExperienceAnalyticsBaselinesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserExperienceAnalyticsBaselinesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

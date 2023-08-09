@@ -33,7 +33,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the assignments property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         Args:
-            managed_device_mobile_app_configuration_assignment_id: Unique identifier of the item
+            managed_device_mobile_app_configuration_assignment_id: The unique identifier of managedDeviceMobileAppConfigurationAssignment
         Returns: ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder
         """
         if not managed_device_mobile_app_configuration_assignment_id:
@@ -206,7 +206,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AssignmentsRequestBuilder.AssignmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AssignmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the provisioning property of the microsoft.graph.auditLogRoot entity.
         Args:
-            provisioning_object_summary_id: Unique identifier of the item
+            provisioning_object_summary_id: The unique identifier of provisioningObjectSummary
         Returns: ProvisioningObjectSummaryItemRequestBuilder
         """
         if not provisioning_object_summary_id:
@@ -206,7 +206,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ProvisioningRequestBuilder.ProvisioningRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ProvisioningRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

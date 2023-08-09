@@ -204,7 +204,7 @@ class AccessPackageResourceEnvironmentItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AccessPackageResourceEnvironmentItemRequestBuilder.AccessPackageResourceEnvironmentItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AccessPackageResourceEnvironmentItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

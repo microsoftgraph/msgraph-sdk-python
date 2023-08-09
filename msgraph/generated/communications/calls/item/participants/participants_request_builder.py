@@ -34,7 +34,7 @@ class ParticipantsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the participants property of the microsoft.graph.call entity.
         Args:
-            participant_id: Unique identifier of the item
+            participant_id: The unique identifier of participant
         Returns: ParticipantItemRequestBuilder
         """
         if not participant_id:
@@ -216,7 +216,7 @@ class ParticipantsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ParticipantsRequestBuilder.ParticipantsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ParticipantsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the permissions property of the microsoft.graph.site entity.
         Args:
-            permission_id: Unique identifier of the item
+            permission_id: The unique identifier of permission
         Returns: PermissionItemRequestBuilder
         """
         if not permission_id:
@@ -206,7 +206,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PermissionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

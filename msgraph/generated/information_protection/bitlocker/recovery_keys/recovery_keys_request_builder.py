@@ -32,7 +32,7 @@ class RecoveryKeysRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the recoveryKeys property of the microsoft.graph.bitlocker entity.
         Args:
-            bitlocker_recovery_key_id: Unique identifier of the item
+            bitlocker_recovery_key_id: The unique identifier of bitlockerRecoveryKey
         Returns: BitlockerRecoveryKeyItemRequestBuilder
         """
         if not bitlocker_recovery_key_id:
@@ -159,7 +159,7 @@ class RecoveryKeysRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RecoveryKeysRequestBuilder.RecoveryKeysRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RecoveryKeysRequestBuilderGetQueryParameters] = None
 
     
 

@@ -103,7 +103,7 @@ class ArticleIndicatorItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ArticleIndicatorItemRequestBuilder.ArticleIndicatorItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ArticleIndicatorItemRequestBuilderGetQueryParameters] = None
 
     
 

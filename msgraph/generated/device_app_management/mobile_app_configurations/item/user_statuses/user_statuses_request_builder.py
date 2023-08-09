@@ -33,7 +33,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         Args:
-            managed_device_mobile_app_configuration_user_status_id: Unique identifier of the item
+            managed_device_mobile_app_configuration_user_status_id: The unique identifier of managedDeviceMobileAppConfigurationUserStatus
         Returns: ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder
         """
         if not managed_device_mobile_app_configuration_user_status_id:
@@ -206,7 +206,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserStatusesRequestBuilder.UserStatusesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserStatusesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

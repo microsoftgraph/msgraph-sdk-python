@@ -34,7 +34,7 @@ class InstancesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the instances property of the microsoft.graph.accessReviewScheduleDefinition entity.
         Args:
-            access_review_instance_id: Unique identifier of the item
+            access_review_instance_id: The unique identifier of accessReviewInstance
         Returns: AccessReviewInstanceItemRequestBuilder
         """
         if not access_review_instance_id:
@@ -220,7 +220,7 @@ class InstancesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[InstancesRequestBuilder.InstancesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[InstancesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

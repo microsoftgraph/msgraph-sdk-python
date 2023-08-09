@@ -33,7 +33,7 @@ class WindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the windowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
         Args:
-            windows_autopilot_device_identity_id: Unique identifier of the item
+            windows_autopilot_device_identity_id: The unique identifier of windowsAutopilotDeviceIdentity
         Returns: WindowsAutopilotDeviceIdentityItemRequestBuilder
         """
         if not windows_autopilot_device_identity_id:
@@ -206,7 +206,7 @@ class WindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WindowsAutopilotDeviceIdentitiesRequestBuilder.WindowsAutopilotDeviceIdentitiesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WindowsAutopilotDeviceIdentitiesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

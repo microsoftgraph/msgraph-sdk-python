@@ -33,7 +33,7 @@ class LanguagesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the languages property of the microsoft.graph.b2xIdentityUserFlow entity.
         Args:
-            user_flow_language_configuration_id: Unique identifier of the item
+            user_flow_language_configuration_id: The unique identifier of userFlowLanguageConfiguration
         Returns: UserFlowLanguageConfigurationItemRequestBuilder
         """
         if not user_flow_language_configuration_id:
@@ -206,7 +206,7 @@ class LanguagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LanguagesRequestBuilder.LanguagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LanguagesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

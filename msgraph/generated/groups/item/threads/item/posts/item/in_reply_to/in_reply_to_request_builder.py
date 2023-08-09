@@ -143,7 +143,7 @@ class InReplyToRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[InReplyToRequestBuilder.InReplyToRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[InReplyToRequestBuilderGetQueryParameters] = None
 
     
 

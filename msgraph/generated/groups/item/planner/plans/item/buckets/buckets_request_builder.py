@@ -33,7 +33,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the buckets property of the microsoft.graph.plannerPlan entity.
         Args:
-            planner_bucket_id: Unique identifier of the item
+            planner_bucket_id: The unique identifier of plannerBucket
         Returns: PlannerBucketItemRequestBuilder
         """
         if not planner_bucket_id:
@@ -206,7 +206,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[BucketsRequestBuilder.BucketsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[BucketsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

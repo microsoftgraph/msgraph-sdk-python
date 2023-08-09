@@ -159,7 +159,7 @@ class RejectedSendersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RejectedSendersRequestBuilder.RejectedSendersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RejectedSendersRequestBuilderGetQueryParameters] = None
 
     
 

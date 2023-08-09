@@ -33,7 +33,7 @@ class TaskTriggersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the taskTriggers property of the microsoft.graph.printer entity.
         Args:
-            print_task_trigger_id: Unique identifier of the item
+            print_task_trigger_id: The unique identifier of printTaskTrigger
         Returns: PrintTaskTriggerItemRequestBuilder
         """
         if not print_task_trigger_id:
@@ -206,7 +206,7 @@ class TaskTriggersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TaskTriggersRequestBuilder.TaskTriggersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TaskTriggersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class OpenShiftChangeRequestsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the openShiftChangeRequests property of the microsoft.graph.schedule entity.
         Args:
-            open_shift_change_request_id: Unique identifier of the item
+            open_shift_change_request_id: The unique identifier of openShiftChangeRequest
         Returns: OpenShiftChangeRequestItemRequestBuilder
         """
         if not open_shift_change_request_id:
@@ -206,7 +206,7 @@ class OpenShiftChangeRequestsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OpenShiftChangeRequestsRequestBuilder.OpenShiftChangeRequestsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OpenShiftChangeRequestsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

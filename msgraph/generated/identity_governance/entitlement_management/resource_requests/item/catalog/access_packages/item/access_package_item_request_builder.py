@@ -103,7 +103,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AccessPackageItemRequestBuilder.AccessPackageItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AccessPackageItemRequestBuilderGetQueryParameters] = None
 
     
 

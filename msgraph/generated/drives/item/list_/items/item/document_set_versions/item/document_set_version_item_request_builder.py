@@ -214,7 +214,7 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DocumentSetVersionItemRequestBuilder.DocumentSetVersionItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DocumentSetVersionItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

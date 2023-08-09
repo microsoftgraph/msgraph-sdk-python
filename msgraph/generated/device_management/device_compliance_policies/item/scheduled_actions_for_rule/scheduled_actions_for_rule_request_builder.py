@@ -33,7 +33,7 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the scheduledActionsForRule property of the microsoft.graph.deviceCompliancePolicy entity.
         Args:
-            device_compliance_scheduled_action_for_rule_id: Unique identifier of the item
+            device_compliance_scheduled_action_for_rule_id: The unique identifier of deviceComplianceScheduledActionForRule
         Returns: DeviceComplianceScheduledActionForRuleItemRequestBuilder
         """
         if not device_compliance_scheduled_action_for_rule_id:
@@ -206,7 +206,7 @@ class ScheduledActionsForRuleRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ScheduledActionsForRuleRequestBuilder.ScheduledActionsForRuleRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ScheduledActionsForRuleRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

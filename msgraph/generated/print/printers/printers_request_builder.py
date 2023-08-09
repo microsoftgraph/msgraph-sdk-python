@@ -34,7 +34,7 @@ class PrintersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the printers property of the microsoft.graph.print entity.
         Args:
-            printer_id: Unique identifier of the item
+            printer_id: The unique identifier of printer
         Returns: PrinterItemRequestBuilder
         """
         if not printer_id:
@@ -216,7 +216,7 @@ class PrintersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PrintersRequestBuilder.PrintersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PrintersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

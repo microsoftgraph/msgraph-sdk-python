@@ -33,7 +33,7 @@ class EdiscoveryCasesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the ediscoveryCases property of the microsoft.graph.security.casesRoot entity.
         Args:
-            ediscovery_case_id: Unique identifier of the item
+            ediscovery_case_id: The unique identifier of ediscoveryCase
         Returns: EdiscoveryCaseItemRequestBuilder
         """
         if not ediscovery_case_id:
@@ -206,7 +206,7 @@ class EdiscoveryCasesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[EdiscoveryCasesRequestBuilder.EdiscoveryCasesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[EdiscoveryCasesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

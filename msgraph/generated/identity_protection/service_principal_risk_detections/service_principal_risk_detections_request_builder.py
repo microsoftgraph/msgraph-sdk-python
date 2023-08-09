@@ -33,7 +33,7 @@ class ServicePrincipalRiskDetectionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the servicePrincipalRiskDetections property of the microsoft.graph.identityProtectionRoot entity.
         Args:
-            service_principal_risk_detection_id: Unique identifier of the item
+            service_principal_risk_detection_id: The unique identifier of servicePrincipalRiskDetection
         Returns: ServicePrincipalRiskDetectionItemRequestBuilder
         """
         if not service_principal_risk_detection_id:
@@ -206,7 +206,7 @@ class ServicePrincipalRiskDetectionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ServicePrincipalRiskDetectionsRequestBuilder.ServicePrincipalRiskDetectionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ServicePrincipalRiskDetectionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

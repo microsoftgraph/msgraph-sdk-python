@@ -33,7 +33,7 @@ class MobileAppConfigurationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the mobileAppConfigurations property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            managed_device_mobile_app_configuration_id: Unique identifier of the item
+            managed_device_mobile_app_configuration_id: The unique identifier of managedDeviceMobileAppConfiguration
         Returns: ManagedDeviceMobileAppConfigurationItemRequestBuilder
         """
         if not managed_device_mobile_app_configuration_id:
@@ -46,7 +46,7 @@ class MobileAppConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MobileAppConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationCollectionResponse]:
         """
-        List properties and relationships of the iosMobileAppConfiguration objects.
+        List properties and relationships of the managedDeviceMobileAppConfiguration objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfigurationCollectionResponse]
@@ -93,7 +93,7 @@ class MobileAppConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the iosMobileAppConfiguration objects.
+        List properties and relationships of the managedDeviceMobileAppConfiguration objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -142,7 +142,7 @@ class MobileAppConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppConfigurationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the iosMobileAppConfiguration objects.
+        List properties and relationships of the managedDeviceMobileAppConfiguration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -206,7 +206,7 @@ class MobileAppConfigurationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MobileAppConfigurationsRequestBuilder.MobileAppConfigurationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MobileAppConfigurationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

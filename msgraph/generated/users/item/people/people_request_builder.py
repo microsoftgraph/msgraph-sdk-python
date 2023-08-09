@@ -32,7 +32,7 @@ class PeopleRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the people property of the microsoft.graph.user entity.
         Args:
-            person_id: Unique identifier of the item
+            person_id: The unique identifier of person
         Returns: PersonItemRequestBuilder
         """
         if not person_id:
@@ -154,7 +154,7 @@ class PeopleRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PeopleRequestBuilder.PeopleRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PeopleRequestBuilderGetQueryParameters] = None
 
     
 

@@ -32,7 +32,7 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the childTags property of the microsoft.graph.security.ediscoveryReviewTag entity.
         Args:
-            ediscovery_review_tag_id1: Unique identifier of the item
+            ediscovery_review_tag_id1: The unique identifier of ediscoveryReviewTag
         Returns: EdiscoveryReviewTagItemRequestBuilder
         """
         if not ediscovery_review_tag_id1:
@@ -159,7 +159,7 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ChildTagsRequestBuilder.ChildTagsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ChildTagsRequestBuilderGetQueryParameters] = None
 
     
 

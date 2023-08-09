@@ -103,7 +103,7 @@ class CatalogRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CatalogRequestBuilder.CatalogRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CatalogRequestBuilderGetQueryParameters] = None
 
     
 

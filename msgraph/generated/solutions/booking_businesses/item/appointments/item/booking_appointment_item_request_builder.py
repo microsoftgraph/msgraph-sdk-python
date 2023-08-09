@@ -204,7 +204,7 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[BookingAppointmentItemRequestBuilder.BookingAppointmentItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[BookingAppointmentItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

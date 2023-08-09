@@ -103,7 +103,7 @@ class ActivityRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ActivityRequestBuilder.ActivityRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ActivityRequestBuilderGetQueryParameters] = None
 
     
 

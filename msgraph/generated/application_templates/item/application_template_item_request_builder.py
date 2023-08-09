@@ -113,7 +113,7 @@ class ApplicationTemplateItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ApplicationTemplateItemRequestBuilder.ApplicationTemplateItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ApplicationTemplateItemRequestBuilderGetQueryParameters] = None
 
     
 

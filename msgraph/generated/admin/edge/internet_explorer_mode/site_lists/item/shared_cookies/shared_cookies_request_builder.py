@@ -33,7 +33,7 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the sharedCookies property of the microsoft.graph.browserSiteList entity.
         Args:
-            browser_shared_cookie_id: Unique identifier of the item
+            browser_shared_cookie_id: The unique identifier of browserSharedCookie
         Returns: BrowserSharedCookieItemRequestBuilder
         """
         if not browser_shared_cookie_id:
@@ -206,7 +206,7 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SharedCookiesRequestBuilder.SharedCookiesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SharedCookiesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class TermStoresRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the termStores property of the microsoft.graph.site entity.
         Args:
-            store_id: Unique identifier of the item
+            store_id: The unique identifier of store
         Returns: StoreItemRequestBuilder
         """
         if not store_id:
@@ -206,7 +206,7 @@ class TermStoresRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TermStoresRequestBuilder.TermStoresRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TermStoresRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

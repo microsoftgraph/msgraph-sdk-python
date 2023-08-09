@@ -103,7 +103,7 @@ class LastIndexOperationRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LastIndexOperationRequestBuilder.LastIndexOperationRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LastIndexOperationRequestBuilderGetQueryParameters] = None
 
     
 

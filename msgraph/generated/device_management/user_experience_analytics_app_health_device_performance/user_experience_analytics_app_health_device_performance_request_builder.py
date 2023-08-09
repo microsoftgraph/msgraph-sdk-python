@@ -33,7 +33,7 @@ class UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilder(BaseReques
         """
         Provides operations to manage the userExperienceAnalyticsAppHealthDevicePerformance property of the microsoft.graph.deviceManagement entity.
         Args:
-            user_experience_analytics_app_health_device_performance_id: Unique identifier of the item
+            user_experience_analytics_app_health_device_performance_id: The unique identifier of userExperienceAnalyticsAppHealthDevicePerformance
         Returns: UserExperienceAnalyticsAppHealthDevicePerformanceItemRequestBuilder
         """
         if not user_experience_analytics_app_health_device_performance_id:
@@ -206,7 +206,7 @@ class UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilder(BaseReques
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilder.UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -194,7 +194,7 @@ class MobileAppCategoryItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MobileAppCategoryItemRequestBuilder.MobileAppCategoryItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MobileAppCategoryItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

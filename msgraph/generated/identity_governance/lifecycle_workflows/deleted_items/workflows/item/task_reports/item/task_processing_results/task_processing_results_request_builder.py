@@ -32,7 +32,7 @@ class TaskProcessingResultsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the taskProcessingResults property of the microsoft.graph.identityGovernance.taskReport entity.
         Args:
-            task_processing_result_id: Unique identifier of the item
+            task_processing_result_id: The unique identifier of taskProcessingResult
         Returns: TaskProcessingResultItemRequestBuilder
         """
         if not task_processing_result_id:
@@ -159,7 +159,7 @@ class TaskProcessingResultsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TaskProcessingResultsRequestBuilder.TaskProcessingResultsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TaskProcessingResultsRequestBuilderGetQueryParameters] = None
 
     
 

@@ -103,7 +103,7 @@ class GraphAppRoleAssignmentRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GraphAppRoleAssignmentRequestBuilder.GraphAppRoleAssignmentRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GraphAppRoleAssignmentRequestBuilderGetQueryParameters] = None
 
     
 

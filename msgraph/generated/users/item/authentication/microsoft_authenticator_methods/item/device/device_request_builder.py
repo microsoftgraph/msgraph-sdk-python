@@ -103,7 +103,7 @@ class DeviceRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceRequestBuilder.DeviceRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceRequestBuilderGetQueryParameters] = None
 
     
 

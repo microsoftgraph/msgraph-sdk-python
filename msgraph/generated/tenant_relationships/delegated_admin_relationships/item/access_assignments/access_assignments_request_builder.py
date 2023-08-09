@@ -33,7 +33,7 @@ class AccessAssignmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the accessAssignments property of the microsoft.graph.delegatedAdminRelationship entity.
         Args:
-            delegated_admin_access_assignment_id: Unique identifier of the item
+            delegated_admin_access_assignment_id: The unique identifier of delegatedAdminAccessAssignment
         Returns: DelegatedAdminAccessAssignmentItemRequestBuilder
         """
         if not delegated_admin_access_assignment_id:
@@ -206,7 +206,7 @@ class AccessAssignmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AccessAssignmentsRequestBuilder.AccessAssignmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AccessAssignmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

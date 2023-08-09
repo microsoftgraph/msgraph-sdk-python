@@ -33,7 +33,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the reviewSets property of the microsoft.graph.security.ediscoveryCase entity.
         Args:
-            ediscovery_review_set_id: Unique identifier of the item
+            ediscovery_review_set_id: The unique identifier of ediscoveryReviewSet
         Returns: EdiscoveryReviewSetItemRequestBuilder
         """
         if not ediscovery_review_set_id:
@@ -206,7 +206,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ReviewSetsRequestBuilder.ReviewSetsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ReviewSetsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

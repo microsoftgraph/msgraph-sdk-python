@@ -103,7 +103,7 @@ class ParentRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ParentRequestBuilder.ParentRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ParentRequestBuilderGetQueryParameters] = None
 
     
 

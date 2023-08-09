@@ -33,7 +33,7 @@ class HostTrackersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the hostTrackers property of the microsoft.graph.security.threatIntelligence entity.
         Args:
-            host_tracker_id: Unique identifier of the item
+            host_tracker_id: The unique identifier of hostTracker
         Returns: HostTrackerItemRequestBuilder
         """
         if not host_tracker_id:
@@ -206,7 +206,7 @@ class HostTrackersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HostTrackersRequestBuilder.HostTrackersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HostTrackersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

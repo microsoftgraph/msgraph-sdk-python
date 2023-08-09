@@ -37,7 +37,7 @@ class GroupsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of group entities.
         Args:
-            group_id: Unique identifier of the item
+            group_id: The unique identifier of group
         Returns: GroupItemRequestBuilder
         """
         if not group_id:
@@ -246,7 +246,7 @@ class GroupsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GroupsRequestBuilder.GroupsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GroupsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

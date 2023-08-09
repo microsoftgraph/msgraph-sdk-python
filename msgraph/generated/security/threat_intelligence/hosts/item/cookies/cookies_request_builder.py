@@ -32,7 +32,7 @@ class CookiesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the cookies property of the microsoft.graph.security.host entity.
         Args:
-            host_cookie_id: Unique identifier of the item
+            host_cookie_id: The unique identifier of hostCookie
         Returns: HostCookieItemRequestBuilder
         """
         if not host_cookie_id:
@@ -159,7 +159,7 @@ class CookiesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CookiesRequestBuilder.CookiesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CookiesRequestBuilderGetQueryParameters] = None
 
     
 

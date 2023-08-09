@@ -33,7 +33,7 @@ class UserExperienceAnalyticsAppHealthOSVersionPerformanceRequestBuilder(BaseReq
         """
         Provides operations to manage the userExperienceAnalyticsAppHealthOSVersionPerformance property of the microsoft.graph.deviceManagement entity.
         Args:
-            user_experience_analytics_app_health_o_s_version_performance_id: Unique identifier of the item
+            user_experience_analytics_app_health_o_s_version_performance_id: The unique identifier of userExperienceAnalyticsAppHealthOSVersionPerformance
         Returns: UserExperienceAnalyticsAppHealthOSVersionPerformanceItemRequestBuilder
         """
         if not user_experience_analytics_app_health_o_s_version_performance_id:
@@ -206,7 +206,7 @@ class UserExperienceAnalyticsAppHealthOSVersionPerformanceRequestBuilder(BaseReq
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsAppHealthOSVersionPerformanceRequestBuilder.UserExperienceAnalyticsAppHealthOSVersionPerformanceRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserExperienceAnalyticsAppHealthOSVersionPerformanceRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

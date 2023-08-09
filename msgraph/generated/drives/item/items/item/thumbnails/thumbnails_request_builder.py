@@ -33,7 +33,7 @@ class ThumbnailsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the thumbnails property of the microsoft.graph.driveItem entity.
         Args:
-            thumbnail_set_id: Unique identifier of the item
+            thumbnail_set_id: The unique identifier of thumbnailSet
         Returns: ThumbnailSetItemRequestBuilder
         """
         if not thumbnail_set_id:
@@ -206,7 +206,7 @@ class ThumbnailsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ThumbnailsRequestBuilder.ThumbnailsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ThumbnailsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

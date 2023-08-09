@@ -33,7 +33,7 @@ class ActivitiesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the activities property of the microsoft.graph.externalConnectors.externalItem entity.
         Args:
-            external_activity_id: Unique identifier of the item
+            external_activity_id: The unique identifier of externalActivity
         Returns: ExternalActivityItemRequestBuilder
         """
         if not external_activity_id:
@@ -206,7 +206,7 @@ class ActivitiesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ActivitiesRequestBuilder.ActivitiesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ActivitiesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

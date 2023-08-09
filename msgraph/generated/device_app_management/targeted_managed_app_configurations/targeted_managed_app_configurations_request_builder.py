@@ -33,7 +33,7 @@ class TargetedManagedAppConfigurationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the targetedManagedAppConfigurations property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            targeted_managed_app_configuration_id: Unique identifier of the item
+            targeted_managed_app_configuration_id: The unique identifier of targetedManagedAppConfiguration
         Returns: TargetedManagedAppConfigurationItemRequestBuilder
         """
         if not targeted_managed_app_configuration_id:
@@ -206,7 +206,7 @@ class TargetedManagedAppConfigurationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TargetedManagedAppConfigurationsRequestBuilder.TargetedManagedAppConfigurationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TargetedManagedAppConfigurationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

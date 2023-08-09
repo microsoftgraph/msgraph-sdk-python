@@ -194,7 +194,7 @@ class IdentityItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IdentityItemRequestBuilder.IdentityItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IdentityItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

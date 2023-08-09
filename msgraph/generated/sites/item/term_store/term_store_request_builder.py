@@ -214,7 +214,7 @@ class TermStoreRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TermStoreRequestBuilder.TermStoreRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TermStoreRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

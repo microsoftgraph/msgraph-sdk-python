@@ -103,7 +103,7 @@ class HostTrackerItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HostTrackerItemRequestBuilder.HostTrackerItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HostTrackerItemRequestBuilderGetQueryParameters] = None
 
     
 

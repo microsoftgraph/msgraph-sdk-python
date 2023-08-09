@@ -199,7 +199,7 @@ class IdentityRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IdentityRequestBuilder.IdentityRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IdentityRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

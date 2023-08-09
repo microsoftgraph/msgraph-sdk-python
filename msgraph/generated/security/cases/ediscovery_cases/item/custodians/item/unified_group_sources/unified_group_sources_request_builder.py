@@ -33,7 +33,7 @@ class UnifiedGroupSourcesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the unifiedGroupSources property of the microsoft.graph.security.ediscoveryCustodian entity.
         Args:
-            unified_group_source_id: Unique identifier of the item
+            unified_group_source_id: The unique identifier of unifiedGroupSource
         Returns: UnifiedGroupSourceItemRequestBuilder
         """
         if not unified_group_source_id:
@@ -206,7 +206,7 @@ class UnifiedGroupSourcesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UnifiedGroupSourcesRequestBuilder.UnifiedGroupSourcesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UnifiedGroupSourcesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

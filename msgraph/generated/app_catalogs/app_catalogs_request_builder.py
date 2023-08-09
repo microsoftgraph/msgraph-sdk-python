@@ -159,7 +159,7 @@ class AppCatalogsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AppCatalogsRequestBuilder.AppCatalogsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AppCatalogsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

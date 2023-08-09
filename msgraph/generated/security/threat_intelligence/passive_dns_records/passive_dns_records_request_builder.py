@@ -33,7 +33,7 @@ class PassiveDnsRecordsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the passiveDnsRecords property of the microsoft.graph.security.threatIntelligence entity.
         Args:
-            passive_dns_record_id: Unique identifier of the item
+            passive_dns_record_id: The unique identifier of passiveDnsRecord
         Returns: PassiveDnsRecordItemRequestBuilder
         """
         if not passive_dns_record_id:
@@ -206,7 +206,7 @@ class PassiveDnsRecordsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PassiveDnsRecordsRequestBuilder.PassiveDnsRecordsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PassiveDnsRecordsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -118,7 +118,7 @@ class GetAttackSimulationRepeatOffendersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GetAttackSimulationRepeatOffendersRequestBuilder.GetAttackSimulationRepeatOffendersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GetAttackSimulationRepeatOffendersRequestBuilderGetQueryParameters] = None
 
     
 

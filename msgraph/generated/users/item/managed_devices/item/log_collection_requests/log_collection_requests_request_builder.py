@@ -33,7 +33,7 @@ class LogCollectionRequestsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the logCollectionRequests property of the microsoft.graph.managedDevice entity.
         Args:
-            device_log_collection_response_id: Unique identifier of the item
+            device_log_collection_response_id: The unique identifier of deviceLogCollectionResponse
         Returns: DeviceLogCollectionResponseItemRequestBuilder
         """
         if not device_log_collection_response_id:
@@ -206,7 +206,7 @@ class LogCollectionRequestsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LogCollectionRequestsRequestBuilder.LogCollectionRequestsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LogCollectionRequestsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

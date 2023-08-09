@@ -128,7 +128,7 @@ class AdditionalAccessRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AdditionalAccessRequestBuilder.AdditionalAccessRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AdditionalAccessRequestBuilderGetQueryParameters] = None
 
     
 

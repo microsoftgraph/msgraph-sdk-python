@@ -33,7 +33,7 @@ class MonthlyPrintUsageByUserRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the monthlyPrintUsageByUser property of the microsoft.graph.reportRoot entity.
         Args:
-            print_usage_by_user_id: Unique identifier of the item
+            print_usage_by_user_id: The unique identifier of printUsageByUser
         Returns: PrintUsageByUserItemRequestBuilder
         """
         if not print_usage_by_user_id:
@@ -206,7 +206,7 @@ class MonthlyPrintUsageByUserRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MonthlyPrintUsageByUserRequestBuilder.MonthlyPrintUsageByUserRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MonthlyPrintUsageByUserRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

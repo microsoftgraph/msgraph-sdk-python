@@ -103,7 +103,7 @@ class AnalyticsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AnalyticsRequestBuilder.AnalyticsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AnalyticsRequestBuilderGetQueryParameters] = None
 
     
 

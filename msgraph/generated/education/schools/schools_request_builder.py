@@ -34,7 +34,7 @@ class SchoolsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the schools property of the microsoft.graph.educationRoot entity.
         Args:
-            education_school_id: Unique identifier of the item
+            education_school_id: The unique identifier of educationSchool
         Returns: EducationSchoolItemRequestBuilder
         """
         if not education_school_id:
@@ -216,7 +216,7 @@ class SchoolsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SchoolsRequestBuilder.SchoolsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SchoolsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

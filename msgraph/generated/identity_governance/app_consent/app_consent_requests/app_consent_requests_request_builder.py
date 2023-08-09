@@ -34,7 +34,7 @@ class AppConsentRequestsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the appConsentRequests property of the microsoft.graph.appConsentApprovalRoute entity.
         Args:
-            app_consent_request_id: Unique identifier of the item
+            app_consent_request_id: The unique identifier of appConsentRequest
         Returns: AppConsentRequestItemRequestBuilder
         """
         if not app_consent_request_id:
@@ -220,7 +220,7 @@ class AppConsentRequestsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AppConsentRequestsRequestBuilder.AppConsentRequestsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AppConsentRequestsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

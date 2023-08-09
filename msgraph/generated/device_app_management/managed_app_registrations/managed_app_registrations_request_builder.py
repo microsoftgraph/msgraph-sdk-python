@@ -34,7 +34,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the managedAppRegistrations property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            managed_app_registration_id: Unique identifier of the item
+            managed_app_registration_id: The unique identifier of managedAppRegistration
         Returns: ManagedAppRegistrationItemRequestBuilder
         """
         if not managed_app_registration_id:
@@ -47,7 +47,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppRegistrationCollectionResponse]:
         """
-        List properties and relationships of the iosManagedAppRegistration objects.
+        List properties and relationships of the androidManagedAppRegistration objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppRegistrationCollectionResponse]
@@ -94,7 +94,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the iosManagedAppRegistration objects.
+        List properties and relationships of the androidManagedAppRegistration objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -152,7 +152,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppRegistrationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the iosManagedAppRegistration objects.
+        List properties and relationships of the androidManagedAppRegistration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -216,7 +216,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ManagedAppRegistrationsRequestBuilder.ManagedAppRegistrationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ManagedAppRegistrationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

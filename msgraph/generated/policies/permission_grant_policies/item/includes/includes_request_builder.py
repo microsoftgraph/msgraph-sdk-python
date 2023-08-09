@@ -33,7 +33,7 @@ class IncludesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the includes property of the microsoft.graph.permissionGrantPolicy entity.
         Args:
-            permission_grant_condition_set_id: Unique identifier of the item
+            permission_grant_condition_set_id: The unique identifier of permissionGrantConditionSet
         Returns: PermissionGrantConditionSetItemRequestBuilder
         """
         if not permission_grant_condition_set_id:
@@ -206,7 +206,7 @@ class IncludesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IncludesRequestBuilder.IncludesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IncludesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

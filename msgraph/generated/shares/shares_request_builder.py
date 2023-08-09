@@ -33,7 +33,7 @@ class SharesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of sharedDriveItem entities.
         Args:
-            shared_drive_item_id: Unique identifier of the item
+            shared_drive_item_id: The unique identifier of sharedDriveItem
         Returns: SharedDriveItemItemRequestBuilder
         """
         if not shared_drive_item_id:
@@ -206,7 +206,7 @@ class SharesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SharesRequestBuilder.SharesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SharesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

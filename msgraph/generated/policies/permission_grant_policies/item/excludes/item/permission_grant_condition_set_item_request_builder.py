@@ -194,7 +194,7 @@ class PermissionGrantConditionSetItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PermissionGrantConditionSetItemRequestBuilder.PermissionGrantConditionSetItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PermissionGrantConditionSetItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

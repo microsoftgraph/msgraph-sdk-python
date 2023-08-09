@@ -48,7 +48,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppPolicy]:
         """
-        Read properties and relationships of the managedAppProtection object.
+        Read properties and relationships of the targetedManagedAppProtection object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicy]
@@ -111,7 +111,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedAppProtection object.
+        Read properties and relationships of the targetedManagedAppProtection object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -170,7 +170,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppPolicyItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedAppProtection object.
+        Read properties and relationships of the targetedManagedAppProtection object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -204,7 +204,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ManagedAppPolicyItemRequestBuilder.ManagedAppPolicyItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ManagedAppPolicyItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

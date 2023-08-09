@@ -128,7 +128,7 @@ class MicrosoftGraphSecurityAsHierarchyRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MicrosoftGraphSecurityAsHierarchyRequestBuilder.MicrosoftGraphSecurityAsHierarchyRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MicrosoftGraphSecurityAsHierarchyRequestBuilderGetQueryParameters] = None
 
     
 

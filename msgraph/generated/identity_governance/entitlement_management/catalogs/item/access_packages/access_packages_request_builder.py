@@ -32,7 +32,7 @@ class AccessPackagesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the accessPackages property of the microsoft.graph.accessPackageCatalog entity.
         Args:
-            access_package_id: Unique identifier of the item
+            access_package_id: The unique identifier of accessPackage
         Returns: AccessPackageItemRequestBuilder
         """
         if not access_package_id:
@@ -159,7 +159,7 @@ class AccessPackagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AccessPackagesRequestBuilder.AccessPackagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AccessPackagesRequestBuilderGetQueryParameters] = None
 
     
 

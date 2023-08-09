@@ -118,7 +118,7 @@ class GetManagedAppDiagnosticStatusesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GetManagedAppDiagnosticStatusesRequestBuilder.GetManagedAppDiagnosticStatusesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GetManagedAppDiagnosticStatusesRequestBuilderGetQueryParameters] = None
 
     
 

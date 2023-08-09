@@ -39,7 +39,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the messages property of the microsoft.graph.serviceAnnouncement entity.
         Args:
-            service_update_message_id: Unique identifier of the item
+            service_update_message_id: The unique identifier of serviceUpdateMessage
         Returns: ServiceUpdateMessageItemRequestBuilder
         """
         if not service_update_message_id:
@@ -266,7 +266,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MessagesRequestBuilder.MessagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MessagesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

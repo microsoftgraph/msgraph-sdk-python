@@ -34,7 +34,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the pivotTables property of the microsoft.graph.workbookWorksheet entity.
         Args:
-            workbook_pivot_table_id: Unique identifier of the item
+            workbook_pivot_table_id: The unique identifier of workbookPivotTable
         Returns: WorkbookPivotTableItemRequestBuilder
         """
         if not workbook_pivot_table_id:
@@ -216,7 +216,7 @@ class PivotTablesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PivotTablesRequestBuilder.PivotTablesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PivotTablesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

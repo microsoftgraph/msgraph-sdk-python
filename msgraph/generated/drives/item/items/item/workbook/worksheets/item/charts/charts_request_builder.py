@@ -36,7 +36,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the charts property of the microsoft.graph.workbookWorksheet entity.
         Args:
-            workbook_chart_id: Unique identifier of the item
+            workbook_chart_id: The unique identifier of workbookChart
         Returns: WorkbookChartItemRequestBuilder
         """
         if not workbook_chart_id:
@@ -244,7 +244,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ChartsRequestBuilder.ChartsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ChartsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

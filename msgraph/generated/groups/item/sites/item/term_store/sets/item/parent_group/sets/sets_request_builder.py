@@ -33,7 +33,7 @@ class SetsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the sets property of the microsoft.graph.termStore.group entity.
         Args:
-            set_id1: Unique identifier of the item
+            set_id1: The unique identifier of set
         Returns: SetItemRequestBuilder
         """
         if not set_id1:
@@ -206,7 +206,7 @@ class SetsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SetsRequestBuilder.SetsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SetsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -194,7 +194,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OpenShiftItemRequestBuilder.OpenShiftItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OpenShiftItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

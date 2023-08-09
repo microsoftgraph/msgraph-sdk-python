@@ -32,7 +32,7 @@ class AttachmentSessionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the attachmentSessions property of the microsoft.graph.todoTask entity.
         Args:
-            attachment_session_id: Unique identifier of the item
+            attachment_session_id: The unique identifier of attachmentSession
         Returns: AttachmentSessionItemRequestBuilder
         """
         if not attachment_session_id:
@@ -149,7 +149,7 @@ class AttachmentSessionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AttachmentSessionsRequestBuilder.AttachmentSessionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AttachmentSessionsRequestBuilderGetQueryParameters] = None
 
     
 

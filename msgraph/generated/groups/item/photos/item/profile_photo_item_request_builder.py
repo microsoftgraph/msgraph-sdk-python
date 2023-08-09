@@ -108,7 +108,7 @@ class ProfilePhotoItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ProfilePhotoItemRequestBuilder.ProfilePhotoItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ProfilePhotoItemRequestBuilderGetQueryParameters] = None
 
     
 

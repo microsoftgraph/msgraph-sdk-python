@@ -37,7 +37,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of servicePrincipal entities.
         Args:
-            service_principal_id: Unique identifier of the item
+            service_principal_id: The unique identifier of servicePrincipal
         Returns: ServicePrincipalItemRequestBuilder
         """
         if not service_principal_id:
@@ -246,7 +246,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ServicePrincipalsRequestBuilder.ServicePrincipalsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ServicePrincipalsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

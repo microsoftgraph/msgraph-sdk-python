@@ -113,7 +113,7 @@ class TaskItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TaskItemRequestBuilder.TaskItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TaskItemRequestBuilderGetQueryParameters] = None
 
     
 

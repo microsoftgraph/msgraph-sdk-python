@@ -209,7 +209,7 @@ class RegisteredOwnersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RegisteredOwnersRequestBuilder.RegisteredOwnersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RegisteredOwnersRequestBuilderGetQueryParameters] = None
 
     
 

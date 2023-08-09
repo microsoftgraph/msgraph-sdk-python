@@ -37,7 +37,7 @@ class GroupSettingTemplatesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of groupSettingTemplate entities.
         Args:
-            group_setting_template_id: Unique identifier of the item
+            group_setting_template_id: The unique identifier of groupSettingTemplate
         Returns: GroupSettingTemplateItemRequestBuilder
         """
         if not group_setting_template_id:
@@ -246,7 +246,7 @@ class GroupSettingTemplatesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GroupSettingTemplatesRequestBuilder.GroupSettingTemplatesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GroupSettingTemplatesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

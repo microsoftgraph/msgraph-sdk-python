@@ -32,7 +32,7 @@ class VersionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the versions property of the microsoft.graph.identityGovernance.workflow entity.
         Args:
-            workflow_version_version_number: Unique identifier of the item
+            workflow_version_version_number: The unique identifier of workflowVersion
         Returns: WorkflowVersionVersionNumberItemRequestBuilder
         """
         if not workflow_version_version_number:
@@ -159,7 +159,7 @@ class VersionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[VersionsRequestBuilder.VersionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[VersionsRequestBuilderGetQueryParameters] = None
 
     
 

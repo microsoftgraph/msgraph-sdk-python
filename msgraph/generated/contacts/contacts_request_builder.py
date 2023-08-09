@@ -37,7 +37,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of orgContact entities.
         Args:
-            org_contact_id: Unique identifier of the item
+            org_contact_id: The unique identifier of orgContact
         Returns: OrgContactItemRequestBuilder
         """
         if not org_contact_id:
@@ -246,7 +246,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ContactsRequestBuilder.ContactsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ContactsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

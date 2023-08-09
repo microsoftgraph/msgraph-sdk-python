@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from .content_type import ContentType
     from .drive import Drive
     from .item_analytics import ItemAnalytics
-    from .list_ import List_
+    from .list____ import List____
     from .onenote import Onenote
     from .permission import Permission
     from .public_error import PublicError
@@ -44,7 +44,7 @@ class Site(BaseItem):
     # Used to address any item contained in this site. This collection can't be enumerated.
     items: Optional[List[BaseItem]] = None
     # The collection of lists under this site.
-    lists: Optional[List[List_]] = None
+    lists: Optional[List[List____]] = None
     # Calls the OneNote service for notebook related operations.
     onenote: Optional[Onenote] = None
     # The collection of long-running operations on the site.
@@ -86,7 +86,7 @@ class Site(BaseItem):
         from .content_type import ContentType
         from .drive import Drive
         from .item_analytics import ItemAnalytics
-        from .list_ import List_
+        from .list____ import List____
         from .onenote import Onenote
         from .permission import Permission
         from .public_error import PublicError
@@ -101,7 +101,7 @@ class Site(BaseItem):
         from .content_type import ContentType
         from .drive import Drive
         from .item_analytics import ItemAnalytics
-        from .list_ import List_
+        from .list____ import List____
         from .onenote import Onenote
         from .permission import Permission
         from .public_error import PublicError
@@ -121,7 +121,7 @@ class Site(BaseItem):
             "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
             "externalColumns": lambda n : setattr(self, 'external_columns', n.get_collection_of_object_values(ColumnDefinition)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(BaseItem)),
-            "lists": lambda n : setattr(self, 'lists', n.get_collection_of_object_values(List_)),
+            "lists": lambda n : setattr(self, 'lists', n.get_collection_of_object_values(List____)),
             "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(Onenote)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(RichLongRunningOperation)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_object_values(Permission)),

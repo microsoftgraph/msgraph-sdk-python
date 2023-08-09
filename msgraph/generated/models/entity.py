@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
@@ -339,7 +338,7 @@ if TYPE_CHECKING:
     from .linked_resource import LinkedResource
     from .list_item import ListItem
     from .list_item_version import ListItemVersion
-    from .list_ import List_
+    from .list____ import List____
     from .localized_notification_message import LocalizedNotificationMessage
     from .long_running_operation import LongRunningOperation
     from .mac_o_s_compliance_policy import MacOSCompliancePolicy
@@ -783,12 +782,10 @@ if TYPE_CHECKING:
     from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
 
 @dataclass
-class Entity(AdditionalDataHolder, BackedModel, Parsable):
-    # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
-
+class Entity(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
+
     # The unique idenfier for an entity. Read-only.
     id: Optional[str] = None
     # The OdataType property
@@ -2139,9 +2136,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
 
             return LinkedResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.list".casefold():
-            from .list_ import List_
+            from .list____ import List____
 
-            return List_()
+            return List____()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.listItem".casefold():
             from .list_item import ListItem
 
@@ -4257,7 +4254,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .linked_resource import LinkedResource
         from .list_item import ListItem
         from .list_item_version import ListItemVersion
-        from .list_ import List_
+        from .list____ import List____
         from .localized_notification_message import LocalizedNotificationMessage
         from .long_running_operation import LongRunningOperation
         from .mac_o_s_compliance_policy import MacOSCompliancePolicy
@@ -5034,7 +5031,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .linked_resource import LinkedResource
         from .list_item import ListItem
         from .list_item_version import ListItemVersion
-        from .list_ import List_
+        from .list____ import List____
         from .localized_notification_message import LocalizedNotificationMessage
         from .long_running_operation import LongRunningOperation
         from .mac_o_s_compliance_policy import MacOSCompliancePolicy

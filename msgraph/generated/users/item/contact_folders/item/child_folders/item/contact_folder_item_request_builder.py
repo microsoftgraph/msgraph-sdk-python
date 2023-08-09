@@ -204,7 +204,7 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ContactFolderItemRequestBuilder.ContactFolderItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ContactFolderItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -34,7 +34,7 @@ class SeriesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the series property of the microsoft.graph.workbookChart entity.
         Args:
-            workbook_chart_series_id: Unique identifier of the item
+            workbook_chart_series_id: The unique identifier of workbookChartSeries
         Returns: WorkbookChartSeriesItemRequestBuilder
         """
         if not workbook_chart_series_id:
@@ -220,7 +220,7 @@ class SeriesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SeriesRequestBuilder.SeriesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SeriesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

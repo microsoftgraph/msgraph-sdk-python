@@ -148,7 +148,7 @@ class DataSourceItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DataSourceItemRequestBuilder.DataSourceItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DataSourceItemRequestBuilderGetQueryParameters] = None
 
     
 

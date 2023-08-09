@@ -32,7 +32,7 @@ class TrackersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the trackers property of the microsoft.graph.security.host entity.
         Args:
-            host_tracker_id: Unique identifier of the item
+            host_tracker_id: The unique identifier of hostTracker
         Returns: HostTrackerItemRequestBuilder
         """
         if not host_tracker_id:
@@ -159,7 +159,7 @@ class TrackersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TrackersRequestBuilder.TrackersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TrackersRequestBuilderGetQueryParameters] = None
 
     
 

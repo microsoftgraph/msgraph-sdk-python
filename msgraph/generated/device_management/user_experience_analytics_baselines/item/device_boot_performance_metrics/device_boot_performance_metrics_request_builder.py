@@ -103,7 +103,7 @@ class DeviceBootPerformanceMetricsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceBootPerformanceMetricsRequestBuilder.DeviceBootPerformanceMetricsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceBootPerformanceMetricsRequestBuilderGetQueryParameters] = None
 
     
 

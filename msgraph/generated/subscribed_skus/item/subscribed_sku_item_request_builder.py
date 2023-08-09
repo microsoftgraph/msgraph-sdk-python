@@ -189,7 +189,7 @@ class SubscribedSkuItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SubscribedSkuItemRequestBuilder.SubscribedSkuItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SubscribedSkuItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

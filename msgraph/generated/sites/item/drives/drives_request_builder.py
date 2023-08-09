@@ -32,7 +32,7 @@ class DrivesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the drives property of the microsoft.graph.site entity.
         Args:
-            drive_id: Unique identifier of the item
+            drive_id: The unique identifier of drive
         Returns: DriveItemRequestBuilder
         """
         if not drive_id:
@@ -159,7 +159,7 @@ class DrivesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DrivesRequestBuilder.DrivesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DrivesRequestBuilderGetQueryParameters] = None
 
     
 

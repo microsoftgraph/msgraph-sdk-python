@@ -33,7 +33,7 @@ class AuthenticationMethodModesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the authenticationMethodModes property of the microsoft.graph.authenticationStrengthRoot entity.
         Args:
-            authentication_method_mode_detail_id: Unique identifier of the item
+            authentication_method_mode_detail_id: The unique identifier of authenticationMethodModeDetail
         Returns: AuthenticationMethodModeDetailItemRequestBuilder
         """
         if not authentication_method_mode_detail_id:
@@ -206,7 +206,7 @@ class AuthenticationMethodModesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AuthenticationMethodModesRequestBuilder.AuthenticationMethodModesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AuthenticationMethodModesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

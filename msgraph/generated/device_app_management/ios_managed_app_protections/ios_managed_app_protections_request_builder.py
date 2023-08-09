@@ -33,7 +33,7 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the iosManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            ios_managed_app_protection_id: Unique identifier of the item
+            ios_managed_app_protection_id: The unique identifier of iosManagedAppProtection
         Returns: IosManagedAppProtectionItemRequestBuilder
         """
         if not ios_managed_app_protection_id:
@@ -206,7 +206,7 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IosManagedAppProtectionsRequestBuilder.IosManagedAppProtectionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IosManagedAppProtectionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the resources property of the microsoft.graph.accessPackageResourceEnvironment entity.
         Args:
-            access_package_resource_id: Unique identifier of the item
+            access_package_resource_id: The unique identifier of accessPackageResource
         Returns: AccessPackageResourceItemRequestBuilder
         """
         if not access_package_resource_id:
@@ -206,7 +206,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ResourcesRequestBuilder.ResourcesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ResourcesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

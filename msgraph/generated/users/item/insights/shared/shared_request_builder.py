@@ -33,7 +33,7 @@ class SharedRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
         Args:
-            shared_insight_id: Unique identifier of the item
+            shared_insight_id: The unique identifier of sharedInsight
         Returns: SharedInsightItemRequestBuilder
         """
         if not shared_insight_id:
@@ -206,7 +206,7 @@ class SharedRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SharedRequestBuilder.SharedRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SharedRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

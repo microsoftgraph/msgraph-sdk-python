@@ -204,7 +204,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TokenLifetimePolicyItemRequestBuilder.TokenLifetimePolicyItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TokenLifetimePolicyItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

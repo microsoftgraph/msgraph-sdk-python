@@ -33,7 +33,7 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the subjectRightsRequests property of the microsoft.graph.privacy entity.
         Args:
-            subject_rights_request_id: Unique identifier of the item
+            subject_rights_request_id: The unique identifier of subjectRightsRequest
         Returns: SubjectRightsRequestItemRequestBuilder
         """
         if not subject_rights_request_id:
@@ -206,7 +206,7 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SubjectRightsRequestsRequestBuilder.SubjectRightsRequestsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SubjectRightsRequestsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

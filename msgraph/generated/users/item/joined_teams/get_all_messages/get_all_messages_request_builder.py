@@ -133,7 +133,7 @@ class GetAllMessagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GetAllMessagesRequestBuilder.GetAllMessagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GetAllMessagesRequestBuilderGetQueryParameters] = None
 
     
 

@@ -103,7 +103,7 @@ class LastSevenDaysRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LastSevenDaysRequestBuilder.LastSevenDaysRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LastSevenDaysRequestBuilderGetQueryParameters] = None
 
     
 

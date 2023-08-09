@@ -33,7 +33,7 @@ class ConnectionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the connections property of the microsoft.graph.externalConnectors.external entity.
         Args:
-            external_connection_id: Unique identifier of the item
+            external_connection_id: The unique identifier of externalConnection
         Returns: ExternalConnectionItemRequestBuilder
         """
         if not external_connection_id:
@@ -206,7 +206,7 @@ class ConnectionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ConnectionsRequestBuilder.ConnectionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ConnectionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

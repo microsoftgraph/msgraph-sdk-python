@@ -33,7 +33,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the audioRoutingGroups property of the microsoft.graph.call entity.
         Args:
-            audio_routing_group_id: Unique identifier of the item
+            audio_routing_group_id: The unique identifier of audioRoutingGroup
         Returns: AudioRoutingGroupItemRequestBuilder
         """
         if not audio_routing_group_id:
@@ -206,7 +206,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AudioRoutingGroupsRequestBuilder.AudioRoutingGroupsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AudioRoutingGroupsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

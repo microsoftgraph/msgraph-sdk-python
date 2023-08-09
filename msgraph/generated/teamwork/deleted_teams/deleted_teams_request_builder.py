@@ -34,7 +34,7 @@ class DeletedTeamsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the deletedTeams property of the microsoft.graph.teamwork entity.
         Args:
-            deleted_team_id: Unique identifier of the item
+            deleted_team_id: The unique identifier of deletedTeam
         Returns: DeletedTeamItemRequestBuilder
         """
         if not deleted_team_id:
@@ -216,7 +216,7 @@ class DeletedTeamsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeletedTeamsRequestBuilder.DeletedTeamsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeletedTeamsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

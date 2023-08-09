@@ -32,7 +32,7 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the followedSites property of the microsoft.graph.user entity.
         Args:
-            site_id: Unique identifier of the item
+            site_id: The unique identifier of site
         Returns: SiteItemRequestBuilder
         """
         if not site_id:
@@ -159,7 +159,7 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[FollowedSitesRequestBuilder.FollowedSitesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[FollowedSitesRequestBuilderGetQueryParameters] = None
 
     
 

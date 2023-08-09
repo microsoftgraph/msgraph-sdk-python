@@ -254,7 +254,7 @@ class MeRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MeRequestBuilder.MeRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MeRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

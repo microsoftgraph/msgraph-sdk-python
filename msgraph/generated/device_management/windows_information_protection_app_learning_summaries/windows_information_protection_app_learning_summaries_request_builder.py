@@ -33,7 +33,7 @@ class WindowsInformationProtectionAppLearningSummariesRequestBuilder(BaseRequest
         """
         Provides operations to manage the windowsInformationProtectionAppLearningSummaries property of the microsoft.graph.deviceManagement entity.
         Args:
-            windows_information_protection_app_learning_summary_id: Unique identifier of the item
+            windows_information_protection_app_learning_summary_id: The unique identifier of windowsInformationProtectionAppLearningSummary
         Returns: WindowsInformationProtectionAppLearningSummaryItemRequestBuilder
         """
         if not windows_information_protection_app_learning_summary_id:
@@ -206,7 +206,7 @@ class WindowsInformationProtectionAppLearningSummariesRequestBuilder(BaseRequest
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WindowsInformationProtectionAppLearningSummariesRequestBuilder.WindowsInformationProtectionAppLearningSummariesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WindowsInformationProtectionAppLearningSummariesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -129,7 +129,7 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GetApplicableContentTypesForListWithListIdRequestBuilder.GetApplicableContentTypesForListWithListIdRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GetApplicableContentTypesForListWithListIdRequestBuilderGetQueryParameters] = None
 
     
 

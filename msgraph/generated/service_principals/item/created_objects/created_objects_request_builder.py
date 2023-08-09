@@ -33,7 +33,7 @@ class CreatedObjectsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the createdObjects property of the microsoft.graph.servicePrincipal entity.
         Args:
-            directory_object_id: Unique identifier of the item
+            directory_object_id: The unique identifier of directoryObject
         Returns: DirectoryObjectItemRequestBuilder
         """
         if not directory_object_id:
@@ -169,7 +169,7 @@ class CreatedObjectsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CreatedObjectsRequestBuilder.CreatedObjectsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CreatedObjectsRequestBuilderGetQueryParameters] = None
 
     
 

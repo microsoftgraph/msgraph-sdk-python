@@ -33,7 +33,7 @@ class WorkforceIntegrationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the workforceIntegrations property of the microsoft.graph.teamwork entity.
         Args:
-            workforce_integration_id: Unique identifier of the item
+            workforce_integration_id: The unique identifier of workforceIntegration
         Returns: WorkforceIntegrationItemRequestBuilder
         """
         if not workforce_integration_id:
@@ -206,7 +206,7 @@ class WorkforceIntegrationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WorkforceIntegrationsRequestBuilder.WorkforceIntegrationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WorkforceIntegrationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

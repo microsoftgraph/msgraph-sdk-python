@@ -314,7 +314,7 @@ class FilterRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[FilterRequestBuilder.FilterRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[FilterRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

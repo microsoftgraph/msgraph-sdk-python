@@ -33,7 +33,7 @@ class NotificationMessageTemplatesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the notificationMessageTemplates property of the microsoft.graph.deviceManagement entity.
         Args:
-            notification_message_template_id: Unique identifier of the item
+            notification_message_template_id: The unique identifier of notificationMessageTemplate
         Returns: NotificationMessageTemplateItemRequestBuilder
         """
         if not notification_message_template_id:
@@ -206,7 +206,7 @@ class NotificationMessageTemplatesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[NotificationMessageTemplatesRequestBuilder.NotificationMessageTemplatesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[NotificationMessageTemplatesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

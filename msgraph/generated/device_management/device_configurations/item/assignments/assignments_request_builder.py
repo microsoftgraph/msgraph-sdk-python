@@ -33,7 +33,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the assignments property of the microsoft.graph.deviceConfiguration entity.
         Args:
-            device_configuration_assignment_id: Unique identifier of the item
+            device_configuration_assignment_id: The unique identifier of deviceConfigurationAssignment
         Returns: DeviceConfigurationAssignmentItemRequestBuilder
         """
         if not device_configuration_assignment_id:
@@ -206,7 +206,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AssignmentsRequestBuilder.AssignmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AssignmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

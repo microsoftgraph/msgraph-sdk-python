@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
@@ -9,12 +8,10 @@ if TYPE_CHECKING:
     from .entitlement_management_schedule import EntitlementManagementSchedule
 
 @dataclass
-class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, BackedModel, Parsable):
-    # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
-
+class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
+
     # Indicates whether the requestor is allowed to set a custom schedule.
     allow_custom_assignment_schedule: Optional[bool] = None
     # Indicates whether a request to add must be approved by an approver.

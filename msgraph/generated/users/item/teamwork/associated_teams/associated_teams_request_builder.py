@@ -33,7 +33,7 @@ class AssociatedTeamsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the associatedTeams property of the microsoft.graph.userTeamwork entity.
         Args:
-            associated_team_info_id: Unique identifier of the item
+            associated_team_info_id: The unique identifier of associatedTeamInfo
         Returns: AssociatedTeamInfoItemRequestBuilder
         """
         if not associated_team_info_id:
@@ -206,7 +206,7 @@ class AssociatedTeamsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AssociatedTeamsRequestBuilder.AssociatedTeamsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AssociatedTeamsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

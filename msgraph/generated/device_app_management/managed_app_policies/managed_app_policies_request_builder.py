@@ -33,7 +33,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            managed_app_policy_id: Unique identifier of the item
+            managed_app_policy_id: The unique identifier of managedAppPolicy
         Returns: ManagedAppPolicyItemRequestBuilder
         """
         if not managed_app_policy_id:
@@ -206,7 +206,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ManagedAppPoliciesRequestBuilder.ManagedAppPoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ManagedAppPoliciesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

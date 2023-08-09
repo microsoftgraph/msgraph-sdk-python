@@ -204,7 +204,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilder.TermsAndConditionsAcceptanceStatusItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TermsAndConditionsAcceptanceStatusItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

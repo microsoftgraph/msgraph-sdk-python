@@ -143,7 +143,7 @@ class GraphAdministrativeUnitRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GraphAdministrativeUnitRequestBuilder.GraphAdministrativeUnitRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GraphAdministrativeUnitRequestBuilderGetQueryParameters] = None
 
     
 

@@ -33,7 +33,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the connectedOrganizations property of the microsoft.graph.entitlementManagement entity.
         Args:
-            connected_organization_id: Unique identifier of the item
+            connected_organization_id: The unique identifier of connectedOrganization
         Returns: ConnectedOrganizationItemRequestBuilder
         """
         if not connected_organization_id:
@@ -206,7 +206,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ConnectedOrganizationsRequestBuilder.ConnectedOrganizationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ConnectedOrganizationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

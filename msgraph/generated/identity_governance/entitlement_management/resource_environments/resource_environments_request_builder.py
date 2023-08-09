@@ -33,7 +33,7 @@ class ResourceEnvironmentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the resourceEnvironments property of the microsoft.graph.entitlementManagement entity.
         Args:
-            access_package_resource_environment_id: Unique identifier of the item
+            access_package_resource_environment_id: The unique identifier of accessPackageResourceEnvironment
         Returns: AccessPackageResourceEnvironmentItemRequestBuilder
         """
         if not access_package_resource_environment_id:
@@ -206,7 +206,7 @@ class ResourceEnvironmentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ResourceEnvironmentsRequestBuilder.ResourceEnvironmentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ResourceEnvironmentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

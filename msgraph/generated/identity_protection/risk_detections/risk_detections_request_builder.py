@@ -33,7 +33,7 @@ class RiskDetectionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the riskDetections property of the microsoft.graph.identityProtectionRoot entity.
         Args:
-            risk_detection_id: Unique identifier of the item
+            risk_detection_id: The unique identifier of riskDetection
         Returns: RiskDetectionItemRequestBuilder
         """
         if not risk_detection_id:
@@ -206,7 +206,7 @@ class RiskDetectionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RiskDetectionsRequestBuilder.RiskDetectionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RiskDetectionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

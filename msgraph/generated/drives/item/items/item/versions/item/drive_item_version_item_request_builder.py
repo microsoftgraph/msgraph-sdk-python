@@ -214,7 +214,7 @@ class DriveItemVersionItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DriveItemVersionItemRequestBuilder.DriveItemVersionItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DriveItemVersionItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

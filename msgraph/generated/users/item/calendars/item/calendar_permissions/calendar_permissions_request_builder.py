@@ -33,7 +33,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the calendarPermissions property of the microsoft.graph.calendar entity.
         Args:
-            calendar_permission_id: Unique identifier of the item
+            calendar_permission_id: The unique identifier of calendarPermission
         Returns: CalendarPermissionItemRequestBuilder
         """
         if not calendar_permission_id:
@@ -196,7 +196,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CalendarPermissionsRequestBuilder.CalendarPermissionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CalendarPermissionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

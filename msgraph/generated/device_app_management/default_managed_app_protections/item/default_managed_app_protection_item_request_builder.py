@@ -214,7 +214,7 @@ class DefaultManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DefaultManagedAppProtectionItemRequestBuilder.DefaultManagedAppProtectionItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DefaultManagedAppProtectionItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -142,7 +142,7 @@ class OutlookRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OutlookRequestBuilder.OutlookRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OutlookRequestBuilderGetQueryParameters] = None
 
     
 

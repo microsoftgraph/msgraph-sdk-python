@@ -33,7 +33,7 @@ class SessionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the sessions property of the microsoft.graph.callRecords.callRecord entity.
         Args:
-            session_id: Unique identifier of the item
+            session_id: The unique identifier of session
         Returns: SessionItemRequestBuilder
         """
         if not session_id:
@@ -206,7 +206,7 @@ class SessionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SessionsRequestBuilder.SessionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SessionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

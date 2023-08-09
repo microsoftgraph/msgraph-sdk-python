@@ -103,7 +103,7 @@ class CustomExtensionRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CustomExtensionRequestBuilder.CustomExtensionRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CustomExtensionRequestBuilderGetQueryParameters] = None
 
     
 

@@ -33,7 +33,7 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the appLogCollectionRequests property of the microsoft.graph.mobileAppTroubleshootingEvent entity.
         Args:
-            app_log_collection_request_id: Unique identifier of the item
+            app_log_collection_request_id: The unique identifier of appLogCollectionRequest
         Returns: AppLogCollectionRequestItemRequestBuilder
         """
         if not app_log_collection_request_id:
@@ -206,7 +206,7 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AppLogCollectionRequestsRequestBuilder.AppLogCollectionRequestsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AppLogCollectionRequestsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

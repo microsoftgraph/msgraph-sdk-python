@@ -214,7 +214,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WorkbookNamedItemItemRequestBuilder.WorkbookNamedItemItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WorkbookNamedItemItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

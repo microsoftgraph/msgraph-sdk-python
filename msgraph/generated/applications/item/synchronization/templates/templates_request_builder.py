@@ -33,7 +33,7 @@ class TemplatesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the templates property of the microsoft.graph.synchronization entity.
         Args:
-            synchronization_template_id: Unique identifier of the item
+            synchronization_template_id: The unique identifier of synchronizationTemplate
         Returns: SynchronizationTemplateItemRequestBuilder
         """
         if not synchronization_template_id:
@@ -206,7 +206,7 @@ class TemplatesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TemplatesRequestBuilder.TemplatesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TemplatesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

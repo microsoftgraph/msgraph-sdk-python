@@ -32,7 +32,7 @@ class TemplatesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the templates property of the microsoft.graph.conditionalAccessRoot entity.
         Args:
-            conditional_access_template_id: Unique identifier of the item
+            conditional_access_template_id: The unique identifier of conditionalAccessTemplate
         Returns: ConditionalAccessTemplateItemRequestBuilder
         """
         if not conditional_access_template_id:
@@ -159,7 +159,7 @@ class TemplatesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TemplatesRequestBuilder.TemplatesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TemplatesRequestBuilderGetQueryParameters] = None
 
     
 

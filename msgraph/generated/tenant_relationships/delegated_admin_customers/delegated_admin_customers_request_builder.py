@@ -33,7 +33,7 @@ class DelegatedAdminCustomersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the delegatedAdminCustomers property of the microsoft.graph.tenantRelationship entity.
         Args:
-            delegated_admin_customer_id: Unique identifier of the item
+            delegated_admin_customer_id: The unique identifier of delegatedAdminCustomer
         Returns: DelegatedAdminCustomerItemRequestBuilder
         """
         if not delegated_admin_customer_id:
@@ -206,7 +206,7 @@ class DelegatedAdminCustomersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DelegatedAdminCustomersRequestBuilder.DelegatedAdminCustomersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DelegatedAdminCustomersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -33,7 +33,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the resourceOperations property of the microsoft.graph.deviceManagement entity.
         Args:
-            resource_operation_id: Unique identifier of the item
+            resource_operation_id: The unique identifier of resourceOperation
         Returns: ResourceOperationItemRequestBuilder
         """
         if not resource_operation_id:
@@ -206,7 +206,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ResourceOperationsRequestBuilder.ResourceOperationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ResourceOperationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

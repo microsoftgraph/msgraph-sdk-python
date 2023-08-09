@@ -34,7 +34,7 @@ class OnlineMeetingsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the onlineMeetings property of the microsoft.graph.user entity.
         Args:
-            online_meeting_id: Unique identifier of the item
+            online_meeting_id: The unique identifier of onlineMeeting
         Returns: OnlineMeetingItemRequestBuilder
         """
         if not online_meeting_id:
@@ -216,7 +216,7 @@ class OnlineMeetingsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OnlineMeetingsRequestBuilder.OnlineMeetingsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OnlineMeetingsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

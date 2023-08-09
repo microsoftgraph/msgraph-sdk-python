@@ -194,7 +194,7 @@ class UserExperienceAnalyticsDeviceScoresItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsDeviceScoresItemRequestBuilder.UserExperienceAnalyticsDeviceScoresItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserExperienceAnalyticsDeviceScoresItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

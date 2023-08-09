@@ -33,7 +33,7 @@ class RetentionEventTypesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the retentionEventTypes property of the microsoft.graph.security.triggerTypesRoot entity.
         Args:
-            retention_event_type_id: Unique identifier of the item
+            retention_event_type_id: The unique identifier of retentionEventType
         Returns: RetentionEventTypeItemRequestBuilder
         """
         if not retention_event_type_id:
@@ -206,7 +206,7 @@ class RetentionEventTypesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RetentionEventTypesRequestBuilder.RetentionEventTypesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RetentionEventTypesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

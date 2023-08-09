@@ -32,7 +32,7 @@ class BaseTypesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the baseTypes property of the microsoft.graph.contentType entity.
         Args:
-            content_type_id1: Unique identifier of the item
+            content_type_id1: The unique identifier of contentType
         Returns: ContentTypeItemRequestBuilder
         """
         if not content_type_id1:
@@ -159,7 +159,7 @@ class BaseTypesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[BaseTypesRequestBuilder.BaseTypesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[BaseTypesRequestBuilderGetQueryParameters] = None
 
     
 

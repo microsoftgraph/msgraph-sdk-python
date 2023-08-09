@@ -195,7 +195,7 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DirectoryRolesWithRoleTemplateIdRequestBuilder.DirectoryRolesWithRoleTemplateIdRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DirectoryRolesWithRoleTemplateIdRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

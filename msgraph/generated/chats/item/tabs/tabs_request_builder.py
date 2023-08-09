@@ -33,7 +33,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the tabs property of the microsoft.graph.chat entity.
         Args:
-            teams_tab_id: Unique identifier of the item
+            teams_tab_id: The unique identifier of teamsTab
         Returns: TeamsTabItemRequestBuilder
         """
         if not teams_tab_id:
@@ -206,7 +206,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TabsRequestBuilder.TabsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TabsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

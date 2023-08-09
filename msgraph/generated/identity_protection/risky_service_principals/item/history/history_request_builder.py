@@ -33,7 +33,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the history property of the microsoft.graph.riskyServicePrincipal entity.
         Args:
-            risky_service_principal_history_item_id: Unique identifier of the item
+            risky_service_principal_history_item_id: The unique identifier of riskyServicePrincipalHistoryItem
         Returns: RiskyServicePrincipalHistoryItemItemRequestBuilder
         """
         if not risky_service_principal_history_item_id:
@@ -206,7 +206,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HistoryRequestBuilder.HistoryRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HistoryRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

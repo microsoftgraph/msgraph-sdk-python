@@ -33,7 +33,7 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of attributeMappingFunctionSchema entities.
         Args:
-            attribute_mapping_function_schema_id: Unique identifier of the item
+            attribute_mapping_function_schema_id: The unique identifier of attributeMappingFunctionSchema
         Returns: AttributeMappingFunctionSchemaItemRequestBuilder
         """
         if not attribute_mapping_function_schema_id:
@@ -206,7 +206,7 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[FunctionsRequestBuilder.FunctionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[FunctionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

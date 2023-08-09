@@ -33,7 +33,7 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the attributeSets property of the microsoft.graph.directory entity.
         Args:
-            attribute_set_id: Unique identifier of the item
+            attribute_set_id: The unique identifier of attributeSet
         Returns: AttributeSetItemRequestBuilder
         """
         if not attribute_set_id:
@@ -206,7 +206,7 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AttributeSetsRequestBuilder.AttributeSetsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AttributeSetsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

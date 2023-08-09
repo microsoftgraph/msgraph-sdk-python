@@ -33,7 +33,7 @@ class CertificateBasedAuthConfigurationRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of certificateBasedAuthConfiguration entities.
         Args:
-            certificate_based_auth_configuration_id: Unique identifier of the item
+            certificate_based_auth_configuration_id: The unique identifier of certificateBasedAuthConfiguration
         Returns: CertificateBasedAuthConfigurationItemRequestBuilder
         """
         if not certificate_based_auth_configuration_id:
@@ -206,7 +206,7 @@ class CertificateBasedAuthConfigurationRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CertificateBasedAuthConfigurationRequestBuilder.CertificateBasedAuthConfigurationRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CertificateBasedAuthConfigurationRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

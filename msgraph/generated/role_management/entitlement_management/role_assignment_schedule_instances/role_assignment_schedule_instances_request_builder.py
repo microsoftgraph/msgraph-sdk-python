@@ -34,7 +34,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the roleAssignmentScheduleInstances property of the microsoft.graph.rbacApplication entity.
         Args:
-            unified_role_assignment_schedule_instance_id: Unique identifier of the item
+            unified_role_assignment_schedule_instance_id: The unique identifier of unifiedRoleAssignmentScheduleInstance
         Returns: UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder
         """
         if not unified_role_assignment_schedule_instance_id:
@@ -220,7 +220,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RoleAssignmentScheduleInstancesRequestBuilder.RoleAssignmentScheduleInstancesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RoleAssignmentScheduleInstancesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

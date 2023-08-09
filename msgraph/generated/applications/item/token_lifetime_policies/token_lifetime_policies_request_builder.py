@@ -169,7 +169,7 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TokenLifetimePoliciesRequestBuilder.TokenLifetimePoliciesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TokenLifetimePoliciesRequestBuilderGetQueryParameters] = None
 
     
 

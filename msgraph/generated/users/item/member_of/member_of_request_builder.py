@@ -35,7 +35,7 @@ class MemberOfRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the memberOf property of the microsoft.graph.user entity.
         Args:
-            directory_object_id: Unique identifier of the item
+            directory_object_id: The unique identifier of directoryObject
         Returns: DirectoryObjectItemRequestBuilder
         """
         if not directory_object_id:
@@ -189,7 +189,7 @@ class MemberOfRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MemberOfRequestBuilder.MemberOfRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MemberOfRequestBuilderGetQueryParameters] = None
 
     
 

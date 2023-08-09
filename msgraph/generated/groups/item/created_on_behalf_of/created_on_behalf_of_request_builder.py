@@ -103,7 +103,7 @@ class CreatedOnBehalfOfRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CreatedOnBehalfOfRequestBuilder.CreatedOnBehalfOfRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CreatedOnBehalfOfRequestBuilderGetQueryParameters] = None
 
     
 

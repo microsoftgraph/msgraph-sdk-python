@@ -33,7 +33,7 @@ class ItemActivityStatsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the itemActivityStats property of the microsoft.graph.itemAnalytics entity.
         Args:
-            item_activity_stat_id: Unique identifier of the item
+            item_activity_stat_id: The unique identifier of itemActivityStat
         Returns: ItemActivityStatItemRequestBuilder
         """
         if not item_activity_stat_id:
@@ -206,7 +206,7 @@ class ItemActivityStatsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ItemActivityStatsRequestBuilder.ItemActivityStatsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ItemActivityStatsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

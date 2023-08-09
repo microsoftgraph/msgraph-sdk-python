@@ -33,7 +33,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the additionalSources property of the microsoft.graph.security.ediscoverySearch entity.
         Args:
-            data_source_id: Unique identifier of the item
+            data_source_id: The unique identifier of dataSource
         Returns: DataSourceItemRequestBuilder
         """
         if not data_source_id:
@@ -206,7 +206,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AdditionalSourcesRequestBuilder.AdditionalSourcesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AdditionalSourcesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

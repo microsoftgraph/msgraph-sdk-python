@@ -33,7 +33,7 @@ class HostedContentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the hostedContents property of the microsoft.graph.chatMessage entity.
         Args:
-            chat_message_hosted_content_id: Unique identifier of the item
+            chat_message_hosted_content_id: The unique identifier of chatMessageHostedContent
         Returns: ChatMessageHostedContentItemRequestBuilder
         """
         if not chat_message_hosted_content_id:
@@ -206,7 +206,7 @@ class HostedContentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HostedContentsRequestBuilder.HostedContentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HostedContentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

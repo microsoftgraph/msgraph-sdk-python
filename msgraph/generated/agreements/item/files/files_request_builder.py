@@ -33,7 +33,7 @@ class FilesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the files property of the microsoft.graph.agreement entity.
         Args:
-            agreement_file_localization_id: Unique identifier of the item
+            agreement_file_localization_id: The unique identifier of agreementFileLocalization
         Returns: AgreementFileLocalizationItemRequestBuilder
         """
         if not agreement_file_localization_id:
@@ -206,7 +206,7 @@ class FilesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[FilesRequestBuilder.FilesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[FilesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

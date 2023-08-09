@@ -169,7 +169,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MembersRequestBuilder.MembersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MembersRequestBuilderGetQueryParameters] = None
 
     
 

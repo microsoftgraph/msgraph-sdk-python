@@ -33,7 +33,7 @@ class QuestionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the questions property of the microsoft.graph.accessPackageAssignmentPolicy entity.
         Args:
-            access_package_question_id: Unique identifier of the item
+            access_package_question_id: The unique identifier of accessPackageQuestion
         Returns: AccessPackageQuestionItemRequestBuilder
         """
         if not access_package_question_id:
@@ -206,7 +206,7 @@ class QuestionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[QuestionsRequestBuilder.QuestionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[QuestionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

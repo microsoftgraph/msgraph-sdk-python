@@ -32,7 +32,7 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the categories property of the microsoft.graph.mobileApp entity.
         Args:
-            mobile_app_category_id: Unique identifier of the item
+            mobile_app_category_id: The unique identifier of mobileAppCategory
         Returns: MobileAppCategoryItemRequestBuilder
         """
         if not mobile_app_category_id:
@@ -159,7 +159,7 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CategoriesRequestBuilder.CategoriesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CategoriesRequestBuilderGetQueryParameters] = None
 
     
 

@@ -35,6 +35,8 @@ class Incident(Entity):
     display_name: Optional[str] = None
     # The URL for the incident page in the Microsoft 365 Defender portal.
     incident_web_url: Optional[str] = None
+    # The lastModifiedBy property
+    last_modified_by: Optional[str] = None
     # Time when the incident was last updated.
     last_update_date_time: Optional[datetime.datetime] = None
     # The OdataType property
@@ -91,6 +93,7 @@ class Incident(Entity):
             "determination": lambda n : setattr(self, 'determination', n.get_enum_value(AlertDetermination)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "incidentWebUrl": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),
             "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
             "redirectIncidentId": lambda n : setattr(self, 'redirect_incident_id', n.get_str_value()),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(AlertSeverity)),
@@ -119,6 +122,7 @@ class Incident(Entity):
         writer.write_enum_value("determination", self.determination)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("incidentWebUrl", self.incident_web_url)
+        writer.write_str_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
         writer.write_str_value("redirectIncidentId", self.redirect_incident_id)
         writer.write_enum_value("severity", self.severity)

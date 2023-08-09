@@ -194,7 +194,7 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceCategoryRequestBuilder.DeviceCategoryRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceCategoryRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

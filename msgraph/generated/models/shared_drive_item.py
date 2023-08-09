@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from .drive_item import DriveItem
     from .identity_set import IdentitySet
     from .list_item import ListItem
-    from .list_ import List_
+    from .list____ import List____
     from .permission import Permission
     from .site import Site
 
@@ -23,7 +23,7 @@ class SharedDriveItem(BaseItem):
     # All driveItems contained in the sharing root. This collection cannot be enumerated.
     items: Optional[List[DriveItem]] = None
     # Used to access the underlying list
-    list_: Optional[List_] = None
+    list_: Optional[List____] = None
     # Used to access the underlying listItem
     list_item: Optional[ListItem] = None
     # Information about the owner of the shared item being referenced.
@@ -56,7 +56,7 @@ class SharedDriveItem(BaseItem):
         from .drive_item import DriveItem
         from .identity_set import IdentitySet
         from .list_item import ListItem
-        from .list_ import List_
+        from .list____ import List____
         from .permission import Permission
         from .site import Site
 
@@ -64,14 +64,14 @@ class SharedDriveItem(BaseItem):
         from .drive_item import DriveItem
         from .identity_set import IdentitySet
         from .list_item import ListItem
-        from .list_ import List_
+        from .list____ import List____
         from .permission import Permission
         from .site import Site
 
         fields: Dict[str, Callable[[Any], None]] = {
             "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(DriveItem)),
-            "list": lambda n : setattr(self, 'list_', n.get_object_value(List_)),
+            "list": lambda n : setattr(self, 'list_', n.get_object_value(List____)),
             "listItem": lambda n : setattr(self, 'list_item', n.get_object_value(ListItem)),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(IdentitySet)),
             "permission": lambda n : setattr(self, 'permission', n.get_object_value(Permission)),

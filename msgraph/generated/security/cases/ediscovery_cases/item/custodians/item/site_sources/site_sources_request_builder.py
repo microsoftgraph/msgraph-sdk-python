@@ -33,7 +33,7 @@ class SiteSourcesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the siteSources property of the microsoft.graph.security.ediscoveryCustodian entity.
         Args:
-            site_source_id: Unique identifier of the item
+            site_source_id: The unique identifier of siteSource
         Returns: SiteSourceItemRequestBuilder
         """
         if not site_source_id:
@@ -206,7 +206,7 @@ class SiteSourcesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SiteSourcesRequestBuilder.SiteSourcesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SiteSourcesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

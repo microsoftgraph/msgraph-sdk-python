@@ -194,7 +194,7 @@ class UserExperienceAnalyticsAppHealthDevicePerformanceItemRequestBuilder(BaseRe
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsAppHealthDevicePerformanceItemRequestBuilder.UserExperienceAnalyticsAppHealthDevicePerformanceItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserExperienceAnalyticsAppHealthDevicePerformanceItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

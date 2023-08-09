@@ -33,7 +33,7 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the customQuestions property of the microsoft.graph.bookingBusiness entity.
         Args:
-            booking_custom_question_id: Unique identifier of the item
+            booking_custom_question_id: The unique identifier of bookingCustomQuestion
         Returns: BookingCustomQuestionItemRequestBuilder
         """
         if not booking_custom_question_id:
@@ -206,7 +206,7 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CustomQuestionsRequestBuilder.CustomQuestionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[CustomQuestionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

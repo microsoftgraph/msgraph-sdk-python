@@ -32,7 +32,7 @@ class ExternalColumnsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the externalColumns property of the microsoft.graph.site entity.
         Args:
-            column_definition_id: Unique identifier of the item
+            column_definition_id: The unique identifier of columnDefinition
         Returns: ColumnDefinitionItemRequestBuilder
         """
         if not column_definition_id:
@@ -159,7 +159,7 @@ class ExternalColumnsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ExternalColumnsRequestBuilder.ExternalColumnsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ExternalColumnsRequestBuilderGetQueryParameters] = None
 
     
 

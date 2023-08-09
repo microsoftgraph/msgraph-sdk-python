@@ -43,7 +43,7 @@ class DeletedItemsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
         Args:
-            directory_object_id: Unique identifier of the item
+            directory_object_id: The unique identifier of directoryObject
         Returns: DirectoryObjectItemRequestBuilder
         """
         if not directory_object_id:
@@ -306,7 +306,7 @@ class DeletedItemsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeletedItemsRequestBuilder.DeletedItemsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeletedItemsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -34,7 +34,7 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder)
         """
         Provides operations to manage the importedWindowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
         Args:
-            imported_windows_autopilot_device_identity_id: Unique identifier of the item
+            imported_windows_autopilot_device_identity_id: The unique identifier of importedWindowsAutopilotDeviceIdentity
         Returns: ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder
         """
         if not imported_windows_autopilot_device_identity_id:
@@ -216,7 +216,7 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder)
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder.ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

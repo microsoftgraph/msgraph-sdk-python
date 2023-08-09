@@ -35,7 +35,7 @@ class RiskyServicePrincipalsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the riskyServicePrincipals property of the microsoft.graph.identityProtectionRoot entity.
         Args:
-            risky_service_principal_id: Unique identifier of the item
+            risky_service_principal_id: The unique identifier of riskyServicePrincipal
         Returns: RiskyServicePrincipalItemRequestBuilder
         """
         if not risky_service_principal_id:
@@ -226,7 +226,7 @@ class RiskyServicePrincipalsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RiskyServicePrincipalsRequestBuilder.RiskyServicePrincipalsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RiskyServicePrincipalsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

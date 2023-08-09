@@ -194,7 +194,7 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RetentionEventTypeItemRequestBuilder.RetentionEventTypeItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RetentionEventTypeItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

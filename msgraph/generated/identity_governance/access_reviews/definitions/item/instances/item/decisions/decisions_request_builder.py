@@ -34,7 +34,7 @@ class DecisionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the decisions property of the microsoft.graph.accessReviewInstance entity.
         Args:
-            access_review_instance_decision_item_id: Unique identifier of the item
+            access_review_instance_decision_item_id: The unique identifier of accessReviewInstanceDecisionItem
         Returns: AccessReviewInstanceDecisionItemItemRequestBuilder
         """
         if not access_review_instance_decision_item_id:
@@ -220,7 +220,7 @@ class DecisionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DecisionsRequestBuilder.DecisionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DecisionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

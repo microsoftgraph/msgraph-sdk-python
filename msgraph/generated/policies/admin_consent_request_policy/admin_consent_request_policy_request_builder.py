@@ -194,7 +194,7 @@ class AdminConsentRequestPolicyRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AdminConsentRequestPolicyRequestBuilder.AdminConsentRequestPolicyRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AdminConsentRequestPolicyRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -93,7 +93,7 @@ class RefRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RefRequestBuilder.RefRequestBuilderDeleteQueryParameters] = None
+        query_parameters: Optional[RefRequestBuilderDeleteQueryParameters] = None
 
     
 

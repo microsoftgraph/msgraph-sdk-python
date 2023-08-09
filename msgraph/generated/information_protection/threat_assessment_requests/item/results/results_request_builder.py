@@ -33,7 +33,7 @@ class ResultsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the results property of the microsoft.graph.threatAssessmentRequest entity.
         Args:
-            threat_assessment_result_id: Unique identifier of the item
+            threat_assessment_result_id: The unique identifier of threatAssessmentResult
         Returns: ThreatAssessmentResultItemRequestBuilder
         """
         if not threat_assessment_result_id:
@@ -206,7 +206,7 @@ class ResultsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ResultsRequestBuilder.ResultsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ResultsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

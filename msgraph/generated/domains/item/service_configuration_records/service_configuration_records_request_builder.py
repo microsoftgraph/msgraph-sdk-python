@@ -33,7 +33,7 @@ class ServiceConfigurationRecordsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the serviceConfigurationRecords property of the microsoft.graph.domain entity.
         Args:
-            domain_dns_record_id: Unique identifier of the item
+            domain_dns_record_id: The unique identifier of domainDnsRecord
         Returns: DomainDnsRecordItemRequestBuilder
         """
         if not domain_dns_record_id:
@@ -206,7 +206,7 @@ class ServiceConfigurationRecordsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ServiceConfigurationRecordsRequestBuilder.ServiceConfigurationRecordsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ServiceConfigurationRecordsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

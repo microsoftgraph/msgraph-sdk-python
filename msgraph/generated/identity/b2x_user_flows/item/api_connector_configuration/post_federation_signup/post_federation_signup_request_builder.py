@@ -214,7 +214,7 @@ class PostFederationSignupRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PostFederationSignupRequestBuilder.PostFederationSignupRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PostFederationSignupRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -149,7 +149,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AlertItemRequestBuilder.AlertItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AlertItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

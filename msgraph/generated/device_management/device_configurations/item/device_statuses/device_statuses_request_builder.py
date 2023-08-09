@@ -33,7 +33,7 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceConfiguration entity.
         Args:
-            device_configuration_device_status_id: Unique identifier of the item
+            device_configuration_device_status_id: The unique identifier of deviceConfigurationDeviceStatus
         Returns: DeviceConfigurationDeviceStatusItemRequestBuilder
         """
         if not device_configuration_device_status_id:
@@ -206,7 +206,7 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceStatusesRequestBuilder.DeviceStatusesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceStatusesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

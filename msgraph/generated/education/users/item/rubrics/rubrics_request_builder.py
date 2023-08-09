@@ -33,7 +33,7 @@ class RubricsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the rubrics property of the microsoft.graph.educationUser entity.
         Args:
-            education_rubric_id: Unique identifier of the item
+            education_rubric_id: The unique identifier of educationRubric
         Returns: EducationRubricItemRequestBuilder
         """
         if not education_rubric_id:
@@ -206,7 +206,7 @@ class RubricsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RubricsRequestBuilder.RubricsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RubricsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

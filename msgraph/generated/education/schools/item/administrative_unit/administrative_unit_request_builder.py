@@ -149,7 +149,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AdministrativeUnitRequestBuilder.AdministrativeUnitRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AdministrativeUnitRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -123,7 +123,7 @@ class ApiConnectorConfigurationRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ApiConnectorConfigurationRequestBuilder.ApiConnectorConfigurationRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ApiConnectorConfigurationRequestBuilderGetQueryParameters] = None
 
     
 

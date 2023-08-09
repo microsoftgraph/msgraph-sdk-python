@@ -35,7 +35,7 @@ class TablesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the tables property of the microsoft.graph.workbook entity.
         Args:
-            workbook_table_id: Unique identifier of the item
+            workbook_table_id: The unique identifier of workbookTable
         Returns: WorkbookTableItemRequestBuilder
         """
         if not workbook_table_id:
@@ -230,7 +230,7 @@ class TablesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[TablesRequestBuilder.TablesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[TablesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

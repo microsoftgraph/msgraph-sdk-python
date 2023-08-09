@@ -32,7 +32,7 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of subscription entities.
         Args:
-            subscription_id: Unique identifier of the item
+            subscription_id: The unique identifier of subscription
         Returns: SubscriptionItemRequestBuilder
         """
         if not subscription_id:
@@ -166,7 +166,7 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SubscriptionsRequestBuilder.SubscriptionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SubscriptionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

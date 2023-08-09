@@ -33,7 +33,7 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the iosUpdateStatuses property of the microsoft.graph.deviceManagement entity.
         Args:
-            ios_update_device_status_id: Unique identifier of the item
+            ios_update_device_status_id: The unique identifier of iosUpdateDeviceStatus
         Returns: IosUpdateDeviceStatusItemRequestBuilder
         """
         if not ios_update_device_status_id:
@@ -206,7 +206,7 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[IosUpdateStatusesRequestBuilder.IosUpdateStatusesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[IosUpdateStatusesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

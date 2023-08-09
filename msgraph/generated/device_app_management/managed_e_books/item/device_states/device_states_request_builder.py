@@ -33,7 +33,7 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the deviceStates property of the microsoft.graph.managedEBook entity.
         Args:
-            device_install_state_id: Unique identifier of the item
+            device_install_state_id: The unique identifier of deviceInstallState
         Returns: DeviceInstallStateItemRequestBuilder
         """
         if not device_install_state_id:
@@ -206,7 +206,7 @@ class DeviceStatesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceStatesRequestBuilder.DeviceStatesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceStatesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

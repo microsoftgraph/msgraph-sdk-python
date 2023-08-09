@@ -33,7 +33,7 @@ class UserExperienceAnalyticsDeviceScoresRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the userExperienceAnalyticsDeviceScores property of the microsoft.graph.deviceManagement entity.
         Args:
-            user_experience_analytics_device_scores_id: Unique identifier of the item
+            user_experience_analytics_device_scores_id: The unique identifier of userExperienceAnalyticsDeviceScores
         Returns: UserExperienceAnalyticsDeviceScoresItemRequestBuilder
         """
         if not user_experience_analytics_device_scores_id:
@@ -206,7 +206,7 @@ class UserExperienceAnalyticsDeviceScoresRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsDeviceScoresRequestBuilder.UserExperienceAnalyticsDeviceScoresRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserExperienceAnalyticsDeviceScoresRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

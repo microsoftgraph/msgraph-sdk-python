@@ -103,7 +103,7 @@ class MessageRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MessageRequestBuilder.MessageRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MessageRequestBuilderGetQueryParameters] = None
 
     
 

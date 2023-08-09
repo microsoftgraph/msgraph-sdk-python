@@ -103,7 +103,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PrintConnectorItemRequestBuilder.PrintConnectorItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PrintConnectorItemRequestBuilderGetQueryParameters] = None
 
     
 

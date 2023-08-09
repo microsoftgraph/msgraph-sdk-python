@@ -204,7 +204,7 @@ class WindowsProtectionStateRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WindowsProtectionStateRequestBuilder.WindowsProtectionStateRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WindowsProtectionStateRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

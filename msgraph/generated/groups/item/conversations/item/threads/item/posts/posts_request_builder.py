@@ -32,7 +32,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
         Args:
-            post_id: Unique identifier of the item
+            post_id: The unique identifier of post
         Returns: PostItemRequestBuilder
         """
         if not post_id:
@@ -154,7 +154,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PostsRequestBuilder.PostsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PostsRequestBuilderGetQueryParameters] = None
 
     
 

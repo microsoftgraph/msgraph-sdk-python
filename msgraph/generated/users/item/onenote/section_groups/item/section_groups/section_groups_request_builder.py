@@ -32,7 +32,7 @@ class SectionGroupsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the sectionGroups property of the microsoft.graph.sectionGroup entity.
         Args:
-            section_group_id1: Unique identifier of the item
+            section_group_id1: The unique identifier of sectionGroup
         Returns: SectionGroupItemRequestBuilder
         """
         if not section_group_id1:
@@ -159,7 +159,7 @@ class SectionGroupsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SectionGroupsRequestBuilder.SectionGroupsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SectionGroupsRequestBuilderGetQueryParameters] = None
 
     
 

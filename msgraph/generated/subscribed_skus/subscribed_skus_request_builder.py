@@ -32,7 +32,7 @@ class SubscribedSkusRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the collection of subscribedSku entities.
         Args:
-            subscribed_sku_id: Unique identifier of the item
+            subscribed_sku_id: The unique identifier of subscribedSku
         Returns: SubscribedSkuItemRequestBuilder
         """
         if not subscribed_sku_id:
@@ -171,7 +171,7 @@ class SubscribedSkusRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SubscribedSkusRequestBuilder.SubscribedSkusRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SubscribedSkusRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

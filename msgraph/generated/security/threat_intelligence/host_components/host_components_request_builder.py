@@ -33,7 +33,7 @@ class HostComponentsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the hostComponents property of the microsoft.graph.security.threatIntelligence entity.
         Args:
-            host_component_id: Unique identifier of the item
+            host_component_id: The unique identifier of hostComponent
         Returns: HostComponentItemRequestBuilder
         """
         if not host_component_id:
@@ -206,7 +206,7 @@ class HostComponentsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[HostComponentsRequestBuilder.HostComponentsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[HostComponentsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

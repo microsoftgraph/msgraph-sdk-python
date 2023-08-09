@@ -194,7 +194,7 @@ class UserStatusSummaryRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserStatusSummaryRequestBuilder.UserStatusSummaryRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserStatusSummaryRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

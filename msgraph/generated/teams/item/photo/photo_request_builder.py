@@ -159,7 +159,7 @@ class PhotoRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PhotoRequestBuilder.PhotoRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PhotoRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

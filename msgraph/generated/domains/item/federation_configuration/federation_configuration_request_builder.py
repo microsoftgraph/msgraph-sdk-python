@@ -33,7 +33,7 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the federationConfiguration property of the microsoft.graph.domain entity.
         Args:
-            internal_domain_federation_id: Unique identifier of the item
+            internal_domain_federation_id: The unique identifier of internalDomainFederation
         Returns: InternalDomainFederationItemRequestBuilder
         """
         if not internal_domain_federation_id:
@@ -206,7 +206,7 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[FederationConfigurationRequestBuilder.FederationConfigurationRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[FederationConfigurationRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

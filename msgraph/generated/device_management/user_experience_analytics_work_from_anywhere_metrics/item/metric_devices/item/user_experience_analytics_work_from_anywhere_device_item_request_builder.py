@@ -194,7 +194,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder(BaseReques
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder.UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

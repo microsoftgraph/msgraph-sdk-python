@@ -5,14 +5,14 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
-    from .list_ import List_
+    from .list____ import List____
 
 from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
 
 @dataclass
 class ListCollectionResponse(BaseCollectionPaginationCountResponse):
     # The value property
-    value: Optional[List[List_]] = None
+    value: Optional[List[List____]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ListCollectionResponse:
@@ -32,13 +32,13 @@ class ListCollectionResponse(BaseCollectionPaginationCountResponse):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
-        from .list_ import List_
+        from .list____ import List____
 
         from .base_collection_pagination_count_response import BaseCollectionPaginationCountResponse
-        from .list_ import List_
+        from .list____ import List____
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(List_)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(List____)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

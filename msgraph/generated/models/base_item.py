@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from .identity_set import IdentitySet
     from .item_reference import ItemReference
     from .list_item import ListItem
-    from .list_ import List_
+    from .list____ import List____
     from .shared_drive_item import SharedDriveItem
     from .site import Site
     from .user import User
@@ -68,9 +68,9 @@ class BaseItem(Entity):
 
             return DriveItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.list".casefold():
-            from .list_ import List_
+            from .list____ import List____
 
-            return List_()
+            return List____()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.listItem".casefold():
             from .list_item import ListItem
 
@@ -96,7 +96,7 @@ class BaseItem(Entity):
         from .identity_set import IdentitySet
         from .item_reference import ItemReference
         from .list_item import ListItem
-        from .list_ import List_
+        from .list____ import List____
         from .shared_drive_item import SharedDriveItem
         from .site import Site
         from .user import User
@@ -107,7 +107,7 @@ class BaseItem(Entity):
         from .identity_set import IdentitySet
         from .item_reference import ItemReference
         from .list_item import ListItem
-        from .list_ import List_
+        from .list____ import List____
         from .shared_drive_item import SharedDriveItem
         from .site import Site
         from .user import User

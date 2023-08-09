@@ -204,7 +204,7 @@ class UserFlowLanguagePageItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserFlowLanguagePageItemRequestBuilder.UserFlowLanguagePageItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserFlowLanguagePageItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

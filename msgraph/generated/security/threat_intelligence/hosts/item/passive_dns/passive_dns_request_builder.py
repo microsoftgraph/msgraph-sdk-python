@@ -32,7 +32,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the passiveDns property of the microsoft.graph.security.host entity.
         Args:
-            passive_dns_record_id: Unique identifier of the item
+            passive_dns_record_id: The unique identifier of passiveDnsRecord
         Returns: PassiveDnsRecordItemRequestBuilder
         """
         if not passive_dns_record_id:
@@ -159,7 +159,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[PassiveDnsRequestBuilder.PassiveDnsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[PassiveDnsRequestBuilderGetQueryParameters] = None
 
     
 

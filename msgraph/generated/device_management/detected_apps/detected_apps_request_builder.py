@@ -33,7 +33,7 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the detectedApps property of the microsoft.graph.deviceManagement entity.
         Args:
-            detected_app_id: Unique identifier of the item
+            detected_app_id: The unique identifier of detectedApp
         Returns: DetectedAppItemRequestBuilder
         """
         if not detected_app_id:
@@ -206,7 +206,7 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DetectedAppsRequestBuilder.DetectedAppsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DetectedAppsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

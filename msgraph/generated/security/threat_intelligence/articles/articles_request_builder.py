@@ -33,7 +33,7 @@ class ArticlesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the articles property of the microsoft.graph.security.threatIntelligence entity.
         Args:
-            article_id: Unique identifier of the item
+            article_id: The unique identifier of article
         Returns: ArticleItemRequestBuilder
         """
         if not article_id:
@@ -206,7 +206,7 @@ class ArticlesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ArticlesRequestBuilder.ArticlesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ArticlesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

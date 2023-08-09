@@ -224,7 +224,7 @@ class ServiceAnnouncementRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ServiceAnnouncementRequestBuilder.ServiceAnnouncementRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ServiceAnnouncementRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

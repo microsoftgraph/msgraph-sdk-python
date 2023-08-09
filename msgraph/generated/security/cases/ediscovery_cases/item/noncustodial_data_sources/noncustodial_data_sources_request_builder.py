@@ -35,7 +35,7 @@ class NoncustodialDataSourcesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the noncustodialDataSources property of the microsoft.graph.security.ediscoveryCase entity.
         Args:
-            ediscovery_noncustodial_data_source_id: Unique identifier of the item
+            ediscovery_noncustodial_data_source_id: The unique identifier of ediscoveryNoncustodialDataSource
         Returns: EdiscoveryNoncustodialDataSourceItemRequestBuilder
         """
         if not ediscovery_noncustodial_data_source_id:
@@ -226,7 +226,7 @@ class NoncustodialDataSourcesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[NoncustodialDataSourcesRequestBuilder.NoncustodialDataSourcesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[NoncustodialDataSourcesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

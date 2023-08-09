@@ -204,7 +204,7 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(BaseRequestBui
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilder.DeviceCompliancePolicySettingStateSummaryItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

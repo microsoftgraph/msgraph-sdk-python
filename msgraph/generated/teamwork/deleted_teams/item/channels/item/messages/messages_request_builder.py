@@ -34,7 +34,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the messages property of the microsoft.graph.channel entity.
         Args:
-            chat_message_id: Unique identifier of the item
+            chat_message_id: The unique identifier of chatMessage
         Returns: ChatMessageItemRequestBuilder
         """
         if not chat_message_id:
@@ -216,7 +216,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MessagesRequestBuilder.MessagesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MessagesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

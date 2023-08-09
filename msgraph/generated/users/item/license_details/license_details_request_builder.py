@@ -33,7 +33,7 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the licenseDetails property of the microsoft.graph.user entity.
         Args:
-            license_details_id: Unique identifier of the item
+            license_details_id: The unique identifier of licenseDetails
         Returns: LicenseDetailsItemRequestBuilder
         """
         if not license_details_id:
@@ -206,7 +206,7 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[LicenseDetailsRequestBuilder.LicenseDetailsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[LicenseDetailsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

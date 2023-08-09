@@ -33,7 +33,7 @@ class SharedWithTeamsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the sharedWithTeams property of the microsoft.graph.channel entity.
         Args:
-            shared_with_channel_team_info_id: Unique identifier of the item
+            shared_with_channel_team_info_id: The unique identifier of sharedWithChannelTeamInfo
         Returns: SharedWithChannelTeamInfoItemRequestBuilder
         """
         if not shared_with_channel_team_info_id:
@@ -206,7 +206,7 @@ class SharedWithTeamsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SharedWithTeamsRequestBuilder.SharedWithTeamsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SharedWithTeamsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

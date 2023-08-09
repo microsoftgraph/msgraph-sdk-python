@@ -33,7 +33,7 @@ class ExtensionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the extensions property of the microsoft.graph.event entity.
         Args:
-            extension_id: Unique identifier of the item
+            extension_id: The unique identifier of extension
         Returns: ExtensionItemRequestBuilder
         """
         if not extension_id:
@@ -201,7 +201,7 @@ class ExtensionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ExtensionsRequestBuilder.ExtensionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ExtensionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

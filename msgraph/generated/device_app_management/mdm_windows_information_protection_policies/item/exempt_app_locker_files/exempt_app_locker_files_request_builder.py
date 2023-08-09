@@ -33,7 +33,7 @@ class ExemptAppLockerFilesRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the exemptAppLockerFiles property of the microsoft.graph.windowsInformationProtection entity.
         Args:
-            windows_information_protection_app_locker_file_id: Unique identifier of the item
+            windows_information_protection_app_locker_file_id: The unique identifier of windowsInformationProtectionAppLockerFile
         Returns: WindowsInformationProtectionAppLockerFileItemRequestBuilder
         """
         if not windows_information_protection_app_locker_file_id:
@@ -206,7 +206,7 @@ class ExemptAppLockerFilesRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ExemptAppLockerFilesRequestBuilder.ExemptAppLockerFilesRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ExemptAppLockerFilesRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

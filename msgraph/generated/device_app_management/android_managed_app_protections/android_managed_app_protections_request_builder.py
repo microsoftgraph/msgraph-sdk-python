@@ -33,7 +33,7 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the androidManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
         Args:
-            android_managed_app_protection_id: Unique identifier of the item
+            android_managed_app_protection_id: The unique identifier of androidManagedAppProtection
         Returns: AndroidManagedAppProtectionItemRequestBuilder
         """
         if not android_managed_app_protection_id:
@@ -206,7 +206,7 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[AndroidManagedAppProtectionsRequestBuilder.AndroidManagedAppProtectionsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[AndroidManagedAppProtectionsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

@@ -113,7 +113,7 @@ class FilesFolderRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[FilesFolderRequestBuilder.FilesFolderRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[FilesFolderRequestBuilderGetQueryParameters] = None
 
     
 

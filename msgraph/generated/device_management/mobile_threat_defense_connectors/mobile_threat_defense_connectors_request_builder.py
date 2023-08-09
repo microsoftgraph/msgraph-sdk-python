@@ -33,7 +33,7 @@ class MobileThreatDefenseConnectorsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the mobileThreatDefenseConnectors property of the microsoft.graph.deviceManagement entity.
         Args:
-            mobile_threat_defense_connector_id: Unique identifier of the item
+            mobile_threat_defense_connector_id: The unique identifier of mobileThreatDefenseConnector
         Returns: MobileThreatDefenseConnectorItemRequestBuilder
         """
         if not mobile_threat_defense_connector_id:
@@ -206,7 +206,7 @@ class MobileThreatDefenseConnectorsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[MobileThreatDefenseConnectorsRequestBuilder.MobileThreatDefenseConnectorsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[MobileThreatDefenseConnectorsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

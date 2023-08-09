@@ -32,7 +32,7 @@ class WindowsHelloForBusinessMethodsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the windowsHelloForBusinessMethods property of the microsoft.graph.authentication entity.
         Args:
-            windows_hello_for_business_authentication_method_id: Unique identifier of the item
+            windows_hello_for_business_authentication_method_id: The unique identifier of windowsHelloForBusinessAuthenticationMethod
         Returns: WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder
         """
         if not windows_hello_for_business_authentication_method_id:
@@ -159,7 +159,7 @@ class WindowsHelloForBusinessMethodsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[WindowsHelloForBusinessMethodsRequestBuilder.WindowsHelloForBusinessMethodsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[WindowsHelloForBusinessMethodsRequestBuilderGetQueryParameters] = None
 
     
 

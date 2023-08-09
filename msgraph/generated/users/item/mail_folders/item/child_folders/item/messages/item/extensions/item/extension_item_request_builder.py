@@ -194,7 +194,7 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ExtensionItemRequestBuilder.ExtensionItemRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ExtensionItemRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

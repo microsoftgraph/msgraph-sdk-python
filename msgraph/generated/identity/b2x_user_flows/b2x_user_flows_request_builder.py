@@ -33,7 +33,7 @@ class B2xUserFlowsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the b2xUserFlows property of the microsoft.graph.identityContainer entity.
         Args:
-            b2x_identity_user_flow_id: Unique identifier of the item
+            b2x_identity_user_flow_id: The unique identifier of b2xIdentityUserFlow
         Returns: B2xIdentityUserFlowItemRequestBuilder
         """
         if not b2x_identity_user_flow_id:
@@ -206,7 +206,7 @@ class B2xUserFlowsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[B2xUserFlowsRequestBuilder.B2xUserFlowsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[B2xUserFlowsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

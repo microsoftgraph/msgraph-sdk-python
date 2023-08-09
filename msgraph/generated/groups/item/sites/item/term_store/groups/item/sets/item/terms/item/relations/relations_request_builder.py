@@ -33,7 +33,7 @@ class RelationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the relations property of the microsoft.graph.termStore.term entity.
         Args:
-            relation_id: Unique identifier of the item
+            relation_id: The unique identifier of relation
         Returns: RelationItemRequestBuilder
         """
         if not relation_id:
@@ -206,7 +206,7 @@ class RelationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[RelationsRequestBuilder.RelationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[RelationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

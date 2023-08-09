@@ -33,7 +33,7 @@ class ServiceManagementDetailsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the serviceManagementDetails property of the microsoft.graph.delegatedAdminCustomer entity.
         Args:
-            delegated_admin_service_management_detail_id: Unique identifier of the item
+            delegated_admin_service_management_detail_id: The unique identifier of delegatedAdminServiceManagementDetail
         Returns: DelegatedAdminServiceManagementDetailItemRequestBuilder
         """
         if not delegated_admin_service_management_detail_id:
@@ -206,7 +206,7 @@ class ServiceManagementDetailsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[ServiceManagementDetailsRequestBuilder.ServiceManagementDetailsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[ServiceManagementDetailsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

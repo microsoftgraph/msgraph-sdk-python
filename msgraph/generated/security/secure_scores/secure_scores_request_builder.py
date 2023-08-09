@@ -33,7 +33,7 @@ class SecureScoresRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the secureScores property of the microsoft.graph.security entity.
         Args:
-            secure_score_id: Unique identifier of the item
+            secure_score_id: The unique identifier of secureScore
         Returns: SecureScoreItemRequestBuilder
         """
         if not secure_score_id:
@@ -206,7 +206,7 @@ class SecureScoresRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[SecureScoresRequestBuilder.SecureScoresRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SecureScoresRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

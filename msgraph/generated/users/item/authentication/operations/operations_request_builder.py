@@ -33,7 +33,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the operations property of the microsoft.graph.authentication entity.
         Args:
-            long_running_operation_id: Unique identifier of the item
+            long_running_operation_id: The unique identifier of longRunningOperation
         Returns: LongRunningOperationItemRequestBuilder
         """
         if not long_running_operation_id:
@@ -206,7 +206,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[OperationsRequestBuilder.OperationsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[OperationsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

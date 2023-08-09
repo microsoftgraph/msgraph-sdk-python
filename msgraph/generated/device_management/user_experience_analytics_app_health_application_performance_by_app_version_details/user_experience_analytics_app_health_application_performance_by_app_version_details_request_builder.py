@@ -33,7 +33,7 @@ class UserExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDetailsR
         """
         Provides operations to manage the userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDetails property of the microsoft.graph.deviceManagement entity.
         Args:
-            user_experience_analytics_app_health_app_performance_by_app_version_details_id: Unique identifier of the item
+            user_experience_analytics_app_health_app_performance_by_app_version_details_id: The unique identifier of userExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails
         Returns: UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetailsItemRequestBuilder
         """
         if not user_experience_analytics_app_health_app_performance_by_app_version_details_id:
@@ -206,7 +206,7 @@ class UserExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDetailsR
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDetailsRequestBuilder.UserExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDetailsRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[UserExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDetailsRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

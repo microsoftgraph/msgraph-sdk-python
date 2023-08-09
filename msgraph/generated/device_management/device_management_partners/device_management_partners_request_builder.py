@@ -33,7 +33,7 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
         """
         Provides operations to manage the deviceManagementPartners property of the microsoft.graph.deviceManagement entity.
         Args:
-            device_management_partner_id: Unique identifier of the item
+            device_management_partner_id: The unique identifier of deviceManagementPartner
         Returns: DeviceManagementPartnerItemRequestBuilder
         """
         if not device_management_partner_id:
@@ -206,7 +206,7 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[DeviceManagementPartnersRequestBuilder.DeviceManagementPartnersRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[DeviceManagementPartnersRequestBuilderGetQueryParameters] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

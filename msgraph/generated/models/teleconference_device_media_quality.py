@@ -2,6 +2,7 @@ from __future__ import annotations
 import datetime
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
@@ -10,10 +11,12 @@ if TYPE_CHECKING:
     from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
 
 @dataclass
-class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
+class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, BackedModel, Parsable):
+    # Stores model information.
+    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-
     # The average inbound stream network jitter.
     average_inbound_jitter: Optional[datetime.timedelta] = None
     # The average inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.

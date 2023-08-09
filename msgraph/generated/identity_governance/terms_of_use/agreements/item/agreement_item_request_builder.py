@@ -50,7 +50,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Agreement]:
         """
-        Retrieve all files related to an agreement. This includes the default file and all localized files.
+        Retrieve the properties and relationships of an agreement object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Agreement]
@@ -113,7 +113,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve all files related to an agreement. This includes the default file and all localized files.
+        Retrieve the properties and relationships of an agreement object.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -190,7 +190,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AgreementItemRequestBuilderGetQueryParameters():
         """
-        Retrieve all files related to an agreement. This includes the default file and all localized files.
+        Retrieve the properties and relationships of an agreement object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

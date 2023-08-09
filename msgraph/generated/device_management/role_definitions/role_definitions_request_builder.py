@@ -68,7 +68,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RoleDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[RoleDefinition]:
         """
-        Create a new roleDefinition object.
+        Create a new deviceAndAppManagementRoleDefinition object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +111,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RoleDefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new roleDefinition object.
+        Create a new deviceAndAppManagementRoleDefinition object.
         Args:
             body: The request body
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.

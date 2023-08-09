@@ -46,7 +46,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppPolicyCollectionResponse]:
         """
-        List properties and relationships of the windowsInformationProtection objects.
+        List properties and relationships of the targetedManagedAppProtection objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicyCollectionResponse]
@@ -93,7 +93,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the windowsInformationProtection objects.
+        List properties and relationships of the targetedManagedAppProtection objects.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -142,7 +142,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppPoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windowsInformationProtection objects.
+        List properties and relationships of the targetedManagedAppProtection objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

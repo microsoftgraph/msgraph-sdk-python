@@ -2,19 +2,22 @@ from __future__ import annotations
 import datetime
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .booking_reminder_recipients import BookingReminderRecipients
 
 @dataclass
-class BookingReminder(AdditionalDataHolder, Parsable):
+class BookingReminder(AdditionalDataHolder, BackedModel, Parsable):
     """
     This type represents when and to whom to send an e-mail reminder.
     """
+    # Stores model information.
+    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-
     # The message in the reminder.
     message: Optional[str] = None
     # The OdataType property

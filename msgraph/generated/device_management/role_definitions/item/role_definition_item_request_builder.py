@@ -29,7 +29,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RoleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a deviceAndAppManagementRoleDefinition.
+        Deletes a roleDefinition.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -95,7 +95,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RoleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceAndAppManagementRoleDefinition.
+        Deletes a roleDefinition.
         Args:
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

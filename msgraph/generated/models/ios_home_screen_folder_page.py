@@ -1,19 +1,22 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .ios_home_screen_app import IosHomeScreenApp
 
 @dataclass
-class IosHomeScreenFolderPage(AdditionalDataHolder, Parsable):
+class IosHomeScreenFolderPage(AdditionalDataHolder, BackedModel, Parsable):
     """
     A page for a folder containing apps and web clips on the Home Screen.
     """
+    # Stores model information.
+    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-
     # A list of apps and web clips to appear on a page within a folder. This collection can contain a maximum of 500 elements.
     apps: Optional[List[IosHomeScreenApp]] = None
     # Name of the folder page

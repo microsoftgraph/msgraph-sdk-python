@@ -2,16 +2,19 @@ from __future__ import annotations
 import datetime
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .subject_set import SubjectSet
 
 @dataclass
-class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
+class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
+    # Stores model information.
+    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-
     # The number of days that a request can be pending a response before it is automatically denied.
     duration_before_automatic_denial: Optional[datetime.timedelta] = None
     # If escalation is required, the time a request can be pending a response from a primary approver.

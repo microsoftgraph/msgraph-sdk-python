@@ -20,18 +20,19 @@ class SnoozeReminderRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SnoozeReminderRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/calendarView/{event%2Did}/instances/{event%2Did1}/snoozeReminder", path_parameters)
     
     async def post(self,body: Optional[SnoozeReminderPostRequestBody] = None, request_configuration: Optional[SnoozeReminderRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Postpone a reminder for an event in a user calendar until a new time.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/event-snoozereminder?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -51,9 +52,8 @@ class SnoozeReminderRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[SnoozeReminderPostRequestBody] = None, request_configuration: Optional[SnoozeReminderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Postpone a reminder for an event in a user calendar until a new time.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

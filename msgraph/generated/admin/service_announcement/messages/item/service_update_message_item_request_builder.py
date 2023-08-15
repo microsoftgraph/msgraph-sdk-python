@@ -22,17 +22,17 @@ class ServiceUpdateMessageItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ServiceUpdateMessageItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/messages/{serviceUpdateMessage%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property messages for admin
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,9 +50,9 @@ class ServiceUpdateMessageItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ServiceUpdateMessage]:
         """
         Retrieve the properties and relationships of a serviceUpdateMessage object. This operation retrieves a specified service update message for the tenant. The operation returns an error if the message does not exist for the tenant.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceUpdateMessage]
+        Find more info here: https://learn.microsoft.com/graph/api/serviceupdatemessage-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,9 +72,8 @@ class ServiceUpdateMessageItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[ServiceUpdateMessage] = None, request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ServiceUpdateMessage]:
         """
         Update the navigation property messages in admin
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceUpdateMessage]
         """
         if not body:
@@ -97,8 +96,7 @@ class ServiceUpdateMessageItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property messages for admin
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -113,8 +111,7 @@ class ServiceUpdateMessageItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a serviceUpdateMessage object. This operation retrieves a specified service update message for the tenant. The operation returns an error if the message does not exist for the tenant.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -131,9 +128,8 @@ class ServiceUpdateMessageItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[ServiceUpdateMessage] = None, request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property messages in admin
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -185,8 +181,7 @@ class ServiceUpdateMessageItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

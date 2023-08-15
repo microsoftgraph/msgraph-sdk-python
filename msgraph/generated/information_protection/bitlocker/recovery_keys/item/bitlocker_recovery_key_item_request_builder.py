@@ -20,18 +20,18 @@ class BitlockerRecoveryKeyItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new BitlockerRecoveryKeyItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/informationProtection/bitlocker/recoveryKeys/{bitlockerRecoveryKey%2Did}{?%24select,%24expand}", path_parameters)
     
     async def get(self,request_configuration: Optional[BitlockerRecoveryKeyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[BitlockerRecoveryKey]:
         """
         Retrieve the properties and relationships of a bitlockerRecoveryKey object.  By default, this operation does not return the key property that represents the actual recovery key. To include the key property in the response, use the $select OData query parameter. Including the $select query parameter triggers an Azure AD audit of the operation and generates an audit log. For more information on audit logs for bitlocker recovery keys, see the KeyManagement category filter of Azure AD audit logs.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BitlockerRecoveryKey]
+        Find more info here: https://learn.microsoft.com/graph/api/bitlockerrecoverykey-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -51,8 +51,7 @@ class BitlockerRecoveryKeyItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[BitlockerRecoveryKeyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a bitlockerRecoveryKey object.  By default, this operation does not return the key property that represents the actual recovery key. To include the key property in the response, use the $select OData query parameter. Including the $select query parameter triggers an Azure AD audit of the operation and generates an audit log. For more information on audit logs for bitlocker recovery keys, see the KeyManagement category filter of Azure AD audit logs.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -74,8 +73,7 @@ class BitlockerRecoveryKeyItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

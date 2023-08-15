@@ -2,7 +2,6 @@ from __future__ import annotations
 import datetime
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
@@ -17,12 +16,10 @@ if TYPE_CHECKING:
     from .identity_set import IdentitySet
 
 @dataclass
-class EducationResource(AdditionalDataHolder, BackedModel, Parsable):
-    # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
-
+class EducationResource(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
+
     # The individual who created the resource.
     created_by: Optional[IdentitySet] = None
     # Moment in time when the resource was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -40,8 +37,7 @@ class EducationResource(AdditionalDataHolder, BackedModel, Parsable):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationResource:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: EducationResource
         """
         if not parse_node:
@@ -122,8 +118,8 @@ class EducationResource(AdditionalDataHolder, BackedModel, Parsable):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

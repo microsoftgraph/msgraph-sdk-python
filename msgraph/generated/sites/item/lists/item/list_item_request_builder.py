@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models.list_ import List_
+    from .....models.list____ import List____
     from .....models.o_data_errors.o_data_error import ODataError
     from .columns.columns_request_builder import ColumnsRequestBuilder
     from .content_types.content_types_request_builder import ContentTypesRequestBuilder
@@ -28,17 +28,17 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ListItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ListItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property lists for sites
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,12 +53,12 @@ class ListItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ListItemRequestBuilderGetRequestConfiguration] = None) -> Optional[List_]:
+    async def get(self,request_configuration: Optional[ListItemRequestBuilderGetRequestConfiguration] = None) -> Optional[List____]:
         """
         Get a list of rich long-running operations associated with a list.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[List_]
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[List____]
+        Find more info here: https://learn.microsoft.com/graph/api/list-list-operations?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,17 +71,16 @@ class ListItemRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.list_ import List_
+        from .....models.list____ import List____
 
-        return await self.request_adapter.send_async(request_info, List_, error_mapping)
+        return await self.request_adapter.send_async(request_info, List____, error_mapping)
     
-    async def patch(self,body: Optional[List_] = None, request_configuration: Optional[ListItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[List_]:
+    async def patch(self,body: Optional[List____] = None, request_configuration: Optional[ListItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[List____]:
         """
         Update the navigation property lists in sites
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[List_]
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[List____]
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,15 +95,14 @@ class ListItemRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.list_ import List_
+        from .....models.list____ import List____
 
-        return await self.request_adapter.send_async(request_info, List_, error_mapping)
+        return await self.request_adapter.send_async(request_info, List____, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ListItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property lists for sites
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -119,8 +117,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ListItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of rich long-running operations associated with a list.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -134,12 +131,11 @@ class ListItemRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[List_] = None, request_configuration: Optional[ListItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[List____] = None, request_configuration: Optional[ListItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property lists in sites
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -245,8 +241,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

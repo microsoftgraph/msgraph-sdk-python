@@ -23,17 +23,16 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IncompatibleAccessPackagesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/accessPackages/{accessPackage%2Did}/incompatibleAccessPackages{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_access_package_id1(self,access_package_id1: str) -> AccessPackageItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.identityGovernance.entitlementManagement.accessPackages.item.incompatibleAccessPackages.item collection
-        Args:
-            access_package_id1: Unique identifier of the item
+        param access_package_id1: Unique identifier of the item
         Returns: AccessPackageItemRequestBuilder
         """
         if not access_package_id1:
@@ -47,9 +46,9 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[IncompatibleAccessPackagesRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageCollectionResponse]:
         """
         Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.  
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackage-list-incompatibleaccesspackages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,8 +68,7 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[IncompatibleAccessPackagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.  
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -110,8 +108,7 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

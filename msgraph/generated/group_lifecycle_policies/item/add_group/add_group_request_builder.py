@@ -21,19 +21,19 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AddGroupRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groupLifecyclePolicies/{groupLifecyclePolicy%2Did}/addGroup", path_parameters)
     
     async def post(self,body: Optional[AddGroupPostRequestBody] = None, request_configuration: Optional[AddGroupRequestBuilderPostRequestConfiguration] = None) -> Optional[AddGroupResponse]:
         """
         Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AddGroupResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/grouplifecyclepolicy-addgroup?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -55,9 +55,8 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[AddGroupPostRequestBody] = None, request_configuration: Optional[AddGroupRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

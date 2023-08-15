@@ -25,17 +25,16 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CategoriesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/education/me/assignments/{educationAssignment%2Did}/categories{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_education_category_id(self,education_category_id: str) -> EducationCategoryItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.education.me.assignments.item.categories.item collection
-        Args:
-            education_category_id: Unique identifier of the item
+        param education_category_id: Unique identifier of the item
         Returns: EducationCategoryItemRequestBuilder
         """
         if not education_category_id:
@@ -49,9 +48,9 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationCategoryCollectionResponse]:
         """
         List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationCategoryCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-list-categories?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,10 +70,10 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[EducationCategory] = None, request_configuration: Optional[CategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationCategory]:
         """
         Add one or more existing educationCategory objects to the specified  educationAssignment. Only teachers can perform this operation.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationCategory]
+        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-post-categories?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,8 +95,7 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -114,9 +112,8 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[EducationCategory] = None, request_configuration: Optional[CategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add one or more existing educationCategory objects to the specified  educationAssignment. Only teachers can perform this operation.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -167,8 +164,7 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

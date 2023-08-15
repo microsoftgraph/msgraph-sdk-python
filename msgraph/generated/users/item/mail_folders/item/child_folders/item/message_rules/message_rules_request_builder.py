@@ -23,17 +23,16 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MessageRulesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", path_parameters)
     
     def by_message_rule_id(self,message_rule_id: str) -> MessageRuleItemRequestBuilder:
         """
         Provides operations to manage the messageRules property of the microsoft.graph.mailFolder entity.
-        Args:
-            message_rule_id: Unique identifier of the item
+        param message_rule_id: The unique identifier of messageRule
         Returns: MessageRuleItemRequestBuilder
         """
         if not message_rule_id:
@@ -47,9 +46,9 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[MessageRulesRequestBuilderGetRequestConfiguration] = None) -> Optional[MessageRuleCollectionResponse]:
         """
         Get all the messageRule objects defined for the user's inbox.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MessageRuleCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[MessageRule] = None, request_configuration: Optional[MessageRulesRequestBuilderPostRequestConfiguration] = None) -> Optional[MessageRule]:
         """
         Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MessageRule]
+        Find more info here: https://learn.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[MessageRulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get all the messageRule objects defined for the user's inbox.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[MessageRule] = None, request_configuration: Optional[MessageRulesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

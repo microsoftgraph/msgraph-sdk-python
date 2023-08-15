@@ -21,17 +21,16 @@ class RefRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RefRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identity/b2xUserFlows/{b2xIdentityUserFlow%2Did}/userFlowIdentityProviders/$ref{?%24top,%24skip,%24search,%24filter,%24count,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> Optional[StringCollectionResponse]:
         """
         Get ref of userFlowIdentityProviders from identity
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[StringCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -52,9 +51,9 @@ class RefRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RefRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Create new navigation property ref to userFlowIdentityProviders for identity
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -74,8 +73,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get ref of userFlowIdentityProviders from identity
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -92,9 +90,8 @@ class RefRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RefRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property ref to userFlowIdentityProviders for identity
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -117,8 +114,7 @@ class RefRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -30,17 +30,17 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ScheduleRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/teams/{team%2Did}/schedule{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ScheduleRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property schedule for teams
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -58,9 +58,9 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ScheduleRequestBuilderGetRequestConfiguration] = None) -> Optional[Schedule]:
         """
         Retrieve the properties and relationships of a schedule object. The schedule creation process conforms to the One API guideline for resource based long running operations (RELO).When clients use the PUT method, if the schedule is provisioned, the operation updates the schedule; otherwise, the operation starts the schedule provisioning process in the background. During schedule provisioning, clients can use the GET method to get the schedule and look at the provisionStatus property for the current state of the provisioning. If the provisioning failed, clients can get additional information from the provisionStatusCode property. Clients can also inspect the configuration of the schedule.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Schedule]
+        Find more info here: https://learn.microsoft.com/graph/api/schedule-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -80,9 +80,8 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
     async def put(self,body: Optional[Schedule] = None, request_configuration: Optional[ScheduleRequestBuilderPutRequestConfiguration] = None) -> Optional[Schedule]:
         """
         Update the navigation property schedule in teams
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Schedule]
         """
         if not body:
@@ -105,8 +104,7 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[ScheduleRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property schedule for teams
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -121,8 +119,7 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ScheduleRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a schedule object. The schedule creation process conforms to the One API guideline for resource based long running operations (RELO).When clients use the PUT method, if the schedule is provisioned, the operation updates the schedule; otherwise, the operation starts the schedule provisioning process in the background. During schedule provisioning, clients can use the GET method to get the schedule and look at the provisionStatus property for the current state of the provisioning. If the provisioning failed, clients can get additional information from the provisionStatusCode property. Clients can also inspect the configuration of the schedule.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -139,9 +136,8 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
     def to_put_request_information(self,body: Optional[Schedule] = None, request_configuration: Optional[ScheduleRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property schedule in teams
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -265,8 +261,7 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

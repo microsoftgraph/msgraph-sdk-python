@@ -20,18 +20,18 @@ class FollowRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new FollowRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/follow", path_parameters)
     
     async def post(self,request_configuration: Optional[FollowRequestBuilderPostRequestConfiguration] = None) -> Optional[DriveItem]:
         """
         Follow a driveItem.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItem]
+        Find more info here: https://learn.microsoft.com/graph/api/driveitem-follow?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -51,8 +51,7 @@ class FollowRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,request_configuration: Optional[FollowRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Follow a driveItem.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()

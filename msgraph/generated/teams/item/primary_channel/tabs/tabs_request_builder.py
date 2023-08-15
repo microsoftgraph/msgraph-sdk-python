@@ -23,17 +23,16 @@ class TabsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TabsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/teams/{team%2Did}/primaryChannel/tabs{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_teams_tab_id(self,teams_tab_id: str) -> TeamsTabItemRequestBuilder:
         """
         Provides operations to manage the tabs property of the microsoft.graph.channel entity.
-        Args:
-            teams_tab_id: Unique identifier of the item
+        param teams_tab_id: The unique identifier of teamsTab
         Returns: TeamsTabItemRequestBuilder
         """
         if not teams_tab_id:
@@ -47,9 +46,9 @@ class TabsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsTabCollectionResponse]:
         """
         Retrieve the list of tabs in the specified channel within a team. 
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTabCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/channel-list-tabs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class TabsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[TeamsTab] = None, request_configuration: Optional[TabsRequestBuilderPostRequestConfiguration] = None) -> Optional[TeamsTab]:
         """
         Adds (pins) a tab to the specified channel within a team. The corresponding app must already be installed in the team.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTab]
+        Find more info here: https://learn.microsoft.com/graph/api/channel-post-tabs?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the list of tabs in the specified channel within a team. 
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class TabsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[TeamsTab] = None, request_configuration: Optional[TabsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Adds (pins) a tab to the specified channel within a team. The corresponding app must already be installed in the team.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

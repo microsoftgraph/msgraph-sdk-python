@@ -33,17 +33,18 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookChartItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[WorkbookChartItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Deletes the chart object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/chart-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -61,9 +62,9 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[WorkbookChartItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChart]:
         """
         Retrieve the properties and relationships of chart object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChart]
+        Find more info here: https://learn.microsoft.com/graph/api/chart-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -83,8 +84,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     def image_with_width(self,width: Optional[int] = None) -> ImageWithWidthRequestBuilder:
         """
         Provides operations to call the image method.
-        Args:
-            width: Usage: width={width}
+        param width: Usage: width={width}
         Returns: ImageWithWidthRequestBuilder
         """
         if not width:
@@ -96,9 +96,8 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     def image_with_width_with_height(self,height: Optional[int] = None, width: Optional[int] = None) -> ImageWithWidthWithHeightRequestBuilder:
         """
         Provides operations to call the image method.
-        Args:
-            height: Usage: height={height}
-            width: Usage: width={width}
+        param height: Usage: height={height}
+        param width: Usage: width={width}
         Returns: ImageWithWidthWithHeightRequestBuilder
         """
         if not height:
@@ -112,10 +111,9 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     def image_with_width_with_height_with_fitting_mode(self,fitting_mode: Optional[str] = None, height: Optional[int] = None, width: Optional[int] = None) -> ImageWithWidthWithHeightWithFittingModeRequestBuilder:
         """
         Provides operations to call the image method.
-        Args:
-            fitting_mode: Usage: fittingMode='{fittingMode}'
-            height: Usage: height={height}
-            width: Usage: width={width}
+        param fitting_mode: Usage: fittingMode='{fittingMode}'
+        param height: Usage: height={height}
+        param width: Usage: width={width}
         Returns: ImageWithWidthWithHeightWithFittingModeRequestBuilder
         """
         if not fitting_mode:
@@ -131,10 +129,10 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChart]:
         """
         Update the properties of chart object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChart]
+        Find more info here: https://learn.microsoft.com/graph/api/chart-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -156,8 +154,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[WorkbookChartItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Deletes the chart object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -172,8 +169,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[WorkbookChartItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of chart object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -190,9 +186,8 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of chart object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -316,8 +311,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

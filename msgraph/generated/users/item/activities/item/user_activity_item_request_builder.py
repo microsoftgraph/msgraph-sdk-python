@@ -21,17 +21,18 @@ class UserActivityItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UserActivityItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/activities/{userActivity%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[UserActivityItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete an existing user activity for your app.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/projectrome-delete-activity?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,8 +50,7 @@ class UserActivityItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[UserActivityItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserActivity]:
         """
         The user's activities across devices. Read-only. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserActivity]
         """
         request_info = self.to_get_request_information(
@@ -71,9 +71,8 @@ class UserActivityItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[UserActivity] = None, request_configuration: Optional[UserActivityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UserActivity]:
         """
         Update the navigation property activities in users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserActivity]
         """
         if not body:
@@ -96,8 +95,7 @@ class UserActivityItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[UserActivityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete an existing user activity for your app.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,8 +110,7 @@ class UserActivityItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[UserActivityItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The user's activities across devices. Read-only. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -130,9 +127,8 @@ class UserActivityItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[UserActivity] = None, request_configuration: Optional[UserActivityItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property activities in users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -175,8 +171,7 @@ class UserActivityItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -27,17 +27,18 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/accessPackages/{accessPackage%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[AccessPackageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete an accessPackage object. You cannot delete an access package if it has any accessPackageAssignment.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackage-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,9 +56,9 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[AccessPackageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackage]:
         """
         Retrieve the properties and relationships of an accessPackage object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackage]
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackage-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -77,10 +78,10 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[AccessPackage] = None, request_configuration: Optional[AccessPackageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AccessPackage]:
         """
         Update an existing accessPackage object to change one or more of its properties, such as the display name or description.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackage]
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackage-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -102,8 +103,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete an accessPackage object. You cannot delete an access package if it has any accessPackageAssignment.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -118,8 +118,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AccessPackageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of an accessPackage object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -136,9 +135,8 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[AccessPackage] = None, request_configuration: Optional[AccessPackageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update an existing accessPackage object to change one or more of its properties, such as the display name or description.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -235,8 +233,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

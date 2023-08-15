@@ -20,20 +20,19 @@ class ImageWithWidthWithHeightWithFittingModeRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, fitting_mode: Optional[str] = None, height: Optional[int] = None, width: Optional[int] = None) -> None:
         """
         Instantiates a new ImageWithWidthWithHeightWithFittingModeRequestBuilder and sets the default values.
-        Args:
-            fitting_mode: Usage: fittingMode='{fittingMode}'
-            height: Usage: height={height}
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
-            width: Usage: width={width}
+        param fitting_mode: Usage: fittingMode='{fittingMode}'
+        param height: Usage: height={height}
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        param width: Usage: width={width}
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}/image(width={width},height={height},fittingMode='{fittingMode}')", path_parameters)
     
     async def get(self,request_configuration: Optional[ImageWithWidthWithHeightWithFittingModeRequestBuilderGetRequestConfiguration] = None) -> Optional[ImageWithWidthWithHeightWithFittingModeResponse]:
         """
         Invoke function image
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ImageWithWidthWithHeightWithFittingModeResponse]
         """
         request_info = self.to_get_request_information(
@@ -54,8 +53,7 @@ class ImageWithWidthWithHeightWithFittingModeRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ImageWithWidthWithHeightWithFittingModeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function image
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()

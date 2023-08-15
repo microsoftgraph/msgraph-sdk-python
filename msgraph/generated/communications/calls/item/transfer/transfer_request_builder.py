@@ -20,18 +20,19 @@ class TransferRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TransferRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/communications/calls/{call%2Did}/transfer", path_parameters)
     
     async def post(self,body: Optional[TransferPostRequestBody] = None, request_configuration: Optional[TransferRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Transfer an active peer-to-peer call or group call. A consultative transfer means that the transferor can inform the person they want to transfer the call to (the transferee), before the transfer is made. This is opposed to transfering the call directly.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/call-transfer?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -51,9 +52,8 @@ class TransferRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[TransferPostRequestBody] = None, request_configuration: Optional[TransferRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Transfer an active peer-to-peer call or group call. A consultative transfer means that the transferor can inform the person they want to transfer the call to (the transferee), before the transfer is made. This is opposed to transfering the call directly.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

@@ -20,18 +20,18 @@ class LastIndexOperationRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new LastIndexOperationRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/custodians/{ediscoveryCustodian%2Did}/lastIndexOperation{?%24select,%24expand}", path_parameters)
     
     async def get(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryIndexOperation]:
         """
         Get a list of the ediscoveryIndexOperations associated with an ediscoveryCustodian.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryIndexOperation]
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycustodian-list-lastindexoperation?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -51,8 +51,7 @@ class LastIndexOperationRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of the ediscoveryIndexOperations associated with an ediscoveryCustodian.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -74,8 +73,7 @@ class LastIndexOperationRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

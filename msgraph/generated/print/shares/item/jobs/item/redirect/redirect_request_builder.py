@@ -21,19 +21,19 @@ class RedirectRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RedirectRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/print/shares/{printerShare%2Did}/jobs/{printJob%2Did}/redirect", path_parameters)
     
     async def post(self,body: Optional[RedirectPostRequestBody] = None, request_configuration: Optional[RedirectRequestBuilderPostRequestConfiguration] = None) -> Optional[PrintJob]:
         """
         Redirect a print job to a different printer. Redirecting a print job will only succeed if there is a printTask in a processing state on the associated print job, started by a trigger that the requesting app created.  For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintJob]
+        Find more info here: https://learn.microsoft.com/graph/api/printjob-redirect?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -55,9 +55,8 @@ class RedirectRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[RedirectPostRequestBody] = None, request_configuration: Optional[RedirectRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Redirect a print job to a different printer. Redirecting a print job will only succeed if there is a printTask in a processing state on the associated print job, started by a trigger that the requesting app created.  For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

@@ -22,17 +22,16 @@ class VersionsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new VersionsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow%2Did}/versions{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_workflow_version_version_number(self,workflow_version_version_number: int) -> WorkflowVersionVersionNumberItemRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.identityGovernance.workflow entity.
-        Args:
-            workflow_version_version_number: Unique identifier of the item
+        param workflow_version_version_number: The unique identifier of workflowVersion
         Returns: WorkflowVersionVersionNumberItemRequestBuilder
         """
         if not workflow_version_version_number:
@@ -46,9 +45,9 @@ class VersionsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[VersionsRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkflowVersionCollectionResponse]:
         """
         Get a list of the workflowVersion objects and their properties.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkflowVersionCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-workflow-list-versions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,8 +67,7 @@ class VersionsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[VersionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of the workflowVersion objects and their properties.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -100,8 +98,7 @@ class VersionsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -23,17 +23,16 @@ class MethodsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MethodsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/authentication/methods{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_authentication_method_id(self,authentication_method_id: str) -> AuthenticationMethodItemRequestBuilder:
         """
         Provides operations to manage the methods property of the microsoft.graph.authentication entity.
-        Args:
-            authentication_method_id: Unique identifier of the item
+        param authentication_method_id: The unique identifier of authenticationMethod
         Returns: AuthenticationMethodItemRequestBuilder
         """
         if not authentication_method_id:
@@ -47,9 +46,9 @@ class MethodsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[MethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationMethodCollectionResponse]:
         """
         Retrieve a list of authentication methods registered to a user. The authentication methods are defined by the types derived from the authenticationMethod resource type, and only the methods supported on this API version. See Azure AD authentication methods API overview for a list of currently supported methods.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/authentication-list-methods?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,9 +68,8 @@ class MethodsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[AuthenticationMethod] = None, request_configuration: Optional[MethodsRequestBuilderPostRequestConfiguration] = None) -> Optional[AuthenticationMethod]:
         """
         Create new navigation property to methods for users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethod]
         """
         if not body:
@@ -94,8 +92,7 @@ class MethodsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[MethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of authentication methods registered to a user. The authentication methods are defined by the types derived from the authenticationMethod resource type, and only the methods supported on this API version. See Azure AD authentication methods API overview for a list of currently supported methods.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +109,8 @@ class MethodsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[AuthenticationMethod] = None, request_configuration: Optional[MethodsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to methods for users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +143,7 @@ class MethodsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -24,17 +24,17 @@ class SynchronizationRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SynchronizationRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/synchronization{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[SynchronizationRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property synchronization for servicePrincipals
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,8 +52,7 @@ class SynchronizationRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[SynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[Synchronization]:
         """
         Represents the capability for Azure Active Directory (Azure AD) identity synchronization through the Microsoft Graph API.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Synchronization]
         """
         request_info = self.to_get_request_information(
@@ -74,9 +73,8 @@ class SynchronizationRequestBuilder(BaseRequestBuilder):
     async def put(self,body: Optional[Synchronization] = None, request_configuration: Optional[SynchronizationRequestBuilderPutRequestConfiguration] = None) -> Optional[Synchronization]:
         """
         Update the navigation property synchronization in servicePrincipals
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Synchronization]
         """
         if not body:
@@ -99,8 +97,7 @@ class SynchronizationRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[SynchronizationRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property synchronization for servicePrincipals
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -115,8 +112,7 @@ class SynchronizationRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[SynchronizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Represents the capability for Azure Active Directory (Azure AD) identity synchronization through the Microsoft Graph API.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -133,9 +129,8 @@ class SynchronizationRequestBuilder(BaseRequestBuilder):
     def to_put_request_information(self,body: Optional[Synchronization] = None, request_configuration: Optional[SynchronizationRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property synchronization in servicePrincipals
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -205,8 +200,7 @@ class SynchronizationRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

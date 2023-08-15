@@ -20,17 +20,17 @@ class UserExperienceAnalyticsDevicePerformanceItemRequestBuilder(BaseRequestBuil
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UserExperienceAnalyticsDevicePerformanceItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/userExperienceAnalyticsDevicePerformance/{userExperienceAnalyticsDevicePerformance%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[UserExperienceAnalyticsDevicePerformanceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property userExperienceAnalyticsDevicePerformance for deviceManagement
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,8 +48,7 @@ class UserExperienceAnalyticsDevicePerformanceItemRequestBuilder(BaseRequestBuil
     async def get(self,request_configuration: Optional[UserExperienceAnalyticsDevicePerformanceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsDevicePerformance]:
         """
         User experience analytics device performance
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserExperienceAnalyticsDevicePerformance]
         """
         request_info = self.to_get_request_information(
@@ -70,9 +69,8 @@ class UserExperienceAnalyticsDevicePerformanceItemRequestBuilder(BaseRequestBuil
     async def patch(self,body: Optional[UserExperienceAnalyticsDevicePerformance] = None, request_configuration: Optional[UserExperienceAnalyticsDevicePerformanceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsDevicePerformance]:
         """
         Update the navigation property userExperienceAnalyticsDevicePerformance in deviceManagement
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserExperienceAnalyticsDevicePerformance]
         """
         if not body:
@@ -95,8 +93,7 @@ class UserExperienceAnalyticsDevicePerformanceItemRequestBuilder(BaseRequestBuil
     def to_delete_request_information(self,request_configuration: Optional[UserExperienceAnalyticsDevicePerformanceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property userExperienceAnalyticsDevicePerformance for deviceManagement
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -111,8 +108,7 @@ class UserExperienceAnalyticsDevicePerformanceItemRequestBuilder(BaseRequestBuil
     def to_get_request_information(self,request_configuration: Optional[UserExperienceAnalyticsDevicePerformanceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         User experience analytics device performance
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -129,9 +125,8 @@ class UserExperienceAnalyticsDevicePerformanceItemRequestBuilder(BaseRequestBuil
     def to_patch_request_information(self,body: Optional[UserExperienceAnalyticsDevicePerformance] = None, request_configuration: Optional[UserExperienceAnalyticsDevicePerformanceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property userExperienceAnalyticsDevicePerformance in deviceManagement
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -165,8 +160,7 @@ class UserExperienceAnalyticsDevicePerformanceItemRequestBuilder(BaseRequestBuil
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

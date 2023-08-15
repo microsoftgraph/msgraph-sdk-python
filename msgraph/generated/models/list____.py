@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 from .base_item import BaseItem
 
 @dataclass
-class List_(BaseItem):
+class List____(BaseItem):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.list"
     # The collection of field definitions for this list.
@@ -43,16 +43,15 @@ class List_(BaseItem):
     system: Optional[SystemFacet] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> List_:
+    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> List____:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
-        Returns: List_
+        param parse_node: The parse node to use to read the discriminator value and create the object
+        Returns: List____
         """
         if not parse_node:
             raise TypeError("parse_node cannot be null.")
-        return List_()
+        return List____()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -100,8 +99,8 @@ class List_(BaseItem):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

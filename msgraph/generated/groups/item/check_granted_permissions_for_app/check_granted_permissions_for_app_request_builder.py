@@ -20,17 +20,16 @@ class CheckGrantedPermissionsForAppRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CheckGrantedPermissionsForAppRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/checkGrantedPermissionsForApp", path_parameters)
     
     async def post(self,request_configuration: Optional[CheckGrantedPermissionsForAppRequestBuilderPostRequestConfiguration] = None) -> Optional[CheckGrantedPermissionsForAppResponse]:
         """
         Invoke action checkGrantedPermissionsForApp
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CheckGrantedPermissionsForAppResponse]
         """
         request_info = self.to_post_request_information(
@@ -51,8 +50,7 @@ class CheckGrantedPermissionsForAppRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,request_configuration: Optional[CheckGrantedPermissionsForAppRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action checkGrantedPermissionsForApp
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()

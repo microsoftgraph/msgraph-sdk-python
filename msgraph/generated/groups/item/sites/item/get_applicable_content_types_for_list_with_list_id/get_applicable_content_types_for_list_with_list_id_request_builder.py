@@ -20,18 +20,17 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, list_id: Optional[str] = None) -> None:
         """
         Instantiates a new GetApplicableContentTypesForListWithListIdRequestBuilder and sets the default values.
-        Args:
-            list_id: Usage: listId='{listId}'
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param list_id: Usage: listId='{listId}'
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/getApplicableContentTypesForList(listId='{listId}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[GetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration] = None) -> Optional[GetApplicableContentTypesForListWithListIdResponse]:
         """
         Invoke function getApplicableContentTypesForList
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetApplicableContentTypesForListWithListIdResponse]
         """
         request_info = self.to_get_request_information(
@@ -52,8 +51,7 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
     def to_get_request_information(self,request_configuration: Optional[GetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function getApplicableContentTypesForList
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -75,8 +73,7 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

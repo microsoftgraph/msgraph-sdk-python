@@ -20,17 +20,18 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EmailAuthenticationMethodItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/authentication/emailMethods/{emailAuthenticationMethod%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Deletes a user's emailAuthenticationMethod object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/emailauthenticationmethod-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,9 +49,9 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EmailAuthenticationMethod]:
         """
         Retrieve a user's single email authentication method object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EmailAuthenticationMethod]
+        Find more info here: https://learn.microsoft.com/graph/api/emailauthenticationmethod-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,10 +71,10 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[EmailAuthenticationMethod] = None, request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EmailAuthenticationMethod]:
         """
         Update a user's email address represented by an emailAuthenticationMethod object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EmailAuthenticationMethod]
+        Find more info here: https://learn.microsoft.com/graph/api/emailauthenticationmethod-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -95,8 +96,7 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Deletes a user's emailAuthenticationMethod object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -111,8 +111,7 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a user's single email authentication method object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -129,9 +128,8 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[EmailAuthenticationMethod] = None, request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update a user's email address represented by an emailAuthenticationMethod object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -165,8 +163,7 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

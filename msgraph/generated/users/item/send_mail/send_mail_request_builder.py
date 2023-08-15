@@ -20,18 +20,19 @@ class SendMailRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SendMailRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/sendMail", path_parameters)
     
     async def post(self,body: Optional[SendMailPostRequestBody] = None, request_configuration: Optional[SendMailRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Send the message specified in the request body using either JSON or MIME format. When using JSON format you can include a file attachment in the same sendMail action call. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in base64 format in the request body.- Add any attachments and S/MIME properties to the MIME content. This method saves the message in the Sent Items folder. Alternatively, create a draft message to send later. To learn more about the steps involved in the backend before a mail is delivered to recipients, see here.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/user-sendmail?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -51,9 +52,8 @@ class SendMailRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[SendMailPostRequestBody] = None, request_configuration: Optional[SendMailRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Send the message specified in the request body using either JSON or MIME format. When using JSON format you can include a file attachment in the same sendMail action call. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in base64 format in the request body.- Add any attachments and S/MIME properties to the MIME content. This method saves the message in the Sent Items folder. Alternatively, create a draft message to send later. To learn more about the steps involved in the backend before a mail is delivered to recipients, see here.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

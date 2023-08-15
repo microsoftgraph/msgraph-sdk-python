@@ -24,17 +24,16 @@ class AppConsentRequestsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AppConsentRequestsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/appConsent/appConsentRequests{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_app_consent_request_id(self,app_consent_request_id: str) -> AppConsentRequestItemRequestBuilder:
         """
         Provides operations to manage the appConsentRequests property of the microsoft.graph.appConsentApprovalRoute entity.
-        Args:
-            app_consent_request_id: Unique identifier of the item
+        param app_consent_request_id: The unique identifier of appConsentRequest
         Returns: AppConsentRequestItemRequestBuilder
         """
         if not app_consent_request_id:
@@ -48,8 +47,7 @@ class AppConsentRequestsRequestBuilder(BaseRequestBuilder):
     def filter_by_current_user_with_on(self,on: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
-        Args:
-            on: Usage: on='{on}'
+        param on: Usage: on='{on}'
         Returns: FilterByCurrentUserWithOnRequestBuilder
         """
         if not on:
@@ -61,9 +59,9 @@ class AppConsentRequestsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[AppConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[AppConsentRequestCollectionResponse]:
         """
         Retrieve appConsentRequest objects and their properties.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppConsentRequestCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/appconsentapprovalroute-list-appconsentrequests?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -83,9 +81,8 @@ class AppConsentRequestsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[AppConsentRequest] = None, request_configuration: Optional[AppConsentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[AppConsentRequest]:
         """
         Create new navigation property to appConsentRequests for identityGovernance
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppConsentRequest]
         """
         if not body:
@@ -108,8 +105,7 @@ class AppConsentRequestsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AppConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve appConsentRequest objects and their properties.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -126,9 +122,8 @@ class AppConsentRequestsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[AppConsentRequest] = None, request_configuration: Optional[AppConsentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to appConsentRequests for identityGovernance
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -161,8 +156,7 @@ class AppConsentRequestsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

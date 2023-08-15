@@ -23,17 +23,16 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new InstalledAppsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/chats/{chat%2Did}/installedApps{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_teams_app_installation_id(self,teams_app_installation_id: str) -> TeamsAppInstallationItemRequestBuilder:
         """
         Provides operations to manage the installedApps property of the microsoft.graph.chat entity.
-        Args:
-            teams_app_installation_id: Unique identifier of the item
+        param teams_app_installation_id: The unique identifier of teamsAppInstallation
         Returns: TeamsAppInstallationItemRequestBuilder
         """
         if not teams_app_installation_id:
@@ -47,9 +46,9 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsAppInstallationCollectionResponse]:
         """
         List all app installations within a chat.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppInstallationCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/chat-list-installedapps?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[TeamsAppInstallation]:
         """
         Install a teamsApp to the specified chat.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppInstallation]
+        Find more info here: https://learn.microsoft.com/graph/api/chat-post-installedapps?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List all app installations within a chat.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Install a teamsApp to the specified chat.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

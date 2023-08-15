@@ -20,17 +20,17 @@ class BotRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new BotRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/appCatalogs/teamsApps/{teamsApp%2Did}/appDefinitions/{teamsAppDefinition%2Did}/bot{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[BotRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property bot for appCatalogs
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,9 +48,9 @@ class BotRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[BotRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamworkBot]:
         """
         Get the bot associated with a specific definition of the  TeamsApp.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamworkBot]
+        Find more info here: https://learn.microsoft.com/graph/api/teamworkbot-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,9 +70,8 @@ class BotRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[TeamworkBot] = None, request_configuration: Optional[BotRequestBuilderPatchRequestConfiguration] = None) -> Optional[TeamworkBot]:
         """
         Update the navigation property bot in appCatalogs
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamworkBot]
         """
         if not body:
@@ -95,8 +94,7 @@ class BotRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[BotRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property bot for appCatalogs
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -111,8 +109,7 @@ class BotRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[BotRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the bot associated with a specific definition of the  TeamsApp.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -129,9 +126,8 @@ class BotRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[TeamworkBot] = None, request_configuration: Optional[BotRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property bot in appCatalogs
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -165,8 +161,7 @@ class BotRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -20,18 +20,19 @@ class ExportPersonalDataRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ExportPersonalDataRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/exportPersonalData", path_parameters)
     
     async def post(self,body: Optional[ExportPersonalDataPostRequestBody] = None, request_configuration: Optional[ExportPersonalDataRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Submit a data policy operation request from a company administrator or an application to export an organizational user's data. This data includes the user's data stored in OneDrive and their activity reports. For more guidance about exporting data while complying with regulations, see Data Subject Requests and the GDPR and CCPA.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/user-exportpersonaldata?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -51,9 +52,8 @@ class ExportPersonalDataRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[ExportPersonalDataPostRequestBody] = None, request_configuration: Optional[ExportPersonalDataRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Submit a data policy operation request from a company administrator or an application to export an organizational user's data. This data includes the user's data stored in OneDrive and their activity reports. For more guidance about exporting data while complying with regulations, see Data Subject Requests and the GDPR and CCPA.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

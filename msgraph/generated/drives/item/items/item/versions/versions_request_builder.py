@@ -23,17 +23,16 @@ class VersionsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new VersionsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/versions{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_drive_item_version_id(self,drive_item_version_id: str) -> DriveItemVersionItemRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.driveItem entity.
-        Args:
-            drive_item_version_id: Unique identifier of the item
+        param drive_item_version_id: The unique identifier of driveItemVersion
         Returns: DriveItemVersionItemRequestBuilder
         """
         if not drive_item_version_id:
@@ -47,9 +46,9 @@ class VersionsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[VersionsRequestBuilderGetRequestConfiguration] = None) -> Optional[DriveItemVersionCollectionResponse]:
         """
         OneDrive and SharePoint can be configured to retain the history for files.Depending on the service and configuration, a new version can be created for each edit, each time the file is saved, manually, or never. Previous versions of a document may be retained for a finite period of time depending on admin settings which may be unique per user or location.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItemVersionCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/driveitem-list-versions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,9 +68,8 @@ class VersionsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[DriveItemVersion] = None, request_configuration: Optional[VersionsRequestBuilderPostRequestConfiguration] = None) -> Optional[DriveItemVersion]:
         """
         Create new navigation property to versions for drives
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItemVersion]
         """
         if not body:
@@ -94,8 +92,7 @@ class VersionsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[VersionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         OneDrive and SharePoint can be configured to retain the history for files.Depending on the service and configuration, a new version can be created for each edit, each time the file is saved, manually, or never. Previous versions of a document may be retained for a finite period of time depending on admin settings which may be unique per user or location.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +109,8 @@ class VersionsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[DriveItemVersion] = None, request_configuration: Optional[VersionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to versions for drives
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +143,7 @@ class VersionsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

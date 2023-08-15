@@ -20,18 +20,17 @@ class GetYammerDeviceUsageUserDetailWithDateRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, date: Optional[datetime.date] = None) -> None:
         """
         Instantiates a new GetYammerDeviceUsageUserDetailWithDateRequestBuilder and sets the default values.
-        Args:
-            date: Usage: date={date}
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param date: Usage: date={date}
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/reports/getYammerDeviceUsageUserDetail(date={date})", path_parameters)
     
     async def get(self,request_configuration: Optional[GetYammerDeviceUsageUserDetailWithDateRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
         Invoke function getYammerDeviceUsageUserDetail
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
         request_info = self.to_get_request_information(
@@ -50,8 +49,7 @@ class GetYammerDeviceUsageUserDetailWithDateRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[GetYammerDeviceUsageUserDetailWithDateRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function getYammerDeviceUsageUserDetail
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()

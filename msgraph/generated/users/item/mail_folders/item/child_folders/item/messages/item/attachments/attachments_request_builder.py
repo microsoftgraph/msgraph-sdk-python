@@ -24,17 +24,16 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AttachmentsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/attachments{?%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_attachment_id(self,attachment_id: str) -> AttachmentItemRequestBuilder:
         """
         Provides operations to manage the attachments property of the microsoft.graph.message entity.
-        Args:
-            attachment_id: Unique identifier of the item
+        param attachment_id: The unique identifier of attachment
         Returns: AttachmentItemRequestBuilder
         """
         if not attachment_id:
@@ -47,10 +46,10 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AttachmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[AttachmentCollectionResponse]:
         """
-        Retrieve a list of attachment objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Retrieve a list of attachment objects attached to a message.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttachmentCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/message-list-attachments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,10 +69,10 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[Attachment] = None, request_configuration: Optional[AttachmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[Attachment]:
         """
         Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Attachment]
+        Find more info here: https://learn.microsoft.com/graph/api/message-post-attachments?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,9 +93,8 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AttachmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of attachment objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Retrieve a list of attachment objects attached to a message.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -113,9 +111,8 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[Attachment] = None, request_configuration: Optional[AttachmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -152,13 +149,12 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttachmentsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of attachment objects.
+        Retrieve a list of attachment objects attached to a message.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

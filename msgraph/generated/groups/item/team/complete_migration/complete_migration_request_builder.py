@@ -19,17 +19,18 @@ class CompleteMigrationRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CompleteMigrationRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/team/completeMigration", path_parameters)
     
     async def post(self,request_configuration: Optional[CompleteMigrationRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Complete the message migration process by removing migration mode from a team. Migration mode is a special state where certain operations are barred, like message POST and membership operations during the data migration process. After a completeMigration request is made, you cannot import additional messages into the team. You can add members to the team after the request returns a successful response.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/team-completemigration?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -47,8 +48,7 @@ class CompleteMigrationRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,request_configuration: Optional[CompleteMigrationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Complete the message migration process by removing migration mode from a team. Migration mode is a special state where certain operations are barred, like message POST and membership operations during the data migration process. After a completeMigration request is made, you cannot import additional messages into the team. You can add members to the team after the request returns a successful response.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()

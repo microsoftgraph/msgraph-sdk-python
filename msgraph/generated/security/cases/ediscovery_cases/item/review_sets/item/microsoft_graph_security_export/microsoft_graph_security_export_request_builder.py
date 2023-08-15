@@ -20,18 +20,19 @@ class MicrosoftGraphSecurityExportRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MicrosoftGraphSecurityExportRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/reviewSets/{ediscoveryReviewSet%2Did}/microsoft.graph.security.export", path_parameters)
     
     async def post(self,body: Optional[ExportPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityExportRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Initiate an export from a ediscoveryReviewSet. For details, see Export documents from a review set in eDiscovery (Premium).
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-export?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -51,9 +52,8 @@ class MicrosoftGraphSecurityExportRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[ExportPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityExportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Initiate an export from a ediscoveryReviewSet. For details, see Export documents from a review set in eDiscovery (Premium).
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

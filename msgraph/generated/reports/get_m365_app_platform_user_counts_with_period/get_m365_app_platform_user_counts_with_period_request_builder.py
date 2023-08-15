@@ -19,18 +19,17 @@ class GetM365AppPlatformUserCountsWithPeriodRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, period: Optional[str] = None) -> None:
         """
         Instantiates a new GetM365AppPlatformUserCountsWithPeriodRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            period: Usage: period='{period}'
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param period: Usage: period='{period}'
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/reports/getM365AppPlatformUserCounts(period='{period}')", path_parameters)
     
     async def get(self,request_configuration: Optional[GetM365AppPlatformUserCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
         Invoke function getM365AppPlatformUserCounts
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
         request_info = self.to_get_request_information(
@@ -49,8 +48,7 @@ class GetM365AppPlatformUserCountsWithPeriodRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[GetM365AppPlatformUserCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function getM365AppPlatformUserCounts
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()

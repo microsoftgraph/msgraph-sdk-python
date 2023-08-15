@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from .identity_set import IdentitySet
     from .item_reference import ItemReference
     from .list_item import ListItem
-    from .list_ import List_
+    from .list____ import List____
     from .shared_drive_item import SharedDriveItem
     from .site import Site
     from .user import User
@@ -49,8 +49,7 @@ class BaseItem(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BaseItem:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: BaseItem
         """
         if not parse_node:
@@ -68,9 +67,9 @@ class BaseItem(Entity):
 
             return DriveItem()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.list".casefold():
-            from .list_ import List_
+            from .list____ import List____
 
-            return List_()
+            return List____()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.listItem".casefold():
             from .list_item import ListItem
 
@@ -96,7 +95,7 @@ class BaseItem(Entity):
         from .identity_set import IdentitySet
         from .item_reference import ItemReference
         from .list_item import ListItem
-        from .list_ import List_
+        from .list____ import List____
         from .shared_drive_item import SharedDriveItem
         from .site import Site
         from .user import User
@@ -107,7 +106,7 @@ class BaseItem(Entity):
         from .identity_set import IdentitySet
         from .item_reference import ItemReference
         from .list_item import ListItem
-        from .list_ import List_
+        from .list____ import List____
         from .shared_drive_item import SharedDriveItem
         from .site import Site
         from .user import User
@@ -132,8 +131,8 @@ class BaseItem(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

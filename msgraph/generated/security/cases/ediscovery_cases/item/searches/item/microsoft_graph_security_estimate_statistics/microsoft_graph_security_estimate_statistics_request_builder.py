@@ -19,17 +19,18 @@ class MicrosoftGraphSecurityEstimateStatisticsRequestBuilder(BaseRequestBuilder)
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MicrosoftGraphSecurityEstimateStatisticsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/searches/{ediscoverySearch%2Did}/microsoft.graph.security.estimateStatistics", path_parameters)
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityEstimateStatisticsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Run an estimate of the number of emails and documents in the eDiscovery search. To learn more about searches in eDiscovery, see Collect data for a case in eDiscovery (Premium).
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverysearch-estimatestatistics?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -47,8 +48,7 @@ class MicrosoftGraphSecurityEstimateStatisticsRequestBuilder(BaseRequestBuilder)
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityEstimateStatisticsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Run an estimate of the number of emails and documents in the eDiscovery search. To learn more about searches in eDiscovery, see Collect data for a case in eDiscovery (Premium).
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()

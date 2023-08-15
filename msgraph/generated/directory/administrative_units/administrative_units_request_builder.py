@@ -24,17 +24,16 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AdministrativeUnitsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/directory/administrativeUnits{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_administrative_unit_id(self,administrative_unit_id: str) -> AdministrativeUnitItemRequestBuilder:
         """
         Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
-        Args:
-            administrative_unit_id: Unique identifier of the item
+        param administrative_unit_id: The unique identifier of administrativeUnit
         Returns: AdministrativeUnitItemRequestBuilder
         """
         if not administrative_unit_id:
@@ -48,9 +47,9 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[AdministrativeUnitsRequestBuilderGetRequestConfiguration] = None) -> Optional[AdministrativeUnitCollectionResponse]:
         """
         Retrieve a list of administrativeUnit objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdministrativeUnitCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/directory-list-administrativeunits?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,10 +69,10 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitsRequestBuilderPostRequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
         Use this API to create a new administrativeUnit.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdministrativeUnit]
+        Find more info here: https://learn.microsoft.com/graph/api/directory-post-administrativeunits?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -95,8 +94,7 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AdministrativeUnitsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of administrativeUnit objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -113,9 +111,8 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Use this API to create a new administrativeUnit.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -157,8 +154,7 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

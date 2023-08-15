@@ -19,17 +19,16 @@ class LogoRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new LogoRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/applications/{application%2Did}/logo", path_parameters)
     
     async def get(self,request_configuration: Optional[LogoRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
         The main logo for the application. Not nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
         request_info = self.to_get_request_information(
@@ -48,9 +47,8 @@ class LogoRequestBuilder(BaseRequestBuilder):
     async def put(self,body: bytes, request_configuration: Optional[LogoRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
         The main logo for the application. Not nullable.
-        Args:
-            body: Binary request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: Binary request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
         if not body:
@@ -71,8 +69,7 @@ class LogoRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[LogoRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The main logo for the application. Not nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -87,9 +84,8 @@ class LogoRequestBuilder(BaseRequestBuilder):
     def to_put_request_information(self,body: bytes, request_configuration: Optional[LogoRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         The main logo for the application. Not nullable.
-        Args:
-            body: Binary request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: Binary request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

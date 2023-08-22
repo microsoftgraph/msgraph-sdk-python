@@ -21,17 +21,18 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CalendarGroupItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}{?%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[CalendarGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete a calendar group other than the default calendar group.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/calendargroup-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,9 +50,9 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[CalendarGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CalendarGroup]:
         """
         Retrieve the properties and relationships of a calendar group object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarGroup]
+        Find more info here: https://learn.microsoft.com/graph/api/calendargroup-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,10 +72,10 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[CalendarGroup] = None, request_configuration: Optional[CalendarGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[CalendarGroup]:
         """
         Update the properties of calendargroup object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarGroup]
+        Find more info here: https://learn.microsoft.com/graph/api/calendargroup-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,8 +97,7 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[CalendarGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete a calendar group other than the default calendar group.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,8 +112,7 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[CalendarGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a calendar group object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -130,9 +129,8 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[CalendarGroup] = None, request_configuration: Optional[CalendarGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of calendargroup object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -175,8 +173,7 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

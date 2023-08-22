@@ -20,19 +20,18 @@ class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestB
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_package_id: Optional[str] = None, incompatible_access_package_id: Optional[str] = None) -> None:
         """
         Instantiates a new AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder and sets the default values.
-        Args:
-            access_package_id: Usage: accessPackageId='{accessPackageId}'
-            incompatible_access_package_id: Usage: incompatibleAccessPackageId='{incompatibleAccessPackageId}'
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param access_package_id: Usage: accessPackageId='{accessPackageId}'
+        param incompatible_access_package_id: Usage: incompatibleAccessPackageId='{incompatibleAccessPackageId}'
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/assignments/additionalAccess(accessPackageId='{accessPackageId}',incompatibleAccessPackageId='{incompatibleAccessPackageId}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilderGetRequestConfiguration] = None) -> Optional[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdResponse]:
         """
         Invoke function additionalAccess
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdResponse]
         """
         request_info = self.to_get_request_information(
@@ -53,8 +52,7 @@ class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestB
     def to_get_request_information(self,request_configuration: Optional[AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function additionalAccess
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -76,8 +74,7 @@ class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestB
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

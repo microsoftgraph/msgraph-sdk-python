@@ -23,17 +23,16 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CalendarViewRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarView{?startDateTime*,endDateTime*,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_event_id(self,event_id: str) -> EventItemRequestBuilder:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.user entity.
-        Args:
-            event_id: Unique identifier of the item
+        param event_id: The unique identifier of event
         Returns: EventItemRequestBuilder
         """
         if not event_id:
@@ -47,9 +46,9 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> Optional[EventCollectionResponse]:
         """
         The calendar view for the calendar. Read-only. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EventCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/user-list-calendarview?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,8 +68,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The calendar view for the calendar. Read-only. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -110,8 +108,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

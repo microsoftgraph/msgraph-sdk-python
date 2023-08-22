@@ -23,17 +23,16 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AttendanceReportsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/onlineMeetings/{onlineMeeting%2Did}/attendanceReports{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_meeting_attendance_report_id(self,meeting_attendance_report_id: str) -> MeetingAttendanceReportItemRequestBuilder:
         """
         Provides operations to manage the attendanceReports property of the microsoft.graph.onlineMeeting entity.
-        Args:
-            meeting_attendance_report_id: Unique identifier of the item
+        param meeting_attendance_report_id: The unique identifier of meetingAttendanceReport
         Returns: MeetingAttendanceReportItemRequestBuilder
         """
         if not meeting_attendance_report_id:
@@ -47,9 +46,9 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[AttendanceReportsRequestBuilderGetRequestConfiguration] = None) -> Optional[MeetingAttendanceReportCollectionResponse]:
         """
         Get a list of meetingAttendanceReport objects for an onlineMeeting. Each time an online meeting ends, an attendance report is generated for that session.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MeetingAttendanceReportCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/meetingattendancereport-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,9 +68,8 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[MeetingAttendanceReport] = None, request_configuration: Optional[AttendanceReportsRequestBuilderPostRequestConfiguration] = None) -> Optional[MeetingAttendanceReport]:
         """
         Create new navigation property to attendanceReports for users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MeetingAttendanceReport]
         """
         if not body:
@@ -94,8 +92,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AttendanceReportsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of meetingAttendanceReport objects for an onlineMeeting. Each time an online meeting ends, an attendance report is generated for that session.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +109,8 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[MeetingAttendanceReport] = None, request_configuration: Optional[AttendanceReportsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to attendanceReports for users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +143,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

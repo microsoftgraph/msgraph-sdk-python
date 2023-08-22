@@ -23,17 +23,16 @@ class MonthlyPrintUsageByPrinterRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MonthlyPrintUsageByPrinterRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/reports/monthlyPrintUsageByPrinter{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_print_usage_by_printer_id(self,print_usage_by_printer_id: str) -> PrintUsageByPrinterItemRequestBuilder:
         """
         Provides operations to manage the monthlyPrintUsageByPrinter property of the microsoft.graph.reportRoot entity.
-        Args:
-            print_usage_by_printer_id: Unique identifier of the item
+        param print_usage_by_printer_id: The unique identifier of printUsageByPrinter
         Returns: PrintUsageByPrinterItemRequestBuilder
         """
         if not print_usage_by_printer_id:
@@ -47,9 +46,9 @@ class MonthlyPrintUsageByPrinterRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[MonthlyPrintUsageByPrinterRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintUsageByPrinterCollectionResponse]:
         """
         Retrieve a list of monthly print usage summaries, grouped by printer.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintUsageByPrinterCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-list-monthlyprintusagebyprinter?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,9 +68,8 @@ class MonthlyPrintUsageByPrinterRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[PrintUsageByPrinter] = None, request_configuration: Optional[MonthlyPrintUsageByPrinterRequestBuilderPostRequestConfiguration] = None) -> Optional[PrintUsageByPrinter]:
         """
         Create new navigation property to monthlyPrintUsageByPrinter for reports
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintUsageByPrinter]
         """
         if not body:
@@ -94,8 +92,7 @@ class MonthlyPrintUsageByPrinterRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[MonthlyPrintUsageByPrinterRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of monthly print usage summaries, grouped by printer.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +109,8 @@ class MonthlyPrintUsageByPrinterRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[PrintUsageByPrinter] = None, request_configuration: Optional[MonthlyPrintUsageByPrinterRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to monthlyPrintUsageByPrinter for reports
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +143,7 @@ class MonthlyPrintUsageByPrinterRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

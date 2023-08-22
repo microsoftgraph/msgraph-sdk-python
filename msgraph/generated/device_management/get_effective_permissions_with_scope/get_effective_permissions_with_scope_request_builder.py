@@ -20,18 +20,17 @@ class GetEffectivePermissionsWithScopeRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, scope: Optional[str] = None) -> None:
         """
         Instantiates a new GetEffectivePermissionsWithScopeRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
-            scope: Usage: scope='{scope}'
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        param scope: Usage: scope='{scope}'
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/getEffectivePermissions(scope='{scope}'){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
     async def get(self,request_configuration: Optional[GetEffectivePermissionsWithScopeRequestBuilderGetRequestConfiguration] = None) -> Optional[GetEffectivePermissionsWithScopeResponse]:
         """
         Retrieves the effective permissions of the currently authenticated user
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetEffectivePermissionsWithScopeResponse]
         """
         request_info = self.to_get_request_information(
@@ -52,8 +51,7 @@ class GetEffectivePermissionsWithScopeRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[GetEffectivePermissionsWithScopeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieves the effective permissions of the currently authenticated user
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -75,8 +73,7 @@ class GetEffectivePermissionsWithScopeRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

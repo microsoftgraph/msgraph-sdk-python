@@ -19,17 +19,18 @@ class MicrosoftGraphSecurityReleaseRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MicrosoftGraphSecurityReleaseRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/custodians/{ediscoveryCustodian%2Did}/microsoft.graph.security.release", path_parameters)
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityReleaseRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Release a custodian from a case. For details, see Release a custodian from a case.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycustodian-release?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -47,8 +48,7 @@ class MicrosoftGraphSecurityReleaseRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityReleaseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Release a custodian from a case. For details, see Release a custodian from a case.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()

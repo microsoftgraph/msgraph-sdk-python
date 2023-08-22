@@ -20,17 +20,17 @@ class UnifiedRbacResourceActionItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UnifiedRbacResourceActionItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/roleManagement/entitlementManagement/resourceNamespaces/{unifiedRbacResourceNamespace%2Did}/resourceActions/{unifiedRbacResourceAction%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property resourceActions for roleManagement
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,8 +48,7 @@ class UnifiedRbacResourceActionItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRbacResourceAction]:
         """
         Get resourceActions from roleManagement
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRbacResourceAction]
         """
         request_info = self.to_get_request_information(
@@ -70,9 +69,8 @@ class UnifiedRbacResourceActionItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[UnifiedRbacResourceAction] = None, request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UnifiedRbacResourceAction]:
         """
         Update the navigation property resourceActions in roleManagement
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRbacResourceAction]
         """
         if not body:
@@ -95,8 +93,7 @@ class UnifiedRbacResourceActionItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property resourceActions for roleManagement
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -111,8 +108,7 @@ class UnifiedRbacResourceActionItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get resourceActions from roleManagement
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -129,9 +125,8 @@ class UnifiedRbacResourceActionItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[UnifiedRbacResourceAction] = None, request_configuration: Optional[UnifiedRbacResourceActionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property resourceActions in roleManagement
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -165,8 +160,7 @@ class UnifiedRbacResourceActionItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

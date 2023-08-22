@@ -23,17 +23,16 @@ class PhoneMethodsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PhoneMethodsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/authentication/phoneMethods{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_phone_authentication_method_id(self,phone_authentication_method_id: str) -> PhoneAuthenticationMethodItemRequestBuilder:
         """
         Provides operations to manage the phoneMethods property of the microsoft.graph.authentication entity.
-        Args:
-            phone_authentication_method_id: Unique identifier of the item
+        param phone_authentication_method_id: The unique identifier of phoneAuthenticationMethod
         Returns: PhoneAuthenticationMethodItemRequestBuilder
         """
         if not phone_authentication_method_id:
@@ -47,9 +46,9 @@ class PhoneMethodsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[PhoneMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[PhoneAuthenticationMethodCollectionResponse]:
         """
         Retrieve a list of phone authentication method objects for a user. This will return up to three objects, as a user can have up to three phones usable for authentication. This method is available only for standard Azure AD and B2B users, but not B2C users.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PhoneAuthenticationMethodCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/authentication-list-phonemethods?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class PhoneMethodsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[PhoneAuthenticationMethod] = None, request_configuration: Optional[PhoneMethodsRequestBuilderPostRequestConfiguration] = None) -> Optional[PhoneAuthenticationMethod]:
         """
         Add a new phone authentication method for a user. A user may only have one phone of each type, captured in the phoneType property. This means, for example, adding a mobile phone to a user with a preexisting mobile phone will fail. Additionally, a user must always have a mobile phone before adding an alternateMobile phone. Adding a phone number makes it available for use in both Azure multi-factor authentication (MFA) and self-service password reset (SSPR), if enabled. Additionally, if a user is enabled by policy to use SMS sign-in and a mobile number is added, the system will attempt to register the number for use in that system.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PhoneAuthenticationMethod]
+        Find more info here: https://learn.microsoft.com/graph/api/authentication-post-phonemethods?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class PhoneMethodsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[PhoneMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of phone authentication method objects for a user. This will return up to three objects, as a user can have up to three phones usable for authentication. This method is available only for standard Azure AD and B2B users, but not B2C users.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class PhoneMethodsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[PhoneAuthenticationMethod] = None, request_configuration: Optional[PhoneMethodsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add a new phone authentication method for a user. A user may only have one phone of each type, captured in the phoneType property. This means, for example, adding a mobile phone to a user with a preexisting mobile phone will fail. Additionally, a user must always have a mobile phone before adding an alternateMobile phone. Adding a phone number makes it available for use in both Azure multi-factor authentication (MFA) and self-service password reset (SSPR), if enabled. Additionally, if a user is enabled by policy to use SMS sign-in and a mobile number is added, the system will attempt to register the number for use in that system.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class PhoneMethodsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -21,18 +21,17 @@ class LcmRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new LcmRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/functions/lcm", path_parameters)
     
     async def post(self,body: Optional[LcmPostRequestBody] = None, request_configuration: Optional[LcmRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookFunctionResult]:
         """
         Invoke action lcm
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookFunctionResult]
         """
         if not body:
@@ -55,9 +54,8 @@ class LcmRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[LcmPostRequestBody] = None, request_configuration: Optional[LcmRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action lcm
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

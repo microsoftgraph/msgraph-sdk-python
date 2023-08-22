@@ -21,19 +21,19 @@ class AddCopyRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AddCopyRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/list/contentTypes/addCopy", path_parameters)
     
     async def post(self,body: Optional[AddCopyPostRequestBody] = None, request_configuration: Optional[AddCopyRequestBuilderPostRequestConfiguration] = None) -> Optional[ContentType]:
         """
         Add a copy of a [content type][contentType] from a [site][site] to a [list][list].
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContentType]
+        Find more info here: https://learn.microsoft.com/graph/api/contenttype-addcopy?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -55,9 +55,8 @@ class AddCopyRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[AddCopyPostRequestBody] = None, request_configuration: Optional[AddCopyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add a copy of a [content type][contentType] from a [site][site] to a [list][list].
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

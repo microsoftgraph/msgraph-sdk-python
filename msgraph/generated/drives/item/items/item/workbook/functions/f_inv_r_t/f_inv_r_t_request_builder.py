@@ -21,18 +21,17 @@ class F_Inv_RTRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new F_Inv_RTRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/functions/f_Inv_RT", path_parameters)
     
     async def post(self,body: Optional[F_Inv_RTPostRequestBody] = None, request_configuration: Optional[F_Inv_RTRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookFunctionResult]:
         """
         Invoke action f_Inv_RT
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookFunctionResult]
         """
         if not body:
@@ -55,9 +54,8 @@ class F_Inv_RTRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[F_Inv_RTPostRequestBody] = None, request_configuration: Optional[F_Inv_RTRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action f_Inv_RT
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

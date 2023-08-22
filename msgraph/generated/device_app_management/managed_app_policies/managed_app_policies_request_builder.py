@@ -23,17 +23,16 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ManagedAppPoliciesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedAppPolicies{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_managed_app_policy_id(self,managed_app_policy_id: str) -> ManagedAppPolicyItemRequestBuilder:
         """
         Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
-        Args:
-            managed_app_policy_id: Unique identifier of the item
+        param managed_app_policy_id: The unique identifier of managedAppPolicy
         Returns: ManagedAppPolicyItemRequestBuilder
         """
         if not managed_app_policy_id:
@@ -46,10 +45,10 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppPolicyCollectionResponse]:
         """
-        List properties and relationships of the targetedManagedAppProtection objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        List properties and relationships of the managedAppProtection objects.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicyCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappprotection-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,9 +68,8 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[ManagedAppPolicy] = None, request_configuration: Optional[ManagedAppPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedAppPolicy]:
         """
         Create new navigation property to managedAppPolicies for deviceAppManagement
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicy]
         """
         if not body:
@@ -93,9 +91,8 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the targetedManagedAppProtection objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        List properties and relationships of the managedAppProtection objects.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +109,8 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[ManagedAppPolicy] = None, request_configuration: Optional[ManagedAppPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to managedAppPolicies for deviceAppManagement
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -142,13 +138,12 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppPoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the targetedManagedAppProtection objects.
+        List properties and relationships of the managedAppProtection objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

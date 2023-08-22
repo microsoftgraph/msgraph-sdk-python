@@ -20,18 +20,17 @@ class UsedRangeWithValuesOnlyRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, values_only: Optional[bool] = None) -> None:
         """
         Instantiates a new UsedRangeWithValuesOnlyRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
-            values_only: Usage: valuesOnly={valuesOnly}
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        param values_only: Usage: valuesOnly={valuesOnly}
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/usedRange(valuesOnly={valuesOnly})", path_parameters)
     
     async def get(self,request_configuration: Optional[UsedRangeWithValuesOnlyRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookRange]:
         """
         Invoke function usedRange
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookRange]
         """
         request_info = self.to_get_request_information(
@@ -52,8 +51,7 @@ class UsedRangeWithValuesOnlyRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[UsedRangeWithValuesOnlyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function usedRange
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()

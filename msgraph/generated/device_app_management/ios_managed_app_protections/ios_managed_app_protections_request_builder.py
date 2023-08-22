@@ -23,17 +23,16 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IosManagedAppProtectionsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/iosManagedAppProtections{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_ios_managed_app_protection_id(self,ios_managed_app_protection_id: str) -> IosManagedAppProtectionItemRequestBuilder:
         """
         Provides operations to manage the iosManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
-        Args:
-            ios_managed_app_protection_id: Unique identifier of the item
+        param ios_managed_app_protection_id: The unique identifier of iosManagedAppProtection
         Returns: IosManagedAppProtectionItemRequestBuilder
         """
         if not ios_managed_app_protection_id:
@@ -47,9 +46,9 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[IosManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[IosManagedAppProtectionCollectionResponse]:
         """
         List properties and relationships of the iosManagedAppProtection objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IosManagedAppProtectionCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappprotection-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[IosManagedAppProtection]:
         """
         Create a new iosManagedAppProtection object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IosManagedAppProtection]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappprotection-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[IosManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List properties and relationships of the iosManagedAppProtection objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new iosManagedAppProtection object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -23,17 +23,17 @@ class ServiceAnnouncementRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ServiceAnnouncementRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ServiceAnnouncementRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property serviceAnnouncement for admin
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,8 +51,7 @@ class ServiceAnnouncementRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ServiceAnnouncementRequestBuilderGetRequestConfiguration] = None) -> Optional[ServiceAnnouncement]:
         """
         A container for service communications resources. Read-only.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceAnnouncement]
         """
         request_info = self.to_get_request_information(
@@ -73,9 +72,8 @@ class ServiceAnnouncementRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[ServiceAnnouncement] = None, request_configuration: Optional[ServiceAnnouncementRequestBuilderPatchRequestConfiguration] = None) -> Optional[ServiceAnnouncement]:
         """
         Update the navigation property serviceAnnouncement in admin
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceAnnouncement]
         """
         if not body:
@@ -98,8 +96,7 @@ class ServiceAnnouncementRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[ServiceAnnouncementRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property serviceAnnouncement for admin
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -114,8 +111,7 @@ class ServiceAnnouncementRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ServiceAnnouncementRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         A container for service communications resources. Read-only.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -132,9 +128,8 @@ class ServiceAnnouncementRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[ServiceAnnouncement] = None, request_configuration: Optional[ServiceAnnouncementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property serviceAnnouncement in admin
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -195,8 +190,7 @@ class ServiceAnnouncementRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

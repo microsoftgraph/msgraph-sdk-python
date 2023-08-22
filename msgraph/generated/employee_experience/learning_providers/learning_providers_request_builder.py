@@ -23,17 +23,16 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new LearningProvidersRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/employeeExperience/learningProviders{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_learning_provider_id(self,learning_provider_id: str) -> LearningProviderItemRequestBuilder:
         """
         Provides operations to manage the learningProviders property of the microsoft.graph.employeeExperience entity.
-        Args:
-            learning_provider_id: Unique identifier of the item
+        param learning_provider_id: The unique identifier of learningProvider
         Returns: LearningProviderItemRequestBuilder
         """
         if not learning_provider_id:
@@ -47,9 +46,9 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningProviderCollectionResponse]:
         """
         Get a list of the learningProvider resources registered in Viva Learning for a tenant.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProviderCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/employeeexperience-list-learningproviders?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[LearningProvider]:
         """
         Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProvider]
+        Find more info here: https://learn.microsoft.com/graph/api/employeeexperience-post-learningproviders?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of the learningProvider resources registered in Viva Learning for a tenant.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

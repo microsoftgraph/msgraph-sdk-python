@@ -99,8 +99,7 @@ class ColumnDefinition(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ColumnDefinition:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ColumnDefinition
         """
         if not parse_node:
@@ -193,8 +192,8 @@ class ColumnDefinition(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

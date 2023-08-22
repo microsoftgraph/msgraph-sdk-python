@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from .planner_group import PlannerGroup
     from .profile_photo import ProfilePhoto
     from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+    from .service_provisioning_error import ServiceProvisioningError
     from .site import Site
     from .team import Team
 
@@ -144,6 +145,8 @@ class Group(DirectoryObject):
     security_enabled: Optional[bool] = None
     # Security identifier of the group, used in Windows scenarios. Returned by default.
     security_identifier: Optional[str] = None
+    # The serviceProvisioningErrors property
+    service_provisioning_errors: Optional[List[ServiceProvisioningError]] = None
     # Settings that can govern this group's behavior, like whether members can invite guest users to the group. Nullable.
     settings: Optional[List[GroupSetting]] = None
     # The list of SharePoint sites in this group. Access the default site with /sites/root.
@@ -160,15 +163,14 @@ class Group(DirectoryObject):
     transitive_members: Optional[List[DirectoryObject]] = None
     # Count of conversations that have received new posts since the signed-in user last visited the group. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
     unseen_count: Optional[int] = None
-    # Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or HiddenMembership. HiddenMembership can be set only for Microsoft 365 groups, when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. Groups assignable to roles are always Private. See group visibility options to learn more. Returned by default. Nullable.
+    # Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or HiddenMembership. HiddenMembership can be set only for Microsoft 365 groups, when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. Groups assignable to roles are always Private. To learn more, see group visibility options. Returned by default. Nullable.
     visibility: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Group:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Group
         """
         if not parse_node:
@@ -198,6 +200,7 @@ class Group(DirectoryObject):
         from .planner_group import PlannerGroup
         from .profile_photo import ProfilePhoto
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .service_provisioning_error import ServiceProvisioningError
         from .site import Site
         from .team import Team
 
@@ -219,6 +222,7 @@ class Group(DirectoryObject):
         from .planner_group import PlannerGroup
         from .profile_photo import ProfilePhoto
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
+        from .service_provisioning_error import ServiceProvisioningError
         from .site import Site
         from .team import Team
 
@@ -279,6 +283,7 @@ class Group(DirectoryObject):
             "renewedDateTime": lambda n : setattr(self, 'renewed_date_time', n.get_datetime_value()),
             "securityEnabled": lambda n : setattr(self, 'security_enabled', n.get_bool_value()),
             "securityIdentifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
+            "serviceProvisioningErrors": lambda n : setattr(self, 'service_provisioning_errors', n.get_collection_of_object_values(ServiceProvisioningError)),
             "settings": lambda n : setattr(self, 'settings', n.get_collection_of_object_values(GroupSetting)),
             "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(Site)),
             "team": lambda n : setattr(self, 'team', n.get_object_value(Team)),
@@ -296,8 +301,8 @@ class Group(DirectoryObject):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")
@@ -358,6 +363,7 @@ class Group(DirectoryObject):
         writer.write_datetime_value("renewedDateTime", self.renewed_date_time)
         writer.write_bool_value("securityEnabled", self.security_enabled)
         writer.write_str_value("securityIdentifier", self.security_identifier)
+        writer.write_collection_of_object_values("serviceProvisioningErrors", self.service_provisioning_errors)
         writer.write_collection_of_object_values("settings", self.settings)
         writer.write_collection_of_object_values("sites", self.sites)
         writer.write_object_value("team", self.team)

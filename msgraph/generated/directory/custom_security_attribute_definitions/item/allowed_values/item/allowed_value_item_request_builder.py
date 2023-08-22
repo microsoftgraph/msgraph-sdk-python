@@ -20,17 +20,17 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AllowedValueItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/directory/customSecurityAttributeDefinitions/{customSecurityAttributeDefinition%2Did}/allowedValues/{allowedValue%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[AllowedValueItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property allowedValues for directory
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,9 +48,9 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[AllowedValueItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AllowedValue]:
         """
         Read the properties and relationships of an allowedValue object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AllowedValue]
+        Find more info here: https://learn.microsoft.com/graph/api/allowedvalue-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,10 +70,10 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[AllowedValue] = None, request_configuration: Optional[AllowedValueItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AllowedValue]:
         """
         Update the properties of an allowedValue object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AllowedValue]
+        Find more info here: https://learn.microsoft.com/graph/api/allowedvalue-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -95,8 +95,7 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[AllowedValueItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property allowedValues for directory
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -111,8 +110,7 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AllowedValueItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of an allowedValue object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -129,9 +127,8 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[AllowedValue] = None, request_configuration: Optional[AllowedValueItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an allowedValue object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -165,8 +162,7 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

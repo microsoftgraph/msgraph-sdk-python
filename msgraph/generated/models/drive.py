@@ -7,7 +7,7 @@ if TYPE_CHECKING:
     from .base_item import BaseItem
     from .drive_item import DriveItem
     from .identity_set import IdentitySet
-    from .list_ import List_
+    from .list____ import List____
     from .quota import Quota
     from .sharepoint_ids import SharepointIds
     from .system_facet import SystemFacet
@@ -27,7 +27,7 @@ class Drive(BaseItem):
     # All items contained in the drive. Read-only. Nullable.
     items: Optional[List[DriveItem]] = None
     # For drives in SharePoint, the underlying document library list. Read-only. Nullable.
-    list_: Optional[List_] = None
+    list_: Optional[List____] = None
     # Optional. The user account that owns the drive. Read-only.
     owner: Optional[IdentitySet] = None
     # Optional. Information about the drive's storage space quota. Read-only.
@@ -45,8 +45,7 @@ class Drive(BaseItem):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Drive:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Drive
         """
         if not parse_node:
@@ -61,7 +60,7 @@ class Drive(BaseItem):
         from .base_item import BaseItem
         from .drive_item import DriveItem
         from .identity_set import IdentitySet
-        from .list_ import List_
+        from .list____ import List____
         from .quota import Quota
         from .sharepoint_ids import SharepointIds
         from .system_facet import SystemFacet
@@ -69,7 +68,7 @@ class Drive(BaseItem):
         from .base_item import BaseItem
         from .drive_item import DriveItem
         from .identity_set import IdentitySet
-        from .list_ import List_
+        from .list____ import List____
         from .quota import Quota
         from .sharepoint_ids import SharepointIds
         from .system_facet import SystemFacet
@@ -79,7 +78,7 @@ class Drive(BaseItem):
             "driveType": lambda n : setattr(self, 'drive_type', n.get_str_value()),
             "following": lambda n : setattr(self, 'following', n.get_collection_of_object_values(DriveItem)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(DriveItem)),
-            "list": lambda n : setattr(self, 'list_', n.get_object_value(List_)),
+            "list": lambda n : setattr(self, 'list_', n.get_object_value(List____)),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(IdentitySet)),
             "quota": lambda n : setattr(self, 'quota', n.get_object_value(Quota)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(DriveItem)),
@@ -94,8 +93,8 @@ class Drive(BaseItem):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

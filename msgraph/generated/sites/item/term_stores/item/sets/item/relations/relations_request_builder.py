@@ -23,17 +23,16 @@ class RelationsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RelationsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/termStores/{store%2Did}/sets/{set%2Did}/relations{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_relation_id(self,relation_id: str) -> RelationItemRequestBuilder:
         """
         Provides operations to manage the relations property of the microsoft.graph.termStore.set entity.
-        Args:
-            relation_id: Unique identifier of the item
+        param relation_id: The unique identifier of relation
         Returns: RelationItemRequestBuilder
         """
         if not relation_id:
@@ -47,9 +46,9 @@ class RelationsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[RelationsRequestBuilderGetRequestConfiguration] = None) -> Optional[RelationCollectionResponse]:
         """
         Get the different relation of a [term] or [set] from the relations navigation property.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RelationCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/termstore-term-list-relations?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,9 +68,8 @@ class RelationsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[Relation] = None, request_configuration: Optional[RelationsRequestBuilderPostRequestConfiguration] = None) -> Optional[Relation]:
         """
         Create new navigation property to relations for sites
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Relation]
         """
         if not body:
@@ -94,8 +92,7 @@ class RelationsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[RelationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the different relation of a [term] or [set] from the relations navigation property.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +109,8 @@ class RelationsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[Relation] = None, request_configuration: Optional[RelationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to relations for sites
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +143,7 @@ class RelationsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

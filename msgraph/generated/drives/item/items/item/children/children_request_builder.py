@@ -23,17 +23,16 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChildrenRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/children{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_drive_item_id1(self,drive_item_id1: str) -> DriveItemItemRequestBuilder:
         """
         Provides operations to manage the children property of the microsoft.graph.driveItem entity.
-        Args:
-            drive_item_id1: Unique identifier of the item
+        param drive_item_id1: The unique identifier of driveItem
         Returns: DriveItemItemRequestBuilder
         """
         if not drive_item_id1:
@@ -47,9 +46,9 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ChildrenRequestBuilderGetRequestConfiguration] = None) -> Optional[DriveItemCollectionResponse]:
         """
         Return a collection of DriveItems in the children relationship of a DriveItem. DriveItems with a non-null folder or package facet can have one or more child DriveItems.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItemCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/driveitem-list-children?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[DriveItem] = None, request_configuration: Optional[ChildrenRequestBuilderPostRequestConfiguration] = None) -> Optional[DriveItem]:
         """
         Create new navigation property to children for drives
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItem]
+        Find more info here: https://learn.microsoft.com/graph/api/driveitem-post-children?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ChildrenRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Return a collection of DriveItems in the children relationship of a DriveItem. DriveItems with a non-null folder or package facet can have one or more child DriveItems.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[DriveItem] = None, request_configuration: Optional[ChildrenRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to children for drives
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

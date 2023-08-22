@@ -23,17 +23,16 @@ class IncludesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IncludesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/policies/permissionGrantPolicies/{permissionGrantPolicy%2Did}/includes{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_permission_grant_condition_set_id(self,permission_grant_condition_set_id: str) -> PermissionGrantConditionSetItemRequestBuilder:
         """
         Provides operations to manage the includes property of the microsoft.graph.permissionGrantPolicy entity.
-        Args:
-            permission_grant_condition_set_id: Unique identifier of the item
+        param permission_grant_condition_set_id: The unique identifier of permissionGrantConditionSet
         Returns: PermissionGrantConditionSetItemRequestBuilder
         """
         if not permission_grant_condition_set_id:
@@ -47,9 +46,9 @@ class IncludesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[IncludesRequestBuilderGetRequestConfiguration] = None) -> Optional[PermissionGrantConditionSetCollectionResponse]:
         """
         Retrieve the condition sets which are *included* in a permissionGrantPolicy.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionGrantConditionSetCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/permissiongrantpolicy-list-includes?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class IncludesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[IncludesRequestBuilderPostRequestConfiguration] = None) -> Optional[PermissionGrantConditionSet]:
         """
         Add conditions under which a permission grant event is *included* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the includes collection of a  permissionGrantPolicy.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionGrantConditionSet]
+        Find more info here: https://learn.microsoft.com/graph/api/permissiongrantpolicy-post-includes?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class IncludesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[IncludesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the condition sets which are *included* in a permissionGrantPolicy.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class IncludesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[IncludesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add conditions under which a permission grant event is *included* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the includes collection of a  permissionGrantPolicy.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class IncludesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

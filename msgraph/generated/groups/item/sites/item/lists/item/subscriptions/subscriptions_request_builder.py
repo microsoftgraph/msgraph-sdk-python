@@ -23,17 +23,16 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SubscriptionsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/lists/{list%2Did}/subscriptions{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_subscription_id(self,subscription_id: str) -> SubscriptionItemRequestBuilder:
         """
         Provides operations to manage the subscriptions property of the microsoft.graph.list entity.
-        Args:
-            subscription_id: Unique identifier of the item
+        param subscription_id: The unique identifier of subscription
         Returns: SubscriptionItemRequestBuilder
         """
         if not subscription_id:
@@ -47,8 +46,7 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[SubscriptionsRequestBuilderGetRequestConfiguration] = None) -> Optional[SubscriptionCollectionResponse]:
         """
         The set of subscriptions on the list.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SubscriptionCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,9 +67,8 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[Subscription] = None, request_configuration: Optional[SubscriptionsRequestBuilderPostRequestConfiguration] = None) -> Optional[Subscription]:
         """
         Create new navigation property to subscriptions for groups
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Subscription]
         """
         if not body:
@@ -94,8 +91,7 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[SubscriptionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The set of subscriptions on the list.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +108,8 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[Subscription] = None, request_configuration: Optional[SubscriptionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to subscriptions for groups
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +142,7 @@ class SubscriptionsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

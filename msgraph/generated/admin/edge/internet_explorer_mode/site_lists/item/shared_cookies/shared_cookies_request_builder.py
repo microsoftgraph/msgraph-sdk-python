@@ -23,17 +23,16 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SharedCookiesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/admin/edge/internetExplorerMode/siteLists/{browserSiteList%2Did}/sharedCookies{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_browser_shared_cookie_id(self,browser_shared_cookie_id: str) -> BrowserSharedCookieItemRequestBuilder:
         """
         Provides operations to manage the sharedCookies property of the microsoft.graph.browserSiteList entity.
-        Args:
-            browser_shared_cookie_id: Unique identifier of the item
+        param browser_shared_cookie_id: The unique identifier of browserSharedCookie
         Returns: BrowserSharedCookieItemRequestBuilder
         """
         if not browser_shared_cookie_id:
@@ -47,9 +46,9 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[SharedCookiesRequestBuilderGetRequestConfiguration] = None) -> Optional[BrowserSharedCookieCollectionResponse]:
         """
         Get a list of the browserSharedCookie objects and their properties.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSharedCookieCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/browsersitelist-list-sharedcookies?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[BrowserSharedCookie] = None, request_configuration: Optional[SharedCookiesRequestBuilderPostRequestConfiguration] = None) -> Optional[BrowserSharedCookie]:
         """
         Create a new browserSharedCookie object in a browserSiteList.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSharedCookie]
+        Find more info here: https://learn.microsoft.com/graph/api/browsersitelist-post-sharedcookies?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[SharedCookiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of the browserSharedCookie objects and their properties.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[BrowserSharedCookie] = None, request_configuration: Optional[SharedCookiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new browserSharedCookie object in a browserSiteList.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class SharedCookiesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

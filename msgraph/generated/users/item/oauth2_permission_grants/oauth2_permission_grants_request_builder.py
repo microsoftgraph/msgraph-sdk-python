@@ -22,17 +22,16 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new Oauth2PermissionGrantsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/oauth2PermissionGrants{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_o_auth2_permission_grant_id(self,o_auth2_permission_grant_id: str) -> OAuth2PermissionGrantItemRequestBuilder:
         """
         Provides operations to manage the oauth2PermissionGrants property of the microsoft.graph.user entity.
-        Args:
-            o_auth2_permission_grant_id: Unique identifier of the item
+        param o_auth2_permission_grant_id: The unique identifier of oAuth2PermissionGrant
         Returns: OAuth2PermissionGrantItemRequestBuilder
         """
         if not o_auth2_permission_grant_id:
@@ -46,9 +45,9 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> Optional[OAuth2PermissionGrantCollectionResponse]:
         """
         Retrieve a list of oAuth2PermissionGrant entities, which represent delegated permissions granted to enable a client application to access an API on behalf of the user.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OAuth2PermissionGrantCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/user-list-oauth2permissiongrants?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,8 +67,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of oAuth2PermissionGrant entities, which represent delegated permissions granted to enable a client application to access an API on behalf of the user.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -100,8 +98,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

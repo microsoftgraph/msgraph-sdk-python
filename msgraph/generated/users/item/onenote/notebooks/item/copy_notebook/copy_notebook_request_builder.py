@@ -21,19 +21,19 @@ class CopyNotebookRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CopyNotebookRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/onenote/notebooks/{notebook%2Did}/copyNotebook", path_parameters)
     
     async def post(self,body: Optional[CopyNotebookPostRequestBody] = None, request_configuration: Optional[CopyNotebookRequestBuilderPostRequestConfiguration] = None) -> Optional[OnenoteOperation]:
         """
         For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenoteOperation]
+        Find more info here: https://learn.microsoft.com/graph/api/notebook-copynotebook?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -55,9 +55,8 @@ class CopyNotebookRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[CopyNotebookPostRequestBody] = None, request_configuration: Optional[CopyNotebookRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

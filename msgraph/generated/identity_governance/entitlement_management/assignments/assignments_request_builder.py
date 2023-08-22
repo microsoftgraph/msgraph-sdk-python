@@ -26,18 +26,17 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AssignmentsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/assignments{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def additional_access_with_access_package_id_with_incompatible_access_package_id(self,access_package_id: Optional[str] = None, incompatible_access_package_id: Optional[str] = None) -> AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder:
         """
         Provides operations to call the additionalAccess method.
-        Args:
-            access_package_id: Usage: accessPackageId='{accessPackageId}'
-            incompatible_access_package_id: Usage: incompatibleAccessPackageId='{incompatibleAccessPackageId}'
+        param access_package_id: Usage: accessPackageId='{accessPackageId}'
+        param incompatible_access_package_id: Usage: incompatibleAccessPackageId='{incompatibleAccessPackageId}'
         Returns: AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder
         """
         if not access_package_id:
@@ -51,8 +50,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     def by_access_package_assignment_id(self,access_package_assignment_id: str) -> AccessPackageAssignmentItemRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            access_package_assignment_id: Unique identifier of the item
+        param access_package_assignment_id: The unique identifier of accessPackageAssignment
         Returns: AccessPackageAssignmentItemRequestBuilder
         """
         if not access_package_assignment_id:
@@ -66,8 +64,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     def filter_by_current_user_with_on(self,on: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
-        Args:
-            on: Usage: on='{on}'
+        param on: Usage: on='{on}'
         Returns: FilterByCurrentUserWithOnRequestBuilder
         """
         if not on:
@@ -79,9 +76,9 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageAssignmentCollectionResponse]:
         """
         In Azure AD entitlement management, retrieve a list of accessPackageAssignment objects. For directory-wide administrators, the resulting list includes all the assignments, current and well as expired, that the caller has access to read, across all catalogs and access packages.  If the caller is on behalf of a delegated user who is assigned only to catalog-specific delegated administrative roles, the request must supply a filter to indicate a specific access package, such as: $filter=accessPackage/id eq 'a914b616-e04e-476b-aa37-91038f0b165b'.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageAssignmentCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/entitlementmanagement-list-assignments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -101,9 +98,8 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[AccessPackageAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessPackageAssignment]:
         """
         Create new navigation property to assignments for identityGovernance
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageAssignment]
         """
         if not body:
@@ -126,8 +122,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         In Azure AD entitlement management, retrieve a list of accessPackageAssignment objects. For directory-wide administrators, the resulting list includes all the assignments, current and well as expired, that the caller has access to read, across all catalogs and access packages.  If the caller is on behalf of a delegated user who is assigned only to catalog-specific delegated administrative roles, the request must supply a filter to indicate a specific access package, such as: $filter=accessPackage/id eq 'a914b616-e04e-476b-aa37-91038f0b165b'.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -144,9 +139,8 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[AccessPackageAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to assignments for identityGovernance
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -188,8 +182,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -88,7 +88,7 @@ class Application(DirectoryObject):
     oauth2_require_post_response: Optional[bool] = None
     # Application developers can configure optional claims in their Azure AD applications to specify the claims that are sent to their application by the Microsoft security token service. For more information, see How to: Provide optional claims to your app.
     optional_claims: Optional[OptionalClaims] = None
-    # Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+    # Directory objects that are owners of the application. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
     owners: Optional[List[DirectoryObject]] = None
     # Specifies parental control settings for an application.
     parental_control_settings: Optional[ParentalControlSettings] = None
@@ -129,8 +129,7 @@ class Application(DirectoryObject):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Application:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Application
         """
         if not parse_node:
@@ -243,8 +242,8 @@ class Application(DirectoryObject):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

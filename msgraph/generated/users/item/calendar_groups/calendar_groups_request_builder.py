@@ -23,17 +23,16 @@ class CalendarGroupsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CalendarGroupsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", path_parameters)
     
     def by_calendar_group_id(self,calendar_group_id: str) -> CalendarGroupItemRequestBuilder:
         """
         Provides operations to manage the calendarGroups property of the microsoft.graph.user entity.
-        Args:
-            calendar_group_id: Unique identifier of the item
+        param calendar_group_id: The unique identifier of calendarGroup
         Returns: CalendarGroupItemRequestBuilder
         """
         if not calendar_group_id:
@@ -47,9 +46,9 @@ class CalendarGroupsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[CalendarGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[CalendarGroupCollectionResponse]:
         """
         Get the user's calendar groups.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarGroupCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/user-list-calendargroups?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class CalendarGroupsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[CalendarGroup] = None, request_configuration: Optional[CalendarGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[CalendarGroup]:
         """
         Use this API to create a new CalendarGroup.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarGroup]
+        Find more info here: https://learn.microsoft.com/graph/api/user-post-calendargroups?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class CalendarGroupsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[CalendarGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the user's calendar groups.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class CalendarGroupsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[CalendarGroup] = None, request_configuration: Optional[CalendarGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Use this API to create a new CalendarGroup.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class CalendarGroupsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -22,17 +22,16 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChildTagsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/tags/{ediscoveryReviewTag%2Did}/childTags{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_ediscovery_review_tag_id1(self,ediscovery_review_tag_id1: str) -> EdiscoveryReviewTagItemRequestBuilder:
         """
         Provides operations to manage the childTags property of the microsoft.graph.security.ediscoveryReviewTag entity.
-        Args:
-            ediscovery_review_tag_id1: Unique identifier of the item
+        param ediscovery_review_tag_id1: The unique identifier of ediscoveryReviewTag
         Returns: EdiscoveryReviewTagItemRequestBuilder
         """
         if not ediscovery_review_tag_id1:
@@ -46,8 +45,7 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ChildTagsRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewTagCollectionResponse]:
         """
         Returns the tags that are a child of a tag.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewTagCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -68,8 +66,7 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ChildTagsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Returns the tags that are a child of a tag.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -100,8 +97,7 @@ class ChildTagsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

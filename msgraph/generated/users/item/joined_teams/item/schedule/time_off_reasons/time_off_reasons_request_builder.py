@@ -23,17 +23,16 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TimeOffReasonsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/schedule/timeOffReasons{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select}", path_parameters)
     
     def by_time_off_reason_id(self,time_off_reason_id: str) -> TimeOffReasonItemRequestBuilder:
         """
         Provides operations to manage the timeOffReasons property of the microsoft.graph.schedule entity.
-        Args:
-            time_off_reason_id: Unique identifier of the item
+        param time_off_reason_id: The unique identifier of timeOffReason
         Returns: TimeOffReasonItemRequestBuilder
         """
         if not time_off_reason_id:
@@ -47,9 +46,9 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[TimeOffReasonsRequestBuilderGetRequestConfiguration] = None) -> Optional[TimeOffReasonCollectionResponse]:
         """
         Get the list of timeOffReasons in a schedule.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOffReasonCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/schedule-list-timeoffreasons?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[TimeOffReason] = None, request_configuration: Optional[TimeOffReasonsRequestBuilderPostRequestConfiguration] = None) -> Optional[TimeOffReason]:
         """
         Create a new timeOffReason.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOffReason]
+        Find more info here: https://learn.microsoft.com/graph/api/schedule-post-timeoffreasons?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[TimeOffReasonsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the list of timeOffReasons in a schedule.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[TimeOffReason] = None, request_configuration: Optional[TimeOffReasonsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new timeOffReason.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

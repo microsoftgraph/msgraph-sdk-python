@@ -21,17 +21,17 @@ class ApprovalItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ApprovalItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/accessPackageAssignmentApprovals/{approval%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ApprovalItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property accessPackageAssignmentApprovals for identityGovernance
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,9 +49,9 @@ class ApprovalItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ApprovalItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Approval]:
         """
         In Azure AD entitlement management, retrieve the properties of an approval object.  This call can be made by an approver, providing the identifier of the access package assignment request.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Approval]
+        Find more info here: https://learn.microsoft.com/graph/api/approval-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,9 +71,8 @@ class ApprovalItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[Approval] = None, request_configuration: Optional[ApprovalItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Approval]:
         """
         Update the navigation property accessPackageAssignmentApprovals in identityGovernance
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Approval]
         """
         if not body:
@@ -96,8 +95,7 @@ class ApprovalItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[ApprovalItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property accessPackageAssignmentApprovals for identityGovernance
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,8 +110,7 @@ class ApprovalItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ApprovalItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         In Azure AD entitlement management, retrieve the properties of an approval object.  This call can be made by an approver, providing the identifier of the access package assignment request.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -130,9 +127,8 @@ class ApprovalItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[Approval] = None, request_configuration: Optional[ApprovalItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property accessPackageAssignmentApprovals in identityGovernance
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -175,8 +171,7 @@ class ApprovalItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

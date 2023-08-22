@@ -20,18 +20,17 @@ class SearchWithQRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, q: Optional[str] = None) -> None:
         """
         Instantiates a new SearchWithQRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            q: Usage: q='{q}'
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param q: Usage: q='{q}'
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/search(q='{q}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> Optional[SearchWithQResponse]:
         """
         Invoke function search
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SearchWithQResponse]
         """
         request_info = self.to_get_request_information(
@@ -52,8 +51,7 @@ class SearchWithQRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function search
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -75,8 +73,7 @@ class SearchWithQRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

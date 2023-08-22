@@ -21,19 +21,19 @@ class GetNotebookFromWebUrlRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new GetNotebookFromWebUrlRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/onenote/notebooks/getNotebookFromWebUrl", path_parameters)
     
     async def post(self,body: Optional[GetNotebookFromWebUrlPostRequestBody] = None, request_configuration: Optional[GetNotebookFromWebUrlRequestBuilderPostRequestConfiguration] = None) -> Optional[CopyNotebookModel]:
         """
         Retrieve the properties and relationships of a notebook object by using its URL path. The location can be user notebooks on Microsoft 365, group notebooks, or SharePoint site-hosted team notebooks on Microsoft 365.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CopyNotebookModel]
+        Find more info here: https://learn.microsoft.com/graph/api/notebook-getnotebookfromweburl?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -55,9 +55,8 @@ class GetNotebookFromWebUrlRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[GetNotebookFromWebUrlPostRequestBody] = None, request_configuration: Optional[GetNotebookFromWebUrlRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a notebook object by using its URL path. The location can be user notebooks on Microsoft 365, group notebooks, or SharePoint site-hosted team notebooks on Microsoft 365.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

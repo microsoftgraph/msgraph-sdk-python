@@ -19,17 +19,18 @@ class RemoveAllDevicesFromManagementRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RemoveAllDevicesFromManagementRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/removeAllDevicesFromManagement", path_parameters)
     
     async def post(self,request_configuration: Optional[RemoveAllDevicesFromManagementRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Retire all devices from management for this user
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-user-removealldevicesfrommanagement?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -47,8 +48,7 @@ class RemoveAllDevicesFromManagementRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,request_configuration: Optional[RemoveAllDevicesFromManagementRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Retire all devices from management for this user
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()

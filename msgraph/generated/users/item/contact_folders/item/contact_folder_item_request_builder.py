@@ -22,17 +22,18 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ContactFolderItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/contactFolders/{contactFolder%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ContactFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete contactFolder other than the default contactFolder.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/contactfolder-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,9 +51,9 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ContactFolderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ContactFolder]:
         """
         Get a contact folder by using the contact folder ID. There are two scenarios where an app can get another user's contact folder:
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactFolder]
+        Find more info here: https://learn.microsoft.com/graph/api/contactfolder-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,10 +73,10 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[ContactFolder] = None, request_configuration: Optional[ContactFolderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ContactFolder]:
         """
         Update the properties of contactfolder object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactFolder]
+        Find more info here: https://learn.microsoft.com/graph/api/contactfolder-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -97,8 +98,7 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[ContactFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete contactFolder other than the default contactFolder.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -113,8 +113,7 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ContactFolderItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a contact folder by using the contact folder ID. There are two scenarios where an app can get another user's contact folder:
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -131,9 +130,8 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[ContactFolder] = None, request_configuration: Optional[ContactFolderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of contactfolder object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -185,8 +183,7 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

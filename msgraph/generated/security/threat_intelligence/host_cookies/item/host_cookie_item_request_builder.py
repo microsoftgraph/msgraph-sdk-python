@@ -21,17 +21,17 @@ class HostCookieItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new HostCookieItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/security/threatIntelligence/hostCookies/{hostCookie%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[HostCookieItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property hostCookies for security
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,9 +49,9 @@ class HostCookieItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[HostCookieItemRequestBuilderGetRequestConfiguration] = None) -> Optional[HostCookie]:
         """
         Read the properties and relationships of a hostCookie object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostCookie]
+        Find more info here: https://learn.microsoft.com/graph/api/security-hostcookie-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,9 +71,8 @@ class HostCookieItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[HostCookie] = None, request_configuration: Optional[HostCookieItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[HostCookie]:
         """
         Update the navigation property hostCookies in security
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostCookie]
         """
         if not body:
@@ -96,8 +95,7 @@ class HostCookieItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[HostCookieItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property hostCookies for security
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,8 +110,7 @@ class HostCookieItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[HostCookieItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of a hostCookie object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -130,9 +127,8 @@ class HostCookieItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[HostCookie] = None, request_configuration: Optional[HostCookieItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property hostCookies in security
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -175,8 +171,7 @@ class HostCookieItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

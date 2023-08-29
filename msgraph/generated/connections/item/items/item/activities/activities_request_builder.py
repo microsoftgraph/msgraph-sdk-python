@@ -23,17 +23,16 @@ class ActivitiesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ActivitiesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/connections/{externalConnection%2Did}/items/{externalItem%2Did}/activities{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_external_activity_id(self,external_activity_id: str) -> ExternalActivityItemRequestBuilder:
         """
         Provides operations to manage the activities property of the microsoft.graph.externalConnectors.externalItem entity.
-        Args:
-            external_activity_id: Unique identifier of the item
+        param external_activity_id: The unique identifier of externalActivity
         Returns: ExternalActivityItemRequestBuilder
         """
         if not external_activity_id:
@@ -47,8 +46,7 @@ class ActivitiesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ActivitiesRequestBuilderGetRequestConfiguration] = None) -> Optional[ExternalActivityCollectionResponse]:
         """
         Returns a list of activities performed on the item. Write-only.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExternalActivityCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,9 +67,8 @@ class ActivitiesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[ExternalActivity] = None, request_configuration: Optional[ActivitiesRequestBuilderPostRequestConfiguration] = None) -> Optional[ExternalActivity]:
         """
         Create new navigation property to activities for connections
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExternalActivity]
         """
         if not body:
@@ -94,8 +91,7 @@ class ActivitiesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ActivitiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Returns a list of activities performed on the item. Write-only.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +108,8 @@ class ActivitiesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[ExternalActivity] = None, request_configuration: Optional[ActivitiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to activities for connections
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +142,7 @@ class ActivitiesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

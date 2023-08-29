@@ -47,6 +47,7 @@ if TYPE_CHECKING:
     from .profile_photo import ProfilePhoto
     from .provisioned_plan import ProvisionedPlan
     from .scoped_role_membership import ScopedRoleMembership
+    from .service_provisioning_error import ServiceProvisioningError
     from .sign_in_activity import SignInActivity
     from .site import Site
     from .team import Team
@@ -114,7 +115,7 @@ class User(DirectoryObject):
     created_objects: Optional[List[DirectoryObject]] = None
     # Indicates whether the user account was created through one of the following methods:  As a regular school or work account (null). As an external account (Invitation). As a local account for an Azure Active Directory B2C tenant (LocalAccount). Through self-service sign-up by an internal user using email verification (EmailVerified). Through self-service sign-up by an external user signing up through a link that is part of a user flow (SelfServiceSignUp). Read-only.Returned only on $select. Supports $filter (eq, ne, not, in).
     creation_type: Optional[str] = None
-    # The customSecurityAttributes property
+    # An open complex type that holds the value of a custom security attribute that is assigned to a directory object. Nullable. Returned only on $select. Supports $filter (eq, ne, not, startsWith). Filter value is case sensitive.
     custom_security_attributes: Optional[CustomSecurityAttributeValue] = None
     # The name for the department in which the user works. Maximum length is 64 characters. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, and eq on null values).
     department: Optional[str] = None
@@ -238,7 +239,7 @@ class User(DirectoryObject):
     outlook: Optional[OutlookUser] = None
     # Devices that are owned by the user. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
     owned_devices: Optional[List[DirectoryObject]] = None
-    # Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
+    # Directory objects that are owned by the user. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
     owned_objects: Optional[List[DirectoryObject]] = None
     # Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword. Returned only on $select. For more information on the default password policies, see Azure AD pasword policies. Supports $filter (ne, not, and eq on null values).
     password_policies: Optional[str] = None
@@ -280,6 +281,8 @@ class User(DirectoryObject):
     scoped_role_member_of: Optional[List[ScopedRoleMembership]] = None
     # Security identifier (SID) of the user, used in Windows scenarios. Read-only. Returned by default. Supports $select and $filter (eq, not, ge, le, startsWith).
     security_identifier: Optional[str] = None
+    # The serviceProvisioningErrors property
+    service_provisioning_errors: Optional[List[ServiceProvisioningError]] = None
     # The settings property
     settings: Optional[UserSettings] = None
     # Do not use in Microsoft Graph. Manage this property through the Microsoft 365 admin center instead. Represents whether the user should be included in the Outlook global address list. See Known issue.
@@ -313,8 +316,7 @@ class User(DirectoryObject):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> User:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: User
         """
         if not parse_node:
@@ -368,6 +370,7 @@ class User(DirectoryObject):
         from .profile_photo import ProfilePhoto
         from .provisioned_plan import ProvisionedPlan
         from .scoped_role_membership import ScopedRoleMembership
+        from .service_provisioning_error import ServiceProvisioningError
         from .sign_in_activity import SignInActivity
         from .site import Site
         from .team import Team
@@ -419,6 +422,7 @@ class User(DirectoryObject):
         from .profile_photo import ProfilePhoto
         from .provisioned_plan import ProvisionedPlan
         from .scoped_role_membership import ScopedRoleMembership
+        from .service_provisioning_error import ServiceProvisioningError
         from .sign_in_activity import SignInActivity
         from .site import Site
         from .team import Team
@@ -538,6 +542,7 @@ class User(DirectoryObject):
             "schools": lambda n : setattr(self, 'schools', n.get_collection_of_primitive_values(str)),
             "scopedRoleMemberOf": lambda n : setattr(self, 'scoped_role_member_of', n.get_collection_of_object_values(ScopedRoleMembership)),
             "securityIdentifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
+            "serviceProvisioningErrors": lambda n : setattr(self, 'service_provisioning_errors', n.get_collection_of_object_values(ServiceProvisioningError)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(UserSettings)),
             "showInAddressList": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
             "signInActivity": lambda n : setattr(self, 'sign_in_activity', n.get_object_value(SignInActivity)),
@@ -560,8 +565,8 @@ class User(DirectoryObject):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")
@@ -675,6 +680,7 @@ class User(DirectoryObject):
         writer.write_collection_of_primitive_values("schools", self.schools)
         writer.write_collection_of_object_values("scopedRoleMemberOf", self.scoped_role_member_of)
         writer.write_str_value("securityIdentifier", self.security_identifier)
+        writer.write_collection_of_object_values("serviceProvisioningErrors", self.service_provisioning_errors)
         writer.write_object_value("settings", self.settings)
         writer.write_bool_value("showInAddressList", self.show_in_address_list)
         writer.write_object_value("signInActivity", self.sign_in_activity)

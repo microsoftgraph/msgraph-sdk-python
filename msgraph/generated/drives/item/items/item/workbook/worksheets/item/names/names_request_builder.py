@@ -25,17 +25,16 @@ class NamesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new NamesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/names{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_workbook_named_item_id(self,workbook_named_item_id: str) -> WorkbookNamedItemItemRequestBuilder:
         """
         Provides operations to manage the names property of the microsoft.graph.workbookWorksheet entity.
-        Args:
-            workbook_named_item_id: Unique identifier of the item
+        param workbook_named_item_id: The unique identifier of workbookNamedItem
         Returns: WorkbookNamedItemItemRequestBuilder
         """
         if not workbook_named_item_id:
@@ -49,9 +48,9 @@ class NamesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[NamesRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookNamedItemCollectionResponse]:
         """
         Retrieve a list of named item associated with the worksheet. 
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookNamedItemCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/worksheet-list-names?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,9 +70,8 @@ class NamesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[WorkbookNamedItem] = None, request_configuration: Optional[NamesRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookNamedItem]:
         """
         Create new navigation property to names for drives
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookNamedItem]
         """
         if not body:
@@ -96,8 +94,7 @@ class NamesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[NamesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of named item associated with the worksheet. 
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -114,9 +111,8 @@ class NamesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[WorkbookNamedItem] = None, request_configuration: Optional[NamesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to names for drives
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -167,8 +163,7 @@ class NamesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

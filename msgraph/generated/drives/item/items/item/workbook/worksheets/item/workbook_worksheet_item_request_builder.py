@@ -30,18 +30,17 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookWorksheetItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}{?%24select,%24expand}", path_parameters)
     
     def cell_with_row_with_column(self,column: Optional[int] = None, row: Optional[int] = None) -> CellWithRowWithColumnRequestBuilder:
         """
         Provides operations to call the cell method.
-        Args:
-            column: Usage: column={column}
-            row: Usage: row={row}
+        param column: Usage: column={column}
+        param row: Usage: row={row}
         Returns: CellWithRowWithColumnRequestBuilder
         """
         if not column:
@@ -55,8 +54,9 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     async def delete(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Deletes the worksheet from the workbook.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/worksheet-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -74,9 +74,9 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookWorksheet]:
         """
         Retrieve the properties and relationships of worksheet object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookWorksheet]
+        Find more info here: https://learn.microsoft.com/graph/api/worksheet-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -96,10 +96,10 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[WorkbookWorksheet] = None, request_configuration: Optional[WorkbookWorksheetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookWorksheet]:
         """
         Update the properties of worksheet object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookWorksheet]
+        Find more info here: https://learn.microsoft.com/graph/api/worksheet-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -121,8 +121,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     def range_with_address(self,address: Optional[str] = None) -> RangeWithAddressRequestBuilder:
         """
         Provides operations to call the range method.
-        Args:
-            address: Usage: address='{address}'
+        param address: Usage: address='{address}'
         Returns: RangeWithAddressRequestBuilder
         """
         if not address:
@@ -134,8 +133,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Deletes the worksheet from the workbook.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -150,8 +148,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of worksheet object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -168,9 +165,8 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[WorkbookWorksheet] = None, request_configuration: Optional[WorkbookWorksheetItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of worksheet object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -189,8 +185,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     def used_range_with_values_only(self,values_only: Optional[bool] = None) -> UsedRangeWithValuesOnlyRequestBuilder:
         """
         Provides operations to call the usedRange method.
-        Args:
-            values_only: Usage: valuesOnly={valuesOnly}
+        param values_only: Usage: valuesOnly={valuesOnly}
         Returns: UsedRangeWithValuesOnlyRequestBuilder
         """
         if not values_only:
@@ -280,8 +275,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -24,17 +24,16 @@ class OutlookRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OutlookRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/outlook{?%24select}", path_parameters)
     
     async def get(self,request_configuration: Optional[OutlookRequestBuilderGetRequestConfiguration] = None) -> Optional[OutlookUser]:
         """
         Get outlook from users
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OutlookUser]
         """
         request_info = self.to_get_request_information(
@@ -55,8 +54,7 @@ class OutlookRequestBuilder(BaseRequestBuilder):
     def supported_time_zones_with_time_zone_standard(self,time_zone_standard: Optional[str] = None) -> SupportedTimeZonesWithTimeZoneStandardRequestBuilder:
         """
         Provides operations to call the supportedTimeZones method.
-        Args:
-            time_zone_standard: Usage: TimeZoneStandard='{TimeZoneStandard}'
+        param time_zone_standard: Usage: TimeZoneStandard='{TimeZoneStandard}'
         Returns: SupportedTimeZonesWithTimeZoneStandardRequestBuilder
         """
         if not time_zone_standard:
@@ -68,8 +66,7 @@ class OutlookRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[OutlookRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get outlook from users
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -118,8 +115,7 @@ class OutlookRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

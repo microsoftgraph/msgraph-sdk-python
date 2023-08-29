@@ -19,18 +19,18 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CustomCSSRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/organization/{organization%2Did}/branding/customCSS", path_parameters)
     
     async def get(self,request_configuration: Optional[CustomCSSRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
         CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/organizationalbranding-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,9 +48,8 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     async def put(self,body: bytes, request_configuration: Optional[CustomCSSRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
         CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
-        Args:
-            body: Binary request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: Binary request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
         if not body:
@@ -71,8 +70,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[CustomCSSRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -87,9 +85,8 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
     def to_put_request_information(self,body: bytes, request_configuration: Optional[CustomCSSRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
-        Args:
-            body: Binary request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: Binary request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

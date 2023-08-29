@@ -33,13 +33,14 @@ class ConditionalAccessPolicy(Entity):
     session_controls: Optional[ConditionalAccessSessionControls] = None
     # The state property
     state: Optional[ConditionalAccessPolicyState] = None
+    # The templateId property
+    template_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessPolicy:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessPolicy
         """
         if not parse_node:
@@ -72,6 +73,7 @@ class ConditionalAccessPolicy(Entity):
             "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "sessionControls": lambda n : setattr(self, 'session_controls', n.get_object_value(ConditionalAccessSessionControls)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(ConditionalAccessPolicyState)),
+            "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -80,8 +82,8 @@ class ConditionalAccessPolicy(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")
@@ -94,5 +96,6 @@ class ConditionalAccessPolicy(Entity):
         writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
         writer.write_object_value("sessionControls", self.session_controls)
         writer.write_enum_value("state", self.state)
+        writer.write_str_value("templateId", self.template_id)
     
 

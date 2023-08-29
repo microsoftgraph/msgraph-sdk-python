@@ -21,17 +21,17 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MinorGridlinesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}/axes/seriesAxis/minorGridlines{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[MinorGridlinesRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property minorGridlines for drives
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,9 +49,9 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[MinorGridlinesRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartGridlines]:
         """
         Retrieve the properties and relationships of chartgridlines object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartGridlines]
+        Find more info here: https://learn.microsoft.com/graph/api/chartgridlines-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,10 +71,10 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[WorkbookChartGridlines] = None, request_configuration: Optional[MinorGridlinesRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChartGridlines]:
         """
         Update the properties of chartgridlines object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartGridlines]
+        Find more info here: https://learn.microsoft.com/graph/api/chartgridlines-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,8 +96,7 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[MinorGridlinesRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property minorGridlines for drives
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,8 +111,7 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[MinorGridlinesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of chartgridlines object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -130,9 +128,8 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[WorkbookChartGridlines] = None, request_configuration: Optional[MinorGridlinesRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of chartgridlines object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -175,8 +172,7 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

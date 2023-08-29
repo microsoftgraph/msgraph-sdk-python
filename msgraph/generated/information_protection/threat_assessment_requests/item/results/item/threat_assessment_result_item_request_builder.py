@@ -20,17 +20,17 @@ class ThreatAssessmentResultItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ThreatAssessmentResultItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/informationProtection/threatAssessmentRequests/{threatAssessmentRequest%2Did}/results/{threatAssessmentResult%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ThreatAssessmentResultItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property results for informationProtection
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,8 +48,7 @@ class ThreatAssessmentResultItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ThreatAssessmentResultItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ThreatAssessmentResult]:
         """
         A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ThreatAssessmentResult]
         """
         request_info = self.to_get_request_information(
@@ -70,9 +69,8 @@ class ThreatAssessmentResultItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[ThreatAssessmentResult] = None, request_configuration: Optional[ThreatAssessmentResultItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ThreatAssessmentResult]:
         """
         Update the navigation property results in informationProtection
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ThreatAssessmentResult]
         """
         if not body:
@@ -95,8 +93,7 @@ class ThreatAssessmentResultItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[ThreatAssessmentResultItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property results for informationProtection
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -111,8 +108,7 @@ class ThreatAssessmentResultItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ThreatAssessmentResultItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -129,9 +125,8 @@ class ThreatAssessmentResultItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[ThreatAssessmentResult] = None, request_configuration: Optional[ThreatAssessmentResultItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property results in informationProtection
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -165,8 +160,7 @@ class ThreatAssessmentResultItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

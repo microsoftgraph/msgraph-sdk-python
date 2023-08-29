@@ -20,18 +20,17 @@ class FindTenantInformationByDomainNameWithDomainNameRequestBuilder(BaseRequestB
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, domain_name: Optional[str] = None) -> None:
         """
         Instantiates a new FindTenantInformationByDomainNameWithDomainNameRequestBuilder and sets the default values.
-        Args:
-            domain_name: Usage: domainName='{domainName}'
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param domain_name: Usage: domainName='{domainName}'
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/tenantRelationships/findTenantInformationByDomainName(domainName='{domainName}')", path_parameters)
     
     async def get(self,request_configuration: Optional[FindTenantInformationByDomainNameWithDomainNameRequestBuilderGetRequestConfiguration] = None) -> Optional[TenantInformation]:
         """
         Invoke function findTenantInformationByDomainName
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TenantInformation]
         """
         request_info = self.to_get_request_information(
@@ -52,8 +51,7 @@ class FindTenantInformationByDomainNameWithDomainNameRequestBuilder(BaseRequestB
     def to_get_request_information(self,request_configuration: Optional[FindTenantInformationByDomainNameWithDomainNameRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function findTenantInformationByDomainName
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()

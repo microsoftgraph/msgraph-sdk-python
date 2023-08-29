@@ -21,19 +21,19 @@ class AddPasswordRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AddPasswordRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/applications/{application%2Did}/addPassword", path_parameters)
     
     async def post(self,body: Optional[AddPasswordPostRequestBody] = None, request_configuration: Optional[AddPasswordRequestBuilderPostRequestConfiguration] = None) -> Optional[PasswordCredential]:
         """
         Adds a strong password or secret to an application.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PasswordCredential]
+        Find more info here: https://learn.microsoft.com/graph/api/application-addpassword?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -55,9 +55,8 @@ class AddPasswordRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[AddPasswordPostRequestBody] = None, request_configuration: Optional[AddPasswordRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Adds a strong password or secret to an application.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

@@ -23,17 +23,16 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new FeatureRolloutPoliciesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/policies/featureRolloutPolicies{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_feature_rollout_policy_id(self,feature_rollout_policy_id: str) -> FeatureRolloutPolicyItemRequestBuilder:
         """
         Provides operations to manage the featureRolloutPolicies property of the microsoft.graph.policyRoot entity.
-        Args:
-            feature_rollout_policy_id: Unique identifier of the item
+        param feature_rollout_policy_id: The unique identifier of featureRolloutPolicy
         Returns: FeatureRolloutPolicyItemRequestBuilder
         """
         if not feature_rollout_policy_id:
@@ -47,9 +46,9 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[FeatureRolloutPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[FeatureRolloutPolicyCollectionResponse]:
         """
         Retrieve a list of featureRolloutPolicy objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FeatureRolloutPolicyCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicies-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[FeatureRolloutPolicy]:
         """
         Create a new featureRolloutPolicy object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FeatureRolloutPolicy]
+        Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicies-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[FeatureRolloutPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of featureRolloutPolicy objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new featureRolloutPolicy object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -20,17 +20,17 @@ class SegmentItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SegmentItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/communications/callRecords/{callRecord%2Did}/sessions/{session%2Did}/segments/{segment%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[SegmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property segments for communications
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,8 +48,7 @@ class SegmentItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[SegmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Segment]:
         """
         The list of segments involved in the session. Read-only. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Segment]
         """
         request_info = self.to_get_request_information(
@@ -70,9 +69,8 @@ class SegmentItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[Segment] = None, request_configuration: Optional[SegmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Segment]:
         """
         Update the navigation property segments in communications
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Segment]
         """
         if not body:
@@ -95,8 +93,7 @@ class SegmentItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[SegmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property segments for communications
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -111,8 +108,7 @@ class SegmentItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[SegmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The list of segments involved in the session. Read-only. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -129,9 +125,8 @@ class SegmentItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[Segment] = None, request_configuration: Optional[SegmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property segments in communications
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -165,8 +160,7 @@ class SegmentItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

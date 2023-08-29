@@ -39,7 +39,7 @@ class Chat(Entity):
     odata_type: Optional[str] = None
     # Represents details about an online meeting. If the chat isn't associated with an online meeting, the property is empty. Read-only.
     online_meeting_info: Optional[TeamworkOnlineMeetingInfo] = None
-    # The permissionGrants property
+    # A collection of permissions granted to apps for the chat.
     permission_grants: Optional[List[ResourceSpecificPermissionGrant]] = None
     # A collection of all the pinned messages in the chat. Nullable.
     pinned_messages: Optional[List[PinnedChatMessageInfo]] = None
@@ -58,8 +58,7 @@ class Chat(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Chat:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Chat
         """
         if not parse_node:
@@ -119,8 +118,8 @@ class Chat(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

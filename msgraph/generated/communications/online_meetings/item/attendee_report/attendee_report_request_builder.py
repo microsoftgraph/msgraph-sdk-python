@@ -19,18 +19,18 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AttendeeReportRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/communications/onlineMeetings/{onlineMeeting%2Did}/attendeeReport", path_parameters)
     
     async def get(self,request_configuration: Optional[AttendeeReportRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
         The content stream of the attendee report of a Microsoft Teams live event. Read-only.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/onlinemeeting-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,9 +48,8 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     async def put(self,body: bytes, request_configuration: Optional[AttendeeReportRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
         The content stream of the attendee report of a Microsoft Teams live event. Read-only.
-        Args:
-            body: Binary request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: Binary request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
         if not body:
@@ -71,8 +70,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AttendeeReportRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The content stream of the attendee report of a Microsoft Teams live event. Read-only.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -87,9 +85,8 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     def to_put_request_information(self,body: bytes, request_configuration: Optional[AttendeeReportRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         The content stream of the attendee report of a Microsoft Teams live event. Read-only.
-        Args:
-            body: Binary request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: Binary request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

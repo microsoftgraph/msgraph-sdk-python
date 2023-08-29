@@ -23,17 +23,16 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AppManagementPoliciesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/policies/appManagementPolicies{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_app_management_policy_id(self,app_management_policy_id: str) -> AppManagementPolicyItemRequestBuilder:
         """
         Provides operations to manage the appManagementPolicies property of the microsoft.graph.policyRoot entity.
-        Args:
-            app_management_policy_id: Unique identifier of the item
+        param app_management_policy_id: The unique identifier of appManagementPolicy
         Returns: AppManagementPolicyItemRequestBuilder
         """
         if not app_management_policy_id:
@@ -47,9 +46,9 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[AppManagementPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[AppManagementPolicyCollectionResponse]:
         """
         Retrieve a list of appManagementPolicy objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppManagementPolicyCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/appmanagementpolicy-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[AppManagementPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[AppManagementPolicy]:
         """
         Create an appManagementPolicy object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppManagementPolicy]
+        Find more info here: https://learn.microsoft.com/graph/api/appmanagementpolicy-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AppManagementPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of appManagementPolicy objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[AppManagementPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create an appManagementPolicy object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +144,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

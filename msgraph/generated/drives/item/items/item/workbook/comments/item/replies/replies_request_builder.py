@@ -23,17 +23,16 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RepliesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/comments/{workbookComment%2Did}/replies{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_workbook_comment_reply_id(self,workbook_comment_reply_id: str) -> WorkbookCommentReplyItemRequestBuilder:
         """
         Provides operations to manage the replies property of the microsoft.graph.workbookComment entity.
-        Args:
-            workbook_comment_reply_id: Unique identifier of the item
+        param workbook_comment_reply_id: The unique identifier of workbookCommentReply
         Returns: WorkbookCommentReplyItemRequestBuilder
         """
         if not workbook_comment_reply_id:
@@ -47,8 +46,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookCommentReplyCollectionResponse]:
         """
         Retrieve the properties and relationships of workbookCommentReply object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookCommentReplyCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,9 +67,8 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[WorkbookCommentReply] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookCommentReply]:
         """
         Create new navigation property to replies for drives
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookCommentReply]
         """
         if not body:
@@ -94,8 +91,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of workbookCommentReply object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +108,8 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[WorkbookCommentReply] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to replies for drives
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,8 +142,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

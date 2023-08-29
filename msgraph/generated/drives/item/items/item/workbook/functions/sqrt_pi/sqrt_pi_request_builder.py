@@ -21,18 +21,17 @@ class SqrtPiRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SqrtPiRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/functions/sqrtPi", path_parameters)
     
     async def post(self,body: Optional[SqrtPiPostRequestBody] = None, request_configuration: Optional[SqrtPiRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookFunctionResult]:
         """
         Invoke action sqrtPi
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookFunctionResult]
         """
         if not body:
@@ -55,9 +54,8 @@ class SqrtPiRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[SqrtPiPostRequestBody] = None, request_configuration: Optional[SqrtPiRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action sqrtPi
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

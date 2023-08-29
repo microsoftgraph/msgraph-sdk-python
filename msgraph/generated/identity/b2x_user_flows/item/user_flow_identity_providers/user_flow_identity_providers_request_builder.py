@@ -23,17 +23,16 @@ class UserFlowIdentityProvidersRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UserFlowIdentityProvidersRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identity/b2xUserFlows/{b2xIdentityUserFlow%2Did}/userFlowIdentityProviders{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_identity_provider_base_id(self,identity_provider_base_id: str) -> IdentityProviderBaseItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.identity.b2xUserFlows.item.userFlowIdentityProviders.item collection
-        Args:
-            identity_provider_base_id: Unique identifier of the item
+        param identity_provider_base_id: Unique identifier of the item
         Returns: IdentityProviderBaseItemRequestBuilder
         """
         if not identity_provider_base_id:
@@ -47,8 +46,7 @@ class UserFlowIdentityProvidersRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[UserFlowIdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProviderBaseCollectionResponse]:
         """
         Get userFlowIdentityProviders from identity
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityProviderBaseCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,8 +67,7 @@ class UserFlowIdentityProvidersRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[UserFlowIdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get userFlowIdentityProviders from identity
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -110,8 +107,7 @@ class UserFlowIdentityProvidersRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -21,18 +21,17 @@ class Weibull_DistRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new Weibull_DistRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/functions/weibull_Dist", path_parameters)
     
     async def post(self,body: Optional[Weibull_DistPostRequestBody] = None, request_configuration: Optional[Weibull_DistRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookFunctionResult]:
         """
         Invoke action weibull_Dist
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookFunctionResult]
         """
         if not body:
@@ -55,9 +54,8 @@ class Weibull_DistRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[Weibull_DistPostRequestBody] = None, request_configuration: Optional[Weibull_DistRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action weibull_Dist
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:

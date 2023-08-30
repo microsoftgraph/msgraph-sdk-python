@@ -24,17 +24,16 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChildFoldersRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/contactFolders/{contactFolder%2Did}/childFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_contact_folder_id1(self,contact_folder_id1: str) -> ContactFolderItemRequestBuilder:
         """
         Provides operations to manage the childFolders property of the microsoft.graph.contactFolder entity.
-        Args:
-            contact_folder_id1: Unique identifier of the item
+        param contact_folder_id1: The unique identifier of contactFolder
         Returns: ContactFolderItemRequestBuilder
         """
         if not contact_folder_id1:
@@ -48,9 +47,9 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[ContactFolderCollectionResponse]:
         """
         Get a collection of child folders under the specified contact folder.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactFolderCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/contactfolder-list-childfolders?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,10 +69,10 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[ContactFolder]:
         """
         Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactFolder]
+        Find more info here: https://learn.microsoft.com/graph/api/contactfolder-post-childfolders?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -95,8 +94,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a collection of child folders under the specified contact folder.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -113,9 +111,8 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -130,6 +127,16 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> ChildFoldersRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: ChildFoldersRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return ChildFoldersRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -157,8 +164,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

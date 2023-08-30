@@ -23,17 +23,16 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new BookingBusinessesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/solutions/bookingBusinesses{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_booking_business_id(self,booking_business_id: str) -> BookingBusinessItemRequestBuilder:
         """
         Provides operations to manage the bookingBusinesses property of the microsoft.graph.solutionsRoot entity.
-        Args:
-            booking_business_id: Unique identifier of the item
+        param booking_business_id: The unique identifier of bookingBusiness
         Returns: BookingBusinessItemRequestBuilder
         """
         if not booking_business_id:
@@ -47,9 +46,9 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[BookingBusinessesRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingBusinessCollectionResponse]:
         """
         Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the id and displayName of each Microsoft Bookings business in the collection. For performance considerations, it does not return other properties. You can get the other properties of a Bookings business by specifying its id in a GET operation.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingBusinessCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[BookingBusiness] = None, request_configuration: Optional[BookingBusinessesRequestBuilderPostRequestConfiguration] = None) -> Optional[BookingBusiness]:
         """
         Create a new Microsoft Bookings business in a tenant. This is the first step in setting up a Bookings business where you must specify the business display name. You can include other information such as business address, web site address, and scheduling policy, or set that information later by updating the bookingBusiness.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingBusiness]
+        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-post-bookingbusinesses?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[BookingBusinessesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a collection of bookingBusiness objects that has been created for the tenant. This operation returns only the id and displayName of each Microsoft Bookings business in the collection. For performance considerations, it does not return other properties. You can get the other properties of a Bookings business by specifying its id in a GET operation.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[BookingBusiness] = None, request_configuration: Optional[BookingBusinessesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new Microsoft Bookings business in a tenant. This is the first step in setting up a Bookings business where you must specify the business display name. You can include other information such as business address, web site address, and scheduling policy, or set that information later by updating the bookingBusiness.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +126,16 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> BookingBusinessesRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: BookingBusinessesRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return BookingBusinessesRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,8 +154,7 @@ class BookingBusinessesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

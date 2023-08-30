@@ -20,17 +20,16 @@ class IsPublishedRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IsPublishedRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/contentTypes/{contentType%2Did}/isPublished()", path_parameters)
     
     async def get(self,request_configuration: Optional[IsPublishedRequestBuilderGetRequestConfiguration] = None) -> Optional[IsPublishedResponse]:
         """
         Invoke function isPublished
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IsPublishedResponse]
         """
         request_info = self.to_get_request_information(
@@ -51,8 +50,7 @@ class IsPublishedRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[IsPublishedRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function isPublished
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -64,6 +62,16 @@ class IsPublishedRequestBuilder(BaseRequestBuilder):
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> IsPublishedRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: IsPublishedRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return IsPublishedRequestBuilder(raw_url, self.request_adapter)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

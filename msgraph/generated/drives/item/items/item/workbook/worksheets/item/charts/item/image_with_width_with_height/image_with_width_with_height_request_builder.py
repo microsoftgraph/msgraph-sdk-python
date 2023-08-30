@@ -20,19 +20,18 @@ class ImageWithWidthWithHeightRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, height: Optional[int] = None, width: Optional[int] = None) -> None:
         """
         Instantiates a new ImageWithWidthWithHeightRequestBuilder and sets the default values.
-        Args:
-            height: Usage: height={height}
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
-            width: Usage: width={width}
+        param height: Usage: height={height}
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        param width: Usage: width={width}
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}/image(width={width},height={height})", path_parameters)
     
     async def get(self,request_configuration: Optional[ImageWithWidthWithHeightRequestBuilderGetRequestConfiguration] = None) -> Optional[ImageWithWidthWithHeightResponse]:
         """
         Invoke function image
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ImageWithWidthWithHeightResponse]
         """
         request_info = self.to_get_request_information(
@@ -53,8 +52,7 @@ class ImageWithWidthWithHeightRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ImageWithWidthWithHeightRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function image
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -66,6 +64,16 @@ class ImageWithWidthWithHeightRequestBuilder(BaseRequestBuilder):
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> ImageWithWidthWithHeightRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: ImageWithWidthWithHeightRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return ImageWithWidthWithHeightRequestBuilder(raw_url, self.request_adapter)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

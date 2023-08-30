@@ -20,21 +20,20 @@ class ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipToke
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, filter: Optional[str] = None, skip: Optional[int] = None, skip_token: Optional[str] = None, top: Optional[int] = None) -> None:
         """
         Instantiates a new ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder and sets the default values.
-        Args:
-            filter: Usage: filter='{filter}'
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
-            skip: Usage: skip={skip}
-            skip_token: Usage: skipToken='{skipToken}'
-            top: Usage: top={top}
+        param filter: Usage: filter='{filter}'
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        param skip: Usage: skip={skip}
+        param skip_token: Usage: skipToken='{skipToken}'
+        param top: Usage: top={top}
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/reports/managedDeviceEnrollmentFailureDetails(skip={skip},top={top},filter='{filter}',skipToken='{skipToken}')", path_parameters)
     
     async def get(self,request_configuration: Optional[ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilderGetRequestConfiguration] = None) -> Optional[Report]:
         """
         Invoke function managedDeviceEnrollmentFailureDetails
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Report]
         """
         request_info = self.to_get_request_information(
@@ -55,8 +54,7 @@ class ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipToke
     def to_get_request_information(self,request_configuration: Optional[ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function managedDeviceEnrollmentFailureDetails
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -68,6 +66,16 @@ class ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipToke
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder(raw_url, self.request_adapter)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

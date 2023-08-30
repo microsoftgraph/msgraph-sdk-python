@@ -25,17 +25,17 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AuthenticationMethodsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/reports/authenticationMethods{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[AuthenticationMethodsRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property authenticationMethods for reports
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,8 +53,7 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[AuthenticationMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationMethodsRoot]:
         """
         Container for navigation properties for Azure AD authentication methods resources.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodsRoot]
         """
         request_info = self.to_get_request_information(
@@ -75,9 +74,8 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[AuthenticationMethodsRoot] = None, request_configuration: Optional[AuthenticationMethodsRequestBuilderPatchRequestConfiguration] = None) -> Optional[AuthenticationMethodsRoot]:
         """
         Update the navigation property authenticationMethods in reports
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodsRoot]
         """
         if not body:
@@ -100,8 +98,7 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[AuthenticationMethodsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property authenticationMethods for reports
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -116,8 +113,7 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AuthenticationMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Container for navigation properties for Azure AD authentication methods resources.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -134,9 +130,8 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[AuthenticationMethodsRoot] = None, request_configuration: Optional[AuthenticationMethodsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property authenticationMethods in reports
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -155,9 +150,8 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     def users_registered_by_feature_with_included_user_types_with_included_user_roles(self,included_user_roles: Optional[str] = None, included_user_types: Optional[str] = None) -> UsersRegisteredByFeatureWithIncludedUserTypesWithIncludedUserRolesRequestBuilder:
         """
         Provides operations to call the usersRegisteredByFeature method.
-        Args:
-            included_user_roles: Usage: includedUserRoles='{includedUserRoles}'
-            included_user_types: Usage: includedUserTypes='{includedUserTypes}'
+        param included_user_roles: Usage: includedUserRoles='{includedUserRoles}'
+        param included_user_types: Usage: includedUserTypes='{includedUserTypes}'
         Returns: UsersRegisteredByFeatureWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
         """
         if not included_user_roles:
@@ -171,9 +165,8 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     def users_registered_by_method_with_included_user_types_with_included_user_roles(self,included_user_roles: Optional[str] = None, included_user_types: Optional[str] = None) -> UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder:
         """
         Provides operations to call the usersRegisteredByMethod method.
-        Args:
-            included_user_roles: Usage: includedUserRoles='{includedUserRoles}'
-            included_user_types: Usage: includedUserTypes='{includedUserTypes}'
+        param included_user_roles: Usage: includedUserRoles='{includedUserRoles}'
+        param included_user_types: Usage: includedUserTypes='{includedUserTypes}'
         Returns: UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
         """
         if not included_user_roles:
@@ -183,6 +176,16 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
         from .users_registered_by_method_with_included_user_types_with_included_user_roles.users_registered_by_method_with_included_user_types_with_included_user_roles_request_builder import UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
 
         return UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder(self.request_adapter, self.path_parameters, included_user_roles, included_user_types)
+    
+    def with_url(self,raw_url: Optional[str] = None) -> AuthenticationMethodsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: AuthenticationMethodsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return AuthenticationMethodsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def user_registration_details(self) -> UserRegistrationDetailsRequestBuilder:
@@ -229,8 +232,7 @@ class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

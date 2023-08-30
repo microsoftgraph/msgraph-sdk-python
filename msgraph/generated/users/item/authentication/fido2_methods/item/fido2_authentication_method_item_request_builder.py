@@ -20,17 +20,18 @@ class Fido2AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new Fido2AuthenticationMethodItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/authentication/fido2Methods/{fido2AuthenticationMethod%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Deletes a user's FIDO2 Security Key Authentication Method object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/fido2authenticationmethod-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,9 +49,9 @@ class Fido2AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Fido2AuthenticationMethod]:
         """
         Retrieve a user's single FIDO2 Security Key Authentication Method object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Fido2AuthenticationMethod]
+        Find more info here: https://learn.microsoft.com/graph/api/fido2authenticationmethod-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,8 +71,7 @@ class Fido2AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Deletes a user's FIDO2 Security Key Authentication Method object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -86,8 +86,7 @@ class Fido2AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a user's single FIDO2 Security Key Authentication Method object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -100,6 +99,16 @@ class Fido2AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> Fido2AuthenticationMethodItemRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: Fido2AuthenticationMethodItemRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return Fido2AuthenticationMethodItemRequestBuilder(raw_url, self.request_adapter)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
@@ -119,8 +128,7 @@ class Fido2AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

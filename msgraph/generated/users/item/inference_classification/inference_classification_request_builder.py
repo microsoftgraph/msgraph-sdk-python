@@ -21,17 +21,16 @@ class InferenceClassificationRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}", path_parameters)
     
     async def get(self,request_configuration: Optional[InferenceClassificationRequestBuilderGetRequestConfiguration] = None) -> Optional[InferenceClassification]:
         """
         Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[InferenceClassification]
         """
         request_info = self.to_get_request_information(
@@ -52,9 +51,8 @@ class InferenceClassificationRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[InferenceClassification] = None, request_configuration: Optional[InferenceClassificationRequestBuilderPatchRequestConfiguration] = None) -> Optional[InferenceClassification]:
         """
         Update the navigation property inferenceClassification in users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[InferenceClassification]
         """
         if not body:
@@ -77,8 +75,7 @@ class InferenceClassificationRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[InferenceClassificationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -95,9 +92,8 @@ class InferenceClassificationRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[InferenceClassification] = None, request_configuration: Optional[InferenceClassificationRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property inferenceClassification in users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -112,6 +108,16 @@ class InferenceClassificationRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> InferenceClassificationRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: InferenceClassificationRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return InferenceClassificationRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def overrides(self) -> OverridesRequestBuilder:
@@ -130,8 +136,7 @@ class InferenceClassificationRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

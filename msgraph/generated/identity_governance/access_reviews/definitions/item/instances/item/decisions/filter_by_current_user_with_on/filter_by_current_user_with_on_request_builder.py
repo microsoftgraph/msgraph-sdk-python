@@ -20,18 +20,17 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, on: Optional[str] = None) -> None:
         """
         Instantiates a new FilterByCurrentUserWithOnRequestBuilder and sets the default values.
-        Args:
-            on: Usage: on='{on}'
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param on: Usage: on='{on}'
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition%2Did}/instances/{accessReviewInstance%2Did}/decisions/filterByCurrentUser(on='{on}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> Optional[FilterByCurrentUserWithOnResponse]:
         """
         Invoke function filterByCurrentUser
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FilterByCurrentUserWithOnResponse]
         """
         request_info = self.to_get_request_information(
@@ -52,8 +51,7 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function filterByCurrentUser
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -67,6 +65,16 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         return request_info
     
+    def with_url(self,raw_url: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: FilterByCurrentUserWithOnRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return FilterByCurrentUserWithOnRequestBuilder(raw_url, self.request_adapter)
+    
     @dataclass
     class FilterByCurrentUserWithOnRequestBuilderGetQueryParameters():
         """
@@ -75,8 +83,7 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

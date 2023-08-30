@@ -20,17 +20,16 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new GetActivitiesByIntervalRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/list/items/{listItem%2Did}/getActivitiesByInterval(){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[GetActivitiesByIntervalRequestBuilderGetRequestConfiguration] = None) -> Optional[GetActivitiesByIntervalResponse]:
         """
         Invoke function getActivitiesByInterval
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetActivitiesByIntervalResponse]
         """
         request_info = self.to_get_request_information(
@@ -51,8 +50,7 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[GetActivitiesByIntervalRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function getActivitiesByInterval
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -66,6 +64,16 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         return request_info
     
+    def with_url(self,raw_url: Optional[str] = None) -> GetActivitiesByIntervalRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: GetActivitiesByIntervalRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return GetActivitiesByIntervalRequestBuilder(raw_url, self.request_adapter)
+    
     @dataclass
     class GetActivitiesByIntervalRequestBuilderGetQueryParameters():
         """
@@ -74,8 +82,7 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

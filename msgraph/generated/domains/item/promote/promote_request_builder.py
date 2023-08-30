@@ -20,18 +20,18 @@ class PromoteRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PromoteRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/domains/{domain%2Did}/promote", path_parameters)
     
     async def post(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> Optional[PromoteResponse]:
         """
         Promote a verified subdomain to the root domain. A verified domain has its isVerified property set to true.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PromoteResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/domain-promote?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -51,8 +51,7 @@ class PromoteRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Promote a verified subdomain to the root domain. A verified domain has its isVerified property set to true.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -64,6 +63,16 @@ class PromoteRequestBuilder(BaseRequestBuilder):
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> PromoteRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: PromoteRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return PromoteRequestBuilder(raw_url, self.request_adapter)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

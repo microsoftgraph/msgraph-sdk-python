@@ -23,17 +23,16 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DocumentSetVersionsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/lists/{list%2Did}/items/{listItem%2Did}/documentSetVersions{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_document_set_version_id(self,document_set_version_id: str) -> DocumentSetVersionItemRequestBuilder:
         """
         Provides operations to manage the documentSetVersions property of the microsoft.graph.listItem entity.
-        Args:
-            document_set_version_id: Unique identifier of the item
+        param document_set_version_id: The unique identifier of documentSetVersion
         Returns: DocumentSetVersionItemRequestBuilder
         """
         if not document_set_version_id:
@@ -47,9 +46,9 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[DocumentSetVersionsRequestBuilderGetRequestConfiguration] = None) -> Optional[DocumentSetVersionCollectionResponse]:
         """
         Get a list of the versions of a document set item in a list.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DocumentSetVersionCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/listitem-list-documentsetversions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[DocumentSetVersion] = None, request_configuration: Optional[DocumentSetVersionsRequestBuilderPostRequestConfiguration] = None) -> Optional[DocumentSetVersion]:
         """
         Create a new version of a document set item in a list.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DocumentSetVersion]
+        Find more info here: https://learn.microsoft.com/graph/api/listitem-post-documentsetversions?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[DocumentSetVersionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of the versions of a document set item in a list.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[DocumentSetVersion] = None, request_configuration: Optional[DocumentSetVersionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new version of a document set item in a list.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +126,16 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> DocumentSetVersionsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: DocumentSetVersionsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return DocumentSetVersionsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,8 +154,7 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

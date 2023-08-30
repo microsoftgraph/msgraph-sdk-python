@@ -21,17 +21,17 @@ class UnifiedGroupSourceItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UnifiedGroupSourceItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/custodians/{ediscoveryCustodian%2Did}/unifiedGroupSources/{unifiedGroupSource%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property unifiedGroupSources for security
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,8 +49,7 @@ class UnifiedGroupSourceItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedGroupSource]:
         """
         Data source entity for groups associated with the custodian.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedGroupSource]
         """
         request_info = self.to_get_request_information(
@@ -71,9 +70,8 @@ class UnifiedGroupSourceItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[UnifiedGroupSource] = None, request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UnifiedGroupSource]:
         """
         Update the navigation property unifiedGroupSources in security
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedGroupSource]
         """
         if not body:
@@ -96,8 +94,7 @@ class UnifiedGroupSourceItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property unifiedGroupSources for security
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,8 +109,7 @@ class UnifiedGroupSourceItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Data source entity for groups associated with the custodian.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -130,9 +126,8 @@ class UnifiedGroupSourceItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[UnifiedGroupSource] = None, request_configuration: Optional[UnifiedGroupSourceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property unifiedGroupSources in security
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,6 +142,16 @@ class UnifiedGroupSourceItemRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> UnifiedGroupSourceItemRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: UnifiedGroupSourceItemRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return UnifiedGroupSourceItemRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def group(self) -> GroupRequestBuilder:
@@ -175,8 +180,7 @@ class UnifiedGroupSourceItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

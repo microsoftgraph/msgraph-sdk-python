@@ -21,13 +21,17 @@ from ..entity import Entity
 class Alert(Entity):
     # The adversary or activity group that is associated with this alert.
     actor_display_name: Optional[str] = None
+    # The additionalDataProperty property
+    additional_data: Optional[Dictionary] = None
+    # The alertPolicyId property
+    alert_policy_id: Optional[str] = None
     # URL for the alert page in the Microsoft 365 Defender portal.
     alert_web_url: Optional[str] = None
     # Owner of the alert, or null if no owner is assigned.
     assigned_to: Optional[str] = None
     # The attack kill-chain category that the alert belongs to. Aligned with the MITRE ATT&CK framework.
     category: Optional[str] = None
-    # Specifies whether the alert represents a true threat. Possible values are: unknown, falsePositive, truePositive, benignPositive, unknownFutureValue.
+    # Specifies whether the alert represents a true threat. Possible values are: unknown, falsePositive, truePositive, informationalExpectedActivity, unknownFutureValue.
     classification: Optional[AlertClassification] = None
     # Array of comments created by the Security Operations (SecOps) team during the alert management process.
     comments: Optional[List[AlertComment]] = None
@@ -82,8 +86,7 @@ class Alert(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Alert:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Alert
         """
         if not parse_node:
@@ -117,6 +120,7 @@ class Alert(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "actorDisplayName": lambda n : setattr(self, 'actor_display_name', n.get_str_value()),
+            "alertPolicyId": lambda n : setattr(self, 'alert_policy_id', n.get_str_value()),
             "alertWebUrl": lambda n : setattr(self, 'alert_web_url', n.get_str_value()),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
@@ -152,13 +156,14 @@ class Alert(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("actorDisplayName", self.actor_display_name)
+        writer.write_str_value("alertPolicyId", self.alert_policy_id)
         writer.write_str_value("alertWebUrl", self.alert_web_url)
         writer.write_str_value("assignedTo", self.assigned_to)
         writer.write_str_value("category", self.category)

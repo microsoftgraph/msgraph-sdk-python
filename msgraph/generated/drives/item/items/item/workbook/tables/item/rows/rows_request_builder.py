@@ -25,17 +25,16 @@ class RowsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RowsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/tables/{workbookTable%2Did}/rows{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_workbook_table_row_id(self,workbook_table_row_id: str) -> WorkbookTableRowItemRequestBuilder:
         """
         Provides operations to manage the rows property of the microsoft.graph.workbookTable entity.
-        Args:
-            workbook_table_row_id: Unique identifier of the item
+        param workbook_table_row_id: The unique identifier of workbookTableRow
         Returns: WorkbookTableRowItemRequestBuilder
         """
         if not workbook_table_row_id:
@@ -49,9 +48,9 @@ class RowsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[RowsRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookTableRowCollectionResponse]:
         """
         Retrieve a list of tablerow objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableRowCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/table-list-rows?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,8 +70,7 @@ class RowsRequestBuilder(BaseRequestBuilder):
     def item_at_with_index(self,index: Optional[int] = None) -> ItemAtWithIndexRequestBuilder:
         """
         Provides operations to call the itemAt method.
-        Args:
-            index: Usage: index={index}
+        param index: Usage: index={index}
         Returns: ItemAtWithIndexRequestBuilder
         """
         if not index:
@@ -84,10 +82,10 @@ class RowsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[WorkbookTableRow] = None, request_configuration: Optional[RowsRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookTableRow]:
         """
         Adds rows to the end of a table.  Note that this API can accept multiple rows of data. Adding one row at a time can affect performance. The recommended approach is to batch the rows together in a single call rather than inserting single rows. For best results, collect the rows to be inserted on the application side and perform a single row add operation. Experiment with the number of rows to determine the ideal number of rows to use in a single API call.  This request might occasionally result in a 504 HTTP error. The appropriate response to this error is to repeat the request.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableRow]
+        Find more info here: https://learn.microsoft.com/graph/api/table-post-rows?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -109,8 +107,7 @@ class RowsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[RowsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of tablerow objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -127,9 +124,8 @@ class RowsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[WorkbookTableRow] = None, request_configuration: Optional[RowsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Adds rows to the end of a table.  Note that this API can accept multiple rows of data. Adding one row at a time can affect performance. The recommended approach is to batch the rows together in a single call rather than inserting single rows. For best results, collect the rows to be inserted on the application side and perform a single row add operation. Experiment with the number of rows to determine the ideal number of rows to use in a single API call.  This request might occasionally result in a 504 HTTP error. The appropriate response to this error is to repeat the request.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -144,6 +140,16 @@ class RowsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> RowsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: RowsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return RowsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def add(self) -> AddRequestBuilder:
@@ -171,8 +177,7 @@ class RowsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

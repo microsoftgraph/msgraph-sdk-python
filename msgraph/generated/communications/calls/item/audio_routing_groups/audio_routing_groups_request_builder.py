@@ -23,17 +23,16 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AudioRoutingGroupsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/communications/calls/{call%2Did}/audioRoutingGroups{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_audio_routing_group_id(self,audio_routing_group_id: str) -> AudioRoutingGroupItemRequestBuilder:
         """
         Provides operations to manage the audioRoutingGroups property of the microsoft.graph.call entity.
-        Args:
-            audio_routing_group_id: Unique identifier of the item
+        param audio_routing_group_id: The unique identifier of audioRoutingGroup
         Returns: AudioRoutingGroupItemRequestBuilder
         """
         if not audio_routing_group_id:
@@ -47,9 +46,9 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[AudioRoutingGroupCollectionResponse]:
         """
         Retrieve a list of audioRoutingGroup objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AudioRoutingGroupCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/call-list-audioroutinggroups?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
         """
         Create a new audioRoutingGroup.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AudioRoutingGroup]
+        Find more info here: https://learn.microsoft.com/graph/api/call-post-audioroutinggroups?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of audioRoutingGroup objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new audioRoutingGroup.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +126,16 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> AudioRoutingGroupsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: AudioRoutingGroupsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return AudioRoutingGroupsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,8 +154,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

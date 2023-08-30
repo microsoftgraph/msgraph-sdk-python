@@ -789,7 +789,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The unique idenfier for an entity. Read-only.
+    # The unique identifier for an entity. Read-only.
     id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -798,8 +798,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Entity:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Entity
         """
         if not parse_node:
@@ -5486,8 +5485,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

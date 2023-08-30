@@ -24,17 +24,16 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChannelsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/channels{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_channel_id(self,channel_id: str) -> ChannelItemRequestBuilder:
         """
         Provides operations to manage the channels property of the microsoft.graph.team entity.
-        Args:
-            channel_id: Unique identifier of the item
+        param channel_id: The unique identifier of channel
         Returns: ChannelItemRequestBuilder
         """
         if not channel_id:
@@ -48,9 +47,9 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ChannelsRequestBuilderGetRequestConfiguration] = None) -> Optional[ChannelCollectionResponse]:
         """
         Retrieve the list of channels in this team.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChannelCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/channel-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,10 +69,10 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[Channel] = None, request_configuration: Optional[ChannelsRequestBuilderPostRequestConfiguration] = None) -> Optional[Channel]:
         """
         Create a new channel in a team, as specified in the request body.  When you create a channel, the maximum length of the channel's displayName is 50 characters. This is the name that appears to the user in Microsoft Teams. If you're creating a private channel, you can add a maximum of 200 members.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Channel]
+        Find more info here: https://learn.microsoft.com/graph/api/channel-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -95,8 +94,7 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ChannelsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the list of channels in this team.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -113,9 +111,8 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[Channel] = None, request_configuration: Optional[ChannelsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new channel in a team, as specified in the request body.  When you create a channel, the maximum length of the channel's displayName is 50 characters. This is the name that appears to the user in Microsoft Teams. If you're creating a private channel, you can add a maximum of 200 members.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -130,6 +127,16 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> ChannelsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: ChannelsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return ChannelsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -157,8 +164,7 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

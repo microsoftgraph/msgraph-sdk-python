@@ -24,17 +24,16 @@ class UserProcessingResultsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UserProcessingResultsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/workflows/{workflow%2Did}/runs/{run%2Did}/userProcessingResults{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_user_processing_result_id(self,user_processing_result_id: str) -> UserProcessingResultItemRequestBuilder:
         """
         Provides operations to manage the userProcessingResults property of the microsoft.graph.identityGovernance.run entity.
-        Args:
-            user_processing_result_id: Unique identifier of the item
+        param user_processing_result_id: The unique identifier of userProcessingResult
         Returns: UserProcessingResultItemRequestBuilder
         """
         if not user_processing_result_id:
@@ -48,9 +47,9 @@ class UserProcessingResultsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[UserProcessingResultsRequestBuilderGetRequestConfiguration] = None) -> Optional[UserProcessingResultCollectionResponse]:
         """
         Get user processing results of a workflow run object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserProcessingResultCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-run-list-userprocessingresults?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,9 +69,8 @@ class UserProcessingResultsRequestBuilder(BaseRequestBuilder):
     def microsoft_graph_identity_governance_summary_with_start_date_time_with_end_date_time(self,end_date_time: Optional[datetime.datetime] = None, start_date_time: Optional[datetime.datetime] = None) -> MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder:
         """
         Provides operations to call the summary method.
-        Args:
-            end_date_time: Usage: endDateTime={endDateTime}
-            start_date_time: Usage: startDateTime={startDateTime}
+        param end_date_time: Usage: endDateTime={endDateTime}
+        param start_date_time: Usage: startDateTime={startDateTime}
         Returns: MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder
         """
         if not end_date_time:
@@ -86,8 +84,7 @@ class UserProcessingResultsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[UserProcessingResultsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get user processing results of a workflow run object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -100,6 +97,16 @@ class UserProcessingResultsRequestBuilder(BaseRequestBuilder):
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> UserProcessingResultsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: UserProcessingResultsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return UserProcessingResultsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -118,8 +125,7 @@ class UserProcessingResultsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

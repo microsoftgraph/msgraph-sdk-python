@@ -20,7 +20,7 @@ from .entity import Entity
 
 @dataclass
 class BaseItem(Entity):
-    # Identity of the user, device, or application which created the item. Read-only.
+    # Identity of the user, device, or application that created the item. Read-only.
     created_by: Optional[IdentitySet] = None
     # Identity of the user who created the item. Read-only.
     created_by_user: Optional[User] = None
@@ -30,7 +30,7 @@ class BaseItem(Entity):
     description: Optional[str] = None
     # ETag for the item. Read-only.
     e_tag: Optional[str] = None
-    # Identity of the user, device, and application which last modified the item. Read-only.
+    # Identity of the user, device, and application that last modified the item. Read-only.
     last_modified_by: Optional[IdentitySet] = None
     # Identity of the user who last modified the item. Read-only.
     last_modified_by_user: Optional[User] = None
@@ -42,15 +42,14 @@ class BaseItem(Entity):
     odata_type: Optional[str] = None
     # Parent information, if the item has a parent. Read-write.
     parent_reference: Optional[ItemReference] = None
-    # URL that displays the resource in the browser. Read-only.
+    # URL that either displays the resource in the browser (for Office file formats), or is a direct link to the file (for other formats). Read-only.
     web_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BaseItem:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: BaseItem
         """
         if not parse_node:
@@ -132,8 +131,8 @@ class BaseItem(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

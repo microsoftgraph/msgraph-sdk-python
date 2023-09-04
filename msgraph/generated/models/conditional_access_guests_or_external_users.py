@@ -18,7 +18,7 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, BackedModel, 
     # The tenant IDs of the selected types of external users. Either all B2B tenant or a collection of tenant IDs. External tenants can be specified only when the property guestOrExternalUserTypes is not null or an empty String.
     external_tenants: Optional[ConditionalAccessExternalTenants] = None
     # The guestOrExternalUserTypes property
-    guest_or_external_user_types: Optional[ConditionalAccessGuestOrExternalUserTypes] = None
+    guest_or_external_user_types: Optional[List[ConditionalAccessGuestOrExternalUserTypes]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -47,7 +47,7 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, BackedModel, 
 
         fields: Dict[str, Callable[[Any], None]] = {
             "externalTenants": lambda n : setattr(self, 'external_tenants', n.get_object_value(ConditionalAccessExternalTenants)),
-            "guestOrExternalUserTypes": lambda n : setattr(self, 'guest_or_external_user_types', n.get_enum_value(ConditionalAccessGuestOrExternalUserTypes)),
+            "guestOrExternalUserTypes": lambda n : setattr(self, 'guest_or_external_user_types', list(map(lambda x: ConditionalAccessGuestOrExternalUserTypes[x[0].upper() + x[1:]], n.get_str_value().split(',')))),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

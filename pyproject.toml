@@ -13,7 +13,7 @@ dependencies = [
     "microsoft-kiota-authentication-azure >=0.2",
     "microsoft-kiota-serialization-json >=0.4,<0.5",
     "microsoft-kiota-serialization-text >=0.2.0",
-    "microsoft-kiota-http >=0.5,<0.6",
+    "microsoft-kiota-http >=0.6,<0.7",
     "msgraph_core >=1.0.0a2"
 
 ]

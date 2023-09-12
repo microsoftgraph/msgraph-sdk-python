@@ -20,18 +20,18 @@ class MicrosoftGraphIdentityGovernanceRestoreRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MicrosoftGraphIdentityGovernanceRestoreRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/workflows/{workflow%2Did}/microsoft.graph.identityGovernance.restore", path_parameters)
     
     async def post(self,request_configuration: Optional[MicrosoftGraphIdentityGovernanceRestoreRequestBuilderPostRequestConfiguration] = None) -> Optional[Workflow]:
         """
         Restore a workflow that has been deleted. You can only restore a workflow that was deleted within the last 30 days before Azure AD automatically permanently deletes it.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Workflow]
+        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-workflow-restore?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -51,8 +51,7 @@ class MicrosoftGraphIdentityGovernanceRestoreRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphIdentityGovernanceRestoreRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Restore a workflow that has been deleted. You can only restore a workflow that was deleted within the last 30 days before Azure AD automatically permanently deletes it.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -64,6 +63,16 @@ class MicrosoftGraphIdentityGovernanceRestoreRequestBuilder(BaseRequestBuilder):
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> MicrosoftGraphIdentityGovernanceRestoreRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: MicrosoftGraphIdentityGovernanceRestoreRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return MicrosoftGraphIdentityGovernanceRestoreRequestBuilder(raw_url, self.request_adapter)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

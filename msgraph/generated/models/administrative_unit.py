@@ -16,7 +16,7 @@ class AdministrativeUnit(DirectoryObject):
     odata_type: Optional[str] = "#microsoft.graph.administrativeUnit"
     # An optional description for the administrative unit. Supports $filter (eq, ne, in, startsWith), $search.
     description: Optional[str] = None
-    # Display name for the administrative unit. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+    # Display name for the administrative unit. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
     display_name: Optional[str] = None
     # The collection of open extensions defined for this administrative unit. Nullable.
     extensions: Optional[List[Extension]] = None
@@ -31,8 +31,7 @@ class AdministrativeUnit(DirectoryObject):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AdministrativeUnit:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AdministrativeUnit
         """
         if not parse_node:
@@ -67,8 +66,8 @@ class AdministrativeUnit(DirectoryObject):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

@@ -1,14 +1,16 @@
 from enum import Enum
 
 class WindowsDeviceType(str, Enum):
-    # No flags set.
+    # No device types supported. Default value.
     None_ = "none",
-    # Whether or not the Desktop Windows device type is supported.
+    # Indicates support for Desktop Windows device type.
     Desktop = "desktop",
-    # Whether or not the Mobile Windows device type is supported.
+    # Indicates support for Mobile Windows device type.
     Mobile = "mobile",
-    # Whether or not the Holographic Windows device type is supported.
+    # Indicates support for Holographic Windows device type.
     Holographic = "holographic",
-    # Whether or not the Team Windows device type is supported.
+    # Indicates support for Team Windows device type.
     Team = "team",
+    # Evolvable enumeration sentinel value. Do not use.
+    UnknownFutureValue = "unknownFutureValue",
 

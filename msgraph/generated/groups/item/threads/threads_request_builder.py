@@ -23,17 +23,16 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ThreadsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/threads{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", path_parameters)
     
     def by_conversation_thread_id(self,conversation_thread_id: str) -> ConversationThreadItemRequestBuilder:
         """
         Provides operations to manage the threads property of the microsoft.graph.group entity.
-        Args:
-            conversation_thread_id: Unique identifier of the item
+        param conversation_thread_id: The unique identifier of conversationThread
         Returns: ConversationThreadItemRequestBuilder
         """
         if not conversation_thread_id:
@@ -47,9 +46,9 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ThreadsRequestBuilderGetRequestConfiguration] = None) -> Optional[ConversationThreadCollectionResponse]:
         """
         Get all the threads of a group.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationThreadCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/group-list-threads?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[ConversationThread] = None, request_configuration: Optional[ThreadsRequestBuilderPostRequestConfiguration] = None) -> Optional[ConversationThread]:
         """
         Start a new group conversation by first creating a thread. A new conversation, conversation thread, and post are created in the group.Use reply thread or reply post to further post to that thread. Note: You can also start a new thread in an existing conversation.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationThread]
+        Find more info here: https://learn.microsoft.com/graph/api/group-post-threads?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ThreadsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get all the threads of a group.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[ConversationThread] = None, request_configuration: Optional[ThreadsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Start a new group conversation by first creating a thread. A new conversation, conversation thread, and post are created in the group.Use reply thread or reply post to further post to that thread. Note: You can also start a new thread in an existing conversation.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +126,16 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> ThreadsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: ThreadsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return ThreadsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,8 +154,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

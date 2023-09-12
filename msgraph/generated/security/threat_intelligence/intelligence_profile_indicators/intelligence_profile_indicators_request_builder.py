@@ -23,17 +23,16 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IntelligenceProfileIndicatorsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/security/threatIntelligence/intelligenceProfileIndicators{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_intelligence_profile_indicator_id(self,intelligence_profile_indicator_id: str) -> IntelligenceProfileIndicatorItemRequestBuilder:
         """
         Provides operations to manage the intelligenceProfileIndicators property of the microsoft.graph.security.threatIntelligence entity.
-        Args:
-            intelligence_profile_indicator_id: Unique identifier of the item
+        param intelligence_profile_indicator_id: The unique identifier of intelligenceProfileIndicator
         Returns: IntelligenceProfileIndicatorItemRequestBuilder
         """
         if not intelligence_profile_indicator_id:
@@ -47,8 +46,7 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[IntelligenceProfileIndicatorsRequestBuilderGetRequestConfiguration] = None) -> Optional[IntelligenceProfileIndicatorCollectionResponse]:
         """
         Read the properties and relationships of a intelligenceProfileIndicator object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IntelligenceProfileIndicatorCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,9 +67,8 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[IntelligenceProfileIndicator] = None, request_configuration: Optional[IntelligenceProfileIndicatorsRequestBuilderPostRequestConfiguration] = None) -> Optional[IntelligenceProfileIndicator]:
         """
         Create new navigation property to intelligenceProfileIndicators for security
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IntelligenceProfileIndicator]
         """
         if not body:
@@ -94,8 +91,7 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[IntelligenceProfileIndicatorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of a intelligenceProfileIndicator object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +108,8 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[IntelligenceProfileIndicator] = None, request_configuration: Optional[IntelligenceProfileIndicatorsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to intelligenceProfileIndicators for security
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +124,16 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> IntelligenceProfileIndicatorsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: IntelligenceProfileIndicatorsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return IntelligenceProfileIndicatorsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,8 +152,7 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

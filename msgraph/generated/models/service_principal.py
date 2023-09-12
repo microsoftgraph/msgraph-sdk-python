@@ -64,7 +64,7 @@ class ServicePrincipal(DirectoryObject):
     claims_mapping_policies: Optional[List[ClaimsMappingPolicy]] = None
     # Directory objects created by this service principal. Read-only. Nullable.
     created_objects: Optional[List[DirectoryObject]] = None
-    # The customSecurityAttributes property
+    # An open complex type that holds the value of a custom security attribute that is assigned to a directory object. Nullable. Returned only on $select. Supports $filter (eq, ne, not, startsWith). Filter value is case sensitive.
     custom_security_attributes: Optional[CustomSecurityAttributeValue] = None
     # The delegatedPermissionClassifications property
     delegated_permission_classifications: Optional[List[DelegatedPermissionClassification]] = None
@@ -72,7 +72,7 @@ class ServicePrincipal(DirectoryObject):
     description: Optional[str] = None
     # Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
     disabled_by_microsoft_status: Optional[str] = None
-    # The display name for the service principal. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+    # The display name for the service principal. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
     display_name: Optional[str] = None
     # The endpoints property
     endpoints: Optional[List[Endpoint]] = None
@@ -100,9 +100,9 @@ class ServicePrincipal(DirectoryObject):
     oauth2_permission_grants: Optional[List[OAuth2PermissionGrant]] = None
     # The delegated permissions exposed by the application. For more information see the oauth2PermissionScopes property on the application entity's api property. Not nullable.
     oauth2_permission_scopes: Optional[List[PermissionScope]] = None
-    # Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+    # Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
     owned_objects: Optional[List[DirectoryObject]] = None
-    # Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable.  Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+    # Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
     owners: Optional[List[DirectoryObject]] = None
     # The collection of password credentials associated with the application. Not nullable.
     password_credentials: Optional[List[PasswordCredential]] = None
@@ -141,8 +141,7 @@ class ServicePrincipal(DirectoryObject):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServicePrincipal:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ServicePrincipal
         """
         if not parse_node:
@@ -260,8 +259,8 @@ class ServicePrincipal(DirectoryObject):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

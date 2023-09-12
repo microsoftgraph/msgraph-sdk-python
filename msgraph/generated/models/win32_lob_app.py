@@ -51,8 +51,7 @@ class Win32LobApp(MobileLobApp):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobApp:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Win32LobApp
         """
         if not parse_node:
@@ -79,7 +78,7 @@ class Win32LobApp(MobileLobApp):
         from .windows_architecture import WindowsArchitecture
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(WindowsArchitecture)),
+            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_collection_of_enum_values(WindowsArchitecture)),
             "installCommandLine": lambda n : setattr(self, 'install_command_line', n.get_str_value()),
             "installExperience": lambda n : setattr(self, 'install_experience', n.get_object_value(Win32LobAppInstallExperience)),
             "minimumCpuSpeedInMHz": lambda n : setattr(self, 'minimum_cpu_speed_in_m_hz', n.get_int_value()),
@@ -100,8 +99,8 @@ class Win32LobApp(MobileLobApp):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

@@ -21,17 +21,17 @@ class TodoRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TodoRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/todo{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[TodoRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property todo for users
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,8 +49,7 @@ class TodoRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[TodoRequestBuilderGetRequestConfiguration] = None) -> Optional[Todo]:
         """
         Represents the To Do services available to a user.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Todo]
         """
         request_info = self.to_get_request_information(
@@ -71,9 +70,8 @@ class TodoRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[Todo] = None, request_configuration: Optional[TodoRequestBuilderPatchRequestConfiguration] = None) -> Optional[Todo]:
         """
         Update the navigation property todo in users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Todo]
         """
         if not body:
@@ -96,8 +94,7 @@ class TodoRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[TodoRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property todo for users
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,8 +109,7 @@ class TodoRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[TodoRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Represents the To Do services available to a user.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -130,9 +126,8 @@ class TodoRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[Todo] = None, request_configuration: Optional[TodoRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property todo in users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,6 +142,16 @@ class TodoRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> TodoRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: TodoRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return TodoRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def lists(self) -> ListsRequestBuilder:
@@ -175,8 +180,7 @@ class TodoRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

@@ -36,8 +36,7 @@ class WindowsAppX(MobileLobApp):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsAppX:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WindowsAppX
         """
         if not parse_node:
@@ -58,7 +57,7 @@ class WindowsAppX(MobileLobApp):
         from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(WindowsArchitecture)),
+            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_collection_of_enum_values(WindowsArchitecture)),
             "identityName": lambda n : setattr(self, 'identity_name', n.get_str_value()),
             "identityPublisherHash": lambda n : setattr(self, 'identity_publisher_hash', n.get_str_value()),
             "identityResourceIdentifier": lambda n : setattr(self, 'identity_resource_identifier', n.get_str_value()),
@@ -73,8 +72,8 @@ class WindowsAppX(MobileLobApp):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

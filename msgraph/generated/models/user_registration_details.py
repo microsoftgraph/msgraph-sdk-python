@@ -37,11 +37,11 @@ class UserRegistrationDetails(Entity):
     odata_type: Optional[str] = None
     # Collection of authentication methods that the system determined to be the most secure authentication methods among the registered methods for second factor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. Supports $filter (any with eq).
     system_preferred_authentication_methods: Optional[List[str]] = None
-    # The user display name, such as Adele Vance. Supports $filter (eq, startsWith) and $orderBy.
+    # The user display name, such as Adele Vance. Supports $filter (eq, startsWith) and $orderby.
     user_display_name: Optional[str] = None
     # The method the user selected as the default second-factor for performing multi-factor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. This property is used as preferred MFA method when isSystemPreferredAuthenticationMethodEnabled is false. Supports $filter (any with eq).
     user_preferred_method_for_secondary_authentication: Optional[UserDefaultAuthenticationMethod] = None
-    # The user principal name, such as AdeleV@contoso.com. Supports $filter (eq, startsWith) and $orderBy.
+    # The user principal name, such as AdeleV@contoso.com. Supports $filter (eq, startsWith) and $orderby.
     user_principal_name: Optional[str] = None
     # Identifies whether the user is a member or guest in the tenant. The possible values are: member, guest, unknownFutureValue.
     user_type: Optional[SignInUserType] = None
@@ -50,8 +50,7 @@ class UserRegistrationDetails(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserRegistrationDetails:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UserRegistrationDetails
         """
         if not parse_node:
@@ -95,8 +94,8 @@ class UserRegistrationDetails(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

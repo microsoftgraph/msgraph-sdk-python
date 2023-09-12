@@ -24,17 +24,16 @@ class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TenantRelationshipsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/tenantRelationships{?%24select,%24expand}", path_parameters)
     
     def find_tenant_information_by_domain_name_with_domain_name(self,domain_name: Optional[str] = None) -> FindTenantInformationByDomainNameWithDomainNameRequestBuilder:
         """
         Provides operations to call the findTenantInformationByDomainName method.
-        Args:
-            domain_name: Usage: domainName='{domainName}'
+        param domain_name: Usage: domainName='{domainName}'
         Returns: FindTenantInformationByDomainNameWithDomainNameRequestBuilder
         """
         if not domain_name:
@@ -46,8 +45,7 @@ class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
     def find_tenant_information_by_tenant_id_with_tenant_id(self,tenant_id: Optional[str] = None) -> FindTenantInformationByTenantIdWithTenantIdRequestBuilder:
         """
         Provides operations to call the findTenantInformationByTenantId method.
-        Args:
-            tenant_id: Usage: tenantId='{tenantId}'
+        param tenant_id: Usage: tenantId='{tenantId}'
         Returns: FindTenantInformationByTenantIdWithTenantIdRequestBuilder
         """
         if not tenant_id:
@@ -59,8 +57,7 @@ class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[TenantRelationshipsRequestBuilderGetRequestConfiguration] = None) -> Optional[TenantRelationship]:
         """
         Get tenantRelationships
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TenantRelationship]
         """
         request_info = self.to_get_request_information(
@@ -81,9 +78,8 @@ class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[TenantRelationship] = None, request_configuration: Optional[TenantRelationshipsRequestBuilderPatchRequestConfiguration] = None) -> Optional[TenantRelationship]:
         """
         Update tenantRelationships
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TenantRelationship]
         """
         if not body:
@@ -106,8 +102,7 @@ class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[TenantRelationshipsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get tenantRelationships
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -124,9 +119,8 @@ class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[TenantRelationship] = None, request_configuration: Optional[TenantRelationshipsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update tenantRelationships
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -141,6 +135,16 @@ class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> TenantRelationshipsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: TenantRelationshipsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return TenantRelationshipsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def delegated_admin_customers(self) -> DelegatedAdminCustomersRequestBuilder:
@@ -168,8 +172,7 @@ class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

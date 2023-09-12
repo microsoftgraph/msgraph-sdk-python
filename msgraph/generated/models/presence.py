@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .presence_status_message import PresenceStatusMessage
 
 from .entity import Entity
 
@@ -16,13 +17,14 @@ class Presence(Entity):
     availability: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The statusMessage property
+    status_message: Optional[PresenceStatusMessage] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Presence:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Presence
         """
         if not parse_node:
@@ -35,12 +37,15 @@ class Presence(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .presence_status_message import PresenceStatusMessage
 
         from .entity import Entity
+        from .presence_status_message import PresenceStatusMessage
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
             "availability": lambda n : setattr(self, 'availability', n.get_str_value()),
+            "statusMessage": lambda n : setattr(self, 'status_message', n.get_object_value(PresenceStatusMessage)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -49,13 +54,14 @@ class Presence(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("activity", self.activity)
         writer.write_str_value("availability", self.availability)
+        writer.write_object_value("statusMessage", self.status_message)
     
 

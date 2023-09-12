@@ -23,17 +23,16 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CombinationConfigurationsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identity/conditionalAccess/authenticationStrength/policies/{authenticationStrengthPolicy%2Did}/combinationConfigurations{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_authentication_combination_configuration_id(self,authentication_combination_configuration_id: str) -> AuthenticationCombinationConfigurationItemRequestBuilder:
         """
         Provides operations to manage the combinationConfigurations property of the microsoft.graph.authenticationStrengthPolicy entity.
-        Args:
-            authentication_combination_configuration_id: Unique identifier of the item
+        param authentication_combination_configuration_id: The unique identifier of authenticationCombinationConfiguration
         Returns: AuthenticationCombinationConfigurationItemRequestBuilder
         """
         if not authentication_combination_configuration_id:
@@ -47,9 +46,9 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[CombinationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationCombinationConfigurationCollectionResponse]:
         """
         Get the authenticationCombinationConfiguration objects for an authentication strength policy. authenticationCombinationConfiguration represents requirements placed on specific authentication method combinations that require specified variants of those authentication methods to be used when authenticating. Currently, only fido2combinationConfigurations objects are supported. authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationCombinationConfigurationCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/authenticationstrengthpolicy-list-combinationconfigurations?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[AuthenticationCombinationConfiguration] = None, request_configuration: Optional[CombinationConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[AuthenticationCombinationConfiguration]:
         """
         Create a new authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be created, and these may only be created for custom authentication strength policies.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationCombinationConfiguration]
+        Find more info here: https://learn.microsoft.com/graph/api/authenticationstrengthpolicy-post-combinationconfigurations?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[CombinationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the authenticationCombinationConfiguration objects for an authentication strength policy. authenticationCombinationConfiguration represents requirements placed on specific authentication method combinations that require specified variants of those authentication methods to be used when authenticating. Currently, only fido2combinationConfigurations objects are supported. authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[AuthenticationCombinationConfiguration] = None, request_configuration: Optional[CombinationConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be created, and these may only be created for custom authentication strength policies.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +126,16 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> CombinationConfigurationsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: CombinationConfigurationsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return CombinationConfigurationsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,8 +154,7 @@ class CombinationConfigurationsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

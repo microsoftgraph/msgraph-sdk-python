@@ -40,8 +40,7 @@ class ObjectMapping(AdditionalDataHolder, BackedModel, Parsable):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ObjectMapping:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ObjectMapping
         """
         if not parse_node:
@@ -66,7 +65,7 @@ class ObjectMapping(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "attributeMappings": lambda n : setattr(self, 'attribute_mappings', n.get_collection_of_object_values(AttributeMapping)),
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "flowTypes": lambda n : setattr(self, 'flow_types', n.get_enum_value(ObjectFlowTypes)),
+            "flowTypes": lambda n : setattr(self, 'flow_types', n.get_collection_of_enum_values(ObjectFlowTypes)),
             "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(ObjectMappingMetadataEntry)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -79,8 +78,8 @@ class ObjectMapping(AdditionalDataHolder, BackedModel, Parsable):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

@@ -23,8 +23,7 @@ class UnifiedGroupSource(DataSource):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedGroupSource:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedGroupSource
         """
         if not parse_node:
@@ -46,7 +45,7 @@ class UnifiedGroupSource(DataSource):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
-            "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(SourceType)),
+            "includedSources": lambda n : setattr(self, 'included_sources', n.get_collection_of_enum_values(SourceType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,8 +54,8 @@ class UnifiedGroupSource(DataSource):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

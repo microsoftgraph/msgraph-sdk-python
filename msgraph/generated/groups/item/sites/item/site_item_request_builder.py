@@ -40,17 +40,16 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SiteItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}{?%24select,%24expand}", path_parameters)
     
     async def get(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Site]:
         """
         The list of SharePoint sites in this group. Access the default site with /sites/root.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Site]
         """
         request_info = self.to_get_request_information(
@@ -71,10 +70,9 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
-        Args:
-            end_date_time: Usage: endDateTime='{endDateTime}'
-            interval: Usage: interval='{interval}'
-            start_date_time: Usage: startDateTime='{startDateTime}'
+        param end_date_time: Usage: endDateTime='{endDateTime}'
+        param interval: Usage: interval='{interval}'
+        param start_date_time: Usage: startDateTime='{startDateTime}'
         Returns: GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
         """
         if not end_date_time:
@@ -90,8 +88,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     def get_applicable_content_types_for_list_with_list_id(self,list_id: Optional[str] = None) -> GetApplicableContentTypesForListWithListIdRequestBuilder:
         """
         Provides operations to call the getApplicableContentTypesForList method.
-        Args:
-            list_id: Usage: listId='{listId}'
+        param list_id: Usage: listId='{listId}'
         Returns: GetApplicableContentTypesForListWithListIdRequestBuilder
         """
         if not list_id:
@@ -103,8 +100,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     def get_by_path_with_path(self,path: Optional[str] = None) -> GetByPathWithPathRequestBuilder:
         """
         Provides operations to call the getByPath method.
-        Args:
-            path: Usage: path='{path}'
+        param path: Usage: path='{path}'
         Returns: GetByPathWithPathRequestBuilder
         """
         if not path:
@@ -116,9 +112,8 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Site]:
         """
         Update the navigation property sites in groups
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Site]
         """
         if not body:
@@ -141,8 +136,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The list of SharePoint sites in this group. Access the default site with /sites/root.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -159,9 +153,8 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property sites in groups
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -176,6 +169,16 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> SiteItemRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: SiteItemRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return SiteItemRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def analytics(self) -> AnalyticsRequestBuilder:
@@ -338,8 +341,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

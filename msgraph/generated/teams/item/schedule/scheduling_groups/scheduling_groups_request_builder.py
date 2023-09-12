@@ -23,17 +23,16 @@ class SchedulingGroupsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SchedulingGroupsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/teams/{team%2Did}/schedule/schedulingGroups{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select}", path_parameters)
     
     def by_scheduling_group_id(self,scheduling_group_id: str) -> SchedulingGroupItemRequestBuilder:
         """
         Provides operations to manage the schedulingGroups property of the microsoft.graph.schedule entity.
-        Args:
-            scheduling_group_id: Unique identifier of the item
+        param scheduling_group_id: The unique identifier of schedulingGroup
         Returns: SchedulingGroupItemRequestBuilder
         """
         if not scheduling_group_id:
@@ -47,9 +46,9 @@ class SchedulingGroupsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[SchedulingGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[SchedulingGroupCollectionResponse]:
         """
         Get the list of schedulingGroups in this schedule.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SchedulingGroupCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/schedule-list-schedulinggroups?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class SchedulingGroupsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[SchedulingGroup]:
         """
         Create a new schedulingGroup.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SchedulingGroup]
+        Find more info here: https://learn.microsoft.com/graph/api/schedule-post-schedulinggroups?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class SchedulingGroupsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[SchedulingGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the list of schedulingGroups in this schedule.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class SchedulingGroupsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new schedulingGroup.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +126,16 @@ class SchedulingGroupsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> SchedulingGroupsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: SchedulingGroupsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return SchedulingGroupsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,8 +154,7 @@ class SchedulingGroupsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

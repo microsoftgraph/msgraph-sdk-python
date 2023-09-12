@@ -20,17 +20,18 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IdentitySynchronizationRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/policies/crossTenantAccessPolicy/partners/{crossTenantAccessPolicyConfigurationPartner%2DtenantId}/identitySynchronization{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete the user synchronization policy for a partner-specific configuration.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/crosstenantidentitysyncpolicypartner-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,9 +49,9 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[CrossTenantIdentitySyncPolicyPartner]:
         """
         Get the user synchronization policy of a partner-specific configuration.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantIdentitySyncPolicyPartner]
+        Find more info here: https://learn.microsoft.com/graph/api/crosstenantidentitysyncpolicypartner-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,17 +68,16 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CrossTenantIdentitySyncPolicyPartner, error_mapping)
     
-    async def patch(self,body: Optional[CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPatchRequestConfiguration] = None) -> Optional[CrossTenantIdentitySyncPolicyPartner]:
+    async def put(self,body: Optional[CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPutRequestConfiguration] = None) -> Optional[CrossTenantIdentitySyncPolicyPartner]:
         """
-        Create a cross-tenant user synchronization policy for a partner-specific configuration.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Update the navigation property identitySynchronization in policies
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantIdentitySyncPolicyPartner]
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = self.to_patch_request_information(
+        request_info = self.to_put_request_information(
             body, request_configuration
         )
         from ......models.o_data_errors.o_data_error import ODataError
@@ -95,8 +95,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete the user synchronization policy for a partner-specific configuration.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -111,8 +110,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the user synchronization policy of a partner-specific configuration.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -126,12 +124,11 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: Optional[CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a cross-tenant user synchronization policy for a partner-specific configuration.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Update the navigation property identitySynchronization in policies
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -139,13 +136,23 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
+        request_info.http_method = Method.PUT
         request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> IdentitySynchronizationRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: IdentitySynchronizationRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return IdentitySynchronizationRequestBuilder(raw_url, self.request_adapter)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
@@ -165,8 +172,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -200,7 +206,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
-    class IdentitySynchronizationRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+    class IdentitySynchronizationRequestBuilderPutRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
         """

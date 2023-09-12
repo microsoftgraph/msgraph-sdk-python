@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from .public_client_application import PublicClientApplication
     from .request_signature_verification import RequestSignatureVerification
     from .required_resource_access import RequiredResourceAccess
+    from .service_principal_lock_configuration import ServicePrincipalLockConfiguration
     from .spa_application import SpaApplication
     from .synchronization import Synchronization
     from .token_issuance_policy import TokenIssuancePolicy
@@ -50,7 +51,7 @@ class Application(DirectoryObject):
     application_template_id: Optional[str] = None
     # Specifies the certification status of the application.
     certification: Optional[Certification] = None
-    # The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderBy.
+    # The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderby.
     created_date_time: Optional[datetime.datetime] = None
     # Supports $filter (/$count eq 0, /$count ne 0). Read-only.
     created_on_behalf_of: Optional[DirectoryObject] = None
@@ -60,7 +61,7 @@ class Application(DirectoryObject):
     description: Optional[str] = None
     # Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
     disabled_by_microsoft_status: Optional[str] = None
-    # The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+    # The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
     display_name: Optional[str] = None
     # Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
     extension_properties: Optional[List[ExtensionProperty]] = None
@@ -88,7 +89,7 @@ class Application(DirectoryObject):
     oauth2_require_post_response: Optional[bool] = None
     # Application developers can configure optional claims in their Azure AD applications to specify the claims that are sent to their application by the Microsoft security token service. For more information, see How to: Provide optional claims to your app.
     optional_claims: Optional[OptionalClaims] = None
-    # Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+    # Directory objects that are owners of the application. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
     owners: Optional[List[DirectoryObject]] = None
     # Specifies parental control settings for an application.
     parental_control_settings: Optional[ParentalControlSettings] = None
@@ -106,6 +107,8 @@ class Application(DirectoryObject):
     saml_metadata_url: Optional[str] = None
     # References application or service contact information from a Service or Asset Management database. Nullable.
     service_management_reference: Optional[str] = None
+    # Specifies whether sensitive properties of a multi-tenant application should be locked for editing after the application is provisioned in a tenant. Nullable. null by default.
+    service_principal_lock_configuration: Optional[ServicePrincipalLockConfiguration] = None
     # Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. The value for this property has implications on other app object properties. As a result, if you change this property, you may need to change other properties first. For more information, see Validation differences for signInAudience.Supports $filter (eq, ne, not).
     sign_in_audience: Optional[str] = None
     # Specifies settings for a single-page application, including sign out URLs and redirect URIs for authorization codes and access tokens.
@@ -129,8 +132,7 @@ class Application(DirectoryObject):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Application:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Application
         """
         if not parse_node:
@@ -159,6 +161,7 @@ class Application(DirectoryObject):
         from .public_client_application import PublicClientApplication
         from .request_signature_verification import RequestSignatureVerification
         from .required_resource_access import RequiredResourceAccess
+        from .service_principal_lock_configuration import ServicePrincipalLockConfiguration
         from .spa_application import SpaApplication
         from .synchronization import Synchronization
         from .token_issuance_policy import TokenIssuancePolicy
@@ -183,6 +186,7 @@ class Application(DirectoryObject):
         from .public_client_application import PublicClientApplication
         from .request_signature_verification import RequestSignatureVerification
         from .required_resource_access import RequiredResourceAccess
+        from .service_principal_lock_configuration import ServicePrincipalLockConfiguration
         from .spa_application import SpaApplication
         from .synchronization import Synchronization
         from .token_issuance_policy import TokenIssuancePolicy
@@ -226,6 +230,7 @@ class Application(DirectoryObject):
             "requiredResourceAccess": lambda n : setattr(self, 'required_resource_access', n.get_collection_of_object_values(RequiredResourceAccess)),
             "samlMetadataUrl": lambda n : setattr(self, 'saml_metadata_url', n.get_str_value()),
             "serviceManagementReference": lambda n : setattr(self, 'service_management_reference', n.get_str_value()),
+            "servicePrincipalLockConfiguration": lambda n : setattr(self, 'service_principal_lock_configuration', n.get_object_value(ServicePrincipalLockConfiguration)),
             "signInAudience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
             "spa": lambda n : setattr(self, 'spa', n.get_object_value(SpaApplication)),
             "synchronization": lambda n : setattr(self, 'synchronization', n.get_object_value(Synchronization)),
@@ -243,8 +248,8 @@ class Application(DirectoryObject):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")
@@ -284,6 +289,7 @@ class Application(DirectoryObject):
         writer.write_collection_of_object_values("requiredResourceAccess", self.required_resource_access)
         writer.write_str_value("samlMetadataUrl", self.saml_metadata_url)
         writer.write_str_value("serviceManagementReference", self.service_management_reference)
+        writer.write_object_value("servicePrincipalLockConfiguration", self.service_principal_lock_configuration)
         writer.write_str_value("signInAudience", self.sign_in_audience)
         writer.write_object_value("spa", self.spa)
         writer.write_object_value("synchronization", self.synchronization)

@@ -32,7 +32,7 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
     ip_address: Optional[str] = None
     # Link speed in bits per second reported by the network adapter used by the media endpoint.
     link_speed: Optional[int] = None
-    # The media access control (MAC) address of the media endpoint's network device.
+    # The media access control (MAC) address of the media endpoint's network device. This value may be missing or shown as 02:00:00:00:00:00 due to operating system privacy policies.
     mac_address: Optional[str] = None
     # The networkTransportProtocol property
     network_transport_protocol: Optional[NetworkTransportProtocol] = None
@@ -77,8 +77,7 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NetworkInfo:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: NetworkInfo
         """
         if not parse_node:
@@ -136,8 +135,8 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

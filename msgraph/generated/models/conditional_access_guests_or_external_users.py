@@ -26,8 +26,7 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, BackedModel, 
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessGuestsOrExternalUsers:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessGuestsOrExternalUsers
         """
         if not parse_node:
@@ -47,7 +46,7 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, BackedModel, 
 
         fields: Dict[str, Callable[[Any], None]] = {
             "externalTenants": lambda n : setattr(self, 'external_tenants', n.get_object_value(ConditionalAccessExternalTenants)),
-            "guestOrExternalUserTypes": lambda n : setattr(self, 'guest_or_external_user_types', n.get_enum_value(ConditionalAccessGuestOrExternalUserTypes)),
+            "guestOrExternalUserTypes": lambda n : setattr(self, 'guest_or_external_user_types', n.get_collection_of_enum_values(ConditionalAccessGuestOrExternalUserTypes)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -55,8 +54,8 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, BackedModel, 
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

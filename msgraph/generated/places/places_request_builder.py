@@ -17,17 +17,16 @@ class PlacesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PlacesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/places", path_parameters)
     
     def by_place_id(self,place_id: str) -> PlaceItemRequestBuilder:
         """
         Provides operations to manage the collection of place entities.
-        Args:
-            place_id: Unique identifier of the item
+        param place_id: The unique identifier of place
         Returns: PlaceItemRequestBuilder
         """
         if not place_id:

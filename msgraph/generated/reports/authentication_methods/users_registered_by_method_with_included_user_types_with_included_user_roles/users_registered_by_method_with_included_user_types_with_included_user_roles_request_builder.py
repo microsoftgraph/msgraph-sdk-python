@@ -20,19 +20,18 @@ class UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBu
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, included_user_roles: Optional[str] = None, included_user_types: Optional[str] = None) -> None:
         """
         Instantiates a new UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder and sets the default values.
-        Args:
-            included_user_roles: Usage: includedUserRoles='{includedUserRoles}'
-            included_user_types: Usage: includedUserTypes='{includedUserTypes}'
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param included_user_roles: Usage: includedUserRoles='{includedUserRoles}'
+        param included_user_types: Usage: includedUserTypes='{includedUserTypes}'
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/reports/authenticationMethods/usersRegisteredByMethod(includedUserTypes='{includedUserTypes}',includedUserRoles='{includedUserRoles}')", path_parameters)
     
     async def get(self,request_configuration: Optional[UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilderGetRequestConfiguration] = None) -> Optional[UserRegistrationMethodSummary]:
         """
         Invoke function usersRegisteredByMethod
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserRegistrationMethodSummary]
         """
         request_info = self.to_get_request_information(
@@ -53,8 +52,7 @@ class UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBu
     def to_get_request_information(self,request_configuration: Optional[UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function usersRegisteredByMethod
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -66,6 +64,16 @@ class UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBu
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder(raw_url, self.request_adapter)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

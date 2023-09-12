@@ -84,8 +84,7 @@ class ManagedAppProtection(ManagedAppPolicy):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppProtection:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAppProtection
         """
         if not parse_node:
@@ -149,7 +148,7 @@ class ManagedAppProtection(ManagedAppPolicy):
             "deviceComplianceRequired": lambda n : setattr(self, 'device_compliance_required', n.get_bool_value()),
             "disableAppPinIfDevicePinIsSet": lambda n : setattr(self, 'disable_app_pin_if_device_pin_is_set', n.get_bool_value()),
             "fingerprintBlocked": lambda n : setattr(self, 'fingerprint_blocked', n.get_bool_value()),
-            "managedBrowser": lambda n : setattr(self, 'managed_browser', n.get_enum_value(ManagedBrowserType)),
+            "managedBrowser": lambda n : setattr(self, 'managed_browser', n.get_collection_of_enum_values(ManagedBrowserType)),
             "managedBrowserToOpenLinksRequired": lambda n : setattr(self, 'managed_browser_to_open_links_required', n.get_bool_value()),
             "maximumPinRetries": lambda n : setattr(self, 'maximum_pin_retries', n.get_int_value()),
             "minimumPinLength": lambda n : setattr(self, 'minimum_pin_length', n.get_int_value()),
@@ -175,8 +174,8 @@ class ManagedAppProtection(ManagedAppPolicy):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

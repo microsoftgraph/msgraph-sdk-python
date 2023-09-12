@@ -25,17 +25,16 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UserAttributeAssignmentsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identity/b2xUserFlows/{b2xIdentityUserFlow%2Did}/userAttributeAssignments{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_identity_user_flow_attribute_assignment_id(self,identity_user_flow_attribute_assignment_id: str) -> IdentityUserFlowAttributeAssignmentItemRequestBuilder:
         """
         Provides operations to manage the userAttributeAssignments property of the microsoft.graph.b2xIdentityUserFlow entity.
-        Args:
-            identity_user_flow_attribute_assignment_id: Unique identifier of the item
+        param identity_user_flow_attribute_assignment_id: The unique identifier of identityUserFlowAttributeAssignment
         Returns: IdentityUserFlowAttributeAssignmentItemRequestBuilder
         """
         if not identity_user_flow_attribute_assignment_id:
@@ -49,9 +48,9 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[UserAttributeAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityUserFlowAttributeAssignmentCollectionResponse]:
         """
         Get the identityUserFlowAttributeAssignment resources from the userAttributeAssignments navigation property in a b2xIdentityUserFlow.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttributeAssignmentCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/b2xidentityuserflow-list-userattributeassignments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,10 +70,10 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[IdentityUserFlowAttributeAssignment] = None, request_configuration: Optional[UserAttributeAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[IdentityUserFlowAttributeAssignment]:
         """
         Create a new identityUserFlowAttributeAssignment object in a b2xIdentityUserFlow.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttributeAssignment]
+        Find more info here: https://learn.microsoft.com/graph/api/b2xidentityuserflow-post-userattributeassignments?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,8 +95,7 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[UserAttributeAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the identityUserFlowAttributeAssignment resources from the userAttributeAssignments navigation property in a b2xIdentityUserFlow.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -114,9 +112,8 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[IdentityUserFlowAttributeAssignment] = None, request_configuration: Optional[UserAttributeAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new identityUserFlowAttributeAssignment object in a b2xIdentityUserFlow.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -131,6 +128,16 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> UserAttributeAssignmentsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: UserAttributeAssignmentsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return UserAttributeAssignmentsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -167,8 +174,7 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

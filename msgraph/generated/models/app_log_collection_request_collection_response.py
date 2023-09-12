@@ -18,8 +18,7 @@ class AppLogCollectionRequestCollectionResponse(BaseCollectionPaginationCountRes
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppLogCollectionRequestCollectionResponse:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AppLogCollectionRequestCollectionResponse
         """
         if not parse_node:
@@ -47,8 +46,8 @@ class AppLogCollectionRequestCollectionResponse(BaseCollectionPaginationCountRes
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

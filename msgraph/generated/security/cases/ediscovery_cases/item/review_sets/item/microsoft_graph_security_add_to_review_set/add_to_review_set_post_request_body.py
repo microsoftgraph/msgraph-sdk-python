@@ -24,8 +24,7 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddToReviewSetPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AddToReviewSetPostRequestBody
         """
         if not parse_node:
@@ -44,7 +43,7 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         from ........models.security.ediscovery_search import EdiscoverySearch
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "additionalDataOptions": lambda n : setattr(self, 'additional_data_options', n.get_enum_value(AdditionalDataOptions)),
+            "additionalDataOptions": lambda n : setattr(self, 'additional_data_options', n.get_collection_of_enum_values(AdditionalDataOptions)),
             "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
         }
         return fields
@@ -52,8 +51,8 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

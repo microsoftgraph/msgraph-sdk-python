@@ -23,17 +23,16 @@ class CustomExtensionStageSettingsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CustomExtensionStageSettingsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/assignmentPolicies/{accessPackageAssignmentPolicy%2Did}/customExtensionStageSettings{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_custom_extension_stage_setting_id(self,custom_extension_stage_setting_id: str) -> CustomExtensionStageSettingItemRequestBuilder:
         """
         Provides operations to manage the customExtensionStageSettings property of the microsoft.graph.accessPackageAssignmentPolicy entity.
-        Args:
-            custom_extension_stage_setting_id: Unique identifier of the item
+        param custom_extension_stage_setting_id: The unique identifier of customExtensionStageSetting
         Returns: CustomExtensionStageSettingItemRequestBuilder
         """
         if not custom_extension_stage_setting_id:
@@ -47,8 +46,7 @@ class CustomExtensionStageSettingsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[CustomExtensionStageSettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[CustomExtensionStageSettingCollectionResponse]:
         """
         The collection of stages when to execute one or more custom access package workflow extensions. Supports $expand.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomExtensionStageSettingCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,9 +67,8 @@ class CustomExtensionStageSettingsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[CustomExtensionStageSetting] = None, request_configuration: Optional[CustomExtensionStageSettingsRequestBuilderPostRequestConfiguration] = None) -> Optional[CustomExtensionStageSetting]:
         """
         Create new navigation property to customExtensionStageSettings for identityGovernance
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomExtensionStageSetting]
         """
         if not body:
@@ -94,8 +91,7 @@ class CustomExtensionStageSettingsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[CustomExtensionStageSettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The collection of stages when to execute one or more custom access package workflow extensions. Supports $expand.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +108,8 @@ class CustomExtensionStageSettingsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[CustomExtensionStageSetting] = None, request_configuration: Optional[CustomExtensionStageSettingsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to customExtensionStageSettings for identityGovernance
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +124,16 @@ class CustomExtensionStageSettingsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> CustomExtensionStageSettingsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: CustomExtensionStageSettingsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return CustomExtensionStageSettingsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,8 +152,7 @@ class CustomExtensionStageSettingsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

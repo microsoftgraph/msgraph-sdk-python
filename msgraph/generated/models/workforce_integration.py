@@ -31,8 +31,7 @@ class WorkforceIntegration(ChangeTrackedEntity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkforceIntegration:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WorkforceIntegration
         """
         if not parse_node:
@@ -57,7 +56,7 @@ class WorkforceIntegration(ChangeTrackedEntity):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "encryption": lambda n : setattr(self, 'encryption', n.get_object_value(WorkforceIntegrationEncryption)),
             "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
-            "supportedEntities": lambda n : setattr(self, 'supported_entities', n.get_enum_value(WorkforceIntegrationSupportedEntities)),
+            "supportedEntities": lambda n : setattr(self, 'supported_entities', n.get_collection_of_enum_values(WorkforceIntegrationSupportedEntities)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -67,8 +66,8 @@ class WorkforceIntegration(ChangeTrackedEntity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

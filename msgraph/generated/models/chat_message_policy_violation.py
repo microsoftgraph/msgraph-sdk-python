@@ -34,8 +34,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, BackedModel, Parsable):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessagePolicyViolation:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ChatMessagePolicyViolation
         """
         if not parse_node:
@@ -58,20 +57,20 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, BackedModel, Parsable):
         from .chat_message_policy_violation_verdict_details_types import ChatMessagePolicyViolationVerdictDetailsTypes
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "dlpAction": lambda n : setattr(self, 'dlp_action', n.get_enum_value(ChatMessagePolicyViolationDlpActionTypes)),
+            "dlpAction": lambda n : setattr(self, 'dlp_action', n.get_collection_of_enum_values(ChatMessagePolicyViolationDlpActionTypes)),
             "justificationText": lambda n : setattr(self, 'justification_text', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "policyTip": lambda n : setattr(self, 'policy_tip', n.get_object_value(ChatMessagePolicyViolationPolicyTip)),
-            "userAction": lambda n : setattr(self, 'user_action', n.get_enum_value(ChatMessagePolicyViolationUserActionTypes)),
-            "verdictDetails": lambda n : setattr(self, 'verdict_details', n.get_enum_value(ChatMessagePolicyViolationVerdictDetailsTypes)),
+            "userAction": lambda n : setattr(self, 'user_action', n.get_collection_of_enum_values(ChatMessagePolicyViolationUserActionTypes)),
+            "verdictDetails": lambda n : setattr(self, 'verdict_details', n.get_collection_of_enum_values(ChatMessagePolicyViolationVerdictDetailsTypes)),
         }
         return fields
     
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

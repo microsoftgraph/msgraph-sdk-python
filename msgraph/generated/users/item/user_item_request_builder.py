@@ -73,6 +73,7 @@ if TYPE_CHECKING:
     from .remove_all_devices_from_management.remove_all_devices_from_management_request_builder import RemoveAllDevicesFromManagementRequestBuilder
     from .reprocess_license_assignment.reprocess_license_assignment_request_builder import ReprocessLicenseAssignmentRequestBuilder
     from .restore.restore_request_builder import RestoreRequestBuilder
+    from .retry_service_provisioning.retry_service_provisioning_request_builder import RetryServiceProvisioningRequestBuilder
     from .revoke_sign_in_sessions.revoke_sign_in_sessions_request_builder import RevokeSignInSessionsRequestBuilder
     from .scoped_role_member_of.scoped_role_member_of_request_builder import ScopedRoleMemberOfRequestBuilder
     from .send_mail.send_mail_request_builder import SendMailRequestBuilder
@@ -90,17 +91,18 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UserItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[UserItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Deletes a user.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -118,9 +120,8 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     def export_device_and_app_management_data_with_skip_with_top(self,skip: Optional[int] = None, top: Optional[int] = None) -> ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder:
         """
         Provides operations to call the exportDeviceAndAppManagementData method.
-        Args:
-            skip: Usage: skip={skip}
-            top: Usage: top={top}
+        param skip: Usage: skip={skip}
+        param top: Usage: top={top}
         Returns: ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder
         """
         if not skip:
@@ -133,10 +134,10 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[User]:
         """
-        Retrieve the properties and relationships of user object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Read properties and relationships of the user object.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -155,11 +156,11 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[User] = None, request_configuration: Optional[UserItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[User]:
         """
-        Update the properties of a user object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Update the properties of a user object. Not all properties can be updated by Member or Guest users with their default permissions without Administrator roles. Compare member and guest default permissions to see properties they can manage.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
+        Find more info here: https://learn.microsoft.com/graph/api/user-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -181,9 +182,8 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     def reminder_view_with_start_date_time_with_end_date_time(self,end_date_time: Optional[str] = None, start_date_time: Optional[str] = None) -> ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder:
         """
         Provides operations to call the reminderView method.
-        Args:
-            end_date_time: Usage: EndDateTime='{EndDateTime}'
-            start_date_time: Usage: StartDateTime='{StartDateTime}'
+        param end_date_time: Usage: EndDateTime='{EndDateTime}'
+        param start_date_time: Usage: StartDateTime='{StartDateTime}'
         Returns: ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder
         """
         if not end_date_time:
@@ -197,8 +197,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[UserItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Deletes a user.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -212,9 +211,8 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of user object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Read properties and relationships of the user object.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -230,10 +228,9 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[User] = None, request_configuration: Optional[UserItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a user object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Update the properties of a user object. Not all properties can be updated by Member or Guest users with their default permissions without Administrator roles. Compare member and guest default permissions to see properties they can manage.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -248,6 +245,16 @@ class UserItemRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> UserItemRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: UserItemRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return UserItemRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def activities(self) -> ActivitiesRequestBuilder:
@@ -781,6 +788,15 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def retry_service_provisioning(self) -> RetryServiceProvisioningRequestBuilder:
+        """
+        Provides operations to call the retryServiceProvisioning method.
+        """
+        from .retry_service_provisioning.retry_service_provisioning_request_builder import RetryServiceProvisioningRequestBuilder
+
+        return RetryServiceProvisioningRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def revoke_sign_in_sessions(self) -> RevokeSignInSessionsRequestBuilder:
         """
         Provides operations to call the revokeSignInSessions method.
@@ -874,13 +890,12 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of user object.
+        Read properties and relationships of the user object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

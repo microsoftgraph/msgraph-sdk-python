@@ -23,17 +23,16 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CustomQuestionsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/customQuestions{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_booking_custom_question_id(self,booking_custom_question_id: str) -> BookingCustomQuestionItemRequestBuilder:
         """
         Provides operations to manage the customQuestions property of the microsoft.graph.bookingBusiness entity.
-        Args:
-            booking_custom_question_id: Unique identifier of the item
+        param booking_custom_question_id: The unique identifier of bookingCustomQuestion
         Returns: BookingCustomQuestionItemRequestBuilder
         """
         if not booking_custom_question_id:
@@ -47,9 +46,9 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[CustomQuestionsRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingCustomQuestionCollectionResponse]:
         """
         Get the bookingCustomQuestion resources associated with a bookingBusiness.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCustomQuestionCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-list-customquestions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[BookingCustomQuestion] = None, request_configuration: Optional[CustomQuestionsRequestBuilderPostRequestConfiguration] = None) -> Optional[BookingCustomQuestion]:
         """
         Create a new bookingCustomQuestion object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCustomQuestion]
+        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-post-customquestions?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[CustomQuestionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the bookingCustomQuestion resources associated with a bookingBusiness.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[BookingCustomQuestion] = None, request_configuration: Optional[CustomQuestionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new bookingCustomQuestion object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +126,16 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> CustomQuestionsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: CustomQuestionsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return CustomQuestionsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,8 +154,7 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

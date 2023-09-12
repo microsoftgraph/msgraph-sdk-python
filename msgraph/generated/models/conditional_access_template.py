@@ -27,8 +27,7 @@ class ConditionalAccessTemplate(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessTemplate:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessTemplate
         """
         if not parse_node:
@@ -52,7 +51,7 @@ class ConditionalAccessTemplate(Entity):
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "details": lambda n : setattr(self, 'details', n.get_object_value(ConditionalAccessPolicyDetail)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "scenarios": lambda n : setattr(self, 'scenarios', n.get_enum_value(TemplateScenarios)),
+            "scenarios": lambda n : setattr(self, 'scenarios', n.get_collection_of_enum_values(TemplateScenarios)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,8 +60,8 @@ class ConditionalAccessTemplate(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .on_premises_provisioning_error import OnPremisesProvisioningError
     from .phone import Phone
     from .physical_office_address import PhysicalOfficeAddress
+    from .service_provisioning_error import ServiceProvisioningError
 
 from .directory_object import DirectoryObject
 
@@ -24,7 +25,7 @@ class OrgContact(DirectoryObject):
     department: Optional[str] = None
     # The contact's direct reports. (The users and contacts that have their manager property set to this contact.)  Read-only. Nullable. Supports $expand.
     direct_reports: Optional[List[DirectoryObject]] = None
-    # Display name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values), $search, and $orderBy.
+    # Display name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values), $search, and $orderby.
     display_name: Optional[str] = None
     # First name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
     given_name: Optional[str] = None
@@ -48,6 +49,8 @@ class OrgContact(DirectoryObject):
     phones: Optional[List[Phone]] = None
     # For example: 'SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com'. The any operator is required for filter expressions on multi-valued properties. Supports $filter (eq, not, ge, le, startsWith, /$count eq 0, /$count ne 0).
     proxy_addresses: Optional[List[str]] = None
+    # The serviceProvisioningErrors property
+    service_provisioning_errors: Optional[List[ServiceProvisioningError]] = None
     # Last name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
     surname: Optional[str] = None
     # Groups that this contact is a member of, including groups that the contact is nested under. Read-only. Nullable.
@@ -57,8 +60,7 @@ class OrgContact(DirectoryObject):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrgContact:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: OrgContact
         """
         if not parse_node:
@@ -74,11 +76,13 @@ class OrgContact(DirectoryObject):
         from .on_premises_provisioning_error import OnPremisesProvisioningError
         from .phone import Phone
         from .physical_office_address import PhysicalOfficeAddress
+        from .service_provisioning_error import ServiceProvisioningError
 
         from .directory_object import DirectoryObject
         from .on_premises_provisioning_error import OnPremisesProvisioningError
         from .phone import Phone
         from .physical_office_address import PhysicalOfficeAddress
+        from .service_provisioning_error import ServiceProvisioningError
 
         fields: Dict[str, Callable[[Any], None]] = {
             "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(PhysicalOfficeAddress)),
@@ -97,6 +101,7 @@ class OrgContact(DirectoryObject):
             "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(Phone)),
             "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
+            "serviceProvisioningErrors": lambda n : setattr(self, 'service_provisioning_errors', n.get_collection_of_object_values(ServiceProvisioningError)),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
             "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
         }
@@ -107,8 +112,8 @@ class OrgContact(DirectoryObject):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")
@@ -129,6 +134,7 @@ class OrgContact(DirectoryObject):
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
         writer.write_collection_of_object_values("phones", self.phones)
         writer.write_collection_of_primitive_values("proxyAddresses", self.proxy_addresses)
+        writer.write_collection_of_object_values("serviceProvisioningErrors", self.service_provisioning_errors)
         writer.write_str_value("surname", self.surname)
         writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
     

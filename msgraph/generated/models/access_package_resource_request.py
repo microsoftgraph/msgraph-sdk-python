@@ -25,15 +25,14 @@ class AccessPackageResourceRequest(Entity):
     request_type: Optional[AccessPackageRequestType] = None
     # The resource property
     resource: Optional[AccessPackageResource] = None
-    # The outcome of whether the service was able to add the resource to the catalog.  The value is delivered if the resource was added or removed. Read-only.
+    # The outcome of whether the service was able to add the resource to the catalog.  The value is delivered if the resource was added or removed, and deliveryFailed if it could not be added or removed. Read-only.
     state: Optional[AccessPackageRequestState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageResourceRequest:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageResourceRequest
         """
         if not parse_node:
@@ -71,8 +70,8 @@ class AccessPackageResourceRequest(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

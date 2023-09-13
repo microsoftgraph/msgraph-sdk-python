@@ -23,8 +23,7 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetMailTipsPostRequestBody:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: GetMailTipsPostRequestBody
         """
         if not parse_node:
@@ -42,15 +41,15 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "EmailAddresses": lambda n : setattr(self, 'email_addresses', n.get_collection_of_primitive_values(str)),
-            "MailTipsOptions": lambda n : setattr(self, 'mail_tips_options', n.get_enum_value(MailTipsType)),
+            "MailTipsOptions": lambda n : setattr(self, 'mail_tips_options', n.get_collection_of_enum_values(MailTipsType)),
         }
         return fields
     
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

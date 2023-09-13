@@ -23,17 +23,16 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DefaultManagedAppProtectionsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/defaultManagedAppProtections{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_default_managed_app_protection_id(self,default_managed_app_protection_id: str) -> DefaultManagedAppProtectionItemRequestBuilder:
         """
         Provides operations to manage the defaultManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
-        Args:
-            default_managed_app_protection_id: Unique identifier of the item
+        param default_managed_app_protection_id: The unique identifier of defaultManagedAppProtection
         Returns: DefaultManagedAppProtectionItemRequestBuilder
         """
         if not default_managed_app_protection_id:
@@ -47,9 +46,9 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[DefaultManagedAppProtectionCollectionResponse]:
         """
         List properties and relationships of the defaultManagedAppProtection objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DefaultManagedAppProtectionCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-defaultmanagedappprotection-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,10 +68,10 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[DefaultManagedAppProtection]:
         """
         Create a new defaultManagedAppProtection object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DefaultManagedAppProtection]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-defaultmanagedappprotection-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,8 +93,7 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List properties and relationships of the defaultManagedAppProtection objects.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +110,8 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new defaultManagedAppProtection object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +126,16 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> DefaultManagedAppProtectionsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: DefaultManagedAppProtectionsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return DefaultManagedAppProtectionsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,8 +154,7 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

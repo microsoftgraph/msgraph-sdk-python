@@ -29,8 +29,7 @@ class ChatMessageHistoryItem(AdditionalDataHolder, BackedModel, Parsable):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageHistoryItem:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: ChatMessageHistoryItem
         """
         if not parse_node:
@@ -49,7 +48,7 @@ class ChatMessageHistoryItem(AdditionalDataHolder, BackedModel, Parsable):
         from .chat_message_reaction import ChatMessageReaction
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "actions": lambda n : setattr(self, 'actions', n.get_enum_value(ChatMessageActions)),
+            "actions": lambda n : setattr(self, 'actions', n.get_collection_of_enum_values(ChatMessageActions)),
             "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reaction": lambda n : setattr(self, 'reaction', n.get_object_value(ChatMessageReaction)),
@@ -59,8 +58,8 @@ class ChatMessageHistoryItem(AdditionalDataHolder, BackedModel, Parsable):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

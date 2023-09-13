@@ -23,17 +23,16 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CalendarViewRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/calendarView{?start*,end*,%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_booking_appointment_id(self,booking_appointment_id: str) -> BookingAppointmentItemRequestBuilder:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.bookingBusiness entity.
-        Args:
-            booking_appointment_id: Unique identifier of the item
+        param booking_appointment_id: The unique identifier of bookingAppointment
         Returns: BookingAppointmentItemRequestBuilder
         """
         if not booking_appointment_id:
@@ -47,9 +46,9 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingAppointmentCollectionResponse]:
         """
         The set of appointments of this business in a specified date range. Read-only. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingAppointmentCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-list-calendarview?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,9 +68,8 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[BookingAppointment] = None, request_configuration: Optional[CalendarViewRequestBuilderPostRequestConfiguration] = None) -> Optional[BookingAppointment]:
         """
         Create new navigation property to calendarView for solutions
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingAppointment]
         """
         if not body:
@@ -94,8 +92,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The set of appointments of this business in a specified date range. Read-only. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +109,8 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[BookingAppointment] = None, request_configuration: Optional[CalendarViewRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to calendarView for solutions
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +125,16 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> CalendarViewRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: CalendarViewRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return CalendarViewRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,16 +153,13 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
-            if original_name == "end":
-                return "end"
             if original_name == "expand":
                 return "%24expand"
             if original_name == "filter":
@@ -169,10 +172,12 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
                 return "%24select"
             if original_name == "skip":
                 return "%24skip"
-            if original_name == "start":
-                return "start"
             if original_name == "top":
                 return "%24top"
+            if original_name == "end":
+                return "end"
+            if original_name == "start":
+                return "start"
             return original_name
         
         # Include count of items

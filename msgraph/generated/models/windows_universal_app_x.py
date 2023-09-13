@@ -15,13 +15,13 @@ from .mobile_lob_app import MobileLobApp
 @dataclass
 class WindowsUniversalAppX(MobileLobApp):
     """
-    Contains properties and inherited properties for Windows Universal AppX Line Of Business apps.
+    Contains properties and inherited properties for Windows Universal AppX Line Of Business apps. Inherits from `mobileLobApp`.
     """
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.windowsUniversalAppX"
     # Contains properties for Windows architecture.
     applicable_architectures: Optional[WindowsArchitecture] = None
-    # Contains properties for Windows device type.
+    # Contains properties for Windows device type. Multiple values can be selected. Default value is `none`.
     applicable_device_types: Optional[WindowsDeviceType] = None
     # The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
     committed_contained_apps: Optional[List[MobileContainedApp]] = None
@@ -42,8 +42,7 @@ class WindowsUniversalAppX(MobileLobApp):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUniversalAppX:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WindowsUniversalAppX
         """
         if not parse_node:
@@ -68,8 +67,8 @@ class WindowsUniversalAppX(MobileLobApp):
         from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(WindowsArchitecture)),
-            "applicableDeviceTypes": lambda n : setattr(self, 'applicable_device_types', n.get_enum_value(WindowsDeviceType)),
+            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_collection_of_enum_values(WindowsArchitecture)),
+            "applicableDeviceTypes": lambda n : setattr(self, 'applicable_device_types', n.get_collection_of_enum_values(WindowsDeviceType)),
             "committedContainedApps": lambda n : setattr(self, 'committed_contained_apps', n.get_collection_of_object_values(MobileContainedApp)),
             "identityName": lambda n : setattr(self, 'identity_name', n.get_str_value()),
             "identityPublisherHash": lambda n : setattr(self, 'identity_publisher_hash', n.get_str_value()),
@@ -85,8 +84,8 @@ class WindowsUniversalAppX(MobileLobApp):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

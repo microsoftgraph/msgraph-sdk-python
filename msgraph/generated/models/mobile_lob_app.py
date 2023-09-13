@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .android_lob_app import AndroidLobApp
     from .ios_lob_app import IosLobApp
+    from .mac_o_s_dmg_app import MacOSDmgApp
     from .mac_o_s_lob_app import MacOSLobApp
     from .mobile_app import MobileApp
     from .mobile_app_content import MobileAppContent
@@ -36,8 +37,7 @@ class MobileLobApp(MobileApp):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileLobApp:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MobileLobApp
         """
         if not parse_node:
@@ -54,6 +54,10 @@ class MobileLobApp(MobileApp):
             from .ios_lob_app import IosLobApp
 
             return IosLobApp()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSDmgApp".casefold():
+            from .mac_o_s_dmg_app import MacOSDmgApp
+
+            return MacOSDmgApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSLobApp".casefold():
             from .mac_o_s_lob_app import MacOSLobApp
 
@@ -83,6 +87,7 @@ class MobileLobApp(MobileApp):
         """
         from .android_lob_app import AndroidLobApp
         from .ios_lob_app import IosLobApp
+        from .mac_o_s_dmg_app import MacOSDmgApp
         from .mac_o_s_lob_app import MacOSLobApp
         from .mobile_app import MobileApp
         from .mobile_app_content import MobileAppContent
@@ -93,6 +98,7 @@ class MobileLobApp(MobileApp):
 
         from .android_lob_app import AndroidLobApp
         from .ios_lob_app import IosLobApp
+        from .mac_o_s_dmg_app import MacOSDmgApp
         from .mac_o_s_lob_app import MacOSLobApp
         from .mobile_app import MobileApp
         from .mobile_app_content import MobileAppContent
@@ -114,8 +120,8 @@ class MobileLobApp(MobileApp):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

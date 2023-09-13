@@ -21,17 +21,17 @@ class ParentGroupRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ParentGroupRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/termStore/sets/{set%2Did}/parentGroup{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ParentGroupRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property parentGroup for groups
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,8 +49,7 @@ class ParentGroupRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[ParentGroupRequestBuilderGetRequestConfiguration] = None) -> Optional[Group]:
         """
         The parent [group] that contains the set.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Group]
         """
         request_info = self.to_get_request_information(
@@ -71,9 +70,8 @@ class ParentGroupRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[Group] = None, request_configuration: Optional[ParentGroupRequestBuilderPatchRequestConfiguration] = None) -> Optional[Group]:
         """
         Update the navigation property parentGroup in groups
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Group]
         """
         if not body:
@@ -96,8 +94,7 @@ class ParentGroupRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[ParentGroupRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property parentGroup for groups
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,8 +109,7 @@ class ParentGroupRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ParentGroupRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The parent [group] that contains the set.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -130,9 +126,8 @@ class ParentGroupRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[Group] = None, request_configuration: Optional[ParentGroupRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property parentGroup in groups
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,6 +142,16 @@ class ParentGroupRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> ParentGroupRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: ParentGroupRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return ParentGroupRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def sets(self) -> SetsRequestBuilder:
@@ -175,8 +180,7 @@ class ParentGroupRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

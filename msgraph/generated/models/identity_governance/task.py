@@ -38,8 +38,7 @@ class Task(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Task:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Task
         """
         if not parse_node:
@@ -63,7 +62,7 @@ class Task(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "arguments": lambda n : setattr(self, 'arguments', n.get_collection_of_object_values(KeyValuePair)),
-            "category": lambda n : setattr(self, 'category', n.get_enum_value(LifecycleTaskCategory)),
+            "category": lambda n : setattr(self, 'category', n.get_collection_of_enum_values(LifecycleTaskCategory)),
             "continueOnError": lambda n : setattr(self, 'continue_on_error', n.get_bool_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -79,8 +78,8 @@ class Task(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

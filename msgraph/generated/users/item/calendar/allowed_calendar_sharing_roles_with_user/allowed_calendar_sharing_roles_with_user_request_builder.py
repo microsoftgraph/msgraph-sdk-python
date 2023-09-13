@@ -20,18 +20,17 @@ class AllowedCalendarSharingRolesWithUserRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, user: Optional[str] = None) -> None:
         """
         Instantiates a new AllowedCalendarSharingRolesWithUserRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
-            user: Usage: User='{User}'
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        param user: Usage: User='{User}'
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendar/allowedCalendarSharingRoles(User='{User}'){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
     async def get(self,request_configuration: Optional[AllowedCalendarSharingRolesWithUserRequestBuilderGetRequestConfiguration] = None) -> Optional[AllowedCalendarSharingRolesWithUserResponse]:
         """
         Invoke function allowedCalendarSharingRoles
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AllowedCalendarSharingRolesWithUserResponse]
         """
         request_info = self.to_get_request_information(
@@ -52,8 +51,7 @@ class AllowedCalendarSharingRolesWithUserRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AllowedCalendarSharingRolesWithUserRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function allowedCalendarSharingRoles
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -67,6 +65,16 @@ class AllowedCalendarSharingRolesWithUserRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         return request_info
     
+    def with_url(self,raw_url: Optional[str] = None) -> AllowedCalendarSharingRolesWithUserRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: AllowedCalendarSharingRolesWithUserRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return AllowedCalendarSharingRolesWithUserRequestBuilder(raw_url, self.request_adapter)
+    
     @dataclass
     class AllowedCalendarSharingRolesWithUserRequestBuilderGetQueryParameters():
         """
@@ -75,8 +83,7 @@ class AllowedCalendarSharingRolesWithUserRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

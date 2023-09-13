@@ -28,7 +28,7 @@ class AccessReviewScheduleDefinition(Entity):
     description_for_admins: Optional[str] = None
     # Description provided  by review creators to provide more context of the review to reviewers. Reviewers will see this description in the email sent to them requesting their review. Email notifications support up to 256 characters. Supports $select.
     description_for_reviewers: Optional[str] = None
-    # Name of the access review series. Supports $select and $orderBy. Required on create.
+    # Name of the access review series. Supports $select and $orderby. Required on create.
     display_name: Optional[str] = None
     # This collection of reviewer scopes is used to define the list of fallback reviewers. These fallback reviewers will be notified to take action if no users are found from the list of reviewers specified. This could occur when either the group owner is specified as the reviewer but the group owner does not exist, or manager is specified as reviewer but a user's manager does not exist. See accessReviewReviewerScope. Replaces backupReviewers. Supports $select. NOTE: The value of this property will be ignored if fallback reviewers are assigned through the stageSettings property.
     fallback_reviewers: Optional[List[AccessReviewReviewerScope]] = None
@@ -55,8 +55,7 @@ class AccessReviewScheduleDefinition(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewScheduleDefinition:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewScheduleDefinition
         """
         if not parse_node:
@@ -110,8 +109,8 @@ class AccessReviewScheduleDefinition(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

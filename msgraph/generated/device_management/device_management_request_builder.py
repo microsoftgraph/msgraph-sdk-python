@@ -58,6 +58,7 @@ if TYPE_CHECKING:
     from .user_experience_analytics_device_scores.user_experience_analytics_device_scores_request_builder import UserExperienceAnalyticsDeviceScoresRequestBuilder
     from .user_experience_analytics_device_startup_history.user_experience_analytics_device_startup_history_request_builder import UserExperienceAnalyticsDeviceStartupHistoryRequestBuilder
     from .user_experience_analytics_device_startup_processes.user_experience_analytics_device_startup_processes_request_builder import UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder
+    from .user_experience_analytics_device_startup_process_performance.user_experience_analytics_device_startup_process_performance_request_builder import UserExperienceAnalyticsDeviceStartupProcessPerformanceRequestBuilder
     from .user_experience_analytics_metric_history.user_experience_analytics_metric_history_request_builder import UserExperienceAnalyticsMetricHistoryRequestBuilder
     from .user_experience_analytics_model_scores.user_experience_analytics_model_scores_request_builder import UserExperienceAnalyticsModelScoresRequestBuilder
     from .user_experience_analytics_overview.user_experience_analytics_overview_request_builder import UserExperienceAnalyticsOverviewRequestBuilder
@@ -79,18 +80,18 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceManagementRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement{?%24select,%24expand}", path_parameters)
     
     async def get(self,request_configuration: Optional[DeviceManagementRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagement]:
         """
         Read properties and relationships of the deviceManagement object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicemanagement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -110,8 +111,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
     def get_effective_permissions_with_scope(self,scope: Optional[str] = None) -> GetEffectivePermissionsWithScopeRequestBuilder:
         """
         Provides operations to call the getEffectivePermissions method.
-        Args:
-            scope: Usage: scope='{scope}'
+        param scope: Usage: scope='{scope}'
         Returns: GetEffectivePermissionsWithScopeRequestBuilder
         """
         if not scope:
@@ -123,10 +123,10 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[DeviceManagement] = None, request_configuration: Optional[DeviceManagementRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceManagement]:
         """
         Update the properties of a deviceManagement object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-devicemanagement-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -148,8 +148,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[DeviceManagementRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read properties and relationships of the deviceManagement object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -166,9 +165,8 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[DeviceManagement] = None, request_configuration: Optional[DeviceManagementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a deviceManagement object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -187,8 +185,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
     def verify_windows_enrollment_auto_discovery_with_domain_name(self,domain_name: Optional[str] = None) -> VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder:
         """
         Provides operations to call the verifyWindowsEnrollmentAutoDiscovery method.
-        Args:
-            domain_name: Usage: domainName='{domainName}'
+        param domain_name: Usage: domainName='{domainName}'
         Returns: VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder
         """
         if not domain_name:
@@ -196,6 +193,16 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         from .verify_windows_enrollment_auto_discovery_with_domain_name.verify_windows_enrollment_auto_discovery_with_domain_name_request_builder import VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder
 
         return VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domain_name)
+    
+    def with_url(self,raw_url: Optional[str] = None) -> DeviceManagementRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: DeviceManagementRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return DeviceManagementRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def apple_push_notification_certificate(self) -> ApplePushNotificationCertificateRequestBuilder:
@@ -603,6 +610,15 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         return UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def user_experience_analytics_device_startup_process_performance(self) -> UserExperienceAnalyticsDeviceStartupProcessPerformanceRequestBuilder:
+        """
+        Provides operations to manage the userExperienceAnalyticsDeviceStartupProcessPerformance property of the microsoft.graph.deviceManagement entity.
+        """
+        from .user_experience_analytics_device_startup_process_performance.user_experience_analytics_device_startup_process_performance_request_builder import UserExperienceAnalyticsDeviceStartupProcessPerformanceRequestBuilder
+
+        return UserExperienceAnalyticsDeviceStartupProcessPerformanceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def user_experience_analytics_metric_history(self) -> UserExperienceAnalyticsMetricHistoryRequestBuilder:
         """
         Provides operations to manage the userExperienceAnalyticsMetricHistory property of the microsoft.graph.deviceManagement entity.
@@ -718,8 +734,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

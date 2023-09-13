@@ -23,17 +23,16 @@ class SessionsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SessionsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/communications/callRecords/{callRecord%2Did}/sessions{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_session_id(self,session_id: str) -> SessionItemRequestBuilder:
         """
         Provides operations to manage the sessions property of the microsoft.graph.callRecords.callRecord entity.
-        Args:
-            session_id: Unique identifier of the item
+        param session_id: The unique identifier of session
         Returns: SessionItemRequestBuilder
         """
         if not session_id:
@@ -47,9 +46,9 @@ class SessionsRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[SessionsRequestBuilderGetRequestConfiguration] = None) -> Optional[SessionCollectionResponse]:
         """
         Retrieve the list of sessions associated with a callRecord object. If the sessions list is truncated, a sessions@odata.nextLink value will be provided to retrieve the next page of sessions. The maximum page size for sessions is 60 entries.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SessionCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/callrecords-session-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,9 +68,8 @@ class SessionsRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[Session] = None, request_configuration: Optional[SessionsRequestBuilderPostRequestConfiguration] = None) -> Optional[Session]:
         """
         Create new navigation property to sessions for communications
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Session]
         """
         if not body:
@@ -94,8 +92,7 @@ class SessionsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[SessionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the list of sessions associated with a callRecord object. If the sessions list is truncated, a sessions@odata.nextLink value will be provided to retrieve the next page of sessions. The maximum page size for sessions is 60 entries.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,9 +109,8 @@ class SessionsRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[Session] = None, request_configuration: Optional[SessionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to sessions for communications
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +125,16 @@ class SessionsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> SessionsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: SessionsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return SessionsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -147,8 +153,7 @@ class SessionsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

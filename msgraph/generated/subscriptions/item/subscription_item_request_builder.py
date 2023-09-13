@@ -21,17 +21,18 @@ class SubscriptionItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SubscriptionItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/subscriptions/{subscription%2Did}{?%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[SubscriptionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete a subscription. For the list of resources that support subscribing to change notifications, see the table in the Permissions section.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/subscription-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,9 +50,9 @@ class SubscriptionItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[SubscriptionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Subscription]:
         """
         Retrieve the properties and relationships of a subscription. See the table in the Permissions section for the list of resources that support subscribing to change notifications.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Subscription]
+        Find more info here: https://learn.microsoft.com/graph/api/subscription-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,10 +72,10 @@ class SubscriptionItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[Subscription] = None, request_configuration: Optional[SubscriptionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Subscription]:
         """
         Renew a subscription by extending its expiry time. The table in the Permissions section lists the resources that support subscribing to change notifications. Subscriptions expire after a length of time that varies by resource type. In order to avoid missing change notifications, an app should renew its subscriptions well in advance of their expiry date. See subscription for maximum length of a subscription for each resource type.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Subscription]
+        Find more info here: https://learn.microsoft.com/graph/api/subscription-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,8 +97,7 @@ class SubscriptionItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[SubscriptionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete a subscription. For the list of resources that support subscribing to change notifications, see the table in the Permissions section.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,8 +112,7 @@ class SubscriptionItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[SubscriptionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a subscription. See the table in the Permissions section for the list of resources that support subscribing to change notifications.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -130,9 +129,8 @@ class SubscriptionItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[Subscription] = None, request_configuration: Optional[SubscriptionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Renew a subscription by extending its expiry time. The table in the Permissions section lists the resources that support subscribing to change notifications. Subscriptions expire after a length of time that varies by resource type. In order to avoid missing change notifications, an app should renew its subscriptions well in advance of their expiry date. See subscription for maximum length of a subscription for each resource type.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,6 +145,16 @@ class SubscriptionItemRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> SubscriptionItemRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: SubscriptionItemRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return SubscriptionItemRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def reauthorize(self) -> ReauthorizeRequestBuilder:
@@ -175,8 +183,7 @@ class SubscriptionItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

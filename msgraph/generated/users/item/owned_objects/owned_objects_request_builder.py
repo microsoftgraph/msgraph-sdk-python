@@ -25,17 +25,16 @@ class OwnedObjectsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OwnedObjectsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/ownedObjects{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_directory_object_id(self,directory_object_id: str) -> DirectoryObjectItemRequestBuilder:
         """
         Provides operations to manage the ownedObjects property of the microsoft.graph.user entity.
-        Args:
-            directory_object_id: Unique identifier of the item
+        param directory_object_id: The unique identifier of directoryObject
         Returns: DirectoryObjectItemRequestBuilder
         """
         if not directory_object_id:
@@ -48,10 +47,10 @@ class OwnedObjectsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OwnedObjectsRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObjectCollectionResponse]:
         """
-        Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Directory objects that are owned by the user. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/user-list-ownedobjects?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,9 +69,8 @@ class OwnedObjectsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OwnedObjectsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Directory objects that are owned by the user. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -85,6 +83,16 @@ class OwnedObjectsRequestBuilder(BaseRequestBuilder):
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> OwnedObjectsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: OwnedObjectsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return OwnedObjectsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -125,13 +133,12 @@ class OwnedObjectsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OwnedObjectsRequestBuilderGetQueryParameters():
         """
-        Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
+        Directory objects that are owned by the user. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

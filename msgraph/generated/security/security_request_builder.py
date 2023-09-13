@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .microsoft_graph_security_run_hunting_query.microsoft_graph_security_run_hunting_query_request_builder import MicrosoftGraphSecurityRunHuntingQueryRequestBuilder
     from .secure_score_control_profiles.secure_score_control_profiles_request_builder import SecureScoreControlProfilesRequestBuilder
     from .secure_scores.secure_scores_request_builder import SecureScoresRequestBuilder
+    from .subject_rights_requests.subject_rights_requests_request_builder import SubjectRightsRequestsRequestBuilder
     from .threat_intelligence.threat_intelligence_request_builder import ThreatIntelligenceRequestBuilder
     from .triggers.triggers_request_builder import TriggersRequestBuilder
     from .trigger_types.trigger_types_request_builder import TriggerTypesRequestBuilder
@@ -31,17 +32,16 @@ class SecurityRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SecurityRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/security{?%24select,%24expand}", path_parameters)
     
     async def get(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None) -> Optional[Security]:
         """
         Get security
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Security]
         """
         request_info = self.to_get_request_information(
@@ -62,9 +62,8 @@ class SecurityRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[Security] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> Optional[Security]:
         """
         Update security
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Security]
         """
         if not body:
@@ -87,8 +86,7 @@ class SecurityRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get security
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -105,9 +103,8 @@ class SecurityRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[Security] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update security
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -122,6 +119,16 @@ class SecurityRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> SecurityRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: SecurityRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return SecurityRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def alerts(self) -> AlertsRequestBuilder:
@@ -196,6 +203,15 @@ class SecurityRequestBuilder(BaseRequestBuilder):
         return SecureScoresRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def subject_rights_requests(self) -> SubjectRightsRequestsRequestBuilder:
+        """
+        Provides operations to manage the subjectRightsRequests property of the microsoft.graph.security entity.
+        """
+        from .subject_rights_requests.subject_rights_requests_request_builder import SubjectRightsRequestsRequestBuilder
+
+        return SubjectRightsRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def threat_intelligence(self) -> ThreatIntelligenceRequestBuilder:
         """
         Provides operations to manage the threatIntelligence property of the microsoft.graph.security entity.
@@ -230,8 +246,7 @@ class SecurityRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

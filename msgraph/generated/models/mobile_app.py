@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .ios_lob_app import IosLobApp
     from .ios_store_app import IosStoreApp
     from .ios_vpp_app import IosVppApp
+    from .mac_o_s_dmg_app import MacOSDmgApp
     from .mac_o_s_lob_app import MacOSLobApp
     from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
     from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
@@ -80,8 +81,7 @@ class MobileApp(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileApp:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MobileApp
         """
         if not parse_node:
@@ -114,6 +114,10 @@ class MobileApp(Entity):
             from .ios_vpp_app import IosVppApp
 
             return IosVppApp()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSDmgApp".casefold():
+            from .mac_o_s_dmg_app import MacOSDmgApp
+
+            return MacOSDmgApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSLobApp".casefold():
             from .mac_o_s_lob_app import MacOSLobApp
 
@@ -204,6 +208,7 @@ class MobileApp(Entity):
         from .ios_lob_app import IosLobApp
         from .ios_store_app import IosStoreApp
         from .ios_vpp_app import IosVppApp
+        from .mac_o_s_dmg_app import MacOSDmgApp
         from .mac_o_s_lob_app import MacOSLobApp
         from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
         from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
@@ -235,6 +240,7 @@ class MobileApp(Entity):
         from .ios_lob_app import IosLobApp
         from .ios_store_app import IosStoreApp
         from .ios_vpp_app import IosVppApp
+        from .mac_o_s_dmg_app import MacOSDmgApp
         from .mac_o_s_lob_app import MacOSLobApp
         from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
         from .mac_o_s_microsoft_edge_app import MacOSMicrosoftEdgeApp
@@ -283,8 +289,8 @@ class MobileApp(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

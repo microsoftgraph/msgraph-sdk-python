@@ -91,9 +91,9 @@ class BaseGraphServiceClient(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, backing_store: Optional[BackingStoreFactory] = None) -> None:
         """
         Instantiates a new BaseGraphServiceClient and sets the default values.
-        Args:
-            backing_store: The backing store to use for the models.
-            request_adapter: The request adapter to use to execute the requests.
+        param backing_store: The backing store to use for the models.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         if not request_adapter:
             raise TypeError("request_adapter cannot be null.")
@@ -110,8 +110,7 @@ class BaseGraphServiceClient(BaseRequestBuilder):
     def applications_with_app_id(self,app_id: Optional[str] = None) -> ApplicationsWithAppIdRequestBuilder:
         """
         Provides operations to manage the collection of application entities.
-        Args:
-            app_id: Alternate key of application
+        param app_id: Alternate key of application
         Returns: ApplicationsWithAppIdRequestBuilder
         """
         if not app_id:
@@ -123,8 +122,7 @@ class BaseGraphServiceClient(BaseRequestBuilder):
     def devices_with_device_id(self,device_id: Optional[str] = None) -> DevicesWithDeviceIdRequestBuilder:
         """
         Provides operations to manage the collection of device entities.
-        Args:
-            device_id: Alternate key of device
+        param device_id: Alternate key of device
         Returns: DevicesWithDeviceIdRequestBuilder
         """
         if not device_id:
@@ -136,8 +134,7 @@ class BaseGraphServiceClient(BaseRequestBuilder):
     def directory_roles_with_role_template_id(self,role_template_id: Optional[str] = None) -> DirectoryRolesWithRoleTemplateIdRequestBuilder:
         """
         Provides operations to manage the collection of directoryRole entities.
-        Args:
-            role_template_id: Alternate key of directoryRole
+        param role_template_id: Alternate key of directoryRole
         Returns: DirectoryRolesWithRoleTemplateIdRequestBuilder
         """
         if not role_template_id:
@@ -149,8 +146,7 @@ class BaseGraphServiceClient(BaseRequestBuilder):
     def service_principals_with_app_id(self,app_id: Optional[str] = None) -> ServicePrincipalsWithAppIdRequestBuilder:
         """
         Provides operations to manage the collection of servicePrincipal entities.
-        Args:
-            app_id: Alternate key of servicePrincipal
+        param app_id: Alternate key of servicePrincipal
         Returns: ServicePrincipalsWithAppIdRequestBuilder
         """
         if not app_id:

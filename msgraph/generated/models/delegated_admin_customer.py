@@ -11,7 +11,7 @@ from .entity import Entity
 
 @dataclass
 class DelegatedAdminCustomer(Entity):
-    # The Azure AD display name of the customer tenant. Read-only. Supports $orderBy.
+    # The Azure AD display name of the customer tenant. Read-only. Supports $orderby.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -24,8 +24,7 @@ class DelegatedAdminCustomer(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedAdminCustomer:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DelegatedAdminCustomer
         """
         if not parse_node:
@@ -55,8 +54,8 @@ class DelegatedAdminCustomer(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

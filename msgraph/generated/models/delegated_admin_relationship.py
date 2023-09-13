@@ -41,15 +41,14 @@ class DelegatedAdminRelationship(Entity):
     operations: Optional[List[DelegatedAdminRelationshipOperation]] = None
     # The requests associated with the delegated admin relationship.
     requests: Optional[List[DelegatedAdminRelationshipRequest]] = None
-    # The status of the relationship. Read Only. The possible values are: activating, active, approvalPending, approved, created, expired, expiring, terminated, terminating, terminationRequested, unknownFutureValue. Supports $orderBy.
+    # The status of the relationship. Read Only. The possible values are: activating, active, approvalPending, approved, created, expired, expiring, terminated, terminating, terminationRequested, unknownFutureValue. Supports $orderby.
     status: Optional[DelegatedAdminRelationshipStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedAdminRelationship:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DelegatedAdminRelationship
         """
         if not parse_node:
@@ -98,8 +97,8 @@ class DelegatedAdminRelationship(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

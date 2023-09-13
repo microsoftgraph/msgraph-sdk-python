@@ -21,17 +21,18 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder(BaseRequestB
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/authentication/windowsHelloForBusinessMethods/{windowsHelloForBusinessAuthenticationMethod%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Deletes a windowsHelloForBusinessAuthenticationMethod object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/windowshelloforbusinessauthenticationmethod-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,9 +50,9 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder(BaseRequestB
     async def get(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsHelloForBusinessAuthenticationMethod]:
         """
         Read the properties and relationships of a windowsHelloForBusinessAuthenticationMethod object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsHelloForBusinessAuthenticationMethod]
+        Find more info here: https://learn.microsoft.com/graph/api/windowshelloforbusinessauthenticationmethod-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,8 +72,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder(BaseRequestB
     def to_delete_request_information(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Deletes a windowsHelloForBusinessAuthenticationMethod object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -87,8 +87,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder(BaseRequestB
     def to_get_request_information(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of a windowsHelloForBusinessAuthenticationMethod object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -101,6 +100,16 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder(BaseRequestB
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def device(self) -> DeviceRequestBuilder:
@@ -129,8 +138,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder(BaseRequestB
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

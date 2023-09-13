@@ -54,6 +54,7 @@ if TYPE_CHECKING:
     from .user_experience_analytics_device_scores import UserExperienceAnalyticsDeviceScores
     from .user_experience_analytics_device_startup_history import UserExperienceAnalyticsDeviceStartupHistory
     from .user_experience_analytics_device_startup_process import UserExperienceAnalyticsDeviceStartupProcess
+    from .user_experience_analytics_device_startup_process_performance import UserExperienceAnalyticsDeviceStartupProcessPerformance
     from .user_experience_analytics_metric_history import UserExperienceAnalyticsMetricHistory
     from .user_experience_analytics_model_scores import UserExperienceAnalyticsModelScores
     from .user_experience_analytics_overview import UserExperienceAnalyticsOverview
@@ -175,6 +176,8 @@ class DeviceManagement(Entity):
     user_experience_analytics_device_scores: Optional[List[UserExperienceAnalyticsDeviceScores]] = None
     # User experience analytics device Startup History
     user_experience_analytics_device_startup_history: Optional[List[UserExperienceAnalyticsDeviceStartupHistory]] = None
+    # User experience analytics device Startup Process Performance
+    user_experience_analytics_device_startup_process_performance: Optional[List[UserExperienceAnalyticsDeviceStartupProcessPerformance]] = None
     # User experience analytics device Startup Processes
     user_experience_analytics_device_startup_processes: Optional[List[UserExperienceAnalyticsDeviceStartupProcess]] = None
     # User experience analytics metric history
@@ -208,8 +211,7 @@ class DeviceManagement(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagement:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceManagement
         """
         if not parse_node:
@@ -270,6 +272,7 @@ class DeviceManagement(Entity):
         from .user_experience_analytics_device_scores import UserExperienceAnalyticsDeviceScores
         from .user_experience_analytics_device_startup_history import UserExperienceAnalyticsDeviceStartupHistory
         from .user_experience_analytics_device_startup_process import UserExperienceAnalyticsDeviceStartupProcess
+        from .user_experience_analytics_device_startup_process_performance import UserExperienceAnalyticsDeviceStartupProcessPerformance
         from .user_experience_analytics_metric_history import UserExperienceAnalyticsMetricHistory
         from .user_experience_analytics_model_scores import UserExperienceAnalyticsModelScores
         from .user_experience_analytics_overview import UserExperienceAnalyticsOverview
@@ -333,6 +336,7 @@ class DeviceManagement(Entity):
         from .user_experience_analytics_device_scores import UserExperienceAnalyticsDeviceScores
         from .user_experience_analytics_device_startup_history import UserExperienceAnalyticsDeviceStartupHistory
         from .user_experience_analytics_device_startup_process import UserExperienceAnalyticsDeviceStartupProcess
+        from .user_experience_analytics_device_startup_process_performance import UserExperienceAnalyticsDeviceStartupProcessPerformance
         from .user_experience_analytics_metric_history import UserExperienceAnalyticsMetricHistory
         from .user_experience_analytics_model_scores import UserExperienceAnalyticsModelScores
         from .user_experience_analytics_overview import UserExperienceAnalyticsOverview
@@ -397,6 +401,7 @@ class DeviceManagement(Entity):
             "userExperienceAnalyticsDevicePerformance": lambda n : setattr(self, 'user_experience_analytics_device_performance', n.get_collection_of_object_values(UserExperienceAnalyticsDevicePerformance)),
             "userExperienceAnalyticsDeviceScores": lambda n : setattr(self, 'user_experience_analytics_device_scores', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceScores)),
             "userExperienceAnalyticsDeviceStartupHistory": lambda n : setattr(self, 'user_experience_analytics_device_startup_history', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceStartupHistory)),
+            "userExperienceAnalyticsDeviceStartupProcessPerformance": lambda n : setattr(self, 'user_experience_analytics_device_startup_process_performance', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceStartupProcessPerformance)),
             "userExperienceAnalyticsDeviceStartupProcesses": lambda n : setattr(self, 'user_experience_analytics_device_startup_processes', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceStartupProcess)),
             "userExperienceAnalyticsMetricHistory": lambda n : setattr(self, 'user_experience_analytics_metric_history', n.get_collection_of_object_values(UserExperienceAnalyticsMetricHistory)),
             "userExperienceAnalyticsModelScores": lambda n : setattr(self, 'user_experience_analytics_model_scores', n.get_collection_of_object_values(UserExperienceAnalyticsModelScores)),
@@ -419,8 +424,8 @@ class DeviceManagement(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")
@@ -474,6 +479,7 @@ class DeviceManagement(Entity):
         writer.write_collection_of_object_values("userExperienceAnalyticsDevicePerformance", self.user_experience_analytics_device_performance)
         writer.write_collection_of_object_values("userExperienceAnalyticsDeviceScores", self.user_experience_analytics_device_scores)
         writer.write_collection_of_object_values("userExperienceAnalyticsDeviceStartupHistory", self.user_experience_analytics_device_startup_history)
+        writer.write_collection_of_object_values("userExperienceAnalyticsDeviceStartupProcessPerformance", self.user_experience_analytics_device_startup_process_performance)
         writer.write_collection_of_object_values("userExperienceAnalyticsDeviceStartupProcesses", self.user_experience_analytics_device_startup_processes)
         writer.write_collection_of_object_values("userExperienceAnalyticsMetricHistory", self.user_experience_analytics_metric_history)
         writer.write_collection_of_object_values("userExperienceAnalyticsModelScores", self.user_experience_analytics_model_scores)

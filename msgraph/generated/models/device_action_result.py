@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from .locate_device_action_result import LocateDeviceActionResult
     from .remote_lock_action_result import RemoteLockActionResult
     from .reset_passcode_action_result import ResetPasscodeActionResult
+    from .rotate_bit_locker_keys_device_action_result import RotateBitLockerKeysDeviceActionResult
     from .windows_defender_scan_action_result import WindowsDefenderScanActionResult
 
 @dataclass
@@ -38,8 +39,7 @@ class DeviceActionResult(AdditionalDataHolder, BackedModel, Parsable):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceActionResult:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DeviceActionResult
         """
         if not parse_node:
@@ -64,6 +64,10 @@ class DeviceActionResult(AdditionalDataHolder, BackedModel, Parsable):
             from .reset_passcode_action_result import ResetPasscodeActionResult
 
             return ResetPasscodeActionResult()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.rotateBitLockerKeysDeviceActionResult".casefold():
+            from .rotate_bit_locker_keys_device_action_result import RotateBitLockerKeysDeviceActionResult
+
+            return RotateBitLockerKeysDeviceActionResult()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsDefenderScanActionResult".casefold():
             from .windows_defender_scan_action_result import WindowsDefenderScanActionResult
 
@@ -80,6 +84,7 @@ class DeviceActionResult(AdditionalDataHolder, BackedModel, Parsable):
         from .locate_device_action_result import LocateDeviceActionResult
         from .remote_lock_action_result import RemoteLockActionResult
         from .reset_passcode_action_result import ResetPasscodeActionResult
+        from .rotate_bit_locker_keys_device_action_result import RotateBitLockerKeysDeviceActionResult
         from .windows_defender_scan_action_result import WindowsDefenderScanActionResult
 
         from .action_state import ActionState
@@ -87,6 +92,7 @@ class DeviceActionResult(AdditionalDataHolder, BackedModel, Parsable):
         from .locate_device_action_result import LocateDeviceActionResult
         from .remote_lock_action_result import RemoteLockActionResult
         from .reset_passcode_action_result import ResetPasscodeActionResult
+        from .rotate_bit_locker_keys_device_action_result import RotateBitLockerKeysDeviceActionResult
         from .windows_defender_scan_action_result import WindowsDefenderScanActionResult
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -101,8 +107,8 @@ class DeviceActionResult(AdditionalDataHolder, BackedModel, Parsable):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

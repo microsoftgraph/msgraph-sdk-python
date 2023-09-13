@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .clear_presence.clear_presence_request_builder import ClearPresenceRequestBuilder
     from .clear_user_preferred_presence.clear_user_preferred_presence_request_builder import ClearUserPreferredPresenceRequestBuilder
     from .set_presence.set_presence_request_builder import SetPresenceRequestBuilder
+    from .set_status_message.set_status_message_request_builder import SetStatusMessageRequestBuilder
     from .set_user_preferred_presence.set_user_preferred_presence_request_builder import SetUserPreferredPresenceRequestBuilder
 
 class PresenceRequestBuilder(BaseRequestBuilder):
@@ -24,17 +25,17 @@ class PresenceRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PresenceRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/presence{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[PresenceRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property presence for users
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,9 +53,9 @@ class PresenceRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[PresenceRequestBuilderGetRequestConfiguration] = None) -> Optional[Presence]:
         """
         Get a user's presence information.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Presence]
+        Find more info here: https://learn.microsoft.com/graph/api/presence-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,9 +75,8 @@ class PresenceRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[Presence] = None, request_configuration: Optional[PresenceRequestBuilderPatchRequestConfiguration] = None) -> Optional[Presence]:
         """
         Update the navigation property presence in users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Presence]
         """
         if not body:
@@ -99,8 +99,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[PresenceRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property presence for users
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -115,8 +114,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[PresenceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a user's presence information.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -133,9 +131,8 @@ class PresenceRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[Presence] = None, request_configuration: Optional[PresenceRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property presence in users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -150,6 +147,16 @@ class PresenceRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> PresenceRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: PresenceRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return PresenceRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def clear_presence(self) -> ClearPresenceRequestBuilder:
@@ -179,6 +186,15 @@ class PresenceRequestBuilder(BaseRequestBuilder):
         return SetPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def set_status_message(self) -> SetStatusMessageRequestBuilder:
+        """
+        Provides operations to call the setStatusMessage method.
+        """
+        from .set_status_message.set_status_message_request_builder import SetStatusMessageRequestBuilder
+
+        return SetStatusMessageRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def set_user_preferred_presence(self) -> SetUserPreferredPresenceRequestBuilder:
         """
         Provides operations to call the setUserPreferredPresence method.
@@ -205,8 +221,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

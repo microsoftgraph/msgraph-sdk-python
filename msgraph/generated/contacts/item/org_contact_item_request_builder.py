@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from .manager.manager_request_builder import ManagerRequestBuilder
     from .member_of.member_of_request_builder import MemberOfRequestBuilder
     from .restore.restore_request_builder import RestoreRequestBuilder
+    from .retry_service_provisioning.retry_service_provisioning_request_builder import RetryServiceProvisioningRequestBuilder
     from .transitive_member_of.transitive_member_of_request_builder import TransitiveMemberOfRequestBuilder
 
 class OrgContactItemRequestBuilder(BaseRequestBuilder):
@@ -29,17 +30,17 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OrgContactItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/contacts/{orgContact%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[OrgContactItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete entity from contacts
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -57,9 +58,9 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[OrgContactItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OrgContact]:
         """
         Get the properties and relationships of an organizational contact.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrgContact]
+        Find more info here: https://learn.microsoft.com/graph/api/orgcontact-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -79,9 +80,8 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[OrgContact] = None, request_configuration: Optional[OrgContactItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[OrgContact]:
         """
         Update entity in contacts
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrgContact]
         """
         if not body:
@@ -104,8 +104,7 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
     def to_delete_request_information(self,request_configuration: Optional[OrgContactItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete entity from contacts
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -120,8 +119,7 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[OrgContactItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the properties and relationships of an organizational contact.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -138,9 +136,8 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[OrgContact] = None, request_configuration: Optional[OrgContactItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in contacts
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -155,6 +152,16 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> OrgContactItemRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: OrgContactItemRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return OrgContactItemRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def check_member_groups(self) -> CheckMemberGroupsRequestBuilder:
@@ -229,6 +236,15 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
         return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def retry_service_provisioning(self) -> RetryServiceProvisioningRequestBuilder:
+        """
+        Provides operations to call the retryServiceProvisioning method.
+        """
+        from .retry_service_provisioning.retry_service_provisioning_request_builder import RetryServiceProvisioningRequestBuilder
+
+        return RetryServiceProvisioningRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def transitive_member_of(self) -> TransitiveMemberOfRequestBuilder:
         """
         Provides operations to manage the transitiveMemberOf property of the microsoft.graph.orgContact entity.
@@ -255,8 +271,7 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

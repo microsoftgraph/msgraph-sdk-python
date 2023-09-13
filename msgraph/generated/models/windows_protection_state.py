@@ -66,8 +66,7 @@ class WindowsProtectionState(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsProtectionState:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WindowsProtectionState
         """
         if not parse_node:
@@ -92,7 +91,7 @@ class WindowsProtectionState(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "antiMalwareVersion": lambda n : setattr(self, 'anti_malware_version', n.get_str_value()),
             "detectedMalwareState": lambda n : setattr(self, 'detected_malware_state', n.get_collection_of_object_values(WindowsDeviceMalwareState)),
-            "deviceState": lambda n : setattr(self, 'device_state', n.get_enum_value(WindowsDeviceHealthState)),
+            "deviceState": lambda n : setattr(self, 'device_state', n.get_collection_of_enum_values(WindowsDeviceHealthState)),
             "engineVersion": lambda n : setattr(self, 'engine_version', n.get_str_value()),
             "fullScanOverdue": lambda n : setattr(self, 'full_scan_overdue', n.get_bool_value()),
             "fullScanRequired": lambda n : setattr(self, 'full_scan_required', n.get_bool_value()),
@@ -104,7 +103,7 @@ class WindowsProtectionState(Entity):
             "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
             "malwareProtectionEnabled": lambda n : setattr(self, 'malware_protection_enabled', n.get_bool_value()),
             "networkInspectionSystemEnabled": lambda n : setattr(self, 'network_inspection_system_enabled', n.get_bool_value()),
-            "productStatus": lambda n : setattr(self, 'product_status', n.get_enum_value(WindowsDefenderProductStatus)),
+            "productStatus": lambda n : setattr(self, 'product_status', n.get_collection_of_enum_values(WindowsDefenderProductStatus)),
             "quickScanOverdue": lambda n : setattr(self, 'quick_scan_overdue', n.get_bool_value()),
             "realTimeProtectionEnabled": lambda n : setattr(self, 'real_time_protection_enabled', n.get_bool_value()),
             "rebootRequired": lambda n : setattr(self, 'reboot_required', n.get_bool_value()),
@@ -119,8 +118,8 @@ class WindowsProtectionState(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

@@ -23,8 +23,7 @@ class SharePointOneDriveOptions(AdditionalDataHolder, BackedModel, Parsable):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharePointOneDriveOptions:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SharePointOneDriveOptions
         """
         if not parse_node:
@@ -41,7 +40,7 @@ class SharePointOneDriveOptions(AdditionalDataHolder, BackedModel, Parsable):
         from .search_content import SearchContent
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "includeContent": lambda n : setattr(self, 'include_content', n.get_enum_value(SearchContent)),
+            "includeContent": lambda n : setattr(self, 'include_content', n.get_collection_of_enum_values(SearchContent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -49,8 +48,8 @@ class SharePointOneDriveOptions(AdditionalDataHolder, BackedModel, Parsable):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

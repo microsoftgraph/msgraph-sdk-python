@@ -345,6 +345,7 @@ if TYPE_CHECKING:
     from .mac_o_s_compliance_policy import MacOSCompliancePolicy
     from .mac_o_s_custom_configuration import MacOSCustomConfiguration
     from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
+    from .mac_o_s_dmg_app import MacOSDmgApp
     from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
     from .mac_o_s_lob_app import MacOSLobApp
     from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
@@ -681,6 +682,7 @@ if TYPE_CHECKING:
     from .user_experience_analytics_device_scores import UserExperienceAnalyticsDeviceScores
     from .user_experience_analytics_device_startup_history import UserExperienceAnalyticsDeviceStartupHistory
     from .user_experience_analytics_device_startup_process import UserExperienceAnalyticsDeviceStartupProcess
+    from .user_experience_analytics_device_startup_process_performance import UserExperienceAnalyticsDeviceStartupProcessPerformance
     from .user_experience_analytics_metric import UserExperienceAnalyticsMetric
     from .user_experience_analytics_metric_history import UserExperienceAnalyticsMetricHistory
     from .user_experience_analytics_model_scores import UserExperienceAnalyticsModelScores
@@ -789,7 +791,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The unique idenfier for an entity. Read-only.
+    # The unique identifier for an entity. Read-only.
     id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -798,8 +800,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Entity:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Entity
         """
         if not parse_node:
@@ -2170,6 +2171,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
 
             return MacOSDeviceFeaturesConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSDmgApp".casefold():
+            from .mac_o_s_dmg_app import MacOSDmgApp
+
+            return MacOSDmgApp()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSGeneralDeviceConfiguration".casefold():
             from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
 
@@ -3516,6 +3521,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .user_experience_analytics_device_startup_process import UserExperienceAnalyticsDeviceStartupProcess
 
             return UserExperienceAnalyticsDeviceStartupProcess()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsDeviceStartupProcessPerformance".casefold():
+            from .user_experience_analytics_device_startup_process_performance import UserExperienceAnalyticsDeviceStartupProcessPerformance
+
+            return UserExperienceAnalyticsDeviceStartupProcessPerformance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.userExperienceAnalyticsMetric".casefold():
             from .user_experience_analytics_metric import UserExperienceAnalyticsMetric
 
@@ -4263,6 +4272,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mac_o_s_compliance_policy import MacOSCompliancePolicy
         from .mac_o_s_custom_configuration import MacOSCustomConfiguration
         from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
+        from .mac_o_s_dmg_app import MacOSDmgApp
         from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
         from .mac_o_s_lob_app import MacOSLobApp
         from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
@@ -4599,6 +4609,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_experience_analytics_device_scores import UserExperienceAnalyticsDeviceScores
         from .user_experience_analytics_device_startup_history import UserExperienceAnalyticsDeviceStartupHistory
         from .user_experience_analytics_device_startup_process import UserExperienceAnalyticsDeviceStartupProcess
+        from .user_experience_analytics_device_startup_process_performance import UserExperienceAnalyticsDeviceStartupProcessPerformance
         from .user_experience_analytics_metric import UserExperienceAnalyticsMetric
         from .user_experience_analytics_metric_history import UserExperienceAnalyticsMetricHistory
         from .user_experience_analytics_model_scores import UserExperienceAnalyticsModelScores
@@ -5040,6 +5051,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mac_o_s_compliance_policy import MacOSCompliancePolicy
         from .mac_o_s_custom_configuration import MacOSCustomConfiguration
         from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
+        from .mac_o_s_dmg_app import MacOSDmgApp
         from .mac_o_s_general_device_configuration import MacOSGeneralDeviceConfiguration
         from .mac_o_s_lob_app import MacOSLobApp
         from .mac_o_s_microsoft_defender_app import MacOSMicrosoftDefenderApp
@@ -5376,6 +5388,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_experience_analytics_device_scores import UserExperienceAnalyticsDeviceScores
         from .user_experience_analytics_device_startup_history import UserExperienceAnalyticsDeviceStartupHistory
         from .user_experience_analytics_device_startup_process import UserExperienceAnalyticsDeviceStartupProcess
+        from .user_experience_analytics_device_startup_process_performance import UserExperienceAnalyticsDeviceStartupProcessPerformance
         from .user_experience_analytics_metric import UserExperienceAnalyticsMetric
         from .user_experience_analytics_metric_history import UserExperienceAnalyticsMetricHistory
         from .user_experience_analytics_model_scores import UserExperienceAnalyticsModelScores
@@ -5486,8 +5499,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

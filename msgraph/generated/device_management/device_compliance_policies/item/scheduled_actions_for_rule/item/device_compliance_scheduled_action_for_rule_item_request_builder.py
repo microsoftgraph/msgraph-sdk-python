@@ -21,17 +21,18 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceComplianceScheduledActionForRuleItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicy%2Did}/scheduledActionsForRule/{deviceComplianceScheduledActionForRule%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[DeviceComplianceScheduledActionForRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Deletes a deviceComplianceScheduledActionForRule.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancescheduledactionforrule-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,9 +50,9 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     async def get(self,request_configuration: Optional[DeviceComplianceScheduledActionForRuleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceScheduledActionForRule]:
         """
         Read properties and relationships of the deviceComplianceScheduledActionForRule object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceScheduledActionForRule]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancescheduledactionforrule-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,10 +72,10 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     async def patch(self,body: Optional[DeviceComplianceScheduledActionForRule] = None, request_configuration: Optional[DeviceComplianceScheduledActionForRuleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceComplianceScheduledActionForRule]:
         """
         Update the properties of a deviceComplianceScheduledActionForRule object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceScheduledActionForRule]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancescheduledactionforrule-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,8 +97,7 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     def to_delete_request_information(self,request_configuration: Optional[DeviceComplianceScheduledActionForRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Deletes a deviceComplianceScheduledActionForRule.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -112,8 +112,7 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     def to_get_request_information(self,request_configuration: Optional[DeviceComplianceScheduledActionForRuleItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read properties and relationships of the deviceComplianceScheduledActionForRule object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -130,9 +129,8 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
     def to_patch_request_information(self,body: Optional[DeviceComplianceScheduledActionForRule] = None, request_configuration: Optional[DeviceComplianceScheduledActionForRuleItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a deviceComplianceScheduledActionForRule object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -147,6 +145,16 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> DeviceComplianceScheduledActionForRuleItemRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: DeviceComplianceScheduledActionForRuleItemRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return DeviceComplianceScheduledActionForRuleItemRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def scheduled_action_configurations(self) -> ScheduledActionConfigurationsRequestBuilder:
@@ -175,8 +183,7 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder(BaseRequestBuilde
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

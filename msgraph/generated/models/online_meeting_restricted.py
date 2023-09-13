@@ -26,8 +26,7 @@ class OnlineMeetingRestricted(AdditionalDataHolder, BackedModel, Parsable):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnlineMeetingRestricted:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: OnlineMeetingRestricted
         """
         if not parse_node:
@@ -46,17 +45,17 @@ class OnlineMeetingRestricted(AdditionalDataHolder, BackedModel, Parsable):
         from .online_meeting_video_disabled_reason import OnlineMeetingVideoDisabledReason
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentSharingDisabled": lambda n : setattr(self, 'content_sharing_disabled', n.get_enum_value(OnlineMeetingContentSharingDisabledReason)),
+            "contentSharingDisabled": lambda n : setattr(self, 'content_sharing_disabled', n.get_collection_of_enum_values(OnlineMeetingContentSharingDisabledReason)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "videoDisabled": lambda n : setattr(self, 'video_disabled', n.get_enum_value(OnlineMeetingVideoDisabledReason)),
+            "videoDisabled": lambda n : setattr(self, 'video_disabled', n.get_collection_of_enum_values(OnlineMeetingVideoDisabledReason)),
         }
         return fields
     
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

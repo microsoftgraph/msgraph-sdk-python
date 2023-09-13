@@ -128,18 +128,18 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ReportsRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/reports{?%24select,%24expand}", path_parameters)
     
     async def get(self,request_configuration: Optional[ReportsRequestBuilderGetRequestConfiguration] = None) -> Optional[ReportRoot]:
         """
         Read properties and relationships of the reportRoot object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ReportRoot]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-reportroot-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -159,8 +159,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_email_activity_counts_with_period(self,period: Optional[str] = None) -> GetEmailActivityCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getEmailActivityCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetEmailActivityCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -172,8 +171,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_email_activity_user_counts_with_period(self,period: Optional[str] = None) -> GetEmailActivityUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getEmailActivityUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetEmailActivityUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -185,8 +183,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_email_activity_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetEmailActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getEmailActivityUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetEmailActivityUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -198,8 +195,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_email_activity_user_detail_with_period(self,period: Optional[str] = None) -> GetEmailActivityUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getEmailActivityUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetEmailActivityUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -211,8 +207,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_email_app_usage_apps_user_counts_with_period(self,period: Optional[str] = None) -> GetEmailAppUsageAppsUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getEmailAppUsageAppsUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetEmailAppUsageAppsUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -224,8 +219,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_email_app_usage_user_counts_with_period(self,period: Optional[str] = None) -> GetEmailAppUsageUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getEmailAppUsageUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetEmailAppUsageUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -237,8 +231,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_email_app_usage_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetEmailAppUsageUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getEmailAppUsageUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetEmailAppUsageUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -250,8 +243,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_email_app_usage_user_detail_with_period(self,period: Optional[str] = None) -> GetEmailAppUsageUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getEmailAppUsageUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetEmailAppUsageUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -263,8 +255,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_email_app_usage_versions_user_counts_with_period(self,period: Optional[str] = None) -> GetEmailAppUsageVersionsUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getEmailAppUsageVersionsUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetEmailAppUsageVersionsUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -276,10 +267,9 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time(self,end_date_time: Optional[datetime.datetime] = None, group_id: Optional[str] = None, start_date_time: Optional[datetime.datetime] = None) -> GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder:
         """
         Provides operations to call the getGroupArchivedPrintJobs method.
-        Args:
-            end_date_time: Usage: endDateTime={endDateTime}
-            group_id: Usage: groupId='{groupId}'
-            start_date_time: Usage: startDateTime={startDateTime}
+        param end_date_time: Usage: endDateTime={endDateTime}
+        param group_id: Usage: groupId='{groupId}'
+        param start_date_time: Usage: startDateTime={startDateTime}
         Returns: GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
         if not end_date_time:
@@ -295,8 +285,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_m365_app_platform_user_counts_with_period(self,period: Optional[str] = None) -> GetM365AppPlatformUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getM365AppPlatformUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetM365AppPlatformUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -308,8 +297,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_m365_app_user_counts_with_period(self,period: Optional[str] = None) -> GetM365AppUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getM365AppUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetM365AppUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -321,8 +309,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_m365_app_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetM365AppUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getM365AppUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetM365AppUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -334,8 +321,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_m365_app_user_detail_with_period(self,period: Optional[str] = None) -> GetM365AppUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getM365AppUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetM365AppUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -347,8 +333,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_mailbox_usage_detail_with_period(self,period: Optional[str] = None) -> GetMailboxUsageDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getMailboxUsageDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetMailboxUsageDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -360,8 +345,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_mailbox_usage_mailbox_counts_with_period(self,period: Optional[str] = None) -> GetMailboxUsageMailboxCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getMailboxUsageMailboxCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetMailboxUsageMailboxCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -373,8 +357,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_mailbox_usage_quota_status_mailbox_counts_with_period(self,period: Optional[str] = None) -> GetMailboxUsageQuotaStatusMailboxCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getMailboxUsageQuotaStatusMailboxCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetMailboxUsageQuotaStatusMailboxCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -386,8 +369,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_mailbox_usage_storage_with_period(self,period: Optional[str] = None) -> GetMailboxUsageStorageWithPeriodRequestBuilder:
         """
         Provides operations to call the getMailboxUsageStorage method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetMailboxUsageStorageWithPeriodRequestBuilder
         """
         if not period:
@@ -399,8 +381,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_office365_active_user_counts_with_period(self,period: Optional[str] = None) -> GetOffice365ActiveUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getOffice365ActiveUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOffice365ActiveUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -412,8 +393,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_office365_active_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetOffice365ActiveUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getOffice365ActiveUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetOffice365ActiveUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -425,8 +405,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_office365_active_user_detail_with_period(self,period: Optional[str] = None) -> GetOffice365ActiveUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getOffice365ActiveUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOffice365ActiveUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -438,8 +417,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_office365_groups_activity_counts_with_period(self,period: Optional[str] = None) -> GetOffice365GroupsActivityCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getOffice365GroupsActivityCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOffice365GroupsActivityCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -451,8 +429,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_office365_groups_activity_detail_with_date(self,date: Optional[datetime.date] = None) -> GetOffice365GroupsActivityDetailWithDateRequestBuilder:
         """
         Provides operations to call the getOffice365GroupsActivityDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetOffice365GroupsActivityDetailWithDateRequestBuilder
         """
         if not date:
@@ -464,8 +441,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_office365_groups_activity_detail_with_period(self,period: Optional[str] = None) -> GetOffice365GroupsActivityDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getOffice365GroupsActivityDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOffice365GroupsActivityDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -477,8 +453,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_office365_groups_activity_file_counts_with_period(self,period: Optional[str] = None) -> GetOffice365GroupsActivityFileCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getOffice365GroupsActivityFileCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOffice365GroupsActivityFileCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -490,8 +465,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_office365_groups_activity_group_counts_with_period(self,period: Optional[str] = None) -> GetOffice365GroupsActivityGroupCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getOffice365GroupsActivityGroupCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOffice365GroupsActivityGroupCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -503,8 +477,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_office365_groups_activity_storage_with_period(self,period: Optional[str] = None) -> GetOffice365GroupsActivityStorageWithPeriodRequestBuilder:
         """
         Provides operations to call the getOffice365GroupsActivityStorage method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOffice365GroupsActivityStorageWithPeriodRequestBuilder
         """
         if not period:
@@ -516,8 +489,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_office365_services_user_counts_with_period(self,period: Optional[str] = None) -> GetOffice365ServicesUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getOffice365ServicesUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOffice365ServicesUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -529,8 +501,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_one_drive_activity_file_counts_with_period(self,period: Optional[str] = None) -> GetOneDriveActivityFileCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getOneDriveActivityFileCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOneDriveActivityFileCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -542,8 +513,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_one_drive_activity_user_counts_with_period(self,period: Optional[str] = None) -> GetOneDriveActivityUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getOneDriveActivityUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOneDriveActivityUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -555,8 +525,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_one_drive_activity_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetOneDriveActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getOneDriveActivityUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetOneDriveActivityUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -568,8 +537,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_one_drive_activity_user_detail_with_period(self,period: Optional[str] = None) -> GetOneDriveActivityUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getOneDriveActivityUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOneDriveActivityUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -581,8 +549,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_one_drive_usage_account_counts_with_period(self,period: Optional[str] = None) -> GetOneDriveUsageAccountCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getOneDriveUsageAccountCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOneDriveUsageAccountCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -594,8 +561,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_one_drive_usage_account_detail_with_date(self,date: Optional[datetime.date] = None) -> GetOneDriveUsageAccountDetailWithDateRequestBuilder:
         """
         Provides operations to call the getOneDriveUsageAccountDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetOneDriveUsageAccountDetailWithDateRequestBuilder
         """
         if not date:
@@ -607,8 +573,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_one_drive_usage_account_detail_with_period(self,period: Optional[str] = None) -> GetOneDriveUsageAccountDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getOneDriveUsageAccountDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOneDriveUsageAccountDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -620,8 +585,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_one_drive_usage_file_counts_with_period(self,period: Optional[str] = None) -> GetOneDriveUsageFileCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getOneDriveUsageFileCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOneDriveUsageFileCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -633,8 +597,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_one_drive_usage_storage_with_period(self,period: Optional[str] = None) -> GetOneDriveUsageStorageWithPeriodRequestBuilder:
         """
         Provides operations to call the getOneDriveUsageStorage method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetOneDriveUsageStorageWithPeriodRequestBuilder
         """
         if not period:
@@ -646,10 +609,9 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time(self,end_date_time: Optional[datetime.datetime] = None, printer_id: Optional[str] = None, start_date_time: Optional[datetime.datetime] = None) -> GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder:
         """
         Provides operations to call the getPrinterArchivedPrintJobs method.
-        Args:
-            end_date_time: Usage: endDateTime={endDateTime}
-            printer_id: Usage: printerId='{printerId}'
-            start_date_time: Usage: startDateTime={startDateTime}
+        param end_date_time: Usage: endDateTime={endDateTime}
+        param printer_id: Usage: printerId='{printerId}'
+        param start_date_time: Usage: startDateTime={startDateTime}
         Returns: GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
         if not end_date_time:
@@ -665,8 +627,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_share_point_activity_file_counts_with_period(self,period: Optional[str] = None) -> GetSharePointActivityFileCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSharePointActivityFileCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSharePointActivityFileCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -678,8 +639,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_share_point_activity_pages_with_period(self,period: Optional[str] = None) -> GetSharePointActivityPagesWithPeriodRequestBuilder:
         """
         Provides operations to call the getSharePointActivityPages method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSharePointActivityPagesWithPeriodRequestBuilder
         """
         if not period:
@@ -691,8 +651,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_share_point_activity_user_counts_with_period(self,period: Optional[str] = None) -> GetSharePointActivityUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSharePointActivityUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSharePointActivityUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -704,8 +663,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_share_point_activity_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetSharePointActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getSharePointActivityUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetSharePointActivityUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -717,8 +675,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_share_point_activity_user_detail_with_period(self,period: Optional[str] = None) -> GetSharePointActivityUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getSharePointActivityUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSharePointActivityUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -730,8 +687,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_share_point_site_usage_detail_with_date(self,date: Optional[datetime.date] = None) -> GetSharePointSiteUsageDetailWithDateRequestBuilder:
         """
         Provides operations to call the getSharePointSiteUsageDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetSharePointSiteUsageDetailWithDateRequestBuilder
         """
         if not date:
@@ -743,8 +699,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_share_point_site_usage_detail_with_period(self,period: Optional[str] = None) -> GetSharePointSiteUsageDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getSharePointSiteUsageDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSharePointSiteUsageDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -756,8 +711,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_share_point_site_usage_file_counts_with_period(self,period: Optional[str] = None) -> GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSharePointSiteUsageFileCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -769,8 +723,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_share_point_site_usage_pages_with_period(self,period: Optional[str] = None) -> GetSharePointSiteUsagePagesWithPeriodRequestBuilder:
         """
         Provides operations to call the getSharePointSiteUsagePages method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSharePointSiteUsagePagesWithPeriodRequestBuilder
         """
         if not period:
@@ -782,8 +735,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_share_point_site_usage_site_counts_with_period(self,period: Optional[str] = None) -> GetSharePointSiteUsageSiteCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSharePointSiteUsageSiteCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSharePointSiteUsageSiteCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -795,8 +747,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_share_point_site_usage_storage_with_period(self,period: Optional[str] = None) -> GetSharePointSiteUsageStorageWithPeriodRequestBuilder:
         """
         Provides operations to call the getSharePointSiteUsageStorage method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSharePointSiteUsageStorageWithPeriodRequestBuilder
         """
         if not period:
@@ -808,8 +759,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_activity_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessActivityCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessActivityCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessActivityCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -821,8 +771,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_activity_user_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessActivityUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessActivityUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessActivityUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -834,8 +783,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_activity_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessActivityUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -847,8 +795,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_activity_user_detail_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessActivityUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessActivityUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessActivityUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -860,8 +807,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_device_usage_distribution_user_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessDeviceUsageDistributionUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -873,8 +819,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_device_usage_user_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessDeviceUsageUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -886,8 +831,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_device_usage_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessDeviceUsageUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -899,8 +843,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_device_usage_user_detail_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessDeviceUsageUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessDeviceUsageUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessDeviceUsageUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -912,8 +855,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_organizer_activity_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessOrganizerActivityCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -925,8 +867,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_organizer_activity_minute_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessOrganizerActivityMinuteCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -938,8 +879,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_organizer_activity_user_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessOrganizerActivityUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -951,8 +891,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_participant_activity_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessParticipantActivityCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -964,8 +903,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_participant_activity_minute_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessParticipantActivityMinuteCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -977,8 +915,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_participant_activity_user_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessParticipantActivityUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -990,8 +927,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_peer_to_peer_activity_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessPeerToPeerActivityCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1003,8 +939,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_peer_to_peer_activity_minute_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessPeerToPeerActivityMinuteCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1016,8 +951,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_skype_for_business_peer_to_peer_activity_user_counts_with_period(self,period: Optional[str] = None) -> GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessPeerToPeerActivityUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1029,8 +963,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_device_usage_distribution_user_counts_with_period(self,period: Optional[str] = None) -> GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getTeamsDeviceUsageDistributionUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1042,8 +975,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_device_usage_user_counts_with_period(self,period: Optional[str] = None) -> GetTeamsDeviceUsageUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getTeamsDeviceUsageUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetTeamsDeviceUsageUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1055,8 +987,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_device_usage_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetTeamsDeviceUsageUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getTeamsDeviceUsageUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetTeamsDeviceUsageUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -1068,8 +999,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_device_usage_user_detail_with_period(self,period: Optional[str] = None) -> GetTeamsDeviceUsageUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getTeamsDeviceUsageUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetTeamsDeviceUsageUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -1081,8 +1011,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_team_activity_counts_with_period(self,period: Optional[str] = None) -> GetTeamsTeamActivityCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getTeamsTeamActivityCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetTeamsTeamActivityCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1094,8 +1023,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_team_activity_detail_with_date(self,date: Optional[datetime.date] = None) -> GetTeamsTeamActivityDetailWithDateRequestBuilder:
         """
         Provides operations to call the getTeamsTeamActivityDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetTeamsTeamActivityDetailWithDateRequestBuilder
         """
         if not date:
@@ -1107,8 +1035,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_team_activity_detail_with_period(self,period: Optional[str] = None) -> GetTeamsTeamActivityDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getTeamsTeamActivityDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetTeamsTeamActivityDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -1120,8 +1047,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_team_activity_distribution_counts_with_period(self,period: Optional[str] = None) -> GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getTeamsTeamActivityDistributionCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1133,8 +1059,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_team_counts_with_period(self,period: Optional[str] = None) -> GetTeamsTeamCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getTeamsTeamCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetTeamsTeamCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1146,8 +1071,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_user_activity_counts_with_period(self,period: Optional[str] = None) -> GetTeamsUserActivityCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getTeamsUserActivityCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetTeamsUserActivityCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1159,8 +1083,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_user_activity_user_counts_with_period(self,period: Optional[str] = None) -> GetTeamsUserActivityUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getTeamsUserActivityUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetTeamsUserActivityUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1172,8 +1095,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_user_activity_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetTeamsUserActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getTeamsUserActivityUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetTeamsUserActivityUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -1185,8 +1107,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_teams_user_activity_user_detail_with_period(self,period: Optional[str] = None) -> GetTeamsUserActivityUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getTeamsUserActivityUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetTeamsUserActivityUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -1198,10 +1119,9 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time(self,end_date_time: Optional[datetime.datetime] = None, start_date_time: Optional[datetime.datetime] = None, user_id: Optional[str] = None) -> GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder:
         """
         Provides operations to call the getUserArchivedPrintJobs method.
-        Args:
-            end_date_time: Usage: endDateTime={endDateTime}
-            start_date_time: Usage: startDateTime={startDateTime}
-            user_id: Usage: userId='{userId}'
+        param end_date_time: Usage: endDateTime={endDateTime}
+        param start_date_time: Usage: startDateTime={startDateTime}
+        param user_id: Usage: userId='{userId}'
         Returns: GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
         if not end_date_time:
@@ -1217,8 +1137,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_activity_counts_with_period(self,period: Optional[str] = None) -> GetYammerActivityCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getYammerActivityCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetYammerActivityCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1230,8 +1149,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_activity_user_counts_with_period(self,period: Optional[str] = None) -> GetYammerActivityUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getYammerActivityUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetYammerActivityUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1243,8 +1161,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_activity_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetYammerActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getYammerActivityUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetYammerActivityUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -1256,8 +1173,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_activity_user_detail_with_period(self,period: Optional[str] = None) -> GetYammerActivityUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getYammerActivityUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetYammerActivityUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -1269,8 +1185,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_device_usage_distribution_user_counts_with_period(self,period: Optional[str] = None) -> GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getYammerDeviceUsageDistributionUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1282,8 +1197,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_device_usage_user_counts_with_period(self,period: Optional[str] = None) -> GetYammerDeviceUsageUserCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getYammerDeviceUsageUserCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetYammerDeviceUsageUserCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1295,8 +1209,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_device_usage_user_detail_with_date(self,date: Optional[datetime.date] = None) -> GetYammerDeviceUsageUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getYammerDeviceUsageUserDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetYammerDeviceUsageUserDetailWithDateRequestBuilder
         """
         if not date:
@@ -1308,8 +1221,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_device_usage_user_detail_with_period(self,period: Optional[str] = None) -> GetYammerDeviceUsageUserDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getYammerDeviceUsageUserDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetYammerDeviceUsageUserDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -1321,8 +1233,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_groups_activity_counts_with_period(self,period: Optional[str] = None) -> GetYammerGroupsActivityCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getYammerGroupsActivityCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetYammerGroupsActivityCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1334,8 +1245,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_groups_activity_detail_with_date(self,date: Optional[datetime.date] = None) -> GetYammerGroupsActivityDetailWithDateRequestBuilder:
         """
         Provides operations to call the getYammerGroupsActivityDetail method.
-        Args:
-            date: Usage: date={date}
+        param date: Usage: date={date}
         Returns: GetYammerGroupsActivityDetailWithDateRequestBuilder
         """
         if not date:
@@ -1347,8 +1257,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_groups_activity_detail_with_period(self,period: Optional[str] = None) -> GetYammerGroupsActivityDetailWithPeriodRequestBuilder:
         """
         Provides operations to call the getYammerGroupsActivityDetail method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetYammerGroupsActivityDetailWithPeriodRequestBuilder
         """
         if not period:
@@ -1360,8 +1269,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def get_yammer_groups_activity_group_counts_with_period(self,period: Optional[str] = None) -> GetYammerGroupsActivityGroupCountsWithPeriodRequestBuilder:
         """
         Provides operations to call the getYammerGroupsActivityGroupCounts method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: GetYammerGroupsActivityGroupCountsWithPeriodRequestBuilder
         """
         if not period:
@@ -1373,11 +1281,10 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token(self,filter: Optional[str] = None, skip: Optional[int] = None, skip_token: Optional[str] = None, top: Optional[int] = None) -> ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder:
         """
         Provides operations to call the managedDeviceEnrollmentFailureDetails method.
-        Args:
-            filter: Usage: filter='{filter}'
-            skip: Usage: skip={skip}
-            skip_token: Usage: skipToken='{skipToken}'
-            top: Usage: top={top}
+        param filter: Usage: filter='{filter}'
+        param skip: Usage: skip={skip}
+        param skip_token: Usage: skipToken='{skipToken}'
+        param top: Usage: top={top}
         Returns: ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder
         """
         if not filter:
@@ -1395,8 +1302,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def managed_device_enrollment_top_failures_with_period(self,period: Optional[str] = None) -> ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder:
         """
         Provides operations to call the managedDeviceEnrollmentTopFailures method.
-        Args:
-            period: Usage: period='{period}'
+        param period: Usage: period='{period}'
         Returns: ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder
         """
         if not period:
@@ -1408,10 +1314,10 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     async def patch(self,body: Optional[ReportRoot] = None, request_configuration: Optional[ReportsRequestBuilderPatchRequestConfiguration] = None) -> Optional[ReportRoot]:
         """
         Update the properties of a reportRoot object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ReportRoot]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-reportroot-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -1433,8 +1339,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[ReportsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read properties and relationships of the reportRoot object.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -1451,9 +1356,8 @@ class ReportsRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[ReportRoot] = None, request_configuration: Optional[ReportsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a reportRoot object.
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -1468,6 +1372,16 @@ class ReportsRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def with_url(self,raw_url: Optional[str] = None) -> ReportsRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: ReportsRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return ReportsRequestBuilder(raw_url, self.request_adapter)
     
     @property
     def authentication_methods(self) -> AuthenticationMethodsRequestBuilder:
@@ -1594,8 +1508,7 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

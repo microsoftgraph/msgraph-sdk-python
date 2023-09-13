@@ -32,8 +32,7 @@ class DirectoryDefinition(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DirectoryDefinition:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: DirectoryDefinition
         """
         if not parse_node:
@@ -54,7 +53,7 @@ class DirectoryDefinition(Entity):
         from .object_definition import ObjectDefinition
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "discoverabilities": lambda n : setattr(self, 'discoverabilities', n.get_enum_value(DirectoryDefinitionDiscoverabilities)),
+            "discoverabilities": lambda n : setattr(self, 'discoverabilities', n.get_collection_of_enum_values(DirectoryDefinitionDiscoverabilities)),
             "discoveryDateTime": lambda n : setattr(self, 'discovery_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "objects": lambda n : setattr(self, 'objects', n.get_collection_of_object_values(ObjectDefinition)),
@@ -68,8 +67,8 @@ class DirectoryDefinition(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

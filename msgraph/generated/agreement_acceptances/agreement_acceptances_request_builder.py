@@ -22,17 +22,16 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AgreementAcceptancesRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/agreementAcceptances{?%24search,%24select}", path_parameters)
     
     def by_agreement_acceptance_id(self,agreement_acceptance_id: str) -> AgreementAcceptanceItemRequestBuilder:
         """
         Provides operations to manage the collection of agreementAcceptance entities.
-        Args:
-            agreement_acceptance_id: Unique identifier of the item
+        param agreement_acceptance_id: The unique identifier of agreementAcceptance
         Returns: AgreementAcceptanceItemRequestBuilder
         """
         if not agreement_acceptance_id:
@@ -46,8 +45,7 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[AgreementAcceptancesRequestBuilderGetRequestConfiguration] = None) -> Optional[AgreementAcceptanceCollectionResponse]:
         """
         Get entities from agreementAcceptances
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AgreementAcceptanceCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -68,9 +66,8 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
     async def post(self,body: Optional[AgreementAcceptance] = None, request_configuration: Optional[AgreementAcceptancesRequestBuilderPostRequestConfiguration] = None) -> Optional[AgreementAcceptance]:
         """
         Add new entity to agreementAcceptances
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AgreementAcceptance]
         """
         if not body:
@@ -93,8 +90,7 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
     def to_get_request_information(self,request_configuration: Optional[AgreementAcceptancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get entities from agreementAcceptances
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -111,9 +107,8 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
     def to_post_request_information(self,body: Optional[AgreementAcceptance] = None, request_configuration: Optional[AgreementAcceptancesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add new entity to agreementAcceptances
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -129,6 +124,16 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    def with_url(self,raw_url: Optional[str] = None) -> AgreementAcceptancesRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: AgreementAcceptancesRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return AgreementAcceptancesRequestBuilder(raw_url, self.request_adapter)
+    
     @dataclass
     class AgreementAcceptancesRequestBuilderGetQueryParameters():
         """
@@ -137,8 +142,7 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:

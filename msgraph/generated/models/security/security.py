@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from ..entity import Entity
     from ..secure_score import SecureScore
     from ..secure_score_control_profile import SecureScoreControlProfile
+    from ..subject_rights_request import SubjectRightsRequest
     from .alert import Alert
     from .cases_root import CasesRoot
     from .incident import Incident
@@ -36,6 +37,8 @@ class Security(Entity):
     secure_score_control_profiles: Optional[List[SecureScoreControlProfile]] = None
     # The secureScores property
     secure_scores: Optional[List[SecureScore]] = None
+    # The subjectRightsRequests property
+    subject_rights_requests: Optional[List[SubjectRightsRequest]] = None
     # The threatIntelligence property
     threat_intelligence: Optional[ThreatIntelligence] = None
     # The triggerTypes property
@@ -47,8 +50,7 @@ class Security(Entity):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Security:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Security
         """
         if not parse_node:
@@ -65,6 +67,7 @@ class Security(Entity):
         from ..entity import Entity
         from ..secure_score import SecureScore
         from ..secure_score_control_profile import SecureScoreControlProfile
+        from ..subject_rights_request import SubjectRightsRequest
         from .alert import Alert
         from .cases_root import CasesRoot
         from .incident import Incident
@@ -77,6 +80,7 @@ class Security(Entity):
         from ..entity import Entity
         from ..secure_score import SecureScore
         from ..secure_score_control_profile import SecureScoreControlProfile
+        from ..subject_rights_request import SubjectRightsRequest
         from .alert import Alert
         from .cases_root import CasesRoot
         from .incident import Incident
@@ -92,6 +96,7 @@ class Security(Entity):
             "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(Incident)),
             "secureScoreControlProfiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(SecureScoreControlProfile)),
             "secureScores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(SecureScore)),
+            "subjectRightsRequests": lambda n : setattr(self, 'subject_rights_requests', n.get_collection_of_object_values(SubjectRightsRequest)),
             "threatIntelligence": lambda n : setattr(self, 'threat_intelligence', n.get_object_value(ThreatIntelligence)),
             "triggerTypes": lambda n : setattr(self, 'trigger_types', n.get_object_value(TriggerTypesRoot)),
             "triggers": lambda n : setattr(self, 'triggers', n.get_object_value(TriggersRoot)),
@@ -103,8 +108,8 @@ class Security(Entity):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")
@@ -116,6 +121,7 @@ class Security(Entity):
         writer.write_collection_of_object_values("incidents", self.incidents)
         writer.write_collection_of_object_values("secureScoreControlProfiles", self.secure_score_control_profiles)
         writer.write_collection_of_object_values("secureScores", self.secure_scores)
+        writer.write_collection_of_object_values("subjectRightsRequests", self.subject_rights_requests)
         writer.write_object_value("threatIntelligence", self.threat_intelligence)
         writer.write_object_value("triggerTypes", self.trigger_types)
         writer.write_object_value("triggers", self.triggers)

@@ -47,8 +47,7 @@ class SharedPCConfiguration(DeviceConfiguration):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedPCConfiguration:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: SharedPCConfiguration
         """
         if not parse_node:
@@ -71,7 +70,7 @@ class SharedPCConfiguration(DeviceConfiguration):
         fields: Dict[str, Callable[[Any], None]] = {
             "accountManagerPolicy": lambda n : setattr(self, 'account_manager_policy', n.get_object_value(SharedPCAccountManagerPolicy)),
             "allowLocalStorage": lambda n : setattr(self, 'allow_local_storage', n.get_bool_value()),
-            "allowedAccounts": lambda n : setattr(self, 'allowed_accounts', n.get_enum_value(SharedPCAllowedAccountType)),
+            "allowedAccounts": lambda n : setattr(self, 'allowed_accounts', n.get_collection_of_enum_values(SharedPCAllowedAccountType)),
             "disableAccountManager": lambda n : setattr(self, 'disable_account_manager', n.get_bool_value()),
             "disableEduPolicies": lambda n : setattr(self, 'disable_edu_policies', n.get_bool_value()),
             "disablePowerPolicies": lambda n : setattr(self, 'disable_power_policies', n.get_bool_value()),
@@ -89,8 +88,8 @@ class SharedPCConfiguration(DeviceConfiguration):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

@@ -102,8 +102,7 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUpdateForBusinessConfiguration:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: WindowsUpdateForBusinessConfiguration
         """
         if not parse_node:
@@ -171,7 +170,7 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
             "scheduleRestartWarningInHours": lambda n : setattr(self, 'schedule_restart_warning_in_hours', n.get_int_value()),
             "skipChecksBeforeRestart": lambda n : setattr(self, 'skip_checks_before_restart', n.get_bool_value()),
             "updateNotificationLevel": lambda n : setattr(self, 'update_notification_level', n.get_enum_value(WindowsUpdateNotificationDisplayOption)),
-            "updateWeeks": lambda n : setattr(self, 'update_weeks', n.get_enum_value(WindowsUpdateForBusinessUpdateWeeks)),
+            "updateWeeks": lambda n : setattr(self, 'update_weeks', n.get_collection_of_enum_values(WindowsUpdateForBusinessUpdateWeeks)),
             "userPauseAccess": lambda n : setattr(self, 'user_pause_access', n.get_enum_value(Enablement)),
             "userWindowsUpdateScanAccess": lambda n : setattr(self, 'user_windows_update_scan_access', n.get_enum_value(Enablement)),
         }
@@ -182,8 +181,8 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")

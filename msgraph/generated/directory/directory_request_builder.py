@@ -122,7 +122,7 @@ class DirectoryRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DirectoryRequestBuilder(raw_url, self.request_adapter)
+        return DirectoryRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def administrative_units(self) -> AdministrativeUnitsRequestBuilder:

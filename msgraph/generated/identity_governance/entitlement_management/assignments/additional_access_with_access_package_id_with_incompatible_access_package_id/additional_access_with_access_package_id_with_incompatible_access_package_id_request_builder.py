@@ -74,7 +74,7 @@ class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestB
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder(raw_url, self.request_adapter)
+        return AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilderGetQueryParameters():

@@ -73,7 +73,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return UserItemRequestBuilder(raw_url, self.request_adapter)
+        return UserItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def mailbox_settings(self) -> MailboxSettingsRequestBuilder:

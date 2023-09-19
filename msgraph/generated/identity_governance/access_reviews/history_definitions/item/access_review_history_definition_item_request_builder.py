@@ -152,7 +152,7 @@ class AccessReviewHistoryDefinitionItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AccessReviewHistoryDefinitionItemRequestBuilder(raw_url, self.request_adapter)
+        return AccessReviewHistoryDefinitionItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def instances(self) -> InstancesRequestBuilder:

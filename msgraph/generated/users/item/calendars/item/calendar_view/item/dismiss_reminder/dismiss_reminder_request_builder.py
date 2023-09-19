@@ -68,7 +68,7 @@ class DismissReminderRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DismissReminderRequestBuilder(raw_url, self.request_adapter)
+        return DismissReminderRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

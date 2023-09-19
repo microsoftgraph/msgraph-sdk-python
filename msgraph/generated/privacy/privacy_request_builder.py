@@ -117,7 +117,7 @@ class PrivacyRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return PrivacyRequestBuilder(raw_url, self.request_adapter)
+        return PrivacyRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def subject_rights_requests(self) -> SubjectRightsRequestsRequestBuilder:

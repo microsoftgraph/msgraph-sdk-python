@@ -162,7 +162,7 @@ class FilterRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return FilterRequestBuilder(raw_url, self.request_adapter)
+        return FilterRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def apply(self) -> ApplyRequestBuilder:

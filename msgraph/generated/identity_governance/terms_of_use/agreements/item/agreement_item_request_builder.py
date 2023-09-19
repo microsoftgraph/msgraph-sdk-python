@@ -156,7 +156,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AgreementItemRequestBuilder(raw_url, self.request_adapter)
+        return AgreementItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def acceptances(self) -> AcceptancesRequestBuilder:

@@ -133,7 +133,7 @@ class HostTrackersRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return HostTrackersRequestBuilder(raw_url, self.request_adapter)
+        return HostTrackersRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

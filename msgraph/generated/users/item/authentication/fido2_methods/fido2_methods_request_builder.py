@@ -89,7 +89,7 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return Fido2MethodsRequestBuilder(raw_url, self.request_adapter)
+        return Fido2MethodsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

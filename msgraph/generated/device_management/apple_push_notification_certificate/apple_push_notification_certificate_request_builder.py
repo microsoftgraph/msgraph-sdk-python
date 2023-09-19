@@ -153,7 +153,7 @@ class ApplePushNotificationCertificateRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ApplePushNotificationCertificateRequestBuilder(raw_url, self.request_adapter)
+        return ApplePushNotificationCertificateRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def download_apple_push_notification_certificate_signing_request(self) -> DownloadApplePushNotificationCertificateSigningRequestRequestBuilder:

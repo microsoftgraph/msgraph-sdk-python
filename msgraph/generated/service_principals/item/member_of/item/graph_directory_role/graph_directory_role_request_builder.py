@@ -72,7 +72,7 @@ class GraphDirectoryRoleRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return GraphDirectoryRoleRequestBuilder(raw_url, self.request_adapter)
+        return GraphDirectoryRoleRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class GraphDirectoryRoleRequestBuilderGetQueryParameters():

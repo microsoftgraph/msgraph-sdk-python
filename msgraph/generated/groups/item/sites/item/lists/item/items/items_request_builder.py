@@ -134,7 +134,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ItemsRequestBuilder(raw_url, self.request_adapter)
+        return ItemsRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class ItemsRequestBuilderGetQueryParameters():

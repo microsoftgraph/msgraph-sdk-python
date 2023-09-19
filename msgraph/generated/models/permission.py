@@ -16,7 +16,7 @@ from .entity import Entity
 
 @dataclass
 class Permission(Entity):
-    # A format of yyyy-MM-ddTHH:mm:ssZ of DateTimeOffset indicates the expiration time of the permission. DateTime.MinValue indicates there is no expiration set for this permission. Optional.
+    # A format of yyyy-MM-ddTHH:mm:ssZ of DateTimeOffset indicates the expiration time of the permission. DateTime.MinValue indicates there's no expiration set for this permission. Optional.
     expiration_date_time: Optional[datetime.datetime] = None
     # The grantedTo property
     granted_to: Optional[IdentitySet] = None
@@ -28,11 +28,11 @@ class Permission(Entity):
     granted_to_v2: Optional[SharePointIdentitySet] = None
     # Indicates whether the password is set for this permission. This property only appears in the response. Optional. Read-only. For OneDrive Personal only..
     has_password: Optional[bool] = None
-    # Provides a reference to the ancestor of the current permission, if it is inherited from an ancestor. Read-only.
+    # Provides a reference to the ancestor of the current permission, if it's inherited from an ancestor. Read-only.
     inherited_from: Optional[ItemReference] = None
     # Details of any associated sharing invitation for this permission. Read-only.
     invitation: Optional[SharingInvitation] = None
-    # Provides the link details of the current permission, if it is a link type permissions. Read-only.
+    # Provides the link details of the current permission, if it's a link type permission. Read-only.
     link: Optional[SharingLink] = None
     # The OdataType property
     odata_type: Optional[str] = None

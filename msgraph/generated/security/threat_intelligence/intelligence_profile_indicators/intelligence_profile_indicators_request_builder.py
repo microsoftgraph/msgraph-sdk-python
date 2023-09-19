@@ -133,7 +133,7 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return IntelligenceProfileIndicatorsRequestBuilder(raw_url, self.request_adapter)
+        return IntelligenceProfileIndicatorsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

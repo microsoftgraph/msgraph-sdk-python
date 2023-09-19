@@ -152,7 +152,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return WorkbookNamedItemItemRequestBuilder(raw_url, self.request_adapter)
+        return WorkbookNamedItemItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def range(self) -> RangeRequestBuilder:

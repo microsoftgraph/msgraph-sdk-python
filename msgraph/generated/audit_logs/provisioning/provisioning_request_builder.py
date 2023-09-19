@@ -134,7 +134,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ProvisioningRequestBuilder(raw_url, self.request_adapter)
+        return ProvisioningRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

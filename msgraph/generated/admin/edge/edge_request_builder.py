@@ -151,7 +151,7 @@ class EdgeRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return EdgeRequestBuilder(raw_url, self.request_adapter)
+        return EdgeRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def internet_explorer_mode(self) -> InternetExplorerModeRequestBuilder:

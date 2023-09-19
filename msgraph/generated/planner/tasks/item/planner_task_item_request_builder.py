@@ -157,7 +157,7 @@ class PlannerTaskItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return PlannerTaskItemRequestBuilder(raw_url, self.request_adapter)
+        return PlannerTaskItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def assigned_to_task_board_format(self) -> AssignedToTaskBoardFormatRequestBuilder:

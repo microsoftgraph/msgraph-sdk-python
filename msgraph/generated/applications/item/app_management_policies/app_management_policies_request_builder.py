@@ -89,7 +89,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AppManagementPoliciesRequestBuilder(raw_url, self.request_adapter)
+        return AppManagementPoliciesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

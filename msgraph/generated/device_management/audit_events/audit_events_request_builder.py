@@ -149,7 +149,7 @@ class AuditEventsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AuditEventsRequestBuilder(raw_url, self.request_adapter)
+        return AuditEventsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

@@ -14,9 +14,9 @@ class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, BackedModel, P
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Determines whether the user's Authenticator app will show them the client app they are signing into.
+    # Determines whether the user's Authenticator app shows them the client app they're signing into.
     display_app_information_required_state: Optional[AuthenticationMethodFeatureConfiguration] = None
-    # Determines whether the user's Authenticator app will show them the geographic location of where the authentication request originated from.
+    # Determines whether the user's Authenticator app shows them the geographic location of where the authentication request originated from.
     display_location_information_required_state: Optional[AuthenticationMethodFeatureConfiguration] = None
     # The OdataType property
     odata_type: Optional[str] = None

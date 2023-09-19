@@ -160,7 +160,7 @@ class DomainItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DomainItemRequestBuilder(raw_url, self.request_adapter)
+        return DomainItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def domain_name_references(self) -> DomainNameReferencesRequestBuilder:

@@ -18,7 +18,7 @@ class EducationOrganization(Entity):
     display_name: Optional[str] = None
     # Source where this organization was created from. Possible values are: sis, manual.
     external_source: Optional[EducationExternalSource] = None
-    # The name of the external source this resources was generated from.
+    # The name of the external source this resource was generated from.
     external_source_detail: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

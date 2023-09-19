@@ -160,7 +160,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return OrganizationalBrandingLocalizationItemRequestBuilder(raw_url, self.request_adapter)
+        return OrganizationalBrandingLocalizationItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def background_image(self) -> BackgroundImageRequestBuilder:

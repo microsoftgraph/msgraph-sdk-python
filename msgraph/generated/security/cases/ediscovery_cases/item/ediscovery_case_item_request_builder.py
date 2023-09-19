@@ -162,7 +162,7 @@ class EdiscoveryCaseItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return EdiscoveryCaseItemRequestBuilder(raw_url, self.request_adapter)
+        return EdiscoveryCaseItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def custodians(self) -> CustodiansRequestBuilder:

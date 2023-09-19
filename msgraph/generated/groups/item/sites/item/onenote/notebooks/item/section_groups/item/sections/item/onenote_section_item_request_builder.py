@@ -155,7 +155,7 @@ class OnenoteSectionItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return OnenoteSectionItemRequestBuilder(raw_url, self.request_adapter)
+        return OnenoteSectionItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def copy_to_notebook(self) -> CopyToNotebookRequestBuilder:

@@ -156,7 +156,7 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return EdiscoveryNoncustodialDataSourceItemRequestBuilder(raw_url, self.request_adapter)
+        return EdiscoveryNoncustodialDataSourceItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def data_source(self) -> DataSourceRequestBuilder:

@@ -75,7 +75,7 @@ class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequest
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder(raw_url, self.request_adapter)
+        return MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetQueryParameters():

@@ -153,7 +153,7 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return OnlineMeetingItemRequestBuilder(raw_url, self.request_adapter)
+        return OnlineMeetingItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def attendance_reports(self) -> AttendanceReportsRequestBuilder:

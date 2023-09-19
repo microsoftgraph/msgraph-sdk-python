@@ -74,7 +74,7 @@ class ApplicationTemplateItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ApplicationTemplateItemRequestBuilder(raw_url, self.request_adapter)
+        return ApplicationTemplateItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def instantiate(self) -> InstantiateRequestBuilder:

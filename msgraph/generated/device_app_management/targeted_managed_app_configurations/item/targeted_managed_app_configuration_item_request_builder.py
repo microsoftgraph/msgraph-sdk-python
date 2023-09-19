@@ -158,7 +158,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TargetedManagedAppConfigurationItemRequestBuilder(raw_url, self.request_adapter)
+        return TargetedManagedAppConfigurationItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def apps(self) -> AppsRequestBuilder:

@@ -154,7 +154,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(BaseRe
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(raw_url, self.request_adapter)
+        return CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def identity_synchronization(self) -> IdentitySynchronizationRequestBuilder:

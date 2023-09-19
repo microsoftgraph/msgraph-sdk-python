@@ -88,7 +88,7 @@ class BaseTypesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return BaseTypesRequestBuilder(raw_url, self.request_adapter)
+        return BaseTypesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

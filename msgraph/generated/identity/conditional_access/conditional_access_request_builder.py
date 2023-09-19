@@ -155,7 +155,7 @@ class ConditionalAccessRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ConditionalAccessRequestBuilder(raw_url, self.request_adapter)
+        return ConditionalAccessRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def authentication_context_class_references(self) -> AuthenticationContextClassReferencesRequestBuilder:

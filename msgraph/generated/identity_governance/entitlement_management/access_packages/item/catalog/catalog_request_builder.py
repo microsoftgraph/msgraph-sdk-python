@@ -72,7 +72,7 @@ class CatalogRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return CatalogRequestBuilder(raw_url, self.request_adapter)
+        return CatalogRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class CatalogRequestBuilderGetQueryParameters():

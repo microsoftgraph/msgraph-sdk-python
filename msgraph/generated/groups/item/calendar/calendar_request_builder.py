@@ -89,7 +89,7 @@ class CalendarRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return CalendarRequestBuilder(raw_url, self.request_adapter)
+        return CalendarRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def calendar_permissions(self) -> CalendarPermissionsRequestBuilder:

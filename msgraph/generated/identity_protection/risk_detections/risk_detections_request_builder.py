@@ -134,7 +134,7 @@ class RiskDetectionsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return RiskDetectionsRequestBuilder(raw_url, self.request_adapter)
+        return RiskDetectionsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

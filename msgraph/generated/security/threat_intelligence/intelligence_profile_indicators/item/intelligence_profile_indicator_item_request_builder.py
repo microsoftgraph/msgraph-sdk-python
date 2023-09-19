@@ -152,7 +152,7 @@ class IntelligenceProfileIndicatorItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return IntelligenceProfileIndicatorItemRequestBuilder(raw_url, self.request_adapter)
+        return IntelligenceProfileIndicatorItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def artifact(self) -> ArtifactRequestBuilder:

@@ -133,7 +133,7 @@ class UserExperienceAnalyticsDeviceStartupProcessPerformanceRequestBuilder(BaseR
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return UserExperienceAnalyticsDeviceStartupProcessPerformanceRequestBuilder(raw_url, self.request_adapter)
+        return UserExperienceAnalyticsDeviceStartupProcessPerformanceRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

@@ -152,7 +152,7 @@ class RiskyUserItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return RiskyUserItemRequestBuilder(raw_url, self.request_adapter)
+        return RiskyUserItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def history(self) -> HistoryRequestBuilder:

@@ -161,7 +161,7 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AccessReviewInstanceItemRequestBuilder(raw_url, self.request_adapter)
+        return AccessReviewInstanceItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def accept_recommendations(self) -> AcceptRecommendationsRequestBuilder:

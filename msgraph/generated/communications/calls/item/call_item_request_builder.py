@@ -170,7 +170,7 @@ class CallItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return CallItemRequestBuilder(raw_url, self.request_adapter)
+        return CallItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def add_large_gallery_view(self) -> AddLargeGalleryViewRequestBuilder:

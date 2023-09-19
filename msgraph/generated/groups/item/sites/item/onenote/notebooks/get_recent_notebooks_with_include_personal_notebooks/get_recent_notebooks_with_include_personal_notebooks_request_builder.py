@@ -73,7 +73,7 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(raw_url, self.request_adapter)
+        return GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetQueryParameters():

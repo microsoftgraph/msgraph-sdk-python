@@ -11,7 +11,7 @@ from .entity import Entity
 
 @dataclass
 class EducationSubmissionResource(Entity):
-    # Pointer to the assignment from which this resource was copied. If this is null, the student uploaded the resource.
+    # Pointer to the assignment from which the resource was copied, and if null, the student uploaded the resource.
     assignment_resource_url: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

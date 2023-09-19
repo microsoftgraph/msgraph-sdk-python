@@ -11,11 +11,11 @@ class ExtensionSchemaProperty(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The name of the strongly-typed property defined as part of a schema extension.
+    # The name of the strongly typed property defined as part of a schema extension.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The type of the property that is defined as part of a schema extension.  Allowed values are Binary, Boolean, DateTime, Integer or String. See the table below for more details.
+    # The type of the property that is defined as part of a schema extension.  Allowed values are Binary, Boolean, DateTime, Integer or String. See the table in the Supported property data types section for more details.
     type: Optional[str] = None
     
     @staticmethod

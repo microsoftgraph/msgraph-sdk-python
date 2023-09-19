@@ -151,7 +151,7 @@ class TrendingItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TrendingItemRequestBuilder(raw_url, self.request_adapter)
+        return TrendingItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def resource(self) -> ResourceRequestBuilder:

@@ -160,7 +160,7 @@ class SharedDriveItemItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return SharedDriveItemItemRequestBuilder(raw_url, self.request_adapter)
+        return SharedDriveItemItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def created_by_user(self) -> CreatedByUserRequestBuilder:

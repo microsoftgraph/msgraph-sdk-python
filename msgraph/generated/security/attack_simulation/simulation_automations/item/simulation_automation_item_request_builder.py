@@ -152,7 +152,7 @@ class SimulationAutomationItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return SimulationAutomationItemRequestBuilder(raw_url, self.request_adapter)
+        return SimulationAutomationItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def runs(self) -> RunsRequestBuilder:

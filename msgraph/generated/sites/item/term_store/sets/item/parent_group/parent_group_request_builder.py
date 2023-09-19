@@ -151,7 +151,7 @@ class ParentGroupRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ParentGroupRequestBuilder(raw_url, self.request_adapter)
+        return ParentGroupRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def sets(self) -> SetsRequestBuilder:

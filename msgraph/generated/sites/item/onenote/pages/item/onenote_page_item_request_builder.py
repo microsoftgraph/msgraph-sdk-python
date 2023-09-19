@@ -158,7 +158,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return OnenotePageItemRequestBuilder(raw_url, self.request_adapter)
+        return OnenotePageItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def content(self) -> ContentRequestBuilder:

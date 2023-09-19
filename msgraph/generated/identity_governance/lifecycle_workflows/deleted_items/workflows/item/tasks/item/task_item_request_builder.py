@@ -151,7 +151,7 @@ class TaskItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TaskItemRequestBuilder(raw_url, self.request_adapter)
+        return TaskItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def task_processing_results(self) -> TaskProcessingResultsRequestBuilder:

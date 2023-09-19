@@ -14,9 +14,9 @@ from .data_source_container import DataSourceContainer
 class EdiscoveryNoncustodialDataSource(DataSourceContainer):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.ediscoveryNoncustodialDataSource"
-    # User source or SharePoint site data source as non-custodial data source.
+    # User source or SharePoint site data source as noncustodial data source.
     data_source: Optional[DataSource] = None
-    # Operation entity that represents the latest indexing for the non-custodial data source.
+    # Operation entity that represents the latest indexing for the noncustodial data source.
     last_index_operation: Optional[EdiscoveryIndexOperation] = None
     
     @staticmethod

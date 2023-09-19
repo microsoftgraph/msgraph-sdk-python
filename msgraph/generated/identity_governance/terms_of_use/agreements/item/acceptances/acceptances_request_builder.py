@@ -134,7 +134,7 @@ class AcceptancesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AcceptancesRequestBuilder(raw_url, self.request_adapter)
+        return AcceptancesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

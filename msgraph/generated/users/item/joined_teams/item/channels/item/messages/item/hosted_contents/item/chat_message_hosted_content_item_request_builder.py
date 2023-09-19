@@ -152,7 +152,7 @@ class ChatMessageHostedContentItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ChatMessageHostedContentItemRequestBuilder(raw_url, self.request_adapter)
+        return ChatMessageHostedContentItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def content(self) -> ContentRequestBuilder:

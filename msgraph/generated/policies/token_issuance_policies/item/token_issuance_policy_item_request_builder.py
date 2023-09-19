@@ -153,7 +153,7 @@ class TokenIssuancePolicyItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TokenIssuancePolicyItemRequestBuilder(raw_url, self.request_adapter)
+        return TokenIssuancePolicyItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def applies_to(self) -> AppliesToRequestBuilder:

@@ -154,7 +154,7 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder(BaseRequestBuilder)
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DeviceAndAppManagementRoleAssignmentItemRequestBuilder(raw_url, self.request_adapter)
+        return DeviceAndAppManagementRoleAssignmentItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def role_definition(self) -> RoleDefinitionRequestBuilder:

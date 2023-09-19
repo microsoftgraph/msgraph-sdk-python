@@ -152,7 +152,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ConversationThreadItemRequestBuilder(raw_url, self.request_adapter)
+        return ConversationThreadItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def posts(self) -> PostsRequestBuilder:

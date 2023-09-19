@@ -72,7 +72,7 @@ class RebootAnalyticsMetricsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return RebootAnalyticsMetricsRequestBuilder(raw_url, self.request_adapter)
+        return RebootAnalyticsMetricsRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class RebootAnalyticsMetricsRequestBuilderGetQueryParameters():

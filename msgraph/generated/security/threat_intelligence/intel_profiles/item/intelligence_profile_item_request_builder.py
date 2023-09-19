@@ -152,7 +152,7 @@ class IntelligenceProfileItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return IntelligenceProfileItemRequestBuilder(raw_url, self.request_adapter)
+        return IntelligenceProfileItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def indicators(self) -> IndicatorsRequestBuilder:

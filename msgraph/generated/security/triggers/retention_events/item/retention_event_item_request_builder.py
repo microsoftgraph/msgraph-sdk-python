@@ -153,7 +153,7 @@ class RetentionEventItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return RetentionEventItemRequestBuilder(raw_url, self.request_adapter)
+        return RetentionEventItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def retention_event_type(self) -> RetentionEventTypeRequestBuilder:

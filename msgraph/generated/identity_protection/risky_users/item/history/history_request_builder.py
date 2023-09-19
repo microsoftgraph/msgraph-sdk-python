@@ -45,10 +45,10 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> Optional[RiskyUserHistoryItemCollectionResponse]:
         """
-        Read the properties and relationships of a riskyUserHistoryItem object.
+        Get the riskyUserHistoryItems from the history navigation property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RiskyUserHistoryItemCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/riskyuser-get-riskyuserhistoryitem?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/riskyuser-list-history?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +91,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a riskyUserHistoryItem object.
+        Get the riskyUserHistoryItems from the history navigation property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -134,7 +134,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return HistoryRequestBuilder(raw_url, self.request_adapter)
+        return HistoryRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -148,7 +148,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HistoryRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a riskyUserHistoryItem object.
+        Get the riskyUserHistoryItems from the history navigation property.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

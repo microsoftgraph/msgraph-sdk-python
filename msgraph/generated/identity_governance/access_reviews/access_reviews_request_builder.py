@@ -152,7 +152,7 @@ class AccessReviewsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AccessReviewsRequestBuilder(raw_url, self.request_adapter)
+        return AccessReviewsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def definitions(self) -> DefinitionsRequestBuilder:

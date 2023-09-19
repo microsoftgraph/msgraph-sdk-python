@@ -152,7 +152,7 @@ class PostAttributeCollectionRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return PostAttributeCollectionRequestBuilder(raw_url, self.request_adapter)
+        return PostAttributeCollectionRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def ref(self) -> RefRequestBuilder:

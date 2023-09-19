@@ -151,7 +151,7 @@ class UnifiedGroupSourceItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return UnifiedGroupSourceItemRequestBuilder(raw_url, self.request_adapter)
+        return UnifiedGroupSourceItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def group(self) -> GroupRequestBuilder:

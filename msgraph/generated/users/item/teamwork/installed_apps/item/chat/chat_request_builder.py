@@ -73,7 +73,7 @@ class ChatRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ChatRequestBuilder(raw_url, self.request_adapter)
+        return ChatRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class ChatRequestBuilderGetQueryParameters():

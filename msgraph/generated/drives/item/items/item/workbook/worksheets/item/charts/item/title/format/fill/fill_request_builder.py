@@ -152,7 +152,7 @@ class FillRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return FillRequestBuilder(raw_url, self.request_adapter)
+        return FillRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def clear(self) -> ClearRequestBuilder:

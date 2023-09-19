@@ -152,7 +152,7 @@ class ActivityHistoryItemItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ActivityHistoryItemItemRequestBuilder(raw_url, self.request_adapter)
+        return ActivityHistoryItemItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def activity(self) -> ActivityRequestBuilder:

@@ -73,7 +73,7 @@ class AllTimeRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AllTimeRequestBuilder(raw_url, self.request_adapter)
+        return AllTimeRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class AllTimeRequestBuilderGetQueryParameters():

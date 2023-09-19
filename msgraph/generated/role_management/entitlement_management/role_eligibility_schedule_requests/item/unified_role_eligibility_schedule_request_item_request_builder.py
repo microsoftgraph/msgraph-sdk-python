@@ -157,7 +157,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(raw_url, self.request_adapter)
+        return UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def app_scope(self) -> AppScopeRequestBuilder:

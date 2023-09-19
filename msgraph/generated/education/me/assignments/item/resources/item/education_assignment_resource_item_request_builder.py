@@ -152,7 +152,7 @@ class EducationAssignmentResourceItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return EducationAssignmentResourceItemRequestBuilder(raw_url, self.request_adapter)
+        return EducationAssignmentResourceItemRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

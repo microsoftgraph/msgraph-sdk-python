@@ -135,7 +135,7 @@ class OverridesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return OverridesRequestBuilder(raw_url, self.request_adapter)
+        return OverridesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

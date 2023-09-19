@@ -160,7 +160,7 @@ class ThreatIntelligenceRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ThreatIntelligenceRequestBuilder(raw_url, self.request_adapter)
+        return ThreatIntelligenceRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def article_indicators(self) -> ArticleIndicatorsRequestBuilder:

@@ -72,7 +72,7 @@ class GetManagedDevicesWithAppFailuresRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return GetManagedDevicesWithAppFailuresRequestBuilder(raw_url, self.request_adapter)
+        return GetManagedDevicesWithAppFailuresRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class GetManagedDevicesWithAppFailuresRequestBuilderGetQueryParameters():

@@ -154,7 +154,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TermsAndConditionsAcceptanceStatusItemRequestBuilder(raw_url, self.request_adapter)
+        return TermsAndConditionsAcceptanceStatusItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def terms_and_conditions(self) -> TermsAndConditionsRequestBuilder:

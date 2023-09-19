@@ -156,7 +156,7 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return MdmWindowsInformationProtectionPolicyItemRequestBuilder(raw_url, self.request_adapter)
+        return MdmWindowsInformationProtectionPolicyItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def assignments(self) -> AssignmentsRequestBuilder:

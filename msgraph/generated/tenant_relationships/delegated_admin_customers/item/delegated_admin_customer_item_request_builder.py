@@ -152,7 +152,7 @@ class DelegatedAdminCustomerItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DelegatedAdminCustomerItemRequestBuilder(raw_url, self.request_adapter)
+        return DelegatedAdminCustomerItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def service_management_details(self) -> ServiceManagementDetailsRequestBuilder:

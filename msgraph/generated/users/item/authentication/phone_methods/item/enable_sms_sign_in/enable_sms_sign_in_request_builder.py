@@ -68,7 +68,7 @@ class EnableSmsSignInRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return EnableSmsSignInRequestBuilder(raw_url, self.request_adapter)
+        return EnableSmsSignInRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

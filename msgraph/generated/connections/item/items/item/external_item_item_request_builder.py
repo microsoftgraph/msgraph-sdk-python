@@ -154,7 +154,7 @@ class ExternalItemItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ExternalItemItemRequestBuilder(raw_url, self.request_adapter)
+        return ExternalItemItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def activities(self) -> ActivitiesRequestBuilder:

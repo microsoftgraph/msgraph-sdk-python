@@ -152,7 +152,7 @@ class AttackSimulationRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AttackSimulationRequestBuilder(raw_url, self.request_adapter)
+        return AttackSimulationRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def simulation_automations(self) -> SimulationAutomationsRequestBuilder:

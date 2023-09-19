@@ -154,7 +154,7 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DetectedAppItemRequestBuilder(raw_url, self.request_adapter)
+        return DetectedAppItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def managed_devices(self) -> ManagedDevicesRequestBuilder:

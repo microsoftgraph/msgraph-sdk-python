@@ -151,7 +151,7 @@ class TriggerTypesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TriggerTypesRequestBuilder(raw_url, self.request_adapter)
+        return TriggerTypesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def retention_event_types(self) -> RetentionEventTypesRequestBuilder:

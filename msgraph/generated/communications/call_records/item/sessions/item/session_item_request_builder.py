@@ -151,7 +151,7 @@ class SessionItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return SessionItemRequestBuilder(raw_url, self.request_adapter)
+        return SessionItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def segments(self) -> SegmentsRequestBuilder:

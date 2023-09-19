@@ -10,27 +10,27 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models.mobile_lob_app import MobileLobApp
+    from .....models.android_lob_app import AndroidLobApp
     from .....models.o_data_errors.o_data_error import ODataError
 
-class GraphMobileLobAppRequestBuilder(BaseRequestBuilder):
+class GraphAndroidLobAppRequestBuilder(BaseRequestBuilder):
     """
-    Casts the previous resource to mobileLobApp.
+    Casts the previous resource to androidLobApp.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
-        Instantiates a new GraphMobileLobAppRequestBuilder and sets the default values.
+        Instantiates a new GraphAndroidLobAppRequestBuilder and sets the default values.
         param path_parameters: The raw url or the Url template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/mobileApps/{mobileApp%2Did}/graph.mobileLobApp{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/mobileApps/{mobileApp%2Did}/graph.androidLobApp{?%24select,%24expand}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GraphMobileLobAppRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileLobApp]:
+    async def get(self,request_configuration: Optional[GraphAndroidLobAppRequestBuilderGetRequestConfiguration] = None) -> Optional[AndroidLobApp]:
         """
-        Get the item of type microsoft.graph.mobileApp as microsoft.graph.mobileLobApp
+        Get the item of type microsoft.graph.mobileApp as microsoft.graph.androidLobApp
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[MobileLobApp]
+        Returns: Optional[AndroidLobApp]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,13 +43,13 @@ class GraphMobileLobAppRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.mobile_lob_app import MobileLobApp
+        from .....models.android_lob_app import AndroidLobApp
 
-        return await self.request_adapter.send_async(request_info, MobileLobApp, error_mapping)
+        return await self.request_adapter.send_async(request_info, AndroidLobApp, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[GraphMobileLobAppRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GraphAndroidLobAppRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the item of type microsoft.graph.mobileApp as microsoft.graph.mobileLobApp
+        Get the item of type microsoft.graph.mobileApp as microsoft.graph.androidLobApp
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -64,20 +64,20 @@ class GraphMobileLobAppRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> GraphMobileLobAppRequestBuilder:
+    def with_url(self,raw_url: Optional[str] = None) -> GraphAndroidLobAppRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
-        Returns: GraphMobileLobAppRequestBuilder
+        Returns: GraphAndroidLobAppRequestBuilder
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return GraphMobileLobAppRequestBuilder(raw_url, self.request_adapter)
+        return GraphAndroidLobAppRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
-    class GraphMobileLobAppRequestBuilderGetQueryParameters():
+    class GraphAndroidLobAppRequestBuilderGetQueryParameters():
         """
-        Get the item of type microsoft.graph.mobileApp as microsoft.graph.mobileLobApp
+        Get the item of type microsoft.graph.mobileApp as microsoft.graph.androidLobApp
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -103,14 +103,14 @@ class GraphMobileLobAppRequestBuilder(BaseRequestBuilder):
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
-    class GraphMobileLobAppRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+    class GraphAndroidLobAppRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[GraphMobileLobAppRequestBuilder.GraphMobileLobAppRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GraphAndroidLobAppRequestBuilder.GraphAndroidLobAppRequestBuilderGetQueryParameters] = None
 
     
 

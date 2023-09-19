@@ -109,7 +109,7 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(BaseRequestBu
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(raw_url, self.request_adapter)
+        return MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def device(self) -> DeviceRequestBuilder:

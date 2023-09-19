@@ -153,7 +153,7 @@ class IncidentItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return IncidentItemRequestBuilder(raw_url, self.request_adapter)
+        return IncidentItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def alerts(self) -> AlertsRequestBuilder:

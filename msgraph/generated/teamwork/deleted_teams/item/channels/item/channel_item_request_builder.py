@@ -159,7 +159,7 @@ class ChannelItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ChannelItemRequestBuilder(raw_url, self.request_adapter)
+        return ChannelItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def complete_migration(self) -> CompleteMigrationRequestBuilder:

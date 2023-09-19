@@ -151,7 +151,7 @@ class ScopeRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ScopeRequestBuilder(raw_url, self.request_adapter)
+        return ScopeRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def resource(self) -> ResourceRequestBuilder:

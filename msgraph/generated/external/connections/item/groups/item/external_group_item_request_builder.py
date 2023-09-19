@@ -154,7 +154,7 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ExternalGroupItemRequestBuilder(raw_url, self.request_adapter)
+        return ExternalGroupItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def members(self) -> MembersRequestBuilder:

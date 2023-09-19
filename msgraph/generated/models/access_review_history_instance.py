@@ -12,17 +12,17 @@ from .entity import Entity
 
 @dataclass
 class AccessReviewHistoryInstance(Entity):
-    # Uri which can be used to retrieve review history data. This URI will be active for 24 hours after being generated. Required.
+    # Uri that can be used to retrieve review history data. This URI will be active for 24 hours after being generated. Required.
     download_uri: Optional[str] = None
     # Timestamp when this instance and associated data expires and the history is deleted. Required.
     expiration_date_time: Optional[datetime.datetime] = None
-    # Timestamp when all of the available data for this instance was collected. This will be set after this instance's status is set to done. Required.
+    # Timestamp when all of the available data for this instance was collected and is set after this instance's status is set to done. Required.
     fulfilled_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Timestamp, reviews ending on or before this date will be included in the fetched history data.
+    # Timestamp reviews ending on or before this date will be included in the fetched history data.
     review_history_period_end_date_time: Optional[datetime.datetime] = None
-    # Timestamp, reviews starting on or after this date will be included in the fetched history data.
+    # Timestamp reviews starting on or after this date will be included in the fetched history data.
     review_history_period_start_date_time: Optional[datetime.datetime] = None
     # Timestamp when the instance's history data is scheduled to be generated.
     run_date_time: Optional[datetime.datetime] = None

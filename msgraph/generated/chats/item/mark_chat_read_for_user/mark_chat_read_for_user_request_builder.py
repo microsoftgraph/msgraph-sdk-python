@@ -76,7 +76,7 @@ class MarkChatReadForUserRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return MarkChatReadForUserRequestBuilder(raw_url, self.request_adapter)
+        return MarkChatReadForUserRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

@@ -91,7 +91,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         Read properties and relationships of the deviceManagement object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicemanagement-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-devicemanagement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -202,7 +202,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DeviceManagementRequestBuilder(raw_url, self.request_adapter)
+        return DeviceManagementRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def apple_push_notification_certificate(self) -> ApplePushNotificationCertificateRequestBuilder:

@@ -65,19 +65,19 @@ class SubjectRightsRequest(Entity):
     last_modified_date_time: Optional[datetime.datetime] = None
     # The mailboxlocations property
     mailboxlocations: Optional[SubjectRightsRequestMailboxLocation] = None
-    # List of notes associcated with the request.
+    # List of notes associated with the request.
     notes: Optional[List[AuthoredNote]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The pauseAfterEstimate property
     pause_after_estimate: Optional[bool] = None
-    # List of regulations that this request will fulfill.
+    # List of regulations that this request fulfills.
     regulations: Optional[List[str]] = None
     # The sitelocations property
     sitelocations: Optional[SubjectRightsRequestSiteLocation] = None
     # Information about the different stages for the request.
     stages: Optional[List[SubjectRightsRequestStageDetail]] = None
-    # The status of the request.. Possible values are: active, closed, unknownFutureValue.
+    # The status of the request. Possible values are: active, closed, unknownFutureValue.
     status: Optional[SubjectRightsRequestStatus] = None
     # Information about the Microsoft Teams team that was created for the request.
     team: Optional[Team] = None

@@ -72,7 +72,7 @@ class RoleDefinitionRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return RoleDefinitionRequestBuilder(raw_url, self.request_adapter)
+        return RoleDefinitionRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class RoleDefinitionRequestBuilderGetQueryParameters():

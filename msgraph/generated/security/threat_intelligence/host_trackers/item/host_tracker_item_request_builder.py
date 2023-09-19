@@ -152,7 +152,7 @@ class HostTrackerItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return HostTrackerItemRequestBuilder(raw_url, self.request_adapter)
+        return HostTrackerItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def host(self) -> HostRequestBuilder:

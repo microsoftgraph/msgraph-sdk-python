@@ -179,7 +179,7 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ListItemItemRequestBuilder(raw_url, self.request_adapter)
+        return ListItemItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def analytics(self) -> AnalyticsRequestBuilder:

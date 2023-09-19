@@ -153,7 +153,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AccessPackageResourceRoleScopeItemRequestBuilder(raw_url, self.request_adapter)
+        return AccessPackageResourceRoleScopeItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def role(self) -> RoleRequestBuilder:

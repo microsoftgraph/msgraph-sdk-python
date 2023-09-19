@@ -153,7 +153,7 @@ class OAuth2PermissionGrantItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return OAuth2PermissionGrantItemRequestBuilder(raw_url, self.request_adapter)
+        return OAuth2PermissionGrantItemRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

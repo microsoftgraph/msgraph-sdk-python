@@ -73,7 +73,7 @@ class BitlockerRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return BitlockerRequestBuilder(raw_url, self.request_adapter)
+        return BitlockerRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def recovery_keys(self) -> RecoveryKeysRequestBuilder:

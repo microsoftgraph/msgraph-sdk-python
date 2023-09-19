@@ -154,7 +154,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return FeatureRolloutPolicyItemRequestBuilder(raw_url, self.request_adapter)
+        return FeatureRolloutPolicyItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def applies_to(self) -> AppliesToRequestBuilder:

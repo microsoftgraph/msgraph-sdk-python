@@ -79,7 +79,7 @@ class Hex2OctRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return Hex2OctRequestBuilder(raw_url, self.request_adapter)
+        return Hex2OctRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

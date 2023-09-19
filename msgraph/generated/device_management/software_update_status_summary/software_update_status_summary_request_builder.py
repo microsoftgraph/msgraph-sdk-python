@@ -73,7 +73,7 @@ class SoftwareUpdateStatusSummaryRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return SoftwareUpdateStatusSummaryRequestBuilder(raw_url, self.request_adapter)
+        return SoftwareUpdateStatusSummaryRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class SoftwareUpdateStatusSummaryRequestBuilderGetQueryParameters():

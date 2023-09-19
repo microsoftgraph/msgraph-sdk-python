@@ -134,7 +134,7 @@ class FederationConfigurationsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return FederationConfigurationsRequestBuilder(raw_url, self.request_adapter)
+        return FederationConfigurationsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def available_provider_types(self) -> AvailableProviderTypesRequestBuilder:

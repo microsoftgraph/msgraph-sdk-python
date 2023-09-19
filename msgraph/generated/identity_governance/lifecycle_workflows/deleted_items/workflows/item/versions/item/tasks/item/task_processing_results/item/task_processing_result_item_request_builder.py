@@ -75,7 +75,7 @@ class TaskProcessingResultItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TaskProcessingResultItemRequestBuilder(raw_url, self.request_adapter)
+        return TaskProcessingResultItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def microsoft_graph_identity_governance_resume(self) -> MicrosoftGraphIdentityGovernanceResumeRequestBuilder:

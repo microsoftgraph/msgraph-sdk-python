@@ -133,7 +133,7 @@ class ExtensionsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ExtensionsRequestBuilder(raw_url, self.request_adapter)
+        return ExtensionsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

@@ -72,7 +72,7 @@ class GetManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return GetManagedAppPoliciesRequestBuilder(raw_url, self.request_adapter)
+        return GetManagedAppPoliciesRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class GetManagedAppPoliciesRequestBuilderGetQueryParameters():

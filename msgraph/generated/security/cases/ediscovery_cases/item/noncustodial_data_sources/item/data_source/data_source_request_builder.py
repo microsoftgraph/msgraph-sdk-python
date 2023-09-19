@@ -47,7 +47,7 @@ class DataSourceRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DataSourceRequestBuilderGetRequestConfiguration] = None) -> Optional[DataSource]:
         """
-        User source or SharePoint site data source as non-custodial data source.
+        User source or SharePoint site data source as noncustodial data source.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DataSource]
         """
@@ -107,7 +107,7 @@ class DataSourceRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DataSourceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        User source or SharePoint site data source as non-custodial data source.
+        User source or SharePoint site data source as noncustodial data source.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -150,7 +150,7 @@ class DataSourceRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DataSourceRequestBuilder(raw_url, self.request_adapter)
+        return DataSourceRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
@@ -165,7 +165,7 @@ class DataSourceRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DataSourceRequestBuilderGetQueryParameters():
         """
-        User source or SharePoint site data source as non-custodial data source.
+        User source or SharePoint site data source as noncustodial data source.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

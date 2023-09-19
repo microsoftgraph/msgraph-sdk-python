@@ -152,7 +152,7 @@ class PrintDocumentItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return PrintDocumentItemRequestBuilder(raw_url, self.request_adapter)
+        return PrintDocumentItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def content(self) -> ContentRequestBuilder:

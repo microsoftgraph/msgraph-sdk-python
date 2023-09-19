@@ -73,7 +73,7 @@ class GetEffectivePermissionsWithScopeRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return GetEffectivePermissionsWithScopeRequestBuilder(raw_url, self.request_adapter)
+        return GetEffectivePermissionsWithScopeRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class GetEffectivePermissionsWithScopeRequestBuilderGetQueryParameters():

@@ -136,7 +136,7 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return RiskyUsersRequestBuilder(raw_url, self.request_adapter)
+        return RiskyUsersRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def confirm_compromised(self) -> ConfirmCompromisedRequestBuilder:

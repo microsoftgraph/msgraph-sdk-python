@@ -161,7 +161,7 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ScheduleRequestBuilder(raw_url, self.request_adapter)
+        return ScheduleRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def offer_shift_requests(self) -> OfferShiftRequestsRequestBuilder:

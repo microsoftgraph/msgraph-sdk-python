@@ -73,7 +73,7 @@ class PasswordAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return PasswordAuthenticationMethodItemRequestBuilder(raw_url, self.request_adapter)
+        return PasswordAuthenticationMethodItemRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class PasswordAuthenticationMethodItemRequestBuilderGetQueryParameters():

@@ -154,7 +154,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ActivityBasedTimeoutPolicyItemRequestBuilder(raw_url, self.request_adapter)
+        return ActivityBasedTimeoutPolicyItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def applies_to(self) -> AppliesToRequestBuilder:

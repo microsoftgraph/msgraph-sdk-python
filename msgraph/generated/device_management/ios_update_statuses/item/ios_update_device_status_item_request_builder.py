@@ -153,7 +153,7 @@ class IosUpdateDeviceStatusItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return IosUpdateDeviceStatusItemRequestBuilder(raw_url, self.request_adapter)
+        return IosUpdateDeviceStatusItemRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

@@ -72,7 +72,7 @@ class AccessPackageItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AccessPackageItemRequestBuilder(raw_url, self.request_adapter)
+        return AccessPackageItemRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class AccessPackageItemRequestBuilderGetQueryParameters():

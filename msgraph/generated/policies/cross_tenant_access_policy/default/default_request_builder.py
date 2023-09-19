@@ -153,7 +153,7 @@ class DefaultRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DefaultRequestBuilder(raw_url, self.request_adapter)
+        return DefaultRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def reset_to_system_default(self) -> ResetToSystemDefaultRequestBuilder:

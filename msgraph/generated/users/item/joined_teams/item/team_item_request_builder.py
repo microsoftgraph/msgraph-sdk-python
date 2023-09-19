@@ -168,7 +168,7 @@ class TeamItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TeamItemRequestBuilder(raw_url, self.request_adapter)
+        return TeamItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def all_channels(self) -> AllChannelsRequestBuilder:

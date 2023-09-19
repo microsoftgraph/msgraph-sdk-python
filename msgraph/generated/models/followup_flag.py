@@ -17,7 +17,7 @@ class FollowupFlag(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The date and time that the follow-up was finished.
     completed_date_time: Optional[DateTimeTimeZone] = None
-    # The date and time that the follow up is to be finished. Note: To set the due date, you must also specify the startDateTime; otherwise, you will get a 400 Bad Request response.
+    # The date and time that the follow-up is to be finished. Note: To set the due date, you must also specify the startDateTime; otherwise, you get a 400 Bad Request response.
     due_date_time: Optional[DateTimeTimeZone] = None
     # The status for follow-up for an item. Possible values are notFlagged, complete, and flagged.
     flag_status: Optional[FollowupFlagStatus] = None

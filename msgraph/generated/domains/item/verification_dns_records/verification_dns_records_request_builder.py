@@ -134,7 +134,7 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return VerificationDnsRecordsRequestBuilder(raw_url, self.request_adapter)
+        return VerificationDnsRecordsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

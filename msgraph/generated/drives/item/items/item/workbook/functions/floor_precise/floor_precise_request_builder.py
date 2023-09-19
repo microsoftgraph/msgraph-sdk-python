@@ -79,7 +79,7 @@ class Floor_PreciseRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return Floor_PreciseRequestBuilder(raw_url, self.request_adapter)
+        return Floor_PreciseRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

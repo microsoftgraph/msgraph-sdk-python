@@ -23,7 +23,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # A filter to define a matching criteria. The key should start with the specified prefix to be returned in the response. Optional.
     prefix_filter: Optional[str] = None
-    # Specifies the manual ranges to compute the aggregations. This is only valid for non-string refiners of date or numeric type. Optional.
+    # Specifies the manual ranges to compute the aggregations. This is only valid for nonstring refiners of date or numeric type. Optional.
     ranges: Optional[List[BucketAggregationRange]] = None
     # The sortBy property
     sort_by: Optional[BucketAggregationSortProperty] = None

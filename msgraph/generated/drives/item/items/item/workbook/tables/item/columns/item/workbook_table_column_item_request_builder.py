@@ -158,7 +158,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return WorkbookTableColumnItemRequestBuilder(raw_url, self.request_adapter)
+        return WorkbookTableColumnItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def data_body_range(self) -> DataBodyRangeRequestBuilder:

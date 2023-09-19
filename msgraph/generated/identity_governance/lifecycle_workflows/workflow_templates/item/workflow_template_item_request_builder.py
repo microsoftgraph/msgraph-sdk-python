@@ -74,7 +74,7 @@ class WorkflowTemplateItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return WorkflowTemplateItemRequestBuilder(raw_url, self.request_adapter)
+        return WorkflowTemplateItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def tasks(self) -> TasksRequestBuilder:

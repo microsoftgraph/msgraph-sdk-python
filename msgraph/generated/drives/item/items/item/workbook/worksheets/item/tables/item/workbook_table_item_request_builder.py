@@ -161,7 +161,7 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return WorkbookTableItemRequestBuilder(raw_url, self.request_adapter)
+        return WorkbookTableItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def clear_filters(self) -> ClearFiltersRequestBuilder:

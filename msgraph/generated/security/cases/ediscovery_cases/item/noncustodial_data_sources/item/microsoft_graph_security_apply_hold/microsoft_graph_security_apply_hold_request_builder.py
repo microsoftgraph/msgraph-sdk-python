@@ -27,7 +27,7 @@ class MicrosoftGraphSecurityApplyHoldRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityApplyHoldRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Start the process of applying hold on eDiscovery non-custodial data sources. After the operation is created, you can get the status by retrieving the Location parameter from the response headers. The location provides a URL that will return an eDiscoveryHoldOperation object.
+        Start the process of applying hold on eDiscovery non-custodial data sources. After the operation is created, you can get the status by retrieving the Location parameter from the response headers. The location provides a URL that returns an eDiscoveryHoldOperation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverynoncustodialdatasource-applyhold?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class MicrosoftGraphSecurityApplyHoldRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityApplyHoldRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Start the process of applying hold on eDiscovery non-custodial data sources. After the operation is created, you can get the status by retrieving the Location parameter from the response headers. The location provides a URL that will return an eDiscoveryHoldOperation object.
+        Start the process of applying hold on eDiscovery non-custodial data sources. After the operation is created, you can get the status by retrieving the Location parameter from the response headers. The location provides a URL that returns an eDiscoveryHoldOperation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -68,7 +68,7 @@ class MicrosoftGraphSecurityApplyHoldRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return MicrosoftGraphSecurityApplyHoldRequestBuilder(raw_url, self.request_adapter)
+        return MicrosoftGraphSecurityApplyHoldRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

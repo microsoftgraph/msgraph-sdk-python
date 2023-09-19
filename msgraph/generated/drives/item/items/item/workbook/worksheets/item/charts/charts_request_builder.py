@@ -51,7 +51,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         Retrieve a list of chart objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/worksheet-list-charts?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/chart-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -162,7 +162,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ChartsRequestBuilder(raw_url, self.request_adapter)
+        return ChartsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def add(self) -> AddRequestBuilder:

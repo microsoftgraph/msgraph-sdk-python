@@ -154,7 +154,7 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DocumentSetVersionItemRequestBuilder(raw_url, self.request_adapter)
+        return DocumentSetVersionItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def fields(self) -> FieldsRequestBuilder:

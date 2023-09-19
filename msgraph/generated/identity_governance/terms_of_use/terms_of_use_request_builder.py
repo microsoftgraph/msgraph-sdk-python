@@ -152,7 +152,7 @@ class TermsOfUseRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TermsOfUseRequestBuilder(raw_url, self.request_adapter)
+        return TermsOfUseRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def agreement_acceptances(self) -> AgreementAcceptancesRequestBuilder:

@@ -21,19 +21,19 @@ class AccessReviewHistoryDefinition(Entity):
     created_by: Optional[UserIdentity] = None
     # Timestamp when the access review definition was created.
     created_date_time: Optional[datetime.datetime] = None
-    # Determines which review decisions will be included in the fetched review history data if specified. Optional on create. All decisions will be included by default if no decisions are provided on create. Possible values are: approve, deny, dontKnow, notReviewed, and notNotified.
+    # Determines which review decisions will be included in the fetched review history data if specified. Optional on create. All decisions are included by default if no decisions are provided on create. Possible values are: approve, deny, dontKnow, notReviewed, and notNotified.
     decisions: Optional[List[AccessReviewHistoryDecisionFilter]] = None
     # Name for the access review history data collection. Required.
     display_name: Optional[str] = None
-    # If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
+    # If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that doesn't recur will have exactly one instance.
     instances: Optional[List[AccessReviewHistoryInstance]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # A timestamp. Reviews ending on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
+    # A timestamp. Reviews ending on or before this date will be included in the fetched history data. Only required if scheduleSettings isn't defined.
     review_history_period_end_date_time: Optional[datetime.datetime] = None
-    # A timestamp. Reviews starting on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
+    # A timestamp. Reviews starting on or before this date will be included in the fetched history data. Only required if scheduleSettings isn't defined.
     review_history_period_start_date_time: Optional[datetime.datetime] = None
-    # The settings for a recurring access review history definition series. Only required if reviewHistoryPeriodStartDateTime or reviewHistoryPeriodEndDateTime are not defined. Not supported yet.
+    # The settings for a recurring access review history definition series. Only required if reviewHistoryPeriodStartDateTime or reviewHistoryPeriodEndDateTime aren't defined. Not supported yet.
     schedule_settings: Optional[AccessReviewHistoryScheduleSettings] = None
     # Used to scope what reviews are included in the fetched history data. Fetches reviews whose scope matches with this provided scope. Required.
     scopes: Optional[List[AccessReviewScope]] = None

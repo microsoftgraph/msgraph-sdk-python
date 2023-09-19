@@ -155,7 +155,7 @@ class RemoteAssistancePartnerItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return RemoteAssistancePartnerItemRequestBuilder(raw_url, self.request_adapter)
+        return RemoteAssistancePartnerItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def begin_onboarding(self) -> BeginOnboardingRequestBuilder:

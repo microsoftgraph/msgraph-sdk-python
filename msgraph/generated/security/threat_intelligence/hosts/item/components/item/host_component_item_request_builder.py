@@ -72,7 +72,7 @@ class HostComponentItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return HostComponentItemRequestBuilder(raw_url, self.request_adapter)
+        return HostComponentItemRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class HostComponentItemRequestBuilderGetQueryParameters():

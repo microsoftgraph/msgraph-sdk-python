@@ -164,7 +164,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AssignmentsRequestBuilder(raw_url, self.request_adapter)
+        return AssignmentsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def additional_access(self) -> AdditionalAccessRequestBuilder:

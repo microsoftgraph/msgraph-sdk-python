@@ -16,9 +16,9 @@ class DirectRoutingLogRow(AdditionalDataHolder, BackedModel, Parsable):
     call_end_sub_reason: Optional[int] = None
     # Call type and direction.
     call_type: Optional[str] = None
-    # Number of the user or bot who received the call. E.164 format, but may include additional data.
+    # Number of the user or bot who received the call. E.164 format, but may include other data.
     callee_number: Optional[str] = None
-    # Number of the user or bot who made the call. E.164 format, but may include additional data.
+    # Number of the user or bot who made the call. E.164 format, but may include other data.
     caller_number: Optional[str] = None
     # Identifier for the call that you can use when calling Microsoft Support. GUID.
     correlation_id: Optional[str] = None
@@ -28,7 +28,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, BackedModel, Parsable):
     end_date_time: Optional[datetime.datetime] = None
     # Only exists for failed (not fully established) calls.
     failure_date_time: Optional[datetime.datetime] = None
-    # The code with which the call ended, RFC 3261.
+    # The code with which the call ended, see RFC 3261.
     final_sip_code: Optional[int] = None
     # Description of the SIP code and Microsoft subcode.
     final_sip_code_phrase: Optional[str] = None
@@ -38,11 +38,11 @@ class DirectRoutingLogRow(AdditionalDataHolder, BackedModel, Parsable):
     invite_date_time: Optional[datetime.datetime] = None
     # Indicates if the trunk was enabled for media bypass or not.
     media_bypass_enabled: Optional[bool] = None
-    # The datacenter used for media path in non-bypass call.
+    # The datacenter used for media path in nonbypass call.
     media_path_location: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The datacenter used for signaling for both bypass and non-bypass calls.
+    # The datacenter used for signaling for both bypass and nonbypass calls.
     signaling_location: Optional[str] = None
     # Call start time.For failed and unanswered calls, this can be equal to invite or failure time.
     start_date_time: Optional[datetime.datetime] = None

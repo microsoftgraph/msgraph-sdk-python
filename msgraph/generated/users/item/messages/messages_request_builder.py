@@ -49,7 +49,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
         The messages in a mailbox or folder. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MessageCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -136,7 +136,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return MessagesRequestBuilder(raw_url, self.request_adapter)
+        return MessagesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

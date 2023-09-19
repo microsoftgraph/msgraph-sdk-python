@@ -154,7 +154,7 @@ class SynchronizationRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return SynchronizationRequestBuilder(raw_url, self.request_adapter)
+        return SynchronizationRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def acquire_access_token(self) -> AcquireAccessTokenRequestBuilder:

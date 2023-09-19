@@ -153,7 +153,7 @@ class SetItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return SetItemRequestBuilder(raw_url, self.request_adapter)
+        return SetItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def children(self) -> ChildrenRequestBuilder:

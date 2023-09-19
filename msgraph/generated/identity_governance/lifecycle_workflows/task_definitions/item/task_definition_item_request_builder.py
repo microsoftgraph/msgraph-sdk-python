@@ -73,7 +73,7 @@ class TaskDefinitionItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TaskDefinitionItemRequestBuilder(raw_url, self.request_adapter)
+        return TaskDefinitionItemRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class TaskDefinitionItemRequestBuilderGetQueryParameters():

@@ -18,7 +18,7 @@ class IdentityUserFlowAttribute(Entity):
     data_type: Optional[IdentityUserFlowAttributeDataType] = None
     # The description of the user flow attribute that's shown to the user at the time of sign-up.
     description: Optional[str] = None
-    # The display name of the user flow attribute.
+    # The display name of the user flow attribute.  Supports $filter (eq, ne).
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

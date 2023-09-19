@@ -14,7 +14,7 @@ from .entity import Entity
 
 @dataclass
 class WorkbookRange(Entity):
-    # Represents the range reference in A1-style. Address value will contain the Sheet reference (e.g. Sheet1!A1:B4). Read-only.
+    # Represents the range reference in A1-style. Address value contains the Sheet reference (for example, Sheet1!A1:B4). Read-only.
     address: Optional[str] = None
     # Represents range reference for the specified range in the language of the user. Read-only.
     address_local: Optional[str] = None
@@ -48,11 +48,11 @@ class WorkbookRange(Entity):
     row_index: Optional[int] = None
     # The worksheet containing the current range. Read-only.
     sort: Optional[WorkbookRangeSort] = None
-    # Text values of the specified range. The Text value will not depend on the cell width. The # sign substitution that happens in Excel UI will not affect the text value returned by the API. Read-only.
+    # Text values of the specified range. The Text value won't depend on the cell width. The # sign substitution that happens in Excel UI won't affect the text value returned by the API. Read-only.
     text: Optional[Json] = None
     # Represents the type of data of each cell. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error. Read-only.
     value_types: Optional[Json] = None
-    # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
+    # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contains an error returns the error string.
     values: Optional[Json] = None
     # The worksheet containing the current range. Read-only.
     worksheet: Optional[WorkbookWorksheet] = None

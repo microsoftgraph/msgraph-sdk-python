@@ -72,7 +72,7 @@ class GetCompatibleHubContentTypesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return GetCompatibleHubContentTypesRequestBuilder(raw_url, self.request_adapter)
+        return GetCompatibleHubContentTypesRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class GetCompatibleHubContentTypesRequestBuilderGetQueryParameters():

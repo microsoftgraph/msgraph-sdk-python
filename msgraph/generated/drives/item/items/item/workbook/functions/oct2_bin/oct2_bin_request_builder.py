@@ -79,7 +79,7 @@ class Oct2BinRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return Oct2BinRequestBuilder(raw_url, self.request_adapter)
+        return Oct2BinRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

@@ -29,10 +29,10 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RoleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a deviceAndAppManagementRoleDefinition.
+        Deletes a roleDefinition.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-deviceandappmanagementroledefinition-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-roledefinition-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +49,10 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RoleDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[RoleDefinition]:
         """
-        Read properties and relationships of the roleDefinition object.
+        Read properties and relationships of the deviceAndAppManagementRoleDefinition object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-roledefinition-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-deviceandappmanagementroledefinition-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -96,7 +96,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RoleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceAndAppManagementRoleDefinition.
+        Deletes a roleDefinition.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RoleDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the roleDefinition object.
+        Read properties and relationships of the deviceAndAppManagementRoleDefinition object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -154,7 +154,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return RoleDefinitionItemRequestBuilder(raw_url, self.request_adapter)
+        return RoleDefinitionItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def role_assignments(self) -> RoleAssignmentsRequestBuilder:
@@ -178,7 +178,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the roleDefinition object.
+        Read properties and relationships of the deviceAndAppManagementRoleDefinition object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

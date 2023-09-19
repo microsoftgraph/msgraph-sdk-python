@@ -68,7 +68,7 @@ class ClearUserPreferredPresenceRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ClearUserPreferredPresenceRequestBuilder(raw_url, self.request_adapter)
+        return ClearUserPreferredPresenceRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

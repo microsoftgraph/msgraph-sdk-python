@@ -152,7 +152,7 @@ class FileRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return FileRequestBuilder(raw_url, self.request_adapter)
+        return FileRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def localizations(self) -> LocalizationsRequestBuilder:

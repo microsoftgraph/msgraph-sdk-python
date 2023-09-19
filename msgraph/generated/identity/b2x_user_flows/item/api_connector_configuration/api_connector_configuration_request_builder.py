@@ -74,7 +74,7 @@ class ApiConnectorConfigurationRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ApiConnectorConfigurationRequestBuilder(raw_url, self.request_adapter)
+        return ApiConnectorConfigurationRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def post_attribute_collection(self) -> PostAttributeCollectionRequestBuilder:

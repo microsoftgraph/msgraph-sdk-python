@@ -153,7 +153,7 @@ class AuthenticationMethodsPolicyRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AuthenticationMethodsPolicyRequestBuilder(raw_url, self.request_adapter)
+        return AuthenticationMethodsPolicyRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def authentication_method_configurations(self) -> AuthenticationMethodConfigurationsRequestBuilder:

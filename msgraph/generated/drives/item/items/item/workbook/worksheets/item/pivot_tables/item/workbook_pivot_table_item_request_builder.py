@@ -153,7 +153,7 @@ class WorkbookPivotTableItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return WorkbookPivotTableItemRequestBuilder(raw_url, self.request_adapter)
+        return WorkbookPivotTableItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def refresh(self) -> RefreshRequestBuilder:

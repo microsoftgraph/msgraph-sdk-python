@@ -153,7 +153,7 @@ class UserFlowLanguageConfigurationItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return UserFlowLanguageConfigurationItemRequestBuilder(raw_url, self.request_adapter)
+        return UserFlowLanguageConfigurationItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def default_pages(self) -> DefaultPagesRequestBuilder:

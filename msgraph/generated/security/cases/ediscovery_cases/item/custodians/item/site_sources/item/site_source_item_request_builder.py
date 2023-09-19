@@ -151,7 +151,7 @@ class SiteSourceItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return SiteSourceItemRequestBuilder(raw_url, self.request_adapter)
+        return SiteSourceItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def site(self) -> SiteRequestBuilder:

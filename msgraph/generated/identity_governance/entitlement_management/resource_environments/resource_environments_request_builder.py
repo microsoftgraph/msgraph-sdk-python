@@ -134,7 +134,7 @@ class ResourceEnvironmentsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ResourceEnvironmentsRequestBuilder(raw_url, self.request_adapter)
+        return ResourceEnvironmentsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

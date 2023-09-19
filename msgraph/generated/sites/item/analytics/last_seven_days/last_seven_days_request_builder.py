@@ -72,7 +72,7 @@ class LastSevenDaysRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return LastSevenDaysRequestBuilder(raw_url, self.request_adapter)
+        return LastSevenDaysRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class LastSevenDaysRequestBuilderGetQueryParameters():

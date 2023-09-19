@@ -72,7 +72,7 @@ class GraphAdministrativeUnitRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return GraphAdministrativeUnitRequestBuilder(raw_url, self.request_adapter)
+        return GraphAdministrativeUnitRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class GraphAdministrativeUnitRequestBuilderGetQueryParameters():

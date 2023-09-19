@@ -72,7 +72,7 @@ class DeviceBootPerformanceMetricsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DeviceBootPerformanceMetricsRequestBuilder(raw_url, self.request_adapter)
+        return DeviceBootPerformanceMetricsRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class DeviceBootPerformanceMetricsRequestBuilderGetQueryParameters():

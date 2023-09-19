@@ -137,7 +137,7 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return UserAttributeAssignmentsRequestBuilder(raw_url, self.request_adapter)
+        return UserAttributeAssignmentsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

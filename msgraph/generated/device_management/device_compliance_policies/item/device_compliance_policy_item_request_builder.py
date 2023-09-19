@@ -37,10 +37,10 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a androidCompliancePolicy.
+        Deletes a macOSCompliancePolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-androidcompliancepolicy-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-macoscompliancepolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -57,10 +57,10 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicy]:
         """
-        Read properties and relationships of the iosCompliancePolicy object.
+        Read properties and relationships of the androidWorkProfileCompliancePolicy object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-ioscompliancepolicy-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-androidworkprofilecompliancepolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -104,7 +104,7 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a androidCompliancePolicy.
+        Deletes a macOSCompliancePolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -119,7 +119,7 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the iosCompliancePolicy object.
+        Read properties and relationships of the androidWorkProfileCompliancePolicy object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -162,7 +162,7 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DeviceCompliancePolicyItemRequestBuilder(raw_url, self.request_adapter)
+        return DeviceCompliancePolicyItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def assign(self) -> AssignRequestBuilder:
@@ -258,7 +258,7 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCompliancePolicyItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the iosCompliancePolicy object.
+        Read properties and relationships of the androidWorkProfileCompliancePolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

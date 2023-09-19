@@ -72,7 +72,7 @@ class TeamsAppDefinitionRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TeamsAppDefinitionRequestBuilder(raw_url, self.request_adapter)
+        return TeamsAppDefinitionRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class TeamsAppDefinitionRequestBuilderGetQueryParameters():

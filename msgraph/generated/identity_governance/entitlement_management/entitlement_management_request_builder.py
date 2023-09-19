@@ -162,7 +162,7 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return EntitlementManagementRequestBuilder(raw_url, self.request_adapter)
+        return EntitlementManagementRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def access_package_assignment_approvals(self) -> AccessPackageAssignmentApprovalsRequestBuilder:

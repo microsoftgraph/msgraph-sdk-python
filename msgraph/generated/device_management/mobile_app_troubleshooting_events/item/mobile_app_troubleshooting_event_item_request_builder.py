@@ -154,7 +154,7 @@ class MobileAppTroubleshootingEventItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return MobileAppTroubleshootingEventItemRequestBuilder(raw_url, self.request_adapter)
+        return MobileAppTroubleshootingEventItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def app_log_collection_requests(self) -> AppLogCollectionRequestsRequestBuilder:

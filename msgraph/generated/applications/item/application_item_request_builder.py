@@ -174,7 +174,7 @@ class ApplicationItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ApplicationItemRequestBuilder(raw_url, self.request_adapter)
+        return ApplicationItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def add_key(self) -> AddKeyRequestBuilder:

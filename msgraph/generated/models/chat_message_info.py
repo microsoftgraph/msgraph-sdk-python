@@ -15,11 +15,11 @@ from .entity import Entity
 
 @dataclass
 class ChatMessageInfo(Entity):
-    # Body of the chatMessage. This will still contain markers for @mentions and attachments even though the object does not return @mentions and attachments.
+    # Body of the chatMessage. This will still contain markers for @mentions and attachments even though the object doesn't return @mentions and attachments.
     body: Optional[ItemBody] = None
     # Date time object representing the time at which message was created.
     created_date_time: Optional[datetime.datetime] = None
-    # Read-only.  If present, represents details of an event that happened in a chat, a channel, or a team, for example, members were added, and so on. For event messages, the messageType property will be set to systemEventMessage.
+    # Read-only.  If present, represents details of an event that happened in a chat, a channel, or a team, for example, members were added, and so on. For event messages, the messageType property is set to systemEventMessage.
     event_detail: Optional[EventMessageDetail] = None
     # Information about the sender of the message.
     from_: Optional[ChatMessageFromIdentitySet] = None

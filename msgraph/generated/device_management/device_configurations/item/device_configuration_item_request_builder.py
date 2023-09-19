@@ -36,10 +36,10 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a windows10TeamGeneralConfiguration.
+        Deletes a windowsDefenderAdvancedThreatProtectionConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10teamgeneralconfiguration-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windowsdefenderadvancedthreatprotectionconfiguration-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -56,10 +56,10 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Read properties and relationships of the windows10EndpointProtectionConfiguration object.
+        Read properties and relationships of the appleDeviceFeaturesConfigurationBase object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10endpointprotectionconfiguration-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-appledevicefeaturesconfigurationbase-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -115,7 +115,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a windows10TeamGeneralConfiguration.
+        Deletes a windowsDefenderAdvancedThreatProtectionConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -130,7 +130,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the windows10EndpointProtectionConfiguration object.
+        Read properties and relationships of the appleDeviceFeaturesConfigurationBase object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -173,7 +173,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DeviceConfigurationItemRequestBuilder(raw_url, self.request_adapter)
+        return DeviceConfigurationItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def assign(self) -> AssignRequestBuilder:
@@ -251,7 +251,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the windows10EndpointProtectionConfiguration object.
+        Read properties and relationships of the appleDeviceFeaturesConfigurationBase object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -72,7 +72,7 @@ class ParentSectionGroupRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ParentSectionGroupRequestBuilder(raw_url, self.request_adapter)
+        return ParentSectionGroupRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class ParentSectionGroupRequestBuilderGetQueryParameters():

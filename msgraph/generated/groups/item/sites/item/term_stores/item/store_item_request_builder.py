@@ -152,7 +152,7 @@ class StoreItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return StoreItemRequestBuilder(raw_url, self.request_adapter)
+        return StoreItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def groups(self) -> GroupsRequestBuilder:

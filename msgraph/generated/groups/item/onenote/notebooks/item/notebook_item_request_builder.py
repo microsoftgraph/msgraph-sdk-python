@@ -154,7 +154,7 @@ class NotebookItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return NotebookItemRequestBuilder(raw_url, self.request_adapter)
+        return NotebookItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def copy_notebook(self) -> CopyNotebookRequestBuilder:

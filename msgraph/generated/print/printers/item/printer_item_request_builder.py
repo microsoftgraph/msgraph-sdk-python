@@ -158,7 +158,7 @@ class PrinterItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return PrinterItemRequestBuilder(raw_url, self.request_adapter)
+        return PrinterItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def connectors(self) -> ConnectorsRequestBuilder:

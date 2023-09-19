@@ -163,7 +163,7 @@ class ChatItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ChatItemRequestBuilder(raw_url, self.request_adapter)
+        return ChatItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def hide_for_user(self) -> HideForUserRequestBuilder:

@@ -160,7 +160,7 @@ class EdiscoveryCustodianItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return EdiscoveryCustodianItemRequestBuilder(raw_url, self.request_adapter)
+        return EdiscoveryCustodianItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def last_index_operation(self) -> LastIndexOperationRequestBuilder:

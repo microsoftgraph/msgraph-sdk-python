@@ -135,7 +135,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TimeOffReasonsRequestBuilder(raw_url, self.request_adapter)
+        return TimeOffReasonsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

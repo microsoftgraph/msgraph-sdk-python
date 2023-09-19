@@ -117,7 +117,7 @@ class AppCatalogsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AppCatalogsRequestBuilder(raw_url, self.request_adapter)
+        return AppCatalogsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def teams_apps(self) -> TeamsAppsRequestBuilder:

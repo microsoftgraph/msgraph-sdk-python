@@ -158,7 +158,7 @@ class ListRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ListRequestBuilder(raw_url, self.request_adapter)
+        return ListRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def columns(self) -> ColumnsRequestBuilder:

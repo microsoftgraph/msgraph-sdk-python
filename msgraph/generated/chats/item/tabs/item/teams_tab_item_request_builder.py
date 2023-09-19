@@ -154,7 +154,7 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TeamsTabItemRequestBuilder(raw_url, self.request_adapter)
+        return TeamsTabItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def teams_app(self) -> TeamsAppRequestBuilder:

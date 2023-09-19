@@ -154,7 +154,7 @@ class VppTokenItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return VppTokenItemRequestBuilder(raw_url, self.request_adapter)
+        return VppTokenItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def sync_licenses(self) -> SyncLicensesRequestBuilder:

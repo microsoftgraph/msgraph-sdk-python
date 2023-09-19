@@ -17,7 +17,7 @@ class ResultInfo(AdditionalDataHolder, BackedModel, Parsable):
     message: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The result sub-code.
+    # The result subcode.
     subcode: Optional[int] = None
     
     @staticmethod

@@ -11,13 +11,13 @@ from .entity import Entity
 
 @dataclass
 class DelegatedPermissionClassification(Entity):
-    # The classification value being given. Possible value: low. Does not support $filter.
+    # The classification value being given. Possible value: low. Doesn't support $filter.
     classification: Optional[PermissionClassificationType] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
+    # The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Doesn't support $filter.
     permission_id: Optional[str] = None
-    # The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
+    # The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Doesn't support $filter.
     permission_name: Optional[str] = None
     
     @staticmethod

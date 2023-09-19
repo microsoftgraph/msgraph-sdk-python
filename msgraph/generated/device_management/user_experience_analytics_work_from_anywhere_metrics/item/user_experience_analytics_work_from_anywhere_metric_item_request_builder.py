@@ -151,7 +151,7 @@ class UserExperienceAnalyticsWorkFromAnywhereMetricItemRequestBuilder(BaseReques
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return UserExperienceAnalyticsWorkFromAnywhereMetricItemRequestBuilder(raw_url, self.request_adapter)
+        return UserExperienceAnalyticsWorkFromAnywhereMetricItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def metric_devices(self) -> MetricDevicesRequestBuilder:

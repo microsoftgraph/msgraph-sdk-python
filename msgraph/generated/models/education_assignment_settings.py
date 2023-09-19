@@ -12,7 +12,7 @@ from .entity import Entity
 class EducationAssignmentSettings(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # Indicates whether turn-in celebration animation will be shown. A value of true indicates that the animation will not be shown. Default value is false.
+    # Indicates whether turn-in celebration animation is shown. A value of true indicates that the animation isn't shown. Default value is false.
     submission_animation_disabled: Optional[bool] = None
     
     @staticmethod

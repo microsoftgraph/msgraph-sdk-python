@@ -120,7 +120,7 @@ class TeamworkRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TeamworkRequestBuilder(raw_url, self.request_adapter)
+        return TeamworkRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def deleted_teams(self) -> DeletedTeamsRequestBuilder:

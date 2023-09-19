@@ -154,7 +154,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TokenLifetimePolicyItemRequestBuilder(raw_url, self.request_adapter)
+        return TokenLifetimePolicyItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def applies_to(self) -> AppliesToRequestBuilder:

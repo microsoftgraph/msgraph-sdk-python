@@ -134,7 +134,7 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ContentSharingSessionsRequestBuilder(raw_url, self.request_adapter)
+        return ContentSharingSessionsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

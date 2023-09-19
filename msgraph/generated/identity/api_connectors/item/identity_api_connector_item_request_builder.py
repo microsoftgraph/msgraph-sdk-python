@@ -154,7 +154,7 @@ class IdentityApiConnectorItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return IdentityApiConnectorItemRequestBuilder(raw_url, self.request_adapter)
+        return IdentityApiConnectorItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def upload_client_certificate(self) -> UploadClientCertificateRequestBuilder:

@@ -151,7 +151,7 @@ class UserExperienceAnalyticsAppHealthOverviewRequestBuilder(BaseRequestBuilder)
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return UserExperienceAnalyticsAppHealthOverviewRequestBuilder(raw_url, self.request_adapter)
+        return UserExperienceAnalyticsAppHealthOverviewRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def metric_values(self) -> MetricValuesRequestBuilder:

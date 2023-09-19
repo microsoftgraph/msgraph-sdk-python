@@ -153,7 +153,7 @@ class RelationItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return RelationItemRequestBuilder(raw_url, self.request_adapter)
+        return RelationItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def from_term(self) -> FromTermRequestBuilder:

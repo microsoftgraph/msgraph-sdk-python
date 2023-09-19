@@ -152,7 +152,7 @@ class ContactItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ContactItemRequestBuilder(raw_url, self.request_adapter)
+        return ContactItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def extensions(self) -> ExtensionsRequestBuilder:

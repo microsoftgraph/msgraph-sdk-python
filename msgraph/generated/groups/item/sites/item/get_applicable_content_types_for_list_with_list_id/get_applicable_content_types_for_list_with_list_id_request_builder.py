@@ -73,7 +73,7 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return GetApplicableContentTypesForListWithListIdRequestBuilder(raw_url, self.request_adapter)
+        return GetApplicableContentTypesForListWithListIdRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class GetApplicableContentTypesForListWithListIdRequestBuilderGetQueryParameters():

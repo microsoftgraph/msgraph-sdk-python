@@ -18,11 +18,11 @@ class AccessPackageSubject(Entity):
     display_name: Optional[str] = None
     # The email address of the subject.
     email: Optional[str] = None
-    # The object identifier of the subject. null if the subject is not yet a user in the tenant.
+    # The object identifier of the subject. null if the subject isn't yet a user in the tenant.
     object_id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # A string representation of the principal's security identifier, if known, or null if the subject does not have a security identifier.
+    # A string representation of the principal's security identifier, if known, or null if the subject doesn't have a security identifier.
     on_premises_security_identifier: Optional[str] = None
     # The principal name, if known, of the subject.
     principal_name: Optional[str] = None

@@ -19,7 +19,7 @@ class WebApplication(AdditionalDataHolder, BackedModel, Parsable):
     home_page_url: Optional[str] = None
     # Specifies whether this web application can request tokens using the OAuth 2.0 implicit flow.
     implicit_grant_settings: Optional[ImplicitGrantSettings] = None
-    # Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
+    # Specifies the URL that is used by Microsoft's authorization service to log out a user using front-channel, back-channel or SAML logout protocols.
     logout_url: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

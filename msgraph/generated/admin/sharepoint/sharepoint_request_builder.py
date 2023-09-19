@@ -151,7 +151,7 @@ class SharepointRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return SharepointRequestBuilder(raw_url, self.request_adapter)
+        return SharepointRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def settings(self) -> SettingsRequestBuilder:

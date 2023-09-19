@@ -14,15 +14,15 @@ from .entity import Entity
 class CalendarPermission(Entity):
     # List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
     allowed_roles: Optional[List[CalendarRoleType]] = None
-    # Represents a sharee or delegate who has access to the calendar. For the 'My Organization' sharee, the address property is null. Read-only.
+    # Represents a share recipient or delegate who has access to the calendar. For the 'My Organization' share recipient, the address property is null. Read-only.
     email_address: Optional[EmailAddress] = None
-    # True if the user in context (sharee or delegate) is inside the same organization as the calendar owner.
+    # True if the user in context (recipient or delegate) is inside the same organization as the calendar owner.
     is_inside_organization: Optional[bool] = None
-    # True if the user can be removed from the list of sharees or delegates for the specified calendar, false otherwise. The 'My organization' user determines the permissions other people within your organization have to the given calendar. You cannot remove 'My organization' as a sharee to a calendar.
+    # True if the user can be removed from the list of recipients or delegates for the specified calendar, false otherwise. The 'My organization' user determines the permissions other people within your organization have to the given calendar. You can't remove 'My organization' as a share recipient to a calendar.
     is_removable: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Current permission level of the calendar sharee or delegate.
+    # Current permission level of the calendar share recipient or delegate.
     role: Optional[CalendarRoleType] = None
     
     @staticmethod

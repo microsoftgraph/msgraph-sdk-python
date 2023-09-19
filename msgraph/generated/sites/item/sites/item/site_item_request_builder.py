@@ -72,7 +72,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return SiteItemRequestBuilder(raw_url, self.request_adapter)
+        return SiteItemRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class SiteItemRequestBuilderGetQueryParameters():

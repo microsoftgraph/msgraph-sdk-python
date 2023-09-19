@@ -135,7 +135,7 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return MessageRulesRequestBuilder(raw_url, self.request_adapter)
+        return MessageRulesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

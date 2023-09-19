@@ -151,7 +151,7 @@ class CustomExtensionStageSettingItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return CustomExtensionStageSettingItemRequestBuilder(raw_url, self.request_adapter)
+        return CustomExtensionStageSettingItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def custom_extension(self) -> CustomExtensionRequestBuilder:

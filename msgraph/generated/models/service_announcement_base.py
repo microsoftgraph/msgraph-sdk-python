@@ -14,7 +14,7 @@ from .entity import Entity
 
 @dataclass
 class ServiceAnnouncementBase(Entity):
-    # Additional details about service event. This property doesn't support filters.
+    # More details about service event. This property doesn't support filters.
     details: Optional[List[KeyValuePair]] = None
     # The end time of the service event.
     end_date_time: Optional[datetime.datetime] = None

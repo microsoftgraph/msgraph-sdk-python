@@ -79,7 +79,7 @@ class WorkDay_IntlRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return WorkDay_IntlRequestBuilder(raw_url, self.request_adapter)
+        return WorkDay_IntlRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

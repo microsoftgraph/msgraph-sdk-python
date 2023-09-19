@@ -154,7 +154,7 @@ class UnifiedRoleDefinitionItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return UnifiedRoleDefinitionItemRequestBuilder(raw_url, self.request_adapter)
+        return UnifiedRoleDefinitionItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def inherits_permissions_from(self) -> InheritsPermissionsFromRequestBuilder:

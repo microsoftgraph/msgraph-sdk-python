@@ -152,7 +152,7 @@ class SharedInsightItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return SharedInsightItemRequestBuilder(raw_url, self.request_adapter)
+        return SharedInsightItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def last_shared_method(self) -> LastSharedMethodRequestBuilder:

@@ -135,7 +135,7 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return CustomQuestionsRequestBuilder(raw_url, self.request_adapter)
+        return CustomQuestionsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

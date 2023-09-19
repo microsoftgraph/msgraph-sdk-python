@@ -152,7 +152,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return SynchronizationTemplateItemRequestBuilder(raw_url, self.request_adapter)
+        return SynchronizationTemplateItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def schema(self) -> SchemaRequestBuilder:

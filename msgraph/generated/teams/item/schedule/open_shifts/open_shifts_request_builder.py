@@ -135,7 +135,7 @@ class OpenShiftsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return OpenShiftsRequestBuilder(raw_url, self.request_adapter)
+        return OpenShiftsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

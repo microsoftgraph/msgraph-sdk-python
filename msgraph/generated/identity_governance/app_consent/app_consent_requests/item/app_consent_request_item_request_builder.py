@@ -152,7 +152,7 @@ class AppConsentRequestItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return AppConsentRequestItemRequestBuilder(raw_url, self.request_adapter)
+        return AppConsentRequestItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def user_consent_requests(self) -> UserConsentRequestsRequestBuilder:

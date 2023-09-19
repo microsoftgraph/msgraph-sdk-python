@@ -21,7 +21,7 @@ class AttributeMappingSource(AdditionalDataHolder, BackedModel, Parsable):
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # If this object represents a function, lists function parameters. Parameters consist of attributeMappingSource objects themselves, allowing for complex expressions. If type is not Function, this property will be null/empty array.
+    # If this object represents a function, lists function parameters. Parameters consist of attributeMappingSource objects themselves, allowing for complex expressions. If type isn't Function, this property is null/empty array.
     parameters: Optional[List[StringKeyAttributeMappingSourceValuePair]] = None
     # The type property
     type: Optional[AttributeMappingSourceType] = None

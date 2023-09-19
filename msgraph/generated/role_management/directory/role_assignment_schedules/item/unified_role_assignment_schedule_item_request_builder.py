@@ -156,7 +156,7 @@ class UnifiedRoleAssignmentScheduleItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return UnifiedRoleAssignmentScheduleItemRequestBuilder(raw_url, self.request_adapter)
+        return UnifiedRoleAssignmentScheduleItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def activated_using(self) -> ActivatedUsingRequestBuilder:

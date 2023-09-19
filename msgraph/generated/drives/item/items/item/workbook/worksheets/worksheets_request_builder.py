@@ -49,7 +49,7 @@ class WorksheetsRequestBuilder(BaseRequestBuilder):
         Retrieve a list of worksheet objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookWorksheetCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/workbook-list-worksheets?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/worksheet-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -135,7 +135,7 @@ class WorksheetsRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return WorksheetsRequestBuilder(raw_url, self.request_adapter)
+        return WorksheetsRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def add(self) -> AddRequestBuilder:

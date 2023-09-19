@@ -159,7 +159,7 @@ class EducationUserItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return EducationUserItemRequestBuilder(raw_url, self.request_adapter)
+        return EducationUserItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def assignments(self) -> AssignmentsRequestBuilder:

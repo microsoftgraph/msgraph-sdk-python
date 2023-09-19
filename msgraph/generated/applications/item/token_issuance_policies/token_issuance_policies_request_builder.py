@@ -90,7 +90,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TokenIssuancePoliciesRequestBuilder(raw_url, self.request_adapter)
+        return TokenIssuancePoliciesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:

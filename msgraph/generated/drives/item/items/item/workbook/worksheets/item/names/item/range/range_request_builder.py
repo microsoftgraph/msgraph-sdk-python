@@ -28,10 +28,10 @@ class RangeRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RangeRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookRange]:
         """
-        Returns the range object that is associated with the name. Throws an exception if the named item's type is not a range.
+        Retrieve the properties and relationships of range object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookRange]
-        Find more info here: https://learn.microsoft.com/graph/api/nameditem-range?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/range-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -50,7 +50,7 @@ class RangeRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RangeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns the range object that is associated with the name. Throws an exception if the named item's type is not a range.
+        Retrieve the properties and relationships of range object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -72,7 +72,7 @@ class RangeRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return RangeRequestBuilder(raw_url, self.request_adapter)
+        return RangeRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

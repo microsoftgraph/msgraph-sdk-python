@@ -151,7 +151,7 @@ class TodoRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TodoRequestBuilder(raw_url, self.request_adapter)
+        return TodoRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def lists(self) -> ListsRequestBuilder:

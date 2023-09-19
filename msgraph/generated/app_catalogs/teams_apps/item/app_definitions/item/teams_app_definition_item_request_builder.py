@@ -152,7 +152,7 @@ class TeamsAppDefinitionItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return TeamsAppDefinitionItemRequestBuilder(raw_url, self.request_adapter)
+        return TeamsAppDefinitionItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def bot(self) -> BotRequestBuilder:

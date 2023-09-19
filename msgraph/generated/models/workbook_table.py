@@ -20,7 +20,7 @@ class WorkbookTable(Entity):
     highlight_first_column: Optional[bool] = None
     # Indicates whether the last column contains special formatting.
     highlight_last_column: Optional[bool] = None
-    # Legacy Id used in older Excle clients. The value of the identifier remains the same even when the table is renamed. This property should be interpreted as an opaque string value and should not be parsed to any other type. Read-only.
+    # Legacy ID used in older Excel clients. The value of the identifier remains the same even when the table is renamed. This property should be interpreted as an opaque string value and shouldn't be parsed to any other type. Read-only.
     legacy_id: Optional[str] = None
     # Name of the table.
     name: Optional[str] = None
@@ -40,7 +40,7 @@ class WorkbookTable(Entity):
     show_totals: Optional[bool] = None
     # Represents the sorting for the table. Read-only.
     sort: Optional[WorkbookTableSort] = None
-    # Constant value that represents the Table style. The possible values are: TableStyleLight1 thru TableStyleLight21, TableStyleMedium1 thru TableStyleMedium28, TableStyleStyleDark1 thru TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
+    # Constant value that represents the Table style. The possible values are: TableStyleLight1 through TableStyleLight21, TableStyleMedium1 through TableStyleMedium28, TableStyleStyleDark1 through TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
     style: Optional[str] = None
     # The worksheet containing the current table. Read-only.
     worksheet: Optional[WorkbookWorksheet] = None

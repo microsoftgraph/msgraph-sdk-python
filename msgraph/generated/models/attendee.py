@@ -14,7 +14,7 @@ from .attendee_base import AttendeeBase
 class Attendee(AttendeeBase):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.attendee"
-    # An alternate date/time proposed by the attendee for a meeting request to start and end. If the attendee hasn't proposed another time, then this property is not included in a response of a GET event.
+    # An alternate date/time proposed by the attendee for a meeting request to start and end. If the attendee hasn't proposed another time, then this property isn't included in a response of a GET event.
     proposed_new_time: Optional[TimeSlot] = None
     # The attendee's response (none, accepted, declined, etc.) for the event and date-time that the response was sent.
     status: Optional[ResponseStatus] = None

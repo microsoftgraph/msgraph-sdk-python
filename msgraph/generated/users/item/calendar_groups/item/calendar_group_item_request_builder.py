@@ -154,7 +154,7 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return CalendarGroupItemRequestBuilder(raw_url, self.request_adapter)
+        return CalendarGroupItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def calendars(self) -> CalendarsRequestBuilder:

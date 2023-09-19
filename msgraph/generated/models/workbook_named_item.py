@@ -22,7 +22,7 @@ class WorkbookNamedItem(Entity):
     scope: Optional[str] = None
     # Indicates what type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.
     type: Optional[str] = None
-    # Represents the formula that the name is defined to refer to. E.g. =Sheet14!$B$2:$H$12, =4.75, etc. Read-only.
+    # Represents the formula that the name is defined to refer to. for example, =Sheet14!$B$2:$H$12, =4.75, etc. Read-only.
     value: Optional[Json] = None
     # Specifies whether the object is visible or not.
     visible: Optional[bool] = None

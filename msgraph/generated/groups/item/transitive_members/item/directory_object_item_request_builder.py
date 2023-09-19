@@ -78,7 +78,7 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DirectoryObjectItemRequestBuilder(raw_url, self.request_adapter)
+        return DirectoryObjectItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def graph_application(self) -> GraphApplicationRequestBuilder:

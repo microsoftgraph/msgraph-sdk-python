@@ -73,7 +73,7 @@ class LastModifiedByUserRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return LastModifiedByUserRequestBuilder(raw_url, self.request_adapter)
+        return LastModifiedByUserRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def mailbox_settings(self) -> MailboxSettingsRequestBuilder:

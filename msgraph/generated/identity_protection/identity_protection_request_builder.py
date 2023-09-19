@@ -120,7 +120,7 @@ class IdentityProtectionRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return IdentityProtectionRequestBuilder(raw_url, self.request_adapter)
+        return IdentityProtectionRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def risk_detections(self) -> RiskDetectionsRequestBuilder:

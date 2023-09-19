@@ -45,10 +45,10 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceCompliancePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyCollectionResponse]:
         """
-        List properties and relationships of the windows10MobileCompliancePolicy objects.
+        List properties and relationships of the deviceCompliancePolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10mobilecompliancepolicy-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancepolicy-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +67,11 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceCompliancePolicy]:
         """
-        Create a new windowsPhone81CompliancePolicy object.
+        Create a new androidWorkProfileCompliancePolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windowsphone81compliancepolicy-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-androidworkprofilecompliancepolicy-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +92,7 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the windows10MobileCompliancePolicy objects.
+        List properties and relationships of the deviceCompliancePolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new windowsPhone81CompliancePolicy object.
+        Create a new androidWorkProfileCompliancePolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,7 +135,7 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DeviceCompliancePoliciesRequestBuilder(raw_url, self.request_adapter)
+        return DeviceCompliancePoliciesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -149,7 +149,7 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCompliancePoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windows10MobileCompliancePolicy objects.
+        List properties and relationships of the deviceCompliancePolicy objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

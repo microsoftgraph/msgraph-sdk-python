@@ -151,7 +151,7 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ServiceHealthIssueItemRequestBuilder(raw_url, self.request_adapter)
+        return ServiceHealthIssueItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def incident_report(self) -> IncidentReportRequestBuilder:

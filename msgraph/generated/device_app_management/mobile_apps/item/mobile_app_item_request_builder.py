@@ -15,8 +15,22 @@ if TYPE_CHECKING:
     from .assign.assign_request_builder import AssignRequestBuilder
     from .assignments.assignments_request_builder import AssignmentsRequestBuilder
     from .categories.categories_request_builder import CategoriesRequestBuilder
+    from .graph_android_lob_app.graph_android_lob_app_request_builder import GraphAndroidLobAppRequestBuilder
+    from .graph_android_store_app.graph_android_store_app_request_builder import GraphAndroidStoreAppRequestBuilder
+    from .graph_ios_lob_app.graph_ios_lob_app_request_builder import GraphIosLobAppRequestBuilder
+    from .graph_ios_store_app.graph_ios_store_app_request_builder import GraphIosStoreAppRequestBuilder
+    from .graph_ios_vpp_app.graph_ios_vpp_app_request_builder import GraphIosVppAppRequestBuilder
+    from .graph_mac_o_s_dmg_app.graph_mac_o_s_dmg_app_request_builder import GraphMacOSDmgAppRequestBuilder
+    from .graph_mac_o_s_lob_app.graph_mac_o_s_lob_app_request_builder import GraphMacOSLobAppRequestBuilder
+    from .graph_managed_android_lob_app.graph_managed_android_lob_app_request_builder import GraphManagedAndroidLobAppRequestBuilder
+    from .graph_managed_i_o_s_lob_app.graph_managed_i_o_s_lob_app_request_builder import GraphManagedIOSLobAppRequestBuilder
     from .graph_managed_mobile_lob_app.graph_managed_mobile_lob_app_request_builder import GraphManagedMobileLobAppRequestBuilder
-    from .graph_mobile_lob_app.graph_mobile_lob_app_request_builder import GraphMobileLobAppRequestBuilder
+    from .graph_microsoft_store_for_business_app.graph_microsoft_store_for_business_app_request_builder import GraphMicrosoftStoreForBusinessAppRequestBuilder
+    from .graph_win32_lob_app.graph_win32_lob_app_request_builder import GraphWin32LobAppRequestBuilder
+    from .graph_windows_app_x.graph_windows_app_x_request_builder import GraphWindowsAppXRequestBuilder
+    from .graph_windows_mobile_m_s_i.graph_windows_mobile_m_s_i_request_builder import GraphWindowsMobileMSIRequestBuilder
+    from .graph_windows_universal_app_x.graph_windows_universal_app_x_request_builder import GraphWindowsUniversalAppXRequestBuilder
+    from .graph_windows_web_app.graph_windows_web_app_request_builder import GraphWindowsWebAppRequestBuilder
 
 class MobileAppItemRequestBuilder(BaseRequestBuilder):
     """
@@ -33,10 +47,10 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[MobileAppItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a iosiPadOSWebClip.
+        Deletes a managedIOSStoreApp.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-iosipadoswebclip-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-managediosstoreapp-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,10 +67,10 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MobileAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileApp]:
         """
-        Read properties and relationships of the windowsMicrosoftEdgeApp object.
+        Read properties and relationships of the iosVppApp object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-windowsmicrosoftedgeapp-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-iosvppapp-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -75,11 +89,11 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[MobileApp] = None, request_configuration: Optional[MobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MobileApp]:
         """
-        Update the properties of a win32LobApp object.
+        Update the properties of a managedIOSStoreApp object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-win32lobapp-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-managediosstoreapp-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -100,7 +114,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[MobileAppItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a iosiPadOSWebClip.
+        Deletes a managedIOSStoreApp.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +129,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the windowsMicrosoftEdgeApp object.
+        Read properties and relationships of the iosVppApp object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -132,7 +146,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[MobileApp] = None, request_configuration: Optional[MobileAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a win32LobApp object.
+        Update the properties of a managedIOSStoreApp object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -158,7 +172,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return MobileAppItemRequestBuilder(raw_url, self.request_adapter)
+        return MobileAppItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def assign(self) -> AssignRequestBuilder:
@@ -188,6 +202,87 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
         return CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def graph_android_lob_app(self) -> GraphAndroidLobAppRequestBuilder:
+        """
+        Casts the previous resource to androidLobApp.
+        """
+        from .graph_android_lob_app.graph_android_lob_app_request_builder import GraphAndroidLobAppRequestBuilder
+
+        return GraphAndroidLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_android_store_app(self) -> GraphAndroidStoreAppRequestBuilder:
+        """
+        Casts the previous resource to androidStoreApp.
+        """
+        from .graph_android_store_app.graph_android_store_app_request_builder import GraphAndroidStoreAppRequestBuilder
+
+        return GraphAndroidStoreAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_ios_lob_app(self) -> GraphIosLobAppRequestBuilder:
+        """
+        Casts the previous resource to iosLobApp.
+        """
+        from .graph_ios_lob_app.graph_ios_lob_app_request_builder import GraphIosLobAppRequestBuilder
+
+        return GraphIosLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_ios_store_app(self) -> GraphIosStoreAppRequestBuilder:
+        """
+        Casts the previous resource to iosStoreApp.
+        """
+        from .graph_ios_store_app.graph_ios_store_app_request_builder import GraphIosStoreAppRequestBuilder
+
+        return GraphIosStoreAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_ios_vpp_app(self) -> GraphIosVppAppRequestBuilder:
+        """
+        Casts the previous resource to iosVppApp.
+        """
+        from .graph_ios_vpp_app.graph_ios_vpp_app_request_builder import GraphIosVppAppRequestBuilder
+
+        return GraphIosVppAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_mac_o_s_dmg_app(self) -> GraphMacOSDmgAppRequestBuilder:
+        """
+        Casts the previous resource to macOSDmgApp.
+        """
+        from .graph_mac_o_s_dmg_app.graph_mac_o_s_dmg_app_request_builder import GraphMacOSDmgAppRequestBuilder
+
+        return GraphMacOSDmgAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_mac_o_s_lob_app(self) -> GraphMacOSLobAppRequestBuilder:
+        """
+        Casts the previous resource to macOSLobApp.
+        """
+        from .graph_mac_o_s_lob_app.graph_mac_o_s_lob_app_request_builder import GraphMacOSLobAppRequestBuilder
+
+        return GraphMacOSLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_managed_android_lob_app(self) -> GraphManagedAndroidLobAppRequestBuilder:
+        """
+        Casts the previous resource to managedAndroidLobApp.
+        """
+        from .graph_managed_android_lob_app.graph_managed_android_lob_app_request_builder import GraphManagedAndroidLobAppRequestBuilder
+
+        return GraphManagedAndroidLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_managed_i_o_s_lob_app(self) -> GraphManagedIOSLobAppRequestBuilder:
+        """
+        Casts the previous resource to managedIOSLobApp.
+        """
+        from .graph_managed_i_o_s_lob_app.graph_managed_i_o_s_lob_app_request_builder import GraphManagedIOSLobAppRequestBuilder
+
+        return GraphManagedIOSLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def graph_managed_mobile_lob_app(self) -> GraphManagedMobileLobAppRequestBuilder:
         """
         Casts the previous resource to managedMobileLobApp.
@@ -197,13 +292,58 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
         return GraphManagedMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def graph_mobile_lob_app(self) -> GraphMobileLobAppRequestBuilder:
+    def graph_microsoft_store_for_business_app(self) -> GraphMicrosoftStoreForBusinessAppRequestBuilder:
         """
-        Casts the previous resource to mobileLobApp.
+        Casts the previous resource to microsoftStoreForBusinessApp.
         """
-        from .graph_mobile_lob_app.graph_mobile_lob_app_request_builder import GraphMobileLobAppRequestBuilder
+        from .graph_microsoft_store_for_business_app.graph_microsoft_store_for_business_app_request_builder import GraphMicrosoftStoreForBusinessAppRequestBuilder
 
-        return GraphMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+        return GraphMicrosoftStoreForBusinessAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_win32_lob_app(self) -> GraphWin32LobAppRequestBuilder:
+        """
+        Casts the previous resource to win32LobApp.
+        """
+        from .graph_win32_lob_app.graph_win32_lob_app_request_builder import GraphWin32LobAppRequestBuilder
+
+        return GraphWin32LobAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_windows_app_x(self) -> GraphWindowsAppXRequestBuilder:
+        """
+        Casts the previous resource to windowsAppX.
+        """
+        from .graph_windows_app_x.graph_windows_app_x_request_builder import GraphWindowsAppXRequestBuilder
+
+        return GraphWindowsAppXRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_windows_mobile_m_s_i(self) -> GraphWindowsMobileMSIRequestBuilder:
+        """
+        Casts the previous resource to windowsMobileMSI.
+        """
+        from .graph_windows_mobile_m_s_i.graph_windows_mobile_m_s_i_request_builder import GraphWindowsMobileMSIRequestBuilder
+
+        return GraphWindowsMobileMSIRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_windows_universal_app_x(self) -> GraphWindowsUniversalAppXRequestBuilder:
+        """
+        Casts the previous resource to windowsUniversalAppX.
+        """
+        from .graph_windows_universal_app_x.graph_windows_universal_app_x_request_builder import GraphWindowsUniversalAppXRequestBuilder
+
+        return GraphWindowsUniversalAppXRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_windows_web_app(self) -> GraphWindowsWebAppRequestBuilder:
+        """
+        Casts the previous resource to windowsWebApp.
+        """
+        from .graph_windows_web_app.graph_windows_web_app_request_builder import GraphWindowsWebAppRequestBuilder
+
+        return GraphWindowsWebAppRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
@@ -218,7 +358,7 @@ class MobileAppItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the windowsMicrosoftEdgeApp object.
+        Read properties and relationships of the iosVppApp object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

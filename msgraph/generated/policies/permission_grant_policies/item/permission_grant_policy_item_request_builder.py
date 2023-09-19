@@ -155,7 +155,7 @@ class PermissionGrantPolicyItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return PermissionGrantPolicyItemRequestBuilder(raw_url, self.request_adapter)
+        return PermissionGrantPolicyItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def excludes(self) -> ExcludesRequestBuilder:

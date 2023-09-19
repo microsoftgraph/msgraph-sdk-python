@@ -49,10 +49,10 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OrganizationRequestBuilderGetRequestConfiguration] = None) -> Optional[OrganizationCollectionResponse]:
         """
-        Retrieve a list of organization objects.
+        List properties and relationships of the organization objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrganizationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/organization-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-organization-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -95,7 +95,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OrganizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of organization objects.
+        List properties and relationships of the organization objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return OrganizationRequestBuilder(raw_url, self.request_adapter)
+        return OrganizationRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:
@@ -188,7 +188,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OrganizationRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of organization objects.
+        List properties and relationships of the organization objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

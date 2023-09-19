@@ -155,7 +155,7 @@ class ResourceSpecificPermissionGrantItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ResourceSpecificPermissionGrantItemRequestBuilder(raw_url, self.request_adapter)
+        return ResourceSpecificPermissionGrantItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def check_member_groups(self) -> CheckMemberGroupsRequestBuilder:

@@ -72,7 +72,7 @@ class ResourceRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return ResourceRequestBuilder(raw_url, self.request_adapter)
+        return ResourceRequestBuilder(self.request_adapter, raw_url)
     
     @dataclass
     class ResourceRequestBuilderGetQueryParameters():

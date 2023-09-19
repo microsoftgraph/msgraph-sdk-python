@@ -163,7 +163,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return EventItemRequestBuilder(raw_url, self.request_adapter)
+        return EventItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def accept(self) -> AcceptRequestBuilder:

@@ -160,7 +160,7 @@ class EdiscoverySearchItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return EdiscoverySearchItemRequestBuilder(raw_url, self.request_adapter)
+        return EdiscoverySearchItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def additional_sources(self) -> AdditionalSourcesRequestBuilder:

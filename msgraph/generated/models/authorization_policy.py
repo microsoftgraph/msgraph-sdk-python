@@ -17,15 +17,15 @@ class AuthorizationPolicy(PolicyBase):
     odata_type: Optional[str] = "#microsoft.graph.authorizationPolicy"
     # Indicates whether a user can join the tenant by email validation.
     allow_email_verified_users_to_join_organization: Optional[bool] = None
-    # Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. For more details, see allowInvitesFrom values.
+    # Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. For more information, see allowInvitesFrom values.
     allow_invites_from: Optional[AllowInvitesFrom] = None
-    # Indicates whether user consent for risky apps is allowed. We recommend to keep this as false. Default value is false.
+    # Indicates whether user consent for risky apps is allowed. We recommend keeping allowUserConsentForRiskyApps as false. Default value is false.
     allow_user_consent_for_risky_apps: Optional[bool] = None
     # Indicates whether users can sign up for email based subscriptions.
     allowed_to_sign_up_email_based_subscriptions: Optional[bool] = None
     # Indicates whether users can use the Self-Serve Password Reset feature on the tenant.
     allowed_to_use_s_s_p_r: Optional[bool] = None
-    # To disable the use of MSOL PowerShell, set this property to true. This also disables user-based access to the legacy service endpoint used by MSOL PowerShell. This does not affect Azure Active Directory Connect or Microsoft Graph.
+    # To disable the use of MSOL PowerShell, set this property to true. This also disables user-based access to the legacy service endpoint used by MSOL PowerShell. This doesn't affect Azure Active Directory Connect or Microsoft Graph.
     block_msol_power_shell: Optional[bool] = None
     # The defaultUserRolePermissions property
     default_user_role_permissions: Optional[DefaultUserRolePermissions] = None

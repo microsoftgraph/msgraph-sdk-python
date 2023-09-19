@@ -154,7 +154,7 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(BaseRequestBui
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(raw_url, self.request_adapter)
+        return DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def device_compliance_setting_states(self) -> DeviceComplianceSettingStatesRequestBuilder:

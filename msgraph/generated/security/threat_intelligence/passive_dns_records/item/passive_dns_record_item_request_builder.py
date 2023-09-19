@@ -153,7 +153,7 @@ class PassiveDnsRecordItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return PassiveDnsRecordItemRequestBuilder(raw_url, self.request_adapter)
+        return PassiveDnsRecordItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def artifact(self) -> ArtifactRequestBuilder:

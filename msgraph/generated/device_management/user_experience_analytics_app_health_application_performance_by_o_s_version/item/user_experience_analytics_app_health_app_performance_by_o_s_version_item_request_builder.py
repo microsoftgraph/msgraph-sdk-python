@@ -150,7 +150,7 @@ class UserExperienceAnalyticsAppHealthAppPerformanceByOSVersionItemRequestBuilde
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return UserExperienceAnalyticsAppHealthAppPerformanceByOSVersionItemRequestBuilder(raw_url, self.request_adapter)
+        return UserExperienceAnalyticsAppHealthAppPerformanceByOSVersionItemRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

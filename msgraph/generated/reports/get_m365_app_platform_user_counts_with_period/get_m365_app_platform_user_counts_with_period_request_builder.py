@@ -68,7 +68,7 @@ class GetM365AppPlatformUserCountsWithPeriodRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return GetM365AppPlatformUserCountsWithPeriodRequestBuilder(raw_url, self.request_adapter)
+        return GetM365AppPlatformUserCountsWithPeriodRequestBuilder(self.request_adapter, raw_url)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

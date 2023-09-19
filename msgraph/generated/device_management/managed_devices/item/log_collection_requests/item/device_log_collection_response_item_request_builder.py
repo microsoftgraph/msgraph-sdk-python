@@ -151,7 +151,7 @@ class DeviceLogCollectionResponseItemRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return DeviceLogCollectionResponseItemRequestBuilder(raw_url, self.request_adapter)
+        return DeviceLogCollectionResponseItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def create_download_url(self) -> CreateDownloadUrlRequestBuilder:

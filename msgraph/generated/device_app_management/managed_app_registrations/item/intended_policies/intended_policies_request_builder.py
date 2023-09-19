@@ -133,7 +133,7 @@ class IntendedPoliciesRequestBuilder(BaseRequestBuilder):
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return IntendedPoliciesRequestBuilder(raw_url, self.request_adapter)
+        return IntendedPoliciesRequestBuilder(self.request_adapter, raw_url)
     
     @property
     def count(self) -> CountRequestBuilder:
